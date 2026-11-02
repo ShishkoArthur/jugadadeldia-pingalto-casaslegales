@@ -1,0 +1,198 @@
+<!-- name: Ciber del barrio -->
+<!-- desc: Ностальгия по аргентинскому «сиберу» 2000-х: вывеска с номером ПК, первый экран внутри пузатого ЭЛТ-монитора, карточки — окна с объёмными кнопками и заголовками, «Esports hoy» — окно чата со временем, инструменты — значки рабочего стола, подвал — панель задач с часами. Пиксельный шрифт только в заголовках, текст — Verdana. Светлая — мятно-серые стены и бирюзовые окна, тёмная — сибер ночью: тёмно-синий и сливовые заголовки окон. -->
+<!-- fonts: family=Silkscreen:wght@400;700 -->
+<style>
+.p06{--wl:#dce6e1;--wt:#cfdad4;--wn:#efeee9;--fg:#111814;--mu:#45514b;--hi:#fff;--sh:#7d8781;--dk:#2a302d;--t1:#0b5a61;--t2:#1f7676;--tt:#fff;--ac:#a3175a;--ok:#1e6b2b;--sel:#0b5a61;--on:#fff;--px:Silkscreen,"Courier New",monospace;background:repeating-linear-gradient(0deg,var(--wt) 0 1px,#0000 1px 48px),repeating-linear-gradient(90deg,var(--wt) 0 1px,#0000 1px 48px),var(--wl);color:var(--fg);font:15px/1.5 Verdana,Tahoma,"DejaVu Sans",sans-serif;font-variant-numeric:tabular-nums}
+.p06[data-mode="dark"]{--wl:#0c1120;--wt:#151c30;--wn:#1d2130;--fg:#e8e9f0;--mu:#a9adbf;--hi:#3a4058;--sh:#06080f;--dk:#000;--t1:#4e2160;--t2:#8a3f8f;--tt:#fff;--ac:#ff8cc6;--ok:#7fdc8e;--sel:#b98ad0;--on:#0c1120}
+.p06 *{box-sizing:border-box;margin:0}
+.p06 :where(a){color:inherit}
+.p06 :focus-visible{outline:2px dotted var(--fg);outline-offset:2px}
+.p06-bv{background:var(--wn);box-shadow:inset -2px -2px var(--sh),inset 2px 2px var(--hi),0 0 0 1px var(--dk)}
+.p06-sg{display:flex;align-items:center;gap:16px;padding:10px 24px;background:var(--dk);color:#f2f2f2}
+.p06-lg{display:flex;align-items:center;gap:10px;font:700 22px var(--px);text-decoration:none;color:#fff}
+.p06-lg svg{width:34px;height:34px}
+.p06-lg rect{fill:#f2c94c}
+.p06-lg path{fill:none;stroke:#111;stroke-width:2.6}
+.p06-lg small{font:400 12px var(--px);color:#f2c94c}
+.p06-nv{display:flex;gap:6px;margin-left:auto}
+.p06-nv a{min-height:40px;display:flex;align-items:center;padding:0 12px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;border:1px solid #ffffff40}
+.p06-nv [aria-current]{background:#f2c94c;color:#111;border-color:#f2c94c}
+.p06-ib{width:42px;height:42px;display:grid;place-items:center;border:0;background:#f2f2f2;color:#111;cursor:pointer;box-shadow:inset -2px -2px #7d8781,inset 2px 2px #fff}
+.p06-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2.2}
+.p06-bg{display:none}
+.p06-mq{display:flex;gap:28px;padding:6px 24px;background:var(--t1);color:var(--tt);font:12px var(--px);white-space:nowrap;overflow:clip}
+.p06-he{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:32px;padding:32px 24px;align-items:center}
+.p06-crt{background:linear-gradient(#bdb9ab,#a9a597);border-radius:26px;padding:22px 22px 40px;box-shadow:inset 0 -6px 0 #8c887b,0 12px 0 -4px #8c887b;position:relative}
+.p06[data-mode="dark"] .p06-crt{background:linear-gradient(#3a3e4c,#2b2f3b);box-shadow:inset 0 -6px 0 #1d2029,0 12px 0 -4px #1d2029}
+.p06-crt::after{content:"";position:absolute;right:30px;bottom:15px;width:10px;height:10px;border-radius:50%;background:#3fd16b;box-shadow:-24px 0 0 -2px #555}
+.p06-sc{border-radius:18px/24px;padding:30px 34px;background:radial-gradient(ellipse at 40% 30%,#14302c,#0a1513);color:#d9f2e6;box-shadow:inset 0 0 40px #000a;position:relative}
+.p06-sc::before{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(0deg,#ffffff08 0 1px,#0000 1px 3px);pointer-events:none}
+.p06-pr{font:13px var(--px);color:#8fe3b4}
+.p06 h1{font:700 44px/1.12 var(--px);margin:12px 0 14px;letter-spacing:-.02em}
+.p06-sb{color:#b9d8ca;max-width:560px}
+.p06-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;position:relative}
+.p06-bt a{min-height:46px;display:inline-flex;align-items:center;padding:0 18px;font-weight:700;text-decoration:none;color:#111;background:#efeee9;box-shadow:inset -2px -2px #7d8781,inset 2px 2px #fff,0 0 0 1px #000}
+.p06 .p06-b1{background:#f2c94c}
+.p06-girl{aspect-ratio:2/3;padding:12px;display:grid;grid-template-rows:auto 1fr auto;gap:8px;transform:rotate(1.5deg)}
+.p06-girl p{font:700 13px var(--px);text-align:center;background:var(--ac);color:var(--on);padding:4px}
+.p06-girl div{display:grid;place-items:end center;background:repeating-linear-gradient(45deg,var(--wt) 0 6px,#0000 6px 12px)}
+.p06-girl svg{width:78%;fill:var(--fg);opacity:.85}
+.p06-girl circle{fill:var(--ac)}
+.p06-girl span{font:12px var(--px);text-align:center;color:var(--mu)}
+.p06-ds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding:4px 24px 28px}
+.p06-w{min-width:0;padding:3px}
+.p06-tb{display:flex;align-items:center;gap:8px;padding:4px 4px 4px 10px;background:linear-gradient(90deg,var(--t1),var(--t2));color:var(--tt)}
+.p06 h2{font:700 15px var(--px);flex:1;min-width:0}
+.p06-tb i{width:22px;height:20px;background:#efeee9;box-shadow:inset -1px -1px #7d8781,inset 1px 1px #fff;display:grid;place-items:center;color:#111;font:700 11px/1 var(--px);font-style:normal}
+.p06-bd{padding:16px;min-width:0}
+.p06-x{font-size:12px;color:var(--mu);margin-bottom:10px}
+.p06-fs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:end}
+.p06-fs label{font-size:12px;color:var(--mu);display:grid;gap:3px}
+.p06-in{display:block;padding:6px 8px;background:var(--hi);box-shadow:inset 2px 2px var(--sh),inset -1px -1px var(--hi);font:700 26px/1.2 var(--px);color:var(--fg)}
+.p06[data-mode="dark"] .p06-in{background:#0c1120}
+.p06-fs b{font:700 22px var(--px);padding-bottom:8px}
+.p06-pg{margin-top:14px;font-size:13px}
+.p06-pb{height:22px;margin-top:4px;padding:3px;background:var(--hi);box-shadow:inset 2px 2px var(--sh)}
+.p06[data-mode="dark"] .p06-pb{background:#0c1120}
+.p06-pb i{display:block;height:100%;width:52%;background:repeating-linear-gradient(90deg,var(--ok) 0 10px,#0000 10px 12px)}
+.p06-rk{list-style:none;padding:0;display:grid;gap:4px;font-size:13px}
+.p06-rk li{display:grid;grid-template-columns:96px minmax(0,1fr) 48px;gap:8px;align-items:center}
+.p06-rk span{height:14px;padding:2px;background:var(--hi);box-shadow:inset 1px 1px var(--sh)}
+.p06[data-mode="dark"] .p06-rk span{background:#0c1120}
+.p06-rk i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--t2) 0 6px,#0000 6px 8px)}
+.p06-rk em{font-style:normal;text-align:right}
+.p06-rk .p06-me{background:var(--sel);color:var(--on);font-weight:700}
+.p06-rk .p06-me i{background:repeating-linear-gradient(90deg,var(--on) 0 6px,#0000 6px 8px)}
+.p06-nt{margin-top:10px;font-weight:700;color:var(--ac)}
+.p06-ch{background:var(--hi);box-shadow:inset 2px 2px var(--sh);padding:10px 12px;display:grid;gap:10px;font-size:14px}
+.p06[data-mode="dark"] .p06-ch{background:#0c1120}
+.p06-ch p b{color:var(--t2)}
+.p06[data-mode="dark"] .p06-ch p b{color:var(--sel)}
+.p06-ch small{color:var(--mu)}
+.p06-vs{display:flex;height:22px;margin-top:4px;font-weight:700;font-size:12px;line-height:22px}
+.p06-vs i{font-style:normal;background:var(--t1);color:#fff;padding-left:6px}
+.p06-vs i+i{background:var(--ac);color:var(--on);text-align:right;padding-right:6px}
+.p06-tl{display:grid;gap:6px}
+.p06-tl div{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:4px;border-bottom:1px dotted var(--sh)}
+.p06-tl b{width:40px;height:40px;display:grid;place-items:center;font:700 20px var(--px);background:var(--t1);color:#fff}
+.p06-tl div:first-child b{background:var(--ac);color:var(--on)}
+.p06-tl span{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--px);background:var(--wn);box-shadow:inset -2px -2px var(--sh),inset 2px 2px var(--hi),0 0 0 1px var(--dk)}
+.p06-ic{padding:0 24px 28px}
+.p06-ic h2{font-size:18px;margin-bottom:12px;color:var(--fg)}
+.p06-ic div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.p06-ic a{display:grid;grid-template-columns:40px minmax(0,1fr);gap:2px 12px;align-items:center;padding:10px;text-decoration:none;min-height:64px}
+.p06-ic a::before{content:"";grid-row:span 2;width:40px;height:40px;background:linear-gradient(var(--t2),var(--t2)) 6px 6px/28px 20px no-repeat,linear-gradient(var(--dk),var(--dk)) 14px 30px/12px 4px no-repeat,linear-gradient(var(--dk),var(--dk)) 8px 34px/24px 4px no-repeat,linear-gradient(var(--dk),var(--dk)) 3px 3px/34px 26px no-repeat}
+.p06-ic a:nth-child(3n)::before{background:linear-gradient(var(--ac),var(--ac)) 4px 4px/32px 32px no-repeat,linear-gradient(var(--dk),var(--dk)) 0 0/40px 40px no-repeat}
+.p06-ic a:hover{background:var(--sel);color:var(--on)}
+.p06-ic b{font-size:14px;line-height:1.25}
+.p06-ic span{font-size:12px;color:var(--mu)}
+.p06-ic a:hover span{color:inherit}
+.p06-tk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:6px 10px;border-top:2px solid var(--hi)}
+.p06-st{font:700 14px var(--px);padding:8px 12px;background:var(--wn);box-shadow:inset -2px -2px var(--sh),inset 2px 2px var(--hi),0 0 0 1px var(--dk)}
+.p06-tk nav{display:flex;flex-wrap:wrap;gap:4px}
+.p06-tk nav a{min-height:40px;display:flex;align-items:center;padding:0 12px;font-size:13px;text-decoration:none;box-shadow:inset -1px -1px var(--sh),inset 1px 1px var(--hi)}
+.p06-tk time{margin-left:auto;padding:8px 12px;font:13px var(--px);box-shadow:inset 1px 1px var(--sh),inset -1px -1px var(--hi)}
+.p06-tk p{flex-basis:100%;font-weight:700;padding:4px 2px 0}
+.p06-tk small{flex-basis:100%;font-size:12px;color:var(--mu);padding:0 2px 6px}
+@container (max-width:620px){
+.p06-sg{padding:8px 12px;gap:8px}
+.p06-lg{font-size:18px}
+.p06-lg small,.p06-nv{display:none}
+.p06-sg .p06-ib:first-of-type{margin-left:auto}
+.p06-bg{display:grid}
+.p06-mq{padding:6px 12px;font-size:11px}
+.p06-mq span+span{display:none}
+.p06-he{grid-template-columns:minmax(0,1fr);padding:20px 12px;gap:24px}
+.p06-crt{padding:12px 12px 30px;border-radius:18px}
+.p06-crt::after{bottom:10px;right:20px}
+.p06-sc{padding:20px 16px}
+.p06 h1{font-size:28px}
+.p06-bt a{flex:1 1 100%;justify-content:center}
+.p06-girl{width:60%;justify-self:center}
+.p06-ds{grid-template-columns:minmax(0,1fr);padding:0 12px 22px;gap:18px}
+.p06-bd{padding:12px}
+.p06-in{font-size:20px}
+.p06-fs{gap:6px}
+.p06-rk li{grid-template-columns:86px minmax(0,1fr) 44px;gap:6px}
+.p06-ic{padding:0 12px 22px}
+.p06-ic div{grid-template-columns:minmax(0,1fr)}
+.p06-tk time{display:none}
+}
+</style>
+<div class="p06 mock" data-mode="light">
+<header class="p06-sg">
+<a class="p06-lg" href="#"><svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34"/><path d="M4 20h6l3-7 4 11 4-14 3 10h6"/></svg><span>pingalto</span><small>ciber · PC 07</small></a>
+<nav class="p06-nv" aria-label="Principal"><a href="#" aria-current="page">Juegos</a><a href="#">Herramientas</a><a href="#">Esports</a><a href="#">Tier list</a></nav>
+<button class="p06-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="p06-ib p06-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</header>
+<p class="p06-mq"><span>PC libres: 3 de 12</span><span>Sábado: LAN de CS2 en las PC 1 a 10</span><span>Horarios en hora argentina</span></p>
+<section class="p06-he">
+<div class="p06-crt"><div class="p06-sc">
+<p class="p06-pr">C:\pingalto&gt; inicio</p>
+<h1>Subí de rango con la cuenta hecha</h1>
+<p class="p06-sb">Rangos, sensibilidad, miras, mapas y tier lists de Valorant, Free Fire, CS2, LoL, Fortnite y más. Sin humo y sin vender nada.</p>
+<div class="p06-bt"><a class="p06-b1" href="#">Calculá tu sensibilidad</a><a href="#">Ver la tier list</a></div>
+</div></div>
+<div class="p06-girl p06-bv" role="img" aria-label="Ilustración"><p>La del mostrador</p><div><svg viewBox="0 0 100 150" aria-hidden="true"><circle cx="71" cy="14" r="7"/><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg></div><span>acá va ella</span></div>
+</section>
+<main class="p06-ds">
+<section class="p06-w p06-bv"><div class="p06-tb"><h2>Sensibilidad: pasala de un juego a otro</h2><i aria-hidden="true">_</i><i aria-hidden="true">x</i></div>
+<div class="p06-bd"><p class="p06-x">Ejemplo · misma vuelta de 360°</p>
+<div class="p06-fs"><label>CS2 · 800 DPI<span class="p06-in">1,25</span></label><b aria-hidden="true">&gt;&gt;</b><label>Valorant<span class="p06-in">0,393</span></label></div>
+<p class="p06-pg">eDPI 1.000 · cm/360: <b>41,6 cm</b></p>
+<div class="p06-pb" aria-hidden="true"><i></i></div>
+</div></section>
+<section class="p06-w p06-bv"><div class="p06-tb"><h2>Rangos de Valorant</h2><i aria-hidden="true">_</i><i aria-hidden="true">x</i></div>
+<div class="p06-bd"><p class="p06-x">% de jugadores, ejemplo</p>
+<ol class="p06-rk">
+<li><b>Hierro</b><span><i style="width:39%"></i></span><em>7 %</em></li>
+<li><b>Bronce</b><span><i style="width:83%"></i></span><em>15 %</em></li>
+<li><b>Plata</b><span><i style="width:100%"></i></span><em>18 %</em></li>
+<li class="p06-me"><b>Oro</b><span><i style="width:89%"></i></span><em>16 %</em></li>
+<li><b>Platino</b><span><i style="width:83%"></i></span><em>15 %</em></li>
+<li><b>Diamante</b><span><i style="width:78%"></i></span><em>14 %</em></li>
+<li><b>Ascendente</b><span><i style="width:56%"></i></span><em>10 %</em></li>
+<li><b>Inmortal</b><span><i style="width:25%"></i></span><em>4,5 %</em></li>
+<li><b>Radiante</b><span><i style="width:3%"></i></span><em>0,5 %</em></li>
+</ol>
+<p class="p06-nt">Estás en Oro 2: por encima del 45 %</p>
+</div></section>
+<section class="p06-w p06-bv"><div class="p06-tb"><h2>Esports hoy</h2><i aria-hidden="true">_</i><i aria-hidden="true">x</i></div>
+<div class="p06-bd"><p class="p06-x">Hora argentina · chances del modelo, ejemplo</p>
+<div class="p06-ch">
+<p><b>[18:00]</b> Furia vs. MIBR <small>· CS2 · Bo3</small></p><div class="p06-vs"><i style="width:58%">58 %</i><i style="width:42%">42 %</i></div>
+<p><b>[20:00]</b> Leviatán vs. KRÜ <small>· Valorant · Bo3</small></p><div class="p06-vs"><i style="width:55%">55 %</i><i style="width:45%">45 %</i></div>
+<p><b>[21:00]</b> Liga LATAM Free Fire <small>· fecha 4 · 12 equipos</small></p>
+</div>
+</div></section>
+<section class="p06-w p06-bv"><div class="p06-tb"><h2>Tier list del parche</h2><i aria-hidden="true">_</i><i aria-hidden="true">x</i></div>
+<div class="p06-bd"><p class="p06-x">Valorant · ejemplo</p>
+<div class="p06-tl">
+<div><b>S</b><span>JE</span><span>RA</span><span>OM</span></div>
+<div><b>A</b><span>SO</span><span>KJ</span><span>CY</span><span>SK</span></div>
+<div><b>B</b><span>BR</span><span>PH</span><span>FA</span></div>
+<div><b>C</b><span>YO</span><span>HA</span></div>
+</div>
+</div></section>
+</main>
+<nav class="p06-ic" aria-labelledby="p06-ih"><h2 id="p06-ih">Escritorio: herramientas</h2>
+<div>
+<a href="#"><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x</span></a>
+<a href="#"><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span></a>
+<a href="#"><b>Rangos de LoL</b><span>De Hierro a Retador</span></a>
+<a href="#"><b>Mapas de Valorant</b><span>Callouts de cada mapa</span></a>
+<a href="#"><b>Brawlers y meta</b><span>Quién pega fuerte hoy</span></a>
+<a href="#"><b>Mazos de Clash Royale</b><span>Por arena y elixir</span></a>
+<a href="#"><b>Rocket League: rangos</b><span>De Bronce a SSL</span></a>
+<a href="#"><b>DPI y eDPI</b><span>Medí tu DPI real</span></a>
+</div>
+</nav>
+<footer class="p06-tk p06-bv">
+<span class="p06-st" aria-hidden="true">pingalto</span>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<time>21:00</time>
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado.</small>
+</footer>
+</div>

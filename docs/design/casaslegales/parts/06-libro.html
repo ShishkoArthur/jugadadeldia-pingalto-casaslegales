@@ -1,0 +1,105 @@
+<!-- name: Libro de registro --><!-- desc: Гроссбух реестра: корешок тома слева с вкладками-разделами, линованная бледно-зелёная бумага, красные двойные линии полей, номера листов, разделы — «asientos» (записи) вместо карточек. Светлая — зелёная конторская бумага и тёмно-зелёные чернила; тёмная — ночной том: глубокий зелёный, мятные чернила, розовые линии. --><!-- fonts: family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Anonymous+Pro:wght@400;700 --><style>
+.c06{--bg:#eaf0e6;--fg:#1a2a21;--mu:#47584d;--ac:#1d5639;--ao:#f3f7f0;--rd:#ad3830;--ln:#bccfb8;--sp:#1e3a2b;--sf:#e6eee2;--no:#86978a;--m:"Anonymous Pro",ui-monospace,monospace;display:grid;grid-template-columns:210px minmax(0,1fr);background:var(--bg);color:var(--fg);font:17px/32px Spectral,Georgia,serif}
+.c06[data-mode="dark"]{--bg:#0e1712;--fg:#e1ebe2;--mu:#a2b4a7;--ac:#8dd4aa;--ao:#0a1610;--rd:#e8857b;--ln:#25372b;--sp:#060c08;--sf:#d4e1d6;--no:#5d7163}
+.c06 *{box-sizing:border-box}
+.c06 :where(a){color:inherit}
+.c06 :focus-visible{outline:2px solid var(--rd);outline-offset:2px}
+.c06-sp{background:var(--sp);color:var(--sf);padding:24px 0;display:flex;flex-direction:column;gap:18px;border-right:6px double var(--rd)}
+.c06-lo{display:grid;justify-items:center;gap:4px;text-decoration:none;font:700 21px/1.1 Spectral,serif;text-align:center}
+.c06-lo svg{width:44px;height:44px}
+.c06-lo small{font:400 13px var(--m);letter-spacing:.1em;opacity:.85}
+.c06-nv{display:grid}
+.c06-nv a{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 20px;text-decoration:none;border-top:1px solid color-mix(in srgb,var(--sf) 20%,transparent);font-size:16px}
+.c06-nv a span{font:13px var(--m);opacity:.8}
+.c06-nv a:hover{background:color-mix(in srgb,var(--sf) 10%,transparent)}
+.c06-ib{width:44px;height:44px;border:1px solid currentColor;border-radius:4px;background:none;color:inherit;display:grid;place-items:center;cursor:pointer;margin:auto auto 0}
+.c06-bg{display:none}
+.c06-mn{min-width:0;background:linear-gradient(90deg,transparent 62px,var(--rd) 62px 63px,transparent 63px 66px,var(--rd) 66px 67px,transparent 67px),repeating-linear-gradient(transparent 0 31px,var(--ln) 31px 32px);padding-right:32px}
+.c06-as{display:grid;grid-template-columns:67px minmax(0,1fr);gap:0 22px;padding:32px 0 0}
+.c06-fo{font:700 14px/32px var(--m);color:var(--rd);text-align:center}
+.c06-k{font:700 14px/32px var(--m);color:var(--ac);text-transform:uppercase;letter-spacing:.06em;margin:0}
+.c06-hr{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px}
+.c06 h1{font-size:50px;line-height:64px;font-weight:700;margin:0;letter-spacing:-.01em}
+.c06 h2{font-size:28px;line-height:32px;font-weight:600;margin:0 0 32px}
+.c06-su{margin:0 0 32px;font-size:19px}
+.c06-fm{display:flex;flex-wrap:wrap;gap:10px}
+.c06-fm label{flex:1 1 100%;font:700 14px var(--m);color:var(--mu)}
+.c06-se{position:relative;display:block}
+.c06-se::after{content:"";position:absolute;right:16px;top:14px;width:8px;height:8px;border:solid var(--fg);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.c06 select,.c06 input{appearance:none;width:100%;min-height:44px;font:600 18px Spectral,serif;color:var(--fg);background:var(--bg);border:1.5px solid var(--fg);border-radius:0;padding:0 40px 0 12px}
+.c06-b1,.c06-b2{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;font:700 15px var(--m);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border:1.5px solid var(--ac);cursor:pointer}
+.c06-b1{background:var(--ac);color:var(--ao)}
+.c06-b2{color:var(--ac);background:var(--bg)}
+.c06-shot{margin:0;border:1.5px solid var(--fg);background:var(--bg)}
+.c06-br{display:flex;gap:10px;border-bottom:1.5px solid var(--fg);padding:0 10px;font:13px/30px var(--m)}
+.c06-br i{color:var(--rd);font-style:normal}
+.c06-pg{height:224px;background:linear-gradient(90deg,transparent 30%,var(--ln) 30% calc(30% + 1px),transparent 0),repeating-linear-gradient(transparent 0 15px,var(--ln) 15px 16px)}
+.c06-shot figcaption{border-top:1.5px solid var(--fg);padding:0 10px;font-style:italic;font-size:15px}
+.c06-t{width:100%;border-collapse:collapse;font-size:16px;line-height:1.2;font-variant-numeric:tabular-nums;background:var(--bg)}
+.c06-t th,.c06-t td{height:40px;padding:0 6px;text-align:center;border-bottom:1px solid var(--ln);border-left:3px double var(--rd)}
+.c06-t :is(th,td):first-child{border-left:0}
+.c06-t thead th{font:700 13px var(--m);text-transform:uppercase;border-bottom:3px double var(--fg)}
+.c06-t tbody th{text-align:left;font-weight:600}
+.c06-t caption{caption-side:bottom;text-align:left;font-style:italic;font-size:15px;line-height:32px;color:var(--mu)}
+.c06-y,.c06-n,.c06-q{font-size:0!important}
+.c06 :is(.c06-y,.c06-n,.c06-q)::before{content:"";display:inline-block;vertical-align:middle}
+.c06-y::before{width:7px;height:14px;border:solid var(--ac);border-width:0 3px 3px 0;transform:translateY(-2px) rotate(45deg)}
+.c06-n::before{width:16px;border-top:1.5px solid var(--no)}
+.c06 .c06-q::before{content:"s/c";font:700 13px/1 var(--m);color:var(--rd)}
+.c06-lg{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font-size:15px;margin:0;color:var(--mu)}
+.c06-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+.c06-vr p{margin:0}
+.c06-rs{margin-top:32px;border:1.5px solid var(--fg);background:var(--bg);padding:0 14px}
+.c06-ch{display:inline-block;font:700 13px/24px var(--m);text-transform:uppercase;color:var(--rd);border:1.5px solid var(--rd);padding:0 8px;margin:4px 0 0}
+.c06-rs p{margin:0 0 4px;font-size:16px;line-height:1.5}
+.c06-rs b{font-family:var(--m);overflow-wrap:anywhere}
+.c06 h3{font-size:22px;margin:0;line-height:32px}
+.c06-cs{display:flex;gap:8px;list-style:none;margin:0;padding:0;font:700 14px/32px var(--m);color:var(--ac)}
+.c06-cs li::before{content:"["}.c06-cs li::after{content:"]"}
+.c06 dl{margin:0}
+.c06 dl div{display:flex;justify-content:space-between;gap:12px}
+.c06 dt{font-weight:600}
+.c06 dd{margin:0;text-align:right;font-style:italic}
+.c06 dd .c06-y{margin-right:10px}
+.c06 blockquote{margin:0;padding-left:16px;border-left:3px double var(--rd);font-style:italic;font-size:19px}
+.c06 blockquote p{margin:0}
+.c06 cite{font:normal 13px var(--m);color:var(--mu)}
+.c06-lw{list-style:none;margin:0;padding:0}
+.c06-lw li{display:grid;grid-template-columns:120px 150px minmax(0,1fr);gap:16px;min-height:64px;align-items:center;border-bottom:1px solid var(--ln)}
+.c06-lw time,.c06-lw b{font:700 14px var(--m)}
+.c06-lw time{color:var(--rd)}
+.c06-lw q{font-style:italic;font-size:19px}
+.c06-ix{list-style:none;margin:0;padding:0;columns:2;column-gap:32px}
+.c06-ix a{display:flex;gap:10px;min-height:44px;align-items:center;text-decoration:none;break-inside:avoid}
+.c06-ix a::after{content:attr(data-f);margin-left:auto;font:700 13px var(--m);color:var(--rd)}
+.c06-ix a:hover{text-decoration:underline}
+.c06-ft{padding-bottom:32px}
+.c06-ft p{margin:0}
+.c06-rg{display:flex;flex-wrap:wrap;gap:0 12px;border:3px double var(--rd);background:var(--bg);padding:6px 14px;margin:0 0 16px!important}
+.c06-rg b{font-family:var(--m);color:var(--rd)}
+.c06-ft nav{display:flex;flex-wrap:wrap;gap:0 22px;font:700 14px/44px var(--m);text-transform:uppercase}
+@container (max-width:620px){
+.c06{grid-template-columns:minmax(0,1fr);font-size:16px}
+.c06-sp{flex-direction:row;align-items:center;padding:0 12px 0 16px;height:60px;gap:8px;border-right:0;border-bottom:6px double var(--rd)}
+.c06-lo{display:flex;gap:8px;font-size:19px;margin-right:auto}
+.c06-lo svg{width:30px;height:30px}
+.c06-lo small,.c06-nv{display:none}
+.c06-ib{margin:0}
+.c06-bg{display:grid}
+.c06-mn{padding-right:16px;background:linear-gradient(90deg,transparent 30px,var(--rd) 30px 31px,transparent 31px 34px,var(--rd) 34px 35px,transparent 35px),repeating-linear-gradient(transparent 0 31px,var(--ln) 31px 32px)}
+.c06-as{grid-template-columns:35px minmax(0,1fr);gap:0 12px}
+.c06-fo{writing-mode:vertical-rl;transform:rotate(180deg);text-align:right;line-height:35px}
+.c06-hr,.c06-g{grid-template-columns:minmax(0,1fr)}
+.c06 h1{font-size:34px;line-height:40px;margin-bottom:12px}
+.c06 h2{font-size:24px;margin-bottom:16px}
+.c06-su{font-size:17px;line-height:28px}
+.c06-fm a{flex:1 1 100%;justify-content:center}
+.c06-t{font-size:14px}
+.c06-t th,.c06-t td{padding:0 2px}
+.c06-t thead th{font-size:13px;text-transform:none}
+.c06-lw li{grid-template-columns:minmax(0,1fr);gap:0;padding:8px 0}
+.c06-ix{columns:1}
+.c06 dl div{display:block}
+.c06 dd{text-align:left}
+}
+</style><div class="c06 mock" data-mode="light"><aside class="c06-sp"><a class="c06-lo" href="#"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M8 5h26a3 3 0 0 1 3 3v31H11a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 34a3 3 0 0 1 3-3h26M13 5v26" stroke="currentColor" stroke-width="2" fill="none"/><path d="m18 18 4 4 8-8" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>casaslegales<small>TOMO I · 2026</small></a><nav class="c06-nv" aria-label="Principal"><a href="#">Operadores<span>f. 10</span></a><a href="#">Provincias<span>f. 20</span></a><a href="#">Licencias<span>f. 30</span></a><a href="#">Verificador<span>f. 40</span></a><a href="#">Guías<span>f. 50</span></a></nav><button class="c06-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button><button class="c06-ib c06-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2"/></svg></button></aside><main class="c06-mn"><section class="c06-as"><span class="c06-fo">001</span><div class="c06-hr"><div><p class="c06-k">Asiento 1 · consulta abierta</p><h1>¿Es legal donde apostás? Fijate en tu provincia</h1><p class="c06-su">Qué casas de apuestas tienen licencia en cada provincia, con la cita del regulador y la fecha en que lo revisamos. Sin enlaces a operadores, sin bonos.</p><form class="c06-fm"><label for="c06-p">Elegí tu provincia</label><span class="c06-se"><select id="c06-p"><option>Buenos Aires</option><option>CABA</option><option>Córdoba</option></select></span><a class="c06-b1" href="#">Ver licencias</a><a class="c06-b2" href="#">Verificar un sitio</a></form></div><figure class="c06-shot"><div class="c06-br"><i>●</i><span>www.ejemplo.bet.ar</span></div><div class="c06-pg"></div><figcaption>Captura propia de la página pública · 02/11/2026</figcaption></figure></div></section><section class="c06-as"><span class="c06-fo">002</span><div><p class="c06-k">Asiento 2</p><h2>Licencias por provincia</h2><table class="c06-t"><caption>Datos de ejemplo para el diseño · fuente y fecha en cada celda</caption><thead><tr><th>Operador</th><th>PBA</th><th>CABA</th><th>Córdoba</th><th>Santa Fe</th><th>Mendoza</th></tr></thead><tbody><tr><th scope="row">Betano</th><td class="c06-y">sí</td><td class="c06-y">sí</td><td class="c06-n">no</td><td class="c06-n">no</td><td class="c06-q">sin confirmar</td></tr><tr><th scope="row">Betsson</th><td class="c06-y">sí</td><td class="c06-y">sí</td><td class="c06-y">sí</td><td class="c06-n">no</td><td class="c06-n">no</td></tr><tr><th scope="row">bplay</th><td class="c06-y">sí</td><td class="c06-y">sí</td><td class="c06-y">sí</td><td class="c06-q">sin confirmar</td><td class="c06-q">sin confirmar</td></tr><tr><th scope="row">BetWarrior</th><td class="c06-y">sí</td><td class="c06-y">sí</td><td class="c06-n">no</td><td class="c06-q">sin confirmar</td><td class="c06-q">sin confirmar</td></tr><tr><th scope="row">bet365</th><td class="c06-y">sí</td><td class="c06-y">sí</td><td class="c06-n">no</td><td class="c06-n">no</td><td class="c06-n">no</td></tr><tr><th scope="row">Codere</th><td class="c06-n">no</td><td class="c06-y">sí</td><td class="c06-n">no</td><td class="c06-n">no</td><td class="c06-q">sin confirmar</td></tr></tbody></table><p class="c06-lg"><span class="c06-y">sí</span> con licencia <span class="c06-n">no</span> no figura <span class="c06-q">?</span> sin confirmar</p></div></section><section class="c06-as"><span class="c06-fo">003</span><div class="c06-g"><div class="c06-vr"><p class="c06-k">Asiento 3 · consulta al registro</p><h2>Verificador</h2><form class="c06-fm"><input type="text" aria-label="Dirección del sitio" placeholder="Pegá la dirección del sitio"><button class="c06-b1" type="button">Verificar</button></form><div class="c06-rs"><span class="c06-ch">Figura en registro</span><p><b>pba.ejemplo.bet.ar</b> — dominio .bet.ar · licencia en Provincia de Buenos Aires (ejemplo)</p></div></div><article><p class="c06-k">Asiento 4 · ficha de operador</p><h2>Operador de ejemplo</h2><ul class="c06-cs"><li>PBA</li><li>CABA</li><li>Córdoba</li></ul><dl><div><dt>Revisado</dt><dd>02/11/2026</dd></div><div><dt>Juego responsable</dt><dd><span class="c06-y">sí</span> límites, autoexclusión</dd></div><div><dt>Medios de pago</dt><dd>Mercado Pago, transferencia, débito</dd></div><div><dt>Edad mínima</dt><dd>18 años</dd></div></dl><blockquote><p>«Cita textual del regulador (ejemplo).»</p><cite><a href="#">Fuente: registro del regulador</a> · 02/11/2026</cite></blockquote></article></div></section><section class="c06-as"><span class="c06-fo">004</span><div><p class="c06-k">Asiento 5</p><h2>La ley, provincia por provincia</h2><ol class="c06-lw"><li><time>02/11/2026</time><b>Buenos Aires</b><q>Cita textual del regulador (ejemplo).</q></li><li><time>02/11/2026</time><b>CABA</b><q>Cita textual del regulador (ejemplo).</q></li><li><time>02/11/2026</time><b>Córdoba</b><q>Cita textual del regulador (ejemplo).</q></li></ol></div></section><section class="c06-as"><span class="c06-fo">005</span><div><p class="c06-k">Asiento 6 · índice</p><h2>Guías</h2><ul class="c06-ix"><li><a href="#" data-f="f. 51">Cómo saber si un sitio es legal</a></li><li><a href="#" data-f="f. 52">Qué significa .bet.ar</a></li><li><a href="#" data-f="f. 53">Autoexclusión por provincia</a></li><li><a href="#" data-f="f. 54">Medios de pago y Mercado Pago</a></li><li><a href="#" data-f="f. 55">Cuotas y margen: la cuenta</a></li><li><a href="#" data-f="f. 56">Qué hacer si apostaste en un sitio ilegal</a></li></ul></div></section><footer class="c06-as c06-ft"><span class="c06-fo">fin</span><div><p class="c06-rg"><b>18+</b><span>Si el juego dejó de ser un juego: línea gratuita de tu provincia</span><a href="#">→ Juego responsable</a></p><p>Sin enlaces a operadores ni bonos. No es asesoramiento legal: depende de la ley de tu provincia.</p><nav aria-label="Pie"><a href="#">Metodología</a><a href="#">Quiénes escriben</a><a href="#">Registro de fuentes</a><a href="#">Juego responsable</a></nav></div></footer></main></div>

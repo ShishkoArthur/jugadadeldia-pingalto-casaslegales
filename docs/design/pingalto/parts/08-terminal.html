@@ -1,0 +1,194 @@
+<!-- name: Terminal -->
+<!-- desc: Главная как терминальное приложение (TUI): строка состояния вместо шапки с вкладками 1–4, панели с рамками и подписями в рамке, ранги — индикаторы как в системном мониторе, инструменты — список с выбором «›», подвал — строка подсказок клавиш. Один моноширинный шрифт с лигатурами. Тёмная — единственная «неоновая» из десяти, но сдержанная: графит, бирюза, малиновый и янтарь; светлая — «бумажный терминал»: белый, графит, ржавый и синий. -->
+<!-- fonts: family=Fira+Code:wght@400;600 -->
+<style>
+.p08{--bg:#f3f5f7;--pn:#fff;--fg:#1d2433;--mu:#566074;--ln:#b8c0cc;--c1:#1f5fbf;--c2:#b0401a;--c3:#2a7a3b;--hl:#e3e9f4;--sel:#1d2433;--on:#fff;--gl:none;background:var(--bg);color:var(--fg);font:15px/1.55 "Fira Code",ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+.p08[data-mode="dark"]{--bg:#0b0e14;--pn:#0f131b;--fg:#cdd6e4;--mu:#8792a6;--ln:#2a3344;--c1:#5ce1e6;--c2:#ff6ac1;--c3:#f5c46b;--hl:#18202d;--sel:#5ce1e6;--on:#0b0e14;--gl:0 0 18px #5ce1e659}
+.p08 *{box-sizing:border-box;margin:0}
+.p08 :where(a){color:inherit;text-decoration:none}
+.p08 :focus-visible{outline:2px solid var(--c2);outline-offset:1px}
+.p08 h1,.p08 h2{font-weight:600}
+.p08-sl{display:flex;align-items:stretch;gap:0;background:var(--fg);color:var(--bg);font-size:14px;min-height:44px}
+.p08[data-mode="dark"] .p08-sl{background:#151b26;color:var(--fg);border-bottom:1px solid var(--ln)}
+.p08-lg{display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--c2);color:var(--on);font-weight:600}
+.p08[data-mode="light"] .p08-lg{color:#fff}
+.p08-lg svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4}
+.p08-nv{display:flex}
+.p08-nv a{display:flex;align-items:center;padding:0 14px;min-height:44px}
+.p08-nv a b{color:var(--c3);margin-right:4px;font-weight:400}
+.p08[data-mode="light"] .p08-nv a b{color:#f5c46b}
+.p08-nv [aria-current]{background:var(--bg);color:var(--fg)}
+.p08-nv [aria-current] b{color:var(--c2)!important}
+.p08-sr{margin-left:auto;display:flex;align-items:center;gap:14px;padding-left:14px}
+.p08-sr span{white-space:nowrap}
+.p08-ib{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;border-left:1px solid #ffffff30;color:inherit;cursor:pointer}
+.p08-ib svg{width:18px;fill:none;stroke:currentColor;stroke-width:2}
+.p08-bg{display:none}
+.p08-p{position:relative;border:1px solid var(--ln);background:var(--pn);padding:22px 18px 16px;min-width:0}
+.p08-p>h2,.p08-lb,.p08-tt{position:absolute;top:-11px;left:12px;font-size:14px;line-height:20px;padding:0 6px;background:var(--pn);color:var(--c1)}
+.p08-p>h2::before,.p08-lb::before{content:"[ "}.p08-p>h2::after,.p08-lb::after{content:" ]"}
+.p08-tt{left:auto;right:12px;color:var(--mu)}
+.p08-wr{display:grid;gap:20px;padding:24px 20px}
+.p08-he{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:20px}
+.p08-he>.p08-p:first-child{display:flex;flex-direction:column;justify-content:center}
+.p08-pr{color:var(--mu)}
+.p08-pr b{color:var(--c3);font-weight:400}
+.p08 h1{font-size:46px;line-height:1.1;letter-spacing:-.02em;margin:14px 0 14px;text-shadow:var(--gl)}
+.p08 h1 em{font-style:normal;color:var(--c1)}
+.p08-cu{display:inline-block;width:.55em;height:.9em;background:var(--c2);vertical-align:-.08em;margin-left:6px}
+.p08-sb{color:var(--mu);max-width:620px}
+.p08-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.p08-bt a{min-height:46px;display:inline-flex;align-items:center;gap:10px;padding:0 16px;border:1px solid var(--fg)}
+.p08 .p08-b1{background:var(--sel);color:var(--on);border-color:var(--sel)}
+.p08-bt kbd{font:inherit;font-size:12px;opacity:.8}
+.p08-girl{display:grid;grid-template-rows:1fr auto;padding-top:24px}
+.p08-girl div{display:grid;place-items:end center;background:radial-gradient(circle,var(--ln) 1px,#0000 1.5px) 0 0/6px 6px;aspect-ratio:2/3;max-height:100%}
+.p08-girl svg{width:80%;fill:var(--c1);opacity:.9}
+.p08-girl circle{fill:var(--c2)}
+.p08-girl p{font-size:12px;color:var(--mu);padding-top:8px}
+.p08-gr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.p08-sv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 18px}
+.p08-sv dt{color:var(--mu)}
+.p08-sv dd{margin:0}
+.p08-sv .p08-big{font-size:30px;font-weight:600;color:var(--c1);line-height:1.2}
+.p08-mt{display:flex;align-items:center;gap:10px;margin-top:10px}
+.p08-mt span{flex:1;height:14px;background:repeating-linear-gradient(90deg,var(--hl) 0 8px,#0000 8px 10px)}
+.p08-mt i{display:block;height:100%;width:52%;background:repeating-linear-gradient(90deg,var(--c3) 0 8px,#0000 8px 10px)}
+.p08-rk{list-style:none;padding:0;display:grid;gap:3px}
+.p08-rk li{display:grid;grid-template-columns:104px minmax(0,1fr) 52px;gap:10px;align-items:center}
+.p08-rk span{height:12px;background:repeating-linear-gradient(90deg,var(--hl) 0 5px,#0000 5px 7px)}
+.p08-rk i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--c1) 0 5px,#0000 5px 7px)}
+.p08-rk em{font-style:normal;text-align:right}
+.p08-rk .p08-me{background:var(--hl);color:var(--c2);font-weight:600}
+.p08-rk .p08-me i{background:repeating-linear-gradient(90deg,var(--c2) 0 5px,#0000 5px 7px)}
+.p08-nt{margin-top:10px}
+.p08-nt b{color:var(--c2)}
+.p08-ms{width:100%;border-collapse:collapse}
+.p08-ms td{padding:8px 0;border-bottom:1px dashed var(--ln);vertical-align:top}
+.p08-ms td:first-child{color:var(--c3);width:66px}
+.p08-ms small{display:block;color:var(--mu);font-size:13px}
+.p08-ms td:last-child{width:46%;padding-left:12px}
+.p08-sp{display:flex;font-size:13px}
+.p08-sp i{font-style:normal;border-top:3px solid var(--c1);padding-top:2px}
+.p08-sp i+i{border-color:var(--c2);text-align:right}
+.p08-tl{display:grid;gap:8px}
+.p08-tl div{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.p08-tl b{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--fg);font-size:18px}
+.p08-tl div:first-child b{background:var(--c2);border-color:var(--c2);color:var(--on)}
+.p08[data-mode="light"] .p08-tl div:first-child b{color:#fff}
+.p08-tl span{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--ln);font-size:13px;background:var(--hl)}
+.p08-fz{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+.p08-fz a{display:grid;grid-template-columns:18px minmax(0,1fr);gap:0 8px;padding:7px 8px;min-height:44px}
+.p08-fz a::before{content:"";grid-row:span 2}
+.p08-fz li:first-child a{background:var(--hl)}
+.p08-fz li:first-child a::before{content:"›";color:var(--c2);font-weight:600}
+.p08-fz b{font-weight:600}
+.p08-fz span{color:var(--mu);font-size:13px}
+.p08-fz a:hover{background:var(--hl)}
+.p08-ft{display:grid;gap:8px;padding:12px 20px 24px;border-top:1px solid var(--ln)}
+.p08-ft p{color:var(--c3);font-weight:600}
+.p08[data-mode="light"] .p08-ft p{color:var(--c2)}
+.p08-ft nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.p08-ft nav a{padding:10px 0}
+.p08-ft nav a::before{content:"[";color:var(--mu)}.p08-ft nav a::after{content:"]";color:var(--mu)}
+.p08-ft small{color:var(--mu);font-size:13px}
+@container (max-width:620px){
+.p08{font-size:14px}
+.p08-nv,.p08-sr span{display:none}
+.p08-lg{padding:0 12px}
+.p08-bg{display:grid}
+.p08-wr{padding:20px 12px;gap:22px}
+.p08-he{grid-template-columns:minmax(0,1fr) 104px;gap:12px}
+.p08-he>.p08-p:first-child{grid-column:1/-1}
+.p08 h1{font-size:30px}
+.p08-bt a{flex:1 1 100%}
+.p08-girl{grid-column:2;grid-row:2}
+.p08-cm{grid-column:1;grid-row:2;align-self:start}
+.p08-gr{grid-template-columns:minmax(0,1fr);gap:22px}
+.p08-p{padding:20px 12px 14px}
+.p08-p>h2{position:relative;top:auto;left:auto;display:inline-block;margin:-31px 0 6px -6px}
+.p08-gr .p08-tt,nav.p08-p .p08-tt{position:static;display:block;padding:0;margin:0 0 8px;background:none;font-size:12px}
+.p08-rk li{grid-template-columns:88px minmax(0,1fr) 48px;gap:6px}
+.p08-ms td:first-child{width:52px}
+.p08-ms tr{display:grid;grid-template-columns:52px minmax(0,1fr);border-bottom:1px dashed var(--ln)}
+.p08-ms td{border:0;padding:6px 0}
+.p08-ms td:last-child{grid-column:2;width:auto;padding:0 0 8px}
+.p08-fz{grid-template-columns:minmax(0,1fr)}
+.p08-ft{padding:12px 12px 22px}
+}
+@container (min-width:621px){.p08-cm{display:none}}
+</style>
+<div class="p08 mock" data-mode="light">
+<header class="p08-sl">
+<a class="p08-lg" href="#"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M2 14h4l2-5 3 8 3-12 2 9h4"/></svg>pingalto</a>
+<nav class="p08-nv" aria-label="Principal"><a href="#" aria-current="page"><b>1</b>juegos</a><a href="#"><b>2</b>herramientas</a><a href="#"><b>3</b>esports</a><a href="#"><b>4</b>tier-list</a></nav>
+<div class="p08-sr"><span>ping 24 ms</span><span>18:00 ART</span>
+<button class="p08-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="p08-ib p08-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</header>
+<div class="p08-wr">
+<section class="p08-he">
+<div class="p08-p"><p class="p08-lb">inicio</p><span class="p08-tt">~/pingalto</span>
+<p class="p08-pr"><b>$</b> pingalto --hoy</p>
+<h1>Tus juegos, <em>en números claros</em><span class="p08-cu" aria-hidden="true"></span></h1>
+<p class="p08-sb">Rangos, sensibilidad, miras, mapas y tier lists de Valorant, Free Fire, CS2, LoL, Fortnite y más. Sin humo y sin vender nada.</p>
+<div class="p08-bt"><a class="p08-b1" href="#"><kbd>[enter]</kbd>Calculá tu sensibilidad</a><a href="#"><kbd>[t]</kbd>Ver la tier list</a></div>
+</div>
+<p class="p08-cm p08-pr"># alt, la guía del sitio, te acompaña en cada sección</p>
+<div class="p08-p p08-girl" role="img" aria-label="Ilustración"><span class="p08-tt">alt.png</span><div><svg viewBox="0 0 100 150" aria-hidden="true"><circle cx="71" cy="14" r="7"/><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg></div><p>acá va ella</p></div>
+</section>
+<div class="p08-gr">
+<section class="p08-p"><h2>Sensibilidad: pasala de un juego a otro</h2><span class="p08-tt">ejemplo</span>
+<dl class="p08-sv"><dt>de</dt><dd>CS2 · 1,25 · 800 DPI</dd><dt>a</dt><dd class="p08-big">Valorant 0,393</dd><dt>eDPI</dt><dd>1.000</dd><dt>cm/360</dt><dd>41,6 cm</dd></dl>
+<div class="p08-mt"><span><i></i></span>41,6 / 80 cm</div>
+</section>
+<section class="p08-p"><h2>Rangos de Valorant</h2><span class="p08-tt">% de jugadores, ejemplo</span>
+<ol class="p08-rk">
+<li><b>Hierro</b><span><i style="width:39%"></i></span><em>7 %</em></li>
+<li><b>Bronce</b><span><i style="width:83%"></i></span><em>15 %</em></li>
+<li><b>Plata</b><span><i style="width:100%"></i></span><em>18 %</em></li>
+<li class="p08-me"><b>&gt; Oro</b><span><i style="width:89%"></i></span><em>16 %</em></li>
+<li><b>Platino</b><span><i style="width:83%"></i></span><em>15 %</em></li>
+<li><b>Diamante</b><span><i style="width:78%"></i></span><em>14 %</em></li>
+<li><b>Ascendente</b><span><i style="width:56%"></i></span><em>10 %</em></li>
+<li><b>Inmortal</b><span><i style="width:25%"></i></span><em>4,5 %</em></li>
+<li><b>Radiante</b><span><i style="width:3%"></i></span><em>0,5 %</em></li>
+</ol>
+<p class="p08-nt">Estás en Oro 2: <b>por encima del 45 %</b></p>
+</section>
+<section class="p08-p"><h2>Esports hoy</h2><span class="p08-tt">hora argentina</span>
+<table class="p08-ms">
+<tr><td>18:00</td><td>Furia vs. MIBR<small>CS2 · Bo3</small></td><td><div class="p08-sp"><i style="width:58%">58 %</i><i style="width:42%">42 %</i></div></td></tr>
+<tr><td>20:00</td><td>Leviatán vs. KRÜ<small>Valorant · Bo3</small></td><td><div class="p08-sp"><i style="width:55%">55 %</i><i style="width:45%">45 %</i></div></td></tr>
+<tr><td>21:00</td><td>Liga LATAM Free Fire<small>Fecha 4 · 12 equipos</small></td><td><small>6 partidas</small></td></tr>
+</table>
+<p class="p08-pr" style="margin-top:8px;font-size:13px"># chances: modelo, ejemplo</p>
+</section>
+<section class="p08-p"><h2>Tier list del parche</h2><span class="p08-tt">Valorant · ejemplo</span>
+<div class="p08-tl">
+<div><b>S</b><span>JE</span><span>RA</span><span>OM</span></div>
+<div><b>A</b><span>SO</span><span>KJ</span><span>CY</span><span>SK</span></div>
+<div><b>B</b><span>BR</span><span>PH</span><span>FA</span></div>
+<div><b>C</b><span>YO</span><span>HA</span></div>
+</div>
+</section>
+</div>
+<nav class="p08-p" aria-labelledby="p08-fh"><h2 id="p08-fh">Herramientas</h2><span class="p08-tt">8/8</span>
+<ul class="p08-fz">
+<li><a href="#"><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x según tu celu</span></a></li>
+<li><a href="#"><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span></a></li>
+<li><a href="#"><b>Rangos de LoL</b><span>De Hierro a Retador, con el % de cada liga</span></a></li>
+<li><a href="#"><b>Mapas de Valorant</b><span>Callouts de Ascent, Split y el resto</span></a></li>
+<li><a href="#"><b>Brawlers y meta</b><span>Quién pega fuerte en la rotación</span></a></li>
+<li><a href="#"><b>Mazos de Clash Royale</b><span>Por arena y con su costo de elixir</span></a></li>
+<li><a href="#"><b>Rocket League: rangos</b><span>De Bronce a Supersonic Legend</span></a></li>
+<li><a href="#"><b>DPI y eDPI</b><span>Medí tu DPI real y compará</span></a></li>
+</ul>
+</nav>
+</div>
+<footer class="p08-ft">
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado.</small>
+</footer>
+</div>

@@ -1,0 +1,186 @@
+<!-- name: Carta de stats -->
+<!-- desc: Лист характеристик как у спортивной карточки игрока (без коллекционирования и «редкостей»): в первом экране — большая карта «Alt» с картинкой-слотом и её примерными настройками, блоки — карточки с номером 01/08, ранги — сетка 3×3 плиток с процентом, матч дня — «versus» с монограммами команд. Светлая — холодно-серый альбом, бирюза и коралл; тёмная — глубокий сливовый с бирюзой и персиковым. -->
+<!-- fonts: family=Bai+Jamjuree:wght@600;700&family=Albert+Sans:wght@400;600 -->
+<style>
+.p09{--bg:#eceff3;--cd:#fff;--fg:#141922;--mu:#4d5665;--ln:#d3d9e1;--t:#0b6f77;--tb:#dcf0f1;--c:#b93a1f;--cb:#fbe5de;--fr:#141922;--on:#fff;--hd:"Bai Jamjuree",system-ui,sans-serif;background:radial-gradient(circle at 1px 1px,var(--ln) 1px,#0000 1.5px) 0 0/22px 22px,var(--bg);color:var(--fg);font:16px/1.5 "Albert Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.p09[data-mode="dark"]{--bg:#17111d;--cd:#221a2b;--fg:#f0eaf4;--mu:#b3a8bd;--ln:#3a2f45;--t:#55d2c6;--tb:#163533;--c:#ff9a7a;--cb:#3d2422;--fr:#55d2c6;--on:#17111d}
+.p09 *{box-sizing:border-box;margin:0}
+.p09 :where(a){color:inherit;text-decoration:none}
+.p09 :focus-visible{outline:3px solid var(--c);outline-offset:2px}
+.p09 :is(h1,h2,b,.p09-lg,.p09-no){font-family:var(--hd);font-weight:700}
+.p09-hd{display:flex;align-items:center;gap:18px;padding:16px 32px}
+.p09-lg{display:flex;align-items:center;gap:10px;font-size:23px;letter-spacing:-.01em}
+.p09-lg svg{width:30px;height:38px}
+.p09-lg rect{fill:var(--cd);stroke:var(--fr);stroke-width:2.5}
+.p09-lg path{fill:none;stroke:var(--c);stroke-width:2.5;stroke-linejoin:round}
+.p09-nv{display:flex;gap:4px;margin-left:auto;padding:4px;border-radius:12px;background:var(--cd);border:1px solid var(--ln)}
+.p09-nv a{min-height:40px;display:flex;align-items:center;padding:0 14px;border-radius:9px;font-weight:600}
+.p09-nv [aria-current]{background:var(--fg);color:var(--bg)}
+.p09-ib{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid var(--ln);background:var(--cd);color:var(--fg);cursor:pointer}
+.p09-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2}
+.p09-bg{display:none}
+.p09-he{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:center;padding:26px 32px 40px}
+.p09-ey{font:700 13px var(--hd);letter-spacing:.14em;text-transform:uppercase;color:var(--t)}
+.p09 h1{font-size:60px;line-height:1.02;letter-spacing:-.025em;margin:12px 0 18px}
+.p09 h1 span{color:var(--c)}
+.p09-sb{font-size:18px;color:var(--mu);max-width:540px}
+.p09-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.p09-bt a{min-height:50px;display:inline-flex;align-items:center;padding:0 22px;border-radius:12px;font:700 17px var(--hd);border:2px solid var(--fg)}
+.p09 .p09-b1{background:var(--t);border-color:var(--t);color:var(--on)}
+.p09-pc{background:var(--cd);border:3px solid var(--fr);border-radius:20px;padding:10px;box-shadow:10px 10px 0 var(--t);transform:rotate(2deg)}
+.p09-ph{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 8px;font:700 14px var(--hd)}
+.p09-ph span{color:var(--mu);font-weight:600}
+.p09-girl{aspect-ratio:2/3;max-height:300px;width:100%;border-radius:12px;background:linear-gradient(160deg,var(--tb),var(--cb));display:grid;place-items:end center;position:relative}
+.p09-girl svg{height:92%;fill:var(--fg);opacity:.85}
+.p09-girl circle{fill:var(--c)}
+.p09-girl span{position:absolute;left:8px;top:8px;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--cd);color:var(--mu)}
+.p09-ps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}
+.p09-ps p{background:var(--bg);border-radius:10px;padding:6px 8px;font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}
+.p09-ps b{display:block;font-size:19px;color:var(--fg);letter-spacing:0;text-transform:none}
+.p09-pf{font-size:12px;color:var(--mu);text-align:center;padding-top:8px}
+.p09-bn{display:grid;align-items:start;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:0 32px 32px}
+.p09-c{background:var(--cd);border:1px solid var(--ln);border-radius:18px;padding:18px 20px 20px;min-width:0;border-top:6px solid var(--t)}
+.p09-c:nth-child(2n){border-top-color:var(--c)}
+.p09-ct{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+.p09 h2{font-size:21px;line-height:1.15;letter-spacing:-.01em}
+.p09-no{font-size:13px;color:var(--mu);white-space:nowrap}
+.p09-x{font-size:13px;color:var(--mu);margin:-6px 0 12px}
+.p09-w2{grid-column:span 2}
+.p09-st{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.p09-st p{border-radius:12px;background:var(--bg);padding:12px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu)}
+.p09-st b{display:block;font-size:34px;line-height:1.1;color:var(--fg);letter-spacing:-.02em}
+.p09-st p:nth-child(2){background:var(--t);color:var(--on)}
+.p09-st p:nth-child(2) b{color:var(--on)}
+.p09-mt{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;margin-top:14px;font-size:14px;color:var(--mu)}
+.p09-mt span{height:10px;border-radius:99px;background:var(--bg)}
+.p09-mt i{display:block;height:100%;width:52%;border-radius:99px;background:var(--t)}
+.p09-rg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.p09-rg p{border-radius:10px;background:var(--bg);padding:7px 9px 9px;font-size:13px;line-height:1.2}
+.p09-rg b{display:block;font-size:22px}
+.p09-rg i{display:block;height:4px;margin-top:5px;border-radius:2px;background:var(--mu)}
+.p09-rg .p09-me{background:var(--c);color:var(--on)}
+.p09-rg .p09-me i{background:var(--on)}
+.p09-nt{margin-top:10px;font-weight:600;font-size:15px}
+.p09-nt mark{background:var(--cb);color:var(--fg);padding:0 4px;border-radius:4px}
+.p09-vs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;text-align:center;gap:8px;padding:12px;border-radius:14px;background:var(--bg)}
+.p09-vs em{width:56px;height:56px;margin:0 auto 4px;border-radius:50%;display:grid;place-items:center;font:700 20px var(--hd);font-style:normal;background:var(--t);color:var(--on)}
+.p09-vs div+span+div em{background:var(--c)}
+.p09-vs strong{display:block;font-size:30px;font-family:var(--hd)}
+.p09-vs>span{font:700 14px var(--hd);color:var(--mu)}
+.p09-vh{text-align:center;font-size:14px;color:var(--mu);margin:8px 0 10px}
+.p09-ms{list-style:none;padding:0;display:grid;gap:6px;font-size:14px}
+.p09-ms li{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:1px solid var(--ln);padding-top:6px}
+.p09-ms b{font-size:15px}
+.p09-tl{display:grid;gap:8px}
+.p09-tl div{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.p09-tl b{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:20px;background:var(--fg);color:var(--bg)}
+.p09-tl div:first-child b{background:var(--c);color:var(--on)}
+.p09-tl span{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;border:2px solid var(--ln);background:var(--bg)}
+.p09-tg{padding:0 32px 36px}
+.p09-tg>div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
+.p09-tg h2{font-size:30px}
+.p09-tg a{display:grid;grid-template-columns:44px minmax(0,1fr);gap:2px 12px;align-items:center;padding:14px;border-radius:14px;background:var(--cd);border:1px solid var(--ln);min-height:84px}
+.p09-tg a:hover{border-color:var(--t)}
+.p09-tg a::before{content:attr(data-n);grid-row:span 2;width:44px;height:56px;border-radius:8px;border:2px solid var(--fr);display:grid;place-items:center;font:700 14px var(--hd);color:var(--t)}
+.p09-tg b{font-size:16px;line-height:1.2}
+.p09-tg span{font-size:13px;color:var(--mu);line-height:1.3}
+.p09-ft{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 30px;padding:26px 32px 30px;border-top:3px solid var(--fr);background:repeating-linear-gradient(45deg,var(--cd) 0 10px,var(--bg) 10px 20px)}
+.p09-ft>*{background:var(--cd);border-radius:8px;padding:2px 8px;justify-self:start}
+.p09-ft p{font:700 20px var(--hd)}
+.p09-ft nav{display:flex;flex-wrap:wrap;gap:0 16px;grid-row:span 2;align-self:center}
+.p09-ft nav a{padding:10px 0;text-decoration:underline;text-underline-offset:3px}
+.p09-ft small{font-size:13px;color:var(--mu)}
+@container (max-width:620px){
+.p09-hd{padding:12px 16px;gap:10px}
+.p09-lg{font-size:20px}
+.p09-nv{display:none}
+.p09-hd .p09-ib:first-of-type{margin-left:auto}
+.p09-bg{display:grid}
+.p09-he{grid-template-columns:minmax(0,1fr);gap:26px;padding:14px 16px 28px}
+.p09 h1{font-size:38px}
+.p09-sb{font-size:16px}
+.p09-bt a{flex:1 1 100%;justify-content:center}
+.p09-pc{width:min(100%,290px);justify-self:center;transform:rotate(1deg);box-shadow:6px 6px 0 var(--t)}
+.p09-girl{max-height:220px}
+.p09-bn{grid-template-columns:minmax(0,1fr);padding:0 16px 24px;gap:16px}
+.p09-w2{grid-column:auto}
+.p09-c{padding:16px 14px 16px}
+.p09-st{grid-template-columns:repeat(2,minmax(0,1fr))}
+.p09-st b{font-size:28px}
+.p09-vs strong{font-size:24px}
+.p09-tg{padding:0 16px 26px}
+.p09-tg>div{grid-template-columns:minmax(0,1fr);gap:8px}
+.p09-tg h2{font-size:26px}
+.p09-ft{grid-template-columns:minmax(0,1fr);padding:22px 16px}
+.p09-ft nav{grid-row:auto}
+}
+</style>
+<div class="p09 mock" data-mode="light">
+<header class="p09-hd">
+<a class="p09-lg" href="#"><svg viewBox="0 0 30 38" aria-hidden="true"><rect x="2" y="2" width="26" height="34" rx="5"/><path d="M6 23h4l3-7 3 9 3-11 2 7h3"/></svg>pingalto</a>
+<nav class="p09-nv" aria-label="Principal"><a href="#" aria-current="page">Juegos</a><a href="#">Herramientas</a><a href="#">Esports</a><a href="#">Tier list</a></nav>
+<button class="p09-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="p09-ib p09-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</header>
+<section class="p09-he">
+<div>
+<p class="p09-ey">Tu ficha de jugador</p>
+<h1>Subí de rango con la cuenta <span>hecha</span></h1>
+<p class="p09-sb">Rangos, sensibilidad, miras, mapas y tier lists de Valorant, Free Fire, CS2, LoL, Fortnite y más. Sin humo y sin vender nada.</p>
+<div class="p09-bt"><a class="p09-b1" href="#">Calculá tu sensibilidad</a><a href="#">Ver la tier list</a></div>
+</div>
+<div class="p09-pc">
+<p class="p09-ph">Alt <span>guía · ficha 00</span></p>
+<div class="p09-girl" role="img" aria-label="Ilustración"><svg viewBox="0 0 100 150" aria-hidden="true"><circle cx="71" cy="14" r="7"/><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg><span>acá va ella</span></div>
+<div class="p09-ps"><p>Sens<b>0,393</b></p><p>DPI<b>800</b></p><p>Rango<b>Oro 2</b></p></div>
+<p class="p09-pf">Valores de ejemplo</p>
+</div>
+</section>
+<main class="p09-bn">
+<section class="p09-c p09-w2"><div class="p09-ct"><h2>Sensibilidad: pasala de un juego a otro</h2><span class="p09-no">01/04</span></div><p class="p09-x">Ejemplo · misma vuelta de 360°</p>
+<div class="p09-st"><p>CS2 · 800 DPI<b>1,25</b></p><p>Valorant<b>0,393</b></p><p>eDPI<b>1.000</b></p><p>cm/360<b>41,6</b></p></div>
+<div class="p09-mt"><span>0 cm</span><span><i></i></span><span>80 cm</span></div>
+</section>
+<section class="p09-c"><div class="p09-ct"><h2>Rangos de Valorant</h2><span class="p09-no">02/04</span></div><p class="p09-x">% de jugadores, ejemplo</p>
+<div class="p09-rg">
+<p><b>7 %</b>Hierro<i style="width:39%"></i></p><p><b>15 %</b>Bronce<i style="width:83%"></i></p><p><b>18 %</b>Plata<i style="width:100%"></i></p>
+<p class="p09-me"><b>16 %</b>Oro<i style="width:89%"></i></p><p><b>15 %</b>Platino<i style="width:83%"></i></p><p><b>14 %</b>Diamante<i style="width:78%"></i></p>
+<p><b>10 %</b>Ascendente<i style="width:56%"></i></p><p><b>4,5 %</b>Inmortal<i style="width:25%"></i></p><p><b>0,5 %</b>Radiante<i style="width:3%"></i></p>
+</div>
+<p class="p09-nt">Estás en Oro 2: <mark>por encima del 45 %</mark></p>
+</section>
+<section class="p09-c"><div class="p09-ct"><h2>Esports hoy</h2><span class="p09-no">03/04</span></div>
+<div class="p09-vs"><div><em>FU</em>Furia<strong>58 %</strong></div><span>VS</span><div><em>MI</em>MIBR<strong>42 %</strong></div></div>
+<p class="p09-vh">18:00 (hora argentina) · CS2 · Bo3 · chances del modelo, ejemplo</p>
+<ul class="p09-ms"><li><b>Leviatán vs. KRÜ</b><span>20:00 · Valorant · 55 % / 45 %</span></li><li><b>Liga LATAM Free Fire</b><span>21:00 · fecha 4 · 12 equipos</span></li></ul>
+</section>
+<section class="p09-c"><div class="p09-ct"><h2>Tier list del parche</h2><span class="p09-no">04/04</span></div><p class="p09-x">Valorant · ejemplo</p>
+<div class="p09-tl">
+<div><b>S</b><span>JE</span><span>RA</span><span>OM</span></div>
+<div><b>A</b><span>SO</span><span>KJ</span><span>CY</span><span>SK</span></div>
+<div><b>B</b><span>BR</span><span>PH</span><span>FA</span></div>
+<div><b>C</b><span>YO</span><span>HA</span></div>
+</div>
+</section>
+<section class="p09-c"><div class="p09-ct"><h2>Así se arma la ficha</h2><span class="p09-no">+</span></div>
+<p class="p09-x" style="margin:0">Cada número sale de una cuenta que podés abrir: fórmula, fuente y fecha. Sin cajas ni sobres: acá no se abre nada al azar.</p>
+</section>
+</main>
+<nav class="p09-tg" aria-labelledby="p09-th"><h2 id="p09-th">Herramientas</h2>
+<div>
+<a href="#" data-n="01"><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x</span></a>
+<a href="#" data-n="02"><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span></a>
+<a href="#" data-n="03"><b>Rangos de LoL</b><span>De Hierro a Retador</span></a>
+<a href="#" data-n="04"><b>Mapas de Valorant</b><span>Callouts de cada mapa</span></a>
+<a href="#" data-n="05"><b>Brawlers y meta</b><span>Quién pega fuerte hoy</span></a>
+<a href="#" data-n="06"><b>Mazos de Clash Royale</b><span>Por arena y elixir</span></a>
+<a href="#" data-n="07"><b>Rocket League: rangos</b><span>De Bronce a SSL</span></a>
+<a href="#" data-n="08"><b>DPI y eDPI</b><span>Medí tu DPI real</span></a>
+</div>
+</nav>
+<footer class="p09-ft">
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado.</small>
+</footer>
+</div>
