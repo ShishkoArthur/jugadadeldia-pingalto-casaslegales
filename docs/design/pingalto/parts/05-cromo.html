@@ -1,0 +1,198 @@
+<!-- name: Cromo Y2K -->
+<!-- desc: Нулевые глазами 2026-го: хромированные буквы, глянцевые «гелевые» кнопки и капсулы, шапка-пилюля, искры-звёздочки, ранги — вертикальные гелевые столбики, инструменты — круглые глянцевые иконки. Серебро с жвачно-розовым и мятным. Светлая — серебристо-жемчужная, тёмная — полночно-синяя с переливающимися (розово-мятными) обводками. -->
+<!-- fonts: family=Syne:wght@700;800&family=Lexend:wght@400;600 -->
+<style>
+.p05{--bg:#e9ebf0;--b2:#f7e9f1;--b3:#e3f4ee;--pn:#fbfbfd;--fg:#1b1e2a;--mu:#4f5466;--ln:#c4c8d3;--pk:#c42a7c;--mt:#0b7a63;--gl:#ffffffd9;--ir:linear-gradient(120deg,#f4a6cf,#b9c6ff,#9fe6cf,#f4a6cf);--cr:linear-gradient(180deg,#fff 0,#c8ccd6 42%,#6b7282 50%,#d9dce3 74%,#fff);--on:#fff;background:radial-gradient(60% 50% at 85% 10%,var(--b2),#0000),radial-gradient(50% 40% at 0 60%,var(--b3),#0000),var(--bg);color:var(--fg);font:16px/1.5 Lexend,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.p05[data-mode="dark"]{--bg:#0d0f1b;--b2:#2a1430;--b3:#0e2a27;--pn:#171a2a;--fg:#eceef6;--mu:#a7abc0;--ln:#30344a;--pk:#ff86c2;--mt:#6fe3c3;--gl:#ffffff1f;--ir:linear-gradient(120deg,#ff86c2,#8e9bff,#6fe3c3,#ff86c2);--on:#0d0f1b}
+.p05 *{box-sizing:border-box;margin:0}
+.p05 :where(a){color:inherit;text-decoration:none}
+.p05 :focus-visible{outline:3px solid var(--pk);outline-offset:3px}
+.p05 :is(h1,h2,.p05-lg){font-family:Syne,system-ui,sans-serif;font-weight:800}
+.p05-gel{position:relative;background:linear-gradient(180deg,var(--gl),#0000 55%),var(--pn);border:1px solid #0000;background-clip:padding-box;box-shadow:0 0 0 1.5px var(--ln),0 10px 30px -18px #1b1e2a66}
+.p05[data-mode="dark"] .p05-gel{box-shadow:0 0 0 1.5px var(--ln)}
+.p05[data-mode="dark"] h1 span{box-shadow:0 0 0 2px var(--mu)}
+.p05-hd{display:flex;align-items:center;gap:12px;margin:18px 28px 0;padding:8px 8px 8px 18px;border-radius:999px}
+.p05-lg{display:flex;align-items:center;gap:8px;font-size:24px;letter-spacing:-.03em}
+.p05-lg svg{width:34px;height:34px}
+.p05-lg circle{fill:url(#p05c)}
+.p05-lg path{fill:none;stroke:var(--fg);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.p05-nv{display:flex;gap:4px;margin-left:auto}
+.p05-nv a{min-height:42px;display:flex;align-items:center;padding:0 16px;border-radius:999px;font-weight:600}
+.p05-nv [aria-current]{background:var(--fg);color:var(--bg)}
+.p05-ib{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:0;background:var(--cr);color:#1b1e2a;cursor:pointer;box-shadow:inset 0 0 0 1px #0003}
+.p05-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2.2}
+.p05-bg{display:none}
+.p05-he{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;padding:48px 28px 36px;align-items:center}
+.p05-ey{display:inline-flex;gap:8px;align-items:center;font-weight:600;color:var(--pk);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.p05-ey svg,.p05-sp{width:16px;height:16px;fill:currentColor}
+.p05 h1{font-size:74px;line-height:.98;letter-spacing:-.045em;margin:12px 0 20px}
+.p05 h1 span{display:inline-block;padding:0 18px 6px;border-radius:999px;background:#1b1e2a;-webkit-text-fill-color:#0000;background-image:var(--cr),linear-gradient(#1b1e2a,#1b1e2a);-webkit-background-clip:text,padding-box;background-clip:text,padding-box}
+.p05-sb{font-size:18px;color:var(--mu);max-width:560px}
+.p05-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.p05-bt a{min-height:52px;display:inline-flex;align-items:center;padding:0 26px;border-radius:999px;font-weight:600;font-size:17px}
+.p05 .p05-b1{background:linear-gradient(180deg,#ffffff70,#0000 50%),var(--pk);color:var(--on);box-shadow:inset 0 -3px 0 #0000002e,0 8px 20px -10px var(--pk)}
+.p05-b2{border:2px solid var(--fg)}
+.p05-girl{position:relative;aspect-ratio:2/3;border-radius:150px 150px 28px 28px;background:linear-gradient(var(--pn),var(--pn)) padding-box,var(--ir) border-box;border:4px solid #0000;display:grid;place-items:end center;padding-bottom:16px}
+.p05-girl::before{content:"";position:absolute;inset:12px;border-radius:140px 140px 20px 20px;background:radial-gradient(circle at 50% 30%,var(--b2),#0000 60%),radial-gradient(circle at 50% 90%,var(--b3),#0000 60%)}
+.p05-girl svg{position:relative;width:76%;fill:var(--fg);opacity:.82}
+.p05-girl circle{fill:var(--pk)}
+.p05-girl span{position:relative;font-size:12px;color:var(--mu);background:var(--pn);border-radius:99px;padding:2px 10px}
+.p05-girl .p05-sp{position:absolute;color:var(--pk);width:26px;height:26px;top:18%;left:-12px}
+.p05-girl .p05-sp+.p05-sp{top:auto;bottom:24%;left:auto;right:-10px;color:var(--mt);width:20px}
+.p05-gd{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:22px;padding:0 28px 30px}
+.p05-c{border-radius:30px;padding:24px;min-width:0}
+.p05-s{grid-column:span 7}.p05-r{grid-column:span 5}.p05-e{grid-column:span 7}.p05-t{grid-column:span 5}
+.p05 h2{font-size:24px;letter-spacing:-.03em;line-height:1.15;margin-bottom:6px}
+.p05-x{font-size:13px;color:var(--mu);margin-bottom:16px}
+.p05-x b{color:var(--pk);font-weight:600}
+.p05-sv{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center}
+.p05-sv div{border-radius:22px;padding:14px 18px;background:var(--bg);box-shadow:inset 0 2px 6px #0000001a}
+.p05-sv small{display:block;font-size:13px;color:var(--mu)}
+.p05-sv b{font:800 42px/1.1 Syne,sans-serif;letter-spacing:-.03em}
+.p05-sv div+svg+div b{color:var(--mt)}
+.p05-sv svg{width:30px;fill:none;stroke:var(--pk);stroke-width:3;stroke-linecap:round}
+.p05-cm{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.p05-cm span{padding:8px 14px;border-radius:99px;background:var(--bg);font-size:15px}
+.p05-tb{height:14px;margin-top:14px;border-radius:99px;background:var(--bg);box-shadow:inset 0 1px 3px #0000002a;overflow:clip}
+.p05-tb i{display:block;height:100%;width:52%;border-radius:99px;background:linear-gradient(180deg,#ffffff80,#0000 60%),var(--mt)}
+.p05-vb{list-style:none;padding:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:6px;align-items:end;height:220px}
+.p05-vb li{display:grid;grid-template-rows:auto minmax(0,1fr) auto;justify-items:center;gap:4px;height:100%;font-size:12px}
+.p05-vb i{align-self:end;width:100%;max-width:30px;border-radius:99px 99px 6px 6px;background:linear-gradient(90deg,#ffffff70,#0000 45%),var(--ln)}
+.p05-vb b{writing-mode:vertical-rl;transform:rotate(180deg);font-weight:400;font-size:13px;height:84px;text-align:right}
+.p05-vb .p05-me i{background:linear-gradient(90deg,#ffffff80,#0000 45%),var(--pk)}
+.p05-vb .p05-me b{font-weight:600;color:var(--pk)}
+.p05-nt{margin-top:14px;padding:10px 16px;border-radius:99px;background:var(--bg);font-weight:600;font-size:15px}
+.p05-ms{list-style:none;padding:0;display:grid;gap:10px}
+.p05-ms li{display:grid;grid-template-columns:70px minmax(0,1fr) minmax(0,190px);gap:4px 14px;align-items:center;padding:10px 12px 10px 14px;border-radius:24px;background:var(--bg)}
+.p05-ms time{font-weight:600;font-size:19px}
+.p05-ms small{display:block;color:var(--mu);font-size:13px}
+.p05-ms p b{font-weight:600}
+.p05-pb{display:flex;height:30px;border-radius:99px;overflow:clip;font-size:13px;font-weight:600;line-height:30px}
+.p05-pb i{font-style:normal;background:linear-gradient(180deg,#ffffff70,#0000 55%),var(--mt);color:var(--on);padding-left:10px}
+.p05-pb i+i{background:linear-gradient(180deg,#ffffff70,#0000 55%),var(--pk);text-align:right;padding:0 10px 0 0}
+.p05-tl{display:grid;gap:10px}
+.p05-tl div{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:5px;border-radius:99px;background:var(--bg)}
+.p05-tl b{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:19px;background:var(--cr);color:#1b1e2a;box-shadow:inset 0 0 0 1px #0003}
+.p05-tl div:first-child b{background:linear-gradient(180deg,#ffffff80,#0000 55%),var(--pk);color:var(--on)}
+.p05-tl span{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;background:var(--pn);box-shadow:0 0 0 1.5px var(--ln)}
+.p05-ap{padding:6px 28px 34px}
+.p05-ap h2{font-size:34px;margin-bottom:18px}
+.p05-ap div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 18px}
+.p05-ap a{display:grid;grid-template-columns:64px minmax(0,1fr);gap:2px 14px;align-items:center;min-height:64px}
+.p05-ap a::before{content:"";grid-row:span 2;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff 0 12%,#0000 45%),var(--ir);box-shadow:inset 0 -6px 12px #00000024}
+.p05-ap a:nth-child(2n)::before{background:radial-gradient(circle at 35% 28%,#fff 0 12%,#0000 45%),var(--cr)}
+.p05-ap b{font-weight:600;line-height:1.25}
+.p05-ap span{font-size:13px;color:var(--mu);line-height:1.35}
+.p05-ft{margin:0 28px 24px;padding:22px 26px;border-radius:30px;display:grid;gap:10px}
+.p05-ft p{font:800 22px/1.25 Syne,sans-serif;letter-spacing:-.02em}
+.p05-ft nav{display:flex;flex-wrap:wrap;gap:6px}
+.p05-ft nav a{min-height:40px;display:flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--bg);font-size:15px}
+.p05-ft small{color:var(--mu);font-size:13px}
+@container (max-width:620px){
+.p05-hd{margin:10px 12px 0;padding:6px 6px 6px 14px;gap:6px}
+.p05-lg{font-size:21px}
+.p05-nv{display:none}
+.p05-hd .p05-ib:first-of-type{margin-left:auto}
+.p05-bg{display:grid}
+.p05-he{grid-template-columns:minmax(0,1fr) 110px;gap:16px 14px;padding:26px 16px 22px}
+.p05-he>div:first-child{display:contents}
+.p05-ey{grid-column:1/-1}
+.p05 h1{font-size:32px;margin:0;grid-column:1;grid-row:2}
+.p05 h1 span{padding:0 10px 4px}
+.p05-girl{grid-column:2;grid-row:2;align-self:center;border-width:3px;padding-bottom:8px}
+.p05-girl::before{inset:6px}
+.p05-girl span{font-size:10px;padding:1px 6px}
+.p05-girl .p05-sp{width:18px;height:18px}
+.p05-sb,.p05-bt{grid-column:1/-1;margin:0}
+.p05-sb{font-size:16px}
+.p05-bt a{flex:1 1 100%;justify-content:center}
+.p05-gd{grid-template-columns:minmax(0,1fr);padding:0 12px 22px;gap:16px}
+.p05-gd>*{grid-column:1/-1}
+.p05-c{padding:20px 16px;border-radius:24px}
+.p05-sv{gap:6px}
+.p05-sv div{padding:10px 12px;border-radius:18px}
+.p05-sv b{font-size:30px}
+.p05-sv svg{width:20px}
+.p05-vb{gap:4px}
+.p05-ms li{grid-template-columns:58px minmax(0,1fr)}
+.p05-pb{grid-column:1/-1}
+.p05-ap{padding:4px 16px 26px}
+.p05-ap h2{font-size:28px}
+.p05-ap div{grid-template-columns:minmax(0,1fr);gap:12px}
+.p05-ap a{grid-template-columns:52px minmax(0,1fr)}
+.p05-ap a::before{width:52px;height:52px}
+.p05-ft{margin:0 12px 16px;padding:20px 16px}
+.p05-ft p{font-size:19px}
+}
+</style>
+<div class="p05 mock" data-mode="light">
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><linearGradient id="p05c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#c8ccd6"/><stop offset=".5" stop-color="#7b8292"/><stop offset="1" stop-color="#eef0f4"/></linearGradient><path id="p05s" d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12C7 11 11 7 12 0z"/></defs></svg>
+<header class="p05-hd p05-gel">
+<a class="p05-lg" href="#"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="16"/><path d="M6 20h5l3-8 4 12 3-9 2 5h5"/></svg>pingalto</a>
+<nav class="p05-nv" aria-label="Principal"><a href="#" aria-current="page">Juegos</a><a href="#">Herramientas</a><a href="#">Esports</a><a href="#">Tier list</a></nav>
+<button class="p05-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="p05-ib p05-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</header>
+<section class="p05-he">
+<div>
+<p class="p05-ey"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#p05s"/></svg>Juegos, rangos y esports</p>
+<h1>Tus juegos, en números <span>claros</span></h1>
+<p class="p05-sb">Rangos, sensibilidad, miras, mapas y tier lists de Valorant, Free Fire, CS2, LoL, Fortnite y más. Sin humo y sin vender nada.</p>
+<div class="p05-bt"><a class="p05-b1" href="#">Calculá tu sensibilidad</a><a class="p05-b2" href="#">Ver la tier list</a></div>
+</div>
+<div class="p05-girl" role="img" aria-label="Ilustración"><svg class="p05-sp" viewBox="0 0 24 24" aria-hidden="true"><use href="#p05s"/></svg><svg class="p05-sp" viewBox="0 0 24 24" aria-hidden="true"><use href="#p05s"/></svg><svg viewBox="0 0 100 150" aria-hidden="true"><circle cx="71" cy="14" r="7"/><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg><span>acá va ella</span></div>
+</section>
+<main class="p05-gd">
+<section class="p05-c p05-gel p05-s"><h2>Sensibilidad: pasala de un juego a otro</h2><p class="p05-x"><b>ejemplo</b> · misma vuelta de 360°</p>
+<div class="p05-sv"><div><small>CS2 · 800 DPI</small><b>1,25</b></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 15h20m-7-7 7 7-7 7"/></svg><div><small>Valorant</small><b>0,393</b></div></div>
+<p class="p05-cm"><span>eDPI 1.000</span><span>cm/360: 41,6 cm</span></p>
+<div class="p05-tb" aria-hidden="true"><i></i></div>
+</section>
+<section class="p05-c p05-gel p05-r"><h2>Rangos de Valorant</h2><p class="p05-x">% de jugadores, <b>ejemplo</b></p>
+<ol class="p05-vb">
+<li><span>7</span><i style="height:39%"></i><b>Hierro</b></li>
+<li><span>15</span><i style="height:83%"></i><b>Bronce</b></li>
+<li><span>18</span><i style="height:100%"></i><b>Plata</b></li>
+<li class="p05-me"><span>16</span><i style="height:89%"></i><b>Oro</b></li>
+<li><span>15</span><i style="height:83%"></i><b>Platino</b></li>
+<li><span>14</span><i style="height:78%"></i><b>Diamante</b></li>
+<li><span>10</span><i style="height:56%"></i><b>Ascendente</b></li>
+<li><span>4,5</span><i style="height:25%"></i><b>Inmortal</b></li>
+<li><span>0,5</span><i style="height:3%"></i><b>Radiante</b></li>
+</ol>
+<p class="p05-nt">Estás en Oro 2: por encima del 45 %</p>
+</section>
+<section class="p05-c p05-gel p05-e"><h2>Esports hoy</h2><p class="p05-x">Hora argentina · chances del modelo, <b>ejemplo</b></p>
+<ul class="p05-ms">
+<li><time>18:00</time><p><b>Furia vs. MIBR</b><small>CS2 · Bo3</small></p><div class="p05-pb"><i style="width:58%">58 %</i><i style="width:42%">42 %</i></div></li>
+<li><time>20:00</time><p><b>Leviatán vs. KRÜ</b><small>Valorant · Bo3</small></p><div class="p05-pb"><i style="width:55%">55 %</i><i style="width:45%">45 %</i></div></li>
+<li><time>21:00</time><p><b>Liga LATAM Free Fire</b><small>Fecha 4 · 12 equipos</small></p></li>
+</ul>
+</section>
+<section class="p05-c p05-gel p05-t"><h2>Tier list del parche</h2><p class="p05-x">Valorant · <b>ejemplo</b></p>
+<div class="p05-tl">
+<div><b>S</b><span>JE</span><span>RA</span><span>OM</span></div>
+<div><b>A</b><span>SO</span><span>KJ</span><span>CY</span><span>SK</span></div>
+<div><b>B</b><span>BR</span><span>PH</span><span>FA</span></div>
+<div><b>C</b><span>YO</span><span>HA</span></div>
+</div>
+</section>
+</main>
+<nav class="p05-ap" aria-labelledby="p05-ah"><h2 id="p05-ah">Herramientas</h2>
+<div>
+<a href="#"><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x</span></a>
+<a href="#"><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span></a>
+<a href="#"><b>Rangos de LoL</b><span>De Hierro a Retador</span></a>
+<a href="#"><b>Mapas de Valorant</b><span>Callouts de cada mapa</span></a>
+<a href="#"><b>Brawlers y meta</b><span>Quién pega fuerte hoy</span></a>
+<a href="#"><b>Mazos de Clash Royale</b><span>Por arena y elixir</span></a>
+<a href="#"><b>Rocket League: rangos</b><span>De Bronce a SSL</span></a>
+<a href="#"><b>DPI y eDPI</b><span>Medí tu DPI real</span></a>
+</div>
+</nav>
+<footer class="p05-ft p05-gel">
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado.</small>
+</footer>
+</div>

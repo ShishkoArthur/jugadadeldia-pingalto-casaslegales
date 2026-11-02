@@ -1,0 +1,202 @@
+<!-- name: Notas del parche -->
+<!-- desc: Главная как список изменений игры: слева — лента версий-разделов, справа — записи «патча» с метками NUEVO/BUFF/NERF, подзаголовок в виде diff («+ рангов, − хайпа»), инструменты — «изменённые файлы» с их адресами. Моноширинный шрифт с курсивом и строгий гротеск. Светлая — белый лист с зелёным/красным/индиго, тёмная — тёмно-серый редактор с мягкими пастельными метками. -->
+<!-- fonts: family=Victor+Mono:ital,wght@0,500;0,700;1,500&family=Public+Sans:wght@400;600;800 -->
+<style>
+.p04{--bg:#fbfbf9;--pn:#f1f2ef;--fg:#18202a;--mu:#505a66;--ln:#d6d9dd;--up:#11743a;--upb:#e3f4e8;--dn:#b42318;--dnb:#fbe7e4;--nw:#3b3fb6;--nwb:#e8e9fb;--mo:"Victor Mono",ui-monospace,Menlo,monospace;background:var(--bg);color:var(--fg);font:16px/1.55 "Public Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.p04[data-mode="dark"]{--bg:#16181d;--pn:#1e2128;--fg:#e5e8ee;--mu:#a0a7b3;--ln:#2f343d;--up:#73d995;--upb:#1b3325;--dn:#ff948a;--dnb:#3d2020;--nw:#aeb1ff;--nwb:#272a4d}
+.p04 *{box-sizing:border-box;margin:0}
+.p04 :where(a){color:inherit}
+.p04 :focus-visible{outline:2px solid var(--nw);outline-offset:2px}
+.p04 :is(code,.p04-m,time){font-family:var(--mo);font-size:.92em}
+.p04-hd{display:flex;align-items:center;gap:18px;padding:12px 28px;border-bottom:1px solid var(--ln)}
+.p04-lg{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;text-decoration:none}
+.p04-lg span{font:500 13px var(--mo);color:var(--mu)}
+.p04-lg svg{width:32px;height:32px}
+.p04-lg rect{fill:var(--fg)}
+.p04-lg path{fill:none;stroke:var(--bg);stroke-width:2.4}
+.p04-nv{display:flex;gap:2px;margin-left:auto}
+.p04-nv a{min-height:40px;display:flex;align-items:center;padding:0 14px;text-decoration:none;font-weight:600;border-radius:6px}
+.p04-nv [aria-current]{background:var(--pn);box-shadow:inset 0 -2px var(--fg)}
+.p04-ib{width:42px;height:42px;display:grid;place-items:center;border-radius:8px;border:1px solid var(--ln);background:none;color:var(--fg);cursor:pointer}
+.p04-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2}
+.p04-bg{display:none}
+.p04-ly{display:grid;grid-template-columns:210px minmax(0,1fr);gap:0 40px;padding:0 28px}
+.p04-tc{padding:32px 0;border-right:1px solid var(--ln)}
+.p04-tc p{font:700 12px var(--mo);letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
+.p04-tc ol{list-style:none;padding:0}
+.p04-tc a{display:flex;gap:10px;align-items:center;min-height:40px;text-decoration:none;font-weight:600;padding-right:14px}
+.p04-tc a::before{content:"";width:9px;height:9px;border-radius:50%;border:2px solid var(--mu);margin-left:-5px;background:var(--bg)}
+.p04-tc [aria-current]::before{background:var(--nw);border-color:var(--nw)}
+.p04-tc small{margin-left:auto;font:500 12px var(--mo);color:var(--mu)}
+.p04-ct{min-width:0;padding:32px 0 8px}
+.p04-e{padding:26px 0;border-bottom:1px dashed var(--ln);min-width:0}
+.p04-mt{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-bottom:10px;font-size:14px;color:var(--mu)}
+.p04-t{font:700 12px/1 var(--mo);padding:5px 7px;border-radius:4px;letter-spacing:.04em;background:var(--nwb);color:var(--nw)}
+.p04-tu{background:var(--upb);color:var(--up)}
+.p04-td{background:var(--dnb);color:var(--dn)}
+.p04-he{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:36px;align-items:start;padding-top:0}
+.p04 h1{font-weight:800;font-size:54px;line-height:1.04;letter-spacing:-.03em;margin:6px 0 18px}
+.p04 h1 i{font:italic 500 .86em var(--mo);letter-spacing:-.04em;color:var(--nw)}
+.p04-df{font:500 15px/1.7 var(--mo);border:1px solid var(--ln);border-radius:8px;background:var(--pn);padding:10px 0;margin-bottom:22px}
+.p04-df p{padding:0 14px}
+.p04-df .p04-a{background:var(--upb);color:var(--up)}
+.p04-df .p04-r{background:var(--dnb);color:var(--dn);text-decoration:line-through}
+.p04-sb{color:var(--mu);font-size:17px;margin-bottom:22px;max-width:620px}
+.p04-bt{display:flex;flex-wrap:wrap;gap:10px}
+.p04-bt a{min-height:48px;display:inline-flex;align-items:center;gap:8px;padding:0 18px;border-radius:8px;font-weight:800;text-decoration:none;border:1px solid var(--fg)}
+.p04 .p04-b1{background:var(--fg);color:var(--bg)}
+.p04-girl{border:1px solid var(--ln);border-radius:12px;background:var(--pn);aspect-ratio:2/3;display:grid;grid-template-rows:auto 1fr auto;overflow:clip}
+.p04-girl p{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--ln);font-weight:800}
+.p04-girl svg{width:74%;align-self:end;justify-self:center;fill:var(--fg);opacity:.85}
+.p04-girl circle{fill:var(--nw)}
+.p04-girl small{padding:8px 12px;border-top:1px solid var(--ln);font:italic 500 13px var(--mo);color:var(--mu)}
+.p04 h2{font-weight:800;font-size:26px;letter-spacing:-.02em;margin-bottom:14px}
+.p04-g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 40px}
+.p04-sv{font:500 16px/1.9 var(--mo);border-left:3px solid var(--nw);padding-left:16px}
+.p04-sv b{font-weight:700;font-size:22px}
+.p04-sv .p04-hl{color:var(--nw)}
+.p04-bar{display:block;height:8px;border-radius:4px;background:var(--pn);margin:4px 0 6px;box-shadow:inset 0 0 0 1px var(--ln)}
+.p04-bar i{display:block;height:100%;width:52%;border-radius:4px;background:var(--nw)}
+.p04-rk{width:100%;border-collapse:collapse;font-size:15px}
+.p04-rk td{padding:3px 0;border-bottom:1px solid var(--ln)}
+.p04-rk td:nth-child(2){width:52%;padding:0 10px}
+.p04-rk td:last-child{text-align:right;font-family:var(--mo);white-space:nowrap}
+.p04-rk i{display:block;height:6px;border-radius:3px;background:var(--mu)}
+.p04-rk .p04-me td{font-weight:800;color:var(--nw)}
+.p04-rk .p04-me i{background:var(--nw);height:10px}
+.p04-nt{margin-top:12px;font-weight:600}
+.p04-ms{list-style:none;padding:0;display:grid;gap:12px}
+.p04-ms li{display:grid;grid-template-columns:200px minmax(0,1fr) 210px;gap:4px 18px;align-items:center;padding:12px 0;border-top:1px solid var(--ln)}
+.p04-ms time{font-weight:700;font-size:15px;white-space:nowrap}
+.p04-ms small{display:block;color:var(--mu);font-size:14px}
+.p04-ms b{font-size:18px}
+.p04-sp{display:flex;gap:3px;height:28px;font:700 13px/28px var(--mo)}
+.p04-sp i{font-style:normal;background:var(--upb);color:var(--up);padding:0 8px;border-radius:4px}
+.p04-sp i+i{background:var(--pn);color:var(--mu);text-align:right}
+.p04-tl{display:grid;gap:8px}
+.p04-tl div{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.p04-tl b{width:44px;font:700 22px var(--mo)}
+.p04-tl span{position:relative;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--mo);border:1px solid var(--ln);background:var(--pn)}
+.p04-tl .p04-u{border-color:var(--up);color:var(--up)}
+.p04-tl .p04-d{border-color:var(--dn);color:var(--dn)}
+.p04-tl .p04-u::after,.p04-tl .p04-d::after{content:"";position:absolute;top:-3px;right:-3px;border:6px solid #0000;border-bottom-color:var(--up);border-top:0}
+.p04-tl .p04-d::after{border-bottom:0;border-top:6px solid var(--dn)}
+.p04-lgd{display:flex;gap:14px;margin-top:10px;font-size:13px;color:var(--mu)}
+.p04-fl{list-style:none;padding:0;border:1px solid var(--ln);border-radius:10px;overflow:clip}
+.p04-fl li+li{border-top:1px solid var(--ln)}
+.p04-fl a{display:grid;grid-template-columns:240px minmax(0,1fr) 230px;gap:4px 16px;align-items:center;min-height:48px;padding:6px 14px;text-decoration:none}
+.p04-fl a:hover{background:var(--pn)}
+.p04-fl b{font-weight:800}
+.p04-fl span{color:var(--mu);font-size:15px}
+.p04-fl code{color:var(--nw);text-align:right}
+.p04-ft{margin:0 28px;padding:24px 0 32px;border-top:1px solid var(--ln);display:grid;gap:10px}
+.p04-ft p{font-weight:800;font-size:18px}
+.p04-ft nav{display:flex;flex-wrap:wrap;gap:0 18px}
+.p04-ft nav a{padding:10px 0;font-weight:600}
+.p04-ft small{color:var(--mu);font-size:13px}
+@container (max-width:620px){
+.p04-hd{padding:10px 16px;gap:10px}
+.p04-lg span,.p04-nv{display:none}
+.p04-hd .p04-ib:first-of-type{margin-left:auto}
+.p04-bg{display:grid}
+.p04-ly{grid-template-columns:minmax(0,1fr);padding:0 16px}
+.p04-tc{border:0;border-bottom:1px solid var(--ln);padding:14px 0 10px}
+.p04-tc ol{display:flex;flex-wrap:wrap;gap:0 4px}
+.p04-tc a{padding-right:8px;font-size:14px}
+.p04-tc small{display:none}
+.p04-ct{padding-top:18px}
+.p04-he{grid-template-columns:minmax(0,1fr) 116px;gap:14px}
+.p04-he>div:first-child{display:contents}
+.p04-mt,.p04 h1,.p04-df,.p04-sb,.p04-bt{grid-column:1/-1}
+.p04 h1{font-size:34px;grid-row:2;grid-column:1;margin:0}
+.p04-girl{grid-row:2;grid-column:2;border-radius:8px}
+.p04-girl p{font-size:12px;padding:5px 6px}
+.p04-girl p .p04-t{display:none}
+.p04-girl small{font-size:10px;padding:4px 6px}
+.p04-df{font-size:13px;margin:0}
+.p04-sb{margin:0}
+.p04-bt a{flex:1 1 100%;justify-content:center}
+.p04-g2{grid-template-columns:minmax(0,1fr)}
+.p04-ms li{grid-template-columns:minmax(0,1fr)}
+.p04-fl a{grid-template-columns:minmax(0,1fr);gap:0;padding:10px 12px}
+.p04-fl code{text-align:left;font-size:13px}
+.p04-ft{margin:0 16px}
+}
+</style>
+<div class="p04 mock" data-mode="light">
+<header class="p04-hd">
+<a class="p04-lg" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7"/><path d="M5 19h5l3-6 3 9 4-13 3 10h4"/></svg>pingalto<span>v1.0</span></a>
+<nav class="p04-nv" aria-label="Principal"><a href="#" aria-current="page">Juegos</a><a href="#">Herramientas</a><a href="#">Esports</a><a href="#">Tier list</a></nav>
+<button class="p04-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="p04-ib p04-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</header>
+<div class="p04-ly">
+<nav class="p04-tc" aria-label="En esta página"><p>Parche 1.0</p>
+<ol><li><a href="#" aria-current="true">Inicio<small>1.0</small></a></li><li><a href="#">Sensibilidad<small>kit</small></a></li><li><a href="#">Rangos<small>val</small></a></li><li><a href="#">Esports hoy<small>live</small></a></li><li><a href="#">Tier list<small>meta</small></a></li><li><a href="#">Herramientas<small>8</small></a></li></ol>
+</nav>
+<main class="p04-ct">
+<section class="p04-e p04-he">
+<div>
+<p class="p04-mt"><span class="p04-t">NUEVO</span><time datetime="2026-11-02">02.11.2026</time><span>Parche 1.0</span></p>
+<h1>Subí de rango con la cuenta <i>hecha</i></h1>
+<div class="p04-df" aria-label="Qué cambia"><p class="p04-a">+ Rangos, sensibilidad, miras, mapas y tier lists</p><p class="p04-a">+ Valorant, Free Fire, CS2, LoL, Fortnite y más</p><p class="p04-r">− humo</p><p class="p04-r">− vender nada</p></div>
+<p class="p04-sb">Rangos, sensibilidad, miras, mapas y tier lists de Valorant, Free Fire, CS2, LoL, Fortnite y más. Sin humo y sin vender nada.</p>
+<div class="p04-bt"><a class="p04-b1" href="#">Calculá tu sensibilidad</a><a href="#">Ver la tier list</a></div>
+</div>
+<div class="p04-girl" role="img" aria-label="Ilustración"><p>Alt <span class="p04-t">NUEVO</span></p><svg viewBox="0 0 100 150" aria-hidden="true"><circle cx="71" cy="14" r="7"/><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg><small>acá va ella</small></div>
+</section>
+<div class="p04-g2">
+<section class="p04-e"><p class="p04-mt"><span class="p04-t">KIT</span><span>ejemplo</span></p><h2>Sensibilidad: pasala de un juego a otro</h2>
+<div class="p04-sv"><p>CS2 · 800 DPI · <b>1,25</b></p><p class="p04-hl">→ Valorant · <b>0,393</b></p><p>eDPI 1.000 · cm/360: 41,6 cm</p><span class="p04-bar" aria-hidden="true"><i></i></span></div>
+</section>
+<section class="p04-e"><p class="p04-mt"><span class="p04-t">VALORANT</span><span>% de jugadores, ejemplo</span></p><h2>Rangos de Valorant</h2>
+<table class="p04-rk">
+<tr><td>Hierro</td><td><i style="width:39%"></i></td><td>7 %</td></tr>
+<tr><td>Bronce</td><td><i style="width:83%"></i></td><td>15 %</td></tr>
+<tr><td>Plata</td><td><i style="width:100%"></i></td><td>18 %</td></tr>
+<tr class="p04-me"><td>Oro</td><td><i style="width:89%"></i></td><td>16 %</td></tr>
+<tr><td>Platino</td><td><i style="width:83%"></i></td><td>15 %</td></tr>
+<tr><td>Diamante</td><td><i style="width:78%"></i></td><td>14 %</td></tr>
+<tr><td>Ascendente</td><td><i style="width:56%"></i></td><td>10 %</td></tr>
+<tr><td>Inmortal</td><td><i style="width:25%"></i></td><td>4,5 %</td></tr>
+<tr><td>Radiante</td><td><i style="width:3%"></i></td><td>0,5 %</td></tr>
+</table>
+<p class="p04-nt"><span class="p04-t p04-tu">▲</span> Estás en Oro 2: por encima del 45 %</p>
+</section>
+</div>
+<section class="p04-e"><p class="p04-mt"><span class="p04-t">LIVE</span><span>hora argentina · chances: modelo, ejemplo</span></p><h2>Esports hoy</h2>
+<ul class="p04-ms">
+<li><time>18:00 (hora argentina)</time><p><b>Furia vs. MIBR</b><small>CS2 · Bo3</small></p><div class="p04-sp"><i style="width:58%">58 %</i><i style="width:42%">42 %</i></div></li>
+<li><time>20:00 (hora argentina)</time><p><b>Leviatán vs. KRÜ</b><small>Valorant · Bo3</small></p><div class="p04-sp"><i style="width:55%">55 %</i><i style="width:45%">45 %</i></div></li>
+<li><time>21:00 (hora argentina)</time><p><b>Liga LATAM Free Fire</b><small>Fecha 4 · 12 equipos</small></p><small>6 partidas</small></li>
+</ul>
+</section>
+<section class="p04-e"><p class="p04-mt"><span class="p04-t">META</span><span>Valorant · ejemplo</span></p><h2>Tier list del parche</h2>
+<div class="p04-tl">
+<div><b>S</b><span>JE</span><span class="p04-u">RA</span><span>OM</span></div>
+<div><b>A</b><span class="p04-d">SO</span><span>KJ</span><span>CY</span><span class="p04-u">SK</span></div>
+<div><b>B</b><span>BR</span><span>PH</span><span class="p04-d">FA</span></div>
+<div><b>C</b><span>YO</span><span>HA</span></div>
+</div>
+<p class="p04-lgd"><span class="p04-t p04-tu">BUFF</span><span class="p04-t p04-td">NERF</span><span>respecto del parche anterior</span></p>
+</section>
+<nav class="p04-e" aria-labelledby="p04-fh"><p class="p04-mt"><span class="p04-t">8 ARCHIVOS</span><span>herramientas</span></p><h2 id="p04-fh">Herramientas</h2>
+<ul class="p04-fl">
+<li><a href="#"><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x según tu celu</span><code>/ff/sensibilidad</code></a></li>
+<li><a href="#"><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span><code>/valorant/mira</code></a></li>
+<li><a href="#"><b>Rangos de LoL</b><span>De Hierro a Retador, con el % de cada liga</span><code>/lol/rangos</code></a></li>
+<li><a href="#"><b>Mapas de Valorant</b><span>Callouts de Ascent, Split y el resto</span><code>/valorant/mapas</code></a></li>
+<li><a href="#"><b>Brawlers y meta</b><span>Quién pega fuerte en la rotación</span><code>/brawl/brawlers</code></a></li>
+<li><a href="#"><b>Mazos de Clash Royale</b><span>Por arena y con su costo de elixir</span><code>/clash/mazos</code></a></li>
+<li><a href="#"><b>Rocket League: rangos</b><span>De Bronce a Supersonic Legend</span><code>/rl/rangos</code></a></li>
+<li><a href="#"><b>DPI y eDPI</b><span>Medí tu DPI real y compará</span><code>/kit/dpi</code></a></li>
+</ul>
+</nav>
+</main>
+</div>
+<footer class="p04-ft">
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado.</small>
+</footer>
+</div>

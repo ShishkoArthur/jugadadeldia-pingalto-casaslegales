@@ -1,7 +1,7 @@
 // Builds the owner's overview page (Russian, phone-first) from the page plans and research.
 // node docs/owner/build-overview.mjs  ->  docs/owner/overview.html
 // Design comparison pages and girl contact sheets are published next to it as separate files.
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -33,6 +33,7 @@ for (const s of SITES) {
   s.concept = concept(s.id);
   const design = join(ROOT, `docs/design/${s.id}/ten-designs-2026-11-02.html`);
   s.design = existsSync(design) ? `designs/${s.id}.html` : null;
+  s.ready = existsSync(join(ROOT, `docs/design/${s.id}/parts`)) ? readdirSync(join(ROOT, `docs/design/${s.id}/parts`)).filter(f => f.endsWith('.html')).length : 0;
   if (s.design) files[s.design] = design;
   if (s.girl && existsSync(join(ROOT, 'data/img-review', s.girl))) files[`girls/${s.girl}`] = join(ROOT, 'data/img-review', s.girl);
   else s.girl = null;
@@ -43,7 +44,7 @@ const siteCard = s => `
   <header class="site-head"><h2>${esc(s.name)}</h2><p>${esc(s.theme)}</p></header>
   <ul class="concept">${s.concept.map(c => `<li>${md(c)}</li>`).join('')}</ul>
   <div class="picks">
-    <a class="pick" ${s.design ? `href="${s.design}"` : 'aria-disabled="true"'}><span class="pick-k">Дизайн</span><span class="pick-v">${s.design ? '10 живых макетов главной →' : 'макеты ещё делаются'}</span><span class="pick-n">Выберите номер 1–10</span></a>
+    <a class="pick" ${s.design ? `href="${s.design}"` : 'aria-disabled="true"'}><span class="pick-k">Дизайн</span><span class="pick-v">${s.design ? (s.ready >= 10 ? '10 живых макетов главной →' : `Готово ${s.ready} из 10 →`) : 'макеты ещё делаются'}</span><span class="pick-n">${s.ready >= 10 ? 'Выберите номер 1–10' : 'остальные дорисовываются, ссылка та же'}</span></a>
     ${s.id === 'casaslegales'
       ? `<div class="pick"><span class="pick-k">Иллюстрации</span><span class="pick-v">Свои скриншоты публичных страниц</span><span class="pick-n">Девушки нет</span></div>`
       : `<a class="pick" ${s.girl ? `href="girls/${s.girl}"` : 'aria-disabled="true"'}><span class="pick-k">Девушка</span><span class="pick-v">${s.girl ? '10 вариантов →' : 'варианты ещё генерируются'}</span><span class="pick-n">Выберите номер 01–10</span></a>`}
