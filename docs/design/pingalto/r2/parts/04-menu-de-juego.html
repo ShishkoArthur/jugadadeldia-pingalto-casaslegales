@@ -1,0 +1,216 @@
+<!-- name: Menú de juego -->
+<!-- desc: Главная как меню игры: слева вертикальное меню с хромированными «гелевыми» кнопками нулевых и подсказками клавиш, первый экран — «лобби» со строкой статуса (LATAM Sur, 21:14 по Аргентине), выбор сервера с полосками сигнала и пингом, девушка — в рамке выбора персонажа «Guía». Панели со срезанными углами и уголками-скобками HUD, инструменты — ячейки инвентаря. Заголовки — Exo 2, обычной ширины. Тёмная — основная, ночной синий с мятным; светлая — холодная сталь и белые панели. -->
+<!-- fonts: family=Exo+2:wght@600;700;800&family=Sofia+Sans:wght@400;600 -->
+<style>
+.q04{--bg:#e8ecf3;--sd:#dce2ec;--pn:#fff;--p2:#f1f4f9;--fg:#0d1322;--mu:#465169;--ln:#c1cad9;--ac:#08695a;--pk:#ae1f68;--li:#4c3bbf;--on:#fff;--cr:linear-gradient(180deg,#fff 0,#dde1e8 44%,#b4bbc8 50%,#eef0f4 100%);--cut:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);background:radial-gradient(50% 40% at 85% 0,#f4d9e8,#0000),radial-gradient(40% 30% at 40% 20%,#d8efe9,#0000),var(--bg);color:var(--fg);font:16px/1.5 "Sofia Sans",system-ui,sans-serif;display:grid;grid-template-columns:230px minmax(0,1fr)}
+.q04[data-mode="dark"]{--bg:#090d18;--sd:#0d1322;--pn:#111a2d;--p2:#172239;--fg:#e8edf7;--mu:#a2adc4;--ln:#26324e;--ac:#6ff0d2;--pk:#ff8ac6;--li:#aa9eff;--on:#090d18;background:radial-gradient(60% 50% at 80% 0,#1b1638,#0000),var(--bg)}
+.q04 *{box-sizing:border-box;margin:0;padding:0}
+.q04 :where(a){color:inherit;text-decoration:none}
+.q04 :where(ul,ol){list-style:none}
+.q04 :focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.q04 :is(h1,h2,.q04-lg,time,.q04-t){font-family:"Exo 2",system-ui,sans-serif;font-weight:700;letter-spacing:0}
+.q04-p{position:relative;background:var(--pn);clip-path:var(--cut);padding:20px 22px;min-width:0}
+.q04-p::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(var(--ac),var(--ac)) 0 100%/18px 2px no-repeat,linear-gradient(var(--ac),var(--ac)) 0 100%/2px 18px no-repeat,linear-gradient(var(--ac),var(--ac)) 100% 0/18px 2px no-repeat,linear-gradient(var(--ac),var(--ac)) 100% 0/2px 18px no-repeat;box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-cb{background:var(--cr);color:#0d1322;border-radius:10px;box-shadow:inset 0 1px 0 #fff,inset 0 -2px 0 #0000002e,0 0 0 1px #0d132240}
+.q04-hd{background:var(--sd);border-right:1px solid var(--ln);padding:22px 16px;display:flex;flex-direction:column;gap:22px}
+.q04-lg{display:flex;align-items:center;gap:10px;font-size:22px;min-height:44px}
+.q04-lg i{width:34px;height:34px;display:grid;place-items:center;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--ac)}
+.q04-lg svg{width:18px;fill:none;stroke:var(--on);stroke-width:2.6;stroke-linecap:round}
+.q04-nv{display:grid;gap:6px}
+.q04-nv a{min-height:48px;display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:10px;font:600 17px "Exo 2",sans-serif;color:var(--mu)}
+.q04-nv kbd{margin-left:auto;font:600 12px "Sofia Sans",sans-serif;min-width:24px;height:24px;display:grid;place-items:center;border-radius:6px;box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-nv [aria-current]{color:#0d1322}
+.q04-nv [aria-current] kbd{box-shadow:inset 0 0 0 1px #0d132266}
+.q04-sv{margin-top:auto;padding:12px;border-radius:10px;background:var(--pn);box-shadow:inset 0 0 0 1px var(--ln);font-size:13px;color:var(--mu)}
+.q04-sv b{display:block;font:700 16px "Exo 2",sans-serif;color:var(--fg)}
+.q04-ib{width:44px;height:44px;border:0;display:grid;place-items:center;cursor:pointer;color:var(--fg);background:var(--pn);border-radius:10px;box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.q04-bg{display:none}
+.q04-mn{min-width:0;padding:0 26px 26px}
+.q04-bar{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln);font-size:14px;color:var(--mu)}
+.q04-bar b{color:var(--fg);font-weight:600}
+.q04-bar i{width:8px;height:8px;border-radius:50%;background:var(--ac);display:inline-block;margin-right:6px}
+.q04-bar .q04-ib{margin-left:auto}
+.q04-he{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:22px 30px;padding:30px 0 24px}
+.q04-ey{font:700 13px "Exo 2",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--ac)}
+.q04 h1{font-size:58px;line-height:1.02;font-weight:800;margin:10px 0 16px}
+.q04 h1 span{color:var(--pk)}
+.q04-sb{font-size:18px;color:var(--mu);max-width:560px}
+.q04-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.q04-bt a{min-height:52px;display:inline-flex;align-items:center;gap:10px;padding:0 22px;font:700 16px "Exo 2",sans-serif}
+.q04-bt a+a{border-radius:10px;box-shadow:inset 0 0 0 1.5px var(--fg)}
+.q04-girl{grid-column:2;grid-row:1/3;position:relative;aspect-ratio:2/3;background:linear-gradient(180deg,#6ff0d226,#0000 40%),var(--p2);clip-path:var(--cut);display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:12px}
+.q04-girl::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 2px var(--ac);clip-path:var(--cut)}
+.q04-girl b{font:700 13px "Exo 2",sans-serif;letter-spacing:.12em;color:var(--ac)}
+.q04-girl svg{align-self:end;justify-self:center;width:80%;fill:var(--fg);opacity:.8}
+.q04-girl span{font-size:12px;color:var(--mu);text-align:center;padding-top:6px;border-top:1px solid var(--ln)}
+.q04-pg h2{font-size:20px}
+.q04-ph{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:12px}
+.q04-ph p{font-size:13px;color:var(--mu);margin-right:auto}
+.q04-sg{display:flex;gap:4px}
+.q04-sg button{min-height:40px;padding:0 12px;border:0;border-radius:8px;background:var(--p2);color:var(--fg);font:600 14px "Sofia Sans",sans-serif;cursor:pointer;box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-sg [aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.q04-sl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.q04-sl a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:12px 14px;border-radius:10px;background:var(--p2);box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-sl [aria-current]{box-shadow:inset 0 0 0 2px var(--ac)}
+.q04-sl b{font-weight:600}
+.q04-sl small{font-size:13px;color:var(--mu)}
+.q04-sl em{grid-row:span 2;font:700 26px/1 "Exo 2",sans-serif;font-style:normal;font-variant-numeric:tabular-nums;text-align:right}
+.q04-sl em small{display:block;font:600 12px "Sofia Sans",sans-serif}
+.q04-sb4{display:flex;gap:3px;align-items:end;height:16px;margin-top:6px}
+.q04-sb4 i{width:5px;background:var(--ac);border-radius:1px}
+.q04-sb4 i:nth-child(1){height:25%}.q04-sb4 i:nth-child(2){height:50%}.q04-sb4 i:nth-child(3){height:75%}.q04-sb4 i:nth-child(4){height:100%}
+.q04-lo .q04-sb4 i{background:var(--pk)}
+.q04-lo .q04-sb4 i:nth-child(n+3){background:var(--ln)}
+.q04-lo em small{color:var(--pk)}
+.q04-gd{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:16px}
+.q04-s{grid-column:span 6}.q04-r{grid-column:span 6}.q04-e{grid-column:span 8}.q04-tt{grid-column:span 4}
+.q04 h2{font-size:21px;line-height:1.2}
+.q04-x{font-size:13px;color:var(--mu);margin:2px 0 14px}
+.q04-x b{color:var(--pk);font-weight:600}
+.q04-cv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.q04-cv div{padding:10px 14px;border-radius:10px;background:var(--p2);box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-cv div+div{box-shadow:inset 0 0 0 2px var(--ac)}
+.q04-cv small{display:block;font-size:13px;color:var(--mu)}
+.q04-cv b{font:700 36px/1.15 "Exo 2",sans-serif;font-variant-numeric:tabular-nums}
+.q04-kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px;font-size:13px;color:var(--mu)}
+.q04-kv b{display:block;font:700 18px "Exo 2",sans-serif;color:var(--fg)}
+.q04-xp{display:grid;grid-template-columns:56px minmax(0,1fr);gap:6px 14px;align-items:center}
+.q04-xp>i{grid-row:span 2;width:50px;height:50px;transform:rotate(45deg);border-radius:8px;background:var(--cr);box-shadow:0 0 0 2px var(--pk);margin-left:3px}
+.q04-xp b{font:700 24px "Exo 2",sans-serif}
+.q04-xp b small{font:600 14px "Sofia Sans",sans-serif;color:var(--mu);margin-left:6px}
+.q04-xb{height:12px;border-radius:3px;background:var(--p2);box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-xb i{display:block;width:40%;height:100%;border-radius:3px;background:repeating-linear-gradient(90deg,var(--pk) 0 8px,#0000 8px 10px)}
+.q04-rl{display:flex;flex-wrap:wrap;gap:4px;margin:14px 0 12px}
+.q04-rl li{font-size:13px;padding:4px 8px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--ln);color:var(--mu)}
+.q04-rl .q04-me{color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--pk);font-weight:600}
+.q04-rc{font-size:14px;color:var(--mu)}
+.q04-rc b{color:var(--fg);font-weight:600}
+.q04-ms li{display:grid;grid-template-columns:60px minmax(0,1fr) 100px 150px;gap:4px 14px;align-items:center;padding:10px 0;border-top:1px solid var(--ln)}
+.q04-ms time{font-size:19px;font-variant-numeric:tabular-nums}
+.q04-ms b{font-weight:600}
+.q04-ms span{font-size:13px;color:var(--mu)}
+.q04-cc{font-size:11px;font-weight:600;color:var(--mu);margin-left:3px}
+.q04-pb{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;font:700 14px "Exo 2",sans-serif;font-variant-numeric:tabular-nums}
+.q04-pb i{height:8px;border-radius:2px;background:linear-gradient(90deg,var(--ac) var(--v),var(--li) 0)}
+.q04-tl{display:grid;gap:6px}
+.q04-tl div{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px;align-items:center}
+.q04-tl b{height:40px;display:grid;place-items:center;font:700 20px "Exo 2",sans-serif}
+.q04-tl div:first-child b{background:var(--pk);color:var(--on);border-radius:10px;box-shadow:none}
+.q04-tl p{display:flex;flex-wrap:wrap;gap:4px;font-size:14px;font-weight:600}
+.q04-tl span{padding:4px 8px;border-radius:6px;background:var(--p2)}
+.q04-ap{margin-top:26px}
+.q04-ap h2{font-size:28px;margin-bottom:14px}
+.q04-ap div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.q04-ap a{display:grid;grid-template-columns:40px minmax(0,1fr);gap:2px 12px;align-items:center;padding:14px}
+.q04-ap svg{grid-row:span 2;width:40px;height:40px;padding:8px;border-radius:8px;background:var(--p2);fill:none;stroke:var(--ac);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.q04-ap b{font-weight:600;line-height:1.25}
+.q04-ap span{font-size:13px;color:var(--mu);line-height:1.3}
+.q04-ft{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 20px;align-items:center}
+.q04-ft p{font:700 22px/1.25 "Exo 2",sans-serif}
+.q04-ft nav{display:flex;flex-wrap:wrap;gap:4px}
+.q04-ft nav a{min-height:40px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:15px;box-shadow:inset 0 0 0 1px var(--ln)}
+.q04-ft small{grid-column:1/-1;font-size:13px;color:var(--mu)}
+@container (max-width:620px){
+.q04{grid-template-columns:minmax(0,1fr)}
+.q04-hd{flex-direction:row;align-items:center;gap:8px;padding:8px 12px;border:0;border-bottom:1px solid var(--ln)}
+.q04-lg{font-size:20px;margin-right:auto}
+.q04-nv,.q04-sv,.q04-bar .q04-ib{display:none}
+.q04-bg{display:grid}
+.q04-mn{padding:0 12px 20px}
+.q04-bar{font-size:13px;gap:4px 12px}
+.q04-he{grid-template-columns:minmax(0,1fr) 108px;gap:14px;padding:20px 0}
+.q04-he>div:first-child{display:contents}
+.q04-ey{grid-column:1/-1;font-size:12px}
+.q04 h1{grid-column:1;grid-row:2;font-size:30px;margin:0}
+.q04-girl{grid-column:2;grid-row:2;padding:6px}
+.q04-girl b{font-size:9px}
+.q04-girl span{font-size:10px}
+.q04-sb,.q04-bt,.q04-pg{grid-column:1/-1;margin:0}
+.q04-sb{font-size:16px}
+.q04-bt a{flex:1 1 100%;justify-content:center}
+.q04-p{padding:18px 14px}
+.q04-sl{grid-template-columns:minmax(0,1fr)}
+.q04-gd{grid-template-columns:minmax(0,1fr);gap:14px}
+.q04-gd>*{grid-column:1/-1}
+.q04-cv b{font-size:28px}
+.q04-ms li{grid-template-columns:54px minmax(0,1fr)}
+.q04-ms li>span{grid-column:2;grid-row:2}
+.q04-pb{grid-column:1/-1}
+.q04-ap div{grid-template-columns:minmax(0,1fr);gap:10px}
+.q04-ft{grid-template-columns:minmax(0,1fr)}
+.q04-ft p{font-size:19px}
+}
+</style>
+<div class="q04 mock" data-mode="dark">
+<header class="q04-hd">
+<a class="q04-lg" href="#"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18v-3M10 18v-6M15 18V9M20 18V5"/></svg></i>pingalto</a>
+<nav class="q04-nv" aria-label="Principal"><a class="q04-cb" href="#" aria-current="page">Juegos<kbd>1</kbd></a><a href="#">Herramientas<kbd>2</kbd></a><a href="#">Esports<kbd>3</kbd></a><a href="#">Tier list<kbd>4</kbd></a></nav>
+<p class="q04-sv">Tu servidor<b>Santiago · 31 ms</b>LATAM Sur · ejemplo</p>
+<button class="q04-ib q04-bg" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="q04-ib q04-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+<div class="q04-mn">
+<p class="q04-bar"><span><i></i><b>LATAM Sur</b></span><span>Buenos Aires</span><span>21:14 (hora argentina)</span><span>3 partidos</span><button class="q04-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button></p>
+<section class="q04-he">
+<div>
+<p class="q04-ey">Lobby · Argentina</p>
+<h1>Elegí servidor. <span>Después,</span> todo lo demás.</h1>
+<p class="q04-sb">Sensibilidad, miras, rangos, mapas y tier lists de Valorant, CS2, LoL, Free Fire y Fortnite. Sin humo y sin vender nada.</p>
+<div class="q04-bt"><a class="q04-cb" href="#">Medí tu ping</a><a href="#">Ver la tier list</a></div>
+</div>
+<div class="q04-girl" role="img" aria-label="Ilustración"><b>GUÍA · ALT</b><svg viewBox="0 0 100 150" aria-hidden="true"><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg><span>acá va ella</span></div>
+<section class="q04-p q04-pg" aria-labelledby="q04-ping">
+<div class="q04-ph"><h2 id="q04-ping">Ping a los servidores</h2><p>Ejemplo · medido en tu navegador</p><span class="q04-sg" role="group" aria-label="Ciudad"><button type="button" aria-pressed="true">Buenos Aires</button><button type="button" aria-pressed="false">Córdoba</button></span></div>
+<div class="q04-sl">
+<a href="#" aria-current="true"><b>Santiago</b><em>31<small>ms · bueno</small></em><span class="q04-sb4" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+<a href="#"><b>São Paulo</b><em>38<small>ms · bueno</small></em><span class="q04-sb4" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+<a class="q04-lo" href="#"><b>Miami</b><em>128<small>ms · alto</small></em><span class="q04-sb4" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+</div>
+</section>
+</section>
+<main class="q04-gd">
+<section class="q04-p q04-s"><h2>Sensibilidad entre juegos</h2><p class="q04-x"><b>ejemplo</b> · misma vuelta de 360°</p>
+<div class="q04-cv"><div><small>CS2 · 800 DPI</small><b>1,25</b></div><div><small>Valorant</small><b>0,393</b></div></div>
+<div class="q04-kv"><p><b>1.000</b>eDPI</p><p><b>41,6 cm</b>por vuelta</p><p><b>3,4 cm</b>de pad libre (45 cm)</p></div>
+</section>
+<section class="q04-p q04-r"><h2>Rangos de Valorant</h2><p class="q04-x">Calculadora de RR · <b>ejemplo</b></p>
+<div class="q04-xp"><i></i><b>Oro 2<small>40 / 100 RR</small></b><div class="q04-xb" aria-hidden="true"><i></i></div></div>
+<ol class="q04-rl"><li>Hierro</li><li>Bronce</li><li>Plata</li><li class="q04-me">Oro</li><li>Platino</li><li>Diamante</li><li>Ascendente</li><li>Inmortal</li><li>Radiante</li></ol>
+<p class="q04-rc"><b>≈ 30 partidas a Platino 1</b> ganando el 55 % con +22 / −15 RR</p>
+</section>
+<section class="q04-p q04-e"><h2>Esports hoy</h2><p class="q04-x">Hora argentina · chances del modelo, <b>ejemplo</b> · sin apuestas</p>
+<ul class="q04-ms">
+<li><time>17:00</time><b>9z<span class="q04-cc">AR</span> vs. Furia<span class="q04-cc">BR</span></b><span>CS2 · Bo3</span><div class="q04-pb">38<i style="--v:38%"></i>62</div></li>
+<li><time>19:30</time><b>Leviatán<span class="q04-cc">AR</span> vs. KRÜ<span class="q04-cc">AR</span></b><span>Valorant · Bo3</span><div class="q04-pb">57<i style="--v:57%"></i>43</div></li>
+<li><time>21:00</time><b>Liga LATAM de Free Fire</b><span>Fecha 4 · 12 equipos</span></li>
+</ul>
+</section>
+<section class="q04-p q04-tt"><h2>Tier list</h2><p class="q04-x">Valorant · <b>ejemplo</b></p>
+<div class="q04-tl">
+<div><b class="q04-cb">S</b><p><span>Jett</span><span>Raze</span><span>Omen</span></p></div>
+<div><b class="q04-cb">A</b><p><span>Sova</span><span>KAY/O</span><span>Cypher</span></p></div>
+<div><b class="q04-cb">B</b><p><span>Breach</span><span>Fade</span></p></div>
+<div><b class="q04-cb">C</b><p><span>Yoru</span><span>Harbor</span></p></div>
+</div>
+</section>
+</main>
+<nav class="q04-ap" aria-labelledby="q04-ah"><h2 id="q04-ah">Herramientas</h2>
+<div>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x</span></a>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v7M12 14v7M3 12h7M14 12h7"/></svg><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span></a>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11l7-6 7 6M5 19l7-6 7 6"/></svg><b>Rangos de LoL</b><span>De Hierro a Retador</span></a>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14"/></svg><b>Mapas de Valorant</b><span>Callouts de cada mapa</span></a>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4 1.3 6L12 16l-5.4 3.3 1.3-6-4.5-4 6-.7z"/></svg><b>Brawlers y meta</b><span>Quién pega fuerte hoy</span></a>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="11" height="15" rx="2"/><path d="M9 3h9a2 2 0 0 1 2 2v13"/></svg><b>Mazos de Clash Royale</b><span>Por arena y elixir</span></a>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c3 3 3 13 0 16"/></svg><b>Rocket League: rangos</b><span>De Bronce a SSL</span></a>
+<a class="q04-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/></svg><b>DPI y eDPI</b><span>Medí tu DPI real</span></a>
+</div>
+</nav>
+<footer class="q04-ft">
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor.</small>
+</footer>
+</div>
+</div>

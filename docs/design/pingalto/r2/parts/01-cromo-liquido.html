@@ -1,0 +1,220 @@
+<!-- name: Cromo líquido -->
+<!-- desc: Взрослая версия «Cromo Y2K»: тёмное дымчатое стекло, тонкие переливающиеся (розово-мятно-сиреневые) кромки, хром только в логотипе, одном слове заголовка и цифрах. Главный виджет первого экрана — пинг из Буэнос-Айреса и Кордовы до Сантьяго, Сан-Паулу и Майами. Заголовки — Urbanist с обычными пропорциями, без растяжки. Тёмная — основная, ночное стекло; светлая — жемчужно-серебристая, хром становится тёмной сталью. -->
+<!-- fonts: family=Urbanist:wght@700&family=Golos+Text:wght@400;600 -->
+<style>
+.q01{--bg:#edeff4;--bg2:#e4e2f2;--pn:#ffffffb8;--pn2:#f6f7fa;--fg:#12141c;--mu:#4a5062;--ln:#cfd3dd;--pk:#b0216a;--mt:#086b54;--li:#5a4bc2;--on:#fff;--ir:linear-gradient(110deg,#e79ac4,#a9b4ff 35%,#8fdcc4 65%,#e79ac4);--cr:linear-gradient(180deg,#3d4354 0,#12141c 46%,#565d70 54%,#1c202b 100%);--sh:0 18px 40px -28px #1a1f3a59;background:radial-gradient(48% 40% at 88% 4%,#f3dcea,#0000),radial-gradient(40% 36% at 4% 46%,#dcefe9,#0000),var(--bg);color:var(--fg);font:16px/1.55 "Golos Text",system-ui,sans-serif}
+.q01[data-mode="dark"]{--bg:#0a0c13;--bg2:#141327;--pn:#ffffff0d;--pn2:#ffffff0a;--fg:#eef0f6;--mu:#a6abbe;--ln:#2a2e3e;--pk:#ff8fc8;--mt:#79eccb;--li:#b9b3ff;--on:#0a0c13;--ir:linear-gradient(110deg,#ff8fc8,#9aa6ff 35%,#79eccb 65%,#ff8fc8);--cr:linear-gradient(180deg,#fff 0,#e3e6ee 42%,#9198aa 52%,#f2f3f7 68%,#c6cad4 100%);--sh:0 24px 60px -30px #000;background:radial-gradient(50% 42% at 90% 0,#2a1531,#0000),radial-gradient(40% 40% at 0 50%,#0d2723,#0000),var(--bg)}
+.q01 *{box-sizing:border-box;margin:0;padding:0}
+.q01 :where(a){color:inherit;text-decoration:none}
+.q01 :where(ul,ol){list-style:none}
+.q01 :focus-visible{outline:2px solid var(--pk);outline-offset:3px}
+.q01 :is(h1,h2,.q01-lg){font-family:Urbanist,system-ui,sans-serif;font-weight:700;letter-spacing:-.02em}
+.q01-g{position:relative;border-radius:22px;background:var(--pn);border:1px solid #0000;background-clip:padding-box;box-shadow:var(--sh)}
+.q01-g::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--ir);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;pointer-events:none}
+.q01-cr{background:var(--cr);-webkit-background-clip:text;background-clip:text;color:#0000}
+.q01-hd{display:flex;align-items:center;gap:14px;margin:16px 28px 0;padding:8px 8px 8px 16px}
+.q01-lg{display:flex;align-items:center;gap:10px;font-size:22px;min-height:44px}
+.q01-lg i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#fff 0 10%,#0000 40%),var(--ir);display:grid;place-items:center}
+.q01-lg svg{width:18px;stroke:#12141c;stroke-width:2.6;fill:none;stroke-linecap:round}
+.q01-nv{display:flex;gap:2px;margin-left:auto}
+.q01-nv a{min-height:44px;display:flex;align-items:center;padding:0 16px;border-radius:12px;font-weight:600;font-size:15px;color:var(--mu)}
+.q01-nv [aria-current]{color:var(--fg)}
+.q01-ib{width:44px;height:44px;border-radius:12px;border:0;display:grid;place-items:center;background:var(--pn2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--ln);cursor:pointer}
+.q01-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.q01-bg{display:none}
+.q01-nv [aria-current],.q01-sg,.q01-tk,.q01-sv div,.q01-ch span,.q01-pad div,.q01-ld span i,.q01-rc,.q01-ms li,.q01-tl div,.q01-ap svg{background:var(--pn2);box-shadow:inset 0 0 0 1px var(--ln)}
+.q01-he{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:22px 36px;padding:44px 28px 30px}
+.q01-tx{padding-top:8px}
+.q01-ey{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.q01-ey i{width:8px;height:8px;border-radius:50%;background:var(--mt)}
+.q01 h1{font-size:62px;line-height:1.02;margin:14px 0 18px;max-width:640px}
+.q01-sb{font-size:18px;color:var(--mu);max-width:560px}
+.q01-bt{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.q01-bt a{min-height:50px;display:inline-flex;align-items:center;padding:0 24px;border-radius:14px;font-weight:600}
+.q01 .q01-b1{background:linear-gradient(180deg,#ffffff59,#0000 52%),var(--pk);color:var(--on);box-shadow:inset 0 -2px 0 #0000002b,0 10px 24px -14px var(--pk)}
+.q01-b2{box-shadow:inset 0 0 0 1.5px var(--fg)}
+.q01-girl{grid-column:2;grid-row:1/3;position:relative;background:var(--ir);padding:1px;box-shadow:var(--sh);aspect-ratio:2/3;align-self:start;border-radius:150px 150px 26px 26px;display:grid;place-items:end center;padding-bottom:14px;overflow:clip}
+.q01-girl::after{content:"";position:absolute;inset:1px;border-radius:140px 140px 18px 18px;background:radial-gradient(60% 40% at 50% 30%,#ff8fc833,#0000),radial-gradient(60% 40% at 50% 92%,#79eccb33,#0000),var(--bg)}
+.q01-girl svg{position:relative;z-index:1;width:74%;fill:var(--fg);opacity:.85}
+.q01-girl span{position:relative;z-index:1;font-size:12px;color:var(--mu)}
+.q01-pg{padding:20px 22px;display:grid;gap:12px}
+.q01-ph{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.q01-ph h2{font-size:20px;margin-right:auto}
+.q01-sg{display:inline-flex;padding:3px;border-radius:12px}
+.q01-sg button{min-height:40px;padding:0 14px;border:0;border-radius:9px;background:none;color:var(--mu);font:600 14px "Golos Text",sans-serif;cursor:pointer}
+.q01-sg [aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.q01-pr{display:grid;grid-template-columns:150px minmax(0,1fr) 82px;gap:14px;align-items:center}
+.q01-pr small{display:block;font-size:13px;color:var(--mu)}
+.q01-pr em{font:700 26px/1 Urbanist,sans-serif;font-style:normal;text-align:right;font-variant-numeric:tabular-nums}
+.q01-pr em small{font:600 13px "Golos Text",sans-serif;display:block;margin-top:2px}
+.q01-tk{height:12px;border-radius:99px;,inset 0 2px 4px #0000001f;overflow:clip}
+.q01-tk i{display:block;height:100%;border-radius:99px;background:linear-gradient(180deg,#ffffff80,#0000 60%),var(--mt)}
+.q01-hi .q01-tk i{background:linear-gradient(180deg,#ffffff80,#0000 60%),var(--pk)}
+.q01-hi em small{color:var(--pk)}
+.q01-pn{font-size:13px;color:var(--mu)}
+.q01-pn b{color:var(--fg)}
+.q01-gd{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;padding:0 28px 28px}
+.q01-c{padding:22px;min-width:0}
+.q01-s{grid-column:span 7}.q01-r{grid-column:span 5;grid-row:span 2;display:flex;flex-direction:column}.q01-e{grid-column:span 7}.q01-t{grid-column:span 12}
+.q01 h2{font-size:22px;line-height:1.2}
+.q01-x{font-size:13px;color:var(--mu);margin:2px 0 16px}
+.q01-x b{color:var(--pk);font-weight:600}
+.q01-sv{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:10px;align-items:center}
+.q01-sv div{padding:12px 16px;border-radius:16px}
+.q01-sv small{display:block;font-size:13px;color:var(--mu)}
+.q01-sv b{font:700 40px/1.1 Urbanist,sans-serif;font-variant-numeric:tabular-nums}
+.q01-sv svg{width:28px;fill:none;stroke:var(--pk);stroke-width:2.5;stroke-linecap:round}
+.q01-ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.q01-ch span{padding:6px 12px;border-radius:10px;font-size:14px}
+.q01-pad{margin-top:14px;font-size:13px;color:var(--mu)}
+.q01-pad div{height:10px;margin-bottom:6px;border-radius:99px;overflow:clip}
+.q01-pad i{display:block;width:92%;height:100%;background:var(--ir)}
+.q01-ld{display:grid;gap:8px;flex:1;align-content:space-between}
+.q01-ld li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:center;font-size:14px}
+.q01-ld span{display:flex;gap:4px;height:22px}
+.q01-ld span i{flex:1;border-radius:6px}
+.q01-ld .q01-me{color:var(--pk);font-weight:600}
+.q01-ld .q01-me i:nth-child(-n+2){background:linear-gradient(180deg,#ffffff70,#0000 60%),var(--pk);box-shadow:none}
+.q01-rc{margin-top:16px;padding:14px 16px;border-radius:16px;font-size:14px;color:var(--mu)}
+.q01-rc b{display:block;font:700 24px/1.2 Urbanist,sans-serif;color:var(--fg)}
+.q01-ms{display:grid;gap:8px}
+.q01-ms li{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,200px);gap:4px 14px;align-items:center;padding:10px 14px;border-radius:16px}
+.q01-ms time{font:700 20px Urbanist,sans-serif;font-variant-numeric:tabular-nums}
+.q01-ms b,.q01-pr b{font-weight:600}
+.q01-ms small{display:block;font-size:13px;color:var(--mu)}
+.q01-cc{font-size:11px;font-weight:600;padding:1px 5px;border-radius:5px;box-shadow:inset 0 0 0 1px var(--mu);color:var(--mu);margin-left:3px;vertical-align:2px}
+.q01-pb{display:flex;height:28px;border-radius:9px;overflow:clip;font-size:13px;font-weight:600;line-height:28px}
+.q01-pb i{font-style:normal;padding-left:9px;background:var(--mt);color:var(--on)}
+.q01-pb i+i{padding:0 9px 0 0;text-align:right;background:var(--li)}
+.q01-tl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.q01-tl div{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px;border-radius:16px}
+.q01-tl b{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font:700 22px Urbanist,sans-serif;background:var(--cr);color:var(--bg)}
+.q01-tl div:first-child b{background:var(--ir);color:#12141c}
+.q01-tl span{min-width:40px;height:40px;padding:0 8px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:600;box-shadow:inset 0 0 0 1px var(--ln)}
+.q01-ap{padding:4px 28px 30px}
+.q01-ap h2{font-size:30px;margin-bottom:16px}
+.q01-ap div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.q01-ap a{display:grid;grid-template-columns:44px minmax(0,1fr);gap:2px 12px;align-items:center;padding:14px;min-height:76px}
+.q01-ap svg{grid-row:span 2;width:44px;height:44px;padding:10px;border-radius:12px;fill:none;stroke:var(--pk);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.q01-ap b{font-weight:600;line-height:1.25}
+.q01-ap span{font-size:13px;color:var(--mu);line-height:1.35}
+.q01-ft{margin:0 28px 24px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:center}
+.q01-ft p{font:700 24px/1.25 Urbanist,sans-serif;letter-spacing:-.015em}
+.q01-ft nav{display:flex;flex-wrap:wrap;gap:4px}
+.q01-ft nav a{min-height:40px;display:flex;align-items:center;padding:0 12px;border-radius:10px;font-size:14px;color:var(--mu)}
+.q01-ft small{grid-column:1/-1;font-size:13px;color:var(--mu)}
+@container (max-width:620px){
+
+.q01-hd{margin:10px 12px 0;padding:6px 6px 6px 12px;gap:6px}
+.q01-nv{display:none}
+.q01-hd .q01-ib:first-of-type{margin-left:auto}
+.q01-bg{display:grid}
+.q01-he{grid-template-columns:minmax(0,1fr) 104px;gap:16px 14px;padding:24px 16px 20px}
+.q01-tx{display:contents}
+.q01-ey{grid-column:1/-1;font-size:12px}
+.q01 h1{grid-column:1;grid-row:2;font-size:33px;margin:0}
+.q01-girl{grid-column:2;grid-row:2;border-radius:60px 60px 16px 16px;padding-bottom:8px}
+.q01-girl::after{border-radius:59px 59px 15px 15px}
+.q01-girl span{font-size:10px}
+.q01-sb,.q01-bt,.q01-pg{grid-column:1/-1;margin:0}
+.q01-sb{font-size:16px}
+.q01-bt a{flex:1 1 100%;justify-content:center}
+.q01-pg{padding:16px 14px}
+.q01-pr{grid-template-columns:minmax(0,1fr) 70px;gap:6px 10px}
+.q01-tk{grid-column:1/-1;grid-row:2}
+.q01-pr em{font-size:22px}
+.q01-gd{grid-template-columns:minmax(0,1fr);padding:0 12px 20px;gap:14px}
+.q01-gd>*{grid-column:1/-1;grid-row:auto}
+.q01-c{padding:18px 14px}
+.q01-sv{grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr);gap:6px}
+.q01-sv div{padding:10px}
+.q01-sv b{font-size:28px}
+.q01-sv svg{width:18px}
+.q01-ld li{grid-template-columns:88px minmax(0,1fr)}
+.q01-ms li{grid-template-columns:54px minmax(0,1fr);padding:10px}
+.q01-pb{grid-column:1/-1}
+.q01-tl{grid-template-columns:minmax(0,1fr)}
+.q01-ap{padding:4px 12px 22px}
+.q01-ap h2{font-size:26px}
+.q01-ap div{grid-template-columns:minmax(0,1fr);gap:10px}
+.q01-ft{margin:0 12px 16px;padding:20px 16px;grid-template-columns:minmax(0,1fr)}
+.q01-ft p{font-size:20px}
+}
+</style>
+<div class="q01 mock" data-mode="dark">
+<header class="q01-hd q01-g">
+<a class="q01-lg" href="#"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18v-3M10 18v-6M15 18V9M20 18V5"/></svg></i>pingalto</a>
+<nav class="q01-nv" aria-label="Principal"><a href="#" aria-current="page">Juegos</a><a href="#">Herramientas</a><a href="#">Esports</a><a href="#">Tier list</a></nav>
+<button class="q01-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="q01-ib q01-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+<section class="q01-he">
+<div class="q01-tx">
+<p class="q01-ey"><i></i>Desde Argentina, para tus juegos</p>
+<h1>Tu ping, tus rangos y los esports <span class="q01-cr">en hora argentina</span></h1>
+<p class="q01-sb">Sensibilidad, miras, rangos, mapas y tier lists de Valorant, CS2, LoL, Free Fire y Fortnite. Sin humo y sin vender nada.</p>
+<div class="q01-bt"><a class="q01-b1" href="#">Medí tu ping</a><a class="q01-b2" href="#">Ver la tier list</a></div>
+</div>
+<section class="q01-pg q01-g" aria-labelledby="q01-ping">
+<div class="q01-ph"><h2 id="q01-ping">Ping desde</h2><span class="q01-sg" role="group" aria-label="Ciudad"><button type="button" aria-pressed="true">Buenos Aires</button><button type="button" aria-pressed="false">Córdoba</button></span></div>
+<div class="q01-pr"><p><b>Santiago</b><small>Chile · Valorant LATAM</small></p><div class="q01-tk"><i style="width:21%"></i></div><em>31<small>ms · bueno</small></em></div>
+<div class="q01-pr"><p><b>São Paulo</b><small>Brasil · Valorant BR</small></p><div class="q01-tk"><i style="width:25%"></i></div><em>38<small>ms · bueno</small></em></div>
+<div class="q01-pr q01-hi"><p><b>Miami</b><small>EE. UU. · Valorant LATAM</small></p><div class="q01-tk"><i style="width:85%"></i></div><em>128<small>ms · alto</small></em></div>
+<p class="q01-pn"><b>Ejemplo.</b> Medido en tu navegador · 21:14 (hora argentina)</p>
+</section>
+<div class="q01-girl" role="img" aria-label="Ilustración"><svg viewBox="0 0 100 150" aria-hidden="true"><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg><span>acá va ella</span></div>
+</section>
+<main class="q01-gd">
+<section class="q01-c q01-g q01-s"><h2>Sensibilidad: pasala de un juego a otro</h2><p class="q01-x"><b>ejemplo</b> · misma vuelta de 360°</p>
+<div class="q01-sv"><div><small>CS2 · 800 DPI</small><b>1,25</b></div><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h18m-6-6 6 6-6 6"/></svg><div><small>Valorant</small><b class="q01-cr">0,393</b></div></div>
+<p class="q01-ch"><span>eDPI 1.000</span><span>41,6 cm por vuelta</span></p>
+<div class="q01-pad"><div aria-hidden="true"><i></i></div>Tu pad de 45 cm: la vuelta entra con 3,4 cm de margen</div>
+</section>
+<section class="q01-c q01-g q01-r"><h2>Rangos de Valorant</h2><p class="q01-x">Calculadora de RR · <b>ejemplo</b></p>
+<ol class="q01-ld" reversed>
+<li>Radiante<span><i></i></span></li>
+<li>Inmortal<span><i></i><i></i><i></i></span></li>
+<li>Ascendente<span><i></i><i></i><i></i></span></li>
+<li>Diamante<span><i></i><i></i><i></i></span></li>
+<li>Platino<span><i></i><i></i><i></i></span></li>
+<li class="q01-me">Oro 2<span><i></i><i></i><i></i></span></li>
+<li>Plata<span><i></i><i></i><i></i></span></li>
+<li>Bronce<span><i></i><i></i><i></i></span></li>
+<li>Hierro<span><i></i><i></i><i></i></span></li>
+</ol>
+<div class="q01-rc"><b>Unas 30 partidas</b>de Oro 2 (40 RR) a Platino 1, ganando el 55 % con +22 / −15 RR</div>
+</section>
+<section class="q01-c q01-g q01-e"><h2>Esports hoy</h2><p class="q01-x">Hora argentina · chances del modelo por mapa y serie, <b>ejemplo</b> · sin apuestas</p>
+<ul class="q01-ms">
+<li><time>17:00</time><p><b>9z<span class="q01-cc">AR</span> vs. Furia<span class="q01-cc">BR</span></b><small>CS2 · Bo3</small></p><div class="q01-pb"><i style="width:38%">38 %</i><i style="width:62%">62 %</i></div></li>
+<li><time>19:30</time><p><b>Leviatán<span class="q01-cc">AR</span> vs. KRÜ<span class="q01-cc">AR</span></b><small>Valorant · Bo3</small></p><div class="q01-pb"><i style="width:57%">57 %</i><i style="width:43%">43 %</i></div></li>
+<li><time>21:00</time><p><b>Liga LATAM de Free Fire</b><small>Fecha 4 · 12 equipos</small></p></li>
+</ul>
+</section>
+<section class="q01-c q01-g q01-t"><h2>Tier list del parche</h2><p class="q01-x">Agentes de Valorant · <b>ejemplo</b></p>
+<div class="q01-tl">
+<div><b>S</b><span>Jett</span><span>Raze</span><span>Omen</span></div>
+<div><b>A</b><span>Sova</span><span>KAY/O</span><span>Cypher</span></div>
+<div><b>B</b><span>Breach</span><span>Fade</span></div>
+<div><b>C</b><span>Yoru</span><span>Harbor</span></div>
+</div>
+</section>
+</main>
+<nav class="q01-ap" aria-labelledby="q01-ah"><h2 id="q01-ah">Herramientas</h2>
+<div>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x</span></a>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v7M12 14v7M3 12h7M14 12h7"/></svg><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span></a>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11l7-6 7 6M5 19l7-6 7 6"/></svg><b>Rangos de LoL</b><span>De Hierro a Retador</span></a>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14"/></svg><b>Mapas de Valorant</b><span>Callouts de cada mapa</span></a>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4 1.3 6L12 16l-5.4 3.3 1.3-6-4.5-4 6-.7z"/></svg><b>Brawlers y meta</b><span>Quién pega fuerte hoy</span></a>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="11" height="15" rx="2"/><path d="M9 3h9a2 2 0 0 1 2 2v13"/></svg><b>Mazos de Clash Royale</b><span>Por arena y elixir</span></a>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c3 3 3 13 0 16"/></svg><b>Rocket League: rangos</b><span>De Bronce a SSL</span></a>
+<a class="q01-g" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/></svg><b>DPI y eDPI</b><span>Medí tu DPI real</span></a>
+</div>
+</nav>
+<footer class="q01-ft q01-g">
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor.</small>
+</footer>
+</div>

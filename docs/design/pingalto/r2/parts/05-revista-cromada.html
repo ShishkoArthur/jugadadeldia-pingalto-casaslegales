@@ -1,0 +1,208 @@
+<!-- name: Revista cromada -->
+<!-- desc: Глянцевый журнал о играх: шапка-«мастхед» с номером выпуска, обложка с крупным заголовком Bodoni Moda (классические пропорции, курсив с хромом в одном слове), девушка — фото на обложке. Пинг — журнальная инфографика: шкала в миллисекундах и таблица «расстояние · физический минимум по оптоволокну · пример». Разделы пронумерованы, тонкие линейки вместо карточек, инструменты — «Sumario». Светлая — холодно-белая глянцевая бумага, чёрный и розовый; тёмная — чёрный глянец, хромовые акценты светлые. -->
+<!-- fonts: family=Bodoni+Moda:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;600;700 -->
+<style>
+.q05{--bg:#f6f6f9;--p2:#ebebf1;--fg:#111116;--mu:#4c4c59;--ln:#c9c9d3;--rl:#111116;--pk:#b0155e;--mt:#086a56;--li:#4b3bbd;--on:#fff;--cr:linear-gradient(180deg,#5b6070 0,#111116 46%,#4b5060 56%,#16171d 100%);background:var(--bg);color:var(--fg);font:16px/1.55 "Plus Jakarta Sans",system-ui,sans-serif}
+.q05[data-mode="dark"]{--bg:#0c0c10;--p2:#18181f;--fg:#f1f1f5;--mu:#adadba;--ln:#2e2e38;--rl:#e9e9ef;--pk:#ff8fc0;--mt:#7fe8cc;--li:#b4a8ff;--on:#0c0c10;--cr:linear-gradient(180deg,#fff 0,#dfe2e9 42%,#9097a8 52%,#f3f4f7 70%,#c3c7d1 100%)}
+.q05 *{box-sizing:border-box;margin:0;padding:0}
+.q05 :where(a){color:inherit;text-decoration:none}
+.q05 :where(ul,ol){list-style:none}
+.q05 :focus-visible{outline:2px solid var(--pk);outline-offset:3px}
+.q05 :is(h1,h2,.q05-lg,.q05-n){font-family:"Bodoni Moda",Didot,Georgia,serif;font-weight:700;letter-spacing:0}
+.q05-cr{background:var(--cr);-webkit-background-clip:text;background-clip:text;color:#0000;font-style:italic;padding-right:.06em}
+.q05-hd{margin:0 28px;padding:12px 0 10px;border-bottom:3px double var(--rl);display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:6px 22px}
+.q05-is{grid-column:1/-1;display:flex;justify-content:space-between;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);padding-bottom:8px;border-bottom:1px solid var(--ln)}
+.q05-lg{font-size:40px;font-style:italic;line-height:1;min-height:44px;display:flex;align-items:center}
+.q05-lg i{width:12px;height:12px;border-radius:50%;background:var(--pk);margin-left:4px;align-self:flex-start;margin-top:8px}
+.q05-nv{display:flex;justify-content:flex-end;gap:2px}
+.q05-nv a{min-height:44px;display:flex;align-items:center;padding:0 14px;font-weight:600;font-size:15px}
+.q05-nv [aria-current]{box-shadow:inset 0 -2px 0 var(--pk)}
+.q05-ib{width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--fg);color:var(--bg);cursor:pointer}
+.q05-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.q05-bg{display:none}
+.q05-he{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px 40px;padding:34px 28px 30px}
+.q05-ey{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pk)}
+.q05 h1{font-size:80px;line-height:.98;margin:14px 0 22px}
+.q05-sb{font-size:19px;max-width:540px}
+.q05-cl{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:20px;font-size:15px;font-weight:600}
+.q05-cl li+li::before{content:"/";margin:0 10px;color:var(--pk)}
+.q05-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.q05-bt a{min-height:52px;display:inline-flex;align-items:center;padding:0 26px;border-radius:99px;font-weight:700;box-shadow:inset 0 0 0 1.5px var(--fg)}
+.q05 .q05-b1{background:var(--fg);color:var(--bg)}
+.q05-girl{grid-column:2;grid-row:1/3;position:relative;min-height:480px;background:radial-gradient(70% 50% at 50% 25%,#ffd9ec,#0000),radial-gradient(60% 40% at 50% 100%,#cdeee5,#0000),var(--p2);display:grid;place-items:end center;overflow:clip}
+.q05[data-mode="dark"] .q05-girl{background:radial-gradient(70% 50% at 50% 25%,#3a1b31,#0000),radial-gradient(60% 40% at 50% 100%,#123329,#0000),var(--p2)}
+.q05-girl svg{width:80%;fill:var(--fg);opacity:.85}
+.q05-girl span{position:absolute;left:12px;bottom:12px;font-size:12px;font-weight:600;background:var(--bg);padding:2px 8px}
+.q05-girl b{position:absolute;top:14px;right:14px;font:italic 700 24px/1 "Bodoni Moda",serif;color:var(--pk)}
+.q05-pg{grid-column:1;border-top:1px solid var(--rl);padding-top:16px}
+.q05-ph{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:14px}
+.q05-ph h2{font-size:26px;margin-right:auto}
+.q05-sg{display:flex;gap:0;box-shadow:inset 0 0 0 1px var(--rl);border-radius:99px}
+.q05-sg button{min-height:40px;padding:0 14px;border:0;border-radius:99px;background:none;color:var(--fg);font:600 14px "Plus Jakarta Sans",sans-serif;cursor:pointer}
+.q05-sg [aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.q05-sc{position:relative;height:58px;margin:0 6px 6px;border-bottom:1px solid var(--rl);background:repeating-linear-gradient(90deg,var(--ln) 0 1px,#0000 1px 13.33%) 0 100%/100% 10px no-repeat}
+.q05-sc b{position:absolute;bottom:-6px;transform:translateX(-50%);display:grid;justify-items:center;font-size:12px;font-weight:700;line-height:1.2;white-space:nowrap}
+.q05-sc b::after{content:"";width:11px;height:11px;border-radius:50%;background:var(--mt);margin-top:4px;box-shadow:0 0 0 3px var(--bg)}
+.q05-sc .q05-hi::after{background:var(--pk)}
+.q05-sc .q05-up::after{margin-top:24px}
+.q05-sx{display:flex;justify-content:space-between;font-size:12px;color:var(--mu);margin:4px 0 14px}
+.q05-tb{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+.q05-tb th{text-align:left;font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;padding:0 8px 6px 0}
+.q05-tb td{padding:8px 8px 8px 0;border-top:1px solid var(--ln)}
+.q05-tb td+td,.q05-tb th+th{text-align:right}
+.q05-tb strong{font:700 22px/1 "Bodoni Moda",serif}
+.q05-tb .q05-hi strong{color:var(--pk)}
+.q05-pn{font-size:13px;color:var(--mu);margin-top:10px}
+.q05-gd{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 28px;border-top:3px double var(--rl)}
+.q05-c{min-width:0;padding:22px 22px 26px}
+.q05-c+.q05-c{border-left:1px solid var(--ln)}
+.q05-c:first-child{padding-left:0}.q05-c:last-child{padding-right:0}
+.q05-n{display:block;font-size:44px;line-height:1;font-style:italic}
+.q05 h2{font-size:30px;line-height:1.1;margin-top:6px}
+.q05-x{font-size:13px;color:var(--mu);margin:6px 0 16px}
+.q05-x b{color:var(--pk);font-weight:600}
+.q05-sv{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:end;border-bottom:1px solid var(--ln);padding-bottom:12px}
+.q05-sv small{display:block;font-size:12px;color:var(--mu);font-weight:600}
+.q05-sv b{font:700 44px/1 "Bodoni Moda",serif;font-variant-numeric:tabular-nums}
+.q05-sv i{font:italic 700 28px "Bodoni Moda",serif;color:var(--pk)}
+.q05-dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;margin-top:12px;font-size:14px}
+.q05-dl dt{color:var(--mu)}
+.q05-dl dd{text-align:right;font-weight:600}
+.q05-rk{display:flex;flex-wrap:wrap;gap:6px;font-size:14px;color:var(--mu)}
+.q05-rk li{padding:1px 8px;box-shadow:inset 0 0 0 1px var(--ln)}
+.q05-rk .q05-me{color:var(--on);background:var(--pk);box-shadow:none;font-weight:700}
+.q05-big{margin-top:14px;font:700 54px/1 "Bodoni Moda",serif}
+.q05-big+p{font-size:14px;color:var(--mu);margin-top:6px}
+.q05-tl{display:grid}
+.q05-tl p{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--ln);font-size:15px}
+.q05-tl b{font:italic 700 30px/1 "Bodoni Moda",serif}
+.q05-tl p:first-child b{color:var(--pk)}
+.q05-ag{margin:0 28px;padding:24px 0;border-top:3px double var(--rl)}
+.q05-ag header{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 18px;margin-bottom:10px}
+.q05-ag h2{margin:0}
+.q05-ag header p{font-size:13px;color:var(--mu)}
+.q05-ag header b{color:var(--pk)}
+.q05-ms li{display:grid;grid-template-columns:90px minmax(0,1fr) 150px minmax(0,220px);gap:4px 18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)}
+.q05-ms time{font:700 30px/1 "Bodoni Moda",serif;font-variant-numeric:tabular-nums}
+.q05-ms b{font-size:18px}
+.q05-ms span{font-size:14px;color:var(--mu)}
+.q05-cc{font-size:12px;font-weight:600;color:var(--mu)}
+.q05-pb{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.q05-pb i{height:4px;background:linear-gradient(90deg,var(--mt) var(--v),var(--li) 0)}
+.q05-ap{margin:0 28px;padding:24px 0 30px;border-top:3px double var(--rl);display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px 30px}
+.q05-ap h2{font-size:44px;font-style:italic}
+.q05-ap div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:30px}
+.q05-ap a{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:0 12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--ln);min-height:56px}
+.q05-ap a::before{content:counter(t,decimal-leading-zero);counter-increment:t;font:italic 700 20px "Bodoni Moda",serif;color:var(--pk)}
+.q05-ap div{counter-reset:t}
+.q05-ap b{font-weight:700}
+.q05-ap span{font-size:13px;color:var(--mu);text-align:right}
+.q05-ft{margin:0 28px;padding:22px 0 26px;border-top:1px solid var(--rl);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 24px;align-items:center}
+.q05-ft p{font:italic 700 28px/1.2 "Bodoni Moda",serif}
+.q05-ft nav{display:flex;flex-wrap:wrap;gap:2px}
+.q05-ft nav a{min-height:40px;display:flex;align-items:center;padding:0 10px;font-size:14px;font-weight:600}
+.q05-ft small{grid-column:1/-1;font-size:13px;color:var(--mu)}
+@container (max-width:620px){
+.q05-hd{margin:0 16px;padding:8px 0;grid-template-columns:minmax(0,1fr) auto auto;gap:8px}
+.q05-is,.q05-nv{display:none}
+.q05-lg{font-size:30px}
+.q05-bg{display:grid}
+.q05-he{grid-template-columns:minmax(0,1fr) 112px;gap:16px 14px;padding:22px 16px 22px}
+.q05-he>div:first-child{display:contents}
+.q05-ey{grid-column:1/-1;font-size:12px}
+.q05 h1{grid-column:1;grid-row:2;font-size:38px;margin:0}
+.q05-girl{grid-column:2;grid-row:2;min-height:0;aspect-ratio:2/3;align-self:center}
+.q05-girl span{font-size:10px;left:6px;bottom:6px;padding:1px 5px}
+.q05-girl b{font-size:16px;top:8px;right:8px}
+.q05-sb,.q05-cl,.q05-bt,.q05-pg{grid-column:1/-1;margin:0}
+.q05-sb{font-size:17px}
+.q05-bt a{flex:1 1 100%;justify-content:center}
+.q05-ph h2{font-size:22px}
+.q05-tb{font-size:14px}
+.q05-tb th:nth-child(2),.q05-tb td:nth-child(2){display:none}
+.q05-gd{grid-template-columns:minmax(0,1fr);margin:0 16px}
+.q05-c,.q05-c:first-child,.q05-c:last-child{padding:20px 0 22px}
+.q05-c+.q05-c{border-left:0;border-top:1px solid var(--ln)}
+.q05 h2{font-size:26px}
+.q05-sv b{font-size:36px}
+.q05-ag,.q05-ap,.q05-ft{margin:0 16px}
+.q05-ms li{grid-template-columns:70px minmax(0,1fr)}
+.q05-ms time{font-size:24px}
+.q05-ms li>span{grid-column:2}
+.q05-pb{grid-column:1/-1}
+.q05-ap{grid-template-columns:minmax(0,1fr)}
+.q05-ap h2{font-size:34px}
+.q05-ap div{grid-template-columns:minmax(0,1fr)}
+.q05-ap a{grid-template-columns:34px minmax(0,1fr)}
+.q05-ap span{grid-column:2;text-align:left}
+.q05-ft{grid-template-columns:minmax(0,1fr)}
+.q05-ft p{font-size:22px}
+}
+</style>
+<div class="q05 mock" data-mode="light">
+<header class="q05-hd">
+<p class="q05-is"><span>N.º 01 · noviembre de 2026</span><span>Buenos Aires · hora argentina</span></p>
+<a class="q05-lg" href="#">pingalto<i></i></a>
+<nav class="q05-nv" aria-label="Principal"><a href="#" aria-current="page">Juegos</a><a href="#">Herramientas</a><a href="#">Esports</a><a href="#">Tier list</a></nav>
+<button class="q05-ib" type="button" aria-label="Cambiar tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/></svg></button>
+<button class="q05-ib q05-bg" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+<section class="q05-he">
+<div>
+<p class="q05-ey">Portada · juegos y esports</p>
+<h1>La guía para jugar <span class="q05-cr">desde Argentina</span></h1>
+<p class="q05-sb">Sensibilidad, miras, rangos, mapas y tier lists de Valorant, CS2, LoL, Free Fire y Fortnite. Sin humo y sin vender nada.</p>
+<ul class="q05-cl"><li>Ping</li><li>Sensibilidad</li><li>Rangos</li><li>Esports hoy</li></ul>
+<div class="q05-bt"><a class="q05-b1" href="#">Medí tu ping</a><a href="#">Ver la tier list</a></div>
+</div>
+<div class="q05-girl" role="img" aria-label="Ilustración"><b>N.º 01</b><svg viewBox="0 0 100 150" aria-hidden="true"><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg><span>acá va ella</span></div>
+<section class="q05-pg" aria-labelledby="q05-ping">
+<div class="q05-ph"><h2 id="q05-ping">¿Cuánto tarda tu jugada?</h2><span class="q05-sg" role="group" aria-label="Ciudad"><button type="button" aria-pressed="true">Buenos Aires</button><button type="button" aria-pressed="false">Córdoba</button></span></div>
+<div class="q05-sc" aria-hidden="true"><b style="left:20.7%">SCL</b><b class="q05-up" style="left:25.3%">SP</b><b class="q05-hi" style="left:85.3%">MIA</b></div>
+<p class="q05-sx" aria-hidden="true"><span>0 ms</span><span>150 ms</span></p>
+<table class="q05-tb"><tr><th>Servidor</th><th>Distancia</th><th>Mínimo físico</th><th>Tu ping</th></tr>
+<tr><td>Santiago (CL)</td><td>1.139 km</td><td>11 ms</td><td><strong>31</strong> ms</td></tr>
+<tr><td>São Paulo (BR)</td><td>1.675 km</td><td>17 ms</td><td><strong>38</strong> ms</td></tr>
+<tr class="q05-hi"><td>Miami (EE. UU.)</td><td>7.095 km</td><td>71 ms</td><td><strong>128</strong> ms</td></tr></table>
+<p class="q05-pn">Tu ping es <b>ejemplo</b>; el mínimo es ida y vuelta por fibra · 21:14 (hora argentina)</p>
+</section>
+</section>
+<main class="q05-gd">
+<section class="q05-c"><span class="q05-n q05-cr">01</span><h2>Sensibilidad</h2><p class="q05-x"><b>ejemplo</b> · misma vuelta de 360°</p>
+<div class="q05-sv"><p><small>CS2 · 800 DPI</small><b>1,25</b></p><i>a</i><p><small>Valorant</small><b>0,393</b></p></div>
+<dl class="q05-dl"><dt>eDPI</dt><dd>1.000</dd><dt>Por vuelta</dt><dd>41,6 cm</dd><dt>Pad de 45 cm</dt><dd>sobran 3,4 cm</dd></dl>
+</section>
+<section class="q05-c"><span class="q05-n q05-cr">02</span><h2>Rangos de Valorant</h2><p class="q05-x">Calculadora de RR · <b>ejemplo</b></p>
+<ol class="q05-rk"><li>Hierro</li><li>Bronce</li><li>Plata</li><li class="q05-me">Oro 2</li><li>Platino</li><li>Diamante</li><li>Ascendente</li><li>Inmortal</li><li>Radiante</li></ol>
+<p class="q05-big">≈ 30</p><p>partidas a Platino 1 desde Oro 2 (40 RR), ganando el 55 % con +22 / −15 RR</p>
+</section>
+<section class="q05-c"><span class="q05-n q05-cr">03</span><h2>Tier list</h2><p class="q05-x">Agentes de Valorant · <b>ejemplo</b></p>
+<div class="q05-tl"><p><b>S</b>Jett, Raze, Omen</p><p><b>A</b>Sova, KAY/O, Cypher</p><p><b>B</b>Breach, Phoenix, Fade</p><p><b>C</b>Yoru, Harbor</p></div>
+</section>
+</main>
+<section class="q05-ag" aria-labelledby="q05-eh">
+<header><h2 id="q05-eh"><span class="q05-cr">04</span> Esports hoy</h2><p>Hora argentina · chances del modelo, <b>ejemplo</b> · sin apuestas</p></header>
+<ul class="q05-ms">
+<li><time>17:00</time><b>9z <span class="q05-cc">AR</span> vs. Furia <span class="q05-cc">BR</span></b><span>CS2 · Bo3</span><div class="q05-pb">38 %<i style="--v:38%"></i>62 %</div></li>
+<li><time>19:30</time><b>Leviatán <span class="q05-cc">AR</span> vs. KRÜ <span class="q05-cc">AR</span></b><span>Valorant · Bo3</span><div class="q05-pb">57 %<i style="--v:57%"></i>43 %</div></li>
+<li><time>21:00</time><b>Liga LATAM de Free Fire</b><span>Fecha 4 · 12 equipos</span></li>
+</ul>
+</section>
+<nav class="q05-ap" aria-labelledby="q05-ah"><h2 id="q05-ah">Sumario de herramientas</h2>
+<div>
+<a href="#"><b>Sensibilidad Free Fire</b><span>General, mira roja, 2x y 4x</span></a>
+<a href="#"><b>Miras de CS2 y Valorant</b><span>Armá tu mira y copiá el código</span></a>
+<a href="#"><b>Rangos de LoL</b><span>De Hierro a Retador</span></a>
+<a href="#"><b>Mapas de Valorant</b><span>Callouts de cada mapa</span></a>
+<a href="#"><b>Brawlers y meta</b><span>Quién pega fuerte hoy</span></a>
+<a href="#"><b>Mazos de Clash Royale</b><span>Por arena y elixir</span></a>
+<a href="#"><b>Rocket League: rangos</b><span>De Bronce a SSL</span></a>
+<a href="#"><b>DPI y eDPI</b><span>Medí tu DPI real</span></a>
+</div>
+</nav>
+<footer class="q05-ft">
+<p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>
+<nav aria-label="Pie"><a href="#">Equipo</a><a href="#">Método</a><a href="#">Datos</a><a href="#">Contacto</a><a href="#">Legal</a></nav>
+<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor.</small>
+</footer>
+</div>
