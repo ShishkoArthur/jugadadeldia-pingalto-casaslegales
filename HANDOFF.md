@@ -22,9 +22,9 @@
 ## Доступы (состояние 02.11)
 | Что | Состояние | Кто |
 |---|---|---|
-| GitHub `git@github.com:ShishkoArthur/jugadadeldia-pingalto-casaslegales.git` | remote и `core.sshCommand` (ключ `~/.ssh/jpc_ed25519`) настроены, коммит сделан; **push — после Deploy key с Allow write access** | владелец |
-| Cloudflare | DNS трёх доменов уже в Cloudflare (прокси на 187.7.26.95); **токен из `.env` видит только gambeteo.com** — добавить jugadadeldia.com, pingalto.com, casaslegales.com в Zone Resources того же токена | владелец |
-| Сервер | https: jugadadeldia/pingalto — 525, casaslegales — нет ответа (нет наших блоков Caddy) | новый чат готовит скрипт (образец `gambeteo/tools/server-setup.sh`, свои метки на каждый сайт), запускает владелец |
+| GitHub `git@github.com:ShishkoArthur/jugadadeldia-pingalto-casaslegales.git` | **push работает** (проверено 02.11, `main` отслеживает `origin/main`) | — |
+| Cloudflare | DNS трёх доменов уже в Cloudflare (прокси на 187.7.26.95); **токен из `.env` видит только gambeteo.com** (перепроверено 02.11 вечером) — добавить jugadadeldia.com, pingalto.com, casaslegales.com в Zone Resources того же токена | владелец |
+| Сервер | https: все три — 525 (02.11 вечер) (нет наших блоков Caddy) | новый чат готовит скрипт (образец `gambeteo/tools/server-setup.sh`, свои метки на каждый сайт), запускает владелец |
 
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
@@ -60,5 +60,8 @@
 Авторы (по одному на сайт?), индекс (сразу целиком?), внешность девушки jugadadeldia, приоритетные операторы для casaslegales.
 
 ## Журнал
+- 02.11 вечер — новый чат начал работу: push проверен; волна 1 (6 агентов): планы страниц ×3 (`data/plan/<сайт>.json`,
+  `docs/PAGES-<САЙТ>.md`), ресёрч API (`docs/research/APIS-2026-11-02.md`), девушки 2×10 (`data/art/<сайт>/girl-jobs.json`,
+  `data/img-review/`), 10 макетов jugadadeldia (`docs/design/jugadadeldia/`). Дальше — макеты pingalto и casaslegales.
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
