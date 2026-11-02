@@ -1,0 +1,160 @@
+<!-- name: Tinta -->
+<!-- desc: Плоский мультфильм с толстым чернильным контуром и жёсткими тенями без размытия: барабан с ручкой, шары-«бильярдки» с белым кружком под номер, лоток «4·7·2·1», карточки как панели комикса, инструменты — наклеенные стикеры. Светлая — масляно-жёлтая бумага и чёрная тушь; тёмная — ночная индиго-бумага, контур становится кремовым, тени — кораллом. -->
+<!-- fonts: family=Luckiest+Guy&family=Baloo+2:wght@500;700;800 -->
+<style>
+.k01{--bg:#fff3cf;--pp:#fffbf1;--hl:#ffd23f;--fg:#1b1530;--mu:#4b4163;--ol:#1b1530;--sh:#1b1530;--ink:#1b1530;--iv:#fffaf0;--rd:#c8321f;--bl:#2457c5;--yl:#ffc928;--gn:#13865a;--pk:#e9579a;--on:#fff6dc;--ft:#1b1530;--tab:#ffc928;--fo:#2457c5;--ac:#c8321f;--d:"Luckiest Guy","Baloo 2",system-ui,sans-serif;font:500 16px/1.5 "Baloo 2",system-ui,sans-serif;background:var(--bg);color:var(--fg);overflow-wrap:anywhere}
+.k01[data-mode="dark"]{--bg:#18142e;--pp:#251f48;--hl:#2c2470;--fg:#fbefd0;--mu:#cfc4ea;--ol:#fbe9bf;--sh:#ff6b5a;--iv:#fff3d6;--rd:#c8321f;--bl:#2f62d4;--yl:#ffc928;--gn:#13865a;--on:#fbefd0;--ft:#0e0b1f;--tab:#ff6b5a;--fo:#ffc928;--ac:#ffc928}
+.k01 :where(h1,h2,h3,p,ol){margin:0;padding:0}
+.k01 :where(a,button,input){font:inherit;color:inherit}
+.k01 :is(a,button,input):focus-visible{outline:4px solid var(--fo);outline-offset:3px}
+.k01 svg{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.k01-r{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.k01-h{padding:10px 28px;border-bottom:4px solid var(--ol);background:var(--pp)}
+.k01-lg{display:flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;text-decoration:none;font:26px/1 var(--d);letter-spacing:.02em}
+.k01-lg b{color:var(--ac);font-weight:400}
+.k01-bl,.k01-tr i,.k01-rk li:before,.k01-six input,.k01-tg i{display:grid;place-items:center;flex:none;width:42px;height:42px;border:3px solid var(--ol);border-radius:50%;background:radial-gradient(circle,var(--iv) 0 52%,var(--ol) 53% 60%,#0000 61%),var(--c,var(--rd));color:var(--ink);font:800 15px/1 "Baloo 2",sans-serif;font-variant-numeric:tabular-nums;box-shadow:inset -4px -4px 0 #0003}
+.k01-n{display:flex;flex-wrap:wrap;gap:8px}
+.k01-n>*,.k01-b{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:2px 16px 0;border:3px solid var(--ol);border-radius:14px;background:var(--pp);font-weight:700;text-decoration:none;cursor:pointer}
+.k01-n [aria-current],.k01-n [aria-pressed="true"]{background:var(--yl);color:var(--ink);box-shadow:3px 3px 0 var(--sh)}
+.k01-ib{width:46px;height:46px;border:3px solid var(--ol);border-radius:14px;background:var(--yl);color:var(--ink);display:grid;place-items:center;box-shadow:3px 3px 0 var(--sh);cursor:pointer}
+.k01-ib svg{width:24px}.k01-bu{display:none}
+.k01-b{font-size:17px;box-shadow:0 5px 0 var(--sh);transition:transform .08s,box-shadow .08s}
+.k01-b:active{transform:translateY(4px);box-shadow:0 1px 0 var(--sh)}
+.k01 .k01-b1{background:var(--rd);color:#fff}
+.k01-hero{display:grid;grid-template:"t d g"/minmax(0,1fr) 340px 240px;gap:26px;align-items:center;padding:40px 28px 48px;background:var(--hl);border-bottom:4px solid var(--ol)}
+.k01-t{grid-area:t;min-width:0}
+.k01-k{display:inline-block;padding:4px 12px 2px;border:3px solid var(--ol);border-radius:10px;background:var(--pp);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transform:rotate(-2deg)}
+.k01 h1{font:52px/1 var(--d);text-transform:uppercase;margin:16px 0 14px;letter-spacing:.01em}
+.k01 h1 em{font-style:normal;color:var(--ac)}
+.k01-hero p{max-width:44ch;margin-bottom:22px;font-size:17px}
+.k01-d{grid-area:d;min-width:0;color:var(--ol)}
+.k01-d svg{display:block;width:100%}
+.k01-d text{fill:var(--ink);stroke:none;font:800 13px "Baloo 2",sans-serif;text-anchor:middle}
+.k01-tr{display:flex;gap:6px;width:max-content;margin:-6px auto 0;padding:6px 10px;border:3px solid var(--ol);border-radius:99px;background:var(--pp);box-shadow:4px 4px 0 var(--sh)}
+.k01-tr i:nth-child(2),.k01-six input:nth-child(3n+2){--c:var(--bl)}
+.k01-tr i:nth-child(3),.k01-six input:nth-child(3n){--c:var(--gn)}
+.k01-tr i:nth-child(4){--c:var(--yl)}
+.k01-girl{grid-area:g;position:relative;aspect-ratio:2/3;border:4px solid var(--ol);border-radius:22px;background:var(--pp);box-shadow:7px 7px 0 var(--sh);overflow:clip;color:var(--pk);transform:rotate(1.5deg)}
+.k01-girl svg{position:absolute;bottom:0;width:100%;fill:currentColor;stroke:var(--ol);stroke-width:4}
+.k01-girl span{position:absolute;top:12px;left:12px;padding:2px 10px;border:3px solid var(--ol);border-radius:10px;background:var(--yl);color:var(--ink);font-weight:800;font-size:13px}
+.k01-mn{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:34px 28px;padding:44px 28px 52px}
+.k01-c{position:relative;min-width:0;padding:30px 22px 24px;border:4px solid var(--ol);border-radius:22px;background:var(--pp);box-shadow:7px 7px 0 var(--sh)}
+.k01 h2{position:absolute;top:-22px;left:16px;padding:6px 14px 2px;border:3px solid var(--ol);border-radius:12px;background:var(--tab);color:var(--ink);font:24px/1.1 var(--d);font-weight:400;transform:rotate(-1.5deg)}
+.k01-c>.k01-tag{float:right;margin:-8px 0 8px 10px;padding:0 10px;border:2px dashed var(--ol);border-radius:8px;font-weight:700;font-size:13px}
+.k01 .k01-q{grid-row:span 3}
+.k01-q>.k01-n{margin-bottom:10px}
+.k01-q>.k01-n+.k01-n>*{border-radius:99px;font-size:15px}
+.k01-rk{min-height:700px;align-content:space-evenly;list-style:none;counter-reset:k;display:grid;grid:repeat(10,auto)/auto-flow minmax(0,1fr);gap:7px 18px;margin:16px 0 18px}
+.k01-rk li{counter-increment:k;display:flex;align-items:center;gap:12px;padding:3px 12px 3px 3px;border:3px solid var(--ol);border-radius:99px;font:800 21px/1 "Baloo 2",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.k01-rk li:before{content:counter(k);width:34px;height:34px;border-width:2px;font-size:13px;letter-spacing:0;box-shadow:none}
+.k01-rk li:nth-child(n+6):before{--c:var(--bl)}.k01-rk li:nth-child(n+11):before{--c:var(--gn)}.k01-rk li:nth-child(n+16):before{--c:var(--yl)}
+.k01-rk li:first-child{background:var(--yl);color:var(--ink);box-shadow:3px 3px 0 var(--sh)}
+.k01-qf{justify-content:space-between;padding-top:14px;border-top:3px dashed var(--ol)}
+.k01-qf b{font:30px/1 var(--d);font-weight:400;color:var(--ac)}
+.k01-qf small,.k01-hon{color:var(--mu);font-size:14px}
+.k01-f{margin-top:6px}.k01-f span{padding:2px 12px 0;border:3px solid var(--ol);border-radius:10px;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.k01-win{margin:14px 0 12px;font-weight:700;font-size:18px}
+.k01-win b{display:block;font:56px/1 var(--d);font-weight:400;color:var(--gn)}.k01[data-mode="dark"] .k01-win b{color:var(--yl)}
+.k01-hon{position:relative;padding:10px 14px;border:3px solid var(--ol);border-radius:16px;background:var(--bg)}
+.k01-six{display:grid;grid-template-columns:repeat(6,minmax(0,52px));gap:8px;margin:8px 0 14px}
+.k01-six input{width:100%;height:auto;aspect-ratio:1;padding:0;text-align:center;font-size:16px}
+.k01-pr{justify-content:space-between;margin-top:16px}.k01-pr b{font-weight:800}
+.k01-tg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 16px;margin-top:22px}
+.k01-tg a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:14px;border:3px solid var(--ol);border-radius:18px;background:var(--pp);box-shadow:5px 5px 0 var(--sh);text-decoration:none;transform:rotate(-1deg)}
+.k01-tg a:nth-child(even){transform:rotate(1deg)}
+.k01-tg i{grid-row:span 2;width:50px;height:50px;background:var(--c,var(--rd));color:#fff;box-shadow:none}
+.k01-tg a:nth-child(2) i{--c:var(--bl)}.k01-tg a:nth-child(3) i{--c:var(--gn)}.k01-tg a:nth-child(4) i{--c:var(--pk);color:var(--ink)}.k01-tg a:nth-child(5) i{--c:var(--yl);color:var(--ink)}.k01-tg a:nth-child(6) i{--c:var(--ol);color:var(--pp)}
+.k01-tg i svg{width:26px}.k01-tg small{color:var(--mu);font-size:14px;line-height:1.35}.k01-tg b{font-size:17px;line-height:1.2}
+.k01-tl{grid-column:1/-1;margin-top:8px}
+.k01-tl>h2{position:static;display:inline-block}
+.k01-ts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.k01-sd{display:flex;flex-direction:column;gap:8px;padding:12px;border:3px solid var(--ol);border-radius:16px;background:var(--bg)}
+.k01-sd h3{display:flex;justify-content:space-between;align-items:baseline;font:22px/1 var(--d);font-weight:400}
+.k01-sd h3 b{font-weight:400;font-size:32px;color:var(--rd)}.k01-sd+.k01-sd h3 b{color:var(--bl)}
+.k01[data-mode="dark"] .k01-sd h3 b{color:var(--yl)}
+.k01-sd small{font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu)}
+.k01-sd p+small{border-top:3px solid var(--ol);padding-top:6px}
+.k01-pz{display:flex;gap:9px;min-height:34px}
+.k01-pz i{width:30px;height:30px;border:4px solid var(--ol);border-radius:4px;background:linear-gradient(to top left,#0000 44%,var(--ol) 0 56%,#0000 0)}
+.k01 .k01-4{background:none}.k01 .k01-2{background:none;border-width:4px 0 0 4px;border-radius:4px 0 0 0}
+.k01-nw{margin-top:16px}
+.k01-ft{padding:34px 28px;background:var(--ft);color:var(--on);border-top:4px solid var(--ol)}
+.k01-ft .k01-n a{background:none;border-color:var(--on);color:var(--on)}
+.k01-ft>.k01-r{justify-content:space-between}
+.k01-ft .k01-rg{justify-content:start;margin-top:20px;padding:6px 16px 6px 6px;border:3px solid var(--on);border-radius:99px;background:var(--yl);color:var(--ink);font-weight:700;flex-wrap:nowrap}
+.k01-rg i{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--yl);font-style:normal;font-weight:800}
+.k01-rg a{display:inline-flex;align-items:center;min-height:40px;font-weight:800;text-decoration-thickness:3px}
+@media (prefers-reduced-motion:no-preference){.k01-tr i{animation:k01-drop .7s cubic-bezier(.3,1.6,.5,1) both}.k01-tr i:nth-child(2){animation-delay:.12s}.k01-tr i:nth-child(3){animation-delay:.24s}.k01-tr i:nth-child(4){animation-delay:.36s}}
+@keyframes k01-drop{from{transform:translateY(-34px) rotate(-90deg);opacity:0}}
+@container (max-width:620px){.k01-h{padding:8px 14px}.k01-lg{font-size:21px}.k01-lg .k01-bl{width:36px;height:36px;font-size:13px}.k01-h .k01-n{display:none}.k01 .k01-bu{display:grid}.k01-ib{width:42px;height:42px}
+.k01-hero{grid-template:"t t" "d g"/minmax(0,1fr) 118px;gap:22px 14px;padding:24px 16px 30px;align-items:end}.k01 h1{font-size:36px}.k01-hero p{font-size:16px}.k01-tr{gap:3px;padding:4px 6px}.k01-tr i{width:34px;height:34px;font-size:13px}.k01-girl{box-shadow:4px 4px 0 var(--sh);border-width:3px}.k01-girl span{top:6px;left:6px;font-size:12px;padding:1px 6px}
+.k01-mn{grid-template-columns:minmax(0,1fr);gap:40px;padding:40px 16px 40px}.k01 .k01-q{grid-row:auto}.k01-c{padding:30px 14px 18px;box-shadow:5px 5px 0 var(--sh)}
+.k01-c>.k01-tag{float:none;display:inline-block;margin:0 0 10px}.k01-n>*{padding:2px 12px 0;font-size:15px}.k01-sd h3{font-size:17px}.k01-sd h3 b{font-size:26px}.k01-rk{gap:6px 8px;min-height:0}.k01-rk li{font-size:17px;gap:6px;padding-right:6px;letter-spacing:.02em}.k01-rk li:before{width:28px;height:28px}
+.k01-win b{font-size:44px}.k01-six{gap:5px}.k01-tg{grid-template-columns:minmax(0,1fr)}.k01-ts{gap:8px}.k01-sd{padding:10px 8px}.k01-pz{gap:5px}.k01-pz i{width:26px;height:26px}.k01-ft{padding:28px 16px}.k01-rg{border-radius:22px}}
+</style>
+<div class="k01 mock" data-mode="light">
+<header class="k01-h k01-r">
+<a class=k01-lg href=#><i class=k01-bl aria-hidden=true>21</i><span>jugada<b>del</b>dia</span></a>
+<nav class=k01-n aria-label=Principal><a href=# aria-current=page>Quiniela</a><a href=#>Quini 6</a><a href=#>Loterías</a><a href=#>Truco</a><a href=#>Juegos</a></nav>
+<button class=k01-ib aria-label="Cambiar tema"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+<button class="k01-ib k01-bu" aria-label=Menú><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+<section class=k01-hero>
+<div class=k01-t>
+<span class=k01-k>Gira el bolillero · 24 jurisdicciones</span>
+<h1>Tu jugada, <em>con la cuenta hecha</em></h1>
+<p>Extractos oficiales de cada provincia, cuánto paga cada apuesta y las chances reales. Y para la sobremesa: anotador de truco, generala y más.</p>
+<div class=k01-r><a class="k01-b k01-b1" href=#>Ver la quiniela de hoy</a><a class=k01-b href=#>¿Cuánto paga?</a></div>
+</div>
+<div class=k01-d>
+<svg viewBox="0 0 340 290" aria-hidden=true><path stroke-width=7 d="M96 278l44-64M232 278l-44-64M70 280h190"/><circle cx=164 cy=126 r=104 fill="var(--pp)" stroke-width=7 /><path stroke-width=3 d="M164 22v208M60 126h208M90 52l148 148M238 52 90 200"/><path stroke-width=7 d="M268 126h34v-40"/><circle cx=302 cy=78 r=12 fill="var(--rd)" stroke-width=5 /><path stroke-width=4 d="M318 112q12 14 0 30M28 94q-12 32 0 64"/><circle cx=164 cy=126 r=12 fill="var(--yl)" stroke-width=5 /><g stroke-width=4><circle cx=110 cy=170 r=19 fill="var(--rd)"/><circle cx=150 cy=192 r=19 fill="var(--bl)"/><circle cx=192 cy=188 r=19 fill="var(--gn)"/><circle cx=226 cy=160 r=19 fill="var(--yl)"/><circle cx=128 cy=82 r=19 fill="var(--pk)"/><circle cx=206 cy=96 r=19 fill="var(--bl)"/></g><g fill="var(--iv)" stroke-width=0><circle cx=110 cy=170 r=10 /><circle cx=150 cy=192 r=10 /><circle cx=192 cy=188 r=10 /><circle cx=226 cy=160 r=10 /><circle cx=128 cy=82 r=10 /><circle cx=206 cy=96 r=10 /></g><text x=110 y=175>9</text><text x=150 y=197>3</text><text x=192 y=193>6</text><text x=226 y=165>5</text><text x=128 y=87>8</text><text x=206 y=101>0</text><path stroke-width=6 d="M164 230v22h-60"/></svg>
+<div class=k01-tr role=img aria-label="La cabeza: 4721"><i>4</i><i>7</i><i>2</i><i>1</i></div>
+</div>
+<div class=k01-girl role=img aria-label=Ilustración><svg viewBox="0 0 200 300"><path d="M64 98c0-52 72-52 72 0v64c-12 10-60 10-72 0z" opacity=.6 /><ellipse cx=100 cy=98 rx=27 ry=33 /><path d="M90 128h20v40H90zM32 302c4-74 28-122 68-122s64 48 68 122z"/></svg><span>acá va ella</span></div>
+</section>
+<main class=k01-mn>
+<section class="k01-c k01-q">
+<h2>Quiniela de hoy</h2><span class=k01-tag>Ejemplo ilustrativo</span>
+<nav class=k01-n aria-label=Jurisdicción><a href=# aria-current=page>Nacional</a><a href=#>Provincia</a><a href=#>Tucumán</a><a href=#>Córdoba</a><a href=#>Santa Fe</a></nav>
+<div class=k01-n role=group aria-label=Sorteo><button>La Previa</button><button>Primera</button><button>Matutina</button><button>Vespertina</button><button aria-pressed=true>Nocturna</button></div>
+<ol class=k01-rk><li>4721<li>0938<li>6154<li>2307<li>8862<li>1495<li>7030<li>3618<li>5276<li>9143<li>0582<li>6409<li>2851<li>7764<li>1327<li>4990<li>8215<li>3046<li>5573<li>9681</ol>
+<div class="k01-qf k01-r"><span>La cabeza: <b>4721</b></span><small>Actualizado 21:14 (hora argentina)</small></div>
+</section>
+<section class=k01-c>
+<h2>¿Cuánto paga?</h2><span class=k01-tag>ejemplo</span>
+<p class="k01-r k01-f"><span>Apuesta $ 100</span><span>A la cabeza</span><span>2 cifras</span></p>
+<p class=k01-win>Cobrás <b>$ 7.000</b></p>
+<p class=k01-hon>Chance: 1 en 100 · por cada $ 100 apostados vuelven en promedio $ 70</p>
+</section>
+<section class=k01-c>
+<h2>Quini 6</h2>
+<p><b>Controlá tu boleta</b></p>
+<div class=k01-six><input value=04 aria-label="Bola 1"><input value=11 aria-label="Bola 2"><input value=17 aria-label="Bola 3"><input value=26 aria-label="Bola 4"><input value=33 aria-label="Bola 5"><input value=45 aria-label="Bola 6"></div>
+<div class=k01-n role=group aria-label=Modalidad><button aria-pressed=true>Tradicional</button><button>La Segunda</button><button>Revancha</button><button>Siempre Sale</button></div>
+<div class="k01-pr k01-r"><p>Chance del pozo: <b>1 en 9.366.819</b></p><button class="k01-b k01-b1">Controlar</button></div>
+</section>
+<section class=k01-c>
+<h2>Anotador de truco</h2>
+<div class=k01-ts>
+<div class=k01-sd><h3>Nosotros <b>17</b></h3><small>malas</small><p class=k01-pz><i></i><i></i><i></i></p><small>buenas</small><p class=k01-pz><i class=k01-2></i></p><button class=k01-b>+1</button></div>
+<div class=k01-sd><h3>Ellos <b>9</b></h3><small>malas</small><p class=k01-pz><i></i><i class=k01-4></i></p><small>buenas</small><p class=k01-pz></p><button class=k01-b>+1</button></div>
+</div>
+<button class="k01-b k01-nw">Nuevo partido</button>
+</section>
+<section class=k01-tl>
+<h2>Todo para tu jugada</h2>
+<div class=k01-tg>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11zM12 8v4"/></svg></i><b>Quiniela por provincia</b><small>Los extractos de las 24 jurisdicciones</small></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M5 7c0-4 14-4 14 0s-14 4-14 0v10c0 4 14 4 14 0V7"/></svg></i><b>Cuánto paga la quiniela</b><small>A la cabeza, a los 5, 10, 20 y redoblona</small></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 12l3 3 5-6"/></svg></i><b>Controlar Quini 6</b><small>Las cuatro modalidades, en un toque</small></a>
+<a href=#><i><svg viewBox="0 0 24 24"><circle cx=7.5 cy=16 r=4 /><circle cx=16.5 cy=16 r=4 /><circle cx=12 cy=8 r=4 /></svg></i><b>Loto Plus y Brinco</b><small>Pozos, chances y cómo se juega</small></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6zM12 7v10M9.5 9.5 12 7l2.5 2.5"/></svg></i><b>Valores del truco</b><small>Qué carta mata a cuál, y las señas</small></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM9 9h0M15 9h0M9 15h0M15 15h0M12 12h0"/></svg></i><b>Generala: probabilidades</b><small>Servida, póker, escalera: la cuenta exacta</small></a>
+</div>
+</section>
+</main>
+<footer class=k01-ft>
+<div class=k01-r><b>Sin apuestas online, sin operadores: solo datos oficiales y la cuenta.</b><nav class=k01-n aria-label=Institucional><a href=#>Quiénes somos</a><a href=#>De dónde salen los datos</a><a href=#>Juego responsable</a></nav></div>
+<p class="k01-r k01-rg"><i>18+</i><span>Si el juego dejó de ser un juego: línea gratuita de tu provincia → <a href=#>Juego responsable</a></span></p>
+</footer>
+</div>
