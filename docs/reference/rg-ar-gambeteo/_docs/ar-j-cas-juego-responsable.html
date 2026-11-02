@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- metas -->
+    <meta charset="utf-8">
+    <meta name="author" content="Caja de Acción Social">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="Caja de Acción Social">
+    <meta name="description" content="Juego Responsable - Caja de Acción Social">
+
+    <!-- Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G69J27424E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G69J27424E');
+</script>
+
+    <!-- title  -->
+    <title>Juego Responsable - Caja de Acción Social</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/favicon/favicon-96x96.png">
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="/css/plugins.css">
+
+    <!-- revolution slider css -->
+    <link rel="stylesheet" href="/css/rev_slider/settings.css">
+    <link rel="stylesheet" href="/css/rev_slider/layers.css">
+    <link rel="stylesheet" href="/css/rev_slider/navigation.css">
+
+    <!-- search css -->
+    <link rel="stylesheet" href="/search/search.css">
+
+    <!-- quform css -->
+    <link rel="stylesheet" href="/quform/css/base.css">
+
+    <!-- theme core css -->
+    <link href="/css/styles-orange.css" rel="stylesheet">
+
+    <!-- custom css (con cache-busting por mtime) -->
+    <link href="/css/custom.css?v=1787837819" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- PAGE LOADING
+    ================================================== -->
+    <div id="preloader"></div>
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper">
+
+        <!-- HEADER
+        ================================================== -->
+        <header class="header-style2">
+
+            <div class="navbar-default border-bottom border-color-light-white">
+
+                <!-- start top search -->
+                <div class="top-search bg-secondary">
+                    <div class="container">
+                        <form class="search-form" action="search.html" method="GET" accept-charset="utf-8">
+                            <div class="input-group">
+                                <span class="input-group-addon cursor-pointer">
+                                    <button class="search-form_submit fas fa-search text-white" type="submit"></button>
+                                </span>
+                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Type & hit enter...">
+                                <span class="input-group-addon close-search mt-1"><i class="fas fa-times"></i></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end top search -->
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-12">
+                            <div class="menu_area">
+                                <nav class="navbar navbar-expand-lg navbar-light p-0">
+
+                                    <div class="navbar-header navbar-header-custom">
+                                        <!-- start logo -->
+                                        <a href="/" class="navbar-brand logodefault"><img id="logo" src="/img/logos/logo.png" alt="logo"></a>
+                                        <!-- end logo -->
+                                    </div>
+
+                                    <div class="navbar-logo-shield"></div>
+                                    <div class="navbar-toggler"></div>
+
+                                    <!-- menu area -->
+                                    <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
+                                        <li><a href="/">Inicio</a></li>
+                                        <li>
+                                            <a href="#!">Institucional</a>
+                                            <ul>
+                                                <li><a href="/institucional/autoridades">Autoridades</a></li>
+                                                <li><a href="/institucional/politica">Política / Misión / Visión</a></li>
+                                                <li><a href="/institucional/premios">Certificaciones y Premios</a></li>
+                                                <li><a href="/institucional/normativa">Normativa</a></li>
+                                                <li><a href="/institucional/noticias">Noticias</a></li>
+                                                <li><a href="/institucional/compras">Compras</a></li>
+                                                <li><a href="/institucional/tramites">Guía de Trámites</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#!">Préstamos</a>
+                                            <ul>
+                                                <li><a href="/prestamos/lineas/">Líneas y Requisitos</a></li>
+                                                <li><a href="/prestamos/turnadocidi/">Turnos</a></li>
+                                                <li><a href="/prestamos/proveedores/viviendas">Proveedores para Viviendas</a></li>
+                                                <li><a href="/prestamos/proveedores/rodados">Proveedores para Rodados</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#!">Remates</a>
+                                            <ul>
+                                                <li><a href="/remates/informacion">Información</a></li>
+                                                <li><a href="/remates/beneficios">Beneficios</a></li>
+                                                <li><a href="/remates/noticias">Noticias</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#!">Juegos</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#!">Sorteos</a>
+                                                    <ul>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=quiniela">Quiniela</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=fortunata">Fortunata</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=quini6">Quini6</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=brinco">Brinco</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=loto">Loto</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=telekino">Telekino</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=cordoba">Lotería de Córdoba</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=ciudad">Lotería de la Ciudad</a></li>
+                                                        <li><a href="/juegos/sorteos/resultados?juego=provincia">Lotería de la Provincia</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="/juegos/tengopremio/">¿Tengo Premio?</a></li>
+                                                <li><a href="/juegos/suenos">Número de los Sueños</a></li>
+                                                <li><a href="/juegos/vivo">Sorteo en Vivo</a></li>
+                                                <li><a href="/juegos/responsable">Juego Responsable</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/contacto">Contacto</a></li>
+                                    </ul>
+                                    <!-- end menu area -->
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="top-position1 pt-0 bg-very-light-gray">
+            <div class="page-title-section bg-img cover-background" data-background="/img/bg/cabecera.jpg" style="--overlay-color: rgba(0, 0, 0, 0.5);">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>Juego Responsable</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="#!">Juegos</a></li>
+                        <li><a href="#!">Juego Responsable</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .modal-content {
+        border-radius: 15px !important;
+    }
+
+    .modal-footer .btn {
+        border-radius: 8px !important;
+        background-color: #f7b035 !important;
+        border-color: #f7b035 !important;
+        color: #fff !important;
+    }
+
+    .modal-footer .btn:hover {
+        background-color: #e5a02d !important;
+        border-color: #e5a02d !important;
+    }
+
+    section:has(.section-heading4) {
+        padding-top: 1.5rem !important;
+        padding-bottom: 0 !important;
+    }
+
+    .section-heading4 h2 {
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .section-heading4 {
+        margin-bottom: 0 !important;
+    }
+
+    .section-heading4 p {
+        margin-bottom: 20px !important;
+    }
+
+    .process-arrow {
+        margin-top: -50px !important;
+    }
+
+    .client-contact-wrapper {
+        border-radius: 20px !important;
+        overflow: hidden;
+    }
+
+    .client-contact-wrapper .btn {
+        border-radius: 25px !important;
+    }
+
+    .row.mt-n1-9 {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .row.mt-n1-9>div {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+
+    @media (max-width: 1024px) {
+        .row.mt-n1-9>div {
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .row.mt-n1-9>div {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+</style>
+
+<!-- INTRO SECTION -->
+<section class="bg-very-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading4 text-center mb-5">
+                    <span>Programa Provincial</span>
+                    <h2>Juego Responsable</h2>
+                    <p class="lead mt-3">La Caja de Acción Social, a través del Programa Provincial de Juego Responsable, brinda contención psicológica y asesoramiento legal a personas que consideren que su modo de jugar no es saludable. Promoviendo un juego recreativo, saludable y responsable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS SECTION -->
+<section class="bg-very-light-gray">
+    <div class="container">
+        <div class="process-arrow position-relative w-100 d-inline-block align-middle">
+            <div class="process-bg-line"></div>
+            <div class="row mt-n1-9 justify-content-center">
+                <!-- ¿Qué es el Juego? -->
+                <div class="mt-1-9 wow fadeIn" data-wow-delay="200ms">
+                    <div class="process-style3 text-center">
+                        <button class="btn-process-circle" data-bs-toggle="modal" data-bs-target="#modal1" style="border: none; background: none; cursor: pointer;">
+                            <div class="icon">
+                                <span class="ti-help-alt fs-2 fs-xl-1"></span>
+                            </div>
+                            <div class="process-contnet">
+                                <h5>¿Qué es el Juego?</h5>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Programa -->
+                <div class="mt-1-9 wow fadeIn" data-wow-delay="400ms">
+                    <div class="process-style3 text-center">
+                        <button class="btn-process-circle" data-bs-toggle="modal" data-bs-target="#modal2" style="border: none; background: none; cursor: pointer;">
+                            <div class="icon">
+                                <span class="ti-light-bulb fs-2 fs-xl-1"></span>
+                            </div>
+                            <div class="process-contnet">
+                                <h5>Programa</h5>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Problemas con el Juego -->
+                <div class="mt-1-9 wow fadeIn" data-wow-delay="600ms">
+                    <div class="process-style3 text-center">
+                        <button class="btn-process-circle" data-bs-toggle="modal" data-bs-target="#modal3" style="border: none; background: none; cursor: pointer;">
+                            <div class="icon">
+                                <span class="ti-alert fs-2 fs-xl-1"></span>
+                            </div>
+                            <div class="process-contnet">
+                                <h5>Problemas</h5>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Autoexclusión -->
+                <div class="mt-1-9 wow fadeIn" data-wow-delay="800ms">
+                    <div class="process-style3 text-center">
+                        <button class="btn-process-circle" data-bs-toggle="modal" data-bs-target="#modal4" style="border: none; background: none; cursor: pointer;">
+                            <div class="icon">
+                                <span class="ti-list fs-2 fs-xl-1"></span>
+                            </div>
+                            <div class="process-contnet">
+                                <h5>Autoexclusión</h5>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preguntas Frecuentes -->
+                <div class="mt-1-9 wow fadeIn" data-wow-delay="1000ms">
+                    <div class="process-style3 text-center">
+                        <button class="btn-process-circle" data-bs-toggle="modal" data-bs-target="#modal5" style="border: none; background: none; cursor: pointer;">
+                            <div class="icon">
+                                <span class="ti-comments fs-2 fs-xl-1"></span>
+                            </div>
+                            <div class="process-contnet">
+                                <h5>Preguntas</h5>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- MODAL 1: ¿Qué es el Juego? -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-header">
+                <h5 class="modal-title">¿Qué es el Juego?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El Juego es una actividad a la que una persona se dedica por el placer que la misma produce sin tener en cuenta el resultado final. Es un ejercicio recreativo sometido a reglas en el cual se gana o se pierde. Jugar no es malo. Más aún, jugar nos permite aprender a respetar reglas, a tener en cuenta las habilidades del oponente, a poner a prueba las nuestras y a superarnos, en definitiva, jugar nos permite pasar un buen rato, educarnos e incluso madurar.</p>
+                <p>El juego se convierte en un problema cuando el jugador pierde el control con cualquier juego de apuestas, cuando tiene dificultad en abstenerse y detenerse al momento de apostar. Por tal motivo se considera una adicción conductual y debe ser tratada por especialistas.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="nextModal('modal2')">Siguiente <i class="ti-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 2: Programa -->
+<div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-header">
+                <h5 class="modal-title">Programa Provincial de Juego Responsable</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Para aquellos casos en que una persona considere que su modo de jugar no es saludable, la Caja de Acción Social cuenta con un Programa Provincial de Juego Responsable, mediante el cual se pone a disposición un formulario de Autoexclusión a las Salas de Casino, destinado a proveer colaboración a quienes consideren no ingresar en las Salas de Casino instaladas en la Provincia de San Juan, indicando conjuntamente realizar la correspondiente consulta con un Profesional del área Salud Mental (psicólogo / psiquiatra) a fin de encontrar un posible diagnóstico y tratamiento.</p>
+                <p>Asimismo, se brinda asesoramiento jurídico acerca del trámite legal que puede realizar el interesado y/o sus familiares directos en sede judicial, destinado a aquellos casos en que se requiera una declaración judicial para preservar la salud, integridad y los bienes de la persona.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="prevModal('modal1')"><i class="ti-arrow-left"></i> Anterior</button>
+                <button type="button" class="btn btn-secondary" onclick="nextModal('modal3')">Siguiente <i class="ti-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 3: Problemas con el Juego -->
+<div class="modal fade" id="modal3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-header">
+                <h5 class="modal-title">Problemas con el Juego</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El Juego Patológico se caracteriza por ser problemático, persistente y recurrente. Provocando un deterioro o malestar significativo y se manifiesta en el individuo presentando cuatro o más de los siguientes criterios durante un periodo aproximado de 12 meses:</p>
+                <ul>
+                    <li>Necesidad de apostar cantidades de dinero cada vez mayores para conseguir la excitación deseada.</li>
+                    <li>Nerviosismo o irritación cuando intenta reducir o abandonar el juego.</li>
+                    <li>Repetidos esfuerzos para controlar, reducir o abandonar el juego, siempre sin éxito.</li>
+                    <li>Pensamientos recurrentes sobre apuestas (por ej. reviviendo continuamente experiencias de apuestas pasadas, condicionando o planificando su próxima apuesta, pensando en formas de conseguir dinero para apostar).</li>
+                    <li>A menudo apuesta cuando siente desasosiego (por ej. desamparo, culpabilidad, ansiedad, depresión).</li>
+                    <li>Después de perder dinero en las apuestas, suele volver otro día para intentar ganar (recuperar las pérdidas).</li>
+                    <li>Miente para ocultar su grado de implicación en el juego.</li>
+                    <li>Ha puesto en peligro o ha perdido una relación importante, un empleo o una carrera académica o profesional a causa del juego.</li>
+                    <li>Cuenta con los demás para que le den dinero para aliviar su desesperante situación financiera provocada por el juego.</li>
+                </ul>
+                <p><strong>Ante la presencia de estos indicadores, sugerimos que realice una consulta con un profesional del área salud mental (psicólogo / psiquiatra).</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="prevModal('modal2')"><i class="ti-arrow-left"></i> Anterior</button>
+                <button type="button" class="btn btn-secondary" onclick="nextModal('modal4')">Siguiente <i class="ti-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 4: Autoexclusión REQUISITOS -->
+<div class="modal fade" id="modal4" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-header">
+                <h5 class="modal-title">Autoexclusión - Requisitos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Para aquellos casos en que una persona considere que su modo de jugar no es saludable, se pone a disposición un formulario de Autoexclusión a las Salas de Casino, destinado a quienes consideren de su mayor interés no ingresar en las Salas de Juego instaladas en la Provincia de San Juan por 4 años.</p>
+                <h6 class="mt-4 mb-3"><strong>Requisitos para realizar el trámite de AUTOEXCLUSIÓN a salas de Casino:</strong></h6>
+                <ul>
+                    <li>Concurrir personalmente a la Oficina de Juego Responsable de la Caja de Acción Social ubicada en calle Santa Fe 10 Este, Planta Baja, de lunes a viernes de 8 a 12 hs.</li>
+                    <li>Asistir acompañado de un testigo mayor de edad.</li>
+                    <li>Ambos concurrir con DNI.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="prevModal('modal3')"><i class="ti-arrow-left"></i> Anterior</button>
+                <button type="button" class="btn btn-secondary" onclick="nextModal('modal5')">Siguiente <i class="ti-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 5: Preguntas Frecuentes -->
+<div class="modal fade" id="modal5" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-header">
+                <h5 class="modal-title">Preguntas Frecuentes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="accordionFAQ">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true">
+                                ¿Si soy familiar de un adicto al juego puedo llenar la ficha de autoexclusión por él?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                No, la ficha de autoexclusión solo puede ser llenada por la persona interesada de manera voluntaria y asistir acompañado de un testigo mayor de edad.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false">
+                                ¿Dónde puedo realizar la autoexclusión?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                <p>En el Departamento de Relaciones Institucionales de la Caja de Acción Social ubicado en calle Santa Fe 10 Este, Planta Baja.</p>
+                                <ul class="mb-0">
+                                    <li><strong>Atención telefónica línea gratuita:</strong> 0800 999 1314 (lunes a viernes de 08 a 12 hs)</li>
+                                    <li><strong>Conmutador:</strong> 4223815 - 4222403 interno 412</li>
+                                    <li><strong>Línea directa:</strong> 4275988</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false">
+                                ¿Cuáles son los requisitos para presentar la autoexclusión?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                <ul class="mb-0">
+                                    <li>Concurrir presencialmente por el Departamento de Relaciones Institucionales de la Caja de Acción Social ubicado en calle Santa Fe 10 Este, Planta Baja, de lunes a viernes de 8 a 12 hs.</li>
+                                    <li>Asistir acompañado de un testigo mayor de edad.</li>
+                                    <li>Ambos concurrir con DNI.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false">
+                                ¿Cuánto dura el programa?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                El trámite de autoexclusión a las salas de casino tiene una duración de 4 años y la posibilidad de revocarlo a los 6 meses de iniciado el trámite adjuntando certificado de profesional de la salud mental en donde conste el apto psicológico para ingresar nuevamente a las salas de casino, así mismo debe asistir con el testigo que lo acompaño oportunamente. Una vez vencido el plazo se puede renovar nuevamente.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="prevModal('modal4')"><i class="ti-arrow-left"></i> Anterior</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function nextModal(nextModalId) {
+        const currentModal = bootstrap.Modal.getInstance(document.querySelector('.modal.show'));
+        if (currentModal) {
+            currentModal.hide();
+        }
+        setTimeout(() => {
+            const nextModal = new bootstrap.Modal(document.getElementById(nextModalId));
+            nextModal.show();
+        }, 300);
+    }
+
+    function prevModal(prevModalId) {
+        const currentModal = bootstrap.Modal.getInstance(document.querySelector('.modal.show'));
+        if (currentModal) {
+            currentModal.hide();
+        }
+        setTimeout(() => {
+            const prevModal = new bootstrap.Modal(document.getElementById(prevModalId));
+            prevModal.show();
+        }, 300);
+    }
+</script>
+
+
+<div style="margin-bottom: 150px;">
+    <div class="container">
+        <div class="client-contact-wrapper">
+            <div class="row g-0">
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column p-1-6 p-lg-2-2 borders-bottom border-lg-bottom-0 border-lg-end border-color-light-white">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fab fa-whatsapp fs-2 text-white"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-1 text-white">WhatsApp</h4>
+                                <p class="mb-3 text-white">264-455-3619</p>
+                            </div>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=5492644553619" class="btn btn-light btn-sm mt-auto" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Abrir conversación
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column p-1-6 p-lg-2-2 borders-bottom border-lg-bottom-0 border-lg-end border-color-light-white">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="ti-mobile fs-2 text-white"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-1 text-white">Teléfono</h4>
+                                <p class="mb-3 text-white">0800 999 1314</p>
+                            </div>
+                        </div>
+                        <a href="tel:08009991314" class="btn btn-light btn-sm mt-auto">
+                            <i class="ti-mobile"></i> Llamar
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column p-1-6 p-lg-2-2">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="ti-time fs-2 text-white"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-1 text-white">Horario</h4>
+                                <p class="mb-1 text-white">Lunes a Viernes</p>
+                                <p class="mb-3 text-white">08:00 - 12:00 hs</p>
+                            </div>
+                        </div>
+                        <a href="https://www.google.com/maps/place/Santa+Fe+10+Este,+San+Juan" class="btn btn-light btn-sm mt-auto" target="_blank">
+                            <i class="ti-map-alt"></i> Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- FOOTER
+        ================================================== -->
+        <footer style="padding-bottom: 50px;">
+            <div class="container">
+                <div class="row mt-n2-6">
+                    <div class="col-sm-6 col-lg-3 mt-2-6 wow fadeIn" data-wow-delay="200ms">
+                        <div class="mb-1-6 mb-lg-1-9">
+                            <div>
+                                <img src="/img/logos/logo_foot.png" alt="Logo CAS" style="display: block; margin-bottom: 25px;">
+                                <img src="/img/logos/logo_subfoot.png" alt="Logo CAS" style="display: block;">
+                            </div>
+                        </div>
+                        <ul class="contact-list">
+                            <li><span class="fa fa-home pe-3 text-white"></span><a href="#!">Santa Fe 10 Este, Capital, San Juan</a></li>
+                            <li><span class="fa fa-phone pe-3 text-white"></span><a href="tel:+542644223815">264-4223815</a></li>
+                            <li><span class="fab fa-whatsapp pe-3 text-white"></span><a href="https://wa.me/5492645866296" target="_blank">264-5866296</a></li>
+                            <li><span class="fa fa-envelope pe-3 text-white"></span><a href="mailto:prestamospersonales@cas.gob.ar">prestamospersonales@cas.gob.ar</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-lg-2 mt-2-6 wow fadeIn" data-wow-delay="400ms">
+                        <div class="ps-sm-1-9 ps-lg-2-2 ps-xl-2-5">
+                            <h3 class="h5 mb-1-6 mb-lg-1-9 text-primary">Institucional</h3>
+                            <ul class="footer-list-style1">
+                                <li><a href="aboutus">Nosotros</a></li>
+                                <li><a href="autoridades">Autoridades</a></li>
+                                <li><a href="normativa">Normativa</a></li>
+                                <li><a href="contactus">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-2 mt-2-6 wow fadeIn" data-wow-delay="600ms">
+                        <div class="ps-lg-2-2 ps-xl-2-5">
+                            <h3 class="h5 mb-1-6 mb-lg-1-9 text-primary">Préstamos</h3>
+                            <ul class="footer-list-style1">
+                                <li><a href="prestamos-personales">Préstamos Personales</a></li>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="solicitar">Solicitar</a></li>
+                                <li><a href="faq">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-2 mt-2-6 wow fadeIn" data-wow-delay="800ms">
+                        <div class="ps-sm-1-9 ps-lg-2-2 ps-xl-2-5">
+                            <h3 class="h5 mb-1-6 mb-lg-1-9 text-primary">Juegos</h3>
+                            <ul class="footer-list-style1">
+                                <li><a href="/juegos/vivo">Sorteo Vivo</a></li>
+                                <li><a href="/juegos/suenos">Sueños</a></li>
+                                <li><a href="/remates/informacion">Remates</a></li>
+                                <li><a href="/institucional/premios">Premios</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 mt-2-6 wow fadeIn" data-wow-delay="1000ms">
+                        <div class="ps-lg-2-2 ps-xl-2-5">
+                            <h3 class="h5 mb-1-6 mb-lg-1-9 text-primary">Contactarnos</h3>
+                            <p class="text-white mb-4">Dejanos tu correo y seguí completando el formulario de contacto para que te respondamos a la brevedad.</p>
+                            <form class="newsletter-form w-90 w-sm-100" action="/contacto" method="get">
+                                <div class="quform-elements">
+                                    <div class="row">
+                                        <!-- Begin Text input element -->
+                                        <div class="col-md-12">
+                                            <div class="quform-element">
+                                                <div class="quform-input">
+                                                    <input class="form-control" id="footer_email" type="email" name="email" placeholder="Tu correo electrónico" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Text input element -->
+
+                                        <!-- Begin Submit button -->
+                                        <div class="col-md-12">
+                                            <div class="quform-submit-inner">
+                                                <button class="btn" type="submit" title="Continuar"><span><i class="fas fa-paper-plane text-white"></i></span></button>
+                                            </div>
+                                        </div>
+                                        <!-- End Submit button -->
+                                    </div>
+                                </div>
+                            </form>
+                            <div style="margin-top: 25px;">
+                                <p class="text-white d-inline-block mb-0 align-middle">Seguinos:</p>
+                                <ul class="footer-social-style1">
+                                    <li>
+                                        <a href="https://www.facebook.com/profile.php?id=100090249592568" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/cas_sanjuan/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/@cajadeaccionsocial9227" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Widget de conversación con asistente — Botón flotante -->
+    <div class="conversacion-floating-btn" id="conversacionBtn" title="Conversar con asistente CAS">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <!-- Widget de conversación con asistente — Backdrop (visible solo en móvil) -->
+    <div class="conversacion-modal-backdrop" id="conversacionBackdrop"></div>
+
+    <!-- Widget de conversación con asistente — Modal -->
+    <div class="conversacion-modal" id="conversacionModal">
+        <div class="conversacion-modal-content">
+            <div class="conversacion-modal-header">
+                <div class="conversacion-header-info">
+                    <div class="conversacion-avatar">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="conversacion-header-text">
+                        <h5 id="conversacionTitle">Rocío de Atención al Público</h5>
+                        <p id="conversacionStatus">En línea</p>
+                    </div>
+                </div>
+                <button class="conversacion-modal-close" id="conversacionClose" aria-label="Cerrar">&times;</button>
+            </div>
+            <div class="conversacion-messages" id="conversacionMessages"></div>
+            <form class="conversacion-input-form" id="conversacionForm" autocomplete="off">
+                <textarea class="conversacion-input" id="conversacionInput" placeholder="Escribí tu mensaje..." rows="1" required></textarea>
+                <button type="submit" class="conversacion-send-btn" id="conversacionSend" title="Enviar" aria-label="Enviar">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- all js include start -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+
+    <!-- modernizr js -->
+    <script src="/js/popper.min.js"></script>
+
+    <!-- bootstrap -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- search -->
+    <script src="/search/search.js"></script>
+
+    <!-- navigation -->
+    <script src="/js/nav-menu.js"></script>
+
+    <!-- animated headline -->
+    <script src="/js/animated.headline.js"></script>
+
+    <!-- tab -->
+    <script src="/js/easy.responsive.tabs.js"></script>
+
+    <!-- owl carousel -->
+    <script src="/js/owl.carousel.js"></script>
+
+    <!-- owl thumbs carousel -->
+    <script src="/js/owl.carousel.thumbs.js"></script>
+
+    <!-- jquery.counterup.min -->
+    <script src="/js/jquery.counterup.min.js"></script>
+
+    <!-- jarallax.min -->
+    <script src="/js/jarallax.min.js"></script>
+
+    <!-- jarallax-video -->
+    <script src="/js/jarallax-video.js"></script>
+
+    <!-- stellar js -->
+    <script src="/js/jquery.stellar.min.js"></script>
+
+    <!-- waypoints js -->
+    <script src="/js/waypoints.min.js"></script>
+
+    <!-- countdown js -->
+        <script src="/js/countdown.js?v=1778683374"></script>
+
+    <!-- datetimepicker js -->
+    <script src="/js/datetimepicker.js"></script>
+
+    <!-- jquery.magnific-popup js -->
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+
+    <!-- lightgallery js -->
+    <script src="/js/lightgallery-all.js"></script>
+
+    <!-- mousewheel js -->
+    <script src="/js/jquery.mousewheel.min.js"></script>
+
+    <!-- isotope.pkgd.min js -->
+    <script src="/js/isotope.pkgd.min.js"></script>
+
+    <!-- wow js -->
+    <script src="/js/wow.js"></script>
+
+    <!-- lettering js -->
+    <script src="/js/jquery.lettering.js"></script>
+
+    <!-- textillate js -->
+    <script src="/js/jquery.textillate.js"></script>
+
+    <!-- tilt js -->
+    <script src="/js/tilt.js"></script>
+
+    <!--  clipboard js -->
+    <script src="/js/clipboard.min.js"></script>
+
+    <!--  prism js -->
+    <script src="/js/prism.js"></script>
+
+    <!-- revolution slider js files start -->
+    <script src="/js/rev_slider/jquery.themepunch.tools.min.js"></script>
+    <script src="/js/rev_slider/jquery.themepunch.revolution.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.actions.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.migration.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="/js/rev_slider/extensions/revolution.extension.video.min.js"></script>
+
+    <!-- core scripts -->
+        <script src="/js/main.js?v=1778690502"></script>
+
+    <!-- custom scripts -->
+        <script src="/js/custom.js?v=1784167559"></script>
+
+    <!-- form plugins js -->
+    <script src="/quform/js/plugins.js"></script>
+
+    <!-- form scripts js -->
+    <script src="/quform/js/scripts.js"></script>
+
+    <!-- all js include end -->
+
+</body>
+
+</html>

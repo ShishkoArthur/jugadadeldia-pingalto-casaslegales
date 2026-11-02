@@ -1,0 +1,14 @@
+{
+  "name": "jugadadeldia-pingalto-casaslegales",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.3.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "acorn": "^8.19.0",
+    "terser": "^5.51.2"
+  }
+}

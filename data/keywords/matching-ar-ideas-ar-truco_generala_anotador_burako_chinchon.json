@@ -1,0 +1,288 @@
+{
+ "fetched": "2026-11-01T14:27:54.880Z",
+ "mode": "matching",
+ "country": "ar",
+ "kw": "truco,generala,anotador,burako,chinchon",
+ "rows": [
+  {
+   "keyword": "truco argentino",
+   "volume": 23000,
+   "difficulty": 0,
+   "traffic_potential": 14000,
+   "parent_topic": "truco argentino"
+  },
+  {
+   "keyword": "valores del truco",
+   "volume": 21000,
+   "difficulty": 0,
+   "traffic_potential": 6700,
+   "parent_topic": "valores del truco"
+  },
+  {
+   "keyword": "señas del truco",
+   "volume": 16000,
+   "difficulty": 0,
+   "traffic_potential": 1700,
+   "parent_topic": "señas truco"
+  },
+  {
+   "keyword": "truco online",
+   "volume": 16000,
+   "difficulty": 0,
+   "traffic_potential": 150,
+   "parent_topic": "gran truco argentino"
+  },
+  {
+   "keyword": "truco",
+   "volume": 12000,
+   "difficulty": 12,
+   "traffic_potential": 14000,
+   "parent_topic": "truco argentino"
+  },
+  {
+   "keyword": "anotador de truco",
+   "volume": 10000,
+   "difficulty": 0,
+   "traffic_potential": 6500,
+   "parent_topic": "anotador de truco"
+  },
+  {
+   "keyword": "burako",
+   "volume": 8400,
+   "difficulty": 0,
+   "traffic_potential": 2100,
+   "parent_topic": "burako"
+  },
+  {
+   "keyword": "jugar al truco",
+   "volume": 5400,
+   "difficulty": 9,
+   "traffic_potential": 5300,
+   "parent_topic": "truco"
+  },
+  {
+   "keyword": "chinchon",
+   "volume": 4400,
+   "difficulty": 0,
+   "traffic_potential": 700,
+   "parent_topic": "juegatu"
+  },
+  {
+   "keyword": "valores truco",
+   "volume": 4300,
+   "difficulty": 0,
+   "traffic_potential": 2400,
+   "parent_topic": "cartas del truco orden"
+  },
+  {
+   "keyword": "anotador",
+   "volume": 4000,
+   "difficulty": 0,
+   "traffic_potential": 6500,
+   "parent_topic": "anotador de truco"
+  },
+  {
+   "keyword": "señas truco",
+   "volume": 3700,
+   "difficulty": 0,
+   "traffic_potential": 2600,
+   "parent_topic": "señas del truco"
+  },
+  {
+   "keyword": "generala",
+   "volume": 3500,
+   "difficulty": 3,
+   "traffic_potential": 20,
+   "parent_topic": "la generala juego"
+  },
+  {
+   "keyword": "truco valores",
+   "volume": 3300,
+   "difficulty": 0,
+   "traffic_potential": 6700,
+   "parent_topic": "valores del truco"
+  },
+  {
+   "keyword": "tabla de valores truco",
+   "volume": 2900,
+   "difficulty": 0,
+   "traffic_potential": 10,
+   "parent_topic": "tabla del truco argentino"
+  },
+  {
+   "keyword": "señas del truco argentino",
+   "volume": 2700,
+   "difficulty": 0,
+   "traffic_potential": 90,
+   "parent_topic": "seña ancho de espada"
+  },
+  {
+   "keyword": "truco de gta san andreas",
+   "volume": 2500,
+   "difficulty": 20,
+   "traffic_potential": 7300,
+   "parent_topic": "trucos gta san andreas"
+  },
+  {
+   "keyword": "reglas del truco",
+   "volume": 2400,
+   "difficulty": 2,
+   "traffic_potential": 1600,
+   "parent_topic": "señas del truco"
+  },
+  {
+   "keyword": "señas de truco",
+   "volume": 2300,
+   "difficulty": 0,
+   "traffic_potential": 30,
+   "parent_topic": "seña del ancho de basto"
+  },
+  {
+   "keyword": "el gran truco",
+   "volume": 2200,
+   "difficulty": 0,
+   "traffic_potential": 600,
+   "parent_topic": "el gran truco"
+  },
+  {
+   "keyword": "cartas truco",
+   "volume": 2200,
+   "difficulty": 1,
+   "traffic_potential": 100,
+   "parent_topic": "cartas del truco"
+  },
+  {
+   "keyword": "jugar al truco gratis",
+   "volume": 2100,
+   "difficulty": 24,
+   "traffic_potential": 7600,
+   "parent_topic": "truco online"
+  },
+  {
+   "keyword": "truco de gta 5",
+   "volume": 2100,
+   "difficulty": 0,
+   "traffic_potential": 9000,
+   "parent_topic": "trucos de gta 5"
+  },
+  {
+   "keyword": "como jugar al truco",
+   "volume": 1900,
+   "difficulty": 0,
+   "traffic_potential": 3800,
+   "parent_topic": "como jugar al truco"
+  },
+  {
+   "keyword": "valor de las cartas del truco",
+   "volume": 1800,
+   "difficulty": 0,
+   "traffic_potential": 90,
+   "parent_topic": "valor cartas truco"
+  },
+  {
+   "keyword": "cartas del truco",
+   "volume": 1800,
+   "difficulty": 2,
+   "traffic_potential": 250,
+   "parent_topic": "cartas truco"
+  },
+  {
+   "keyword": "valores de las cartas en el truco",
+   "volume": 1800,
+   "difficulty": 0,
+   "traffic_potential": 5200,
+   "parent_topic": "valores del truco"
+  },
+  {
+   "keyword": "truco blyts",
+   "volume": 1700,
+   "difficulty": 5,
+   "traffic_potential": 2000,
+   "parent_topic": "truco blyts"
+  },
+  {
+   "keyword": "cartas de truco",
+   "volume": 1700,
+   "difficulty": 1,
+   "traffic_potential": 100,
+   "parent_topic": "cartas del truco"
+  },
+  {
+   "keyword": "anotador truco",
+   "volume": 1600,
+   "difficulty": 0,
+   "traffic_potential": 5200,
+   "parent_topic": "anotador de truco"
+  },
+  {
+   "keyword": "el gran truco argentino",
+   "volume": 1600,
+   "difficulty": 0,
+   "traffic_potential": 9700,
+   "parent_topic": "truco"
+  },
+  {
+   "keyword": "truco de armas gta 5",
+   "volume": 1500,
+   "difficulty": 7,
+   "traffic_potential": 5400,
+   "parent_topic": "truco de armas gta 5"
+  },
+  {
+   "keyword": "jugar truco",
+   "volume": 1500,
+   "difficulty": 33,
+   "traffic_potential": 15000,
+   "parent_topic": "truco online"
+  },
+  {
+   "keyword": "como se juega al truco",
+   "volume": 1500,
+   "difficulty": 0,
+   "traffic_potential": 2300,
+   "parent_topic": "truco"
+  },
+  {
+   "keyword": "chinchon online",
+   "volume": 1400,
+   "difficulty": 27,
+   "traffic_potential": 500,
+   "parent_topic": "chinchon"
+  },
+  {
+   "keyword": "valores de las cartas del truco",
+   "volume": 1400,
+   "difficulty": 0,
+   "traffic_potential": 6600,
+   "parent_topic": "valores del truco"
+  },
+  {
+   "keyword": "valor cartas truco",
+   "volume": 1400,
+   "difficulty": 0,
+   "traffic_potential": 2800,
+   "parent_topic": "tabla de valores truco"
+  },
+  {
+   "keyword": "valores del truco argentino",
+   "volume": 1200,
+   "difficulty": 1,
+   "traffic_potential": 6900,
+   "parent_topic": "valores del truco"
+  },
+  {
+   "keyword": "seña del truco",
+   "volume": 1100,
+   "difficulty": 0,
+   "traffic_potential": 200,
+   "parent_topic": "seña ancho de basto"
+  },
+  {
+   "keyword": "valores del truco y señas",
+   "volume": 1100,
+   "difficulty": 0,
+   "traffic_potential": 800,
+   "parent_topic": "reglas del truco"
+  }
+ ]
+}

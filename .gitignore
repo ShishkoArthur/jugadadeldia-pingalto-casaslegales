@@ -1,0 +1,11 @@
+.env
+node_modules/
+dist/
+scratchpad/
+*.lock
+__pycache__/
+.DS_Store
+data/img-review/*.png
+data/img-review/*.jpg
+.cache/
+data/feeds/_log.json

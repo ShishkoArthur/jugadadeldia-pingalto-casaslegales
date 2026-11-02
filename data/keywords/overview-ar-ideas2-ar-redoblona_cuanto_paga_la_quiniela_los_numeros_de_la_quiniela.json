@@ -1,0 +1,98 @@
+{
+ "fetched": "2026-11-01T14:28:05.716Z",
+ "mode": "overview",
+ "country": "ar",
+ "kw": "redoblona,cuanto paga la quiniela,los numeros de la quiniela,quiniela significado,anotador de generala,probabilidad quini 6",
+ "rows": [
+  {
+   "keyword": "los numeros de la quiniela",
+   "volume": 1500,
+   "difficulty": 43,
+   "traffic_potential": 9000,
+   "parent_topic": "significado de los números en la quiniela",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "anotador de generala",
+   "volume": 80,
+   "difficulty": 0,
+   "traffic_potential": 40,
+   "parent_topic": "generala anotador",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "redoblona",
+   "volume": 100,
+   "difficulty": 0,
+   "traffic_potential": 450,
+   "parent_topic": "quiniela de",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "cuanto paga la quiniela",
+   "volume": 4500,
+   "difficulty": 12,
+   "traffic_potential": 2200,
+   "parent_topic": "cuanto paga la quiniela",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "probabilidad quini 6",
+   "volume": 10,
+   "difficulty": 0,
+   "traffic_potential": 1600,
+   "parent_topic": "6 números para ganar el quini 6",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela significado",
+   "volume": 300,
+   "difficulty": 43,
+   "traffic_potential": 8200,
+   "parent_topic": "los sueños",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  }
+ ]
+}

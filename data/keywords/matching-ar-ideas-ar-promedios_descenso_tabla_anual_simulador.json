@@ -1,0 +1,288 @@
+{
+ "fetched": "2026-11-01T14:27:55.442Z",
+ "mode": "matching",
+ "country": "ar",
+ "kw": "promedios,descenso,tabla anual,simulador",
+ "rows": [
+  {
+   "keyword": "promedios",
+   "volume": 361000,
+   "difficulty": 13,
+   "traffic_potential": 1020000,
+   "parent_topic": "promiedos"
+  },
+  {
+   "keyword": "tabla anual",
+   "volume": 72000,
+   "difficulty": 16,
+   "traffic_potential": 419000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "simulador plazo fijo",
+   "volume": 70000,
+   "difficulty": 21,
+   "traffic_potential": 75000,
+   "parent_topic": "simulador plazo fijo banco nacion"
+  },
+  {
+   "keyword": "tabla anual liga argentina",
+   "volume": 36000,
+   "difficulty": 16,
+   "traffic_potential": 432000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "simulador plazo fijo banco nacion",
+   "volume": 31000,
+   "difficulty": 9,
+   "traffic_potential": 41000,
+   "parent_topic": "plazo fijo"
+  },
+  {
+   "keyword": "plazo fijo simulador",
+   "volume": 20000,
+   "difficulty": 33,
+   "traffic_potential": 65000,
+   "parent_topic": "simulador plazo fijo"
+  },
+  {
+   "keyword": "tabla anual futbol argentino",
+   "volume": 20000,
+   "difficulty": 16,
+   "traffic_potential": 432000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "tabla anual 2025",
+   "volume": 19000,
+   "difficulty": 21,
+   "traffic_potential": 6300,
+   "parent_topic": "tabla anual liga argentina 2026"
+  },
+  {
+   "keyword": "simulador de plazo fijo banco nación",
+   "volume": 17000,
+   "difficulty": 9,
+   "traffic_potential": 11000,
+   "parent_topic": "simulador plazo fijo nación"
+  },
+  {
+   "keyword": "tabla anual liga argentina 2025",
+   "volume": 15000,
+   "difficulty": 22,
+   "traffic_potential": 6300,
+   "parent_topic": "tabla anual liga argentina 2026"
+  },
+  {
+   "keyword": "simulador de plazo fijo",
+   "volume": 13000,
+   "difficulty": 34,
+   "traffic_potential": 26000,
+   "parent_topic": "simulador plazo fijo"
+  },
+  {
+   "keyword": "tabla anual argentina",
+   "volume": 13000,
+   "difficulty": 22,
+   "traffic_potential": 440000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "simulador plazo fijo banco provincia",
+   "volume": 12000,
+   "difficulty": 0,
+   "traffic_potential": 49000,
+   "parent_topic": "simulador de plazo fijo"
+  },
+  {
+   "keyword": "simulador plazo fijo nacion",
+   "volume": 12000,
+   "difficulty": 12,
+   "traffic_potential": 26000,
+   "parent_topic": "simulador de plazo fijo banco nación"
+  },
+  {
+   "keyword": "tabla anual de la liga argentina",
+   "volume": 10000,
+   "difficulty": 16,
+   "traffic_potential": 419000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "simulador plazo fijo santander",
+   "volume": 9600,
+   "difficulty": 11,
+   "traffic_potential": 3800,
+   "parent_topic": "simulador plazo fijo santander"
+  },
+  {
+   "keyword": "tabla de promedios",
+   "volume": 9500,
+   "difficulty": 14,
+   "traffic_potential": 147000,
+   "parent_topic": "primera"
+  },
+  {
+   "keyword": "simulador plazo fijo bbva",
+   "volume": 9300,
+   "difficulty": 0,
+   "traffic_potential": 71000,
+   "parent_topic": "simulador plazo fijo"
+  },
+  {
+   "keyword": "tabla anual 2026",
+   "volume": 8600,
+   "difficulty": 20,
+   "traffic_potential": 261000,
+   "parent_topic": "posiciones de primera división de argentina"
+  },
+  {
+   "keyword": "tabla anual de posiciones liga argentina",
+   "volume": 8500,
+   "difficulty": 23,
+   "traffic_potential": 261000,
+   "parent_topic": "posiciones de primera división de argentina"
+  },
+  {
+   "keyword": "promedios 2026",
+   "volume": 8000,
+   "difficulty": 10,
+   "traffic_potential": 1020000,
+   "parent_topic": "promiedos"
+  },
+  {
+   "keyword": "simulador plazo fijo nación",
+   "volume": 7800,
+   "difficulty": 28,
+   "traffic_potential": 1400,
+   "parent_topic": "tasa de interes plazo fijo"
+  },
+  {
+   "keyword": "tabla anual liga argentina 2026",
+   "volume": 7400,
+   "difficulty": 21,
+   "traffic_potential": 418000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "simulador mundial 2026",
+   "volume": 6800,
+   "difficulty": 1,
+   "traffic_potential": 3000,
+   "parent_topic": "simulador mundial 2026"
+  },
+  {
+   "keyword": "simulador plazo fijo banco nación",
+   "volume": 6600,
+   "difficulty": 0,
+   "traffic_potential": 10,
+   "parent_topic": "plazo fijo en pesos banco nación"
+  },
+  {
+   "keyword": "simulador plazo fijo galicia",
+   "volume": 6200,
+   "difficulty": 9,
+   "traffic_potential": 7600,
+   "parent_topic": "simulador plazo fijo galicia"
+  },
+  {
+   "keyword": "promedios liga argentina",
+   "volume": 5600,
+   "difficulty": 24,
+   "traffic_potential": 389000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "simulador plazo fijo bna",
+   "volume": 5400,
+   "difficulty": 27,
+   "traffic_potential": 15000,
+   "parent_topic": "simulador plazo fijo nacion"
+  },
+  {
+   "keyword": "simulador plazo fijo en dólares",
+   "volume": 4800,
+   "difficulty": 13,
+   "traffic_potential": 6900,
+   "parent_topic": "plazo fijo en dolares"
+  },
+  {
+   "keyword": "simulador plazo fijo en pesos",
+   "volume": 3900,
+   "difficulty": 11,
+   "traffic_potential": 75000,
+   "parent_topic": "simulador plazo fijo banco nacion"
+  },
+  {
+   "keyword": "plazo fijo uva simulador",
+   "volume": 3800,
+   "difficulty": 0,
+   "traffic_potential": 0,
+   "parent_topic": "calculadora uva plazo fijo"
+  },
+  {
+   "keyword": "tabla anual del fútbol argentino",
+   "volume": 3600,
+   "difficulty": 16,
+   "traffic_potential": 432000,
+   "parent_topic": "liga argentina"
+  },
+  {
+   "keyword": "promedios futbol",
+   "volume": 3500,
+   "difficulty": 22,
+   "traffic_potential": 1020000,
+   "parent_topic": "promiedos"
+  },
+  {
+   "keyword": "promedios futbol argentino",
+   "volume": 3400,
+   "difficulty": 12,
+   "traffic_potential": 1380000,
+   "parent_topic": "promiedos"
+  },
+  {
+   "keyword": "promedios liga argentina 2025",
+   "volume": 3400,
+   "difficulty": 0,
+   "traffic_potential": 90,
+   "parent_topic": "futbol argentino promedios"
+  },
+  {
+   "keyword": "plazo fijo banco nación simulador",
+   "volume": 3400,
+   "difficulty": 0,
+   "traffic_potential": 400,
+   "parent_topic": "plazo fijo banco nación simulador"
+  },
+  {
+   "keyword": "descenso de river",
+   "volume": 3200,
+   "difficulty": 0,
+   "traffic_potential": 20,
+   "parent_topic": "cuando desendio river a la b"
+  },
+  {
+   "keyword": "simulador de prestamos",
+   "volume": 3100,
+   "difficulty": 48,
+   "traffic_potential": 50,
+   "parent_topic": "prestamos personales simulador"
+  },
+  {
+   "keyword": "promedios argentina",
+   "volume": 3100,
+   "difficulty": 17,
+   "traffic_potential": 1030000,
+   "parent_topic": "promiedos"
+  },
+  {
+   "keyword": "simulador plazo fijo en dólares banco nación",
+   "volume": 2900,
+   "difficulty": 18,
+   "traffic_potential": 4100,
+   "parent_topic": "plazo fijo en dolares"
+  }
+ ]
+}

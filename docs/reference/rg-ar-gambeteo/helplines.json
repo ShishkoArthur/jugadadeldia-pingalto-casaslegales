@@ -1,0 +1,1243 @@
+{
+  "about": "Линии помощи, самоисключение, возраст, регуляторы и федеральный закон о лудомании — Аргентина (юрисдикции = 23 провинции + CABA). Показываются только записи с дословной цитатой из сохранённого документа (_docs/, sha256) — проверяет tools/verify-rg.mjs; свежесть ≤ maxAgeDays, иначе сборка падает. verify[] — найдено без скачиваемой официальной страницы или не подтверждено: на сайт НЕ выводится. searched[] — где искали, когда ничего официального не нашли. otherLines[] — другие официальные линии на тех же страницах (не по умолчанию). free: true только если цитата говорит «gratuita»; archived: true — документ = копия web.archive.org официальной страницы (живой сайт недоступен); extension — внутренний номер (interno). Отчёт: docs/research/RG-AR-2026-11-01.md. Схема — как в canadabetting (+ iso, regulators[], law[]).",
+  "checked": "2026-11-01",
+  "maxAgeDays": 100,
+  "default": "buenos-aires",
+  "national": {
+    "crisis": [
+      {
+        "name": "Línea Nacional de Orientación y Apoyo en la Urgencia de Salud Mental",
+        "phone": "0800-999-0091",
+        "phoneTel": "08009990091",
+        "short": "Urgencia de Salud Mental",
+        "hours": "las 24 horas, los 365 días del año",
+        "free": true,
+        "freeQuote": "El 0800-999-0091 brinda atención gratuita y confidencial ante situaciones de urgencia de salud mental en todo el país.",
+        "web": "https://www.argentina.gob.ar/node/356435",
+        "note": "Ministerio de Salud / Hospital Nacional Laura Bonaparte. The page lists suicide risk among the situations it covers.",
+        "quote": "La Línea Nacional de Orientación y Apoyo en la Urgencia de Salud Mental 0800-999-0091 es un servicio de atención confidencial que funciona las 24 horas, los 365 días del año.",
+        "doc": "ar-msal-0800-salud-mental"
+      }
+    ]
+  },
+  "provinces": [
+    {
+      "id": "caba",
+      "iso": "AR-C",
+      "name": "Ciudad Autónoma de Buenos Aires",
+      "age": {
+        "value": 18,
+        "scope": "juegos de apuestas autorizados por Lotería de la Ciudad",
+        "quote": "Los juegos de apuestas son sólo para mayores de 18 años",
+        "doc": "ar-c-juegosegurolegal"
+      },
+      "gambling": [
+        {
+          "name": "Línea de orientación por juego problemático (Lotería de la Ciudad)",
+          "phone": "0800-666-6006",
+          "phoneTel": "08006666006",
+          "web": "https://juegosegurolegal.gob.ar/",
+          "note": "The same page says psychological orientation services work \"de lunes a viernes de 9 a 17 hs\" in a paragraph above the number; it is not clear that these are the hours of the 0800 line, so no hours are shown.",
+          "quote": "0800-666-6006 Línea de orientación por juego problemático",
+          "doc": "ar-c-juegosegurolegal"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Programa de Autoexclusión de LOTBA",
+          "web": "https://juegosegurolegal.gob.ar/?page=autoexclusion",
+          "terms": "2 años",
+          "quote": "La Autoexclusión es una herramienta personal y confidencial para cualquiera que quiera restringir su acceso a los juegos de apuestas autorizados por Lotería de la Ciudad (con un plazo inicial de 2 años).",
+          "doc": "ar-c-juegosegurolegal"
+        },
+        {
+          "name": "Autoexclusión en línea (términos)",
+          "web": "https://autoexclusion.loteriadelaciudad.gob.ar/",
+          "terms": "dos (2) años",
+          "quote": "Que acepto que la autoexclusión sea por el plazo de dos (2) años a partir de la firma del presente, y que, en caso de optar por extender el plazo de exclusión, deberé suscribir una nueva solicitud al momento del vencimiento de la presente.",
+          "doc": "ar-c-lotba-autoexclusion",
+          "note": "Scope (verbatim on the same page): Hipódromo Argentino de Palermo, Casino Buenos Aires, Agencias de juego en línea, Juegos lotéricos en línea."
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Lotería de la Ciudad de Buenos Aires (LOTBA)",
+          "short": "Lotería de la Ciudad",
+          "role": "authorizes gambling in CABA",
+          "web": "https://juegosegurolegal.gob.ar/",
+          "quote": "Apostar sólo resulta seguro y legal cuando se realiza en aquellos sitios autorizados por Lotería de la Ciudad",
+          "doc": "ar-c-juegosegurolegal",
+          "also": [
+            {
+              "quote": "Las únicas agencias autorizadas para comercializar juego en línea en el ámbito de la Ciudad de Buenos Aires lo hacen a través de las siguientes páginas web:",
+              "doc": "ar-c-lotba-agencias"
+            }
+          ],
+          "note": "The authorized online agencies are listed on the agencias page; we do not link operators (PLAYBOOK 7.2)."
+        }
+      ]
+    },
+    {
+      "id": "buenos-aires",
+      "iso": "AR-B",
+      "name": "Provincia de Buenos Aires",
+      "age": {
+        "value": 18,
+        "scope": "apuestas de juegos de azar (juego online, Lotería de la Provincia)",
+        "quote": "Toda actividad relacionada a las apuestas de juegos de azar está prohibida para menores de 18 años.",
+        "doc": "ar-b-loteria-juego-online"
+      },
+      "gambling": [
+        {
+          "name": "Programa de Prevención y Asistencia al Juego Compulsivo",
+          "phone": "0800-444-4000",
+          "phoneTel": "08004444000",
+          "free": true,
+          "web": "https://www.loteria.gba.gob.ar/juego-compulsivo",
+          "note": "No hours on the official page (24 h / 365 appears only in news) — no hours shown.",
+          "quote": "El Programa cuenta con una línea telefónica de atención gratuita y diez centros en toda la Provincia. Línea telefónica: 0800-444-4000.",
+          "doc": "ar-b-loteria-juego-compulsivo"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión a las salas de juego de la provincia de Buenos Aires",
+          "web": "https://www.loteria.gba.gob.ar/juego-compulsivo#autoexclusion",
+          "terms": "2 años",
+          "quote": "Les recordamos que la Autoexclusión es voluntaria y tiene una duración de 2 años.",
+          "doc": "ar-b-loteria-juego-compulsivo"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Instituto Provincial de Lotería y Casinos (Lotería de la Provincia)",
+          "short": "15.079",
+          "role": "online gambling licences (ley 15.079, decreto 181/19)",
+          "web": "https://www.loteria.gba.gob.ar/juego-online",
+          "quote": "A partir de la ley 15.079 del año 2019 y su decreto reglamentario 181/19 se autorizaron 7 licencias para la administración y explotación del juego online.",
+          "doc": "ar-b-loteria-juego-online",
+          "also": [
+            {
+              "quote": "Todos los sitios legales de apuestas terminan en \".bet.ar\".",
+              "doc": "ar-b-loteria-juego-online"
+            }
+          ]
+        }
+      ],
+      "otherLines": [
+        {
+          "name": "Red Provincial de Salud Mental (Ministerio de Salud PBA)",
+          "phone": "0800-222-5462",
+          "phoneTel": "08002225462",
+          "free": true,
+          "note": "Mental-health / consumption line of the PBA Ministry of Health, listed on the same Lotería page; not shown by default.",
+          "quote": "Línea de atención gratuita: 0800-222-5462.",
+          "doc": "ar-b-loteria-juego-compulsivo"
+        }
+      ]
+    },
+    {
+      "id": "cordoba",
+      "iso": "AR-X",
+      "name": "Córdoba",
+      "age": {
+        "value": 18,
+        "scope": "juegos de Lotería de Córdoba",
+        "quote": "Juego exclusivo para mayores de 18 años.",
+        "doc": "ar-x-loteria-juego-responsable"
+      },
+      "gambling": [
+        {
+          "name": "Programa Juego Responsable (Lotería de Córdoba)",
+          "phone": "0800-777-2983",
+          "phoneTel": "08007772983",
+          "free": true,
+          "hours": "Las 24hs los 365 días del año",
+          "hoursQuote": "Las 24hs los 365 días del año 0800-777-AYUDA (2983)",
+          "web": "https://www.loteriadecordoba.com.ar/juego-responsable",
+          "quote": "poniendo a disposición una línea gratuita (0800-777-2983), test de autoevaluación, consejos educativos, formularios de Autoexclusión, investigación y direcciones de centros de ayuda.",
+          "doc": "ar-x-loteria-juego-responsable"
+        }
+      ],
+      "selfExclusion": [],
+      "selfExclusionNote": "The page mentions \"formularios de Autoexclusión\" but gives no term; no self-exclusion page was found on loteriadecordoba.com.ar (01.11).",
+      "regulators": [
+        {
+          "name": "Lotería de la Provincia de Córdoba S.E.",
+          "short": "Córdoba S.E.",
+          "role": "state lottery; runs the responsible gambling program",
+          "web": "https://www.loteriadecordoba.com.ar/",
+          "quote": "de Córdoba S.E. crea el Programa Juego Responsable como parte de sus acciones de Responsabilidad Social Empresaria",
+          "doc": "ar-x-loteria-juego-responsable"
+        }
+      ]
+    },
+    {
+      "id": "entre-rios",
+      "iso": "AR-E",
+      "name": "Entre Ríos",
+      "gambling": [
+        {
+          "name": "Departamento Juego Responsable del IAFAS (Prevenjuego)",
+          "phone": "0800-888-2202",
+          "phoneTel": "08008882202",
+          "free": true,
+          "whatsapp": "3434055252",
+          "web": "https://www.iafas.gov.ar/juego-responsable/prevenjuego/",
+          "note": "0800 44 42327 (PLAYBOOK 7.4) is \"ATENCIÓN AL CLIENTE\" of IAFAS (home page footer), not the help line.",
+          "quote": "También a través de la línea gratuita 0800-888-2202, teléfono fijo (0343) 4209570, por Whatsapp al 3434055252",
+          "doc": "ar-e-iafas-prevenjuego"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (IAFAS, Salas de Entretenimientos y Casinos de Entre Ríos)",
+          "web": "https://www.iafas.gov.ar/juego-responsable/prevenjuego/",
+          "terms": "irrevocable por un año",
+          "quote": "Se trata de un procedimiento irrevocable por un año",
+          "doc": "ar-e-iafas-prevenjuego"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Instituto de Ayuda Financiera a la Acción Social (IAFAS)",
+          "short": "IAFAS",
+          "role": "provincial lottery and casinos; runs the responsible gambling program",
+          "web": "https://www.iafas.gov.ar/",
+          "quote": "CONFIDENCIAL Y GRATUITO: Este programa brindado por el Departamento Juego Responsable del IAFAS, es absolutamente confidencial y gratuito.",
+          "doc": "ar-e-iafas-prevenjuego",
+          "also": [
+            {
+              "quote": "ATENCIÓN AL CLIENTE 0800 44 42327",
+              "doc": "ar-e-iafas-home"
+            }
+          ],
+          "note": "also[0] documents that 0800 44 42327 is customer service, not a help line."
+        }
+      ]
+    },
+    {
+      "id": "mendoza",
+      "iso": "AR-M",
+      "name": "Mendoza",
+      "gambling": [
+        {
+          "name": "Programa Juego Responsable (Instituto Provincial de Juegos y Casinos)",
+          "phone": "(0261) 424-7536",
+          "phoneTel": "02614247536",
+          "free": false,
+          "hours": "Lunes a viernes de 8 a 14 hs",
+          "whatsapp": "261 4722471",
+          "whatsappQuote": "Turnos Whatsapp: 261 4722471",
+          "web": "https://www.mendoza.gob.ar/juegosycasinos/juego-responsable/",
+          "note": "Not a free 0800 line: a landline of the IPJyC program (the page does not say it is free).",
+          "quote": "Atención telefónica para asesoramiento: Teléfono: (0261) 424-7536 - Lunes a viernes de 8 a 14 hs",
+          "doc": "ar-m-ipjyc-juego-responsable"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Registro Único de Autoexcluidos de Mendoza (RUAM)",
+          "web": "https://www.mendoza.gob.ar/juegosycasinos/juego-responsable/",
+          "terms": "entre un mínimo de tres meses y un máximo de cinco años",
+          "quote": "Consiste en un compromiso asumido de manera voluntaria, mediante el cual la persona se obliga a no ingresar a ningún casino de la provincia y/o plataforma de juego en línea por un plazo determinado, comprendido entre un mínimo de tres meses y un máximo de cinco años.",
+          "doc": "ar-m-ipjyc-juego-responsable"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Instituto Provincial de Juegos y Casinos (IPJyC)",
+          "short": "Instituto Provincial de Juegos y Casinos",
+          "role": "provincial gambling regulator; runs RUAM",
+          "web": "https://www.mendoza.gob.ar/juegosycasinos/",
+          "quote": "Desde el año 2021, el Instituto Provincial de Juegos y Casinos de la Provincia de Mendoza implementó de manera oficial el SISTEMA INTEGRAL DE RECONOCIMIENTO FACIAL",
+          "doc": "ar-m-ipjyc-juego-responsable"
+        }
+      ]
+    },
+    {
+      "id": "neuquen",
+      "iso": "AR-Q",
+      "name": "Neuquén",
+      "age": {
+        "value": 18,
+        "scope": "apuestas en el país (según IJAN)",
+        "quote": "En nuestro país los menores de 18 años NO pueden realizar apuestas.",
+        "doc": "ar-q-ijan-juego-responsable"
+      },
+      "gambling": [
+        {
+          "name": "Programa de Juego Responsable (IJAN)",
+          "phone": "(0299) 4038900",
+          "phoneTel": "02994038900",
+          "free": false,
+          "hours": "Lunes a viernes de 8 a 15 hs",
+          "whatsapp": "+54 9 299 4234492",
+          "whatsappQuote": "WHATSAPP +54 9 299 4234492",
+          "web": "https://ijan-neuquen.com/juego_responsable.php",
+          "note": "Landline with extensions 202 / 212 (internos), not a free 0800 line.",
+          "quote": "TELEFÓNICAMENTE (0299) 4038900 - internos 202 212 Lunes a viernes de 8 a 15 hs.",
+          "doc": "ar-q-ijan-juego-responsable"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Registro Provincial de Autoexcluidos (IJAN)",
+          "web": "https://ijan-neuquen.com/juego_responsable.php",
+          "quote": "El proceso se formaliza con la firma de un Acta de Autoexclusión ante el IJAN o personal de los casinos autorizados.",
+          "doc": "ar-q-ijan-juego-responsable",
+          "note": "No term stated on the page."
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Instituto Provincial de Juegos de Azar del Neuquén (IJAN)",
+          "short": "IJAN",
+          "role": "provincial gambling regulator",
+          "web": "https://ijan-neuquen.com/",
+          "quote": "El IJAN trabaja día a día para que el juego siga siendo una forma de entretenimiento seguro para adultos.",
+          "doc": "ar-q-ijan-juego-responsable"
+        }
+      ]
+    },
+    {
+      "id": "rio-negro",
+      "iso": "AR-R",
+      "name": "Río Negro",
+      "gambling": [
+        {
+          "name": "Línea de Orientación al Jugador Problemático (Lotería de Río Negro)",
+          "phone": "0800-222-1700",
+          "phoneTel": "08002221700",
+          "web": "https://www.loteriaderionegro.gob.ar/juego-responsable/programa",
+          "note": "No hours on the official page (24 h appears only in news) — no hours shown.",
+          "quote": "Línea de Orientación al Jugador Problemático: 0800-222-1700",
+          "doc": "ar-r-loteria-autoexclusion"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (salas de juego de Río Negro)",
+          "web": "https://www.loteriaderionegro.gob.ar/juego-responsable/autoexclusion",
+          "terms": "dos (2) años",
+          "quote": "La autoexclusión tendrá una vigencia de dos (2) años, con posibilidad de renovación mediante una nueva solicitud.",
+          "termsQuote": "La autoexclusión tendrá una vigencia de dos (2) años",
+          "doc": "ar-r-loteria-autoexclusion"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Lotería de Río Negro",
+          "short": "Lotería de Río Negro",
+          "role": "provincial lottery and casinos",
+          "web": "https://www.loteriaderionegro.gob.ar/",
+          "quote": "© 2026 Lotería de Río Negro · Gobierno de la Provincia de Río Negro",
+          "doc": "ar-r-loteria-autoexclusion"
+        }
+      ]
+    },
+    {
+      "id": "tucuman",
+      "iso": "AR-T",
+      "name": "Tucumán",
+      "age": {
+        "value": 18,
+        "scope": "venta de juegos de la Caja Popular de Ahorros",
+        "quote": "Prohibida su venta a menores de 18 años.",
+        "doc": "ar-t-caja-popular-juego-responsable"
+      },
+      "gambling": [
+        {
+          "name": "Juego Responsable — Caja Popular de Ahorros (Ley 8986)",
+          "phone": "0800 555 7678",
+          "phoneTel": "08005557678",
+          "web": "https://www.cajapopular.gov.ar/index.php/1249-2/",
+          "note": "No hours on the page.",
+          "quote": "JUEGO RESPONSABLE Ley 8986 Si necesitas ayuda llamá al: 0800 555 7678",
+          "doc": "ar-t-caja-popular-juego-responsable"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Registro de autoexclusión (Ley 8986, art. 8)",
+          "terms": "seis (6) meses",
+          "quote": "por el término de seis (6) meses contados a partir de la fecha de inscripción en el mismo.",
+          "doc": "ar-t-ley-8986",
+          "note": "Term from the law text (e-legis-ar.msal.gov.ar); after it the restriction stays unless a lifting act is signed in person."
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Caja Popular de Ahorros de la Provincia de Tucumán",
+          "short": "Caja Popular de Ahorros",
+          "role": "autoridad de aplicación (Ley 6274, Ley 8986)",
+          "web": "https://www.cajapopular.gov.ar/",
+          "quote": "Según lo dispuesto por la Ley 6274, Caja Popular de Ahorros es la autoridad de aplicación y controlador de las actividades del juego",
+          "doc": "ar-t-caja-popular-juego-responsable"
+        }
+      ]
+    },
+    {
+      "id": "salta",
+      "iso": "AR-A",
+      "name": "Salta",
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (todas las salas de la Provincia de Salta)",
+          "web": "https://www.enrejasalta.com.ar/jr.php",
+          "terms": "duración mínima de 1 año",
+          "quote": "Tiene una duración mínima de 1 año. Se renueva automáticamente salvo que el cliente manifieste su voluntad de revocarla. Sirve para todas las salas de la Provincia de Salta.",
+          "doc": "ar-a-enreja-jr"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Ente Regulador del Juego de Azar de la Provincia de Salta (EnReJA)",
+          "short": "Ente Regulador del Juego de Azar",
+          "role": "provincial gambling regulator",
+          "web": "https://www.enrejasalta.com.ar/",
+          "quote": "El Programa de Juego Responsable forma parte del Ente Regulador del Juego de Azar de la Provincia de Salta, desde el año 2009.",
+          "doc": "ar-a-enreja-jr"
+        }
+      ],
+      "verify": [
+        {
+          "kind": "gambling",
+          "phone": "0800-5558548",
+          "source": "https://www.enrejasalta.com.ar/jr.php",
+          "note": "Visible on the regulator page only as \"Solicitar Turno al 387 5420599 (Whatsapp) o 0800-5558548\" (appointments). The footer number \"0800 55 58346\" is inside an HTML comment (not shown)."
+        },
+        {
+          "kind": "gambling",
+          "phone": "0800-555-8346",
+          "source": "https://www.salta.gob.ar/prensa/noticias/el-enreja-desarrollo-jornadas-de-concientizacion-sobre-el-juego-responsable-87978",
+          "note": "salta.gob.ar press release of 17/02/2023 (\"línea gratuita 0800-555-8346\"); contradicts the current EnReJA page; news sites print 0800 558348. Not shown until one number is confirmed."
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://www.enrejasalta.com.ar/jr.php",
+            "salta.gob.ar press releases",
+            "enreja.gob.ar / enreja.gov.ar / enreja.salta.gob.ar (no answer, here and from the server)"
+          ],
+          "result": "two different 0800 numbers on official pages (see verify[]); no line shown"
+        }
+      ]
+    },
+    {
+      "id": "misiones",
+      "iso": "AR-N",
+      "name": "Misiones",
+      "age": {
+        "value": 18,
+        "scope": "juegos de apuesta (IPLyC S.E.)",
+        "quote": "Los juegos de apuesta no están permitidos para menores de 18 años.",
+        "doc": "ar-n-iplyc-portal"
+      },
+      "gambling": [
+        {
+          "name": "Programa de Juego Responsable del IPLyC S.E.",
+          "phone": "0800-888-LUDO",
+          "phoneTel": "08008885836",
+          "vanity": true,
+          "free": true,
+          "whatsapp": "3764 - 683173",
+          "whatsappQuote": "WhatsApp: 3764 - 683173 0800-888-LUDO (5836)",
+          "web": "https://juegoresponsable.loteriademisiones.com.ar/",
+          "note": "Display as \"0800-888-LUDO (5836)\". The page also shows \"Lunes a viernes de 07:00 a 13:00 hs.\" in the contact block (office address); not tied to the 0800 line, no hours shown.",
+          "quote": "GRATUITO Y CONFIDENCIAL (376)-4683173 0800-888-LUDO (5836)",
+          "doc": "ar-n-iplyc-juego-responsable"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (casinos y plataformas online con licencia del IPLyC S.E.)",
+          "web": "https://juegoresponsable.loteriademisiones.com.ar/autoexcluirme/",
+          "terms": "2 (dos) años",
+          "quote": "Su duración es de 2 (dos) años, período en el cual se habilita a los casinos y a las plataformas de juego online",
+          "doc": "ar-n-iplyc-autoexclusion"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Instituto Provincial de Lotería y Casinos S.E. (IPLyC)",
+          "short": "Instituto Provincial de Lotería y Casinos",
+          "role": "provincial lottery, casinos and online licences",
+          "web": "https://www.loteriademisiones.com.ar/",
+          "quote": "Web Oficial del Instituto Provincial de Lotería y Casinos Sociedad del Estado.",
+          "doc": "ar-n-iplyc-portal"
+        }
+      ]
+    },
+    {
+      "id": "chaco",
+      "iso": "AR-H",
+      "name": "Chaco",
+      "gambling": [
+        {
+          "name": "Juego Responsable — Lotería Chaqueña",
+          "phone": "0800-888-2008",
+          "phoneTel": "08008882008",
+          "web": "https://loteria.chaco.gov.ar/juego_responsable",
+          "note": "chaco.gov.ar 17.02.2025 calls it free (\"en forma totalmente gratuita y confidencial\", doc ar-h-chaco-gob-2025-02-17). Hours 7-18 Mon-Fri appear only in a 2022 news item on loteria.chaco.gov.ar — not shown.",
+          "also": [
+            {
+              "quote": "pueden comunicarse de inmediato al 0800-888-2008 o bien recurrir a nuestras otras líneas de ayuda, en forma totalmente gratuita y confidencial",
+              "doc": "ar-h-chaco-gob-2025-02-17"
+            }
+          ],
+          "quote": "Teléfono: 0800-888-2008 Email: juegoresponsable@chaco.gov.ar",
+          "doc": "ar-h-loteria-chaquena-jr"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (casinos, salas y locales autorizados por Lotería Chaqueña)",
+          "web": "https://loteria.chaco.gov.ar/juego_responsable",
+          "terms": "4 años",
+          "quote": "El plazo de vigencia de la autoexclusión de los Casinos, Salas y Locales donde se exploten de Juegos de azar autorizados por Lotería Chaqueña es de 4 años, irrevocable por ese término, existiendo la posibilidad de renovación actualizando la solicitud.",
+          "doc": "ar-h-loteria-chaquena-jr"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Lotería Chaqueña",
+          "short": "Lotería Chaqueña",
+          "role": "authorizes gambling in Chaco",
+          "web": "https://loteria.chaco.gov.ar/",
+          "quote": "Juegos de azar autorizados por Lotería Chaqueña",
+          "doc": "ar-h-loteria-chaquena-jr"
+        }
+      ]
+    },
+    {
+      "id": "corrientes",
+      "iso": "AR-W",
+      "name": "Corrientes",
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (Lotería Correntina)",
+          "web": "https://www.loteriacorrentina.gob.ar/juego-responsable/autoexclusi%C3%B3n",
+          "terms": "1 (un) año",
+          "quote": "¿Por cuánto tiempo es la autoexclusión? 1 (un) año desde su suscripción, vencida esa fecha esta se prorrogará por periodos sucesivos de igual duración, si no manifestaras tu deseo en contrario.",
+          "doc": "ar-w-loteria-correntina-autoexclusion"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Instituto de Lotería y Casinos de Corrientes",
+          "short": "Instituto de Lotería y Casinos de Corrientes",
+          "role": "provincial lottery and casinos",
+          "web": "https://www.loteriacorrentina.gob.ar/",
+          "quote": "Instituto de Lotería y Casinos de Corrientes Córdoba 915 Corrientes, Argentina",
+          "doc": "ar-w-loteria-correntina-autoexclusion"
+        }
+      ],
+      "otherLines": [
+        {
+          "name": "Consultas sobre autoexclusión (Lotería Correntina)",
+          "phone": "(379)-4476213",
+          "phoneTel": "3794476213",
+          "note": "Institute switchboard for questions about self-exclusion — not a help line; not shown by default.",
+          "quote": "Antes cualquier duda o consulta llama al (54)(379)-4476213",
+          "doc": "ar-w-loteria-correntina-autoexclusion"
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://www.loteriacorrentina.gob.ar/juego-responsable",
+            "https://www.loteriacorrentina.gob.ar/juego-responsable/autoexclusi%C3%B3n",
+            "loteriacorrentina.gov.ar (no answer)",
+            "web search \"Corrientes juego responsable 0800\""
+          ],
+          "result": "no gambling help line on official pages (a 0800 line and WhatsApp mentioned only in search summaries, not found on any downloaded page)"
+        }
+      ]
+    },
+    {
+      "id": "chubut",
+      "iso": "AR-U",
+      "name": "Chubut",
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://loteriadelchubut.com.ar/juego-responsable/",
+            "https://loteriadelchubut.com.ar/formulario-de-autoexclusion/",
+            "https://loteriadelchubut.com.ar/institucional/",
+            "loteriadelchubut.gov.ar / .gob.ar / loteriachubut.gov.ar (no answer, here and from the server)",
+            "web search \"Lotería del Chubut 0800 juego responsable\""
+          ],
+          "result": "no gambling help line and no self-exclusion term on official pages; only a general \"Mesa de Ayuda\" (0280-999-777). The official site carries a hidden spam link to a gambling operator — not used as a source."
+        }
+      ]
+    },
+    {
+      "id": "jujuy",
+      "iso": "AR-Y",
+      "name": "Jujuy",
+      "verify": [
+        {
+          "kind": "gambling",
+          "phone": "0800 888 4767",
+          "source": "https://inprojuy.gob.ar/img/INPROJUY_0800.jpg",
+          "note": "Only in an image on inprojuy.gob.ar (\"LAS 24HS LOS 365 DÍAS DEL AÑO AL 0800 888 4767 (OPCIÓN 1) LÍNEA DE ATENCIÓN GRATUITA Y CONFIDENCIAL\", read visually by a helper); no text to quote byte-for-byte."
+        },
+        {
+          "kind": "selfExclusion",
+          "note": "Minimum two years, auto-renewed — only in the JavaScript bundle of the single-page site inprojuy.gob.ar (hash-named file, would break on every redeploy)."
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://inprojuy.gob.ar/ (JavaScript app)",
+            "https://inprojuy.gob.ar/img/INPROJUY_0800.jpg",
+            "prensa.jujuy.gob.ar (403)"
+          ],
+          "result": "line only in an image; not shown until a text page with the number is found"
+        }
+      ]
+    },
+    {
+      "id": "formosa",
+      "iso": "AR-P",
+      "name": "Formosa",
+      "verify": [
+        {
+          "kind": "gambling",
+          "phone": "0800 5555 427",
+          "source": "https://www.alea.org.ar/post/luzverde-al-jr-el-ias-de-formosa-en-el-17-2",
+          "note": "ALEA (association of state lotteries, not a government site): \"línea telefónica gratuita 0800 5555 427 (IAS)\"."
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://www.ias.gob.ar/ (timeout, also via WebFetch)",
+            "agenfor.com.ar (no phone)",
+            "https://www.alea.org.ar/ (not official)"
+          ],
+          "result": "official IAS site does not answer; no line shown"
+        }
+      ]
+    },
+    {
+      "id": "santa-fe",
+      "iso": "AR-S",
+      "name": "Santa Fe",
+      "gambling": [
+        {
+          "name": "Centro de Orientación y Atención Virtual (APRECOD, Ministerio de Salud)",
+          "phone": "0800-268-5640",
+          "phoneTel": "08002685640",
+          "free": true,
+          "hours": "todos los días del año, de 8 a 24hs",
+          "whatsapp": "341-540-7653",
+          "archived": true,
+          "note": "Archived copy (web.archive.org); the live site does not answer from our machines. Snapshot of santafe.gob.ar/ms/juegocompulsivo/ of 2026-07-14; the Lotería page (snapshot 2025-08-13) gives the same line. Provincial addictions line (APRECOD), not gambling-only.",
+          "also": [
+            {
+              "quote": "de manera gratuita a través del 0800-268-5640 y por mensaje al WhatsApp 341-540-7653, todos los días del año, de 8 a 24hs.",
+              "doc": "ar-s-loteria-juego-responsable-wayback-2025-08-13"
+            }
+          ],
+          "quote": "pone a disposición un Centro de Orientación y Atención Virtual que brinda escucha profesional de manera gratuita a través del 0800-268-5640 y por mensaje al WhatsApp 341-540-7653, todos los días del año, de 8 a 24hs.",
+          "doc": "ar-s-ms-juego-compulsivo-wayback-2026-07-14"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (casinos, plataformas online, sedes de Lotería de Santa Fe)",
+          "quote": "Si usted desea autoexcluirse de las salas de juego, podrá hacerlo en los tres casinos habilitados vía online en las plataformas o en las sedes de Lotería de Santa Fe",
+          "doc": "ar-s-loteria-juego-responsable-wayback-2025-08-13",
+          "archived": true,
+          "note": "Archived copy (web.archive.org); the live site does not answer from our machines. No term stated."
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Caja de Asistencia Social - Lotería de Santa Fe",
+          "short": "Lotería de Santa Fe",
+          "role": "provincial lottery and casinos",
+          "quote": "Caja de Asistencia Social - Lotería de Santa Fe Primera Junta 2724, Ciudad de Santa Fe",
+          "doc": "ar-s-loteria-juego-responsable-wayback-2025-08-13",
+          "archived": true
+        }
+      ],
+      "verify": [
+        {
+          "kind": "gambling",
+          "phone": "0800-555-6743",
+          "note": "Only in news (line under provincial ley 14.293); not on any saved official page — not used."
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://www.loteriasantafe.gov.ar/ (timeout here; HTTP 403 Apache from the server 187.7.26.95; not bypassed)",
+            "https://www.santafe.gov.ar/ and https://www.santafe.gob.ar/ (no answer, here and from the server)",
+            "web.archive.org snapshots of loteriasantafe.gov.ar (2025-08-13) and santafe.gob.ar/ms/juegocompulsivo/ (2026-07-14) — used"
+          ],
+          "result": "live official pages unreachable; line taken from archived official pages"
+        }
+      ]
+    },
+    {
+      "id": "san-juan",
+      "iso": "AR-J",
+      "name": "San Juan",
+      "gambling": [
+        {
+          "name": "Oficina de Juego Responsable — Caja de Acción Social",
+          "phone": "0800 999 1314",
+          "phoneTel": "08009991314",
+          "free": true,
+          "hours": "lunes a viernes de 08 a 12 hs",
+          "web": "https://www.cas.gob.ar/juegos/responsable",
+          "quote": "Atención telefónica línea gratuita: 0800 999 1314 (lunes a viernes de 08 a 12 hs)",
+          "doc": "ar-j-cas-juego-responsable"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión a las Salas de Casino (Caja de Acción Social)",
+          "web": "https://www.cas.gob.ar/juegos/responsable",
+          "terms": "4 años",
+          "quote": "El trámite de autoexclusión a las salas de casino tiene una duración de 4 años y la posibilidad de revocarlo a los 6 meses de iniciado el trámite",
+          "doc": "ar-j-cas-juego-responsable",
+          "note": "News items say 2 years; the official page says 4 — the official page is used."
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Caja de Acción Social de San Juan (CAS)",
+          "short": "Caja de Acción Social",
+          "role": "provincial lottery and casinos; runs the responsible gambling office",
+          "web": "https://www.cas.gob.ar/",
+          "quote": "Concurrir personalmente a la Oficina de Juego Responsable de la Caja de Acción Social",
+          "doc": "ar-j-cas-juego-responsable"
+        }
+      ]
+    },
+    {
+      "id": "san-luis",
+      "iso": "AR-D",
+      "name": "San Luis",
+      "verify": [
+        {
+          "kind": "gambling",
+          "phone": "0800-666-6176",
+          "source": "https://agenciasanluis.com/2021/02/17/676161-17-de-febrero-dia-internacional-del-juego-responsable/",
+          "note": "Only in a 2021-02-17 item of Agencia de Noticias San Luis signed \"Prensa Caja Social y Financiera\" (\"se activó la línea telefónica gratuita 0800-666-6176\"); five years old, no current official page — not shown."
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://agenciasanluis.com/2021/02/17/676161-17-de-febrero-dia-internacional-del-juego-responsable/",
+            "web search for Caja Social y Financiera de San Luis juego responsable"
+          ],
+          "result": "no current official page with a help line; 2021 news of the regulator in verify[]"
+        }
+      ]
+    },
+    {
+      "id": "la-pampa",
+      "iso": "AR-L",
+      "name": "La Pampa",
+      "gambling": [
+        {
+          "name": "DAFAS (Instituto de Seguridad Social) — consultas y trámites de autoexclusión",
+          "phone": "2954- 433974",
+          "phoneTel": "2954433974",
+          "free": false,
+          "hours": "de lunes a viernes, de 7 a 13 horas",
+          "whatsapp": "2954202112",
+          "archived": true,
+          "note": "Archived copy (web.archive.org); the live site does not answer from our machines. Snapshot of isslapampa.gob.ar/dafas-juego-responsable/ of 2026-07-13. Dial option 3, extension 8563. Line for questions and self-exclusion procedures (not a dedicated help line).",
+          "quote": "Para consultas y/o trámites de autoexclusión Comunicarse de lunes a viernes, de 7 a 13 horas al Whatsapp 2954202112, al teléfono 2954- 433974, opción 3 (DAFAS), interno 8563",
+          "doc": "ar-l-iss-dafas-juego-responsable-wayback-2026-07-13"
+        }
+      ],
+      "selfExclusion": [
+        {
+          "name": "Autoexclusión (DAFAS)",
+          "terms": "Dos años",
+          "quote": "¿Cuánto tiempo dura? Dos años.",
+          "doc": "ar-l-iss-dafas-juego-responsable-wayback-2026-07-13",
+          "archived": true,
+          "note": "Archived copy (web.archive.org); the live site does not answer from our machines."
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://www.isslapampa.gob.ar/ (does not resolve)",
+            "web.archive.org snapshots 2026-04-12, 2026-05-19, 2026-07-13 — 2026-07-13 used"
+          ],
+          "result": "live site unreachable; line from the archived official page"
+        }
+      ]
+    },
+    {
+      "id": "tierra-del-fuego",
+      "iso": "AR-V",
+      "name": "Tierra del Fuego",
+      "gambling": [
+        {
+          "name": "Departamento Juego Responsable del IPRA — Ushuaia",
+          "phone": "02901-433515",
+          "phoneTel": "02901433515",
+          "extension": "512",
+          "web": "https://www.ipra.gov.ar/web/juegoresponsable/",
+          "note": "The IPRA procedures page shows different extensions; the main responsible-gambling page is used. No hours.",
+          "quote": "Ushuaia Departamento Juego Responsable Dirección : San Martin Nº 360 Teléfono: 02901-433515 Int. 512",
+          "doc": "ar-v-ipra-juego-responsable"
+        },
+        {
+          "name": "Departamento Juego Responsable del IPRA — Río Grande",
+          "phone": "02964-430030",
+          "phoneTel": "02964430030",
+          "extension": "612",
+          "web": "https://www.ipra.gov.ar/web/juegoresponsable/",
+          "quote": "Río Grande Departamento Juego Responsable Dirección : Perito Moreno Nº 168 Teléfono: 02964-430030 Int. 612",
+          "doc": "ar-v-ipra-juego-responsable"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Instituto Provincial de Regulación de Apuestas (IPRA)",
+          "short": "I.P.R.A.",
+          "role": "provincial gambling regulator; runs the program",
+          "web": "https://www.ipra.gov.ar/",
+          "quote": "CONFIDENCIAL Y GRATUITO: Este programa brindado por el Departamento Juego Responsable del I.P.R.A., es absolutamente confidencial y gratuito.",
+          "doc": "ar-v-ipra-juego-responsable"
+        }
+      ]
+    },
+    {
+      "id": "la-rioja",
+      "iso": "AR-F",
+      "name": "La Rioja",
+      "selfExclusion": [
+        {
+          "name": "Formulario de Autoexclusión (AJALaR)",
+          "web": "https://ajalar.com.ar/sitio/formulario-de-autoexclusion/",
+          "quote": "Es una herramienta disponible para todo aquel que voluntariamente solicite que se le impida el acceso y/o la posibilidad de realizar apuestas en cualquiera de las modalidades de juegos de azar autorizadas por AJALAR.",
+          "doc": "ar-f-ajalar-autoexclusion",
+          "note": "No term stated."
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Administración de Juegos de Azar de La Rioja (AJALaR)",
+          "short": "AJALAR",
+          "role": "authorizes gambling in La Rioja",
+          "web": "https://ajalar.com.ar/",
+          "quote": "modalidades de juegos de azar autorizadas por AJALAR.",
+          "doc": "ar-f-ajalar-autoexclusion"
+        }
+      ],
+      "otherLines": [
+        {
+          "name": "AJALaR — contacto general",
+          "phone": "0380 4427527",
+          "phoneTel": "03804427527",
+          "note": "General switchboard of the regulator, not a help line; not shown by default.",
+          "quote": "Dirección: 25 de Mayo 243. Teléfono: 0380 4427527",
+          "doc": "ar-f-ajalar-contacto"
+        }
+      ],
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://ajalar.com.ar/sitio/contacto/",
+            "https://ajalar.com.ar/sitio/formulario-de-autoexclusion/",
+            "https://www.ajalar.com.ar/index.php",
+            "salud.larioja.gob.ar and larioja.gob.ar/salud/saludmentalyadicciones/ (no gambling line)"
+          ],
+          "result": "no gambling help line on official pages; only the general contact number (otherLines)"
+        }
+      ]
+    },
+    {
+      "id": "santiago-del-estero",
+      "iso": "AR-G",
+      "name": "Santiago del Estero",
+      "gambling": [
+        {
+          "name": "Programa \"Juego Responsable\" — Caja Social de Santiago del Estero (contacto)",
+          "phone": "(0385) 428-8850",
+          "phoneTel": "03854288850",
+          "free": false,
+          "hours": "Lunes a Viernes de 7:45 a 13:30 hs",
+          "web": "http://www.cajasocialsde.gob.ar/php/juegoresponsable.php",
+          "note": "Contact block of the Juego Responsable page (institution phone, not a dedicated help line).",
+          "quote": "Teléfonos: (0385) 428-8850 Horarios: Lunes a Viernes de 7:45 a 13:30 hs.",
+          "doc": "ar-g-caja-social-juego-responsable"
+        }
+      ],
+      "regulators": [
+        {
+          "name": "Caja Social de Santiago del Estero",
+          "short": "Caja Social de Santiago del Estero",
+          "role": "provincial lottery; runs the program",
+          "web": "http://www.cajasocialsde.gob.ar/",
+          "quote": "la Caja Social de Santiago del Estero, ha creado el Programa \"Juego Responsable\"",
+          "doc": "ar-g-caja-social-juego-responsable"
+        }
+      ]
+    },
+    {
+      "id": "catamarca",
+      "iso": "AR-K",
+      "name": "Catamarca",
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "Catamarca lottery / Caja de Crédito sites (Cloudflare check, HTTP 403 — not bypassed)",
+            "web.archive.org listings of cajadecredito.catamarca.gob.ar and capresca.gob.ar",
+            "web search \"Catamarca juego responsable 0800\""
+          ],
+          "result": "nothing official reachable; no line shown"
+        }
+      ]
+    },
+    {
+      "id": "santa-cruz",
+      "iso": "AR-Z",
+      "name": "Santa Cruz",
+      "age": {
+        "value": 18,
+        "scope": "juegos comercializados y regulados legalmente a nivel nacional (guía de la Lotería de Santa Cruz)",
+        "quote": "TODOS LOS JUEGOS COMERCIALIZADOS Y REGULADOS LEGALMENTE A NIVEL NACIONAL, SE ENCUENTRAN HABILITADOS A PARTIR DE LOS 18 AÑOS DE EDAD, SIN EXCEPCIÓN.",
+        "doc": "ar-z-loas-guia-padres-docentes"
+      },
+      "searched": [
+        {
+          "date": "2026-11-01",
+          "tried": [
+            "https://loteriadesantacruz.gob.ar/juegoresponsable/",
+            "LOAS guides (PDF, 2025)",
+            "boletinoficial.santacruz.gob.ar",
+            "noticias.santacruz.gob.ar (two items on ludopatía)"
+          ],
+          "result": "no gambling help line on official pages"
+        }
+      ]
+    }
+  ],
+  "law": [
+    {
+      "id": "diputados-media-sancion",
+      "date": "2024-11-27",
+      "summary": "Diputados approved and sent to the Senate the bill on prevention of ludopatía and regulation of online gambling (139-36-59).",
+      "quote": "la Cámara de Diputados aprobó y giró al Senado un proyecto de ley de prevención de ludopatía y regulación de juegos de azar y apuestas en línea. Fue aprobado por 139 votos afirmativos, 36 negativos y 59 abstenciones",
+      "doc": "ar-hcdn-media-sancion-2024-11-27",
+      "also": [
+        {
+          "quote": "la norma prohíbe el acceso de niñas, niños y adolescentes menores de 18 años a sitios y plataformas de juegos de azar y apuestas, de pronósticos y apuestas deportivas en línea.",
+          "doc": "ar-hcdn-media-sancion-2024-11-27"
+        }
+      ]
+    },
+    {
+      "id": "senado-cd-26-24",
+      "date": "2026-11-01",
+      "summary": "Senate file CD-26/24: sanctioned by Diputados 27/11/2024; sent to the Health, General Legislation and Justice committees on 26-03-2025; committee report (dictamen) entry: \"SIN FECHA\" as of 2026-11-01.",
+      "quote": "PROYECTO DE LEY EN REVISION DE PREVENCION DE LA LUDOPATIA Y REGULACION DE JUEGOS DE AZAR Y APUESTAS EN LINEA.",
+      "doc": "ar-senado-cd-26-24",
+      "also": [
+        {
+          "quote": "Fecha Sanción: 27/11/2024",
+          "doc": "ar-senado-cd-26-24"
+        },
+        {
+          "quote": "INGRESO DEL DICTAMEN A LA MESA DE ENTRADAS 26-03-2025 SIN FECHA",
+          "doc": "ar-senado-cd-26-24"
+        }
+      ]
+    },
+    {
+      "id": "senado-plenario-2025-10-15",
+      "date": "2025-10-15",
+      "summary": "Senate plenary of committees kept hearing experts on 28 bills, one of them with half-sanction (CD-26/24).",
+      "quote": "el proyecto de ley venido en revisión de la Cámara de Diputados, de prevención de la ludopatía y regulación de juegos de azar y apuestas en línea, registrado bajo el expediente CD-26/24",
+      "doc": "ar-senado-plenario-2025-10-15"
+    },
+    {
+      "id": "proyecto-ejecutivo-2026",
+      "date": "2026-05-26",
+      "summary": "The national Government sent its own bill (Prevención de Ludopatía y Regulación de Juegos de Azar en Línea) to Congress.",
+      "quote": "El Gobierno nacional presentó ante el Congreso el Proyecto de Ley de Prevención de Ludopatía y Regulación de Juegos de Azar en Línea.",
+      "doc": "ar-gob-proyecto-pe-2026-05-26"
+    }
+  ],
+  "closed": [
+    {
+      "url": "https://www.loteriasantafe.gov.ar/",
+      "date": "2026-11-01",
+      "reason": "no answer from this machine (timeout); from the server 187.7.26.95: HTTP 403 Forbidden (Apache) with curl default UA and with \"gambeteo-feeds/1.0\"; not bypassed"
+    },
+    {
+      "url": "https://www.santafe.gov.ar/",
+      "date": "2026-11-01",
+      "reason": "no answer (timeout) from this machine and from the server"
+    }
+  ],
+  "docs": {
+    "ar-c-juegosegurolegal": {
+      "url": "https://juegosegurolegal.gob.ar/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "782d662a7b0a4be70b0f42415eb7e3014621bd01498022be82c8136ab614b6a2",
+      "file": "data/sources/rg/_docs/ar-c-juegosegurolegal.html"
+    },
+    "ar-c-lotba-autoexclusion": {
+      "url": "https://juegosegurolegal.gob.ar/?page=autoexclusion",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "4b77736a7d2423e0dd71781bebe7094128dd3cb8463ac519f7735adbb5015f1a",
+      "file": "data/sources/rg/_docs/ar-c-lotba-autoexclusion.html",
+      "finalUrl": "https://autoexclusion.loteriadelaciudad.gob.ar/wpnformulariopreregistroresponsive"
+    },
+    "ar-c-lotba-agencias": {
+      "url": "https://juegosegurolegal.gob.ar/?page=agencias-juego-en-linea",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "0835246c022439e2cd5d6f295330936c857752425a8eed53c3d031c40508c617",
+      "file": "data/sources/rg/_docs/ar-c-lotba-agencias.html"
+    },
+    "ar-b-loteria-juego-compulsivo": {
+      "url": "https://www.loteria.gba.gob.ar/juego-compulsivo",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "f05560a662d54d6aa918b5e562b547788dc810e71f3cb72881ba90c6fd89e00c",
+      "file": "data/sources/rg/_docs/ar-b-loteria-juego-compulsivo.html",
+      "finalUrl": "https://loteria.gba.gob.ar/juego-compulsivo"
+    },
+    "ar-b-loteria-juego-online": {
+      "url": "https://www.loteria.gba.gob.ar/juego-online",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "7efce31c8ffa8bf0356585f7ddd7693711489ace399c770867e6ce27f33894e2",
+      "file": "data/sources/rg/_docs/ar-b-loteria-juego-online.html",
+      "finalUrl": "https://loteria.gba.gob.ar/juego-online"
+    },
+    "ar-x-loteria-juego-responsable": {
+      "url": "https://www.loteriadecordoba.com.ar/juego-responsable",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "d4d78efe65a0cabeeb2ccd4ff74a6bfbd23f0fb989e52c07a1b654f22e9100eb",
+      "file": "data/sources/rg/_docs/ar-x-loteria-juego-responsable.html"
+    },
+    "ar-e-iafas-prevenjuego": {
+      "url": "https://www.iafas.gov.ar/juego-responsable/prevenjuego/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "5a01127a3d48a7503fda30d0bbbffebccad308ccf9b24fdcdaaab51eaf375dca",
+      "file": "data/sources/rg/_docs/ar-e-iafas-prevenjuego.html"
+    },
+    "ar-e-iafas-home": {
+      "url": "https://www.iafas.gov.ar/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "7eee5fec5d4e7cb3f6f2fbf951886813359dd48473fc1d6d8466b6f3b279f9ff",
+      "file": "data/sources/rg/_docs/ar-e-iafas-home.html"
+    },
+    "ar-m-ipjyc-juego-responsable": {
+      "url": "https://www.mendoza.gob.ar/juegosycasinos/juego-responsable/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "a0cada19b066c476b7f5c62707e266c16e5999daeab6e44717b73b01bff826d2",
+      "file": "data/sources/rg/_docs/ar-m-ipjyc-juego-responsable.html"
+    },
+    "ar-q-ijan-juego-responsable": {
+      "url": "https://ijan-neuquen.com/juego_responsable.php",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "bf579cd3e349d51f67917a7d935acadc27a60587564eb5efb38466876b85ac34",
+      "file": "data/sources/rg/_docs/ar-q-ijan-juego-responsable.html"
+    },
+    "ar-r-loteria-autoexclusion": {
+      "url": "https://www.loteriaderionegro.gob.ar/juego-responsable/autoexclusion",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "6b69564b4a3bfa44fa67f64f72ce34b79141a2cfe3fe875187cb8c2a2ddef215",
+      "file": "data/sources/rg/_docs/ar-r-loteria-autoexclusion.html"
+    },
+    "ar-msal-0800-salud-mental": {
+      "url": "https://www.argentina.gob.ar/node/356435",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "4ee93aa8cac331c5b27aaef4f486bdc01ca13ee6dfcc0e3bbd7de150a4c15a29",
+      "file": "data/sources/rg/_docs/ar-msal-0800-salud-mental.html"
+    },
+    "ar-hcdn-media-sancion-2024-11-27": {
+      "url": "https://www.hcdn.gob.ar/prensa/noticia/OBTUVO-MEDIA-SANCION-UN-PROYECTO-DE-PREVENCION-DE-LUDOPATIA-Y-REGULACION-DE-LAS-CIBERAPUESTAS/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "4608cffc099cb5ab1a4db7d579a9ddfa78258c87d82deb0b3dd580231062eded",
+      "file": "data/sources/rg/_docs/ar-hcdn-media-sancion-2024-11-27.html"
+    },
+    "ar-senado-cd-26-24": {
+      "url": "https://www.senado.gob.ar/parlamentario/comisiones/verExp/26.24/CD/PL",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "a8337c963a5398ec13220997faf5f2e8868beebad3e21dc029c7bc6adb364ab7",
+      "file": "data/sources/rg/_docs/ar-senado-cd-26-24.html"
+    },
+    "ar-senado-plenario-2025-10-15": {
+      "url": "https://www.senado.gob.ar/micrositios/nota/23285/noticias",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "88da0dfc31bcd8eb8e01860b8fc5d7af92169fa9894c8acc0b503ae5e7456ce3",
+      "file": "data/sources/rg/_docs/ar-senado-plenario-2025-10-15.html"
+    },
+    "ar-gob-proyecto-pe-2026-05-26": {
+      "url": "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-presento-un-proyecto-para-prevenir-la-ludopatia",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "d6931819062ee6caaae61f9ffa8cb082624662ce92fb04a203cc984e6d724b9e",
+      "file": "data/sources/rg/_docs/ar-gob-proyecto-pe-2026-05-26.html"
+    },
+    "ar-t-caja-popular-juego-responsable": {
+      "url": "https://www.cajapopular.gov.ar/index.php/1249-2/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "c0f4855f19febf3454a2ace18da27541b15f6a34385ac34f86508322f2020191",
+      "file": "data/sources/rg/_docs/ar-t-caja-popular-juego-responsable.html"
+    },
+    "ar-t-ley-8986": {
+      "url": "https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/pdf/28536.pdf",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "40c5b2b4a9f6c8c21d783c264fd0d87b239164f2e6f2c4ca30d3b90997b8164f",
+      "file": "data/sources/rg/_docs/ar-t-ley-8986.pdf"
+    },
+    "ar-a-enreja-jr": {
+      "url": "https://www.enrejasalta.com.ar/jr.php",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "d2e03313b93f54d271e6608ba60a08529e896dbc7c880132db99f441f8cf1b96",
+      "file": "data/sources/rg/_docs/ar-a-enreja-jr.html"
+    },
+    "ar-n-iplyc-portal": {
+      "url": "https://www.loteriademisiones.com.ar/portal/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "112c6d7c50a56c68cbfc7af7d3c5a757d881bf8a763ae39b305ca9b0d6fed2ad",
+      "file": "data/sources/rg/_docs/ar-n-iplyc-portal.html"
+    },
+    "ar-n-iplyc-juego-responsable": {
+      "url": "https://juegoresponsable.loteriademisiones.com.ar/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "a4c185a0c15b690d9d4a24f8197f9eda816ce9d1a4e7fd478c22cd98948b5361",
+      "file": "data/sources/rg/_docs/ar-n-iplyc-juego-responsable.html"
+    },
+    "ar-n-iplyc-autoexclusion": {
+      "url": "https://juegoresponsable.loteriademisiones.com.ar/autoexcluirme/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "15e220055b923e49f848865d5b23b44caf44c08f47e1b670ba6e96bfdc54e376",
+      "file": "data/sources/rg/_docs/ar-n-iplyc-autoexclusion.html"
+    },
+    "ar-h-loteria-chaquena-jr": {
+      "url": "https://loteria.chaco.gov.ar/juego_responsable",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "d9b0adf548dd773ee641ee50c059719d01df9c93fe19b08442963a3f45dfd410",
+      "file": "data/sources/rg/_docs/ar-h-loteria-chaquena-jr.html"
+    },
+    "ar-h-chaco-gob-2025-02-17": {
+      "url": "https://chaco.gov.ar/noticia-loteria-chaquena-redobla-su-compromiso-con-el-juego-responsable-2025-02-17-10-30",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "deeafe4002784879e24872985e603bf08c4281c1f92da549c260f1e2e03b544c",
+      "file": "data/sources/rg/_docs/ar-h-chaco-gob-2025-02-17.html"
+    },
+    "ar-w-loteria-correntina-autoexclusion": {
+      "url": "https://www.loteriacorrentina.gob.ar/juego-responsable/autoexclusi%C3%B3n",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "ed8b02ba27192a3ef7d528457a61a59ca84899e938481dfc1f33b1b111128fa4",
+      "file": "data/sources/rg/_docs/ar-w-loteria-correntina-autoexclusion.html"
+    },
+    "ar-j-cas-juego-responsable": {
+      "url": "https://www.cas.gob.ar/juegos/responsable",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "a5183b06b63e532a71c6b3ab8d0e1534e1dbfba66878172a2b9a4e0d684236a8",
+      "file": "data/sources/rg/_docs/ar-j-cas-juego-responsable.html"
+    },
+    "ar-l-iss-dafas-juego-responsable-wayback-2026-07-13": {
+      "url": "https://web.archive.org/web/20260713124458/https://www.isslapampa.gob.ar/dafas-juego-responsable/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "90d0aa208b42eab016f1847592751e8552e8f785c61c7fdf948726b50e32fe50",
+      "file": "data/sources/rg/_docs/ar-l-iss-dafas-juego-responsable-wayback-2026-07-13.html"
+    },
+    "ar-v-ipra-juego-responsable": {
+      "url": "https://www.ipra.gov.ar/web/juegoresponsable/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "2d8235a2e5b0249c452732e459f6f2b7ab9152cd0152f8ddad82826686373bbc",
+      "file": "data/sources/rg/_docs/ar-v-ipra-juego-responsable.html"
+    },
+    "ar-f-ajalar-contacto": {
+      "url": "https://ajalar.com.ar/sitio/contacto/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "7a5723db9278d54a9344a2476cc38e6b1baac39d5ac760baa4ad33bca04caf5f",
+      "file": "data/sources/rg/_docs/ar-f-ajalar-contacto.html"
+    },
+    "ar-f-ajalar-autoexclusion": {
+      "url": "https://ajalar.com.ar/sitio/formulario-de-autoexclusion/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "9c4a6920036522538821d93950148f0b5cff6f0a13211433727969240d20daca",
+      "file": "data/sources/rg/_docs/ar-f-ajalar-autoexclusion.html"
+    },
+    "ar-g-caja-social-juego-responsable": {
+      "url": "http://www.cajasocialsde.gob.ar/php/juegoresponsable.php",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "23c7e99255e7a118b1a297e8a9e7f438c5795c593649e7d8fb9b371231afc96a",
+      "file": "data/sources/rg/_docs/ar-g-caja-social-juego-responsable.html"
+    },
+    "ar-s-loteria-juego-responsable-wayback-2025-08-13": {
+      "url": "https://web.archive.org/web/20250813193304/https://www.loteriasantafe.gov.ar/index.php/juego-responsable",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "d361d998771f4719c434fd499fb071c9702270983f4e6c3c5c9e8bd40145e542",
+      "file": "data/sources/rg/_docs/ar-s-loteria-juego-responsable-wayback-2025-08-13.html"
+    },
+    "ar-s-ms-juego-compulsivo-wayback-2026-07-14": {
+      "url": "https://web.archive.org/web/20260714063341/https://www.santafe.gob.ar/ms/juegocompulsivo/",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "3dd34645c077f9b9bea2f07b39b1b97143cb885008266900fd86c9ec9095d57f",
+      "file": "data/sources/rg/_docs/ar-s-ms-juego-compulsivo-wayback-2026-07-14.html"
+    },
+    "ar-z-loas-guia-padres-docentes": {
+      "url": "https://loteriadesantacruz.gob.ar/wp-content/uploads/2025/01/Guia-para-Padre-y-Docentes.pdf",
+      "fetched": "2026-11-01",
+      "status": 200,
+      "sha256": "889ea46685087f2246caf339d54680f17560666ecdabca5a28d7eb9bb4699415",
+      "file": "data/sources/rg/_docs/ar-z-loas-guia-padres-docentes.pdf"
+    }
+  }
+}

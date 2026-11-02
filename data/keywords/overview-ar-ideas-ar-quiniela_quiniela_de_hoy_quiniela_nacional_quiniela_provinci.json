@@ -1,0 +1,1021 @@
+{
+ "fetched": "2026-11-01T14:27:34.688Z",
+ "mode": "overview",
+ "country": "ar",
+ "kw": "quiniela,quiniela de hoy,quiniela nacional,quiniela provincia,significado de los numeros de la quiniela,la quiniela 1 al 100,quiniela resultados,quiniela de la ciudad,quini 6,loto,brinco,telekino,loto plus,prode,raspaditas,tombola,quiniela plus,poceada,pronosticos futbol,cuotas,tabla de posiciones liga profesional,promedios,tabla de promedios,fixture liga profesional,copa de la liga,copa libertadores,tabla anual,eliminatorias sudamericanas,tabla eliminatorias,mundial 2026,fixture mundial 2026,colapinto,franco colapinto,formula 1,turismo carretera,dakar,truco,truco online,jugar al truco,reglas del truco,generala,chinchon,burako,poker,carreras de caballos,palermo carreras,san isidro carreras,hipodromo de palermo,burrero,calculadora de apuestas,apuestas deportivas,casas de apuestas,surebet,simulador mundial 2026,simulador eliminatorias,simulador liga profesional,probabilidades descenso,ludopatia,juego responsable,bingo,ruleta,ruleta online,blackjack,casino online,tragamonedas gratis,liga nacional de basquet,nba,sorteo quini 6,resultados quini 6,loteria",
+ "rows": [
+  {
+   "keyword": "chinchon",
+   "volume": 4400,
+   "difficulty": 0,
+   "traffic_potential": 700,
+   "parent_topic": "juegatu",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "fixture mundial 2026",
+   "volume": 1130000,
+   "difficulty": 35,
+   "traffic_potential": 563000,
+   "parent_topic": "fixture mundial 2026",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "brinco",
+   "volume": 35000,
+   "difficulty": 0,
+   "traffic_potential": 31000,
+   "parent_topic": "brinco",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "loteria",
+   "volume": 11000,
+   "difficulty": 72,
+   "traffic_potential": 80000,
+   "parent_topic": "resultado de la quiniela",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "tombola",
+   "volume": 26000,
+   "difficulty": 5,
+   "traffic_potential": 91000,
+   "parent_topic": "loterías mundiales",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "simulador mundial 2026",
+   "volume": 6800,
+   "difficulty": 1,
+   "traffic_potential": 3000,
+   "parent_topic": "simulador mundial 2026",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "jugar al truco",
+   "volume": 5400,
+   "difficulty": 9,
+   "traffic_potential": 5300,
+   "parent_topic": "truco",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "poker",
+   "volume": 13000,
+   "difficulty": 68,
+   "traffic_potential": 800,
+   "parent_topic": "poker juego",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "ludopatia",
+   "volume": 16000,
+   "difficulty": 40,
+   "traffic_potential": 100,
+   "parent_topic": "ludopatia que es",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela provincia",
+   "volume": 20000,
+   "difficulty": 28,
+   "traffic_potential": 64000,
+   "parent_topic": "resultado de la quiniela",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "poceada",
+   "volume": 37000,
+   "difficulty": 12,
+   "traffic_potential": 118000,
+   "parent_topic": "poceada",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "generala",
+   "volume": 3500,
+   "difficulty": 3,
+   "traffic_potential": 20,
+   "parent_topic": "la generala juego",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "bingo",
+   "volume": 6600,
+   "difficulty": 5,
+   "traffic_potential": 10,
+   "parent_topic": "reglas del bingo",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "casino online",
+   "volume": 214000,
+   "difficulty": 61,
+   "traffic_potential": 73000,
+   "parent_topic": "casino online",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela plus",
+   "volume": 193000,
+   "difficulty": 5,
+   "traffic_potential": 25000,
+   "parent_topic": "quiniela plus de hoy",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": true,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "nba",
+   "volume": 527000,
+   "difficulty": 34,
+   "traffic_potential": 800,
+   "parent_topic": "posiciones de nba",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "burako",
+   "volume": 8400,
+   "difficulty": 0,
+   "traffic_potential": 2100,
+   "parent_topic": "burako",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "casas de apuestas",
+   "volume": 2100,
+   "difficulty": 37,
+   "traffic_potential": 5800,
+   "parent_topic": "mejor casa de apuestas argentina",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "resultados quini 6",
+   "volume": 47000,
+   "difficulty": 9,
+   "traffic_potential": 765000,
+   "parent_topic": "quini 6",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "copa libertadores",
+   "volume": 263000,
+   "difficulty": 50,
+   "traffic_potential": 8500,
+   "parent_topic": "libertadores",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "prode",
+   "volume": 7800,
+   "difficulty": 45,
+   "traffic_potential": 10,
+   "parent_topic": "que es un prode",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "formula 1",
+   "volume": 525000,
+   "difficulty": 44,
+   "traffic_potential": 173000,
+   "parent_topic": "formula 1",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "palermo carreras",
+   "volume": 80,
+   "difficulty": null,
+   "traffic_potential": null,
+   "parent_topic": null,
+   "intents": {
+    "informational": true,
+    "navigational": true,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": true
+   }
+  },
+  {
+   "keyword": "colapinto",
+   "volume": 298000,
+   "difficulty": 35,
+   "traffic_potential": 79000,
+   "parent_topic": "colapinto",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "telekino",
+   "volume": 185000,
+   "difficulty": 0,
+   "traffic_potential": 6500,
+   "parent_topic": "telekino controlar",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "dakar",
+   "volume": 5000,
+   "difficulty": 22,
+   "traffic_potential": 4600,
+   "parent_topic": "dakar",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela",
+   "volume": 1410000,
+   "difficulty": 43,
+   "traffic_potential": 3640000,
+   "parent_topic": "ruta 1000",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "truco online",
+   "volume": 16000,
+   "difficulty": 0,
+   "traffic_potential": 150,
+   "parent_topic": "gran truco argentino",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "loto plus",
+   "volume": 184000,
+   "difficulty": 10,
+   "traffic_potential": 40000,
+   "parent_topic": "resultado del loto",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "mundial 2026",
+   "volume": 1350000,
+   "difficulty": 44,
+   "traffic_potential": 1790000,
+   "parent_topic": "copa mundial de la fifa 2026",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "raspaditas",
+   "volume": 600,
+   "difficulty": 0,
+   "traffic_potential": 70,
+   "parent_topic": "tortitas mendocinas",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "fixture liga profesional",
+   "volume": 2500,
+   "difficulty": 28,
+   "traffic_potential": 442000,
+   "parent_topic": "liga argentina",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "juego responsable",
+   "volume": 50,
+   "difficulty": 53,
+   "traffic_potential": 10,
+   "parent_topic": "juego responsable",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "simulador eliminatorias",
+   "volume": 0,
+   "difficulty": null,
+   "traffic_potential": null,
+   "parent_topic": null,
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "sorteo quini 6",
+   "volume": 36000,
+   "difficulty": 17,
+   "traffic_potential": 325000,
+   "parent_topic": "quini 6",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "tabla eliminatorias",
+   "volume": 40,
+   "difficulty": 6,
+   "traffic_potential": 12000,
+   "parent_topic": "eliminatorias conmebol",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quini 6",
+   "volume": 660000,
+   "difficulty": 17,
+   "traffic_potential": 325000,
+   "parent_topic": "quini 6",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "cuotas",
+   "volume": 3700,
+   "difficulty": 13,
+   "traffic_potential": 24000,
+   "parent_topic": "go cuotas",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela resultados",
+   "volume": 9700,
+   "difficulty": 38,
+   "traffic_potential": 436000,
+   "parent_topic": "jugando online",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "ruleta online",
+   "volume": 15000,
+   "difficulty": 54,
+   "traffic_potential": 79000,
+   "parent_topic": "ruleta",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "significado de los numeros de la quiniela",
+   "volume": 100,
+   "difficulty": 0,
+   "traffic_potential": 150,
+   "parent_topic": "significado de numeros de quiniela",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "tabla de posiciones liga profesional",
+   "volume": 2300,
+   "difficulty": 35,
+   "traffic_potential": 421000,
+   "parent_topic": "liga argentina",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela de hoy",
+   "volume": 1080000,
+   "difficulty": 55,
+   "traffic_potential": 1070000,
+   "parent_topic": "quiniela de hoy",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "pronosticos futbol",
+   "volume": 400,
+   "difficulty": 0,
+   "traffic_potential": 3400,
+   "parent_topic": "pronostico futbol",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "simulador liga profesional",
+   "volume": 0,
+   "difficulty": null,
+   "traffic_potential": null,
+   "parent_topic": null,
+   "intents": {}
+  },
+  {
+   "keyword": "carreras de caballos",
+   "volume": 300,
+   "difficulty": 1,
+   "traffic_potential": 100,
+   "parent_topic": "carreras de caballos",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": true
+   }
+  },
+  {
+   "keyword": "reglas del truco",
+   "volume": 2400,
+   "difficulty": 2,
+   "traffic_potential": 1600,
+   "parent_topic": "señas del truco",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "truco",
+   "volume": 12000,
+   "difficulty": 12,
+   "traffic_potential": 14000,
+   "parent_topic": "truco argentino",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "tabla de promedios",
+   "volume": 9500,
+   "difficulty": 14,
+   "traffic_potential": 147000,
+   "parent_topic": "primera",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela de la ciudad",
+   "volume": 34000,
+   "difficulty": 39,
+   "traffic_potential": 39000,
+   "parent_topic": "quiniela de la ciudad",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "copa de la liga",
+   "volume": 13000,
+   "difficulty": 12,
+   "traffic_potential": 279000,
+   "parent_topic": "partidos de primera división de argentina",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "tragamonedas gratis",
+   "volume": 9800,
+   "difficulty": 39,
+   "traffic_potential": 800,
+   "parent_topic": "juegos de casino gratis tragamonedas 777",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "apuestas deportivas",
+   "volume": 9300,
+   "difficulty": 47,
+   "traffic_potential": 90,
+   "parent_topic": "app de apuestas deportivas",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": true,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "turismo carretera",
+   "volume": 19000,
+   "difficulty": 13,
+   "traffic_potential": 600,
+   "parent_topic": "asociación corredores de turismo carretera",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "surebet",
+   "volume": 250,
+   "difficulty": 56,
+   "traffic_potential": 500,
+   "parent_topic": "surebets",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": true,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "eliminatorias sudamericanas",
+   "volume": 1800,
+   "difficulty": 1,
+   "traffic_potential": 30,
+   "parent_topic": "tabla de posiciones eliminatorias 2023",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "liga nacional de basquet",
+   "volume": 9400,
+   "difficulty": 4,
+   "traffic_potential": 17000,
+   "parent_topic": "liga nacional de basquet",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "calculadora de apuestas",
+   "volume": 60,
+   "difficulty": 27,
+   "traffic_potential": 70,
+   "parent_topic": "apuesta segura",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "blackjack",
+   "volume": 6000,
+   "difficulty": 56,
+   "traffic_potential": 1100,
+   "parent_topic": "black jack",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "quiniela nacional",
+   "volume": 167000,
+   "difficulty": 46,
+   "traffic_potential": 97000,
+   "parent_topic": "quiniela nacional nocturna de hoy 21 hs",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "loto",
+   "volume": 53000,
+   "difficulty": 8,
+   "traffic_potential": 85000,
+   "parent_topic": "loto",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "hipodromo de palermo",
+   "volume": 9300,
+   "difficulty": 22,
+   "traffic_potential": 9600,
+   "parent_topic": "hipodromo de palermo",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": true
+   }
+  },
+  {
+   "keyword": "burrero",
+   "volume": 0,
+   "difficulty": null,
+   "traffic_potential": null,
+   "parent_topic": null,
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "franco colapinto",
+   "volume": 223000,
+   "difficulty": 39,
+   "traffic_potential": 74000,
+   "parent_topic": "colapinto hoy",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "tabla anual",
+   "volume": 72000,
+   "difficulty": 16,
+   "traffic_potential": 419000,
+   "parent_topic": "liga argentina",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": false
+   }
+  },
+  {
+   "keyword": "ruleta",
+   "volume": 120000,
+   "difficulty": 51,
+   "traffic_potential": 79000,
+   "parent_topic": "ruleta",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  },
+  {
+   "keyword": "san isidro carreras",
+   "volume": 0,
+   "difficulty": null,
+   "traffic_potential": null,
+   "parent_topic": null,
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": true,
+    "local": true
+   }
+  },
+  {
+   "keyword": "promedios",
+   "volume": 361000,
+   "difficulty": 13,
+   "traffic_potential": 1020000,
+   "parent_topic": "promiedos",
+   "intents": {
+    "informational": true,
+    "navigational": false,
+    "commercial": false,
+    "transactional": false,
+    "branded": false,
+    "local": false
+   }
+  }
+ ]
+}

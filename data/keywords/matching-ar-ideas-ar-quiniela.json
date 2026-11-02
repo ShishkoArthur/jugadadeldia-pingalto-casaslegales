@@ -1,0 +1,358 @@
+{
+ "fetched": "2026-11-01T14:27:54.490Z",
+ "mode": "matching",
+ "country": "ar",
+ "kw": "quiniela",
+ "rows": [
+  {
+   "keyword": "quiniela",
+   "volume": 1410000,
+   "difficulty": 43,
+   "traffic_potential": 3640000,
+   "parent_topic": "ruta 1000"
+  },
+  {
+   "keyword": "quiniela enzo",
+   "volume": 1240000,
+   "difficulty": 30,
+   "traffic_potential": 1810000,
+   "parent_topic": "quiniela enzo"
+  },
+  {
+   "keyword": "quiniela de hoy",
+   "volume": 1080000,
+   "difficulty": 55,
+   "traffic_potential": 1070000,
+   "parent_topic": "quiniela de hoy"
+  },
+  {
+   "keyword": "quiniela de tucuman",
+   "volume": 546000,
+   "difficulty": 0,
+   "traffic_potential": 755000,
+   "parent_topic": "quiniela de tucuman"
+  },
+  {
+   "keyword": "quiniela en vivo",
+   "volume": 490000,
+   "difficulty": 18,
+   "traffic_potential": 11000,
+   "parent_topic": "quiniela vivo"
+  },
+  {
+   "keyword": "quiniela de tucumán",
+   "volume": 450000,
+   "difficulty": 0,
+   "traffic_potential": 746000,
+   "parent_topic": "quiniela de tucuman"
+  },
+  {
+   "keyword": "enzo quiniela",
+   "volume": 310000,
+   "difficulty": 20,
+   "traffic_potential": 1810000,
+   "parent_topic": "quiniela enzo"
+  },
+  {
+   "keyword": "quiniela hoy",
+   "volume": 273000,
+   "difficulty": 24,
+   "traffic_potential": 32000,
+   "parent_topic": "loterias de hoy"
+  },
+  {
+   "keyword": "quiniela de mendoza",
+   "volume": 267000,
+   "difficulty": 13,
+   "traffic_potential": 157000,
+   "parent_topic": "quiniela de mendoza"
+  },
+  {
+   "keyword": "quiniela mundial",
+   "volume": 266000,
+   "difficulty": 47,
+   "traffic_potential": 1580000,
+   "parent_topic": "loterias mundiales"
+  },
+  {
+   "keyword": "quiniela confiable",
+   "volume": 218000,
+   "difficulty": 18,
+   "traffic_potential": 3360000,
+   "parent_topic": "ruta 1000"
+  },
+  {
+   "keyword": "quiniela plus",
+   "volume": 193000,
+   "difficulty": 5,
+   "traffic_potential": 25000,
+   "parent_topic": "quiniela plus de hoy"
+  },
+  {
+   "keyword": "resultado de la quiniela",
+   "volume": 189000,
+   "difficulty": 28,
+   "traffic_potential": 84000,
+   "parent_topic": "la quiniela de hoy"
+  },
+  {
+   "keyword": "quiniela nacional",
+   "volume": 167000,
+   "difficulty": 46,
+   "traffic_potential": 97000,
+   "parent_topic": "quiniela nacional nocturna de hoy 21 hs"
+  },
+  {
+   "keyword": "notitimba quiniela",
+   "volume": 151000,
+   "difficulty": 3,
+   "traffic_potential": 1880000,
+   "parent_topic": "notitimba"
+  },
+  {
+   "keyword": "quiniela notitimba",
+   "volume": 144000,
+   "difficulty": 13,
+   "traffic_potential": 1730000,
+   "parent_topic": "notitimba"
+  },
+  {
+   "keyword": "quiniela vivo",
+   "volume": 134000,
+   "difficulty": 43,
+   "traffic_potential": 1880000,
+   "parent_topic": "notitimba"
+  },
+  {
+   "keyword": "quiniela formoseña",
+   "volume": 120000,
+   "difficulty": 25,
+   "traffic_potential": 124000,
+   "parent_topic": "quiniela formoseña"
+  },
+  {
+   "keyword": "quiniela de catamarca",
+   "volume": 115000,
+   "difficulty": 0,
+   "traffic_potential": 62000,
+   "parent_topic": "quiniela de catamarca"
+  },
+  {
+   "keyword": "quiniela nacional y provincia nocturna de hoy 21 hs",
+   "volume": 114000,
+   "difficulty": 6,
+   "traffic_potential": 70,
+   "parent_topic": "quiniela de hoy todas las cabezas nacional y provincia nocturna"
+  },
+  {
+   "keyword": "quiniela de san juan",
+   "volume": 113000,
+   "difficulty": 0,
+   "traffic_potential": 144000,
+   "parent_topic": "quiniela de san juan"
+  },
+  {
+   "keyword": "quiniela nocturna",
+   "volume": 110000,
+   "difficulty": 39,
+   "traffic_potential": 195000,
+   "parent_topic": "quiniela nocturna"
+  },
+  {
+   "keyword": "quiniela de tucumán último sorteo",
+   "volume": 109000,
+   "difficulty": 0,
+   "traffic_potential": 884000,
+   "parent_topic": "quiniela de tucuman"
+  },
+  {
+   "keyword": "resultado de la quiniela de hoy",
+   "volume": 107000,
+   "difficulty": 54,
+   "traffic_potential": 1820000,
+   "parent_topic": "quiniela de hoy"
+  },
+  {
+   "keyword": "quiniela correntina",
+   "volume": 106000,
+   "difficulty": 43,
+   "traffic_potential": 184000,
+   "parent_topic": "quiniela correntina"
+  },
+  {
+   "keyword": "quiniela mundiales",
+   "volume": 105000,
+   "difficulty": 56,
+   "traffic_potential": 1500000,
+   "parent_topic": "loterias mundiales"
+  },
+  {
+   "keyword": "quiniela de entre rios",
+   "volume": 104000,
+   "difficulty": 30,
+   "traffic_potential": 199000,
+   "parent_topic": "quiniela entre ríos"
+  },
+  {
+   "keyword": "quiniela chaqueña",
+   "volume": 100000,
+   "difficulty": 39,
+   "traffic_potential": 2000,
+   "parent_topic": "sorteo quinielas"
+  },
+  {
+   "keyword": "quiniela de córdoba",
+   "volume": 99000,
+   "difficulty": 44,
+   "traffic_potential": 134000,
+   "parent_topic": "quiniela de córdoba"
+  },
+  {
+   "keyword": "quiniela online",
+   "volume": 97000,
+   "difficulty": 33,
+   "traffic_potential": 1560000,
+   "parent_topic": "quiniela de hoy"
+  },
+  {
+   "keyword": "quiniela de cordoba",
+   "volume": 96000,
+   "difficulty": 41,
+   "traffic_potential": 134000,
+   "parent_topic": "quiniela de córdoba"
+  },
+  {
+   "keyword": "resultados quiniela",
+   "volume": 85000,
+   "difficulty": 49,
+   "traffic_potential": 1070000,
+   "parent_topic": "quiniela de hoy"
+  },
+  {
+   "keyword": "quiniela nacional y provincia",
+   "volume": 83000,
+   "difficulty": 44,
+   "traffic_potential": 3360000,
+   "parent_topic": "ruta 1000"
+  },
+  {
+   "keyword": "quiniela entre ríos",
+   "volume": 73000,
+   "difficulty": 46,
+   "traffic_potential": 241000,
+   "parent_topic": "quiniela de entre rios"
+  },
+  {
+   "keyword": "resultado quiniela",
+   "volume": 73000,
+   "difficulty": 39,
+   "traffic_potential": 358000,
+   "parent_topic": "jugando online"
+  },
+  {
+   "keyword": "resultados de la quiniela de hoy",
+   "volume": 72000,
+   "difficulty": 43,
+   "traffic_potential": 3360000,
+   "parent_topic": "ruta 1000"
+  },
+  {
+   "keyword": "quiniela nacional nocturna de hoy 21 hs",
+   "volume": 71000,
+   "difficulty": 51,
+   "traffic_potential": 93000,
+   "parent_topic": "quiniela nacional nocturna de hoy 21 hs"
+  },
+  {
+   "keyword": "quiniela de entre ríos",
+   "volume": 70000,
+   "difficulty": 45,
+   "traffic_potential": 140000,
+   "parent_topic": "tombola de entre rios"
+  },
+  {
+   "keyword": "quiniela al minuto",
+   "volume": 69000,
+   "difficulty": 23,
+   "traffic_potential": 3340000,
+   "parent_topic": "ruta 1000"
+  },
+  {
+   "keyword": "quiniela ruta 1000",
+   "volume": 69000,
+   "difficulty": 0,
+   "traffic_potential": 350,
+   "parent_topic": "quinielas 1000"
+  },
+  {
+   "keyword": "resultados de la quiniela",
+   "volume": 68000,
+   "difficulty": 38,
+   "traffic_potential": 2730000,
+   "parent_topic": "quiniela"
+  },
+  {
+   "keyword": "quiniela tucuman",
+   "volume": 66000,
+   "difficulty": 0,
+   "traffic_potential": 2730000,
+   "parent_topic": "quiniela"
+  },
+  {
+   "keyword": "quiniela misionera",
+   "volume": 66000,
+   "difficulty": 20,
+   "traffic_potential": 44000,
+   "parent_topic": "quiniela misionera"
+  },
+  {
+   "keyword": "ruta 1000 quiniela",
+   "volume": 63000,
+   "difficulty": 13,
+   "traffic_potential": 3340000,
+   "parent_topic": "ruta 1000"
+  },
+  {
+   "keyword": "quiniela de tucumán de hoy",
+   "volume": 62000,
+   "difficulty": 2,
+   "traffic_potential": 2710000,
+   "parent_topic": "quiniela"
+  },
+  {
+   "keyword": "quiniela nacional nocturna",
+   "volume": 61000,
+   "difficulty": 47,
+   "traffic_potential": 215000,
+   "parent_topic": "quiniela nocturna"
+  },
+  {
+   "keyword": "quiniela de tucuman hoy",
+   "volume": 49000,
+   "difficulty": 2,
+   "traffic_potential": 884000,
+   "parent_topic": "quiniela de tucuman"
+  },
+  {
+   "keyword": "quiniela córdoba",
+   "volume": 47000,
+   "difficulty": 0,
+   "traffic_potential": 6000,
+   "parent_topic": "quiniela de cordoba"
+  },
+  {
+   "keyword": "la quiniela de hoy",
+   "volume": 45000,
+   "difficulty": 41,
+   "traffic_potential": 2760000,
+   "parent_topic": "quiniela"
+  },
+  {
+   "keyword": "quiniela nacional y provincia en vivo",
+   "volume": 44000,
+   "difficulty": 29,
+   "traffic_potential": 70,
+   "parent_topic": "quinielas nocturnas nacional y provincia"
+  }
+ ]
+}

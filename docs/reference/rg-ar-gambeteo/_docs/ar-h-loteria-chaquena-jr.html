@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Juego Responsable</title>
+
+      <!-- Mobile Browser Bar Colors -->
+    <meta name="theme-color" content="#2D94CB">
+    <meta name="msapplication-navbutton-color" content="#2D94CB">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2D94CB">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/frontend/images/favicon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="/frontend/images/favicon.png" type="image/png" />
+
+    <!-- Styles -->
+  <link rel="stylesheet" href="/build/frontend.css">
+      
+<style>
+	@font-face {
+			font-family: 'geomanistregular';
+			src: url('/frontend/autoexcluidos/assets/fonts/geomanist/geomanist-regular-webfont.eot');
+			src: url('/frontend/autoexcluidos/assets/fonts/geomanist/geomanist-regular-webfont.eot?#iefix') format('embedded-opentype'),
+				url('/frontend/autoexcluidos/assets/fonts/geomanist/geomanist-regular-webfont.woff2') format('woff2'),
+				url('/frontend/autoexcluidos/assets/fonts/geomanist/geomanist-regular-webfont.woff') format('woff'),
+				url('/frontend/autoexcluidos/assets/fonts/geomanist/geomanist-regular-webfont.ttf') format('truetype'),
+				url('/frontend/autoexcluidos/assets/fonts/geomanist/geomanist-regular-webfont.svg#geomanistregular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+
+		}
+	.imgClose-open {
+		right: 64%;
+		position: relative;
+	}
+
+	.imgClose-bar {
+		right: 70%;
+		position: relative;
+	}
+
+	.imgClose-open-min {
+		right: 55%;
+		position: relative;
+	}
+
+	.imgClose-bar-min {
+		right: 50%;
+		position: relative;
+	}
+
+	#imgCloseMovil {
+		right: 35%;
+		position: relative;
+	}
+</style>
+
+  <!-- INTERNET EXPLORER Fallback -->
+  <script>
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+    if (isIE) window.location.href = "/update.html";
+  </script>
+  <!-- Matomo -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://stats.ecom.com.ar/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '15']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
+</head>
+
+<body>
+    <!-- navbar2 -->
+  <nav class="navbar2 superior">
+    <!-- navbar2 TOP -->
+    <div class="navbar2-top2">
+      <!-- navbar2 DATE -->
+      <section class="navbar2-group navbar2-date">
+        <div class="date-time">
+          <div class="date-time-container">
+            <div class="date-time-box">
+                                          <div class="date-time-item date-time__hour" >
+                <time id="clock"></time>
+              </div>
+            </div>
+            <div class="date-time-box">
+              <div class="date-time-item date-time__date" id="date">
+              </div>
+            </div>
+          </div>
+          <div class="date-time-container social">
+            <div class="date-time-box">
+              <a class="date-time-item date-time__social" href="https://www.facebook.com/LoteriaChaquenaOficial/" target="_blank">
+                <img src="/frontend/images/icons/icon-facebook-blue.svg" alt="Facebook" class="icon-xs">
+              </a>
+            </div>
+            <div class="date-time-box">
+              <a class="date-time-item date-time__social" href="https://twitter.com/loteriachaquena" target="_blank">
+                <img src="/frontend/images/icons/icon-twitter-blue.svg" alt="Facebook" class="icon-xs">
+              </a>
+            </div>
+            <div class="date-time-box">
+              <a class="date-time-item date-time__social" href="https://www.youtube.com/channel/UCUI-haWh0sI9ABHEFfGnHxw" target="_blank">
+                <img src="/frontend/images/icons/icon-youtube-blue.svg" alt="Facebook" class="icon-xs">
+              </a>
+            </div>
+            <div class="date-time-box">
+                <a class="date-time-item date-time__social" href="https://www.instagram.com/loteriachaquena" target="_blank">
+                  <img src="/frontend/images/icons/instagram-icon.png" alt="Facebook" class="icon-xs">
+                </a>
+              </div>
+          </div>
+        </div>
+      </section>
+      <!-- navbar2 DATE -->
+
+      <!-- navbar2 LOGO -->
+      <section class="navbar2-group navbar2-logo2">
+        <a href="/">
+          <img class="img-fluid"  src="/frontend/images/logo-loteria.png" alt="Loteria del Chaco">
+        </a>
+      </section>
+      <!-- navbar2 LOGO -->
+      
+      <!-- navbar2 LOGO -->
+      <section class="navbar2-group navbar2-sponsor2">
+        <a href="http://chaco.gov.ar/" target="_blank">
+          <img src="/frontend/images/logo_gobierno_gris2020.png" alt="Gobierno del Chaco">
+        </a>
+      </section>
+      <!-- navbar2 LOGO -->
+    </div>
+    <!-- navbar2 TOP -->
+
+    <!-- navbar2 BOTTOM -->
+    
+<div class="navbar2-bottom2" style="background-color: #e4e4e4;">
+	<div class="navbar2-mobile-menu-btn2 text-with-icon">
+		<img class="icon-xs" src="/frontend/images/icons/icon-menu-grey_dark.svg" alt="Menu">
+		&nbsp; &nbsp;Menu
+	</div>
+	<div class="navbar2-mobile-menu-btn2 text-with-icon"></div>
+	<div class="navbar2-menu__container2">
+		<div class="navbar2-menu__background2"></div>
+		<ul class="navbar2-menu " style="padding-top:10px;">
+			<li class="navbar2-menu-item border-color-green-strong">
+				<a href="/" class="link-menu">Inicio</a>
+			</li>
+			<li class="navbar2-menu-item border-color-green-strong">
+				<a href="#seccion_juego_patologico" class="link-menu">¿Qué es el juego patológico?</a>
+			</li>
+			<li class="navbar2-menu-item border-color-green-strong">
+				<a href="#seccion_juego_responsable" class="link-menu">Programa de Juego Responsable</a>
+			</li>
+			<li class="navbar2-menu-item border-color-green-strong">
+				<a href="#seccion_autoexclusion" class="link-menu">Autoexclusión</a>
+			</li>
+			<li class="navbar2-menu-item border-color-green-strong">
+				<a href="#seccion_comunicate_con_nosotros" class="link-menu">Contacto</a>
+			</li>
+		</ul>
+		<div />
+	</div>
+	    
+  </nav>
+  <!-- navbar2 -->
+  
+    <!-- SIDEMENU -->
+      <!-- SORTEO EN VIVO POPUP -->
+    <span class="sorteo-popup__container"  id="popup_sorteovivo" style="display:none;">
+      <span class="sorteo-popup">
+        <div class="sorteo-popup__icon">
+          <figure class="btn-icon btn-icon--smd bg-red">
+            <img src="/frontend/images/icons/icon-juegos-white.svg" alt="Novedades">
+          </figure>
+        </div>
+        <div class="sorteo-popup__details blue" onclick="verResultadosEnVivo()" sorteo="" id="aviso_sorteo_vivo"  style="cursor: pointer;"> 
+          <strong class="sorteo-popup__title" id="pop_titulo_sorteovivo">¡COMENZÓ EL SORTEO!</strong>
+          <div id="pop_subtitulo_sorteovivo">Mirá los resultados en vivo</div>
+        </div>
+        <div class="sorteo-popup__close">
+          <figure class="btn-icon btn-icon--xs bg-red">
+            <img src="/frontend/images/icons/icon-close-white.svg" alt="Cerrar">
+          </figure>
+        </div>
+      </span>
+    </span>
+
+  <!-- SORTEO EN VIVO POPUP -->
+  <!-- ventana modal de resultados en vivo -->
+  <div class="modal fade" id="modal_vivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content"  >
+        <div class="modal-header sorteovivo-header">
+          <h3 class="modal-title " id="titulo_modal_vivo"></h3>
+          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <article class="card-body">
+            <h3 id="modalidad_vivo"></h3>
+          </article>
+          <div class="row">
+            <div class="col-md-6">
+                Nro. de Sorteo: <div class="inline"  id="sorteo_vivo_numeroSorteo"></div>
+            </div>
+            <div class="col-md-6">
+                Fecha: <div class="inline" id="sorteo_vivo_fecha"></div>
+            </div>
+            <br><br><br>
+            
+            <div class="col-6 align-center" id="parte_1_sorteo_vivo">
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="ubicacion_header">Ubicación</th>
+                      <th>Número</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lista_vivo1">
+                    
+                  </tbody>
+                </table>
+            </div>
+            <div class="col-6 align-center" id="parte_2_sorteo_vivo">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th  class="ubicacion_header" >Ubicación</th>
+                      <th>Número</th>
+                    </tr>
+                  </thead>
+                    <tbody id="lista_vivo2">
+                      
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+          <span>Resultados sujetos a verificación.</span>
+        </div>
+        <div class="modal-footer">
+          <a id="boton_imprimir_sorteo_vivo" href="" onclick="window.open(this.href, this.target, 'width=800,height=650,scrollbars=yes'); return false;" class="btn btn-danger boton-red" role="button"  target="_blank" aria-pressed="true" style="display:none;">Imprimir</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  	<main class="main">
+
+		<section class="home-welcome">
+    <div class="slider-container2">
+        <div class="home-welcome-slider">
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/6915c638bf3a4479592365.png')"
+                    >
+
+                            </div>
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/65ba5a8d960a7420957550.jpg')"
+                    >
+
+                            </div>
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/65ba5014c22ea136632327.jpg')"
+                    >
+
+                            </div>
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/65ba4febf3336357290483.jpg')"
+                    >
+
+                            </div>
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/65ce13cdd6e39917649039.jpg')"
+                    >
+
+                            </div>
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/65ba4fbf87ccd239008111.jpg')"
+                    >
+
+                            </div>
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/6435513350da6097710661.jpg')"
+                    >
+
+                            </div>
+                         <div name="1" class="home-slider-item background-image"
+                style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/64de34467e7bd062586399.jpg')"
+                    >
+
+                            </div>
+                    </div>
+        <div class="home-welcome-slider__controls slider-controls">
+            <div class="slider-control slider-control--prev">
+                <img class="icon-xl" src="/frontend/images/icons/icon-arrow_left-white.svg" alt="Anterior">
+            </div>
+            <div class="slider-control slider-control--next">
+                <img class="icon-xl" src="/frontend/images/icons/icon-arrow_right-white.svg"
+                    alt="Siguiente">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="btn-flotante d-none d-sm-none d-md-block " style="padding: 17px 65px; margin-right: inherit;">
+    <span class="flo_cerrar ">
+        <img id='imgClose-open' class='imgClose-open' style="display:inline-block;margin-left:15px;"
+            src="/frontend/images/flecha_btn.png">
+        <img id='imgClose-bar' class='imgClose-bar' style="display:inline-block;"
+            src="/frontend/images/barra_btn.png">
+    </span>
+    <a id="flo_flotante_1" href="tel:0800-888-2008">Comunicate al 0800-888-2008</a>
+</div>
+<div class="btn-flotante-movil d-block d-sm-block d-md-none">
+    <span id='imgClose-open-mov' class="flo_cerrar" style="left: 2%;"> <img id='line-mobile'
+            src="/frontend/images/flecha_btn.png"> </span>
+    <span class="flo_cerrar"> <img id='imgCloseMovil' src="/frontend/images/barra_btn.png"> </span>
+
+    <a id="flo_flotante_2" href="tel:0800-888-2008">Comunicate al 0800-888-2008</a>
+</div>
+
+		<div style="margin: 2em 0">
+				<section class="container-section home-sponsors">
+		<article class="slider-container2 container-section-body">
+			<div style="text-align: center;">
+									<div class="slider-item slider-banner" style="width:23%;display:inline-block">
+													<a href="#seccion_juego_patologico" >
+																	<img src="/uploads/banners/611bd28da729b759526586.svg" alt="">
+															</a>
+											</div>
+									<div class="slider-item slider-banner" style="width:23%;display:inline-block">
+													<a href="/autoevaluacion" >
+																	<img src="/uploads/banners/611bd2b496434082687126.svg" alt="">
+															</a>
+											</div>
+									<div class="slider-item slider-banner" style="width:23%;display:inline-block">
+													<a href="/recursos/formulario_autoexclusion_loteria.pdf"  target="_blank" >
+																	<img src="/uploads/banners/611bd2d4929ce682837305.svg" alt="">
+															</a>
+											</div>
+									<div class="slider-item slider-banner" style="width:23%;display:inline-block">
+													<a href="#seccion_comunicate_con_nosotros" >
+																	<img src="/uploads/banners/611bd3111d7e8697098873.svg" alt="">
+															</a>
+											</div>
+							</div>
+		</div>
+
+	</article>
+</section>						<div id="seccion_juego_patologico"></div>
+		<div class="row" style="margin: 2em 7% ">
+		<div class="col-md-12">
+			<div class="juego_responsable_title">
+				<h1 style="font-size:5.5em " class="d-none d-sm-none d-md-block">¿Qué es el juego patológico?</h1>
+				<h4 class="d-block d-sm-block d-md-none">¿Qué es el juego patológico?</h4>
+				<hr class="juego-responsable-border-t">
+			</div>
+			<div class="section-body">
+				<div class="juego_responsable_desarrollo"></div>
+				<br>
+				<div class="row">
+					<div class="col-12"></div>
+				</div>
+
+				<div class="row">
+											<div class="col-md-6">
+															<div class="jr-seccion1-desarrollo1" style="font-size:20pt;">
+									<p style="text-align:justify"><span style="color:#009245">El juego patol&oacute;gico es considerado una adicci&oacute;n sin sustancia&nbsp;que puede afectar diversos aspectos de la vida de las personas (personal, familiar, laboral, social y econ&oacute;mico).&nbsp;<br />
+Una de las caracter&iacute;sticas principales de esta adicci&oacute;n es que la persona ve afectada su capacidad para poder autocontrolarse.</span></p>
+								</div>
+														<br>
+							<div class="juego_responsable_desarrollo2" style="font-size: 16pt !important;">
+								<div class="texto-juego-responsable-responsive">
+<p><var>La Asociaci&oacute;n Estadounidense de Psiquiatr&iacute;a (American Psychiatric Association) en su Manual Diagn&oacute;stico y Estad&iacute;stico de los Trastornos Mentales (DSM &ndash; V) describe al Juego Patol&oacute;gico de la siguiente manera: Conducta problem&aacute;tica de juego de apuestas recurrente y persistente, que lleva a incapacidad o distr&eacute;s cl&iacute;nicamente significativos, como sucede cuando el individuo exhibe 4 o m&aacute;s de los siguientes s&iacute;ntomas durante un per&iacute;odo de 12 meses.</var></p>
+
+<p>&nbsp;</p>
+
+<div style="font-weight:bold">
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Necesidad de jugar cantidades crecientes de dinero para lograr la excitaci&oacute;n deseada.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Est&aacute; inquieto o irritable cuando intenta interrumpir o detener el juego.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Ha efectuado reiterados esfuerzos no exitosos para controlar,&nbsp; interrumpir o detener el juego.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Est&aacute; frecuentemente preocupado por el juego de apuestas.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Juega frecuentemente cuando se siente con distr&eacute;s.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Despu&eacute;s de perder dinero en el juego, vuelve con frecuencia otro d&iacute;a para intentar recuperarlo.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Miente para ocultar su grado de implicaci&oacute;n en el juego.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Ha arriesgado o perdido relaciones interpersonales significativas,&nbsp; oportunidades de trabajo y educativas o profesionales debido al juego.
+
+<p>&nbsp;</p>
+
+<div class="circulo-verde">&nbsp;</div>
+&nbsp;Conf&iacute;a en que los dem&aacute;s le proporcionen el dinero que alivie la desesperada situaci&oacute;n financiera causada por el juego.
+
+<p>&nbsp;</p>
+
+<p><var>*La conducta de juego de apuestas no puede ser atribuible a un episodio man&iacute;aco.</var></p>
+</div>
+</div>
+							</div>
+						</div>
+						<div class="col-md-6 fondo_juego">
+							<style>
+								.fondo_juego {
+									background-image: url("/uploads/noticias/611bd376bafd1229249910.png");
+									background-size: cover;
+									min-height: auto;
+									background-repeat: no-repeat
+								}
+							</style>
+						</div>
+						<div class="col-12">
+							<a href="whatsapp://send?abid=08008882008" target="_blank">
+								<img class="img-fluid jr-seccion1-ws" src="/frontend/images/podemos-ayudarte.svg" alt="">
+							</a>
+						</div>
+						<br><br>
+									</div>
+				<br>
+				<br>
+									<a href="">
+						<img src="" alt="">
+					</a>
+							</div>
+		</div>
+
+
+	</div>
+			<div id="seccion_juego_responsable"></div>
+		<div class="row" style="margin: 2em 7% ">
+		<div class="col-md-12">
+			<div class="juego_responsable_title">
+				<h1 style="font-size:5.5em " class="d-none d-sm-none d-md-block">Programa de Juego Responsable</h1>
+				<h4 class="d-block d-sm-block d-md-none">Programa de Juego Responsable</h4>
+				<hr class="juego-responsable-border-t">
+			</div>
+			<div class="section-body">
+				<div class="juego_responsable_desarrollo"></div>
+				<br>
+				<div class="row">
+					<div class="col-12"></div>
+				</div>
+
+				<div class="row">
+											<div class="col-md-12">
+							<div class="juego_responsable_desarrollo1">
+								<div class="texto-juego-responsable-responsive">
+<p>En el marco de las pol&iacute;ticas de control de adicciones y de la vida saludable que lleva adelante el Gobierno de la Provincia del Chaco, el Ministerio de Salud P&uacute;blica y Loter&iacute;a Chaque&ntilde;a firmaron un&nbsp;Convenio para la implementaci&oacute;n del Programa de Juego Responsable que apunta a la colaboraci&oacute;n y al trabajo conjunto entre ambas instituciones; para brindar atenci&oacute;n a aquellas personas que presenten problemas con el juego.</p>
+</div>
+							</div>
+							<br>
+							<br>
+														<div>
+								    <section class="home-eventos container-section container-section--white">
+        <article class="container-section-body eventos-galeria">
+            <div class="slider-container2">
+            <div class="home-presente-slider">
+                                                                        <div class="slider-item" id="evento_1" onclick="abrirSlider(1187)" style="cursor: pointer;">
+                        <div class="card mb-1">
+                        <div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/resources/65ccf18bc1125261474375.jpeg"></div>
+                        </div>
+                    </div>
+                                                        <div class="slider-item" id="evento_2" onclick="abrirSlider(1188)" style="cursor: pointer;">
+                        <div class="card mb-1">
+                        <div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/resources/65ccf18bc3c5d595260914.jpeg"></div>
+                        </div>
+                    </div>
+                                                        <div class="slider-item" id="evento_3" onclick="abrirSlider(1189)" style="cursor: pointer;">
+                        <div class="card mb-1">
+                        <div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/resources/65ccf18bc641c220237454.jpeg"></div>
+                        </div>
+                    </div>
+                                                        <div class="slider-item" id="evento_4" onclick="abrirSlider(1190)" style="cursor: pointer;">
+                        <div class="card mb-1">
+                        <div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/resources/65ccf239cc38e971050090.jpeg"></div>
+                        </div>
+                    </div>
+                            </div>
+            <div class="home-presente-slider__controls slider-controls">
+                <div class="slider-control slider-control--prev">
+                <img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-orange.svg" alt="Anterior">
+                </div>
+                <div class="slider-control slider-control--next">
+                <img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-orange.svg" alt="Siguiente">
+                </div>
+            </div>
+            </div>
+        </article>
+    </section>
+    <div class="modal fade modal_eventos"  id="modal_eventos" tabindex="-1" role="dialog" aria-labelledby="video_evento" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-evento" role="document">
+        <div class="modal-content">
+          <div class="modal-header modal-evento-header" >
+            <h5 class="modal-title" id="modal-evento-titulo">
+              
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-evento-body" >
+              <div id="galeria_slider">
+              </div>
+              <div class="galeria_slider-presente-slider__controls slider-controls">
+                <div class="slider-control slider-control--prev">
+                  <img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-orange.svg" alt="Anterior">
+                </div>
+                <div class="slider-control slider-control--next">
+                  <img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-orange.svg" alt="Siguiente">
+                </div>
+              </div>
+            </div>  
+          </div>
+          <div class="modal-footer">
+                        <a href="" id="modal-evento-link-not" style="display:none" class="btn btn-danger boton-red" role="button" target="_blank" aria-pressed="true" >Ver Noticia</a>
+            
+            <button type="button" class="btn btn-amber elevation-1" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        </div>
+      </div> 
+    <style>
+        .home-presente-slider .card {
+        height: 200px;
+        border-radius: 5px;
+        overflow: hidden; }
+    </style>
+  							</div>
+							<br>
+							<br>
+							<div class="juego_responsable_desarrollo2">
+								<h1><strong>&iquest;Qu&eacute; es el Juego Responsable?</strong></h1>
+
+<div class="texto-juego-responsable-responsive">
+<p><br />
+Desde lo Institucional, es el conjunto de principios, pr&aacute;cticas y acciones que se comprometen a adoptar los Gobiernos, las Loter&iacute;as de Estados y otros Gestores del Juego, con el objeto de prevenir y mitigar los efectos que pudiera provocar la participaci&oacute;n desordenada en los juegos azar.</p>
+
+<p>&nbsp;</p>
+
+<p>Desde la perspectiva del jugador, el concepto de Juego Responsable intenta designar una forma de juego controlada, segura, protegida y divertida, con fines recreativos y de integraci&oacute;n social.</p>
+
+<p>&nbsp;</p>
+
+<p>El Objetivo general del programa es fomentar el juego saludable y la reducci&oacute;n del riesgo de juego patol&oacute;gico en la Provincia del Chaco. Y como objetivos espec&iacute;ficos propone, brindar contenci&oacute;n, informaci&oacute;n y asesoramiento para el jugador problema y su grupo familiar. Proveer el acceso a servicios asistenciales adecuados cuando la problem&aacute;tica planteada as&iacute; lo requiera.</p>
+
+<p>&nbsp;</p>
+
+<p>El programa, prev&eacute; distintos niveles de prevenci&oacute;n, desde la promoci&oacute;n del Juego Responsable, como la detecci&oacute;n precoz del jugador inmoderado hasta el tratamiento del jugador problema.</p>
+&nbsp;
+
+<h1><strong>Capacitaciones </strong></h1>
+
+<p>&nbsp;</p>
+
+<p>A trav&eacute;s del programa de Juego Responsable se efect&uacute;an talleres informativos y de reflexi&oacute;n sobre la problem&aacute;tica del juego patol&oacute;gico y sus consecuencias, en escuelas, centros de salud y las entidades, que luego de un primer contacto con el servicio demanden mayor informaci&oacute;n sobre el tema.</p>
+
+<p>&nbsp;</p>
+</div>
+							</div>
+						</div>
+						<br><br>
+									</div>
+				<br>
+				<br>
+							</div>
+		</div>
+
+
+	</div>
+			<div id="seccion_autoexclusion"></div>
+		<div class="row" style="margin: 2em 7% ">
+		<div class="col-md-12">
+			<div class="juego_responsable_title">
+				<h1 style="font-size:5.5em " class="d-none d-sm-none d-md-block">Autoexclusión</h1>
+				<h4 class="d-block d-sm-block d-md-none">Autoexclusión</h4>
+				<hr class="juego-responsable-border-t">
+			</div>
+			<div class="section-body">
+				<div class="juego_responsable_desarrollo"></div>
+				<br>
+				<div class="row">
+					<div class="col-12"></div>
+				</div>
+
+				<div class="row">
+																	<div class="col-md-12">
+							<div class="juego_responsable_desarrollo1">
+								<div class="texto-juego-responsable-responsive">
+<p>La autoexclusi&oacute;n consiste en una solicitud voluntaria del jugador de ser excluido por parte del establecimiento de juego cada vez que intente ingresar al mismo o realizar alguna operaci&oacute;n relacionada con el juego de azar. La solicitud de autoexclusi&oacute;n suscripta tendr&aacute; car&aacute;cter irrevocable. El objetivo de la autoexclusi&oacute;n es brindar ayuda a aquellas personas que voluntariamente deciden excluirse a s&iacute; mismas de ingresar y permanecer en Casinos, Salas y Locales donde se exploten de Juegos de azar autorizados por Loter&iacute;a Chaque&ntilde;a.</p>
+
+<p>&nbsp;</p>
+
+<p>La autoexclusi&oacute;n constituye una herramienta de acompa&ntilde;amiento al tratamiento de los trastornos adictivos relacionados con los juegos de azar.</p>
+
+<p>&nbsp;</p>
+
+<p>El plazo de vigencia de la autoexclusi&oacute;n de los Casinos, Salas y Locales donde se exploten de Juegos de azar autorizados por Loter&iacute;a Chaque&ntilde;a es de 4 a&ntilde;os, irrevocable por ese t&eacute;rmino, existiendo la posibilidad de renovaci&oacute;n actualizando la solicitud. Para solicitar la baja de la autoexclusi&oacute;n, es necesario que la persona presente un certificado ortogado por un profesional de la salud mental (psic&oacute;logo o psiquiatra).<br />
+<br />
+<strong>- REQUISITOS PARA SOLICITAR LA AUTOEXCLUSI&Oacute;N</strong></p>
+
+<div class="texto-juego-responsable-responsive" style="padding-left:20px">&bull;Dos fotos carnet actualizadas.<br />
+&bull;Fotocopia del Documento de Identidad.<br />
+&bull;Debe asistir con un acompa&ntilde;ante mayor de 18 a&ntilde;os.
+<p>&nbsp;</p>
+</div>
+
+<p><strong>- SITIOS PARA REALIZAR EL TR&Aacute;MITE<br />
+&nbsp; &nbsp;</strong>Loter&iacute;a chaque&ntilde;a, Frondizi N&deg; 55 - Planta baja (3500) - Resistencia - Chaco<br />
+&nbsp; &nbsp;<a href="https://gobiernodigital.chaco.gob.ar/panel/mis-tramites/nuevo-tramite" target="_blank"><span style="color:#2980b9">Tu gobierno digital</span></a><br />
+&nbsp; &nbsp;Sala de juego de los casinos</p>
+
+<p>&nbsp;</p>
+</div>
+							</div>
+							<br>
+							<div class="juego_responsable_desarrollo2">
+								
+							</div>
+						</div>
+						<br>
+						<br>
+						<a target="_blank" href="/recursos/ubicaciones_autoexclusion.pdf" class="btn btn-success" style="background-color: #39ac34; color:white;padding-top:10px;border-radius: 10px;font-weight: 900;font-size:1.5em; ">
+							DESCARGAR UBICACIONES</a>
+						<br><br>
+									</div>
+				<br>
+				<br>
+							</div>
+		</div>
+
+
+	</div>
+			<div id="seccion_comunicate_con_nosotros"></div>
+		<div class="row" style="margin: 2em 7% ">
+		<div class="col-md-12">
+			<div class="juego_responsable_title">
+				<h1 style="font-size:5.5em " class="d-none d-sm-none d-md-block">Comunicate con nosotros</h1>
+				<h4 class="d-block d-sm-block d-md-none">Comunicate con nosotros</h4>
+				<hr class="juego-responsable-border-t">
+			</div>
+			<div class="section-body">
+				<div class="juego_responsable_desarrollo"></div>
+				<br>
+				<div class="row">
+					<div class="col-12"></div>
+				</div>
+
+				<div class="row">
+																	<div class="col-md-6 col-12">
+							<div class="juego_responsable_desarrollo1">
+								<div class="texto-juego-responsable-responsive">
+<p>Direcci&oacute;n: Frondizi N&deg; 55 - Planta baja, Resistencia - Chaco</p>
+
+<p>&nbsp;</p>
+
+<p>Tel&eacute;fono: 0800-888-2008</p>
+
+<p>&nbsp;</p>
+
+<p>Email:&nbsp;juegoresponsable@chaco.gov.ar</p>
+</div>
+							</div>
+							<br>
+							<div class="juego_responsable_desarrollo2">
+								
+							</div>
+						</div>
+
+						<div class="col-md-6 col-12">
+							<form action="/formulario-contacto" method="POST">
+								<input type="text" class="form-control" name="nombre_apellido" placeholder="Nombre y apellido(opcional)">
+								<br>
+								<input type="email" class="form-control" type="email" name="email" required="required" placeholder="Email">
+								<br>
+								<input type="telefono" class="form-control" name="telefono" required="required" placeholder="Teléfono">
+								<br>
+								<textarea class="form-control" id="" cols="50" rows="10" name="mensaje" placeholder="mensaje"></textarea>
+								<br>
+								<div style="float:right">
+									<button type="submit" class="btn btn-success jr-enviar-contacto-bt">Enviar</button>
+								</div>
+							</form>
+						</div>
+									</div>
+				<br>
+				<br>
+							</div>
+		</div>
+
+
+	</div>
+		</div>
+
+	</main>
+
+	
+  
+        	<!-- MAIN FOOTER -->
+	 <!-- MAIN FOOTER -->
+ <style>
+  .footer-title-grey-2{
+    color:#606060;
+    font-size: 20px;
+    font-weight:600 !important;
+  }
+  .footer-bg-grey{
+    background-color: #efefef;
+  }
+  .footer-text{
+    font-size: 1.2em;
+    font-weight:lighter;
+    color: #adadad;
+    font-family: GeomanistMedium !important;
+  }
+
+
+  .main-footer{
+    font-family: Geomanist Bold, sans-serif !important;
+    font-size: 14px !important;
+  }
+  .footer-title-grey{
+    color:#535353;
+    font-size: 14px !important;
+    font-weight:600 !important;
+    line-height: 21px;
+  }
+
+  .pb-1{
+    line-height: 21px;
+  }
+
+ </style>
+
+ <footer class="main-footer footer-bg-grey footer-text">
+     <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="footer-title-grey-2">
+                      <div class="row pb-1">
+                        <div class="col-1">
+                          <img class="icon-2" src="/frontend/images/footer/oficinas.svg" alt="Facebook">
+                        </div>
+                        <div class="col-10 text-left pt-1 footer-title-grey-2">
+                          Oficinas
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="pb-2">
+                        <div class="footer-title-grey pb-1">
+                            Resistencia - Chaco
+                        </div>
+                        <div class="pb-1">
+                            Sede Central: Guemes 46
+                            <br>
+                            Nueva Sede: 9 de Julio 145
+                        </div>
+                    </div>
+                    <div class="pb-2">
+                        <div class="footer-title-grey">
+                            Saenz Peña - Chaco
+                        </div>
+                        <div class="pb-1">
+                            Direccón: San Martin s/n
+                        </div>
+                    </div>
+                    <div class="pb-2">
+                        <div class="footer-title-grey pb-1">
+                            Ciudad Autónoma de Buenos Aires
+                        </div>
+                        <div class="pb-1">
+                            Dirección: Corrientes 2959
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="text-left pt-1 footer-title-grey-2 ">
+                        Contacto
+                    </div>
+                    <div>
+                        <br>
+                        <div class="row pb-1">
+                          <div class="col-1">
+                            <img class="icon-3" src="/frontend/images/footer/telefono.svg" alt="Facebook">
+                          </div>
+                          <div class="col-10 text-left pt-1">
+                            Teléfono: 0362-4446750
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <img class="icon-3" src="/frontend/images/footer/fax.svg" alt="Facebook">
+                          </div>
+                          <div class="col-10 text-left pt-1">
+                            Fax 0362-4446750
+                          </div>
+                        </div>
+                    </div>
+                    <br><br><br><br>
+                    <div>
+                        <ul class="footer-social">
+                          <li class="footer-social-item">
+                            <a target="_blank" href="https://www.instagram.com/loteriachaquena/">
+                              <img class="icon-3" src="/frontend/images/footer/instagram.svg" alt="Youtube">
+                            </a>
+                          </li>
+                            <li class="footer-social-item">
+                              <a target="_blank" href="https://www.facebook.com/LoteriaChaquenaOficial/">
+                                <img class="icon-3" src="/frontend/images/footer/facebook.svg" alt="Facebook">
+                              </a>
+                            </li>
+                            <li class="footer-social-item">
+                              <a target="_blank" href="https://www.youtube.com/channel/UCUI-haWh0sI9ABHEFfGnHxw">
+                                <img class="icon-3" src="/frontend/images/footer/youtube.svg" alt="Youtube">
+                              </a>
+                            </li>
+                            <li class="footer-social-item">
+                              <a target="_blank" href="https://twitter.com/loteriachaquena">
+                                <img class="icon-3" src="/frontend/images/footer/twitter.svg" alt="Twitter">
+                              </a>
+                            </li>
+
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="footer-bottom">
+                <ul class="footer-links">
+                  <li class="footer-links-item">
+                    <a href="/loteria" class="grey-dark">Institucional</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/agencia_digital" class="grey-dark">Agencias</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="#" class="grey-dark">Juegos</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/juego/quiniela_chaquenia" class="grey-dark">Extractos</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/juego_responsable" class="grey-dark">Juego Responsable</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/agencia_casino" class="grey-dark">Casino y Tragamonedas</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+        <div class="col-md-2 col-sm-12 col-xs-12">
+
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="row">
+                
+            </div>
+        </div>
+     </div>
+  </footer>	
+  	  <script src="/build/runtime.js"></script><script src="/build/frontend.js"></script>
+   <script src="/frontend/js/tiny-slider.js"></script>
+  <script src="/frontend/js/jquery.lazy.min.js"></script>
+  <script src="/frontend/js/jquery.lazy.plugins.min.js"></script>
+  <script src="/frontend/video/video.min.js"></script>
+
+  <script>
+  $(document).ready(function () {
+    $(function () {
+        var now = moment();
+        now.locale('es');
+        var clock = now.format('HH:mm A');
+        var date = now.format('dddd D [de] MMMM [de] YYYY');
+        $('#clock').html(clock);
+        $('#date').html(date);
+    });
+  });
+  </script>
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115097949-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115097949-1');
+  </script>
+
+  <script>
+    //para el lazy load de las imagenes
+    $(function() {
+      $('.lazyload').lazy();
+    });
+
+  </script>
+  
+
+<script>
+  $( document ).ready(() => {
+      $.get( "/api", function( data ) {
+          mostrarSorteoVivo(data.data);
+      });
+
+
+      setInterval(function() {
+      $.get( "/api", function( data ) {
+        mostrarSorteoVivo(data.data);
+      });
+    }, 60000);
+  });
+
+
+        let mercureUrl = '';
+    if(mercureUrl && mercureUrl!=''){
+      const url = new URL('');    
+      url.searchParams.append('topic', 'broadcast');
+              const eventSource = new EventSource(url);
+        eventSource.onmessage = event => {
+          sorteo_vivo = JSON.parse(event.data);
+
+
+          mostrarSorteoVivo(sorteo_vivo,true);
+        }
+    }
+    
+
+
+    function verResultadosEnVivo() {
+    if ($("#aviso_sorteo_vivo").attr('sorteo')=="vivo" || $("#aviso_sorteo_vivo").attr('sorteo')=="resultado") {
+      $('#modal_vivo').modal();
+    }
+  }
+
+  //ver que opcion mostrar del sorteo en vivo
+  function mostrarSorteoVivo(sorteo_vivo, mercure= false) {
+    //llega 1 si no existen ningun sorteo activo
+    if (sorteo_vivo == 1) {
+      $("#barra_sorteovivo").hide();
+      $("#popup_sorteovivo").hide();
+    }
+
+    //ahora me fijo segun el estado en el que mando
+    if (sorteo_vivo.estado == 1) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong>Próximamente</strong>")
+        $("#barra_sorteovivo").show();
+        $("#popup_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','')
+        $('#pop_titulo_sorteovivo').html('¡PRÓXIMAMENTE SORTEO !');
+        $('#pop_subtitulo_sorteovivo').html('Quiniela '+sorteo_vivo.sorteo);
+        $('#modal_vivo').modal('hide');
+      }
+    }
+
+    //en el caso de que sea en instantes
+    if (sorteo_vivo.estado == 2) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong>En instantes</strong>")
+        $("#barra_sorteovivo").show();
+        $("#popup_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','')
+        $('#pop_titulo_sorteovivo').html('¡EN INSTÁNTES SORTEO! ');
+        $('#pop_subtitulo_sorteovivo').html('Quiniela '+sorteo_vivo.sorteo);
+        $('#modal_vivo').modal('hide');
+      }
+    }
+
+    //en el caso de que sea en vivo
+    if (sorteo_vivo.estado == 3) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong style='cursor: pointer;' onclick='verResultadosEnVivo()'>Ver ahora</strong>");
+        cargar_modal_vivo(sorteo_vivo,1);
+        $("#popup_sorteovivo").show();
+        $("#barra_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','vivo')
+        $('#pop_titulo_sorteovivo').html('¡COMENZÓ EL SORTEO!');
+        $('#pop_subtitulo_sorteovivo').html('Mirá los resultados en vivo');
+
+        if(mercure){
+          $('#modal_vivo').modal();
+        }
+      }
+    }
+    //en el caso de que sea ver ultimos resultados
+    if (sorteo_vivo.estado == 4) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong style='cursor: pointer;' onclick='verResultadosEnVivo()'>Ultimos Resultados</strong>");
+        cargar_modal_vivo(sorteo_vivo,2);
+        $("#barra_sorteovivo").show();
+        $("#popup_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','resultado')
+        $('#pop_titulo_sorteovivo').html('¡MIRA LOS ULTIMOS RESULTADOS!');
+        $('#pop_subtitulo_sorteovivo').html('Quiniela '+sorteo_vivo.sorteo);
+        // $('#modal_vivo').modal('hide');
+      }
+    }
+  }
+
+  //cargar la modal de los resultados del sorteo en vivo
+  function cargar_modal_vivo(sorteo_vivo, envivo) {
+    if(sorteo_vivo.sorteo == 'Sorteo Bénefico'){
+      // console.log(sorteo_vivo.sorteo)
+      $("#parte_2_sorteo_vivo").hide()
+      $("#parte_1_sorteo_vivo").attr('class','col-md-12')
+    }else{
+      $("#parte_2_sorteo_vivo").show()
+    }
+    if (envivo == 1) {
+      //en caso de que se este sorteando en vivo 
+      $("#boton_imprimir_sorteo_vivo").hide();
+
+      $("#titulo_modal_vivo").html("Resultados en VIVO");
+      ultimo_check=`<img style="margin-left:5px;width:14px;height:14px;display:inline;" src="/backend/images/active.png" title="Último" />`;
+    } else {
+      //en caso de que ya haya finalizado el sorteo ( todavia no esta en los web service)
+
+      //la ruta para el link de imprimir
+      link_imprimir="/imprimir_sorteovivo/idsorteo";
+      link_imprimir=link_imprimir.replace("idsorteo", sorteo_vivo.id);
+      $("#boton_imprimir_sorteo_vivo").attr('href',link_imprimir);
+      $("#boton_imprimir_sorteo_vivo").show();
+
+      $("#titulo_modal_vivo").html("Últimos Resultados");
+
+      ultimo_check="";
+    }
+
+    if(typeof(sorteo_vivo.fecha) =="string" ){
+      if(sorteo_vivo.fecha.length > 0){
+        $('#sorteo_vivo_fecha').html(sorteo_vivo.fecha + " " + sorteo_vivo.hora);
+      }
+    }
+
+    $('#sorteo_vivo_numeroSorteo').html(sorteo_vivo.numeroSorteo);
+    var pad = "000000";
+    
+   
+    if(sorteo_vivo.sorteo == 'Sorteo Bénefico'){
+      var n = '5';
+      var corte = 5
+    }
+
+    var cantidadExtractos = 20
+    if(sorteo_vivo.sorteoVivoEspecialTipo){
+      var n = sorteo_vivo.sorteoVivoEspecialTipo.cantidadDigitos
+      var corte = sorteo_vivo.sorteoVivoEspecialTipo.cantidadDigitos
+      cantidadExtractos = sorteo_vivo.sorteoVivoEspecialTipo.cantidadExtractos
+    }else{
+       var n = '4';
+        var corte = 4
+    }
+    var result = (pad+n).slice(-pad.length);
+
+    if(sorteo_vivo.tieneCartones){
+      $('.ubicacion_header').text('Fracción');
+      lista_numeros1=`
+      <tr class="ubicacion1">
+        <td style="`+((1 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton1 !== null ? ('0000'+sorteo_vivo.numeroCarton1).slice(-corte)  : `` )+`</td>
+        <td style="`+((1 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton1 !== null ? ('0000'+sorteo_vivo.numeroCarton1).slice(-corte)  : `` )+`</td>
+      </tr>
+      <tr class="ubicacion2">
+        <td style="`+((2 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton2 !== null ? ('0000'+sorteo_vivo.numeroCarton2).slice(-corte)  : `` )+`</td>
+        <td style="`+((2 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.ubicacion2 !== null ? ('0000'+sorteo_vivo.ubicacion2).slice(-corte) : `` )+(2 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion3">
+        <td style="`+((3 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton3 !== null ? ('0000'+sorteo_vivo.numeroCarton3).slice(-corte)  : `` )+`</td>
+        <td style="`+((3 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion3 !== null ? ('0000'+sorteo_vivo.ubicacion3).slice(-corte) : `` )+(3 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion4">
+        <td style="`+((4 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton4 !== null ? ('0000'+sorteo_vivo.numeroCarton4).slice(-corte)  : `` )+`</td>
+        <td style="`+((4 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion4 !== null ? ('0000'+sorteo_vivo.ubicacion4).slice(-corte) : `` )+(4 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion5">
+        <td style="`+((5 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton5 !== null ? ('0000'+sorteo_vivo.numeroCarton5).slice(-corte)  : `` )+`</td>
+        <td style="`+((5 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion5 !== null ? ('0000'+sorteo_vivo.ubicacion5).slice(-corte) : `` )+(5 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion6">
+        <td style="`+((6 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton6 !== null ? ('0000'+sorteo_vivo.numeroCarton6).slice(-corte)  : `` )+`</td>
+        <td style="`+((6 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion6 !== null ?('0000'+sorteo_vivo.ubicacion6).slice(-corte) : `` )+(6 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion7">
+        <td style="`+((7 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton7 !== null ? ('0000'+sorteo_vivo.numeroCarton7).slice(-corte)  : `` )+`</td>
+        <td style="`+((7 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion7 !== null ? ('0000'+sorteo_vivo.ubicacion7).slice(-corte) : `` )+(7 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion8">
+        <td style="`+((8 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton8 !== null ? ('0000'+sorteo_vivo.numeroCarton8).slice(-corte)  : `` )+`</td>
+        <td style="`+((8 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion8 !== null ? ('0000'+sorteo_vivo.ubicacion8).slice(-corte) : `` )+(8 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion9">
+        <td style="`+((9 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton9 !== null ? ('0000'+sorteo_vivo.numeroCarton9).slice(-corte)  : `` )+`</td>
+        <td style="`+((9 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion9 !== null ? ('0000'+sorteo_vivo.ubicacion9).slice(-corte) : `` )+(9 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion10">
+        <td style="`+((10 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton10 !== null ? ('0000'+sorteo_vivo.numeroCarton10).slice(-corte)  : `` )+`</td>
+        <td style="`+((10 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion10 !== null ? ('0000'+sorteo_vivo.ubicacion10).slice(-corte) : `` )+(10 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+
+    lista_numeros2=`
+      <tr class="ubicacion11">
+        <td style="`+((11 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton11 !== null ? ('0000'+sorteo_vivo.numeroCarton11).slice(-corte)  : `` )+`</td>
+        <td style="`+((11 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion11 !== null ? ('0000'+sorteo_vivo.ubicacion11).slice(-corte) : `` )+(11 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion12">
+        <td style="`+((12 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton12 !== null ? ('0000'+sorteo_vivo.numeroCarton12).slice(-corte)  : `` )+`</td>
+        <td style="`+((12 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion12 !== null ? ('0000'+sorteo_vivo.ubicacion12).slice(-corte) : `` )+(12 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion13">
+        <td style="`+((13 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton13 !== null ? ('0000'+sorteo_vivo.numeroCarton13).slice(-corte)  : `` )+`</td>
+        <td style="`+((13 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion13 !== null ? ('0000'+sorteo_vivo.ubicacion13).slice(-corte) : `` )+(13 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion14">
+        <td style="`+((14 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton14 !== null ? ('0000'+sorteo_vivo.numeroCarton14).slice(-corte)  : `` )+`</td>
+        <td style="`+((14 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion14 !== null ? ('0000'+sorteo_vivo.ubicacion14).slice(-corte) : `` )+(14 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion15">
+        <td style="`+((15 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton15 !== null ? ('0000'+sorteo_vivo.numeroCarton15).slice(-corte)  : `` )+`</td>
+        <td style="`+((15 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion15 !== null ? ('0000'+sorteo_vivo.ubicacion15).slice(-corte) : `` )+(15 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion16">
+        <td style="`+((16 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton16 !== null ? ('0000'+sorteo_vivo.numeroCarton16).slice(-corte)  : `` )+`</td>
+        <td style="`+((16 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion16 !== null ? ('0000'+sorteo_vivo.ubicacion16).slice(-corte) : `` )+(16 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion17">
+        <td style="`+((17 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton17 !== null ? ('0000'+sorteo_vivo.numeroCarton17).slice(-corte)  : `` )+`</td>
+        <td style="`+((17 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion17 !== null ? ('0000'+sorteo_vivo.ubicacion17).slice(-corte) : `` )+(17 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion18">
+        <td style="`+((18 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton18 !== null ? ('0000'+sorteo_vivo.numeroCarton18).slice(-corte)  : `` )+`</td>
+        <td style="`+((18 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion18 !== null ? ('0000'+sorteo_vivo.ubicacion18).slice(-corte) : `` )+(18 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion19">
+        <td style="`+((19 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton19 !== null ? ('0000'+sorteo_vivo.numeroCarton19).slice(-corte)  : `` )+`</td>
+        <td style="`+((19 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion19 !== null ? ('0000'+sorteo_vivo.ubicacion19).slice(-corte) : `` )+(19 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion20">
+        <td style="`+((20 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton20 !== null ? ('0000'+sorteo_vivo.numeroCarton20).slice(-corte)  : `` )+`</td>
+        <td style="`+((20 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion20 !== null ? ('0000'+sorteo_vivo.ubicacion20).slice(-corte) : `` )+(20 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+    }else{
+      $('.ubicacion_header').text('Ubicación')
+      lista_numeros1=`
+      <tr class="ubicacion1">
+        <td scope="row">`+1+`</td>
+        <td style="`+((1 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.ubicacion1 !== null ? ('0000'+sorteo_vivo.ubicacion1).slice(-corte)  : `` )+(1 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion2">
+        <td scope="row">`+2+`</td>
+        <td style="`+((2 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.ubicacion2 !== null ? ('0000'+sorteo_vivo.ubicacion2).slice(-corte) : `` )+(2 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion3">
+        <td scope="row">`+3+`</td>
+        <td style="`+((3 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion3 !== null ? ('0000'+sorteo_vivo.ubicacion3).slice(-corte) : `` )+(3 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion4">
+        <td scope="row">`+4+`</td>
+        <td style="`+((4 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion4 !== null ? ('0000'+sorteo_vivo.ubicacion4).slice(-corte) : `` )+(4 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion5">
+        <td scope="row">`+5+`</td>
+        <td style="`+((5 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion5 !== null ? ('0000'+sorteo_vivo.ubicacion5).slice(-corte) : `` )+(5 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion6">
+        <td scope="row">`+6+`</td>
+        <td style="`+((6 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion6 !== null ?('0000'+sorteo_vivo.ubicacion6).slice(-corte) : `` )+(6 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion7">
+        <td scope="row">`+7+`</td>
+        <td style="`+((7 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion7 !== null ? ('0000'+sorteo_vivo.ubicacion7).slice(-corte) : `` )+(7 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion8">
+        <td scope="row">`+8+`</td>
+        <td style="`+((8 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion8 !== null ? ('0000'+sorteo_vivo.ubicacion8).slice(-corte) : `` )+(8 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion9">
+        <td scope="row">`+9+`</td>
+        <td style="`+((9 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion9 !== null ? ('0000'+sorteo_vivo.ubicacion9).slice(-corte) : `` )+(9 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion10">
+        <td scope="row">`+10+`</td>
+        <td style="`+((10 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion10 !== null ? ('0000'+sorteo_vivo.ubicacion10).slice(-corte) : `` )+(10 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+
+    lista_numeros2=`
+      <tr class="ubicacion11">
+        <td scope="row">`+11+`</td>
+        <td style="`+((11 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion11 !== null ? ('0000'+sorteo_vivo.ubicacion11).slice(-corte) : `` )+(11 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion12">
+        <td scope="row">`+12+`</td>
+        <td style="`+((12 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion12 !== null ? ('0000'+sorteo_vivo.ubicacion12).slice(-corte) : `` )+(12 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion13">
+        <td scope="row">`+13+`</td>
+        <td style="`+((13 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion13 !== null ? ('0000'+sorteo_vivo.ubicacion13).slice(-corte) : `` )+(13 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion14">
+        <td scope="row">`+14+`</td>
+        <td style="`+((14 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion14 !== null ? ('0000'+sorteo_vivo.ubicacion14).slice(-corte) : `` )+(14 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion15">
+        <td scope="row">`+15+`</td>
+        <td style="`+((15 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion15 !== null ? ('0000'+sorteo_vivo.ubicacion15).slice(-corte) : `` )+(15 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion16">
+        <td scope="row">`+16+`</td>
+        <td style="`+((16 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion16 !== null ? ('0000'+sorteo_vivo.ubicacion16).slice(-corte) : `` )+(16 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion17">
+        <td scope="row">`+17+`</td>
+        <td style="`+((17 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion17 !== null ? ('0000'+sorteo_vivo.ubicacion17).slice(-corte) : `` )+(17 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion18">
+        <td scope="row">`+18+`</td>
+        <td style="`+((18 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion18 !== null ? ('0000'+sorteo_vivo.ubicacion18).slice(-corte) : `` )+(18 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion19">
+        <td scope="row">`+19+`</td>
+        <td style="`+((19 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion19 !== null ? ('0000'+sorteo_vivo.ubicacion19).slice(-corte) : `` )+(19 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion20">
+        <td scope="row">`+20+`</td>
+        <td style="`+((20 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion20 !== null ? ('0000'+sorteo_vivo.ubicacion20).slice(-corte) : `` )+(20 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+
+    }
+    
+   
+    
+    
+    $("#lista_vivo1").html(lista_numeros1);
+    $("#lista_vivo2").html(lista_numeros2);
+    for (var i = 1; i <= 20; i++) {
+        if (i > cantidadExtractos){
+            $('.ubicacion'+i).hide()
+        }
+        
+    }
+    
+
+    if(sorteo_vivo.sorteo == 'Sorteo Bénefico'){
+      // console.log(sorteo_vivo.sorteo)
+      $("#parte_2_sorteo_vivo").hide()
+    }else{
+     if (cantidadExtractos > 10){
+        $("#lista_vivo2").show();
+        $("#parte_2_sorteo_vivo").show()
+        $("#parte_1_sorteo_vivo").addClass('col-6')  
+        $("#parte_1_sorteo_vivo").removeClass('col-12')   
+
+      }else{
+        $("#lista_vivo2").hide()
+        $("#parte_2_sorteo_vivo").hide()   
+        $("#parte_1_sorteo_vivo").addClass('col-12')   
+        $("#parte_1_sorteo_vivo").removeClass('col-6')   
+      }
+    }
+    $("#modalidad_vivo").html(sorteo_vivo.sorteo);
+  }
+
+        sorteo_vivo={
+      ubicacion1:  5931 ,
+      ubicacion2:  6761 ,
+      ubicacion3:  8320 ,
+      ubicacion4:  4174 ,
+      ubicacion5:  2347 ,
+      ubicacion6:  8134 ,
+      ubicacion7:  1619 ,
+      ubicacion8:  3796 ,
+      ubicacion9:  3587 ,
+      ubicacion10: 4090 ,
+      ubicacion11: 7023 ,
+      ubicacion12: 7458 ,
+      ubicacion13: 9479 ,
+      ubicacion14: 0356 ,
+      ubicacion15: 6957 ,
+      ubicacion16: 9441 ,
+      ubicacion17: 8582 ,
+      ubicacion18: 7954 ,
+      ubicacion19:  1708 ,
+      ubicacion20:  6362 ,
+      estado: 4,
+      sorteo: "Nocturna",
+      numeroSorteo: "15375",
+      fecha: "31/10/2026 21:00",
+      ultimaUbicacion: "6",
+      id: 9992
+    };
+    mostrarSorteoVivo(sorteo_vivo);
+  </script>
+
+  <!-- Para el video en vivo de chaco tv -->
+  
+	<script>
+		$( document ).ready(function(){
+			// var player = videojs('my-video');
+      // const chacoTv = document.querySelector('.chaco-tv');
+      // const chacoTvOpen = document.querySelector('#img-open-chacotv');
+      // const chacoTvOpen2 = document.querySelector('#img-open-chacotv-banner');
+
+      // chacoTvOpen.addEventListener('click', () => {
+      //   chacoTv.classList.add('active');
+      //   player.play();
+      // });
+      // chacoTvOpen2.addEventListener('click', () => {
+      //   chacoTv.classList.add('active');
+      //   player.play();
+      // });
+      // const chacoTvClose = document.querySelector('.chaco-tv__close');
+      // chacoTvClose.addEventListener('click', () => {
+      //   chacoTv.classList.remove('active');
+      //   player.pause();
+      // });
+    })
+  </script>
+
+	<script>
+		var floatNumber = true;
+		$('.flo_cerrar').on("click", function () { // por las clases de bootstrap solapan al hide , tengo que forzar con js
+
+			if (floatNumber) {
+				document.getElementById("flo_flotante_1").style.display = "none";
+				document.getElementById("flo_flotante_2").style.display = "none";
+				$(".btn-flotante").css('padding', '30px 65px');
+				$(".btn-flotante").css('margin-right', '-95px');
+				$(".btn-flotante-movil").css('margin-right', '-42px');
+				// $('.btn-flotante').css('filter','invert(100%)');
+				$(".flo_cerrar").css('margin-right', '-421px !important');
+				$(".flo_cerrar").css('transform', '-scaleX(-1)');
+				$(".flo_cerrar").css('-webkit-transform', '-scaleX(-1)');
+				let imgClose = document.getElementById('imgClose-open')
+				deg = !floatNumber ? 0 : 180;
+				imgClose.style.webkitTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.mozTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.msTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.oTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.transform = 'rotate(' + deg + 'deg)';
+				$('#imgClose-open').removeClass('imgClose-open');
+				$('#imgClose-open').addClass('imgClose-open-min');
+				$('#imgClose-bar').hide();
+				let imgCloseMovil = document.getElementById('imgClose-open-mov');
+				deg = !floatNumber ? 0 : 180;
+				imgCloseMovil.style.webkitTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.mozTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.msTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.oTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.transform = 'rotate(' + deg + 'deg)';
+				$('#imgCloseMovil').hide();
+				floatNumber = false;
+			} else {
+				document.getElementById("flo_flotante_1").style.display = "block";
+				document.getElementById("flo_flotante_2").style.display = "block";
+				// $('.btn-flotante').css('filter','invert(100%)');
+				$(".flo_cerrar").css('margin-right', 'none !important');
+				$(".btn-flotante").css('padding', '17px 65px');
+
+				$(".btn-flotante-movil").css('margin-right', 'inherit');
+				$(".btn-flotante").css('margin-right', 'inherit');
+
+				let imgClose = document.getElementById('imgClose-open')
+				deg = !floatNumber ? 0 : 180;
+				imgClose.style.webkitTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.mozTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.msTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.oTransform = 'rotate(' + deg + 'deg)';
+				imgClose.style.transform = 'rotate(' + deg + 'deg)';
+				$('#imgClose-open').removeClass('imgClose-open-min');
+				$('#imgClose-open').addClass('imgClose-open')
+				$('#imgClose-bar').show();
+				let imgCloseMovil = document.getElementById('imgClose-open-mov')
+				deg = !floatNumber ? 0 : 180;
+				imgCloseMovil.style.webkitTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.mozTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.msTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.oTransform = 'rotate(' + deg + 'deg)';
+				imgCloseMovil.style.transform = 'rotate(' + deg + 'deg)';
+				$('#imgCloseMovil').show();
+				floatNumber = true;
+			}
+		})
+		// Home Welcome Slider
+		const homeWelcomeSlider = tns({
+			container: '.home-welcome-slider',
+			items: 1,
+			slideBy: 1,
+			autoplay: false,
+			// autoplayButton: 'autoplay-button',
+			controlsContainer: '.home-welcome-slider__controls',
+			loop: false
+		});
+		const homeGallery = tns({
+			container: '.home-presente-slider',
+			items: 4,
+			slideBy: 'page',
+			autoplay: false,
+			autoplayButton: 'autoplay-button',
+			gutter: 10,
+			controlsContainer: '.home-presente-slider__controls',
+			mouseDrag: true,
+			loop: false,
+			responsive: {
+				0: {
+					items: 1,
+					edgePadding: 20
+				},
+				600: {
+					items: 2,
+					edgePadding: 40
+				},
+				900: {
+					items: 3
+				},
+				1200: {
+					items: 4
+				}
+			}
+		});
+	</script>
+	<script>
+		var puntaje_total = 0
+		function ver_resultados() {
+			puntaje_total = 0
+			let respuestas = []
+			$('input[type=radio]:checked').each(function () {
+				let pregunta = $(this)
+				if (pregunta.attr('checked')) {
+					let puntaje = pregunta.attr('puntaje')
+					if (puntaje) {
+						puntaje_total = parseFloat(puntaje_total) + parseFloat(puntaje)
+					}
+					console.log($('.respuestas'))
+					$('.respuestas').each(function () {
+						let respuesta = $(this)
+						if (puntaje_total >= respuesta.attr('puntaje')) {
+							respuestas[respuesta.attr('respuesta-id')] = respuesta.attr('respuesta')
+						}
+					})
+				}
+			});
+			if (respuestas && respuestas.length > 0) {
+				console.log(respuestas)
+				respuesta_total = '';
+				console.log(respuestas)
+				respuestas.forEach(respuesta => {
+					respuesta_total = respuesta_total + '</br>' + respuesta
+				})
+				console.log('nostrar respuesta')
+				$('#jr_respuesta_dinamica').html(respuesta_total)
+				$('#jr_respuesta_modal').modal('show')
+			}
+		}
+
+		function marcarCheck(preguntaId) {
+			console.log(preguntaId)
+			if ($('#' + preguntaId + '_check').attr('checked')) {
+				$('#' + preguntaId + '_check').attr('checked', false);
+			} else {
+				console.log('desmarco')
+				$('#' + preguntaId + '_check').attr('checked', true);
+			}
+		}
+
+
+		{
+				}
+		var eventos = []		
+
+		
+								evento = {
+			id: 1187,
+		imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/65ccf18bc1125261474375.jpeg"
+}
+
+		eventos.push(evento)		evento = {
+			id: 1188,
+		imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/65ccf18bc3c5d595260914.jpeg"
+}
+
+		eventos.push(evento)		evento = {
+			id: 1189,
+		imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/65ccf18bc641c220237454.jpeg"
+}
+
+		eventos.push(evento)		evento = {
+			id: 1190,
+		imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/65ccf239cc38e971050090.jpeg"
+}
+
+		eventos.push(evento)
+		function mostrarSlider() {
+			slider_eventos = tns({
+				container: '#galeria_slider',
+				items: 1,
+				slideBy: 'page',
+				autoplay: false,
+				// autoplayButton: 'autoplay-button',
+				gutter: 10,
+				mouseDrag: true,
+				controlsContainer: '.galeria_slider-presente-slider__controls',
+				mouseDrag: true,
+				loop: false,
+				nav: false
+
+			});
+		}
+
+		function abrirSlider(evento_id) { // busco los datos del evento del cual voy a mostrar la modal
+			var evento = eventos.find(function (evento) {
+				return evento.id === evento_id;
+			});
+			slider = '';
+			// para la imagen principal del evento
+			sliders = "<div class='slider-item'><img class='img-fluid evento_slider_element'   src='" + evento.imagen + "' alt=''></div>"
+
+			// ahora por cada imagen los seteo en la modal
+			eventos.forEach(resource => {
+				sliders = sliders + "<div class='slider-item'><img class='img-fluid evento_slider_element'   src='" + resource.imagen + "' alt=''><hr><br><div  style='text-align:center;'></div></div>"
+			});
+
+			$('#galeria_slider').html(sliders);
+			$('#modal-evento-link-not').css('display', 'none')
+
+
+			$('.tns-nav').html('');
+			// $('.galeria_slider-presente-slider__controls').hide()
+			if (eventos.length > 0) {
+				$('.galeria_slider-presente-slider__controls').show()
+				mostrarSlider()
+			} else {
+				$('.galeria_slider-presente-slider__controls').hide()
+			}
+			$("#modal_eventos").modal();
+		}
+
+		
+		
+
+		
+				
+
+		
+				
+
+		
+				
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="/frontend/css/juego_responsable.css?v3" />
+
+	</body>
+</html>
