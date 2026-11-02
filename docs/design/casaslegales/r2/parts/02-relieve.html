@@ -1,0 +1,224 @@
+<!-- name: Relieve -->
+<!-- desc: Первый экран — объёмная изометрическая карта Аргентины из 24 плиток-клавиш: чем больше лицензий, тем выше плитка, выбранная провинция приподнята и открывает панель справа. Светлая — бледный шалфей, сосновые грани, салатовые верхушки, коралл для «только пресса»; тёмная — ночная хвоя, верхушки светятся. -->
+<!-- fonts: family=Gabarito:wght@500;700;900&family=Ubuntu+Sans+Mono:wght@500;700 -->
+<style>
+.l02{--bg:#e8efe5;--pa:#fbfdf9;--fg:#10241c;--mu:#4a5e54;--ac:#0e5a3a;--t0:#d0dbcd;--t1:#c4ee58;--sd:#2e5944;--co:#ff7a59;--ct:#9c2f16;--sl:#10241c;--so:#fbfdf9;--ln:#cfdacb;--m:"Ubuntu Sans Mono",ui-monospace,Menlo,monospace;background:var(--bg);color:var(--fg);font:16px/1.5 Gabarito,system-ui,-apple-system,"Segoe UI",sans-serif}
+.l02[data-mode="dark"]{--bg:#0a1511;--pa:#11201a;--fg:#e5efe9;--mu:#9cb2a6;--ac:#c4ee58;--t0:#1f3229;--t1:#b3e248;--sd:#030806;--co:#ff8a6b;--ct:#ffb39f;--sl:#f1f7f3;--so:#0a1511;--ln:#22362d}
+.l02 *{box-sizing:border-box}
+.l02 :where(a){color:inherit}
+.l02 :focus-visible{outline:3px solid var(--co);outline-offset:3px}
+.l02 h1,.l02 h2,.l02 h3,.l02 p{margin:0}
+.l02-hd{display:flex;align-items:center;gap:16px;height:72px;padding:0 32px}
+.l02-lo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;text-decoration:none;margin-right:auto;min-height:44px}
+.l02-lo i{width:30px;height:30px;border-radius:9px;background:var(--t1);box-shadow:0 5px 0 var(--sd);transform:translateY(-3px);display:grid;place-items:center}
+.l02-lo i::after{content:"";width:6px;height:11px;border:solid var(--sd);border-width:0 3px 3px 0;transform:translateY(-1px) rotate(45deg)}
+.l02-nv{display:flex;gap:2px;background:var(--pa);border-radius:14px;padding:4px;border:1px solid var(--ln)}
+.l02-nv a{padding:9px 14px;border-radius:10px;font-weight:700;text-decoration:none}
+.l02-nv a[aria-current]{background:var(--sl);color:var(--so)}
+.l02-ib{width:44px;height:44px;border-radius:12px;border:1px solid var(--ln);background:var(--pa);color:var(--fg);display:grid;place-items:center}
+.l02-bu{display:none}
+.l02-w{padding:0 32px}
+.l02-hr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:24px;align-items:center;padding:24px 0 40px}
+.l02-k{font:700 14px var(--m);color:var(--ac);text-transform:uppercase;letter-spacing:.06em}
+.l02 h1{font-size:64px;line-height:1;font-weight:900;letter-spacing:-.035em;margin:14px 0 18px}
+.l02-su{font-size:19px;color:var(--mu)}
+.l02-se{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px;min-height:60px;padding:0 18px;border-radius:16px;background:var(--pa);border:2px solid var(--fg);font-size:18px}
+.l02-se small{color:var(--mu);font-size:15px;display:block;line-height:1.2}
+.l02-se b{display:block;line-height:1.2}
+.l02-se::after{content:"";width:10px;height:10px;border:solid var(--fg);border-width:0 3px 3px 0;transform:rotate(45deg) translateY(-3px)}
+.l02-bt{display:flex;gap:10px;margin-top:10px}
+.l02-b1,.l02-b2{flex:1;display:grid;place-items:center;min-height:54px;border-radius:16px;font-weight:700;font-size:17px;text-decoration:none}
+.l02-b1{background:var(--t1);color:#10241c;box-shadow:0 5px 0 var(--sd)}
+.l02-b2{border:2px solid var(--ln);background:var(--pa)}
+.l02-mp{display:grid;justify-items:center;gap:8px}
+.l02-g{display:grid;grid-template-columns:repeat(5,60px);grid-auto-rows:60px;gap:8px;transform:rotateX(52deg) rotateZ(-32deg);margin:-70px 0 -140px -24px}
+.l02-g i{font-style:normal;--h:3px;border-radius:12px;background:var(--t0);box-shadow:0 var(--h) 0 var(--sd);transform:translateY(calc(var(--h)*-1));display:grid;place-items:center;font:700 15px var(--m);text-decoration:none;color:var(--fg)}
+.l02-g .l02-a{--h:9px;background:var(--t1);color:#10241c}
+.l02-g .l02-b{--h:18px;background:var(--t1);color:#10241c}
+.l02-g .l02-c{--h:30px;background:var(--t1);color:#10241c}
+.l02-g .l02-p{--h:4px;background:var(--co);color:#10241c}
+.l02-g .l02-s{--h:42px;background:var(--sl);color:var(--so)}
+.l02-sh{width:100%;background:var(--pa);border-radius:20px;padding:16px 18px;border:1px solid var(--ln);box-shadow:0 20px 40px -24px #0a1f1580;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 18px;align-items:center}
+.l02-sh h2{grid-column:1/-1}
+.l02-sh .l02-n{grid-row:2/4}
+.l02-sh h2{font-size:24px;font-weight:900;line-height:1.1}
+.l02-n{font:700 48px/1 var(--m);font-variant-numeric:tabular-nums}
+.l02-n small{font:500 15px Gabarito,sans-serif;color:var(--mu);margin-left:6px}
+.l02-sh p{font:500 13px var(--m);color:var(--mu)}
+.l02-lg{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--mu)}
+.l02-lg span{display:inline-flex;gap:6px;align-items:center}
+.l02-lg i{width:14px;height:14px;border-radius:4px;background:var(--c);box-shadow:0 3px 0 var(--sd)}
+.l02-sc{padding:48px 0 0}
+.l02-hh{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.l02 h2{font-size:40px;font-weight:900;letter-spacing:-.03em;line-height:1.05}
+.l02-hh p{color:var(--mu);font:500 14px var(--m)}
+.l02-cd{background:var(--pa);border-radius:24px;border:1px solid var(--ln);padding:20px}
+.l02 table{width:100%;border-collapse:separate;border-spacing:0 6px;font-size:16px}
+.l02 th,.l02 td{padding:6px;text-align:center}
+.l02 thead th{font:700 13px var(--m);color:var(--mu);text-transform:uppercase}
+.l02 tbody th{text-align:left;font-weight:700;font-size:17px}
+.l02 abbr{text-decoration:none}
+.l02-c1,.l02-c2,.l02-c3{display:grid;place-items:center;height:40px;border-radius:10px;font:700 0/1 var(--m);color:transparent}
+.l02-c1{background:var(--t1);box-shadow:0 4px 0 var(--sd)}
+.l02-c1::after{content:"";width:7px;height:13px;border:solid #10241c;border-width:0 3px 3px 0;transform:translateY(-2px) rotate(45deg)}
+.l02-c2{border:2px dashed var(--co)}
+.l02-c2::after{content:"?";font-size:18px;color:var(--ct)}
+.l02-c3{background:var(--bg)}
+.l02-c3::after{content:"";width:14px;height:3px;border-radius:2px;background:var(--mu)}
+.l02-cap{font:500 13px var(--m);color:var(--mu);margin-top:8px}
+.l02-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.l02-vf{background:var(--sl);color:var(--so);border-radius:24px;padding:24px;display:grid;gap:14px;align-content:start}
+.l02-vf h2{font-size:32px}
+.l02-in{display:flex;align-items:center;gap:8px;min-height:60px;border-radius:16px;background:var(--so);color:var(--sl);padding:0 8px 0 18px;font-size:18px}
+.l02-in span{flex:1;color:var(--mu);min-width:0}
+.l02-in b{background:var(--t1);color:#10241c;border-radius:12px;min-height:46px;padding:0 18px;display:grid;place-items:center}
+.l02-rs{border:2px solid var(--t1);border-radius:16px;padding:14px 16px;display:grid;gap:4px}
+.l02-rs strong{font:700 19px var(--m);overflow-wrap:anywhere}
+.l02-rs em{font-style:normal;justify-self:start;background:var(--t1);color:#10241c;border-radius:8px;padding:2px 10px;font-weight:700;font-size:14px}
+.l02-vf small{font-size:14px;opacity:.85}
+.l02-op{display:grid;gap:14px}
+.l02-shot{margin:0;border-radius:18px;overflow:clip;border:1px solid var(--ln);background:var(--bg)}
+.l02-ba{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--pa);border-bottom:1px solid var(--ln)}
+.l02-ba i{width:9px;height:9px;border-radius:50%;background:var(--ln)}
+.l02-ba span{flex:1;text-align:center;font:500 13px var(--m);background:var(--bg);border-radius:8px;padding:4px}
+.l02-vp{height:150px;margin:12px;border-radius:10px;background:linear-gradient(var(--t0) 0 0) 0 0/55% 22% no-repeat,linear-gradient(var(--t0) 0 0) 0 40%/80% 10% no-repeat,repeating-linear-gradient(90deg,var(--t0) 0 31%,#0000 0 34.5%) 0 100%/100% 38% no-repeat}
+.l02-shot figcaption{font:500 13px var(--m);color:var(--mu);padding:0 12px 10px}
+.l02-op h3{font-size:24px;font-weight:900}
+.l02-ch{display:flex;gap:8px;flex-wrap:wrap}
+.l02-ch span{border-radius:10px;padding:4px 10px;background:var(--t1);color:#10241c;font-weight:700;font-size:14px;box-shadow:0 3px 0 var(--sd)}
+.l02 dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0}
+.l02 dl div{background:var(--bg);border-radius:12px;padding:10px}
+.l02 dt{font:500 13px var(--m);color:var(--mu)}
+.l02 dd{margin:0;font-weight:700}
+.l02 blockquote{margin:0;border-left:5px solid var(--t1);padding:4px 0 4px 14px;font-size:17px}
+.l02 cite{display:block;font:500 13px var(--m);color:var(--mu);font-style:normal;margin-top:4px}
+.l02-lw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.l02-lw article{background:var(--pa);border:1px solid var(--ln);border-radius:20px;padding:18px;display:grid;gap:10px;align-content:start}
+.l02-lw b{justify-self:start;font:700 15px var(--m);background:var(--sl);color:var(--so);border-radius:10px;padding:6px 10px;box-shadow:0 4px 0 var(--sd)}
+.l02-lw p{font-size:19px;font-weight:500}
+.l02-lw small{font:500 13px var(--m);color:var(--mu)}
+.l02-gd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;padding-bottom:48px}
+.l02-gd a{display:flex;align-items:center;gap:14px;min-height:64px;border-bottom:2px solid var(--ln);text-decoration:none;font-size:19px;font-weight:700}
+.l02-gd span{font:700 14px var(--m);color:var(--ac);width:28px}
+.l02-gd a::after{content:"";margin-left:auto;width:10px;height:10px;border:solid var(--fg);border-width:3px 3px 0 0;transform:rotate(45deg)}
+.l02-ft{background:var(--sl);color:var(--so);padding:28px 32px;display:grid;gap:16px}
+.l02-ft nav{display:flex;flex-wrap:wrap;gap:4px 20px}
+.l02-ft nav a{min-height:40px;display:inline-flex;align-items:center;font-weight:700}
+.l02-rg{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--t1);color:#10241c;border-radius:16px;padding:12px 16px;font-weight:500}
+.l02-rg b{font:700 18px var(--m);background:#10241c;color:#c4ee58;border-radius:8px;padding:2px 8px}
+@container (max-width:620px){
+.l02-hd{height:60px;padding:0 16px;gap:8px}
+.l02-nv{display:none}
+.l02-bu{display:grid}
+.l02-w{padding:0 16px}
+.l02-hr{grid-template-columns:minmax(0,1fr);padding:12px 0 24px;gap:0}
+.l02 h1{font-size:42px}
+.l02-su{font-size:17px}
+.l02-bt{flex-direction:column}
+.l02-mp{min-height:0;display:grid;gap:0;overflow:clip}
+.l02-g{grid-template-columns:repeat(5,46px);grid-auto-rows:46px;gap:5px;margin:-60px 0 -70px;transform:rotateX(52deg) rotateZ(-18deg)}
+.l02-g i{font-style:normal;font-size:12px;border-radius:9px}
+.l02-sh{grid-template-columns:minmax(0,1fr)}
+.l02-sh .l02-n{grid-row:auto}
+.l02-sc{padding-top:36px}
+.l02 h2{font-size:30px}
+.l02-cd{padding:10px}
+.l02 table{font-size:14px}
+.l02 th,.l02 td{padding:3px}
+.l02 tbody th{font-size:15px}
+.l02-c1,.l02-c2,.l02-c3{height:36px}
+.l02-two,.l02-lw,.l02-gd{grid-template-columns:minmax(0,1fr)}
+.l02-vf{padding:18px}
+.l02-in{flex-wrap:wrap;padding:8px}
+.l02-in span{padding-left:8px}
+.l02-in b{width:100%}
+.l02 dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+.l02-ft{padding:24px 16px}
+}
+</style>
+<div class="l02 mock" data-mode="light">
+<header class="l02-hd">
+<a class="l02-lo" href="#"><i aria-hidden="true"></i>casaslegales</a>
+<nav class="l02-nv" aria-label="Principal"><a href="#">Operadores</a><a href="#" aria-current="page">Provincias</a><a href="#">Licencias</a><a href="#">Verificador</a><a href="#">Guías</a></nav>
+<button class="l02-ib" type="button" aria-label="Cambiar tema"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M15 12.5A6.5 6.5 0 0 1 7.5 5a6.5 6.5 0 1 0 7.5 7.5z" fill="currentColor"/></svg></button>
+<button class="l02-ib l02-bu" type="button" aria-label="Menú"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+</header>
+<main class="l02-w">
+<section class="l02-hr">
+<div>
+<p class="l02-k">24 jurisdicciones · revisado 02/11/2026</p>
+<h1>¿Es legal donde apostás? Fijate en tu provincia</h1>
+<p class="l02-su">Qué casas de apuestas tienen licencia en cada provincia, con la cita del regulador y la fecha en que lo revisamos. Sin enlaces a operadores, sin bonos.</p>
+<div class="l02-se" role="button" tabindex="0"><span><small>Elegí tu provincia</small><b>Buenos Aires</b></span></div>
+<div class="l02-bt"><a class="l02-b1" href="#">Ver licencias</a><a class="l02-b2" href="#">Verificar un sitio</a></div>
+</div>
+<div class="l02-mp">
+<div class="l02-g" role="img" aria-label="Mapa de licencias por provincia (ejemplo)">
+<i style="grid-area:1/2" class="l02-b">JUJ</i><i style="grid-area:1/3" class="l02-p">SAL</i><i style="grid-area:1/4">FOR</i><i style="grid-area:1/5">MIS</i>
+<i style="grid-area:2/2">CAT</i><i style="grid-area:2/3">TUC</i><i style="grid-area:2/4">SGO</i><i style="grid-area:2/5">CHA</i>
+<i style="grid-area:3/1">SJU</i><i style="grid-area:3/2">LRI</i><i style="grid-area:3/3" class="l02-b">CBA</i><i style="grid-area:3/4" class="l02-b">SFE</i><i style="grid-area:3/5">COR</i>
+<i style="grid-area:4/1" class="l02-c">MZA</i><i style="grid-area:4/2">SLU</i><i style="grid-area:4/3/6/5" class="l02-s">PBA</i><i style="grid-area:4/5" class="l02-a">ERI</i>
+<i style="grid-area:5/1" class="l02-p">NEU</i><i style="grid-area:5/2">LPA</i><i style="grid-area:5/5" class="l02-c">CABA</i>
+<i style="grid-area:6/1/7/3">RNE</i><i style="grid-area:7/1/8/3" class="l02-a">CHU</i><i style="grid-area:8/1/9/3">SCR</i><i style="grid-area:9/2">TDF</i>
+</div>
+<aside class="l02-sh">
+<h2>Provincia de Buenos Aires</h2>
+<div class="l02-n">7<small>plataformas con licencia</small></div>
+<p>Regulador: IPLyC · dominios pba.*.bet.ar · revisado 02/11/2026</p>
+<div class="l02-lg"><span><i style="--c:var(--t1)"></i>con licencias</span><span><i style="--c:var(--co)"></i>solo prensa</span><span><i style="--c:var(--t0)"></i>sin datos</span></div>
+</aside>
+</div>
+</section>
+<section class="l02-sc">
+<div class="l02-hh"><h2>Licencias por provincia</h2><p>Datos de ejemplo para el diseño · fuente y fecha en cada celda</p></div>
+<div class="l02-cd">
+<table>
+<thead><tr><th scope="col"><span hidden>Operador</span></th><th scope="col">PBA</th><th scope="col">CABA</th><th scope="col"><abbr title="Córdoba">CBA</abbr></th><th scope="col"><abbr title="Santa Fe">SFE</abbr></th><th scope="col"><abbr title="Mendoza">MZA</abbr></th></tr></thead>
+<tbody>
+<tr><th scope="row">Betano</th><td><i class="l02-c1">Sí</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c2">Sin confirmar</i></td></tr>
+<tr><th scope="row">Betsson</th><td><i class="l02-c1">Sí</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c3">No</i></td></tr>
+<tr><th scope="row">bplay</th><td><i class="l02-c1">Sí</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c2">Sin confirmar</i></td><td><i class="l02-c2">Sin confirmar</i></td></tr>
+<tr><th scope="row">BetWarrior</th><td><i class="l02-c1">Sí</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c2">Sin confirmar</i></td><td><i class="l02-c2">Sin confirmar</i></td></tr>
+<tr><th scope="row">bet365</th><td><i class="l02-c1">Sí</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c3">No</i></td></tr>
+<tr><th scope="row">Codere</th><td><i class="l02-c3">No</i></td><td><i class="l02-c1">Sí</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c3">No</i></td><td><i class="l02-c2">Sin confirmar</i></td></tr>
+</tbody>
+</table>
+<p class="l02-cap">Verde: registro oficial · coral: solo prensa · gris: no figura (no quiere decir ilegal)</p>
+</div>
+</section>
+<section class="l02-sc l02-two">
+<div class="l02-vf">
+<h2>Verificador</h2>
+<div class="l02-in"><span>Pegá la dirección del sitio</span><b>Verificar</b></div>
+<div class="l02-rs"><em>Figura en el registro</em><strong>pba.ejemplo.bet.ar</strong><span>dominio .bet.ar · licencia en Provincia de Buenos Aires (ejemplo)</span></div>
+<small>Fuente: IPLyC · 02/11/2026, 14:20 (hora argentina)</small>
+</div>
+<div class="l02-cd l02-op">
+<figure class="l02-shot"><div class="l02-ba" aria-hidden="true"><i></i><i></i><i></i><span>www.ejemplo.bet.ar</span></div><div class="l02-vp"></div><figcaption>Captura propia de la página pública · 02/11/2026</figcaption></figure>
+<h3>Operador de ejemplo</h3>
+<div class="l02-ch"><span>PBA</span><span>CABA</span></div>
+<dl><div><dt>Revisado</dt><dd>02/11/2026</dd></div><div><dt>Juego resp.</dt><dd>Límites y pausa</dd></div><div><dt>Pagos</dt><dd>Mercado Pago, débito</dd></div><div><dt>Edad</dt><dd>18+</dd></div></dl>
+<blockquote>«Cita textual del regulador (ejemplo).»<cite>LOTBA · 02/11/2026</cite></blockquote>
+</div>
+</section>
+<section class="l02-sc">
+<div class="l02-hh"><h2>La ley, provincia por provincia</h2><p>Citas con fecha</p></div>
+<div class="l02-lw">
+<article><b>PBA</b><p>«Cita textual del regulador (ejemplo).»</p><small>IPLyC · 02/11/2026</small></article>
+<article><b>CABA</b><p>«Cita textual del regulador (ejemplo).»</p><small>LOTBA · 28/10/2026</small></article>
+<article><b>CBA</b><p>«Cita textual del regulador (ejemplo).»</p><small>Lotería de Córdoba · 21/10/2026</small></article>
+</div>
+</section>
+<section class="l02-sc">
+<div class="l02-hh"><h2>Guías</h2></div>
+<div class="l02-gd">
+<a href="#"><span>01</span>Cómo saber si un sitio es legal</a><a href="#"><span>02</span>Qué significa .bet.ar</a><a href="#"><span>03</span>Autoexclusión por provincia</a><a href="#"><span>04</span>Medios de pago y Mercado Pago</a><a href="#"><span>05</span>Cuotas y margen: la cuenta</a><a href="#"><span>06</span>Qué hacer si apostaste en un sitio ilegal</a>
+</div>
+</section>
+</main>
+<footer class="l02-ft">
+<p>Sin enlaces a operadores ni bonos. No es asesoramiento legal: depende de la ley de tu provincia.</p>
+<nav aria-label="Pie"><a href="#">Metodología</a><a href="#">Quiénes escriben</a><a href="#">Registro de fuentes</a><a href="#">Juego responsable</a></nav>
+<div class="l02-rg"><b>18+</b><span>Si el juego dejó de ser un juego: línea gratuita de tu provincia → <a href="#">Juego responsable</a></span></div>
+</footer>
+</div>
