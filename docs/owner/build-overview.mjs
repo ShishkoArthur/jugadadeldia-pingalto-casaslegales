@@ -8,9 +8,12 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const q = JSON.parse(readFileSync(join(ROOT, 'docs/owner/questions.json'), 'utf8'));
 const SITES = [
-  { id: 'jugadadeldia', name: 'jugadadeldia.com', theme: 'Кинела, лотереи, труко и местные игры', girl: 'contact-jdd-girls.jpg' },
-  { id: 'pingalto', name: 'pingalto.com', theme: 'Киберспорт и инструменты для игр', girl: 'contact-pa-girls.jpg' },
-  { id: 'casaslegales', name: 'casaslegales.com', theme: 'Лицензии и обзоры букмекеров, без людей', girl: null },
+  { id: 'jugadadeldia', name: 'jugadadeldia.com', theme: 'Кинела, лотереи, труко и местные игры', girl: 'contact-jdd-girls-r2.jpg',
+    designFile: 'r2/five-variants-2026-11-02.html', designWant: 5, designNote: '5 вариантов дизайна «Bolillero», игровее и мультяшнее', girlNote: 'вариантов девушки 01: моложе, юбка или шорты' },
+  { id: 'pingalto', name: 'pingalto.com', theme: 'Киберспорт и инструменты для игр', girl: 'contact-pa-girls-r2.jpg',
+    designFile: 'r2/five-variants-2026-11-02.html', designWant: 5, designNote: '5 вариантов дизайна «Cromo», без растянутого заголовка', girlNote: 'вариантов девушки 01: юбка, шорты, платье' },
+  { id: 'casaslegales', name: 'casaslegales.com', theme: 'Лицензии и обзоры букмекеров, без людей', girl: null,
+    designFile: 'r2/six-concepts-2026-11-02.html', designWant: 6, designNote: 'новые концепции после ресёрча' },
 ];
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -27,13 +30,13 @@ const files = {};
 const data = {};
 for (const s of SITES) {
   const plan = JSON.parse(readFileSync(join(ROOT, `data/plan/${s.id}.json`), 'utf8'));
-  data[s.id] = plan.map(p => [p.section, p.url, p.h1, p.keys, p.tool, p.data, p.auto, p.wave, p.kind]);
+  data[s.id] = plan.map(p => [p.section, p.url, p.h1, p.keys, p.tool, p.data, p.auto, p.wave, p.kind, p.title, p.description || '', p.ar || '']);
   s.count = plan.length;
   s.waves = ['P1', 'P2', 'P3'].map(w => plan.filter(p => p.wave === w).length);
   s.concept = concept(s.id);
-  const design = join(ROOT, `docs/design/${s.id}/ten-designs-2026-11-02.html`);
+  const design = join(ROOT, `docs/design/${s.id}/${s.designFile}`);
   s.design = existsSync(design) ? `designs/${s.id}.html` : null;
-  s.ready = existsSync(join(ROOT, `docs/design/${s.id}/parts`)) ? readdirSync(join(ROOT, `docs/design/${s.id}/parts`)).filter(f => f.endsWith('.html')).length : 0;
+  s.ready = existsSync(join(ROOT, `docs/design/${s.id}/r2/parts`)) ? readdirSync(join(ROOT, `docs/design/${s.id}/r2/parts`)).filter(f => f.endsWith('.html')).length : 0;
   if (s.design) files[s.design] = design;
   if (s.girl && existsSync(join(ROOT, 'data/img-review', s.girl))) files[`girls/${s.girl}`] = join(ROOT, 'data/img-review', s.girl);
   else s.girl = null;
@@ -44,10 +47,10 @@ const siteCard = s => `
   <header class="site-head"><h2>${esc(s.name)}</h2><p>${esc(s.theme)}</p></header>
   <ul class="concept">${s.concept.map(c => `<li>${md(c)}</li>`).join('')}</ul>
   <div class="picks">
-    <a class="pick" ${s.design ? `href="${s.design}"` : 'aria-disabled="true"'}><span class="pick-k">Дизайн</span><span class="pick-v">${s.design ? (s.ready >= 10 ? '10 живых макетов главной →' : `Готово ${s.ready} из 10 →`) : 'макеты ещё делаются'}</span><span class="pick-n">${s.ready >= 10 ? 'Выберите номер 1–10' : 'остальные дорисовываются, ссылка та же'}</span></a>
+    <a class="pick" ${s.design ? `href="${s.design}"` : 'aria-disabled="true"'}><span class="pick-k">Дизайн</span><span class="pick-v">${s.design ? esc(s.designNote) + ' →' : 'делаются'}</span><span class="pick-n">${s.design && s.ready >= s.designWant ? `Выберите номер 1–${s.designWant}` : `готово ${s.ready} из ${s.designWant}, ссылка та же`}</span></a>
     ${s.id === 'casaslegales'
       ? `<div class="pick"><span class="pick-k">Иллюстрации</span><span class="pick-v">Свои скриншоты публичных страниц</span><span class="pick-n">Девушки нет</span></div>`
-      : `<a class="pick" ${s.girl ? `href="girls/${s.girl}"` : 'aria-disabled="true"'}><span class="pick-k">Девушка</span><span class="pick-v">${s.girl ? '10 вариантов →' : 'варианты ещё генерируются'}</span><span class="pick-n">Выберите номер 01–10</span></a>`}
+      : `<a class="pick" ${s.girl ? `href="girls/${s.girl}"` : 'aria-disabled="true"'}><span class="pick-k">Девушка</span><span class="pick-v">${s.girl ? esc(s.girlNote) + ' →' : 'генерируются'}</span><span class="pick-n">Выберите номер</span></a>`}
   </div>
   <p class="counts"><b>${s.count}</b> страниц · <span class="w w1">P1 ${s.waves[0]}</span> <span class="w w2">P2 ${s.waves[1]}</span> <span class="w w3">P3 ${s.waves[2]}</span></p>
 </section>`;
@@ -107,7 +110,7 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
 .pg{border-top:1px solid var(--line);padding:12px 14px;display:grid;gap:4px;min-width:0}
 .pg-top{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .pg-url{font:500 13px var(--m);overflow-wrap:anywhere}
-.pg-h1{font-weight:700}
+.pg-h1{font-weight:700}.pg-ti{font-size:14px}.pg-de{font-size:13px;color:var(--mute)}.pg-ar{font-size:13px;border-left:3px solid var(--acc);padding-left:8px}.lbl{font:500 11px var(--m);text-transform:uppercase;letter-spacing:.05em;color:var(--mute);margin-right:4px}
 .pg-k{font-size:13px;color:var(--mute);overflow-wrap:anywhere}
 .pg-t{font-size:14px}
 .pg-d{font-size:13px;color:var(--mute)}
@@ -117,8 +120,8 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
 </style>
 <main class="wrap">
   <header style="display:grid;gap:10px">
-    <h1>Три сайта для Аргентины: план, дизайн, девушки</h1>
-    <p class="lead">Сводка на 02.11.2026. Ваша задача на этой странице: выбрать дизайн каждого сайта и девушку для двух сайтов, ответить на вопросы ниже (или промолчать — тогда делаем по умолчанию). Ниже — полный список страниц с фильтром.</p>
+    <h1>Три сайта для Аргентины: круг 2</h1>
+    <p class="lead">Обновлено по вашим правкам: варианты выбранных дизайнов (светлая и тёмная тема — переключатель у каждого), новые концепции casaslegales, варианты девушек. Ниже — все страницы с title, H1, description и тем, что на странице аргентинского.</p>
     <ul class="status">
       <li><span class="dot"></span><span>Все три домена работают по https (пока заглушка, закрыта от индекса), www → основной адрес.</span></li>
       <li><span class="dot"></span><span>GitHub: код сохраняется в репозиторий.</span></li>
@@ -154,15 +157,15 @@ const DATA=${JSON.stringify(data)};
 const st={site:${JSON.stringify(SITES[0].id)},wave:'',q:''};
 const E=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function render(){
-  const rows=DATA[st.site].filter(r=>(!st.wave||r[7]===st.wave)&&(!st.q||(r[1]+' '+r[2]+' '+r[3]).toLowerCase().includes(st.q)));
+  const rows=DATA[st.site].filter(r=>(!st.wave||r[7]===st.wave)&&(!st.q||(r[1]+' '+r[2]+' '+r[3]+' '+r[9]).toLowerCase().includes(st.q)));
   const secs=[];const by={};
   for(const r of rows){if(!by[r[0]]){by[r[0]]=[];secs.push(r[0]);}by[r[0]].push(r);}
   const el=document.getElementById('list');
   if(!rows.length){el.innerHTML='<p class="empty">Ничего не найдено.</p>';return;}
   el.innerHTML=secs.map((s,i)=>'<details class="sec"'+(i===0||st.q?' open':'')+'><summary><span>'+E(s)+'</span><span class="n">'+by[s].length+'</span></summary>'+by[s].map(r=>
     '<div class="pg"><div class="pg-top"><span class="w w'+E(r[7]).slice(1)+'">'+E(r[7])+'</span><span class="pg-url">'+E(r[1])+'</span></div>'+
-    '<div class="pg-h1">'+E(r[2])+'</div>'+(r[3]&&r[3]!=='—'?'<div class="pg-k">'+E(r[3])+'</div>':'')+
-    '<div class="pg-t">'+E(r[4])+'</div><div class="pg-d"><b>Данные:</b> '+E(r[5])+' · <b>Обновление:</b> '+E(r[6])+'</div></div>').join('')+'</details>').join('');
+    '<div class="pg-ti"><span class="lbl">title</span> '+E(r[9])+'</div><div class="pg-h1"><span class="lbl">H1</span> '+E(r[2])+'</div>'+(r[10]?'<div class="pg-de"><span class="lbl">description</span> '+E(r[10])+'</div>':'')+(r[3]&&r[3]!=='—'?'<div class="pg-k">'+E(r[3])+'</div>':'')+
+    '<div class="pg-t">'+E(r[4])+'</div>'+(r[11]?'<div class="pg-ar"><b>Аргентина:</b> '+E(r[11])+'</div>':'')+'<div class="pg-d"><b>Данные:</b> '+E(r[5])+' · <b>Обновление:</b> '+E(r[6])+'</div></div>').join('')+'</details>').join('');
 }
 function press(group,attr,val){document.querySelectorAll(group+' button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===val)));}
 document.querySelector('.tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st.site=b.dataset.tab;press('.tabs','tab',st.site);render();});
