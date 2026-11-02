@@ -1,0 +1,188 @@
+<!-- name: Agencia de barrio -->
+<!-- desc: Витрина районной агентуры: зелёная вывеска, маркиза, фетровая доска с буквами, чеки на скотче за стеклом. Ночью неон за тёмным стеклом. -->
+<!-- fonts: family=Martian+Mono:wght@500;700&family=Schibsted+Grotesk:wght@400;600;800 -->
+<style>
+.j01{--bg:#edf1ec;--fg:#13241b;--mu:#4b5c52;--g:#0d6a3a;--on:#fff;--sb:#0d6a3a;--st:#fff;--aw:#f7f8f4;--pa:#fff;--ln:#c4cfc7;--fe:#1c1e1d;--pg:#f2f2ec;--py:#f1d36b;--pd:#8f9490;--fr:#aeb8b1;--gA:#dbe6df;--gB:#f4f8f5;--tp:#e2cc78b0;--pl:#e9dcae;--pt:#3b2f12;--ac:#a8261c;--vg:none;--m:"Martian Mono",ui-monospace,Menlo,monospace;--x:clamp(16px,3.6cqw,40px);--b:clamp(6px,1cqw,10px);--p:clamp(14px,2cqw,22px);font:16px/1.5 "Schibsted Grotesk",system-ui,Arial,sans-serif;background:var(--bg);color:var(--fg);overflow-wrap:anywhere}
+.j01[data-mode="dark"]{--bg:#09110d;--fg:#e2ece5;--mu:#9bb0a3;--g:#4cc68a;--on:#04140b;--sb:#10291d;--st:#86f2b8;--aw:#7d8f85;--pa:#131d18;--ln:#2c3c33;--fe:#0e100f;--fr:#28322d;--gA:#0d1813;--gB:#14231b;--tp:#c9b86a3a;--pl:#2f2918;--pt:#efdca2;--ac:#ff8f80;--vg:inset 0 0 90px #4cc68a30}
+.j01 *{box-sizing:border-box;margin:0}
+.j01 a{color:inherit}
+.j01 :is(button,input){font:inherit;color:inherit;background:none}
+.j01 :is(a,button,input):focus-visible{outline:3px solid var(--ac);outline-offset:2px;box-shadow:0 0 0 5px var(--aw)}
+.j01 :is(.lg,.ey,.fb,.pl,.ex,.dr,.cz b,.xt,.up,.bl,.ch,.rr,.bg,.rg,.gl span,.tg i){font-family:var(--m)}
+.j01 .sg{display:flex;align-items:center;gap:12px;padding:clamp(6px,1cqw,12px) var(--x);background:var(--sb);color:var(--st);border-bottom:3px solid var(--fr)}
+.j01 :is(.ey,.fb,.pl,.ex,.dr,.tg>span){text-transform:uppercase}
+.j01 :is(.fb p,.xt li,.rr){display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.j01 :is(.xt,.tl){list-style:none;padding:0}
+.j01 :is(.ib,.tl,.tg) svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.j01 .lg{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.j01 .lg svg{width:clamp(34px,4cqw,44px)}
+.j01 .lg b{font-size:clamp(16px,2cqw,22px)}
+.j01 .nv a{text-decoration:none;font-weight:600;padding:10px}
+.j01 .ib{width:clamp(40px,4cqw,44px);aspect-ratio:1;display:grid;place-items:center;border:2px solid;border-radius:50%}
+.j01 .ib svg{width:22px}
+.j01 .bu{display:none}
+.j01 .aw{height:clamp(6px,2.4cqw - 4px,26px);position:relative;background:linear-gradient(#0000 40%,#0003),repeating-linear-gradient(90deg,var(--sb) 0 28px,var(--aw) 0 56px)}
+.j01 .aw:after{content:"";position:absolute;inset:100% 0 auto;height:13px;background:radial-gradient(circle at 14px 0,var(--sb) 13px,#0000 14px) 0 0/56px,radial-gradient(circle at 42px 0,var(--aw) 13px,#0000 14px) 0 0/56px}
+.j01 .hr{display:grid;grid:"c c g" "f p g" 1fr/minmax(0,1fr) 210px 280px;gap:24px;padding:clamp(34px,5cqw,56px) var(--x) 40px}
+.j01 .cp{grid-area:c}
+.j01 .ey{font-size:12px;color:var(--g)}
+.j01 :is(h1,h2){font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.j01 h1{font-size:clamp(36px,5cqw,56px);line-height:1;margin:12px 0}
+.j01 h1 em{font-style:normal;color:var(--g)}
+.j01 .sb{font-size:clamp(16px,1.6cqw,18px);color:var(--mu);margin-bottom:24px}
+.j01 :is(.bt,.bl,.tb,.hh){display:flex;flex-wrap:wrap;gap:8px}
+.j01 :is(.bp,.bs){min-height:48px;display:inline-flex;align-items:center;padding:0 22px;font-weight:700;text-decoration:none;border:2px solid var(--g);color:var(--g)}
+.j01 .bp{background:var(--g);color:var(--on)}
+.j01 :is(.fb,.gl,.vd){border:var(--b) solid var(--fr)}
+.j01 :is(.gl,.vd){background:linear-gradient(115deg,var(--gA) 46%,var(--gB) 0 54%,var(--gA) 0);box-shadow:var(--vg)}
+.j01 .fb{grid-area:f;--l:clamp(24px,2.5cqw,28px);background:repeating-linear-gradient(var(--fe) 0 calc(var(--l) - 2px),#000 0 var(--l)) 0 10px;padding:10px clamp(10px,1.6cqw,18px);color:var(--pg);font-size:clamp(11px,1.4cqw,15px);line-height:var(--l);box-shadow:inset 0 0 22px #000}
+.j01 .fb p:first-child{color:var(--py)}
+.j01 .fb i{font-style:normal;color:var(--pd)}
+.j01 .pl{grid-area:p;background:var(--pl);color:var(--pt);padding:20px;font-size:12px;line-height:1.6}
+.j01 .pl b{display:block;font-size:15px;border-bottom:1px solid;margin-bottom:8px}
+.j01 .gl{grid-area:g;aspect-ratio:2/3;display:grid;place-items:end center;position:relative}
+.j01 .gl svg{width:84%;fill:var(--fr)}
+.j01 .gl span{position:absolute;top:8%;left:50%;translate:-50%;rotate:-4deg;background:var(--pa);font-size:clamp(10px,1.1cqw,12px);padding:.4em;white-space:nowrap}
+.j01 .vd{margin:0 var(--x);padding:clamp(22px,2.6cqw,30px) clamp(10px,2.5cqw,28px);display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:28px}
+.j01 .sd{display:grid;gap:30px}
+.j01 .cd{background:var(--pa);padding:var(--p);position:relative;box-shadow:0 10px 18px -12px #0008}
+.j01 .cd:before{content:"";position:absolute;top:-10px;left:40%;width:80px;height:22px;background:var(--tp);rotate:-3deg}
+.j01 .tk:before{display:none}
+.j01 .tk{mask:radial-gradient(circle 6px at 50% 100%,#0000 98%,#000) 0 0/14px;padding-bottom:30px}
+.j01 .hh{justify-content:space-between;align-items:center}
+.j01 h2{font-size:clamp(22px,2.2cqw,25px)}
+.j01 .ex{font-size:11px;font-weight:700;color:var(--ac);border:2px solid;padding:6px;rotate:-3deg}
+.j01 .tb{margin:14px 0}
+.j01 .tb>*{min-height:40px;padding:0 14px;border:1.5px solid var(--ln);font-size:14px;font-weight:600;border-radius:20px;text-decoration:none;display:inline-flex;align-items:center}
+.j01 .dr>*{border-radius:0;font-size:11px}
+.j01 .tb>:is([aria-current],[aria-pressed=true]){background:var(--g);border-color:var(--g);color:var(--on)}
+.j01 :is(.cz b,.bg){font-size:40px;font-weight:700;color:var(--g)}
+.j01 .xt{counter-reset:n;margin:14px 0;display:grid;grid:repeat(5,auto)/auto-flow minmax(0,1fr);column-gap:16px;font-variant-numeric:tabular-nums}
+.j01 :is(.xt li,.rr){padding:7px 6px;border-bottom:1px dashed var(--ln)}
+.j01 .xt li{font-size:17px}
+.j01 .xt li:before{counter-increment:n;content:counter(n);font-size:13px;color:var(--mu)}
+.j01 .xt li:first-child{background:var(--g);color:var(--on)}
+.j01 .xt li:first-child:before{color:inherit}
+.j01 .rr{font-size:14px}
+.j01 p.bg{font-size:26px;line-height:1.2;margin:14px 0}
+.j01 .bl{gap:6px;margin-top:16px}
+.j01 .bl input{width:42px;height:42px;border-radius:50%;border:2px solid var(--g);background:var(--bg);text-align:center;font-weight:700;padding:0}
+.j01 .ch{font-size:13px;margin-bottom:14px}
+.j01 .lw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:28px;padding:clamp(36px,4cqw,48px) var(--x)}
+.j01 .an{background:var(--pa);padding:0 var(--p) var(--p)}
+.j01 .an:before{content:"";display:block;height:16px;margin:0 calc(0px - var(--p)) 18px;background:radial-gradient(circle,var(--bg) 3px,#0000 4px) 0 50%/20px 16px,var(--fe)}
+.j01 .tg{display:grid;grid-template-columns:70px minmax(0,1fr) minmax(0,1fr);margin:16px 0}
+.j01 .tg>*{padding:8px}
+.j01 .tg>:nth-child(3n){border-left:2px solid}
+.j01 .tg>:nth-child(n+7):nth-child(-n+9){border-top:2px solid}
+.j01 .tg>span{font-size:11px;color:var(--mu)}
+.j01 .tg i{display:block;font-size:28px;font-weight:700;font-style:normal;color:var(--g)}
+.j01 .tg svg{width:100%;max-width:150px;stroke-width:3}
+.j01 .tg button{min-height:40px;width:100%;max-width:120px;border:2px solid var(--g);color:var(--g);font-weight:700}
+.j01 .tl{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--fr);border:2px solid var(--fr)}
+.j01 .tl a{display:grid;align-content:start;gap:6px 12px;height:100%;padding:var(--p);background:var(--pa);text-decoration:none}
+.j01 .tl svg{width:44px;height:44px;padding:9px;border-radius:50%;border:2px solid;color:var(--g)}
+.j01 :is(.up,.nt,.tl span){font-size:14px;color:var(--mu)}
+.j01 .ft{background:repeating-linear-gradient(var(--gB) 0 12px,var(--gA) 0 14px);border-top:8px solid var(--fr);padding:24px var(--x);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-weight:600}
+.j01 .ft a{min-height:40px;display:inline-flex;align-items:center;margin-right:1em}
+.j01 .rg{background:var(--sb);color:var(--st);font-size:13px;padding:12px var(--x)}
+@container (max-width:620px){
+.j01 .nv{display:none}
+.j01 .bu{display:grid}
+.j01 .hr{grid:"c c" "f g" "p p"/minmax(0,1fr) 112px;gap:20px 12px}
+.j01 :is(.vd,.lw,.tl){grid-template-columns:minmax(0,1fr)}
+.j01 .xt{grid-template-rows:repeat(10,auto)}
+.j01 .tl a{grid-template-columns:44px minmax(0,1fr)}
+.j01 .tl svg{grid-row:span 2}
+}
+</style>
+<div class="j01 mock" data-mode="light">
+<header>
+<div class="sg">
+<a class="lg" href><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="var(--st)"/><text x="20" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="var(--sb)">47</text></svg><b>jugadadeldia</b></a>
+<nav class="nv" aria-label="Principal"><a href>Quiniela</a><a href>Quini 6</a><a href>Loterías</a><a href>Truco</a><a href>Juegos</a></nav>
+<button class="ib" aria-label="Cambiar tema"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg></button>
+<button class="ib bu" aria-label="Menú"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div>
+<div class="aw"></div>
+</header>
+<main>
+<section class="hr">
+<div class="cp">
+<p class="ey">Vidriera del día · Nacional y provincias
+<h1>La quiniela de hoy, <em>clara y sin humo</em></h1>
+<p class="sb">Extractos oficiales de cada provincia, cuánto paga cada apuesta y las chances reales. Y para la sobremesa: anotador de truco, generala y más.
+<div class="bt"><a class="bp" href>Ver la quiniela de hoy</a><a class="bs" href>¿Cuánto paga?</a></div>
+</div>
+<div class="fb">
+<p>Cabezas · Nacional
+<p>La Previa<i>····</i>
+<p>Primera<i>····</i>
+<p>Matutina<i>····</i>
+<p>Vespertina<i>····</i>
+<p>Nocturna<b>4721</b>
+<p><i>Ejemplo · 21:14 hs</i>
+</div>
+<div class="pl"><b>Horario</b>Extractos de lunes a sábado. Acá no se apuesta: solo datos y la cuenta.</div>
+<div class="gl" role="img" aria-label="Ilustración"><svg viewBox="0 0 120 180"><path d="M36 66C30 20 90 20 84 66l4 36H32z"/><circle cx="60" cy="52" r="17"/><path d="M60 76c-26 0-38 18-40 46l-6 58h92l-6-58c-2-28-14-46-40-46z"/></svg><span>acá va ella</span></div>
+</section>
+<section class="vd">
+<article class="cd">
+<div class="hh"><h2>Quiniela de hoy</h2><span class="ex">Ejemplo ilustrativo</span></div>
+<nav class="tb" aria-label="Jurisdicción"><a href aria-current="page">Nacional</a><a href>Provincia</a><a href>Tucumán</a><a href>Córdoba</a><a href>Santa Fe</a></nav>
+<div class="tb dr"><button>La Previa</button><button>Primera</button><button>Matutina</button><button>Vespertina</button><button aria-pressed="true">Nocturna</button></div>
+<p class="cz">La cabeza: <b>4721</b>
+<ol class="xt"><li>4721<li>0938<li>6154<li>2307<li>8862<li>1495<li>7030<li>3618<li>5276<li>9143<li>0582<li>6409<li>2851<li>7764<li>1327<li>4990<li>8215<li>3046<li>5573<li>9681</ol>
+<p class="up">Actualizado 21:14 (hora argentina)
+</article>
+<div class="sd">
+<article class="cd tk">
+<div class="hh"><h2>¿Cuánto paga?</h2><span class="ex">Ejemplo</span></div>
+<p class="rr">Apuesta<b>$ 100</b>
+<p class="rr">Jugada<b>A la cabeza</b>
+<p class="rr">Cifras<b>2 cifras</b>
+<p class="bg">Cobrás $&nbsp;7.000
+<p class="nt">Chance: 1 en 100 · por cada $ 100 apostados vuelven en promedio $ 70
+</article>
+<article class="cd">
+<h2>Quini 6</h2>
+<p class="nt">Controlá tu boleta
+<div class="bl"><input value="04" aria-label="N.º 1"><input value="11" aria-label="N.º 2"><input value="17" aria-label="N.º 3"><input value="26" aria-label="N.º 4"><input value="33" aria-label="N.º 5"><input value="45" aria-label="N.º 6"></div>
+<div class="tb"><button aria-pressed="true">Tradicional</button><button>La Segunda</button><button>Revancha</button><button>Siempre Sale</button></div>
+<p class="ch">Chance del pozo: 1 en 9.366.819</p>
+<button class="bp">Controlar</button>
+</article>
+</div>
+</section>
+<section class="lw">
+<article class="an">
+<h2>Anotador de truco</h2>
+<div class="tg">
+<span></span><b>Nosotros<i>17</i></b><b>Ellos<i>9</i></b>
+<span>Malas</span><svg viewBox="0 0 132 40"><defs><path id="j01q" d="M4 4h32v32H4zm0 0 32 32"/></defs><use href="#j01q"/><use href="#j01q" x="46"/><use href="#j01q" x="92"/></svg><svg viewBox="0 0 132 40"><use href="#j01q"/><path d="M50 4h32v32H50z"/></svg>
+<span>Buenas</span><svg viewBox="0 0 132 40"><path d="M4 4h32v32"/></svg><svg viewBox="0 0 132 40"></svg>
+<span></span><button aria-label="Sumar a Nosotros">+1</button><button aria-label="Sumar a Ellos">+1</button>
+</div>
+<button class="bs">Nuevo partido</button>
+</article>
+<div>
+<h2>En el mostrador</h2>
+<ul class="tl">
+<li><a href><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><b>Quiniela por provincia</b><span>Los extractos de las 24 jurisdicciones</span></a>
+<li><a href><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6zm3 4h6m-6 5h6m-6 4h6"/></svg><b>Cuánto paga la quiniela</b><span>A la cabeza, a los 5, 10, 20 y redoblona</span></a>
+<li><a href><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><b>Controlar Quini 6</b><span>Las cuatro modalidades, en un toque</span></a>
+<li><a href><svg viewBox="0 0 24 24"><path d="M3 7h18v10H3zm6 0v10m6-7v4m-2-2h4"/></svg><b>Loto Plus y Brinco</b><span>Pozos, chances y cómo se juega</span></a>
+<li><a href><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6z"/><circle cx="12" cy="12" r="3"/></svg><b>Valores del truco</b><span>Qué carta mata a cuál, y las señas</span></a>
+<li><a href><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8.5 8.5h0m7 7h0M12 12h0m3.5-3.5h0m-7 7h0" stroke-width="3"/></svg><b>Generala: probabilidades</b><span>Servida, póker, escalera: la cuenta exacta</span></a>
+</ul>
+</div>
+</section>
+</main>
+<footer>
+<div class="ft">
+<p>Sin apuestas online, sin operadores: solo datos oficiales y la cuenta.
+<nav aria-label="Institucional"><a href>Quiénes somos</a><a href>De dónde salen los datos</a><a href>Juego responsable</a></nav>
+</div>
+<p class="rg">18+ · Si el juego dejó de ser un juego: línea gratuita de tu provincia → <a href>Juego responsable</a>
+</footer>
+</div>
