@@ -258,5 +258,245 @@
   "created": "2026-11-02T22:09:09.437Z",
   "note": "pingalto, вариант девушки «альт» 6/10 (взрослая, 22): афроаргентинские корни, тёмная кожа; электрик-синие косички-бокс-брейды распущены, септум; оверсайз-футболка, длинная чёрная куртка-утилити, широкие чёрные карго, берцы на платформе, сетчатые рукава; реквизит: чёрный геймпад, «играет»",
   "checked": null
+ },
+ "jdd-girl-r2-01": {
+  "file": "jdd-girl-r2-01.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same olive skin, same thick dark brown curly shoulder-length hair with volume, same dark brown eyes, small gold hoop earrings. Make her look a little younger and prettier: she is an adult woman about 23 years old (adult, 22 to 24), natural adult proportions, fresh glowing skin, soft natural makeup, warm friendly natural smile, looking at the viewer, approachable Argentine neighbourhood vibe. She wears: terracotta pleated midi skirt; cream fitted short-sleeve knit top tucked in, thin tan leather belt, tan leather strappy flat sandals. She holds a fanned hand of Spanish-deck playing cards toward the viewer at chest height, three-quarter view. The playing cards are shown only from the back: identical plain card backs with a simple burgundy-and-cream geometric pattern, no faces, no pips, no numbers, no letters visible. Argentine casual-smart look, warm palette, tasteful, fully clothed, not revealing, modest pose. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. No money, no banknotes, no coins, no lottery tickets, no drinks or alcohol, no phone screens, no celebration gestures.",
+  "refs": [
+   "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793656601028-ofifjibydq.jpg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "cdd019e0a254d57bd9113595741c2e2f",
+  "sourceUrl": "https://file.aiquickdraw.com/as/cdd019e0a254d57bd9113595741c2e2f_1793659443343.jpeg",
+  "created": "2026-11-02T22:44:07.004Z",
+  "note": "jugadadeldia круг 2, 1/6 от jdd-girl-01 (моложе ~23, красивее): юбка-миди плиссе терракота, кремовый трикотажный топ, сандалии; реквизит: веер карт рубашкой",
+  "checked": null
+ },
+ "jdd-girl-r2-02": {
+  "file": "jdd-girl-r2-02.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same olive skin, same thick dark brown curly shoulder-length hair with volume, same dark brown eyes, small gold hoop earrings. Make her look noticeably younger and prettier than in the reference: she is a young adult woman of 22 (clearly adult), youthful fresh face with smooth skin, softer cheeks, no smile lines, slimmer face, natural adult proportions, fresh glowing skin, soft natural makeup, warm friendly natural smile, looking at the viewer, approachable Argentine neighbourhood vibe. She wears: high-waisted light-blue denim A-line skirt to the knee; white linen shirt tucked in with sleeves rolled to the elbow, brown leather belt, tan leather sandals. She shows two ivory-white dice with black dots resting on her open palm at waist height, relaxed stance, three-quarter view. Argentine casual-smart look, warm palette, tasteful, fully clothed, not revealing, modest pose. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. No money, no banknotes, no coins, no lottery tickets, no drinks or alcohol, no phone screens, no celebration gestures.",
+  "refs": [
+   "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793656601028-ofifjibydq.jpg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "d63321b7ff1be843368fbd8579f2ac48",
+  "sourceUrl": "https://file.aiquickdraw.com/as/d63321b7ff1be843368fbd8579f2ac48_1793659649659.jpeg",
+  "created": "2026-11-02T22:47:32.695Z",
+  "note": "jugadadeldia круг 2, 2/6 от jdd-girl-01 (моложе ~23, красивее): джинсовая юбка-трапеция до колена, белая льняная рубашка, сандалии; реквизит: две кости; перегенерирована: лицо читалось на ~27, усилено «моложе» (22)",
+  "checked": null
+ },
+ "jdd-girl-r2-03": {
+  "file": "jdd-girl-r2-03.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same olive skin, same thick dark brown curly shoulder-length hair with volume, same dark brown eyes, small gold hoop earrings. Make her look a little younger and prettier: she is an adult woman about 23 years old (adult, 22 to 24), natural adult proportions, fresh glowing skin, soft natural makeup, warm friendly natural smile, looking at the viewer, approachable Argentine neighbourhood vibe. She wears: tailored camel high-waisted shorts reaching just above the knee, cream silk-look blouse tucked in, mustard-yellow knit cardigan worn open, sheer black tights, tan leather loafers. She holds a traditional mate gourd wrapped in brown leather with a silver metal bombilla straw in both hands at chest height, three-quarter view. Argentine casual-smart look, warm palette, tasteful, fully clothed, not revealing, modest pose. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. No money, no banknotes, no coins, no lottery tickets, no drinks or alcohol, no phone screens, no celebration gestures.",
+  "refs": [
+   "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793656601028-ofifjibydq.jpg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "6c40e4010d2b59e0fbd1be2d021d4045",
+  "sourceUrl": "https://file.aiquickdraw.com/as/6c40e4010d2b59e0fbd1be2d021d4045_1793659453808.jpeg",
+  "created": "2026-11-02T22:44:16.258Z",
+  "note": "jugadadeldia круг 2, 3/6 от jdd-girl-01 (моложе ~23, красивее): классические шорты кэмел, кремовая блузка, горчичный кардиган, тонкие колготки, лоферы; реквизит: мате",
+  "checked": null
+ },
+ "jdd-girl-r2-04": {
+  "file": "jdd-girl-r2-04.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same olive skin, same thick dark brown curly shoulder-length hair with volume, same dark brown eyes, small gold hoop earrings. Make her look a little younger and prettier: she is an adult woman about 23 years old (adult, 22 to 24), natural adult proportions, fresh glowing skin, soft natural makeup, warm friendly natural smile, looking at the viewer, approachable Argentine neighbourhood vibe. She wears: burgundy satin A-line midi skirt; cream short-sleeve fitted knit top tucked in, small gold pendant necklace, brown leather ankle-strap sandals with a low block heel. She holds a small notebook with a plain brown cardboard cover and blank pages, plus a yellow pencil, as if about to jot something down, three-quarter view. Argentine casual-smart look, warm palette, tasteful, fully clothed, not revealing, modest pose. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. No money, no banknotes, no coins, no lottery tickets, no drinks or alcohol, no phone screens, no celebration gestures.",
+  "refs": [
+   "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793656601028-ofifjibydq.jpg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "8413388461037a5a3a1582f5363c8515",
+  "sourceUrl": "https://file.aiquickdraw.com/as/8413388461037a5a3a1582f5363c8515_1793659433370.jpeg",
+  "created": "2026-11-02T22:43:58.142Z",
+  "note": "jugadadeldia круг 2, 4/6 от jdd-girl-01 (моложе ~23, красивее): бордовая атласная юбка-миди, кремовый топ, сандалии на каблучке; реквизит: блокнот и карандаш",
+  "checked": null
+ },
+ "jdd-girl-r2-05": {
+  "file": "jdd-girl-r2-05.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same olive skin, same thick dark brown curly shoulder-length hair with volume, same dark brown eyes, small gold hoop earrings. Make her look noticeably younger and prettier than in the reference: she is a young adult woman of 22 (clearly adult), youthful fresh face with smooth skin, softer cheeks, no smile lines, slimmer face, natural adult proportions, fresh glowing skin, soft natural makeup, warm friendly natural smile, looking at the viewer, approachable Argentine neighbourhood vibe. She wears: mustard-yellow corduroy A-line skirt to the knee; cream fine-knit turtleneck tucked in, opaque chocolate-brown tights, brown leather Mary Jane shoes. She holds a fanned hand of Spanish-deck playing cards close to her cheek with a playful smile, head slightly tilted, three-quarter view. The playing cards are shown only from the back: identical plain card backs with a simple burgundy-and-cream geometric pattern, no faces, no pips, no numbers, no letters visible. Argentine casual-smart look, warm palette, tasteful, fully clothed, not revealing, modest pose. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. No money, no banknotes, no coins, no lottery tickets, no drinks or alcohol, no phone screens, no celebration gestures.",
+  "refs": [
+   "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793656601028-ofifjibydq.jpg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "98b7af746d3dc0649b9a223ed14e12e6",
+  "sourceUrl": "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793659680997-hnnnd2xx8cf.jpg",
+  "created": "2026-11-02T22:48:07.702Z",
+  "note": "jugadadeldia круг 2, 5/6 от jdd-girl-01 (моложе ~23, красивее): вельветовая юбка горчичная, кремовая водолазка, коричневые колготки, мэри-джейн; реквизит: веер карт у щеки; перегенерирована: лицо читалось на ~27, усилено «моложе» (22)",
+  "checked": null
+ },
+ "jdd-girl-r2-06": {
+  "file": "jdd-girl-r2-06.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same olive skin, same thick dark brown curly shoulder-length hair with volume, same dark brown eyes, small gold hoop earrings. Make her look a little younger and prettier: she is an adult woman about 23 years old (adult, 22 to 24), natural adult proportions, fresh glowing skin, soft natural makeup, warm friendly natural smile, looking at the viewer, approachable Argentine neighbourhood vibe. She wears: rust-orange linen tailored Bermuda shorts to the knee, white short-sleeve cotton blouse tucked in, woven tan straw bag on her shoulder, tan espadrille sandals. She is mid-step walking toward the viewer with a natural swing, one hand holding two ivory-white dice with black dots, the other on the bag strap. Argentine casual-smart look, warm palette, tasteful, fully clothed, not revealing, modest pose. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. No money, no banknotes, no coins, no lottery tickets, no drinks or alcohol, no phone screens, no celebration gestures.",
+  "refs": [
+   "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793656601028-ofifjibydq.jpg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "6e790afb8c09eeede5c3556c31cafc34",
+  "sourceUrl": "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793659472242-1749ku1170a.png",
+  "created": "2026-11-02T22:44:35.399Z",
+  "note": "jugadadeldia круг 2, 6/6 от jdd-girl-01 (моложе ~23, красивее): льняные бермуды ржавые, белая блузка, соломенная сумка, эспадрильи; реквизит: две кости, в шаге",
+  "checked": null
+ },
+ "pa-girl-r2-01": {
+  "file": "pa-girl-r2-01.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: a charcoal-and-black tartan pleated skirt ending just above the knee, opaque black tights, an oversized plain black hoodie, chunky black platform boots, a silver chain belt. A matte black gaming headset rests around her neck, hands in the hoodie pocket, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Wide full-length shot: the camera is far enough back that her entire figure fits in the frame, including the full length of her legs and both boots resting on the ground, with clear empty green space below the soles of the boots and above the top of her head; nothing cropped. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "0d04fc748e807478911d392480abd2e8",
+  "sourceUrl": "https://file.aiquickdraw.com/as/0d04fc748e807478911d392480abd2e8_1793659746063.jpeg",
+  "created": "2026-11-02T22:49:07.584Z",
+  "note": "pingalto круг 2, 1/10 от pa-girl-01 (красивее, взрослая ~22): юбка-плиссе в серо-чёрную клетку, плотные колготки, оверсайз-худи, платформы; наушники на шее; перегенерирована: обрезаны ступни (01, 02) / видны кнопки геймпада в стиле PlayStation (06)",
+  "checked": null
+ },
+ "pa-girl-r2-02": {
+  "file": "pa-girl-r2-02.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: high-waisted black denim shorts reaching mid-thigh, worn over black fishnet tights layered on opaque black tights, an oversized plain charcoal t-shirt half-tucked, chunky black platform boots, a silver wallet chain. Thumbs hooked in her front pockets, relaxed stance, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Wide full-length shot: the camera is far enough back that her entire figure fits in the frame, including the full length of her legs and both boots resting on the ground, with clear empty green space below the soles of the boots and above the top of her head; nothing cropped. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "cb69103aef99f5014dae1830584ccd10",
+  "sourceUrl": "https://file.aiquickdraw.com/as/cb69103aef99f5014dae1830584ccd10_1793659722621.jpeg",
+  "created": "2026-11-02T22:48:48.501Z",
+  "note": "pingalto круг 2, 2/10 от pa-girl-01 (красивее, взрослая ~22): чёрные джинсовые шорты поверх сетки и плотных колготок, оверсайз-футболка, платформы, цепь; перегенерирована: обрезаны ступни (01, 02) / видны кнопки геймпада в стиле PlayStation (06)",
+  "checked": null
+ },
+ "pa-girl-r2-03": {
+  "file": "pa-girl-r2-03.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: a knee-length black long-sleeve knit dress with a high crew neckline, opaque black tights, black platform Mary Jane shoes with buckles, a thin silver choker chain. She holds a matte white game controller loosely in both hands at waist height, the controller turned so its face and buttons point away from the viewer, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "98b6298c1b85ead7e22fcf13f0053682",
+  "sourceUrl": "https://file.aiquickdraw.com/as/98b6298c1b85ead7e22fcf13f0053682_1793659521874.jpeg",
+  "created": "2026-11-02T22:45:27.675Z",
+  "note": "pingalto круг 2, 3/10 от pa-girl-01 (красивее, взрослая ~22): чёрное трикотажное платье до колена с длинным рукавом, колготки, мэри-джейн на платформе; белый геймпад кнопками от зрителя",
+  "checked": null
+ },
+ "pa-girl-r2-04": {
+  "file": "pa-girl-r2-04.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: a black faux-leather corset-style vest worn over a plain white crew-neck t-shirt (streetwear layering, not lingerie), a black tiered midi skirt, chunky black platform boots, silver rings. One hand on her hip, the other relaxed, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "e403871b3ba14834c052f976afb88f98",
+  "sourceUrl": "https://file.aiquickdraw.com/as/e403871b3ba14834c052f976afb88f98_1793659526627.jpeg",
+  "created": "2026-11-02T22:45:30.546Z",
+  "note": "pingalto круг 2, 4/10 от pa-girl-01 (красивее, взрослая ~22): корсет-жилет поверх белой футболки, чёрная многоярусная юбка-миди, платформы",
+  "checked": null
+ },
+ "pa-girl-r2-05": {
+  "file": "pa-girl-r2-05.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: an oversized heather-grey hoodie dress reaching mid-thigh with the hood down, opaque black tights, chunky black lace-up sneakers with thick soles, black fingerless gloves. A matte black over-ear gaming headset worn on her head over her pink hair, one hand adjusting the ear cup, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "ba0d6989f8aaa07edd04bbca4137ab55",
+  "sourceUrl": "https://file.aiquickdraw.com/as/ba0d6989f8aaa07edd04bbca4137ab55_1793659516552.jpeg",
+  "created": "2026-11-02T22:45:22.294Z",
+  "note": "pingalto круг 2, 5/10 от pa-girl-01 (красивее, взрослая ~22): серое худи-платье, плотные колготки, массивные кроссовки, митенки; наушники на голове",
+  "checked": null
+ },
+ "pa-girl-r2-06": {
+  "file": "pa-girl-r2-06.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: a black cargo midi skirt with utility pockets and buckle straps, a fitted black long-sleeve top tucked in, chunky black platform boots, a silver wallet chain. She holds a plain matte black generic game controller in one hand down by her side, seen only from its smooth back side, the front with the buttons pressed against her thigh and completely hidden; no recognizable console brand design, no symbols. Three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Wide full-length shot: the camera is far enough back that her entire figure fits in the frame, including the full length of her legs and both boots resting on the ground, with clear empty green space below the soles of the boots and above the top of her head; nothing cropped. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "d1457b91255aade05461180e639cb391",
+  "sourceUrl": "https://tempfile.aiquickdraw.com/models/nano-banana-pro/1793659780909-lmtdf4tfw6.jpg",
+  "created": "2026-11-02T22:49:44.187Z",
+  "note": "pingalto круг 2, 6/10 от pa-girl-01 (красивее, взрослая ~22): чёрная карго-юбка-миди, чёрный лонгслив, платформы; чёрный геймпад в опущенной руке; перегенерирована: обрезаны ступни (01, 02) / видны кнопки геймпада в стиле PlayStation (06)",
+  "checked": null
+ },
+ "pa-girl-r2-07": {
+  "file": "pa-girl-r2-07.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: a burgundy-and-black tartan pleated skirt ending mid-thigh over opaque black tights, a plain black fitted turtleneck, an oversized black faux-leather jacket worn open, chunky black platform boots. Hands in the jacket pockets, slight head tilt, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "d69247304b1f9c99ccdbdaeda97c9582",
+  "sourceUrl": "https://file.aiquickdraw.com/as/d69247304b1f9c99ccdbdaeda97c9582_1793659524019.jpeg",
+  "created": "2026-11-02T22:45:27.582Z",
+  "note": "pingalto круг 2, 7/10 от pa-girl-01 (красивее, взрослая ~22): юбка в бордово-чёрную клетку, колготки, водолазка, оверсайз-косуха, платформы",
+  "checked": null
+ },
+ "pa-girl-r2-08": {
+  "file": "pa-girl-r2-08.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: a knee-length dark plum long-sleeve fitted dress, opaque black tights, an oversized black denim jacket worn open, black lace-up combat boots. She holds a matte white gaming headset by the band in one hand at hip height, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "2ab19890b8deabb38722d37896d5112d",
+  "sourceUrl": "https://file.aiquickdraw.com/as/2ab19890b8deabb38722d37896d5112d_1793659526376.jpeg",
+  "created": "2026-11-02T22:45:29.789Z",
+  "note": "pingalto круг 2, 8/10 от pa-girl-01 (красивее, взрослая ~22): тёмно-сливовое платье до колена, колготки, оверсайз-джинсовка, берцы; белые наушники в руке",
+  "checked": null
+ },
+ "pa-girl-r2-09": {
+  "file": "pa-girl-r2-09.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: knee-length black denim Bermuda shorts over opaque black tights, a black corset-style belt-vest worn over a plain heather-grey t-shirt (streetwear layering, not lingerie), chunky black platform boots. She holds a matte black game controller at chest height with both hands, the controller seen from the back so no buttons are visible, three-quarter view. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "8f5b814a6277d45f725156cd9b4fb7fa",
+  "sourceUrl": "https://file.aiquickdraw.com/as/8f5b814a6277d45f725156cd9b4fb7fa_1793659529153.jpeg",
+  "created": "2026-11-02T22:45:32.862Z",
+  "note": "pingalto круг 2, 9/10 от pa-girl-01 (красивее, взрослая ~22): чёрные джинсовые бермуды поверх колготок, корсет-пояс поверх серой футболки, платформы; геймпад со спины",
+  "checked": null
+ },
+ "pa-girl-r2-10": {
+  "file": "pa-girl-r2-10.png",
+  "prompt": "Edit of the reference image. Photorealistic full-body studio photo of the same woman as in the reference image: same face identity, same facial features, same light olive skin, same pastel pink shoulder-length shag haircut with curtain fringe swept to the sides, same small silver septum ring, silver ear cuffs, same black-ink tattoos on her forearms. Make her prettier: defined black winged eyeliner, subtle glossy lips, groomed brows, clear glowing skin. She is clearly an adult woman, 22 years old (adult, 21 to 23), with a mature adult face, adult features and natural adult proportions; not childlike, not a teenager, no pigtails, no school uniform, no plush toys, no childlike pose. She wears: a black asymmetric midi skirt with silver buckles, a plain white oversized t-shirt layered over a black long-sleeve mesh top, chunky black platform boots, a silver chain necklace. A matte black gaming headset around her neck, walking toward the viewer mid-step with a confident smile. Alternative / gamer street style, tasteful, fully clothed, not revealing, not sexualized, modest confident pose, looking at the viewer with a slight smile. Tattoos are black ink only. Full body from head to toe, shoes fully visible, nothing cropped, small margin above the head and below the feet. Photorealistic photo, soft even studio lighting, sharp focus, high detail skin and fabric, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, jewelry or props. Plain clothes: no logos, no brand marks, no graphic prints, no flags, no numbers, no words or letters anywhere. Any headset or game controller is plain matte black or matte white with no logos, no lights, no visible button letters or symbols, no colored buttons. No money, no drinks, no cigarettes, no weapons, no phone screens, no monitors.",
+  "refs": [
+   "https://file.aiquickdraw.com/as/0e2f91e40db4fecfbf913aa7c92ff0c4_1793657245277.jpeg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "b1c0d4afbdb74735e8f9952c3a383bdb",
+  "sourceUrl": "https://file.aiquickdraw.com/as/b1c0d4afbdb74735e8f9952c3a383bdb_1793659540868.jpeg",
+  "created": "2026-11-02T22:45:45.333Z",
+  "note": "pingalto круг 2, 10/10 от pa-girl-01 (красивее, взрослая ~22): асимметричная юбка-миди с пряжками, белая футболка поверх сетчатого лонгслива, платформы; наушники на шее, в шаге",
+  "checked": null
  }
 }
