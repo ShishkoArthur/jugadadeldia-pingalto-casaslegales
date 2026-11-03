@@ -58,7 +58,7 @@
   "title": "Horarios de la quiniela: ¿hay sorteo hoy?",
   "titleLen": 41,
   "h1": "¿Hay quiniela hoy? Horarios de todos los sorteos",
-  "description": "¿Hay quiniela hoy? Respuesta para hoy y mañana según feriados, y los horarios de la Previa a la Nocturna en cada provincia, todo en hora argentina.",
+  "description": "¿Hay quiniela hoy? La respuesta para hoy y mañana según el programa oficial y el registro de sorteos, y los horarios de la Previa a la Nocturna.",
   "keys": "hay quiniela hoy 6.8k/53 · quiniela nocturna 110k/39 · quiniela matutina 40k/37 · quiniela vespertina 18k/31 · quiniela previa 15k/41 · quiniela la previa 14k/48 · mañana hay quiniela nacional y provincia 350/63 · a que hora es la quiniela vespertina de san juan 700/0",
   "kind": "tool",
   "wave": "P1",
@@ -67,7 +67,8 @@
   "data": "расписания с сайтов лотерей (цитата + дата) + календарь feriados (официальный, с цитатой)",
   "auto": "feriados — ежегодно лентой/выгрузкой; расписание — автопроверка источников раз в месяц",
   "rg": true,
-  "notes": "Ключи турно (nocturna 110k, matutina 40k, vespertina 18k, previa 15k) — сюда, без пяти отдельных страниц-дублей."
+  "notes": "Ключи турно (nocturna 110k, matutina 40k, vespertina 18k, previa 15k) — сюда, без пяти отдельных страниц-дублей.",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -135,7 +136,8 @@
   "ar": "Boleta аргентинской агентуры (agencia de lotería) пошагово; суммы в песо; 18+ и помощь провинции",
   "data": "регламент PBA/LOTBA (цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -186,7 +188,8 @@
   "data": "регламент выплат (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
-  "notes": "Движок и симулятор — из kenomath (horizon/lifetime)."
+  "notes": "Движок и симулятор — из kenomath (horizon/lifetime).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela por provincia",
@@ -624,10 +627,10 @@
  {
   "section": "Quini 6",
   "url": "/quini-6/controlar/",
-  "title": "Controlar Quini 6: revisá tu jugada al instante",
-  "titleLen": 47,
+  "title": "Controlar Quini 6: revisá varias boletas a la vez",
+  "titleLen": 49,
   "h1": "Controlá tu Quini 6",
-  "description": "Controlá tu Quini 6 al instante: cargá tus seis números, elegí los sorteos y mirá aciertos y premio en pesos por modalidad. Tus números no van en la URL.",
+  "description": "Controlá tu Quini 6: cargá tus boletas y el extracto, y mirá los aciertos de cada una en Tradicional, La Segunda, Revancha, Siempre Sale y Extra.",
   "keys": "controlar quini 6 65k/2 · quini 6 controlar 47k/1 · quini 6: controlar 16k/2",
   "kind": "tool",
   "wave": "P1",
@@ -636,15 +639,16 @@
   "data": "лента Quini 6 (архив тиражей)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Номера билета в URL не кладём (приватность)."
+  "notes": "Номера билета в URL не кладём (приватность).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quini 6",
   "url": "/quini-6/como-se-juega/",
-  "title": "Cómo se juega al Quini 6, cuánto sale y a qué hora sortea",
-  "titleLen": 57,
+  "title": "Cómo se juega al Quini 6: modalidades y premios",
+  "titleLen": 47,
   "h1": "Cómo se juega al Quini 6",
-  "description": "Cómo se juega al Quini 6: qué modalidades elegir, cuánto sale la jugada en pesos, hasta qué hora se juega y a qué hora sortea, todo en hora argentina.",
+  "description": "Cómo se juega al Quini 6: marcás seis números del 00 al 45 y elegís modalidades. Qué gana en cada una, cuántos sorteos juega tu boleta y la chance exacta.",
   "keys": "quini 6 como se juega 2.4k/1 · cuanto sale el quini 6 1.9k/0 · como se juega al quini 6 1.2k/0 · a que hora sortea el quini 6 1.2k/2 · cuando sortea el quini 6 1.1k/0 · hasta que hora se puede jugar al quini 6 1.1k/1 · como se juega al quini 6 y cuánto cuesta 900/0 · cuanto cuesta el quini 6 900/0 · cuánto sale el quini 6 700/1 · cuando se sortea el quini 6 700/2 · como se juega el quini 6 700/0 · hasta que numero es el quini 6 600/1 · cuantos numeros tiene el quini 6 600/0 · cuanto sale jugar al quini 6 500/1 · cuando se juega el quini 6 400/0 · quini 6 cuanto sale 350/0 · se puede jugar al quini 6 online 400/0",
   "kind": "tool",
   "wave": "P1",
@@ -653,7 +657,8 @@
   "data": "регламент Quini 6 (цена, дни, часы — цитата)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
-  "notes": "Цена меняется — автопроверка источника раз в месяц обязательна."
+  "notes": "Цена меняется — автопроверка источника раз в месяц обязательна.",
+  "live": "2026-11-03"
  },
  {
   "section": "Quini 6",
@@ -776,7 +781,7 @@
   "title": "Controlar Telekino: revisá tu cartón",
   "titleLen": 36,
   "h1": "Controlá tu cartón de Telekino",
-  "description": "Controlá tu cartón de Telekino en una grilla de 5 por 5: marcás tus 15 números y se iluminan los aciertos del sorteo que elijas, con su categoría.",
+  "description": "Controlá tu cartón de Telekino en una grilla de 5 por 5: marcás tus 15 números y se iluminan los aciertos del sorteo, con su categoría y el Rekino.",
   "keys": "controlar telekino 21k/4 · controlar telekino de hoy 17k/0",
   "kind": "tool",
   "wave": "P1",
@@ -784,7 +789,8 @@
   "ar": "Cartón 5×5 Telekino, как в аргентинском билете",
   "data": "лента Telekino",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Loterías",
@@ -858,7 +864,7 @@
   "title": "¿Cuánto devuelve cada juego? Quiniela, Quini 6, Loto y más",
   "titleLen": 58,
   "h1": "De cada $ 100, cuánto vuelve",
-  "description": "De cada $ 100 que jugás, cuánto vuelve en premios en la quiniela, el Quini 6, el Loto y las tómbolas, según los reglamentos. Una comparación con fuente.",
+  "description": "De cada $ 100 que jugás, cuánto vuelve en premios en la quiniela, el Quini 6, el Loto, el Telekino y la Tombolina, según cada reglamento.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "tool",
   "wave": "P2",
@@ -866,7 +872,8 @@
   "ar": "Возврат на $ 100 ARS по аргентинским играм (доли фонда — из регламентов)",
   "data": "регламенты (доли фонда, премии — цитаты) + считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Loterías",
@@ -1086,7 +1093,8 @@
   "ar": "Правила truco argentino (envido, truco, retruco, vale cuatro)",
   "data": "правила труко (источник — цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1102,7 +1110,8 @@
   "ar": "Очки cantos аргентинского truco",
   "data": "правила (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1145,7 +1154,7 @@
   "title": "¿Quiero o no quiero? Entrenador de truco y envido",
   "titleLen": 49,
   "h1": "¿Quiero o no quiero?",
-  "description": "¿Quiero o no quiero? Entrená tus decisiones de truco y envido con situaciones de partido real y compará cada respuesta con la del motor, en series de diez.",
+  "description": "¿Quiero o no quiero? Entrená tus decisiones de truco y envido con manos al azar y compará cada respuesta con la cuenta del motor, en series de diez.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "tool",
   "wave": "P3",
@@ -1153,7 +1162,8 @@
   "ar": "Решения в аргентинском truco (envido, truco) по ситуации партии",
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1169,7 +1179,8 @@
   "ar": "Flor — региональное правило аргентинского truco (con flor / sin flor)",
   "data": "считает движок (engine/, тест-замки) + правила (цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1195,7 +1206,7 @@
   "title": "Burako: reglas, canastas y cuántos puntos vale cada una",
   "titleLen": 55,
   "h1": "Burako",
-  "description": "Burako con las reglas que se juegan en Argentina: canastas limpias y sucias, el muerto y una calculadora que suma los puntos de la mano en segundos.",
+  "description": "Burako con el reglamento de los Juegos Bonaerenses: canastas puras e impuras, el muerto y una calculadora que suma los puntos de la mano en segundos.",
   "keys": "burako 8.4k/0 · burako juego 1k/0 · rummy burako 500/0 · juego burako 500/0 · rummy y burako 450/0",
   "kind": "tool",
   "wave": "P1",
@@ -1203,7 +1214,8 @@
   "ar": "Burako — румми, как играют в Аргентине (106 fichas, canastas limpias / sucias, muerto)",
   "data": "правила бурако (цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1211,7 +1223,7 @@
   "title": "Anotador de burako: planilla online para 2 o 4",
   "titleLen": 46,
   "h1": "Anotador de burako",
-  "description": "Anotador de burako online para dos o cuatro jugadores: planilla mano por mano hasta la meta que elijan, con los puntos del calculador cargados de un toque.",
+  "description": "Anotador de burako online para dos jugadores o dos parejas: planilla mano por mano hasta la meta que elijan, con la calculadora de la mano incluida.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "game",
   "wave": "P2",
@@ -1219,7 +1231,8 @@
   "ar": "Планилла до 3000 — как принято в Аргентине (цель настраивается)",
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1251,7 +1264,8 @@
   "ar": "Chinchón с испанской колодой, как играют в Аргентине",
   "data": "правила (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1259,7 +1273,7 @@
   "title": "Anotador de chinchón online, con enganche",
   "titleLen": 41,
   "h1": "Anotador de chinchón",
-  "description": "Anotador de chinchón online: puntaje hasta 100 o lo que elijan, menos diez por cortar, enganche y reenganche y la tabla final de quién quedó afuera.",
+  "description": "Anotador de chinchón online: puntaje hasta 101 o lo que elijan, menos diez por cortar con todo, reenganche y la tabla final de quién quedó afuera.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "game",
   "wave": "P2",
@@ -1267,7 +1281,8 @@
   "ar": "Enganche / reenganche — местные правила",
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1376,7 +1391,7 @@
   "title": "Escoba de 15: reglas y buscador de escobas",
   "titleLen": 42,
   "h1": "Escoba de 15",
-  "description": "Escoba de 15 con las reglas de acá: cargá las cartas de la mesa y la tuya y el buscador te muestra todas las sumas de 15 y si hay escoba. Suma los puntos.",
+  "description": "Escoba de 15 con las reglas de acá: cargá las cartas de la mesa y la tuya, y el buscador te muestra todas las sumas de 15 y si hay escoba. Y contá la mano.",
   "keys": "escoba de 15 2k/5",
   "kind": "tool",
   "wave": "P2",
@@ -1384,7 +1399,8 @@
   "ar": "Escoba de 15, как играют в Аргентине (setenta, oros, siete de oro)",
   "data": "правила (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1452,7 +1468,8 @@
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": true,
-  "notes": "«bingo» 6,6k неоднозначен (залы и онлайн-бинго) — поэтому rg: true; без ссылок на залы и онлайн-бинго."
+  "notes": "«bingo» 6,6k неоднозначен (залы и онлайн-бинго) — поэтому rg: true; без ссылок на залы и онлайн-бинго.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1878,7 +1895,8 @@
   "ar": "Словарь аргентинской кинелы и truco (cabeza, redoblona, a los 5, envido, falta envido)",
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Servicio",
@@ -1886,7 +1904,7 @@
   "title": "Política de privacidad de Jugada del Día",
   "titleLen": 40,
   "h1": "Política de privacidad",
-  "description": "Política de privacidad de Jugada del Día: qué guarda tu navegador, como los anotadores, qué no recolectamos y cuáles son tus derechos por ley argentina.",
+  "description": "Política de privacidad de Jugada del Día: qué guarda tu navegador, como los anotadores, qué no recolectamos y cómo pedir que borremos o corrijamos algo.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "service",
   "wave": "P1",
@@ -1894,6 +1912,7 @@
   "ar": "Ley 25.326 (datos personales), AAIP; что храним в браузере",
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  }
 ]

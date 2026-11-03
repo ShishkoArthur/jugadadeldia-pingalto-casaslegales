@@ -113,3 +113,4 @@
 @media (max-width:620px){.jg-x20{grid-template-columns:repeat(5,minmax(0,1fr))}.jg-bars>div{grid-template-columns:minmax(0,1fr) 70px;row-gap:4px}.jg-bars>div>i{grid-column:1/-1;grid-row:2}.jg-vol{grid-template-columns:repeat(6,minmax(0,1fr))}.jg-b90 span{font-size:12px;padding:5px 0}.jg-days{grid-template-columns:repeat(4,minmax(0,1fr))}.jg-bb{font-size:52px}}
 @media print{.jg-h,.jg-ft,.jg-hero,.jg-noprint,.jg-panel,.jg-skip{display:none!important}.jg-main{max-width:none;padding:0}.jg-c{box-shadow:none;padding:0}.jg-mn{display:block}.jg-ct{break-inside:avoid;margin-bottom:12px}}
 [data-burako] .jg-chk2{display:flex;min-height:40px}
+.jg-ul.tx li{display:block}
