@@ -54,7 +54,7 @@
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
 ## Состояние и следующее (03.11, вечер)
-- **Все три сайта живые, индекс открыт:** casaslegales.com (83 стр., все 27 марок со страницей, дизайн r3 «01 Relieve alto», 8 официальных списков), pingalto.com
+- **Все три сайта живые, индекс открыт:** casaslegales.com (97 стр. из 117 плана, все 27 марок со страницей, дизайн r3 «01 Relieve alto», 8 официальных списков; остаток — раздел «97 страниц» ниже), pingalto.com
   (47 стр. из 86 плана — волна 4 ниже, дизайн «Holo pastel», девушка pa-girl-r3-09), jugadadeldia.com (45 стр., дизайн r3 «06 Menú principal», девушка jdd-girl-r3-10,
   автор Denis Krazok). Сцены девушек приняты (стандарт — DECISIONS 03.11 «сцены приняты»), стоят на страницах, размер — правило в «Сцены девушек».
 - Сводка владельцу: https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS (сборка `node docs/owner/build-overview.mjs`, тот же путь публикации).
@@ -154,6 +154,7 @@
   `docs/FEEDS.md` (раздел «Ленты» выше).
 - 03.11 — pingalto: меню «Juegos» и ряд игр на главной, свои фоны шапки по играм, сцены r4 «в игре» (CS2, Valorant, LoL, Fortnite + 5 для
   будущих страниц), официальных логотипов нет — разбор политик издателей (раздел «pingalto (03.11) — игры» ниже).
+- 03.11 — casaslegales: +14 страниц (97 из 117): 8 оператор × провинция, /casinos-online-legales, /verificar/mystake и jugabet, /aviso-legal, /contacto, /privacidad.
 - 03.11 — casaslegales: страницы всех 27 марок из 8 списков (+17), каждое имя марки в таблицах/списках — ссылка на её страницу (гейт brandlink).
 - 03.11 — casaslegales: дизайн «01 Relieve alto» на живом сайте (изометрия, высота = число сайтов); третья выгрузка владельца → реестры
   Santa Fe (4) и Mendoza (7), 8 списков; +3 страницы оператор × провинция (раздел ниже).
@@ -258,9 +259,10 @@
   `elo.mjs`, `stats.mjs` (Wilson), `engine/test/pingalto-wave4.test.mjs` (приватность лент: нет имён/тегов/картинок/брендов).
 - **Фоны:** свои 21:9 для dota2, clash, brawl, rl, eafc (`backgrounds.mjs`). **Меню «Juegos» и главная:** +5 игр (10 плиток), +5 инструментов.
 - **Сцены:** /rl и /eafc — это r4 `/rocket-league` и `/fc` (в `scenes.mjs` опция `slug`, id файлов прежние); r5 (8 шт.) отмечены accepted по
-  слову владельца; новые r6 (проверены мной, `checked`): /clash/mazos, /lol/worlds, /valorant/champions, /brawl/meta. Ждут генерации (API
-  отвечает 524): /esports/sistema-suizo, /valorant/mapas/ascent, /esports/argentinos, /dota2/ti (первая попытка — щит как тарелка и зелёный
-  цвет, отклонена: `pa-sc-dota2-ti-r6-try1.png`). Повтор: `node tools/gen-image.mjs data/art/pingalto/scene-r6-jobs.json --missing`, затем
+  слову владельца; новые r6 (проверены мной, `checked`, ждут владельца): /clash/mazos, /lol/worlds, /valorant/champions, /brawl/meta,
+  /esports/sistema-suizo, /esports/argentinos (сводка `data/img-review/contact-pingalto-scenes-r6.jpg`). Не сгенерировались (API 03.11
+  вечером отвечал 524 на ~20 попыток): /valorant/mapas/ascent, /dota2/ti (первая попытка — щит как тарелка и зелёный цвет, отклонена:
+  `pa-sc-dota2-ti-r6-try1.png`, промпт исправлен). Без сцены пока и /dota2/ti, /clash/meta, /lol/msi, /esports/latam, /valorant/mapas/*. Повтор: `node tools/gen-image.mjs data/art/pingalto/scene-r6-jobs.json --missing`, затем
   шаги 4–8 «Как добавить сцену». **Ловушка:** `build-scenes.mjs` переписывает `scenes.json` и снимает `checked`/`accepted` — после него
   вернуть статусы (сравнить с HEAD).
 - **Заголовки, изменённые против плана (данные не держат обещание):** /rl, /eafc, /clash/mazos («comparalo» вместо «calificá» — оценку не
@@ -359,6 +361,25 @@
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
 - **Дальше:** хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
+
+## casaslegales (03.11) — 97 страниц из 117 плана (+404): что сделано и что осталось
+- **Новое (14):** оператор × провинция — betano/caba, bplay/buenos-aires, bplay/caba, betwarrior/buenos-aires, jugadon/caba, jugadon/cordoba,
+  jugadon/la-rioja, super7/mendoza (`content/opprov.mjs`; 4 последних вне плана добавлены в план по спросу из `data/keywords`);
+  /casinos-online-legales (`pages/casinos.mjs`: 2 списка из 8 называют казино отдельно — таблица IJAN «CASINOS ONLINE PERMITIDOS» и блок
+  CASINOS ONLINE Санта-Фе, код считает 7 адресов; остальные 6 — цитата «juego online» без разделения; изо-карта: высота = казино-адреса,
+  «стопки» сайтов по спискам); /verificar/mystake, /verificar/jugabet (0 вхождений в сыром HTML 8 списков); /aviso-legal, /contacto
+  (почты нет — неработающий адрес не публикуем), /privacidad (без cookies/аналитики; localStorage `rl-theme`, `rl-prov`; Cloudflare) — `pages/legal.mjs`, ссылки в подвале.
+- **Исправлено:** «Lo que vimos en <адрес>» на странице оператор × провинция подхватывал скриншоты поддоменов других провинций
+  (jugadon.bet.ar ← caba.jugadon…, bplay.bet.ar ← pba/caba/cordoba.bplay…); теперь исключаются более точные адреса той же марки.
+- **Не сделано и почему (20, причины — в `notes` плана):** /operador/betway — нет в 8 списках, но в коде страницы LOTBA есть закомментированная
+  запись Betway (Disp. 464/2021), а у IPLyC — «Betway Bingo King» в Registro de Aspirantes: формулировку /verificar/betway — по слову владельца;
+  /verificar/casino-magic — марка есть в списке Neuquén (/operador/casino-magic-online); /verificar/casino-del-litoral — у провинций Litoral нет
+  проверенного списка, нужна юр. проверка; /verificar/quiniela-online — вопрос владельцу (пересечение с jugadadeldia); /cambios — нет журнала
+  хеш-монитора; /guia/mercado-pago, /margen-medido, /comparar — оплаты/линии/функции операторов за гео-блоком (нужен Chrome владельца из AR);
+  /guia/apps-oficiales — нет копий страниц магазинов; /guia/que-casino-paga-mas — нет опубликованного RTP; /guia/como-funciona-una-cuenta —
+  нет регламентов провинций; /guia/impuestos — нужны цитаты ARCA и юр. проверка; /juego-responsable/autoevaluacion — нужна копия и разрешение
+  LOTBA; guazubet, interbet, la-correntina-online — платформы без списка (покрыты /provincia/*); betponcho, bplay/entre-rios, bplay/jujuy,
+  betwarrior/salta — у провинции нет проверенного списка.
 
 ## casaslegales (03.11) — все 27 марок со своей страницей (83 страницы + 404)
 - **Владелец 03.11:** «не всегда можно кликнуть на бренд». Было 10 из 27 страниц `/operador/*`; добавлены 17 (`content/operators.mjs`, план синхронизирован):
