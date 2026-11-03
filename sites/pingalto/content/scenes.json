@@ -1,287 +1,372 @@
 {
- "canvas": {
-  "w": 1134,
-  "h": 1700
+ "rule": {
+  "full": 1700,
+  "exp": 0.7,
+  "margin": "top 3 %, sides 3 %, bottom 1 % of the figure height"
  },
  "pages": {
   "/": {
    "image": "pa-sc-home-r2",
    "files": [
     {
-     "name": "scenes/home-140.webp",
-     "w": 140,
-     "h": 262,
-     "kb": 8
+     "name": "scenes/home-171.webp",
+     "w": 171,
+     "h": 300,
+     "kb": 11
     },
     {
-     "name": "scenes/home-279.webp",
-     "w": 279,
-     "h": 523,
-     "kb": 19
+     "name": "scenes/home-320.webp",
+     "w": 320,
+     "h": 560,
+     "kb": 25
+    },
+    {
+     "name": "scenes/home-480.webp",
+     "w": 480,
+     "h": 840,
+     "kb": 43
     }
    ],
-   "fw": 0.582,
-   "fh": 0.7271,
+   "ar": 0.5709,
+   "g": 0.7996,
    "alt": "Alt, la guía de pingalto, sentada en un banquito jugando con un joystick"
   },
   "/kit/ping": {
    "image": "pa-sc-kit-ping-r2",
    "files": [
     {
-     "name": "scenes/kit-ping-143.webp",
-     "w": 143,
-     "h": 299,
-     "kb": 8
+     "name": "scenes/kit-ping-156.webp",
+     "w": 156,
+     "h": 300,
+     "kb": 10
     },
     {
-     "name": "scenes/kit-ping-287.webp",
-     "w": 287,
-     "h": 597,
-     "kb": 19
+     "name": "scenes/kit-ping-291.webp",
+     "w": 291,
+     "h": 560,
+     "kb": 21
+    },
+    {
+     "name": "scenes/kit-ping-436.webp",
+     "w": 436,
+     "h": 840,
+     "kb": 36
     }
    ],
-   "fw": 0.5979,
-   "fh": 0.83,
+   "ar": 0.5194,
+   "g": 0.8777,
    "alt": "Alt caminando con un router de wifi en la mano, mirándolo con desconfianza"
   },
   "/kit/sensibilidad": {
    "image": "pa-sc-kit-sensibilidad-r3",
    "files": [
     {
-     "name": "scenes/kit-sensibilidad-109.webp",
-     "w": 109,
-     "h": 252,
-     "kb": 7
+     "name": "scenes/kit-sensibilidad-143.webp",
+     "w": 143,
+     "h": 300,
+     "kb": 11
     },
     {
-     "name": "scenes/kit-sensibilidad-218.webp",
-     "w": 218,
-     "h": 504,
-     "kb": 18
+     "name": "scenes/kit-sensibilidad-266.webp",
+     "w": 266,
+     "h": 560,
+     "kb": 24
+    },
+    {
+     "name": "scenes/kit-sensibilidad-399.webp",
+     "w": 399,
+     "h": 840,
+     "kb": 41
     }
    ],
-   "fw": 0.455,
-   "fh": 0.7,
+   "ar": 0.4753,
+   "g": 0.7786,
    "alt": "Alt sentada al lado de una mesita, moviendo el mouse sobre un pad negro"
   },
   "/kit/dpi": {
    "image": "pa-sc-kit-dpi-r2",
    "files": [
     {
-     "name": "scenes/kit-dpi-213.webp",
-     "w": 213,
-     "h": 284,
-     "kb": 10
+     "name": "scenes/kit-dpi-234.webp",
+     "w": 234,
+     "h": 300,
+     "kb": 14
     },
     {
-     "name": "scenes/kit-dpi-426.webp",
-     "w": 426,
-     "h": 568,
-     "kb": 24
+     "name": "scenes/kit-dpi-436.webp",
+     "w": 436,
+     "h": 560,
+     "kb": 30
+    },
+    {
+     "name": "scenes/kit-dpi-654.webp",
+     "w": 654,
+     "h": 840,
+     "kb": 50
     }
    ],
-   "fw": 0.888,
-   "fh": 0.79,
+   "ar": 0.7787,
+   "g": 0.8479,
    "alt": "Alt sentada en una mesa alineando el mouse con una tarjeta de plástico"
   },
   "/tier-list": {
    "image": "pa-sc-tier-list-r2",
    "files": [
     {
-     "name": "scenes/tier-list-127.webp",
-     "w": 127,
-     "h": 288,
-     "kb": 7
+     "name": "scenes/tier-list-144.webp",
+     "w": 144,
+     "h": 300,
+     "kb": 9
     },
     {
-     "name": "scenes/tier-list-254.webp",
-     "w": 254,
-     "h": 577,
-     "kb": 18
+     "name": "scenes/tier-list-270.webp",
+     "w": 270,
+     "h": 560,
+     "kb": 21
+    },
+    {
+     "name": "scenes/tier-list-404.webp",
+     "w": 404,
+     "h": 840,
+     "kb": 34
     }
    ],
-   "fw": 0.5291,
-   "fh": 0.8012,
+   "ar": 0.4813,
+   "g": 0.8563,
    "alt": "Alt pegando un papelito en una tabla de tier list"
   },
   "/ff/sensibilidad": {
    "image": "pa-sc-ff-sensibilidad-r2",
    "files": [
     {
-     "name": "scenes/ff-sensibilidad-176.webp",
-     "w": 176,
-     "h": 277,
-     "kb": 10
+     "name": "scenes/ff-sensibilidad-200.webp",
+     "w": 200,
+     "h": 300,
+     "kb": 14
     },
     {
-     "name": "scenes/ff-sensibilidad-351.webp",
-     "w": 351,
-     "h": 554,
-     "kb": 24
+     "name": "scenes/ff-sensibilidad-373.webp",
+     "w": 373,
+     "h": 560,
+     "kb": 30
+    },
+    {
+     "name": "scenes/ff-sensibilidad-560.webp",
+     "w": 560,
+     "h": 840,
+     "kb": 49
     }
    ],
-   "fw": 0.7319,
-   "fh": 0.7706,
+   "ar": 0.6667,
+   "g": 0.8333,
    "alt": "Alt sentada jugando con el celular en horizontal"
   },
   "/ff/nombres": {
    "image": "pa-sc-ff-nombres-r2",
    "files": [
     {
-     "name": "scenes/ff-nombres-108.webp",
-     "w": 108,
-     "h": 199,
-     "kb": 5
+     "name": "scenes/ff-nombres-174.webp",
+     "w": 174,
+     "h": 300,
+     "kb": 11
     },
     {
-     "name": "scenes/ff-nombres-215.webp",
-     "w": 215,
-     "h": 397,
-     "kb": 13
+     "name": "scenes/ff-nombres-325.webp",
+     "w": 325,
+     "h": 560,
+     "kb": 24
+    },
+    {
+     "name": "scenes/ff-nombres-487.webp",
+     "w": 487,
+     "h": 840,
+     "kb": 41
     }
    ],
-   "fw": 0.4489,
-   "fh": 0.5524,
+   "ar": 0.5795,
+   "g": 0.6595,
    "alt": "Alt de rodillas escribiendo en el celular"
   },
   "/ff/espacio-invisible": {
    "image": "pa-sc-ff-espacio-invisible-r2",
    "files": [
     {
-     "name": "scenes/ff-espacio-invisible-127.webp",
-     "w": 127,
-     "h": 323,
-     "kb": 8
+     "name": "scenes/ff-espacio-invisible-131.webp",
+     "w": 131,
+     "h": 300,
+     "kb": 9
     },
     {
-     "name": "scenes/ff-espacio-invisible-254.webp",
-     "w": 254,
-     "h": 646,
+     "name": "scenes/ff-espacio-invisible-244.webp",
+     "w": 244,
+     "h": 560,
      "kb": 20
+    },
+    {
+     "name": "scenes/ff-espacio-invisible-367.webp",
+     "w": 367,
+     "h": 840,
+     "kb": 34
     }
    ],
-   "fw": 0.5291,
-   "fh": 0.8971,
+   "ar": 0.4366,
+   "g": 0.9264,
    "alt": "Alt girándose y pellizcando el aire, como si agarrara un espacio invisible"
   },
   "/valorant/rangos": {
    "image": "pa-sc-valorant-rangos-r2",
    "files": [
     {
-     "name": "scenes/valorant-rangos-136.webp",
-     "w": 136,
-     "h": 318,
-     "kb": 8
+     "name": "scenes/valorant-rangos-140.webp",
+     "w": 140,
+     "h": 300,
+     "kb": 10
     },
     {
-     "name": "scenes/valorant-rangos-271.webp",
-     "w": 271,
-     "h": 637,
-     "kb": 21
+     "name": "scenes/valorant-rangos-262.webp",
+     "w": 262,
+     "h": 560,
+     "kb": 22
+    },
+    {
+     "name": "scenes/valorant-rangos-393.webp",
+     "w": 393,
+     "h": 840,
+     "kb": 37
     }
    ],
-   "fw": 0.5653,
-   "fh": 0.8847,
+   "ar": 0.468,
+   "g": 0.917,
    "alt": "Alt saltando y festejando con el puño en alto"
   },
   "/valorant/agentes": {
    "image": "pa-sc-valorant-agentes-r2",
    "files": [
     {
-     "name": "scenes/valorant-agentes-139.webp",
-     "w": 139,
-     "h": 265,
-     "kb": 8
+     "name": "scenes/valorant-agentes-169.webp",
+     "w": 169,
+     "h": 300,
+     "kb": 12
     },
     {
-     "name": "scenes/valorant-agentes-279.webp",
-     "w": 279,
-     "h": 531,
-     "kb": 20
+     "name": "scenes/valorant-agentes-315.webp",
+     "w": 315,
+     "h": 560,
+     "kb": 27
+    },
+    {
+     "name": "scenes/valorant-agentes-473.webp",
+     "w": 473,
+     "h": 840,
+     "kb": 44
     }
    ],
-   "fw": 0.5811,
-   "fh": 0.7376,
+   "ar": 0.5632,
+   "g": 0.8082,
    "alt": "Alt sentada con auriculares, hablando con su equipo"
   },
   "/cs2/mira": {
    "image": "pa-sc-cs2-mira-r2",
    "files": [
     {
-     "name": "scenes/cs2-mira-134.webp",
-     "w": 134,
-     "h": 315,
-     "kb": 8
+     "name": "scenes/cs2-mira-140.webp",
+     "w": 140,
+     "h": 300,
+     "kb": 10
     },
     {
-     "name": "scenes/cs2-mira-267.webp",
-     "w": 267,
-     "h": 630,
+     "name": "scenes/cs2-mira-260.webp",
+     "w": 260,
+     "h": 560,
      "kb": 21
+    },
+    {
+     "name": "scenes/cs2-mira-391.webp",
+     "w": 391,
+     "h": 840,
+     "kb": 36
     }
    ],
-   "fw": 0.5564,
-   "fh": 0.8753,
+   "ar": 0.4651,
+   "g": 0.911,
    "alt": "Alt haciendo un círculo con los dedos frente a un ojo, como una mira"
   },
   "/lol/rangos": {
    "image": "pa-sc-lol-rangos-r2",
    "files": [
     {
-     "name": "scenes/lol-rangos-102.webp",
-     "w": 102,
-     "h": 265,
-     "kb": 8
+     "name": "scenes/lol-rangos-128.webp",
+     "w": 128,
+     "h": 300,
+     "kb": 11
     },
     {
-     "name": "scenes/lol-rangos-203.webp",
-     "w": 203,
-     "h": 530,
-     "kb": 19
+     "name": "scenes/lol-rangos-238.webp",
+     "w": 238,
+     "h": 560,
+     "kb": 25
+    },
+    {
+     "name": "scenes/lol-rangos-358.webp",
+     "w": 358,
+     "h": 840,
+     "kb": 41
     }
    ],
-   "fw": 0.4233,
-   "fh": 0.7371,
+   "ar": 0.4256,
+   "g": 0.8077,
    "alt": "Alt sentada con un teclado en las piernas"
   },
   "/fortnite/nube": {
    "image": "pa-sc-fortnite-nube-r2",
    "files": [
     {
-     "name": "scenes/fortnite-nube-136.webp",
-     "w": 136,
-     "h": 354,
+     "name": "scenes/fortnite-nube-128.webp",
+     "w": 128,
+     "h": 300,
      "kb": 10
     },
     {
-     "name": "scenes/fortnite-nube-272.webp",
-     "w": 272,
-     "h": 709,
-     "kb": 25
+     "name": "scenes/fortnite-nube-239.webp",
+     "w": 239,
+     "h": 560,
+     "kb": 22
+    },
+    {
+     "name": "scenes/fortnite-nube-358.webp",
+     "w": 358,
+     "h": 840,
+     "kb": 37
     }
    ],
-   "fw": 0.567,
-   "fh": 0.9853,
+   "ar": 0.4259,
+   "g": 0.9897,
    "alt": "Alt caminando y señalando el cielo con el celular en la mano"
   },
   "/ff": {
    "image": "pa-sc-ff-r3",
    "files": [
     {
-     "name": "scenes/ff-108.webp",
-     "w": 108,
-     "h": 324,
-     "kb": 7
+     "name": "scenes/ff-114.webp",
+     "w": 114,
+     "h": 300,
+     "kb": 8
     },
     {
-     "name": "scenes/ff-217.webp",
-     "w": 217,
-     "h": 649,
-     "kb": 19
+     "name": "scenes/ff-212.webp",
+     "w": 212,
+     "h": 560,
+     "kb": 18
+    },
+    {
+     "name": "scenes/ff-318.webp",
+     "w": 318,
+     "h": 840,
+     "kb": 31
     }
    ],
-   "fw": 0.4515,
-   "fh": 0.9018,
+   "ar": 0.3792,
+   "g": 0.9298,
    "alt": "Alt corriendo con el celular en la mano"
   },
   "/ff/codigos": {
@@ -290,138 +375,180 @@
     {
      "name": "scenes/ff-codigos-137.webp",
      "w": 137,
-     "h": 330,
-     "kb": 10
+     "h": 300,
+     "kb": 11
     },
     {
-     "name": "scenes/ff-codigos-273.webp",
-     "w": 273,
-     "h": 659,
-     "kb": 23
+     "name": "scenes/ff-codigos-256.webp",
+     "w": 256,
+     "h": 560,
+     "kb": 24
+    },
+    {
+     "name": "scenes/ff-codigos-384.webp",
+     "w": 384,
+     "h": 840,
+     "kb": 39
     }
    ],
-   "fw": 0.5697,
-   "fh": 0.9159,
+   "ar": 0.4571,
+   "g": 0.9399,
    "alt": "Alt sentada con el celular, haciendo un gesto de alto con la mano"
   },
   "/valorant": {
    "image": "pa-sc-valorant-r3",
    "files": [
     {
-     "name": "scenes/valorant-159.webp",
-     "w": 159,
-     "h": 342,
+     "name": "scenes/valorant-151.webp",
+     "w": 151,
+     "h": 300,
      "kb": 9
     },
     {
-     "name": "scenes/valorant-318.webp",
-     "w": 318,
-     "h": 684,
-     "kb": 24
+     "name": "scenes/valorant-283.webp",
+     "w": 283,
+     "h": 560,
+     "kb": 21
+    },
+    {
+     "name": "scenes/valorant-424.webp",
+     "w": 424,
+     "h": 840,
+     "kb": 36
     }
    ],
-   "fw": 0.6631,
-   "fh": 0.95,
+   "ar": 0.5045,
+   "g": 0.9647,
    "alt": "Alt caminando mientras se pone los auriculares"
   },
   "/cs2": {
    "image": "pa-sc-cs2-r3",
    "files": [
     {
-     "name": "scenes/cs2-219.webp",
-     "w": 219,
-     "h": 319,
-     "kb": 12
+     "name": "scenes/cs2-216.webp",
+     "w": 216,
+     "h": 300,
+     "kb": 14
     },
     {
-     "name": "scenes/cs2-439.webp",
-     "w": 439,
-     "h": 637,
-     "kb": 28
+     "name": "scenes/cs2-403.webp",
+     "w": 403,
+     "h": 560,
+     "kb": 29
+    },
+    {
+     "name": "scenes/cs2-604.webp",
+     "w": 604,
+     "h": 840,
+     "kb": 48
     }
    ],
-   "fw": 0.9136,
-   "fh": 0.8853,
+   "ar": 0.7195,
+   "g": 0.9183,
    "alt": "Alt sentada en una mesa señalando un gráfico de barras"
   },
   "/cs2/major": {
    "image": "pa-sc-cs2-major-r3",
    "files": [
     {
-     "name": "scenes/cs2-major-162.webp",
-     "w": 162,
-     "h": 175,
-     "kb": 6
+     "name": "scenes/cs2-major-284.webp",
+     "w": 284,
+     "h": 300,
+     "kb": 13
     },
     {
-     "name": "scenes/cs2-major-324.webp",
-     "w": 324,
-     "h": 351,
-     "kb": 15
+     "name": "scenes/cs2-major-529.webp",
+     "w": 529,
+     "h": 560,
+     "kb": 31
+    },
+    {
+     "name": "scenes/cs2-major-794.webp",
+     "w": 794,
+     "h": 840,
+     "kb": 54
     }
    ],
-   "fw": 0.6746,
-   "fh": 0.4876,
+   "ar": 0.9455,
+   "g": 0.6049,
    "alt": "Alt sentada en un almohadón leyendo un cuaderno"
   },
   "/lol": {
    "image": "pa-sc-lol-r3",
    "files": [
     {
-     "name": "scenes/lol-173.webp",
-     "w": 173,
-     "h": 314,
-     "kb": 10
+     "name": "scenes/lol-176.webp",
+     "w": 176,
+     "h": 300,
+     "kb": 12
     },
     {
-     "name": "scenes/lol-346.webp",
-     "w": 346,
-     "h": 628,
-     "kb": 24
+     "name": "scenes/lol-329.webp",
+     "w": 329,
+     "h": 560,
+     "kb": 27
+    },
+    {
+     "name": "scenes/lol-494.webp",
+     "w": 494,
+     "h": 840,
+     "kb": 45
     }
    ],
-   "fw": 0.7213,
-   "fh": 0.8724,
+   "ar": 0.5879,
+   "g": 0.9084,
    "alt": "Alt sentada eligiendo una carta de colores de un abanico"
   },
   "/esports": {
    "image": "pa-sc-esports-r3",
    "files": [
     {
-     "name": "scenes/esports-155.webp",
-     "w": 155,
-     "h": 307,
-     "kb": 10
+     "name": "scenes/esports-163.webp",
+     "w": 163,
+     "h": 300,
+     "kb": 12
     },
     {
-     "name": "scenes/esports-310.webp",
-     "w": 310,
-     "h": 613,
-     "kb": 25
+     "name": "scenes/esports-304.webp",
+     "w": 304,
+     "h": 560,
+     "kb": 27
+    },
+    {
+     "name": "scenes/esports-456.webp",
+     "w": 456,
+     "h": 840,
+     "kb": 45
     }
    ],
-   "fw": 0.6455,
-   "fh": 0.8524,
+   "ar": 0.5432,
+   "g": 0.8942,
    "alt": "Alt sentada en un almohadón aplaudiendo como si mirara una partida"
   },
   "/esports/series": {
    "image": "pa-sc-esports-series-r3",
    "files": [
     {
-     "name": "scenes/esports-series-145.webp",
-     "w": 145,
-     "h": 318,
-     "kb": 9
+     "name": "scenes/esports-series-149.webp",
+     "w": 149,
+     "h": 300,
+     "kb": 11
     },
     {
-     "name": "scenes/esports-series-289.webp",
-     "w": 289,
-     "h": 636,
-     "kb": 23
+     "name": "scenes/esports-series-277.webp",
+     "w": 277,
+     "h": 560,
+     "kb": 24
+    },
+    {
+     "name": "scenes/esports-series-416.webp",
+     "w": 416,
+     "h": 840,
+     "kb": 40
     }
    ],
-   "fw": 0.6023,
-   "fh": 0.8835,
+   "ar": 0.4952,
+   "g": 0.9165,
    "alt": "Alt sentada mostrando tres dedos, con una libretita en la rodilla"
   }
  }

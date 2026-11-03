@@ -8,16 +8,22 @@ export const oneIn = n => '1 en ' + fmt(n, n < 100 ? 1 : 0);
 export const money = n => '$ ' + fmt(n, 2);
 
 // The girl of the site (jdd-girl-r3-10): the accepted scene of the page from sites/jugadadeldia/content/scenes.json
-// (data/art/publish-scenes.mjs). Every scene shares one 2:3 canvas, so the figure keeps its width share fw and the head is the same
-// size on every page; the decorative balls stay behind her. Empty string when the page has no scene (service and help pages).
+// (data/art/publish-scenes.mjs). The figure fills its frame: the frame is K times its width tall, times g of the scene (a seated pose
+// gets a shorter frame and a slightly larger scale, so heads stay comparable), and never wider than the figure needs. --r1 is the frame
+// aspect on wide screens, --r2 on phones; the decorative balls stay behind her. Empty string when the page has no scene.
 const SCENES = JSON.parse(readFileSync(new URL('../content/scenes.json', import.meta.url), 'utf8'));
+const K1 = 1.4, K2 = 1.5, FIT = 0.94;
+const frameH = (sc, k) => Math.min(k * sc.g, FIT / sc.ar);
 export const hasGirl = h => !!SCENES.pages[h.page.path];
 export function girl(h, { lazy = false, cls = '' } = {}) {
   const sc = SCENES.pages[h.page.path];
   if (!sc) return '';
-  const [a, b] = sc.files;
-  const img = '<img src="' + h.asset(a.name) + '" srcset="' + h.asset(a.name) + ' ' + a.w + 'w, ' + h.asset(b.name) + ' ' + b.w + 'w" sizes="(max-width:620px) ' + Math.ceil(112 * sc.fw) + 'px, ' + Math.ceil(240 * sc.fw) + 'px" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' decoding="async" style="width:' + +(sc.fw * 100).toFixed(2) + '%">';
-  return '<figure class="jg-girl' + (cls ? ' ' + cls : '') + '"><i class="jg-ba" aria-hidden="true"></i><i class="jg-ba c3" aria-hidden="true"></i><i class="jg-ba c4" aria-hidden="true"></i>' + img + '</figure>';
+  const r = k => +(1 / frameH(sc, k)).toFixed(4);
+  const x1 = frameH(sc, K1) * sc.ar * FIT, x2 = frameH(sc, K2) * sc.ar * FIT;
+  const a = sc.files[0];
+  const set = sc.files.map(f => h.asset(f.name) + ' ' + f.w + 'w').join(', ');
+  const img = '<img src="' + h.asset(a.name) + '" srcset="' + set + '" sizes="(max-width:620px) ' + Math.ceil(46 * x2) + 'vw, ' + Math.ceil(280 * x1) + 'px" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' decoding="async">';
+  return '<figure class="jg-girl' + (cls ? ' ' + cls : '') + '" style="--r1:' + r(K1) + ';--r2:' + r(K2) + '"><i class="jg-ba" aria-hidden="true"></i><i class="jg-ba c3" aria-hidden="true"></i><i class="jg-ba c4" aria-hidden="true"></i>' + img + '</figure>';
 }
 // Pages that open with a game table have no hero: the girl stands beside the first sections under the table (lazy, below the fold).
 export const mnOpen = h => '<div class="jg-mn' + (hasGirl(h) ? ' art' : '') + '">';

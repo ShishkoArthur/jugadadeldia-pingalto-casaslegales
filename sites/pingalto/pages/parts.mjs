@@ -24,16 +24,22 @@ export function hero(h, { ey, sub, girl = false, buttons = '' }) {
   return '<section class="pa-he' + (art ? (girl ? '' : ' pa-tl') : ' pa-sm') + '"><div><p class="pa-ey">' + h.esc(ey) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
     (sub ? '<p class="pa-sb">' + sub + '</p>' : '') + (buttons ? '<div class="pa-bt">' + buttons + '</div>' : '') + '</div>' + art + '</section>';
 }
-// Alt's card with the page scene (sites/pingalto/content/scenes.json, data/art/publish-scenes.mjs): every scene shares one 2:3
-// canvas, so the figure keeps its height share fh of the card and the head size matches across pages. Empty string when the page has none.
+// Alt's card with the page scene (sites/pingalto/content/scenes.json, data/art/publish-scenes.mjs). The figure fills its frame: the
+// frame is K times its width tall, times g of the scene (seated poses get a shorter frame and a slightly larger scale), and never wider
+// than the figure needs. --r1 is the frame aspect on wide screens (K1), --r2 on phones (K2, taller frame in a narrower card); the inner
+// width is 280 px in the hero on wide screens and about 44vw on phones, which sizes the srcset. Empty string when the page has none.
 const SCENES = JSON.parse(readFileSync(new URL('../content/scenes.json', import.meta.url), 'utf8'));
+const K1 = 1.3, K2 = 1.55, FIT = 0.94;
+const frameH = (sc, k) => Math.min(k * sc.g, FIT / sc.ar);
 export function girlCard(h, path = h.page.path, { lazy = false } = {}) {
   const sc = SCENES.pages[path];
   if (!sc) return '';
-  const [a, b] = sc.files;
-  const pc = x => +(x * 100).toFixed(2);
-  const img = '<img src="' + h.asset(a.name) + '" srcset="' + h.asset(a.name) + ' ' + a.w + 'w, ' + h.asset(b.name) + ' ' + b.w + 'w" sizes="(max-width:680px) ' + Math.ceil(100 * sc.fw) + 'px, ' + Math.ceil(240 * sc.fw) + 'px" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' decoding="async" style="height:' + pc(sc.fh) + '%">';
-  return '<figure class="pa-girl"><b aria-hidden="true"><span>ALT</span><span>GUÍA</span></b><div><span class="pa-cv">' + img + '</span></div><figcaption>la guía de pingalto</figcaption></figure>';
+  const r = k => +(1 / frameH(sc, k)).toFixed(4);
+  const x1 = frameH(sc, K1) * sc.ar, x2 = frameH(sc, K2) * sc.ar;
+  const a = sc.files[0];
+  const set = sc.files.map(f => h.asset(f.name) + ' ' + f.w + 'w').join(', ');
+  const img = '<img src="' + h.asset(a.name) + '" srcset="' + set + '" sizes="(max-width:680px) ' + Math.ceil(44 * x2) + 'vw, ' + Math.ceil(280 * x1) + 'px" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' decoding="async">';
+  return '<figure class="pa-girl"><b aria-hidden="true"><span>ALT</span><span>GUÍA</span></b><div style="--r1:' + r(K1) + ';--r2:' + r(K2) + '">' + img + '</div><figcaption>la guía de pingalto</figcaption></figure>';
 }
 export function ldPage(h, extra = []) {
   const O = 'https://' + h.site.domain;
