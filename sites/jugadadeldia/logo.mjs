@@ -14,7 +14,7 @@ const ORO = { g0: '#fff4b8', g1: '#ffc22e', g2: '#b87600', sRim: '#8a5200', fBea
 
 export const LOGO = {
   prefix: 'jgl-',
-  pick: 'siete-de-oro',
+  pick: 'j-bolilla',
   manifest: { short_name: 'Jugada', theme_color: '#edf1f6', background_color: '#edf1f6' },
   concepts: [
     {

@@ -38,7 +38,7 @@ const D = { fWall: '#4f7a33', fGable: '#dcf78f', fRoof: '#b9e64e', sChk: '#07120
 
 export const LOGO = {
   prefix: 'cl-',
-  pick: 'casa-iso',
+  pick: 'sello-relieve',
   manifest: { short_name: 'casaslegales', theme_color: '#e9efe6', background_color: '#e9efe6' },
   concepts: [
     { id: 'casa-iso', name: 'Casa en relieve', palette: { light: L, dark: D }, draw: (k, id, o) => HOUSE(k, o.small ? 4.2 : 3.4) },

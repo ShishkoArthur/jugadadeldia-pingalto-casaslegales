@@ -25,7 +25,7 @@ const pixels = (k, o) => (o.small
 
 export const LOGO = {
   prefix: 'pal-',
-  pick: 'pico-senal',
+  pick: 'p-eco',
   manifest: { short_name: 'pingalto', theme_color: '#f6f4fb', background_color: '#f6f4fb' },
   concepts: [
     {
