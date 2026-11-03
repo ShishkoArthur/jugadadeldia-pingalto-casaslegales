@@ -158,6 +158,89 @@
    "brand": "casino-ba-online",
    "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/terminosycondiciones",
    "kind": "tc"
+  },
+  {
+   "id": "betfun-pie",
+   "brand": "betfun",
+   "url": "https://betfun.bet.ar/",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "playuzu-inicio",
+   "brand": "playuzu",
+   "url": "https://www.playuzu.bet.ar/",
+   "kind": "block",
+   "save": true
+  },
+  {
+   "id": "playbet-pie",
+   "brand": "playbet",
+   "url": "https://play.bet.ar/",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "mitesoro-inicio",
+   "brand": "mitesoro",
+   "url": "https://mitesoro.bet.ar/",
+   "kind": "parked",
+   "save": true
+  },
+  {
+   "id": "easybet-larioja-pie",
+   "brand": "easybet",
+   "url": "https://larioja.easybet.bet.ar/",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "casinosdelrio-pie",
+   "brand": "casinosdelrio",
+   "url": "https://casinosdelrio.bet.ar/",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "maverick-inicio",
+   "brand": "maverick",
+   "url": "https://maverickonline.bet.ar/",
+   "kind": "block",
+   "save": true
+  },
+  {
+   "id": "aladdin-inicio",
+   "brand": "aladdin",
+   "url": "https://aladdincasino.bet.ar/",
+   "kind": "block",
+   "save": true
+  },
+  {
+   "id": "larionegrina-inicio",
+   "brand": "larionegrina",
+   "url": "https://larionegrinaonline.bet.ar/",
+   "kind": "block",
+   "save": true
   }
- ]
+ ],
+ "robotsChecked": {
+  "about": "robots.txt read on 2026-11-03 before any capture (TRAPS 03.11): not captured when robots.txt disallows ClaudeBot or AI agents, or when robots.txt itself is behind a bot check, or the host does not answer",
+  "skipped": {
+   "casinoclub": "casinoclubonline.bet.ar: robots.txt behind a Cloudflare block (403)",
+   "macgroup": "casinosmacgroup.bet.ar: robots.txt disallows ClaudeBot",
+   "super7": "super7.com.ar, mdz.super7.bet.ar: TLS handshake failed",
+   "stake": "pba.stake.bet.ar: robots.txt behind a Cloudflare check",
+   "arbet": "arbet.bet.ar: the name does not resolve",
+   "casinomagic": "casinomagiconline.bet.ar: robots.txt behind a Cloudflare block (403)",
+   "citycenteronline": "citycenteronline.bet.ar: robots.txt behind a Cloudflare check",
+   "laneuquina": "laneuquinaonline.bet.ar: robots.txt answers with a page \"Acceso restringido: Solo disponible en Argentina\" (geo block, not bypassed)"
+  },
+  "blockOnly": {
+   "maverick": "robots.txt answers with the geo block page; the capture is that block page",
+   "aladdin": "same as maverick",
+   "larionegrina": "robots.txt and home answer with \"Acceso restringido\"; the capture is that block page",
+   "playuzu": "robots.txt allows; home answers \"not available from your region\"",
+   "mitesoro": "no robots.txt (Wix 404); home is a Wix page saying the domain is not connected"
+  }
+ }
 }

@@ -2,7 +2,8 @@
 // Own screenshots of PUBLIC pages of licensed operators (casaslegales.com): node tools/capture-shots.mjs [id ...]
 // Targets: data/shots/targets.json. Headless Chrome (Playwright, read only; PLAYWRIGHT=<path to playwright/index.mjs>), es-AR,
 // Buenos Aires time zone. Never logs in, never registers, never deposits; a cookie banner is declined when it offers a
-// reject button and left alone otherwise; promotional pop-ups are closed with their own close button.
+// reject button and left alone otherwise; promotional pop-ups are closed with their own close button, fixed promotional bars
+// are hidden; a target may set clip {x, y, width, height} to keep only part of the first screen (no promotional banner).
 // Output: data/shots/<YYYY-MM-DD>/<id>.png (original, git-ignored), data/shots/shots.json (url, final url, HTTP status, date,
 // page title), sites/casaslegales/static/shots/<id>.webp (what ships) and, for targets with save: true, the rendered DOM as
 // a quotable document data/sources/operators/_docs/<id>.html (+ sha256 in shots.json): scripts, styles and inline SVG
@@ -42,7 +43,7 @@ async function tidy(p) {
       const cs = getComputedStyle(el);
       if (cs.position !== 'fixed' || cs.display === 'none') continue;
       const r = el.getBoundingClientRect();
-      if (r.width < 200 || r.height < 120 || !promo.test(el.innerText || '')) continue;
+      if (r.width < 200 || r.height < 40 || !promo.test(el.innerText || '')) continue;
       el.style.setProperty('display', 'none', 'important');
       n++;
     }
@@ -58,7 +59,7 @@ for (const t of T) {
   catch (e) { err = e.message.split('\n')[0]; }
   const title = (await p.title().catch(() => '')).trim();
   const text = ((await p.evaluate(() => document.body ? document.body.innerText : '').catch(() => '')) || '').replace(/\s+/g, ' ').trim();
-  const blocked = status >= 400 || status === 0 || /attention required|access denied|you have been blocked|no tiene acceso|not available|restricted due to/i.test(title + ' ' + text.slice(0, 400));
+  const blocked = status >= 400 || status === 0 || /attention required|access denied|you have been blocked|no tiene acceso|not available|isn.t available from your region|restricted due to|sitio restringido|acceso restringido/i.test(title + ' ' + text.slice(0, 400));
   const rec = { id: t.id, brand: t.brand, kind: t.kind, url: t.url, finalUrl: p.url(), status, date: today, title, ok: !blocked && !err, err: err || undefined, excerpt: text.slice(0, 200) };
   if (!err) {
     if (!blocked) rec.hiddenPromo = await tidy(p);
@@ -77,7 +78,7 @@ for (const t of T) {
         const m = await sharp(full).metadata();
         await sharp(full).extract({ left: 0, top: 0, width: m.width, height: Math.min(m.height, 900) }).png().toFile(png);
       } else await p.screenshot({ path: png });
-    } else await p.screenshot({ path: png });
+    } else await p.screenshot({ path: png, clip: t.clip || undefined });
     rec.png = path.relative(ROOT, png);
     const buf = fs.readFileSync(png);
     rec.pngSha256 = sha(buf);

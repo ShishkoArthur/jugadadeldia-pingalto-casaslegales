@@ -187,6 +187,105 @@
    "official": true,
    "title": "Lotería de Córdoba, juego online",
    "copiedBy": "owner"
+  },
+  "betfun-pie": {
+   "url": "https://betfun.bet.ar/",
+   "finalUrl": "https://betfun.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "betfun",
+   "title": "Página de entrada de Betfun (pie de página)",
+   "file": "data/sources/operators/_docs/betfun-pie.html",
+   "sha256": "d4d39d6d1f11fbb7c7266493d685314dad5f4c7ae7405b787ab471023a4b3a0f"
+  },
+  "playbet-pie": {
+   "url": "https://play.bet.ar/",
+   "finalUrl": "https://play.bet.ar/home",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "playbet",
+   "title": "Página de entrada de PlayBet (pie de página)",
+   "file": "data/sources/operators/_docs/playbet-pie.html",
+   "sha256": "47228959d8cebc47373ac653ed041276d1e9232b6566daae02c5625a62effae4"
+  },
+  "easybet-larioja-pie": {
+   "url": "https://larioja.easybet.bet.ar/",
+   "finalUrl": "https://larioja.easybet.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "easybet",
+   "title": "Página de entrada de easybet La Rioja (pie de página)",
+   "file": "data/sources/operators/_docs/easybet-larioja-pie.html",
+   "sha256": "8f2b7fc989203a2d39dc33974591778e87fccb18cb72286b493591877a3bb412"
+  },
+  "casinosdelrio-pie": {
+   "url": "https://casinosdelrio.bet.ar/",
+   "finalUrl": "https://casinosdelrio.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "casinosdelrio",
+   "title": "Página de entrada de Casinos del Río",
+   "file": "data/sources/operators/_docs/casinosdelrio-pie.html",
+   "sha256": "acad375baf8ff21cc7e169c43d23a13ca5e4d36509d327fe4a61c51ffeb8fa4e"
+  },
+  "maverick-inicio": {
+   "url": "https://maverickonline.bet.ar/",
+   "finalUrl": "https://maverickonline.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "block",
+   "brand": "maverick",
+   "title": "maverickonline.bet.ar fuera de la provincia",
+   "file": "data/sources/operators/_docs/maverick-inicio.html",
+   "sha256": "c21d4b45e8acba98699de6766d38f557315fe3afe20a0f4a921a7cdff01908c3"
+  },
+  "aladdin-inicio": {
+   "url": "https://aladdincasino.bet.ar/",
+   "finalUrl": "https://aladdincasino.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "block",
+   "brand": "aladdin",
+   "title": "aladdincasino.bet.ar fuera de la provincia",
+   "file": "data/sources/operators/_docs/aladdin-inicio.html",
+   "sha256": "3bedd7d69a7c412cb6e4d2823ae70518d6529a727ea58fbc1e081e2b7bfb2230"
+  },
+  "larionegrina-inicio": {
+   "url": "https://larionegrinaonline.bet.ar/",
+   "finalUrl": "https://larionegrinaonline.bet.ar/restringido/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "block",
+   "brand": "larionegrina",
+   "title": "larionegrinaonline.bet.ar fuera del país",
+   "file": "data/sources/operators/_docs/larionegrina-inicio.html",
+   "sha256": "b65cbf7b312914d980842b5b4a3b8bd2efa9c73858516e16bded4bf6a936d2c1"
+  },
+  "playuzu-inicio": {
+   "url": "https://www.playuzu.bet.ar/",
+   "finalUrl": "https://www.playuzu.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "block",
+   "brand": "playuzu",
+   "title": "playuzu.bet.ar fuera del país",
+   "file": "data/sources/operators/_docs/playuzu-inicio.html",
+   "sha256": "f6aeef7a85a72f158af21527cb8bccb69db696d3d9cce56be8901978f7175381"
+  },
+  "mitesoro-inicio": {
+   "url": "https://mitesoro.bet.ar/",
+   "finalUrl": "https://mitesoro.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 404,
+   "kind": "block",
+   "brand": "mitesoro",
+   "title": "mitesoro.bet.ar: página de Wix",
+   "file": "data/sources/operators/_docs/mitesoro-inicio.html",
+   "sha256": "21ef5a9810b4fe7dd20948537fce0e6cb7722135655aa366d9570ffe978774e9"
   }
  },
  "quotes": {
@@ -559,6 +658,104 @@
    "topic": "bill",
    "jur": "ar",
    "label": "Proyecto de ley del Poder Ejecutivo (mayo de 2026), según argentina.gob.ar"
+  },
+  "betfun-permiso": {
+   "doc": "betfun-pie",
+   "text": "Permiso de uso otorgado por LOTBA S.E. mediante RESOL-2020-138-GCABA-LOTBA",
+   "brand": "betfun",
+   "topic": "licence",
+   "label": "Pie de página de betfun.bet.ar"
+  },
+  "betfun-titular": {
+   "doc": "betfun-pie",
+   "text": "HIPÓDROMO ARGENTINO DE PALERMO S.A. - CASINO CLUB S.A. - U.T.",
+   "brand": "betfun",
+   "topic": "licence-holder",
+   "label": "Pie de página de betfun.bet.ar"
+  },
+  "betfun-zona": {
+   "doc": "betfun-pie",
+   "text": "Nuestra plataforma y app están habilitadas para ser utilizadas exclusivamente dentro de la Ciudad Autónoma de Buenos Aires (CABA).",
+   "brand": "betfun",
+   "topic": "licence-area",
+   "label": "Preguntas frecuentes de betfun.bet.ar"
+  },
+  "betfun-ayuda": {
+   "doc": "betfun-pie",
+   "text": "Línea de orientación al jugador problemático: 0800-444-4000.",
+   "brand": "betfun",
+   "topic": "rg-help",
+   "label": "Pie de página de betfun.bet.ar"
+  },
+  "easybet-licencia": {
+   "doc": "easybet-larioja-pie",
+   "text": "Este es un sitio operado por FULLPLAY S.R.L., conforme a la licencia otorgada mediante Resolución Nro. 0007/2025 por la Administración de Juegos de Azar de La Rioja (AJALaR).",
+   "brand": "easybet",
+   "topic": "licence",
+   "label": "Pie de página de larioja.easybet.bet.ar"
+  },
+  "easybet-zona": {
+   "doc": "easybet-larioja-pie",
+   "text": "La oferta de entretenimiento ofrecida en este sitio se circunscribe al ámbito geográfico de la Provincia de La Rioja. Sólo podrán participar jugadores de esta Jurisdicción.",
+   "brand": "easybet",
+   "topic": "licence-area",
+   "label": "Pie de página de larioja.easybet.bet.ar"
+  },
+  "easybet-salud": {
+   "doc": "easybet-larioja-pie",
+   "text": "EL JUEGO COMPULSIVO ES PERJUDICIAL PARA LA SALUD",
+   "brand": "easybet",
+   "topic": "rg-help",
+   "label": "Pie de página de larioja.easybet.bet.ar"
+  },
+  "casinosdelrio-sedes": {
+   "doc": "casinosdelrio-pie",
+   "text": "La empresa cuenta con 7 sedes en la provincia de Río Negro y 3 hoteles de alta categoría",
+   "brand": "casinosdelrio",
+   "topic": "about",
+   "label": "Página de entrada de casinosdelrio.bet.ar"
+  },
+  "casinosdelrio-plataformas": {
+   "doc": "casinosdelrio-pie",
+   "text": "poseemos dos plataformas de casino en línea: BETSUR y DEL RÍO ONLINE.",
+   "brand": "casinosdelrio",
+   "topic": "about",
+   "label": "Página de entrada de casinosdelrio.bet.ar"
+  },
+  "maverick-bloqueo": {
+   "doc": "maverick-inicio",
+   "text": "Solamente se aceptan jugadores de la provincia de Neuquen.",
+   "brand": "maverick",
+   "topic": "block",
+   "label": "maverickonline.bet.ar fuera de la provincia"
+  },
+  "aladdin-bloqueo": {
+   "doc": "aladdin-inicio",
+   "text": "Solamente se aceptan jugadores de la provincia de Neuquen.",
+   "brand": "aladdin",
+   "topic": "block",
+   "label": "aladdincasino.bet.ar fuera de la provincia"
+  },
+  "larionegrina-bloqueo": {
+   "doc": "larionegrina-inicio",
+   "text": "Acceso restringido: Solo disponible en Argentina.",
+   "brand": "larionegrina",
+   "topic": "block",
+   "label": "larionegrinaonline.bet.ar fuera del país"
+  },
+  "playuzu-bloqueo": {
+   "doc": "playuzu-inicio",
+   "text": "available from your region",
+   "brand": "playuzu",
+   "topic": "block",
+   "label": "playuzu.bet.ar fuera del país"
+  },
+  "mitesoro-wix": {
+   "doc": "mitesoro-inicio",
+   "text": "Este dominio no está conectado a un sitio",
+   "brand": "mitesoro",
+   "topic": "block-parked",
+   "label": "mitesoro.bet.ar"
   }
  },
  "brands": {
@@ -648,6 +845,59 @@
     "cbao-pie",
     "cbao-owner-inicio",
     "cbao-owner-juego-responsable"
+   ]
+  },
+  "betfun": {
+   "shots": [
+    "betfun-pie"
+   ],
+   "compare": [
+    {
+     "jur": "caba",
+     "quote": "betfun-permiso",
+     "site": "RESOL-2020-138-GCABA-LOTBA",
+     "list": "1104/2022"
+    }
+   ]
+  },
+  "playbet": {
+   "shots": [
+    "playbet-pie"
+   ]
+  },
+  "easybet": {
+   "shots": [
+    "easybet-larioja-pie"
+   ]
+  },
+  "casinosdelrio": {
+   "shots": [
+    "casinosdelrio-pie"
+   ]
+  },
+  "maverick": {
+   "shots": [
+    "maverick-inicio"
+   ]
+  },
+  "aladdin": {
+   "shots": [
+    "aladdin-inicio"
+   ]
+  },
+  "larionegrina": {
+   "shots": [
+    "larionegrina-inicio"
+   ]
+  },
+  "playuzu": {
+   "shots": [
+    "playuzu-inicio"
+   ]
+  },
+  "mitesoro": {
+   "shots": [
+    "mitesoro-inicio"
    ]
   }
  }

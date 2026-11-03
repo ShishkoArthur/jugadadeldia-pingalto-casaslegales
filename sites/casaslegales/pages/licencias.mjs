@@ -1,5 +1,5 @@
 import { CODE } from '../content/map.mjs';
-import { src, hostHtml, sectionHead } from './parts.mjs';
+import { src, hostHtml, sectionHead, brandLink } from './parts.mjs';
 
 export const licencias = {
   path: '/licencias',
@@ -22,7 +22,7 @@ export const licencias = {
       '<div class="rl-big"><b>' + h.t('{{lic_total}}') + '</b><span>sitios con licencia en las listas que verificamos</span><small>' + h.t('{{reg_total}} de {{jur_total}} jurisdicciones') + '</small></div></section>';
     const filter = '<div class="rl-filter" data-rl-filter role="group" aria-label="Filtrar por jurisdicción"><button type="button" data-f="all" aria-pressed="true">Todas</button>' +
       regs.map(r => '<button type="button" data-f="' + r.id + '" aria-pressed="false">' + h.esc(h.rg.prov(r.id).name) + '</button>').join('') + '</div>';
-    const rows = all.map(({ r, l }) => '<tr data-j="' + r.id + '"><th scope="row">' + h.esc(h.names[l.brand]) + '</th><td>' + h.esc(CODE[r.id]) + '</td><td class="rl-host">' + hostHtml(h, l.host) + '</td><td>' +
+    const rows = all.map(({ r, l }) => '<tr data-j="' + r.id + '"><th scope="row">' + brandLink(h, l.brand) + '</th><td>' + h.esc(CODE[r.id]) + '</td><td class="rl-host">' + hostHtml(h, l.host) + '</td><td>' +
       (l.ref ? h.esc(l.ref) : '<span class="rl-src">la lista no lo indica</span>') + '</td><td>' + h.esc(r.regulator.short) + ' · ' + h.fmtDate(h.doc(l.evidence.doc).fetched) + '</td></tr>').join('');
     const table = '<section class="rl-sec">' + sectionHead(h, 'Todos los sitios', 'mostrando ') .replace('</p></div>', '<span data-rl-count>' + all.length + '</span></p></div>') +
       filter + '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Marca</th><th scope="col">Jurisdicción</th><th scope="col">Dirección</th><th scope="col">Acto</th><th scope="col">Regulador y copia</th></tr></thead><tbody data-rl-rows>' + rows + '</tbody></table></div>' +

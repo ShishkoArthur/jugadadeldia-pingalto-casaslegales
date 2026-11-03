@@ -9,7 +9,7 @@ import { provData } from '../content/provdata.mjs';
 import { rowOf, entries } from './operador.mjs';
 import { anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
 import { relief, help } from './provincia.mjs';
-import { quote, sectionHead } from './parts.mjs';
+import { quote, sectionHead, brandLink } from './parts.mjs';
 
 const DE = { IPLyC: 'del IPLyC', 'Lotería de Córdoba': 'de la Lotería de Córdoba', 'Lotería de Río Negro': 'de la Lotería de Río Negro', 'Lotería de Santa Fe': 'de la Lotería de Santa Fe', IPJyC: 'del IPJyC' };
 const actOf = (h, r, cell) => {
@@ -87,7 +87,7 @@ export function opProvPage(o) {
         (otherHosts.length ? ' En ' + others.filter(y => row.cells[y.id].host !== o.host).map(y => h.rg.prov(y.id).name).join(' y ') + ' la marca figura con ' + (otherHosts.length === 1 ? 'otra dirección' : 'otras direcciones') + ': si jugás desde ' + prov + ', vale la de esta lista.' : '') +
         (sameHost.length ? ' La misma dirección figura también en la lista de ' + sameHost.map(y => h.rg.prov(y.id).name).join(' y ') + ', con otro regulador.' : '');
       const map = relief(h, P, o.jur, { cls: y => row.cells[y.id] ? 'rl-s-list' : h.regs.some(z => z.id === y.id) ? 'rl-s-none' : 'rl-s-blocked', tip: y => row.cells[y.id] ? 'figura en la lista oficial' : 'no figura o sin lista verificada' });
-      const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + h.esc(row.name + ' × ' + prov) + ' · lista copiada el ' + h.fmtDate(listDoc.fetched) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
+      const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + brandLink(h, o.brand, row.name) + h.esc(' × ' + prov) + ' · lista copiada el ' + h.fmtDate(listDoc.fetched) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
         '<p class="rl-lead">' + h.esc(lead) + '</p><p class="rl-note">Sin enlaces al operador, sin promociones. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
         '<div class="rl-pvv">' + map + '<p class="rl-pvn"><b>' + T.n + '</b><span>' + (T.n === 1 ? 'lista oficial nombra a ' : 'listas oficiales de las que revisamos nombran a ') + h.esc(row.name) + '</span></p><p class="rl-pvcap">' + h.esc(prov) + ' resaltada; en verde, donde figura</p></div></section>';
       const licQuote = r.quotes.licences || r.quotes.licence || r.quotes.list;

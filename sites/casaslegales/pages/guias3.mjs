@@ -8,7 +8,7 @@ import { CODE } from '../content/map.mjs';
 import { provData, STATUS_LABEL, STATUS_ORDER } from '../content/provdata.mjs';
 import { opData, quotesOf } from '../content/opdata.mjs';
 import { anat, opQuote, listsDate } from './opparts.mjs';
-import { quote, rgQuote, sectionHead, hostHtml } from './parts.mjs';
+import { quote, rgQuote, sectionHead, hostHtml, brandLink } from './parts.mjs';
 import { relief } from './provincia.mjs';
 
 const go = (h, list) => '<div class="rl-gd">' + list.filter(([u]) => h.built(u)).map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div>';
@@ -40,7 +40,7 @@ export const comoVerificar = {
     const steps = '<section class="rl-sec">' + sectionHead(h, 'Cinco pasos', 'cada ejemplo sale de las listas verificadas') + '<ol class="rl-steps">' +
       '<li><b>Copiá la dirección completa</b><p>De la barra del navegador, no del anuncio, del mensaje ni del perfil que te la pasó. Lo que importa es todo lo que está antes de la primera barra: subdominio, nombre y terminación.</p></li>' +
       '<li><b>Fijate qué publica tu provincia</b><p>No todas publican una lista. Hoy, de ' + P.all.length + ' jurisdicciones: ' + h.esc(statusLine) + '.' + (h.built('/provincias') ? ' El detalle está en <a href="' + h.href('/provincias') + '">provincias</a>.' : '') + '</p></li>' +
-      '<li><b>Compará letra por letra</b><p>La misma marca puede tener una dirección distinta en cada provincia. ' + h.esc(widest.name) + ' figura con ' + distinctHosts(widest) + ' direcciones: ' +
+      '<li><b>Compará letra por letra</b><p>La misma marca puede tener una dirección distinta en cada provincia. ' + brandLink(h, widest.brand, widest.name) + ' figura con ' + distinctHosts(widest) + ' direcciones: ' +
         h.regs.filter(r => widest.cells[r.id]).map(r => '<span class="rl-host">' + h.esc(widest.cells[r.id].host) + '</span> (' + h.esc(CODE[r.id]) + ')').join(', ') + '. Solo vale la de tu lista.</p></li>' +
       '<li><b>.bet.ar ayuda, pero no alcanza</b><p>' + (nonBet.length ? 'En las listas que guardamos hay ' + nonBet.length + (nonBet.length === 1 ? ' dirección que no termina' : ' direcciones que no terminan') + ' en .bet.ar: ' + nonBet.map(l => '<span class="rl-host">' + h.esc(l.host) + '</span>').join(', ') + '. ' : '') +
         'Y una dirección .bet.ar puede ser de otra provincia: la terminación no dice dónde vale la licencia.</p></li>' +
@@ -79,7 +79,7 @@ export const menores = {
     const D = opData(h.today);
     const ops = Object.keys(D.data.brands).flatMap(b => quotesOf(D, b, 'rg-age'));
     const sites = ops.length ? '<section class="rl-sec">' + sectionHead(h, 'Lo que muestran los sitios con licencia', 'capturas y copias propias de páginas públicas') +
-      '<div class="rl-law">' + ops.map(q => '<article><span class="rl-tag">' + h.esc(h.names[q.brand] || q.brand) + '</span>' + opQuote(h, D, q, q.label) + '</article>').join('') + '</div></section>' : '';
+      '<div class="rl-law">' + ops.map(q => '<article><span class="rl-tag">' + brandLink(h, q.brand) + '</span>' + opQuote(h, D, q, q.label) + '</article>').join('') + '</div></section>' : '';
     const fed = (h.rg.pack.law || []).find(l => l.id === 'diputados-media-sancion');
     const fedQ = fed && (fed.also || []).find(a => /menores de 18/.test(a.quote));
     const law = fedQ ? '<section class="rl-sec">' + sectionHead(h, 'El proyecto de ley federal', 'media sanción, todavía no es ley') + '<div class="rl-two"><div class="rl-box"><h3>Qué aprobó Diputados</h3>' + rgQuote(h, { doc: fedQ.doc, quote: fedQ.quote }, 'Cámara de Diputados') +

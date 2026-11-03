@@ -701,6 +701,199 @@
    "width": 960,
    "height": 473,
    "webp": "sites/casaslegales/static/shots/cbao-owner-juego-responsable.webp"
+  },
+  "playuzu-inicio": {
+   "id": "playuzu-inicio",
+   "brand": "playuzu",
+   "kind": "block",
+   "url": "https://www.playuzu.bet.ar/",
+   "finalUrl": "https://www.playuzu.bet.ar/",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "PlayUZU",
+   "ok": false,
+   "excerpt": "The website isn’t available from your region.",
+   "png": "data/shots/2026-11-03/playuzu-inicio.png",
+   "pngSha256": "47ffbe701dd247f94c172755c8961242b99620e70b134d2fe0537979540ccd8d",
+   "width": 960,
+   "height": 600,
+   "webp": "sites/casaslegales/static/shots/playuzu-inicio.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/playuzu-inicio.html",
+    "sha256": "f6aeef7a85a72f158af21527cb8bccb69db696d3d9cce56be8901978f7175381"
+   }
+  },
+  "mitesoro-inicio": {
+   "id": "mitesoro-inicio",
+   "brand": "mitesoro",
+   "kind": "parked",
+   "url": "https://mitesoro.bet.ar/",
+   "finalUrl": "https://mitesoro.bet.ar/",
+   "status": 404,
+   "date": "2026-11-03",
+   "title": "Reconnect Your Domain | Wix.com",
+   "ok": false,
+   "excerpt": "Crear un sitio web Este dominio no está conectado a un sitio Si este dominio es tuyo, ve a la página de Dominios en tu panel de control de Wix. ¿Sueñas con tener tu propio dominio? Consigue uno ahora ",
+   "png": "data/shots/2026-11-03/mitesoro-inicio.png",
+   "pngSha256": "5cbf623cf879a38463d2ff4797227768ca50c634285ae30f98017a03c12c331d",
+   "width": 960,
+   "height": 600,
+   "webp": "sites/casaslegales/static/shots/mitesoro-inicio.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/mitesoro-inicio.html",
+    "sha256": "21ef5a9810b4fe7dd20948537fce0e6cb7722135655aa366d9570ffe978774e9"
+   }
+  },
+  "maverick-inicio": {
+   "id": "maverick-inicio",
+   "brand": "maverick",
+   "kind": "block",
+   "url": "https://maverickonline.bet.ar/",
+   "finalUrl": "https://maverickonline.bet.ar/",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "MaverickOnline | Solo se permiten jugadores de la provincia de Neuquen",
+   "ok": false,
+   "excerpt": "NO TIENE ACCESO DESDE SU UBICACIï¿½N Solamente se aceptan jugadores de la provincia de Neuquen. Disculpe las molestias.",
+   "png": "data/shots/2026-11-03/maverick-inicio.png",
+   "pngSha256": "087d16af9eb6004970246e464d6f189ff28d1ea8b0ac35b7e4c6b984ed6dbd6d",
+   "width": 960,
+   "height": 600,
+   "webp": "sites/casaslegales/static/shots/maverick-inicio.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/maverick-inicio.html",
+    "sha256": "c21d4b45e8acba98699de6766d38f557315fe3afe20a0f4a921a7cdff01908c3"
+   }
+  },
+  "aladdin-inicio": {
+   "id": "aladdin-inicio",
+   "brand": "aladdin",
+   "kind": "block",
+   "url": "https://aladdincasino.bet.ar/",
+   "finalUrl": "https://aladdincasino.bet.ar/",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "AladdinCasino | Solo se permiten jugadores de la provincia de Neuquen",
+   "ok": false,
+   "excerpt": "NO TIENE ACCESO DESDE SU UBICACIï¿½N Solamente se aceptan jugadores de la provincia de Neuquen. Disculpe las molestias.",
+   "png": "data/shots/2026-11-03/aladdin-inicio.png",
+   "pngSha256": "14f57789dda50f8140c2b529d81869771e875166158805ef017fe01f9a7ae209",
+   "width": 960,
+   "height": 600,
+   "webp": "sites/casaslegales/static/shots/aladdin-inicio.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/aladdin-inicio.html",
+    "sha256": "3bedd7d69a7c412cb6e4d2823ae70518d6529a727ea58fbc1e081e2b7bfb2230"
+   }
+  },
+  "larionegrina-inicio": {
+   "id": "larionegrina-inicio",
+   "brand": "larionegrina",
+   "kind": "block",
+   "url": "https://larionegrinaonline.bet.ar/",
+   "finalUrl": "https://larionegrinaonline.bet.ar/restringido/",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "Sitio restringido",
+   "ok": false,
+   "excerpt": "Acceso restringido: Solo disponible en Argentina.",
+   "png": "data/shots/2026-11-03/larionegrina-inicio.png",
+   "pngSha256": "abb5fc70e294267c654eb4b5a4aac4af6a6f542f86df9b7e8f95aaeccf0b9f01",
+   "width": 960,
+   "height": 600,
+   "webp": "sites/casaslegales/static/shots/larionegrina-inicio.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/larionegrina-inicio.html",
+    "sha256": "b65cbf7b312914d980842b5b4a3b8bd2efa9c73858516e16bded4bf6a936d2c1"
+   }
+  },
+  "betfun-pie": {
+   "id": "betfun-pie",
+   "brand": "betfun",
+   "kind": "footer",
+   "url": "https://betfun.bet.ar/",
+   "finalUrl": "https://betfun.bet.ar/",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "El casino online del Hipódromo Palermo | Betfun",
+   "ok": true,
+   "excerpt": "El casino online del Hipódromo Palermo Casino Online y Apuestas Deportivas en CABA Sumate y recibí hasta $300.000 en bonos con tu primer depósito $25.000 CASINO + $10.000 DEPORTES CREÁ TU CUENTA Inici",
+   "hiddenPromo": 1,
+   "png": "data/shots/2026-11-03/betfun-pie.png",
+   "pngSha256": "187ced36f30012dc81efd590054f32480e72c6d4b7248e6b2cb6b1d931ac3499",
+   "width": 960,
+   "height": 509,
+   "webp": "sites/casaslegales/static/shots/betfun-pie.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/betfun-pie.html",
+    "sha256": "d4d39d6d1f11fbb7c7266493d685314dad5f4c7ae7405b787ab471023a4b3a0f"
+   }
+  },
+  "playbet-pie": {
+   "id": "playbet-pie",
+   "brand": "playbet",
+   "kind": "footer",
+   "url": "https://play.bet.ar/",
+   "finalUrl": "https://play.bet.ar/home",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "Playbet",
+   "ok": true,
+   "excerpt": "INICIO DEPORTES SLOTS CASINO EN VIVO CABALLOS NEWS PROMOCIONES ACCESO REGISTRARSE Español Português English Jugar Jugar Jugar Jugar Jugar Jugar Deportes Argentina - Liga Profesional Thu, Nov 5, 03:00 ",
+   "hiddenPromo": 0,
+   "png": "data/shots/2026-11-03/playbet-pie.png",
+   "pngSha256": "acc4fa3b2d567cd28eaba6add334369c4f1260d4a96aa5012c7d79b2306f56ae",
+   "width": 960,
+   "height": 134,
+   "webp": "sites/casaslegales/static/shots/playbet-pie.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/playbet-pie.html",
+    "sha256": "47228959d8cebc47373ac653ed041276d1e9232b6566daae02c5625a62effae4"
+   }
+  },
+  "easybet-larioja-pie": {
+   "id": "easybet-larioja-pie",
+   "brand": "easybet",
+   "kind": "footer",
+   "url": "https://larioja.easybet.bet.ar/",
+   "finalUrl": "https://larioja.easybet.bet.ar/",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "Apuestas deportivas y casino online easybet-larioja Chile Perú Ecuador",
+   "ok": true,
+   "excerpt": "REGISTRARSE ACCEDER DEPORTIVAS SLOTS CASINO EN VIVO MINIJUEGOS PROMOCIONES CASINO EN VIVO Casino en vivo Casino en vivo PROMOS promos Promociones CRASH GAMES Crash games Sobre nosotros Términos y cond",
+   "hiddenPromo": 0,
+   "png": "data/shots/2026-11-03/easybet-larioja-pie.png",
+   "pngSha256": "99b7d2f8207189e685f7fd419598d8e3ab6abf18b594d4ebcf3bf67d80d71e47",
+   "width": 960,
+   "height": 435,
+   "webp": "sites/casaslegales/static/shots/easybet-larioja-pie.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/easybet-larioja-pie.html",
+    "sha256": "8f2b7fc989203a2d39dc33974591778e87fccb18cb72286b493591877a3bb412"
+   }
+  },
+  "casinosdelrio-pie": {
+   "id": "casinosdelrio-pie",
+   "brand": "casinosdelrio",
+   "kind": "footer",
+   "url": "https://casinosdelrio.bet.ar/",
+   "finalUrl": "https://casinosdelrio.bet.ar/",
+   "status": 200,
+   "date": "2026-11-03",
+   "title": "Home HUD - Casinos del Rio",
+   "ok": true,
+   "excerpt": "BIENVENIDO A CASINOS DEL RÍO ELIGE TU SEDE HOTEL Y CASINO CIPOLLETTI HOTEL Y CASINO ROCA HOTEL Y CASINO LAS GRUTAS HOTEL Y CASINO VIEDMA CASINO CATRIEL CASINO CHOELE CHOEL CASINO VILLA REGINA DEL RÍO ",
+   "hiddenPromo": 0,
+   "png": "data/shots/2026-11-03/casinosdelrio-pie.png",
+   "pngSha256": "4a112aff6e3c2e39e2515ecc17afcf53e2490cb52b58e9da287bcd30b24236b6",
+   "width": 960,
+   "height": 434,
+   "webp": "sites/casaslegales/static/shots/casinosdelrio-pie.webp",
+   "doc": {
+    "file": "data/sources/operators/_docs/casinosdelrio-pie.html",
+    "sha256": "acad375baf8ff21cc7e169c43d23a13ca5e4d36509d327fe4a61c51ffeb8fa4e"
+   }
   }
  }
 }

@@ -51,6 +51,18 @@
    "text": "El acceso a las plataformas de apuestas está prohibido por ley para niñas, niños y adolescentes.",
    "role": "age",
    "hidden": true
+  },
+  "citycenter": {
+   "doc": "santa-fe-plataformas",
+   "text": "El CITY CENTER ROSARIO es un mega complejo ubicado en la ciudad de Rosario",
+   "role": "operator",
+   "hidden": true
+  },
+  "citycenteronline": {
+   "doc": "santa-fe-plataformas",
+   "text": "En octubre de 2020 comienza con los juegos de casinos online, modalidad que lleva adelante en su plataforma",
+   "role": "operator",
+   "hidden": true
   }
  },
  "law": [

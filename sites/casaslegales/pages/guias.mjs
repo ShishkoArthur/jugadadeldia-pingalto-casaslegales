@@ -6,8 +6,8 @@ import { TILES, CODE } from '../content/map.mjs';
 import { OPS } from '../content/operators.mjs';
 import { opData, quoteById } from '../content/opdata.mjs';
 import { anat, opSrcQuote, listsDate } from './opparts.mjs';
-import { quote, rgQuote, src, sectionHead } from './parts.mjs';
-import { slugOf } from './verificador.mjs';
+import { quote, rgQuote, src, sectionHead, brandLink } from './parts.mjs';
+import { opPath } from '../content/operators.mjs';
 
 const go = (h, list) => '<div class="rl-gd">' + list.filter(([u]) => h.built(u)).map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div>';
 
@@ -91,19 +91,19 @@ export const operadores = {
     const D = opData(h.today);
     const matrix = brandMatrix(h.regs, h.names);
     const cards = matrix.map(row => {
-      const u = '/operador/' + slugOf(row.brand);
+      const u = opPath(row.brand);
       const shots = ((D.data.brands[row.brand] || {}).shots || []).length;
       const dots = '<span class="rl-dots" aria-label="' + h.esc('Figura en ' + presence(row) + ' de ' + h.regs.length + ' listas') + '">' + h.regs.map(r => '<i class="' + (row.cells[r.id] ? 'on' : '') + '" title="' + h.esc(CODE[r.id]) + '">' + h.esc(CODE[r.id]) + '</i>').join('') + '</span>';
       const hosts = [...new Set(Object.values(row.cells).filter(Boolean).map(c => c.host))];
       const inner = '<h3>' + h.esc(row.name) + '</h3>' + dots + '<p class="rl-host">' + hosts.map(x => h.esc(x)).join('<br>') + '</p>' +
-        '<p class="rl-src">' + (h.built(u) ? (shots ? shots + (shots === 1 ? ' captura propia' : ' capturas propias') : 'sin capturas: el sitio no se mostró') : 'ficha todavía no publicada') + '</p>';
-      return h.built(u) ? '<a class="rl-opc" href="' + h.href(u) + '">' + inner + '</a>' : '<div class="rl-opc rl-opc-off">' + inner + '</div>';
+        '<p class="rl-src">' + (shots ? shots + (shots === 1 ? ' captura propia' : ' capturas propias') : 'sin capturas propias') + '</p>';
+      return '<a class="rl-opc" href="' + h.href(u) + '">' + inner + '</a>';
     }).join('');
     const withRg = OPS.filter(o => Object.values(D.data.quotes).some(q => q.brand === o.brand && /^rg-(deposit|loss|time|bet|pause|selfex)$/.test(q.topic)));
     const TOOLS = [['rg-deposit', 'Depósito'], ['rg-loss', 'Pérdida'], ['rg-time', 'Tiempo'], ['rg-pause', 'Pausa'], ['rg-selfex', 'Autoexclusión']];
     const tbl = withRg.length ? '<section class="rl-sec">' + sectionHead(h, 'Herramientas que nombran sus páginas', 'solo operadores cuya página pudimos guardar') + '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-tbl"><thead><tr><th scope="col"><span class="rl-vh">Operador</span></th>' +
       TOOLS.map(([, l]) => '<th scope="col">' + h.esc(l) + '</th>').join('') + '</tr></thead><tbody>' +
-      withRg.map(o => '<tr><th scope="row">' + h.esc(h.names[o.brand]) + '</th>' + TOOLS.map(([t]) => '<td>' + (Object.values(D.data.quotes).some(q => q.brand === o.brand && q.topic === t) ? '<i class="rl-y"><span class="rl-vh">La nombra</span></i>' : '<i class="rl-n"><span class="rl-vh">No la encontramos en la página guardada</span></i>') + '</td>').join('') + '</tr>').join('') +
+      withRg.map(o => '<tr><th scope="row">' + brandLink(h, o.brand) + '</th>' + TOOLS.map(([t]) => '<td>' + (Object.values(D.data.quotes).some(q => q.brand === o.brand && q.topic === t) ? '<i class="rl-y"><span class="rl-vh">La nombra</span></i>' : '<i class="rl-n"><span class="rl-vh">No la encontramos en la página guardada</span></i>') + '</td>').join('') + '</tr>').join('') +
       '</tbody></table></div><p class="rl-cap">Tilde: la página de juego responsable del operador nombra esa herramienta (cita en su ficha). Raya: no la encontramos en la copia que guardamos. No es una evaluación: no abrimos cuentas.</p></div></section>' : '';
     const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + h.t('{{brand_total}} marcas en {{reg_total}} listas oficiales · ') + listsDate(h) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Cada marca que figura en al menos una lista oficial que verificamos. El orden es por cantidad de listas y después alfabético: no es un ranking ni una recomendación.</p></div>' +

@@ -53,6 +53,8 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
   const isAsset = u => u.startsWith('/' + SITE.assetDir + '/');
   const sizeOf = f => (existsSync(f) ? statSync(f).size : 0);
 
+  const G = SITE.gate;
+  const brandPairs = G.brandLinks ? G.brandLinks.names() : [];
   for (const f of htmls) {
     const H = html[f], p = pageByFile.get(f), is404 = f === notFoundFile, vis = visibleText(H);
     if (!p && !is404) { bad('extrafile', f, 'HTML file that is not a page of the site'); continue; }
@@ -140,6 +142,16 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
       for (const [, u] of H.matchAll(/href="(\/[^"#?]*)/g)) { const k = kindOf(u); if (k && S.BETTING_KINDS.includes(k)) { bad('helplink', f, 'help page links to a ' + k + ' page ' + u); break; } }
     }
     }
+    // brand links (gate.brandLinks): inside the registry tables and lists of the site, an element whose whole text is the name of
+    // a listed brand must sit inside an <a> to that brand's page
+    if (G.brandLinks) for (const box of containers(H, G.brandLinks.scope)) for (const { name, href } of brandPairs) {
+      const re = new RegExp('>\\s*' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*<', 'g');
+      for (const m of box.matchAll(re)) {
+        const a = box.lastIndexOf('<a ', m.index), c = box.lastIndexOf('</a>', m.index);
+        const got = a > c ? (box.slice(a, box.indexOf('>', a)).match(/\shref="([^"]*)"/) || [])[1] : null;
+        if (got !== href) bad('brandlink', f, name + (got ? ' links to ' + got + ' instead of ' + href : ' is not a link to ' + href));
+      }
+    }
     // weight: HTML + CSS + JS loaded with the page; fonts apart
     {
       let w = Buffer.byteLength(H), fw = 0;
@@ -196,6 +208,17 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
   return { problems, pages: htmls.length, files: files.length };
 }
 function createHashHex(buf) { return createHash('sha256').update(buf).digest('hex'); }
+// the HTML of every element opened by a tag matching scope (a global RegExp whose group 1 is the tag name), nesting counted
+function containers(H, scope) {
+  const out = [];
+  for (const m of H.matchAll(scope)) {
+    const tag = m[1], re = new RegExp('<(/?)' + tag + '\\b[^>]*>', 'g');
+    re.lastIndex = m.index;
+    let depth = 0, x;
+    while ((x = re.exec(H))) { depth += x[1] ? -1 : 1; if (!depth) { out.push(H.slice(m.index, re.lastIndex)); break; } }
+  }
+  return out;
+}
 
 async function selftest(id) {
   const S = await loadSite(id);
@@ -273,6 +296,7 @@ async function selftest(id) {
   };
   if (S.SITE.noPerson !== false) cases.push(['jsonld', A, body('<script type="application/ld+json">{"@type":"Person","name":"x"}</script>')]);
   if (G.noRgKinds && G.rgSample) { const NR = S.PAGES.find(p => G.noRgKinds.includes(p.kind)); if (NR) cases.push(['rgblock', F(NR.path), body(G.rgSample)]); }
+  for (const [path, fn] of (G.brandLinks && G.brandLinks.corrupt) || []) cases.push(['brandlink', F(path), fn]);
   if (S.SITE.gate.decimalComma) cases.push(['decimal', A, body('<p>Sensibilidad 0.39</p>')], ['decimal', A, body('<input id="z" type="number" value="1">')]);
   const RG_ONLY = new Set(['rgblock', 'tel', 'age', 'helpmark', 'helplink', 'helpnav']);
   for (const [name, file, mut] of cases.filter(c => RG || !RG_ONLY.has(c[0]))) await run(name, tmp => { const f = join(tmp, file); writeFileSync(f, mut(readFileSync(f, 'utf8'))); });

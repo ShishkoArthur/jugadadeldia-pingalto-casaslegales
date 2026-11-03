@@ -3,7 +3,8 @@
 import { anatomy, checkHost } from '../../../engine/hostcheck.mjs';
 import { CODE } from '../content/map.mjs';
 import { anat, listsDate } from './opparts.mjs';
-import { quote, src, sectionHead } from './parts.mjs';
+import { quote, src, sectionHead, brandLink } from './parts.mjs';
+import { opPath } from '../content/operators.mjs';
 import { entries } from './operador.mjs';
 
 const EXAMPLES = ['pba.betsson.bet.ar', 'betsson.com', 'bplay.bet.ar', 'betano.bet.ar', 'sportsbet.io'];
@@ -18,7 +19,7 @@ export const verificador = {
   ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ['/verificador', 'Verificador']])],
   render(h) {
     const all = entries(h);
-    const pages = Object.fromEntries(h.regs.flatMap(r => r.licensees.map(l => [l.brand, h.built('/operador/' + slugOf(l.brand)) ? '/operador/' + slugOf(l.brand) : null])));
+    const pages = Object.fromEntries(h.regs.flatMap(r => r.licensees.map(l => [l.brand, h.href(opPath(l.brand))])));
     const data = {
       e: all.map(e => ({ h: e.host, j: e.jur, b: h.names[e.brand], r: (h.reg(e.jur).licensees.find(l => l.host === e.host) || {}).ref || null, u: pages[e.brand] })),
       j: Object.fromEntries(h.regs.map(r => [r.id, { n: h.rg.prov(r.id).name, c: CODE[r.id], r: r.regulator.short, d: h.fmtDate(h.doc(r.list.doc).fetched), u: h.built('/provincia/' + r.id) ? '/provincia/' + r.id : null }])),
@@ -53,10 +54,9 @@ export const verificador = {
       '<article><span class="rl-tag">CABA</span><p>La lista de la Ciudad incluye ' + nonBet.length + ' ' + (nonBet.length === 1 ? 'dirección que no termina' : 'direcciones que no terminan') + ' en .bet.ar: ' + nonBet.map(l => '<span class="rl-host">' + h.esc(l.host) + '</span>').join(' y ') + '.</p>' + src(h, caba.list.doc) + '</article>' +
       '</div>' + (h.built('/guia/bet-ar') ? '<p class="rl-note"><a href="' + h.href('/guia/bet-ar') + '">Qué garantiza el dominio .bet.ar y qué no</a></p>' : '') + '</section>';
     const list = '<section class="rl-sec">' + sectionHead(h, 'Todas las direcciones de las listas', h.t('{{lic_total}} direcciones')) + '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Dirección</th><th scope="col">Marca</th><th scope="col">Lista</th></tr></thead><tbody>' +
-      all.slice().sort((a, b) => a.host.localeCompare(b.host)).map(e => '<tr><td class="rl-host">' + h.esc(e.host) + '</td><td>' + h.esc(h.names[e.brand]) + '</td><td>' + h.esc(CODE[e.jur]) + '</td></tr>').join('') +
+      all.slice().sort((a, b) => a.host.localeCompare(b.host)).map(e => '<tr><td class="rl-host">' + h.esc(e.host) + '</td><td>' + brandLink(h, e.brand) + '</td><td>' + h.esc(CODE[e.jur]) + '</td></tr>').join('') +
       '</tbody></table></div>' + h.regs.map(r => src(h, r.list.doc, h.rg.prov(r.id).name)).join('') + '</div></section>';
     return hero + read + betar + list;
   },
 };
-const SLUG = { 'casino-ba-online': 'casino-buenos-aires-online' };
-export const slugOf = brand => SLUG[brand] || brand;
+export { slugOf } from '../content/operators.mjs';

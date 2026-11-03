@@ -1,7 +1,7 @@
 import { TILES, CODE } from '../content/map.mjs';
 import { brandMatrix, splitAddress } from '../../../engine/registry.mjs';
 import { isoMap, isoHeight, isoLadder } from './iso.mjs';
-import { src, quote, hostHtml, sectionHead } from './parts.mjs';
+import { src, quote, hostHtml, sectionHead, brandLink } from './parts.mjs';
 import { provData } from '../content/provdata.mjs';
 
 export const home = {
@@ -45,7 +45,7 @@ export const home = {
     const regs = h.regs;
     const matrix = brandMatrix(regs, h.names);
     const head = '<thead><tr><th scope="col"><span class="rl-vh">Marca</span></th>' + regs.map(r => '<th scope="col"><abbr title="' + h.esc(h.rg.prov(r.id).name) + '">' + h.esc(CODE[r.id]) + '</abbr></th>').join('') + '</tr></thead>';
-    const rows = matrix.map(row => '<tr><th scope="row">' + h.esc(row.name) + '</th>' + regs.map(r => {
+    const rows = matrix.map(row => '<tr><th scope="row">' + brandLink(h, row.brand, row.name) + '</th>' + regs.map(r => {
       const c = row.cells[r.id];
       return '<td>' + (c ? '<i class="rl-y" title="' + h.esc(c.host) + '"><span class="rl-vh">Figura: ' + h.esc(c.host) + '</span></i>' : '<i class="rl-n"><span class="rl-vh">No figura</span></i>') + '</td>';
     }).join('') + '</tr>').join('');
@@ -57,7 +57,7 @@ export const home = {
     const multi = splitAddress(matrix);
     const dom = '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de tu provincia?', h.t('{{split_total}} marcas cambian de dirección según la jurisdicción')) +
       '<p class="rl-note">La misma marca puede tener una dirección distinta en cada provincia. En la lista oficial figura una dirección exacta: mirá la dirección completa, no solo el nombre de la marca.</p>' +
-      '<div class="rl-dom" data-nosnippet>' + multi.map(row => '<article><h3>' + h.esc(row.name) + '</h3><ul>' +
+      '<div class="rl-dom" data-nosnippet>' + multi.map(row => '<article><h3>' + brandLink(h, row.brand, row.name) + '</h3><ul>' +
         regs.filter(r => row.cells[r.id]).map(r => '<li><span class="rl-tag">' + h.esc(CODE[r.id]) + '</span>' + hostHtml(h, row.cells[r.id].host) + '</li>').join('') +
         '</ul></article>').join('') + '</div></section>';
 

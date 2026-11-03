@@ -3,7 +3,7 @@ import { isoMap, isoHeight } from './iso.mjs';
 import { PROV_COPY } from '../content/provcopy.mjs';
 import { provData, pdQuote, pdSrc, STATUS_LABEL } from '../content/provdata.mjs';
 import { brandMatrix, distinctHosts } from '../../../engine/registry.mjs';
-import { src, quote, rgQuote, hostHtml, sectionHead } from './parts.mjs';
+import { src, quote, rgQuote, hostHtml, sectionHead, brandLink } from './parts.mjs';
 
 export function relief(h, P, cur, { links = false, cls: clsOf = null, tip = null, aria = null } = {}) {
   return isoMap(h, t => {
@@ -44,7 +44,7 @@ function hero(h, P, x, o) {
 }
 
 function sites(h, r) {
-  return '<ul class="rl-sites" data-nosnippet>' + r.licensees.map(l => '<li><h3>' + h.esc(h.names[l.brand]) + '</h3>' + hostHtml(h, l.host) +
+  return '<ul class="rl-sites" data-nosnippet>' + r.licensees.map(l => '<li><h3>' + brandLink(h, l.brand) + '</h3>' + hostHtml(h, l.host) +
     (l.ref ? '<span class="rl-ref">Autorizado por ' + h.esc(l.ref) + '</span>' : '') + '</li>').join('') + '</ul>';
 }
 
@@ -56,7 +56,7 @@ function others(h, x) {
   const split = matrix.filter(row => distinctHosts(row) > 1).length;
   return '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de ' + x.name + '?', split ? 'misma marca, otra dirección' : 'misma marca en otras listas') +
     '<p class="rl-note">Estas marcas figuran también en otra lista oficial. En la lista de ' + h.esc(x.name) + ' figura la dirección resaltada; cada provincia autoriza la suya.</p>' +
-    '<div class="rl-dom" data-nosnippet>' + matrix.map(row => '<article><h3>' + h.esc(row.name) + '</h3><ul>' +
+    '<div class="rl-dom" data-nosnippet>' + matrix.map(row => '<article><h3>' + brandLink(h, row.brand, row.name) + '</h3><ul>' +
       h.regs.filter(y => row.cells[y.id]).map(y => '<li><span class="rl-tag">' + h.esc(code(y.id)) + '</span>' + (y.id === r.id ? hostHtml(h, row.cells[y.id].host) : '<span class="rl-host rl-src">' + h.esc(row.cells[y.id].host) + '</span>') + '</li>').join('') +
       '</ul></article>').join('') + '</div></section>';
 }
