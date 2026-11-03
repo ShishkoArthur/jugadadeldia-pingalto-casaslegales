@@ -14,10 +14,8 @@ h1,h2,h3,p,blockquote,figure,dl,dd{margin:0}
 .rl-skip:focus{top:8px}
 .rl-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;height:60px;padding:0 16px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .rl-logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:21px;text-decoration:none;margin-right:auto;min-height:44px;letter-spacing:-.01em}
-.rl-logo svg{width:30px;height:30px;flex:none}
-.rl-logo .rl-lg-s{fill:var(--sd)}
-.rl-logo .rl-lg-t{fill:var(--t1)}
-.rl-logo .rl-lg-k{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.rl-logo svg{width:38px;height:38px;flex:none;margin:-4px 0}
+.rl-logo b{font-weight:900;color:var(--ac)}
 .rl-nav{display:none;position:absolute;left:0;right:0;top:60px;flex-direction:column;gap:2px;padding:10px 16px 16px;background:var(--pa);border-bottom:1px solid var(--ln);box-shadow:0 20px 30px -24px #0a1f1580}
 .rl-nav.rl-open{display:flex}
 html:not(.js) .rl-nav{display:flex;position:static;flex-direction:row;overflow-x:auto;padding:6px 0;background:none;border:0;box-shadow:none}

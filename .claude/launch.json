@@ -30,6 +30,16 @@
         "4342"
       ],
       "port": 4342
+    },
+    {
+      "name": "pingalto",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve.mjs",
+        "pingalto",
+        "4320"
+      ],
+      "port": 4320
     }
   ]
 }

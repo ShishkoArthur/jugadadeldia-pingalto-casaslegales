@@ -131,7 +131,22 @@
   и `content/scenes.json`, только для построенных страниц); (8) render → check-dist → commit → deploy. Страница сама покажет сцену, если она есть.
 - PNG (`data/img-review/*.png`) и вырезки `data/art/<сайт>/cut/` — только локально (не в git); на сайт идут `sites/<сайт>/static/scenes/`.
 
+## Логотипы и фавиконы (03.11) — свои у каждого сайта, стоят и выложены
+- Владелец 03.11: «На всех сайтах сгенерируй и поставь интересные логотипы и фавиконы». По 3 варианта на сайт, нарисованы вручную
+  (SVG-векторы, без растра ИИ); сравнение для владельца — `docs/owner/logos-2026-11-03.html` (сборка `node docs/owner/build-logos.mjs`,
+  она же пишет `sites/<сайт>/static/logo-options/<вариант>-{light,dark,favicon,app,maskable}.svg` — в выкладку не идут).
+- **Стоят (рекомендованные):** jugadadeldia — «Siete de oro» (золотая бола-монета «оро» с семёркой: кинела + труко), pingalto —
+  «Pico de señal» (линия пинга → вершина «alto», дуги сигнала, голо-пастель; словесный знак ping**alto**), casaslegales — «Casa en relieve»
+  (изометрический дом с галочкой, как карта «Relieve alto»; словесный знак casas**legales**). Запасные: jdd «Bolilla 7», «j con bolilla»;
+  pa «p con eco», «Pico pixel»; cl «Sello en relieve», «Casa-check plana».
+- **Как устроено:** варианты — `sites/<сайт>/logo.mjs` (`LOGO.pick` — какой стоит; сменить вариант = одна строка + render + deploy),
+  рисует `tools/lib/icons.mjs`: цвета через классы, поэтому один рисунок даёт шапку (inline SVG, следует переключателю темы), `favicon.svg`
+  (prefers-color-scheme), `favicon.ico` (16/32/48, мелкие — упрощённый рисунок), `apple-touch-icon.png` 180, `icon-192/512.png`,
+  `icon-maskable-512.png`, `site.webmanifest` (имя, theme/background) — всё собирает `tools/render.mjs`. `static/mark.svg` больше нет.
+  og:image на сайтах нет (twitter:card summary) — делать отдельно, если владелец захочет превью ссылок.
+
 ## Журнал
+- 03.11 — логотипы и фавиконы трёх сайтов (раздел «Логотипы и фавиконы» выше), сравнение `docs/owner/logos-2026-11-03.html`.
 - 03.11 — девушки на jugadadeldia и pingalto крупнее и чётче: файлы из полноразмерных вырезок (320–1280w, q88), рамки 340–380 px
   на ПК, на телефоне карточка под текстом ~330 px, `sizes` по реальным рамкам (раздел «Сцены девушек»).
 - 03.11 — автообновление: ленты кинелы (jugadadeldia, 10 новых страниц) и киберспорта/Supercell (pingalto, 4 страницы + блоки) на сервере,

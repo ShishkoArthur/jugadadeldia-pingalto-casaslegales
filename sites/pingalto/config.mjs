@@ -26,7 +26,6 @@ export const SITE = {
   fonts: ['rounded-800-latin.woff2', 'vietnam-400-latin.woff2', 'vietnam-600-latin.woff2'],
   preload: ['rounded-800-latin.woff2', 'vietnam-400-latin.woff2'],
   engineDirs: ['games'],
-  iconBackground: '#f6f4fb',
   registries: [],
   gate: {
     gambling: false,

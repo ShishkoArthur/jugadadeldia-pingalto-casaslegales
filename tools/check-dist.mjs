@@ -27,7 +27,7 @@ const PROMISE = /\b(coming soon|stay tuned)\b|pr[oó]ximamente|muy pronto|en bre
 const AFFIL = /[?&](btag|affid|aff_id|affiliate|aff|ref|refid|clickid|subid|pid|tracking)=|\/(go|out|visit|aff|affiliate|track|recommends)\/|utm_(medium|source)=(affiliate|partner)/i;
 const FONT_HOSTS = new Set(['fonts.googleapis.com', 'fonts.gstatic.com']);
 const TEXT_EXT = /\.(html|js|mjs|css|json|xml|txt|svg|webmanifest)$/;
-const ALLOWED_EXT = /\.(html|css|js|mjs|woff2|svg|png|ico|webp|jpg|xml|txt|json)$/;
+const ALLOWED_EXT = /\.(html|css|js|mjs|woff2|svg|png|ico|webp|jpg|xml|txt|json|webmanifest)$/;
 
 function walk(dir) { const out = []; for (const f of readdirSync(dir)) { const p = join(dir, f); if (statSync(p).isDirectory()) out.push(...walk(p)); else out.push(p); } return out; }
 function visibleText(html) {

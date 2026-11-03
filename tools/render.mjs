@@ -12,6 +12,7 @@ import { loadRegistries, verifyRegistries, brandNames, loadRg } from './lib/sour
 import { verify as verifyRg, displayable, freshness } from './verify-rg.mjs';
 import { ownerCopyReminder } from './lib/ownercopy.mjs';
 import { fmtDate, fmtInt } from '../engine/format.mjs';
+import { iconFiles } from './lib/icons.mjs';
 
 export const SITES = ['jugadadeldia', 'pingalto', 'casaslegales'];
 export const LIMITS = { title: 60, descMin: 115, descMax: 155 };
@@ -121,18 +122,11 @@ async function build(id) {
     };
     for (const f of readdirSync(join(dir, 'client')).filter(f => f.endsWith('.js'))) await one(join(dir, 'client', f));
   }
-  // icons from the site mark (static/mark.svg): favicon.svg, favicon.ico (one 32 px PNG inside an ICO), apple-touch-icon.png
+  // icons from the site logo (sites/<site>/logo.mjs, drawn by tools/lib/icons.mjs): favicon.svg, favicon.ico (16/32/48),
+  // apple-touch-icon.png, icon-192/512 and maskable PNGs, site.webmanifest
   {
-    const svg = readFileSync(join(dir, 'static/mark.svg'));
-    const sharp = (await import('sharp')).default;
-    writeFileSync(join(DIST, 'favicon.svg'), svg);
-    writeFileSync(join(DIST, 'apple-touch-icon.png'), await sharp(svg, { density: 300 }).resize(180, 180).flatten({ background: SITE.iconBackground || '#e8efe5' }).png().toBuffer());
-    const png = await sharp(svg, { density: 300 }).resize(32, 32).png().toBuffer();
-    const ico = Buffer.alloc(22);
-    ico.writeUInt16LE(0, 0); ico.writeUInt16LE(1, 2); ico.writeUInt16LE(1, 4);
-    ico.writeUInt8(32, 6); ico.writeUInt8(32, 7); ico.writeUInt8(0, 8); ico.writeUInt8(0, 9);
-    ico.writeUInt16LE(1, 10); ico.writeUInt16LE(32, 12); ico.writeUInt32LE(png.length, 14); ico.writeUInt32LE(22, 18);
-    writeFileSync(join(DIST, 'favicon.ico'), Buffer.concat([ico, png]));
+    const { LOGO } = await import(pathToFileURL(join(dir, 'logo.mjs')).href);
+    for (const [n, b] of Object.entries(await iconFiles(LOGO, SITE))) writeFileSync(join(DIST, n), b);
   }
 
   // ---- pages ----

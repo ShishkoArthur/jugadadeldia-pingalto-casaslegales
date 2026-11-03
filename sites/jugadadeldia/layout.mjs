@@ -2,6 +2,10 @@
 // theme switch; footer with the help block on quiniela and lottery pages. Pages give { path, title, description, h1, kind,
 // section, help, jurisdiction, css, js, data, ld } and a body string; the shared build (tools/render.mjs) passes the helper h.
 import { MENU, TOP, HELP_NAV, FOOT } from './content/menu.mjs';
+import { LOGO } from './logo.mjs';
+import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
+
+const MARK = logoSvg(LOGO, LOGO.pick, { mode: 'page', attrs: ' class="jg-lgm" aria-hidden="true"' });
 
 const ICON = {
   moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>',
@@ -63,9 +67,7 @@ export function page(h, p, body) {
     '<meta name="twitter:card" content="summary">',
     '<meta name="theme-color" content="#edf1f6" media="(prefers-color-scheme: light)">',
     '<meta name="theme-color" content="#0a111c" media="(prefers-color-scheme: dark)">',
-    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
-    '<link rel="icon" href="/favicon.ico" sizes="32x32">',
-    '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
+    iconLinks(),
     h.site.preload.map(f => '<link rel="preload" href="' + h.asset(f) + '" as="font" type="font/woff2" crossorigin>').join(''),
     css.map(f => '<link rel="stylesheet" href="' + h.asset(f) + '">').join(''),
     '<script>' + THEME_JS + '</script>',
@@ -74,7 +76,7 @@ export function page(h, p, body) {
   const nav = p.help
     ? '<nav class="jg-sg jg-hnav" aria-label="Ayuda">' + linkList(h, HELP_NAV, p.path) + '</nav>'
     : '<nav class="jg-menu jg-sg" aria-label="Principal">' + TOP.filter(([u]) => h.built(u)).map(([u, label, sec]) => '<a href="' + h.href(u) + '"' + (u === p.path || sec === p.section ? ' aria-current="' + (u === p.path ? 'page' : 'true') + '"' : '') + '>' + h.esc(label) + '</a>').join('') + '</nav>';
-  const header = '<header class="jg-h"><a class="jg-lg" href="/"><i class="jg-ba" aria-hidden="true">7</i><span>jugada<b>del</b>día</span></a>' + nav +
+  const header = '<header class="jg-h"><a class="jg-lg" href="/">' + MARK + '<span>jugada<b>del</b>día</span></a>' + nav +
     '<button class="jg-ib" type="button" data-jg-tema aria-label="Cambiar entre tema claro y oscuro">' + ICON.moon + ICON.sun + '</button>' +
     (p.help ? '' : '<button class="jg-ib jg-bu" type="button" data-jg-menu aria-controls="jg-panel" aria-expanded="false" aria-label="Menú">' + ICON.burger + '</button>') + '</header>' +
     (p.help ? '' : menuPanel(h, p));

@@ -26,7 +26,6 @@ export const SITE = {
   fonts: ['kanit-400.woff2', 'kanit-700.woff2'],
   preload: ['kanit-700.woff2'],
   engineDirs: ['games', 'lottery', 'cards', 'truco', 'generala', 'chinchon', 'escoba'],
-  iconBackground: '#edf1f6',
   registries: [],
   defaultJurisdiction: 'buenos-aires',
   noPerson: false,

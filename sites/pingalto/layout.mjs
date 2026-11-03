@@ -2,6 +2,10 @@
 // "sin apuestas, sin skins, sin cajas" with the trademark note. Pages give { path, title, description, h1, ld, scripts, riot }
 // and a body string; the shared build (tools/render.mjs) passes the helper h.
 import { GAMES, sectionOf } from './content/visual.mjs';
+import { LOGO as MARKS } from './logo.mjs';
+import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
+
+const MARK = logoSvg(MARKS, MARKS.pick, { mode: 'page', attrs: ' class="pa-lgm" aria-hidden="true"' });
 
 const NAV = [
   ['/kit/ping', 'Ping'],
@@ -16,7 +20,6 @@ const FOOT = [
   ['/contacto', 'Contacto'],
   ['/legal', 'Legal'],
 ];
-export const LOGO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h4l2-5 4 10 2-5h6"/></svg>';
 const MOON = '<svg class="pa-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
 const SUN = '<svg class="pa-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>';
 const BURGER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
@@ -55,15 +58,13 @@ export function page(h, p, body) {
     '<meta name="twitter:card" content="summary">',
     '<meta name="theme-color" content="#f6f4fb" media="(prefers-color-scheme: light)">',
     '<meta name="theme-color" content="#110e1d" media="(prefers-color-scheme: dark)">',
-    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
-    '<link rel="icon" href="/favicon.ico" sizes="32x32">',
-    '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
+    iconLinks(),
     h.site.preload.map(f => '<link rel="preload" href="' + h.asset(f) + '" as="font" type="font/woff2" crossorigin>').join(''),
     '<link rel="stylesheet" href="' + h.asset('pa.css') + '">',
     '<script>' + THEME_JS + '</script>',
     ld,
   ].join('');
-  const header = '<header class="pa-hd"><a class="pa-lg" href="/" aria-label="pingalto, inicio"><i>' + LOGO + '</i>pingalto</a>' +
+  const header = '<header class="pa-hd"><a class="pa-lg" href="/" aria-label="pingalto, inicio">' + MARK + '<span>ping<b>alto</b></span></a>' +
     '<nav class="pa-nv" id="pa-nv" aria-label="Principal">' + links(h, NAV, p.path) + '</nav>' +
     '<button class="pa-ib" type="button" data-pa-theme aria-label="Cambiar entre tema claro y oscuro">' + MOON + SUN + '</button>' +
     '<button class="pa-ib pa-bu" type="button" data-pa-menu aria-controls="pa-nv" aria-expanded="false" aria-label="Menú">' + BURGER + '</button></header>';
