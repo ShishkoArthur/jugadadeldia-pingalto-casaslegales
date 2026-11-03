@@ -1,0 +1,207 @@
+{
+ "id": "escoba-rules",
+ "about": "Rules of escoba de 15 used by engine/escoba. Every quote is checked verbatim against the saved copy (engine/test/games-sources.test.mjs). Re-read every six months.",
+ "checked": "2026-11-03",
+ "docs": {
+  "gba-2026": {
+   "title": "Juegos Bonaerenses 2026 - Reglamento especifico: Escoba de 15 (adultos mayores)",
+   "publisher": "Provincia de Buenos Aires, Juegos Bonaerenses",
+   "url": "https://juegos.gba.gob.ar/wp-content/uploads/2026/reglamentos/especificos/deportes_adultos_mayores/escoba_de_15.pdf",
+   "file": "data/sources/escoba/_docs/gba-2026-escoba-de-15.pdf",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "bb08297b24ffbb49f9c3ef460af7042261d835eb26a42af6bfaf907651c37866"
+  },
+  "ludoteka": {
+   "title": "Ludoteka - Escoba: reglas",
+   "publisher": "Ludoteka",
+   "url": "https://www.ludoteka.com/clasika/escoba.html",
+   "file": "data/sources/escoba/_docs/ludoteka-escoba.html",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "743326778932a43cc405e737b7dbd735646c9c19fcd33e5a7310b5000162dea0"
+  }
+ },
+ "quotes": {
+  "pairs": {
+   "doc": "gba-2026",
+   "text": "Se jugará entre dos parejas.",
+   "uses": "newMatch pairs"
+  },
+  "deal": {
+   "doc": "gba-2026",
+   "text": "distribuirá por derecha, tres a cada uno, de una en una. Luego pondrá sobre la mesa boca arriba cuatro cartas más",
+   "uses": "game.mjs dealHand"
+  },
+  "values": {
+   "doc": "gba-2026",
+   "text": "La SOTA valdrá ocho (8), el CABALLO nueve (9), y el REY diez (10).",
+   "uses": "rules.mjs VALUE"
+  },
+  "total-220": {
+   "doc": "gba-2026",
+   "text": "El total de los valores de las cuarenta (40) cartas del mazo es de doscientos veinte (220) puntos",
+   "uses": "test lock: the deck adds up to 220"
+  },
+  "target-30": {
+   "doc": "gba-2026",
+   "text": "La escoba se jugará a treinta (30) tantos.",
+   "uses": "newMatch target (30 for Juegos Bonaerenses)"
+  },
+  "cartas": {
+   "doc": "gba-2026",
+   "text": "Valdrá un tanto y se lo anotará el jugador o la pareja que tenga más.",
+   "uses": "scoring 'gba' cartas"
+  },
+  "oros-6": {
+   "doc": "gba-2026",
+   "text": "el que tenga como mínimo seis de ellos ganará y se anotará un tanto.",
+   "uses": "scoring 'gba' oros"
+  },
+  "setenta-suits": {
+   "doc": "gba-2026",
+   "text": "No es indispensable tener todos los sietes, siempre y cuando se cubran los cuatro palos de las barajas",
+   "uses": "rules.mjs setentaOf (all four suits)"
+  },
+  "scale-7": {
+   "doc": "gba-2026",
+   "text": "El siete vale: 21 puntos",
+   "uses": "rules.mjs SETENTA"
+  },
+  "scale-6-1": {
+   "doc": "gba-2026",
+   "text": "El seis vale: 18 puntos El as vale: 16 puntos",
+   "uses": "rules.mjs SETENTA"
+  },
+  "scale-5-4-3": {
+   "doc": "gba-2026",
+   "text": "El cinco vale: 15 puntos El cuatro vale: 14 puntos El tres vale: 13 puntos",
+   "uses": "rules.mjs SETENTA"
+  },
+  "scale-2": {
+   "doc": "gba-2026",
+   "text": "El dos vale: 12 puntos",
+   "uses": "rules.mjs SETENTA"
+  },
+  "scale-fig": {
+   "doc": "gba-2026",
+   "text": "Las figuras valen: 10 puntos",
+   "uses": "rules.mjs SETENTA"
+  },
+  "setenta-75": {
+   "doc": "gba-2026",
+   "text": "tres seis = 54 más 21 puntos del siete - total = 75 puntos",
+   "uses": "test lock: example 12.1"
+  },
+  "setenta-81": {
+   "doc": "gba-2026",
+   "text": "tres sietes = 63 más 18 puntos del seis - total = 81 puntos",
+   "uses": "test lock: example 12.2"
+  },
+  "siete-oros": {
+   "doc": "gba-2026",
+   "text": "El que levante ésta carta, se anotará un tanto al final de la mano.",
+   "uses": "scoreHand sieteDeOros"
+  },
+  "escoba": {
+   "doc": "gba-2026",
+   "text": "Consiste en levantar todas las cartas de la mesa al sumar quince, con la carta que se tira.",
+   "uses": "game.mjs step sweep"
+  },
+  "muestra": {
+   "doc": "gba-2026",
+   "text": "el dador las levanta y se anotará escoba.",
+   "uses": "muestra 'gba'"
+  },
+  "muestra-doble": {
+   "doc": "gba-2026",
+   "text": "Si la escoba fuese doble, es decir quince (15) y quince (15), no tendrá valor",
+   "uses": "muestra 'gba' two fifteens"
+  },
+  "tie-none": {
+   "doc": "gba-2026",
+   "text": "Cuando hay empate en cartas, oros o setenta, ninguno de los bandos se anotará el tanto correspondiente.",
+   "uses": "scoring 'gba' ties"
+  },
+  "tie-match": {
+   "doc": "gba-2026",
+   "text": "Cuando se produce empate en los puntos finales de un partido se jugarán una o más vueltas hasta desempatar.",
+   "uses": "game.mjs endHand tie plays on"
+  },
+  "must-take": {
+   "doc": "gba-2026",
+   "text": "El que pudiendo levantar quince con la carta jugada y no lo hace, faculta de hecho al adversario para recoger dicha baza.",
+   "uses": "capture 'mandatory' (the engine does not allow leaving it)"
+  },
+  "l-values": {
+   "doc": "ludoteka",
+   "text": "la sota cuenta 8; el caballo cuenta 9 ; el rey cuenta 10.",
+   "uses": "rules.mjs VALUE"
+  },
+  "l-muestra": {
+   "doc": "ludoteka",
+   "text": "si las cartas depositadas sumasen exactamente uno o dos grupos de 15, quien repartió se las llevará para sí marcando en su montón una o dos escobas respectivamente.",
+   "uses": "muestra 'ludoteka'"
+  },
+  "l-redeal": {
+   "doc": "ludoteka",
+   "text": "repitiendo todo este sistema de repartos y descartes hasta que se acaben las cartas del mazo.",
+   "uses": "game.mjs dealRound"
+  },
+  "l-rest": {
+   "doc": "ludoteka",
+   "text": "las cartas que quedasen en el centro se las llevará el último jugador que hubiera logrado llevarse cartas en su turno correspondiente.",
+   "uses": "game.mjs endHand rest to the last taker"
+  },
+  "l-escoba": {
+   "doc": "ludoteka",
+   "text": "Por cada escoba que hubiera realizado un jugador sumará un punto.",
+   "uses": "scoreHand escobas"
+  },
+  "l-7o": {
+   "doc": "ludoteka",
+   "text": "El jugador que tuviese en su poder el siete de oros sumará un punto.",
+   "uses": "scoreHand sieteDeOros"
+  },
+  "l-sietes": {
+   "doc": "ludoteka",
+   "text": "El jugador que tuviera en su poder la mayoría de sietes de los de la baraja (incluido el de oros) sumará un punto. En caso de empate sumará un tanto cada uno de los jugadores protagonistas del mismo.",
+   "uses": "scoring 'ludoteka' sietes"
+  },
+  "l-cartas": {
+   "doc": "ludoteka",
+   "text": "El jugador que tuviera en su poder el mayor número de cartas se adjudicará un tanto.",
+   "uses": "scoring 'ludoteka' cartas"
+  },
+  "l-oros": {
+   "doc": "ludoteka",
+   "text": "El jugador que tuviera en su poder el mayor número de cartas del palo de oros (10 en total), sumará un punto.",
+   "uses": "scoring 'ludoteka' oros"
+  },
+  "l-tie-each": {
+   "doc": "ludoteka",
+   "text": "En caso de empate entre dos o más jugadores se adjudicará un punto a cada uno de ellos.",
+   "uses": "scoring 'ludoteka' ties"
+  },
+  "l-optional": {
+   "doc": "ludoteka",
+   "text": "en el caso de la escoba española no parece haber un criterio unificado",
+   "uses": "capture 'optional'"
+  },
+  "l-obligatoria": {
+   "doc": "ludoteka",
+   "text": "en cuyo caso el programa impide dejar una carta con la que pueda sumarse 15.",
+   "uses": "capture 'mandatory' (ludoteka-obligatoria)"
+  },
+  "l-pairs": {
+   "doc": "ludoteka",
+   "text": "Cuando participan 4 jugadores es posible jugar por parejas.",
+   "uses": "newMatch pairs"
+  },
+  "l-tie-match": {
+   "doc": "ludoteka",
+   "text": "se dilucidará el empate jugando una nueva mano, y así sucesivamente hasta romper el empate.",
+   "uses": "game.mjs endHand tie plays on"
+  }
+ }
+}
