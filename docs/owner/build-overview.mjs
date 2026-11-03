@@ -133,6 +133,12 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
   <div class="sites">${SITES.map(siteCard).join('')}</div>
 
   <section class="need">
+    <h2>Логотипы и фавиконы</h2>
+    <p class="lead">По 3 варианта на сайт; рекомендованный уже стоит на сайте. Скажите номер, если хотите другой.</p>
+    <div class="picks"><a class="pick" href="logos.html"><span class="pick-k">три сайта</span><span class="pick-v">логотипы, фавиконы, иконки →</span><span class="pick-n">светлая и тёмная тема, 16–180 px</span></a></div>
+  </section>
+
+  <section class="need">
     <h2>Сцены девушек на страницах</h2>
     <p class="lead">Одна и та же девушка, своя поза и предмет на каждой странице; фон уже вырезан. Скажите, какие переделать (по адресу под картинкой).</p>
     <div class="picks">
