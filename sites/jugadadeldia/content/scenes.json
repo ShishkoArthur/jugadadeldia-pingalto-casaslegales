@@ -2,6 +2,13 @@
  "rule": {
   "full": 1700,
   "exp": 0.7,
+  "widths": [
+   320,
+   480,
+   720,
+   960,
+   1280
+  ],
   "margin": "top 3 %, sides 3 %, bottom 1 % of the figure height"
  },
  "pages": {
@@ -9,48 +16,60 @@
    "image": "jdd-sc-home-r2",
    "files": [
     {
-     "name": "scenes/home-162.webp",
-     "w": 162,
-     "h": 300,
-     "kb": 11
+     "name": "scenes/home-320.webp",
+     "w": 320,
+     "h": 595,
+     "kb": 33
     },
     {
-     "name": "scenes/home-302.webp",
-     "w": 302,
-     "h": 560,
-     "kb": 24
+     "name": "scenes/home-480.webp",
+     "w": 480,
+     "h": 892,
+     "kb": 56
     },
     {
-     "name": "scenes/home-452.webp",
-     "w": 452,
-     "h": 840,
-     "kb": 40
+     "name": "scenes/home-720.webp",
+     "w": 720,
+     "h": 1338,
+     "kb": 97
+    },
+    {
+     "name": "scenes/home-960.webp",
+     "w": 960,
+     "h": 1784,
+     "kb": 146
+    },
+    {
+     "name": "scenes/home-1240.webp",
+     "w": 1240,
+     "h": 2304,
+     "kb": 140
     }
    ],
-   "ar": 0.5387,
-   "g": 0.886,
+   "ar": 0.5382,
+   "g": 0.8857,
    "alt": "Chica de vestido rojo sentada en un banquito blanco, mezclando un mazo de cartas españolas"
   },
   "/quiniela/": {
    "image": "jdd-sc-quiniela-r2",
    "files": [
     {
-     "name": "scenes/quiniela-97.webp",
-     "w": 97,
-     "h": 300,
-     "kb": 7
+     "name": "scenes/quiniela-320.webp",
+     "w": 320,
+     "h": 991,
+     "kb": 42
     },
     {
-     "name": "scenes/quiniela-181.webp",
-     "w": 181,
-     "h": 560,
-     "kb": 15
+     "name": "scenes/quiniela-480.webp",
+     "w": 480,
+     "h": 1487,
+     "kb": 77
     },
     {
-     "name": "scenes/quiniela-271.webp",
-     "w": 271,
-     "h": 840,
-     "kb": 25
+     "name": "scenes/quiniela-774.webp",
+     "w": 774,
+     "h": 2398,
+     "kb": 112
     }
    ],
    "ar": 0.3228,
@@ -61,441 +80,609 @@
    "image": "jdd-sc-quiniela-nacional-y-provincia-r2",
    "files": [
     {
-     "name": "scenes/quiniela-nacional-y-provincia-164.webp",
-     "w": 164,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/quiniela-nacional-y-provincia-320.webp",
+     "w": 320,
+     "h": 587,
+     "kb": 34
     },
     {
-     "name": "scenes/quiniela-nacional-y-provincia-305.webp",
-     "w": 305,
-     "h": 560,
-     "kb": 26
+     "name": "scenes/quiniela-nacional-y-provincia-480.webp",
+     "w": 480,
+     "h": 881,
+     "kb": 59
     },
     {
-     "name": "scenes/quiniela-nacional-y-provincia-458.webp",
-     "w": 458,
-     "h": 840,
-     "kb": 42
+     "name": "scenes/quiniela-nacional-y-provincia-720.webp",
+     "w": 720,
+     "h": 1321,
+     "kb": 101
+    },
+    {
+     "name": "scenes/quiniela-nacional-y-provincia-960.webp",
+     "w": 960,
+     "h": 1761,
+     "kb": 152
+    },
+    {
+     "name": "scenes/quiniela-nacional-y-provincia-1239.webp",
+     "w": 1239,
+     "h": 2273,
+     "kb": 139
     }
    ],
-   "ar": 0.545,
-   "g": 0.8773,
+   "ar": 0.5451,
+   "g": 0.877,
    "alt": "Chica sentada en un banquito, comparando dos boletas en blanco, una en cada mano"
   },
   "/quiniela/cuanto-paga/": {
    "image": "jdd-sc-quiniela-cuanto-paga-r2",
    "files": [
     {
-     "name": "scenes/quiniela-cuanto-paga-215.webp",
-     "w": 215,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/quiniela-cuanto-paga-320.webp",
+     "w": 320,
+     "h": 447,
+     "kb": 24
     },
     {
-     "name": "scenes/quiniela-cuanto-paga-401.webp",
-     "w": 401,
-     "h": 560,
-     "kb": 26
+     "name": "scenes/quiniela-cuanto-paga-480.webp",
+     "w": 480,
+     "h": 670,
+     "kb": 41
     },
     {
-     "name": "scenes/quiniela-cuanto-paga-602.webp",
-     "w": 602,
-     "h": 840,
-     "kb": 43
+     "name": "scenes/quiniela-cuanto-paga-720.webp",
+     "w": 720,
+     "h": 1005,
+     "kb": 72
+    },
+    {
+     "name": "scenes/quiniela-cuanto-paga-960.webp",
+     "w": 960,
+     "h": 1340,
+     "kb": 107
+    },
+    {
+     "name": "scenes/quiniela-cuanto-paga-1280.webp",
+     "w": 1280,
+     "h": 1787,
+     "kb": 157
     }
    ],
-   "ar": 0.7161,
-   "g": 0.8527,
+   "ar": 0.7164,
+   "g": 0.8528,
    "alt": "Chica sentada en el borde de una mesa blanca, anotando en una boleta con un lápiz"
   },
   "/quiniela/nacional/": {
    "image": "jdd-sc-quiniela-nacional-r2",
    "files": [
     {
-     "name": "scenes/quiniela-nacional-166.webp",
-     "w": 166,
-     "h": 300,
-     "kb": 10
+     "name": "scenes/quiniela-nacional-320.webp",
+     "w": 320,
+     "h": 578,
+     "kb": 27
     },
     {
-     "name": "scenes/quiniela-nacional-310.webp",
-     "w": 310,
-     "h": 560,
-     "kb": 20
+     "name": "scenes/quiniela-nacional-480.webp",
+     "w": 480,
+     "h": 867,
+     "kb": 46
     },
     {
-     "name": "scenes/quiniela-nacional-465.webp",
-     "w": 465,
-     "h": 840,
-     "kb": 33
+     "name": "scenes/quiniela-nacional-720.webp",
+     "w": 720,
+     "h": 1301,
+     "kb": 82
+    },
+    {
+     "name": "scenes/quiniela-nacional-960.webp",
+     "w": 960,
+     "h": 1734,
+     "kb": 125
+    },
+    {
+     "name": "scenes/quiniela-nacional-1280.webp",
+     "w": 1280,
+     "h": 2312,
+     "kb": 190
     }
    ],
-   "ar": 0.5531,
-   "g": 0.9441,
+   "ar": 0.5535,
+   "g": 0.9443,
    "alt": "Chica caminando con paso rápido, con una hoja enrollada bajo el brazo, señalando hacia adelante"
   },
   "/quiniela/provincia/": {
    "image": "jdd-sc-quiniela-provincia-r2",
    "files": [
     {
-     "name": "scenes/quiniela-provincia-215.webp",
-     "w": 215,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/quiniela-provincia-320.webp",
+     "w": 320,
+     "h": 447,
+     "kb": 25
     },
     {
-     "name": "scenes/quiniela-provincia-401.webp",
-     "w": 401,
-     "h": 560,
-     "kb": 26
+     "name": "scenes/quiniela-provincia-480.webp",
+     "w": 480,
+     "h": 671,
+     "kb": 42
     },
     {
-     "name": "scenes/quiniela-provincia-601.webp",
-     "w": 601,
-     "h": 840,
-     "kb": 45
+     "name": "scenes/quiniela-provincia-720.webp",
+     "w": 720,
+     "h": 1007,
+     "kb": 75
+    },
+    {
+     "name": "scenes/quiniela-provincia-960.webp",
+     "w": 960,
+     "h": 1342,
+     "kb": 111
+    },
+    {
+     "name": "scenes/quiniela-provincia-1280.webp",
+     "w": 1280,
+     "h": 1789,
+     "kb": 168
     }
    ],
-   "ar": 0.7154,
-   "g": 0.7973,
+   "ar": 0.7153,
+   "g": 0.7979,
    "alt": "Chica sentada de costado en una silla, mostrando una boleta junto a la cara"
   },
   "/quiniela/mendoza/": {
    "image": "jdd-sc-quiniela-mendoza-r2",
    "files": [
     {
-     "name": "scenes/quiniela-mendoza-130.webp",
-     "w": 130,
-     "h": 300,
-     "kb": 11
+     "name": "scenes/quiniela-mendoza-320.webp",
+     "w": 320,
+     "h": 737,
+     "kb": 43
     },
     {
-     "name": "scenes/quiniela-mendoza-243.webp",
-     "w": 243,
-     "h": 560,
-     "kb": 24
+     "name": "scenes/quiniela-mendoza-480.webp",
+     "w": 480,
+     "h": 1105,
+     "kb": 74
     },
     {
-     "name": "scenes/quiniela-mendoza-365.webp",
-     "w": 365,
-     "h": 840,
-     "kb": 39
+     "name": "scenes/quiniela-mendoza-720.webp",
+     "w": 720,
+     "h": 1657,
+     "kb": 131
+    },
+    {
+     "name": "scenes/quiniela-mendoza-984.webp",
+     "w": 984,
+     "h": 2265,
+     "kb": 130
     }
    ],
-   "ar": 0.4339,
-   "g": 0.8968,
+   "ar": 0.4344,
+   "g": 0.8967,
    "alt": "Chica sentada en un banquito, sacando una uva de un racimo violeta"
   },
   "/quiniela/cordoba/": {
    "image": "jdd-sc-quiniela-cordoba-r2",
    "files": [
     {
-     "name": "scenes/quiniela-cordoba-225.webp",
-     "w": 225,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/quiniela-cordoba-320.webp",
+     "w": 320,
+     "h": 428,
+     "kb": 23
     },
     {
-     "name": "scenes/quiniela-cordoba-419.webp",
-     "w": 419,
-     "h": 560,
-     "kb": 25
+     "name": "scenes/quiniela-cordoba-480.webp",
+     "w": 480,
+     "h": 641,
+     "kb": 38
     },
     {
-     "name": "scenes/quiniela-cordoba-629.webp",
-     "w": 629,
-     "h": 840,
-     "kb": 41
+     "name": "scenes/quiniela-cordoba-720.webp",
+     "w": 720,
+     "h": 962,
+     "kb": 65
+    },
+    {
+     "name": "scenes/quiniela-cordoba-960.webp",
+     "w": 960,
+     "h": 1283,
+     "kb": 96
+    },
+    {
+     "name": "scenes/quiniela-cordoba-1280.webp",
+     "w": 1280,
+     "h": 1710,
+     "kb": 139
     }
    ],
-   "ar": 0.7486,
-   "g": 0.8576,
+   "ar": 0.7485,
+   "g": 0.8572,
    "alt": "Chica sentada en el borde de una mesa, a punto de morder un alfajor de chocolate"
   },
   "/quini-6/": {
    "image": "jdd-sc-quini-6-r2",
    "files": [
     {
-     "name": "scenes/quini-6-268.webp",
-     "w": 268,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/quini-6-320.webp",
+     "w": 320,
+     "h": 358,
+     "kb": 18
     },
     {
-     "name": "scenes/quini-6-501.webp",
-     "w": 501,
-     "h": 560,
-     "kb": 25
+     "name": "scenes/quini-6-480.webp",
+     "w": 480,
+     "h": 537,
+     "kb": 31
     },
     {
-     "name": "scenes/quini-6-751.webp",
-     "w": 751,
-     "h": 840,
-     "kb": 42
+     "name": "scenes/quini-6-720.webp",
+     "w": 720,
+     "h": 806,
+     "kb": 56
+    },
+    {
+     "name": "scenes/quini-6-960.webp",
+     "w": 960,
+     "h": 1074,
+     "kb": 85
+    },
+    {
+     "name": "scenes/quini-6-1280.webp",
+     "w": 1280,
+     "h": 1432,
+     "kb": 133
     }
    ],
-   "ar": 0.8939,
-   "g": 0.6206,
+   "ar": 0.8938,
+   "g": 0.6205,
    "alt": "Chica sentada en un almohadón con un bol de seis bolillas, sacando una"
   },
   "/loto-plus/": {
    "image": "jdd-sc-loto-plus-r2",
    "files": [
     {
-     "name": "scenes/loto-plus-117.webp",
-     "w": 117,
-     "h": 300,
-     "kb": 8
+     "name": "scenes/loto-plus-320.webp",
+     "w": 320,
+     "h": 823,
+     "kb": 33
     },
     {
-     "name": "scenes/loto-plus-218.webp",
-     "w": 218,
-     "h": 560,
-     "kb": 16
+     "name": "scenes/loto-plus-480.webp",
+     "w": 480,
+     "h": 1234,
+     "kb": 59
     },
     {
-     "name": "scenes/loto-plus-327.webp",
-     "w": 327,
-     "h": 840,
-     "kb": 26
+     "name": "scenes/loto-plus-720.webp",
+     "w": 720,
+     "h": 1851,
+     "kb": 105
+    },
+    {
+     "name": "scenes/loto-plus-879.webp",
+     "w": 879,
+     "h": 2260,
+     "kb": 98
     }
    ],
-   "ar": 0.3894,
-   "g": 0.9851,
+   "ar": 0.3889,
+   "g": 0.9853,
    "alt": "Chica tirando una pelotita naranja de una mano a la otra"
   },
   "/quiniela-plus/": {
    "image": "jdd-sc-quiniela-plus-r2",
    "files": [
     {
-     "name": "scenes/quiniela-plus-174.webp",
-     "w": 174,
-     "h": 300,
-     "kb": 11
+     "name": "scenes/quiniela-plus-320.webp",
+     "w": 320,
+     "h": 551,
+     "kb": 29
     },
     {
-     "name": "scenes/quiniela-plus-325.webp",
-     "w": 325,
-     "h": 560,
-     "kb": 24
+     "name": "scenes/quiniela-plus-480.webp",
+     "w": 480,
+     "h": 826,
+     "kb": 50
     },
     {
-     "name": "scenes/quiniela-plus-488.webp",
-     "w": 488,
-     "h": 840,
-     "kb": 40
+     "name": "scenes/quiniela-plus-720.webp",
+     "w": 720,
+     "h": 1239,
+     "kb": 88
+    },
+    {
+     "name": "scenes/quiniela-plus-960.webp",
+     "w": 960,
+     "h": 1652,
+     "kb": 131
+    },
+    {
+     "name": "scenes/quiniela-plus-1280.webp",
+     "w": 1280,
+     "h": 2203,
+     "kb": 197
     }
    ],
-   "ar": 0.5809,
-   "g": 0.8404,
+   "ar": 0.581,
+   "g": 0.8405,
    "alt": "Chica sentada con una boleta en la rodilla, levantando un dedo como diciendo «una más»"
   },
   "/telekino/": {
    "image": "jdd-sc-telekino-r2",
    "files": [
     {
-     "name": "scenes/telekino-111.webp",
-     "w": 111,
-     "h": 300,
-     "kb": 7
+     "name": "scenes/telekino-320.webp",
+     "w": 320,
+     "h": 860,
+     "kb": 34
     },
     {
-     "name": "scenes/telekino-208.webp",
-     "w": 208,
-     "h": 560,
-     "kb": 14
+     "name": "scenes/telekino-480.webp",
+     "w": 480,
+     "h": 1291,
+     "kb": 61
     },
     {
-     "name": "scenes/telekino-312.webp",
-     "w": 312,
-     "h": 840,
-     "kb": 25
+     "name": "scenes/telekino-720.webp",
+     "w": 720,
+     "h": 1936,
+     "kb": 110
+    },
+    {
+     "name": "scenes/telekino-887.webp",
+     "w": 887,
+     "h": 2385,
+     "kb": 106
     }
    ],
-   "ar": 0.3714,
-   "g": 0.8964,
+   "ar": 0.3719,
+   "g": 0.8963,
    "alt": "Chica caminando con un cartón de bingo en blanco en las manos"
   },
   "/truco/": {
    "image": "jdd-sc-truco-r2",
    "files": [
     {
-     "name": "scenes/truco-299.webp",
-     "w": 299,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/truco-320.webp",
+     "w": 320,
+     "h": 321,
+     "kb": 17
     },
     {
-     "name": "scenes/truco-558.webp",
-     "w": 558,
-     "h": 560,
-     "kb": 27
+     "name": "scenes/truco-480.webp",
+     "w": 480,
+     "h": 481,
+     "kb": 29
     },
     {
-     "name": "scenes/truco-836.webp",
-     "w": 836,
-     "h": 840,
-     "kb": 46
+     "name": "scenes/truco-720.webp",
+     "w": 720,
+     "h": 722,
+     "kb": 52
+    },
+    {
+     "name": "scenes/truco-960.webp",
+     "w": 960,
+     "h": 963,
+     "kb": 79
+    },
+    {
+     "name": "scenes/truco-1280.webp",
+     "w": 1280,
+     "h": 1284,
+     "kb": 124
     }
    ],
-   "ar": 0.9958,
-   "g": 0.6482,
+   "ar": 0.9973,
+   "g": 0.6477,
    "alt": "Chica sentada en un almohadón repartiendo cartas españolas boca abajo"
   },
   "/truco/valores-de-las-cartas/": {
    "image": "jdd-sc-truco-valores-de-las-cartas-r2",
    "files": [
     {
-     "name": "scenes/truco-valores-de-las-cartas-111.webp",
-     "w": 111,
-     "h": 300,
-     "kb": 7
+     "name": "scenes/truco-valores-de-las-cartas-320.webp",
+     "w": 320,
+     "h": 864,
+     "kb": 32
     },
     {
-     "name": "scenes/truco-valores-de-las-cartas-207.webp",
-     "w": 207,
-     "h": 560,
-     "kb": 14
+     "name": "scenes/truco-valores-de-las-cartas-480.webp",
+     "w": 480,
+     "h": 1296,
+     "kb": 57
     },
     {
-     "name": "scenes/truco-valores-de-las-cartas-311.webp",
-     "w": 311,
-     "h": 840,
-     "kb": 23
+     "name": "scenes/truco-valores-de-las-cartas-720.webp",
+     "w": 720,
+     "h": 1943,
+     "kb": 102
+    },
+    {
+     "name": "scenes/truco-valores-de-las-cartas-884.webp",
+     "w": 884,
+     "h": 2386,
+     "kb": 97
     }
    ],
-   "ar": 0.3701,
-   "g": 0.908,
+   "ar": 0.3705,
+   "g": 0.9074,
    "alt": "Chica caminando con una carta española en la mano, contando con los dedos"
   },
   "/truco/senas/": {
    "image": "jdd-sc-truco-senas-r2",
    "files": [
     {
-     "name": "scenes/truco-senas-126.webp",
-     "w": 126,
-     "h": 300,
-     "kb": 11
+     "name": "scenes/truco-senas-320.webp",
+     "w": 320,
+     "h": 766,
+     "kb": 47
     },
     {
-     "name": "scenes/truco-senas-234.webp",
-     "w": 234,
-     "h": 560,
-     "kb": 24
+     "name": "scenes/truco-senas-480.webp",
+     "w": 480,
+     "h": 1149,
+     "kb": 83
     },
     {
-     "name": "scenes/truco-senas-352.webp",
-     "w": 352,
-     "h": 840,
-     "kb": 41
+     "name": "scenes/truco-senas-720.webp",
+     "w": 720,
+     "h": 1724,
+     "kb": 148
+    },
+    {
+     "name": "scenes/truco-senas-945.webp",
+     "w": 945,
+     "h": 2263,
+     "kb": 146
     }
    ],
-   "ar": 0.4187,
-   "g": 0.7809,
+   "ar": 0.4176,
+   "g": 0.7812,
    "alt": "Chica sentada con tres cartas contra el pecho, guiñando un ojo"
   },
   "/truco/anotador/": {
    "image": "jdd-sc-truco-anotador-r2",
    "files": [
     {
-     "name": "scenes/truco-anotador-221.webp",
-     "w": 221,
-     "h": 300,
-     "kb": 10
+     "name": "scenes/truco-anotador-320.webp",
+     "w": 320,
+     "h": 434,
+     "kb": 19
     },
     {
-     "name": "scenes/truco-anotador-413.webp",
-     "w": 413,
-     "h": 560,
-     "kb": 20
+     "name": "scenes/truco-anotador-480.webp",
+     "w": 480,
+     "h": 650,
+     "kb": 33
     },
     {
-     "name": "scenes/truco-anotador-620.webp",
-     "w": 620,
-     "h": 840,
-     "kb": 34
+     "name": "scenes/truco-anotador-720.webp",
+     "w": 720,
+     "h": 976,
+     "kb": 57
+    },
+    {
+     "name": "scenes/truco-anotador-960.webp",
+     "w": 960,
+     "h": 1301,
+     "kb": 86
+    },
+    {
+     "name": "scenes/truco-anotador-1280.webp",
+     "w": 1280,
+     "h": 1735,
+     "kb": 137
     }
    ],
    "ar": 0.7379,
-   "g": 0.7887,
+   "g": 0.7885,
    "alt": "Chica sentada en una mesa anotando palitos en una libretita"
   },
   "/generala/": {
    "image": "jdd-sc-generala-r2",
    "files": [
     {
-     "name": "scenes/generala-144.webp",
-     "w": 144,
-     "h": 300,
-     "kb": 9
+     "name": "scenes/generala-320.webp",
+     "w": 320,
+     "h": 665,
+     "kb": 29
     },
     {
-     "name": "scenes/generala-269.webp",
-     "w": 269,
-     "h": 560,
-     "kb": 18
+     "name": "scenes/generala-480.webp",
+     "w": 480,
+     "h": 998,
+     "kb": 54
     },
     {
-     "name": "scenes/generala-404.webp",
-     "w": 404,
-     "h": 840,
-     "kb": 31
+     "name": "scenes/generala-720.webp",
+     "w": 720,
+     "h": 1497,
+     "kb": 100
+    },
+    {
+     "name": "scenes/generala-960.webp",
+     "w": 960,
+     "h": 1996,
+     "kb": 153
+    },
+    {
+     "name": "scenes/generala-1156.webp",
+     "w": 1156,
+     "h": 2404,
+     "kb": 149
     }
    ],
-   "ar": 0.4808,
-   "g": 0.8181,
+   "ar": 0.4809,
+   "g": 0.8182,
    "alt": "Chica sacudiendo un cubilete de cuero"
   },
   "/dados/": {
    "image": "jdd-sc-dados-r2",
    "files": [
     {
-     "name": "scenes/dados-213.webp",
-     "w": 213,
-     "h": 300,
-     "kb": 11
+     "name": "scenes/dados-320.webp",
+     "w": 320,
+     "h": 452,
+     "kb": 24
     },
     {
-     "name": "scenes/dados-397.webp",
-     "w": 397,
-     "h": 560,
-     "kb": 25
+     "name": "scenes/dados-480.webp",
+     "w": 480,
+     "h": 677,
+     "kb": 42
     },
     {
-     "name": "scenes/dados-595.webp",
-     "w": 595,
-     "h": 840,
-     "kb": 41
+     "name": "scenes/dados-720.webp",
+     "w": 720,
+     "h": 1016,
+     "kb": 77
+    },
+    {
+     "name": "scenes/dados-960.webp",
+     "w": 960,
+     "h": 1355,
+     "kb": 115
+    },
+    {
+     "name": "scenes/dados-1280.webp",
+     "w": 1280,
+     "h": 1807,
+     "kb": 176
     }
    ],
    "ar": 0.7085,
-   "g": 0.6912,
+   "g": 0.6914,
    "alt": "Chica de rodillas que acaba de tirar dos dados"
   },
   "/quiniela/redoblona/": {
    "image": "jdd-sc-quiniela-redoblona-r3",
    "files": [
     {
-     "name": "scenes/quiniela-redoblona-138.webp",
-     "w": 138,
-     "h": 300,
-     "kb": 10
-    },
-    {
-     "name": "scenes/quiniela-redoblona-258.webp",
-     "w": 258,
-     "h": 560,
-     "kb": 22
-    },
-    {
-     "name": "scenes/quiniela-redoblona-386.webp",
-     "w": 386,
-     "h": 840,
+     "name": "scenes/quiniela-redoblona-320.webp",
+     "w": 320,
+     "h": 695,
      "kb": 37
+    },
+    {
+     "name": "scenes/quiniela-redoblona-480.webp",
+     "w": 480,
+     "h": 1043,
+     "kb": 65
+    },
+    {
+     "name": "scenes/quiniela-redoblona-720.webp",
+     "w": 720,
+     "h": 1565,
+     "kb": 115
+    },
+    {
+     "name": "scenes/quiniela-redoblona-1063.webp",
+     "w": 1063,
+     "h": 2310,
+     "kb": 126
     }
    ],
-   "ar": 0.4599,
+   "ar": 0.4602,
    "g": 0.9148,
    "alt": "Chica sentada en un banquito de madera, mostrando dos bolillas blancas juntas"
   },
@@ -503,234 +690,330 @@
    "image": "jdd-sc-brinco-r3",
    "files": [
     {
-     "name": "scenes/brinco-187.webp",
-     "w": 187,
-     "h": 300,
-     "kb": 11
+     "name": "scenes/brinco-320.webp",
+     "w": 320,
+     "h": 513,
+     "kb": 26
     },
     {
-     "name": "scenes/brinco-349.webp",
-     "w": 349,
-     "h": 560,
-     "kb": 22
+     "name": "scenes/brinco-480.webp",
+     "w": 480,
+     "h": 770,
+     "kb": 45
     },
     {
-     "name": "scenes/brinco-523.webp",
-     "w": 523,
-     "h": 840,
-     "kb": 38
+     "name": "scenes/brinco-720.webp",
+     "w": 720,
+     "h": 1155,
+     "kb": 84
+    },
+    {
+     "name": "scenes/brinco-960.webp",
+     "w": 960,
+     "h": 1539,
+     "kb": 131
+    },
+    {
+     "name": "scenes/brinco-1280.webp",
+     "w": 1280,
+     "h": 2053,
+     "kb": 195
     }
    ],
-   "ar": 0.6231,
-   "g": 0.8855,
+   "ar": 0.6236,
+   "g": 0.8858,
    "alt": "Chica dando un saltito con una boleta en la mano"
   },
   "/poceada/": {
    "image": "jdd-sc-poceada-r3",
    "files": [
     {
-     "name": "scenes/poceada-160.webp",
-     "w": 160,
-     "h": 300,
-     "kb": 9
+     "name": "scenes/poceada-320.webp",
+     "w": 320,
+     "h": 601,
+     "kb": 32
     },
     {
-     "name": "scenes/poceada-298.webp",
-     "w": 298,
-     "h": 560,
-     "kb": 20
+     "name": "scenes/poceada-480.webp",
+     "w": 480,
+     "h": 902,
+     "kb": 56
     },
     {
-     "name": "scenes/poceada-447.webp",
-     "w": 447,
-     "h": 840,
-     "kb": 34
+     "name": "scenes/poceada-720.webp",
+     "w": 720,
+     "h": 1353,
+     "kb": 109
+    },
+    {
+     "name": "scenes/poceada-960.webp",
+     "w": 960,
+     "h": 1804,
+     "kb": 173
+    },
+    {
+     "name": "scenes/poceada-1164.webp",
+     "w": 1164,
+     "h": 2187,
+     "kb": 183
     }
    ],
-   "ar": 0.5326,
-   "g": 0.7326,
+   "ar": 0.5322,
+   "g": 0.7323,
    "alt": "Chica de rodillas tirando una bolilla en un frasco de vidrio con más bolillas"
   },
   "/truco/jugar/": {
    "image": "jdd-sc-truco-jugar-r3",
    "files": [
     {
-     "name": "scenes/truco-jugar-229.webp",
-     "w": 229,
-     "h": 300,
-     "kb": 11
+     "name": "scenes/truco-jugar-320.webp",
+     "w": 320,
+     "h": 419,
+     "kb": 21
     },
     {
-     "name": "scenes/truco-jugar-427.webp",
-     "w": 427,
-     "h": 560,
-     "kb": 25
+     "name": "scenes/truco-jugar-480.webp",
+     "w": 480,
+     "h": 629,
+     "kb": 36
     },
     {
-     "name": "scenes/truco-jugar-641.webp",
-     "w": 641,
-     "h": 840,
-     "kb": 40
+     "name": "scenes/truco-jugar-720.webp",
+     "w": 720,
+     "h": 943,
+     "kb": 61
+    },
+    {
+     "name": "scenes/truco-jugar-960.webp",
+     "w": 960,
+     "h": 1258,
+     "kb": 92
+    },
+    {
+     "name": "scenes/truco-jugar-1280.webp",
+     "w": 1280,
+     "h": 1677,
+     "kb": 138
     }
    ],
-   "ar": 0.763,
-   "g": 0.8925,
+   "ar": 0.7632,
+   "g": 0.8921,
    "alt": "Chica sentada en el borde de una mesa tirando una carta como quien canta truco"
   },
   "/truco/envido/": {
    "image": "jdd-sc-truco-envido-r3",
    "files": [
     {
-     "name": "scenes/truco-envido-113.webp",
-     "w": 113,
-     "h": 300,
-     "kb": 9
+     "name": "scenes/truco-envido-320.webp",
+     "w": 320,
+     "h": 847,
+     "kb": 46
     },
     {
-     "name": "scenes/truco-envido-212.webp",
-     "w": 212,
-     "h": 560,
-     "kb": 21
+     "name": "scenes/truco-envido-480.webp",
+     "w": 480,
+     "h": 1270,
+     "kb": 82
     },
     {
-     "name": "scenes/truco-envido-318.webp",
-     "w": 318,
-     "h": 840,
-     "kb": 35
+     "name": "scenes/truco-envido-720.webp",
+     "w": 720,
+     "h": 1905,
+     "kb": 146
+    },
+    {
+     "name": "scenes/truco-envido-854.webp",
+     "w": 854,
+     "h": 2260,
+     "kb": 129
     }
    ],
-   "ar": 0.3782,
-   "g": 0.9259,
+   "ar": 0.3779,
+   "g": 0.926,
    "alt": "Chica sentada en un banquito con dos cartas, contando los tantos con los dedos"
   },
   "/juegos-de-cartas/": {
    "image": "jdd-sc-juegos-de-cartas-r3",
    "files": [
     {
-     "name": "scenes/juegos-de-cartas-181.webp",
-     "w": 181,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/juegos-de-cartas-320.webp",
+     "w": 320,
+     "h": 530,
+     "kb": 31
     },
     {
-     "name": "scenes/juegos-de-cartas-338.webp",
-     "w": 338,
-     "h": 560,
-     "kb": 26
+     "name": "scenes/juegos-de-cartas-480.webp",
+     "w": 480,
+     "h": 795,
+     "kb": 54
     },
     {
-     "name": "scenes/juegos-de-cartas-507.webp",
-     "w": 507,
-     "h": 840,
-     "kb": 45
+     "name": "scenes/juegos-de-cartas-720.webp",
+     "w": 720,
+     "h": 1193,
+     "kb": 94
+    },
+    {
+     "name": "scenes/juegos-de-cartas-960.webp",
+     "w": 960,
+     "h": 1590,
+     "kb": 141
+    },
+    {
+     "name": "scenes/juegos-de-cartas-1280.webp",
+     "w": 1280,
+     "h": 2120,
+     "kb": 209
     }
    ],
-   "ar": 0.6038,
-   "g": 0.858,
+   "ar": 0.6036,
+   "g": 0.8575,
    "alt": "Chica sentada en una silla con un abanico de cartas españolas y un cubilete"
   },
   "/generala/jugar/": {
    "image": "jdd-sc-generala-jugar-r3",
    "files": [
     {
-     "name": "scenes/generala-jugar-149.webp",
-     "w": 149,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/generala-jugar-320.webp",
+     "w": 320,
+     "h": 645,
+     "kb": 39
     },
     {
-     "name": "scenes/generala-jugar-278.webp",
-     "w": 278,
-     "h": 560,
-     "kb": 25
+     "name": "scenes/generala-jugar-480.webp",
+     "w": 480,
+     "h": 967,
+     "kb": 68
     },
     {
-     "name": "scenes/generala-jugar-417.webp",
-     "w": 417,
-     "h": 840,
-     "kb": 43
+     "name": "scenes/generala-jugar-720.webp",
+     "w": 720,
+     "h": 1451,
+     "kb": 121
+    },
+    {
+     "name": "scenes/generala-jugar-960.webp",
+     "w": 960,
+     "h": 1935,
+     "kb": 181
+    },
+    {
+     "name": "scenes/generala-jugar-1121.webp",
+     "w": 1121,
+     "h": 2259,
+     "kb": 157
     }
    ],
-   "ar": 0.496,
-   "g": 0.7818,
+   "ar": 0.4962,
+   "g": 0.7812,
    "alt": "Chica sentada en un almohadón volcando cinco dados de un cubilete"
   },
   "/generala/probabilidades/": {
    "image": "jdd-sc-generala-probabilidades-r3",
    "files": [
     {
-     "name": "scenes/generala-probabilidades-213.webp",
-     "w": 213,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/generala-probabilidades-320.webp",
+     "w": 320,
+     "h": 452,
+     "kb": 25
     },
     {
-     "name": "scenes/generala-probabilidades-397.webp",
-     "w": 397,
-     "h": 560,
-     "kb": 26
+     "name": "scenes/generala-probabilidades-480.webp",
+     "w": 480,
+     "h": 677,
+     "kb": 41
     },
     {
-     "name": "scenes/generala-probabilidades-595.webp",
-     "w": 595,
-     "h": 840,
-     "kb": 43
+     "name": "scenes/generala-probabilidades-720.webp",
+     "w": 720,
+     "h": 1016,
+     "kb": 72
+    },
+    {
+     "name": "scenes/generala-probabilidades-960.webp",
+     "w": 960,
+     "h": 1355,
+     "kb": 107
+    },
+    {
+     "name": "scenes/generala-probabilidades-1280.webp",
+     "w": 1280,
+     "h": 1806,
+     "kb": 158
     }
    ],
-   "ar": 0.7084,
-   "g": 0.872,
+   "ar": 0.7086,
+   "g": 0.8715,
    "alt": "Chica sentada en una mesa mirando de cerca un dado, con una libretita en la rodilla"
   },
   "/chinchon/jugar/": {
    "image": "jdd-sc-chinchon-jugar-r3",
    "files": [
     {
-     "name": "scenes/chinchon-jugar-123.webp",
-     "w": 123,
-     "h": 300,
-     "kb": 8
+     "name": "scenes/chinchon-jugar-320.webp",
+     "w": 320,
+     "h": 781,
+     "kb": 34
     },
     {
-     "name": "scenes/chinchon-jugar-230.webp",
-     "w": 230,
-     "h": 560,
-     "kb": 17
+     "name": "scenes/chinchon-jugar-480.webp",
+     "w": 480,
+     "h": 1171,
+     "kb": 61
     },
     {
-     "name": "scenes/chinchon-jugar-345.webp",
-     "w": 345,
-     "h": 840,
-     "kb": 28
+     "name": "scenes/chinchon-jugar-720.webp",
+     "w": 720,
+     "h": 1756,
+     "kb": 111
+    },
+    {
+     "name": "scenes/chinchon-jugar-992.webp",
+     "w": 992,
+     "h": 2420,
+     "kb": 129
     }
    ],
-   "ar": 0.4105,
-   "g": 0.9246,
+   "ar": 0.4099,
+   "g": 0.9244,
    "alt": "Chica acomodando las siete cartas de su mano de chinchón"
   },
   "/escoba-de-15/jugar/": {
    "image": "jdd-sc-escoba-de-15-jugar-r3",
    "files": [
     {
-     "name": "scenes/escoba-de-15-jugar-217.webp",
-     "w": 217,
-     "h": 300,
-     "kb": 12
+     "name": "scenes/escoba-de-15-jugar-320.webp",
+     "w": 320,
+     "h": 442,
+     "kb": 24
     },
     {
-     "name": "scenes/escoba-de-15-jugar-406.webp",
-     "w": 406,
-     "h": 560,
-     "kb": 25
+     "name": "scenes/escoba-de-15-jugar-480.webp",
+     "w": 480,
+     "h": 663,
+     "kb": 44
     },
     {
-     "name": "scenes/escoba-de-15-jugar-609.webp",
-     "w": 609,
-     "h": 840,
-     "kb": 43
+     "name": "scenes/escoba-de-15-jugar-720.webp",
+     "w": 720,
+     "h": 994,
+     "kb": 83
+    },
+    {
+     "name": "scenes/escoba-de-15-jugar-960.webp",
+     "w": 960,
+     "h": 1326,
+     "kb": 129
+    },
+    {
+     "name": "scenes/escoba-de-15-jugar-1280.webp",
+     "w": 1280,
+     "h": 1768,
+     "kb": 202
     }
    ],
-   "ar": 0.7249,
-   "g": 0.6362,
+   "ar": 0.724,
+   "g": 0.6358,
    "alt": "Chica de rodillas juntando cuatro cartas del piso con la mano"
   }
  }

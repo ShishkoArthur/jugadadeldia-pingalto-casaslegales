@@ -10,27 +10,38 @@ export const money = n => '$ ' + fmt(n, 2);
 // The girl of the site (jdd-girl-r3-10): the accepted scene of the page from sites/jugadadeldia/content/scenes.json
 // (data/art/publish-scenes.mjs). The figure fills its frame: the frame is K times its width tall, times g of the scene (a seated pose
 // gets a shorter frame and a slightly larger scale, so heads stay comparable), and never wider than the figure needs. --r1 is the frame
-// aspect on wide screens, --r2 on phones; the decorative balls stay behind her. Empty string when the page has no scene.
+// aspect on wide screens, --r2 on phones; --g and --a (file width / height) size the full-width phone card of the hero, which is
+// g * clamp(320px, 100vw, 420px) tall. Frame widths in css/jg.css (FRAME below must match them): hero 360 px (300 px at <= 900),
+// home 340 px (240 px), in-page 340 px (280 px); on phones the home figure gets the same card as a hero (the decorative stack is
+// hidden there) and an in-page one min(280px, 76 %). sizes = frame width * share of the image in it, so phones with DPR 3 get at least 3x pixels.
+// Empty string when the page has no scene.
 const SCENES = JSON.parse(readFileSync(new URL('../content/scenes.json', import.meta.url), 'utf8'));
 const K1 = 1.4, K2 = 1.5, FIT = 0.94;
+const FRAME = { hero: [360, 300], home: [340, 240], mn: [340, 280] };
 const frameH = (sc, k) => Math.min(k * sc.g, FIT / sc.ar);
+const px = x => Math.ceil(x) + 'px';
+function sizes(sc, kind) {
+  const x1 = frameH(sc, K1) * sc.ar * FIT, [wide, mid] = FRAME[kind];
+  const phone = kind !== 'mn' ? ['(max-width:420px) ' + Math.ceil(100 * FIT * sc.g * sc.ar) + 'vw', '(max-width:620px) ' + px(420 * FIT * sc.g * sc.ar)]
+    : ['(max-width:388px) calc((100vw - 20px) * ' + (0.76 * x1).toFixed(3) + ')', '(max-width:620px) ' + px(280 * x1)];
+  return [...phone, '(max-width:900px) ' + px(mid * x1), px(wide * x1)].join(', ');
+}
 export const hasGirl = h => !!SCENES.pages[h.page.path];
-export function girl(h, { lazy = false, cls = '' } = {}) {
+export function girl(h, { lazy = false, cls = '', kind = 'hero' } = {}) {
   const sc = SCENES.pages[h.page.path];
   if (!sc) return '';
   const r = k => +(1 / frameH(sc, k)).toFixed(4);
-  const x1 = frameH(sc, K1) * sc.ar * FIT, x2 = frameH(sc, K2) * sc.ar * FIT;
   const a = sc.files[0];
   const set = sc.files.map(f => h.asset(f.name) + ' ' + f.w + 'w').join(', ');
-  const img = '<img src="' + h.asset(a.name) + '" srcset="' + set + '" sizes="(max-width:620px) ' + Math.ceil(46 * x2) + 'vw, ' + Math.ceil(280 * x1) + 'px" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' decoding="async">';
-  return '<figure class="jg-girl' + (cls ? ' ' + cls : '') + '" style="--r1:' + r(K1) + ';--r2:' + r(K2) + '"><i class="jg-ba" aria-hidden="true"></i><i class="jg-ba c3" aria-hidden="true"></i><i class="jg-ba c4" aria-hidden="true"></i>' + img + '</figure>';
+  const img = '<img src="' + h.asset(a.name) + '" srcset="' + set + '" sizes="' + sizes(sc, kind) + '" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : ' fetchpriority="high"') + ' decoding="async">';
+  return '<figure class="jg-girl' + (cls ? ' ' + cls : '') + '" style="--r1:' + r(K1) + ';--r2:' + r(K2) + ';--g:' + sc.g + ';--a:' + sc.ar + '"><i class="jg-ba" aria-hidden="true"></i><i class="jg-ba c3" aria-hidden="true"></i><i class="jg-ba c4" aria-hidden="true"></i>' + img + '</figure>';
 }
 // Pages that open with a game table have no hero: the girl stands beside the first sections under the table (lazy, below the fold).
 export const mnOpen = h => '<div class="jg-mn' + (hasGirl(h) ? ' art' : '') + '">';
-export const mnArt = h => girl(h, { lazy: true });
+export const mnArt = h => girl(h, { lazy: true, kind: 'mn' });
 
 export function hero(h, { kicker, lede, scene, actions = '' }) {
-  const g = scene ? girl(h) : '';
+  const g = scene ? girl(h, { kind: h.page.path === '/' ? 'home' : 'hero' }) : '';
   return '<section class="jg-hero' + (g ? '' : ' no-g') + '"><div><span class="jg-k">' + kicker + '</span><h1>' + h.esc(h.page.h1) + '</h1>' +
     (lede ? '<p class="jg-lede">' + lede + '</p>' : '') + (actions ? '<div class="jg-r">' + actions + '</div>' : '') + '</div>' + g + '</section>';
 }
