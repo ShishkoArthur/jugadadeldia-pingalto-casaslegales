@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Licence registries: node tools/verify-sources.mjs [-q] [--today YYYY-MM-DD]
+// Licence registries and lottery rules (tools/lib/lottery-sources.mjs, data/sources/lottery/; --recheck covers registries only):
+// node tools/verify-sources.mjs [-q] [--today YYYY-MM-DD]
 //   every quote is verbatim in the visible text of its saved document, every listed site is backed by a byte-for-byte HTML
 //   snippet of the official list, the list is complete (the pattern finds exactly the listed hosts), sha256 and freshness.
 // node tools/verify-sources.mjs --recheck [--write]
@@ -11,6 +12,7 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { ROOT } from './env.mjs';
 import { loadRegistries, verifyRegistries, checkRegistry, brandNames } from './lib/sources.mjs';
+import { verifyLottery } from './lib/lottery-sources.mjs';
 
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 casaslegales-check/1.0';
 const args = process.argv.slice(2);
@@ -52,6 +54,7 @@ if (args.includes('--recheck')) {
   console.log('recheck: ' + (problems ? problems + ' registries need attention' : 'all registries unchanged') + (write ? '' : ' (dry run)'));
   process.exit(problems ? 1 : 0);
 }
-const n = verifyRegistries({ today, log: m => { if (!quiet || !m.startsWith('  ok')) console.log(m); } });
-console.log('verify-sources: ' + (n ? 'CHECKS FAILED: ' + n : 'all registry checks passed'));
+const logq = m => { if (!quiet || !m.startsWith('  ok')) console.log(m); };
+const n = verifyRegistries({ today, log: logq }) + verifyLottery({ today, log: logq });
+console.log('verify-sources: ' + (n ? 'CHECKS FAILED: ' + n : 'all registry and lottery-rule checks passed'));
 process.exit(n ? 1 : 0);

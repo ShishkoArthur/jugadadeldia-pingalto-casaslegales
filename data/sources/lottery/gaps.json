@@ -1,0 +1,22 @@
+{
+ "id": "gaps",
+ "operator": "rules searched for and not found in an official document (03/11/2026); the engine has no rule set for them and refuses",
+ "checked": "2026-11-03",
+ "maxAgeDays": 183,
+ "docs": {},
+ "facts": [],
+ "missing": [
+  { "id": "gaps.cordoba.quiniela", "what": "Lotería de Córdoba quiniela regulation / payout table",
+    "searched": ["https://www.loteriadecordoba.com.ar/juegos/quiniela (404)", "section /institucional/legislacion-vigente (data behind a Strapi token, docs/research/APIS-2026-11-02.md)", "web search 'Lotería de Córdoba quiniela reglamento veces lo apostado' (only press articles)"] },
+  { "id": "gaps.mendoza.quiniela", "what": "Mendoza (IPJyC) quiniela payout table",
+    "searched": ["https://www.mendoza.gov.ar/juegosycasinos/wp-content/uploads/sites/18/2017/10/Informacion-pagos-y-tablas-Quiniela-LOTERICOAS-SAPIA-1.pdf (returns an HTML page, not the PDF)", "juegosycasinos.mendoza.gov.ar (timeout)"] },
+  { "id": "gaps.tombola.santiaguena", "what": "Tómbola Santiagueña regulation (Caja Social de Santiago del Estero); press pages describe a quiniela-like game with different ratios (3 cifras 500 in the Nocturna, 4 cifras 3000) but they are not official",
+    "searched": ["Caja Social Santiago del Estero site (timeout per docs/research/APIS-2026-11-02.md)", "web search 'tómbola santiagueña reglamento premios' (only diariopanorama.com)"] },
+  { "id": "gaps.tombola.other", "what": "Tómbola Jujeña, Salteña, Entrerriana, Tucumana regulations",
+    "searched": ["inprojuy.gob.ar (SPA shell)", "enrejasalta.com.ar (reCAPTCHA)", "IAFAS (API with token, not used)", "resultadosquiniela.cajapopular.gov.ar (results only)"] },
+  { "id": "gaps.poceada.other", "what": "Poceada Cordobesa and Poceada Chaqueña regulations (only Poceada de la Ciudad is cited, in lotba.json)",
+    "searched": ["loteriadecordoba.com.ar (no regulation page reachable)", "https://loteria.chaco.gov.ar/ (results only)"] },
+  { "id": "gaps.loto5", "what": "Loto 5 Plus programación (the regulation address on the site returns 404; Loto 5 Plus is a modality of the Loto Plus regulation)",
+    "searched": ["https://loto5.loteriadelaciudad.gob.ar/documentacion/REGLAMENTO%20LOTO.pdf (404)"] }
+ ]
+}
