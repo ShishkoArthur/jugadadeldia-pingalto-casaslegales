@@ -21,7 +21,7 @@ export function gapFor(x, rd = VRS_RD) {
   return (400 * Math.log10(x / (1 - x))) / gFactor(rd);
 }
 
-const BRAND = /bet|casino|stake|parimatch|1win|ggbet|pinnacle|roobet|rollbit|gamdom|csgoempire|thunderpick|rivalry|melbet|mostbet|fonbet|winline|leon\b/i;
+const BRAND = /bet|casino|stake|parimatch|1win|ggbet|pinnacle|roobet|rollbit|gamdom|csgoempire|thunderpick|rivalry|melbet|mostbet|fonbet|winline|leon\b|\bpari(?:\b|vision)/i;
 export const isBrandName = name => BRAND.test(String(name));
 
 // Rows of one standings file: [{ rank, points, team, roster: [nicks], masked }] in Valve's order. Throws on a file that does

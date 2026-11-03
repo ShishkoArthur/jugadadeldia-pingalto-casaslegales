@@ -17,14 +17,14 @@ export const GAMES = [
   { k: 'eafc', ps: 'fifa', name: 'EA Sports FC' },
 ];
 const STATUS = new Set(['not_started', 'running', 'finished', 'postponed', 'canceled']);
-const LATAM = new Set(['AR', 'BO', 'BR', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'GT', 'HN', 'MX', 'NI', 'PA', 'PE', 'PR', 'PY', 'SV', 'UY', 'VE']);
+export const LATAM = new Set(['AR', 'BO', 'BR', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'GT', 'HN', 'MX', 'NI', 'PA', 'PE', 'PR', 'PY', 'SV', 'UY', 'VE']);
 const KEEP_TIERS = new Set(['s', 'a', 'b', 'c']);
 const DAYS_AHEAD = 10, DAYS_BACK = 3, MAX_UP = 60, MAX_PAST = 30;
 const clean = s => String(s == null ? '' : s).replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, 60);
 const safe = (s, hidden) => { const c = clean(s); return c && isBrandName(c) ? hidden : c; };
 
-function slim(m, g) {
-  const teams = (m.opponents || []).map(o => o && o.opponent).filter(Boolean).map(t => ({ n: safe(t.name, 'Nombre oculto'), a: isBrandName(t.name) ? undefined : safe(t.acronym, '') || undefined, loc: t.location || undefined, id: t.id }));
+export function slim(m, g) {
+  const teams = (m.opponents || []).map(o => o && o.opponent).filter(Boolean).map(t => ({ n: safe(t.name, 'Nombre oculto'), a: isBrandName(t.name) ? undefined : safe(t.acronym, '') || undefined, loc: t.location || t.nationality || undefined, id: t.id }));
   const score = teams.map(t => { const r = (m.results || []).find(x => x.team_id === t.id); return r ? r.score : 0; });
   const streams = (m.streams_list || []).filter(s => s && s.official && /^https:\/\/(www\.)?(twitch\.tv|youtube\.com|kick\.com)\//.test(s.raw_url || '') && !isBrandName(s.raw_url));
   const st = streams.find(s => s.language === 'es') || streams.find(s => s.main) || streams[0];
@@ -33,7 +33,7 @@ function slim(m, g) {
     id: m.id, g: g.k, at: m.begin_at || m.scheduled_at || null, end: m.end_at || null, st: m.status,
     bo: m.number_of_games || null, type: m.match_type || null, resched: !!m.rescheduled || undefined, ff: !!m.forfeit || undefined,
     lg: safe(lg.name, 'Liga (nombre oculto)'), se: safe(se.full_name || se.name, ''), tn: safe(t.name, ''), tier: t.tier || null, reg: t.region || null,
-    teams: teams.map(({ id, ...x }) => x), score, win: m.winner_id ? teams.findIndex(x => x.id === m.winner_id) : -1,
+    teams: teams.map(({ id, ...x }) => ({ ...x, i: id })), score, win: m.winner_id ? teams.findIndex(x => x.id === m.winner_id) : -1,
     tv: st ? { url: st.raw_url, lang: st.language || null } : undefined,
     ar: teams.some(x => x.loc === 'AR') || undefined, latam: teams.some(x => LATAM.has(x.loc)) || undefined,
   };
