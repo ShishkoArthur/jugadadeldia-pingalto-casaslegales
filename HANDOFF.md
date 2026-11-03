@@ -54,7 +54,7 @@
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
 ## Состояние и следующее (03.11, вечер)
-- **Все три сайта живые, индекс открыт:** casaslegales.com (66 стр., дизайн r3 «01 Relieve alto», 8 официальных списков), pingalto.com
+- **Все три сайта живые, индекс открыт:** casaslegales.com (83 стр., все 27 марок со страницей, дизайн r3 «01 Relieve alto», 8 официальных списков), pingalto.com
   (26 стр., дизайн «Holo pastel», девушка pa-girl-r3-09), jugadadeldia.com (45 стр., дизайн r3 «06 Menú principal», девушка jdd-girl-r3-10,
   автор Denis Krazok). Сцены девушек приняты (стандарт — DECISIONS 03.11 «сцены приняты»), стоят на страницах, размер — правило в «Сцены девушек».
 - Сводка владельцу: https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS (сборка `node docs/owner/build-overview.mjs`, тот же путь публикации).
@@ -138,6 +138,7 @@
   `docs/FEEDS.md` (раздел «Ленты» выше).
 - 03.11 — pingalto: меню «Juegos» и ряд игр на главной, свои фоны шапки по играм, сцены r4 «в игре» (CS2, Valorant, LoL, Fortnite + 5 для
   будущих страниц), официальных логотипов нет — разбор политик издателей (раздел «pingalto (03.11) — игры» ниже).
+- 03.11 — casaslegales: страницы всех 27 марок из 8 списков (+17), каждое имя марки в таблицах/списках — ссылка на её страницу (гейт brandlink).
 - 03.11 — casaslegales: дизайн «01 Relieve alto» на живом сайте (изометрия, высота = число сайтов); третья выгрузка владельца → реестры
   Santa Fe (4) и Mendoza (7), 8 списков; +3 страницы оператор × провинция (раздел ниже).
 - 03.11 — casaslegales: копии и скриншоты владельца встали на место (14 страниц регуляторов, 12 скриншотов 5 операторов из AR),
@@ -281,6 +282,29 @@
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
 - **Дальше:** хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
+
+## casaslegales (03.11) — все 27 марок со своей страницей (83 страницы + 404)
+- **Владелец 03.11:** «не всегда можно кликнуть на бренд». Было 10 из 27 страниц `/operador/*`; добавлены 17 (`content/operators.mjs`, план синхронизирован):
+  casino-club, mac-group, super7, stake, betfun, play-uzu, playbet, arbet, mitesoro, easybet, la-neuquina-online, casino-magic-online,
+  maverick-online, aladdin-online, la-rionegrina-online, casinos-del-rio (в плане было casino-del-rio), city-center-online. Слаги — `slugOf`/`opPath`.
+- **Новые блоки страницы оператора** (`pages/operador.mjs`): таблица «<марка> en cada lista» для марок в ≥ 2 списках (адрес, как называет список, акт,
+  регулятор, сайтов в списке, дата); «платформа провинции» (La Neuquina — IJAN называет её отдельно от таблицы казино, вычисляется по
+  `evidence.doc`; La Rionegrina — цитата Лотереи) + помощь провинции; категории списка Santa Fe (casinos online / apuestas deportivas — из копии);
+  цитаты регулятора о марке (Santa Fe о City Center Rosario, новые скрытые цитаты в `santa-fe.json`); `labels` — проверка названия в списке;
+  `related` (у Betfun в подвале «CASINO CLUB S.A.» — с оговоркой, что не проверяли); `access` — честная причина, почему нет своей капчи.
+- **Капчи** (robots.txt прочитан до съёмки, `targets.json` → `robotsChecked`): сняты подвалы Betfun, PlayBet, easybet La Rioja, Casinos del Río
+  (подвал, а не главная — на главных баннеры бонусов; `capture-shots` теперь прячет и фиксированные промо-полосы ≥ 40 px, есть `clip`);
+  страницы блокировки Maverick, Aladdin (только Neuquén), La Rionegrina, Play Uzu (регион), mitesoro (Wix: домен не подключён).
+  **Не снимали:** MAC Group (robots запрещает ClaudeBot), Casino Club, Stake, Casino Magic, City Center (robots за проверкой Cloudflare),
+  Super7 (TLS), ARBET (DNS), La Neuquina (robots.txt отвечает «Acceso restringido» — гео, не обходили; первая съёмка удалена). 14 новых цитат
+  (лицензия/зона/помощь Betfun и easybet, «о себе» Casinos del Río, сообщения блокировки) — `operators.json`, сверены.
+- **Ссылки везде:** главная (матрица, «misma marca»), /licencias, /provincia/* (список и «otras listas»), /operadores (все карточки — ссылки,
+  «ficha todavía no publicada» убрано), /verificador (таблица и «Ver la ficha» в результате), оператор × провинция, /guia/como-verificar,
+  /guia/menores, /registro-de-fuentes. Хелпер `brandLink` (`pages/parts.mjs`, ссылка на несобранную страницу роняет сборку).
+- **Гейт `brandlink`** (`tools/check-dist.mjs`, настройка `SITE.gate.brandLinks` в `config.mjs`): внутри `rl-tbl/rl-reg/rl-sites/rl-dom/rl-opcs/rl-law`
+  элемент с текстом = имя марки обязан быть внутри `<a href="/operador/<slug>">`; selftest — 3 порчи (снятая ссылка в /licencias и /provincia/cordoba,
+  чужой адрес в /operadores). Проверено вживую: 27/27 → 200, /provincia/cordoba и /operadores на 375 и 1280 без горизонтальной прокрутки.
+- **Дальше:** капчи и цитаты JR/T&C для марок без капчи — только из Chrome владельца в AR (список выше); /operador/betway в плане — марки нет в списках.
 
 ## casaslegales (03.11) — дизайн «01 Relieve alto» и третья выгрузка владельца (66 страниц + 404)
 - **Дизайн** (`docs/design/casaslegales/r3/parts/01-relieve-alto.html`) применён: токены светлой/тёмной темы варианта (шалфей / ночная хвоя,
