@@ -40,6 +40,8 @@ const SEATS = {
   kneel: null,
 };
 const S = SEATS;
+// Round 5 (owner 2026-11-03: r4 accepted except /clash - three arms - and /dota2 - strange face, make her a cosplay meat hook on a
+// chain): /clash and /dota2 redone, /ff a third try (seated sideways, landscape phone grip, knees together).
 // Round 4 (/ff: two tries failed the standard - legs apart, then a view under the hem and the jacket off the arms - so /ff keeps
 // its r3 scene; data/img-review/pa-sc-ff-r4*.png are kept as rejected).
 // Round 4 (owner 2026-11-03: "she could hold an AWP in CS2 or portray something from the game"): pingalto game pages get the
@@ -119,7 +121,7 @@ export const SITES = {
       '/valorant/agentes': ['wstool', `She sits on ${S.wstool} turned partly sideways, legs crossed at the knee, wearing ${HEADSET} on her head, one hand adjusting an ear cup while she talks to her team`, 'animated, mouth open mid-sentence'],
       '/cs2/mira': ['stand', 'She stands upright with her weight on one leg and her head tilted, one hand on her hip, making a small circle with the thumb and index finger of the other hand and holding it up to one eye like a playful spyglass', 'one eye closed, concentrated half smile'],
       '/lol/rangos': ['chair', `She sits on ${S.chair}, knees together, a compact plain black keyboard with blank keys (no letters, no symbols, no lights) resting on her lap, typing on it with both hands`, 'calm focused smile'],
-      '/ff': ['walk', `She runs toward the camera in a light jog mid-stride, holding ${PHONE} in one hand, looking back over her shoulder with her hair swinging; both platform sandals stay close to the ground, and her bare legs are evenly lit from the front with natural skin colour down to the ankles, with no green light reflected on them`, 'excited thrilled grin', { round: 'r3' }],
+      '/ff': ['stool', `She sits sideways on ${S.stool}, her body in profile and her face turned toward the viewer, knees pressed together and both feet side by side on the floor, leaning forward with excitement and holding ${PHONE} horizontally in both hands in a landscape gameplay grip, both thumbs on the side facing her; a small toy airdrop crate (a plain bright neon orange plastic cube the size of a tennis ball, no marks) rests on the floor touching the side of her shoe; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'excited focused grin, eyes on the phone', { round: 'r5', cosplay: true, keepAll: true }],
       '/ff/codigos': ['wstool', `She sits on ${S.wstool}, legs crossed at the knee, holding ${PHONE} in one hand and raising the other hand with the palm out toward the viewer in a stop gesture`, 'wary skeptical look, one eyebrow raised, lips pressed', { round: 'r3' }],
       '/valorant': ['walk', `She strides to one side mid-step like a game agent using an ability: her right arm swings up and out to the side and releases a small glowing ball of soft pink and white light that floats in the air just beyond her open fingertips, away from the viewer; her left hand touches the ear cup of ${HEADSET} worn on her head; her hair swings with the motion`, 'focused determined look with a small smile, eyes on the glowing ball', { round: 'r4', cosplay: true, keepAll: true }],
       '/cs2': ['stand', `She stands relaxed in a three-quarter turn, weight on one leg, holding a long bolt-action sniper rifle replica as a cosplay prop: the barrel rests on her right shoulder and points straight up at the ceiling behind her, her right hand loosely on the grip, her left hand lifting the big round scope close to her eye as if checking it; the replica is obviously a painted foam and 3D-printed prop with visible seams, mostly matte black with white panels and bright orange stripes and a bright orange tip, nothing green on it`, 'cool confident half smile, one eye narrowed as if checking the scope', { round: 'r4', cosplay: true }],
@@ -128,11 +130,11 @@ export const SITES = {
       '/esports': ['chair', `She sits on ${S.chair}, knees together, leaning forward, ${HEADSET} around her neck, clapping her hands enthusiastically as if watching a great match; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'thrilled cheering smile, mouth open', { round: 'r3' }],
       '/esports/series': ['chair', `She sits on ${S.chair}, legs crossed at the knee, ${NOTEPAD} resting on her knee, holding up three fingers of one hand toward the viewer as if saying best of three, ${PENCIL} in the other hand`, 'explaining friendly smile', { round: 'r3' }],
       '/fortnite/nube': ['jump', `She does a playful victory dance emote mid-hop, one knee lifted, one arm pumping up in the air, the other hand holding an oversized cartoon toy pickaxe as a cosplay prop resting on her shoulder: a chunky soft foam pickaxe with a pastel purple head, a white handle and a pink grip, clearly a toy`, 'goofy joyful laugh', { round: 'r4', cosplay: true }],
-      '/dota2': ['walk', `She strides forward mid-step like a wizard on the move, planting a tall cosplay wizard staff on the floor beside her with one hand: a twisted light wooden staff taller than her head with a softly glowing amber crystal at the top, clearly a foam and resin prop; her other hand is raised at shoulder height, fingers spread, as if channeling a spell`, 'playful dramatic look, one eyebrow raised', { round: 'r4', cosplay: true, retry: 1 }],
+      '/dota2': ['stand', `She stands in a dynamic three-quarter stance, weight on her back leg, mid-swing like a hero about to throw a hook: her right hand grips a chunky grey plastic chain and swings it up over her right shoulder, so a cosplay replica of a big curved meat hook hangs behind her shoulder; her left hand holds the loose end of the chain low at her hip. The hook is a single large curved hook as long as her forearm with a blunt rounded tip, a clean grey weathered-metal paint finish, clearly a lightweight foam and 3D-printed prop with visible seams; no blood, no red stains, no rust. The hook points up and away behind her, never at the viewer. Exactly two arms and two hands, both fully inside the jacket sleeves`, 'pretty, friendly and confident: a soft natural smile, relaxed natural eyes looking at the viewer, a gentle playful glint', { round: 'r5', cosplay: true }],
       '/rocket-league': ['kneel', `She kneels on the floor sitting back on her heels, knees together, holding a plain black remote control for toy cars in both hands with its short antenna up; on the floor in front of her knees is a small toy RC car (bright orange body, black wheels, small blue toy rocket boosters at the back) nudging a white-and-light-blue ball the size of a grapefruit`, 'competitive excited grin, eyes on the car', { round: 'r4', cosplay: true, keepAll: true }],
       '/fc': ['stand', `She stands on one leg doing a playful football trick, the sole of her raised platform sandal resting on top of a classic white football with black pentagons on the floor in front of her, holding ${PHONE} in one hand and glancing down at it, the other arm out for balance`, 'confident playful smile', { round: 'r4', keepAll: true }],
       '/brawl': ['jump', `She does a light playful jump, knees bent, holding ${PHONE} vertically in one hand with her thumb on it, and holding up in the other hand a small glowing purple toy cube as a fantasy prop, as if she just picked up a power-up`, 'mischievous thrilled grin', { round: 'r4', cosplay: true }],
-      '/clash': ['chair', `She sits on ${S.chair}, legs crossed at the knee, wearing a small shiny gold toy plastic crown with pink plastic gems tilted on her head, holding ${PHONE} vertically in one hand and tapping it with the thumb, while the other hand lifts a small pink teardrop-shaped plush toy`, 'royal playful smirk, chin up', { round: 'r4', cosplay: true }],
+      '/clash': ['chair', `She sits on ${S.chair}, legs crossed at the knee, sitting upright like a playful queen, wearing a small shiny golden toy plastic crown on top of her head. She has exactly two arms and two hands, both clearly visible and anatomically correct, each coming out of one jacket sleeve: her right hand holds ${PHONE} vertically at chest height and taps it with the thumb; her left hand rests flat on her knee. Nothing else in her hands, no other arms, hands or fingers anywhere in the image`, 'royal playful smirk, chin up, looking at the viewer', { round: 'r5', cosplay: true }],
     },
   },
 };
@@ -174,7 +176,7 @@ export const ALT = {
     '/kit/sensibilidad': 'Alt sentada al lado de una mesita, moviendo el mouse sobre un pad negro',
     '/kit/dpi': 'Alt sentada en una mesa alineando el mouse con una tarjeta de plástico',
     '/tier-list': 'Alt pegando un papelito en una tabla de tier list',
-    '/ff': 'Alt corriendo con el celular en la mano',
+    '/ff': 'Alt sentada de costado en un banquito jugando con el celular en horizontal',
     '/ff/sensibilidad': 'Alt sentada jugando con el celular en horizontal',
     '/ff/nombres': 'Alt de rodillas escribiendo en el celular',
     '/ff/espacio-invisible': 'Alt girándose y pellizcando el aire, como si agarrara un espacio invisible',
@@ -188,7 +190,7 @@ export const ALT = {
     '/lol': 'Alt sentada en un banquito lanzando un hechizo con una esfera de luz azul y dorada entre las manos',
     '/lol/rangos': 'Alt sentada con un teclado en las piernas',
     '/fortnite/nube': 'Alt bailando un festejo con un pico gigante de goma apoyado en el hombro',
-    '/dota2': 'Alt sentada con un báculo de cosplay con un cristal ámbar, como si lanzara un hechizo',
+    '/dota2': 'Alt revoleando sobre el hombro una réplica de cosplay de un gancho gigante con cadena',
     '/rocket-league': 'Alt de rodillas manejando un autito a control remoto que empuja una pelota',
     '/fc': 'Alt pisando una pelota de fútbol con el celular en la mano',
     '/brawl': 'Alt dando un saltito con el celular y un cubito violeta de juguete que brilla',

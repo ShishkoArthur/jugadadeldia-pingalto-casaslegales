@@ -126,5 +126,17 @@
  "pa-sc-clash-r4": {
   "top": 118,
   "chin": 400
+ },
+ "pa-sc-ff-r5": {
+  "top": 5,
+  "chin": 385
+ },
+ "pa-sc-dota2-r5": {
+  "top": 5,
+  "chin": 325
+ },
+ "pa-sc-clash-r5": {
+  "top": 100,
+  "chin": 420
  }
 }

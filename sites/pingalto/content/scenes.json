@@ -344,30 +344,30 @@
    "alt": "Alt bailando un festejo con un pico gigante de goma apoyado en el hombro"
   },
   "/ff": {
-   "image": "pa-sc-ff-r3",
+   "image": "pa-sc-ff-r5",
    "files": [
     {
-     "name": "scenes/ff-114.webp",
-     "w": 114,
+     "name": "scenes/ff-195.webp",
+     "w": 195,
      "h": 300,
-     "kb": 8
+     "kb": 13
     },
     {
-     "name": "scenes/ff-212.webp",
-     "w": 212,
+     "name": "scenes/ff-363.webp",
+     "w": 363,
      "h": 560,
-     "kb": 18
+     "kb": 28
     },
     {
-     "name": "scenes/ff-318.webp",
-     "w": 318,
+     "name": "scenes/ff-545.webp",
+     "w": 545,
      "h": 840,
-     "kb": 31
+     "kb": 47
     }
    ],
-   "ar": 0.3792,
-   "g": 0.9298,
-   "alt": "Alt corriendo con el celular en la mano"
+   "ar": 0.649,
+   "g": 0.7735,
+   "alt": "Alt sentada de costado en un banquito jugando con el celular en horizontal"
   },
   "/ff/codigos": {
    "image": "pa-sc-ff-codigos-r3",

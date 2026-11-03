@@ -92,12 +92,12 @@
    "transparent": 77,
    "size": "480x1253"
   },
-  "pa-sc-ff-r3": {
-   "pose": "walk",
-   "head": 314,
-   "scale": 0.675,
-   "transparent": 80,
-   "size": "512x1533"
+  "pa-sc-ff-r5": {
+   "pose": "stool",
+   "head": 380,
+   "scale": 0.558,
+   "transparent": null,
+   "size": "725x1180"
   },
   "pa-sc-ff-codigos-r3": {
    "pose": "wstool",
@@ -155,12 +155,12 @@
    "transparent": null,
    "size": "760x1667"
   },
-  "pa-sc-dota2-r4": {
-   "pose": "walk",
-   "head": 307,
-   "scale": 0.691,
+  "pa-sc-dota2-r5": {
+   "pose": "stand",
+   "head": 320,
+   "scale": 0.662,
    "transparent": null,
-   "size": "802x1572"
+   "size": "857x1505"
   },
   "pa-sc-rocket-league-r4": {
    "pose": "kneel",
@@ -183,12 +183,12 @@
    "transparent": null,
    "size": "716x1347"
   },
-  "pa-sc-clash-r4": {
+  "pa-sc-clash-r5": {
    "pose": "chair",
-   "head": 282,
-   "scale": 0.752,
+   "head": 320,
+   "scale": 0.662,
    "transparent": null,
-   "size": "857x1654"
+   "size": "521x1427"
   }
  }
 }
