@@ -77,11 +77,12 @@ test('rule sets: every field required, no defaults', () => {
   assert.equal(validateRules(ok).target, 30);
   for (const k of Object.keys(ok)) { const r = { ...ok }; delete r[k]; assert.throws(() => validateRules(r), new RegExp(k)); }
   assert.throws(() => validateRules({ ...ok, target: 20 }));
-  assert.throws(() => validateRules({ ...ok, players: 4 }), /not implemented/);
+  assert.throws(() => validateRules({ ...ok, players: 4 }), /responder/);
+  assert.throws(() => validateRules({ ...ok, players: 4, responder: 'pie', flor: true }), /not implemented/);
   assert.throws(() => validateRules({ ...ok, flor: 'si' }));
   assert.throws(() => validateRules({ ...ok, falta: 'whatever' }));
   assert.throws(() => validateRules({ ...ok, extra: 1 }), /unknown key/);
-  for (const r of Object.values(RULESETS)) assert.equal(validateRules(r).players, 2);
+  for (const r of Object.values(RULESETS)) assert.equal(validateRules(r).players, r.name.startsWith('parejas-') ? 4 : 2);
   assert.equal(buenasAt(RULESETS['clasico-30-sin-flor']), 15);
   assert.equal(buenasAt(RULESETS['bonaerense-40-con-flor']), 20);
   assert.equal(buenasAt(RULESETS['corto-15-sin-flor']), null);

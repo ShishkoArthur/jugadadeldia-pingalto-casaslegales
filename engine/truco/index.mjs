@@ -2,6 +2,7 @@
 export * from './cards.mjs';
 export * from './rules.mjs';
 export * from './game.mjs';
+export { SENAS, legalSignals, signal, singEnvido, pieOf } from './game4.mjs';
 export * from './probability.mjs';
 export * from './simulate.mjs';
 export { LEVELS, createBot, playMatch, oppHandsConsistent } from './bots.mjs';

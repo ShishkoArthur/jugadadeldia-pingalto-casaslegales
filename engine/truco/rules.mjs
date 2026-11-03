@@ -1,7 +1,8 @@
 // Truco rule sets. Every field is required: a missing or unknown value is an error, never a silent default (PLAYBOOK §5).
 // Sources and quotes for every option: data/sources/truco/rules.json.
 //
-//   players          2 (1 vs 1). 4 (2 vs 2) is designed for (seats and teams in the state) but not playable yet.
+//   players          2 (1 vs 1) or 4 (2 vs 2, partners sit facing, seat % 2 is the team; engine/truco/game4.mjs).
+//                    2 vs 2 is played sin flor only for now (flor between four hands has its own rules, not built yet).
 //   target           15, 30 or 40 points. With 30 and 40 the first half are "malas", the second half "buenas".
 //   flor             true = con flor (flor 3, con flor me achico 4, contraflor 6, contraflor al resto wins the chico),
 //                    false = sin flor (three of a suit count as envido: 20 + the two highest).
@@ -12,15 +13,25 @@
 //                                       needs to win (Juegos Bonaerenses 9.2).
 //   mazoNoCardPoints points the other side scores when a side goes to the mazo before playing any card and before anything
 //                    was sung in the hand: 2 (Juegos Bonaerenses 6.1) or 1.
+//   responder        2 vs 2 only (required there, unknown with 2 players): who answers a call for the other team.
+//                    'pie'   the pie of that team, the last of its two players in the hand ("Pie: ultimo jugador de cada
+//                            bando; suele actuar como capitan", juegosdesalon);
+//                    'next'  the next player of that team after the caller ("cualquier jugador del bando contrario puede
+//                            contestar y su respuesta obliga a todo su equipo", juegosdesalon).
 export const FALTA = Object.freeze(['leader-to-win', 'leader-to-stage', 'malas-wins-match']);
 const KEYS = ['players', 'target', 'flor', 'falta', 'mazoNoCardPoints'];
+export const RESPONDERS = Object.freeze(['pie', 'next']);
 
 export function validateRules(r) {
   if (!r || typeof r !== 'object') throw new Error('truco: a rule set object is required (see engine/truco/rules.mjs)');
   for (const k of KEYS) if (!(k in r)) throw new Error('truco rules: missing "' + k + '"');
-  for (const k of Object.keys(r)) if (!KEYS.includes(k) && k !== 'name') throw new Error('truco rules: unknown key "' + k + '"');
-  if (r.players === 4) throw new Error('truco rules: 2 vs 2 is not implemented yet (players: 2)');
-  if (r.players !== 2) throw new Error('truco rules: players must be 2');
+  for (const k of Object.keys(r)) if (!KEYS.includes(k) && k !== 'name' && !(k === 'responder' && r.players === 4)) throw new Error('truco rules: unknown key "' + k + '"');
+  if (r.players !== 2 && r.players !== 4) throw new Error('truco rules: players must be 2 or 4');
+  if (r.players === 4) {
+    if (!('responder' in r)) throw new Error('truco rules: missing "responder" (2 vs 2)');
+    if (!RESPONDERS.includes(r.responder)) throw new Error('truco rules: responder must be one of ' + RESPONDERS.join(', '));
+    if (r.flor !== false) throw new Error('truco rules: 2 vs 2 con flor is not implemented yet (flor: false)');
+  }
   if (![15, 30, 40].includes(r.target)) throw new Error('truco rules: target must be 15, 30 or 40');
   if (typeof r.flor !== 'boolean') throw new Error('truco rules: flor must be true or false');
   if (!FALTA.includes(r.falta)) throw new Error('truco rules: falta must be one of ' + FALTA.join(', '));
@@ -38,7 +49,24 @@ export const RULESETS = Object.freeze({
   'clasico-30-sin-flor': Object.freeze({ name: 'clasico-30-sin-flor', players: 2, target: 30, flor: false, falta: 'malas-wins-match', mazoNoCardPoints: 2 }),
   'clasico-30-con-flor': Object.freeze({ name: 'clasico-30-con-flor', players: 2, target: 30, flor: true, falta: 'malas-wins-match', mazoNoCardPoints: 2 }),
   'corto-15-sin-flor': Object.freeze({ name: 'corto-15-sin-flor', players: 2, target: 15, flor: false, falta: 'leader-to-win', mazoNoCardPoints: 2 }),
+  'parejas-30-sin-flor': Object.freeze({ name: 'parejas-30-sin-flor', players: 4, target: 30, flor: false, falta: 'malas-wins-match', mazoNoCardPoints: 2, responder: 'pie' }),
+  'parejas-15-sin-flor': Object.freeze({ name: 'parejas-15-sin-flor', players: 4, target: 15, flor: false, falta: 'leader-to-win', mazoNoCardPoints: 1, responder: 'next' }),
 });
+
+// Winner of the bazas, or null if not decided yet. Results are team numbers or -1 (parda).
+// Parda rules: first parda -> the next baza decides; all three parda -> the mano; one each and a parda -> the side that won first.
+export function handWinner(R, manoTeam) {
+  if (R.length < 2) return null;
+  const [a, b, c] = R;
+  if (a === -1) {
+    if (b !== -1) return b;
+    if (R.length < 3) return null;
+    return c !== -1 ? c : manoTeam;
+  }
+  if (b === a || b === -1) return a;
+  if (R.length < 3) return null;
+  return c === -1 ? a : c;
+}
 
 // Falta envido value for the side that wins it.
 export function faltaValue(rules, score, winnerTeam) {

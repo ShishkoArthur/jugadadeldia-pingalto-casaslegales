@@ -1,4 +1,4 @@
-// Computer opponents for truco 1 vs 1. A bot sees only observation(state, seat) (engine/truco/game.mjs): its own cards, the
+// Computer opponents for truco 1 vs 1 (2 vs 2 observations go to bots4.mjs with the same levels). A bot sees only observation(state, seat) (engine/truco/game.mjs): its own cards, the
 // table, what was sung and shown. It always returns one of obs.legal, so it can never make an illegal move.
 // Levels:
 //   facil    legal moves at random with simple rules of thumb (sings envido with good points, accepts by coin and hand).
@@ -14,6 +14,7 @@ import { POWER, envidoPoints, florPoints, hasFlor } from './cards.mjs';
 import { step, toAct, observation } from './game.mjs';
 import { envidoNoQuieroValue, faltaValue, TRUCO_CALLS } from './rules.mjs';
 import { solveBazas } from './probability.mjs';
+import { choose4 } from './bots4.mjs';
 
 export const LEVELS = Object.freeze(['facil', 'normal', 'dificil']);
 const DEFAULTS = Object.freeze({
@@ -30,7 +31,7 @@ export function createBot(level, seed) {
     const L = obs.legal;
     if (!L || !L.length) throw new Error('bot: nothing to do for seat ' + obs.seat);
     if (L.length === 1) return L[0];
-    const a = level === 'facil' ? easy(obs, rng) : level === 'normal' ? normal(obs, rng, cfg) : hard(obs, rng, cfg);
+    const a = obs.rules.players === 4 ? choose4(obs, rng, level) : level === 'facil' ? easy(obs, rng) : level === 'normal' ? normal(obs, rng, cfg) : hard(obs, rng, cfg);
     return (a && L.find(x => x.type === a.type && x.card === a.card)) || L[0];
   };
   return { level, choose, act: state => choose(observation(state, toAct(state))) };

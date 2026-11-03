@@ -9,7 +9,10 @@
 import { DECK_40, shuffle, deal } from '../cards/spanish.mjs';
 import { createRng, fromState } from '../cards/rng.mjs';
 import { POWER, envidoPoints, florPoints, hasFlor } from './cards.mjs';
-import { validateRules, envidoCanRaise, envidoQuieroValue, envidoNoQuieroValue, faltaValue, TRUCO_CALLS, FLOR_POINTS } from './rules.mjs';
+import { validateRules, envidoCanRaise, envidoQuieroValue, envidoNoQuieroValue, faltaValue, TRUCO_CALLS, FLOR_POINTS, handWinner } from './rules.mjs';
+import { newMatch4, customHand4, toAct4, legalActions4, step4, observation4 } from './game4.mjs';
+
+export { handWinner };
 
 export const VERSION = 1;
 const PARDA = -1;
@@ -19,6 +22,7 @@ const other = seat => 1 - seat;
 export function newMatch(rules, seed) {
   const r = validateRules(rules);
   if (seed === undefined || seed === null) throw new Error('newMatch: a seed is required');
+  if (r.players === 4) return newMatch4(r, seed);
   const rng = createRng(seed);
   const firstMano = rng.int(r.players);
   const state = { v: VERSION, rules: { ...r }, seed: String(seed), rng: rng.state(), score: [0, 0], handNo: 0, over: false, winner: null, hand: null, lastHand: null, history: [] };
@@ -49,6 +53,7 @@ export function freshHand(no, mano, hands) {
 
 // A match whose current hand has the given cards (tests, trainer situations, "quiero o no quiero" puzzles).
 export function customHand(rules, seed, hands, { mano, score }) {
+  if (rules && rules.players === 4) return customHand4(rules, seed, hands, { mano, score });
   const state = newMatch(rules, seed);
   const all = hands.flat();
   if (hands.length !== state.rules.players || hands.some(x => x.length !== 3) || new Set(all).size !== all.length || !all.every(c => DECK_40.includes(c)))
@@ -66,6 +71,7 @@ export function clone(state) {
 
 // The seat that must act now, or null when the match is over.
 export function toAct(state) {
+  if (state.rules.players === 4) return toAct4(state);
   if (state.over) return null;
   const h = state.hand;
   if (h.ended) return null;
@@ -84,6 +90,7 @@ function envidoOpen(state, h, seat) {
 }
 
 export function legalActions(state, seat) {
+  if (state.rules.players === 4) return legalActions4(state, seat);
   if (state.over || seat !== toAct(state)) return [];
   const h = state.hand;
   const A = t => ({ type: t });
@@ -128,6 +135,7 @@ export function apply(state, action) {
 
 // In-place transition (for simulations on a private copy). opts.deal = false stops at the end of the hand (no new deal).
 export function step(state, action, opts = { deal: true }) {
+  if (state.rules.players === 4) return step4(state, action, opts);
   if (!isLegal(state, action)) throw new Error('illegal action ' + JSON.stringify(action) + ' for seat ' + toAct(state));
   const seat = toAct(state), h = state.hand;
   h.actions.push({ seat, type: action.type, ...(action.card ? { card: action.card } : {}) });
@@ -225,21 +233,6 @@ function playCard(state, seat, card) {
   h.turn = lead;
 }
 
-// Winner of the bazas, or null if not decided yet. Results are team numbers or -1 (parda).
-// Parda rules: first parda -> the next baza decides; all three parda -> the mano; one each and a parda -> the side that won first.
-export function handWinner(R, manoTeam) {
-  if (R.length < 2) return null;
-  const [a, b, c] = R;
-  if (a === PARDA) {
-    if (b !== PARDA) return b;
-    if (R.length < 3) return null;
-    return c !== PARDA ? c : manoTeam;
-  }
-  if (b === a || b === PARDA) return a;
-  if (R.length < 3) return null;
-  return c === PARDA ? a : c;
-}
-
 function mazo(state, seat) {
   const h = state.hand, o = other(seat);
   let pts = h.truco.level;
@@ -271,6 +264,7 @@ function finishHand(state, how) {
 
 // What one seat may know: the opponent's unplayed cards and the future deck are hidden.
 export function observation(state, seat) {
+  if (state.rules.players === 4) return observation4(state, seat);
   const h = state.hand, o = other(seat);
   const hidden = {
     ...h,

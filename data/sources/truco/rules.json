@@ -235,6 +235,101 @@
    "doc": "catamarca-rentas",
    "text": "Antes del inicio del partido se debe decidir si se juega con flor.",
    "uses": "engine/truco/rules.mjs flor true/false"
+  },
+  "4p-pairs": {
+   "doc": "gba-2026",
+   "text": "Partida más generalizada formándose entre dos (2) parejas de contrarios que deberán sentarse alternados (frente a frente)",
+   "uses": "engine/truco/game4.mjs team = seat % 2, partners facing"
+  },
+  "4p-order": {
+   "doc": "juegosdesalon",
+   "text": "Todo el juego del truco se realiza en sentido contrario al de las agujas del reloj.",
+   "uses": "engine/truco/game4.mjs seats in playing order"
+  },
+  "4p-mano-right": {
+   "doc": "juegosdesalon",
+   "text": "El jugador a la derecha del dador es el mano y cuenta con ciertas preferencias en el juego",
+   "uses": "engine/truco/game4.mjs mano first, next hand next seat"
+  },
+  "4p-pie": {
+   "doc": "juegosdesalon",
+   "text": "El último jugador de cada bando es el pie, que suele actuar como capitán y estratega del equipo.",
+   "uses": "engine/truco/rules.mjs responder \"pie\"; game4.mjs pieOf"
+  },
+  "4p-responder-any": {
+   "doc": "juegosdesalon",
+   "text": "Cualquier jugador del bando contrario puede contestar y su respuesta obliga a todo su equipo.",
+   "uses": "engine/truco/rules.mjs responder \"next\""
+  },
+  "4p-envido-team": {
+   "doc": "juegosdesalon",
+   "text": "Tanto los envites como las respuestas comprometen a todo el bando en el cual juega el que los hizo.",
+   "uses": "engine/truco/game4.mjs envido per team"
+  },
+  "4p-envido-answer-after-card": {
+   "doc": "juegosdesalon",
+   "text": "Cuando uno de los jugadores grita el envido, los otros tienen la posibilidad de responderle, aunque ya hayan jugado su primera carta.",
+   "uses": "engine/truco/game4.mjs the responder may have played"
+  },
+  "4p-envido-tie-mano": {
+   "doc": "juegosdesalon",
+   "text": "en caso de igualdad gana el mano (es decir, entre dos jugadores que tienen los mismos puntos de envido gana el que se encuentra primero en esa ronda).",
+   "uses": "engine/truco/game4.mjs singEnvido ties"
+  },
+  "4p-son-buenas": {
+   "doc": "juegosdesalon",
+   "text": "Cuando un jugador tiene una jugada peor que otra declarada, no es necesario que cante la suya, basta que diga son buenas.",
+   "uses": "engine/truco/game4.mjs singEnvido shown"
+  },
+  "4p-baza-same-team": {
+   "doc": "juegosdesalon",
+   "text": "Cuando más de uno juega la carta mayor, ganan si son del mismo bando, y si son contrarios, empatan (baza parda).",
+   "uses": "engine/truco/game4.mjs bazaResult"
+  },
+  "4p-lead-winner": {
+   "doc": "juegosdesalon",
+   "text": "en la segunda y en la tercera, sale el que ha ganado la anterior.",
+   "uses": "engine/truco/game4.mjs next lead"
+  },
+  "4p-parda-mano-leads": {
+   "doc": "juegosdesalon",
+   "text": "Si la primera resultó empatada vuelve a iniciar la segunda el mano.",
+   "uses": "engine/truco/game4.mjs lead after a parda"
+  },
+  "4p-mazo-alone": {
+   "doc": "juegosdesalon",
+   "text": "Si en un bando un jugador se va a baraja y el otro no, éste queda solo en el juego defendiendo con sus cartas la suerte del equipo.",
+   "uses": "engine/truco/game4.mjs mazo (one player)"
+  },
+  "4p-mazo-both": {
+   "doc": "juegosdesalon",
+   "text": "Si los dos jugadores de un bando se van a baraja y no se ha gritado o cantado truco, el otro bando cobra 1 tanto.",
+   "uses": "engine/truco/rules.mjs mazoNoCardPoints 1 (parejas-15-sin-flor)"
+  },
+  "4p-mazo-any-time": {
+   "doc": "gba-2026",
+   "text": "Podrán irse a baraja los que quieran siguiendo el curso del tiro mientras queden con cartas los contrarios",
+   "uses": "engine/truco/game4.mjs mazo on own turn"
+  },
+  "4p-senas": {
+   "doc": "juegosdesalon",
+   "text": "Es posible señalar a los compañeros las cartas que se tienen.",
+   "uses": "engine/truco/game4.mjs SENAS, signal"
+  },
+  "4p-senas-malas": {
+   "doc": "juegosdesalon",
+   "text": "Malas cartas: cerrar los ojos.",
+   "uses": "engine/truco/game4.mjs sena \"malas\""
+  },
+  "4p-senas-envido": {
+   "doc": "juegosdesalon",
+   "text": "Buenas cartas para envido: inclinar la cabeza hacia adelante o hacia un lado.",
+   "uses": "engine/truco/game4.mjs sena \"envido\""
+  },
+  "4p-senas-falso": {
+   "doc": "juegosdesalon",
+   "text": "As de oros o as de copas: abrir un poco la boca.",
+   "uses": "engine/truco/game4.mjs sena \"anchoFalso\""
   }
  }
 }

@@ -24,7 +24,7 @@ function checkHand(s) {
 
 test('random self-play: 10 000 hands, no illegal move accepted, scores consistent, every match ends', () => {
   const rng = createRng('fuzz-truco');
-  const sets = Object.values(RULESETS);
+  const sets = Object.values(RULESETS).filter(r => r.players === 2);
   let hands = 0, matches = 0, steps = 0;
   while (hands < 10000) {
     const rules = sets[matches % sets.length];
