@@ -12,19 +12,19 @@ export const money = n => '$ ' + fmt(n, 2);
 // gets a shorter frame and a slightly larger scale, so heads stay comparable), and never wider than the figure needs. --r1 is the frame
 // aspect on wide screens, --r2 on phones; --g and --a (file width / height) size the full-width phone card of the hero, which is
 // g * clamp(320px, 100vw, 420px) tall. Frame widths in css/jg.css (FRAME below must match them): hero 360 px (300 px at <= 900),
-// home 340 px (240 px), in-page 340 px (280 px); on phones the home figure gets the same card as a hero (the decorative stack is
+// home 340 px (at most 300 px under the text at <= 1100), in-page 340 px (280 px); on phones the home figure gets the same card as a hero (the decorative stack is
 // hidden there) and an in-page one min(280px, 76 %). sizes = frame width * share of the image in it, so phones with DPR 3 get at least 3x pixels.
 // Empty string when the page has no scene.
 const SCENES = JSON.parse(readFileSync(new URL('../content/scenes.json', import.meta.url), 'utf8'));
 const K1 = 1.4, K2 = 1.5, FIT = 0.94;
-const FRAME = { hero: [360, 300], home: [340, 240], mn: [340, 280] };
+const FRAME = { hero: [360, 300, 900], home: [340, 300, 1100], mn: [340, 280, 900] };
 const frameH = (sc, k) => Math.min(k * sc.g, FIT / sc.ar);
 const px = x => Math.ceil(x) + 'px';
 function sizes(sc, kind) {
-  const x1 = frameH(sc, K1) * sc.ar * FIT, [wide, mid] = FRAME[kind];
+  const x1 = frameH(sc, K1) * sc.ar * FIT, [wide, mid, bp] = FRAME[kind];
   const phone = kind !== 'mn' ? ['(max-width:420px) ' + Math.ceil(100 * FIT * sc.g * sc.ar) + 'vw', '(max-width:620px) ' + px(420 * FIT * sc.g * sc.ar)]
     : ['(max-width:388px) calc((100vw - 20px) * ' + (0.76 * x1).toFixed(3) + ')', '(max-width:620px) ' + px(280 * x1)];
-  return [...phone, '(max-width:900px) ' + px(mid * x1), px(wide * x1)].join(', ');
+  return [...phone, '(max-width:' + bp + 'px) ' + px(mid * x1), px(wide * x1)].join(', ');
 }
 export const hasGirl = h => !!SCENES.pages[h.page.path];
 export function girl(h, { lazy = false, cls = '', kind = 'hero' } = {}) {
