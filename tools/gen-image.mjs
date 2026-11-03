@@ -56,7 +56,13 @@ await Promise.all(jobs.map(async (j, idx) => {
     const taskId = await submit(j);
     console.log(`${j.id}: task ${taskId}`);
     const url = await poll(taskId);
-    const img = Buffer.from(await (await fetch(url)).arrayBuffer());
+    let img;
+    for (let k = 0; k < 4; k++) { // the file host sometimes answers with an HTML error page first
+      img = Buffer.from(await (await fetch(url)).arrayBuffer());
+      if (img[0] === 0xff || img[0] === 0x89 || img.subarray(8, 12).toString() === 'WEBP') break;
+      if (k === 3) throw new Error(`${taskId}: download is not an image (${img.length} bytes)`);
+      await new Promise(res => setTimeout(res, 10000));
+    }
     writeFileSync(join(OUT, `${j.id}.png`), img);
     prov[j.id] = { file: `${j.id}.png`, prompt: j.prompt, refs: j.refs || [], aspectRatio: j.aspectRatio,
       resolution: j.resolution || '2K', model: 'nano-banana-pro', taskId, sourceUrl: url,

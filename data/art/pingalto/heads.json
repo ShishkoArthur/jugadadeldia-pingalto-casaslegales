@@ -1,0 +1,58 @@
+{
+ "base": {
+  "top": 6,
+  "chin": 317
+ },
+ "pa-sc-home-r2": {
+  "top": 5,
+  "chin": 380
+ },
+ "pa-sc-kit-ping-r2": {
+  "top": 5,
+  "chin": 347
+ },
+ "pa-sc-kit-sensibilidad-r2": {
+  "top": 3,
+  "chin": 464
+ },
+ "pa-sc-kit-dpi-r2": {
+  "top": 5,
+  "chin": 356
+ },
+ "pa-sc-tier-list-r2": {
+  "top": 5,
+  "chin": 356
+ },
+ "pa-sc-ff-sensibilidad-r2": {
+  "top": 5,
+  "chin": 353
+ },
+ "pa-sc-ff-nombres-r2": {
+  "top": 5,
+  "chin": 444
+ },
+ "pa-sc-ff-espacio-invisible-r2": {
+  "top": 5,
+  "chin": 322
+ },
+ "pa-sc-valorant-rangos-r2": {
+  "top": 67,
+  "chin": 383
+ },
+ "pa-sc-valorant-agentes-r2": {
+  "top": 11,
+  "chin": 361
+ },
+ "pa-sc-cs2-mira-r2": {
+  "top": 9,
+  "chin": 333
+ },
+ "pa-sc-lol-rangos-r2": {
+  "top": 5,
+  "chin": 356
+ },
+ "pa-sc-fortnite-nube-r2": {
+  "top": 5,
+  "chin": 294
+ }
+}

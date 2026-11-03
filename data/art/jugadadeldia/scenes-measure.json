@@ -1,230 +1,236 @@
 {
+ "round": "r2",
+ "scaleBy": "head (hair top to chin, marked by eye)",
  "bodyPx": 1500,
- "medianSourceBody": 2305,
+ "headPx": 213,
+ "base": {
+  "head": 327,
+  "body": 2299
+ },
  "scenes": {
-  "jdd-sc-home": {
-   "body": 2300,
-   "scale": 0.652,
-   "offMedian": -0.2,
-   "transparent": 80,
-   "size": "457x1505"
-  },
-  "jdd-sc-quiniela": {
-   "body": 2300,
-   "scale": 0.652,
-   "offMedian": -0.2,
-   "transparent": 79,
-   "size": "552x1505"
-  },
-  "jdd-sc-quiniela-nacional-y-provincia": {
-   "body": 2300,
-   "scale": 0.652,
-   "offMedian": -0.2,
+  "jdd-sc-home-r2": {
+   "pose": "stool",
+   "head": 330,
+   "scale": 0.645,
    "transparent": 78,
-   "size": "541x1505"
+   "size": "715x1430"
   },
-  "jdd-sc-quiniela-horarios": {
-   "body": 2308,
-   "scale": 0.65,
-   "offMedian": 0.1,
+  "jdd-sc-quiniela-r2": {
+   "pose": "walk",
+   "head": 336,
+   "scale": 0.634,
    "transparent": 80,
-   "size": "472x1505"
+   "size": "403x1462"
   },
-  "jdd-sc-quiniela-cuanto-paga": {
-   "body": 2309,
-   "scale": 0.65,
-   "offMedian": 0.2,
-   "transparent": 80,
-   "size": "388x1505"
+  "jdd-sc-quiniela-nacional-y-provincia-r2": {
+   "pose": "wstool",
+   "head": 330,
+   "scale": 0.645,
+   "transparent": 77,
+   "size": "715x1410"
   },
-  "jdd-sc-quiniela-significado-de-los-numeros": {
-   "body": 2308,
-   "scale": 0.65,
-   "offMedian": 0.1,
-   "transparent": 80,
-   "size": "398x1505"
+  "jdd-sc-quiniela-horarios-r2": {
+   "pose": "turn",
+   "head": 306,
+   "scale": 0.696,
+   "transparent": 81,
+   "size": "718x1579"
   },
-  "jdd-sc-quiniela-nacional": {
-   "body": 2306,
-   "scale": 0.65,
-   "offMedian": 0,
+  "jdd-sc-quiniela-cuanto-paga-r2": {
+   "pose": "table",
+   "head": 335,
+   "scale": 0.636,
+   "transparent": 76,
+   "size": "928x1354"
+  },
+  "jdd-sc-quiniela-significado-de-los-numeros-r2": {
+   "pose": "kneel",
+   "head": 376,
+   "scale": 0.566,
+   "transparent": 68,
+   "size": "671x1161"
+  },
+  "jdd-sc-quiniela-nacional-r2": {
+   "pose": "walk",
+   "head": 315,
+   "scale": 0.676,
    "transparent": 79,
-   "size": "594x1506"
+   "size": "807x1567"
   },
-  "jdd-sc-quiniela-provincia": {
-   "body": 2299,
-   "scale": 0.652,
-   "offMedian": -0.3,
+  "jdd-sc-quiniela-provincia-r2": {
+   "pose": "chair",
+   "head": 380,
+   "scale": 0.561,
+   "transparent": 70,
+   "size": "841x1230"
+  },
+  "jdd-sc-quiniela-tucuman-r2": {
+   "pose": "stand",
+   "head": 350,
+   "scale": 0.609,
+   "transparent": 82,
+   "size": "539x1369"
+  },
+  "jdd-sc-quiniela-mendoza-r2": {
+   "pose": "wstool",
+   "head": 319,
+   "scale": 0.668,
    "transparent": 79,
-   "size": "558x1505"
+   "size": "570x1455"
   },
-  "jdd-sc-quiniela-tucuman": {
-   "body": 2313,
-   "scale": 0.649,
-   "offMedian": 0.3,
-   "transparent": 80,
-   "size": "580x1505"
+  "jdd-sc-quiniela-catamarca-r2": {
+   "pose": "kneel",
+   "head": 475,
+   "scale": 0.448,
+   "transparent": 70,
+   "size": "378x957"
   },
-  "jdd-sc-quiniela-mendoza": {
-   "body": 2303,
-   "scale": 0.651,
-   "offMedian": -0.1,
-   "transparent": 79,
-   "size": "443x1505"
-  },
-  "jdd-sc-quiniela-catamarca": {
-   "body": 2316,
-   "scale": 0.648,
-   "offMedian": 0.5,
-   "transparent": 80,
-   "size": "387x1505"
-  },
-  "jdd-sc-quiniela-san-juan": {
-   "body": 2308,
-   "scale": 0.65,
-   "offMedian": 0.1,
+  "jdd-sc-quiniela-san-juan-r2": {
+   "pose": "walk",
+   "head": 300,
+   "scale": 0.71,
    "transparent": 78,
-   "size": "561x1506"
+   "size": "680x1644"
   },
-  "jdd-sc-quiniela-cordoba": {
-   "body": 2299,
-   "scale": 0.652,
-   "offMedian": -0.3,
-   "transparent": 80,
-   "size": "512x1505"
+  "jdd-sc-quiniela-cordoba-r2": {
+   "pose": "table",
+   "head": 330,
+   "scale": 0.645,
+   "transparent": 77,
+   "size": "982x1365"
   },
-  "jdd-sc-quini-6": {
-   "body": 2316,
-   "scale": 0.648,
-   "offMedian": 0.5,
-   "transparent": 80,
-   "size": "427x1505"
+  "jdd-sc-quini-6-r2": {
+   "pose": "cushion",
+   "head": 475,
+   "scale": 0.448,
+   "transparent": 66,
+   "size": "748x861"
   },
-  "jdd-sc-quini-6-controlar": {
-   "body": 2301,
-   "scale": 0.652,
-   "offMedian": -0.2,
-   "transparent": 79,
-   "size": "500x1505"
-  },
-  "jdd-sc-quini-6-como-se-juega": {
-   "body": 2320,
-   "scale": 0.647,
-   "offMedian": 0.7,
-   "transparent": 79,
-   "size": "633x1505"
-  },
-  "jdd-sc-loto-plus": {
-   "body": 2307,
-   "scale": 0.65,
-   "offMedian": 0.1,
-   "transparent": 79,
-   "size": "486x1506"
-  },
-  "jdd-sc-quiniela-plus": {
-   "body": 2305,
-   "scale": 0.651,
-   "offMedian": 0,
-   "transparent": 80,
-   "size": "427x1506"
-  },
-  "jdd-sc-telekino": {
-   "body": 2299,
-   "scale": 0.652,
-   "offMedian": -0.3,
-   "transparent": 80,
-   "size": "408x1505"
-  },
-  "jdd-sc-telekino-controlar": {
-   "body": 2297,
-   "scale": 0.653,
-   "offMedian": -0.3,
-   "transparent": 79,
-   "size": "556x1505"
-  },
-  "jdd-sc-tombola-santiaguena": {
-   "body": 2301,
-   "scale": 0.652,
-   "offMedian": -0.2,
-   "transparent": 79,
-   "size": "541x1505"
-  },
-  "jdd-sc-tombola-jujena": {
-   "body": 2303,
-   "scale": 0.651,
-   "offMedian": -0.1,
-   "transparent": 80,
-   "size": "418x1505"
-  },
-  "jdd-sc-truco": {
-   "body": 2309,
-   "scale": 0.65,
-   "offMedian": 0.2,
-   "transparent": 79,
-   "size": "532x1505"
-  },
-  "jdd-sc-truco-valores-de-las-cartas": {
-   "body": 2312,
+  "jdd-sc-quini-6-controlar-r2": {
+   "pose": "stand",
+   "head": 328,
    "scale": 0.649,
-   "offMedian": 0.3,
-   "transparent": 80,
-   "size": "400x1505"
+   "transparent": 79,
+   "size": "566x1503"
   },
-  "jdd-sc-truco-senas": {
-   "body": 2296,
-   "scale": 0.653,
-   "offMedian": -0.4,
-   "transparent": 80,
-   "size": "393x1505"
+  "jdd-sc-quini-6-como-se-juega-r2": {
+   "pose": "chair",
+   "head": 350,
+   "scale": 0.609,
+   "transparent": 73,
+   "size": "704x1317"
   },
-  "jdd-sc-truco-anotador": {
-   "body": 2300,
-   "scale": 0.652,
-   "offMedian": -0.2,
+  "jdd-sc-loto-plus-r2": {
+   "pose": "stand",
+   "head": 278,
+   "scale": 0.766,
+   "transparent": 82,
+   "size": "574x1665"
+  },
+  "jdd-sc-quiniela-plus-r2": {
+   "pose": "stool",
+   "head": 350,
+   "scale": 0.609,
+   "transparent": 80,
+   "size": "722x1326"
+  },
+  "jdd-sc-telekino-r2": {
+   "pose": "walk",
+   "head": 336,
+   "scale": 0.634,
    "transparent": 81,
-   "size": "397x1506"
+   "size": "475x1454"
   },
-  "jdd-sc-truco-reglas": {
-   "body": 2308,
-   "scale": 0.65,
-   "offMedian": 0.1,
-   "transparent": 80,
-   "size": "426x1505"
+  "jdd-sc-telekino-controlar-r2": {
+   "pose": "cushion",
+   "head": 464,
+   "scale": 0.459,
+   "transparent": 69,
+   "size": "778x796"
   },
-  "jdd-sc-burako": {
-   "body": 2300,
-   "scale": 0.652,
-   "offMedian": -0.2,
-   "transparent": 80,
-   "size": "423x1506"
+  "jdd-sc-tombola-santiaguena-r2": {
+   "pose": "kneel",
+   "head": 491,
+   "scale": 0.434,
+   "transparent": 71,
+   "size": "629x842"
   },
-  "jdd-sc-generala": {
-   "body": 2305,
-   "scale": 0.651,
-   "offMedian": 0,
-   "transparent": 80,
-   "size": "463x1505"
+  "jdd-sc-tombola-jujena-r2": {
+   "pose": "stand",
+   "head": 403,
+   "scale": 0.529,
+   "transparent": 79,
+   "size": "357x1224"
   },
-  "jdd-sc-dados": {
-   "body": 2309,
-   "scale": 0.65,
-   "offMedian": 0.2,
-   "transparent": 81,
-   "size": "373x1506"
+  "jdd-sc-truco-r2": {
+   "pose": "cushion",
+   "head": 408,
+   "scale": 0.522,
+   "transparent": 74,
+   "size": "893x915"
   },
-  "jdd-sc-chinchon": {
-   "body": 2311,
-   "scale": 0.649,
-   "offMedian": 0.3,
-   "transparent": 80,
-   "size": "414x1505"
+  "jdd-sc-truco-valores-de-las-cartas-r2": {
+   "pose": "walk",
+   "head": 330,
+   "scale": 0.645,
+   "transparent": 82,
+   "size": "482x1481"
   },
-  "jdd-sc-escoba-de-15": {
-   "body": 2305,
-   "scale": 0.651,
-   "offMedian": 0,
-   "transparent": 80,
-   "size": "424x1506"
+  "jdd-sc-truco-senas-r2": {
+   "pose": "chair",
+   "head": 388,
+   "scale": 0.549,
+   "transparent": 76,
+   "size": "448x1195"
+  },
+  "jdd-sc-truco-anotador-r2": {
+   "pose": "table",
+   "head": 395,
+   "scale": 0.539,
+   "transparent": 71,
+   "size": "857x1211"
+  },
+  "jdd-sc-truco-reglas-r2": {
+   "pose": "stand",
+   "head": 344,
+   "scale": 0.619,
+   "transparent": 79,
+   "size": "526x1425"
+  },
+  "jdd-sc-burako-r2": {
+   "pose": "wstool",
+   "head": 330,
+   "scale": 0.645,
+   "transparent": 78,
+   "size": "516x1414"
+  },
+  "jdd-sc-generala-r2": {
+   "pose": "stand",
+   "head": 386,
+   "scale": 0.552,
+   "transparent": 76,
+   "size": "562x1276"
+  },
+  "jdd-sc-dados-r2": {
+   "pose": "kneel",
+   "head": 384,
+   "scale": 0.555,
+   "transparent": 77,
+   "size": "679x1003"
+  },
+  "jdd-sc-chinchon-r2": {
+   "pose": "chair",
+   "head": 369,
+   "scale": 0.577,
+   "transparent": 76,
+   "size": "628x1228"
+  },
+  "jdd-sc-escoba-de-15-r2": {
+   "pose": "table",
+   "head": 378,
+   "scale": 0.563,
+   "transparent": 71,
+   "size": "951x1223"
   }
  }
 }

@@ -1,0 +1,134 @@
+{
+ "base": {
+  "top": 3,
+  "chin": 330
+ },
+ "jdd-sc-home-r2": {
+  "top": 3,
+  "chin": 333
+ },
+ "jdd-sc-quiniela-r2": {
+  "top": 3,
+  "chin": 339
+ },
+ "jdd-sc-quiniela-nacional-y-provincia-r2": {
+  "top": 3,
+  "chin": 333
+ },
+ "jdd-sc-quiniela-horarios-r2": {
+  "top": 3,
+  "chin": 309
+ },
+ "jdd-sc-quiniela-cuanto-paga-r2": {
+  "top": 3,
+  "chin": 338
+ },
+ "jdd-sc-quiniela-significado-de-los-numeros-r2": {
+  "top": 3,
+  "chin": 379
+ },
+ "jdd-sc-quiniela-nacional-r2": {
+  "top": 3,
+  "chin": 318
+ },
+ "jdd-sc-quiniela-provincia-r2": {
+  "top": 3,
+  "chin": 383
+ },
+ "jdd-sc-quiniela-tucuman-r2": {
+  "top": 3,
+  "chin": 353
+ },
+ "jdd-sc-quiniela-mendoza-r2": {
+  "top": 3,
+  "chin": 322
+ },
+ "jdd-sc-quiniela-catamarca-r2": {
+  "top": 3,
+  "chin": 478
+ },
+ "jdd-sc-quiniela-san-juan-r2": {
+  "top": 11,
+  "chin": 311
+ },
+ "jdd-sc-quiniela-cordoba-r2": {
+  "top": 3,
+  "chin": 333
+ },
+ "jdd-sc-quini-6-r2": {
+  "top": 3,
+  "chin": 478
+ },
+ "jdd-sc-quini-6-controlar-r2": {
+  "top": 5,
+  "chin": 333
+ },
+ "jdd-sc-quini-6-como-se-juega-r2": {
+  "top": 3,
+  "chin": 353
+ },
+ "jdd-sc-loto-plus-r2": {
+  "top": 22,
+  "chin": 300
+ },
+ "jdd-sc-quiniela-plus-r2": {
+  "top": 3,
+  "chin": 353
+ },
+ "jdd-sc-telekino-r2": {
+  "top": 3,
+  "chin": 339
+ },
+ "jdd-sc-telekino-controlar-r2": {
+  "top": 3,
+  "chin": 467
+ },
+ "jdd-sc-tombola-santiaguena-r2": {
+  "top": 3,
+  "chin": 494
+ },
+ "jdd-sc-tombola-jujena-r2": {
+  "top": 3,
+  "chin": 406
+ },
+ "jdd-sc-truco-r2": {
+  "top": 3,
+  "chin": 411
+ },
+ "jdd-sc-truco-valores-de-las-cartas-r2": {
+  "top": 3,
+  "chin": 333
+ },
+ "jdd-sc-truco-senas-r2": {
+  "top": 3,
+  "chin": 391
+ },
+ "jdd-sc-truco-anotador-r2": {
+  "top": 3,
+  "chin": 398
+ },
+ "jdd-sc-truco-reglas-r2": {
+  "top": 3,
+  "chin": 347
+ },
+ "jdd-sc-burako-r2": {
+  "top": 3,
+  "chin": 333
+ },
+ "jdd-sc-generala-r2": {
+  "top": 3,
+  "chin": 389
+ },
+ "jdd-sc-dados-r2": {
+  "top": 3,
+  "chin": 387
+ },
+ "jdd-sc-chinchon-r2": {
+  "top": 3,
+  "chin": 372
+ },
+ "jdd-sc-escoba-de-15-r2": {
+  "top": 3,
+  "chin": 381
+ }
+}

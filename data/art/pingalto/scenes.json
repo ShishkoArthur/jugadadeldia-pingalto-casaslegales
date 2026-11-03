@@ -3,80 +3,80 @@
  "base": "data/art/base/pingalto/girl-base.png",
  "pages": {
   "/": {
-   "image": "pa-sc-home",
-   "file": "data/art/pingalto/cut/pa-sc-home.webp",
+   "image": "pa-sc-home-r2",
+   "file": "data/art/pingalto/cut/pa-sc-home-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/kit/ping": {
-   "image": "pa-sc-kit-ping",
-   "file": "data/art/pingalto/cut/pa-sc-kit-ping.webp",
+   "image": "pa-sc-kit-ping-r2",
+   "file": "data/art/pingalto/cut/pa-sc-kit-ping-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/kit/sensibilidad": {
-   "image": "pa-sc-kit-sensibilidad",
-   "file": "data/art/pingalto/cut/pa-sc-kit-sensibilidad.webp",
+   "image": "pa-sc-kit-sensibilidad-r2",
+   "file": "data/art/pingalto/cut/pa-sc-kit-sensibilidad-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/kit/dpi": {
-   "image": "pa-sc-kit-dpi",
-   "file": "data/art/pingalto/cut/pa-sc-kit-dpi.webp",
+   "image": "pa-sc-kit-dpi-r2",
+   "file": "data/art/pingalto/cut/pa-sc-kit-dpi-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/tier-list": {
-   "image": "pa-sc-tier-list",
-   "file": "data/art/pingalto/cut/pa-sc-tier-list.webp",
+   "image": "pa-sc-tier-list-r2",
+   "file": "data/art/pingalto/cut/pa-sc-tier-list-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/ff/sensibilidad": {
-   "image": "pa-sc-ff-sensibilidad",
-   "file": "data/art/pingalto/cut/pa-sc-ff-sensibilidad.webp",
+   "image": "pa-sc-ff-sensibilidad-r2",
+   "file": "data/art/pingalto/cut/pa-sc-ff-sensibilidad-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/ff/nombres": {
-   "image": "pa-sc-ff-nombres",
-   "file": "data/art/pingalto/cut/pa-sc-ff-nombres.webp",
+   "image": "pa-sc-ff-nombres-r2",
+   "file": "data/art/pingalto/cut/pa-sc-ff-nombres-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/ff/espacio-invisible": {
-   "image": "pa-sc-ff-espacio-invisible",
-   "file": "data/art/pingalto/cut/pa-sc-ff-espacio-invisible.webp",
+   "image": "pa-sc-ff-espacio-invisible-r2",
+   "file": "data/art/pingalto/cut/pa-sc-ff-espacio-invisible-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/valorant/rangos": {
-   "image": "pa-sc-valorant-rangos",
-   "file": "data/art/pingalto/cut/pa-sc-valorant-rangos.webp",
+   "image": "pa-sc-valorant-rangos-r2",
+   "file": "data/art/pingalto/cut/pa-sc-valorant-rangos-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/valorant/agentes": {
-   "image": "pa-sc-valorant-agentes",
-   "file": "data/art/pingalto/cut/pa-sc-valorant-agentes.webp",
+   "image": "pa-sc-valorant-agentes-r2",
+   "file": "data/art/pingalto/cut/pa-sc-valorant-agentes-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/cs2/mira": {
-   "image": "pa-sc-cs2-mira",
-   "file": "data/art/pingalto/cut/pa-sc-cs2-mira.webp",
+   "image": "pa-sc-cs2-mira-r2",
+   "file": "data/art/pingalto/cut/pa-sc-cs2-mira-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/lol/rangos": {
-   "image": "pa-sc-lol-rangos",
-   "file": "data/art/pingalto/cut/pa-sc-lol-rangos.webp",
+   "image": "pa-sc-lol-rangos-r2",
+   "file": "data/art/pingalto/cut/pa-sc-lol-rangos-r2.webp",
    "status": "review",
    "alt": ""
   },
   "/fortnite/nube": {
-   "image": "pa-sc-fortnite-nube",
-   "file": "data/art/pingalto/cut/pa-sc-fortnite-nube.webp",
+   "image": "pa-sc-fortnite-nube-r2",
+   "file": "data/art/pingalto/cut/pa-sc-fortnite-nube-r2.webp",
    "status": "review",
    "alt": ""
   }

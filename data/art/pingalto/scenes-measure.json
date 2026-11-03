@@ -1,97 +1,103 @@
 {
+ "round": "r2",
+ "scaleBy": "head (hair top to chin, marked by eye)",
  "bodyPx": 1500,
- "medianSourceBody": 2251,
+ "headPx": 212,
+ "base": {
+  "head": 311,
+  "body": 2199
+ },
  "scenes": {
-  "pa-sc-home": {
-   "body": 2260,
-   "scale": 0.664,
-   "offMedian": 0.4,
-   "transparent": 76,
-   "size": "588x1517"
+  "pa-sc-home-r2": {
+   "pose": "stool",
+   "head": 375,
+   "scale": 0.565,
+   "transparent": 74,
+   "size": "660x1236"
   },
-  "pa-sc-kit-ping": {
-   "body": 2251,
-   "scale": 0.666,
-   "offMedian": 0,
-   "transparent": 78,
-   "size": "545x1517"
-  },
-  "pa-sc-kit-sensibilidad": {
-   "body": 2240,
-   "scale": 0.67,
-   "offMedian": -0.5,
-   "transparent": 79,
-   "size": "504x1523"
-  },
-  "pa-sc-kit-dpi": {
-   "body": 2252,
-   "scale": 0.666,
-   "offMedian": 0,
-   "transparent": 79,
-   "size": "499x1511"
-  },
-  "pa-sc-tier-list": {
-   "body": 2263,
-   "scale": 0.663,
-   "offMedian": 0.5,
-   "transparent": 76,
-   "size": "571x1516"
-  },
-  "pa-sc-ff-sensibilidad": {
-   "body": 2253,
-   "scale": 0.666,
-   "offMedian": 0.1,
-   "transparent": 79,
-   "size": "485x1514"
-  },
-  "pa-sc-ff-nombres": {
-   "body": 2262,
-   "scale": 0.663,
-   "offMedian": 0.5,
-   "transparent": 78,
-   "size": "483x1511"
-  },
-  "pa-sc-ff-espacio-invisible": {
-   "body": 2255,
-   "scale": 0.665,
-   "offMedian": 0.2,
+  "pa-sc-kit-ping-r2": {
+   "pose": "walk",
+   "head": 342,
+   "scale": 0.62,
    "transparent": 77,
-   "size": "575x1513"
+   "size": "678x1412"
   },
-  "pa-sc-valorant-rangos": {
-   "body": 2195,
-   "scale": 0.683,
-   "offMedian": -2.5,
+  "pa-sc-kit-sensibilidad-r2": {
+   "pose": "cushion",
+   "head": 461,
+   "scale": 0.46,
+   "transparent": 64,
+   "size": "662x916"
+  },
+  "pa-sc-kit-dpi-r2": {
+   "pose": "table",
+   "head": 351,
+   "scale": 0.604,
+   "transparent": 69,
+   "size": "1007x1344"
+  },
+  "pa-sc-tier-list-r2": {
+   "pose": "stand",
+   "head": 351,
+   "scale": 0.604,
    "transparent": 76,
-   "size": "658x1550"
+   "size": "600x1363"
   },
-  "pa-sc-valorant-agentes": {
-   "body": 2246,
-   "scale": 0.668,
-   "offMedian": -0.2,
-   "transparent": 79,
-   "size": "470x1515"
+  "pa-sc-ff-sensibilidad-r2": {
+   "pose": "chair",
+   "head": 348,
+   "scale": 0.609,
+   "transparent": 73,
+   "size": "830x1310"
   },
-  "pa-sc-cs2-mira": {
-   "body": 2248,
-   "scale": 0.667,
-   "offMedian": -0.1,
-   "transparent": 76,
-   "size": "649x1516"
+  "pa-sc-ff-nombres-r2": {
+   "pose": "kneel",
+   "head": 439,
+   "scale": 0.483,
+   "transparent": 71,
+   "size": "509x939"
   },
-  "pa-sc-lol-rangos": {
-   "body": 2233,
-   "scale": 0.672,
-   "offMedian": -0.8,
+  "pa-sc-ff-espacio-invisible-r2": {
+   "pose": "turn",
+   "head": 317,
+   "scale": 0.669,
    "transparent": 77,
-   "size": "535x1523"
+   "size": "601x1525"
   },
-  "pa-sc-fortnite-nube": {
-   "body": 2245,
-   "scale": 0.668,
-   "offMedian": -0.3,
+  "pa-sc-valorant-rangos-r2": {
+   "pose": "jump",
+   "head": 316,
+   "scale": 0.671,
    "transparent": 78,
-   "size": "525x1511"
+   "size": "641x1503"
+  },
+  "pa-sc-valorant-agentes-r2": {
+   "pose": "wstool",
+   "head": 350,
+   "scale": 0.606,
+   "transparent": 78,
+   "size": "659x1253"
+  },
+  "pa-sc-cs2-mira-r2": {
+   "pose": "stand",
+   "head": 324,
+   "scale": 0.654,
+   "transparent": 76,
+   "size": "631x1489"
+  },
+  "pa-sc-lol-rangos-r2": {
+   "pose": "chair",
+   "head": 351,
+   "scale": 0.604,
+   "transparent": 77,
+   "size": "480x1254"
+  },
+  "pa-sc-fortnite-nube-r2": {
+   "pose": "walk",
+   "head": 289,
+   "scale": 0.734,
+   "transparent": 77,
+   "size": "643x1675"
   }
  }
 }
