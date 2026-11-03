@@ -43,7 +43,7 @@
   иначе гейт `fresh` остановит выкладку.
 
 ## Доступы (состояние 03.11)
-- Ключи в `.env` проверены 03.11: PandaScore (200), Supercell CR и BS (200 с сервера по IPv4, IP 187.7.26.95). Telegram-бот — ждём.
+- Ключи в `.env` проверены 03.11: PandaScore (200), Supercell CR и BS (200 с сервера по IPv4, IP 187.7.26.95). Telegram-бот @jpc_avisos_bot — подключён 03.11 (`TG_BOT_TOKEN`, `TG_CHAT_ID` в `.env` и в secrets лент обоих сайтов на сервере, тест дошёл).
 
 | Что | Состояние | Кто |
 |---|---|---|
@@ -58,7 +58,7 @@
   (26 стр., дизайн «Holo pastel», девушка pa-girl-r3-09), jugadadeldia.com (45 стр., дизайн r3 «06 Menú principal», девушка jdd-girl-r3-10,
   автор Denis Krazok). Сцены девушек приняты (стандарт — DECISIONS 03.11 «сцены приняты»), стоят на страницах, размер — правило в «Сцены девушек».
 - Сводка владельцу: https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS (сборка `node docs/owner/build-overview.mjs`, тот же путь публикации).
-- **Ключи:** PandaScore, Supercell CR/BS — в `.env`, проверены. **Ждём от владельца:** Telegram-бот (сбои лент), Search Console (позже,
+- **Ключи:** PandaScore, Supercell CR/BS — в `.env`, проверены. **Ждём от владельца:** Search Console (позже,
   «в гск добавлю потом»), автоисключение Mendoza и PDF к копиям (по желанию).
 - **Лимит:** не больше 2 агентов одновременно (владелец 03.11).
 - **Автообновление работает (03.11, раздел «Ленты» ниже, инструкция `docs/FEEDS.md`):** кинела jugadadeldia каждые 15 мин, киберспорт
