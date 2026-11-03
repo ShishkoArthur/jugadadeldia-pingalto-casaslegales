@@ -56,8 +56,7 @@
   (`docs/design/jugadadeldia/r3/`) и девушка из 10 (`contact-jdd-girls-r3.jpg`); pingalto — девушка из 10 (`contact-pa-girls-r3.jpg`).
 - Сводка владельцу (планы с title/H1/description/AR, макеты, девушки, вопросы): https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS —
   сборка `node docs/owner/build-overview.mjs`, вопросы `docs/owner/questions.json`, публиковать тем же путём `docs/owner/overview.html`.
-- **В работе (агенты 03.11):** casaslegales волна 2 (операторы со своими скриншотами, `/verificador`, проверки нелицензированных, гайды);
-  pingalto каркас + P1-инструменты без ключей. **Готово:** движок лотерей (`engine/lottery`, 139 цитат, пробелы — `docs/ENGINE-LOTTERY.md`) и
+- **Готово 03.11:** casaslegales волна 2 (29 страниц живые, раздел «casaslegales (03.11) — волна 2» ниже); pingalto каркас + P1-инструменты без ключей. **Готово:** движок лотерей (`engine/lottery`, 139 цитат, пробелы — `docs/ENGINE-LOTTERY.md`) и
   движок труко 1×1 + боты facil/normal/dificil (`engine/truco`, `engine/cards`, `docs/ENGINE-TRUCO.md`; 2×2 — позже).
 - **Потом:** оформление jugadadeldia после выбора; сцены девушек; тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
   ждём токен); Santa Fe/Mendoza — файлы от владельца в `docs/reference/owner-saves/`; ключи PandaScore/Supercell — от владельца.
@@ -65,6 +64,7 @@
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
+- 03.11 — casaslegales волна 2 выложена: 10 операторов со своими скриншотами, /verificador, 5 проверок брендов, 3 гайда, автоисключение.
 - 03.11 — движок трёх сайтов (render, гейты + selftest, deploy, источники с цитатами) и каркас casaslegales.com выложен
   (9 страниц + 404, индекс открыт). Раздел «Движок и выкладка» выше. /quienes-escriben → /redaccion (автор только на jugadadeldia).
 - 02.11 ночь, круг 2 (решение в DECISIONS): варианты выбранных дизайнов — `docs/design/<сайт>/r2/` (jdd 5 «Bolillero», pa 5 «Cromo»,
@@ -99,3 +99,28 @@
   перенос FF-чувствительности между телефонами (Garena не публикует формулу). Живой пинг — только São Paulo и Virginia (AWS);
   Santiago/Miami — только расчёт (у AWS нет публичных точек там; sa-west-1 отвечает, но не в документации — не используем).
 - **Дальше:** девушка (выбор владельца) → сцены; страницы P2 из `data/plan/pingalto.json`; ленты (OpenDota, VRS) — по слову владельца.
+
+## casaslegales (03.11) — волна 2 выложена (29 страниц + 404, индекс открыт)
+- **Живое (новое):** /verificador · /operadores · /operador/{betsson, betano, bet365, bplay, betwarrior, codere, jugadon, playcet, sportsbet,
+  casino-buenos-aires-online} · /verificar/{zeus, tucan-win, betbox, 1win, betonwin} · /guia/bet-ar · /guia/sitios-ilegales ·
+  /juego-responsable/autoexclusion (страница помощи). Меню: Verificador, Licencias, Operadores, 3 провинции, Ayuda; гайды — в подвале.
+- **Оператор:** своя SVG-карта лицензий (только PBA/CABA/Córdoba из реестров, прочие — «sin dato verificado»), разбор адреса
+  (поддомен · имя · окончание), цитаты своего сайта о лицензии/возрасте/линии помощи, сравнение номера акта «подвал сайта vs список
+  регулятора» (Jugadón CABA DI-2021-468 vs 1132/23; Jugadón CBA и Playcet 1689/23 vs 1889/23 — «не совпадают, решает список»),
+  свои скриншоты, RG-инструменты и оплаты — только цитаты. Строки `check` в `content/operators.mjs` — сборка падает, если реестр изменился.
+- **Скриншоты:** `node tools/capture-shots.mjs [id…]` (Playwright из manuallysites, headless, es-AR; без входа/регистрации/депозита;
+  отклоняет cookies, если есть кнопка; прячет промо-оверлеи) → `data/shots/<дата>/*.png` (под игнором), `data/shots/shots.json`,
+  `sites/casaslegales/static/shots/*.webp` (отдаются как `/_r/<хеш>.webp`, `SITE.images`), DOM без скриптов → `data/sources/operators/_docs/`.
+  Цели — `data/shots/targets.json`. Сняты с этой машины (Польша): Jugadón CABA/CBA, Playcet, Casino BA Online — открылись;
+  betsson.com.ar → www.betsson.bet.ar (выбор провинции); pba./cba.betsson, Betano, pba.sports — страницы блокировки (сняты как есть).
+  **Не открылись (403, Cloudflare/Akamai):** bet365, BetWarrior, bplay (все 3), Codere; Casino BA Online JR/T&C → region_not_supported —
+  на страницах честно «no pudimos ver su sitio». Для них нужен Chrome владельца из Аргентины.
+- **Источники операторов:** `data/sources/operators/operators.json` — 51 цитата в 17 копиях (14 страниц операторов + 3 офиц.: LOTBA
+  juegosegurolegal, Lotería de Córdoba, проект закона argentina.gob.ar); проверка `node tools/verify-operators.mjs` (в `npm test` и при
+  сборке): sha256, дословность, свежесть ≤ 100 дн. (переснять до 09.02.2027). Ссылок на операторов нет нигде (адреса — текст).
+- **Verificador:** `engine/hostcheck.mjs` (+ тесты): точное/поддомен → «figura», имя/родитель/1–2 буквы/содержит → «parecida»,
+  иначе «no figura en las listas que revisamos» (≠ нелегально). Данные встроены, сеть не нужна; `?d=` для ссылки.
+- **Проверки брендов** `/verificar/*`: сборка ищет имя в сыром HTML трёх копий списков и падает, если нашла; Stake не брали (есть в PBA).
+- **План** `data/plan/casaslegales.json` синхронизирован (title/H1/description построенных, поле `live`).
+- **Дальше:** Chrome владельца из AR — скриншоты bet365/BetWarrior/bplay/Codere/Betano (+ их JR/T&C → цитаты); P2: /operador/stake,
+  super7, betfun, play-uzu; operator × provincia; /guia/mercado-pago (нужны оплаты ≥ 3 операторов); Mendoza/Santa Fe (файлы владельца).
