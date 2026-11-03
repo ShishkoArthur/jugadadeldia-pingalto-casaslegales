@@ -31,6 +31,58 @@
    "g": 0.886,
    "alt": "Chica de vestido rojo sentada en un banquito blanco, mezclando un mazo de cartas españolas"
   },
+  "/quiniela/": {
+   "image": "jdd-sc-quiniela-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-97.webp",
+     "w": 97,
+     "h": 300,
+     "kb": 7
+    },
+    {
+     "name": "scenes/quiniela-181.webp",
+     "w": 181,
+     "h": 560,
+     "kb": 15
+    },
+    {
+     "name": "scenes/quiniela-271.webp",
+     "w": 271,
+     "h": 840,
+     "kb": 25
+    }
+   ],
+   "ar": 0.3228,
+   "g": 0.8998,
+   "alt": "Chica caminando hacia la cámara mientras mira el celular que tiene en una mano"
+  },
+  "/quiniela/nacional-y-provincia/": {
+   "image": "jdd-sc-quiniela-nacional-y-provincia-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-nacional-y-provincia-164.webp",
+     "w": 164,
+     "h": 300,
+     "kb": 12
+    },
+    {
+     "name": "scenes/quiniela-nacional-y-provincia-305.webp",
+     "w": 305,
+     "h": 560,
+     "kb": 26
+    },
+    {
+     "name": "scenes/quiniela-nacional-y-provincia-458.webp",
+     "w": 458,
+     "h": 840,
+     "kb": 42
+    }
+   ],
+   "ar": 0.545,
+   "g": 0.8773,
+   "alt": "Chica sentada en un banquito, comparando dos boletas en blanco, una en cada mano"
+  },
   "/quiniela/cuanto-paga/": {
    "image": "jdd-sc-quiniela-cuanto-paga-r2",
    "files": [
@@ -56,6 +108,110 @@
    "ar": 0.7161,
    "g": 0.8527,
    "alt": "Chica sentada en el borde de una mesa blanca, anotando en una boleta con un lápiz"
+  },
+  "/quiniela/nacional/": {
+   "image": "jdd-sc-quiniela-nacional-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-nacional-166.webp",
+     "w": 166,
+     "h": 300,
+     "kb": 10
+    },
+    {
+     "name": "scenes/quiniela-nacional-310.webp",
+     "w": 310,
+     "h": 560,
+     "kb": 20
+    },
+    {
+     "name": "scenes/quiniela-nacional-465.webp",
+     "w": 465,
+     "h": 840,
+     "kb": 33
+    }
+   ],
+   "ar": 0.5531,
+   "g": 0.9441,
+   "alt": "Chica caminando con paso rápido, con una hoja enrollada bajo el brazo, señalando hacia adelante"
+  },
+  "/quiniela/provincia/": {
+   "image": "jdd-sc-quiniela-provincia-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-provincia-215.webp",
+     "w": 215,
+     "h": 300,
+     "kb": 12
+    },
+    {
+     "name": "scenes/quiniela-provincia-401.webp",
+     "w": 401,
+     "h": 560,
+     "kb": 26
+    },
+    {
+     "name": "scenes/quiniela-provincia-601.webp",
+     "w": 601,
+     "h": 840,
+     "kb": 45
+    }
+   ],
+   "ar": 0.7154,
+   "g": 0.7973,
+   "alt": "Chica sentada de costado en una silla, mostrando una boleta junto a la cara"
+  },
+  "/quiniela/mendoza/": {
+   "image": "jdd-sc-quiniela-mendoza-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-mendoza-130.webp",
+     "w": 130,
+     "h": 300,
+     "kb": 11
+    },
+    {
+     "name": "scenes/quiniela-mendoza-243.webp",
+     "w": 243,
+     "h": 560,
+     "kb": 24
+    },
+    {
+     "name": "scenes/quiniela-mendoza-365.webp",
+     "w": 365,
+     "h": 840,
+     "kb": 39
+    }
+   ],
+   "ar": 0.4339,
+   "g": 0.8968,
+   "alt": "Chica sentada en un banquito, sacando una uva de un racimo violeta"
+  },
+  "/quiniela/cordoba/": {
+   "image": "jdd-sc-quiniela-cordoba-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-cordoba-225.webp",
+     "w": 225,
+     "h": 300,
+     "kb": 12
+    },
+    {
+     "name": "scenes/quiniela-cordoba-419.webp",
+     "w": 419,
+     "h": 560,
+     "kb": 25
+    },
+    {
+     "name": "scenes/quiniela-cordoba-629.webp",
+     "w": 629,
+     "h": 840,
+     "kb": 41
+    }
+   ],
+   "ar": 0.7486,
+   "g": 0.8576,
+   "alt": "Chica sentada en el borde de una mesa, a punto de morder un alfajor de chocolate"
   },
   "/quini-6/": {
    "image": "jdd-sc-quini-6-r2",

@@ -22,7 +22,7 @@
   "title": "Quiniela de hoy: cabezas y resultados de cada provincia",
   "titleLen": 55,
   "h1": "Quiniela de hoy: todas las cabezas",
-  "description": "La quiniela de hoy en todas las provincias: cabezas de la Previa a la Nocturna, los 20 números de cada sorteo en hora argentina y aviso de feriados.",
+  "description": "La quiniela de hoy en seis jurisdicciones: las cabezas de la Previa a la Nocturna y los 20 números de cada sorteo, de las copias oficiales comparadas.",
   "keys": "quiniela 1410k/43 · quiniela de hoy 1080k/55 · quiniela en vivo 490k/18 · quiniela hoy 273k/24 · resultado de la quiniela 189k/28 · resultado de la quiniela de hoy 107k/54 · resultados quiniela 85k/49 · que salio en la quiniela 23k/51 · que salio en la quiniela hoy 19k/51 · quiniela de hoy todas las cabezas 20k/39 · quiniela hoy todas las cabezas 14k/56 · sorteo de quiniela 41k/43 · quiniela de hoy todas 33k/39",
   "kind": "results",
   "wave": "P1",
@@ -31,7 +31,8 @@
   "data": "ленты выписок всех юрисдикций с готовой лентой (PBA — JSON без ключа, проверено 01.11; остальные — искать)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "«quiniela en vivo» 490k — на хаб (автообновление), отдельной «en vivo» нет: живой ленты во время тиража нет, обещать нельзя. Бренды-ловушки (enzo, notitimba, ruta 1000, mundial, al minuto, san diego, ya, timba) не берём."
+  "notes": "«quiniela en vivo» 490k — на хаб (автообновление), отдельной «en vivo» нет: живой ленты во время тиража нет, обещать нельзя. Бренды-ловушки (enzo, notitimba, ruta 1000, mundial, al minuto, san diego, ya, timba) не берём.",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -39,7 +40,7 @@
   "title": "Quiniela Nacional y Provincia: los dos sorteos, lado a lado",
   "titleLen": 59,
   "h1": "Nacional y Provincia, lado a lado",
-  "description": "La Nacional y la Provincia del mismo turno, una al lado de la otra, con los números que coinciden marcados. Ideal para la Nocturna de las 21 hs.",
+  "description": "La Nacional y la Provincia del mismo turno, una al lado de la otra, con las terminaciones que coinciden marcadas. Elegí el turno y el día de la semana.",
   "keys": "quiniela nacional y provincia nocturna de hoy 21 hs 114k/6 · quiniela nacional y provincia 83k/44 · quiniela nacional y provincia en vivo 44k/29 · resultado de la quiniela nacional y provincia nocturna de hoy 32k/16 · quiniela nacional y provincia de hoy 26k/48 · resultado de la quiniela nacional y provincia 24k/36 · quiniela nacional y provincia nocturna 20k/32",
   "kind": "results",
   "wave": "P1",
@@ -48,7 +49,8 @@
   "data": "ленты Nacional (LOTBA) и Provincia (PBA JSON)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "KD 6 при 114k — лучший ключ кинелы по соотношению."
+  "notes": "KD 6 при 114k — лучший ключ кинелы по соотношению.",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -73,7 +75,7 @@
   "title": "Extractos de la quiniela: buscá cualquier sorteo por fecha",
   "titleLen": 58,
   "h1": "Extractos anteriores de la quiniela",
-  "description": "Buscá el extracto de cualquier sorteo de la quiniela por fecha, provincia y turno, con los 20 números, y fijate cuándo salió un número a la cabeza.",
+  "description": "Buscá el extracto de cualquier sorteo de la quiniela de los últimos meses por fecha, provincia y turno, y fijate cuándo salió un número a la cabeza.",
   "keys": "quiniela de ayer 20k/7 · que numero salio en la quiniela ayer 600/40 · que salio en la quiniela ayer 500/50 · qué salió anoche en la quiniela 400/58 · que salio anoche en la quiniela 350/57",
   "kind": "results",
   "wave": "P2",
@@ -81,7 +83,8 @@
   "ar": "Архив выписок по аргентинским юрисдикциям и турно; даты в формате es-AR",
   "data": "архив лент (накапливаем с запуска; PBA — исторические выписки по дате)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -165,7 +168,8 @@
   "ar": "Частоты 00–99 по аргентинским юрисдикциям и периоду против честного генератора",
   "data": "архив лент + считает движок (engine/, тест-замки)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -190,7 +194,7 @@
   "title": "Quiniela Nacional de hoy: resultados de la Ciudad",
   "titleLen": 49,
   "h1": "Quiniela Nacional (de la Ciudad)",
-  "description": "La Quiniela Nacional, hoy de la Ciudad de Buenos Aires: el último sorteo en grande, extractos de la semana y números del año, con ayuda de LOTBA.",
+  "description": "La Quiniela Nacional de hoy, de la Ciudad de Buenos Aires: el último sorteo en grande, las cabezas de la semana y cuánto cobraba tu número.",
   "keys": "quiniela nacional 167k/46 · quiniela nacional nocturna de hoy 21 hs 71k/51 · quiniela nacional nocturna 61k/47 · loteria nacional nocturna 43k/35 · quiniela de la ciudad 34k/39 · quiniela de nacional 20k/55 · quiniela nacional de hoy 25k/37 · lotería nacional nocturna de hoy 21 hs 14k/47 · lotería nacional nocturna 13k/49",
   "kind": "results",
   "wave": "P1",
@@ -199,7 +203,8 @@
   "data": "лента выписок с официального сайта — найти (HTML/JSON/PDF); регулятор: Lotería de la Ciudad de Buenos Aires (LOTBA); помощь — пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон)."
+  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela por provincia",
@@ -207,7 +212,7 @@
   "title": "Quiniela de la Provincia de Buenos Aires: extractos de hoy",
   "titleLen": 58,
   "h1": "Quiniela de la Provincia",
-  "description": "Quiniela de la Provincia de Buenos Aires de hoy: el extracto oficial del día, los últimos siete días y los números del año, con la ayuda bonaerense.",
+  "description": "Quiniela de la Provincia de Buenos Aires de hoy: el extracto oficial del día, los últimos siete días y cuánto cobraba tu número, con la ayuda bonaerense.",
   "keys": "quiniela provincia 20k/28 · quiniela de buenos aires 13k/36",
   "kind": "results",
   "wave": "P1",
@@ -216,7 +221,8 @@
   "data": "лента PBA: loteria.gba.gob.ar/api-loteria/extractos/<fecha> — JSON с PDF, без ключа (проверено 01.11); регулятор: Instituto Provincial de Lotería y Casinos (Lotería de la Provincia); помощь — пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон)."
+  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela por provincia",
@@ -233,15 +239,16 @@
   "data": "лента выписок с официального сайта — найти (HTML/JSON/PDF); регулятор: Caja Popular de Ahorros de la Provincia de Tucumán; помощь — пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Самый сильный ключ сайта: 546k + 450k при KD 0. Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон)."
+  "notes": "Самый сильный ключ сайта: 546k + 450k при KD 0. Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
+  "blocked": "2026-11-03: TLS-сертификат resultadosquiniela.cajapopular.gov.ar не проходит проверку — проверку не отключаем"
  },
  {
   "section": "Quiniela por provincia",
   "url": "/quiniela/mendoza/",
-  "title": "Quiniela de Mendoza hoy: resultados y horarios",
-  "titleLen": 46,
+  "title": "Quiniela de Mendoza hoy: resultados de cada turno",
+  "titleLen": 49,
   "h1": "Quiniela de Mendoza",
-  "description": "Quiniela de Mendoza de hoy con horarios del IPJyC, extractos de la semana y la comparación Mendoza y Nacional en una línea, como la buscan en Mendoza.",
+  "description": "Quiniela de Mendoza de hoy: los resultados de cada turno y las cabezas de la semana, de la copia oficial que publica LOTBA, y la línea de ayuda de Mendoza.",
   "keys": "quiniela de mendoza 267k/13 · quiniela mendoza 37k/8 · quiniela de mendoza y nacional 29k/11 · quiniela de mendoza de hoy 26k/9 · quiniela nocturna de mendoza 21k/9 · que numero salio en la quiniela de mendoza hoy 600/29 · qué salió en la quiniela de mendoza 450/29",
   "kind": "results",
   "wave": "P1",
@@ -250,7 +257,8 @@
   "data": "лента выписок с официального сайта — найти (HTML/JSON/PDF); регулятор: Instituto Provincial de Juegos y Casinos (IPJyC); помощь — пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон)."
+  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela por provincia",
@@ -292,16 +300,17 @@
   "title": "Quiniela de Córdoba: extractos de hoy y anteriores",
   "titleLen": 50,
   "h1": "Quiniela de Córdoba",
-  "description": "Quiniela de Córdoba: extractos de hoy y anteriores de la Lotería de Córdoba, el mapa de números del año y la ayuda provincial gratuita, en una sola página.",
+  "description": "Quiniela de Córdoba: extractos de hoy y de la semana, de las copias oficiales de LOTBA y de la Provincia comparadas número por número, con la ayuda local.",
   "keys": "quiniela de córdoba 99k/44 · quiniela de cordoba 96k/41 · quiniela córdoba 47k/0 · loteria de cordoba 20k/30 · quiniela de córdoba nocturna 16k/36 · quiniela de córdoba de hoy 14k/36 · quiniela cordoba 14k/38 · qué número salió en la quiniela de córdoba 600/36",
   "kind": "results",
   "wave": "P1",
   "tool": "Последний тираж крупно + выписки 7 дней, тепловая карта 00–99 этой юрисдикции за год; своё: турно Lotería de Córdoba, связь с Poceada (если Córdoba её проводит — проверить), линия 0800 Córdoba и самоисключение из пакета",
   "ar": "Кинела юрисдикции Córdoba (Lotería de Córdoba S.E.): связь с Poceada (проверить), линия 0800 Córdoba; время турно — hora argentina, суммы — $ ARS, помощь провинции",
-  "data": "лента выписок с официального сайта — найти (HTML/JSON/PDF); регулятор: Lotería de la Provincia de Córdoba S.E.; помощь — пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
+  "data": "LOTBA (55) + PBA PDF (CORDOBA); API Córdoba не используем — robots закрыт для ИИ (правило 03.11)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон)."
+  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela por provincia",
@@ -309,7 +318,7 @@
   "title": "Quiniela de Entre Ríos: resultados del día",
   "titleLen": 42,
   "h1": "Quiniela de Entre Ríos",
-  "description": "Quiniela de Entre Ríos: resultados del día del IAFAS, extractos de la semana y el vínculo con la Tómbola entrerriana, con la línea de ayuda correcta.",
+  "description": "Quiniela de Entre Ríos: resultados del día y extractos de la semana, de las copias oficiales de LOTBA y de la Provincia comparadas cifra por cifra.",
   "keys": "quiniela de entre rios 104k/30 · quiniela entre ríos 73k/46 · quiniela de entre ríos 70k/45 · loteria de entre rios 35k/33",
   "kind": "results",
   "wave": "P2",
@@ -318,7 +327,8 @@
   "data": "лента выписок с официального сайта — найти (HTML/JSON/PDF); регулятор: IAFAS; помощь — пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон)."
+  "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela por provincia",
@@ -394,7 +404,7 @@
   "title": "Quiniela de Santa Fe: resultados y turnos",
   "titleLen": 41,
   "h1": "Quiniela de Santa Fe",
-  "description": "Quiniela de Santa Fe: resultados y turnos de la Lotería santafesina, la misma que sortea el Quini 6 y el Brinco, con extractos y números del año.",
+  "description": "Quiniela de Santa Fe: resultados de cada turno y extractos de la semana, de las copias oficiales de LOTBA y de la Provincia de Buenos Aires, comparadas.",
   "keys": "quiniela de santa fe 41k/22 · quiniela santa fe 23k/22",
   "kind": "results",
   "wave": "P2",
@@ -403,7 +413,8 @@
   "data": "лента выписок с официального сайта — найти (HTML/JSON/PDF); регулятор: Caja de Asistencia Social – Lotería de Santa Fe; помощь — пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Сайт Santa Fe гео-блокирует наш сервер — лента через другой источник или Chrome владельца. Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон)."
+  "notes": "Сайт Santa Fe гео-блокирует наш сервер — лента через другой источник или Chrome владельца. Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela por provincia",

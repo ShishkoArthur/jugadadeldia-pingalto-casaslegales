@@ -1,5 +1,5 @@
 // Home of jugadadeldia.com: the "Menu principal" layout (design r3/06): HUD chips, hero, quiniela grid explained, cuánto paga,
-// Quini 6 odds, truco scorer and the library of tools. No draw results are shown (no official feed yet).
+// Quini 6 odds, truco scorer and the library of tools. Draw results live on /quiniela/ and the province pages (server feed).
 import { directBet } from '../../../engine/lottery/quiniela.mjs';
 import { odds } from '../../../engine/lottery/games.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
@@ -21,7 +21,7 @@ export const home = {
     return hud + hero(h, {
       kicker: 'Quiniela · loterías · truco', scene: 'home',
       lede: 'Cuánto paga cada jugada según el reglamento oficial y qué chance real tiene, sin humo. Y para la sobremesa: truco, generala, chinchón y escoba contra la compu.',
-      actions: btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga la quiniela?', true) + btn(h, '/truco/jugar/', 'Jugar al truco'),
+      actions: btn(h, '/quiniela/', 'La quiniela de hoy', true) + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') + btn(h, '/truco/jugar/', 'Jugar al truco'),
     }).replace('<figure class="jg-girl"', stack + '<figure class="jg-girl"').replace('class="jg-hero"', 'class="jg-hero home"') +
       '<div class="jg-mn">' +
       '<section class="jg-c w2 t2 jg-qn"><span class="jg-tag">La grilla</span><h2>La quiniela, del 00 al 99</h2><p>En la quiniela salen 20 números de cuatro cifras. Si jugás a dos cifras, lo que cuenta es la terminación: hay 100, del 00 al 99, y <b>todas tienen la misma chance</b>.</p>' + grid +
@@ -32,6 +32,7 @@ export const home = {
       '<section class="jg-c"><span class="jg-tag">Ejemplo</span><h2>¿Cuánto paga?</h2><p class="jg-ch"><span>Apuesta $ 100</span><span>A la cabeza</span><span>2 cifras</span></p><p class="jg-win">Cobrás <b>' + money(toNumber(two.perHit)) + '</b></p><p class="jg-hon">Chance: ' + oneIn(two.oneIn) + ' · por cada $ 100 apostados vuelven en promedio ' + money(toNumber(two.evPer100)) + '</p>' + btn(h, '/quiniela/redoblona/', '¿Y la redoblona?') + '</section>' +
       '<section class="jg-c"><span class="jg-sm">Quini 6</span><h2>Controlá tu boleta</h2><div class="jg-six jg-demo" aria-hidden="true">' + ['04', '11', '17', '26', '33', '45'].map(n => '<input value="' + n + '" tabindex="-1" readonly>').join('') + '</div><p>Chance de los 6 en un sorteo: <b>' + oneIn(q6.rows[0].oneIn) + '</b></p>' + btn(h, '/quini-6/', 'Ir al Quini 6', true) + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Biblioteca</span><h2>Todo para tu jugada</h2>' + tiles(h, [
+        ['/quiniela/', 'Quiniela de hoy', 'Las cabezas y los extractos de seis provincias', '#ff5a3c', ICONS.balls],
         ['/quiniela/cuanto-paga/', 'Cuánto paga la quiniela', 'A la cabeza, a los 5, 10 y 20, Ciudad y Provincia', '#16b38a', ICONS.calc],
         ['/quini-6/', 'Quini 6', 'Las cinco modalidades y el control de tu boleta', '#2f7cf6', ICONS.check],
         ['/loto-plus/', 'Loto Plus y Brinco', 'Modalidades, número Plus y chances', '#8b5cf6', ICONS.balls],
