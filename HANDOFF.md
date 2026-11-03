@@ -53,19 +53,17 @@
 
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
-## Состояние и следующее (03.11)
-- **Выбор владельца:** pingalto — дизайн r2 «02 Holo pastel»; casaslegales — r3 «01 Relieve alto» (живой с 03.11). jugadadeldia — r3 «06 Menú principal» (живой, волна 1) и девушка jdd-girl-r3-10 (сцены — следующий шаг); pingalto — девушка pa-girl-r3-09.
-- Сводка владельцу (планы с title/H1/description/AR, макеты, девушки, вопросы): https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS —
-  сборка `node docs/owner/build-overview.mjs`, вопросы `docs/owner/questions.json`, публиковать тем же путём `docs/owner/overview.html`.
-- **Готово 03.11:** casaslegales волна 2 (29 страниц живые, раздел «casaslegales (03.11) — волна 2» ниже); pingalto каркас + P1-инструменты без ключей. **Готово:** движок лотерей (`engine/lottery`, 139 цитат, пробелы — `docs/ENGINE-LOTTERY.md`) и
-  движок труко 1×1 и 2×2 + боты, generala (оптимальный бот), chinchón, escoba de 15 (`engine/*`, `docs/ENGINE-TRUCO.md`,
-  `docs/ENGINE-GAMES.md`; 160 тестов). Страницы игр jugadadeldia — живые (волна 1).
-- **Готово 03.11 (вечер):** сцены девушек на обоих сайтах (раздел «Сцены девушек» ниже).
-- **Потом:** тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
-  ждём токен); копии страниц от владельца: три выгрузки 03.11 разобраны (Santa Fe и Mendoza — теперь «lista oficial verificada»); ещё нужны
-  Mendoza автоисключение и PDF — `docs/reference/owner-saves/README.md`; все копии владельца пересохранить до ~09.02.2027; ключи PandaScore/Supercell — от владельца.
-- Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
-  pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
+## Состояние и следующее (03.11, вечер)
+- **Все три сайта живые, индекс открыт:** casaslegales.com (66 стр., дизайн r3 «01 Relieve alto», 8 официальных списков), pingalto.com
+  (26 стр., дизайн «Holo pastel», девушка pa-girl-r3-09), jugadadeldia.com (45 стр., дизайн r3 «06 Menú principal», девушка jdd-girl-r3-10,
+  автор Denis Krazok). Сцены девушек приняты (стандарт — DECISIONS 03.11 «сцены приняты»), стоят на страницах, размер — правило в «Сцены девушек».
+- Сводка владельцу: https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS (сборка `node docs/owner/build-overview.mjs`, тот же путь публикации).
+- **Ключи:** PandaScore, Supercell CR/BS — в `.env`, проверены. **Ждём от владельца:** Telegram-бот (сбои лент), Search Console (позже,
+  «в гск добавлю потом»), автоисключение Mendoza и PDF к копиям (по желанию).
+- **Лимит:** не больше 2 агентов одновременно (владелец 03.11).
+- **Дальше:** автообновление (ленты на сервере по образцу gambeteo: выписки кинелы LOTBA/PBA/Córdoba/Tucumán → страницы результатов по
+  провинциям + 20 готовых сцен для них; киберспорт PandaScore; Supercell — Clash Royale/Brawl Stars страницы); тексты через Claude API;
+  P2-страницы планов; QA-проход всех трёх сайтов.
 
 ## Сцены девушек (03.11) — на сайтах: pingalto 21 страница, jugadadeldia 22 страницы
 - **Живое:** у каждой контентной страницы своя сцена (те же девушка и одежда, сидя/в движении, действие по теме страницы). Без фигуры —
