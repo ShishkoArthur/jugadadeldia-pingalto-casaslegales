@@ -56,11 +56,14 @@ function map(data) {
   const panel = document.querySelector('[data-rl-panel]');
   const pick = document.querySelector('[data-rl-pick]');
   const tiles = [...board.querySelectorAll('button[data-j]')];
+  const tag = board.querySelector('u');
   const s = data.s;
   const show = id => {
     const j = data.j[id];
     if (!j) return;
-    tiles.forEach(t => t.setAttribute('aria-pressed', t.dataset.j === id ? 'true' : 'false'));
+    tiles.forEach(t => { const on = t.dataset.j === id; t.setAttribute('aria-pressed', on ? 'true' : 'false'); t.classList.toggle('rl-on', on); });
+    const tile = tiles.find(t => t.dataset.j === id);
+    if (tag && tile) { tag.textContent = j.co + (j.c === null ? '' : ' · ' + j.c); tile.append(tag); }
     if (pick && pick.value !== id) pick.value = id;
     panel.querySelector('h2').textContent = j.n;
     const num = panel.querySelector('.rl-num');

@@ -11,7 +11,7 @@ import { anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
 import { relief, help } from './provincia.mjs';
 import { quote, sectionHead } from './parts.mjs';
 
-const DE = { IPLyC: 'del IPLyC', 'Lotería de Córdoba': 'de la Lotería de Córdoba', 'Lotería de Río Negro': 'de la Lotería de Río Negro' };
+const DE = { IPLyC: 'del IPLyC', 'Lotería de Córdoba': 'de la Lotería de Córdoba', 'Lotería de Río Negro': 'de la Lotería de Río Negro', 'Lotería de Santa Fe': 'de la Lotería de Santa Fe', IPJyC: 'del IPJyC' };
 const actOf = (h, r, cell) => {
   if (cell.ref) return cell.ref;
   const lic = r.quotes.licence && /Resoluci[oó]n\D*\d+\/\d+/.exec(r.quotes.licence.text);

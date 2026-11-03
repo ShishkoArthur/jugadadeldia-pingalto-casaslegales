@@ -1,5 +1,6 @@
 import { TILES, CODE } from '../content/map.mjs';
-import { brandMatrix, splitAddress, tileLevel, countBy } from '../../../engine/registry.mjs';
+import { brandMatrix, splitAddress } from '../../../engine/registry.mjs';
+import { isoMap, isoHeight, isoLadder } from './iso.mjs';
 import { src, quote, hostHtml, sectionHead } from './parts.mjs';
 import { provData } from '../content/provdata.mjs';
 
@@ -15,33 +16,31 @@ export const home = {
     h.org(true),
   ],
   render(h) {
-    const by = countBy(h.regs);
     const def = h.site.defaultJurisdiction;
     const dj = h.rg.prov(def), dreg = h.reg(def);
     const P = provData(h);
-    const tiles = TILES.map(t => {
+    const map = isoMap(h, t => {
       const x = P.one(t.id);
-      const n = by[t.id];
-      const cls = x.st === 'list' ? 'rl-l' + tileLevel(n) : x.st === 'platform' ? 'rl-pf' : x.st === 'blocked' ? 'rl-bk' : '';
-      const label = x.name + ': ' + (x.st === 'list' ? n + ' sitios en la lista oficial' : x.st === 'platform' ? x.label + ', ' + x.e.platforms.map(q => q.name).join(', ') : x.label);
-      return '<button type="button" data-j="' + t.id + '" style="grid-area:' + t.area + '"' + (cls ? ' class="' + cls + '"' : '') + ' aria-pressed="' + (t.id === def) + '" aria-label="' + h.esc(label) + '">' + t.code + '</button>';
-    }).join('');
+      const label = x.name + ': ' + (x.st === 'list' ? x.n + ' sitios en la lista oficial' : x.st === 'platform' ? x.label + ', ' + x.e.platforms.map(q => q.name).join(', ') : x.label);
+      return { kind: x.st, h: isoHeight(x.st, x.n), on: t.id === def, label: t.id === def ? t.code + (x.n !== null ? ' · ' + x.n : '') : null,
+        attrs: ' type="button" data-j="' + t.id + '" aria-pressed="' + (t.id === def) + '" aria-label="' + h.esc(label) + '"' };
+    }, { size: 'l', tag: 'button', group: true, aria: 'Mapa de las jurisdicciones: la altura de cada ficha es la cantidad de sitios de su lista oficial', ladder: isoLadder(h, P) });
     const opts = TILES.map(t => [t.id, h.rg.prov(t.id).name]).sort((a, b) => a[1].localeCompare(b[1], 'es'))
       .map(([id, n]) => '<option value="' + id + '"' + (id === def ? ' selected' : '') + '>' + h.esc(n) + '</option>').join('');
-    const hero = '<section class="rl-hero"><div>' +
+    const ver = h.built('/verificador');
+    const hero = '<section class="rl-hero rl-hero-home"><div class="rl-htxt">' +
       '<p class="rl-kick">' + h.t('{{jur_total}} jurisdicciones · {{reg_total}} listas oficiales verificadas · revisado {{checked}}') + '</p>' +
       '<h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Qué casas de apuestas figuran en la lista oficial de cada provincia, con la cita del regulador y la fecha en que la copiamos. Sin enlaces a operadores, sin bonos. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p>' +
       '<div class="rl-pick"><label for="rl-pick">Elegí tu provincia</label><select id="rl-pick" data-rl-pick>' + opts + '</select></div>' +
-      '<div class="rl-acts"><a class="rl-b1" href="' + h.href(h.built('/verificador') ? '/verificador' : '/licencias') + '">' + (h.built('/verificador') ? 'Verificar una dirección' : 'Ver las licencias') + '</a><a class="rl-b2" href="' + h.href('/metodologia') + '">Cómo lo verificamos</a></div>' +
-      '</div><div class="rl-mapw" data-nosnippet><div class="rl-map" data-rl-map role="group" aria-label="Mapa de las jurisdicciones: la altura de cada ficha muestra cuántos sitios tiene su lista oficial">' + tiles + '</div>' +
-      '<aside class="rl-panel" data-rl-panel aria-live="polite"><h2>' + h.esc(dj.name) + '</h2>' +
+      '</div><div class="rl-hside"><aside class="rl-panel" data-rl-panel aria-live="polite"><h2>' + h.esc(dj.name) + '</h2>' +
       '<div class="rl-num" data-s="list">' + dreg.licensees.length + '<small>sitios en la lista oficial</small></div>' +
       '<p class="rl-meta" data-rl-meta>' + h.esc(dreg.regulator.short) + ' · revisado ' + h.fmtDate(dreg.checked) + '</p>' +
       '<p class="rl-line" data-rl-help>Ayuda: <a href="tel:' + h.esc(dj.line.phoneTel) + '">' + h.esc(dj.line.phone) + '</a></p>' +
       '<a class="rl-go" data-rl-go href="' + h.href('/provincia/' + def) + '">Ver ' + h.esc(dj.name) + '</a>' +
       '<div class="rl-leg"><span><i class="rl-s-list"></i>lista oficial verificada</span><span><i class="rl-s-platform"></i>plataforma provincial</span><span><i class="rl-s-none"></i>sin dato verificado</span><span><i class="rl-s-blocked"></i>no consultable</span></div>' +
-      '</aside></div></section>';
+      '</aside><div class="rl-acts"><a class="rl-b2" href="' + h.href(ver ? '/verificador' : '/licencias') + '">' + (ver ? 'Verificar una dirección' : 'Ver las licencias') + '</a><a class="rl-b2" href="' + h.href('/metodologia') + '">Cómo lo verificamos</a></div></div>' +
+      '<div class="rl-hmap">' + map + '</div></section>';
 
     const regs = h.regs;
     const matrix = brandMatrix(regs, h.names);

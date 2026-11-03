@@ -54,19 +54,21 @@
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
 ## Состояние и следующее (03.11)
-- **Выбор владельца:** pingalto — дизайн r2 «02 Holo pastel»; casaslegales — r2 «02 Relieve». jugadadeldia — r3 «06 Menú principal» (живой, волна 1) и девушка jdd-girl-r3-10 (сцены — следующий шаг); pingalto — девушка pa-girl-r3-09.
+- **Выбор владельца:** pingalto — дизайн r2 «02 Holo pastel»; casaslegales — r3 «01 Relieve alto» (живой с 03.11). jugadadeldia — r3 «06 Menú principal» (живой, волна 1) и девушка jdd-girl-r3-10 (сцены — следующий шаг); pingalto — девушка pa-girl-r3-09.
 - Сводка владельцу (планы с title/H1/description/AR, макеты, девушки, вопросы): https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS —
   сборка `node docs/owner/build-overview.mjs`, вопросы `docs/owner/questions.json`, публиковать тем же путём `docs/owner/overview.html`.
 - **Готово 03.11:** casaslegales волна 2 (29 страниц живые, раздел «casaslegales (03.11) — волна 2» ниже); pingalto каркас + P1-инструменты без ключей. **Готово:** движок лотерей (`engine/lottery`, 139 цитат, пробелы — `docs/ENGINE-LOTTERY.md`) и
   движок труко 1×1 и 2×2 + боты, generala (оптимальный бот), chinchón, escoba de 15 (`engine/*`, `docs/ENGINE-TRUCO.md`,
   `docs/ENGINE-GAMES.md`; 160 тестов). Страницы игр jugadadeldia — живые (волна 1).
 - **Потом:** сцены девушек (jugadadeldia — вставить в `figure.jg-girl`); тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
-  ждём токен); копии страниц от владельца: 03.11 пришли 14 (раздел «casaslegales (03.11) — копии и скриншоты владельца»); ещё нужны
-  Córdoba juegos/online, Santa Fe /casinos/ и /juego-responsable-3/, Mendoza ipjyc.gob.ar/wp/ и автоисключение — `docs/reference/owner-saves/README.md`; ключи PandaScore/Supercell — от владельца.
+  ждём токен); копии страниц от владельца: три выгрузки 03.11 разобраны (Santa Fe и Mendoza — теперь «lista oficial verificada»); ещё нужны
+  Mendoza автоисключение и PDF — `docs/reference/owner-saves/README.md`; все копии владельца пересохранить до ~09.02.2027; ключи PandaScore/Supercell — от владельца.
 - Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
+- 03.11 — casaslegales: дизайн «01 Relieve alto» на живом сайте (изометрия, высота = число сайтов); третья выгрузка владельца → реестры
+  Santa Fe (4) и Mendoza (7), 8 списков; +3 страницы оператор × провинция (раздел ниже).
 - 03.11 — casaslegales: копии и скриншоты владельца встали на место (14 страниц регуляторов, 12 скриншотов 5 операторов из AR),
   Mendoza и Santa Fe «no consultable» → «sin dato verificado» (раздел ниже).
 - 03.11 — jugadadeldia волна 1 выложена: дизайн «06 Menú principal», 45 страниц + 404 (кинела, 6 лотерей, труко и игры против
@@ -176,6 +178,26 @@
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
 - **Дальше:** девушка pa-girl-r3-09 → сцены; хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
+
+## casaslegales (03.11) — дизайн «01 Relieve alto» и третья выгрузка владельца (66 страниц + 404)
+- **Дизайн** (`docs/design/casaslegales/r3/parts/01-relieve-alto.html`) применён: токены светлой/тёмной темы варианта (шалфей / ночная хвоя,
+  у плиток верх + две грани, «no consultable» — коралловая штриховка), логотип-кубик (и favicon), шапка без рамки, h1 36/50, диагональные тени
+  у ячеек матрицы/тегов/чипов. Общий модуль `sites/casaslegales/pages/iso.mjs`: изометрическая карта 24 юрисдикций, высота плитки
+  `isoHeight` = 10 + 6 × сайтов в официальном списке (код считает), платформа 12, без данных 4; мягкая тень, ярлык «КОД · N» над выбранной,
+  «лесенка высот» (`isoLadder`, списки по убыванию). Одна разметка для главной (кнопки, JS переносит ярлык), /provincias (ссылки),
+  /provincia/* , /guia/menores, оператор × провинция и карты операторов (бывший SVG `licenceMap` → та же изометрия). Телефон 375:
+  без горизонтальной прокрутки (проверено на 9 страницах; исправлена утечка `.rl-vh` из `.rl-scroll`), карта крупнее на телефоне; обе темы.
+- **Выгрузка `3333/`** (разобрана и удалена; файлы в `docs/reference/owner-saves/2026-11-03/`, `urls.txt`):
+  Córdoba `cba-juegos-online` — нужная страница, список 4 не изменился (доказательства заново дословно, шаблон допускает `/`);
+  Santa Fe /casinos/ — **официальный список** → `data/sources/registries/santa-fe.json` (4 адреса: bplay, City Center Online, BetWarrior,
+  Jugadón; `declaredCount` 4 по цитате «2 plataformas de juego online y 4 de apuestas deportivas», закон 14235/23);
+  Santa Fe /juego-responsable-3/ → автоисключение из живой копии (Wayback 2025 удалён);
+  «Juego en Línea» = **ipjyc.gob.ar/JEL/** (IPJyC Mendoza) → `registries/mendoza.json` (7 платформ, ley 9267). Обе провинции убраны из
+  `provinces.json`, добавлены в `SITE.registries`; тексты provcopy, `sfe_n`/`mza_n`, бренд `citycenteronline`. Верификатор не ослабляли.
+- **Операторы:** строки `check` теперь обязаны покрывать **все** реестры (сборка падает, если новый список не проверен); тексты bplay,
+  BetWarrior, Betano, Codere, Jugadón, Sportsbet обновлены. Новые: /operador/bplay/santa-fe, /operador/betano/mendoza,
+  /operador/betwarrior/mendoza. План синхронизирован.
+- **Ещё нужно от владельца:** Mendoza автоисключение (`mendoza-autoexclusion`), PDF; копии Santa Fe/Mendoza/Córdoba/… истекают 09–11.02.2027.
 
 ## casaslegales (03.11) — копии и скриншоты владельца (из браузера в Аргентине)
 - **Пришло** (папка `11111111111/`, разобрана и удалена): Chrome «полностью» 10 страниц → `docs/reference/owner-saves/2026-11-03/<slug>.html`

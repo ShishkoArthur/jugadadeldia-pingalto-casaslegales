@@ -32,4 +32,22 @@ export const OPPROV = [
     description: 'bplay en Córdoba: la licencia de la Lotería de Córdoba, el dominio cordobés de bplay y qué cambia frente a sus versiones en otras provincias argentinas.',
     h1: 'bplay en Córdoba: licencia de la Lotería de Córdoba',
   },
+  {
+    brand: 'bplay', jur: 'santa-fe', host: 'bplay.bet.ar',
+    title: 'bplay en Santa Fe: licencia y dominio',
+    description: 'bplay en Santa Fe: la dirección que publica la Lotería de Santa Fe, sin subdominio provincial, y en qué se diferencia de sus versiones en otras provincias.',
+    h1: 'bplay en Santa Fe: la dirección que publica la Lotería',
+  },
+  {
+    brand: 'betano', jur: 'mendoza', host: 'mza.betano.bet.ar',
+    title: 'Betano en Mendoza: ¿tiene licencia del IPJyC?',
+    description: 'Betano en Mendoza: qué dice la lista del IPJyC, el dominio mza.betano.bet.ar y en qué se diferencia de la dirección de Buenos Aires y la Ciudad.',
+    h1: 'Betano en Mendoza: qué dice la lista del IPJyC',
+  },
+  {
+    brand: 'betwarrior', jur: 'mendoza', host: 'mza.betwarrior.bet.ar',
+    title: 'BetWarrior en Mendoza: licencia del IPJyC',
+    description: 'BetWarrior en Mendoza: la dirección que figura en la lista del IPJyC, mza.betwarrior.bet.ar, y qué cambia frente a sus versiones en otras provincias.',
+    h1: 'BetWarrior en Mendoza: la dirección que autoriza el IPJyC',
+  },
 ];

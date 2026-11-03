@@ -28,6 +28,7 @@ const HELP_NAV = [['/juego-responsable', 'Líneas de ayuda'], ['/juego-responsab
 
 const MOON = '<svg class="rl-moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15 12.5A6.5 6.5 0 0 1 7.5 5a6.5 6.5 0 1 0 7.5 7.5z" fill="currentColor"/></svg>';
 const SUN = '<svg class="rl-sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><path d="M10 1.5v2.5M10 16v2.5M1.5 10H4M16 10h2.5M4 4l1.8 1.8M14.2 14.2 16 16M4 16l1.8-1.8M14.2 5.8 16 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const LOGO = '<svg viewBox="0 0 30 30" aria-hidden="true"><path class="rl-lg-s" d="M15 2 27 9v12l-12 7-12-7V9z"/><path class="rl-lg-t" d="M15 2 27 9l-12 7L3 9z"/><path class="rl-lg-k" d="m10 9 4 3 6-5"/></svg>';
 const BURGER = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
 const THEME_JS = "try{var t=localStorage.getItem('rl-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')";
 
@@ -64,8 +65,8 @@ export function page(h, p, body) {
     p.description ? '<meta property="og:description" content="' + h.esc(p.description) + '">' : '',
     '<meta property="og:url" content="' + url + '">',
     '<meta name="twitter:card" content="summary">',
-    '<meta name="theme-color" content="#e8efe5" media="(prefers-color-scheme: light)">',
-    '<meta name="theme-color" content="#0a1511" media="(prefers-color-scheme: dark)">',
+    '<meta name="theme-color" content="#e9efe6" media="(prefers-color-scheme: light)">',
+    '<meta name="theme-color" content="#07120e" media="(prefers-color-scheme: dark)">',
     '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
     '<link rel="icon" href="/favicon.ico" sizes="32x32">',
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
@@ -77,7 +78,7 @@ export function page(h, p, body) {
   const nav = p.help
     ? '<nav class="rl-hnav" aria-label="Ayuda">' + links(h, HELP_NAV, p.path) + '</nav>'
     : '<nav class="rl-nav" id="rl-nav" aria-label="Principal">' + links(h, NAV, p.path) + '</nav>';
-  const header = '<header class="rl-top"><a class="rl-logo" href="/"><i aria-hidden="true"></i>casaslegales</a>' + nav +
+  const header = '<header class="rl-top"><a class="rl-logo" href="/">' + LOGO + 'casaslegales</a>' + nav +
     '<button class="rl-ib" type="button" data-rl-theme aria-label="Cambiar entre tema claro y oscuro">' + MOON + SUN + '</button>' +
     (p.help ? '' : '<button class="rl-ib rl-bu" type="button" data-rl-menu aria-controls="rl-nav" aria-expanded="false" aria-label="Menú">' + BURGER + '</button>') + '</header>';
   const footer = '<footer class="rl-ft"><p>Sin enlaces a operadores ni bonos. No es asesoramiento legal: depende de la ley de tu provincia.</p>' +
@@ -100,7 +101,7 @@ export function clientData(h) {
     const k = x.st === 'list' ? (x.n === 1 ? 'sitio en la lista oficial' : 'sitios en la lista oficial') : x.st === 'platform' ? (x.n === 1 ? 'plataforma enlazada por el regulador' : 'plataformas enlazadas por el regulador') : x.label;
     const m = x.st === 'list' ? r.regulator.short + ' · revisado ' + h.fmtDate(r.checked) : x.st === 'platform' ? x.e.platforms.map(q => q.name).join(', ') + ' · copia del ' + h.fmtDate(x.date) :
       x.st === 'none' ? 'No hay una lista oficial que podamos citar.' : x.e.reason === 'geo' ? 'La fuente oficial no abre desde fuera de Argentina: copia pendiente.' : 'La fuente oficial no está en condiciones de citarse.';
-    j[t.id] = { n: p.name, s: x.st, c: x.n, k, m, l: p.line ? { p: p.line.phone, t: p.line.phoneTel } : null, u: h.built(u) ? u : null };
+    j[t.id] = { n: p.name, co: t.code, s: x.st, c: x.n, k, m, l: p.line ? { p: p.line.phone, t: p.line.phoneTel } : null, u: h.built(u) ? u : null };
   }
   return {
     j,

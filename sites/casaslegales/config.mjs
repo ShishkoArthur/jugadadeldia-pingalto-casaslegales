@@ -18,7 +18,7 @@ export const SITE = {
   fonts: ['gabarito-var-latin.woff2', 'ubuntu-sans-mono-var-latin.woff2'],
   preload: ['gabarito-var-latin.woff2'],
   images: SHOT_FILES(),
-  registries: ['buenos-aires', 'caba', 'cordoba', 'la-rioja', 'neuquen', 'rio-negro'],
+  registries: ['buenos-aires', 'caba', 'cordoba', 'la-rioja', 'neuquen', 'rio-negro', 'santa-fe', 'mendoza'],
   defaultJurisdiction: 'buenos-aires',
   gate: {
     rgBlock: /<aside class="rl-ay"/,

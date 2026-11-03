@@ -26,11 +26,10 @@
 | Salta | https://www.enrejasalta.com.ar/ja.php | `sal-enreja-juego-autorizado` | «Juego autorizado», ley 7020 |
 | Salta | https://www.enrejasalta.com.ar/jr.php | `ar-a-enreja-jr` | juego responsable |
 | Santa Fe | https://www.loteriasantafe.gov.ar/ | `santa-fe-inicio` | главная Lotería de Santa Fe |
-| Santa Fe | страница со списком разрешённых онлайн-платформ — найти в меню («Juego online», «Plataformas autorizadas», «Juego legal») | `santa-fe-plataformas` | список сайтов .bet.ar |
-| Santa Fe | https://www.loteriasantafe.gov.ar/index.php/juego-responsable | `santa-fe-juego-responsable` | сейчас у нас только копия из Wayback 2025 |
-| Santa Fe | https://www.santafe.gob.ar/ms/juegocompulsivo/ | `santa-fe-juego-compulsivo` | сейчас только Wayback 2026 |
-| Mendoza | https://www.mendoza.gob.ar/juegosycasinos/ | `mendoza-ipjyc-inicio` | главная IPJyC |
-| Mendoza | страница со списком разрешённых онлайн-платформ — найти в меню IPJyC («Juego online», «Plataformas autorizadas», «Juego legal») | `mendoza-plataformas` | список сайтов .bet.ar |
+| Santa Fe | https://www.loteriasantafe.gov.ar/casinos/ | `santa-fe-plataformas` | список «CASINOS ONLINE» + «APUESTAS DEPORTIVAS» (4 адреса .bet.ar) |
+| Santa Fe | https://www.loteriasantafe.gov.ar/juego-responsable-3/ | `santa-fe-juego-responsable` | линия APRECOD, автоисключение |
+| Santa Fe | https://www.santafe.gob.ar/ms/juegocompulsivo/ | `santa-fe-juego-compulsivo` | линия APRECOD |
+| Mendoza | https://www.ipjyc.gob.ar/JEL/ (сайт «Juego En Línea Mendoza» IPJyC) | `mendoza-plataformas` | блок «PLATAFORMAS DE JUEGO EN LÍNEA» (7 адресов .bet.ar) |
 | Mendoza | страница автоисключения IPJyC (меню «Juego responsable» → «Autoexclusión») | `mendoza-autoexclusion` | срок, как подать |
 
 Если адрес из таблицы открывается не на ту страницу — сохранить ту, где есть нужное, и записать её адрес в `urls.txt`
@@ -48,10 +47,16 @@ Santa Fe (вторая выгрузка): `santa-fe-inicio`, `santa-fe-juego-com
 Лотереи .bet.ar нет — статус «sin dato verificado»; линия APRECOD 0800-268-5640 и регулятор теперь из живых копий (не Wayback).
 Сайт Лотереи переделан: старый адрес `index.php/juego-responsable` теперь, судя по меню, `/juego-responsable-3/`.
 
-**Ещё нужно:** `cba-juegos-online` (https://loteriadecordoba.com.ar/juegos/online — прислана была другая страница);
-Santa Fe — `santa-fe-plataformas` (вероятно https://www.loteriasantafe.gov.ar/casinos/), `santa-fe-juego-responsable`
-(https://www.loteriasantafe.gov.ar/juego-responsable-3/ — там автоисключение; сейчас оно из Wayback 2025);
-Mendoza — `mendoza-plataformas` (ipjyc.gob.ar/wp/), `mendoza-autoexclusion`. PDF не пришли — желательно.
+Третья выгрузка (03.11, папка `3333/`, разобрана и удалена; файлы — в `2026-11-03/`, адреса — `urls.txt`):
+- `cba-juegos-online` — теперь та самая страница со списком Córdoba (4 сайта, не изменился); шаблон списка допускает `/` на конце (Chrome).
+- `santa-fe-plataformas` (/casinos/) — **официальный список**: CASINOS ONLINE 2 + APUESTAS DEPORTIVAS 4 = 4 адреса; Santa Fe →
+  `data/sources/registries/santa-fe.json`, «lista oficial verificada». Копия главной (`santa-fe-inicio`) переехала туда же (цитата о несовершеннолетних).
+- `santa-fe-juego-responsable` (/juego-responsable-3/) — автоисключение и вторая цитата линии APRECOD теперь из живой копии (Wayback 2025 удалён).
+- «Juego en Línea _ Sitio de Juego en Línea» — это **ipjyc.gob.ar/JEL/**, сайт игры в линии IPJyC Mendoza: `mendoza-plataformas`,
+  **официальный список 7 платформ** → `data/sources/registries/mendoza.json`, «lista oficial verificada». Копия главной IPJyC больше не нужна (удалена из данных).
+
+**Ещё нужно:** Mendoza — `mendoza-autoexclusion` (меню IPJyC «Juego responsable» → «Autoexclusión»; сейчас автоисключение из
+`ar-m-ipjyc-juego-responsable`); PDF к копиям — желательно. Дальше все копии владельца — пересохранять раз в 3 месяца (до ~09.02.2027).
 
 Сохранено было «Веб-страница полностью» (DOM после браузера: ссылки стали абсолютными, у пустых атрибутов `=""`). Это тоже годится:
 цитаты сверяются по видимому тексту, а HTML-доказательства строк списка агент берёт дословно из присланной копии. Но `view-source`

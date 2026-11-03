@@ -1,18 +1,20 @@
 import { TILES } from '../content/map.mjs';
+import { isoMap, isoHeight } from './iso.mjs';
 import { PROV_COPY } from '../content/provcopy.mjs';
 import { provData, pdQuote, pdSrc, STATUS_LABEL } from '../content/provdata.mjs';
 import { brandMatrix, distinctHosts } from '../../../engine/registry.mjs';
 import { src, quote, rgQuote, hostHtml, sectionHead } from './parts.mjs';
 
-export function relief(h, P, cur, { links = false, cls: clsOf = null, tip = null } = {}) {
-  const tiles = P.all.map(x => {
-    const t = TILES.find(y => y.id === x.id);
-    const cls = (clsOf ? clsOf(x) : 'rl-s-' + x.st) + (x.id === cur ? ' rl-cur' : '');
+export function relief(h, P, cur, { links = false, cls: clsOf = null, tip = null, aria = null } = {}) {
+  return isoMap(h, t => {
+    const x = P.one(t.id);
+    const kind = clsOf ? clsOf(x).replace(/^rl-s-/, '') : x.st;
     const label = x.name + ': ' + (tip ? tip(x) : x.label);
-    if (links && h.built('/provincia/' + x.id)) return '<a class="' + cls + '" style="grid-area:' + t.area + '" href="' + h.href('/provincia/' + x.id) + '" aria-label="' + h.esc(label) + '">' + x.code + '</a>';
-    return '<i class="' + cls + '" style="grid-area:' + t.area + '">' + x.code + '</i>';
-  }).join('');
-  return '<div class="rl-relw"' + (links ? '' : ' aria-hidden="true"') + '><div class="rl-rel">' + tiles + '</div></div>';
+    const on = x.id === cur;
+    const href = links && h.built('/provincia/' + x.id) ? h.href('/provincia/' + x.id) : null;
+    return { kind, h: clsOf ? (kind === 'list' ? 28 : kind === 'blocked' ? 6 : 4) : isoHeight(x.st, x.n), on,
+      label: on ? x.code + (!clsOf && x.n !== null ? ' · ' + x.n : '') : null, href, attrs: href ? ' aria-label="' + h.esc(label) + '"' : '', title: href ? null : label };
+  }, { size: 'm', aria: links ? 'Mapa de las 24 jurisdicciones: cada ficha lleva a su página' : aria });
 }
 export function reliefLegend() {
   return '<ul class="rl-rleg">' + ['list', 'platform', 'none', 'blocked'].map(s => '<li><i class="rl-s-' + s + '"></i>' + STATUS_LABEL[s] + '</li>').join('') + '</ul>';

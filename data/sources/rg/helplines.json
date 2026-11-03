@@ -640,11 +640,11 @@
      "free": true,
      "hours": "todos los días del año, de 8 a 24hs",
      "whatsapp": "341-540-7653",
-     "note": "Live page saved by the owner from a browser in Argentina on 2026-11-03 (from our machines the site does not answer); the Lotería page (Wayback 2025-08-13) gives the same line. Provincial addictions line (APRECOD), not gambling-only.",
+     "note": "Live page saved by the owner from a browser in Argentina on 2026-11-03 (from our machines the site does not answer); the Lotería de Santa Fe juego responsable page (owner copy, same day) gives the same line. Provincial addictions line (APRECOD), not gambling-only.",
      "also": [
       {
-       "quote": "de manera gratuita a través del 0800-268-5640 y por mensaje al WhatsApp 341-540-7653, todos los días del año, de 8 a 24hs.",
-       "doc": "ar-s-loteria-juego-responsable-wayback-2025-08-13"
+       "quote": "brinda una escucha profesional a todas las personas e instituciones de la Provincia de Santa Fe de manera gratuita a través del 0800-268-5640",
+       "doc": "santa-fe-juego-responsable"
       }
      ],
      "quote": "pone a disposición un Centro de Orientación y Atención Virtual que brinda escucha profesional de manera gratuita a través del 0800-268-5640 y por mensaje al WhatsApp 341-540-7653, todos los días del año, de 8 a 24hs.",
@@ -655,9 +655,8 @@
     {
      "name": "Autoexclusión (casinos, plataformas online, sedes de Lotería de Santa Fe)",
      "quote": "Si usted desea autoexcluirse de las salas de juego, podrá hacerlo en los tres casinos habilitados vía online en las plataformas o en las sedes de Lotería de Santa Fe",
-     "doc": "ar-s-loteria-juego-responsable-wayback-2025-08-13",
-     "archived": true,
-     "note": "Archived copy (web.archive.org); the live site does not answer from our machines. No term stated."
+     "doc": "santa-fe-juego-responsable",
+     "note": "Live page of Lotería de Santa Fe (/juego-responsable-3/) saved by the owner from a browser in Argentina on 2026-11-03. No term stated."
     }
    ],
    "regulators": [
@@ -690,9 +689,9 @@
      "date": "2026-11-03",
      "tried": [
       "owner copies from a browser in Argentina: loteriasantafe.gov.ar home, /historia/, /resena-de-juegos/ and santafe.gob.ar/ms/juegocompulsivo/ — used (line and regulator)",
-      "not saved yet: loteriasantafe.gov.ar/juego-responsable-3/ (self-exclusion still from Wayback 2025) and /casinos/"
+      "owner copies of loteriasantafe.gov.ar/juego-responsable-3/ and /casinos/ (2026-11-03, third upload) — used: self-exclusion from the live page (Wayback copy dropped); /casinos/ holds the list of authorized online platforms (data/sources/registries/santa-fe.json)"
      ],
-     "result": "help line and regulator from live owner copies; self-exclusion still archived"
+     "result": "help line, regulator and self-exclusion from live owner copies"
     }
    ]
   },
@@ -1262,13 +1261,6 @@
    "sha256": "23c7e99255e7a118b1a297e8a9e7f438c5795c593649e7d8fb9b371231afc96a",
    "file": "data/sources/rg/_docs/ar-g-caja-social-juego-responsable.html"
   },
-  "ar-s-loteria-juego-responsable-wayback-2025-08-13": {
-   "url": "https://web.archive.org/web/20250813193304/https://www.loteriasantafe.gov.ar/index.php/juego-responsable",
-   "fetched": "2026-11-01",
-   "status": 200,
-   "sha256": "d361d998771f4719c434fd499fb071c9702270983f4e6c3c5c9e8bd40145e542",
-   "file": "data/sources/rg/_docs/ar-s-loteria-juego-responsable-wayback-2025-08-13.html"
-  },
   "ar-z-loas-guia-padres-docentes": {
    "url": "https://loteriadesantacruz.gob.ar/wp-content/uploads/2025/01/Guia-para-Padre-y-Docentes.pdf",
    "fetched": "2026-11-01",
@@ -1290,6 +1282,14 @@
    "status": 200,
    "sha256": "7b6717fb8d9c51b3fbfaab96a3bd67665619bfcfdbb160bca4b3c92f20fe8199",
    "file": "data/sources/rg/_docs/santa-fe-historia.html",
+   "copiedBy": "owner"
+  },
+  "santa-fe-juego-responsable": {
+   "url": "https://www.loteriasantafe.gov.ar/juego-responsable-3/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "12bfc5f8ddab5d41a5fc2160aa4d5fc445337f370b3afd6b11a8bea0a99cd928",
+   "file": "data/sources/rg/_docs/santa-fe-juego-responsable.html",
    "copiedBy": "owner"
   }
  }

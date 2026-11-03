@@ -1,0 +1,106 @@
+{
+ "id": "mendoza",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "status": "official-list",
+ "regulator": {
+  "name": "Instituto Provincial de Juegos y Casinos de Mendoza",
+  "short": "IPJyC"
+ },
+ "list": {
+  "doc": "mendoza-plataformas",
+  "pattern": "<p style=\"text-align: center;\"><a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)/?\"",
+  "note": "Home page of \"Juego En Línea Mendoza\" (ipjyc.gob.ar/JEL/), the online gaming site of the IPJyC: block \"PLATAFORMAS DE JUEGO EN LÍNEA\", one logo and one address per platform. The site does not answer from outside Argentina (not bypassed): the copy is the one the owner saved from his own browser in Argentina on 2026-11-03; evidence snippets are taken verbatim from it. The IPJyC home page (mendoza.gob.ar/juegosycasinos/) has no list."
+ },
+ "docs": {
+  "mendoza-plataformas": {
+   "url": "https://www.ipjyc.gob.ar/JEL/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "c5499cfbb56fb3dc158460eb0c36bf73880be899700ac439b84a275472d09995",
+   "file": "data/sources/registries/_docs/mendoza-plataformas.html",
+   "copiedBy": "owner"
+  }
+ },
+ "quotes": {
+  "list": {
+   "doc": "mendoza-plataformas",
+   "text": "Las plataformas autorizadas al día de la fecha son las siquientes:",
+   "role": "list"
+  },
+  "regulator": {
+   "doc": "mendoza-plataformas",
+   "text": "En el ámbito del Instituto Provincial de Juegos y Casinos de Mendoza, se regula el juego en línea legal y oficial dentro del territorio de la Provincia de Mendoza.",
+   "role": "regulator"
+  },
+  "law": {
+   "doc": "mendoza-plataformas",
+   "text": "En el marco de la Ley Provincial 9267, la Resolución de Directorio 554/22 del IPJyC, y la correspondiente licitación pública, se otorgaron licencias para la explotación del juego en linea en la Provincia de Mendoza.",
+   "role": "law"
+  }
+ },
+ "law": [
+  {
+   "name": "Ley Provincial 9267",
+   "quote": "law"
+  }
+ ],
+ "licensees": [
+  {
+   "brand": "super7",
+   "host": "mdz.super7.bet.ar",
+   "evidence": {
+    "doc": "mendoza-plataformas",
+    "html": "<p style=\"text-align: center;\"><a href=\"https://mdz.super7.bet.ar/\" target=\"_blank\" rel=\"noopener\">https://mdz.super7.bet.ar/</a></p>"
+   }
+  },
+  {
+   "brand": "bplay",
+   "host": "mendoza.bplay.bet.ar",
+   "evidence": {
+    "doc": "mendoza-plataformas",
+    "html": "<p style=\"text-align: center;\"><a href=\"https://mendoza.bplay.bet.ar/\" target=\"_blank\" rel=\"noopener\">https://mendoza.bplay.bet.ar/</a></p>"
+   }
+  },
+  {
+   "brand": "betwarrior",
+   "host": "mza.betwarrior.bet.ar",
+   "evidence": {
+    "doc": "mendoza-plataformas",
+    "html": "<p style=\"text-align: center;\"><a href=\"https://mza.betwarrior.bet.ar/\" target=\"_blank\" rel=\"noopener\">https://mza.betwarrior.bet.ar/</a></p>"
+   }
+  },
+  {
+   "brand": "codere",
+   "host": "m.mdz.codere.bet.ar",
+   "evidence": {
+    "doc": "mendoza-plataformas",
+    "html": "<p style=\"text-align: center;\"><a href=\"https://m.mdz.codere.bet.ar/\">https://m.mdz.codere.bet.ar/</a></p>"
+   }
+  },
+  {
+   "brand": "casinoclub",
+   "host": "casinoclubonline.bet.ar",
+   "evidence": {
+    "doc": "mendoza-plataformas",
+    "html": "<p style=\"text-align: center;\"><a href=\"https://casinoclubonline.bet.ar/\">https://casinoclubonline.bet.ar/</a></p>"
+   }
+  },
+  {
+   "brand": "sportsbet",
+   "host": "mza.sportsbet.bet.ar",
+   "evidence": {
+    "doc": "mendoza-plataformas",
+    "html": "<p style=\"text-align: center;\"><a href=\"https://mza.sportsbet.bet.ar/\" target=\"_blank\" rel=\"noopener\">https://mza.sportsbet.bet.ar/</a></p>"
+   }
+  },
+  {
+   "brand": "betano",
+   "host": "mza.betano.bet.ar",
+   "evidence": {
+    "doc": "mendoza-plataformas",
+    "html": "<p style=\"text-align: center;\"><a href=\"https://mza.betano.bet.ar/\">https://mza.betano.bet.ar</a></p>"
+   }
+  }
+ ]
+}

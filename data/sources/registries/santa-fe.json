@@ -1,0 +1,100 @@
+{
+ "id": "santa-fe",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "status": "official-list",
+ "regulator": {
+  "name": "Caja de Asistencia Social - Lotería de Santa Fe",
+  "short": "Lotería de Santa Fe"
+ },
+ "list": {
+  "doc": "santa-fe-plataformas",
+  "pattern": "<li><a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)/?\" target=\"_blank\" rel=\"noopener\">",
+  "note": "Page \"Casinos\" of Lotería de Santa Fe, block \"Juego Online en Santa Fe: Regulación y Plataformas Habilitadas\": two lists, CASINOS ONLINE (bplay.bet.ar, citycenteronline.bet.ar) and APUESTAS DEPORTIVAS (the same two plus betwarrior.bet.ar and jugadon.bet.ar), so 4 distinct addresses; the page itself says 2 online gaming platforms and 4 sports betting platforms. The site does not answer from outside Argentina (not bypassed): the copies are the ones the owner saved from his own browser in Argentina on 2026-11-03; evidence snippets are taken verbatim from those copies."
+ },
+ "docs": {
+  "santa-fe-plataformas": {
+   "url": "https://www.loteriasantafe.gov.ar/casinos/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "57a84fc3ff7fffcc3f99620fe76506fbc7ebf2c0038c069b25bbcc3e97709afa",
+   "file": "data/sources/registries/_docs/santa-fe-plataformas.html",
+   "copiedBy": "owner"
+  },
+  "santa-fe-inicio": {
+   "url": "https://www.loteriasantafe.gov.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "737203406cf7dec68ddd3d19bd2ba0d0283ee8128f216fef96f3afea8dbfc86b",
+   "file": "data/sources/registries/_docs/santa-fe-inicio.html",
+   "copiedBy": "owner"
+  }
+ },
+ "quotes": {
+  "list": {
+   "doc": "santa-fe-plataformas",
+   "text": "Las plataformas autorizadas para operar en la provincia de Santa Fe son:",
+   "role": "list"
+  },
+  "count": {
+   "doc": "santa-fe-plataformas",
+   "text": "Actualmente, se encuentran habilitadas 2 plataformas de juego online y 4 de apuestas deportivas, homologadas a través de la Ley 14235/23",
+   "role": "law"
+  },
+  "regulator": {
+   "doc": "santa-fe-plataformas",
+   "text": "La Lotería de Santa Fe vela por el cumplimiento de la normativa vigente para garantizar un entorno de juego seguro y responsable para todos los ciudadanos.",
+   "role": "regulator"
+  },
+  "age": {
+   "doc": "santa-fe-inicio",
+   "text": "El acceso a las plataformas de apuestas está prohibido por ley para niñas, niños y adolescentes.",
+   "role": "age",
+   "hidden": true
+  }
+ },
+ "law": [
+  {
+   "name": "Ley 14235/23",
+   "quote": "count"
+  }
+ ],
+ "declaredCount": {
+  "quote": "count",
+  "value": 4
+ },
+ "licensees": [
+  {
+   "brand": "bplay",
+   "host": "bplay.bet.ar",
+   "evidence": {
+    "doc": "santa-fe-plataformas",
+    "html": "<li><a href=\"http://bplay.bet.ar/\" target=\"_blank\" rel=\"noopener\">bplay.bet.ar</a></li>"
+   }
+  },
+  {
+   "brand": "citycenteronline",
+   "host": "citycenteronline.bet.ar",
+   "evidence": {
+    "doc": "santa-fe-plataformas",
+    "html": "<li><a href=\"http://citycenteronline.bet.ar/\" target=\"_blank\" rel=\"noopener\">citycenteronline.bet.ar</a></li>"
+   }
+  },
+  {
+   "brand": "betwarrior",
+   "host": "betwarrior.bet.ar",
+   "evidence": {
+    "doc": "santa-fe-plataformas",
+    "html": "<li><a href=\"http://betwarrior.bet.ar/\" target=\"_blank\" rel=\"noopener\">betwarrior.bet.ar</a></li>"
+   }
+  },
+  {
+   "brand": "jugadon",
+   "host": "jugadon.bet.ar",
+   "evidence": {
+    "doc": "santa-fe-plataformas",
+    "html": "<li><a href=\"http://jugadon.bet.ar/\" target=\"_blank\" rel=\"noopener\">jugadon.bet.ar</a></li>"
+   }
+  }
+ ]
+}

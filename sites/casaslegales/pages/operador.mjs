@@ -20,6 +20,8 @@ export function entries(h) {
   return h.regs.flatMap(r => r.licensees.map(l => ({ host: l.host, jur: r.id, brand: l.brand })));
 }
 function checks(h, o, row) {
+  const missing = h.regs.filter(r => !o.check.some(([jid]) => jid === r.id)).map(r => r.id);
+  if (missing.length) throw new Error('/operador/' + o.slug + ': the copy has no check line for ' + missing.join(', ') + ' (every verified list must be checked)');
   for (const [jid, host] of o.check) {
     const c = row.cells[jid];
     if (host === null ? c : !c || c.host !== host) throw new Error('/operador/' + o.slug + ': the copy says ' + jid + ' = ' + host + ' but the registry has ' + (c ? c.host : 'nothing'));

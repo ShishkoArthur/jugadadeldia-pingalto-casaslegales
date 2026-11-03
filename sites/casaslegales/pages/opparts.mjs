@@ -1,24 +1,17 @@
 // Pieces of operator, verifier and brand-check pages: licence map (inline SVG), address anatomy, operator quotes (no link
 // to the operator: its address is text), screenshot figures.
-import { TILES, CODE } from '../content/map.mjs';
+import { CODE } from '../content/map.mjs';
+import { isoMap } from './iso.mjs';
 import { anatomy } from '../../../engine/hostcheck.mjs';
 import { docOf } from '../content/opdata.mjs';
 
-const S = 40, G = 4;
-function cell(area) {
-  const [r, c, r2, c2] = area.split('/').map(Number);
-  return { x: (c - 1) * S, y: (r - 1) * S, w: ((c2 || c + 1) - c) * S - G, h: ((r2 || r + 1) - r) * S - G };
-}
-// state(jid) -> 'yes' | 'no' | 'na'; label(jid) -> short text under the code for 'yes'
+// state(jid) -> 'yes' | 'no' | 'na'; label(jid) -> the address listed there, shown in the tile title
 export function licenceMap(h, { state, title, label = () => '' }) {
-  const tiles = TILES.map(t => {
-    const st = state(t.id), b = cell(t.area), name = h.rg.prov(t.id).name;
+  return isoMap(h, t => {
+    const st = state(t.id), name = h.rg.prov(t.id).name;
     const tip = name + ': ' + (st === 'yes' ? 'figura en la lista oficial' + (label(t.id) ? ' (' + label(t.id) + ')' : '') : st === 'no' ? 'no figura en la lista oficial' : 'sin dato verificado');
-    const mark = st === 'yes' ? '<path class="rl-mk" d="M' + (b.x + b.w - 15) + ' ' + (b.y + 9) + 'l4 4 7-8"/>' : st === 'no' ? '<path class="rl-mx" d="M' + (b.x + b.w - 14) + ' ' + (b.y + 6) + 'l7 7m0-7-7 7"/>' : '';
-    return '<g class="rl-m-' + st + '"><title>' + h.esc(tip) + '</title><rect x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="7"/>' +
-      '<text x="' + (b.x + 6) + '" y="' + (b.y + b.h - 8) + '">' + t.code + '</text>' + mark + '</g>';
-  }).join('');
-  return '<svg class="rl-lmap" viewBox="-2 -2 ' + (5 * S + 4) + ' ' + (9 * S + 4) + '" role="img" aria-label="' + h.esc(title) + '">' + tiles + '</svg>';
+    return { kind: st === 'na' ? 'none' : st, h: st === 'yes' ? 28 : 4, title: tip };
+  }, { size: 'm', aria: title });
 }
 export function mapLegend() {
   return '<ul class="rl-mleg"><li><i class="rl-m-yes"></i>figura en la lista oficial</li><li><i class="rl-m-no"></i>no figura en la lista oficial</li><li><i class="rl-m-na"></i>sin dato verificado: todavía no guardamos esa lista</li></ul>';

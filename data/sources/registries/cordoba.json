@@ -9,17 +9,17 @@
  },
  "list": {
   "doc": "cba-juegos-online",
-  "pattern": "class=\"text-center text-sm text-white\" href=\"https?://(?<host>[^/\"]+)\">",
-  "note": "Section \"Sitios oficiales de juego online en Córdoba\" (server-rendered Next.js page). Fetched once on 2026-11-03 with a transparent user agent; robots.txt allows * (Content-Signal: search=yes, ai-train=no, use=reference)."
+  "pattern": "class=\"text-center text-sm text-white\" href=\"https?://(?<host>[^/\"]+)/?\">",
+  "note": "Section \"Sitios oficiales de juego online en Córdoba\" (Next.js page). robots.txt disallows AI crawlers, so the copy is the one the owner saved from his own browser in Argentina on 2026-11-03 (Chrome \"save complete page\": links get a trailing slash; the pattern allows it); evidence snippets are taken verbatim from that copy."
  },
  "docs": {
   "cba-juegos-online": {
    "url": "https://loteriadecordoba.com.ar/juegos/online",
    "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "87e2d04637f9d7f8e4723884adbf36904a65f6243ed73686d2f4b254eebf8fe6",
+   "sha256": "1dfc8a77702f16509a51409d3d26b1ebba59ad577ff158ca5bde0b35d68c7ae5",
    "file": "data/sources/registries/_docs/cba-juegos-online.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   }
  },
  "quotes": {
@@ -67,7 +67,7 @@
    "host": "cba.betsson.bet.ar",
    "evidence": {
     "doc": "cba-juegos-online",
-    "html": "class=\"text-center text-sm text-white\" href=\"https://www.cba.betsson.bet.ar\">"
+    "html": "class=\"text-center text-sm text-white\" href=\"https://www.cba.betsson.bet.ar/\">"
    }
   },
   {
@@ -75,7 +75,7 @@
    "host": "cordoba.jugadon.bet.ar",
    "evidence": {
     "doc": "cba-juegos-online",
-    "html": "class=\"text-center text-sm text-white\" href=\"https://www.cordoba.jugadon.bet.ar\">"
+    "html": "class=\"text-center text-sm text-white\" href=\"https://www.cordoba.jugadon.bet.ar/\">"
    }
   },
   {
@@ -83,7 +83,7 @@
    "host": "cordoba.bplay.bet.ar",
    "evidence": {
     "doc": "cba-juegos-online",
-    "html": "class=\"text-center text-sm text-white\" href=\"https://cordoba.bplay.bet.ar\">"
+    "html": "class=\"text-center text-sm text-white\" href=\"https://cordoba.bplay.bet.ar/\">"
    }
   },
   {
@@ -91,7 +91,7 @@
    "host": "playcet.bet.ar",
    "evidence": {
     "doc": "cba-juegos-online",
-    "html": "class=\"text-center text-sm text-white\" href=\"https://www.playcet.bet.ar\">"
+    "html": "class=\"text-center text-sm text-white\" href=\"https://www.playcet.bet.ar/\">"
    }
   }
  ]

@@ -13,3 +13,7 @@ santa-fe-inicio https://www.loteriasantafe.gov.ar/
 santa-fe-juego-compulsivo https://www.santafe.gob.ar/ms/juegocompulsivo/
 santa-fe-historia https://www.loteriasantafe.gov.ar/historia/
 santa-fe-resena-de-juegos https://www.loteriasantafe.gov.ar/resena-de-juegos/
+santa-fe-plataformas https://www.loteriasantafe.gov.ar/casinos/
+santa-fe-juego-responsable https://www.loteriasantafe.gov.ar/juego-responsable-3/
+mendoza-plataformas https://www.ipjyc.gob.ar/JEL/
+cba-juegos-online https://loteriadecordoba.com.ar/juegos/online
