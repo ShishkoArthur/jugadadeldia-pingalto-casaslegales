@@ -124,8 +124,11 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
       const ogUrl = (H.match(/<meta property="og:url" content="([^"]+)"/) || [])[1];
       if (!/<meta property="og:title" content="[^"]+"/.test(H) || !/<meta property="og:description" content="[^"]+"/.test(H) || ogUrl !== ORIGIN + p.path) bad('og', f, 'og:title/og:description/og:url missing or wrong');
     }
-    // help and age (only on gambling sites; a site without them sets gate.gambling = false in its config)
-    if (SITE.gate.gambling !== false) {
+    // help and age (only on gambling sites; a site without them sets gate.gambling = false in its config; a gambling site may
+    // list page kinds that are not gambling - gate.noRgKinds, e.g. card games on jugadadeldia - those carry no help block)
+    const noRg = !!(p && (SITE.gate.noRgKinds || []).includes(p.kind));
+    if (noRg && SITE.gate.rgBlock.test(H)) bad('rgblock', f, 'help block on a ' + p.kind + ' page (not a gambling page)');
+    if (SITE.gate.gambling !== false && !noRg) {
     if (!SITE.gate.age.test(H)) bad('age', f, 'no 18+ mark');
     if (!/href="tel:\d+"/.test(H)) bad('tel', f, 'no tel: link with digits (help line)');
     const helpMarked = SITE.gate.helpMark.test(H);
@@ -206,7 +209,8 @@ async function selftest(id) {
   const F = p => S.SITE.fileOf(p);
   const RG = S.SITE.gate.gambling !== false;
   const A_PATH = S.SITE.gate.samplePage || '/metodologia';
-  const A = F(A_PATH), HOME = F('/'), HELP = RG ? F(S.PAGES.find(p => p.help).path) : null, PROV = RG ? S.PAGES.find(p => p.kind === 'province').path : null;
+  const A = F(A_PATH), HOME = F('/'), HELP = RG ? F(S.PAGES.find(p => p.help).path) : null, PROV = RG ? (S.PAGES.find(p => p.kind === 'province') || S.PAGES.find(p => S.BETTING_KINDS.includes(p.kind))).path : null;
+  const G = S.SITE.gate, HELP_ATTR = G.helpAttr || 'data-calma';
   const rep = (a, b) => s => { if (!s.includes(a)) throw new Error('selftest: missing "' + a.slice(0, 40) + '"'); return s.replace(a, b); };
   const body = x => rep('</main>', x + '</main>');
   const cyr = ch(0x43f, 0x440, 0x438);
@@ -217,10 +221,10 @@ async function selftest(id) {
     ['desc', A, s => s.replace(/<meta name="description" content="[^"]*"/, '<meta name="description" content="corta"')],
     ['canonical', A, s => s.replace(/<link rel="canonical" href="[^"]+"/, '<link rel="canonical" href="https://' + S.SITE.domain + '/otra"')],
     ['og', A, s => s.replace(/<meta property="og:title"[^>]*>/, '')],
-    ['link', A, body('<a href="/no-existe">x</a>')],
+    ['link', A, body('<a href="' + (G.deadLink || '/no-existe') + '">x</a>')],
     ['link', A, body('<a href="relativo">x</a>')],
     ['urlscheme', A, body('<a href="/metodologia.html">x</a>')],
-    ['urlscheme', A, body('<a href="/licencias/">x</a>')],
+    ['urlscheme', A, body('<a href="' + (G.offScheme || '/licencias/') + '">x</a>')],
     ['anchor', A, body('<a href="#no-existe">x</a>')],
     ['src', A, body('<img src="/' + S.SITE.assetDir + '/no-existe.webp" alt="x">')],
     ['alt', A, body('<img src="/favicon.svg">')],
@@ -236,7 +240,6 @@ async function selftest(id) {
     ['extscript', A, body('<script src="https://cdn.example.com/x.js"></script>')],
     ['extstyle', A, rep('</head>', '<link rel="stylesheet" href="https://cdn.example.com/x.css"></head>')],
     ['jsonld', A, body('<script type="application/ld+json">{oops</script>')],
-    ['jsonld', A, body('<script type="application/ld+json">{"@type":"Person","name":"x"}</script>')],
     ['operator', A, body('<a href="https://pba.ejemplo.bet.ar/">x</a>')],
     ['operator', A, body('<a href="https://www.betsson.com.ar/">x</a>')],
     ['affiliate', A, body('<a href="https://example.org/oferta?btag=123">x</a>')],
@@ -246,10 +249,10 @@ async function selftest(id) {
     ['age', A, s => s.replace(S.SITE.gate.age, 'class="x">18+<')],
     ['noindex', A, rep('<head>', '<head><meta name="robots" content="noindex,follow">')],
     ['noindex', S.SITE.notFoundFile, s => s.replace(/<meta name="robots" content="[^"]*">/, '')],
-    ['helpmark', HELP, s => s.replace(/(<body[^>]*)\sdata-calma/, '$1')],
-    ['helpmark', A, s => s.replace('<body', '<body data-calma')],
+    ['helpmark', HELP, s => s.replace(new RegExp('(<body[^>]*)\\s' + HELP_ATTR), '$1')],
+    ['helpmark', A, s => s.replace('<body', '<body ' + HELP_ATTR)],
     ['helplink', HELP, body('<a href="' + PROV + '">x</a>')],
-    ['helpnav', HELP, body('<nav class="rl-nav" id="x"></nav>')],
+    ['helpnav', HELP, body(G.navSample || '<nav class="rl-nav" id="x"></nav>')],
     ['sitemap', 'sitemap.xml', rep('</urlset>', '<url><loc>https://' + S.SITE.domain + '/no-existe</loc></url></urlset>')],
     ['sitemap', 'sitemap.xml', s => s.replace(new RegExp('<url><loc>[^<]*' + A_PATH + '</loc>[^\\n]*\\n?'), '')],
     ['robots', 'robots.txt', () => 'User-agent: *\nDisallow: /\n'],
@@ -268,6 +271,8 @@ async function selftest(id) {
     if (!hit) fail++;
     rmSync(tmp, { recursive: true, force: true });
   };
+  if (S.SITE.noPerson !== false) cases.push(['jsonld', A, body('<script type="application/ld+json">{"@type":"Person","name":"x"}</script>')]);
+  if (G.noRgKinds && G.rgSample) { const NR = S.PAGES.find(p => G.noRgKinds.includes(p.kind)); if (NR) cases.push(['rgblock', F(NR.path), body(G.rgSample)]); }
   if (S.SITE.gate.decimalComma) cases.push(['decimal', A, body('<p>Sensibilidad 0.39</p>')], ['decimal', A, body('<input id="z" type="number" value="1">')]);
   const RG_ONLY = new Set(['rgblock', 'tel', 'age', 'helpmark', 'helplink', 'helpnav']);
   for (const [name, file, mut] of cases.filter(c => RG || !RG_ONLY.has(c[0]))) await run(name, tmp => { const f = join(tmp, file); writeFileSync(f, mut(readFileSync(f, 'utf8'))); });

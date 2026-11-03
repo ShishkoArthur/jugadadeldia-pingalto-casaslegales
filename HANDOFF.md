@@ -52,20 +52,21 @@
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
 ## Состояние и следующее (03.11)
-- **Выбор владельца:** pingalto — дизайн r2 «02 Holo pastel»; casaslegales — r2 «02 Relieve». **Ждём:** jugadadeldia — дизайн из 20
-  (`docs/design/jugadadeldia/r3/`) и девушка из 10 (`contact-jdd-girls-r3.jpg`); pingalto — девушка из 10 (`contact-pa-girls-r3.jpg`).
+- **Выбор владельца:** pingalto — дизайн r2 «02 Holo pastel»; casaslegales — r2 «02 Relieve». jugadadeldia — r3 «06 Menú principal» (живой, волна 1) и девушка jdd-girl-r3-10 (сцены — следующий шаг); pingalto — девушка pa-girl-r3-09.
 - Сводка владельцу (планы с title/H1/description/AR, макеты, девушки, вопросы): https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS —
   сборка `node docs/owner/build-overview.mjs`, вопросы `docs/owner/questions.json`, публиковать тем же путём `docs/owner/overview.html`.
 - **Готово 03.11:** casaslegales волна 2 (29 страниц живые, раздел «casaslegales (03.11) — волна 2» ниже); pingalto каркас + P1-инструменты без ключей. **Готово:** движок лотерей (`engine/lottery`, 139 цитат, пробелы — `docs/ENGINE-LOTTERY.md`) и
   движок труко 1×1 и 2×2 + боты, generala (оптимальный бот), chinchón, escoba de 15 (`engine/*`, `docs/ENGINE-TRUCO.md`,
-  `docs/ENGINE-GAMES.md`; 160 тестов). Страницы игр jugadadeldia — после выбора дизайна.
-- **Потом:** оформление jugadadeldia после выбора; сцены девушек; тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
+  `docs/ENGINE-GAMES.md`; 160 тестов). Страницы игр jugadadeldia — живые (волна 1).
+- **Потом:** сцены девушек (jugadadeldia — вставить в `figure.jg-girl`); тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
   ждём токен); копии страниц от владельца (Córdoba, Neuquén, Río Negro, Salta — robots закрыт для ИИ; Santa Fe, Mendoza — гео-блок):
   список и инструкция — `docs/reference/owner-saves/README.md`, сохранить до конца января 2027; ключи PandaScore/Supercell — от владельца.
 - Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
+- 03.11 — jugadadeldia волна 1 выложена: дизайн «06 Menú principal», 45 страниц + 404 (кинела, 6 лотерей, труко и игры против
+  компьютера, служебные, помощь по провинциям), индекс открыт (раздел «jugadadeldia» ниже).
 - 03.11 — pingalto волна 3 выложена: /cs2 (Valve VRS), /cs2/major, /esports/series, /esports, /lol, /valorant, /ff, /ff/codigos
   (раздел «pingalto (03.11) — волна 3» ниже).
 - 03.11 — casaslegales волна 4 выложена: копии сайтов с закрытым для ИИ robots → `pendingOwnerCopy`, 5 страниц оператор × провинция,
@@ -88,6 +89,36 @@
   `data/img-review/`), 10 макетов jugadadeldia (`docs/design/jugadadeldia/`). Дальше — макеты pingalto и casaslegales.
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
+
+## jugadadeldia (03.11) — волна 1 выложена: 45 страниц + 404, индекс открыт
+- **Живое:** https://jugadadeldia.com/ · /quiniela/cuanto-paga/ · /quiniela/redoblona/ · /quini-6/ · /loto-plus/ · /brinco/ · /telekino/ ·
+  /poceada/ · /quiniela-plus/ · /truco/ · /truco/jugar/ · /truco/anotador/ · /truco/valores-de-las-cartas/ · /truco/senas/ · /truco/envido/ ·
+  /juegos-de-cartas/ · /generala/ · /generala/jugar/ · /generala/probabilidades/ · /chinchon/jugar/ · /escoba-de-15/jugar/ · /dados/ ·
+  /quienes-somos/ · /quien-escribe/ · /de-donde-salen-los-datos/ · /juego-responsable/ (+ /autoexclusion/ и 18 провинций, где в пакете
+  помощи есть линия или автоисключение) · 404 «Esta bolilla no salió». `/путь` без слэша → 301 на `/путь/` (Caddy `server-setup.sh jugadadeldia update`).
+- **Устройство:** `sites/jugadadeldia/` — дизайн r3 «06 Menú principal» (шары-HUD, карточки, тёмный подвал), классы `jg-*`, адреса-папки со
+  слэшем (`/truco/jugar/` → `truco/jugar/index.html`), ассеты `/v/<8 hex>-<имя>` (год кэша), шрифт Kanit 400/700 (свои woff2, моно — системный).
+  `kind`: `lottery`/`hub`/`service` — блок помощи + 18+ (линия провинции: на калькуляторах следует за выбранной лотереей, иначе сохранённая
+  провинция или PBA; кризисная линия отдельной строкой); `game` (труко и игры) — без блока (гейт `noRgKinds`, наоборот блок на игре — ошибка);
+  `help` — `data-jg-ayuda`, без игрового меню и ссылок на лотереи/игры. Автор Denis Krazok (Person на /quien-escribe/, author в WebPage).
+  Честно о текстах: «redactan con ayuda de IA (Claude)», числа — код + тесты; вычитку человеком не заявляем (владелец не подтвердил).
+- **Числа:** всё из `engine/lottery`, `engine/truco`, `engine/generala` и др. при сборке (`content/facts.mjs`, страницы) и в браузере тем же
+  модулем; цены/часы — `value` фактов `data/sources/lottery` (`h.src.value`), цитаты `cite()` с копией и датой (`content/sources.mjs` при
+  сборке гоняет `verifyLottery` и sha256/возраст копий игр ≤ 183 дн.). Señas: +7 цитат juegosdesalon в `data/sources/truco/rules.json`.
+- **Игры против компьютера:** труко 1×1 (3 уровня, 4 набора правил, flor, сохранение в localStorage, разбор каждой мано), generala (боты,
+  подсказка «¿qué me conviene?» и разбор ошибок через solver), chinchón (3 колоды), escoba (подсказка «se te pasó una escoba»), кости
+  (crypto, гистограмма против теории). Звук Web Audio выключен по умолчанию, клавиатура и тач, анимации CSS + запасные таймеры. 2×2 в UI — нет.
+- **Лотереи без лент:** результатов нет нигде (не выдумываем); «controlá tu boleta» — ручной ввод чисел тиража, сверка в браузере, номера
+  билета — только localStorage. Заголовки results-страниц плана переименованы под «шансы и контроль» (план обновлён, поле `live`).
+- **Общие правки tools/:** `render.mjs` — модули клиента по пути (одинаковые имена в engine/*), имя ассета `<папка>-<файл>` при совпадении;
+  `check-dist.mjs` — `gate.noRgKinds`, образцы selftest из config (`helpAttr`, `navSample`, `deadLink`, `offScheme`, `rgSample`), Person-порча
+  только при `noPerson !== false`; `server-setup.sh` — блок jugadadeldia; `package.json` — selftest jugadadeldia в `npm test`.
+- **Честные пропуски волны 1:** /quiniela/significado-de-los-numeros/ (нет сохранённого источника таблицы фольклора), /quiniela/<провинция>/,
+  /quiniela/ и прочие страницы результатов (ждём ленты), Quini 6 цена (Santa Fe гео-блок), 2×2 в /truco/jugar/, /burako/*, /chinchon/ и
+  /escoba-de-15/ (инструменты «¿puedo cortar?» и «buscador de escobas»), /truco/reglas/, /truco/puntos/, /truco/flor/, /truco/quiero-o-no-quiero/.
+- **Дальше:** девушка jdd-girl-r3-10 → заменить заглушку `figure.jg-girl[data-girl=<сцена>]` (2:3, есть на страницах кроме помощи и автора)
+  сценами из `data/art/base/jugadadeldia/`; сцены на señas; ленты результатов (по слову владельца) → /quiniela/, провинции, Quini 6 hoy;
+  P2 из плана; перепроверка программ LOTBA (ежемесячно, `maxAgeDays` 183) и пакета помощи до 09.02.2027.
 
 ## pingalto (03.11) — волна 3 выложена: 26 страниц + 404, индекс открыт
 - **Новое (живое):** **/cs2** (Valve VRS 02.11.2026: мир 376 и Америки 87, Америки подсвечены в мировой таблице, поиск по команде/игроку,

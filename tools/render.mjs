@@ -97,24 +97,29 @@ async function build(id) {
   const minCss = t => t.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '').replace(/\s{2,}/g, ' ').replace(/\s*([{};,>])\s*/g, '$1').replace(/;}/g, '}')
     .replace(/url\(fonts\/([\w.-]+\.woff2)\)/g, (m, f) => { if (!assets[f]) throw new Error('CSS: font not in config.fonts ' + f); return 'url(' + assets[f] + ')'; });
   for (const f of readdirSync(join(dir, 'css')).filter(f => f.endsWith('.css')).sort()) emitAsset(f, minCss(readFileSync(join(dir, 'css', f), 'utf8')));
-  // browser modules: sites/<site>/client/*.js and the engine modules they import; imports are rewritten to hashed files
+  // browser modules: sites/<site>/client/*.js and the engine modules they import; imports are resolved by path (engine dirs may
+  // share file names: engine/truco/rules.mjs, engine/lottery/rules.mjs) and rewritten to hashed files. Asset name = file name,
+  // or "<dir>-<file name>" when two allowed modules share it.
   {
     const { minify } = await import('terser');
-    const SRC = {};
-    for (const f of readdirSync(join(dir, 'client')).filter(f => f.endsWith('.js'))) SRC[f] = join(dir, 'client', f);
-    for (const sub of ['', ...(SITE.engineDirs || [])]) for (const f of readdirSync(join(ROOT, 'engine', sub)).filter(f => f.endsWith('.mjs'))) { if (SRC[f]) throw new Error('module name used twice: ' + f); SRC[f] = join(ROOT, 'engine', sub, f); }
+    const SRC = new Map();
+    for (const f of readdirSync(join(dir, 'client')).filter(f => f.endsWith('.js'))) SRC.set(join(dir, 'client', f), f);
+    for (const sub of ['', ...(SITE.engineDirs || [])]) for (const f of readdirSync(join(ROOT, 'engine', sub)).filter(f => f.endsWith('.mjs'))) SRC.set(join(ROOT, 'engine', sub, f), f);
+    const seen = {};
+    for (const n of SRC.values()) seen[n] = (seen[n] || 0) + 1;
+    for (const [p, n] of SRC) if (seen[n] > 1) SRC.set(p, basename(dirname(p)) + '-' + n);
     const done = {};
-    const one = async (f, stack = []) => {
-      if (done[f]) return done[f];
-      if (stack.includes(f)) throw new Error('import cycle ' + [...stack, f].join(' -> '));
-      if (!SRC[f]) throw new Error('no module ' + f + ' (from ' + stack.at(-1) + ')');
-      const r = await minify(readFileSync(SRC[f], 'utf8'), { module: true, compress: { passes: 1 }, mangle: true, format: { comments: false, ascii_only: true } });
+    const one = async (abs, stack = []) => {
+      if (done[abs]) return done[abs];
+      if (stack.includes(abs)) throw new Error('import cycle ' + [...stack, abs].join(' -> '));
+      if (!SRC.has(abs)) throw new Error('no module ' + abs + ' (from ' + stack.at(-1) + '; engine dirs in config.engineDirs)');
+      const r = await minify(readFileSync(abs, 'utf8'), { module: true, compress: { passes: 1 }, mangle: true, format: { comments: false, ascii_only: true } });
       let code = r.code;
-      const deps = [...code.matchAll(/(?:from|import)\s*["']((?:\.{1,2}\/)+(?:[\w-]+\/)*([\w.-]+\.m?js))["']/g)];
-      for (const m of deps) { const to = await one(m[2], [...stack, f]); code = code.split(m[1]).join('./' + basename(to)); }
-      return (done[f] = emitAsset(f, code));
+      const deps = [...new Set([...code.matchAll(/(?:from|import)\s*["']((?:\.{1,2}\/)+(?:[\w-]+\/)*[\w.-]+\.m?js)["']/g)].map(m => m[1]))];
+      for (const d of deps) { const to = await one(resolve(dirname(abs), d), [...stack, abs]); code = code.split('"' + d + '"').join('"./' + basename(to) + '"').split("'" + d + "'").join("'./" + basename(to) + "'"); }
+      return (done[abs] = emitAsset(SRC.get(abs), code));
     };
-    for (const f of readdirSync(join(dir, 'client')).filter(f => f.endsWith('.js'))) await one(f);
+    for (const f of readdirSync(join(dir, 'client')).filter(f => f.endsWith('.js'))) await one(join(dir, 'client', f));
   }
   // icons from the site mark (static/mark.svg): favicon.svg, favicon.ico (one 32 px PNG inside an ICO), apple-touch-icon.png
   {

@@ -5,7 +5,7 @@
   "title": "Jugada del Día: quiniela, loterías y truco, con números",
   "titleLen": 55,
   "h1": "La jugada del día",
-  "description": "Lo que salió hoy en la quiniela de cada provincia, el Quini 6 y las loterías argentinas, con cuánto paga cada jugada en pesos. Y truco, burako y generala.",
+  "description": "Cuánto paga cada jugada de la quiniela en pesos, las chances reales del Quini 6 y las loterías argentinas, y truco, generala y chinchón contra la compu.",
   "keys": "марка",
   "kind": "hub",
   "wave": "P1",
@@ -13,7 +13,8 @@
   "ar": "Все игры — аргентинские: кинела 24 юрисдикций, Quini 6, Loto, Telekino, tómbolas, truco argentino; время тиражей — hora argentina, суммы — $ ARS, помощь — по провинциям",
   "data": "ленты кинелы и лотерей + движок труко",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -97,7 +98,8 @@
   "data": "коэффициенты выплат — только из регламентов юрисдикций (цитата); вероятности — считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
-  "notes": "Если коэффициенты совпадают во всех юрисдикциях — один набор, иначе выбор провинции."
+  "notes": "Если коэффициенты совпадают во всех юрисдикциях — один набор, иначе выбор провинции.",
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -113,7 +115,8 @@
   "ar": "Redoblona — аргентинская ставка кинелы; коэффициенты из регламента юрисдикции, суммы в песо",
   "data": "регламент юрисдикций (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Quiniela",
@@ -592,10 +595,10 @@
  {
   "section": "Quini 6",
   "url": "/quini-6/",
-  "title": "Quini 6 hoy: resultados de todas las modalidades",
-  "titleLen": 48,
-  "h1": "Quini 6: el último sorteo",
-  "description": "Quini 6 de hoy en sus cinco modalidades: Tradicional, Segunda, Revancha, Siempre Sale y Pozo Extra, con ganadores, pozos en pesos y el próximo sorteo.",
+  "title": "Quini 6: chances de cada modalidad y control de tu boleta",
+  "titleLen": 57,
+  "h1": "Quini 6: chances y control de tu boleta",
+  "description": "El Quini 6 modalidad por modalidad: Tradicional, La Segunda, Revancha, Siempre Sale y Premio Extra, la chance exacta de cada premio y tu boleta.",
   "keys": "quini 6 660k/17 · resultados quini 6 47k/9 · quini 6 hoy 46k/12 · sorteo quini 6 36k/12 · resultado del quini 6 33k/15 · resultados del quini 6 24k/12 · quini 6 resultados 22k/9 · quini 6 de hoy 22k/13 · resultado quini 6 21k/8 · sorteo del quini 6 18k/12 · numeros del quini 6 14k/13 · qué números salieron en el quini 6 900/6 · que numeros salieron en el quini 6 900/11",
   "kind": "results",
   "wave": "P1",
@@ -604,7 +607,8 @@
   "data": "Lotería de Santa Fe (гео-блок с сервера — нужен Chrome владельца или другой официальный источник)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "notes": "Хаб и «resultados» — один интент, одна страница."
+  "notes": "Хаб и «resultados» — один интент, одна страница.",
+  "live": "2026-11-03"
  },
  {
   "section": "Quini 6",
@@ -691,10 +695,10 @@
  {
   "section": "Loterías",
   "url": "/loto-plus/",
-  "title": "Loto Plus: resultados, modalidades y chances",
-  "titleLen": 44,
-  "h1": "Loto Plus: el último sorteo",
-  "description": "Loto Plus: el último sorteo con sus modalidades y el número Plus, el control de tu jugada y la tabla de chances por aciertos, calculada por nuestro código.",
+  "title": "Loto Plus: modalidades, número Plus y chances",
+  "titleLen": 45,
+  "h1": "Loto Plus: modalidades y chances",
+  "description": "Loto Plus: Tradicional, Match, Desquite, Sale o Sale y el Multiplicador con el número Plus, la chance de cada premio y el control de tu jugada.",
   "keys": "loto plus 184k/10 · loto 53k/8 · loto de hoy 15k/10 · resultado del loto 13k/1",
   "kind": "results",
   "wave": "P1",
@@ -702,7 +706,8 @@
   "ar": "Loto Plus — провинциальная лотерея Аргентины (оператор — найти и процитировать), модальности и número Plus, премии в песо",
   "data": "оператор и регламент Loto Plus — найти и процитировать; лента — официальный сайт",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Loterías",
@@ -723,10 +728,10 @@
  {
   "section": "Loterías",
   "url": "/quiniela-plus/",
-  "title": "Quiniela Plus: resultados y control de tu jugada",
-  "titleLen": 48,
+  "title": "Quiniela Plus: chances por aciertos y control de tu jugada",
+  "titleLen": 58,
   "h1": "Quiniela Plus",
-  "description": "Quiniela Plus: resultados del último sorteo, el control de tu jugada con los números que elegiste y la tabla de chances por aciertos, en una sola página.",
+  "description": "Quiniela Plus de la Provincia: 8 números contra los 20 de la Nocturna. La chance exacta de 8 a 5 aciertos, Súper Plus, Chance Plus y tu control.",
   "keys": "quiniela plus 193k/5 · controlar quiniela plus 16k/4 · quiniela plus control 13k/1",
   "kind": "results",
   "wave": "P1",
@@ -734,15 +739,16 @@
   "ar": "Quiniela Plus (оператор — найти и процитировать), проверка билета, шансы",
   "data": "оператор и регламент Quiniela Plus — найти и процитировать; лента — официальный сайт",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Loterías",
   "url": "/telekino/",
-  "title": "Telekino: el último sorteo, premios y chances",
-  "titleLen": 45,
-  "h1": "Telekino: el último sorteo",
-  "description": "Telekino: el último sorteo de 15 números sobre 25, premios por categoría de 15 a 11 aciertos y el Rekino, con la chance exacta de cada uno calculada.",
+  "title": "Telekino: premios de 15 a 11 aciertos y chances",
+  "titleLen": 47,
+  "h1": "Telekino: premios y chances",
+  "description": "Telekino: tu cartón tiene 15 números del 1 al 25 y salen 15. La chance exacta de 15 a 11 aciertos, el Rekino y el control de tu cartón con el sorteo.",
   "keys": "telekino 185k/0 · telekino hoy 14k/0",
   "kind": "results",
   "wave": "P1",
@@ -750,7 +756,8 @@
   "ar": "Telekino 15 из 25 и Rekino (если есть по регламенту), премии в песо по категориям",
   "data": "оператор и регламент Telekino — найти и процитировать; лента — официальный сайт",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Loterías",
@@ -771,10 +778,10 @@
  {
   "section": "Loterías",
   "url": "/brinco/",
-  "title": "Brinco: resultados del sorteo y chances",
-  "titleLen": 39,
-  "h1": "Brinco: el último sorteo",
-  "description": "Brinco: el último sorteo de la Lotería de Santa Fe, el control de tu jugada, las chances por aciertos y la comparación con el Quini 6 por el mismo precio.",
+  "title": "Brinco: chances por aciertos y control de tu jugada",
+  "titleLen": 51,
+  "h1": "Brinco: chances y control",
+  "description": "Brinco: seis números del 00 al 39, premios de 6 a 3 aciertos con su chance exacta, la comparación con el Quini 6 y el control de tu jugada con el extracto.",
   "keys": "brinco 35k/0",
   "kind": "results",
   "wave": "P2",
@@ -782,15 +789,16 @@
   "ar": "Brinco — Lotería de Santa Fe; сравнение с Quini 6",
   "data": "Lotería de Santa Fe (гео-блок — как у Quini 6)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Loterías",
   "url": "/poceada/",
-  "title": "Poceada: cómo funciona, chances y resultados",
-  "titleLen": 44,
+  "title": "Poceada de la Ciudad: cómo funciona y qué chance tiene",
+  "titleLen": 54,
   "h1": "La Poceada",
-  "description": "Cómo funciona la Poceada, qué chance tenés de 8, 7, 6 o 5 aciertos contra los 20 números del sorteo y en qué provincias se juega, con sus resultados.",
+  "description": "Cómo funciona la Poceada de la Ciudad: 8 números del 00 al 99 contra 20 sorteados. La chance exacta de 8, 7, 6 o 5 aciertos y el control de tu jugada.",
   "keys": "poceada 37k/12 · quiniela poceada 24k/8",
   "kind": "tool",
   "wave": "P2",
@@ -798,7 +806,8 @@
   "ar": "Карта аргентинских юрисдикций, где есть Poceada",
   "data": "регламенты юрисдикций с Poceada (какие — выяснить) + считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Loterías",
@@ -996,7 +1005,8 @@
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "notes": "Не азартная — без блока помощи и 18+. «el gran truco», «truco blyts», «one truco» — бренды приложений, не берём; «truco de gta», «dulce o truco» — чужой интент."
+  "notes": "Не азартная — без блока помощи и 18+. «el gran truco», «truco blyts», «one truco» — бренды приложений, не берём; «truco de gta», «dulce o truco» — чужой интент.",
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1012,7 +1022,8 @@
   "ar": "Иерархия аргентинского truco (ancho de espadas, ancho de bastos, siete de espadas …); «machete» для печати",
   "data": "правила труко (источник — регламент/книга, цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1029,7 +1040,8 @@
   "data": "традиционные сеñas (источник указать)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "notes": "Хорошее место для девушки сайта — серия сцен."
+  "notes": "Хорошее место для девушки сайта — серия сцен.",
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1046,7 +1058,8 @@
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "notes": "«anotador» 4k — общий ключ, страница может его взять как главный анотадор сайта."
+  "notes": "«anotador» 4k — общий ключ, страница может его взять как главный анотадор сайта.",
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1094,7 +1107,8 @@
   "ar": "Envido аргентинского truco",
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1102,7 +1116,7 @@
   "title": "Jugar al truco online gratis contra la compu",
   "titleLen": 44,
   "h1": "Jugá al truco contra la compu",
-  "description": "Jugá al truco argentino online contra la compu, sin registro y sin plata de por medio. Al final, un repaso de las manos donde se te escaparon puntos.",
+  "description": "Jugá al truco argentino online contra la compu, sin registro y sin plata de por medio. Tres niveles, con o sin flor, y el repaso de cada mano.",
   "keys": "truco online 16k/0 · jugar al truco 5.4k/9 · jugar al truco gratis 2.1k/24 · jugar al truco gratis sin registrarse 1.1k/— · truco online gratis sin registro 1k/13 · truco argentino online 1k/0 · jugar truco 1.5k/33 · jugar al truco online 800/19 · juego de truco 700/12 · truco gratis 700/12 · truco online gratis 700/12 · jugar truco online 600/24 · truco argentino gratis 500/19",
   "kind": "game",
   "wave": "P2",
@@ -1111,7 +1125,8 @@
   "data": "движок труко (свой, тесты)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "notes": "Самый трудоёмкий инструмент сайта — отдельной волной."
+  "notes": "Самый трудоёмкий инструмент сайта — отдельной волной.",
+  "live": "2026-11-03"
  },
  {
   "section": "Truco",
@@ -1150,8 +1165,8 @@
   "url": "/juegos-de-cartas/",
   "title": "Juegos de cartas españolas que se juegan en Argentina",
   "titleLen": 53,
-  "h1": "Juegos con cartas españolas",
-  "description": "Juegos con cartas españolas que se juegan en Argentina: truco, chinchón, escoba, tute y más. Decinos cuántos son y cuánto tiempo tienen y elegimos uno.",
+  "h1": "Juegos de cartas y de dados",
+  "description": "Los juegos de cartas españolas y de dados de la mesa argentina: truco, chinchón, escoba de 15 y generala, para jugar contra la compu o anotar en la mesa.",
   "keys": "juegos de cartas 2.5k/25 · cartas españolas 1.7k/3 · juegos con cartas españolas 700/17 · juegos de cartas españolas 450/16",
   "kind": "hub",
   "wave": "P2",
@@ -1160,7 +1175,8 @@
   "data": "правила игр (цитаты)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "notes": "«significado de las cartas españolas», «tirada de cartas» — гадание, не берём."
+  "notes": "«significado de las cartas españolas», «tirada de cartas» — гадание, не берём.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1248,7 +1264,7 @@
   "title": "Jugar al chinchón online gratis",
   "titleLen": 31,
   "h1": "Jugá al chinchón",
-  "description": "Jugá al chinchón online contra la compu, gratis y sin registro: cortás cuando podés y el juego te muestra si se te pasó un chinchón en la mano.",
+  "description": "Jugá al chinchón online contra la compu, gratis y sin registro: robás, descartás y cortás cuando podés, con las reglas de los Juegos Bonaerenses.",
   "keys": "chinchon online 1.4k/27 · chinchon gratis 1k/5 · chinchon online gratis 600/0",
   "kind": "game",
   "wave": "P3",
@@ -1256,7 +1272,8 @@
   "ar": "Chinchón против бота по аргентинским правилам",
   "data": "свой движок",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1272,7 +1289,8 @@
   "ar": "Generala — аргентинская игра в кости (servida, doble generala)",
   "data": "правила генералы (цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1280,7 +1298,7 @@
   "title": "Probabilidades de la generala: servida y con tres tiros",
   "titleLen": 55,
   "h1": "Qué chance tiene cada jugada",
-  "description": "Probabilidades de la generala: qué chance tiene cada jugada servida y en tres tiros si guardás los dados óptimos, calculadas exactas por nuestro código.",
+  "description": "Probabilidades de la generala: qué chance tiene cada jugada servida y en tres tiros si guardás los dados, calculadas exactas por nuestro código.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "tool",
   "wave": "P2",
@@ -1288,7 +1306,8 @@
   "ar": "Аргентинские правила generala (servida, три броска)",
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1296,7 +1315,7 @@
   "title": "Jugar a la generala online contra la compu",
   "titleLen": 42,
   "h1": "Jugá a la generala",
-  "description": "Jugá a la generala online contra la compu, que juega con estrategia óptima. Al terminar, mirá en qué tiros te apartaste de la mejor jugada posible.",
+  "description": "Jugá a la generala online contra la compu, que en difícil juega con estrategia óptima. Al terminar, mirá en qué tiros te apartaste de la mejor jugada.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "game",
   "wave": "P3",
@@ -1304,7 +1323,8 @@
   "ar": "Generala по аргентинским правилам против бота",
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1312,7 +1332,7 @@
   "title": "Tirador de dados online: 1 a 10 dados, para la generala",
   "titleLen": 55,
   "h1": "Tirá los dados",
-  "description": "Tirador de dados online: de 1 a 10 dados, de 4 a 20 caras, en 3D, con suma e historial. Atajo para la generala con cinco dados y gráfico de resultados.",
+  "description": "Tirador de dados online: de 1 a 10 dados, de 4 a 20 caras, con suma e historial. Atajo para la generala con cinco dados y gráfico de resultados.",
   "keys": "dados 5.8k/29 · tirador de dados de google 5.4k/0 · dados online 1.9k/28 · tirar dados 1k/12 · dados virtuales 3d 600/0 · dados virtuales 600/0 · juego de dados 600/0",
   "kind": "game",
   "wave": "P1",
@@ -1320,7 +1340,8 @@
   "ar": "Пресеты для generala (5 костей) и местных игр в кости",
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1368,7 +1389,8 @@
   "ar": "Escoba de 15 по местным правилам против бота",
   "data": "свой движок",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juegos",
@@ -1436,7 +1458,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи (isHelpPage): короткое меню помощи, без игрового меню и инструментов."
+  "notes": "Страница помощи (isHelpPage): короткое меню помощи, без игрового меню и инструментов.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1444,7 +1467,7 @@
   "title": "Autoexclusión del juego: cómo pedirla en cada provincia",
   "titleLen": 55,
   "h1": "Autoexclusión, provincia por provincia",
-  "description": "Autoexclusión del juego en cada provincia argentina: cuánto dura, dónde se pide, qué bloquea y qué papeles hacen falta, en una tabla para comparar.",
+  "description": "Autoexclusión del juego en cada provincia argentina: cuánto dura, dónde se pide y qué dice la página oficial, en una tabla para comparar con la fuente.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1452,7 +1475,8 @@
   "ar": "Сравнение программ самоисключения провинций Аргентины (PBA 2 года, Tucumán 6 месяцев …)",
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
-  "rg": false
+  "rg": false,
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1460,7 +1484,7 @@
   "title": "Ayuda por juego compulsivo en Ciudad de Buenos Aires",
   "titleLen": 52,
   "h1": "Ayuda en Ciudad de Buenos Aires",
-  "description": "Ayuda por juego compulsivo en la Ciudad de Buenos Aires: línea gratuita, autoexclusión de LOTBA paso a paso y qué ley te respalda, con fecha de revisión.",
+  "description": "Ayuda por juego compulsivo en Ciudad de Buenos Aires: línea 0800-666-6006, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1469,7 +1493,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1477,7 +1502,7 @@
   "title": "Ayuda por juego compulsivo en Provincia de Buenos Aires",
   "titleLen": 55,
   "h1": "Ayuda en Provincia de Buenos Aires",
-  "description": "Ayuda por juego compulsivo en Provincia de Buenos Aires: la línea gratuita bonaerense y la autoexclusión del IPLyC, cuánto dura y dónde se pide.",
+  "description": "Ayuda por juego compulsivo en Provincia de Buenos Aires: línea 0800-444-4000, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1486,7 +1511,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1494,7 +1520,7 @@
   "title": "Ayuda por juego compulsivo en Córdoba",
   "titleLen": 37,
   "h1": "Ayuda en Córdoba",
-  "description": "Si el juego te está complicando en Córdoba: la línea gratuita provincial, cómo pedir la autoexclusión ante la Lotería de Córdoba y qué pasa después.",
+  "description": "Ayuda por juego compulsivo en Córdoba: línea 0800-777-2983 y quién regula, con la fuente oficial de cada dato. Sin publicidad.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1503,7 +1529,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1511,7 +1538,7 @@
   "title": "Ayuda por juego compulsivo en Tucumán",
   "titleLen": 37,
   "h1": "Ayuda en Tucumán",
-  "description": "Ayuda por juego compulsivo en Tucumán: la línea 0800 de la Caja Popular, la autoexclusión por la ley 8986 y quién te atiende, con fecha de revisión.",
+  "description": "Ayuda por juego compulsivo en Tucumán: línea 0800 555 7678, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1520,7 +1547,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1528,7 +1556,7 @@
   "title": "Ayuda por juego compulsivo en Mendoza",
   "titleLen": 37,
   "h1": "Ayuda en Mendoza",
-  "description": "Ayuda por juego compulsivo en Mendoza: la línea de atención del IPJyC y la autoexclusión con plazo a elección, explicada paso a paso y con fuente oficial.",
+  "description": "Ayuda por juego compulsivo en Mendoza: línea (0261) 424-7536, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1537,7 +1565,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1545,7 +1574,7 @@
   "title": "Ayuda por juego compulsivo en San Juan",
   "titleLen": 38,
   "h1": "Ayuda en San Juan",
-  "description": "Ayuda en San Juan si el juego dejó de ser un juego: la línea de la CAS, cómo pedir la autoexclusión y qué cubre, con cita oficial y fecha de revisión.",
+  "description": "Ayuda por juego compulsivo en San Juan: línea 0800 999 1314, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1554,7 +1583,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1562,7 +1592,7 @@
   "title": "Ayuda por juego compulsivo en Entre Ríos",
   "titleLen": 40,
   "h1": "Ayuda en Entre Ríos",
-  "description": "Ayuda por juego compulsivo en Entre Ríos: la línea de ayuda del IAFAS, que no es la de atención al cliente, y cómo pedir la autoexclusión en la provincia.",
+  "description": "Ayuda por juego compulsivo en Entre Ríos: línea 0800-888-2202, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1571,7 +1601,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1579,7 +1610,7 @@
   "title": "Ayuda por juego compulsivo en Santa Fe",
   "titleLen": 38,
   "h1": "Ayuda en Santa Fe",
-  "description": "Ayuda por juego compulsivo en Santa Fe: la línea gratuita de la provincia y el programa de autoexclusión de la Lotería santafesina, con cómo se pide.",
+  "description": "Ayuda por juego compulsivo en Santa Fe: línea 0800-268-5640, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1588,7 +1619,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1596,7 +1628,7 @@
   "title": "Ayuda por juego compulsivo en Chaco",
   "titleLen": 35,
   "h1": "Ayuda en Chaco",
-  "description": "Ayuda por juego compulsivo en Chaco: la línea de la Lotería Chaqueña, cómo pedir la autoexclusión y qué te pueden ofrecer, con fuente oficial y fecha.",
+  "description": "Ayuda por juego compulsivo en Chaco: línea 0800-888-2008, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1605,7 +1637,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1613,7 +1646,7 @@
   "title": "Ayuda por juego compulsivo en Misiones",
   "titleLen": 38,
   "h1": "Ayuda en Misiones",
-  "description": "Ayuda por juego compulsivo en Misiones: la línea y la autoexclusión del IPLyC misionero, paso a paso, con la cita oficial y la fecha de la última revisión.",
+  "description": "Ayuda por juego compulsivo en Misiones: línea 0800-888-LUDO, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1622,7 +1655,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1630,7 +1664,7 @@
   "title": "Ayuda por juego compulsivo en Neuquén",
   "titleLen": 37,
   "h1": "Ayuda en Neuquén",
-  "description": "Ayuda en Neuquén si el juego te preocupa: la línea y la autoexclusión del IJAN, qué bloquea y cómo se pide, con fuente oficial y fecha de revisión.",
+  "description": "Ayuda por juego compulsivo en Neuquén: línea (0299) 4038900, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1639,7 +1673,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1647,7 +1682,7 @@
   "title": "Ayuda por juego compulsivo en Río Negro",
   "titleLen": 39,
   "h1": "Ayuda en Río Negro",
-  "description": "Ayuda por juego compulsivo en Río Negro: la línea de la Lotería rionegrina y su programa de autoexclusión, explicado sin vueltas y con fuente oficial.",
+  "description": "Ayuda por juego compulsivo en Río Negro: línea 0800-222-1700, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1656,7 +1691,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1664,7 +1700,7 @@
   "title": "Ayuda por juego compulsivo en Santiago del Estero",
   "titleLen": 49,
   "h1": "Ayuda en Santiago del Estero",
-  "description": "Ayuda por juego compulsivo en Santiago del Estero: la línea de la Caja Social, la autoexclusión en la provincia y qué norma la respalda, con fecha.",
+  "description": "Ayuda por juego compulsivo en Santiago del Estero: línea (0385) 428-8850 y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P2",
@@ -1673,7 +1709,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "Страница помощи; индексировать — по решению владельца."
+  "notes": "Страница помощи; индексировать — по решению владельца.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1681,7 +1718,7 @@
   "title": "Ayuda por juego compulsivo en La Pampa",
   "titleLen": 38,
   "h1": "Ayuda en La Pampa",
-  "description": "Ayuda por juego compulsivo en La Pampa: lo que confirmamos de línea de ayuda y autoexclusión en la provincia, con fuente oficial y fecha de revisión.",
+  "description": "Ayuda por juego compulsivo en La Pampa: línea 2954- 433974, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P3",
@@ -1690,7 +1727,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены."
+  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1698,7 +1736,7 @@
   "title": "Ayuda por juego compulsivo en Tierra del Fuego",
   "titleLen": 46,
   "h1": "Ayuda en Tierra del Fuego",
-  "description": "Ayuda por juego compulsivo en Tierra del Fuego: las dos líneas de ayuda de la provincia, la autoexclusión del IPRA y cómo pedirla, con fuente oficial.",
+  "description": "Ayuda por juego compulsivo en Tierra del Fuego: línea 02901-433515 y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P3",
@@ -1707,7 +1745,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены."
+  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1715,7 +1754,7 @@
   "title": "Ayuda por juego compulsivo en Salta",
   "titleLen": 35,
   "h1": "Ayuda en Salta",
-  "description": "Ayuda por juego compulsivo en Salta: la autoexclusión de EnReJA paso a paso y las líneas de ayuda que pudimos confirmar, con fecha de la última revisión.",
+  "description": "Ayuda por juego compulsivo en Salta: línea nacional, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P3",
@@ -1724,7 +1763,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены."
+  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1732,7 +1772,7 @@
   "title": "Ayuda por juego compulsivo en Corrientes",
   "titleLen": 40,
   "h1": "Ayuda en Corrientes",
-  "description": "Ayuda por juego compulsivo en Corrientes: cómo pedir la autoexclusión en la provincia y la línea nacional gratuita mientras confirmamos la provincial.",
+  "description": "Ayuda por juego compulsivo en Corrientes: línea nacional, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P3",
@@ -1741,7 +1781,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены."
+  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
+  "live": "2026-11-03"
  },
  {
   "section": "Juego responsable",
@@ -1749,7 +1790,7 @@
   "title": "Ayuda por juego compulsivo en La Rioja",
   "titleLen": 38,
   "h1": "Ayuda en La Rioja",
-  "description": "Ayuda por juego compulsivo en La Rioja: la autoexclusión de AJALaR, cómo se pide y qué cubre, más la línea nacional gratuita, con fuente y fecha.",
+  "description": "Ayuda por juego compulsivo en La Rioja: línea nacional, autoexclusión y quién regula, con la fuente oficial de cada dato.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "help",
   "wave": "P3",
@@ -1758,7 +1799,8 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены."
+  "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
+  "live": "2026-11-03"
  },
  {
   "section": "Servicio",
@@ -1766,7 +1808,7 @@
   "title": "Quiénes somos: qué es Jugada del Día y qué no",
   "titleLen": 45,
   "h1": "Quiénes somos",
-  "description": "Quiénes somos: Jugada del Día cuenta resultados y chances de la quiniela, las loterías argentinas y el truco. Sin apuestas ni links a operadores.",
+  "description": "Quiénes somos: Jugada del Día cuenta premios y chances de la quiniela, las loterías argentinas y el truco. Sin apuestas ni links a operadores.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "service",
   "wave": "P1",
@@ -1774,7 +1816,8 @@
   "ar": "Аргентинский сайт про аргентинские игры, без операторов и монетизации; es-AR",
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Servicio",
@@ -1782,7 +1825,7 @@
   "title": "Quién escribe en Jugada del Día",
   "titleLen": 31,
   "h1": "Quién escribe",
-  "description": "Quién escribe en Jugada del Día: la persona detrás de los textos, cómo revisamos cada número con fuentes oficiales argentinas y cómo usamos la IA.",
+  "description": "Quién escribe en Jugada del Día: la persona a cargo de los textos, cómo chequeamos cada número con fuentes oficiales argentinas y cómo usamos la IA.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "service",
   "wave": "P1",
@@ -1790,7 +1833,8 @@
   "ar": "Автор пишет на es-AR («vos»), сверка с официальными лотереями провинций",
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Servicio",
@@ -1798,7 +1842,7 @@
   "title": "De dónde salen los datos y cómo calculamos",
   "titleLen": 42,
   "h1": "De dónde salen los datos",
-  "description": "De dónde salen los datos: cada lotería provincial y reglamento que usamos, con su fuente, fecha de la última revisión y cómo calculamos premios y chances.",
+  "description": "De dónde salen los datos: cada reglamento de lotería y de juego que usamos, con su fuente, la fecha de la copia y cómo calculamos premios y chances.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "service",
   "wave": "P1",
@@ -1806,7 +1850,8 @@
   "ar": "Источники — официальные лотереи и регуляторы провинций Аргентины, с датой проверки",
   "data": "data/sources + статусы лент",
   "auto": "статусы — из лент автоматически",
-  "rg": true
+  "rg": true,
+  "live": "2026-11-03"
  },
  {
   "section": "Servicio",

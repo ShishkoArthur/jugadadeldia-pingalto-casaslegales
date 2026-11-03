@@ -24,10 +24,12 @@ block() {
   local name="$1" domain="$1.com" assets="/assets/*"
   # each site keeps its own asset folder (casaslegales: /_r/); hashed names there are cached for a year, everything else is revalidated
   # pingalto: own asset folder /s/ and a 301 from any path ending in "/" (except the root) to the same path without it
+  # jugadadeldia: own asset folder /v/ and a 301 from a folder path without the trailing slash to the folder (/truco -> /truco/)
   local extra=""
   case "$name" in
     casaslegales) assets="/_r/*" ;;
     pingalto) assets="/s/*"; extra=$'\t@slash path_regexp slash ^(.+)/$\n\tredir @slash {re.slash.1} permanent\n' ;;
+    jugadadeldia) assets="/v/*"; extra=$'\t@noslash {\n\t\tnot path */\n\t\tnot path /v/*\n\t\tfile {path}/index.html\n\t}\n\tredir @noslash {path}/ permanent\n' ;;
   esac
   cat <<EOF
 # >>> $name - $domain (repo ShishkoArthur/jugadadeldia-pingalto-casaslegales). Does not touch other blocks.

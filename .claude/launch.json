@@ -1,6 +1,25 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "casaslegales", "runtimeExecutable": "node", "runtimeArgs": ["tools/serve.mjs", "casaslegales", "4310"], "port": 4310 }
+    {
+      "name": "casaslegales",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve.mjs",
+        "casaslegales",
+        "4310"
+      ],
+      "port": 4310
+    },
+    {
+      "name": "jugadadeldia",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve.mjs",
+        "jugadadeldia",
+        "4330"
+      ],
+      "port": 4330
+    }
   ]
 }

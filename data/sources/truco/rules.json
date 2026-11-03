@@ -330,6 +330,41 @@
    "doc": "juegosdesalon",
    "text": "As de oros o as de copas: abrir un poco la boca.",
    "uses": "engine/truco/game4.mjs sena \"anchoFalso\""
+  },
+  "4p-senas-1e": {
+   "doc": "juegosdesalon",
+   "text": "As de espadas: levantar las cejas.",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "4p-senas-1b": {
+   "doc": "juegosdesalon",
+   "text": "As de bastos: guiñar un ojo.",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "4p-senas-7e": {
+   "doc": "juegosdesalon",
+   "text": "Siete de espadas: mover los labios hacia la derecha.",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "4p-senas-7o": {
+   "doc": "juegosdesalon",
+   "text": "Siete de oros: mover los labios hacia la izquierda.",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "4p-senas-tres": {
+   "doc": "juegosdesalon",
+   "text": "Cualquier tres: morder el labio inferior.",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "4p-senas-dos": {
+   "doc": "juegosdesalon",
+   "text": "Cualquier dos: fruncir los labios hacia adelante, como besar.",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "4p-senas-visible": {
+   "doc": "juegosdesalon",
+   "text": "Hay que tener en cuenta que las señas para informar a los compañeros también pueden observarlas los contrarios.",
+   "uses": "jugadadeldia /truco/senas/"
   }
  }
 }
