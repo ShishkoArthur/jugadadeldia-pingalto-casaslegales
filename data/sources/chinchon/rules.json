@@ -1,0 +1,237 @@
+{
+ "id": "chinchon-rules",
+ "about": "Rules of chinchon used by engine/chinchon. Every quote is checked verbatim against the saved copy (engine/test/games-sources.test.mjs). Re-read every six months.",
+ "checked": "2026-11-03",
+ "docs": {
+  "gba-2026": {
+   "title": "Juegos Bonaerenses 2026 - Reglamento especifico: Chin-Chon (adultos mayores)",
+   "publisher": "Provincia de Buenos Aires, Juegos Bonaerenses",
+   "url": "https://juegos.gba.gob.ar/wp-content/uploads/2026/reglamentos/especificos/deportes_adultos_mayores/chin_chon.pdf",
+   "file": "data/sources/chinchon/_docs/gba-2026-chin-chon.pdf",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "bb5c6acff83055cb25be136382b1f46b9b9d0ba1efc5c9563820ad14e3f92790"
+  },
+  "ludoteka": {
+   "title": "Ludoteka - Chinchon: reglas",
+   "publisher": "Ludoteka",
+   "url": "https://www.ludoteka.com/clasika/chinchon.html",
+   "file": "data/sources/chinchon/_docs/ludoteka-chinchon.html",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "daeaec592a7de6ef48b60420d2645046b5f59f2c04ddc7a0b5d3813eb91376b6"
+  }
+ },
+ "quotes": {
+  "50-cards": {
+   "doc": "gba-2026",
+   "text": "Se jugará con un mazo de cincuenta (50) cartas españolas.",
+   "uses": "RULESETS bonaerense-50: deck 48 + jokers 2"
+  },
+  "ace-lowest": {
+   "doc": "gba-2026",
+   "text": "Dos y As (1) qué es el menor.",
+   "uses": "engine/chinchon/rules.mjs NUMBERS order"
+  },
+  "jokers-two": {
+   "doc": "gba-2026",
+   "text": "Los Comodines serán dos (2) que reemplazarán cualquier carta faltante, no se podrán colocar en los juegos de los demás ni descartarse en el Pozo.",
+   "uses": "jokers 2; melds.mjs layOn (no comodin on other melds); game.mjs a comodin is never thrown"
+  },
+  "one-joker": {
+   "doc": "gba-2026",
+   "text": "Sólo se permitirá un (1) Comodín por juego.",
+   "uses": "jokersPerMeld 1"
+  },
+  "values": {
+   "doc": "gba-2026",
+   "text": "El valor será el mismo del número de la carta y el Comodín en mano tendrá un valor de veinte (20) puntos.",
+   "uses": "figureValues 'number', jokerValue 20"
+  },
+  "seven-cards": {
+   "doc": "gba-2026",
+   "text": "completando un total de siete (7) para cada uno de ellos.",
+   "uses": "game.mjs deal seven each"
+  },
+  "melds": {
+   "doc": "gba-2026",
+   "text": "Los jugadores deberán formar juegos: Escaleras o Grupos de cartas iguales que deberán poseer un mínimo de tres (3) cartas.",
+   "uses": "melds.mjs meldOf"
+  },
+  "chinchon-def": {
+   "doc": "gba-2026",
+   "text": "Si se utilizaran las siete (7) cartas para formar una escalera se denominará CHIN- CHON.",
+   "uses": "melds.mjs bestSplit chinchon"
+  },
+  "ace-low": {
+   "doc": "gba-2026",
+   "text": "El As (1) para las escaleras sólo podrá combinarse con el dos (2) y el tres (3).",
+   "uses": "melds.mjs no wrap from rey to as"
+  },
+  "groups-3-4": {
+   "doc": "gba-2026",
+   "text": "Los grupos de cartas iguales podrán ser de tres (3) o cuatro (4) cartas.",
+   "uses": "melds.mjs groups of 3 or 4"
+  },
+  "draw-discard": {
+   "doc": "gba-2026",
+   "text": "Cada jugador deberá alzar una carta del mazo o del Pozo y descartará otra de la mano",
+   "uses": "game.mjs draw then discard"
+  },
+  "cut-5": {
+   "doc": "gba-2026",
+   "text": "para poder cortar, las cartas restantes no podrán sumar más de cinco (5) puntos.",
+   "uses": "cut 'sum-at-most-5'"
+  },
+  "cut-face-down": {
+   "doc": "gba-2026",
+   "text": "Aquel jugador que logre cortar el juego deberá descartar una carta al Pozo, tapada",
+   "uses": "game.mjs cut card face down"
+  },
+  "layoff-all": {
+   "doc": "gba-2026",
+   "text": "El descarte se realizará sobre todos los juegos de la mesa respetando el orden correspondiente.",
+   "uses": "layOff 'always'; melds.mjs bestShow"
+  },
+  "reshuffle-once": {
+   "doc": "gba-2026",
+   "text": "Si se agotara nuevamente, se da por finalizada la mano procediendo a bajar los juegos",
+   "uses": "reshuffles 1; game.mjs scoreDeckOut"
+  },
+  "no-layoff-deckout": {
+   "doc": "gba-2026",
+   "text": "no se podrá realizar ningún descarte.",
+   "uses": "game.mjs scoreDeckOut without lay-offs"
+  },
+  "eighth-card": {
+   "doc": "gba-2026",
+   "text": "La octava carta se da vuelta en la mesa",
+   "uses": "game.mjs first pozo card"
+  },
+  "limit-101": {
+   "doc": "gba-2026",
+   "text": "El partido se jugará a ciento uno (101) puntos.",
+   "uses": "newMatch limit (101 for Juegos Bonaerenses)"
+  },
+  "lay-zero": {
+   "doc": "gba-2026",
+   "text": "Si descarta todas, su puntaje será cero (0).",
+   "uses": "melds.mjs bestShow points 0"
+  },
+  "all-melded": {
+   "doc": "gba-2026",
+   "text": "Si corta y utiliza todas las cartas para los juegos se anotará menos diez (-10).",
+   "uses": "allMelded -10"
+  },
+  "all-over": {
+   "doc": "gba-2026",
+   "text": "Si todos los jugadores superan los ciento uno (101) puntos, ganará el que menos puntos haya obtenido",
+   "uses": "game.mjs finishHand all over the limit"
+  },
+  "tie-cutter": {
+   "doc": "gba-2026",
+   "text": "Si estuviese empatado ganará el que cortó.",
+   "uses": "game.mjs finishHand tie"
+  },
+  "tie-mano": {
+   "doc": "gba-2026",
+   "text": "Si ninguno de ellos hubiese cortado ganará la mano.",
+   "uses": "game.mjs finishHand tie"
+  },
+  "chinchon-joker": {
+   "doc": "gba-2026",
+   "text": "Si un jugador lograra formar CHIN-CHON con un comodín y cortase, descontará diez puntos (-10)",
+   "uses": "chinchonWithJoker -10"
+  },
+  "chinchon-wins": {
+   "doc": "gba-2026",
+   "text": "si un jugador lograra formar CHIN-CHON sin comodín y cortase, automáticamente ganará el partido",
+   "uses": "game.mjs scoreCut chinchon wins"
+  },
+  "no-rejoin": {
+   "doc": "gba-2026",
+   "text": "Cuando un jugador supere los 101 puntos, no podrá engancharse nuevamente en el juego.",
+   "uses": "newMatch reenganches 0 for Juegos Bonaerenses"
+  },
+  "l-deck": {
+   "doc": "ludoteka",
+   "text": "El Chinchón es un juego de baraja española de 40 o 48 cartas que se juega, a elección de los jugadores, con o sin comodines.",
+   "uses": "deck 40 or 48, jokers 0 or 2"
+  },
+  "l-order-40": {
+   "doc": "ludoteka",
+   "text": "Baraja de 40 cartas: 1, 2, 3, 4, 5, 6, 7, sota, caballo, rey.",
+   "uses": "rules.mjs NUMBERS[40]: the sota follows the seven"
+  },
+  "l-order-48": {
+   "doc": "ludoteka",
+   "text": "Baraja de 48 cartas: 1, 2, 3, 4, 5, 6, 7, 8, 9, sota, caballo, rey.",
+   "uses": "rules.mjs NUMBERS[48]"
+  },
+  "l-two-real": {
+   "doc": "ludoteka",
+   "text": "debiendo en cada grupo de cartas haber por lo menos dos que no sean comodín.",
+   "uses": "jokersPerMeld 'two-real'"
+  },
+  "l-cut": {
+   "doc": "ludoteka",
+   "text": "si sólo le quedara una carta sin ligar y ésta tuviera un valor igual o inferior a 4",
+   "uses": "cut 'one-card-at-most-4'"
+  },
+  "l-figures-10": {
+   "doc": "ludoteka",
+   "text": "salvo la sota, el caballo y el rey que valen 10 puntos",
+   "uses": "figureValues 'ten'"
+  },
+  "l-first-round": {
+   "doc": "ludoteka",
+   "text": "En la primera vuelta de cada mano no se puede cerrar.",
+   "uses": "noCutFirstRound true"
+  },
+  "l-fourth": {
+   "doc": "ludoteka",
+   "text": "el cierre se produce de manera automática cuando las cartas del mazo se agotan por cuarta vez.",
+   "uses": "reshuffles 3"
+  },
+  "l-reshuffle": {
+   "doc": "ludoteka",
+   "text": "se toman las cartas lanzadas y, una vez barajadas, se forma el mazo con ellas.",
+   "uses": "game.mjs reshuffle"
+  },
+  "l-layoff-cond": {
+   "doc": "ludoteka",
+   "text": "Esto puede realizarse tan sólo si quien cerró la mano lo hizo quedándose a su vez con alguna carta sin ligar.",
+   "uses": "layOff 'if-cutter-has-leftover'"
+  },
+  "l-show-order": {
+   "doc": "ludoteka",
+   "text": "empezando por el que cierra y en el mismo orden en que tenían el turno de juego",
+   "uses": "game.mjs scoreCut order"
+  },
+  "l-minus-10": {
+   "doc": "ludoteka",
+   "text": "Con dos grupos de cartas (uno de tres y otro de cuatro) será -10.",
+   "uses": "allMelded -10"
+  },
+  "l-chinchon-wins": {
+   "doc": "ludoteka",
+   "text": "Con una escalera de siete cartas sin comodines (chinchón) ganará la partida directamente.",
+   "uses": "game.mjs chinchon wins"
+  },
+  "l-reenganche": {
+   "doc": "ludoteka",
+   "text": "haciéndolo con la puntuación de aquel jugador que tuviera la máxima puntuación.",
+   "uses": "game.mjs finishHand reenganche"
+  },
+  "l-no-reenganche-2": {
+   "doc": "ludoteka",
+   "text": "En caso de partidas entre dos jugadores no son posibles los reenganches.",
+   "uses": "newMatch reenganches 0 with two players"
+  },
+  "l-all-rivals-out": {
+   "doc": "ludoteka",
+   "text": "Si un jugador logra que todos los rivales sobrepasen la puntuación establecida en una mano, gana aunque el resto no haya gastado sus reenganches.",
+   "uses": "game.mjs finishHand last in"
+  }
+ }
+}
