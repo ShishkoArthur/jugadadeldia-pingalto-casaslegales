@@ -266,7 +266,7 @@ html{scroll-padding-top:88px}
 .rl-vs-ok{background:var(--pa);border:2px solid var(--t1)}
 .rl-vs-no{background:var(--pa);border:2px dashed var(--co)}
 .rl-vs-no .rl-q{border-left-color:var(--co)}
-.rl-dots{display:flex;gap:4px}
+.rl-dots{display:flex;flex-wrap:wrap;gap:4px;min-width:0}
 .rl-dots i{font:700 11px var(--m);font-style:normal;padding:3px 6px;border-radius:7px;background:var(--bg);color:var(--mu)}
 .rl-dots i.on{background:var(--t1);color:var(--ink);box-shadow:0 3px 0 var(--sd)}
 .rl-opcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
