@@ -181,6 +181,18 @@
    "file": "data/art/pingalto/cut/pa-sc-brawl-meta-r6.webp",
    "status": "review",
    "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete, jacket on both shoulders, legs crossed, blank black phone, toy gem, no logos"
+  },
+  "/esports/sistema-suizo": {
+   "image": "pa-sc-esports-sistema-suizo-r6",
+   "file": "data/art/pingalto/cut/pa-sc-esports-sistema-suizo-r6.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (r6): two arms and hands, face, outfit complete, jacket on both shoulders, modest, no logos or text"
+  },
+  "/esports/argentinos": {
+   "image": "pa-sc-esports-argentinos-r6",
+   "file": "data/art/pingalto/cut/pa-sc-esports-argentinos-r6.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (r6): two arms and hands, face, outfit complete, jacket on both shoulders, modest, no logos or text"
   }
  }
 }

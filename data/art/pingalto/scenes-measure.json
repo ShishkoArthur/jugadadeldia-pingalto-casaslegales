@@ -204,6 +204,20 @@
    "transparent": null,
    "size": "914x1318"
   },
+  "pa-sc-esports-sistema-suizo-r6": {
+   "pose": "stand",
+   "head": 295,
+   "scale": 0.719,
+   "transparent": null,
+   "size": "957x1616"
+  },
+  "pa-sc-esports-argentinos-r6": {
+   "pose": "jump",
+   "head": 270,
+   "scale": 0.785,
+   "transparent": null,
+   "size": "1140x1536"
+  },
   "pa-sc-lol-worlds-r6": {
    "pose": "stool",
    "head": 317,

@@ -174,5 +174,13 @@
  "pa-sc-brawl-meta-r6": {
   "top": 5,
   "chin": 345
+ },
+ "pa-sc-esports-sistema-suizo-r6": {
+  "top": 5,
+  "chin": 300
+ },
+ "pa-sc-esports-argentinos-r6": {
+  "top": 255,
+  "chin": 525
  }
 }

@@ -1127,6 +1127,82 @@
    "ar": 0.7245,
    "g": 0.8368,
    "alt": "Alt sentada mostrando el celular con el dedo, con una gema violeta de juguete en la rodilla"
+  },
+  "/esports/sistema-suizo": {
+   "image": "pa-sc-esports-sistema-suizo-r6",
+   "files": [
+    {
+     "name": "scenes/esports-sistema-suizo-320.webp",
+     "w": 320,
+     "h": 510,
+     "kb": 39
+    },
+    {
+     "name": "scenes/esports-sistema-suizo-480.webp",
+     "w": 480,
+     "h": 765,
+     "kb": 67
+    },
+    {
+     "name": "scenes/esports-sistema-suizo-720.webp",
+     "w": 720,
+     "h": 1148,
+     "kb": 116
+    },
+    {
+     "name": "scenes/esports-sistema-suizo-960.webp",
+     "w": 960,
+     "h": 1531,
+     "kb": 172
+    },
+    {
+     "name": "scenes/esports-sistema-suizo-1280.webp",
+     "w": 1280,
+     "h": 2041,
+     "kb": 260
+    }
+   ],
+   "ar": 0.6271,
+   "g": 0.965,
+   "alt": "Alt dibujando con un marcador el cuadro de un torneo en una pizarra"
+  },
+  "/esports/argentinos": {
+   "image": "pa-sc-esports-argentinos-r6",
+   "files": [
+    {
+     "name": "scenes/esports-argentinos-320.webp",
+     "w": 320,
+     "h": 415,
+     "kb": 28
+    },
+    {
+     "name": "scenes/esports-argentinos-480.webp",
+     "w": 480,
+     "h": 622,
+     "kb": 48
+    },
+    {
+     "name": "scenes/esports-argentinos-720.webp",
+     "w": 720,
+     "h": 933,
+     "kb": 84
+    },
+    {
+     "name": "scenes/esports-argentinos-960.webp",
+     "w": 960,
+     "h": 1244,
+     "kb": 136
+    },
+    {
+     "name": "scenes/esports-argentinos-1280.webp",
+     "w": 1280,
+     "h": 1659,
+     "kb": 223
+    }
+   ],
+   "ar": 0.7715,
+   "g": 0.9312,
+   "alt": "Alt saltando como hincha con una bufanda celeste y blanca en alto"
   }
  }
 }
