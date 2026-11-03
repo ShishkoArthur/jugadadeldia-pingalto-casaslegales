@@ -13,7 +13,7 @@ const SITES = [
   { id: 'pingalto', name: 'pingalto.com', theme: 'Киберспорт и инструменты для игр', girl: 'contact-pa-girls-r3.jpg',
     designFile: 'r2/five-variants-2026-11-02.html', designWant: 5, chosen: 'Выбран вариант 2 «Holo pastel»', designNote: 'Варианты «Cromo» (ваш выбор — 2)', girlNote: '10 вариантов в современной одежде, без колготок' },
   { id: 'casaslegales', name: 'casaslegales.com', theme: 'Лицензии и обзоры букмекеров, без людей', girl: null,
-    designFile: 'r2/six-concepts-2026-11-02.html', designWant: 6, chosen: 'Выбран вариант 2 «Relieve» — сайт строится', designNote: 'Концепции (ваш выбор — 2)' },
+    designFile: 'r3/five-variants-2026-11-03.html', designWant: 5, designNote: '5 вариантов «Relieve»: изометрия, карта, панель, вердикты, спокойный' },
 ];
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
