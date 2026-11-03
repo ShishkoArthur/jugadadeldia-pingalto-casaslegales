@@ -1072,11 +1072,11 @@
   },
   "ar-x-loteria-juego-responsable": {
    "url": "https://www.loteriadecordoba.com.ar/juego-responsable",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "d4d78efe65a0cabeeb2ccd4ff74a6bfbd23f0fb989e52c07a1b654f22e9100eb",
+   "sha256": "8f911cd8f6257704aaed18bea29f17692f8c679b7050af39d4767cdaa7971584",
    "file": "data/sources/rg/_docs/ar-x-loteria-juego-responsable.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   },
   "ar-e-iafas-prevenjuego": {
    "url": "https://www.iafas.gov.ar/juego-responsable/prevenjuego/",
@@ -1101,19 +1101,19 @@
   },
   "ar-q-ijan-juego-responsable": {
    "url": "https://ijan-neuquen.com/juego_responsable.php",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "bf579cd3e349d51f67917a7d935acadc27a60587564eb5efb38466876b85ac34",
+   "sha256": "a5df4eebe8f537f2cc019f3754f687dfbe6c1b3aa3e18c3cca95904eb4183418",
    "file": "data/sources/rg/_docs/ar-q-ijan-juego-responsable.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   },
   "ar-r-loteria-autoexclusion": {
    "url": "https://www.loteriaderionegro.gob.ar/juego-responsable/autoexclusion",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "6b69564b4a3bfa44fa67f64f72ce34b79141a2cfe3fe875187cb8c2a2ddef215",
+   "sha256": "c8d041c15bc31054d2a621c9f79ddd19aebc2e79c7edfd4f81699bf30ae4eeda",
    "file": "data/sources/rg/_docs/ar-r-loteria-autoexclusion.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   },
   "ar-msal-0800-salud-mental": {
    "url": "https://www.argentina.gob.ar/node/356435",
@@ -1166,11 +1166,11 @@
   },
   "ar-a-enreja-jr": {
    "url": "https://www.enrejasalta.com.ar/jr.php",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "d2e03313b93f54d271e6608ba60a08529e896dbc7c880132db99f441f8cf1b96",
+   "sha256": "00d7d9dec42230f9d7a0e06b1da29e3ccbd4db34b91dc7d190e6eb18fb24926b",
    "file": "data/sources/rg/_docs/ar-a-enreja-jr.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   },
   "ar-n-iplyc-portal": {
    "url": "https://www.loteriademisiones.com.ar/portal/",

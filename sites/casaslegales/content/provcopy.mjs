@@ -173,11 +173,11 @@ export const PROV_COPY = {
     lead: 'Hay noticias sobre licencias de apuestas online en Santa Fe, pero no las repetimos sin la lista oficial. Lo que sí está verificado, con copia archivada, es la ayuda de la provincia.',
   },
   mendoza: {
-    status: 'blocked',
+    status: 'none',
     title: 'Apuestas online legales en Mendoza: lo que verificamos',
-    description: 'Apuestas online en Mendoza: el sitio del IPJyC bloquea el acceso desde fuera del país, así que no listamos licencias. Ayuda y autoexclusión verificadas.',
-    h1: 'Mendoza: el regulador no abre desde fuera del país',
-    checked: 'Las páginas del Instituto Provincial de Juegos y Casinos devuelven «Request blocked» a nuestras conexiones fuera de Argentina. No saltamos ese bloqueo: esperamos una copia hecha desde un navegador en Argentina.',
-    lead: 'La prensa habla de varias licencias en Mendoza, pero sin la lista del IPJyC no publicamos nombres. Más abajo van la línea de ayuda y la autoexclusión, que sí tienen fuente oficial.',
+    description: 'Apuestas online en Mendoza: qué muestra la portada del IPJyC, por qué todavía no listamos plataformas y dónde pedir ayuda o la autoexclusión.',
+    h1: 'Mendoza: sin una lista oficial de sitios verificada',
+    checked: 'La portada del Instituto Provincial de Juegos y Casinos no abre desde fuera del país, así que la guardamos desde un navegador en Argentina. Debajo de su invitación a la oferta oficial enlaza los sitios del casino, la quiniela y el hipódromo de Mendoza y otro sitio del Instituto (ipjyc.gob.ar), que todavía no revisamos. Ninguna de esas direcciones termina en .bet.ar.',
+    lead: 'La prensa habla de varias licencias en Mendoza, pero en la portada del IPJyC que guardamos no hay una lista de plataformas online. Sin esa lista no publicamos nombres. Más abajo van la ayuda y la autoexclusión, con fuente oficial.',
   },
 };

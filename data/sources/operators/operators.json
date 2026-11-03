@@ -574,16 +574,30 @@
    ]
   },
   "bet365": {
-   "shots": []
+   "shots": [
+    "bet365-owner-inicio",
+    "bet365-owner-juego-responsable"
+   ]
   },
   "bplay": {
-   "shots": []
+   "shots": [
+    "bplay-owner-inicio",
+    "bplay-owner-deportes",
+    "bplay-owner-juego-responsable"
+   ]
   },
   "betwarrior": {
-   "shots": []
+   "shots": [
+    "betwarrior-owner-inicio",
+    "betwarrior-owner-deportes"
+   ]
   },
   "codere": {
-   "shots": []
+   "shots": [
+    "codere-owner-inicio",
+    "codere-owner-deportes",
+    "codere-owner-juego-responsable"
+   ]
   },
   "jugadon": {
    "shots": [
@@ -631,7 +645,9 @@
   },
   "casino-ba-online": {
    "shots": [
-    "cbao-pie"
+    "cbao-pie",
+    "cbao-owner-inicio",
+    "cbao-owner-juego-responsable"
    ]
   }
  }

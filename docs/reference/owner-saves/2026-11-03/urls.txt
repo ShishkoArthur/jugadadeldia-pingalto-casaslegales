@@ -1,0 +1,11 @@
+rne-inicio https://www.loteriaderionegro.gob.ar/
+rne-rionegrina-online https://www.loteriaderionegro.gob.ar/la-rionegrina-online
+ar-r-loteria-autoexclusion https://www.loteriaderionegro.gob.ar/juego-responsable/autoexclusion
+sal-enreja-juego-autorizado https://www.enrejasalta.com.ar/ja.php
+ar-a-enreja-jr https://www.enrejasalta.com.ar/jr.php
+neu-casinos https://ijan-neuquen.com/casinos.php
+neu-juego-legal https://ijan-neuquen.com/juego_legal.php
+ar-q-ijan-juego-responsable https://ijan-neuquen.com/juego_responsable.php
+ar-x-loteria-juego-responsable https://www.loteriadecordoba.com.ar/juego-responsable
+mendoza-ipjyc-inicio https://www.mendoza.gob.ar/juegosycasinos/
+santa-fe-afiche-juego-responsable.jpg image only, source page not recorded (Loteria de Santa Fe poster), not used on the site

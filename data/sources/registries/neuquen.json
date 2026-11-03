@@ -13,27 +13,27 @@
   "more": [
    {
     "doc": "neu-juego-legal",
-    "pattern": "- La Neuquina Online - <a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)\""
+    "pattern": "- La Neuquina Online - <a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)/?\""
    }
   ],
-  "note": "Two pages of the regulator: \"Juego legal\" names the authorised online platforms (La Neuquina Online and the online casinos page); \"Casinos\" has the table \"CASINOS ONLINE PERMITIDOS\". robots.txt allows * (Content-Signal: search=yes, ai-train=no, use=reference); fetched once with a transparent user agent."
+  "note": "Two pages of the regulator: \"Juego legal\" names the authorised online platforms (La Neuquina Online and the online casinos page); \"Casinos\" has the table \"CASINOS ONLINE PERMITIDOS\". robots.txt disallows AI crawlers, so the copies are the ones the owner saved from his own browser on 2026-11-03 (Chrome \"save complete page\": the DOM as the browser serialized it, links made absolute); evidence snippets are taken verbatim from those copies."
  },
  "docs": {
   "neu-juego-legal": {
    "url": "https://ijan-neuquen.com/juego_legal.php",
    "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "b5db3b8d384557e25df2a775dbe262869829e965f33fa3552a550d7a0a28750f",
+   "sha256": "9e59f2d72a6513714629f2ee7b58285eb9d3d296d4fc9e942e009178cdfcd1df",
    "file": "data/sources/registries/_docs/neu-juego-legal.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   },
   "neu-casinos": {
    "url": "https://ijan-neuquen.com/casinos.php",
    "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "91bfd63bc833b52e9fd0ec8ab6a3ecddb29fe6d5c77c30395a7783f0dd280dd3",
+   "sha256": "b85283e75f6f23b17ae5c556661aa711093e8272b6011343e4335d9777f6385c",
    "file": "data/sources/registries/_docs/neu-casinos.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   }
  },
  "quotes": {
@@ -83,7 +83,7 @@
    "label": "La Neuquina Online",
    "evidence": {
     "doc": "neu-juego-legal",
-    "html": "- La Neuquina Online - <a href=\"https://www.laneuquinaonline.bet.ar\""
+    "html": "- La Neuquina Online - <a href=\"https://www.laneuquinaonline.bet.ar/\""
    }
   },
   {
@@ -92,7 +92,7 @@
    "label": "Casino Magic Online",
    "evidence": {
     "doc": "neu-casinos",
-    "html": "<td><p class=\"parrafo-14\">Casino Magic Online</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://casinomagiconline.bet.ar\">"
+    "html": "<td><p class=\"parrafo-14\">Casino Magic Online</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://casinomagiconline.bet.ar/\">"
    }
   },
   {
@@ -101,7 +101,7 @@
    "label": "Maverick Online",
    "evidence": {
     "doc": "neu-casinos",
-    "html": "<td><p class=\"parrafo-14\">Maverick Online</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://maverickonline.bet.ar\">"
+    "html": "<td><p class=\"parrafo-14\">Maverick Online</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://maverickonline.bet.ar/\">"
    }
   },
   {
@@ -110,7 +110,7 @@
    "label": "Casino MAC Group",
    "evidence": {
     "doc": "neu-casinos",
-    "html": "<td><p class=\"parrafo-14\">Casino MAC Group</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://casinosmacgroup.bet.ar\">"
+    "html": "<td><p class=\"parrafo-14\">Casino MAC Group</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://casinosmacgroup.bet.ar/\">"
    }
   },
   {

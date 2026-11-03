@@ -36,6 +36,21 @@
 Если адрес из таблицы открывается не на ту страницу — сохранить ту, где есть нужное, и записать её адрес в `urls.txt`
 (строка: `имя-файла адрес`). Для Santa Fe и Mendoza `urls.txt` нужен всегда.
 
+## Что уже пришло (03.11.2026, папка `2026-11-03/`)
+
+Встали на место (`copiedBy: "owner"`, следующее сохранение — до ~09.02.2027): `rne-inicio`, `rne-rionegrina-online`,
+`ar-r-loteria-autoexclusion`, `sal-enreja-juego-autorizado`, `ar-a-enreja-jr`, `neu-casinos`, `neu-juego-legal`,
+`ar-q-ijan-juego-responsable`, `ar-x-loteria-juego-responsable` (файл назывался «Loteria _ Juegos», внутри — страница juego-responsable),
+`mendoza-ipjyc-inicio`. Списки Río Negro (3) и Neuquén (6) не изменились. Mendoza: на главной списка .bet.ar нет — статус
+«sin dato verificado»; там есть плитка-ссылка на **https://ipjyc.gob.ar/wp/** — её сохранить следующей (`mendoza-plataformas`, вероятно там список).
+
+**Ещё нужно:** `cba-juegos-online` (https://loteriadecordoba.com.ar/juegos/online — прислана была другая страница), всё по Santa Fe,
+`mendoza-plataformas` (ipjyc.gob.ar/wp/), `mendoza-autoexclusion`. PDF не пришли — желательно.
+
+Сохранено было «Веб-страница полностью» (DOM после браузера: ссылки стали абсолютными, у пустых атрибутов `=""`). Это тоже годится:
+цитаты сверяются по видимому тексту, а HTML-доказательства строк списка агент берёт дословно из присланной копии. Но `view-source`
+(Ctrl+U → Ctrl+S) по-прежнему лучше — без папок `_files`.
+
 ## Как сохранить (Chrome на компьютере)
 
 Для каждой страницы — **два файла**:

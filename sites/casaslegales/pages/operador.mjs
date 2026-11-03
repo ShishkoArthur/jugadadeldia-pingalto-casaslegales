@@ -8,7 +8,7 @@ import { opData, quotesOf, shotsOf, docOf } from '../content/opdata.mjs';
 import { licenceMap, mapLegend, anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
 import { src, sectionHead } from './parts.mjs';
 
-const SHOT_LABEL = { home: 'Página de entrada', footer: 'Pie de página', rg: 'Juego responsable', pay: 'Medios de pago', tc: 'Términos y condiciones', block: 'Lo que muestra fuera de su provincia' };
+const SHOT_LABEL = { home: 'Página de entrada', footer: 'Pie de página', rg: 'Juego responsable', sports: 'Apuestas deportivas', pay: 'Medios de pago', tc: 'Términos y condiciones', block: 'Lo que muestra fuera de su provincia' };
 const RG_ORDER = ['rg-deposit', 'rg-loss', 'rg-bet', 'rg-time', 'rg-pause', 'rg-selfex', 'rg-check', 'rg-age', 'rg-help'];
 
 export function rowOf(h, brand) {
@@ -83,13 +83,15 @@ function shotsSection(h, o, D) {
   const misses = Object.values(D.shots).filter(s => s.brand === o.brand && !used.has(s.id) && !s.ok);
   const figs = shots.map(s => shotFigure(h, s, SHOT_LABEL[s.kind] || 'Página pública')).join('');
   const blockQuotes = quotesOf(D, o.brand, 'block');
+  const fromAr = shots.some(s => s.source === 'owner');
   const miss = misses.map(s => '<li><span class="rl-host">' + h.esc(new URL(s.url).hostname) + '</span><span>' +
     (s.status >= 400 || s.status === 202 ? 'respondió con una página de bloqueo (código ' + s.status + ')' : 'no cargó') + ' · ' + h.fmtDate(s.date) + '</span></li>').join('');
   if (!figs && !miss) return '';
   return '<section class="rl-sec" id="capturas">' + sectionHead(h, 'Capturas propias', 'sin registrarnos, sin depositar') +
     (figs ? '<div class="rl-shots">' + figs + '</div>' : '') +
     (blockQuotes.length ? '<div class="rl-law rl-law-1">' + blockQuotes.map(q => '<article>' + opQuote(h, D, q, q.label) + '</article>').join('') + '</div>' : '') +
-    (miss ? '<div class="rl-box rl-miss"><h3>' + (figs ? 'Otras direcciones que no pudimos ver' : 'No pudimos ver su sitio') + '</h3><p>Las visitamos desde fuera de Argentina y el sitio no mostró su contenido. No usamos capturas ajenas, así que esta ficha no tiene imagen de esas páginas.</p><ul class="rl-misslist">' + miss + '</ul></div>' : '') +
+    (miss ? (fromAr ? '<div class="rl-box rl-miss"><h3>Desde fuera de Argentina</h3><p>Cuando visitamos estas direcciones desde fuera del país, no mostraron su contenido. Las capturas de arriba se hicieron desde un navegador en Argentina, sin registrarnos.</p>' :
+      '<div class="rl-box rl-miss"><h3>' + (figs ? 'Otras direcciones que no pudimos ver' : 'No pudimos ver su sitio') + '</h3><p>Las visitamos desde fuera de Argentina y el sitio no mostró su contenido. No usamos capturas ajenas, así que esta ficha no tiene imagen de esas páginas.</p>') + '<ul class="rl-misslist">' + miss + '</ul></div>' : '') +
     '</section>';
 }
 
@@ -98,7 +100,7 @@ function toolsSection(h, o, D) {
   const pay = quotesOf(D, o.brand, 'pay');
   if (!rg.length && !pay.length) {
     return '<section class="rl-sec">' + sectionHead(h, 'Herramientas de juego responsable y medios de pago') +
-      '<div class="rl-box"><p>No publicamos una lista: solo contamos lo que dice una página pública del operador que pudimos guardar, y la de ' + h.esc(h.names[o.brand]) + ' no se mostró desde nuestra ubicación. Las herramientas que exige cada provincia están en la página de esa provincia.</p></div></section>';
+      '<div class="rl-box"><p>No publicamos una lista: solo contamos lo que dice una página pública del operador que pudimos guardar, y la de ' + h.esc(h.names[o.brand]) + (shotsOf(D, o.brand).some(s => s.source === 'owner') ? ' solo la vimos en capturas hechas desde Argentina, sin un texto guardado que podamos citar' : ' no se mostró desde nuestra ubicación') + '. Las herramientas que exige cada provincia están en la página de esa provincia.</p></div></section>';
   }
   const groups = list => [...new Set(list.map(q => q.doc))].map(slug => ({ d: docOf(D, slug), qs: list.filter(q => q.doc === slug) }));
   const head = d => '<p class="rl-src rl-gsrc">' + h.esc(d.title) + ' · <span class="rl-host">' + h.esc(d.host + (d.path === '/' ? '' : d.path)) + '</span> · copia del ' + h.fmtDate(d.fetched) + '</p>';

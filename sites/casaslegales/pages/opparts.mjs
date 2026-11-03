@@ -40,6 +40,12 @@ export function opSrcQuote(h, D, q, label) {
   return opQuote(h, D, q, label);
 }
 export function shotFigure(h, s, label) {
+  if (s.source === 'owner') {
+    const name = h.names[s.brand] || s.brand;
+    return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(name) + '</span></div>' +
+      '<img src="' + h.asset('shots/' + s.id + '.webp') + '" width="' + s.width + '" height="' + s.height + '" loading="lazy" decoding="async" alt="' + h.esc(label + ' de ' + name + ', vista desde Argentina') + '">' +
+      '<figcaption><b>' + h.esc(label) + '</b> Captura de la página pública (Argentina) · ' + h.fmtDate(s.date) + '</figcaption></figure>';
+  }
   const u = new URL(s.finalUrl || s.url);
   return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(u.hostname + (u.pathname === '/' ? '' : u.pathname)) + '</span></div>' +
     '<img src="' + h.asset('shots/' + s.id + '.webp') + '" width="' + s.width + '" height="' + s.height + '" loading="lazy" decoding="async" alt="' + h.esc(label + ': ' + u.hostname) + '">' +

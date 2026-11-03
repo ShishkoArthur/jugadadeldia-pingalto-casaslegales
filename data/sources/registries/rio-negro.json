@@ -10,24 +10,24 @@
  "list": {
   "doc": "rne-inicio",
   "pattern": "<a href=\"https?://(?<host>[^/\"]+)/[^\"]*\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"sitio-card\"",
-  "note": "Block \"Jugá online en los sitios autorizados\" on the home page of the provincial lottery (one card per site, name in the image alt). robots.txt allows * (Content-Signal: search=yes, ai-train=no, use=reference); fetched once with a transparent user agent."
+  "note": "Block \"Jugá online en los sitios autorizados\" on the home page of the provincial lottery (one card per site, name in the image alt). robots.txt disallows AI crawlers, so the copies are the ones the owner saved from his own browser on 2026-11-03 (Chrome \"save complete page\": the DOM as the browser serialized it, links made absolute); evidence snippets are taken verbatim from those copies."
  },
  "docs": {
   "rne-inicio": {
    "url": "https://www.loteriaderionegro.gob.ar/",
    "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "390394fa4f5a689a38922c478d25ed50f15e23326545abf5b869c0d193b5dd89",
+   "sha256": "2780aeb4924ecbac3c79aaf8ce31744d7a846261994fe5125ec012789b8b1fa2",
    "file": "data/sources/registries/_docs/rne-inicio.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   },
   "rne-rionegrina-online": {
    "url": "https://www.loteriaderionegro.gob.ar/la-rionegrina-online",
    "fetched": "2026-11-03",
    "status": 200,
-   "sha256": "2fe0e330b7ece81b3cca94b0d29a286f36c3d464a209900e4fdf1d0c9e9bfd88",
+   "sha256": "a47c234a600cabaaae38521ae6f071645eeec99cce51771e7a198765282d44f9",
    "file": "data/sources/registries/_docs/rne-rionegrina-online.html",
-   "pendingOwnerCopy": true
+   "copiedBy": "owner"
   }
  },
  "quotes": {
@@ -67,7 +67,7 @@
    "label": "La Rionegrina Online",
    "evidence": {
     "doc": "rne-inicio",
-    "html": "<a href=\"https://larionegrinaonline.bet.ar/plataforma/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"sitio-card\" data-astro-cid-lcdefpme><img src=\"/sitios/rionegrina-online.jpg\" alt=\"La Rionegrina Online\""
+    "html": "<a href=\"https://larionegrinaonline.bet.ar/plataforma/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"sitio-card\" data-astro-cid-lcdefpme=\"\"><img src=\"./Inicio _ Lotería de Río Negro_files/rionegrina-online.jpg\" alt=\"La Rionegrina Online\""
    }
   },
   {
@@ -76,7 +76,7 @@
    "label": "Casinos del Río",
    "evidence": {
     "doc": "rne-inicio",
-    "html": "<a href=\"https://casinosdelrio.bet.ar/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"sitio-card\" data-astro-cid-lcdefpme><img src=\"/sitios/casinos-del-rio.jpg\" alt=\"Casinos del Río\""
+    "html": "<a href=\"https://casinosdelrio.bet.ar/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"sitio-card\" data-astro-cid-lcdefpme=\"\"><img src=\"./Inicio _ Lotería de Río Negro_files/casinos-del-rio.jpg\" alt=\"Casinos del Río\""
    }
   },
   {
@@ -85,7 +85,7 @@
    "label": "Casino Club Online",
    "evidence": {
     "doc": "rne-inicio",
-    "html": "<a href=\"https://www.casinoclubonline.bet.ar/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"sitio-card\" data-astro-cid-lcdefpme><img src=\"/sitios/casino-club.jpg\" alt=\"Casino Club Online\""
+    "html": "<a href=\"https://www.casinoclubonline.bet.ar/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"sitio-card\" data-astro-cid-lcdefpme=\"\"><img src=\"./Inicio _ Lotería de Río Negro_files/casino-club.jpg\" alt=\"Casino Club Online\""
    }
   }
  ]
