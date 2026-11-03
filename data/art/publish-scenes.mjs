@@ -7,8 +7,10 @@
 // frame of a page is as tall as K * width * g, where g = (figure height / standing height FULL) ^ 0.7 on the common head scale. Standing
 // figures get the full frame, a seated one a shorter frame at a slightly larger scale (head on screen at most ~1.25 x the standing one),
 // so heads stay comparable from page to page; a frame is never wider than the figure needs (ar = width / height of the file).
-// Three heights per scene (H_SET, capped at the cut-out height) for srcset. Only pages the site builds get files; alt comes from ALT in
-// scenes.mjs and must exist. Run after a scene is accepted, then render.
+// Pixels come from the full-resolution cut-out data/art/<site>/cut/raw/<id>.webp (one lossy pass, not the head-scaled copy); the rule
+// numbers (g) stay on the head scale: figure height there = raw height * scale of scenes-measure.json. Widths W_SET for srcset, never
+// wider than the source (no upscaling); WebP quality 88, alpha 95, smart subsampling. Only pages the site builds get files; alt comes
+// from ALT in scenes.mjs and must exist. Run after a scene is accepted, then render.
 // node data/art/publish-scenes.mjs <jugadadeldia|pingalto>
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -20,7 +22,9 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '../..');
 const site = process.argv[2];
 if (!ALT[site]) { console.error('usage: publish-scenes.mjs <jugadadeldia|pingalto>'); process.exit(2); }
-const FULL = 1700, H_SET = [300, 560, 840], EXP = 0.7, A_MIN = 40;
+const FULL = 1700, W_SET = [320, 480, 720, 960, 1280], EXP = 0.7, A_MIN = 40;
+const measPath = join(HERE, site, 'scenes-measure.json');
+const MEAS = existsSync(measPath) ? JSON.parse(readFileSync(measPath, 'utf8')).scenes || {} : {};
 
 const man = JSON.parse(readFileSync(join(HERE, site, 'scenes.json'), 'utf8'));
 const { PAGES } = await import(pathToFileURL(join(ROOT, 'sites', site, 'pages/index.mjs')).href);
@@ -34,8 +38,9 @@ for (const [url, e] of Object.entries(man.pages)) {
   if (!(e.status === 'accepted' || (e.status === 'review' && e.checked)) || !built.has(url)) continue;
   const alt = ALT[site][url];
   if (!alt) throw new Error(url + ': no alt text in ALT of scenes.mjs');
-  const src = join(ROOT, e.file);
-  if (!existsSync(src)) throw new Error(url + ': no cut-out ' + e.file);
+  if (!existsSync(join(ROOT, e.file))) throw new Error(url + ': no cut-out ' + e.file);
+  const raw = join(HERE, site, 'cut/raw', e.image + '.webp'), k = MEAS[e.image]?.scale;
+  const src = existsSync(raw) && k ? raw : join(ROOT, e.file), scale = src === raw ? k : 1;
   const { data, info } = await sharp(src).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   let x0 = info.width, y0 = info.height, x1 = -1, y1 = -1;
   for (let y = 0; y < info.height; y++) for (let x = 0; x < info.width; x++) {
@@ -49,16 +54,17 @@ for (const [url, e] of Object.entries(man.pages)) {
     .extend({ top: mt, bottom: mb, left: ms, right: ms, background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
   const W = bw + 2 * ms, H = bh + mt + mb;
   const files = [];
-  for (const th of [...new Set(H_SET.map(x => Math.min(x, H)))]) {
-    const hh = th, w = Math.round(W * th / H);
+  const top = Math.min(W, W_SET.at(-1));
+  for (const w of [...W_SET.filter(x => x <= top * 0.9), top]) {
+    const hh = Math.round(H * w / W);
     const name = 'scenes/' + slug(url) + '-' + w + '.webp';
-    const buf = await sharp(trimmed).resize({ width: w, height: hh }).webp({ quality: 80, alphaQuality: 85, effort: 6, smartSubsample: true }).toBuffer();
+    const buf = await sharp(trimmed).resize({ width: w, height: hh, kernel: 'lanczos3' }).webp({ quality: 88, alphaQuality: 95, effort: 6, smartSubsample: true }).toBuffer();
     writeFileSync(join(ROOT, 'sites', site, 'static', name), buf);
     bytes += buf.length;
     files.push({ name, w, h: hh, kb: Math.round(buf.length / 1024) });
   }
-  pages[url] = { image: e.image, files, ar: +(W / H).toFixed(4), g: +Math.min(1, Math.pow(bh / FULL, EXP)).toFixed(4), alt };
+  pages[url] = { image: e.image, files, ar: +(W / H).toFixed(4), g: +Math.min(1, Math.pow(bh * scale / FULL, EXP)).toFixed(4), alt };
 }
 const missing = [...built].filter(u => !pages[u]);
-writeFileSync(join(ROOT, 'sites', site, 'content/scenes.json'), JSON.stringify({ rule: { full: FULL, exp: EXP, margin: 'top 3 %, sides 3 %, bottom 1 % of the figure height' }, pages }, null, 1) + '\n');
+writeFileSync(join(ROOT, 'sites', site, 'content/scenes.json'), JSON.stringify({ rule: { full: FULL, exp: EXP, widths: W_SET, margin: 'top 3 %, sides 3 %, bottom 1 % of the figure height' }, pages }, null, 1) + '\n');
 console.log(`${site}: ${Object.keys(pages).length} scenes published, ${readdirSync(OUT).length} files, ${Math.round(bytes / 1024)} KB; pages without a scene: ${missing.join(' ') || 'none'}`);
