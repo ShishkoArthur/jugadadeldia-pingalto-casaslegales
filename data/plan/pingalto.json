@@ -721,7 +721,8 @@
   "ar": "Матчи дня в hora argentina, аргентинские команды наверху",
   "data": "Liquipedia LPDB API (ключ, условия) или PandaScore free (условия)",
   "auto": "лента раз в 1–6 ч",
-  "notes": "блокер — условия API (ресёрч другого агента)"
+  "notes": "блокер — условия API (ресёрч другого агента)",
+  "live": "2026-11-03"
  },
  {
   "section": "Esports",
@@ -1084,10 +1085,10 @@
  {
   "section": "Brawl Stars",
   "url": "/brawl/brawlers",
-  "title": "Brawlers de Brawl Stars: todos, por rareza y clase",
-  "titleLen": 50,
+  "title": "Brawlers de Brawl Stars: todos, con habilidades y gadgets",
+  "titleLen": 57,
   "h1": "Todos los brawlers de Brawl Stars",
-  "description": "Todos los brawlers de Brawl Stars por rareza y clase, con habilidades estelares y gadgets, el más nuevo, tu colección y los favoritos del top argentino.",
+  "description": "Todos los brawlers de Brawl Stars con sus habilidades estelares y gadgets, el más nuevo y las copas que piden los 200 mejores puestos de Argentina.",
   "keys": "brawl stars personajes 1.7k/0 · personajes de brawl stars 1.1k/0 · brawlers 1k/10 · brawlers de brawl stars 350/1 · todos los brawlers 300/0 · spike 2.2k/0 · edgar 1.9k/0 · leon 1.2k/0 · mandy 900/0 · melodie 900/0 · colette 700/0",
   "kind": "live",
   "wave": "P1",
@@ -1095,7 +1096,8 @@
   "ar": "Какие бравлеры чаще у топ-200 Аргентины (Supercell rankings AR)",
   "data": "Supercell Brawl Stars API (ключ бесплатный, привязан к IP сервера) /brawlers; редкость/класс — Brawlify API (неофициальный, условия)",
   "auto": "лента раз в сутки",
-  "notes": "страницы отдельных бравлеров не делаем (шаблон); ключ Supercell — шаг владельца"
+  "notes": "страницы отдельных бравлеров не делаем (шаблон); ключ Supercell — шаг владельца",
+  "live": "2026-11-03"
  },
  {
   "section": "Brawl Stars",
@@ -1119,7 +1121,7 @@
   "title": "Eventos de Brawl Stars hoy: mapas y modos en hora argentina",
   "titleLen": 59,
   "h1": "Eventos de Brawl Stars de hoy",
-  "description": "Los eventos de Brawl Stars de hoy con mapa, modo y cuánto falta para que cambien en hora argentina, más los brawlers que mejor rinden en cada mapa.",
+  "description": "Los eventos de Brawl Stars de hoy con su mapa, su modo y cuánto falta para que cambien, en hora argentina, de la rotación oficial que revisamos cada hora.",
   "keys": "— (0–10)",
   "kind": "live",
   "wave": "P2",
@@ -1127,7 +1129,8 @@
   "ar": "Таймеры смены ротации в hora argentina",
   "data": "Supercell API /events/rotation",
   "auto": "лента раз в 1–3 ч",
-  "notes": ""
+  "notes": "",
+  "live": "2026-11-03"
  },
  {
   "section": "Brawl Stars",
@@ -1196,10 +1199,10 @@
  {
   "section": "Clash Royale",
   "url": "/clash/cartas",
-  "title": "Cartas de Clash Royale: elixir, rareza y roles",
-  "titleLen": 46,
+  "title": "Cartas de Clash Royale: elixir y rareza de cada una",
+  "titleLen": 51,
   "h1": "Todas las cartas de Clash Royale",
-  "description": "Todas las cartas de Clash Royale con su nombre en español, elixir, rareza y tipo, para comparar dos lado a lado y ver cuáles usa más el top argentino.",
+  "description": "Todas las cartas de Clash Royale con su elixir, su rareza y si tienen evolución, con filtros y el elixir promedio de un mazo de ocho armado por vos.",
   "keys": "cartas de clash royale 700/0 · duende 700/0 · valquiria 700/0 · mazo de megacaballero 300/0 · emotes 800/0 (не цель)",
   "kind": "live",
   "wave": "P2",
@@ -1207,7 +1210,8 @@
   "ar": "Испанские названия карт (Duende, Valquiria — так ищут в Аргентине), популярность у топа Аргентины",
   "data": "Supercell API /cards; статы — RoyaleAPI cr-api-data (GitHub, лицензию проверить)",
   "auto": "лента раз в сутки",
-  "notes": ""
+  "notes": "",
+  "live": "2026-11-03"
  },
  {
   "section": "Rocket League",

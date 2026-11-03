@@ -6,6 +6,7 @@ import { mapChanceFor, swiss, swissCounts } from '../../../engine/games/series.m
 import { swissSvg, swissRecords } from '../../../engine/games/seriesviz.mjs';
 import { vrs, rowsForClient } from '../content/vrs.mjs';
 import { fmt, fmtPct, fmtInput, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
+import { agendaBlock } from './feeds.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const SHOW = 30;
@@ -31,7 +32,7 @@ export const cs2Ranking = {
   title: 'Ranking de CS2 de Valve: el mundo y las Américas',
   description: 'El ranking oficial de Valve de los equipos de CS2: el mundo y las Américas, donde juega Argentina, y la chance entre dos equipos según el modelo de Valve.',
   h1: 'Ranking de equipos de CS2 de Valve',
-  scripts: ['vrs.js'],
+  scripts: ['vrs.js', 'agenda.js'],
   data: h => { const V = vrs(h); return { gl: rowsForClient(V.gl.rows, true), am: V.am.rows.map(r => [r.rank, r.global]), show: SHOW }; },
   ld: h => ldPage(h),
   render(h) {
@@ -61,7 +62,7 @@ export const cs2Ranking = {
       '<div><p>Valve no publica la nacionalidad de cada jugador en estas tablas, así que no marcamos equipos como argentinos. Buscá el tuyo por nombre o por un jugador en la tabla de arriba.</p><p>Valve tiene un punto de su red en Buenos Aires: tu ping hasta ahí, y hasta Santiago o São Paulo, en el <a href="' + h.href('/kit/ping') + '">test de ping</a>. Cómo usa Valve estas tablas para invitar al Major, en <a href="' + h.href('/cs2/major') + '">el Major de CS2 explicado</a>.</p></div></div>');
     const when = sec('Cada cuánto cambia', '<p>Valve sube una tabla nueva a su repositorio cada tanto. La que ves es la del ' + h.fmtDate(V.date) + ', copiada el ' + h.fmtDate(h.pa.doc('vrs-americas').fetched) + '. Por ahora la actualizamos a mano: si ves una más nueva en el repositorio de Valve, esta ya quedó vieja.</p>');
     return hero(h, { ey: 'CS2 · ranking de Valve · ' + h.fmtDate(V.date), sub: 'Los ' + fmt(V.gl.rows.length, 0) + ' equipos del ranking oficial de Valve, las Américas aparte y la chance entre dos equipos con la fórmula del propio modelo de Valve.' }) +
-      '<div class="pa-tool">' + duel + list + '</div>' + sec('El mundo y las Américas', chart) + model + ar + when;
+      '<div class="pa-tool">' + duel + list + '</div>' + (h.built('/esports/agenda') ? agendaBlock(h, 'cs2', 'Próximos partidos de CS2') : '') + sec('El mundo y las Américas', chart) + model + ar + when;
   },
 };
 

@@ -4,6 +4,7 @@
 // signs and where to report it in Argentina, quoted from argentina.gob.ar). Every number comes from a saved file.
 import { agents } from './valorant.mjs';
 import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
+import { agendaBlock } from './feeds.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
@@ -31,7 +32,7 @@ export const lolHub = {
   title: 'LoL en Argentina: campeones por rol y rangos de LAS',
   description: 'League of Legends desde Argentina: todos los campeones por rol con los datos de Riot en español, comparador de a dos y los rangos de LAS con calculadora.',
   h1: 'League of Legends desde Argentina',
-  scripts: ['champs.js'],
+  scripts: ['champs.js', 'agenda.js'],
   data: h => { const C = champions(h); return { c: C.list.map(c => [c.id, c.name, c.tags.map(t => C.role[t]).join(', '), INFO.map(([k]) => c.info[k]), c.res, C.STATS.map(([k]) => c.s[k])]), stats: C.STATS.map(([, l]) => l), info: INFO.map(([, l]) => l) }; },
   ld: h => ldPage(h),
   render(h) {
@@ -52,7 +53,7 @@ export const lolHub = {
     const ar = sec('Desde Argentina', '<div class="pa-two"><div><p>Los nombres, títulos y roles están en el español de Argentina que Riot publica en sus datos del juego (es_AR). Los rangos de LAS, con cuántos PL pide cada división y una calculadora de partidas, en <a href="' + h.href('/lol/rangos') + '">rangos de LoL</a>.</p>' + quote(h, 'lol_lan_mia', 'es') + '</div>' +
       '<div><p>Armá tu tier list de campeones y compartila en el <a href="' + h.href('/tier-list') + '">creador de tier list</a>, y medí tu ping desde tu provincia en el <a href="' + h.href('/kit/ping') + '">test de ping</a>.</p><p class="pa-src">Lo que no mostramos: qué campeones se eligen o ganan más en el competitivo o en la cola clasificatoria. Esos datos necesitan una clave de Riot para productos aprobados o fuentes que no podemos copiar.</p></div></div>');
     return hero(h, { ey: 'LoL · ' + fmt(C.list.length, 0) + ' campeones · versión ' + C.version, girl: true, sub: 'Todos los campeones con sus roles y las notas de Riot en español, un comparador de a dos y la calculadora de rangos de LAS. Datos del juego, sin win rates inventados.' }) +
-      tools + '<div class="pa-gd"><div class="pa-w2">' + bars + '</div><div class="pa-w4 pa-c"><h3>Notas de Riot, en promedio</h3>' + avgInfo(C) + '</div></div>' + sec('Todos los campeones', grid) + about + ar;
+      tools + '<div class="pa-gd"><div class="pa-w2">' + bars + '</div><div class="pa-w4 pa-c"><h3>Notas de Riot, en promedio</h3>' + avgInfo(C) + '</div></div>' + (h.built('/esports/agenda') ? agendaBlock(h, 'lol', 'Próximos partidos de LoL') : '') + sec('Todos los campeones', grid) + about + ar;
   },
 };
 function avgInfo(C) {
@@ -75,6 +76,7 @@ const VAL = [
 export const valorantHub = {
   path: '/valorant',
   kind: 'hub',
+  scripts: ['agenda.js'],
   riot: true,
   title: 'Valorant en Argentina: rangos, agentes, mapas y servidor',
   description: 'Valorant desde Argentina: rangos y calculadora de RR, todos los agentes y roles, los mapas con sitios del juego y el servidor de Santiago que te toca.',
@@ -92,7 +94,7 @@ export const valorantHub = {
     const mapList = sec('Mapas con sitios', '<ul class="pa-mapl">' + maps.map(([n, d]) => '<li><b>' + h.esc(n) + '</b><span>' + h.esc(d) + '</span></li>').join('') + '</ul><p class="pa-src">Son los mapas con sitios de plantado que trae el cliente ' + h.esc(A.version) + '. Riot rota cuáles entran en competitivo cada tanto, y esa rotación no está en estos datos: no la mostramos como si lo estuviera.</p>' + srcLine(h, 'valapi-maps'));
     const ar = sec('El servidor que te toca', '<div class="pa-two"><div>' + quote(h, 'val_scl', 'es') + quote(h, 'val_scl_ar', 'es') + '</div><div><p>Cuánto ping le sacás a Santiago desde tu provincia, y el mínimo que permite la física, en el <a href="' + h.href('/kit/ping') + '">test de ping</a>.</p></div></div>');
     return hero(h, { ey: 'Valorant · desde Argentina', girl: true, sub: 'Rangos, agentes, mapas y el servidor de Santiago, con los datos del juego y de Riot. Elegí por dónde empezar.' }) +
-      sec('Herramientas', cards(h, VAL)) + facts + mapList + ar;
+      sec('Herramientas', cards(h, VAL)) + (h.built('/esports/agenda') ? agendaBlock(h, 'valorant', 'Próximos partidos de Valorant') : '') + facts + mapList + ar;
   },
 };
 

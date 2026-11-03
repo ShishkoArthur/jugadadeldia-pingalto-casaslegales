@@ -12,7 +12,8 @@ import { esportsSeries, esportsHub } from './series.mjs';
 import { cs2Ranking, cs2Major } from './vrs.mjs';
 import { lolHub, valorantHub, ffHub, ffCodigos } from './hubs.mjs';
 import { equipo, metodo, datos, contacto, legal, notFound } from './service.mjs';
+import { FEED_PAGES } from './feeds.mjs';
 
-export const PAGES = [home, ping, sensibilidad, dpi, tierList, ffHub, ffSensibilidad, ffNombres, ffEspacio, ffCodigos, valorantHub, valorantRangos, valorantAgentes, cs2Ranking, cs2Major, cs2Mira, lolHub, lolRangos, fortniteNube, esportsHub, esportsSeries, equipo, metodo, datos, contacto, legal];
+export const PAGES = [home, ping, sensibilidad, dpi, tierList, ffHub, ffSensibilidad, ffNombres, ffEspacio, ffCodigos, valorantHub, valorantRangos, valorantAgentes, cs2Ranking, cs2Major, cs2Mira, lolHub, lolRangos, fortniteNube, esportsHub, esportsSeries, ...FEED_PAGES, equipo, metodo, datos, contacto, legal];
 export const NOT_FOUND = notFound;
 export const BETTING_KINDS = [];

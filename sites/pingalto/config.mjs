@@ -35,5 +35,5 @@ export const SITE = {
     decimalComma: true,
     decimalOk: /Counter-Strike 1\.6|CC BY(-SA)? \d\.\d/g,
   },
-  deployCheck: ['/', '/kit/sensibilidad', '/kit/dpi', '/kit/ping', '/ff/sensibilidad', '/valorant/rangos', '/lol/rangos', '/tier-list', '/valorant/agentes', '/cs2/mira', '/ff/nombres', '/ff/espacio-invisible', '/fortnite/nube', '/ff', '/ff/codigos', '/valorant', '/lol', '/cs2', '/cs2/major', '/esports', '/esports/series', '/equipo', '/metodo', '/datos', '/contacto', '/legal', '/kit/ping/', '/no-existe'],
+  deployCheck: ['/', '/esports/agenda', '/clash/cartas', '/brawl/brawlers', '/brawl/eventos', '/data/feeds/agenda.json', '/kit/sensibilidad', '/kit/dpi', '/kit/ping', '/ff/sensibilidad', '/valorant/rangos', '/lol/rangos', '/tier-list', '/valorant/agentes', '/cs2/mira', '/ff/nombres', '/ff/espacio-invisible', '/fortnite/nube', '/ff', '/ff/codigos', '/valorant', '/lol', '/cs2', '/cs2/major', '/esports', '/esports/series', '/equipo', '/metodo', '/datos', '/contacto', '/legal', '/kit/ping/', '/no-existe'],
 };
