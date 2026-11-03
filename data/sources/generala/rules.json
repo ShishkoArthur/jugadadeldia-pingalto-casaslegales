@@ -1,0 +1,148 @@
+{
+ "id": "generala-rules",
+ "about": "Rules of generala used by engine/generala. Every quote is checked verbatim against the saved copy (engine/test/games-sources.test.mjs). No official regulation was found; the Ruibal sheet (Argentine maker of the boxed game) is the main source, Wikipedia gives the variants. Re-read every six months.",
+ "checked": "2026-11-03",
+ "docs": {
+  "ruibal": {
+   "title": "Reglamento de Generala (Ruibal, Los Juegos de la Familia)",
+   "publisher": "Ruibal (ruibalgames.com); copy from the Internet Archive, the original link answers 404 since 2026",
+   "url": "https://web.archive.org/web/20260815024839/https://ruibalgames.com/wp-content/uploads/2015/11/Reglamento-Generala.pdf",
+   "original": "https://ruibalgames.com/wp-content/uploads/2015/11/Reglamento-Generala.pdf",
+   "file": "data/sources/generala/_docs/ruibal-reglamento-generala.pdf",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "3b07803362c717525a21cf5e365e46006134b29e84f09708b00f75300532221e"
+  },
+  "wikipedia": {
+   "title": "Generala - Wikipedia, la enciclopedia libre (revision 175076848)",
+   "publisher": "Wikipedia en espanol",
+   "url": "https://es.wikipedia.org/w/index.php?title=Generala&oldid=175076848",
+   "file": "data/sources/generala/_docs/wikipedia-generala-175076848.html",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "86530bfc72b02208dfb24109cd9c3a6027934ff9f6bc36eae7f4e5afdc77bdb1"
+  }
+ },
+ "quotes": {
+  "three-throws": {
+   "doc": "ruibal",
+   "text": "Cada jugador puede hacer hasta tres tiros por turno",
+   "uses": "engine/generala/game.mjs throws 1-3"
+  },
+  "ten-boxes": {
+   "doc": "ruibal",
+   "text": "tendrá puntaje en cada una de las diez categorías.",
+   "uses": "engine/generala/rules.mjs boxesOf (doble null)"
+  },
+  "reroll-all": {
+   "doc": "ruibal",
+   "text": "Si lo desea, puede arrojar nuevamente los cinco dados",
+   "uses": "engine/generala/game.mjs keep [] after the first throw"
+  },
+  "servida-wins": {
+   "doc": "ruibal",
+   "text": "Si obtiene en los cinco el mismo número habrá hecho generala servida y automáticamente gana el juego.",
+   "uses": "engine/generala/rules.mjs generalaServida \"wins-game\""
+  },
+  "servida-any-box": {
+   "doc": "ruibal",
+   "text": "se computará como generala servida.",
+   "uses": "engine/generala/game.mjs servida even with the generala box used"
+  },
+  "generala-60": {
+   "doc": "ruibal",
+   "text": "Generala = 5 dados del mismo número = 60 pts.",
+   "uses": "RULESETS ruibal generala 60"
+  },
+  "poker-40": {
+   "doc": "ruibal",
+   "text": "Poker = 4 dados de un mismo número = 40 pts.",
+   "uses": "RULESETS poker 40"
+  },
+  "full-30": {
+   "doc": "ruibal",
+   "text": "Full = 3 de un mismo número y un par = 30 pts.",
+   "uses": "RULESETS full 30"
+  },
+  "escalera-20": {
+   "doc": "ruibal",
+   "text": "Escalera = 1-2-3-4-5 ó 2-3-4-5-6 = 20 pts.",
+   "uses": "RULESETS ruibal escalera 20, straights escalera-12345-23456"
+  },
+  "servida-bonus-5": {
+   "doc": "ruibal",
+   "text": "se suman 5 puntos en cualquiera de los juegos mayores (salvo la generala)",
+   "uses": "engine/generala/rules.mjs servidaBonus 5"
+  },
+  "number-box": {
+   "doc": "ruibal",
+   "text": "se multiplica el total de dados donde éste aparece por dicho número.",
+   "uses": "engine/generala/solver.mjs boxScore numbers"
+  },
+  "major-as-number": {
+   "doc": "ruibal",
+   "text": "o multiplicar los dados del mismo número y anotar ese",
+   "uses": "engine/generala/game.mjs any roll may go to a number box"
+  },
+  "five-as-number": {
+   "doc": "ruibal",
+   "text": "si un jugador ya ha hecho generala y saca cinco 6, se anotará 30 puntos al seis.",
+   "uses": "engine/generala/solver.mjs boxScore"
+  },
+  "scratch-zero": {
+   "doc": "ruibal",
+   "text": "debe tratar de hacer el juego que le falta aun si en el intento saca cero.",
+   "uses": "engine/generala/game.mjs a box may take 0"
+  },
+  "highest-wins": {
+   "doc": "ruibal",
+   "text": "Gana el jugador que ha alcanzado el máximo puntaje.",
+   "uses": "engine/generala/game.mjs winners"
+  },
+  "w-escalera": {
+   "doc": "wikipedia",
+   "text": "Escalera: 25 puntos si es servida, 20 si fue armada.",
+   "uses": "RULESETS wikipedia-* escalera 20 + servidaBonus 5"
+  },
+  "w-escalera-as": {
+   "doc": "wikipedia",
+   "text": "1-2-3-4-5 (escalera menor), 2-3-4-5-6 (escalera mayor) o 3-4-5-6-1",
+   "uses": "RULESETS wikipedia-* straights escalera-con-as-arriba"
+  },
+  "w-full": {
+   "doc": "wikipedia",
+   "text": "Full: 35 puntos si es servido o 30 puntos si es armado.",
+   "uses": "RULESETS wikipedia-* full 30 + 5"
+  },
+  "w-poker": {
+   "doc": "wikipedia",
+   "text": "Póker: 45 puntos si es servido o 40 puntos si es armado.",
+   "uses": "RULESETS wikipedia-* poker 40 + 5"
+  },
+  "w-generala-60-50": {
+   "doc": "wikipedia",
+   "text": "Generala: 60 puntos (o 50 puntos, según la variante)",
+   "uses": "RULESETS wikipedia-60, wikipedia-50"
+  },
+  "w-servida": {
+   "doc": "wikipedia",
+   "text": "se llama generala servida y en cualquier tiro se gana la partida.",
+   "uses": "engine/generala/rules.mjs generalaServida"
+  },
+  "w-doble-optional": {
+   "doc": "wikipedia",
+   "text": "doble generala (esta última se puede omitir con el acuerdo de los jugadores",
+   "uses": "engine/generala/rules.mjs doble (value chosen by the players)"
+  },
+  "w-scratch": {
+   "doc": "wikipedia",
+   "text": "deberá elegir alguna y tachar la casilla correspondiente",
+   "uses": "engine/generala/game.mjs a box may take 0"
+  },
+  "w-box-closed": {
+   "doc": "wikipedia",
+   "text": "si el jugador la repite no la podrá usar",
+   "uses": "engine/generala/game.mjs a box is scored once"
+  }
+ }
+}
