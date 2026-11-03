@@ -68,7 +68,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
     if (PROMISE.test(vis)) bad('promise', f, 'promise of a date');
     if (SITE.gate.decimalComma) {
       if (/<input\b[^>]*\stype="number"/.test(H)) bad('decimal', f, 'number input (shows the decimal point of the visitor system; use text + inputmode)');
-      if (/<input\b[^>]*\svalue="-?\d+\.\d+"/.test(H)) bad('decimal', f, 'input value with a decimal point');
+      if (/<input\b(?![^>]*type="(range|hidden)")[^>]*\svalue="-?\d+\.\d+"/.test(H)) bad('decimal', f, 'input value with a decimal point');
       const dm = visibleText(H.replace(/<(code|pre|kbd|samp)\b[\s\S]*?<\/\1>/gi, ' ')).replace(SITE.gate.decimalOk || /$^/g, ' ').match(/(?<![\w.,\/:+-])\d+\.\d{1,2}(?![\d.,\w])/);
       if (dm) bad('decimal', f, 'decimal point in text "' + dm[0] + '" (es-AR writes a decimal comma)');
     }

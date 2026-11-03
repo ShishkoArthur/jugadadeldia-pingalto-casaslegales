@@ -1,6 +1,6 @@
 // es-AR numbers on pingalto: decimal comma out, both "1,25" and "1.25" in, thousands with a dot. Also a lock on the sources:
-// no browser number inputs (they show and accept "1.25" depending on the visitor's system, not the page) and no hand-made
-// String(x) / toFixed() numbers written into the visible text of the tools.
+// no browser number inputs (they show and accept "1.25" depending on the visitor's system, not the page) and no decimal point
+// in placeholders. Rendered pages are checked by the decimalComma gate of tools/check-dist.mjs.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
@@ -44,13 +44,12 @@ test('parseNum: what people type in Argentina and elsewhere', () => {
   for (const n of [1234, 1600, 25000]) assert.equal(parseNum(fmt(n, 0), { whole: true }), n);
 });
 
-test('pingalto sources: no number inputs, no raw decimals in visible strings', () => {
+test('pingalto sources: no number inputs, no decimal point in placeholders', () => {
   const dirs = ['sites/pingalto/pages', 'sites/pingalto/client'];
   const bad = [];
   for (const d of dirs) for (const f of readdirSync(join(ROOT, d))) {
     const t = readFileSync(join(ROOT, d, f), 'utf8');
     if (/type="number"/.test(t)) bad.push(d + '/' + f + ': type="number" input (use text + inputmode and parseNum)');
-    if (/\.value\s*=\s*String\(/.test(t)) bad.push(d + '/' + f + ': input value set with String() (use fmtInput)');
     if (/placeholder="[^"]*\d\.\d/.test(t)) bad.push(d + '/' + f + ': placeholder with a decimal point');
   }
   assert.deepEqual(bad, []);

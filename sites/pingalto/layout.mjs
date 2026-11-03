@@ -5,6 +5,7 @@ const NAV = [
   ['/kit/ping', 'Ping'],
   ['/kit/sensibilidad', 'Sensibilidad'],
   ['/kit/dpi', 'DPI'],
+  ['/tier-list', 'Tier list'],
   ['/ff/sensibilidad', 'Free Fire'],
   ['/valorant/rangos', 'Valorant'],
   ['/lol/rangos', 'LoL'],

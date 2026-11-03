@@ -30,5 +30,5 @@ export const SITE = {
     decimalComma: true,
     decimalOk: /Counter-Strike 1\.6|CC BY(-SA)? \d\.\d/g,
   },
-  deployCheck: ['/', '/kit/sensibilidad', '/kit/dpi', '/kit/ping', '/ff/sensibilidad', '/valorant/rangos', '/lol/rangos', '/equipo', '/metodo', '/datos', '/contacto', '/legal', '/kit/ping/', '/no-existe'],
+  deployCheck: ['/', '/kit/sensibilidad', '/kit/dpi', '/kit/ping', '/ff/sensibilidad', '/valorant/rangos', '/lol/rangos', '/tier-list', '/valorant/agentes', '/cs2/mira', '/ff/nombres', '/ff/espacio-invisible', '/fortnite/nube', '/equipo', '/metodo', '/datos', '/contacto', '/legal', '/kit/ping/', '/no-existe'],
 };

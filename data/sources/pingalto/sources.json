@@ -176,6 +176,137 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "2f125af9829ad05183846693860fc2a076eb80e47d5ad3f6daddb35e3f25fba0"
+  },
+  "steam-cs2-news": {
+   "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=730&count=15&maxlength=0&feeds=steam_community_announcements",
+   "file": "data/sources/pingalto/_docs/steam-cs2-news.json",
+   "type": "json",
+   "publisher": "Valve (notas de actualización de CS2, Steam)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "363c56bceb5184e0aa3e07675b16118ef6b1afd5ee9c3f48a83b592a1a12d191"
+  },
+  "xhair-codec": {
+   "url": "https://github.com/akiver/csgo-sharecode/blob/139b9e284756110b44a894331f285b0ddabdf6ef/src/crosshair.ts",
+   "file": "data/sources/pingalto/_docs/akiver-crosshair.ts.txt",
+   "type": "text",
+   "publisher": "csgo-sharecode (akiver, licencia MIT, GitHub)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "33fb5b85282de97cfdc3fd744fd713702e0f01d6d9408a212702321b56db8868"
+  },
+  "xhair-base57": {
+   "url": "https://github.com/akiver/csgo-sharecode/blob/139b9e284756110b44a894331f285b0ddabdf6ef/src/share-code.ts",
+   "file": "data/sources/pingalto/_docs/akiver-share-code.ts.txt",
+   "type": "text",
+   "publisher": "csgo-sharecode (akiver, licencia MIT, GitHub)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "4862c8e70f3992c91a29b24cea77ca51d6d5871a56e02d30dc8268f7ab5e7d98"
+  },
+  "xhair-tests": {
+   "url": "https://github.com/akiver/csgo-sharecode/blob/139b9e284756110b44a894331f285b0ddabdf6ef/src/index.test.ts",
+   "file": "data/sources/pingalto/_docs/akiver-index.test.ts.txt",
+   "type": "text",
+   "publisher": "csgo-sharecode (akiver, licencia MIT, GitHub)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "c68c69cf4ce293ff322e33a20c7a7163ba045441120d59e3e2a35f5d5096c5ad"
+  },
+  "valapi-agents": {
+   "url": "https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=es-MX",
+   "file": "data/sources/pingalto/_docs/valorant-api-agents-es-mx.json",
+   "type": "json",
+   "publisher": "valorant-api.com (datos del cliente de Valorant)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "803e42cd1948956c35d229038b5aa6757cddbddb2862348ba71c22f820d4d4b3"
+  },
+  "valapi-maps": {
+   "url": "https://valorant-api.com/v1/maps?language=es-MX",
+   "file": "data/sources/pingalto/_docs/valorant-api-maps-es-mx.json",
+   "type": "json",
+   "publisher": "valorant-api.com (datos del cliente de Valorant)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "4c66b2d3a5e7fa71458685fe2221c9e5d13eaa90276ac96ff3ba29c5b08e136b"
+  },
+  "valapi-version": {
+   "url": "https://valorant-api.com/v1/version",
+   "file": "data/sources/pingalto/_docs/valorant-api-version.json",
+   "type": "json",
+   "publisher": "valorant-api.com (versión del cliente)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "5f0f9b6e68bf70f3bdd026963f6063e3adf47580cb8f96f562357d8cbd85ac36"
+  },
+  "ddragon-champs": {
+   "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/es_AR/champion.json",
+   "file": "data/sources/pingalto/_docs/ddragon-champion-es-ar.json",
+   "type": "json",
+   "publisher": "Riot Games (Data Dragon, es_AR)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "358b4a7c15b5bf440a87f7ccd6d455241b71f859c3125336ed6936d8406a1e3f"
+  },
+  "xbox-cloud-ar": {
+   "url": "https://www.xbox.com/es-AR/cloud-gaming",
+   "file": "data/sources/pingalto/_docs/xbox-cloud-gaming-es-ar.html",
+   "type": "html",
+   "publisher": "Xbox (Microsoft), Argentina",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "6bc56c0d6b6c499d16cf72938e5e01c2e740c700c63f40eff9ce08d40780ba16"
+  },
+  "xbox-wire-ar": {
+   "url": "https://news.xbox.com/en-us/2022/06/09/xbox-cloud-gaming-now-available-in-argentina-and-new-zealand/",
+   "file": "data/sources/pingalto/_docs/xbox-wire-argentina-2022.html",
+   "type": "html",
+   "publisher": "Xbox Wire (Microsoft)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "45641a1a59581e96e6b6277bbb6d9e3f91e4461efe2302f19e0f006d0fda99e2",
+   "published": "2022-06-09"
+  },
+  "unicode-blocks": {
+   "url": "https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt",
+   "file": "data/sources/pingalto/_docs/unicode-blocks.txt",
+   "type": "text",
+   "publisher": "Unicode Consortium (Blocks.txt)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "a58f8d322f3c5e254f9f97b1cbf76a454a7e02de6ac35619a5e4f27aaabfd553"
+  },
+  "wp-hcj": {
+   "url": "https://en.wikipedia.org/wiki/Hangul_Compatibility_Jamo",
+   "file": "data/sources/pingalto/_docs/wikipedia-hangul-compatibility-jamo.html",
+   "type": "html",
+   "publisher": "Wikipedia (CC BY-SA 4.0)",
+   "kind": "reference",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "bc8d016a4f4cd75d94bd8f6b8ced277ea07fc49568c60dc2aec419fb16d03c32"
+  },
+  "xhair-format": {
+   "url": "https://github.com/akiver/csgo-sharecode/blob/139b9e284756110b44a894331f285b0ddabdf6ef/src/crosshair-format.ts",
+   "file": "data/sources/pingalto/_docs/akiver-crosshair-format.ts.txt",
+   "type": "text",
+   "publisher": "csgo-sharecode (akiver, licencia MIT, GitHub)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "8d59c4af8cb733c6d675f0bef408be0b87ee591fe48a06c19881886a103d6709"
   }
  },
  "facts": {
@@ -382,6 +513,166 @@
     50,
     75
    ]
+  },
+  "cs2_code_format": {
+   "doc": "steam-cs2-news",
+   "quote": "Changed the format of the crosshair share code to accommodate newly included crosshair settings",
+   "value": "share code"
+  },
+  "cs2_code_scope": {
+   "doc": "steam-cs2-news",
+   "quote": "Scope dot scale and color preferences are now included in the new crosshair share code",
+   "value": "Scope dot"
+  },
+  "cs2_px": {
+   "doc": "steam-cs2-news",
+   "quote": "The new crosshair thickness and length units are in pixels.",
+   "value": "pixels"
+  },
+  "cs2_half_outline": {
+   "doc": "steam-cs2-news",
+   "quote": "Added option to draw half-outlines. This will only draw the top-left portions of the outline for a crosshair.",
+   "value": "half-outlines"
+  },
+  "xhair_prefix": {
+   "doc": "xhair-codec",
+   "quote": "const PREFIX = 'CS';",
+   "value": "CS"
+  },
+  "xhair_chars": {
+   "doc": "xhair-codec",
+   "quote": "const CHAR_COUNT = 44;",
+   "value": 44
+  },
+  "xhair_bytes": {
+   "doc": "xhair-codec",
+   "quote": "const BYTE_LENGTH = 32;",
+   "value": 32
+  },
+  "xhair_dict": {
+   "doc": "xhair-base57",
+   "quote": "export const DICTIONARY = 'ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789';",
+   "value": "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789"
+  },
+  "xhair_styles": {
+   "doc": "xhair-codec",
+   "quote": "0 => Dynamic Cross * 1 => Dynamic Circle * 2 => Dynamic Cross (Legacy) * 3 => Static Circle * 4 => Static Cross * 5 => Static Cross (Shot Feedback) * 6 => Dot Only * 7 => Dynamic Quad * 8 => Static Square * 9 => Static Quad",
+   "value": [
+    "Dynamic Cross",
+    "Dynamic Circle",
+    "Dynamic Cross (Legacy)",
+    "Static Circle",
+    "Static Cross",
+    "Static Cross (Shot Feedback)",
+    "Dot Only",
+    "Dynamic Quad",
+    "Static Square",
+    "Static Quad"
+   ]
+  },
+  "xhair_legacy": {
+   "doc": "xhair-format",
+   "quote": "The 'legacy' one is the 'CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx' code CS2 no * longer accepts on import",
+   "value": "CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"
+  },
+  "xhair_game_vector": {
+   "doc": "xhair-tests",
+   "quote": "Code generated by CS2 1.41.8.8, its values have been checked against the cl_* ConVars written by the game.",
+   "value": "1.41.8.8"
+  },
+  "xbox_free_fortnite": {
+   "doc": "xbox-cloud-ar",
+   "quote": "Disfruta en streaming gratis de juegos populares, como Fortnite, iniciando sesión en xbox.com/play con tu cuenta de Microsoft.",
+   "value": "Fortnite"
+  },
+  "xbox_min_mbps": {
+   "doc": "xbox-cloud-ar",
+   "quote": "Una conexión de datos Wi-Fi o LTE con una velocidad mínima de 10 Mbps de bajada.",
+   "value": 10
+  },
+  "xbox_best_mbps": {
+   "doc": "xbox-cloud-ar",
+   "quote": "Ten en cuenta que, para obtener la mejor calidad, algunos dispositivos podrían requerir 20 Mbps.",
+   "value": 20
+  },
+  "xbox_5ghz": {
+   "doc": "xbox-cloud-ar",
+   "quote": "Recomendamos utilizar una conexión Wi-Fi de 5 GHz.",
+   "value": "5 GHz"
+  },
+  "xbox_browsers": {
+   "doc": "xbox-cloud-ar",
+   "quote": "Si juegas en xbox.com, un explorador compatible como Microsoft Edge, Google Chrome o Safari.",
+   "value": [
+    "Microsoft Edge",
+    "Google Chrome",
+    "Safari"
+   ]
+  },
+  "xbox_perf": {
+   "doc": "xbox-cloud-ar",
+   "quote": "El mejor rendimiento se logrará a velocidades de 10 Mbps en dispositivos móviles, 20 Mbps en consolas, PC y tabletas, y conexión Wi-Fi o datos móviles de 5 GHz.",
+   "value": "10 Mbps en dispositivos móviles, 20 Mbps en consolas, PC y tabletas"
+  },
+  "xbox_ar_launch": {
+   "doc": "xbox-wire-ar",
+   "quote": "Today, I'm proud to announce we're continuing to expand by bringing Xbox Cloud Gaming to New Zealand and Argentina.",
+   "value": "Argentina"
+  },
+  "xbox_ar_fortnite": {
+   "doc": "xbox-wire-ar",
+   "quote": "Now New Zealand and Argentina fans can join the party and play Fortnite through Xbox Cloud Gaming, no subscription required.",
+   "value": "no subscription required"
+  },
+  "xbox_touch": {
+   "doc": "xbox-wire-ar",
+   "quote": "there are more than 100 games featuring touch controls including Fortnite",
+   "value": 100
+  },
+  "uni_version": {
+   "doc": "unicode-blocks",
+   "quote": "# Blocks-18.0.0.txt",
+   "value": "18.0.0"
+  },
+  "uni_math": {
+   "doc": "unicode-blocks",
+   "quote": "1D400..1D7FF; Mathematical Alphanumeric Symbols",
+   "value": "1D400..1D7FF"
+  },
+  "uni_hcj": {
+   "doc": "unicode-blocks",
+   "quote": "3130..318F; Hangul Compatibility Jamo",
+   "value": "3130..318F"
+  },
+  "uni_enclosed": {
+   "doc": "unicode-blocks",
+   "quote": "2460..24FF; Enclosed Alphanumerics",
+   "value": "2460..24FF"
+  },
+  "uni_fullwidth": {
+   "doc": "unicode-blocks",
+   "quote": "FF00..FFEF; Halfwidth and Fullwidth Forms",
+   "value": "FF00..FFEF"
+  },
+  "hangul_filler": {
+   "doc": "wp-hcj",
+   "quote": "Informative Alias of U+3164 HANGUL FILLER",
+   "value": "U+3164"
+  },
+  "cs2_tab": {
+   "doc": "steam-cs2-news",
+   "quote": "tab is available in the Settings menu, and includes updated crosshair settings.",
+   "value": "Settings"
+  },
+  "cs2_rescale": {
+   "doc": "steam-cs2-news",
+   "quote": "Please be aware that the new crosshair system automatically rescales pixel counts when the display resolution changes.",
+   "value": "rescales"
+  },
+  "uni_braille": {
+   "doc": "unicode-blocks",
+   "quote": "2800..28FF; Braille Patterns",
+   "value": "2800..28FF"
   }
  }
 }

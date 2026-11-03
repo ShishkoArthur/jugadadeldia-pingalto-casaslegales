@@ -12,6 +12,12 @@ const ICON = {
   ff: '<path d="M12 3c3 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 3 3 3 0-3-1-5 0-7z"/>',
   val: '<path d="M4 5l8 14 8-14M9 5l3 6 3-6"/>',
   lol: '<path d="M5 11l7-6 7 6M5 19l7-6 7 6"/>',
+  tier: '<path d="M4 6h4M4 12h4M4 18h4M11 6h9M11 12h6M11 18h3"/>',
+  name: '<path d="M4 19l5-14 5 14M6 14h6M16 12c0-2 4-2 4 0v7M20 15c-4 0-4 4 0 4"/>',
+  inv: '<rect x="4" y="7" width="16" height="10" rx="2" stroke-dasharray="3 3"/>',
+  agent: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>',
+  mira: '<circle cx="12" cy="12" r="2"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/>',
+  nube: '<path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.5 3.5 0 0 0 7 18z"/>',
 };
 const TOOLS = [
   ['/kit/ping', 'ping', 'Ping desde tu provincia', 'Piso físico y medición real'],
@@ -20,6 +26,12 @@ const TOOLS = [
   ['/ff/sensibilidad', 'ff', 'Sensibilidad Free Fire', 'Calibrada paso a paso'],
   ['/valorant/rangos', 'val', 'Rangos de Valorant', 'Calculadora de RR'],
   ['/lol/rangos', 'lol', 'Rangos de LoL', 'De Hierro a Retador'],
+  ['/tier-list', 'tier', 'Tier list', 'Armá la tuya y compartila'],
+  ['/valorant/agentes', 'agent', 'Agentes de Valorant', 'Habilidades y roles en español'],
+  ['/cs2/mira', 'mira', 'Mira de CS2', 'Con el código nuevo'],
+  ['/ff/nombres', 'name', 'Nombres para Free Fire', 'Letras y símbolos'],
+  ['/ff/espacio-invisible', 'inv', 'Espacio invisible', 'Copiar y pegar'],
+  ['/fortnite/nube', 'nube', 'Fortnite en la nube', 'Cuántos GB del plan'],
 ];
 
 export const home = {

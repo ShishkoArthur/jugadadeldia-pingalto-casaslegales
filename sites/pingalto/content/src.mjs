@@ -42,5 +42,5 @@ export function load({ today, root = ROOT } = {}) {
   const sdr = json('valve-sdr');
   const pop = code => { const p = sdr.pops[code]; if (!p || !p.geo) throw new Error('no Valve point ' + code); return { code, desc: p.desc, lon: p.geo[0], lat: p.geo[1] }; };
   const typical = (a, b) => { const r = sdr.typical_pings.find(x => (x[0] === a && x[1] === b) || (x[0] === b && x[1] === a)); if (!r) throw new Error('no typical ping ' + a + '-' + b); return r[2]; };
-  return { src, fact, doc: slug => ({ slug, ...src.docs[slug] }), capitals, city, pop, typical, sdrRevision: sdr.revision };
+  return { src, fact, json, doc: slug => ({ slug, ...src.docs[slug] }), capitals, city, pop, typical, sdrRevision: sdr.revision };
 }
