@@ -25,7 +25,7 @@ const safe = (s, hidden) => { const c = clean(s); return c && isBrandName(c) ? h
 
 export function slim(m, g) {
   const teams = (m.opponents || []).map(o => o && o.opponent).filter(Boolean).map(t => ({ n: safe(t.name, 'Nombre oculto'), a: isBrandName(t.name) ? undefined : safe(t.acronym, '') || undefined, loc: t.location || t.nationality || undefined, id: t.id }));
-  const score = teams.map(t => { const r = (m.results || []).find(x => x.team_id === t.id); return r ? r.score : 0; });
+  const score = teams.map(t => { const r = (m.results || []).find(x => x.team_id === t.id || x.player_id === t.id); return r ? r.score : 0; });
   const streams = (m.streams_list || []).filter(s => s && s.official && /^https:\/\/(www\.)?(twitch\.tv|youtube\.com|kick\.com)\//.test(s.raw_url || '') && !isBrandName(s.raw_url));
   const st = streams.find(s => s.language === 'es') || streams.find(s => s.main) || streams[0];
   const t = m.tournament || {}, lg = m.league || {}, se = m.serie || {};

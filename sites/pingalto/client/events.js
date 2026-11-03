@@ -41,7 +41,7 @@ function edition(ed, ev) {
 function stageList(ed, id) {
   const ms = ed.matches.filter(m => m.stage === id);
   const g = {};
-  for (const m of ms) { const k = m.rd.replace(/ match \d+$/i, '').replace(/ \d+$/, '') || 'Partidos'; (g[k] = g[k] || []).push(m); }
+  for (const m of ms) { let k = m.rd.replace(/ match \d+$/i, '') || 'Partidos'; if (/final/i.test(k)) k = k.replace(/ \d+$/, ''); (g[k] = g[k] || []).push(m); }
   return Object.entries(g).map(([k, list]) => '<h4 class="pa-fdh3">' + esc(tr(k, TR)) + '</h4><ol class="pa-fdl">' + list.map(row).join('') + '</ol>').join('');
 }
 
