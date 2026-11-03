@@ -60,11 +60,40 @@
 - **Готово 03.11:** casaslegales волна 2 (29 страниц живые, раздел «casaslegales (03.11) — волна 2» ниже); pingalto каркас + P1-инструменты без ключей. **Готово:** движок лотерей (`engine/lottery`, 139 цитат, пробелы — `docs/ENGINE-LOTTERY.md`) и
   движок труко 1×1 и 2×2 + боты, generala (оптимальный бот), chinchón, escoba de 15 (`engine/*`, `docs/ENGINE-TRUCO.md`,
   `docs/ENGINE-GAMES.md`; 160 тестов). Страницы игр jugadadeldia — живые (волна 1).
-- **Потом:** сцены девушек (jugadadeldia — вставить в `figure.jg-girl`); тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
+- **Готово 03.11 (вечер):** сцены девушек на обоих сайтах (раздел «Сцены девушек» ниже).
+- **Потом:** тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
   ждём токен); копии страниц от владельца: три выгрузки 03.11 разобраны (Santa Fe и Mendoza — теперь «lista oficial verificada»); ещё нужны
   Mendoza автоисключение и PDF — `docs/reference/owner-saves/README.md`; все копии владельца пересохранить до ~09.02.2027; ключи PandaScore/Supercell — от владельца.
 - Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
+
+## Сцены девушек (03.11) — на сайтах: pingalto 21 страница, jugadadeldia 22 страницы
+- **Живое:** у каждой контентной страницы своя сцена (те же девушка и одежда, сидя/в движении, действие по теме страницы). Без фигуры —
+  служебные (pingalto /equipo… /legal, jugadadeldia /quienes-somos/, /de-donde-salen-los-datos/), автор (/quien-escribe/) и помощь
+  (/juego-responsable/*). На pingalto /equipo — сцена главной в карточке «Alt» (текст: персонаж, созданный ИИ).
+- **Раунд r3 (03.11):** pingalto /kit/sensibilidad переделана (мышь на чёрном коврике на коленях; 3 попытки — в первых двух вторая мышь,
+  логотип на коврике, обрезанный стол, куртка не на руках); новые pingalto /ff, /ff/codigos, /valorant, /cs2, /cs2/major, /lol, /esports,
+  /esports/series; jugadadeldia /quiniela/redoblona/, /brinco/, /poceada/, /truco/jugar/, /truco/envido/, /juegos-de-cartas/,
+  /generala/jugar/, /generala/probabilidades/, /chinchon/jugar/, /escoba-de-15/jugar/. Проверено самим в полном размере; переделаны
+  /lol и /esports (куртка не на руках), /generala/jugar/ (нескромная посадка), /ff (нога). Сводки `data/img-review/contact-<сайт>-scenes-r3.jpg`.
+  Все r2 — accepted (владелец 03.11). 20 сцен jugadadeldia ждут своих страниц (/quiniela/, провинции, /tombola/*, /burako/ и др. — в манифесте).
+- **«Белый блик на ноге»** был от вырезки, не от картинки: голень в зелёном рефлексе пола становилась полупрозрачной. `cut.mjs`: метрика
+  `split` у pingalto (среднее R/B для розовых волос сверху, max ниже), тёплые пиксели ниже середины не вырезаются, зелёный оттенок кожи и белой
+  мебели снимается (и у jugadadeldia). Все сцены обоих сайтов перерезаны.
+- **Вёрстка:** pingalto — карточка «ALT · GUÍA» в герое каждой контентной страницы (`pages/parts.mjs` `hero`/`girlCard`; у инструментов —
+  компактный герой `pa-tl`, колонка 196 px); jugadadeldia — `figure.jg-girl` в герое (`parts.mjs` `girl`), на страницах-столах (/truco/jugar/,
+  /truco/anotador/, /generala/jugar/, /chinchon/jugar/, /escoba-de-15/jugar/, /dados/) — справа от первых двух разделов под столом
+  (`mnOpen`/`mnArt`, класс `.jg-mn.art`, lazy; на телефоне — по центру между разделами). Все сцены на одном холсте 2:3 (1134×1700 после
+  масштаба по голове), поэтому голова одного размера везде; webp двух ширин (`srcset`), width/height заданы, alt на es-AR. Вес картинок
+  в бюджет гейта не входит (бюджет не меняли); 620–710 КБ всех сцен на сайт, 6–30 КБ файл.
+- **Как добавить сцену для новой страницы:** (1) строка в `data/art/scenes.mjs` → `SITES.<сайт>.scenes` (поза, действие, лицо, `{ round: 'r3' }`
+  или новый раунд) и alt в `ALT.<сайт>`; (2) `node data/art/scenes.mjs` → `data/art/<сайт>/scene-<раунд>-jobs.json`; (3) `node tools/gen-image.mjs
+  data/art/<сайт>/scene-r3-jobs.json <id>`; (4) посмотреть PNG в полном размере (одежда целиком, куртка на обеих руках, скромная посадка, нет
+  надписей/логотипов, весь реквизит в кадре); (5) `node data/art/build-scenes.mjs <сайт> --round r3` → разметить верх волос и подбородок на
+  `data/img-review/heads-<сайт>-r3-1.jpg` в `data/art/<сайт>/heads.json` → повторить (сводка `contact-<сайт>-scenes-r3.jpg`); (6) поставить
+  `status: accepted` в `data/art/<сайт>/scenes.json`; (7) `node data/art/publish-scenes.mjs <сайт>` (кладёт файлы в `sites/<сайт>/static/scenes/`
+  и `content/scenes.json`, только для построенных страниц); (8) render → check-dist → commit → deploy. Страница сама покажет сцену, если она есть.
+- PNG (`data/img-review/*.png`) и вырезки `data/art/<сайт>/cut/` — только локально (не в git); на сайт идут `sites/<сайт>/static/scenes/`.
 
 ## Журнал
 - 03.11 — casaslegales: дизайн «01 Relieve alto» на живом сайте (изометрия, высота = число сайтов); третья выгрузка владельца → реестры
@@ -122,8 +151,7 @@
 - **Честные пропуски волны 1:** /quiniela/significado-de-los-numeros/ (нет сохранённого источника таблицы фольклора), /quiniela/<провинция>/,
   /quiniela/ и прочие страницы результатов (ждём ленты), Quini 6 цена (Santa Fe гео-блок), 2×2 в /truco/jugar/, /burako/*, /chinchon/ и
   /escoba-de-15/ (инструменты «¿puedo cortar?» и «buscador de escobas»), /truco/reglas/, /truco/puntos/, /truco/flor/, /truco/quiero-o-no-quiero/.
-- **Дальше:** девушка jdd-girl-r3-10 → заменить заглушку `figure.jg-girl[data-girl=<сцена>]` (2:3, есть на страницах кроме помощи и автора)
-  сценами из `data/art/base/jugadadeldia/`; сцены на señas; ленты результатов (по слову владельца) → /quiniela/, провинции, Quini 6 hoy;
+- **Дальше:** (сцены — сделаны 03.11, см. «Сцены девушек»); ленты результатов (по слову владельца) → /quiniela/, провинции, Quini 6 hoy;
   P2 из плана; перепроверка программ LOTBA (ежемесячно, `maxAgeDays` 183) и пакета помощи до 09.02.2027.
 
 ## pingalto (03.11) — волна 3 выложена: 26 страниц + 404, индекс открыт
@@ -156,7 +184,7 @@
   /datos · /contacto · /legal (+404 «Ping perdido»; `/путь/` → 301 без слэша — Caddy `server-setup.sh pingalto update`).
 - **Устройство:** `sites/pingalto/` — дизайн r2 «02 Holo pastel», классы `pa-*`, ассеты `/s/<имя>.<10 hex>.<ext>` (год кэша), шрифты
   M PLUS Rounded 1c 800 + Be Vietnam Pro 400/600 (свои woff2). Не азарт: `gate.gambling = false` (без блока помощи/18+), selftest pingalto
-  в `npm test`. Девушка — заглушка-карточка «ALT · GUÍA» (`pages/parts.mjs` girlCard; владелец не выбрал), автора нет («redacción»).
+  в `npm test`. Девушка — сцены в карточке «ALT · GUÍA» (с 03.11, см. «Сцены девушек»), автора нет («redacción»).
   Riot-текст в подвале страниц Valorant/LoL/tier-list и главной (`riot: true`).
 - **Числа es-AR (волна 2):** `engine/games/num.mjs` — свой форматтер (запятая, точка тысяч «1.234» одинаково во всех браузерах),
   `parseNum` читает «1,25» и «1.25» (в целых полях «1.600» = 1600), `fmtInput` для значений полей. Поля — `type="text"` + `inputmode`,
@@ -176,7 +204,7 @@
   /esports/calendario (без ленты не делаем), лимит длины ника FF и список допустимых символов (Garena не публикует — страница считает
   и предупреждает), тир-лист «vs топ Аргентины» (нужен ключ Supercell), прицелы аргентинских про (только из их публикаций — не нашли),
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
-- **Дальше:** девушка pa-girl-r3-09 → сцены; хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
+- **Дальше:** хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
 
 ## casaslegales (03.11) — дизайн «01 Relieve alto» и третья выгрузка владельца (66 страниц + 404)
