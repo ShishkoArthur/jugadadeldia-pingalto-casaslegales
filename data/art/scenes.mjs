@@ -144,7 +144,7 @@ export const SITES = {
       '/lol/worlds': ['stool', `She sits on ${S.stool}, legs crossed at the knee, as a fan in the stands of a big final: she holds up in her right hand a glowing plastic light stick shining soft blue and gold, and in her left hand on her knee a small plain dark blue foam cushion; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'thrilled hopeful smile, eyes up as if watching a big stage', { round: 'r6', cosplay: true }],
       '/valorant/mapas/ascent': ['kneel', `She kneels on the floor sitting back on her heels, knees together, leaning over a large plain sheet of light grey paper lying flat on the floor in front of her knees with a simple top-down floor plan sketched in thin black lines (corridors, two open squares, no letters, no numbers); with her right hand she places a small glowing pink plastic token on the plan; ${HEADSET} worn on her head; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'focused tactical look with a small smile', { round: 'r6', cosplay: true, keepAll: true }],
       '/valorant/champions': ['walk', `She strides forward mid-step like a player walking out onto a stage, ${HEADSET} worn on her head, her right hand raised waving to a crowd and her left hand holding a small glowing pink and coral light stick down at her side; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'proud confident smile, chin up', { round: 'r6', cosplay: true }],
-      '/dota2/ti': ['chair', `She sits on ${S.chair}, legs crossed at the knee, as a fan watching a big final: she holds with both hands on her knee a plain round cosplay shield replica the size of a dinner plate, painted silver-green with a simple raised rim and no emblem, no symbols, clearly painted foam; ${HEADSET} around her neck; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'excited nervous smile, biting her lower lip, eyes up as if watching a big screen', { round: 'r6', cosplay: true }],
+      '/dota2/ti': ['chair', `She sits on ${S.chair}, legs crossed at the knee, as a fan watching a big final: she holds upright on her knee, facing the viewer like a fan's prop, a round cosplay shield replica as wide as her torso, painted dark bronze and gold with a simple raised rim and no emblem, no symbols, clearly painted foam, gripped by its edge with both hands; ${HEADSET} around her neck; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'excited nervous smile, biting her lower lip, eyes up as if watching a big screen', { round: 'r6', cosplay: true }],
     },
   },
 };
@@ -222,7 +222,7 @@ export const ALT = {
     '/lol/worlds': 'Alt sentada como hincha en una final, con una barra de luz azul y dorada',
     '/valorant/mapas/ascent': 'Alt de rodillas sobre un plano dibujado en el piso, poniendo una ficha rosa que brilla',
     '/valorant/champions': 'Alt caminando hacia el escenario con auriculares, saludando al público',
-    '/dota2/ti': 'Alt sentada mirando una final con un escudo de cosplay en las rodillas',
+    '/dota2/ti': 'Alt sentada mirando una final con un escudo redondo de cosplay apoyado en la rodilla',
   },
 };
 

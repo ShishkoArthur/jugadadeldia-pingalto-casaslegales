@@ -71,6 +71,13 @@
 - **`brawl` (раз в час; бойцы и рейтинг кэш 20 ч):** `/brawlers` (111: star powers, gadgets; редкости/класса в официальном API нет),
   `/events/rotation`, `/rankings/AR/players` → только пороги копов на местах 1/10/25/50/100/200 (имена и теги не храним).
   Страницы `/brawl/brawlers`, `/brawl/eventos` (обратный отсчёт). `maxAgeHours` 6.
+- **`torneos` (раз в час, PandaScore):** большие турниры (`EVENTS` в файле: Worlds, MSI, VCT Champions/Masters/Americas, TI, RLCS, FC Pro) —
+  последняя редакция, стадии, все матчи; завершённые кэш 20 ч. Страницы /lol/worlds, /lol/msi, /valorant/champions, /dota2/ti, /rl, /eafc.
+  Новая лига — строка в `EVENTS` (id лиги: `/leagues?search[name]=…`). `maxAgeHours` 6.
+- **`argentinos` (сутки, PandaScore):** игроки с nationality AR и командой (ник, команда, страна команды), команды AR. /esports/argentinos, /rl, /eafc.
+- **`dotaelo` (сутки, PandaScore):** серии Dota 2 за 180 дней → Elo (`engine/games/elo.mjs`), бэктест 60 дней. /dota2.
+- **`clashmeta` / `brawlmeta` (сутки, Supercell):** топ-10 кланов AR → 100 игроков → текущие колоды; топ-100 AR Brawl Stars → battlelog.
+  Только счётчики (без имён и тегов). /clash, /clash/mazos, /clash/meta, /brawl, /brawl/meta. ≈ 110 и 100 запросов (по 1 с).
 - Supercell Fan Content Policy: на каждой странице текст «This material is unofficial and is not endorsed by Supercell…», без логотипов и
   арта карт, ничего не продаём. JSON pingalto — обработанные данные (не зеркало ответов API).
 

@@ -9,6 +9,8 @@ const TR = [
 ];
 const STG = [[/^Group Stage$/i, 'Fase de grupos'], [/^Group ([A-H])$/i, 'Grupo $1'], [/^Knockout Stage$/i, 'Eliminación directa'], [/^Elimination Round$/i, 'Ronda de eliminación'], [/^Swiss Stage$/i, 'Fase suiza']];
 const tr = (s, list) => { let x = String(s || ''); for (const [r, t] of list) x = x.replace(r, t); return x.charAt(0).toUpperCase() + x.slice(1); };
+const VCT = new Set(['champions', 'masters', 'americas']);
+const title = (ev, ed) => VCT.has(ev.k) ? 'VCT ' + ed.name : ev.name + (ed.name && !/^\d{4}$/.test(ed.name) ? ' ' + ed.name : ed.year ? ' ' + ed.year : '');
 const ST = { running: 'En curso', upcoming: 'Por empezar', finished: 'Terminado' };
 const SA = new Set(['AR', 'BO', 'BR', 'CL', 'CO', 'EC', 'PE', 'PY', 'UY', 'VE']);
 const flag = loc => loc === 'AR' ? ' <i class="pa-fdar" title="Argentina">AR</i>' : '';
@@ -29,7 +31,7 @@ function edition(ed, ev) {
   const live = ed.matches.filter(m => m.st === 'running'), next = ed.matches.filter(m => m.st === 'not_started' && m.at && Date.parse(m.at) > Date.now() - 3 * 3600e3);
   const ar = [...new Set(ed.matches.flatMap(m => m.teams.filter(t => t.loc === 'AR').map(t => t.n)))];
   const sa = [...new Set(ed.matches.flatMap(m => m.teams.filter(t => SA.has(t.loc) && t.loc !== 'AR').map(t => t.n)))];
-  let h = '<div class="pa-evh"><div><p class="pa-x">' + esc(ev.game) + ' · ' + esc(range(ed.begin, ed.end)) + '</p><h3>' + esc(ev.name + (ed.name && !/^\d{4}$/.test(ed.name) ? ' ' + ed.name : ed.year ? ' ' + ed.year : '')) + '</h3></div><span class="pa-evs pa-evs-' + ed.st + '">' + ST[ed.st] + '</span></div>';
+  let h = '<div class="pa-evh"><div><p class="pa-x">' + esc(ev.game) + ' · ' + esc(range(ed.begin, ed.end)) + '</p><h3>' + esc(title(ev, ed)) + '</h3></div><span class="pa-evs pa-evs-' + ed.st + '">' + ST[ed.st] + '</span></div>';
   h += '<div class="pa-evk">' + (ed.winner ? '<div><small>Campeón</small><b>' + esc(ed.winner.n) + flag(ed.winner.loc) + '</b></div>' : '') + '<div><small>Partidos</small><b>' + ed.matches.length + '</b></div><div><small>Fases</small><b>' + ed.stages.length + '</b></div>' + (ar.length ? '<div><small>Equipos argentinos</small><b>' + ar.map(esc).join(', ') + '</b></div>' : '') + '<div><small>Otros de Sudamérica</small><b>' + (sa.length ? sa.map(esc).join(', ') : 'ninguno') + '</b></div></div>';
   if (live.length || next.length) h += '<h4 class="pa-fdh3">' + (live.length ? 'En vivo y lo que viene' : 'Lo que viene') + ' · hora argentina</h4><ol class="pa-fdl">' + [...live, ...next.slice(0, 8)].map(row).join('') + '</ol>';
   const tabs = ed.stages.filter(s => ed.matches.some(m => m.stage === s.id));
@@ -60,7 +62,7 @@ async function event(el) {
 async function champs(el) {
   const doc = await load(el.dataset.fdSrc, 'torneos'), d = doc.data, g = el.dataset.g;
   const eds = d.events.filter(e => !g || e.g === g).flatMap(e => e.eds.map(ed => ({ e, ed })));
-  el.innerHTML = '<ul class="pa-evc">' + eds.map(({ e, ed }) => '<li><small>' + esc(e.game) + ' · ' + esc(range(ed.begin, ed.end)) + '</small><b>' + esc(e.name + (ed.name && !/^\d{4}$/.test(ed.name) ? ' ' + ed.name : ed.year ? ' ' + ed.year : '')) + '</b><span>' + (ed.winner ? 'Campeón: <strong>' + esc(ed.winner.n) + '</strong>' + flag(ed.winner.loc) : esc(ST[ed.st])) + '</span></li>').join('') + '</ul>';
+  el.innerHTML = '<ul class="pa-evc">' + eds.map(({ e, ed }) => '<li><small>' + esc(e.game) + ' · ' + esc(range(ed.begin, ed.end)) + '</small><b>' + esc(title(e, ed)) + '</b><span>' + (ed.winner ? 'Campeón: <strong>' + esc(ed.winner.n) + '</strong>' + flag(ed.winner.loc) : esc(ST[ed.st])) + '</span></li>').join('') + '</ul>';
 }
 
 async function argentinos(el) {

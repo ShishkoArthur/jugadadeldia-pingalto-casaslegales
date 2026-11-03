@@ -55,7 +55,7 @@
 
 ## Состояние и следующее (03.11, вечер)
 - **Все три сайта живые, индекс открыт:** casaslegales.com (83 стр., все 27 марок со страницей, дизайн r3 «01 Relieve alto», 8 официальных списков), pingalto.com
-  (26 стр., дизайн «Holo pastel», девушка pa-girl-r3-09), jugadadeldia.com (45 стр., дизайн r3 «06 Menú principal», девушка jdd-girl-r3-10,
+  (47 стр. из 86 плана — волна 4 ниже, дизайн «Holo pastel», девушка pa-girl-r3-09), jugadadeldia.com (45 стр., дизайн r3 «06 Menú principal», девушка jdd-girl-r3-10,
   автор Denis Krazok). Сцены девушек приняты (стандарт — DECISIONS 03.11 «сцены приняты»), стоят на страницах, размер — правило в «Сцены девушек».
 - Сводка владельцу: https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS (сборка `node docs/owner/build-overview.mjs`, тот же путь публикации).
 - **Ключи:** PandaScore, Supercell CR/BS — в `.env`, проверены. **Ждём от владельца:** Search Console (позже,
@@ -63,8 +63,8 @@
 - **Лимит:** не больше 2 агентов одновременно (владелец 03.11).
 - **Автообновление работает (03.11, раздел «Ленты» ниже, инструкция `docs/FEEDS.md`):** кинела jugadadeldia каждые 15 мин, киберспорт
   и Supercell pingalto каждый час/сутки — на сервере, без агента. Telegram-хук готов, ждёт `TG_BOT_TOKEN`/`TG_CHAT_ID` от владельца.
-- **Дальше:** тексты через Claude API; P2-страницы планов (/quiniela/horarios/ — нужен источник праздников; /clash/mazos, /brawl);
-  QA-проход всех трёх сайтов; меню pingalto: Clash/Brawl пока без пункта «Juegos» (ссылки только из sitemap) — добавить в `content/visual.mjs`.
+- **Дальше:** тексты через Claude API; P2-страницы плана jugadadeldia (/quiniela/horarios/ — нужен источник праздников); QA-проход всех
+  трёх сайтов. pingalto: всё, что можно честно, построено (волна 4); оставшиеся 39 страниц плана — с причинами в «pingalto волна 4».
 
 ## Ленты (03.11) — автообновление на сервере; jugadadeldia 55 стр., pingalto 30 стр.
 - **Как устроено:** `tools/feeds/run.mjs` + `lib.mjs` (общий движок), ленты `tools/feeds/<сайт>/*.mjs`, сервер — `bash tools/feeds-server.sh
@@ -239,6 +239,40 @@
   /escoba-de-15/ (инструменты «¿puedo cortar?» и «buscador de escobas»), /truco/reglas/, /truco/puntos/, /truco/flor/, /truco/quiero-o-no-quiero/.
 - **Дальше:** (сцены — сделаны 03.11, см. «Сцены девушек»); ленты результатов (по слову владельца) → /quiniela/, провинции, Quini 6 hoy;
   P2 из плана; перепроверка программ LOTBA (ежемесячно, `maxAgeDays` 183) и пакета помощи до 09.02.2027.
+
+## pingalto (03.11) — волна 4 выложена: 47 страниц из 86 плана + 404 (было 30)
+- **Новое (живое, 17):** хабы со сценами «в игре» **/dota2** (наш Elo по сериям PandaScore за 180 дней, Sudamérica, cara a cara, бэктест
+  ~68 % за 60 дней), **/clash**, **/brawl**, **/rl**, **/eafc**; **/dota2/ti**, **/lol/worlds** (идёт сейчас, четвертьфиналы в hora
+  argentina), **/lol/msi**, **/valorant/champions** (Champions, 2 Masters — Masters London выиграл Leviatán AR, лига Américas),
+  **/clash/mazos** (конструктор: элексир, цикл, кривая, типы по коду карты, сравнение с топом AR, мазо в ссылке ?m=), **/clash/meta**,
+  **/brawl/meta** (выбор и винрейт с интервалом Уилсона, по режиму и по картам текущей ротации), **/esports/argentinos** (277 игроков AR с
+  командой, «afuera», ближайшие матчи по id команд), **/esports/latam**, **/esports/sistema-suizo** (16 команд VRS, 10 000 прогонов,
+  правила пар Valve: 1v9, «высший против низшего без реванша» с перебором, таблица 6, Бухгольц — 5 новых цитат), **/valorant/mapas/ascent**
+  и **/split** (callouts es-MX + en-US из valorant-api.com по координатам, своя SVG-схема, не миникарта Riot; викторина).
+- **Ленты (новые, на сервере, `sync` сделан):** `torneos` (час; Worlds 297, MSI 300, VCT 4531 — Champions/Masters/Americas, TI 4106,
+  RLCS 4834/4694, FC Pro 5271; чемпион — winner_id или гранд-финал последней стадии), `argentinos` (сутки; ники, команда, страна команды —
+  без имён и дат рождения), `dotaelo` (сутки, `engine/games/elo.mjs`), `clashmeta` (сутки: рейтинги игроков AR в CR пусты, берём топ-10
+  кланов AR → 100 участников с наибольшими кубками → текущая колода; только счётчики), `brawlmeta` (сутки: топ-100 AR → battlelog по 25
+  боёв; только счётчики). У agenda в командах появился `i` (id) — для связи с argentinos. «PARI»/PARIVISION — в маске беттинг-брендов.
+- **Движки и тесты:** `engine/games/swisssim.mjs` (точные правила пар Valve, сид; тест: равные команды = точный расчёт одной команды),
+  `elo.mjs`, `stats.mjs` (Wilson), `engine/test/pingalto-wave4.test.mjs` (приватность лент: нет имён/тегов/картинок/брендов).
+- **Фоны:** свои 21:9 для dota2, clash, brawl, rl, eafc (`backgrounds.mjs`). **Меню «Juegos» и главная:** +5 игр (10 плиток), +5 инструментов.
+- **Сцены:** /rl и /eafc — это r4 `/rocket-league` и `/fc` (в `scenes.mjs` опция `slug`, id файлов прежние); r5 (8 шт.) отмечены accepted по
+  слову владельца; новые r6 (проверены мной, `checked`): /clash/mazos, /lol/worlds, /valorant/champions, /brawl/meta. Ждут генерации (API
+  отвечает 524): /esports/sistema-suizo, /valorant/mapas/ascent, /esports/argentinos, /dota2/ti (первая попытка — щит как тарелка и зелёный
+  цвет, отклонена: `pa-sc-dota2-ti-r6-try1.png`). Повтор: `node tools/gen-image.mjs data/art/pingalto/scene-r6-jobs.json --missing`, затем
+  шаги 4–8 «Как добавить сцену». **Ловушка:** `build-scenes.mjs` переписывает `scenes.json` и снимает `checked`/`accepted` — после него
+  вернуть статусы (сравнить с HEAD).
+- **Заголовки, изменённые против плана (данные не держат обещание):** /rl, /eafc, /clash/mazos («comparalo» вместо «calificá» — оценку не
+  выдумываем), /esports/argentinos («partidos» вместо «logros»), /valorant/mapas/split (без «rotaciones»), описания /clash/meta,
+  /brawl/meta, /lol/worlds, /lol/msi, /dota2/ti, /esports/latam. План синхронизирован (`data/plan/pingalto.json`: status и notes).
+- **Не сделано и почему (39, причины в notes плана):** P3 «кандидаты на удаление» без AR-угла (/kit/reaccion, /lol/horas, /ff/personajes,
+  /ff/armas, /ff/historia, /brawl/mejoras, /rl/rangos|hitbox|requisitos|sideswipe, /eafc/ps4, /eafc/sobres, /mlbb); закрытые/нет источника —
+  /dota2/rangos|heroes (OpenDota закрыт для ИИ), /lol/meta (платный план/ключ Riot), /lol/latam (структура лиги 2026 неясна), /cs2/rangos,
+  /cs2/mapas, /cs2/economia, /cs2/autoexec, /cs2/cajas, /cs16, /valorant/mira, /valorant/mapas (ротации нет в данных), /valorant/peso,
+  /valorant/mobile, /ff/max, /ff/liga, /ff/rangos, /ff/servidor-avanzado, /fortnite (+temporada, rangos: fortnite.com 403), /fortnite/tracker
+  (нужен прокси с ключом — вопрос владельцу), /fortnite/tienda (вопрос), /eafc/quimica и /eafc/argentinos (EA запрещает роботов),
+  /mlbb/torneos (игра без хаба и сцены; PandaScore MLBB есть — можно позже).
 
 ## pingalto (03.11) — игры: логотипы, фоны, девушка «в игре» (DECISIONS 03.11 «логотипы игр, фоны»)
 - **Логотипы — лицензии** (`data/sources/pingalto/brand-policies.json`, копии в `_docs/`, цитаты дословно — тест `pingalto-brands`; robots
