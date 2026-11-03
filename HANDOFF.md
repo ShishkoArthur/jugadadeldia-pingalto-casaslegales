@@ -79,3 +79,23 @@
   `data/img-review/`), 10 макетов jugadadeldia (`docs/design/jugadadeldia/`). Дальше — макеты pingalto и casaslegales.
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
+
+## pingalto (03.11) — каркас и 6 инструментов P1 выложены, индекс открыт
+- **Живое:** https://pingalto.com/ · /kit/ping · /kit/sensibilidad · /kit/dpi · /ff/sensibilidad · /valorant/rangos · /lol/rangos ·
+  /equipo · /metodo · /datos · /contacto · /legal (+404 «Ping perdido»; `/путь/` → 301 без слэша — Caddy `server-setup.sh pingalto update`).
+- **Устройство:** `sites/pingalto/` — дизайн r2 «02 Holo pastel», классы `pa-*`, ассеты `/s/<имя>.<10 hex>.<ext>` (год кэша), шрифты
+  M PLUS Rounded 1c 800 + Be Vietnam Pro 400/600 (свои woff2). Не азарт: `gate.gambling = false` (без блока помощи/18+), selftest pingalto
+  в `npm test`. Девушка — заглушка-карточка «ALT · GUÍA» (`pages/parts.mjs` girlCard), автора нет («redacción»). Riot-текст в подвале
+  страниц Valorant/LoL и главной (`riot: true`).
+- **Движки** `engine/games/*` (чистые, тест-замки `engine/test/games.test.mjs`): sens (yaw, cm/360, eDPI), dpi, geo (гаверсинус, пол
+  по волокну), ping, bisect (калибровка FF делением пополам), ladder (точная цепь Маркова: подъём/перенос/понижение; сверено с МК).
+- **Источники** `data/sources/pingalto/sources.json` + `_docs/` (17 документов, sha256, цитаты дословно, значение внутри цитаты, свежесть
+  ≤ 180 дн. — проверка при сборке, `content/src.mjs`; тест порчи `engine/test/pingalto-sources.test.mjs`). Перепроверка вручную до 02.05.2027
+  (скрипта `--recheck` для pingalto пока нет). Yaw: Valve SDK (0,022, офиц.) + frameratetest.com (CS2/Apex 0,022, Valorant 0,07, OW2 0,0066 —
+  «comunidad»). Ранги/правила CR и PL — support.riotgames.com es-mx; серверы — playvalorant (2020) и LoL Wiki; SDR Valve (пинги от eze);
+  ID-1 — Wikipedia, SUBE — pchardwarepro; c, n=1,4475, радиус Земли — Wikipedia; координаты — Wikidata; AWS endpoints — docs.aws.
+- **Пропущено:** /cs2/premier и /cs2/rangos (Valve публикует только «граница цвета каждые 5000 CS Rating», цвета/доли — без источника),
+  /valorant/mapas/ascent и /split (у Riot нет списка callouts), Fortnite в конвертере (нет значения Epic, у сообществ расходится),
+  перенос FF-чувствительности между телефонами (Garena не публикует формулу). Живой пинг — только São Paulo и Virginia (AWS);
+  Santiago/Miami — только расчёт (у AWS нет публичных точек там; sa-west-1 отвечает, но не в документации — не используем).
+- **Дальше:** девушка (выбор владельца) → сцены; страницы P2 из `data/plan/pingalto.json`; ленты (OpenDota, VRS) — по слову владельца.

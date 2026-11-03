@@ -95,7 +95,7 @@ export const lolRangos = {
       '<section class="pa-c pa-w2"><h2>Lo que dice Riot</h2>' + quote(h, 'lol_tiers_n', 'es') + quote(h, 'lol_divs', 'es') + '</section></div>';
     const top = h.pa.fact('lol_master_top');
     const rules = sec('PL, divisiones y la cima', '<div class="pa-three"><div class="pa-c"><h3>' + fmt(L.top, 0) + ' PL por división</h3>' + quote(h, 'lol_lp_up', 'es') + '</div>' +
-      '<div class="pa-c"><h3>' + h.esc(L.apex[0]) + ' es el ' + fmt(top, 1) + ' %</h3>' + quote(h, 'lol_master_top', 'es') + '<p class="pa-src">Es el único porcentaje que Riot da en esa página; el resto de la distribución no lo publica.</p></div>' +
+      '<div class="pa-c"><h3>Llegar a ' + h.esc(L.apex[0]) + ': el ' + fmt(top, 1) + ' %</h3>' + quote(h, 'lol_master_top', 'es') + '<p class="pa-src">Es el único porcentaje que Riot da en esa página; el resto de la distribución no lo publica.</p></div>' +
       '<div class="pa-c"><h3>El orden</h3>' + quote(h, 'lol_tiers_low', 'es') + quote(h, 'lol_tiers_apex', 'es') + '</div></div>' +
       '<div class="pa-two" style="margin-top:14px"><div class="pa-c"><h3>Si bajás</h3>' + quote(h, 'lol_demote_div', 'es') + quote(h, 'lol_demote_tier', 'es') + '</div>' +
       '<p class="pa-note">La calculadora sigue estas reglas: al subir conservás los PL que sobran, al bajar de división arrastrás lo que te faltó y al bajar de nivel caés a ' + fmt(L.tier.to, 0) + ' PL, el caso más bajo de los que nombra Riot. No baja del rango donde empezás, no cuenta la protección de nivel y llega hasta ' + h.esc(L.apex[0]) + ': arriba de eso las reglas son otras.</p></div>');

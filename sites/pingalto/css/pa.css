@@ -138,7 +138,7 @@ h1 em{font-style:normal;color:var(--vi)}
 .pa-tb th{font-size:13px;color:var(--mu);font-weight:600;background:var(--p2)}
 .pa-tb tr:last-child td{border-bottom:0}
 .pa-tb .pa-n{text-align:right;white-space:nowrap}
-.pa-tag{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600;background:var(--p2)}
+.pa-tag{display:inline-block;white-space:nowrap;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600;background:var(--p2)}
 .pa-tag.pa-of{background:var(--tl);color:var(--on)}
 .pa-tag.pa-cm{background:var(--pk);color:var(--on)}
 .pa-src{font-size:13px;color:var(--mu);margin-top:10px}
@@ -226,6 +226,7 @@ h2{font-size:23px}
 .pa-two{grid-template-columns:minmax(0,1fr)}
 .pa-big{font-size:48px}
 .pa-tb{font-size:14px}
+.pa-tb td .pa-tag+.pa-tag{margin-top:4px}
 .pa-tb th,.pa-tb td{padding:8px 10px}
 .pa-sl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .pa-ft{padding:24px 16px}
