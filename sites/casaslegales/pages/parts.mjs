@@ -11,7 +11,7 @@ export function src(h, slug, extra = '') {
 }
 export function quote(h, q, label) {
   const d = h.doc(q.doc);
-  return '<blockquote class="rl-q" cite="' + h.esc(d.url) + '">«' + h.esc(q.text) + '»<cite>' + h.esc(label) + ' · <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
+  return '<blockquote class="rl-q" cite="' + h.esc(d.url) + '">«' + h.esc(q.text).replace(/@/g, '<span>@</span>') + '»<cite>' + h.esc(label) + ' · <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
 }
 export function rgQuote(h, e, label) {
   return quote(h, { doc: 'rg:' + e.doc, text: e.quote }, label);
