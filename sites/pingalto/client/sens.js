@@ -1,5 +1,5 @@
 import { cm360, convertSens, edpi, degPerCm } from '../../../engine/games/sens.mjs';
-import { $, data, out, num, params, setParams, share, fmt } from './kit.js';
+import { $, data, out, num, params, setParams, share, fmt, fmtInput, parseNum } from './kit.js';
 
 const D = data();
 const f = $('#pa-sf');
@@ -9,7 +9,7 @@ if (D && f) {
   const q = params();
   if (G[q.get('de')]) el.de.value = q.get('de');
   if (G[q.get('a')]) el.a.value = q.get('a');
-  for (const k of ['s', 'dpi', 'dpi2']) { const v = Number(q.get(k)); if (q.has(k) && v > 0) el[k].value = String(v); }
+  for (const k of ['s', 'dpi', 'dpi2']) { const v = parseNum(q.get(k), { whole: k !== 's' }); if (q.has(k) && v > 0) el[k].value = fmtInput(v, 4); }
   const run = () => {
     const from = G[el.de.value], to = G[el.a.value];
     const s = num(el.s), d1 = num(el.dpi), d2 = num(el.dpi2) > 0 ? num(el.dpi2) : d1;

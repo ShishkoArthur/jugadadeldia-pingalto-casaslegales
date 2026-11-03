@@ -3,11 +3,11 @@
 import { cm360, convertSens, edpi, degPerCm } from '../../../engine/games/sens.mjs';
 import { greatCircleKm, fibreRttMs } from '../../../engine/games/geo.mjs';
 import { sensGames } from '../content/games.mjs';
-import { fmt, fmtFixed, srcLine, quote, hero, ldPage, sec, kindTag } from './parts.mjs';
+import { fmt, fmtFixed, fmtInput, srcLine, quote, hero, ldPage, sec, kindTag } from './parts.mjs';
 
 const opt = (list, sel) => list.map(g => '<option value="' + g.id + '"' + (g.id === sel ? ' selected' : '') + '>' + g.name + '</option>').join('');
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
-const num = (id, name, value, attrs = '') => '<input id="' + id + '" name="' + name + '" type="number" inputmode="decimal" step="any" value="' + value + '"' + attrs + '>';
+const num = (id, name, value, attrs = '', whole = false) => '<input id="' + id + '" name="' + name + '" type="text" inputmode="' + (whole ? 'numeric' : 'decimal') + '" autocomplete="off" spellcheck="false" value="' + (value === '' ? '' : fmtInput(value, 4)) + '"' + attrs + '>';
 
 // Example shown before the visitor types (and without JavaScript): CS2 1.25 at 800 DPI -> Valorant.
 const EX = { from: 'cs2', to: 'valorant', s: 1.25, dpi: 800, dpi2: 800 };
@@ -28,8 +28,8 @@ export const sensibilidad = {
     const form = '<form class="pa-c pa-fm" id="pa-sf" autocomplete="off">' +
       '<div class="pa-row">' + field('sf-from', 'Juego de origen', '<select id="sf-from" name="de">' + opt(G, EX.from) + '</select>') +
       field('sf-to', 'Juego de destino', '<select id="sf-to" name="a">' + opt(G, EX.to) + '</select>') + '</div>' +
-      '<div class="pa-row">' + field('sf-s', 'Tu sensibilidad', num('sf-s', 's', EX.s, ' min="0.0001"')) + field('sf-d', 'Tu DPI', num('sf-d', 'dpi', EX.dpi, ' min="1"')) + '</div>' +
-      field('sf-d2', 'DPI en el juego de destino', num('sf-d2', 'dpi2', EX.dpi2, ' min="1"'), 'Si usás el mismo mouse sin tocar nada, es el mismo DPI.') +
+      '<div class="pa-row">' + field('sf-s', 'Tu sensibilidad', num('sf-s', 's', EX.s)) + field('sf-d', 'Tu DPI', num('sf-d', 'dpi', EX.dpi, '', true)) + '</div>' +
+      field('sf-d2', 'DPI en el juego de destino', num('sf-d2', 'dpi2', EX.dpi2, '', true), 'Si usás el mismo mouse sin tocar nada, es el mismo DPI.') +
       '<p class="pa-x"><b>ejemplo</b> · cambiá cualquier valor y el resultado se actualiza solo</p></form>';
     const res = '<div class="pa-c pa-out" aria-live="polite">' +
       '<p class="pa-x">Sensibilidad en <b data-o="to">' + to.name + '</b></p>' +
@@ -69,10 +69,10 @@ export const dpi = {
       '<div class="pa-card" aria-hidden="true">' + fmtFixed(W, 2) + ' mm</div>' +
       '<ol class="pa-steps"><li><span>Apoyá la SUBE (o una tarjeta bancaria) sobre el pad, a lo largo.</span></li><li><span>Poné el borde izquierdo del mouse alineado con el borde izquierdo de la tarjeta.</span></li><li><span>Apretá <b>Empezar</b>, deslizá el mouse en línea recta hasta el otro borde de la tarjeta y hacé clic.</span></li><li><span>Repetilo tres veces: usamos la mediana.</span></li></ol>' +
       '<div class="pa-row">' + field('dp-dist', 'Distancia que recorrés', '<select id="dp-dist" name="dist"><option value="card">Largo de la tarjeta: ' + fmtFixed(W, 2) + ' mm</option><option value="mm">Otra (la medís con regla)</option></select>') +
-      field('dp-mm', 'Milímetros', num('dp-mm', 'mm', W, ' min="10" disabled')) + '</div>' +
-      '<div class="pa-row">' + field('dp-decl', 'DPI de fábrica (opcional)', num('dp-decl', 'decl', '', ' min="1" placeholder="por ejemplo 800"')) +
+      field('dp-mm', 'Milímetros', num('dp-mm', 'mm', W, ' disabled')) + '</div>' +
+      '<div class="pa-row">' + field('dp-decl', 'DPI de fábrica (opcional)', num('dp-decl', 'decl', '', ' placeholder="por ejemplo 800"', true)) +
       field('dp-game', 'Juego para el eDPI', '<select id="dp-game" name="game">' + opt(G, 'valorant') + '</select>') + '</div>' +
-      field('dp-sens', 'Tu sensibilidad en ese juego', num('dp-sens', 'sens', '', ' min="0.0001" placeholder="por ejemplo 0.4"')) +
+      field('dp-sens', 'Tu sensibilidad en ese juego', num('dp-sens', 'sens', '', ' placeholder="por ejemplo 0,4"')) +
       '</div><div class="pa-c pa-out" aria-live="polite">' +
       '<p class="pa-x">DPI medido</p><p class="pa-big" data-o="dpi">-</p>' +
       '<p class="pa-say" data-o="say">Todavía no mediste. Necesitás una compu con mouse: en el celular no hay puntero que medir.</p>' +

@@ -1,10 +1,10 @@
 // /valorant/rangos and /lol/rangos - rank ladders from the publisher's support pages (quoted) and a progress calculator
 // (engine/games/ladder.mjs, exact Markov chain). Shares of players per rank are shown only where the publisher states one.
 import { progress } from '../../../engine/games/ladder.mjs';
-import { fmt, fmtPct, quote, hero, ldPage, sec } from './parts.mjs';
+import { fmt, fmtPct, fmtInput, quote, hero, ldPage, sec } from './parts.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
-const num = (id, value, attrs) => '<input id="' + id + '" type="number" inputmode="decimal" step="1" value="' + value + '"' + attrs + '>';
+const num = (id, value) => '<input id="' + id + '" type="text" inputmode="numeric" autocomplete="off" value="' + fmtInput(value, 0) + '">';
 const ROMAN = ['IV', 'III', 'II', 'I'];
 
 function valorant(h) {
@@ -31,10 +31,10 @@ function calc(h, L, startIdx, game) {
   const r = progress({ from: startIdx, pts: EX.pts, to: startIdx + EX.up, top: L.top, win: EX.win, loss: EX.loss, p: EX.p, carry: L.carry, minAfterUp: L.minAfterUp, demote: L.demote, tier: L.tier, maxGames: 1500 });
   const opts = (sel, upto, from = 0) => L.steps.slice(from, upto + 1).map((s, i) => '<option value="' + (i + from) + '"' + (i + from === sel ? ' selected' : '') + '>' + h.esc(s) + '</option>').join('');
   const form = '<form class="pa-c pa-fm" id="pa-lf" autocomplete="off">' +
-    '<div class="pa-row">' + field('lf-from', 'Tu rango', '<select id="lf-from">' + opts(startIdx, L.lastModel - 1) + '</select>') + field('lf-pts', 'Tus ' + L.unit + ' ahora', num('lf-pts', EX.pts, ' min="0" max="' + (L.top - 1) + '"')) + '</div>' +
+    '<div class="pa-row">' + field('lf-from', 'Tu rango', '<select id="lf-from">' + opts(startIdx, L.lastModel - 1) + '</select>') + field('lf-pts', 'Tus ' + L.unit + ' ahora', num('lf-pts', EX.pts)) + '</div>' +
     field('lf-to', 'Querés llegar a', '<select id="lf-to">' + opts(startIdx + EX.up, L.lastModel, 1) + '</select>') +
-    '<div class="pa-row">' + field('lf-p', '% de partidas que ganás', num('lf-p', Math.round(EX.p * 100), ' min="1" max="99"')) + field('lf-n', 'Partidas que pensás jugar', num('lf-n', EX.n, ' min="1" max="1500"')) + '</div>' +
-    '<div class="pa-row">' + field('lf-w', L.unit + ' por victoria', num('lf-w', EX.win, ' min="1" max="' + L.top + '"')) + field('lf-l', L.unit + ' por derrota', num('lf-l', EX.loss, ' min="0" max="' + L.top + '"')) + '</div>' +
+    '<div class="pa-row">' + field('lf-p', '% de partidas que ganás', num('lf-p', Math.round(EX.p * 100))) + field('lf-n', 'Partidas que pensás jugar', num('lf-n', EX.n)) + '</div>' +
+    '<div class="pa-row">' + field('lf-w', L.unit + ' por victoria', num('lf-w', EX.win)) + field('lf-l', L.unit + ' por derrota', num('lf-l', EX.loss)) + '</div>' +
     '<p class="pa-x"><b>ejemplo</b> · poné tus promedios de las últimas partidas</p></form>';
   const bars = [];
   const len = Math.min(r.cdf.length, Math.max(EX.n, (r.p90 || EX.n)) + 10);

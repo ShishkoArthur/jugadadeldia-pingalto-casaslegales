@@ -1,5 +1,5 @@
 import { start, answer, triesLeft } from '../../../engine/games/bisect.mjs';
-import { $, $$, data, out, store, params, setParams, share, fmt, esc } from './kit.js';
+import { $, $$, data, out, store, params, setParams, share, fmt, fmtInput, parseNum, esc } from './kit.js';
 
 const D = data();
 if (D && $('.pa-sl')) {
@@ -16,7 +16,7 @@ if (D && $('.pa-sl')) {
     if (saved && saved.n && saved.n[i]) field(i, 'n').value = saved.n[i];
   });
   let cur = 0, s = null;
-  const int = v => { const n = Number(String(v).trim()); return Number.isInteger(n) ? n : NaN; };
+  const int = v => { const n = parseNum(v, { whole: true }); return Number.isInteger(n) ? n : NaN; };
   const persist = () => {
     const v = rows.map((r, i) => field(i, 'v').value), m = rows.map((r, i) => field(i, 'm').value), n = rows.map((r, i) => field(i, 'n').value);
     store.set(KEY, JSON.stringify({ v, m, n }));
@@ -51,7 +51,7 @@ if (D && $('.pa-sl')) {
   btns.forEach(b => b.addEventListener('click', () => {
     if (!s) return;
     s = answer(s, b.dataset.a);
-    if (s.done) { field(cur, 'v').value = String(s.value); persist(); }
+    if (s.done) { field(cur, 'v').value = fmtInput(s.value, 0); persist(); }
     paint();
   }));
   $('.pa-sl').addEventListener('input', persist);

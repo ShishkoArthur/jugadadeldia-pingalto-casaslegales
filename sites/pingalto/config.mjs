@@ -27,6 +27,8 @@ export const SITE = {
     gambling: false,
     samplePage: '/metodo',
     siteMenu: /<nav class="pa-nv"/,
+    decimalComma: true,
+    decimalOk: /Counter-Strike 1\.6|CC BY(-SA)? \d\.\d/g,
   },
   deployCheck: ['/', '/kit/sensibilidad', '/kit/dpi', '/kit/ping', '/ff/sensibilidad', '/valorant/rangos', '/lol/rangos', '/equipo', '/metodo', '/datos', '/contacto', '/legal', '/kit/ping/', '/no-existe'],
 };

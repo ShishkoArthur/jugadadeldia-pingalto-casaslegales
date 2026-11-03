@@ -1,5 +1,5 @@
-import { fmt, fmtPct } from '../../../engine/games/num.mjs';
-export { fmt, fmtPct };
+import { fmt, fmtPct, fmtInput, parseNum } from '../../../engine/games/num.mjs';
+export { fmt, fmtPct, fmtInput, parseNum };
 export const $ = (s, el = document) => el.querySelector(s);
 export const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 export function data() {
@@ -10,8 +10,7 @@ export function data() {
 export const out = (k, html) => { const el = document.querySelector('[data-o="' + k + '"]'); if (el) el.innerHTML = html; return el; };
 export function num(el) {
   if (!el) return NaN;
-  const v = String(el.value).trim().replace(',', '.');
-  return v === '' ? NaN : Number(v);
+  return parseNum(el.value, { whole: el.inputMode === 'numeric' || el.getAttribute('inputmode') === 'numeric' });
 }
 export const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },

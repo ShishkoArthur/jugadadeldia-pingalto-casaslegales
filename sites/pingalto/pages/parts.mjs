@@ -1,6 +1,6 @@
 // Small shared pieces of pingalto pages: number format, source line and quote, hero, structured data.
-import { fmt, fmtFixed, fmtPct } from '../../../engine/games/num.mjs';
-export { fmt, fmtFixed, fmtPct };
+import { fmt, fmtFixed, fmtPct, fmtInput } from '../../../engine/games/num.mjs';
+export { fmt, fmtFixed, fmtPct, fmtInput };
 
 const KIND = { official: ['oficial', 'pa-of'], community: ['comunidad', 'pa-cm'], reference: ['referencia', ''] };
 export function kindTag(h, kind) {

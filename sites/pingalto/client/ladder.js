@@ -1,12 +1,12 @@
 import { progress } from '../../../engine/games/ladder.mjs';
-import { $, data, out, num, params, setParams, share, fmt, fmtPct, esc } from './kit.js';
+import { $, data, out, num, params, setParams, share, fmt, fmtPct, fmtInput, parseNum, esc } from './kit.js';
 
 const D = data();
 const f = $('#pa-lf');
 if (D && f) {
   const el = { from: $('#lf-from'), to: $('#lf-to'), pts: $('#lf-pts'), p: $('#lf-p'), n: $('#lf-n'), w: $('#lf-w'), l: $('#lf-l') };
   const q = params();
-  for (const k of Object.keys(el)) if (q.has(k) && q.get(k) !== '') el[k].value = q.get(k);
+  for (const k of Object.keys(el)) { const v = parseNum(q.get(k), { whole: true }); if (q.has(k) && Number.isFinite(v)) el[k].value = el[k].tagName === 'SELECT' ? String(v) : fmtInput(v, 0); }
   let timer = 0;
   const run = () => {
     const from = num(el.from), to = num(el.to), pts = num(el.pts), p = num(el.p) / 100, n = num(el.n), w = num(el.w), l = num(el.l);

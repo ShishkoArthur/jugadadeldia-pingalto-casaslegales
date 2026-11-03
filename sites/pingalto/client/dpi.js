@@ -1,5 +1,5 @@
 import { dpiFromCounts, median, deviation } from '../../../engine/games/dpi.mjs';
-import { $, data, out, num, fmt, fmtPct } from './kit.js';
+import { $, data, out, num, fmt, fmtPct, fmtInput } from './kit.js';
 
 const D = data();
 const startBtn = $('[data-pa-start]');
@@ -8,7 +8,7 @@ if (D && startBtn) {
   const runs = [];
   let counting = false, counts = 0, raw = null;
   const distance = () => (dist.value === 'card' ? D.cardMm : num(mm));
-  dist.addEventListener('change', () => { mm.disabled = dist.value === 'card'; if (dist.value === 'card') mm.value = String(D.cardMm); });
+  dist.addEventListener('change', () => { mm.disabled = dist.value === 'card'; if (dist.value === 'card') mm.value = fmtInput(D.cardMm, 2); });
   const show = () => {
     out('runs', runs.map((r, i) => '<span>Medición ' + (i + 1) + ': ' + fmt(r, 0) + ' DPI</span>').join(''));
     if (!runs.length) { out('dpi', '-'); out('dev', 'Diferencia con fábrica: -'); out('edpi', 'eDPI: -'); return; }

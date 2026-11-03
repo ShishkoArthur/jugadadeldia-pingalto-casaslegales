@@ -66,6 +66,12 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
     const bm = (vis + ' ' + decode((H.match(/<title>([^<]*)/) || [])[1] || '') + ' ' + decode((H.match(/name="description" content="([^"]*)"/) || [])[1] || '')).match(BAIT);
     if (bm) bad('bait', f, 'bait words "' + bm[0] + '"');
     if (PROMISE.test(vis)) bad('promise', f, 'promise of a date');
+    if (SITE.gate.decimalComma) {
+      if (/<input\b[^>]*\stype="number"/.test(H)) bad('decimal', f, 'number input (shows the decimal point of the visitor system; use text + inputmode)');
+      if (/<input\b[^>]*\svalue="-?\d+\.\d+"/.test(H)) bad('decimal', f, 'input value with a decimal point');
+      const dm = visibleText(H.replace(/<(code|pre|kbd|samp)\b[\s\S]*?<\/\1>/gi, ' ')).replace(SITE.gate.decimalOk || /$^/g, ' ').match(/(?<![\w.,\/:+-])\d+\.\d{1,2}(?![\d.,\w])/);
+      if (dm) bad('decimal', f, 'decimal point in text "' + dm[0] + '" (es-AR writes a decimal comma)');
+    }
     for (const [, src] of H.matchAll(/<script\b[^>]*\ssrc="([^"]+)"/gi)) if (/^(https?:)?\/\//i.test(src)) bad('extscript', f, 'external script ' + src);
     for (const [, tag] of H.matchAll(/<link\b([^>]*)>/gi)) {
       const href = (tag.match(/\shref="([^"]+)"/) || [])[1] || '';
@@ -262,6 +268,7 @@ async function selftest(id) {
     if (!hit) fail++;
     rmSync(tmp, { recursive: true, force: true });
   };
+  if (S.SITE.gate.decimalComma) cases.push(['decimal', A, body('<p>Sensibilidad 0.39</p>')], ['decimal', A, body('<input id="z" type="number" value="1">')]);
   const RG_ONLY = new Set(['rgblock', 'tel', 'age', 'helpmark', 'helplink', 'helpnav']);
   for (const [name, file, mut] of cases.filter(c => RG || !RG_ONLY.has(c[0]))) await run(name, tmp => { const f = join(tmp, file); writeFileSync(f, mut(readFileSync(f, 'utf8'))); });
   await run('comments', asset(/\.css$/, s => '/* x */' + s));

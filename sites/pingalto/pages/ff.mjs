@@ -21,8 +21,8 @@ export const ffSensibilidad = {
     const first = triesLeft(s);
     s = answer(s, 'fast');
     const rows = SLIDERS.map((name, i) => '<div data-row="' + i + '"><div class="pa-f"><label for="ff-n' + i + '">Deslizador</label><input id="ff-n' + i + '" value="' + h.esc(name) + '" maxlength="24"></div>' +
-      '<div class="pa-f"><label for="ff-v' + i + '">Hoy tenés</label><input id="ff-v' + i + '" type="number" inputmode="numeric" step="1" min="0" value=""></div>' +
-      '<div class="pa-f"><label for="ff-m' + i + '">Máximo</label><input id="ff-m' + i + '" type="number" inputmode="numeric" step="1" min="1" value=""></div>' +
+      '<div class="pa-f"><label for="ff-v' + i + '">Hoy tenés</label><input id="ff-v' + i + '" type="text" inputmode="numeric" autocomplete="off" value=""></div>' +
+      '<div class="pa-f"><label for="ff-m' + i + '">Máximo</label><input id="ff-m' + i + '" type="text" inputmode="numeric" autocomplete="off" value=""></div>' +
       '<button type="button" data-pick="' + i + '" aria-pressed="' + (i === 0) + '">Calibrar</button></div>').join('');
     const tool = '<div class="pa-tool"><div class="pa-c pa-fm"><h2>Tus deslizadores</h2><p class="pa-x">Copiá los valores de la parte de sensibilidad en los ajustes del juego. El máximo es el número más alto que te deja poner tu versión del juego.</p><div class="pa-sl">' + rows + '</div>' +
       '<div class="pa-share"><button type="button" data-pa-share>Copiar link con mis valores</button><output data-o="copied"></output></div></div>' +
