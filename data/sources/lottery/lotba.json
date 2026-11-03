@@ -104,6 +104,8 @@
 
   { "id": "lotba.poceada.pick", "value": 8, "valueText": "OCHO (8)", "doc": "quiniela-programa",
     "quote": "Es una modalidad en que el apostador deberá seleccionar OCHO (8) números de dos dígitos, desde el doble CERO (00) al NOVENTA Y NUEVE (99)." },
+  { "id": "lotba.poceada.max", "value": 99, "valueText": "NOVENTA Y NUEVE (99)", "doc": "quiniela-programa",
+    "quote": "Es una modalidad en que el apostador deberá seleccionar OCHO (8) números de dos dígitos, desde el doble CERO (00) al NOVENTA Y NUEVE (99)." },
   { "id": "lotba.poceada.distinct", "value": 20, "valueText": "veinte (20)", "doc": "quiniela-programa",
     "quote": "a fin de obtener veinte (20) números distintos entre sí." },
   { "id": "lotba.poceada.price", "value": 1700, "valueText": "$ 1700", "doc": "quiniela-programa",
@@ -122,6 +124,8 @@
 
   { "id": "lotba.tombolina.pick", "value": "3 to 7 of 00-99", "doc": "quiniela-programa",
     "quote": "El apostador deberá elegir indistintamente grupos de 3, 4, 5, 6 o 7 números de dos cifras cualesquiera entre DOBLE CERO (00) y el NOVENTA Y NUEVE (99) sin repetición." },
+  { "id": "lotba.tombolina.max", "value": 99, "valueText": "NOVENTA Y NUEVE (99)", "doc": "quiniela-programa",
+    "quote": "números de dos cifras cualesquiera entre DOBLE CERO (00) y el NOVENTA Y NUEVE (99) sin repetición." },
   { "id": "lotba.tombolina.extract", "value": "20 distinct two-digit endings of the Quiniela de la Ciudad", "doc": "quiniela-programa",
     "quote": "Los sorteos de \"TOMBOLINA DE LA CIUDAD\" se resolverán por el extracto de \"QUINIELA DE LA CIUDAD\"." },
   { "id": "lotba.tombolina.pay", "table": true,
@@ -131,6 +135,8 @@
     "note": "rows: [numbers played, numbers hit, payout in times the stake]" },
 
   { "id": "lotba.loto.universe", "value": 45, "valueText": "CUARENTA Y CINCO (45)", "doc": "loto-programa",
+    "quote": "se deberá elegir, como mínimo, SEIS (6) números comprendidos entre el CERO (0) y el CUARENTA Y CINCO (45), incluidos ambos" },
+  { "id": "lotba.loto.pick", "value": 6, "valueText": "SEIS (6)", "doc": "loto-programa",
     "quote": "se deberá elegir, como mínimo, SEIS (6) números comprendidos entre el CERO (0) y el CUARENTA Y CINCO (45), incluidos ambos" },
   { "id": "lotba.loto.plus-universe", "value": 9, "valueText": "NUEVE (9)", "doc": "loto-programa",
     "quote": "se deberá elegir, exclusivamente, UN (1) número adicional comprendido en el universo del CERO (0) al NUEVE (9) ambos inclusive" },

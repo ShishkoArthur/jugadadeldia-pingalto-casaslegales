@@ -20,6 +20,8 @@
     "quote": "Cada apuesta simple consistirá en elegir seis (6) números del universo de números que corresponda a cada una de las modalidades del juego." },
   { "id": "cas.quini6.tradicional-draws", "value": 2, "valueText": "dos (2) sorteos", "doc": "quini6-reglamento",
     "quote": "Esta modalidad constará de dos (2) sorteos, los que se denomina- rán \"PRIMER SORTEO\" y \"LA SEGUNDA DEL QUINI\" respectivamente, y cada uno de ellos consistirá en extraer seis (6) números de su universo." },
+  { "id": "cas.quini6.drawn", "value": 6, "valueText": "extraer seis (6)", "doc": "quini6-reglamento",
+    "quote": "cada uno de ellos consistirá en extraer seis (6) números de su universo." },
   { "id": "cas.quini6.tiers", "value": [6, 5, 4], "doc": "quini6-reglamento",
     "quote": "cuyos números apostados coincidan con la totalidad de los números favorecidos en el Sorteo respectivo, y ganadores del Segundo y Tercer Premio, aquellos que hayan obtenido cinco (5) o cuatro (4) aciertos respectivamente, en el sorteo que se trate" },
   { "id": "cas.quini6.nominal", "value": 90, "valueText": "(90 %)", "doc": "quini6-reglamento",
