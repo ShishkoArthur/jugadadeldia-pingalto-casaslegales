@@ -27,12 +27,12 @@ export const provincias = {
       const reg = x.reg ? x.reg.regulator.short : x.j.regulator ? (x.j.regulator.short || x.j.regulator.name) : null;
       const what = x.st === 'list' ? x.n + ' sitios' : x.st === 'platform' ? x.e.platforms.map(p => p.name).join(', ') : '-';
       return '<tr data-s="' + x.st + '"><th scope="row"><a href="' + h.href('/provincia/' + x.id) + '">' + h.esc(x.name) + '</a></th>' +
-        '<td><span class="rl-sb rl-c-' + x.st + '">' + h.esc(x.label) + '</span></td>' +
-        '<td>' + (reg ? h.esc(reg) : '<span class="rl-src">sin cita</span>') + '</td>' +
-        '<td>' + h.esc(what) + '</td>' +
-        '<td>' + (x.j.line ? '<a href="tel:' + h.esc(x.j.line.phoneTel) + '">' + h.esc(x.j.line.phone) + '</a>' : '<span class="rl-src">nacional</span>') + '</td>' +
-        '<td>' + (x.j.selfExclusion ? h.esc(x.j.selfExclusion.terms || 'sí, sin plazo publicado') : '<span class="rl-src">sin dato</span>') + '</td>' +
-        '<td>' + (x.date ? h.fmtDate(x.date) : '<span class="rl-src">-</span>') + '</td></tr>';
+        '<td class="rl-pst"><span class="rl-sb rl-c-' + x.st + '">' + h.esc(x.label) + '</span></td>' +
+        '<td data-l="Regulador">' + (reg ? h.esc(reg) : '<span class="rl-src">sin cita</span>') + '</td>' +
+        '<td data-l="Sitios">' + h.esc(what) + '</td>' +
+        '<td data-l="Ayuda">' + (x.j.line ? '<a href="tel:' + h.esc(x.j.line.phoneTel) + '">' + h.esc(x.j.line.phone) + '</a>' : '<span class="rl-src">nacional</span>') + '</td>' +
+        '<td data-l="Autoexclusión">' + (x.j.selfExclusion ? h.esc(x.j.selfExclusion.terms || 'sí, sin plazo publicado') : '<span class="rl-src">sin dato</span>') + '</td>' +
+        '<td data-l="Copia">' + (x.date ? h.fmtDate(x.date) : '<span class="rl-src">-</span>') + '</td></tr>';
     }).join('');
     const filter = '<div class="rl-filter" data-rl-sfilter role="group" aria-label="Filtrar por estado"><button type="button" data-f="all" aria-pressed="true">Todas</button>' +
       STATUS_ORDER.map(s => '<button type="button" data-f="' + s + '" aria-pressed="false">' + h.esc(STATUS_LABEL[s]) + '</button>').join('') + '</div>';
