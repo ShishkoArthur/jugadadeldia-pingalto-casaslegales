@@ -67,8 +67,3 @@ export function fromState(words) {
     state: () => [a, b, c, d],
   };
 }
-
-// Independent child generator (for a bot or a simulation run) derived from a parent seed and a label.
-export function deriveSeed(seed, label) {
-  return String(seed) + '/' + String(label);
-}
