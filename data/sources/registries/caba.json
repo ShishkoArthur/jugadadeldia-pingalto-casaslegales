@@ -1,0 +1,151 @@
+{
+ "id": "caba",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "status": "official-list",
+ "regulator": {
+  "name": "Lotería de la Ciudad de Buenos Aires",
+  "short": "LOTBA"
+ },
+ "list": {
+  "doc": "caba-agencias",
+  "pattern": "<li><a href=\"\\s*https?://(?<host>[^/\"]+)[^\"]*\" class=\"link\"[^>]*><img [^>]*alt=\"(?<label>[^\"]+)\" /></a><p[^>]*>Autorizado por (?<ref>[^<]+)</p>",
+  "note": "ul#logosConvenios > li after removing HTML comments: a commented-out entry is not listed. Company names live only inside HTML comments: not used."
+ },
+ "docs": {
+  "caba-agencias": {
+   "url": "https://juegosegurolegal.gob.ar/?page=agencias-juego-en-linea",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "0835246c022439e2cd5d6f295330936c857752425a8eed53c3d031c40508c617",
+   "file": "data/sources/registries/_docs/caba-agencias.html"
+  }
+ },
+ "quotes": {
+  "list": {
+   "doc": "caba-agencias",
+   "text": "Las únicas agencias autorizadas para comercializar juego en línea en el ámbito de la Ciudad de Buenos Aires lo hacen a través de las siguientes páginas web:",
+   "role": "list"
+  },
+  "regulator": {
+   "doc": "caba-agencias",
+   "text": "LOTBA S.A.U.",
+   "role": "regulator",
+   "hidden": true
+  }
+ },
+ "law": [],
+ "lawNote": "The law of the City on online gambling was not found in an official document we could save (2026-11-03); no law is quoted.",
+ "licensees": [
+  {
+   "brand": "codere",
+   "host": "codere.bet.ar",
+   "label": "Codere",
+   "ref": "Disposición N° 359/23",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://www.codere.bet.ar/\" class=\"link\" target=\"_blank\" title=\"Codere\" ><img src=\"images/juegosLinea/codere.png\" alt=\"Codere\" /></a><p>Autorizado por Disposición N° 359/23</p>"
+   }
+  },
+  {
+   "brand": "bplay",
+   "host": "caba.bplay.bet.ar",
+   "label": "bplay",
+   "ref": "Disposición N° 239/2021",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://caba.bplay.bet.ar/\" class=\"link\" target=\"_blank\" title=\"bplay\" ><img src=\"images/juegosLinea/bplay.png\" alt=\"bplay\" /></a><p>Autorizado por Disposición N° 239/2021</p>"
+   }
+  },
+  {
+   "brand": "super7",
+   "host": "super7.com.ar",
+   "label": "Super7",
+   "ref": "Disposición N° 240/2021",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://www.super7.com.ar/\" class=\"link\" target=\"_blank\" title=\"Super7\" ><img src=\"images/juegosLinea/super7.png\" alt=\"Super7\" /></a><p>Autorizado por Disposición N° 240/2021</p>"
+   }
+  },
+  {
+   "brand": "jugadon",
+   "host": "caba.jugadon.bet.ar",
+   "label": "Jugadon",
+   "ref": "Disposición N° 1132/23",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\" https://caba.jugadon.bet.ar/\" class=\"link\" target=\"_blank\" title=\"Jugadon\"  ><img src=\"images/juegosLinea/jugadon.png\" alt=\"Jugadon\" /></a><p>Autorizado por Disposición N° 1132/23</p>"
+   }
+  },
+  {
+   "brand": "betsson",
+   "host": "betsson.com.ar",
+   "label": "betsson",
+   "ref": "Disposición N° 1166/2021",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://www.betsson.com.ar/\" class=\"link\" target=\"_blank\" title=\"betsson\" ><img src=\"images/juegosLinea/betsson.png\" alt=\"betsson\" /></a><p>Autorizado por Disposición N° 1166/2021</p>"
+   }
+  },
+  {
+   "brand": "betwarrior",
+   "host": "caba.betwarrior.bet.ar",
+   "label": "BETWARRIOR",
+   "ref": "Disposición N° 1167/2021",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://caba.betwarrior.bet.ar/es-ar/sports\" class=\"link\" target=\"_blank\" title=\"BETWARRIOR\" ><img src=\"images/juegosLinea/betwarrior.png\" alt=\"BETWARRIOR\" /></a><p>Autorizado por Disposición N° 1167/2021</p>"
+   }
+  },
+  {
+   "brand": "bet365",
+   "host": "bet365.bet.ar",
+   "label": "BET365",
+   "ref": "Disposición N° 103/2022",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://www.bet365.bet.ar\" class=\"link\" target=\"_blank\" title=\"BETWARRIOR\" ><img src=\"images/juegosLinea/Bet365.png\" alt=\"BET365\" /></a><p>Autorizado por Disposición N° 103/2022</p>"
+   }
+  },
+  {
+   "brand": "betfun",
+   "host": "betfun.bet.ar",
+   "label": "BETFUN",
+   "ref": "Disposición N° 1104/2022",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://betfun.bet.ar/\" class=\"link\" target=\"_blank\" title=\"BETFUN\" ><img src=\"images/juegosLinea/betfun.png\" alt=\"BETFUN\" /></a><p>Autorizado por Disposición N° 1104/2022</p>"
+   }
+  },
+  {
+   "brand": "casino-ba-online",
+   "host": "casinobuenosairesonline.bet.ar",
+   "label": "CASINO BA ONLINE",
+   "ref": "Disposición N° 1135/2022",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://casinobuenosairesonline.bet.ar/\" class=\"link\" target=\"_blank\" title=\"CASINO BA ONLINE\" ><img src=\"images/juegosLinea/casinoBAonline.png\" alt=\"CASINO BA ONLINE\" /></a><p>Autorizado por Disposición N° 1135/2022</p>"
+   }
+  },
+  {
+   "brand": "playuzu",
+   "host": "playuzu.bet.ar",
+   "label": "PLAY UZU",
+   "ref": "Disposición N°335/2023",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\"https://www.playuzu.bet.ar/\" class=\"link\" target=\"_blank\" title=\"PLAY UZU\" ><img src=\"images/juegosLinea/playU2U.png\" alt=\"PLAY UZU\" /></a><p>Autorizado por Disposición N°335/2023</p>"
+   }
+  },
+  {
+   "brand": "betano",
+   "host": "betano.bet.ar",
+   "label": "BETANO",
+   "ref": "Resolución N°RESDI-2024-29-GCABA-LOTBA",
+   "evidence": {
+    "doc": "caba-agencias",
+    "html": "<li><a href=\" https://www.betano.bet.ar/\" class=\"link\" target=\"_blank\" title=\"BETANO\" ><img src=\"images/juegosLinea/betano.png\" alt=\"BETANO\" /></a><p class=\"tiptext\">Autorizado por Resolución N°RESDI-2024-29-GCABA-LOTBA</p>"
+   }
+  }
+ ]
+}

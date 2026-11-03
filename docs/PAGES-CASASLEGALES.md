@@ -15,7 +15,7 @@ playcet, super7, sportsbet, casino club online, autoexclusion, apuestas córdoba
 - Числа в title/H1 («las 4 plataformas», «las 7 licencias») — метки из реестра, сборка подставляет (не руками).
 - Свежесть — автоматически: хеш-монитор страниц реестров раз в месяц на сервере → письмо → правка; полная перепроверка раз в полгода.
 - **Адреса** (своя схема): без завершающего слэша, существительные в единственном числе, плоско ≤ 2 уровней — `/operador/betano`, `/operador/betano/mendoza`,
-  `/provincia/cordoba`, `/verificar/1win`, `/guia/…`, `/calculadora/…`; служебные — `/metodologia`, `/quienes-escriben`, `/registro-de-fuentes`,
+  `/provincia/cordoba`, `/verificar/1win`, `/guia/…`, `/calculadora/…`; служебные — `/metodologia`, `/redaccion`, `/registro-de-fuentes`,
   `/juego-responsable`. Отличается от jugadadeldia (испанские папки со слэшем) и pingalto (короткие игровые пути) и от RinkMath (`/is-it-legal/x/`).
 
 ## Итого
@@ -67,7 +67,7 @@ P1 (37, из них служебных и помощи — 8):
 30. `/juego-responsable` — Juego responsable en Argentina: ayuda en tu provincia (53)
 31. `/juego-responsable/autoexclusion` — Autoexclusión de juego online por provincia: cómo pedirla (57)
 32. `/metodologia` — Metodología: cómo verificamos licencias y operadores (52)
-33. `/quienes-escriben` — Quiénes escriben casaslegales.com (33)
+33. `/redaccion` — Redacción: quiénes somos y cómo trabajamos (42) — владелец 03.11: без именного автора, только редакция
 34. `/registro-de-fuentes` — Registro de fuentes: cada dato con su cita y fecha (50)
 35. `/aviso-legal` — Aviso legal: sin asesoramiento legal ni afiliados (49)
 36. `/contacto` — Contacto: correcciones y consultas (34)
@@ -275,7 +275,7 @@ P1 (37, из них служебных и помощи — 8):
 | Волна | URL · тип | Title (знаков) · description | H1 | Ключи (объём/KD) | Инструмент | AR — что аргентинского | Данные · обновление · заметки |
 |---|---|---|---|---|---|---|---|
 | P1 | `/metodologia`<br><small>служебная</small> | Metodología: cómo verificamos licencias y operadores (52)<br><small>Cómo verificamos licencias: el registro de cada regulador provincial, una copia con fecha, la cita de la fuente y solo capturas de páginas públicas.</small> | Cómo trabajamos: registros, citas, capturas y fechas | — | Схема конвейера: реестр → снимок + sha256 → цитата → проверка сборкой → дата на странице; правила скриншотов (только публичные страницы, без регистрации) | Реестры провинциальных регуляторов Аргентины: снимок + sha256, цитата, дата | описание процесса<br><small>обновлять при изменении процесса</small><br><small>**Доверие YMYL до открытия индекса**</small> |
-| P1 | `/quienes-escriben`<br><small>служебная</small> | Quiénes escriben casaslegales.com (33)<br><small>Quiénes escriben y revisan casaslegales.com, cómo usamos la IA para redactar y por qué cada dato sobre licencias se revisa contra el registro provincial.</small> | Quiénes escriben y revisan este sitio | — | Карточка автора(ов) + как пишутся тексты (Claude API + ревью) честно | Редакция пишет на es-AR и сверяет каждый факт с аргентинскими реестрами | решение владельца об авторе<br><small>по слову владельца</small><br><small>**Автор — свой, не Denis Krazok (не сеть) — вопрос владельцу**</small> |
+| P1 | `/redaccion`<br><small>служебная</small> | Redacción: quiénes somos y cómo trabajamos (42)<br><small>Quiénes hacen casaslegales.com: una redacción sin firmas ni afiliados, que escribe con ayuda de IA y verifica cada dato contra el registro oficial.</small> | La redacción: quiénes somos y cómo trabajamos | — | Страница редакции без имён: независимость, работа с источниками, как пишутся тексты (ИИ + автоматическая сверка цитат) | Редакция пишет на es-AR и сверяет каждый факт с аргентинскими реестрами | Владелец 03.11: автор только на jugadadeldia; здесь schema Organization, без Person |
 | P1 | `/registro-de-fuentes`<br><small>служебная</small> | Registro de fuentes: cada dato con su cita y fecha (50)<br><small>Todas las fuentes oficiales que usamos: regulador, dirección, fecha de la copia, huella digital y cita textual, con un filtro por provincia argentina.</small> | Registro de fuentes oficiales usadas en el sitio | — | Таблица всех источников: регулятор, URL, дата снимка, sha256, цитата; фильтр по провинции | Все источники — регуляторы Аргентины; фильтр по провинции | data/sources/**<br><small>автоматически из пакета источников при сборке</small> |
 | P1 | `/aviso-legal`<br><small>служебная</small> | Aviso legal: sin asesoramiento legal ni afiliados (49)<br><small>Aviso legal de casaslegales.com: no damos asesoramiento legal, no tenemos acuerdos ni links con operadores y lo que vale es siempre la ley de tu provincia.</small> | Aviso legal | — | Короткий текст: no es asesoramiento legal; sin enlaces ni acuerdos con operadores; 18+ | Формула «no es asesoramiento legal»; решает закон провинции; 18+ | текст<br><small>по необходимости</small> |
 | P1 | `/contacto`<br><small>служебная</small> | Contacto: correcciones y consultas (34)<br><small>¿Viste un error en un registro o en una ficha? Escribinos con la provincia, el sitio y la fuente oficial. Cada corrección queda anotada con su fecha.</small> | Contacto y correcciones | — | Форма/почта «нашёл ошибку в реестре» → журнал исправлений | Исправления реестров — с указанием провинции и официального источника | —<br><small>—</small> |
@@ -286,7 +286,7 @@ P1 (37, из них служебных и помощи — 8):
   рекламы/упоминания брендов → хеш-монитор страницы Сената раз в неделю; при принятии — пересмотр всего сайта (`/guia/ley-federal`).
 - **Гео-блок .bet.ar**: часть сайтов операторов и Лотерея Santa Fe не открываются с нашего сервера → скриншоты и проверки из Chrome владельца;
   только публичные страницы, без регистрации и депозита.
-- **Google YMYL** (деньги + закон + азарт): доверие до индекса (`/metodologia`, `/quienes-escriben`, `/registro-de-fuentes`), даты сверки на каждой
+- **Google YMYL** (деньги + закон + азарт): доверие до индекса (`/metodologia`, `/redaccion`, `/registro-de-fuentes`), даты сверки на каждой
   странице, индекс порциями (PLAYBOOK §9.5). Страницы «оператор × провинция» и P3-провинции — риск шаблона: только при реальных различиях.
 - **Бренды-навигация**: топ-ключи (betsson 1,9 млн, betano 1,33 млн) — официальные сайты; наши шансы — длинный хвост («betano mendoza» 4,1k/3,
   «jugadon» 16k/0, «playcet» 32k/0, «sportsbet» 49k/4, «casino buenos aires online» 10k/7, «bplay» 109k/0).
@@ -298,4 +298,4 @@ P1 (37, из них служебных и помощи — 8):
 2. Страницы «оператор × провинция» (15 шт., P2/P3) — делать или держать эти ключи якорями на странице оператора? По умолчанию: сначала якоря, отдельные — для 3–5 с наибольшей разницей.
 3. Проверки нелицензированных брендов (`/verificar/*`, P3) — делать после юр. проверки или не делать? По умолчанию: отложить.
 4. `/verificar/quiniela-online` — не конкурирует ли с jugadadeldia? По умолчанию: отложить.
-5. Автор casaslegales — отдельный (не Denis Krazok)? По умолчанию: отдельный псевдоним-редакция.
+5. ~~Автор casaslegales~~ — решено 03.11: именного автора нет, только редакция (`/redaccion`).

@@ -1,0 +1,155 @@
+{
+ "id": "buenos-aires",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "status": "official-list",
+ "regulator": {
+  "name": "Instituto Provincial de Lotería y Casinos",
+  "short": "IPLyC"
+ },
+ "list": {
+  "doc": "pba-juego-online",
+  "pattern": "<a class=\"juegoOnline generalDesktop\"[^>]*aria-label=\"Ir al sitio de (?<label>[^\"]+)\" href=\"https?://(?<host>[^/\"#]+)",
+  "note": "Licensed sites = links a.juegoOnline.generalDesktop (the generalMobile copies are duplicates). The section \"Proceso de Aspirantes\" lists applicants, not licensees: not used."
+ },
+ "docs": {
+  "pba-juego-online": {
+   "url": "https://loteria.gba.gob.ar/juego-online",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "714a58e42a87f44c0193a19e45837299425e1e1c9927224466c9bb3451c75e45",
+   "file": "data/sources/registries/_docs/pba-juego-online.html"
+  },
+  "pba-ley-15079": {
+   "url": "https://normas.gba.gob.ar/ar-b/ley/2018/15079/2404",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "ebdaff2a0b6d74770c8e984a5ff9baa32fed9ed8e184202bcffef94f4280d0bb",
+   "file": "data/sources/registries/_docs/pba-ley-15079.html"
+  },
+  "pba-decreto-181-19": {
+   "url": "https://normas.gba.gob.ar/ar-b/decreto/2019/181/207077",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "97012d785e0635b2a22970d27075ca7015ca431bed8b5fa70a9142de9e0adc50",
+   "file": "data/sources/registries/_docs/pba-decreto-181-19.html"
+  }
+ },
+ "quotes": {
+  "licences": {
+   "doc": "pba-juego-online",
+   "text": "A partir de la ley 15.079 del año 2019 y su decreto reglamentario 181/19 se autorizaron 7 licencias para la administración y explotación del juego online.",
+   "role": "list"
+  },
+  "betar": {
+   "doc": "pba-juego-online",
+   "text": "Todos los sitios legales de apuestas terminan en \".bet.ar\".",
+   "role": "domain"
+  },
+  "law": {
+   "doc": "pba-ley-15079",
+   "text": "LEY IMPOSITIVA PARA EL EJERCICIO FISCAL 2019. APRUEBA EL CONSENSO FISCAL 2018 SUSCRIPTO ENTRE EL PRESIDENTE DE LA NACIÓN Y LOS GOBERNADORES. REGULA EL JUEGO ON LINE.",
+   "role": "law"
+  },
+  "decree": {
+   "doc": "pba-decreto-181-19",
+   "text": "REGLAMENTA TÍTULO VIII DE LA LEY 15079 \"REGULACIÓN DEL JUEGO ON LINE\". APRUEBA RÉGIMEN GRAL. DE CONVOCATORIA PARA EL OTORGAMIENTO DE LICENCIAS DE JUEGO ON LINE.CREA EL REGISTRO DE ASPIRANTES A LICENCIATARIO. AUTORIDAD DE APLICACIÓN: LOTERÍA Y CASINOS.",
+   "role": "law"
+  },
+  "regulator": {
+   "doc": "pba-ley-15079",
+   "text": "Resolución 791/2019 del Instituto Provincial de Lotería y Casinos",
+   "role": "regulator",
+   "hidden": true
+  }
+ },
+ "law": [
+  {
+   "name": "Ley 15.079",
+   "quote": "law",
+   "date": {
+    "doc": "pba-ley-15079",
+    "text": "Fecha de publicación: 11/12/2018",
+    "role": "date"
+   }
+  },
+  {
+   "name": "Decreto 181/2019",
+   "quote": "decree",
+   "date": {
+    "doc": "pba-decreto-181-19",
+    "text": "Fecha de publicación: 29/03/2019",
+    "role": "date"
+   }
+  }
+ ],
+ "declaredCount": {
+  "quote": "licences",
+  "value": 7
+ },
+ "licensees": [
+  {
+   "brand": "bet365",
+   "host": "bet365.bet.ar",
+   "label": "Bet 365",
+   "evidence": {
+    "doc": "pba-juego-online",
+    "html": "<a class=\"juegoOnline generalDesktop\" target=\"_blank\" aria-label=\"Ir al sitio de Bet 365\" href=\"https://www.bet365.bet.ar"
+   }
+  },
+  {
+   "brand": "betano",
+   "host": "betano.bet.ar",
+   "label": "Betano",
+   "evidence": {
+    "doc": "pba-juego-online",
+    "html": "<a class=\"juegoOnline generalDesktop\" target=\"_blank\" aria-label=\"Ir al sitio de Betano\" href=\"https://www.betano.bet.ar"
+   }
+  },
+  {
+   "brand": "betsson",
+   "host": "pba.betsson.bet.ar",
+   "label": "Betsson",
+   "evidence": {
+    "doc": "pba-juego-online",
+    "html": "<a class=\"juegoOnline generalDesktop\" target=\"_blank\" aria-label=\"Ir al sitio de Betsson\" href=\"https://pba.betsson.bet.ar"
+   }
+  },
+  {
+   "brand": "betwarrior",
+   "host": "betwarrior.bet.ar",
+   "label": "Betwarrior",
+   "evidence": {
+    "doc": "pba-juego-online",
+    "html": "<a class=\"juegoOnline generalDesktop\" target=\"_blank\" aria-label=\"Ir al sitio de Betwarrior\" href=\"https://betwarrior.bet.ar"
+   }
+  },
+  {
+   "brand": "bplay",
+   "host": "pba.bplay.bet.ar",
+   "label": "Bplay",
+   "evidence": {
+    "doc": "pba-juego-online",
+    "html": "<a class=\"juegoOnline generalDesktop\" target=\"_blank\" aria-label=\"Ir al sitio de Bplay\" href=\"https://pba.bplay.bet.ar"
+   }
+  },
+  {
+   "brand": "sportsbet",
+   "host": "pba.sports.bet.ar",
+   "label": "Sportsbet",
+   "evidence": {
+    "doc": "pba-juego-online",
+    "html": "<a class=\"juegoOnline generalDesktop\" target=\"_blank\" aria-label=\"Ir al sitio de Sportsbet\" href=\"https://pba.sports.bet.ar"
+   }
+  },
+  {
+   "brand": "stake",
+   "host": "pba.stake.bet.ar",
+   "label": "Stake",
+   "evidence": {
+    "doc": "pba-juego-online",
+    "html": "<a class=\"juegoOnline generalDesktop\" target=\"_blank\" aria-label=\"Ir al sitio de Stake\" href=\"https://pba.stake.bet.ar"
+   }
+  }
+ ]
+}

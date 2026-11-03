@@ -1,0 +1,84 @@
+import { TILES, CODE } from '../content/map.mjs';
+import { brandMatrix, splitAddress, tileLevel, countBy } from '../../../engine/registry.mjs';
+import { src, quote, hostHtml, sectionHead } from './parts.mjs';
+
+export const home = {
+  path: '/',
+  id: 'home',
+  kind: 'hub',
+  title: 'Casas de apuestas legales en Argentina, por provincia',
+  description: 'Qué casas de apuestas tienen licencia en tu provincia: mapa de las {{jur_total}} jurisdicciones de Argentina, regulador, dominios .bet.ar y fecha de verificación.',
+  h1: 'Casas de apuestas legales: qué sitio está habilitado en tu provincia',
+  ld: h => [
+    { '@context': 'https://schema.org', '@type': 'WebSite', name: 'casaslegales.com', url: 'https://' + h.site.domain + '/', inLanguage: 'es-AR', publisher: h.org() },
+    h.org(true),
+  ],
+  render(h) {
+    const by = countBy(h.regs);
+    const def = h.site.defaultJurisdiction;
+    const dj = h.rg.prov(def), dreg = h.reg(def);
+    const tiles = TILES.map(t => {
+      const n = by[t.id];
+      const lvl = n === undefined ? 0 : tileLevel(n);
+      const name = h.rg.prov(t.id).name;
+      const label = name + ': ' + (n === undefined ? 'sin lista oficial verificada' : n + ' sitios en la lista oficial');
+      return '<button type="button" data-j="' + t.id + '" style="grid-area:' + t.area + '"' + (lvl ? ' class="rl-l' + lvl + '"' : '') + ' aria-pressed="' + (t.id === def) + '" aria-label="' + h.esc(label) + '">' + t.code + '</button>';
+    }).join('');
+    const opts = TILES.map(t => [t.id, h.rg.prov(t.id).name]).sort((a, b) => a[1].localeCompare(b[1], 'es'))
+      .map(([id, n]) => '<option value="' + id + '"' + (id === def ? ' selected' : '') + '>' + h.esc(n) + '</option>').join('');
+    const hero = '<section class="rl-hero"><div>' +
+      '<p class="rl-kick">' + h.t('{{jur_total}} jurisdicciones · {{reg_total}} listas oficiales verificadas · revisado {{checked}}') + '</p>' +
+      '<h1>' + h.esc(h.page.h1) + '</h1>' +
+      '<p class="rl-lead">Qué casas de apuestas figuran en la lista oficial de cada provincia, con la cita del regulador y la fecha en que la copiamos. Sin enlaces a operadores, sin bonos. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p>' +
+      '<div class="rl-pick"><label for="rl-pick">Elegí tu provincia</label><select id="rl-pick" data-rl-pick>' + opts + '</select></div>' +
+      '<div class="rl-acts"><a class="rl-b1" href="' + h.href('/licencias') + '">Ver las licencias</a><a class="rl-b2" href="' + h.href('/metodologia') + '">Cómo lo verificamos</a></div>' +
+      '</div><div class="rl-mapw" data-nosnippet><div class="rl-map" data-rl-map role="group" aria-label="Mapa de las jurisdicciones: la altura de cada ficha muestra cuántos sitios tiene su lista oficial">' + tiles + '</div>' +
+      '<aside class="rl-panel" data-rl-panel aria-live="polite"><h2>' + h.esc(dj.name) + '</h2>' +
+      '<div class="rl-num">' + dreg.licensees.length + '<small>sitios en la lista oficial</small></div>' +
+      '<p class="rl-meta" data-rl-meta>' + h.esc(dreg.regulator.short) + ' · revisado ' + h.fmtDate(dreg.checked) + '</p>' +
+      '<p class="rl-line" data-rl-help>Ayuda: <a href="tel:' + h.esc(dj.line.phoneTel) + '">' + h.esc(dj.line.phone) + '</a></p>' +
+      '<a class="rl-go" data-rl-go href="' + h.href('/provincia/' + def) + '">Ver ' + h.esc(dj.name) + '</a>' +
+      '<div class="rl-leg"><span><i style="--c:var(--t1)"></i>lista oficial verificada</span><span><i style="--c:var(--t0)"></i>sin lista verificada todavía</span></div>' +
+      '</aside></div></section>';
+
+    const regs = h.regs;
+    const matrix = brandMatrix(regs, h.names);
+    const head = '<thead><tr><th scope="col"><span class="rl-vh">Marca</span></th>' + regs.map(r => '<th scope="col"><abbr title="' + h.esc(h.rg.prov(r.id).name) + '">' + h.esc(CODE[r.id]) + '</abbr></th>').join('') + '</tr></thead>';
+    const rows = matrix.map(row => '<tr><th scope="row">' + h.esc(row.name) + '</th>' + regs.map(r => {
+      const c = row.cells[r.id];
+      return '<td>' + (c ? '<i class="rl-y" title="' + h.esc(c.host) + '"><span class="rl-vh">Figura: ' + h.esc(c.host) + '</span></i>' : '<i class="rl-n"><span class="rl-vh">No figura</span></i>') + '</td>';
+    }).join('') + '</tr>').join('');
+    const table = '<section class="rl-sec">' + sectionHead(h, 'Licencias por provincia', h.t('{{brand_total}} marcas en {{reg_total}} listas oficiales · fuente y fecha abajo')) +
+      '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-tbl">' + head + '<tbody>' + rows + '</tbody></table></div>' +
+      '<p class="rl-cap">Verde: figura en la lista oficial de esa jurisdicción. Gris: no figura en esa lista (no quiere decir que sea ilegal en otra provincia). Las demás provincias todavía no tienen una lista verificada acá.</p>' +
+      regs.map(r => src(h, r.list.doc, h.rg.prov(r.id).name)).join('') + '</div></section>';
+
+    const multi = splitAddress(matrix);
+    const dom = '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de tu provincia?', h.t('{{split_total}} marcas cambian de dirección según la jurisdicción')) +
+      '<p class="rl-note">La misma marca puede tener una dirección distinta en cada provincia. En la lista oficial figura una dirección exacta: mirá la dirección completa, no solo el nombre de la marca.</p>' +
+      '<div class="rl-dom" data-nosnippet>' + multi.map(row => '<article><h3>' + h.esc(row.name) + '</h3><ul>' +
+        regs.filter(r => row.cells[r.id]).map(r => '<li><span class="rl-tag">' + h.esc(CODE[r.id]) + '</span>' + hostHtml(h, row.cells[r.id].host) + '</li>').join('') +
+        '</ul></article>').join('') + '</div></section>';
+
+    const pba = h.reg('buenos-aires'), caba = h.reg('caba'), cba = h.reg('cordoba');
+    const law = '<section class="rl-sec">' + sectionHead(h, 'Lo que dice cada regulador', 'citas textuales con fecha') + '<div class="rl-law">' +
+      '<article><span class="rl-tag">PBA</span>' + quote(h, pba.quotes.licences, pba.regulator.name) + quote(h, pba.quotes.betar, pba.regulator.name) + '</article>' +
+      '<article><span class="rl-tag">CABA</span>' + quote(h, caba.quotes.list, caba.regulator.name) + '</article>' +
+      '<article><span class="rl-tag">CBA</span>' + quote(h, cba.quotes.list, cba.regulator.name) + quote(h, cba.quotes.licence, cba.regulator.name) + '</article>' +
+      '</div></section>';
+
+    const guides = [
+      ['/licencias', 'Registro de licencias, sitio por sitio'],
+      ['/provincia/buenos-aires', 'Provincia de Buenos Aires'],
+      ['/provincia/caba', 'Ciudad de Buenos Aires'],
+      ['/provincia/cordoba', 'Córdoba'],
+      ['/juego-responsable', 'Ayuda y autoexclusión en tu provincia'],
+      ['/metodologia', 'Cómo verificamos cada dato'],
+      ['/registro-de-fuentes', 'Todas las fuentes, con fecha'],
+      ['/redaccion', 'Quiénes hacemos este sitio'],
+    ].filter(([u]) => h.built(u));
+    const gd = '<section class="rl-sec">' + sectionHead(h, 'Por dónde seguir') + '<div class="rl-gd">' +
+      guides.map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div></section>';
+    return hero + table + dom + law + gd;
+  },
+};

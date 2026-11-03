@@ -1,0 +1,19 @@
+{
+ "about": "Display names of brands that appear in the saved official registries (data/sources/registries/*.json, field brand). A name is a label only: every licence comes from the registry evidence, never from this file.",
+ "brands": {
+  "bet365": "bet365",
+  "betano": "Betano",
+  "betsson": "Betsson",
+  "betwarrior": "BetWarrior",
+  "bplay": "bplay",
+  "sportsbet": "Sportsbet",
+  "stake": "Stake",
+  "codere": "Codere",
+  "super7": "Super7",
+  "jugadon": "Jugadón",
+  "betfun": "Betfun",
+  "casino-ba-online": "Casino Buenos Aires Online",
+  "playuzu": "Play Uzu",
+  "playcet": "Playcet"
+ }
+}

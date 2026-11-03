@@ -1,0 +1,97 @@
+{
+ "id": "cordoba",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "status": "official-list",
+ "regulator": {
+  "name": "Lotería de la Provincia de Córdoba S.E.",
+  "short": "Lotería de Córdoba"
+ },
+ "list": {
+  "doc": "cba-juegos-online",
+  "pattern": "class=\"text-center text-sm text-white\" href=\"https?://(?<host>[^/\"]+)\">",
+  "note": "Section \"Sitios oficiales de juego online en Córdoba\" (server-rendered Next.js page). Fetched once on 2026-11-03 with a transparent user agent; robots.txt allows * (Content-Signal: search=yes, ai-train=no, use=reference)."
+ },
+ "docs": {
+  "cba-juegos-online": {
+   "url": "https://loteriadecordoba.com.ar/juegos/online",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "87e2d04637f9d7f8e4723884adbf36904a65f6243ed73686d2f4b254eebf8fe6",
+   "file": "data/sources/registries/_docs/cba-juegos-online.html"
+  }
+ },
+ "quotes": {
+  "list": {
+   "doc": "cba-juegos-online",
+   "text": "Sitios oficiales de juego online en Córdoba",
+   "role": "list"
+  },
+  "licence": {
+   "doc": "cba-juegos-online",
+   "text": "Licencia otorgada mediante Resolución de Directorio Nro. 1889/23",
+   "role": "law"
+  },
+  "regulator": {
+   "doc": "cba-juegos-online",
+   "text": "El juego está controlado por La Lotería de Córdoba",
+   "role": "regulator"
+  },
+  "betar": {
+   "doc": "cba-juegos-online",
+   "text": "Recordá que los sitios que finalicen en .bet.ar son legales y seguros",
+   "role": "domain"
+  },
+  "nova": {
+   "doc": "cba-juegos-online",
+   "text": "Descarga NoVa+ y protegé tu familia de sitios ilegales",
+   "role": "tool"
+  },
+  "luca": {
+   "doc": "cba-juegos-online",
+   "text": "Solicitar LUCA Bloquea sitios de apuestas online ilegales",
+   "role": "tool"
+  }
+ },
+ "law": [
+  {
+   "name": "Resolución de Directorio 1889/23",
+   "quote": "licence"
+  }
+ ],
+ "lawNote": "Ley 10.793 (Córdoba, 2021) is named only by secondary sources; not quoted.",
+ "licensees": [
+  {
+   "brand": "betsson",
+   "host": "cba.betsson.bet.ar",
+   "evidence": {
+    "doc": "cba-juegos-online",
+    "html": "class=\"text-center text-sm text-white\" href=\"https://www.cba.betsson.bet.ar\">"
+   }
+  },
+  {
+   "brand": "jugadon",
+   "host": "cordoba.jugadon.bet.ar",
+   "evidence": {
+    "doc": "cba-juegos-online",
+    "html": "class=\"text-center text-sm text-white\" href=\"https://www.cordoba.jugadon.bet.ar\">"
+   }
+  },
+  {
+   "brand": "bplay",
+   "host": "cordoba.bplay.bet.ar",
+   "evidence": {
+    "doc": "cba-juegos-online",
+    "html": "class=\"text-center text-sm text-white\" href=\"https://cordoba.bplay.bet.ar\">"
+   }
+  },
+  {
+   "brand": "playcet",
+   "host": "playcet.bet.ar",
+   "evidence": {
+    "doc": "cba-juegos-online",
+    "html": "class=\"text-center text-sm text-white\" href=\"https://www.playcet.bet.ar\">"
+   }
+  }
+ ]
+}

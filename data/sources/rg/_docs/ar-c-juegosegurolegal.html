@@ -1,0 +1,867 @@
+<script>page = ""</script><!DOCTYPE html>
+<html lang="es" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Seguro Legal | Lotería de la Ciudad de Buenos Aires</title>
+    <link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Juego seguro legal" />
+<link rel="manifest" href="favicon/site.webmanifest" />
+ <link rel="stylesheet" href="css/cookie-banner.css" />
+<script>
+  // Analítica gateada por consentimiento — cookie-banner.js la carga SOLO si el usuario acepta "Analíticas"
+  window.__ANALYTICS = {
+    ga4: "G-9V5B451W0B",
+    gtm: "GTM-M5VS6SXJ",
+    clarity: "xlkqwg40cr"
+  };
+</script>
+</head>
+<body >
+
+<header class="topbar" >
+    <div class="brand">
+        <a href="?page=inicio" class="scroll-link" ><img class="logo" src="images/logos/LOTBA_blanco.svg" /></a>
+        <a href="?page=inicio" class="scroll-link"><img class="logo" src="images/logos/JSL_blanco.svg" /></a>
+    </div>
+    <button class="hamburger" aria-label="Menú">☰</button>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#juego-seguro-legal" class="scroll-link">Juego seguro legal</a></li>
+            <li><a href="#juego-patologico" class="scroll-link">Juego Patológico</a></li>
+        <!--    <li><a href="#informacion-interes" class="scroll-link">Información de interés</a></li>-->
+           
+		   <li><a href="?page=autoexclusion" class="autoexclusionMenu" target="_blank" data-text="La Autoexclusión es una herramienta personal y confidencial para cualquiera que quiera restringir su acceso a los juegos de apuestas autorizados por Lotería de la Ciudad (con un plazo inicial de 2 años).">AUTOEXCLUITE</a></li>
+			<li><a href="?page=denuncias" class="autoexclusionMenu"  data-text="Realizá una denuncia de sitios ilegales">DENUNCIÁ</a></li>
+			<div class="menu-leyenda"></div>
+        </ul>
+		
+    </nav>
+	
+</header>
+<script>
+const leyenda = document.querySelector('.menu-leyenda');
+const botones = document.querySelectorAll('.autoexclusionMenu');
+
+botones.forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    leyenda.textContent = btn.dataset.text;
+    leyenda.style.display = 'block';
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    leyenda.style.display = 'none';
+  });
+});
+</script>
+ <!-- <div class="hero-slide" style="background-image: url('images/imagenes/slideMujer.jpg');">
+	 <div class="hero-content">
+      <p><img src="images/logos/logoHG.svg" width="70%"/><br>Apostar en plataformas reguladas, garantiza que cada jugada esté respaldada por estándares legales y éticos.</p>
+    </div></div>
+    <div class="hero-slide" style="background-image: url('images/imagenes/slideMujer.jpg');">
+	 <div class="hero-content">
+      <p><img src="images/logos/logoHG.svg" width="70%"/><br>Apostar en plataformas reguladas, garantiza que cada jugada esté respaldada por estándares legales y éticos.</p>
+    </div></div>--> 
+	
+<!-- ========================= -->
+<!--       HERO SLIDER        -->
+<!-- ========================= -->
+<section class="hero-slider" id="top">
+    
+    <div class="hero-slide active" style="background-image: url('images/imagenes/slide-hablar-es-ganar.jpg');"> 
+        <div class="hero-content">
+            <p style="font-family: FontLigthPoppins;">
+                <img src="images/logos/logoHG.svg"  style="width:100%;" /><br>
+               <!--Apostar en plataformas reguladas, garantiza que cada jugada esté respaldada por estándares legales y técnicos.-->
+            </p>
+			<p style="text-align: right;">
+                <a href="?page=campania" class="buttonWhite">Ver Campaña</a>
+            </p>
+        </div>
+    </div>
+
+    <section class="content-guias">
+        <div class="guias">
+            <a href="documentos.php?f=guias/GU%C3%8DA_MUNDIAL.pdf" target="_blank">
+                <img src="images/guias/guia-mundial.png" loading="lazy" decoding="async" style="border-bottom-left-radius:0px !important;" />
+				<div class="overlay-text"><span>¡Descarga la guía!</span></div>
+			</a>
+        </div>
+		<div class="guias">
+            <a href="documentos.php?f=guias/GU%C3%8DA_ADOLESCENTES.pdf" target="_blank">
+                <img src="images/guias/guia-adolescente.png" loading="lazy" decoding="async" style="border-bottom-left-radius:0px !important;" />
+				<div class="overlay-text"><span>¡Descarga la guía!</span></div>
+			</a>
+        </div>
+        <div class="guias">
+            <a href="documentos.php?f=guias/GU%C3%8DA_FAMILIAS.pdf" target="_blank">
+                <img src="images/guias/guia-familias.png" loading="lazy" decoding="async" />
+				<div class="overlay-text"><span>¡Descarga la guía!</span></div>
+            </a>
+        </div>
+        <div class="guias">
+            <a href="documentos.php?f=guias/GU%C3%8DA_EDUCADORES.pdf" target="_blank">
+                <img src="images/guias/guia-educadores.png" loading="lazy" decoding="async" />
+				<div class="overlay-text"><span>¡Descarga la guía!</span></div>
+            </a>
+        </div> 
+        <div class="guias">
+            <a href="documentos.php?f=guias/GU%C3%8DA_ADULTOS_MAYORES.pdf" target="_blank">
+                <img src="images/guias/guia-adultosmayores.png" loading="lazy" decoding="async" style="border-bottom-right-radius:0px !important;" />
+				<div class="overlay-text"><span>¡Descarga la guía!</span></div>           
+		   </a>
+        </div>
+    </section>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- SECTION 3 JUEGO SEGURO LEGAL -->
+<!-- ========================= -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+    <span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+	<span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+    <span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+    <span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+    <span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+    <span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+   <span>Los juegos de apuestas son sólo para mayores de 18 años</span><span>|</span>
+
+  </div>
+</div>
+
+<section class="text-sliderPatologico hero1">
+    <section class="content-section" id="juego-seguro-legal">
+
+        <div class="content-text">
+            
+            <h1 class="text-section">Un jugador informado es un jugador responsable</h1>
+        </div>
+		       <div class="content-text" >
+			   <p>El juego debe ser siempre una forma de entretenimiento. Por eso promovemos una experiencia segura y legal, ofreciendo herramientas de autocontrol, límites de apuesta y acceso a información transparente para que cada usuario gestione su actividad de manera consciente y saludable.</p>
+<p>Apostar debe ser siempre una elección <b>voluntaria y consciente</b>, entendida como <b>una actividad recreativa</b>, no como una forma de ingreso ni una solución económica.</p>
+<p><b>Promovemos el juego responsable a través de:</b></p>
+			   	<ul>
+			<li>Establecer límites de tiempo y dinero</li>
+			<li>Conocer las probabilidades reales de cada apuesta</li>
+			<li>Reconocer señales de riesgo o pérdida de control</li>
+			<li>Pausar o dejar de jugar cuando deja de ser una actividad saludable</li>			
+			</ul>
+			  <p><b>Si querés conocer más sobre las herramientas de juego responsable </p>
+			  <p><a href="?page=video-jr" class="buttonBlackVideo" style="text-align:right;">mirá el video acá</a></b></p>
+			   </div>
+
+    </section>
+</section>
+
+
+
+<!-- ========================= -->
+<!-- SECTION 4 JUEGO PATOLOGICO-->
+<!-- ========================= -->
+
+<section class="hero1" id="juego-patologico">
+    <section class="content-section content-margin ">
+           <div class="content-image contImg lazy-bg" data-bg="images/imagenes/img-JuegoPatologico.jpg">
+			   <div id="txt_autoevaluate" class="leyendas">El Problem Gambling Severity Index <b>(PGSI)</b> es una herramienta diseñada para que los jugadores puedan evaluar su propio comportamiento de juego. Está basada en los criterios del Diagnostic and Statistical Manual of Mental Disorders (DSM-V) y permite identificar posibles signos de juego problemático o patológico.</div>
+			   <div id="txt_autoexclusion" class="leyendas">La Autoexclusión es una herramienta personal y confidencial para cualquiera que quiera restringir su acceso a los juegos de apuestas autorizados por Lotería de la Ciudad (con un plazo inicial de 2 años).</div> 
+				<div id="txt_familiar" class="leyendas">Si tenés un familiar con conductas asociadas al juego patológico y considerás que necesita orientación o asistencia, podés comunicarte con nosotros haciendo clic en "Asistencia Familiar".</div>
+			   </div>
+
+        <div class="content-text" style="    justify-content: flex-start;">
+<p class="text-left"><b style="font-family: FontBoldPoppins;">Juego patológico</b></p>
+<p>El <b>juego patológico</b> es una conducta adictiva que afecta la vida emocional, social y económica de quienes la padecen. En nuestro espacio brindamos <b>información confiable, orientación profesional y herramientas de apoyo</b> para personas que enfrentan dificultades con el juego, así como para sus familias y entorno cercano.</p>
+<p>Nuestro objetivo es <b>concientizar y acompañar</b>, ofreciendo contenidos claros sobre cómo identificar señales de alerta, cómo buscar ayuda y qué recursos existen para iniciar un proceso de recuperación. Creemos en un abordaje humano, respetuoso y confidencial, centrado en cada persona y en su camino hacia una vida más equilibrada y saludable.</p>
+<p>Promovemos la detección temprana, la prevención y el acceso a profesionales especializados, poniendo a disposición <b>programas de apoyo, materiales educativos y guías prácticas</b> para transitar este desafío con contención y claridad.</p>
+<p><b>Informar, acompañar y recuperar: estamos para ayudar a quienes buscan salir del juego compulsivo.</b></p>
+ <ul  class="ul-margin" style="list-style:none; ">
+   <li class="button-li" ><a href="?page=autoevaluacion" class="autoexclusionDenuncia" id="btn_autoevaluate" >Autoevaluate</a></li>
+  <li class="button-li"  ><a href="?page=autoexclusion" class="autoexclusionDenuncia" id="btn_autoexclusion" target="_blank">Autoexcluite</a></li>
+   <li class="button-li"  ><a href="?page=asistencia-familiar" class="autoexclusionDenuncia" id="btn_familiar">Asistencia Familiar</a></li>
+  <li class="button-li"><a href="?page=turnos" class="autoexclusionTurno">Solicitá turno</a></li>
+  
+</ul> 
+
+   </div>
+
+    </section>
+</section>
+
+
+<!-- ========================= -->
+<!-- SECTION 5 AYUDA -->
+<!-- ========================= -->
+<section class="text-slider hero-info background lazy-bg text-sliderHelp" id="informacion-interes" data-bg="images/imagenes/img-necesitas-ayuda.gif">
+    <div class="hero-content-info">
+      <p><b style="font-family: FontBoldPoppins;" class="title-ayuda">¿Necesitás ayuda?</b></p>
+<p>Si sentís que el juego dejó de ser una actividad recreativa, podés comunicarte con líneas de asistencia especializadas, servicios de orientación psicológica, de lunes a viernes de 9 a 17 hs. <b>Pedir ayuda es un acto de valentía y cuidado personal.<br>
+  <ul  class="ul-margin" style=" margin: 0 auto;list-style: none;width: 700px;">
+  <li class="button-li"><a href="tel:0800-666-6006" class="info0800">0800-666-6006</a></li>
+  <li class="button-li"><a href="tel:108" class="info0800">Línea 108</a></li>
+  <li class="button-li"><a href="#" class="open-modal info0800 no-transition" data-modal="modalCentros">Centros de Salud</a></li>
+  <li class="button-li"><a href="#" class="open-modal info0800 no-transition" data-modal="modalAutoexclusion">Trámite Autoexclusión</a></li>
+
+</ul>  </p>
+
+    </div>
+</section>
+<!-- ========================= -->
+<!-- SECTION 6 CAPACITACION -->
+<!-- ========================= -->
+<section class="section-background">
+<section class="hero1">
+    <section class="content-section content-margin ">
+
+        <div class="content-text" style="    justify-content: flex-start;">
+
+<p class="text-left" >Solicitá <b style="font-family: FontBoldPoppins;">nuestros talleres de prevención de apuestas en menores de 18 años</b>.</p>
+   </div>
+        <div class="content-text" style="    justify-content: flex-start;">
+
+<p>Ofrecemos talleres especializados que abordan la ilegalidad y los riesgos asociados al acceso a las apuestas por parte de niños, niñas y adolescentes. Estas charlas están dirigidas a jóvenes de entre 13 y 18 años y se dictan en instituciones educativas de nivel secundario y en clubes.</p>
+
+  <ul  class="ul-margin" style="list-style:none; ">
+ <li class="button-li" style="margin-right: 10px;"><a href="mailto:juegoresponsable@loteriadelaciudad.gob.ar" class="autoexclusionDenuncia">Solicitar capacitación</a></li>
+  <li class="button-li"><a href="#" class="open-modal autoexclusionDenuncia no-transition" data-modal="modalCapacitaciones">Ver capacitaciones anteriores</a></li>
+</ul>
+   </div>
+    </section>
+	</section>
+	</section>
+
+<!-- ========================= -->
+<!-- SECTION 7 SITIOS AUTORIZADOS 2-->
+<!-- ========================= -->
+
+<section class="hero1">
+    <section class="content-section content-margin ">
+
+        <div class="content-text" >
+
+<p class="text-left">¿Por qué es importante jugar en <b style="font-family: FontBoldPoppins;">sitios autorizados</b>?</p>
+<p>Apostar sólo resulta seguro y legal cuando se realiza en aquellos sitios autorizados por Lotería de la Ciudad ya que proporcionan las siguientes ventajas a los jugadores:</p>
+ <ul class="sitios-autorizados">
+<li>Reglas de juego claras y transparentes.</li>
+<li>Protección de datos personales.</li>
+<li>Garantía de juego honesto, sin trampas ni estafas.</li>
+<li>Seguridad en los pagos, cobros de premios y depósitos.</li>
+<li>Identificación del usurario (comprobación de identidad y edad para impedir el acceso a menores).</li>
+<li>Protección de los derechos de los apostadores.</li>
+<li>Herramientas de Juego Responsable. Las páginas contienen medidas de juego responsable con el objetivo de prevenir el desarrollo de conductas problemáticas.</li>
+<li>Aporte a la Sociedad, “lo que jugás vuelve”.</li>
+        </ul>
+
+</p>
+   </div>
+        <div class="content-text" style="    justify-content: flex-start;">
+
+<p class="text-left"><b style="font-family: FontBoldPoppins;">Vos también podés ayudar a combatir el juego clandestino.</b></p>
+
+<p>El juego ilegal pone en riesgo a las personas, afecta a la comunidad y evade los controles que garantizan seguridad, transparencia y juego responsable. Por eso, tu colaboración es fundamental.</p>
+<p>Si tenés información o indicios sobre posibles actividades de juego clandestino —como personas físicas involucradas, puntos de venta no autorizados, páginas web, perfiles en redes sociales u otros canales— podés realizar una denuncia de manera segura, anónima y confidencial.</p>
+ <ul  class="ul-margin" style="list-style:none;">
+  <li><a href="?page=denuncias" class="autoexclusionDenuncia">Denunciar juego ilegal</a></li>
+</ul> 
+   </div>
+    </section>
+</section>
+
+
+
+
+
+<!-- ========================= -->
+<!-- SECTION 9 INFORMES  -->
+<!-- ========================= -->
+<!--
+<section class="content-guias" >
+			   
+			  <div class="guias">
+			  <a href="documentos.php?f=informes/Infograf%C3%ADa%20-%200800.pdf" target="_blank"><img src="images/imagenes/ico_Infografía - 0800.png" /><br><br><img src="images/controles/imgDescarga.svg" style="width:25px !important;    vertical-align: sub;" /> Llamados 0800</a></div>
+			  <div class="guias">
+			  <a href="documentos.php?f=informes/Infograf%C3%ADa%20-%20Autoexclusion%20Argentina.pdf" target="_blank"><img src="images/imagenes/ico_Infografía - Autoexclusion Argentina.png" /><br><br><img src="images/controles/imgDescarga.svg" style="width:25px !important;    vertical-align: sub;" /> Mapa autoexclusión argentina</a></div>
+			  <div class="guias">
+			  <a href="documentos.php?f=informes/Infograf%C3%ADa%20-%20Perfil%20del%20autoexcluido.pdf" target="_blank"><img src="images/imagenes/ico_Infografía - Perfil del autoexcluido.png" /><br><br><img src="images/controles/imgDescarga.svg" style="width:25px !important;    vertical-align: sub;" /> Perfil persona autoexcluida</a></div> 
+			  <div class="guias">
+			  <a href="documentos.php?f=informes/Infograf%C3%ADa%20-%20Uso%20responsable%20de%20tecnologias.pdf" target="_blank"><img src="images/imagenes/ico_Infografía - Uso responsable de tecnologias.png" /><br><br><img src="images/controles/imgDescarga.svg" style="width:25px !important;    vertical-align: sub;" /> Uso responsable de la tecnología</a></div> 			  
+
+
+</section>
+-->
+
+
+
+<!-- MODAL CENTROS DE SALUD -->
+<div id="modalCentros" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h1>Centros de Salud</h1>
+
+    <p><b >Centro 1</b><br>
+    Manuela Pedraza 1558<br>
+    Núñez - Comuna 13<br>
+    Tel: <a href="tel:1128213588">(11) 2821-3588</a><br>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Manuela%20Pedraza%201558%2C%20N%C3%BA%C3%B1ez%2C%20Buenos%20Aires" target="_blank" rel="noopener noreferrer" class="link">
+	Cómo llegar
+	</a></p>
+
+    <hr>
+
+    <p><b>Hospital Álvarez</b><br>
+    Dr. Juan Felipe Aranguren 2701<br>
+    Flores - Comuna 7<br>
+    Tel: <a href="tel:46116666">(11) 4611-6666</a> / <a href="tel:46302900">(11) 4630-2900</a><br>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Hospital%20Alvarez%20Dr%20Juan%20Felipe%20Aranguren%202701%20Flores%20Buenos%20Aires" target="_blank" rel="noopener noreferrer" class="link">
+  Cómo llegar
+</a></p>
+
+  </div>
+</div>
+
+<div id="modalAutoexclusion" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	 <h1>Trámite de autoexclusión</h1>
+	 <p>Para tramitar en línea hace clic <a href="?page=autoexclusion" target="_blank" class="link">acá.</a></p>
+	<p>Para tramitar de manera presencial:
+	<ul>
+<li><b>Lotería de la Ciudad</b><br>de 10 a 15.30 h, en Carlos Pellegrini 657 (C1049) CABA .<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Loter%C3%ADa%20de%20la%20Ciudad%2C%20Carlos%20Pellegrini%20657%20%28C1049%29%20CABA%20" target="_blank" rel="noopener noreferrer" class="link">
+  Cómo llegar</a></li>
+<br><b>Salas de juego</b>:
+<li><b>Casino Buenos Aires</b><br>Av. Elvira Rawson de Dellepiane 1107, Dársena Sur, Puerto Madero, CABA.<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Casino%20de%20Buenos%20Aires%20Avenida%20Rawson%20de%20Dellepiane%201107%20D%C3%A1rsena%20sur%20Puerto%20Madero%20Buenos%20Aires" target="_blank" rel="noopener noreferrer" class="link">
+  Cómo llegar</a></li>
+<li><b>Hipódromo Argentino de Palermo</b><br>Avenida Del Libertador 4101, Palermo, CABA.<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Hip%C3%B3dromo%20Argentino%20de%20Palermo%20Avenida%20Libertador%204101%20Palermo%20Buenos%20Aires" target="_blank" rel="noopener noreferrer" class="link">
+  Cómo llegar</a></li>
+</ul>
+Si queres descargar el Programa de Autoexclusión hace clic <a href="documentos.php?f=archivos/Programa%20de%20Autoexclusi%C3%B3n.pdf" target="_blank" class="link">acá.</a></p>
+	</div>
+</div>
+
+<div id="modalCapacitaciones" class="modal" >
+  <div class="modal-content modal-capa">
+    <span class="close">&times;</span>
+	 <h1>Capacitaciones</h1>
+	 <style>
+#ri table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 98%;
+}
+
+#ri th {
+    border: 0px solid #f1f0f0;
+    color: #fff;
+    background-color:#666;
+    text-align: left;
+    padding: 8px;
+    font-size: 19px;
+}
+
+#ri td {
+    border: 0px solid #f1f0f0;
+    text-align: left;
+    padding: 8px;
+    font-size: 16px;
+}
+
+#ri tr:nth-child(even) {
+   background-color: #f1f0f0;
+}
+#ri p{font-size: 16px;}
+#ri .encabezado{font-size: 18px;}
+#ri a{text-decoration:none; }
+#ri a:hover{text-decoration:none; font-weight:bold;color:#000;}
+ 
+.pagination li{display:inline-block;border-radius:2px;text-align:center;vertical-align:top;height:30px}
+.pagination li a{display:inline-block;font-size:1.2rem;padding:0 10px;line-height:30px}
+.pagination li .page_link{color:#444;}
+.pagination li .active{background-color:#4DA870;color:#fff;}
+.pagination li .disabled a{cursor:default;color:#999}
+.pagination li i{font-size:2rem}
+.pagination li .pages ul li{display:inline-block;float:none}
+.center, .center-align{text-align:right}
+.left{float:left !important}
+
+input[type=text]{background-color:transparent;border:none;border:1px solid #666;border-radius:10px;outline:none;height:2rem;width:100%;font-size:1rem;margin:0 0 20px 0;padding:5px;box-shadow:none;box-sizing:content-box;transition:all 0.3s}
+/* Contenedor principal de la paginación */
+.pagination-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    font-family: arial, sans-serif;
+}
+
+/* Botonera compacta */
+/* Corrección de la herencia del icono antiguo */
+.pagination li i {
+    font-size: 1.3rem !important; /* Reduce el tamaño para que quepa en el círculo */
+    line-height: unset !important;
+}
+
+/* Contenedor principal de la paginación */
+.pagination-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    font-family: arial, sans-serif;
+    user-select: none;
+}
+
+/* Botonera compacta */
+.compact-pager {
+    display: inline-flex !important;
+    align-items: center;
+    background-color: #f1f0f0;
+    border-radius: 20px;
+    padding: 2px 6px;
+    margin: 0;
+    list-style: none;
+    gap: 2px; /* Espacio mínimo controlado entre botones */
+}
+
+.compact-pager li {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.compact-pager li a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    text-decoration: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.compact-pager li a:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+/* Estado deshabilitado para las flechas */
+.compact-pager li.disabled a {
+    color: #b5b5b5 !important;
+    pointer-events: none !important;
+    background-color: transparent !important;
+    opacity: 0.5;
+}
+
+/* Input editable para el número de página */
+.page-input-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    gap: 6px;
+}
+
+.page-input-container input[type=number] {
+    width: 45px;
+    height: 28px;
+    text-align: center;
+    border: 1px solid #4DA870;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    -moz-appearance: textfield;
+}
+
+/* Eliminar flechas del input en navegadores webkit */
+.page-input-container input[type=number]::-webkit-outer-spin-button,
+.page-input-container input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-max-text {
+    font-weight: bold;
+    color: #555;
+}
+@media only screen and (max-width: 768px) {
+    #ri th,  #ri td {font-size:2.5vw;  }
+}
+</style>
+
+
+<article id="ri">
+
+    <input type="text" style="width:98%" id="search" placeholder="Busca una actividad..." />
+
+    <table class='table table-hover' id='tabla'><thead style='width:100%;'><tr><th>﻿FECHA</th><th>HORA</th><th>EVENTO</th></tr></thead><tbody id='myTable'><tr><td>08/01/2026</td><td>09:30h.</td><td>Activación &quot;Colonia Patricios&quot; en Comuna 4</td></tr><tr><td>12/01/2026</td><td>09:30h.</td><td>Activación &quot;Colonia Pereyra&quot; en Comuna 4</td></tr><tr><td>13/01/2026</td><td>09.30h.</td><td>Activación &quot;Colonia Martin Fierro&quot; en Comuna 3</td></tr><tr><td>14/01/2026</td><td>09:30h.</td><td>Activación &quot;Colonia Santojanni&quot; en Comuna 9</td></tr><tr><td>15/01/2026</td><td>09:30h.</td><td>Activación &quot;Colonia Avellaneda en Comuna 10</td></tr><tr><td>16/01/2026</td><td>10:00h:</td><td>Activación &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>17/01/2026</td><td>10:00h:</td><td>Activación &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>19/01/2026</td><td>09:30h:</td><td>Activación &quot;Colonia Dorrego en Comuna 9</td></tr><tr><td>20/01/2026</td><td>09:30h:</td><td>Activación &quot;Colonia Roca en Comuna 8</td></tr><tr><td>21/01/2026</td><td>09:30h:</td><td>Activación &quot;Colonia Pomar en Comuna 10</td></tr><tr><td>22/01/2026</td><td>09:30h:</td><td>Activación &quot;Colonia Colegiales en Comuna 13</td></tr><tr><td>23/01/2026</td><td>10:00h:</td><td>Activación &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>24/01/2026</td><td>10:00h:</td><td>Activación &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>26/01/2026</td><td>09:30h:</td><td>Activación &quot;Colonia Costa Rica en Comuna 15</td></tr><tr><td>30/01/2026</td><td>10:00h:</td><td>Activación &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>31/01/2026</td><td>10:00h:</td><td>Activación &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>01/12/2025</td><td>13:00h.</td><td>Activación Taller &quot;Capacitación Prevención del J.Patológico&quot; en el Mterio de Educación /DG personal docente y no docente en C 1</td></tr><tr><td>02/10/2025</td><td>10:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Defensoría  zonal del consejo de derechos de niñas niños y adolescentes&quot; en C4</td></tr><tr><td>08/12/2025</td><td>09:00h.</td><td>Activación &quot;FINALES FADIM&quot; en Parque Sarmiento&quot; en C 12</td></tr><tr><td>09/12/2025</td><td>09:30h.</td><td>Activación &quot;Ciclo conversaciones que transforman-L Aymar- G.Pauls&quot; en C4</td></tr><tr><td>10/12/2025</td><td>12:30h.</td><td>Activación &quot;Modulo II-Programa de capacitación J.R - Casino Bs As en C 1</td></tr><tr><td>10/12/2025</td><td>22:00h.</td><td>Activación &quot;Modulo II-Programa de capacitación J.R - Casino Bs As en C 1</td></tr><tr><td>17/12/2025</td><td>11:00h.</td><td>Activación Estaciones saludables clic &quot;Charla virtual mensual N°8 &quot;Tecnología y juego: riesgos y beneficios&quot;</td></tr><tr><td>04/11/2025</td><td>11:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;ColegioColegio de la Providencia&quot; en C 1</td></tr><tr><td>06/11/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Politécnico  Privado&quot; en C12</td></tr><tr><td>06/11/2025</td><td>13:30h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Inst. Politecnico Privado&quot; en C 12</td></tr><tr><td>11/11/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio EEM2 DE 17-RUMANIA&quot; en C 10</td></tr><tr><td>12/11/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio N°12 de 15- Reconquista&quot; en C 12</td></tr><tr><td>12/11/2025</td><td>11:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio N°12 de 15- Reconquista&quot; en C 12</td></tr><tr><td>13/11/2025</td><td>10:30h.</td><td>Activación &quot;Capacitaciones /Minis de Educ/DG personal docente y no docente Enlaces de Formación&quot; en C 1</td></tr><tr><td>18/11/2025</td><td>09:50h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Corazonista Benito Nazar&quot; en C 5</td></tr><tr><td>18/11/2025</td><td>09:00h.</td><td>Activación &quot;XIV Jornadas Cientificas abiertas a la comunidad: &quot;Cuidamos en comunidad para construir futuros&quot; en C2</td></tr><tr><td>18/11/2025</td><td>10:30h.</td><td>Activación &quot;Capacitaciones /Minis de Educ/DG personal docente y no docente Enlaces de Formación&quot; en C 1</td></tr><tr><td>18/11/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;EEMN°2 de 17- Rumania&quot; en C 10</td></tr><tr><td>19/11/2025</td><td>09:00h.</td><td>Activación &quot;XIV Jornadas Cientificas abiertas a la comunidad: &quot;Cuidamos en comunidad para construir futuros&quot; en C2</td></tr><tr><td>19/11/2025</td><td>11:00h.</td><td>Activación Estaciones saludables clic &quot;Charla virtual mensual N°8 &quot;Estrategias de intervención temprana&quot;</td></tr><tr><td>25/11/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Esc de Enseñanza Artística Lola MORA&quot; en C 8</td></tr><tr><td>26/11/2025</td><td>10:30h.</td><td>Activación &quot;Capacitaciones /Minis de Educ/DG personal docente y no docente Enlaces de Formación&quot; en C 1</td></tr><tr><td>02/10/2025</td><td>11:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Colegio N°9 de 17-Luis pasteur&quot; en C11</td></tr><tr><td>04/10/2025</td><td>10:00h.</td><td>Festival club ciudad en &quot;Av del libertador 7501&quot; en c 13</td></tr><tr><td>06/10/2025</td><td>09:15h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.T N°7 de 18 Hipolito Irigoyen&quot; en C 10</td></tr><tr><td>06/10/2025</td><td>13:45h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio de las victorias Jose Marmol&quot; en C 5</td></tr><tr><td>07/10/2025</td><td>08:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Master College&quot; en C 14</td></tr><tr><td>07/10/2025</td><td>11:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Master college&quot; en C 14</td></tr><tr><td>08/10/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Cabrini&quot; en C 11</td></tr><tr><td>09/10/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela T N°7 Dolores Lavalle&quot; en c 4</td></tr><tr><td>09/10/2025</td><td>16:00h.</td><td>Actividad Juego de Union de federaciones y entidades deportivas metropolitanas en &quot;Parque roca&quot; en C 8</td></tr><tr><td>10/10/2025</td><td>15:00h.</td><td>Auspicio en Argentina game show en &quot;Tecnopolis&quot; en B1605AIA</td></tr><tr><td>11/10/2025</td><td>15:00h.</td><td>Auspicio en Argentina game show en &quot;Tecnopolis&quot; en B1605AIA</td></tr><tr><td>11/10/2025</td><td>15:00h.</td><td>Auspicio en Creamfields en &quot;Parque de la ciudad&quot; en C 8</td></tr><tr><td>12/10/2025</td><td>15:00h.</td><td>Auspicio en Creamfields en &quot;Parque de la ciudad&quot; en C 8</td></tr><tr><td>13/10/2025</td><td>10:30h.</td><td>Activación Capacitaciones /Minis de Educ/DG personal docente  y no docente Enlaces de Formación en C 1</td></tr><tr><td>14/10/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot; °Escuela de Educación media N1 DE 12- Julio Cortázar&quot; en C 7&quot;</td></tr><tr><td>14/10/2025</td><td>11:30h.</td><td>Activación &quot;ACCIÓN DGPJ&quot; en C 4</td></tr><tr><td>15/10/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.TN°8 de 13- Paula. A de Sarmiento&quot; en C9</td></tr><tr><td>15/10/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click &quot; Los adultos mayores y el juego saludable&quot;16</td></tr><tr><td>16/10/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Argentino Arabe Islamico&quot; en C 10</td></tr><tr><td>20/10/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Presencia Villa Devoto&quot; en C 11</td></tr><tr><td>20/10/2025</td><td>15:00h.</td><td>Activacion &quot;Foro Weff&quot;</td></tr><tr><td>21/10/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela de E.M N1 DE 12-Julio Cortázar&quot;C7</td></tr><tr><td>21/10/2025</td><td>10:00h.</td><td>Activación Taller ACAP en &quot;LOTBA&quot; en C 14</td></tr><tr><td>22/10/2025</td><td>13:30h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Usina del Arte OGDAI INFORMATON&quot; en C 4</td></tr><tr><td>22/10/2025</td><td>19:15h.</td><td>Activación &quot;Capacitación Policia de la Ciudad&quot; C 8</td></tr><tr><td>23/10/2025</td><td>10:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Buen Consejo&quot; en C 3</td></tr><tr><td>23/10/2025</td><td>11.30h.</td><td>Activación &quot;ACCIÓN DGPJ&quot; en C 4</td></tr><tr><td>24/10/2025</td><td>09:20h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.N.Superior N°9-Domingo F.Sarmiento&quot; en C3</td></tr><tr><td>27/10/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Normal 7- Jose María Torres&quot; en C5</td></tr><tr><td>27/10/2025</td><td>18:00h.</td><td>Activación Estaciones saludables clic &quot;Charla virtual mensual N°7 &quot;Pantallas y apuestas:cómo acompañar a niñas, niños y adolescentes</td></tr><tr><td>27/10/2025</td><td>19:15h.</td><td>Activación &quot;Capacitación Policia de la Ciudad&quot; C 8</td></tr><tr><td>28/10/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela de Educación artística en artes visuales  Rogelio Yrurtia&quot; en C 10</td></tr><tr><td>28/10/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela N°12 DE 15-Reconquista&quot; en C 12</td></tr><tr><td>28/10/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Escuela de educación media 1 de 2-Julio Cortázar&quot; en C7</td></tr><tr><td>29/10/2025</td><td>09:00h.</td><td>Activación &quot;Deportes de Arena - Parque Sarmiento&quot; en C 12</td></tr><tr><td>29/10/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Misericordia Belgrano&quot; en C 13</td></tr><tr><td>30/10/2025</td><td>09:00h.</td><td>Activación &quot;Deportes de Arena - Parque Sarmiento&quot; en C 12</td></tr><tr><td>30/10/2025</td><td>18:00h.</td><td>Activación taller &quot;FUNDACIÓN CONVIVIR + ALEA&quot;</td></tr><tr><td>31/10/2025</td><td>09:00h.Activación &quot;Deportes de Arena - Parque Sarmiento&quot; en C 12</td><td> </td></tr><tr><td>01/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Nuestra Sra de las Gracias&quot; en C 7</td></tr><tr><td>01/09/2025</td><td>10:00h.</td><td>Activación Capacitacion OGDAI en &quot;Esc artistica Aida Mastrazzi&quot; en C 1</td></tr><tr><td>01/09/2025</td><td>14:00H.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Ntra Sra de las Gracias&quot; en C 7</td></tr><tr><td>02/09/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Nacional Buenos Aires&quot; en C 1</td></tr><tr><td>02/09/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;E.T N°7 Dolores Lavalle&quot; en C 4</td></tr><tr><td>03/09/2025</td><td>09:40h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela Cangallo&quot; en C 3</td></tr><tr><td>03/09/2025</td><td>10:00h.</td><td>Mesa ampliada sobre &quot;Prev de consumos problematicos&quot; en Comuna 1</td></tr><tr><td>04/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Español Virgen del Pilar&quot; en C 13</td></tr><tr><td>04/09/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Ntra Sra de los milagros de Caacupe&quot; en C 4</td></tr><tr><td>05/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Calasancio Divina Pastora&quot; en C 9</td></tr><tr><td>05/09/2025</td><td>11:00h</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio de las Victorias&quot; en C 5</td></tr><tr><td>08/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;CEOL N°9 de 12 Jose de Urquiza&quot; en C 7</td></tr><tr><td>08/09/2025</td><td>14:00h.</td><td>Evento Hablar es ganar &quot;Dialogo y reflexion frente a las apuestas en jovenes&quot; en &quot;Club Huracan&quot; en C 4</td></tr><tr><td>09/09/2025</td><td>10:00h.</td><td>Activación Capacitacion Consejo de la Magistratura-Colegios &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Nacional Bs As&quot; en C 1</td></tr><tr><td>09/09/2025</td><td>10:00h.</td><td>Activación Capacitacion OGDAI en &quot;Escuela de Educacion Media N°6 de 5&quot; en C 4</td></tr><tr><td>10/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Medalla Milagrosa&quot; en C 7</td></tr><tr><td>10/09/2025</td><td>10:00h.</td><td>Activación Capacitacion OGDAI en &quot;Escuela Media N°2 de 20&quot; en C 8</td></tr><tr><td>12/09/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Inst Calasancio Divina Pastora&quot; en C 9</td></tr><tr><td>15/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Justo Jose de Urquiza&quot; en C 6</td></tr><tr><td>15/09/2025</td><td>10:00h.</td><td>Activación Capacitacion OGDAI en &quot;Escuela de Comercio N°15 - C. Grierson&quot; en C 12</td></tr><tr><td>16/09/2025</td><td>10:00h.</td><td>Activación Capacitacion Consejo de la Magistratura-Colegios &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Nacional Bs As&quot; en C 1</td></tr><tr><td>16/09/2025</td><td>10:00h.</td><td>Activación Taller ACAP en &quot;LOTBA&quot; en C 14</td></tr><tr><td>16/09/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio de Las Victorias&quot; en C 5</td></tr><tr><td>17/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela de Comercio N°6 de 13&quot; en C 8</td></tr><tr><td>17/09/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click &quot;Impacto de las redes sociales en los hábitos de juego&quot;</td></tr><tr><td>18/09/2025</td><td>09:30.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela de Eduacion Media N°2 de 19&quot; en C 8</td></tr><tr><td>18/09/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Cristo Maestro&quot; en C10</td></tr><tr><td>19/09/2025</td><td>11:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Inst Nuestra Sra de las Nieves&quot; en C 9</td></tr><tr><td>19/09/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Inst Nuestra Sra de las Nieves&quot; en C 9</td></tr><tr><td>22/09/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Norbridge&quot; en C 12</td></tr><tr><td>22/09/2025</td><td>09:30h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Norbridge&quot; en C 12</td></tr><tr><td>23/09/2025</td><td>10:00h.</td><td>Activación Capacitacion Consejo de la Magistratura-Colegios &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela de Cerámica N°1&quot; en C 5</td></tr><tr><td>24/09/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Nuestra Sra del Huerto&quot; en C 3</td></tr><tr><td>24/09/2025</td><td>10:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Nuestra Sra de las Nieves&quot; en C 9</td></tr><tr><td>25/09/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst San Judas Tadeo&quot; en C 7</td></tr><tr><td>25/09/2025</td><td>09:30h.</td><td>Activación Capacitacion &quot;Consumos problematicos en la escuela&quot; en &quot;Inst superior J.V González&quot; en C 3</td></tr><tr><td>26/09/2025</td><td>14:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela Tecnica N°1 de 4 Otto Krause&quot; en C 1</td></tr><tr><td>29/09/2025</td><td>09:30.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.N.S N°5 Gral Martin Miguel de Guemes&quot; en C 4</td></tr><tr><td>29/09/2025</td><td>18:00h.</td><td>Activación &quot;Charla virtual mensual N°7&quot; - Dra Cecilia Garcia</td></tr><tr><td>30/09/2025</td><td>10:00h.</td><td>Activación Capacitacion Consejo de la Magistratura-Colegios &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela Argentina Manuel Belgrano&quot; en C 13</td></tr><tr><td>30/09/2025</td><td>10:00h.</td><td>Activación Taller ACAP en &quot;LOTBA&quot; en C 1</td></tr><tr><td>04/08/2025</td><td>08:00h.</td><td>Activacion Charla Testimonial con Cayetano en &quot;Colegio Santa Ana y San Joaquin&quot; en C 13</td></tr><tr><td>04/08/2025</td><td>11:00h.</td><td>Activación Taller ACAP en &quot;USAL&quot; &quot;Como impactan los j de apuestas en los jovenes&quot; en C 3</td></tr><tr><td>04/08/2025</td><td>18:00h.</td><td>Activación 7° Charla mensual virtual de LOTBA “Pantallas y Apuestas:Prevención del riesgo en el Juego Online”</td></tr><tr><td>05/08/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Nacional Buenos Aires&quot; en C 1</td></tr><tr><td>06/08/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Escuela Nazareth&quot; en C 12</td></tr><tr><td>06/08/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Ntra Sra de la Paz&quot; en C 8</td></tr><tr><td>07/08/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Sacratisimo corazon de Jesus&quot; en C 10</td></tr><tr><td>07/08/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Inst. Justo Jose de Urquiza&quot; en C 7</td></tr><tr><td>08/08/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Nac. N°5 de 2 Bartolomé Mitre&quot; en C 3</td></tr><tr><td>11/08/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Jose Ingenieros&quot; en C 13</td></tr><tr><td>12/08/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Nacional Buenos Aires&quot; en C 1</td></tr><tr><td>13/08/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;E.C.N°19- J. Montalvo&quot; en C 6</td></tr><tr><td>13/08/2025</td><td>09:15h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Ecleston&quot; en C 7</td></tr><tr><td>13/08/2025</td><td>14:00h.</td><td>Activación Día del niño en &quot;Parque Olímpico&quot; en C 8</td></tr><tr><td>14/08/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio La Inmaculada Marista&quot; en C 4</td></tr><tr><td>14/08/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;E.CN°19 J. Montalvo&quot; en C 6</td></tr><tr><td>18/08/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Logosofico&quot; en C 14</td></tr><tr><td>18/08/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot; Colegio San Martin de Tours&quot; en C 14</td></tr><tr><td>19/08/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Nueva Pompeya&quot; en C 4</td></tr><tr><td>20/08/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Esc de Comercio N°6 de 13- AMERICA&quot; en C 8</td></tr><tr><td>20/08/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click &quot;Limites del juego en el era digital&quot;</td></tr><tr><td>21/08/2025</td><td>09.30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Ntra Sra del Huerto&quot; en C 3</td></tr><tr><td>21/08/2025</td><td>14:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio De las Victorias&quot; en C5</td></tr><tr><td>22/08/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.N.Superior N°9-Domingo F.Sarmiento&quot; en C 3</td></tr><tr><td>25/08/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.T.N°1de 4 Otto KRAUSE&quot; en C 1</td></tr><tr><td>26/08/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Nueva Pompeya&quot; en C 4</td></tr><tr><td>27/08/2025</td><td>10:00h.</td><td>Activación Desafio Olimpico en &quot;Inst Zaccarias&quot; en C 4</td></tr><tr><td>27/08/2025</td><td>13:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Cristo Maestro&quot; en C 10</td></tr><tr><td>28/08/2025</td><td>10:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Buen Consejo&quot; en C 4</td></tr><tr><td>29/08/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.E.N S.N°5 Gral Martin M. de Guemes&quot; en C 4</td></tr><tr><td>01/07/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Sagrado corazón de Jesús2 en C 14</td></tr><tr><td>01/07/2025</td><td>13:00h.</td><td>Activación Taller &quot;Deporte consciente&quot; en Club del Circulo Policial en C 13</td></tr><tr><td>02/07/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Liceo Franco Arg.Jean Mermoz&quot; en C 13</td></tr><tr><td>02/07/2025</td><td>14:00h.</td><td>Activacion Charla Testimonial con Cayetano para Jovenes en &quot;colegio Saint James&quot; en C 12</td></tr><tr><td>04/07/2025</td><td>09:00h.</td><td>Activación Taller Deporte Consciente en &quot;E.C N°32 -Asoc de Fomento S. de Liniers&quot; en C 8</td></tr><tr><td>04/07/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Liceo 9 de 10 Santiago Derqui&quot; en C 13</td></tr><tr><td>07/07/2025</td><td>11:00h.</td><td>Activación Taller J. Saludable y prev del j. patologico&quot; en C.de J &quot;C.de J. El encanto por la vida&quot; en C 7</td></tr><tr><td>07/07/2025</td><td>14:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.de C. N°1 de 4 J.V. González&quot;  C4</td></tr><tr><td>08/07/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. de enseñanza F. Froebel&quot; C4</td></tr><tr><td>10/07/2025</td><td>18:30h.</td><td>Activación Taller &quot;Presentacion del Programa: Compromiso asumido&quot; en &quot;Club Añasco&quot; en C 15</td></tr><tr><td>11/07/2025</td><td>11:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Santa Maria&quot; en C 4</td></tr><tr><td>14/07/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Fasta Mñor Aneiros&quot; en C 7</td></tr><tr><td>14/07/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes en &quot;Colegio Moruli&quot; en C 12</td></tr><tr><td>14/07/2025</td><td>11:00h.</td><td>Activación Taller J. Saludable y prev del j. patologico&quot; en C.de J &quot;CdeJ.Unidos para siempre&quot; en C15</td></tr><tr><td>14/07/2025</td><td>11:15h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.E.Media N°5 Héroes de Malvinas&quot; en C13</td></tr><tr><td>15/07/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Nueva Pompeya&quot; en C 4</td></tr><tr><td>15/07/2025</td><td>11:00h.</td><td>Activación Curso de Concientización Provation en &quot;LOTBA&quot; en C 14</td></tr><tr><td>16/07/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;INST. Dulcisimo Nombre de Jesus&quot; en C 12</td></tr><tr><td>16/07/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click &quot;El juego problematico en menores</td></tr><tr><td>22/07/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Santa Ana y San Joaquin&quot; en C 11</td></tr><tr><td>22/07/2025</td><td>13:30h.</td><td>Activacion &quot;Auspicio de obra de teatro &quot;Dragones y Piratas&quot; en C 13</td></tr><tr><td>23/07/2025</td><td>14:00h.</td><td>Activación Taller &quot;Colonia de Invierno &quot;E.T32 de 14- Gral J.de San Martin&quot; en C 12</td></tr><tr><td>24/07/2025</td><td>14:00h.</td><td>Activación taller &quot;Colonia de Invierno- EN°18de18- Larroque&quot; en C 10</td></tr><tr><td>24/07/2025</td><td>12:00h.</td><td>Taller J. Saludable y prev del j. patologico&quot; en &quot;C de J. Solamente Amigos&quot; en C 11</td></tr><tr><td>26/07/2025</td><td>14:00h.</td><td>Activación 1°Festival contra las apuestas de menores-RAP LIBRE DE APUESTAS en C 8</td></tr><tr><td>28/07/2025</td><td>18:00h.</td><td>Activación 6° Charla mensual virtual de LOTBA &quot;Pantallas y Apuestas: Prevención del riesgo en el Juego Online”</td></tr><tr><td>29/07/2025</td><td>11:00h.</td><td>Activación Curso de Concientización Provation en &quot;LOTBA&quot; en C 14</td></tr><tr><td>29/07/2025</td><td>11:30h.</td><td>Actividad Intergeneracional en Centro de jubilados &quot;Angelita&quot; en C 9</td></tr><tr><td>03/06/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano para Jovenes en &quot;Colegio Guadalupe&quot; en C 14</td></tr><tr><td>03/06/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.C.N°1 Joaquin V. González&quot;en C4</td></tr><tr><td>04/06/2025</td><td>08:00h.</td><td>Activación Charla Testimonial con Cayetano en &quot;Colegio Galileo Galilei&quot; en C5</td></tr><tr><td>04/06/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.Comercial N°35de 21&quot; en C18</td></tr><tr><td>04/06/2025</td><td>09:45h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio AULA XXI&quot; en C13</td></tr><tr><td>04/06/2025</td><td>11:00h.</td><td>Activacion &quot;Taller J. Saludable y prev del j. patologico&quot; en C.de J &quot;Deshojando Margaritas&quot; en C 9</td></tr><tr><td>09/06/2025</td><td>09:00h.</td><td>Activacion Charla Testimonial con Cayetano en &quot;Colegio Horacio Watson&quot; en C 12</td></tr><tr><td>09/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en&quot;E. de Comercio N°11de 17-Dr. J. Peralta&quot;en C 11</td></tr><tr><td>09/06/2025</td><td>12:00h.</td><td>Activacion Taller J. Saludable y prev del j. patologico&quot; en C.de J &quot;C.de J. FELICIDAD&quot; en C 10</td></tr><tr><td>10/06/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en&quot;E.C.N°1Joaquin V. González&quot; en C 4</td></tr><tr><td>10/06/2025</td><td>14:00h.</td><td>Activacion Charla Testimonial con Cayetano en &quot;Inst. Virgen del Valle &quot; en C 13</td></tr><tr><td>11/06/2025</td><td>08:45h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio San Maximiliano Kolbe&quot; en C13</td></tr><tr><td>11/06/2025</td><td>10:00h.</td><td>Activación Taller &quot; Cs.Aplicadas al Alto Rendimiento. Salud mental en el Deporte&quot; en C 4</td></tr><tr><td>11/06/2025</td><td>13:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.de C. N°35 de 21- Leopoldo Marechal&quot; en C8</td></tr><tr><td>12/06/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio N°6DE2- Manuel Belgrano&quot;en C 2</td></tr><tr><td>12/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;ColegioColegio Beata IMELDA&quot; en C 12</td></tr><tr><td>12/06/2025</td><td>14:00h.</td><td>Activacion Charla Testimonial con Cayetano en &quot;Colegio Saint Jean&quot; en C 12</td></tr><tr><td>13/06/2025</td><td>13:45h.</td><td>Activacion Charla Testimonial con Cayetano en &quot;Inst Ntra Sra de la Paz&quot; en C 8</td></tr><tr><td>17/06/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.S. de Comercio C. Pelegrini&quot; en C2</td></tr><tr><td>18/06/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio FASTA Monseñor Aneiros&quot; en C 7</td></tr><tr><td>18/06/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click</td></tr><tr><td>19/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto San Roman&quot; en C13</td></tr><tr><td>19/06/2025</td><td>10:00h.</td><td>Activación Previa a Copa Badminton con escuelas en Parque Sarmiento en C 12</td></tr><tr><td>23/06/2025</td><td>08:00h.</td><td>Activacion Charla Testimonial con Cayetano en &quot;Inst. Dulcisimo nombre de Jesus&quot; en C 12</td></tr><tr><td>23/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.Tecnica N°26de 6- Confederacion Suiza&quot; en C3</td></tr><tr><td>24/06/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.S. de Comercio Carlos Pelegrini&quot; en C 2</td></tr><tr><td>25/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot; Colegio Presencia Villa Devoto&quot; en C 11</td></tr><tr><td>25/06/2025</td><td>10:00h.</td><td>Activación Deporte consciente maximizado en Pque Olímpico en C 8</td></tr><tr><td>26/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst.Santa María del Rosario&quot; en C 4</td></tr><tr><td>26/06/2025</td><td>12:00h.</td><td>Activación  actividad &quot;Social Media Day Buenos Aires-Auspicio&quot; en C 4</td></tr><tr><td>27/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en&quot;E.T.N°23 de 14- Gral. Jose de San Martin&quot; en C 4</td></tr><tr><td>30/06/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en&quot;Esc. TecnicaN°35 de 8- EDUARDO LATZINA&quot; en C10</td></tr><tr><td>30/06/2025</td><td>09:30h.</td><td>Activación &quot;5° Charla virtual mensual-Entre todos, como ayudar a prevenir el  juego patológico&quot;</td></tr><tr><td>05/05/2025</td><td>08:45h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Educ. Ntra Sra de Lujan&quot; en C.12</td></tr><tr><td>06/05/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio M. Auxiliadora-Colegio San Francisco de Sales&quot; en C.5</td></tr><tr><td>06/05/2025</td><td>10:00h.</td><td>Activación &quot;Semana de la Educacion Fisica y Calidad de Vida&quot; en Parque Sarmiento en C 12</td></tr><tr><td>07/05/2025</td><td>09:00h.</td><td>Activación &quot;Olimpiadas Adultos Mayores&quot; en Av. Coronel Roca 4200, en C 8</td></tr><tr><td>07/05/2025</td><td>09:45h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Lange Ley&quot; en C 14</td></tr><tr><td>07/05/2025</td><td>10:00h.</td><td>Activación &quot;Semana de la Educacion Fisica y Calidad de Vida&quot; en Parque Sarmiento en C 12</td></tr><tr><td>08/05/2025</td><td>10:00h.</td><td>Activación &quot;Semana de la Educacion Fisica y Calidad de Vida&quot; en Parque Sarmiento en C 12</td></tr><tr><td>08/05/2025</td><td>10:00h.</td><td>Activacion &quot;Taller J. Saludable y prev del j. patologico&quot; en C.de J. &quot;Un buen lugar&quot; EN C 11</td></tr><tr><td>12/05/2025</td><td>09:45h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Esc.Cristiana de la puerta abierta&quot; en C 10</td></tr><tr><td>13/05/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.C.N°1 Joaquin V. González&quot; en C 4</td></tr><tr><td>14/05/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Sagrado Corazón- Almagro&quot; en C 6</td></tr><tr><td>15/05/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst Hijas de Jesus&quot; en C 12</td></tr><tr><td>16/05/2025</td><td>12.00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto San Jose&quot; en C 11</td></tr><tr><td>20/05/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.C.N°1Joaquin V. González&quot; en C 4</td></tr><tr><td>20/05/2025</td><td>11:30h.</td><td>Activación Taller &quot;Capacitacion ACAP &quot;Como impactan los J.de apuestas en los jóvenes&quot; en LOTBA C 14</td></tr><tr><td>21/05/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Educativo Modelo&quot; en C6</td></tr><tr><td>21/05/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click &quot;&quot;Uso Responsable de la tecnología en adultos&quot;</td></tr><tr><td>22/05/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E. Técnica N°9de 7&quot; en C 6</td></tr><tr><td>23/05/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Inst. Sagrada Familia&quot; en C11</td></tr><tr><td>26/05/2025</td><td>10:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Modelo Sarmiento&quot; en C10</td></tr><tr><td>27/05/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.C.N°1Joaquin V. González&quot; en C 4</td></tr><tr><td>28/05/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto SCHONTHAL&quot; en C 7</td></tr><tr><td>28/05/2025</td><td>16:00h.</td><td>Activación &quot;Dia Internacional del Juego saludable&quot; en &quot;Plaza Colombia&quot; C 4</td></tr><tr><td>29/05/2025</td><td>09:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio José Ingenieros -Obras&quot; en C13</td></tr><tr><td>29/05/2025</td><td>10:00h.</td><td>Activación &quot;Semana de la Educacion Fisica y Calidad de Vida&quot; en Parque Sarmiento en C 12</td></tr><tr><td>30/05/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.de Comercio N°3de7- H. Vieytes&quot; en C 6</td></tr><tr><td>03/04/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto San José&quot; en C.13</td></tr><tr><td>07/04/2025</td><td>09:30h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto ORSINO&quot; en C.6</td></tr><tr><td>08/04/2025</td><td>10:00h.</td><td>Activación Taller &quot;Deporte Consciente&quot; en &quot;Esc. de deportes nueva generación&quot; en C.5</td></tr><tr><td>08/04/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los juegos de apuestas en los jóvenes&quot; en &quot;Consejo de la Magistratura&quot; en C.1</td></tr><tr><td>09/04/2025</td><td>10:30h.</td><td>Activacion Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Misericordia&quot; en C.9</td></tr><tr><td>14/04/2025</td><td>11:00h.</td><td>Activacion Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio Logosofico&quot; en C.14</td></tr><tr><td>15/04/2025</td><td>10:00h.</td><td>Activacion Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio María Auxiliadora&quot; en C.5</td></tr><tr><td>16/04/2025</td><td>09:00h.</td><td>Activacion Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Divina Providencia&quot; en C.12</td></tr><tr><td>16/04/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click &quot;Uso Responsable de la tecnología en adolecentes&quot;</td></tr><tr><td>21/04/2025</td><td>09:30h.</td><td>Activacion Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;E.T.28 de 10 Rep Francesa&quot;en C.13</td></tr><tr><td>22/04/2025</td><td>10:00h.</td><td>Activacion Semana de la Educ.Fisica y Calidad de Vida&quot; en &quot;Parque indoamericano&quot; en C.8</td></tr><tr><td>22/04/2025</td><td>10</td><td>00h.</td></tr><tr><td>23/04/2025</td><td>09</td><td>00h.</td></tr><tr><td>23/04/2025</td><td>10:00h.</td><td>Activación Semana de la Educ.Fisica y Calidad de Vida&quot; en &quot;Parque indoamericano&quot; en C.8</td></tr><tr><td>24/04/2025</td><td>10:00h.</td><td>Activación Semana de la Educ.Fisica y Calidad de Vida&quot; en &quot;Parque indoamericano&quot; en C.8</td></tr><tr><td>25/04/2025</td><td>09:00h.</td><td>Activación Semana de &quot;Sensibilización y estrategias preventivas sobre consumos problC.de J. Un buen lugaremáticos&quot; en Colegio Formar Futuro&quot; en C.10</td></tr><tr><td>29/04/2025</td><td>10:00h.</td><td>Activación Taller &quot;Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Colegio San Francisco de Sales&quot; en C.5</td></tr><tr><td>29/04/2025</td><td>16:00h.</td><td>Activación Evento CIBER SEGURIDAD&quot; en &quot;Hotel Sheraton Bs.As&quot; en C.1</td></tr><tr><td>29/04/2025</td><td>18:00h.</td><td>Activación Charla Virtual LOTBA a la Comunidad&quot; &quot;Hablar es ganar: Perder mas que dinero, el efecto del juego patológico&quot;</td></tr><tr><td>30/04/2025</td><td>09:30h.</td><td>Activación Como impactan los J.de apuestas en los jóvenes&quot; en &quot;Instituto Roberto Arlt&quot; en C.8</td></tr><tr><td>05/03/2025</td><td>10:00h.</td><td>Activación Sub 14 femenino en &quot;Fundación River&quot; Comuna 13</td></tr><tr><td>06/03/2025</td><td>10:00h.</td><td>Activación Sub 14 femenino en &quot;Fundación River&quot; Comuna 13</td></tr><tr><td>17/03/2025</td><td>18:00h.</td><td>Activación 2°charla virtual mensual en LOTBA &quot;Tres ideas sobre...&quot;</td></tr><tr><td>28/03/2025</td><td>10:30h.</td><td>Activacion Capacitación de Juego Patológico para empleados de Sindicatura en Parque lezama Comuna 4</td></tr><tr><td>05/02/2025</td><td>18:00h.</td><td>Activación Verano Mayor &quot;Promoción del juego responsable&quot; en &quot;Polideportivo Chacabbuco&quot; en Comuna 7</td></tr><tr><td>07/02/2025</td><td>10:00h.</td><td>Activación Parques de Verano en &quot;Parque de los Niños&quot; en Comuna 13</td></tr><tr><td>10/02/2025</td><td>18:00h.</td><td>Activación Verano Mayor &quot;Promoción del juego responsable&quot; en &quot;Polideportivo Martín Fierro&quot; en Comuna 3</td></tr><tr><td>11/02/2025</td><td>10:00h.</td><td>Activación Parques de Verano en &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>12/02/2025</td><td>18:00h.</td><td>Activación Verano Mayor &quot;Promoción del juego responsable&quot; en &quot;Polideportivo Chacabbuco&quot; en Comuna 7</td></tr><tr><td>14/02/2025</td><td>10:00h.</td><td>Activación Parques de Verano en &quot;Parque de la Ciudad&quot; en Comuna 8</td></tr><tr><td>17/02/2025</td><td>18:00h.</td><td>Activacion Semana de Juego Responsable &quot;Acción en HAPSA&quot; en Comuna 14</td></tr><tr><td>18/02/2025</td><td>18:00h.</td><td>Activacion Semana de Juego Responsable &quot;Acción en CASINO Bs.As&quot; en Comuna 1</td></tr><tr><td>19/02/2025</td><td>10:00h.</td><td>Activación Semana de Juego Responsable &quot;Acción/ Est. Retiro/ agencia 1 y Once/agencia 5&quot; en Comuna 1</td></tr><tr><td>19/02/2025</td><td>11:00h.</td><td>Activación Taller virtual Estaciones Click</td></tr><tr><td>20/02/2025</td><td>10:00h.</td><td>Activación Semana de Juego Responsable &quot;Acción/ Est.Constitución AGENCIAS 3 y 4 en Comuna 1</td></tr><tr><td>21/02/2025</td><td>09:00h.</td><td>Activación Semana de Juego Responsable &quot;Acción en LOTBA&quot; en Comuna 14</td></tr><tr><td>06/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Parque Sarmiento 1 en Comuna 12</td></tr><tr><td>07/01/2025</td><td>10:00h.</td><td>Activacion Capacitacion en Ministerio Publico Fisacal en Comuna 1</td></tr><tr><td>08/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Barrio nueva Pompeya&quot; en Comuna 4</td></tr><tr><td>09/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Parque Chacabuco&quot; en Comuna 7</td></tr><tr><td>13/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Barracas&quot; en Comuna 4</td></tr><tr><td>15/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Circuito KDT Manuel Belgrano&quot; en Comuna 14</td></tr><tr><td>16/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Club de amigos&quot; en Comuna 14</td></tr><tr><td>20/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Club Dorrego&quot; en Comuna 9</td></tr><tr><td>22/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Club Avellaneda&quot; en Comuna 9</td></tr><tr><td>23/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Parque Roca&quot; en Comuna 8</td></tr><tr><td>27/01/2025</td><td>09:30h.</td><td>Activación Colonia del Gob. de la Ciudad de Bs.As.en &quot;Club Santojani&quot; en Comuna 9</td></tr></tbody></table>
+ <div class="pagination-container">
+    <span id="total_reg" style="font-size: 14px; color: #666; margin-right: auto;"></span>
+    
+    <div class="page-input-container">
+        <span>Pág.</span>
+        <input type="number" id="page_jump" min="1" value="1">
+        <span class="page-max-text" id="page_total_text">de 1</span>
+    </div>
+
+    <ul class="pagination compact-pager" id="myPager"></ul>
+</div>
+
+</article> <!-- Cierre correcto de la etiqueta article -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+    // Inicialización del paginado al cargar la página
+    initPagination();
+            
+    // Evento de búsqueda inteligente
+    $("#search").keyup(function(){
+        var searchText = $(this).val().toLowerCase();
+        
+        $("#tabla tbody tr").each(function() {
+            var rowText = $(this).text().toLowerCase();
+            if (rowText.indexOf(searchText) === -1) {
+                $(this).hide().addClass('filtered');
+            } else {
+                $(this).show().removeClass('filtered');
+            }
+        });
+        
+        // Re-inicializar al filtrar
+        initPagination();
+    });
+
+    // DETECTOR DE CAMBIO DE TAMAÑO: Si el usuario cambia el tamaño de la pantalla o gira el móvil
+    var resizeId;
+    $(window).resize(function() {
+        clearTimeout(resizeId);
+        // Usamos un pequeño delay (debounce) para que no parpadee continuamente mientras arrastran la ventana
+        resizeId = setTimeout(initPagination, 150);
+    });
+});  
+
+function initPagination() {
+    // 1. DETECTAR TAMAÑO DE PANTALLA: Si es menor o igual a 768px mostrar 5, si no, 10.
+    var filasPorPagina = ($(window).width() <= 768) ? 5 : 10;
+
+    var pager = $('#myPager');
+    if(pager.data("curr") !== undefined) {
+        var totalVisibles = $("#tabla tbody tr").not('.filtered').length;
+        var maxPaginasPosibles = Math.ceil(totalVisibles / filasPorPagina);
+        if ((pager.data("curr") + 1) > maxPaginasPosibles) {
+            pager.data("curr", 0); // Reiniciar a la página 1 si el cambio de tamaño nos deja fuera de rango
+        }
+    }
+
+    // 2. PASAR LA VARIABLE DINÁMICA al plugin
+    $('#myTable').pageMe({
+        pagerSelector: '#myPager',
+        inputSelector: '#page_jump',
+        totalTextSelector: '#page_total_text',
+        perPage: filasPorPagina // <--- Aquí se aplica el cambio
+    });
+}
+// PLUGIN PAGEME COMPACTO Y EDITABLE
+$.fn.pageMe = function(opts){
+    var $this = this,
+        defaults = {
+            perPage: 10,
+            pagerSelector: '#myPager',
+            inputSelector: '#page_jump',
+            totalTextSelector: '#page_total_text'
+        },
+        settings = $.extend(defaults, opts);
+
+    var listElement = $this;
+    var perPage = settings.perPage;
+    var children = listElement.children().not('.filtered'); 
+    var pager = $(settings.pagerSelector);
+    var pageInput = $(settings.inputSelector);
+    var totalText = $(settings.totalTextSelector);
+
+    pager.empty();
+
+    var numItems = children.length;
+    var numPages = Math.ceil(numItems / perPage) || 1; // Evita que sea 0
+    
+    $("#total_reg").html("Total de actividades: " + numItems);
+    totalText.html("de " + numPages);
+    pageInput.attr("max", numPages);
+
+    if (numItems === 0) {
+        listElement.children().hide();
+        pageInput.val(0);
+        return this;
+    }
+
+    // Asegurar que el input no tenga un valor fuera de rango
+    var currentProgress = parseInt(pager.data("curr")) || 0;
+    if (currentProgress >= numPages) { currentProgress = numPages - 1; }
+    pager.data("curr", currentProgress);
+    pageInput.val(currentProgress + 1);
+
+    // Construcción de botones de navegación usando Material Icons (o texto si no usas la librería)
+  // Construcción de botones de navegación usando flechas de texto nativas de HTML
+$('<li><a href="#" class="first_link" title="Principio">&#171;</a></li>').appendTo(pager);
+$('<li><a href="#" class="prev_link" title="Anterior">&#8249;</a></li>').appendTo(pager);
+$('<li><a href="#" class="next_link" title="Siguiente">&#8250;</a></li>').appendTo(pager);
+$('<li><a href="#" class="last_link" title="Final">&#187;</a></li>').appendTo(pager);
+
+    // Eventos de los botones de flechas
+    pager.find('.first_link').click(function(){ goTo(0); return false; });
+    pager.find('.prev_link').click(function(){ previous(); return false; });
+    pager.find('.next_link').click(function(){ next(); return false; });
+    pager.find('.last_link').click(function(){ goTo(numPages - 1); return false; });
+
+    // Evento para cuando el usuario escribe un número y presiona ENTER
+    pageInput.off('keypress').on('keypress', function(e) {
+        if (e.which === 13) { // Tecla Enter
+            var targetPage = parseInt($(this).val()) - 1;
+            if (isNaN(targetPage) || targetPage < 0) {
+                targetPage = 0;
+            } else if (targetPage >= numPages) {
+                targetPage = numPages - 1;
+            }
+            goTo(targetPage);
+        }
+    });
+
+    // Evento por si el usuario cambia el foco (pierde el clic en el input)
+    pageInput.off('blur').on('blur', function() {
+        var targetPage = parseInt($(this).val()) - 1;
+        if (!isNaN(targetPage) && targetPage >= 0 && targetPage < numPages) {
+            goTo(targetPage);
+        } else {
+            // Reestablecer al valor real si metió datos erróneos
+            pageInput.val(parseInt(pager.data("curr")) + 1);
+        }
+    });
+
+    // Ejecución inicial de la vista
+    goTo(currentProgress);
+
+    function previous(){
+        var goToPage = parseInt(pager.data("curr")) - 1;
+        if (goToPage >= 0) goTo(goToPage);
+    }
+
+    function next(){
+        var goToPage = parseInt(pager.data("curr")) + 1;
+        if (goToPage < numPages) goTo(goToPage);
+    }
+
+    function goTo(page){
+        var startAt = page * perPage,
+            endOn = startAt + perPage;
+
+        listElement.children().hide();
+        children.slice(startAt, endOn).show();
+
+        // Control de estados de botones (Habilitado / Deshabilitado)
+        if (page >= 1) {
+            pager.find('.prev_link, .first_link').parent().removeClass('disabled');
+        } else {
+            pager.find('.prev_link, .first_link').parent().addClass('disabled');
+        }
+
+        if (page < (numPages - 1)) {
+            pager.find('.next_link, .last_link').parent().removeClass('disabled');
+        } else {
+            pager.find('.next_link, .last_link').parent().addClass('disabled');
+        }
+
+        pager.data("curr", page);
+        pageInput.val(page + 1); // Sincroniza el input numérico
+    }
+    
+    return this;
+};
+</script></div>
+</div>
+<a href="#" class="open-modal info0800 no-transition" data-modal="modalNovedad" style="display:none;">Novedad</a>
+
+<div id="modalNovedad" class="modal" >
+  <div class="modal-content modal-capa">
+    <span class="close">&times;</span>
+<a href="#" target="_blank"><img src="images\novedad\NOSMUDAMOS.png"    width="100%" /></a>
+	 </div>
+</div><style>.topbar{background-color:#00000047;}</style>
+<!-- ========================= -->
+<!-- SECTION PIE --> 
+<!-- ========================= -->
+
+<section class="content-info">
+<section class="content-section" >
+<div class="content-text">
+<p><a href="tel:0800-333-1331">0800-333-1331</a> Atención al cliente<br>
+<a href="tel:147">147</a> Denuncias o irregularidades del juego<br>
+<a href="tel:0800-666-6006">0800-666-6006</a> Línea de orientación por juego problemático<br>
+<a href="#" class="pie-direccion" title="Ver ubicación en el mapa" onclick="abrirMapaPie();return false;">Carlos Pellegrini 657 (C1049) CABA </a><br>
+<a href="http://www.loteriadelaciudad.gob.ar" target="_blank">www.loteriadelaciudad.gob.ar</a> - <a href="http://www.world-lotteries.org" target="_blank">www.world-lotteries.org</a><br>
+<b class="bajadaTxt">EL JUGAR COMPULSIVAMENTE ES PERJUDICIAL PARA LA SALUD</b><br>
+<a href="#" id="cookie-reopen" onclick="CookieBanner.show(); return false;">Preferencias de cookies</a>
+</p>
+</div>
+<div class="content-text">
+    <p><img src="images/logos/imgLogosFooter_V1.svg" width="80%" /></p>
+    
+    <div class="footer-inline-block">
+        
+        <div class="social-group">
+            <a href="https://www.facebook.com/LoteriadelaCiudad/" class="social-media-item" target="_blank"><img src="images/logos/imgSocialMedia-fb.svg" /></a>
+            <a href="https://www.instagram.com/loteriadelaciudad/" class="social-media-item" target="_blank"><img src="images/logos/imgSocialMedia-ig.svg" /></a>
+            <a href="https://www.youtube.com/@loteriadelaciudad_inst" class="social-media-item" target="_blank"><img src="images/logos/imgSocialMedia-yt.svg" /></a>
+            <a href="https://ar.linkedin.com/company/loteria-de-la-ciudad-de-buenos-aires" class="social-media-item" target="_blank"><img src="images/logos/imgSocialMedia-in.svg" /></a>
+        </div>
+
+        <div class="tooltip-container">
+            <a href="#" class="tooltip-trigger">
+                Sitios autorizados para la comercialización de juegos de apuestas en la Ciudad de Buenos Aires.
+            </a>
+            
+            <div class="tooltip-box">
+                <ul class="sitios-autorizados">
+                    <li><a href="https://www.palermo.com.ar/" target="_blank">Hipódromo Argentino de Palermo</a></li>
+                    <li><a href="https://casinobuenosaires.com.ar/" target="_blank">Casino Buenos Aires</a></li>
+                    <li><a href="https://lotba.loteriadelaciudad.gob.ar/#donde-jugar" target="_blank">Agencias de Lotería de la Ciudad</a></li>
+                    <li><a href="?page=agencias-juego-en-linea">Agencias de juego en línea</a></li>
+                    <li><a href="https://www.lotba.bet.ar" target="_blank">Juegos lotéricos en línea</a></li>
+                    <li><a href="https://www.beturf.bet.ar/" target="_blank">Beturf - Apuestas mutuas hípicas remotas online</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</section>
+</section>
+
+<!-- ── Modal mapa: ubicación de LOTBA en Google Maps (se abre desde la dirección del pie) ── -->
+<style>
+.pie-direccion{ cursor:pointer; }
+#mapaModalPie{
+  display:none; position:fixed; z-index:999999; inset:0;
+  background:rgba(23,23,23,0.45);
+  align-items:center; justify-content:center;
+}
+#mapaModalPie .mapaModal-card{
+  background:#fff; color:#333;
+  border-top:4px solid #FFC700; border-radius:16px;
+  box-shadow:0 20px 45px rgba(0,0,0,0.35);
+  max-width:680px; width:92%; padding:22px 24px 18px; position:relative;
+}
+#mapaModalPie h2{ font-size:16px; margin:0 0 14px; padding-right:34px; color:#222; }
+#mapaModalPie iframe{
+  width:100%; height:420px; max-height:60vh;
+  border:none; border-radius:10px; background:#EDEBE7; display:block;
+}
+#mapaModalPie .mapaModal-cerrar{
+  position:absolute; top:12px; right:16px;
+  /* pisa el button{width:230px;...} global del sitio */
+  width:34px; height:34px; padding:0; line-height:34px; text-align:center;
+  display:flex; align-items:center; justify-content:center;
+  background:#F1EFEC; border:none; color:#555;
+  font-size:20px; cursor:pointer; border-radius:50%;
+  transition:background-color 0.15s, color 0.15s;
+}
+#mapaModalPie .mapaModal-cerrar:hover{ background:#FFC700; color:#171717; }
+</style>
+<div id="mapaModalPie" onclick="if(event.target===this)cerrarMapaPie();">
+  <div class="mapaModal-card">
+    <button class="mapaModal-cerrar" onclick="cerrarMapaPie();">&times;</button>
+    <h2>Carlos Pellegrini 657 (C1049) CABA </h2>
+    <iframe id="mapaModalFrame" src="about:blank" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade" title="Ubicación en Google Maps"></iframe>
+  </div>
+</div>
+<script>
+function abrirMapaPie(){
+  var frame = document.getElementById('mapaModalFrame');
+  /* el iframe se carga recién al abrir, para no pedir el mapa en cada página */
+  if (frame.getAttribute('src') === 'about:blank'){
+    frame.src = 'https://www.google.com/maps?q=' + encodeURIComponent("Loter\u00eda de la Ciudad, Carlos Pellegrini 657 (C1049) CABA ") + '&output=embed&hl=es';
+  }
+  document.getElementById('mapaModalPie').style.display = 'flex';
+}
+function cerrarMapaPie(){
+  document.getElementById('mapaModalPie').style.display = 'none';
+}
+</script>
+<!-- <section class="hero" style="background-image: url('https://picsum.photos/1000/600');display:block;">
+    <div >
+        <h1>Otro título</h1>
+    </div>
+</section> -->
+<div id="back-to-top">
+    <a href="#top" class="scroll-link"><img src="images/controles/imgFlechaTop.svg" /></a>
+</div>
+<script src="js/script.js"></script>
+<!-- ===== COOKIE BANNER ===== -->
+<!-- Pegá esto justo antes del cierre </body> en index.html -->
+
+<div id="cookie-overlay" class="cookie-overlay" role="dialog" aria-modal="true" aria-label="Preferencias de cookies" >
+  <div class="cookie-banner">
+
+    <div class="cookie-top">
+      <div class="cookie-icon">🍪</div>
+      <div class="cookie-text">
+        <h3>Usamos cookies</h3>
+        <p>
+          LOTBA S.A.U. utiliza cookies propias y de terceros para garantizar el funcionamiento del sitio, recordar preferencias de navegación y obtener estadísticas anónimas de uso que permitan mejorar los servicios ofrecidos. Podés aceptar todas las cookies, rechazarlas o personalizar tus preferencias. Más información en nuestra
+          <a href="verPoliticaPrivacidad.php" target="_blank" rel="noopener">Política de Privacidad y Cookies</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="cookie-panels">
+      <div class="cookie-panel">
+        <input type="checkbox" checked disabled id="ck-necesarias">
+        <div>
+          <label class="panel-label">Necesarias <span class="panel-badge">SIEMPRE</span></label>
+          <div class="panel-desc">Sesión, seguridad y funcionamiento básico del sitio.</div>
+        </div>
+      </div>
+      <div class="cookie-panel">
+        <input type="checkbox" id="ck-analiticas">
+        <div>
+          <label for="ck-analiticas" class="panel-label">Analíticas</label>
+          <div class="panel-desc">Nos ayudan a entender cómo usás el sitio para mejorarlo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cookie-actions">
+      <button class="btn-cookie btn-reject" id="cookie-reject">Rechazar todo</button>
+      <button class="btn-cookie btn-custom" id="cookie-save">Guardar preferencias</button>
+      <button class="btn-cookie btn-accept" id="cookie-accept">Aceptar todo</button>
+    </div>
+
+    <p class="cookie-mini-note">Podés cambiar tus preferencias en cualquier momento desde el pie de página.</p>
+  </div>
+</div>
+
+<!-- Link para reabrir desde el footer (agregalo en el footer) -->
+<!-- <a href="#" id="cookie-reopen" onclick="CookieBanner.show(); return false;">Preferencias de cookies</a> -->
+
+<script src="js/cookie-banner.js"></script>
+
+</body>
+</html>

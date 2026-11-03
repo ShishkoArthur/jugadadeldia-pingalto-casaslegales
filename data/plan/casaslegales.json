@@ -1650,20 +1650,20 @@
  },
  {
   "section": "Служебные",
-  "url": "/quienes-escriben",
-  "title": "Quiénes escriben casaslegales.com",
-  "titleLen": 33,
-  "h1": "Quiénes escriben y revisan este sitio",
-  "description": "Quiénes escriben y revisan casaslegales.com, cómo usamos la IA para redactar y por qué cada dato sobre licencias se revisa contra el registro provincial.",
+  "url": "/redaccion",
+  "title": "Redacción: quiénes somos y cómo trabajamos",
+  "titleLen": 42,
+  "h1": "La redacción: quiénes somos y cómo trabajamos",
+  "description": "Quiénes hacen casaslegales.com: una redacción sin firmas ni afiliados, que escribe con ayuda de IA y verifica cada dato contra el registro oficial.",
   "keys": "—",
   "kind": "service",
   "wave": "P1",
-  "tool": "Карточка автора(ов) + как пишутся тексты (Claude API + ревью) честно",
+  "tool": "Страница редакции (без имён): кто мы как команда, независимость (без партнёрок и ссылок), как работаем с источниками, как пишутся тексты (ИИ + автоматическая сверка цитат) — честно",
   "ar": "Редакция пишет на es-AR и сверяет каждый факт с аргентинскими реестрами",
-  "data": "решение владельца об авторе",
+  "data": "решение владельца 03.11: на casaslegales нет именного автора, только редакционная команда",
   "auto": "по слову владельца",
   "rg": true,
-  "notes": "Автор — свой, не Denis Krazok (не сеть) — вопрос владельцу"
+  "notes": "Владелец 03.11: Denis Krazok — только jugadadeldia; здесь «redacción», schema Organization, без Person"
  },
  {
   "section": "Служебные",
