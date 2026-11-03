@@ -43,11 +43,11 @@ p a,li a,td a,.pa-src a{color:var(--vi);text-underline-offset:3px}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .pa-sun{display:block}:root:not([data-theme=light]) .pa-moon{display:none}}
 
 .pa-main{flex:1;width:100%;max-width:1240px;margin:0 auto;padding:0 0 40px}
-.pa-he{margin:22px 28px 0;padding:44px 40px;border-radius:36px;background:radial-gradient(80% 60% at 20% 0,#ffffff8c,#fff0),var(--fo);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px 44px;align-items:center;box-shadow:inset 0 0 0 1px var(--rim)}
+.pa-he{margin:22px 28px 0;padding:44px 40px;border-radius:36px;background:radial-gradient(80% 60% at 20% 0,#ffffff8c,#fff0),var(--fo);display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,30vw,380px);gap:28px 44px;align-items:center;box-shadow:inset 0 0 0 1px var(--rim)}
 :root[data-theme=dark] .pa-he{background:radial-gradient(80% 60% at 20% 0,#ffffff12,#fff0),var(--fo)}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .pa-he{background:radial-gradient(80% 60% at 20% 0,#ffffff12,#fff0),var(--fo)}}
 .pa-he.pa-sm{grid-template-columns:minmax(0,1fr);padding:32px 40px}
-.pa-he.pa-tl{grid-template-columns:minmax(0,1fr) 300px;padding:30px 40px}
+.pa-he.pa-tl{grid-template-columns:minmax(0,1fr) clamp(300px,30vw,380px);padding:30px 40px}
 .pa-ey{display:inline-flex;gap:8px;align-items:center;min-height:32px;padding:0 14px;border-radius:99px;background:var(--pn);font-size:14px;font-weight:600;color:var(--pk)}
 h1{font-size:56px;line-height:1.02;margin:16px 0 16px;text-wrap:balance}
 .pa-sm h1,.pa-tl h1{font-size:44px}
@@ -62,6 +62,7 @@ h1 em{font-style:normal;color:var(--vi)}
 .pa-girl div{position:relative;aspect-ratio:var(--r1);border-radius:16px;background:radial-gradient(circle at 50% 30%,#ffffffb3,#fff0 60%),var(--pn);overflow:clip}
 .pa-girl span,.pa-girl figcaption{font-size:12px;text-align:center;padding-top:8px}
 .pa-he:not(.pa-tl)>.pa-girl{margin-bottom:18px}
+.pa-he.pa-tl>.pa-girl{margin-bottom:24px}
 .pa-girl img{position:absolute;left:50%;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);display:block}
 
 .pa-pg{margin:-40px 64px 0;position:relative;padding:20px 24px;border-radius:28px;background:var(--pn);box-shadow:var(--sh),0 0 0 1px var(--ln);display:grid;grid-template-columns:220px repeat(3,minmax(0,1fr));gap:16px;align-items:center}
@@ -228,7 +229,7 @@ textarea{width:100%;padding:12px 14px;border-radius:16px;border:1.5px solid var(
 .pa-three{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:860px){
-.pa-he,.pa-he.pa-tl{grid-template-columns:minmax(0,1fr) 240px;gap:24px 28px}
+.pa-he,.pa-he.pa-tl{grid-template-columns:minmax(0,1fr) 260px;gap:24px 28px}
 .pa-hd{padding:8px 12px;gap:6px}
 .pa-lg{font-size:21px}
 .pa-bu{display:grid}
@@ -240,15 +241,17 @@ textarea{width:100%;padding:12px 14px;border-radius:16px;border:1.5px solid var(
 @media (max-width:680px){
 h1,.pa-sm h1,.pa-tl h1{font-size:32px;margin:12px 0}
 h2{font-size:23px}
-.pa-he{margin:12px 12px 0;padding:22px 16px 24px;border-radius:26px;grid-template-columns:minmax(0,1fr) clamp(150px,44vw,220px);gap:14px}
+.pa-he{--ph:clamp(320px,100vw,420px);margin:12px 12px 0;padding:22px 16px 24px;border-radius:26px;grid-template-columns:minmax(0,1fr);gap:14px}
 .pa-he.pa-sm{padding:22px 16px}
-.pa-he.pa-tl{padding:22px 16px 24px;grid-template-columns:minmax(0,1fr) clamp(150px,44vw,220px)}
+.pa-he.pa-tl{padding:22px 16px 24px;grid-template-columns:minmax(0,1fr)}
 .pa-he>div:first-child{display:contents}
 .pa-he.pa-sm>div:first-child{display:block}
 .pa-ey{grid-column:1/-1;justify-self:start;font-size:13px}
 .pa-he:not(.pa-sm) h1{grid-column:1/-1;grid-row:2;margin:0}
-.pa-girl{grid-column:2;grid-row:3;align-self:start;margin:0!important;padding:5px;border-radius:16px}
+.pa-girl{grid-column:1;align-self:start;margin:4px 0 0!important;padding:5px;border-radius:16px}
+.pa-he>.pa-girl{justify-self:center;width:min(100%,max(64%,calc(var(--g)*var(--ph)*var(--a)*1.3 + 10px)))}
 .pa-girl div{aspect-ratio:var(--r2)}
+.pa-he>.pa-girl div{aspect-ratio:auto;height:calc(var(--g)*var(--ph))}
 .pa-girl b{font-size:10px;padding:1px 4px 5px}
 .pa-girl div{border-radius:10px}
 .pa-girl span,.pa-girl figcaption{font-size:10px;padding-top:3px}
