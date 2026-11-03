@@ -1,0 +1,181 @@
+<!-- name: Carta -->
+<!-- desc: Плоская карта-атлас: упрощённые контуры 24 провинций в SVG, сетка широт, север и масштаб; заливка по статусу и числу сайтов, подписи на карте, легенда и карточка провинции сбоку. Светлая — холодный светлый лист, зелёная шкала, янтарь и лосось; тёмная — ночная карта, светлые зелёные провинции на графите. -->
+<!-- fonts: family=Familjen+Grotesk:wght@500;700&family=Reddit+Mono:wght@500;700 -->
+<style>
+.v02{--bg:#f2f5f3;--pa:#fff;--fg:#13201b;--mu:#4a5852;--ln:#cfd8d3;--ac:#1c6a46;--ex:#e6edea;--gr:#b9c7c0;--st:#7f8f88;--n0:#fdfefd;--nt:#13201b;--l1:#c8e7ba;--l1t:#13201b;--l2:#7dc290;--l2t:#0c1a14;--l3:#2b7a52;--l3t:#fff;--p:#f2cd78;--pt:#13201b;--b:#f5b3a2;--bt:#13201b;--inv:#13201b;--ivt:#f2f5f3;--m:"Reddit Mono",ui-monospace,Menlo,monospace;background:var(--bg);color:var(--fg);font:16px/1.5 "Familjen Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+.v02[data-mode="dark"]{--bg:#0c1311;--pa:#121b18;--fg:#e4ece8;--mu:#9fb1a9;--ln:#26332e;--ac:#8fdca3;--ex:#0f1916;--gr:#24342e;--st:#56675f;--n0:#1b2622;--nt:#d9e3de;--l1:#2d5b43;--l1t:#eef5f1;--l2:#62b781;--l2t:#07120d;--l3:#b5ecbd;--l3t:#07120d;--p:#d8b45c;--pt:#0c1311;--b:#e38c76;--bt:#0c1311;--inv:#e4ece8;--ivt:#0c1311}
+.v02 *{box-sizing:border-box}
+.v02 :where(a){color:inherit}
+.v02 :focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.v02 :is(h1,h2,h3,p,ul,figure,blockquote){margin:0}
+.v02-hd{display:flex;align-items:center;gap:18px;height:70px;padding:0 32px;border-bottom:1px solid var(--ln)}
+.v02-lo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:21px;text-decoration:none;margin-right:auto;min-height:44px}
+.v02-nv{display:flex;gap:20px}
+.v02-nv a{text-decoration:none;font-weight:500;padding:10px 0;border-bottom:2px solid transparent}
+.v02-nv a[aria-current]{border-color:var(--fg);font-weight:700}
+.v02-ib{width:44px;height:44px;border-radius:50%;border:1px solid var(--ln);background:var(--pa);color:var(--fg);display:grid;place-items:center}
+.v02-bu{display:none}
+.v02-w{padding:0 32px}
+.v02-hr{display:grid;grid-template-columns:330px 370px minmax(0,1fr);gap:28px;padding:28px 0 36px;align-items:start}
+.v02-k,.v02-cap,.v02 cite{font:500 13px var(--m);color:var(--mu);font-style:normal}
+.v02-k{color:var(--ac);font-weight:700}
+.v02 h1{font-size:40px;line-height:1.06;font-weight:700;letter-spacing:-.025em;margin:12px 0 14px}
+.v02-su{font-size:17px;color:var(--mu)}
+.v02-se{display:grid;gap:2px;margin-top:20px;padding:10px 16px;min-height:58px;border:1px solid var(--fg);border-radius:6px;background:var(--pa);font-weight:700;font-size:17px}
+.v02-se small{font:500 13px var(--m);color:var(--mu)}
+.v02-bt{display:grid;gap:8px;margin-top:10px}
+.v02-b1,.v02-b2{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:6px;font-weight:700;text-decoration:none}
+.v02-b1{background:var(--inv);color:var(--ivt)}
+.v02-b2{border:1px solid var(--ln);background:var(--pa)}
+.v02-mp{background:var(--ex);border:1px solid var(--ln);border-radius:10px;padding:8px}
+.v02-mp svg{display:block;width:100%;height:auto}
+.v02-mp path{stroke:var(--st);stroke-width:.6;stroke-linejoin:round}
+.v02-mp text{font:700 7.5px var(--m);text-anchor:middle}
+.v02-mp .v02-nm{font:700 9px "Familjen Grotesk",sans-serif}
+.v02-mp .v02-sm{font-size:5.5px}
+.v02-n path{fill:var(--n0)}.v02-n text{fill:var(--nt)}
+.v02-l1 path{fill:var(--l1)}.v02-l1 text{fill:var(--l1t)}
+.v02-l2 path{fill:var(--l2)}.v02-l2 text{fill:var(--l2t)}
+.v02-l3 path,.v02-l3 circle{fill:var(--l3)}.v02-l3 text{fill:var(--l3t)}
+.v02-p path{fill:var(--p)}.v02-p text{fill:var(--pt)}
+.v02-b path{fill:var(--b);stroke-dasharray:2 1.2}.v02-b text{fill:var(--bt)}
+.v02-mp .v02-on path{stroke:var(--fg);stroke-width:1.8}
+.v02-mp .v02-ca :is(path,circle){stroke:var(--fg);stroke-width:.8}
+.v02-mp .v02-ca text{fill:var(--fg);text-anchor:start}
+.v02-mp svg>text{fill:var(--fg)}
+.v02-mp .v02-gr{fill:none;stroke:var(--gr);stroke-dasharray:1.5 2}
+.v02-mp .v02-gl{fill:var(--mu);font-weight:500;font-size:6px;text-anchor:end}
+.v02-mp .v02-ar{fill:var(--fg);stroke:none}
+.v02-mp .v02-sb{stroke:var(--fg);fill:none;stroke-width:.8}
+.v02-sd{display:grid;gap:16px}
+.v02-key{display:grid;gap:10px;padding:16px 0;border-block:1px solid var(--ln)}
+.v02 .v02-key h2{font:700 13px var(--m);text-transform:uppercase;color:var(--mu)}
+.v02-key li{display:flex;align-items:center;gap:10px;font-size:15px}
+.v02-key ul{list-style:none;padding:0;display:grid;gap:8px}
+.v02-key i{width:18px;height:14px;border:1px solid var(--st);background:var(--c);flex:none}
+.v02-key .v02-dsh{border-style:dashed}
+.v02-co{background:var(--pa);border:1px solid var(--ln);border-left:6px solid var(--l3);border-radius:8px;padding:16px;display:grid;gap:8px}
+.v02 .v02-co h2{font-size:22px;line-height:1.15}
+.v02-n7{font:700 52px/1 "Familjen Grotesk",sans-serif;font-variant-numeric:tabular-nums}
+.v02-n7 small{font-size:16px;font-weight:500;color:var(--mu);margin-left:6px}
+.v02-go{display:flex;align-items:center;justify-content:space-between;min-height:46px;padding:0 14px;border-radius:6px;background:var(--inv);color:var(--ivt);font-weight:700;text-decoration:none}
+.v02-sc{padding:44px 0 0}
+.v02-hh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;border-top:2px solid var(--fg);padding-top:12px;margin-bottom:14px}
+.v02 h2{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.v02 table{width:100%;border-collapse:collapse;font-size:16px}
+.v02 th,.v02 td{padding:10px 6px;border-bottom:1px solid var(--ln);text-align:center}
+.v02 thead th{font:700 13px var(--m);color:var(--mu)}
+.v02 tbody th,.v02 thead th:first-child{text-align:left}
+.v02 tbody th{font-weight:700}
+.v02-y,.v02-x{display:inline-block;width:16px;height:16px;border-radius:50%;font-size:0}
+.v02-y{background:var(--l3);box-shadow:0 0 0 3px var(--l1)}
+.v02-x{width:8px;height:8px;border:1.5px solid var(--st)}
+.v02-cap{margin-top:10px}
+.v02-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.v02-vf{display:grid;gap:12px;align-content:start}
+.v02-in{display:flex;align-items:center;gap:8px;min-height:56px;border:1px solid var(--fg);border-radius:6px;background:var(--pa);padding:0 6px 0 14px}
+.v02-in span{flex:1;min-width:0;font:500 16px var(--m);overflow-wrap:anywhere}
+.v02-in b{display:grid;place-items:center;min-height:44px;padding:0 16px;border-radius:4px;background:var(--inv);color:var(--ivt)}
+.v02-rs{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:center;padding:14px;border-radius:8px;background:var(--pa);border:1px solid var(--ln)}
+.v02-rs i{grid-row:span 2;width:22px;height:22px;border-radius:50%;background:var(--l3);box-shadow:0 0 0 4px var(--l1)}
+.v02-rs b{font-size:17px}
+.v02-rs span{color:var(--mu);font-size:15px}
+.v02-qs{display:grid;gap:14px;align-content:start}
+.v02 blockquote{padding-left:14px;border-left:3px solid var(--l2);display:grid;gap:4px;font-size:17px}
+.v02-tg{font:700 13px var(--m);color:var(--ac)}
+.v02-gd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding-bottom:44px}
+.v02-gd a{display:grid;align-content:space-between;gap:16px;min-height:110px;padding:14px;border:1px solid var(--ln);border-radius:8px;background:var(--pa);text-decoration:none;font-weight:700;font-size:17px}
+.v02-gd span{font:500 13px var(--m);color:var(--mu)}
+.v02-ft{border-top:1px solid var(--ln);padding:26px 32px;display:grid;gap:14px;background:var(--pa)}
+.v02-ft nav{display:flex;flex-wrap:wrap;gap:0 20px}
+.v02-ft nav a{min-height:40px;display:inline-flex;align-items:center}
+.v02-rg{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:center;padding:14px 16px;border-radius:8px;background:var(--inv);color:var(--ivt)}
+.v02-rg b{grid-row:span 2;font:700 17px var(--m);border:2px solid currentColor;border-radius:50%;width:52px;height:52px;display:grid;place-items:center}
+.v02-rg a{font-weight:700}
+@container (max-width:620px){
+.v02-hd{height:60px;padding:0 16px;gap:8px}
+.v02-nv{display:none}
+.v02-bu{display:grid}
+.v02-w{padding:0 16px}
+.v02-hr{grid-template-columns:minmax(0,1fr);gap:18px;padding-top:18px}
+.v02 h1{font-size:33px}
+.v02-su{font-size:16px}
+.v02-mp{padding:4px}
+.v02 h2{font-size:26px}
+.v02 table{font-size:14px}
+.v02 th,.v02 td{padding:9px 3px}
+.v02-two,.v02-gd{grid-template-columns:minmax(0,1fr)}
+.v02-gd a{min-height:64px}
+.v02-ft{padding:24px 16px}
+}
+</style>
+<div class="v02 mock" data-mode="light">
+<header class="v02-hd">
+<a class="v02-lo" href="#"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 4l4 11h-8z" style="fill:var(--l3)"/><path d="M15 26l-4-11h8z" fill="currentColor"/></svg>casaslegales</a>
+<nav class="v02-nv" aria-label="Principal"><a href="#">Verificador</a><a href="#">Licencias</a><a href="#">Operadores</a><a href="#" aria-current="page">Provincias</a><a href="#">Cómo verificar</a><a href="#">Ayuda</a></nav>
+<button class="v02-ib" type="button" aria-label="Cambiar entre tema claro y oscuro"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M15 12.5A6.5 6.5 0 0 1 7.5 5a6.5 6.5 0 1 0 7.5 7.5z" fill="currentColor"/></svg></button>
+<button class="v02-ib v02-bu" type="button" aria-label="Menú"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+</header>
+<main class="v02-w">
+<section class="v02-hr">
+<div>
+<p class="v02-k">24 jurisdicciones · 6 listas oficiales · revisado 03/11/2026</p>
+<h1>Casas de apuestas legales: qué sitio está habilitado en tu provincia</h1>
+<p class="v02-su">Qué casas de apuestas figuran en la lista oficial de cada provincia, con la cita del regulador y la fecha en que la copiamos. Sin enlaces a operadores, sin bonos.</p>
+<div class="v02-se" role="button" tabindex="0"><small>Elegí tu provincia</small>Provincia de Buenos Aires</div>
+<div class="v02-bt"><a class="v02-b1" href="#">Verificar una dirección</a><a class="v02-b2" href="#">Cómo lo verificamos</a></div>
+</div>
+<figure class="v02-mp">
+<svg viewBox="0 0 200 340" role="img" aria-label="Mapa de las 24 jurisdicciones según su lista oficial"><path class="v02-gr" d="M0 35H200M0 85H200M0 135H200M0 185H200M0 235H200M0 285H200M33 0V340M74 0V340M115 0V340M156 0V340"/><text class="v02-gl" x="198" y="33">25°S</text><text class="v02-gl" x="198" y="83">30°S</text><text class="v02-gl" x="198" y="143">35°S</text><text class="v02-gl" x="198" y="283">50°S</text><g class="v02-n"><path d="M57 12L73 5L79 21L71 29L55 21Z"/><text x="64" y="16">JUJ</text></g><g class="v02-n"><path d="M73 5L96 6L94 24L89 42L78 46L66 45L46 41L45 29L55 21L71 29L79 21Z"/><text x="84" y="28">SAL</text></g><g class="v02-n"><path d="M96 6L134 38L129 54L94 24Z"/><text x="112" y="30">FOR</text></g><g class="v02-p"><path d="M148 59L158 40L167 44L166 56L151 67Z"/><text x="158" y="52">MIS</text></g><g class="v02-n"><path d="M46 41L66 45L66 63L73 65L74 87L66 84L43 64Z"/><text x="58" y="58">CAT</text></g><g class="v02-n"><path d="M66 45L78 46L73 65L66 63Z"/><text x="71" y="55" class="v02-sm">TUC</text></g><g class="v02-n"><path d="M78 46L89 42L99 65L98 84L74 87L73 65Z"/><text x="86" y="64">SGO</text></g><g class="v02-p"><path d="M94 24L129 54L126 58L118 65L99 65L89 42Z"/><text x="106" y="50">CHA</text></g><g class="v02-n"><path d="M37 72L56 107L30 108L30 88Z"/><text x="38" y="96">SJU</text></g><g class="v02-l2"><path d="M43 64L66 84L66 103L56 107L37 72Z"/><text x="52" y="86">LRI</text><text x="52" y="96" class="v02-nm">6</text></g><g class="v02-l1"><path d="M66 84L74 87L98 84L99 128L87 135L73 141L71 117L66 103Z"/><text x="82" y="106">CBA</text><text x="82" y="116" class="v02-nm">4</text></g><g class="v02-b"><path d="M99 65L118 65L118 87L109 102L113 118L99 128L98 84Z"/><text x="108" y="90">SFE</text></g><g class="v02-p"><path d="M126 58L148 59L151 67L133 87L118 87L118 65Z"/><text x="131" y="72">COR</text></g><g class="v02-b"><path d="M30 108L56 107L57 144L48 160L25 146L33 125Z"/><text x="42" y="130">MZA</text></g><g class="v02-n"><path d="M56 107L66 103L71 117L73 141L57 144Z"/><text x="64" y="125">SLU</text></g><g class="v02-l2 v02-on"><path d="M99 128L113 118L127 124L128 131L138 138L142 149L134 166L115 173L96 174L95 190L88 195L87 176L87 135Z"/><text x="112" y="150">PBA</text><text x="112" y="160" class="v02-nm">7</text></g><g class="v02-p"><path d="M118 87L133 87L130 110L127 124L113 118L109 102Z"/><text x="121" y="104">ERI</text></g><g class="v02-l2"><path d="M25 146L48 160L49 175L20 194L23 170Z"/><text x="33" y="170">NEU</text><text x="33" y="180" class="v02-nm">6</text></g><g class="v02-n"><path d="M57 144L73 141L87 135L87 176L48 160Z"/><text x="68" y="152">LPA</text></g><g class="v02-l1"><path d="M48 160L87 176L88 195L75 195L73 205L18 205L20 194L49 175Z"/><text x="55" y="188">RNE</text><text x="55" y="198" class="v02-nm">3</text></g><g class="v02-b"><path d="M73 205L85 211L74 217L59 235L53 245L19 245L18 205Z"/><text x="45" y="224">CHU</text></g><g class="v02-n"><path d="M53 245L52 275L46 287L46 308L17 305L5 280L14 260L19 245Z"/><text x="32" y="274">SCR</text></g><g class="v02-n"><path d="M44 311L64 321L73 332L44 334Z"/><text x="56" y="326">TDF</text></g><g class="v02-l3 v02-ca"><circle cx="128" cy="131" r="3.4"/><path d="M131 129 146 121"/><text x="162" y="120">CABA</text><text x="162" y="130" class="v02-nm">11</text></g><path class="v02-ar" d="M14 6l4 12-4-3-4 3z"/><text x="14" y="27">N</text><path class="v02-sb" d="M100 330h45M100 327v6M145 327v6"/><text x="122" y="324">500 km</text></svg>
+<figcaption class="v02-cap" style="padding:4px">Datos de ejemplo · contornos simplificados</figcaption>
+</figure>
+<div class="v02-sd">
+<aside class="v02-co" aria-label="Provincia elegida">
+<h2>Provincia de Buenos Aires</h2>
+<div class="v02-n7">7<small>sitios en la lista oficial</small></div>
+<p class="v02-cap">IPLyC · revisado 03/11/2026</p>
+<p>Ayuda: <a href="#">0800-444-4000</a></p>
+<a class="v02-go" href="#">Ver Provincia de Buenos Aires<span aria-hidden="true">→</span></a>
+</aside>
+<div class="v02-key">
+<h2>Referencias</h2>
+<ul>
+<li><i style="--c:var(--l1)"></i><i style="--c:var(--l2)"></i><i style="--c:var(--l3)"></i>lista oficial: 3–4 · 6–7 · 11 sitios</li>
+<li><i style="--c:var(--p)"></i>plataforma provincial</li>
+<li><i class="v02-dsh" style="--c:var(--b)"></i>no consultable</li>
+<li><i style="--c:var(--n0)"></i>sin dato verificado</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="v02-sc">
+<div class="v02-hh"><h2>Licencias por provincia</h2><p class="v02-cap">Datos de ejemplo · 26 marcas en 6 listas oficiales</p></div>
+<table><thead><tr><th scope="col">Marca</th><th scope="col">PBA</th><th scope="col">CABA</th><th scope="col">CBA</th><th scope="col">LRI</th><th scope="col">NEU</th></tr></thead><tbody><tr><th scope="row">Betsson</th><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-x">No</i></td><td><i class="v02-x">No</i></td></tr><tr><th scope="row">BetWarrior</th><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-x">No</i></td><td><i class="v02-x">No</i></td><td><i class="v02-y">Sí</i></td></tr><tr><th scope="row">bplay</th><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-x">No</i></td><td><i class="v02-x">No</i></td></tr><tr><th scope="row">Jugadón</th><td><i class="v02-x">No</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-x">No</i></td></tr><tr><th scope="row">bet365</th><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-x">No</i></td><td><i class="v02-x">No</i></td><td><i class="v02-x">No</i></td></tr><tr><th scope="row">MAC Group</th><td><i class="v02-x">No</i></td><td><i class="v02-x">No</i></td><td><i class="v02-x">No</i></td><td><i class="v02-y">Sí</i></td><td><i class="v02-y">Sí</i></td></tr></tbody></table>
+<p class="v02-cap">Punto lleno: figura en la lista oficial · anillo: no figura en esa lista (no quiere decir que sea ilegal en otra provincia)</p>
+</section>
+<section class="v02-sc v02-two">
+<div class="v02-vf">
+<div class="v02-hh"><h2>Verificador</h2></div>
+<p class="v02-su">¿Estás en el sitio de tu provincia? La misma marca puede tener otra dirección en cada jurisdicción.</p>
+<div class="v02-in"><span>caba.bplay.bet.ar</span><b>Verificar</b></div>
+<div class="v02-rs"><i aria-hidden="true"></i><b>Figura en la lista oficial</b><span>Ciudad Autónoma de Buenos Aires · LOTBA · copia del 03/11/2026, 14:20 (hora argentina)</span></div>
+</div>
+<div class="v02-qs">
+<div class="v02-hh"><h2>Lo que dice cada regulador</h2></div>
+<blockquote><span class="v02-tg">PBA</span>«Todos los sitios legales de apuestas terminan en ".bet.ar".»<cite>IPLyC · copia del 03/11/2026</cite></blockquote>
+<blockquote><span class="v02-tg">CBA</span>«Licencia otorgada mediante Resolución de Directorio Nro. 1889/23»<cite>Lotería de Córdoba · copia del 03/11/2026</cite></blockquote>
+</div>
+</section>
+<section class="v02-sc">
+<div class="v02-hh"><h2>Por dónde seguir</h2></div>
+<div class="v02-gd">
+<a href="#"><span>01</span>Las 24 jurisdicciones, una por una</a><a href="#"><span>02</span>Fichas de operadores, con capturas propias</a><a href="#"><span>03</span>Qué garantiza el dominio .bet.ar</a><a href="#"><span>04</span>Ayuda y autoexclusión en tu provincia</a>
+</div>
+</section>
+</main>
+<footer class="v02-ft">
+<p>Sin enlaces a operadores ni bonos. No es asesoramiento legal: depende de la ley de tu provincia.</p>
+<nav aria-label="Pie"><a href="#">El dominio .bet.ar</a><a href="#">Sitios sin licencia</a><a href="#">Metodología</a></nav>
+<div class="v02-rg"><b>18+</b><span>¿El juego dejó de ser un juego? Línea gratuita de Provincia de Buenos Aires: <a href="#">0800-444-4000</a></span><span>Urgencia de salud mental, en todo el país: <a href="#">0800-999-0091</a>, las 24 horas.</span></div>
+</footer>
+</div>
