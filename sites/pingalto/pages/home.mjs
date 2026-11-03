@@ -73,7 +73,7 @@ export const home = {
       '<p style="margin-top:12px"><a href="' + h.href('/valorant/rangos') + '">Cuántas partidas te faltan</a></p></section>';
     const hero = '<section class="pa-he"><div><p class="pa-ey">Hecho en Argentina · para jugar desde acá</p><h1>¿Ping alto? <em>Jugá con los números</em> a favor</h1>' +
       '<p class="pa-sb">Ping desde tu provincia, sensibilidad entre juegos, DPI real del mouse y rangos de Valorant y LoL. Cada número con su fuente, sin humo y sin vender nada.</p>' +
-      '<div class="pa-bt"><a class="pa-b1" href="' + h.href('/kit/ping') + '">Medí tu ping</a><a href="' + h.href('/kit/sensibilidad') + '">Pasá tu sensibilidad</a></div></div>' + girlCard() + '</section>';
+      '<div class="pa-bt"><a class="pa-b1" href="' + h.href('/kit/ping') + '">Medí tu ping</a><a href="' + h.href('/kit/sensibilidad') + '">Pasá tu sensibilidad</a></div></div>' + girlCard(h) + '</section>';
     const apps = '<nav class="pa-ap" aria-labelledby="h-tools"><h2 id="h-tools">Herramientas</h2><ul>' + TOOLS.filter(([u]) => h.built(u)).map(([u, ic, t, s]) => '<li><a href="' + h.href(u) + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + ICON[ic] + '</svg><b>' + t + '</b><span>' + s + '</span></a></li>').join('') + '</ul></nav>';
     return hero + strip + '<div class="pa-gd">' + sens + ladder + '</div>' + apps;
   },

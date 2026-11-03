@@ -5,80 +5,128 @@
   "/": {
    "image": "pa-sc-home-r2",
    "file": "data/art/pingalto/cut/pa-sc-home-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/kit/ping": {
    "image": "pa-sc-kit-ping-r2",
    "file": "data/art/pingalto/cut/pa-sc-kit-ping-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/kit/sensibilidad": {
-   "image": "pa-sc-kit-sensibilidad-r2",
-   "file": "data/art/pingalto/cut/pa-sc-kit-sensibilidad-r2.webp",
-   "status": "review",
-   "alt": ""
+   "image": "pa-sc-kit-sensibilidad-r3",
+   "file": "data/art/pingalto/cut/pa-sc-kit-sensibilidad-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
   },
   "/kit/dpi": {
    "image": "pa-sc-kit-dpi-r2",
    "file": "data/art/pingalto/cut/pa-sc-kit-dpi-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/tier-list": {
    "image": "pa-sc-tier-list-r2",
    "file": "data/art/pingalto/cut/pa-sc-tier-list-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/ff/sensibilidad": {
    "image": "pa-sc-ff-sensibilidad-r2",
    "file": "data/art/pingalto/cut/pa-sc-ff-sensibilidad-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/ff/nombres": {
    "image": "pa-sc-ff-nombres-r2",
    "file": "data/art/pingalto/cut/pa-sc-ff-nombres-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/ff/espacio-invisible": {
    "image": "pa-sc-ff-espacio-invisible-r2",
    "file": "data/art/pingalto/cut/pa-sc-ff-espacio-invisible-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/valorant/rangos": {
    "image": "pa-sc-valorant-rangos-r2",
    "file": "data/art/pingalto/cut/pa-sc-valorant-rangos-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/valorant/agentes": {
    "image": "pa-sc-valorant-agentes-r2",
    "file": "data/art/pingalto/cut/pa-sc-valorant-agentes-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/cs2/mira": {
    "image": "pa-sc-cs2-mira-r2",
    "file": "data/art/pingalto/cut/pa-sc-cs2-mira-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/lol/rangos": {
    "image": "pa-sc-lol-rangos-r2",
    "file": "data/art/pingalto/cut/pa-sc-lol-rangos-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
   },
   "/fortnite/nube": {
    "image": "pa-sc-fortnite-nube-r2",
    "file": "data/art/pingalto/cut/pa-sc-fortnite-nube-r2.webp",
-   "status": "review",
-   "alt": ""
+   "status": "accepted",
+   "accepted": "2026-11-03 owner"
+  },
+  "/ff": {
+   "image": "pa-sc-ff-r3",
+   "file": "data/art/pingalto/cut/pa-sc-ff-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/ff/codigos": {
+   "image": "pa-sc-ff-codigos-r3",
+   "file": "data/art/pingalto/cut/pa-sc-ff-codigos-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/valorant": {
+   "image": "pa-sc-valorant-r3",
+   "file": "data/art/pingalto/cut/pa-sc-valorant-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/cs2": {
+   "image": "pa-sc-cs2-r3",
+   "file": "data/art/pingalto/cut/pa-sc-cs2-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/cs2/major": {
+   "image": "pa-sc-cs2-major-r3",
+   "file": "data/art/pingalto/cut/pa-sc-cs2-major-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/lol": {
+   "image": "pa-sc-lol-r3",
+   "file": "data/art/pingalto/cut/pa-sc-lol-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/esports": {
+   "image": "pa-sc-esports-r3",
+   "file": "data/art/pingalto/cut/pa-sc-esports-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/esports/series": {
+   "image": "pa-sc-esports-series-r3",
+   "file": "data/art/pingalto/cut/pa-sc-esports-series-r3.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
   }
  }
 }

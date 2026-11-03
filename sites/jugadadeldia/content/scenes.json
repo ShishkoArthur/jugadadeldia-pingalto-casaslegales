@@ -1,0 +1,448 @@
+{
+ "canvas": {
+  "w": 1134,
+  "h": 1700
+ },
+ "pages": {
+  "/": {
+   "image": "jdd-sc-home-r2",
+   "files": [
+    {
+     "name": "scenes/home-151.webp",
+     "w": 151,
+     "h": 303,
+     "kb": 9
+    },
+    {
+     "name": "scenes/home-303.webp",
+     "w": 303,
+     "h": 605,
+     "kb": 22
+    }
+   ],
+   "fw": 0.6305,
+   "fh": 0.8412,
+   "alt": "Chica de vestido rojo sentada en un banquito blanco, mezclando un mazo de cartas españolas"
+  },
+  "/quiniela/cuanto-paga/": {
+   "image": "jdd-sc-quiniela-cuanto-paga-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-cuanto-paga-196.webp",
+     "w": 196,
+     "h": 287,
+     "kb": 9
+    },
+    {
+     "name": "scenes/quiniela-cuanto-paga-393.webp",
+     "w": 393,
+     "h": 573,
+     "kb": 21
+    }
+   ],
+   "fw": 0.8183,
+   "fh": 0.7965,
+   "alt": "Chica sentada en el borde de una mesa blanca, anotando en una boleta con un lápiz"
+  },
+  "/quini-6/": {
+   "image": "jdd-sc-quini-6-r2",
+   "files": [
+    {
+     "name": "scenes/quini-6-158.webp",
+     "w": 158,
+     "h": 182,
+     "kb": 5
+    },
+    {
+     "name": "scenes/quini-6-317.webp",
+     "w": 317,
+     "h": 364,
+     "kb": 12
+    }
+   ],
+   "fw": 0.6596,
+   "fh": 0.5065,
+   "alt": "Chica sentada en un almohadón con un bol de seis bolillas, sacando una"
+  },
+  "/loto-plus/": {
+   "image": "jdd-sc-loto-plus-r2",
+   "files": [
+    {
+     "name": "scenes/loto-plus-121.webp",
+     "w": 121,
+     "h": 352,
+     "kb": 7
+    },
+    {
+     "name": "scenes/loto-plus-243.webp",
+     "w": 243,
+     "h": 705,
+     "kb": 17
+    }
+   ],
+   "fw": 0.5062,
+   "fh": 0.9794,
+   "alt": "Chica tirando una pelotita naranja de una mano a la otra"
+  },
+  "/quiniela-plus/": {
+   "image": "jdd-sc-quiniela-plus-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-plus-153.webp",
+     "w": 153,
+     "h": 281,
+     "kb": 8
+    },
+    {
+     "name": "scenes/quiniela-plus-306.webp",
+     "w": 306,
+     "h": 561,
+     "kb": 19
+    }
+   ],
+   "fw": 0.6367,
+   "fh": 0.78,
+   "alt": "Chica sentada con una boleta en la rodilla, levantando un dedo como diciendo «una más»"
+  },
+  "/telekino/": {
+   "image": "jdd-sc-telekino-r2",
+   "files": [
+    {
+     "name": "scenes/telekino-101.webp",
+     "w": 101,
+     "h": 308,
+     "kb": 6
+    },
+    {
+     "name": "scenes/telekino-201.webp",
+     "w": 201,
+     "h": 615,
+     "kb": 14
+    }
+   ],
+   "fw": 0.4189,
+   "fh": 0.8553,
+   "alt": "Chica caminando con un cartón de bingo en blanco en las manos"
+  },
+  "/truco/": {
+   "image": "jdd-sc-truco-r2",
+   "files": [
+    {
+     "name": "scenes/truco-189.webp",
+     "w": 189,
+     "h": 194,
+     "kb": 6
+    },
+    {
+     "name": "scenes/truco-378.webp",
+     "w": 378,
+     "h": 387,
+     "kb": 14
+    }
+   ],
+   "fw": 0.7875,
+   "fh": 0.5382,
+   "alt": "Chica sentada en un almohadón repartiendo cartas españolas boca abajo"
+  },
+  "/truco/valores-de-las-cartas/": {
+   "image": "jdd-sc-truco-valores-de-las-cartas-r2",
+   "files": [
+    {
+     "name": "scenes/truco-valores-de-las-cartas-102.webp",
+     "w": 102,
+     "h": 313,
+     "kb": 6
+    },
+    {
+     "name": "scenes/truco-valores-de-las-cartas-204.webp",
+     "w": 204,
+     "h": 627,
+     "kb": 14
+    }
+   ],
+   "fw": 0.425,
+   "fh": 0.8712,
+   "alt": "Chica caminando con una carta española en la mano, contando con los dedos"
+  },
+  "/truco/senas/": {
+   "image": "jdd-sc-truco-senas-r2",
+   "files": [
+    {
+     "name": "scenes/truco-senas-95.webp",
+     "w": 95,
+     "h": 253,
+     "kb": 7
+    },
+    {
+     "name": "scenes/truco-senas-190.webp",
+     "w": 190,
+     "h": 506,
+     "kb": 18
+    }
+   ],
+   "fw": 0.3951,
+   "fh": 0.7029,
+   "alt": "Chica sentada con tres cartas contra el pecho, guiñando un ojo"
+  },
+  "/truco/anotador/": {
+   "image": "jdd-sc-truco-anotador-r2",
+   "files": [
+    {
+     "name": "scenes/truco-anotador-181.webp",
+     "w": 181,
+     "h": 256,
+     "kb": 6
+    },
+    {
+     "name": "scenes/truco-anotador-363.webp",
+     "w": 363,
+     "h": 513,
+     "kb": 15
+    }
+   ],
+   "fw": 0.7557,
+   "fh": 0.7124,
+   "alt": "Chica sentada en una mesa anotando palitos en una libretita"
+  },
+  "/generala/": {
+   "image": "jdd-sc-generala-r2",
+   "files": [
+    {
+     "name": "scenes/generala-119.webp",
+     "w": 119,
+     "h": 270,
+     "kb": 6
+    },
+    {
+     "name": "scenes/generala-238.webp",
+     "w": 238,
+     "h": 540,
+     "kb": 15
+    }
+   ],
+   "fw": 0.4956,
+   "fh": 0.7506,
+   "alt": "Chica sacudiendo un cubilete de cuero"
+  },
+  "/dados/": {
+   "image": "jdd-sc-dados-r2",
+   "files": [
+    {
+     "name": "scenes/dados-144.webp",
+     "w": 144,
+     "h": 212,
+     "kb": 6
+    },
+    {
+     "name": "scenes/dados-287.webp",
+     "w": 287,
+     "h": 425,
+     "kb": 14
+    }
+   ],
+   "fw": 0.5988,
+   "fh": 0.59,
+   "alt": "Chica de rodillas que acaba de tirar dos dados"
+  },
+  "/quiniela/redoblona/": {
+   "image": "jdd-sc-quiniela-redoblona-r3",
+   "files": [
+    {
+     "name": "scenes/quiniela-redoblona-133.webp",
+     "w": 133,
+     "h": 317,
+     "kb": 9
+    },
+    {
+     "name": "scenes/quiniela-redoblona-265.webp",
+     "w": 265,
+     "h": 634,
+     "kb": 20
+    }
+   ],
+   "fw": 0.5529,
+   "fh": 0.8812,
+   "alt": "Chica sentada en un banquito de madera, mostrando dos bolillas blancas juntas"
+  },
+  "/brinco/": {
+   "image": "jdd-sc-brinco-r3",
+   "files": [
+    {
+     "name": "scenes/brinco-178.webp",
+     "w": 178,
+     "h": 303,
+     "kb": 8
+    },
+    {
+     "name": "scenes/brinco-356.webp",
+     "w": 356,
+     "h": 605,
+     "kb": 21
+    }
+   ],
+   "fw": 0.7425,
+   "fh": 0.8412,
+   "alt": "Chica dando un saltito con una boleta en la mano"
+  },
+  "/poceada/": {
+   "image": "jdd-sc-poceada-r3",
+   "files": [
+    {
+     "name": "scenes/poceada-114.webp",
+     "w": 114,
+     "h": 231,
+     "kb": 6
+    },
+    {
+     "name": "scenes/poceada-228.webp",
+     "w": 228,
+     "h": 461,
+     "kb": 14
+    }
+   ],
+   "fw": 0.4744,
+   "fh": 0.6412,
+   "alt": "Chica de rodillas tirando una bolilla en un frasco de vidrio con más bolillas"
+  },
+  "/truco/jugar/": {
+   "image": "jdd-sc-truco-jugar-r3",
+   "files": [
+    {
+     "name": "scenes/truco-jugar-224.webp",
+     "w": 224,
+     "h": 306,
+     "kb": 9
+    },
+    {
+     "name": "scenes/truco-jugar-449.webp",
+     "w": 449,
+     "h": 612,
+     "kb": 22
+    }
+   ],
+   "fw": 0.9347,
+   "fh": 0.85,
+   "alt": "Chica sentada en el borde de una mesa tirando una carta como quien canta truco"
+  },
+  "/truco/envido/": {
+   "image": "jdd-sc-truco-envido-r3",
+   "files": [
+    {
+     "name": "scenes/truco-envido-107.webp",
+     "w": 107,
+     "h": 322,
+     "kb": 8
+    },
+    {
+     "name": "scenes/truco-envido-215.webp",
+     "w": 215,
+     "h": 645,
+     "kb": 21
+    }
+   ],
+   "fw": 0.4471,
+   "fh": 0.8959,
+   "alt": "Chica sentada en un banquito con dos cartas, contando los tantos con los dedos"
+  },
+  "/juegos-de-cartas/": {
+   "image": "jdd-sc-juegos-de-cartas-r3",
+   "files": [
+    {
+     "name": "scenes/juegos-de-cartas-164.webp",
+     "w": 164,
+     "h": 289,
+     "kb": 9
+    },
+    {
+     "name": "scenes/juegos-de-cartas-328.webp",
+     "w": 328,
+     "h": 578,
+     "kb": 22
+    }
+   ],
+   "fw": 0.6843,
+   "fh": 0.8035,
+   "alt": "Chica sentada en una silla con un abanico de cartas españolas y un cubilete"
+  },
+  "/generala/jugar/": {
+   "image": "jdd-sc-generala-jugar-r3",
+   "files": [
+    {
+     "name": "scenes/generala-jugar-116.webp",
+     "w": 116,
+     "h": 253,
+     "kb": 8
+    },
+    {
+     "name": "scenes/generala-jugar-232.webp",
+     "w": 232,
+     "h": 506,
+     "kb": 17
+    }
+   ],
+   "fw": 0.4824,
+   "fh": 0.7035,
+   "alt": "Chica sentada en un almohadón volcando cinco dados de un cubilete"
+  },
+  "/generala/probabilidades/": {
+   "image": "jdd-sc-generala-probabilidades-r3",
+   "files": [
+    {
+     "name": "scenes/generala-probabilidades-200.webp",
+     "w": 200,
+     "h": 296,
+     "kb": 9
+    },
+    {
+     "name": "scenes/generala-probabilidades-401.webp",
+     "w": 401,
+     "h": 592,
+     "kb": 21
+    }
+   ],
+   "fw": 0.8351,
+   "fh": 0.8224,
+   "alt": "Chica sentada en una mesa mirando de cerca un dado, con una libretita en la rodilla"
+  },
+  "/chinchon/jugar/": {
+   "image": "jdd-sc-chinchon-jugar-r3",
+   "files": [
+    {
+     "name": "scenes/chinchon-jugar-118.webp",
+     "w": 118,
+     "h": 322,
+     "kb": 7
+    },
+    {
+     "name": "scenes/chinchon-jugar-236.webp",
+     "w": 236,
+     "h": 643,
+     "kb": 17
+    }
+   ],
+   "fw": 0.4912,
+   "fh": 0.8941,
+   "alt": "Chica acomodando las siete cartas de su mano de chinchón"
+  },
+  "/escoba-de-15/jugar/": {
+   "image": "jdd-sc-escoba-de-15-jugar-r3",
+   "files": [
+    {
+     "name": "scenes/escoba-de-15-jugar-131.webp",
+     "w": 131,
+     "h": 189,
+     "kb": 5
+    },
+    {
+     "name": "scenes/escoba-de-15-jugar-262.webp",
+     "w": 262,
+     "h": 377,
+     "kb": 13
+    }
+   ],
+   "fw": 0.545,
+   "fh": 0.5241,
+   "alt": "Chica de rodillas juntando cuatro cartas del piso con la mano"
+  }
+ }
+}

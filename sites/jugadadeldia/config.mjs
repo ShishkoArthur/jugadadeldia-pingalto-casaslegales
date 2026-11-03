@@ -4,8 +4,12 @@
 // Quiniela and lottery pages carry the help block and 18+; card and dice game pages (kind "game") do not - they are not
 // gambling (PLAYBOOK 1.1, 7). Help pages hide the game menu (gate helpnav) and never link to lottery or game pages.
 
+import { readFileSync, existsSync } from 'node:fs';
+
 const SEG = '[a-z0-9]+(-[a-z0-9]+)*';
-const bare = n => n.replace(/^[0-9a-f]{8}-/, '');
+const SCENES = new URL('./content/scenes.json', import.meta.url);
+const sceneFiles = () => existsSync(SCENES) ? Object.values(JSON.parse(readFileSync(SCENES, 'utf8')).pages).flatMap(p => p.files.map(f => f.name)) : [];
+const bare = n => n.split('/').pop().replace(/^[0-9a-f]{8}-/, '');
 
 export const SITE = {
   id: 'jugadadeldia',
@@ -18,6 +22,7 @@ export const SITE = {
   pathRe: new RegExp('^/$|^/' + SEG + '/(' + SEG + '/){0,2}$'),
   fileOf: p => (p === '/' ? 'index.html' : p.slice(1) + 'index.html'),
   notFoundFile: '404.html',
+  images: sceneFiles(),
   fonts: ['kanit-400.woff2', 'kanit-700.woff2'],
   preload: ['kanit-700.woff2'],
   engineDirs: ['games', 'lottery', 'cards', 'truco', 'generala', 'chinchon', 'escoba'],

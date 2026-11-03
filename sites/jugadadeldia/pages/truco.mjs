@@ -4,7 +4,7 @@ import { LADDER, POWER, envidoPoints } from '../../../engine/truco/cards.mjs';
 import { envidoDistribution, florChance } from '../../../engine/truco/probability.mjs';
 import { RULESETS, FLOR_POINTS, TRUCO_CALLS } from '../../../engine/truco/rules.mjs';
 import { DECK_40, combinations } from '../../../engine/cards/spanish.mjs';
-import { hero, cite, crumbs, webPage, fmt, card, SPRITE, tiles, ICONS, NUM, SUIT } from './parts.mjs';
+import { hero, cite, crumbs, webPage, fmt, card, SPRITE, tiles, ICONS, NUM, SUIT, mnOpen, mnArt } from './parts.mjs';
 
 const ldT = (h, extra) => [webPage(h), crumbs(h, h.page.path === '/truco/' ? [] : [['/truco/', 'Truco']]), ...(extra ? [extra] : [])];
 const name = c => NUM[parseInt(c, 10)] + ' de ' + SUIT[c.slice(-1)];
@@ -81,8 +81,7 @@ export const trucoJugar = {
       '<div class="jg-hand mine" data-t="mine"></div><p class="jg-info" data-t="info"></p><div class="jg-calls" data-t="calls"></div>' +
       '<div class="jg-end" data-t="end" hidden aria-live="polite"></div></div></div>' +
       '<noscript><p class="jg-hon">Para jugar hace falta JavaScript.</p></noscript></section>' +
-      '<div class="jg-mn"><section class="jg-c w2"><span class="jg-sm">Cómo jugar</span><h2>Tocá una carta para tirarla</h2><ul><li>Los cantos que podés hacer aparecen como botones debajo de tus cartas: envido, truco, quiero, no quiero, irte al mazo.</li><li>Con el teclado: 1, 2 y 3 tiran tus cartas; Enter reparte.</li><li>La partida se guarda en tu navegador: si cerrás la página, la seguís después.</li><li>La compu no ve tus cartas: decide con lo que se ve en la mesa, como vos.</li></ul></section>' +
-      '<section class="jg-c"><span class="jg-sm">Niveles</span><h2>Qué hace la compu</h2><p><b>Fácil</b> juega casi al azar. <b>Normal</b> calcula la chance exacta de su envido y de sus cartas. <b>Difícil</b> además adivina tus cartas por lo que cantaste y a veces miente.</p></section>' +
+      mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Cómo jugar</span><h2>Tocá una carta para tirarla</h2><ul><li>Los cantos que podés hacer aparecen como botones debajo de tus cartas: envido, truco, quiero, no quiero, irte al mazo.</li><li>Con el teclado: 1, 2 y 3 tiran tus cartas; Enter reparte.</li><li>La partida se guarda en tu navegador: si cerrás la página, la seguís después.</li><li>La compu no ve tus cartas: decide con lo que se ve en la mesa, como vos.</li></ul></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Niveles</span><h2>Qué hace la compu</h2><p><b>Fácil</b> juega casi al azar. <b>Normal</b> calcula la chance exacta de su envido y de sus cartas. <b>Difícil</b> además adivina tus cartas por lo que cantaste y a veces miente.</p></section>' +
       '<section class="jg-c w3"><span class="jg-sm">Reglas que usa el juego</span><h2>De los reglamentos</h2>' + cite(h, ['truco.hierarchy-bravas', 'truco.hierarchy-rest', 'truco.envido-count', 'truco.envido-tie-mano', 'truco.envido-no-quiero', 'truco.falta-malas-wins-match', 'truco.parda-first', 'truco.parda-all-three', 'truco.mazo-before-cards', 'truco.flor-three', 'truco.flor-achico', 'truco.contraflor', 'truco.target-40']) + '</section></div>';
   },
 };
@@ -135,8 +134,7 @@ export const trucoAnotador = {
       '<div class="jg-sides">' + side('a', 'Nosotros') + side('b', 'Ellos') + '</div><p class="jg-win2" data-o="win" hidden aria-live="polite"></p>' +
       '<div class="jg-r jg-tools"><button class="jg-b s" type="button" data-undo>Deshacer</button><button class="jg-b s" type="button" data-reset>Partido nuevo</button><button class="jg-b s" type="button" data-full>Pantalla completa</button><button class="jg-b s" type="button" data-share>Compartir resultado</button><button class="jg-b s" type="button" data-sound aria-pressed="false">Sonido: no</button></div>' +
       '<details class="jg-src"><summary>Historial</summary><ol data-o="log"></ol></details></section>' +
-      '<div class="jg-mn"><section class="jg-c w2"><span class="jg-sm">Cómo se anota</span><h2>Fósforos de a cinco</h2><p>Cada punto es un palito; al quinto se cierra el cuadrado con una diagonal. A 30, los primeros 15 son las malas y los otros 15 las buenas.</p><p>Los nombres y el tanteador quedan guardados en tu teléfono. Una vez abierta, la página anda sin conexión.</p></section>' +
-      '<section class="jg-c"><span class="jg-sm">Del reglamento</span><h2>Malas y buenas</h2>' + cite(h, ['truco.target-30', 'truco.malas-buenas-40']) + '</section></div>';
+      mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Cómo se anota</span><h2>Fósforos de a cinco</h2><p>Cada punto es un palito; al quinto se cierra el cuadrado con una diagonal. A 30, los primeros 15 son las malas y los otros 15 las buenas.</p><p>Los nombres y el tanteador quedan guardados en tu teléfono. Una vez abierta, la página anda sin conexión.</p></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Del reglamento</span><h2>Malas y buenas</h2>' + cite(h, ['truco.target-30', 'truco.malas-buenas-40']) + '</section></div>';
   },
 };
 

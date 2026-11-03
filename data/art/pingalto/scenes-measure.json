@@ -1,5 +1,5 @@
 {
- "round": "r2",
+ "round": "per scene, the suffix of the image id",
  "scaleBy": "head (hair top to chin, marked by eye)",
  "bodyPx": 1500,
  "headPx": 212,
@@ -20,28 +20,28 @@
    "head": 342,
    "scale": 0.62,
    "transparent": 77,
-   "size": "678x1412"
+   "size": "678x1411"
   },
-  "pa-sc-kit-sensibilidad-r2": {
-   "pose": "cushion",
-   "head": 461,
-   "scale": 0.46,
-   "transparent": 64,
-   "size": "662x916"
+  "pa-sc-kit-sensibilidad-r3": {
+   "pose": "chair",
+   "head": 388,
+   "scale": 0.546,
+   "transparent": 72,
+   "size": "516x1190"
   },
   "pa-sc-kit-dpi-r2": {
    "pose": "table",
    "head": 351,
    "scale": 0.604,
    "transparent": 69,
-   "size": "1007x1344"
+   "size": "1007x1343"
   },
   "pa-sc-tier-list-r2": {
    "pose": "stand",
    "head": 351,
    "scale": 0.604,
    "transparent": 76,
-   "size": "600x1363"
+   "size": "600x1362"
   },
   "pa-sc-ff-sensibilidad-r2": {
    "pose": "chair",
@@ -62,35 +62,91 @@
    "head": 317,
    "scale": 0.669,
    "transparent": 77,
-   "size": "601x1525"
+   "size": "600x1525"
   },
   "pa-sc-valorant-rangos-r2": {
    "pose": "jump",
    "head": 316,
    "scale": 0.671,
    "transparent": 78,
-   "size": "641x1503"
+   "size": "641x1504"
   },
   "pa-sc-valorant-agentes-r2": {
    "pose": "wstool",
    "head": 350,
    "scale": 0.606,
-   "transparent": 78,
-   "size": "659x1253"
+   "transparent": 77,
+   "size": "659x1254"
   },
   "pa-sc-cs2-mira-r2": {
    "pose": "stand",
    "head": 324,
    "scale": 0.654,
    "transparent": 76,
-   "size": "631x1489"
+   "size": "631x1488"
   },
   "pa-sc-lol-rangos-r2": {
    "pose": "chair",
    "head": 351,
    "scale": 0.604,
    "transparent": 77,
-   "size": "480x1254"
+   "size": "480x1253"
+  },
+  "pa-sc-ff-r3": {
+   "pose": "walk",
+   "head": 314,
+   "scale": 0.675,
+   "transparent": 80,
+   "size": "512x1533"
+  },
+  "pa-sc-ff-codigos-r3": {
+   "pose": "wstool",
+   "head": 306,
+   "scale": 0.693,
+   "transparent": 75,
+   "size": "646x1557"
+  },
+  "pa-sc-valorant-r3": {
+   "pose": "walk",
+   "head": 299,
+   "scale": 0.709,
+   "transparent": 76,
+   "size": "752x1615"
+  },
+  "pa-sc-cs2-r3": {
+   "pose": "table",
+   "head": 293,
+   "scale": 0.724,
+   "transparent": 73,
+   "size": "1036x1505"
+  },
+  "pa-sc-cs2-major-r3": {
+   "pose": "cushion",
+   "head": 464,
+   "scale": 0.457,
+   "transparent": 65,
+   "size": "765x829"
+  },
+  "pa-sc-lol-r3": {
+   "pose": "wstool",
+   "head": 307,
+   "scale": 0.691,
+   "transparent": 76,
+   "size": "818x1483"
+  },
+  "pa-sc-esports-r3": {
+   "pose": "chair",
+   "head": 301,
+   "scale": 0.704,
+   "transparent": 76,
+   "size": "732x1449"
+  },
+  "pa-sc-esports-series-r3": {
+   "pose": "chair",
+   "head": 310,
+   "scale": 0.684,
+   "transparent": 75,
+   "size": "683x1502"
   },
   "pa-sc-fortnite-nube-r2": {
    "pose": "walk",

@@ -3,8 +3,11 @@
 // tries {path}.html and sends any path ending in "/" to the same path without it with a 301). Own asset folder /s/ with names
 // "<base>.<10 hex of sha256>.<ext>". Not a gambling site: no help block, no 18+ mark (gate.gambling = false).
 import { extname } from 'node:path';
+import { readFileSync, existsSync } from 'node:fs';
 
-const base = n => n.replace(/\.[0-9a-f]{10}(?=\.[a-z0-9]+$)/, '').replace(/\.[a-z0-9]+$/, '');
+const SCENES = new URL('./content/scenes.json', import.meta.url);
+const sceneFiles = () => existsSync(SCENES) ? Object.values(JSON.parse(readFileSync(SCENES, 'utf8')).pages).flatMap(p => p.files.map(f => f.name)) : [];
+const base = n => n.split('/').pop().replace(/\.[0-9a-f]{10}(?=\.[a-z0-9]+$)/, '').replace(/\.[a-z0-9]+$/, '');
 const SEG = '[a-z0-9]+(-[a-z0-9]+)*';
 
 export const SITE = {
@@ -18,6 +21,7 @@ export const SITE = {
   pathRe: new RegExp('^/$|^/' + SEG + '(/' + SEG + '){0,2}$'),
   fileOf: p => (p === '/' ? 'index.html' : p.slice(1) + '.html'),
   notFoundFile: '404.html',
+  images: sceneFiles(),
   fonts: ['rounded-800-latin.woff2', 'vietnam-400-latin.woff2', 'vietnam-600-latin.woff2'],
   preload: ['rounded-800-latin.woff2', 'vietnam-400-latin.woff2'],
   engineDirs: ['games'],

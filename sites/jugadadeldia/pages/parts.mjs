@@ -1,4 +1,5 @@
 // Shared pieces of jugadadeldia.com pages: hero with the girl slot, quotes with their source, Spanish cards, breadcrumbs.
+import { readFileSync } from 'node:fs';
 import { fmt } from '../../../engine/games/num.mjs';
 
 export { fmt };
@@ -6,13 +7,26 @@ export const pct = (x, d = 2) => fmt(x * 100, d) + ' %';
 export const oneIn = n => '1 en ' + fmt(n, n < 100 ? 1 : 0);
 export const money = n => '$ ' + fmt(n, 2);
 
-// The girl of the site goes here later (owner's choice jdd-girl-r3-10; scenes per page). Until then a decorative panel of the
-// same 2:3 size, with the scene name the images will use.
-export const girl = scene => '<figure class="jg-girl" data-girl="' + scene + '" aria-hidden="true"><i class="jg-ba"></i><i class="jg-ba c3"></i><i class="jg-ba c4"></i><b></b></figure>';
+// The girl of the site (jdd-girl-r3-10): the accepted scene of the page from sites/jugadadeldia/content/scenes.json
+// (data/art/publish-scenes.mjs). Every scene shares one 2:3 canvas, so the figure keeps its width share fw and the head is the same
+// size on every page; the decorative balls stay behind her. Empty string when the page has no scene (service and help pages).
+const SCENES = JSON.parse(readFileSync(new URL('../content/scenes.json', import.meta.url), 'utf8'));
+export const hasGirl = h => !!SCENES.pages[h.page.path];
+export function girl(h, { lazy = false, cls = '' } = {}) {
+  const sc = SCENES.pages[h.page.path];
+  if (!sc) return '';
+  const [a, b] = sc.files;
+  const img = '<img src="' + h.asset(a.name) + '" srcset="' + h.asset(a.name) + ' ' + a.w + 'w, ' + h.asset(b.name) + ' ' + b.w + 'w" sizes="(max-width:620px) ' + Math.ceil(112 * sc.fw) + 'px, ' + Math.ceil(240 * sc.fw) + 'px" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' decoding="async" style="width:' + +(sc.fw * 100).toFixed(2) + '%">';
+  return '<figure class="jg-girl' + (cls ? ' ' + cls : '') + '"><i class="jg-ba" aria-hidden="true"></i><i class="jg-ba c3" aria-hidden="true"></i><i class="jg-ba c4" aria-hidden="true"></i>' + img + '</figure>';
+}
+// Pages that open with a game table have no hero: the girl stands beside the first sections under the table (lazy, below the fold).
+export const mnOpen = h => '<div class="jg-mn' + (hasGirl(h) ? ' art' : '') + '">';
+export const mnArt = h => girl(h, { lazy: true });
 
 export function hero(h, { kicker, lede, scene, actions = '' }) {
-  return '<section class="jg-hero' + (scene ? '' : ' no-g') + '"><div><span class="jg-k">' + kicker + '</span><h1>' + h.esc(h.page.h1) + '</h1>' +
-    (lede ? '<p class="jg-lede">' + lede + '</p>' : '') + (actions ? '<div class="jg-r">' + actions + '</div>' : '') + '</div>' + (scene ? girl(scene) : '') + '</section>';
+  const g = scene ? girl(h) : '';
+  return '<section class="jg-hero' + (g ? '' : ' no-g') + '"><div><span class="jg-k">' + kicker + '</span><h1>' + h.esc(h.page.h1) + '</h1>' +
+    (lede ? '<p class="jg-lede">' + lede + '</p>' : '') + (actions ? '<div class="jg-r">' + actions + '</div>' : '') + '</div>' + g + '</section>';
 }
 
 export function cite(h, ids, label = 'De dónde sale') {

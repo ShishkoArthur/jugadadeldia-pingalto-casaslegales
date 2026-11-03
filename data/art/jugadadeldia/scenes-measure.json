@@ -1,5 +1,5 @@
 {
- "round": "r2",
+ "round": "per scene, the suffix of the image id",
  "scaleBy": "head (hair top to chin, marked by eye)",
  "bodyPx": 1500,
  "headPx": 213,
@@ -224,6 +224,76 @@
    "scale": 0.577,
    "transparent": 76,
    "size": "628x1228"
+  },
+  "jdd-sc-quiniela-redoblona-r3": {
+   "pose": "wstool",
+   "head": 316,
+   "scale": 0.674,
+   "transparent": 79,
+   "size": "627x1498"
+  },
+  "jdd-sc-brinco-r3": {
+   "pose": "jump",
+   "head": 295,
+   "scale": 0.722,
+   "transparent": 78,
+   "size": "842x1430"
+  },
+  "jdd-sc-poceada-r3": {
+   "pose": "kneel",
+   "head": 411,
+   "scale": 0.518,
+   "transparent": 68,
+   "size": "538x1090"
+  },
+  "jdd-sc-truco-jugar-r3": {
+   "pose": "table",
+   "head": 306,
+   "scale": 0.696,
+   "transparent": 78,
+   "size": "1060x1445"
+  },
+  "jdd-sc-truco-envido-r3": {
+   "pose": "stool",
+   "head": 304,
+   "scale": 0.701,
+   "transparent": 79,
+   "size": "507x1523"
+  },
+  "jdd-sc-juegos-de-cartas-r3": {
+   "pose": "chair",
+   "head": 330,
+   "scale": 0.645,
+   "transparent": 75,
+   "size": "776x1366"
+  },
+  "jdd-sc-generala-jugar-r3": {
+   "pose": "stool",
+   "head": 387,
+   "scale": 0.55,
+   "transparent": 77,
+   "size": "547x1196"
+  },
+  "jdd-sc-generala-probabilidades-r3": {
+   "pose": "table",
+   "head": 326,
+   "scale": 0.653,
+   "transparent": 76,
+   "size": "947x1398"
+  },
+  "jdd-sc-chinchon-jugar-r3": {
+   "pose": "stand",
+   "head": 326,
+   "scale": 0.653,
+   "transparent": 79,
+   "size": "557x1520"
+  },
+  "jdd-sc-escoba-de-15-jugar-r3": {
+   "pose": "kneel",
+   "head": 449,
+   "scale": 0.474,
+   "transparent": 71,
+   "size": "618x891"
   },
   "jdd-sc-escoba-de-15-r2": {
    "pose": "table",

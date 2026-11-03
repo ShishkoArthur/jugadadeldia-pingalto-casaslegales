@@ -4,7 +4,11 @@
 // by how far their darkest channel is above the background's; a penalty 4*(r-g) when red exceeds green keeps yellow props (lemon, pencil) opaque; despill clamps green to that reference; only the largest region is kept
 // (enclosed transparent holes that are only weakly green and bright, such as green-lit paper, are restored first; dark shadowed
 // background between legs and chair legs stays transparent). metric 'max' measures greenness against max(r, b) instead of
-// the mean: olive skin lit by the green floor is not keyed out (jugadadeldia; pink hair needs the mean)
+// the mean: olive skin lit by the green floor is not keyed out (jugadadeldia; pink hair needs the mean). metric 'split': the mean
+// in the top 40 % of the frame (pink hair), max below 50 % (legs lit by the green floor read as a white see-through patch with the
+// mean: pingalto /kit/sensibilidad r2, owner 2026-11-03), blended in between, and below the split a warm pixel (red above blue: shadowed skin
+// lit by the green floor) counts as less green; with 'split' and 'max' a pixel greener than red is
+// despilled down to the mean of red and blue (green-lit skin turns back to skin, yellow props with red above green stay)
 // (or every region above minFrac of the frame, default 0.05 %, with keepAll); then edge-fix recolours the remaining fringe.
 // node data/art/cut.mjs <in.png> <out.webp> [keepAll]
 import sharp from 'sharp';
@@ -19,9 +23,13 @@ export async function cut(inp, out, { keepAll = false, minFrac = 0.0005, band = 
   for (let y = 0; y < H; y += 4) for (const x of [0, 1, W - 2, W - 1]) edge.push(y * W + x);
   const mins = edge.map(i => Math.min(data[i * 4], data[i * 4 + 2])).sort((a, b) => a - b);
   const bgMin = mins[mins.length >> 1];
-  const ref = metric === 'max' ? (o) => Math.max(data[o], data[o + 2]) : (o) => (data[o] + data[o + 2]) / 2;
+  const mean = (o) => (data[o] + data[o + 2]) / 2, mx = (o) => Math.max(data[o], data[o + 2]);
+  const SPLIT0 = H * 0.4, SPLIT1 = H * 0.5;
+  const low = (o) => { const y = ((o >> 2) / W) | 0; return y <= SPLIT0 ? 0 : y >= SPLIT1 ? 1 : (y - SPLIT0) / (SPLIT1 - SPLIT0); };
+  const ref = metric === 'max' ? mx : metric === 'split' ? (o) => { const t = low(o); return mean(o) * (1 - t) + mx(o) * t; } : mean;
+  const warm = metric === 'split' ? (o) => 1.5 * low(o) * Math.max(0, data[o] - data[o + 2]) : () => 0;
   const gx = (o) => data[o + 1] - ref(o) - 4 * Math.max(0, data[o] - data[o + 1])
-    - 0.35 * Math.max(0, Math.min(data[o], data[o + 2]) - bgMin - 20);
+    - 0.35 * Math.max(0, Math.min(data[o], data[o + 2]) - bgMin - 20) - warm(o);
   const ds = edge.map(i => gx(i * 4)).sort((a, b) => a - b);
   const bg = ds[ds.length >> 1];
   if (bg < 40) throw new Error(`${inp}: background is not green (median ${bg})`);
@@ -31,8 +39,8 @@ export async function cut(inp, out, { keepAll = false, minFrac = 0.0005, band = 
     const o = i * 4, d = gx(o);
     let a = 255;
     if (d > T1) a = d >= T2 ? 0 : Math.round(255 * (1 - (d - T1) / (T2 - T1)));
-    const cap = ref(o) + 2;
-    if (d > 0 && data[o + 1] > cap) data[o + 1] = Math.round(cap);
+    const cap = metric !== 'mean' && data[o + 1] > data[o] ? mean(o) + 2 : ref(o) + 2;
+    if ((d > 0 || metric !== 'mean') && data[o + 1] > cap) data[o + 1] = Math.round(cap);
     data[o + 3] = a;
     if (a === 0) cutPx++;
   }

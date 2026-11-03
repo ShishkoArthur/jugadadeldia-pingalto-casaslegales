@@ -4,20 +4,22 @@
 // on data/img-review/heads-<site>-<round>.jpg (data/art/head.mjs) into data/art/<site>/heads.json { id: { top, chin } }; the base
 // is marked as "base" and fixes the target: a standing figure from hair to soles is BODY px, its head HEAD = BODY * baseHead / baseBody.
 // -> data/art/<site>/cut/<id>.webp (trimmed, transparent) -> data/art/<site>/scenes.json {page url -> image id, status review}
-// -> data/art/<site>/scenes-measure.json -> data/img-review/contact-<site>-scenes-<round>.jpg with page labels.
-// node data/art/build-scenes.mjs <jugadadeldia|pingalto> [--recut]
+// -> data/art/<site>/scenes-measure.json -> data/img-review/contact-<site>-scenes-<round>.jpg with page labels (only the scenes of
+// that round; default ROUND of scenes.mjs). A page whose scene changes goes back to status review.
+// node data/art/build-scenes.mjs <jugadadeldia|pingalto> [--recut] [--round r3]
 import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { cut } from './cut.mjs';
 import { headSheet } from './head.mjs';
-import { SITES, jobId, sceneOpts, ROUND } from './scenes.mjs';
+import { SITES, jobId, sceneOpts, roundOf, ROUND } from './scenes.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '../..');
 const site = process.argv[2];
 const RECUT = process.argv.includes('--recut');
+const ri = process.argv.indexOf('--round'), SHEET = ri > 0 ? process.argv[ri + 1] : ROUND;
 if (!SITES[site]) { console.error('usage: build-scenes.mjs <jugadadeldia|pingalto> [--recut]'); process.exit(2); }
 const SRC = join(ROOT, 'data/img-review'), CUT = join(HERE, site, 'cut'), TMP = join(CUT, 'raw');
 mkdirSync(TMP, { recursive: true });
@@ -57,7 +59,7 @@ for (const url of pages) {
   let transparent = null;
   if (RECUT || !existsSync(raw) || statSync(raw).mtimeMs < statSync(src).mtimeMs) {
     const o = sceneOpts(site, url);
-    const c = await cut(src, raw, { ...(o.keepAll ? { keepAll: true, minFrac: 0.00005 } : {}), metric: site === 'jugadadeldia' ? 'max' : 'mean' });
+    const c = await cut(src, raw, { ...(o.keepAll ? { keepAll: true, minFrac: 0.00005 } : {}), metric: site === 'jugadadeldia' ? 'max' : 'split' });
     transparent = c.transparent;
     if (c.transparent < 50) console.log(`${id}: LOW TRANSPARENCY ${c.transparent}%`);
   }
@@ -72,7 +74,7 @@ if (unmarked.length || !heads.base) {
   const items = [...(heads.base ? [] : [{ file: join(ROOT, `data/art/base/${site}/girl-base-cut.webp`), label: 'base' }]),
     ...unmarked.map(r => ({ file: r.raw, label: r.id }))];
   for (let i = 0; i < items.length; i += 8) {
-    const out = join(SRC, `heads-${site}-${ROUND}-${i / 8 + 1}.jpg`);
+    const out = join(SRC, `heads-${site}-${SHEET}-${i / 8 + 1}.jpg`);
     await headSheet(items.slice(i, i + 8), out);
     console.log(`mark heads on ${out}`);
   }
@@ -96,16 +98,18 @@ for (const r of rows) {
   r.k = k;
   meas[r.id] = { pose: SITES[site].scenes[r.url][0], head, scale: +k.toFixed(3), transparent: r.transparent ?? oldMeas[r.id]?.transparent ?? null, size: `${res.width}x${res.height}` };
   const prev = man.pages[r.url] || {};
-  man.pages[r.url] = { image: r.id, file: `data/art/${site}/cut/${r.id}.webp`, status: prev.status === 'accepted' && prev.image === r.id ? 'accepted' : 'review', alt: '' };
+  const keep = prev.status === 'accepted' && prev.image === r.id;
+  man.pages[r.url] = { image: r.id, file: `data/art/${site}/cut/${r.id}.webp`, status: keep ? 'accepted' : 'review', ...(keep && prev.accepted ? { accepted: prev.accepted } : {}) };
   console.log(`${r.id}: head ${head}px, scale ${k.toFixed(3)}${k > 1 ? '  UPSCALED' : ''}, ${res.width}x${res.height}`);
 }
 writeFileSync(manPath, JSON.stringify(man, null, 1) + '\n');
-writeFileSync(measPath, JSON.stringify({ round: ROUND, scaleBy: 'head (hair top to chin, marked by eye)', bodyPx: BODY, headPx: HEAD,
+writeFileSync(measPath, JSON.stringify({ round: 'per scene, the suffix of the image id', scaleBy: 'head (hair top to chin, marked by eye)', bodyPx: BODY, headPx: HEAD,
   base: { head: baseHead, body: baseBody }, scenes: meas }, null, 1) + '\n');
 
+const sheetRows = rows.filter(r => roundOf(site, r.url) === SHEET);
 const TH = 520, COLS = 8, LBL = 34, scale = TH / Math.max(...rows.map(r => r.H * r.k));
 const tiles = [];
-for (const r of rows) {
+for (const r of sheetRows) {
   const b = await sharp(join(CUT, r.id + '.webp')).resize({ height: Math.max(1, Math.round(r.H * r.k * scale)) }).png().toBuffer();
   tiles.push({ r, b, m: await sharp(b).metadata() });
 }
@@ -121,6 +125,6 @@ tiles.forEach((t, i) => {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${TW}" height="${LBL}"><rect width="100%" height="100%" fill="#222"/><text x="${TW / 2}" y="22" font-family="DejaVu Sans, sans-serif" font-size="${Math.min(15, Math.floor((TW - 8) / (t.r.url.length * 0.6)))}" fill="#fff" text-anchor="middle">${esc(t.r.url)}</text></svg>`;
   comp.push({ input: Buffer.from(svg), left: x, top: y + TH });
 });
-const out = join(SRC, `contact-${site}-scenes-${ROUND}.jpg`);
+const out = join(SRC, `contact-${site}-scenes-${SHEET}.jpg`);
 await sharp({ create: { width: sheetW, height: sheetH, channels: 3, background: '#d9d6cf' } }).composite(comp).jpeg({ quality: 82 }).toFile(out);
-console.log(`${out}: ${rows.length} scenes, head ${HEAD}px (base head ${baseHead} / body ${baseBody})`);
+console.log(`${out}: ${sheetRows.length} of ${rows.length} scenes, head ${HEAD}px (base head ${baseHead} / body ${baseBody})`);

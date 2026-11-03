@@ -1,4 +1,5 @@
 // Small shared pieces of pingalto pages: number format, source line and quote, hero, structured data.
+import { readFileSync } from 'node:fs';
 import { fmt, fmtFixed, fmtPct, fmtInput } from '../../../engine/games/num.mjs';
 export { fmt, fmtFixed, fmtPct, fmtInput };
 
@@ -16,12 +17,23 @@ export function quote(h, factId, lang = 'en') {
   const f = h.pa.src.facts[factId], d = h.pa.doc(f.doc);
   return '<blockquote class="pa-q" cite="' + h.esc(d.url) + '"' + (lang ? ' lang="' + lang + '"' : '') + '>«' + h.esc(f.quote) + '»<cite lang="es">' + kindTag(h, d.kind) + ' <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.publisher) + '</a> · ' + h.esc(host(d.url)) + ' · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
 }
+// Hero: hubs get the big layout (girl: true), tool pages a compact one with a narrower figure column; a page without an accepted
+// scene (service pages) gets the text-only hero.
 export function hero(h, { ey, sub, girl = false, buttons = '' }) {
-  return '<section class="pa-he' + (girl ? '' : ' pa-sm') + '"><div><p class="pa-ey">' + h.esc(ey) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
-    (sub ? '<p class="pa-sb">' + sub + '</p>' : '') + (buttons ? '<div class="pa-bt">' + buttons + '</div>' : '') + '</div>' + (girl ? girlCard() : '') + '</section>';
+  const art = girlCard(h);
+  return '<section class="pa-he' + (art ? (girl ? '' : ' pa-tl') : ' pa-sm') + '"><div><p class="pa-ey">' + h.esc(ey) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
+    (sub ? '<p class="pa-sb">' + sub + '</p>' : '') + (buttons ? '<div class="pa-bt">' + buttons + '</div>' : '') + '</div>' + art + '</section>';
 }
-export function girlCard() {
-  return '<div class="pa-girl" role="img" aria-label="Lugar de Alt, la guía de pingalto"><b><span>ALT</span><span>GUÍA</span></b><div><svg viewBox="0 0 100 150" aria-hidden="true"><path d="M50 10c-13 0-20 9-20 22 0 8-3 14-6 18 8 2 14-1 16-4h20c2 3 8 6 16 4-3-4-6-10-6-18 0-13-7-22-20-22zM44 50h12l2 8 14 6 4 34-8 2-2-20-4 24 3 44h-9l-6-36-6 36h-9l3-44-4-24-2 20-8-2 4-34 14-6z"/></svg></div><span>la guía de pingalto</span></div>';
+// Alt's card with the page scene (sites/pingalto/content/scenes.json, data/art/publish-scenes.mjs): every scene shares one 2:3
+// canvas, so the figure keeps its height share fh of the card and the head size matches across pages. Empty string when the page has none.
+const SCENES = JSON.parse(readFileSync(new URL('../content/scenes.json', import.meta.url), 'utf8'));
+export function girlCard(h, path = h.page.path, { lazy = false } = {}) {
+  const sc = SCENES.pages[path];
+  if (!sc) return '';
+  const [a, b] = sc.files;
+  const pc = x => +(x * 100).toFixed(2);
+  const img = '<img src="' + h.asset(a.name) + '" srcset="' + h.asset(a.name) + ' ' + a.w + 'w, ' + h.asset(b.name) + ' ' + b.w + 'w" sizes="(max-width:680px) ' + Math.ceil(100 * sc.fw) + 'px, ' + Math.ceil(240 * sc.fw) + 'px" width="' + a.w + '" height="' + a.h + '" alt="' + h.esc(sc.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' decoding="async" style="height:' + pc(sc.fh) + '%">';
+  return '<figure class="pa-girl"><b aria-hidden="true"><span>ALT</span><span>GUÍA</span></b><div><span class="pa-cv">' + img + '</span></div><figcaption>la guía de pingalto</figcaption></figure>';
 }
 export function ldPage(h, extra = []) {
   const O = 'https://' + h.site.domain;

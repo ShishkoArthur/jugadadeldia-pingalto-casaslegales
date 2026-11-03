@@ -54,5 +54,41 @@
  "pa-sc-fortnite-nube-r2": {
   "top": 5,
   "chin": 294
+ },
+ "pa-sc-ff-codigos-r3": {
+  "top": 5,
+  "chin": 311
+ },
+ "pa-sc-valorant-r3": {
+  "top": 20,
+  "chin": 319
+ },
+ "pa-sc-cs2-r3": {
+  "top": 3,
+  "chin": 296
+ },
+ "pa-sc-cs2-major-r3": {
+  "top": 6,
+  "chin": 470
+ },
+ "pa-sc-lol-r3": {
+  "top": 13,
+  "chin": 320
+ },
+ "pa-sc-esports-r3": {
+  "top": 13,
+  "chin": 314
+ },
+ "pa-sc-esports-series-r3": {
+  "top": 10,
+  "chin": 320
+ },
+ "pa-sc-kit-sensibilidad-r3": {
+  "top": 6,
+  "chin": 394
+ },
+ "pa-sc-ff-r3": {
+  "top": 4,
+  "chin": 318
  }
 }

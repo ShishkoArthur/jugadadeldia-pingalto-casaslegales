@@ -130,5 +130,45 @@
  "jdd-sc-escoba-de-15-r2": {
   "top": 3,
   "chin": 381
+ },
+ "jdd-sc-quiniela-redoblona-r3": {
+  "top": 3,
+  "chin": 319
+ },
+ "jdd-sc-brinco-r3": {
+  "top": 18,
+  "chin": 313
+ },
+ "jdd-sc-poceada-r3": {
+  "top": 5,
+  "chin": 416
+ },
+ "jdd-sc-truco-jugar-r3": {
+  "top": 5,
+  "chin": 311
+ },
+ "jdd-sc-truco-envido-r3": {
+  "top": 10,
+  "chin": 314
+ },
+ "jdd-sc-juegos-de-cartas-r3": {
+  "top": 6,
+  "chin": 336
+ },
+ "jdd-sc-generala-probabilidades-r3": {
+  "top": 10,
+  "chin": 336
+ },
+ "jdd-sc-chinchon-jugar-r3": {
+  "top": 10,
+  "chin": 336
+ },
+ "jdd-sc-escoba-de-15-jugar-r3": {
+  "top": 3,
+  "chin": 452
+ },
+ "jdd-sc-generala-jugar-r3": {
+  "top": 3,
+  "chin": 390
  }
 }
