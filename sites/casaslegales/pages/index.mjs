@@ -3,12 +3,14 @@
 import { home } from './home.mjs';
 import { licencias } from './licencias.mjs';
 import { provinces } from './provincia.mjs';
+import { provincias } from './provincias.mjs';
+import { comoVerificar, menores, calcMargen, handicap } from './guias3.mjs';
 import { ayuda, metodologia, redaccion, fuentes, notFound } from './service.mjs';
 import { operatorPages } from './operador.mjs';
 import { verificador } from './verificador.mjs';
 import { checkPages } from './verificar.mjs';
 import { betAr, ilegales, operadores, autoexclusion } from './guias.mjs';
 
-export const PAGES = [home, licencias, verificador, operadores, ...operatorPages, ...provinces, ...checkPages, betAr, ilegales, ayuda, autoexclusion, metodologia, redaccion, fuentes];
+export const PAGES = [home, licencias, verificador, operadores, ...operatorPages, provincias, ...provinces, ...checkPages, betAr, ilegales, comoVerificar, menores, calcMargen, handicap, ayuda, autoexclusion, metodologia, redaccion, fuentes];
 export const NOT_FOUND = notFound;
 export const BETTING_KINDS = ['registry', 'province', 'operator', 'tool'];

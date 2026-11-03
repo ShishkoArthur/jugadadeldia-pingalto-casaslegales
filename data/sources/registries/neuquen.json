@@ -1,0 +1,133 @@
+{
+ "id": "neuquen",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "status": "official-list",
+ "regulator": {
+  "name": "Instituto Provincial de Juegos de Azar del Neuquén",
+  "short": "IJAN"
+ },
+ "list": {
+  "doc": "neu-casinos",
+  "pattern": "<td><p class=\"parrafo-14\"><a href=\"https?://(?<host>[^/\"]+)/?\">",
+  "more": [
+   {
+    "doc": "neu-juego-legal",
+    "pattern": "- La Neuquina Online - <a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)\""
+   }
+  ],
+  "note": "Two pages of the regulator: \"Juego legal\" names the authorised online platforms (La Neuquina Online and the online casinos page); \"Casinos\" has the table \"CASINOS ONLINE PERMITIDOS\". robots.txt allows * (Content-Signal: search=yes, ai-train=no, use=reference); fetched once with a transparent user agent."
+ },
+ "docs": {
+  "neu-juego-legal": {
+   "url": "https://ijan-neuquen.com/juego_legal.php",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "b5db3b8d384557e25df2a775dbe262869829e965f33fa3552a550d7a0a28750f",
+   "file": "data/sources/registries/_docs/neu-juego-legal.html"
+  },
+  "neu-casinos": {
+   "url": "https://ijan-neuquen.com/casinos.php",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "91bfd63bc833b52e9fd0ec8ab6a3ecddb29fe6d5c77c30395a7783f0dd280dd3",
+   "file": "data/sources/registries/_docs/neu-casinos.html"
+  }
+ },
+ "quotes": {
+  "list": {
+   "doc": "neu-juego-legal",
+   "text": "las plataformas de juego online autorizadas en Neuquén son:",
+   "role": "list"
+  },
+  "casinos": {
+   "doc": "neu-casinos",
+   "text": "CASINOS ONLINE PERMITIDOS",
+   "role": "list"
+  },
+  "regulator": {
+   "doc": "neu-juego-legal",
+   "text": "En nuestra provincia el organismo competente es el Instituto Provincial de Juegos de Azar del Neuquén (IJAN).",
+   "role": "regulator"
+  },
+  "law": {
+   "doc": "neu-casinos",
+   "text": "A través de la Ley 2751, Instituto Provincial de Juegos de Azar se constituyó en la autoridad de aplicación de los juegos de azar que se desarrollan en la Provincia del Neuquén.",
+   "role": "law"
+  },
+  "illegal": {
+   "doc": "neu-juego-legal",
+   "text": "Es aquel que no se encuentra autorizado, por el Instituto Provincial de Juegos de Azar, dentro del territorio de la Provincia del Neuquén.",
+   "role": "illegal",
+   "hidden": true
+  },
+  "report": {
+   "doc": "neu-juego-legal",
+   "text": "DENUNCIA ANÓNIMA AL: 0800 333 1136",
+   "role": "report",
+   "hidden": true
+  }
+ },
+ "law": [
+  {
+   "name": "Ley 2751",
+   "quote": "law"
+  }
+ ],
+ "licensees": [
+  {
+   "brand": "laneuquina",
+   "host": "laneuquinaonline.bet.ar",
+   "label": "La Neuquina Online",
+   "evidence": {
+    "doc": "neu-juego-legal",
+    "html": "- La Neuquina Online - <a href=\"https://www.laneuquinaonline.bet.ar\""
+   }
+  },
+  {
+   "brand": "casinomagic",
+   "host": "casinomagiconline.bet.ar",
+   "label": "Casino Magic Online",
+   "evidence": {
+    "doc": "neu-casinos",
+    "html": "<td><p class=\"parrafo-14\">Casino Magic Online</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://casinomagiconline.bet.ar\">"
+   }
+  },
+  {
+   "brand": "maverick",
+   "host": "maverickonline.bet.ar",
+   "label": "Maverick Online",
+   "evidence": {
+    "doc": "neu-casinos",
+    "html": "<td><p class=\"parrafo-14\">Maverick Online</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://maverickonline.bet.ar\">"
+   }
+  },
+  {
+   "brand": "macgroup",
+   "host": "casinosmacgroup.bet.ar",
+   "label": "Casino MAC Group",
+   "evidence": {
+    "doc": "neu-casinos",
+    "html": "<td><p class=\"parrafo-14\">Casino MAC Group</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://casinosmacgroup.bet.ar\">"
+   }
+  },
+  {
+   "brand": "aladdin",
+   "host": "aladdincasino.bet.ar",
+   "label": "Aladdin Online",
+   "evidence": {
+    "doc": "neu-casinos",
+    "html": "<td><p class=\"parrafo-14\">Aladdin Online</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://aladdincasino.bet.ar/\">"
+   }
+  },
+  {
+   "brand": "betwarrior",
+   "host": "betwarrior.bet.ar",
+   "label": "Betwarrior",
+   "evidence": {
+    "doc": "neu-casinos",
+    "html": "<td><p class=\"parrafo-14\">Betwarrior</p></td>\n                            <td><p class=\"parrafo-14\"><a href=\"https://betwarrior.bet.ar/\">"
+   }
+  }
+ ]
+}

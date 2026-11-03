@@ -1,3 +1,4 @@
+import { provDocRows } from '../content/provdata.mjs';
 import { TILES } from '../content/map.mjs';
 import { rgQuote, sectionHead } from './parts.mjs';
 import { opData } from '../content/opdata.mjs';
@@ -109,7 +110,7 @@ export const fuentes = {
   h1: 'Registro de fuentes oficiales usadas en el sitio',
   ld: h => [h.webPage()],
   render(h) {
-    const docs = h.docs().sort((a, b) => a.jurName.localeCompare(b.jurName, 'es') || a.host.localeCompare(b.host));
+    const docs = [...h.docs(), ...provDocRows(h)].sort((a, b) => a.jurName.localeCompare(b.jurName, 'es') || a.host.localeCompare(b.host));
     const rows = docs.map(d => '<tr><th scope="row">' + h.esc(d.jurName) + '</th><td><a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host + d.pathShort) + '</a>' + (d.archived ? ' <span class="rl-src">(copia de archivo web)</span>' : '') + '</td><td>' + h.esc(d.use) + '</td><td>' + h.fmtDate(d.fetched) + '</td><td class="rl-host">' + h.esc(d.sha256.slice(0, 12)) + '</td><td>' + d.quotes + '</td></tr>').join('');
     return '<section class="rl-hero"><div><p class="rl-kick">' + h.t('{{doc_total}} documentos · {{quote_total}} citas') + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Cada documento oficial que usamos, con la fecha de nuestra copia y su huella digital (los primeros caracteres del SHA-256). Si una página oficial cambia, la huella cambia y lo revisamos.</p></div></section>' +

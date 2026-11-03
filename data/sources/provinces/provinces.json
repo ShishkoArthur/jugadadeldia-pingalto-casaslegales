@@ -1,0 +1,272 @@
+{
+ "about": "Jurisdictions of casaslegales.com without a verified licensee list (lists live in data/sources/registries/). status: platform = the regulator links its own .bet.ar platform (no list of other operators published); none = nothing verifiable found (seen = saved copies checked for .bet.ar links); blocked = source unreachable or excluded, nothing claimed. Checked by tools/lib/provsources.mjs.",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "docs": {
+  "eri-iafas-inicio": {
+   "url": "https://www.iafas.gov.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "9093827dab41a56d310fc6d9c561861aea00f702ddbb43cb0723ed17e9815607",
+   "file": "data/sources/provinces/_docs/eri-iafas-inicio.html"
+  },
+  "mis-iplyc-portal": {
+   "url": "https://www.loteriademisiones.com.ar/portal/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "047df1a6e9ae07a6456c059615398cbf45b0c04efade8069a2ab9ea833b18aed",
+   "file": "data/sources/provinces/_docs/mis-iplyc-portal.html"
+  },
+  "cha-loteria-inicio": {
+   "url": "https://loteria.chaco.gov.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "b20af0466a18592e814f18b021566b1a887aec951f303e82bc9da1ac81c9105d",
+   "file": "data/sources/provinces/_docs/cha-loteria-inicio.html"
+  },
+  "cha-juego-ilegal": {
+   "url": "https://loteria.chaco.gov.ar/juego-ilegal",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "d8558829442cf6f7c65bc360fae918241ed67a7481462e41705e18fc5d389bc5",
+   "file": "data/sources/provinces/_docs/cha-juego-ilegal.html"
+  },
+  "cor-loteria-inicio": {
+   "url": "https://www.loteriacorrentina.gob.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "e83a94a6175e2b5caede6408c2b5571dc4b9f289d43fa69805a2229cd8c90462",
+   "file": "data/sources/provinces/_docs/cor-loteria-inicio.html"
+  },
+  "sal-enreja-juego-autorizado": {
+   "url": "https://www.enrejasalta.com.ar/ja.php",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "805c3b21fede578c9cb407040f7d191451cce3c979d7b92f8ea07d7d2ac3dccd",
+   "file": "data/sources/provinces/_docs/sal-enreja-juego-autorizado.html"
+  },
+  "tuc-caja-popular-inicio": {
+   "url": "https://www.cajapopular.gov.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "5c01cedda0a087ae1423f2ba5a1b080b0cf2b3cecd8109aa657f0d2b1e0bb892",
+   "file": "data/sources/provinces/_docs/tuc-caja-popular-inicio.html"
+  },
+  "sju-cas-inicio": {
+   "url": "https://www.cas.gob.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "5400a61211763103b2ac484cfdb26feb337a263d76b9f63678f65ceb61d218a4",
+   "file": "data/sources/provinces/_docs/sju-cas-inicio.html"
+  },
+  "tdf-ipra-inicio": {
+   "url": "https://www.ipra.gov.ar/web/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "27890869748520f3484564c0512c137c67d1b39e31facf77c0225aa5ad2f3c42",
+   "file": "data/sources/provinces/_docs/tdf-ipra-inicio.html"
+  },
+  "scr-loas-inicio": {
+   "url": "https://loteriadesantacruz.gob.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "66f28a9571e0611d16bd363b7101d38ebe8b8d46a3c0b418554d533df7aeca08",
+   "file": "data/sources/provinces/_docs/scr-loas-inicio.html"
+  }
+ },
+ "jurisdictions": {
+  "entre-rios": {
+   "status": "platform",
+   "platforms": [
+    {
+     "name": "IAFAS Play",
+     "host": "iafasplay.bet.ar",
+     "evidence": {
+      "doc": "eri-iafas-inicio",
+      "html": "<a target=\"_blank\" href=\"https://www.iafasplay.bet.ar/\">IAFAS Play</a>"
+     },
+     "quote": {
+      "doc": "eri-iafas-inicio",
+      "text": "IAFAS Play"
+     }
+    }
+   ]
+  },
+  "misiones": {
+   "status": "platform",
+   "platforms": [
+    {
+     "name": "GuazuBet",
+     "host": "guazubet.bet.ar",
+     "evidence": {
+      "doc": "mis-iplyc-portal",
+      "html": "<a target=\"_blank\" href=\"https://guazubet.bet.ar/\" aria-label=\"Web de GuazuBet (abre en ventana nueva)\" class=\"elementor-item\">GuazuBet</a>"
+     },
+     "quote": {
+      "doc": "mis-iplyc-portal",
+      "text": "GuazuBet"
+     }
+    },
+    {
+     "name": "QuinApp",
+     "host": "quinapp.bet.ar",
+     "evidence": {
+      "doc": "mis-iplyc-portal",
+      "html": "<a href=\"https://quinapp.bet.ar/home\" target=\"_blank\" aria-label=\"Web de QuinApp (abre en ventana nueva)\">"
+     }
+    }
+   ]
+  },
+  "chaco": {
+   "status": "platform",
+   "platforms": [
+    {
+     "name": "Interbet",
+     "host": "interbet.bet.ar",
+     "evidence": {
+      "doc": "cha-loteria-inicio",
+      "html": "<a href=\"https://www.interbet.bet.ar/aspnet2\" target=\"_blank\" class=\"navbar2-interbet2\" style=\"text-decoration:none;\">\n          <img src=\"https://loteria.chaco.gov.ar/uploads/cache/media/template_interbet/frontend/images/logo-interbet-color.png\" alt=\"Interbet\">\n          <p>Jugá Online</p>\n        </a>"
+     },
+     "quote": {
+      "doc": "cha-loteria-inicio",
+      "text": "Jugá Online"
+     }
+    }
+   ],
+   "report": {
+    "doc": "cha-juego-ilegal",
+    "text": "Vía telefónica : 0810-888-5684"
+   }
+  },
+  "corrientes": {
+   "status": "platform",
+   "platforms": [
+    {
+     "name": "La Correntina Online",
+     "host": "lacorrentinaonline.bet.ar",
+     "evidence": {
+      "doc": "cor-loteria-inicio",
+      "html": "<a data-testid=\"linkElement\" href=\"http://www.lacorrentinaonline.bet.ar\" target=\"_blank\" rel=\"noreferrer noopener\" class=\"StylableButton2545352419__root StylableButton2545352419__forcedColorsBackground style-m4n6g9tw__root wixui-button StylableButton2545352419__link\" aria-label=\"Ingresá\">"
+     },
+     "quote": {
+      "doc": "cor-loteria-inicio",
+      "text": "Ingresá a: lacorrentinaonline.bet.ar y realizá tus jugadas de quiniela."
+     }
+    }
+   ]
+  },
+  "salta": {
+   "status": "none",
+   "reason": "no-list",
+   "seen": [
+    {
+     "doc": "sal-enreja-juego-autorizado",
+     "noBetAr": true
+    }
+   ],
+   "quotes": {
+    "law": {
+     "doc": "sal-enreja-juego-autorizado",
+     "text": "se ajustan a las pautas, procedimientos y condiciones fijadas en la ley provincial 7020."
+    }
+   }
+  },
+  "tucuman": {
+   "status": "none",
+   "reason": "no-list",
+   "seen": [
+    {
+     "doc": "tuc-caja-popular-inicio",
+     "noBetAr": true
+    }
+   ]
+  },
+  "san-juan": {
+   "status": "none",
+   "reason": "no-list",
+   "seen": [
+    {
+     "doc": "sju-cas-inicio",
+     "noBetAr": true
+    }
+   ]
+  },
+  "tierra-del-fuego": {
+   "status": "none",
+   "reason": "no-list",
+   "seen": [
+    {
+     "doc": "tdf-ipra-inicio",
+     "noBetAr": true
+    }
+   ],
+   "quotes": {
+    "regulator": {
+     "doc": "tdf-ipra-inicio",
+     "text": "Instituto Provincial de Regulación de Apuestas - Gobierno de Tierra del Fuego"
+    }
+   }
+  },
+  "santa-cruz": {
+   "status": "none",
+   "reason": "no-list",
+   "seen": [
+    {
+     "doc": "scr-loas-inicio",
+     "noBetAr": true
+    }
+   ],
+   "quotes": {
+    "regulator": {
+     "doc": "scr-loas-inicio",
+     "text": "Loteria para Obras de Acción Social de la Provincia de Santa Cruz"
+    }
+   }
+  },
+  "jujuy": {
+   "status": "none",
+   "reason": "script-only",
+   "note": "inprojuy.gob.ar answers 200 with a 1.4 KB script shell and no readable text; nothing to quote."
+  },
+  "san-luis": {
+   "status": "none",
+   "reason": "not-found",
+   "note": "No official page of a San Luis regulator with a list of online platforms found from this machine (2026-11-03)."
+  },
+  "catamarca": {
+   "status": "none",
+   "reason": "not-found",
+   "note": "No official page found; candidate hosts time out from this machine (2026-11-03)."
+  },
+  "la-pampa": {
+   "status": "none",
+   "reason": "not-found",
+   "note": "isslapampa.gob.ar times out from this machine (2026-11-03); the help package uses a Wayback copy of its responsible gambling page."
+  },
+  "formosa": {
+   "status": "none",
+   "reason": "not-found",
+   "note": "No official page of a Formosa regulator found (2026-11-03)."
+  },
+  "santiago-del-estero": {
+   "status": "none",
+   "reason": "not-found",
+   "note": "cajasocialsde.gob.ar answers only over plain http (https times out); no list of online platforms found (research 2026-11-02)."
+  },
+  "chubut": {
+   "status": "blocked",
+   "reason": "excluded",
+   "note": "Excluded source (docs/research/APIS-2026-11-02.md, F): robots.txt limits automated access (6 requests per hour, 03-12 UTC) and the site showed inserted third-party gambling content."
+  },
+  "santa-fe": {
+   "status": "blocked",
+   "reason": "geo",
+   "note": "loteriasantafe.gov.ar: timeout from this machine and 403 from the server (2026-11-01). Not bypassed; copies from a browser in Argentina pending (docs/reference/owner-saves/)."
+  },
+  "mendoza": {
+   "status": "blocked",
+   "reason": "geo",
+   "note": "IPJyC hosts on mendoza.gob.ar: CloudFront 403 \"Request blocked\" (2026-11-02). Not bypassed; copies from a browser in Argentina pending (docs/reference/owner-saves/)."
+  }
+ }
+}

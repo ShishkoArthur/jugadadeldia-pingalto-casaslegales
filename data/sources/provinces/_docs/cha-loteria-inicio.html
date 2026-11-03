@@ -1,0 +1,3774 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  	<title>Loteria Chaqueña</title>
+
+      <!-- Mobile Browser Bar Colors -->
+    <meta name="theme-color" content="#2D94CB">
+    <meta name="msapplication-navbutton-color" content="#2D94CB">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2D94CB">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/frontend/images/favicon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="/frontend/images/favicon.png" type="image/png" />
+
+    <!-- Styles -->
+  <link rel="stylesheet" href="/build/frontend.css">
+      
+  <!-- INTERNET EXPLORER Fallback -->
+  <script>
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+    if (isIE) window.location.href = "/update.html";
+  </script>
+  <!-- Matomo -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://stats.ecom.com.ar/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '15']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
+</head>
+
+<body>
+    <!-- navbar2 -->
+  <nav class="navbar2 superior">
+    <!-- navbar2 TOP -->
+    <div class="navbar2-top2">
+      <!-- navbar2 DATE -->
+      <section class="navbar2-group navbar2-date">
+        <div class="date-time">
+          <div class="date-time-container">
+            <div class="date-time-box">
+                                          <div class="date-time-item date-time__hour" >
+                <time id="clock"></time>
+              </div>
+            </div>
+            <div class="date-time-box">
+              <div class="date-time-item date-time__date" id="date">
+              </div>
+            </div>
+          </div>
+          <div class="date-time-container social">
+            <div class="date-time-box">
+              <a class="date-time-item date-time__social" href="https://www.facebook.com/LoteriaChaquenaOficial/" target="_blank">
+                <img src="/frontend/images/icons/icon-facebook-blue.svg" alt="Facebook" class="icon-xs">
+              </a>
+            </div>
+            <div class="date-time-box">
+              <a class="date-time-item date-time__social" href="https://twitter.com/loteriachaquena" target="_blank">
+                <img src="/frontend/images/icons/icon-twitter-blue.svg" alt="Facebook" class="icon-xs">
+              </a>
+            </div>
+            <div class="date-time-box">
+              <a class="date-time-item date-time__social" href="https://www.youtube.com/channel/UCUI-haWh0sI9ABHEFfGnHxw" target="_blank">
+                <img src="/frontend/images/icons/icon-youtube-blue.svg" alt="Facebook" class="icon-xs">
+              </a>
+            </div>
+            <div class="date-time-box">
+                <a class="date-time-item date-time__social" href="https://www.instagram.com/loteriachaquena" target="_blank">
+                  <img src="/frontend/images/icons/instagram-icon.png" alt="Facebook" class="icon-xs">
+                </a>
+              </div>
+          </div>
+        </div>
+      </section>
+      <!-- navbar2 DATE -->
+
+      <!-- navbar2 LOGO -->
+      <section class="navbar2-group navbar2-logo2">
+        <a href="/">
+          <img class="img-fluid"  src="/frontend/images/logo-loteria.png" alt="Loteria del Chaco">
+        </a>
+      </section>
+      <!-- navbar2 LOGO -->
+      
+      <!-- navbar2 LOGO -->
+      <section class="navbar2-group navbar2-sponsor2">
+        <a href="http://chaco.gov.ar/" target="_blank">
+          <img src="/frontend/images/logo_gobierno_gris2020.png" alt="Gobierno del Chaco">
+        </a>
+      </section>
+      <!-- navbar2 LOGO -->
+    </div>
+    <!-- navbar2 TOP -->
+
+    <!-- navbar2 BOTTOM -->
+          <div class="navbar2-bottom2">
+        <a href="https://www.interbet.bet.ar/aspnet2" target="_blank" class="navbar2-interbet2" style="text-decoration:none;">
+          <img src="https://loteria.chaco.gov.ar/uploads/cache/media/template_interbet/frontend/images/logo-interbet-color.png" alt="Interbet">
+          <p>Jugá Online</p>
+        </a>
+        <div class="navbar2-mobile-menu-btn2 text-with-icon">
+          <img class="icon-xs" src="/frontend/images/icons/icon-menu-grey_dark.svg" alt="Menu">
+          &nbsp; &nbsp;Menu
+        </div>
+        <div class="navbar2-menu__container2">
+          <div class="navbar2-menu__background2"></div>
+          <ul class="navbar2-menu">
+            	<li class="navbar2-menu-item active border-color-blue">
+	                <a href="/" class="link-menu">Home</a>
+              </li>
+                          <li class="navbar2-menu-item border-color-red">
+                            <a href="/agencia_digital" class="link-menu">Extractos oficiales</a>
+              </li>
+                          <li class="navbar2-menu-item border-color-orange">
+                            <a href="/loteria" class="link-menu">Lotería</a>
+              </li>
+                          <li class="navbar2-menu-item border-color-amber">
+                            <a href="/eventos" class="link-menu">Eventos</a>
+              </li>
+                          <li class="navbar2-menu-item border-color-green">
+                            <a href="/noticias" class="link-menu">Noticias</a>
+              </li>
+                          <li class="navbar2-menu-item border-color-yellow">
+                            <a href="/agencia_casino" class="link-menu">Agencias y Casinos</a>
+              </li>
+                          <li class="navbar2-menu-item border-color-green-strong">
+                            <a href="/juego_responsable" class="link-menu">Juego Responsable</a>
+              </li>
+              <li class="navbar2-menu-item border-color-red">
+                <a href="/juego-ilegal" class="link-menu ">Juego Ilegal</a>
+              </li>
+              <li class="navbar2-menu-item border-color-green">
+                <a href="https://drive.google.com/drive/folders/1Lp7ZWTul4dktMjJztR37IcbuDTwmbfi4?usp=sharing" class="link-menu" target="_blank">Descargas</a>
+              </li>
+              
+              <li class="border-color-autogestion">
+                <a href="https://app.chaco.gob.ar/SAGA/servlet/login" target="_blank" class="navbar2-autogestion" style="text-decoration:none;">
+                  <img src="/frontend/images/icons/icon-person-black.svg" alt="Icono Autogestión">
+                  <p>Autogestión de Agentes</p>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+        
+  </nav>
+  <!-- navbar2 -->
+  
+  	<!-- SIDEMENU -->
+	<aside class="sidemenu-container">
+		<ul class="sidemenu">
+			<li class="sidemenu-item bg-grey-light sidemenu-toggle">
+				<figure class="sidemenu-icon">
+					<img src="/frontend/images/icons/icon-arrow_right_2-black.svg" alt="" class="icon-xs">
+				</figure>
+				<p class="sidemenu-text">Ocultar</p>
+			</li>
+			<li class="sidemenu-item sidemenu-resultados bg-red white" data-link="home-resultados__header">
+				<figure class="sidemenu-icon">
+					<img src="/frontend/images/icons/icon-copa-white.svg" alt="" class="icon-xs">
+				</figure>
+				<p class="sidemenu-text">Resultados</p>
+			</li>
+			<li class="sidemenu-item sidemenu-novedades bg-yellow blue" data-link="home-novedades__header">
+				<figure class="sidemenu-icon">
+					<img src="/frontend/images/icons/icon-novedades-blue.svg" alt="" class="icon-xs">
+				</figure>
+				<p class="sidemenu-text">Novedades</p>
+			</li>
+			<li class="sidemenu-item sidemenu-juegos bg-red white" data-link="home-juegos__header">
+				<figure class="sidemenu-icon">
+					<img src="/frontend/images/icons/icon-juegos-white.svg" alt="" class="icon-xs">
+				</figure>
+				<p class="sidemenu-text">Juegos</p>
+			</li>
+			<li class="sidemenu-item sidemenu-accesos bg-blue white" data-link="home-accesos__header">
+				<figure class="sidemenu-icon">
+					<img src="/frontend/images/icons/icon-shortcut-white.svg" alt="" class="icon-xs">
+				</figure>
+				<p class="sidemenu-text">Accesos Directos</p>
+			</li>
+			<li class="sidemenu-item sidemenu-eventos bg-orange white" data-link="home-eventos__header">
+				<figure class="sidemenu-icon">
+					<img src="/frontend/images/icons/icon-gallery-white.svg" alt="" class="icon-xs">
+				</figure>
+				<p class="sidemenu-text">Eventos</p>
+			</li>
+		</ul>
+	</aside>
+	<!-- SIDEMENU -->
+    <!-- SORTEO EN VIVO POPUP -->
+    <span class="sorteo-popup__container"  id="popup_sorteovivo" style="display:none;">
+      <span class="sorteo-popup">
+        <div class="sorteo-popup__icon">
+          <figure class="btn-icon btn-icon--smd bg-red">
+            <img src="/frontend/images/icons/icon-juegos-white.svg" alt="Novedades">
+          </figure>
+        </div>
+        <div class="sorteo-popup__details blue" onclick="verResultadosEnVivo()" sorteo="" id="aviso_sorteo_vivo"  style="cursor: pointer;"> 
+          <strong class="sorteo-popup__title" id="pop_titulo_sorteovivo">¡COMENZÓ EL SORTEO!</strong>
+          <div id="pop_subtitulo_sorteovivo">Mirá los resultados en vivo</div>
+        </div>
+        <div class="sorteo-popup__close">
+          <figure class="btn-icon btn-icon--xs bg-red">
+            <img src="/frontend/images/icons/icon-close-white.svg" alt="Cerrar">
+          </figure>
+        </div>
+      </span>
+    </span>
+
+  <!-- SORTEO EN VIVO POPUP -->
+  <!-- ventana modal de resultados en vivo -->
+  <div class="modal fade" id="modal_vivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content"  >
+        <div class="modal-header sorteovivo-header">
+          <h3 class="modal-title " id="titulo_modal_vivo"></h3>
+          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <article class="card-body">
+            <h3 id="modalidad_vivo"></h3>
+          </article>
+          <div class="row">
+            <div class="col-md-6">
+                Nro. de Sorteo: <div class="inline"  id="sorteo_vivo_numeroSorteo"></div>
+            </div>
+            <div class="col-md-6">
+                Fecha: <div class="inline" id="sorteo_vivo_fecha"></div>
+            </div>
+            <br><br><br>
+            
+            <div class="col-6 align-center" id="parte_1_sorteo_vivo">
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="ubicacion_header">Ubicación</th>
+                      <th>Número</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lista_vivo1">
+                    
+                  </tbody>
+                </table>
+            </div>
+            <div class="col-6 align-center" id="parte_2_sorteo_vivo">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th  class="ubicacion_header" >Ubicación</th>
+                      <th>Número</th>
+                    </tr>
+                  </thead>
+                    <tbody id="lista_vivo2">
+                      
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+          <span>Resultados sujetos a verificación.</span>
+        </div>
+        <div class="modal-footer">
+          <a id="boton_imprimir_sorteo_vivo" href="" onclick="window.open(this.href, this.target, 'width=800,height=650,scrollbars=yes'); return false;" class="btn btn-danger boton-red" role="button"  target="_blank" aria-pressed="true" style="display:none;">Imprimir</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  		<!-- MAIN CONTAINER -->
+		<main
+			class="main">
+			<!-- HOME SLIDER -->
+
+			<section class="home-welcome">
+				<div class="slider-container2">
+					<div class="home-welcome-slider">
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/6acf90785842a191862688.png')" 
+														 
+								 
+							 
+							 
+								onclick="window.open('https://www.instagram.com/p/DeeiGPYRsf5/?utm_source=ig_web_button_share_sheet&amp;cplk=MzRlODBiNWFlZA==')" 
+								style="cursor: pointer;" 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/6ae692dd69eb3366550744.png')" 
+														 
+								 
+							 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/6a707d33eadb0644662859.png')" 
+														 
+								 
+							 
+							 
+								onclick="window.open('https://drive.google.com/file/d/1zsdAgulcP3lx11LlJerRAwcn5nyMfsxT/view?usp=sharing')" 
+								style="cursor: pointer;" 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/6ac8fcfc6f1b2003296717.png')" 
+														 
+								 
+							 
+							 
+								onclick="window.open('https://www.instagram.com/reel/DeRtxlgx2aN/?utm_source=ig_web_button_share_sheet&amp;dlrf=MzRlODBiNWFlZA==')" 
+								style="cursor: pointer;" 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/6915c44d8b0aa455685534.png')" 
+														 
+								 
+							 
+							 
+								onclick="window.open('https://loteria.chaco.gov.ar/juego_responsable')" 
+								style="cursor: pointer;" 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/67fe882405e61749863986.png')" 
+														 
+								 
+							 
+							 
+								onclick="window.open('https://www.youtube.com/@loteria.chaquena/streams')" 
+								style="cursor: pointer;" 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/68ac61f317d7a731810117.png')" 
+														 
+								 
+							 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/679a43eeb4e11328601381.png')" 
+														 
+								 
+							 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/67c0518c2affb531229433.png')" 
+														 
+								 
+							 
+							 
+								onclick="window.open('https://www.interbet.bet.ar/aspnet2')" 
+								style="cursor: pointer;" 
+							 
+							> 
+							</div> 
+													 
+								<div name="1" class="home-slider-item background-image" style="background-image: url('https://loteria.chaco.gov.ar/uploads/cache/media/index_slider/uploads/sliders/68dfaef354a16443972615.png')" 
+														 
+								 
+							 
+							 
+								onclick="window.location.href('https://loteria.chaco.gov.ar/juego-ilegal')" 
+								style="cursor: pointer;" 
+							 
+							> 
+							</div> 
+						 
+					</div> 
+					<div class="home-welcome-slider__controls slider-controls"> 
+						<div class="slider-control slider-control--prev"> 
+							<img class="icon-xl" src="/frontend/images/icons/icon-arrow_left-white.svg" alt="Anterior"> 
+						</div> 
+						<div class="slider-control slider-control--next"> 
+							<img class="icon-xl" src="/frontend/images/icons/icon-arrow_right-white.svg" alt="Siguiente"> 
+						</div> 
+					</div> 
+				</div> 
+				</section> 
+				<br> <!-- HOME SLIDER --> <!-- HOME MAIN CONTAINER --> 
+				<div class="main-container elevation-6"> 
+					<!-- RESULTADOS --> 
+					<section class="container-section home-resultados"> <!-- SORTEO EN VIVOOO --> 
+					<div class="sorteo-banner" id="barra_sorteovivo" style="display:none;"> 
+					<header class="sorteo-banner__header"> 
+					<div class="background">
+					<div class="content">
+						<h3 class="sorteo-banner__title">Sorteo
+							<strong>en vivo</strong>
+						</h3>
+					</div>
+				</header>
+				<section class="sorteo-banner__details">
+					<h3 class="blue" id="sorteo_vivo"></h3>
+				</section>
+			</div>
+
+			<br>
+			<header class="home-resultados__header container-section-header">
+				<figure class="btn-icon btn-icon--md bg-red">
+					<img class="lazyload" src="/frontend/images/icons/icon-copa-white.svg" alt="Resultados">
+				</figure>
+				<div class="text-box">
+					<div class="title">
+						<h2 class="blue">RESULTADOS DE QUINIELA</h2>
+
+
+					</div>
+					<div class="subtitle">
+						<h5 class="grey">Martes 03 de Noviembre 06:41 am</h5>
+					</div>
+
+				</div>
+
+			</header>
+
+			<article
+				class="container-section-body">
+				<!-- RESULTADOS DE QUINIELA -->
+									<section class="resultados-quiniela" style="text-align: center;">
+						<article class="container-section-body">
+							<ul class="card-list__selector"></ul>
+							<ul class="card-list">
+																																						<li class="card-list__item">
+												<div class="card">
+													<article class="card-body">
+														<h3 class="h4 text-muted mb-3">Chaqueña</h3>
+																													<p>Juego:
+																Quiniela Nocturna</p>
+																												<p>02/11</p>
+													</article>
+													<article class="card-body results">
+														<ul class="results-list two">
+																																																																																																			<li class="results-list__item">
+																			<p class="results-position">1</p>
+																			<p class="results-number"  style="font-weight:bold !important;font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;" >
+																				5451
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">2</p>
+																			<p class="results-number" >
+																				3612
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">3</p>
+																			<p class="results-number" >
+																				6423
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">4</p>
+																			<p class="results-number" >
+																				5769
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">5</p>
+																			<p class="results-number" >
+																				4160
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">6</p>
+																			<p class="results-number" >
+																				3191
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">7</p>
+																			<p class="results-number" >
+																				6621
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">8</p>
+																			<p class="results-number" >
+																				2205
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">9</p>
+																			<p class="results-number" >
+																				1889
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">10</p>
+																			<p class="results-number" >
+																				7698
+																			</p>
+																		</li>
+																																																																							</ul>
+																		<ul class="results-list two">
+																																				<li class="results-list__item">
+																			<p class="results-position">11</p>
+																			<p class="results-number" >
+																				3006
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">12</p>
+																			<p class="results-number" >
+																				0204
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">13</p>
+																			<p class="results-number" >
+																				9354
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">14</p>
+																			<p class="results-number" >
+																				3339
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">15</p>
+																			<p class="results-number" >
+																				2560
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">16</p>
+																			<p class="results-number" >
+																				2137
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">17</p>
+																			<p class="results-number" >
+																				1040
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">18</p>
+																			<p class="results-number" >
+																				8373
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">19</p>
+																			<p class="results-number" >
+																				0446
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">20</p>
+																			<p class="results-number" >
+																				7478
+																			</p>
+																		</li>
+																																																																																</ul>
+													</article>
+												</div>
+											</li>
+																																																											<li class="card-list__item">
+												<div class="card">
+													<article class="card-body">
+														<h3 class="h4 text-muted mb-3">Prov. Bs As</h3>
+																													<p>Juego:
+																Quiniela Nocturna</p>
+																												<p>02/11</p>
+													</article>
+													<article class="card-body results">
+														<ul class="results-list two">
+																																																																																																			<li class="results-list__item">
+																			<p class="results-position">1</p>
+																			<p class="results-number"  style="font-weight:bold !important;font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;" >
+																				2923
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">2</p>
+																			<p class="results-number" >
+																				9062
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">3</p>
+																			<p class="results-number" >
+																				4901
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">4</p>
+																			<p class="results-number" >
+																				3998
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">5</p>
+																			<p class="results-number" >
+																				1491
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">6</p>
+																			<p class="results-number" >
+																				8194
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">7</p>
+																			<p class="results-number" >
+																				2730
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">8</p>
+																			<p class="results-number" >
+																				5586
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">9</p>
+																			<p class="results-number" >
+																				5027
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">10</p>
+																			<p class="results-number" >
+																				7205
+																			</p>
+																		</li>
+																																																																							</ul>
+																		<ul class="results-list two">
+																																				<li class="results-list__item">
+																			<p class="results-position">11</p>
+																			<p class="results-number" >
+																				9022
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">12</p>
+																			<p class="results-number" >
+																				6668
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">13</p>
+																			<p class="results-number" >
+																				9688
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">14</p>
+																			<p class="results-number" >
+																				1982
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">15</p>
+																			<p class="results-number" >
+																				6497
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">16</p>
+																			<p class="results-number" >
+																				6174
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">17</p>
+																			<p class="results-number" >
+																				3763
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">18</p>
+																			<p class="results-number" >
+																				3995
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">19</p>
+																			<p class="results-number" >
+																				2093
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">20</p>
+																			<p class="results-number" >
+																				8053
+																			</p>
+																		</li>
+																																																																																</ul>
+													</article>
+												</div>
+											</li>
+																																								<li class="card-list__item">
+												<div class="card">
+													<article class="card-body">
+														<h3 class="h4 text-muted mb-3">Ciudad Bs As</h3>
+																													<p>Juego:
+																Quiniela Nocturna</p>
+																												<p>02/11</p>
+													</article>
+													<article class="card-body results">
+														<ul class="results-list two">
+																																																																																																			<li class="results-list__item">
+																			<p class="results-position">1</p>
+																			<p class="results-number"  style="font-weight:bold !important;font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;" >
+																				2875
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">2</p>
+																			<p class="results-number" >
+																				1388
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">3</p>
+																			<p class="results-number" >
+																				3235
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">4</p>
+																			<p class="results-number" >
+																				9113
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">5</p>
+																			<p class="results-number" >
+																				4539
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">6</p>
+																			<p class="results-number" >
+																				8418
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">7</p>
+																			<p class="results-number" >
+																				1530
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">8</p>
+																			<p class="results-number" >
+																				6595
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">9</p>
+																			<p class="results-number" >
+																				9915
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">10</p>
+																			<p class="results-number" >
+																				0125
+																			</p>
+																		</li>
+																																																																							</ul>
+																		<ul class="results-list two">
+																																				<li class="results-list__item">
+																			<p class="results-position">11</p>
+																			<p class="results-number" >
+																				2894
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">12</p>
+																			<p class="results-number" >
+																				6512
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">13</p>
+																			<p class="results-number" >
+																				4379
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">14</p>
+																			<p class="results-number" >
+																				5594
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">15</p>
+																			<p class="results-number" >
+																				5598
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">16</p>
+																			<p class="results-number" >
+																				2092
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">17</p>
+																			<p class="results-number" >
+																				4462
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">18</p>
+																			<p class="results-number" >
+																				5291
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">19</p>
+																			<p class="results-number" >
+																				1641
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">20</p>
+																			<p class="results-number" >
+																				1023
+																			</p>
+																		</li>
+																																																																																</ul>
+													</article>
+												</div>
+											</li>
+																																								<li class="card-list__item">
+												<div class="card">
+													<article class="card-body">
+														<h3 class="h4 text-muted mb-3">Correntina</h3>
+																													<p>Juego:
+																Quiniela Nocturna</p>
+																												<p>02/11</p>
+													</article>
+													<article class="card-body results">
+														<ul class="results-list two">
+																																																																																																			<li class="results-list__item">
+																			<p class="results-position">1</p>
+																			<p class="results-number"  style="font-weight:bold !important;font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;" >
+																				9294
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">2</p>
+																			<p class="results-number" >
+																				3272
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">3</p>
+																			<p class="results-number" >
+																				7358
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">4</p>
+																			<p class="results-number" >
+																				7077
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">5</p>
+																			<p class="results-number" >
+																				5101
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">6</p>
+																			<p class="results-number" >
+																				0345
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">7</p>
+																			<p class="results-number" >
+																				7776
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">8</p>
+																			<p class="results-number" >
+																				3630
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">9</p>
+																			<p class="results-number" >
+																				1113
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">10</p>
+																			<p class="results-number" >
+																				4158
+																			</p>
+																		</li>
+																																																																							</ul>
+																		<ul class="results-list two">
+																																				<li class="results-list__item">
+																			<p class="results-position">11</p>
+																			<p class="results-number" >
+																				0316
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">12</p>
+																			<p class="results-number" >
+																				3245
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">13</p>
+																			<p class="results-number" >
+																				4832
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">14</p>
+																			<p class="results-number" >
+																				3956
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">15</p>
+																			<p class="results-number" >
+																				5764
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">16</p>
+																			<p class="results-number" >
+																				9796
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">17</p>
+																			<p class="results-number" >
+																				9137
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">18</p>
+																			<p class="results-number" >
+																				2702
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">19</p>
+																			<p class="results-number" >
+																				0584
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">20</p>
+																			<p class="results-number" >
+																				5563
+																			</p>
+																		</li>
+																																																																																</ul>
+													</article>
+												</div>
+											</li>
+																																								<li class="card-list__item">
+												<div class="card">
+													<article class="card-body">
+														<h3 class="h4 text-muted mb-3">Cordoba</h3>
+																													<p>Juego:
+																Quiniela Nocturna</p>
+																												<p>02/11</p>
+													</article>
+													<article class="card-body results">
+														<ul class="results-list two">
+																																																																																																			<li class="results-list__item">
+																			<p class="results-position">1</p>
+																			<p class="results-number"  style="font-weight:bold !important;font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;" >
+																				8169
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">2</p>
+																			<p class="results-number" >
+																				2212
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">3</p>
+																			<p class="results-number" >
+																				7008
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">4</p>
+																			<p class="results-number" >
+																				8066
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">5</p>
+																			<p class="results-number" >
+																				4220
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">6</p>
+																			<p class="results-number" >
+																				6450
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">7</p>
+																			<p class="results-number" >
+																				4283
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">8</p>
+																			<p class="results-number" >
+																				5585
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">9</p>
+																			<p class="results-number" >
+																				2205
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">10</p>
+																			<p class="results-number" >
+																				9198
+																			</p>
+																		</li>
+																																																																							</ul>
+																		<ul class="results-list two">
+																																				<li class="results-list__item">
+																			<p class="results-position">11</p>
+																			<p class="results-number" >
+																				7229
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">12</p>
+																			<p class="results-number" >
+																				8582
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">13</p>
+																			<p class="results-number" >
+																				6456
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">14</p>
+																			<p class="results-number" >
+																				9083
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">15</p>
+																			<p class="results-number" >
+																				0477
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">16</p>
+																			<p class="results-number" >
+																				1602
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">17</p>
+																			<p class="results-number" >
+																				8496
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">18</p>
+																			<p class="results-number" >
+																				4553
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">19</p>
+																			<p class="results-number" >
+																				4374
+																			</p>
+																		</li>
+																																																																							<li class="results-list__item">
+																			<p class="results-position">20</p>
+																			<p class="results-number" >
+																				4896
+																			</p>
+																		</li>
+																																																																																</ul>
+													</article>
+												</div>
+											</li>
+																																		</ul>
+							<div style="text-align:center;">
+								<a href="/juego/quiniela_chaquenia" class="btn btn-danger boton-red" role="button" aria-pressed="true">Ver todos los extractos</a>
+							</div>
+						</article>
+
+					</section>
+				
+				<br>
+				<hr>
+				<br>
+				<!-- RESULTADOS DE QUINIELA -->
+				<div>
+					<section>
+	<header class="group-header">
+		<p>Juegos propios</p>
+	</header>
+	<div class="slider-container2">
+		<div class="home-juegos-propios__slider">
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Deporbingo</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/6a564ebb15373210662523.png" style="height:110%;margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+																								<a target="_blank" href="https://loteria.chaco.gov.ar/juego/otros_juegos/14" class="btn btn-red material-shadow-2">Ver</a>
+																					</div>
+					</div>
+				</div>
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Sorteo Benéfico y Solidarios por la Vida</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/699855a09da2b387863499.png" style="height:110%;margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+															<a href="/juego/sorteo_benefico/9" class="btn btn-red material-shadow-2">Ver</a>
+													</div>
+					</div>
+				</div>
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Bingo Estudiantil</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/66db0188ecf63050836217.jpg" style="height:110%;margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+															<a href="/juego/bingo_estudiantil/10" class="btn btn-red material-shadow-2">Ver</a>
+													</div>
+					</div>
+				</div>
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Quniela Chaqueña</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/5c5adc7698e0a355869726.png" style="height:110%;margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+															<a href="/juego/quiniela_chaquenia/1" class="btn btn-red material-shadow-2">Ver</a>
+													</div>
+					</div>
+				</div>
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Quiniela Poceada Chaqueña</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/5c50426b2fc88968695941.jpg" style="height:110%;margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+															<a href="/juego/quiniela_poceada/4" class="btn btn-red material-shadow-2">Ver</a>
+													</div>
+					</div>
+				</div>
+					</div>
+		<div class="home-juegos-propios__slider-controls slider-controls">
+			<div class="slider-control slider-control--prev">
+				<img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-red.svg" alt="Anterior">
+			</div>
+			<div class="slider-control slider-control--next">
+				<img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-red.svg" alt="Siguiente">
+			</div>
+		</div>
+	</div>
+</section>				</div>
+				<br>
+                <br>
+								<div
+									class="flex resultados-container">
+									<section class="group">
+	<header class="group-header">
+		<p>Juegos Adheridos</p>
+	</header>
+	<div class="slider-container2 home-juegos-adheridos">
+		<div class="home-juegos-adheridos__slider">
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Quini 6</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/5ba249440a11d400884990.jpg" style="margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+																								<a href="https://www.loteriasantafe.gov.ar/index.php/resultados/quini-6" target="_blank" class="btn btn-red material-shadow-2">Ver</a>
+																					</div>
+					</div>
+				</div>
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Telekino</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/5ba248d5ef4ed074874942.jpg" style="margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+																								<a href="http://www.telekino.com.ar/" target="_blank" class="btn btn-red material-shadow-2">Ver</a>
+																					</div>
+					</div>
+				</div>
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Brinco</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/6a7a8f5c0f4c3145434139.png" style="margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+																								<a href="https://www.loteriasantafe.gov.ar/index.php/resultados/brinco" target="_blank" class="btn btn-red material-shadow-2">Ver</a>
+																					</div>
+					</div>
+				</div>
+							<div class="slider-item2 iconos-juegos">
+					<div class="card">
+						<header class="card-header2 adapt-text">
+							<p>Loto</p>
+						</header>
+						<article class="card-body">
+							<figure class="card-media">
+								<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/uploads/juegos/5ba24886c082e398675485.jpg" style="margin:0px;"></div>
+							</figure>
+						</article>
+						<div class="card-footer2">
+							<br>
+																								<a href="https://loto.loteriadelaciudad.gob.ar" target="_blank" class="btn btn-red material-shadow-2">Ver</a>
+																					</div>
+					</div>
+				</div>
+					</div>
+		<div class="home-juegos-adheridos__slider-controls slider-controls">
+			<div class="slider-control slider-control--prev">
+				<img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-red.svg" alt="Anterior">
+			</div>
+			<div class="slider-control slider-control--next">
+				<img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-red.svg" alt="Siguiente">
+			</div>
+		</div>
+	</div>
+</section>
+									<section class="group">
+	<header class="group-header">
+		<p>Juegos Fiscalizados</p>
+	</header>
+	<div class="slider-container2 home-juegos-fiscalizados">
+		<div class="home-juegos-fiscalizados__slider">
+
+			<div class="slider-item2 iconos-juegos">
+				<div class="card">
+					<header class="card-header2 adapt-text">
+						<p>Bingos Móviles</p>
+					</header>
+					<article class="card-body">
+						<figure class="card-media">
+							<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/frontend/images/juegos_fiscalizados/bingo_moviles.png" style="margin:0px;"></div>
+						</figure>
+					</article>
+					<div class="card-footer2">
+						<br>
+						<a href="/juegos_fiscalizados/0/3/0" class="btn btn-red material-shadow-2">Ver</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item2 iconos-juegos">
+				<div class="card">
+					<header class="card-header2 adapt-text">
+						<p>Carreras Cuadreras</p>
+					</header>
+					<article class="card-body">
+						<figure class="card-media">
+							<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/frontend/images/juegos_fiscalizados/carreras_cuadreras.png" style="margin:0px;"></div>
+						</figure>
+					</article>
+					<div class="card-footer2">
+						<br>
+						<a href="/juegos_fiscalizados/0/9/0" class="btn btn-red material-shadow-2">Ver</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item2 iconos-juegos">
+				<div class="card">
+					<header class="card-header2 adapt-text">
+						<p>Rifas</p>
+					</header>
+					<article class="card-body">
+						<figure class="card-media">
+							<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/frontend/images/juegos_fiscalizados/rifas.png" style="margin:0px;"></div>
+						</figure>
+					</article>
+					<div class="card-footer2">
+						<br>
+						<a href="/juegos_fiscalizados/0/2/0" class="btn btn-red material-shadow-2">Ver</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item2 iconos-juegos">
+				<div class="card">
+					<header class="card-header2 adapt-text">
+						<p>Sorteos Inmediatos</p>
+					</header>
+					<article class="card-body">
+						<figure class="card-media">
+							<div class="background-image-contain full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos/frontend/images/juegos_fiscalizados/sorteos_inmediatos.png" style="margin:0px;"></div>
+						</figure>
+					</article>
+					<div class="card-footer2">
+						<br>
+						<a href="/juegos_fiscalizados/0/1/0" class="btn btn-red material-shadow-2">Ver</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="home-juegos-fiscalizados__slider-controls slider-controls">
+			<div class="slider-control slider-control--prev">
+				<img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-red.svg" alt="Anterior">
+			</div>
+			<div class="slider-control slider-control--next">
+				<img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-red.svg" alt="Siguiente">
+			</div>
+		</div>
+	</div>
+</section>								</div>
+
+
+																	<div class="group">
+										<header class="container-section-header">
+											<div class="text-box">
+												<div class="title">
+													<h4 class="blue">HORARIOS SORTEO QUINIELA</h4>
+												</div>
+											</div>
+										</header>
+										<ul class="home-resultados-horarios">
+																							<li class="home-resultados-horarios__item" style="padding: 0 2em !important">
+													<p>
+														<strong>La Previa</strong>
+													</p>
+													<div class="book grey">de Lunes a Sábados:
+														10:15 hs.</div>
+												</li>
+																							<li class="home-resultados-horarios__item" style="padding: 0 2em !important">
+													<p>
+														<strong>Primera</strong>
+													</p>
+													<div class="book grey">de Lunes a Sábados:
+														12:00 hs.</div>
+												</li>
+																							<li class="home-resultados-horarios__item" style="padding: 0 2em !important">
+													<p>
+														<strong>Matutina</strong>
+													</p>
+													<div class="book grey">de Lunes a Sábados:
+														15:00 hs.</div>
+												</li>
+																							<li class="home-resultados-horarios__item" style="padding: 0 2em !important">
+													<p>
+														<strong>Vespertina</strong>
+													</p>
+													<div class="book grey">de Lunes a Sábados:
+														18:00 hs.</div>
+												</li>
+																							<li class="home-resultados-horarios__item" style="padding: 0 2em !important">
+													<p>
+														<strong>Nocturna</strong>
+													</p>
+													<div class="book grey">de Lunes a Sábados:
+														21:00 hs.</div>
+												</li>
+																					</ul>
+									</div>
+									<div style="margin-left:auto;margin-right:auto;width:270px;" class="home-resultados-horarios__item">
+										<a href="/horarios" class="btn btn-red btn-with-icon elevation-2">
+											<img class="icon-xs" src="/frontend/images/icons/icon-clock-white.svg" alt="">
+											Ver otros Horarios
+										</a>
+									</div>
+															</article>
+						</section>
+						<!-- RESULTADOS -->
+
+						<!-- NOTICIAS -->
+						<section class="container-section home-novedades container-section--white">
+							<header class="home-novedades__header container-section-header">
+								<figure class="btn-icon btn-icon--md bg-yellow">
+									<img src="/frontend/images/icons/icon-novedades-blue.svg" alt="Novedades">
+								</figure>
+								<div class="text-box">
+									<div class="title">
+										<h2 class="blue">NOVEDADES</h2>
+									</div>
+								</div>
+							</header>
+							<article class="container-section-body">
+								<ul class="news-list">
+																			<li class="news-list-item">
+											<a class="link_noticia" href="/detalle_noticia/1408">
+												<div class="news-card">
+													<div class="news-card__background-image background-image blur full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ae22bca899cf724043425.jpeg"></div>
+													<header class="news-card__media">
+														<div class="news-card__featured-image background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ae22bca899cf724043425.jpeg" style="margin-top:5%;margin-bottom:5%;"></div>
+													</header>
+													<article class="news-card__body">
+														<filter class="filter filter-7 bg-amber"></filter>
+														<div class="news-card__content">
+															<p class="news-card__date">28/10/2026</p>
+															<a class="link_noticia" href="/detalle_noticia/1408">
+																<h4 class="news-card__title">
+																																			MES ROSA: LOTERÍA CHAQUEÑA REFUERZA LA PREVENCIÓN Y EL ACOMPAÑAMIENTO FRENTE AL CÁNCER DE MAMA
+																																	</h4>
+															</a>
+
+															<ul class="news-card__tags">
+																															</ul>
+															<br><br><br>
+														</div>
+														<div class="line-social-link">
+															<a class="link-social-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://loteria.chaco.gov.ar/detalle_noticia/1408" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/facebook-icon.png" alt="">
+															</a>
+															<a class="link-social-link" target="_blank" href="https://twitter.com/home?status=https://loteria.chaco.gov.ar/detalle_noticia/1408" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/twitter-icon.png" alt="">
+															</a>
+															<a class="link-social-link" href="https://api.whatsapp.com/send?text=https://loteria.chaco.gov.ar/detalle_noticia/1408" data-action="share/whatsapp/share" class="hvr-grow">
+																<img class="img-social-link-whatsapp" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/whatsapp-icon.png" alt="">
+															</a>
+														</div>
+													</article>
+
+												</div>
+											</a>
+											<hr>
+										</li>
+																			<li class="news-list-item">
+											<a class="link_noticia" href="/detalle_noticia/1407">
+												<div class="news-card">
+													<div class="news-card__background-image background-image blur full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ae0a49a9de66640395546.png"></div>
+													<header class="news-card__media">
+														<div class="news-card__featured-image background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ae0a49a9de66640395546.png" style="margin-top:5%;margin-bottom:5%;"></div>
+													</header>
+													<article class="news-card__body">
+														<filter class="filter filter-7 bg-amber"></filter>
+														<div class="news-card__content">
+															<p class="news-card__date">27/10/2026</p>
+															<a class="link_noticia" href="/detalle_noticia/1407">
+																<h4 class="news-card__title">
+																																			QUITILIPI RECUPERA SU HISTORIA: REFUNCIONALIZAN EL CENTRO CULTURAL GALPÓN DEL FERROCARRIL
+																																	</h4>
+															</a>
+
+															<ul class="news-card__tags">
+																															</ul>
+															<br><br><br>
+														</div>
+														<div class="line-social-link">
+															<a class="link-social-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://loteria.chaco.gov.ar/detalle_noticia/1407" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/facebook-icon.png" alt="">
+															</a>
+															<a class="link-social-link" target="_blank" href="https://twitter.com/home?status=https://loteria.chaco.gov.ar/detalle_noticia/1407" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/twitter-icon.png" alt="">
+															</a>
+															<a class="link-social-link" href="https://api.whatsapp.com/send?text=https://loteria.chaco.gov.ar/detalle_noticia/1407" data-action="share/whatsapp/share" class="hvr-grow">
+																<img class="img-social-link-whatsapp" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/whatsapp-icon.png" alt="">
+															</a>
+														</div>
+													</article>
+
+												</div>
+											</a>
+											<hr>
+										</li>
+																			<li class="news-list-item">
+											<a class="link_noticia" href="/detalle_noticia/1406">
+												<div class="news-card">
+													<div class="news-card__background-image background-image blur full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ad7725b60cba522747139.jpeg"></div>
+													<header class="news-card__media">
+														<div class="news-card__featured-image background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ad7725b60cba522747139.jpeg" style="margin-top:5%;margin-bottom:5%;"></div>
+													</header>
+													<article class="news-card__body">
+														<filter class="filter filter-7 bg-amber"></filter>
+														<div class="news-card__content">
+															<p class="news-card__date">20/10/2026</p>
+															<a class="link_noticia" href="/detalle_noticia/1406">
+																<h4 class="news-card__title">
+																																			IMPORTANTES REFACCIONES EN EL PLAYÓN DEL BARRIO MALVINAS DE LA VERDE
+																																	</h4>
+															</a>
+
+															<ul class="news-card__tags">
+																															</ul>
+															<br><br><br>
+														</div>
+														<div class="line-social-link">
+															<a class="link-social-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://loteria.chaco.gov.ar/detalle_noticia/1406" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/facebook-icon.png" alt="">
+															</a>
+															<a class="link-social-link" target="_blank" href="https://twitter.com/home?status=https://loteria.chaco.gov.ar/detalle_noticia/1406" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/twitter-icon.png" alt="">
+															</a>
+															<a class="link-social-link" href="https://api.whatsapp.com/send?text=https://loteria.chaco.gov.ar/detalle_noticia/1406" data-action="share/whatsapp/share" class="hvr-grow">
+																<img class="img-social-link-whatsapp" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/whatsapp-icon.png" alt="">
+															</a>
+														</div>
+													</article>
+
+												</div>
+											</a>
+											<hr>
+										</li>
+																			<li class="news-list-item">
+											<a class="link_noticia" href="/detalle_noticia/1405">
+												<div class="news-card">
+													<div class="news-card__background-image background-image blur full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ad5fe2d807db172669557.jpg"></div>
+													<header class="news-card__media">
+														<div class="news-card__featured-image background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ad5fe2d807db172669557.jpg" style="margin-top:5%;margin-bottom:5%;"></div>
+													</header>
+													<article class="news-card__body">
+														<filter class="filter filter-7 bg-amber"></filter>
+														<div class="news-card__content">
+															<p class="news-card__date">19/10/2026</p>
+															<a class="link_noticia" href="/detalle_noticia/1405">
+																<h4 class="news-card__title">
+																																			EL SANTUARIO DE SCHOENSTATT CONTARÁ CON NUEVOS ACCESOS PARA RECIBIR A LOS PEREGRINOS
+																																	</h4>
+															</a>
+
+															<ul class="news-card__tags">
+																															</ul>
+															<br><br><br>
+														</div>
+														<div class="line-social-link">
+															<a class="link-social-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://loteria.chaco.gov.ar/detalle_noticia/1405" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/facebook-icon.png" alt="">
+															</a>
+															<a class="link-social-link" target="_blank" href="https://twitter.com/home?status=https://loteria.chaco.gov.ar/detalle_noticia/1405" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/twitter-icon.png" alt="">
+															</a>
+															<a class="link-social-link" href="https://api.whatsapp.com/send?text=https://loteria.chaco.gov.ar/detalle_noticia/1405" data-action="share/whatsapp/share" class="hvr-grow">
+																<img class="img-social-link-whatsapp" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/whatsapp-icon.png" alt="">
+															</a>
+														</div>
+													</article>
+
+												</div>
+											</a>
+											<hr>
+										</li>
+																			<li class="news-list-item">
+											<a class="link_noticia" href="/detalle_noticia/1404">
+												<div class="news-card">
+													<div class="news-card__background-image background-image blur full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6acf8e5cbfda9027528632.jpg"></div>
+													<header class="news-card__media">
+														<div class="news-card__featured-image background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6acf8e5cbfda9027528632.jpg" style="margin-top:5%;margin-bottom:5%;"></div>
+													</header>
+													<article class="news-card__body">
+														<filter class="filter filter-7 bg-amber"></filter>
+														<div class="news-card__content">
+															<p class="news-card__date">14/10/2026</p>
+															<a class="link_noticia" href="/detalle_noticia/1404">
+																<h4 class="news-card__title">
+																																			FECHA REPROGRAMADA: EL DEPORBINGO SE SORTEARÁ EL 4 DE DICIEMBRE
+																																	</h4>
+															</a>
+
+															<ul class="news-card__tags">
+																															</ul>
+															<br><br><br>
+														</div>
+														<div class="line-social-link">
+															<a class="link-social-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://loteria.chaco.gov.ar/detalle_noticia/1404" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/facebook-icon.png" alt="">
+															</a>
+															<a class="link-social-link" target="_blank" href="https://twitter.com/home?status=https://loteria.chaco.gov.ar/detalle_noticia/1404" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/twitter-icon.png" alt="">
+															</a>
+															<a class="link-social-link" href="https://api.whatsapp.com/send?text=https://loteria.chaco.gov.ar/detalle_noticia/1404" data-action="share/whatsapp/share" class="hvr-grow">
+																<img class="img-social-link-whatsapp" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/whatsapp-icon.png" alt="">
+															</a>
+														</div>
+													</article>
+
+												</div>
+											</a>
+											<hr>
+										</li>
+																			<li class="news-list-item">
+											<a class="link_noticia" href="/detalle_noticia/1403">
+												<div class="news-card">
+													<div class="news-card__background-image background-image blur full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ac7c45724d69989120409.jpeg"></div>
+													<header class="news-card__media">
+														<div class="news-card__featured-image background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_noticias/uploads/noticias/6ac7c45724d69989120409.jpeg" style="margin-top:5%;margin-bottom:5%;"></div>
+													</header>
+													<article class="news-card__body">
+														<filter class="filter filter-7 bg-amber"></filter>
+														<div class="news-card__content">
+															<p class="news-card__date">08/10/2026</p>
+															<a class="link_noticia" href="/detalle_noticia/1403">
+																<h4 class="news-card__title">
+																																			PRESENTES EN LA FINAL DE LA LIGA CHAQUEÑA DE FÚTBOL
+																																	</h4>
+															</a>
+
+															<ul class="news-card__tags">
+																															</ul>
+															<br><br><br>
+														</div>
+														<div class="line-social-link">
+															<a class="link-social-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://loteria.chaco.gov.ar/detalle_noticia/1403" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/facebook-icon.png" alt="">
+															</a>
+															<a class="link-social-link" target="_blank" href="https://twitter.com/home?status=https://loteria.chaco.gov.ar/detalle_noticia/1403" class="hvr-grow">
+																<img class="img-social-link" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/twitter-icon.png" alt="">
+															</a>
+															<a class="link-social-link" href="https://api.whatsapp.com/send?text=https://loteria.chaco.gov.ar/detalle_noticia/1403" data-action="share/whatsapp/share" class="hvr-grow">
+																<img class="img-social-link-whatsapp" src="https://loteria.chaco.gov.ar/uploads/cache/media/icono_share_social/frontend/images/whatsapp-icon.png" alt="">
+															</a>
+														</div>
+													</article>
+
+												</div>
+											</a>
+											<hr>
+										</li>
+																	</ul>
+
+							</article>
+							<div class="text-align-center mt-3">
+								<a href="/noticias" class="btn btn-amber elevation-1">Ver todas las noticias</a>
+							</div>
+						</section>
+
+
+						<section class="container-section home-sponsors">
+
+							<article class="slider-container2 container-section-body">
+								<div class="sponsor-slider2 images-list-item">
+																			<div class="slider-item slider-banner">
+																							<a href="https://loteria.chaco.gov.ar/juego-ilegal" target="_blank">
+																											<img src="https://loteria.chaco.gov.ar/uploads/cache/media/index_banner/uploads/banners/6a26ba9e93fa8132975812.png" alt="">
+																									</a>
+																					</div>
+																			<div class="slider-item slider-banner">
+																							<a href="https://loteria.chaco.gov.ar/detalle_noticia/549" target="_blank">
+																											<img src="https://loteria.chaco.gov.ar/uploads/cache/media/index_banner/uploads/banners/67c870b84dead309059207.jpg" alt="">
+																									</a>
+																					</div>
+																			<div class="slider-item slider-banner">
+																							<a href="https://drive.google.com/file/d/1FsNUg2N0RRvudWKiiH2glPg4jvE499HH/view" target="_blank">
+																											<img src="https://loteria.chaco.gov.ar/uploads/cache/media/index_banner/uploads/banners/67c858fcc990e457420480.jpg" alt="">
+																									</a>
+																					</div>
+																	</div>
+								<div class="sponsor-presente-slider__controls slider-controls">
+									<div class="slider-control slider-control--prev">
+										<img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-orange.svg" alt="Anterior">
+									</div>
+									<div class="slider-control slider-control--next">
+										<img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-orange.svg" alt="Siguiente">
+									</div>
+								</div>
+							</div>
+
+						</article>
+					</section>
+					<!-- NOTICIAS -->
+
+
+					<!-- SPONSORS -->
+
+					<!-- JUEGOS -->
+						<section class="home-juegos container-section container-section--white"> <header class="home-juegos__header container-section-header">
+							<figure class="btn-icon btn-icon--md bg-red">
+								<img src="/frontend/images/icons/icon-juegos-white.svg" alt="Novedades">
+							</figure>
+							<div class="text-box">
+								<div class="title">
+									<h2 class="blue">JUEGOS</h2>
+								</div>
+							</div>
+						</header>
+						<article class="slider-container2 container-section-body">
+							<div class="home-juegos-slider">
+																	<div class="slider-item2">
+																																	<a target="_blank" href="https://www.loteriasantafe.gov.ar/index.php/resultados/quini-6" class="card2">
+																																						<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/5ba249440a11d400884990.jpg');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																																	<a target="_blank" href="https://loteria.chaco.gov.ar/juego/otros_juegos/14" class="card2">
+																																						<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/6a564ebb15373210662523.png');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																								<a href="/juego/sorteo_benefico/9" class="card2">
+																												<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/699855a09da2b387863499.png');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																																	<a target="_blank" href="http://www.telekino.com.ar/" class="card2">
+																																						<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/5ba248d5ef4ed074874942.jpg');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																								<a href="/juego/bingo_estudiantil/10" class="card2">
+																												<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/66db0188ecf63050836217.jpg');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																																	<a target="_blank" href="https://www.loteriasantafe.gov.ar/index.php/resultados/brinco" class="card2">
+																																						<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/6a7a8f5c0f4c3145434139.png');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																								<a href="/juego/quiniela_chaquenia/1" class="card2">
+																												<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/5c5adc7698e0a355869726.png');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																								<a href="/juego/quiniela_poceada/4" class="card2">
+																												<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/5c50426b2fc88968695941.jpg');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+																				<div class="slider-item2">
+																																	<a target="_blank" href="https://loto.loteriadelaciudad.gob.ar" class="card2">
+																																						<article class="card-body">
+															<figure class="card-media2">
+																<div class="background-image-contain full-container" style="background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/uploads/juegos/5ba24886c082e398675485.jpg');height:120%;margin-top: -10px;"></div>
+															</figure>
+														</article>
+													</a>
+												</div>
+											
+																						<div class="slider-item2">
+												<a href="/juegos_fiscalizados/0/3/0" class="card2">
+													<article class="card-body">
+														<figure class="card-media2">
+															<div class="background-image-contain full-container" style="height:120%;margin-top: -10px;background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/frontend/images/juegos_fiscalizados/bingo_moviles.png')"></div>
+														</figure>
+													</article>
+												</a>
+											</div>
+
+											<div class="slider-item2">
+												<a href="/juegos_fiscalizados/0/9/0" class="card2">
+													<article class="card-body">
+														<figure class="card-media2">
+															<div class="background-image-contain full-container" style="margin-top: -10px;background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/frontend/images/juegos_fiscalizados/carreras_cuadreras.png')"></div>
+														</figure>
+													</article>
+												</a>
+											</div>
+
+											<div class="slider-item2">
+												<a href="/juegos_fiscalizados/0/2/0" class="card2">
+													<article class="card-body">
+														<figure class="card-media2">
+															<div class="background-image-contain full-container" style="margin-top: -10px;background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/frontend/images/juegos_fiscalizados/rifas.png')"></div>
+														</figure>
+													</article>
+												</a>
+											</div>
+
+											<div class="slider-item2">
+												<a href="/juegos_fiscalizados/0/1/0" class="card2">
+													<article class="card-body">
+														<figure class="card-media2">
+															<div class="background-image-contain full-container" style="margin-top: -10px;background-image:url('https://loteria.chaco.gov.ar/uploads/cache/media/iconos_juegos_chicos/frontend/images/juegos_fiscalizados/sorteos_inmediatos.png')"></div>
+														</figure>
+													</article>
+												</a>
+											</div>
+										</div>
+										<div class="home-juegos-slider__controls slider-controls">
+											<div class="slider-control slider-control--prev">
+												<img class="icon-md" src="/frontend/images/icons/icon-arrow_left-red.svg" alt="Anterior">
+											</div>
+											<div class="slider-control slider-control--next">
+												<img class="icon-md" src="/frontend/images/icons/icon-arrow_right-red.svg" alt="Siguiente">
+											</div>
+										</div>
+									</article>
+								</section>
+								<!-- JUEGOS -->
+
+								<!-- ACCESOS DIRECTOS -->
+								<section class="home-accesos container-section">
+									<header class="home-accesos__header container-section-header">
+										<figure class="btn-icon btn-icon--md bg-blue">
+											<img src="/frontend/images/icons/icon-shortcut-white.svg" alt="Novedades">
+										</figure>
+										<div class="text-box">
+											<div class="title">
+												<h2 class="blue">ACCESOS DIRECTOS</h2>
+											</div>
+										</div>
+									</header>
+									<article
+										class="container-section-body">
+										<!-- ACCESOS DIRECTOS -->
+										<section class="slider-container2 group">
+											<div
+												class="home-accesos-slider">
+												<!-- CHACO TV -->
+												<div class="slider-item2 chaco-tv__open" id="img-open-chacotv-banner">
+													<div class="card elevation-2">
+														<article class="card-body">
+															<div class="background-image full-container lazyload" data-src="/frontend/images/accesos-chaco-tv.jpg"></div>
+														</article>
+														<div class="card-footer">
+															<a href="http://chaco.tv/vivo" target="_blank" class="open-chaco-tv btn btn-amber elevation-2" style="color:white;">Ver en Vivo</a>
+														</div>
+													</div>
+												</div>
+												<!-- HORARIOS SORTEOS DE QUINIELA -->
+																								<!-- INSTRUCTIVO DE JUEGO -->
+													<div class="slider-item2"> <div class="card elevation-2">
+														<header class="card-header">
+															<div class="full-container bg-blue"></div>
+															<h4 class="card-title white">Instructivo de juego fuera de linea</h4>
+														</header>
+														<article class="card-body text-align-center">
+															<img src="/frontend/images/instructivo-fuera-linea.jpg" alt="">
+														</article>
+														<div class="card-footer">
+															<a id="open-video-popup" style="color:white;" class="btn btn-red material-shadow-2">Ver</a>
+														</div>
+													</div>
+												</div>
+												<!-- LICITACIONES -->
+												<div class="slider-item2">
+													<div class="card elevation-2">
+														<header class="card-header">
+															<div class="background-image full-container lazyload" data-src="/frontend/images/bg-licitaciones.jpg"></div>
+															<div class="filter filter-7 bg-blue"></div>
+															<h4 class="card-title white">Licitaciones</h4>
+														</header>
+														<form class="card-body p-3" action="/licitaciones" method="get">
+															<label class="mb-2">Seleccione Tipo</label>
+															<select class="form-control" name="type" id="opcion_licitaciones">
+																<option value="0" selected>Todas</option>
+																																	<option value="1" selected>Licitación Pública</option>
+																																	<option value="2" selected>LICITACION PRIVADA</option>
+																																	<option value="3" selected>Concurso de Precio</option>
+																																	<option value="4" selected>Contratación Directa</option>
+																															</select>
+															<button onclick="mostrarLicitaciones()" class="mt-3 btn btn-amber elevation-2">Ver</button>
+														</form>
+													</div>
+												</div>
+												<!-- SIGNIFICADO DE LOS NUMEROS -->
+												<div class="slider-item2">
+													<div class="card elevation-2">
+														<header class="card-header">
+															<div class="background-image full-container lazyload" data-src="/frontend/images/bg-numbers.jpg"></div>
+															<div class="filter filter-7 bg-blue"></div>
+															<h4 class="card-title white">Significado de los numeros</h4>
+														</header>
+														<article class="card-body">
+															<h1>29</h1>
+															<h3 class="grey">SAN PEDRO</h3>
+														</article>
+														<div class="card-footer">
+															<a href="/suenios" class="btn btn-red material-shadow-2">Ver todos</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="home-accesos-slider__controls slider-controls">
+												<div class="slider-control slider-control--prev">
+													<img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-orange.svg" alt="Anterior">
+												</div>
+												<div class="slider-control slider-control--next">
+													<img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-orange.svg" alt="Siguiente">
+												</div>
+											</div>
+
+										</section>
+										<!-- ACCESOS DIRECTOS -->
+
+									<!-- CAMPAÑAS -->
+																				<!-- CAMPAÑAS -->
+									</article>
+								</section>
+								<!-- ACCESOS DIRECTOS -->
+
+								<!-- PRESENTE -->
+								<section class="home-eventos container-section container-section--white">
+									<header class="home-eventos__header container-section-header">
+										<figure class="btn-icon btn-icon--md bg-orange">
+											<img src="/frontend/images/icons/icon-gallery-white.svg" alt="Galeria">
+										</figure>
+										<div class="text-box">
+											<div class="title">
+												<h2 class="blue">LOTERÍA EN IMÁGENES</h2>
+											</div>
+										</div>
+									</header>
+									<article class="container-section-body eventos-galeria">
+										<div class="slider-container2">
+											<div class="home-presente-slider">
+
+												
+												
+													
+													<div class="slider-item" id="evento_1" style="cursor: pointer;" onclick="abrirSlider(71)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/69a5aa05b7152072390074.JPG"></div>
+														</div>
+														<p class="grey news-card__title">
+															Maratón Juego Responsable
+															<br>
+															Fecha:
+															28/02/2026 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(71)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/69a5aa05b7152072390074.JPG"></div>
+													                      </div>
+													                    <p >Maratón Juego Responsable</p>
+													                    													                  </div> -->
+												
+													
+													<div class="slider-item" id="evento_2" style="cursor: pointer;" onclick="abrirSlider(70)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/683d9541ed17b879392358.jpg"></div>
+														</div>
+														<p class="grey news-card__title">
+															Copa Lotería Chaqueña de Voleibol
+															<br>
+															Fecha:
+															29/05/2025 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(70)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/683d9541ed17b879392358.jpg"></div>
+													                      </div>
+													                    <p >Copa Lotería Chaqueña de Voleibol</p>
+													                    													                  </div> -->
+												
+													
+													<div class="slider-item" id="evento_3" style="cursor: pointer;" onclick="abrirSlider(69)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/683d94c3ae766456962872.jpg"></div>
+														</div>
+														<p class="grey news-card__title">
+															Visita estudiantes de Derecho
+															<br>
+															Fecha:
+															28/05/2025 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(69)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/683d94c3ae766456962872.jpg"></div>
+													                      </div>
+													                    <p >Visita estudiantes de Derecho</p>
+													                    													                  </div> -->
+												
+													
+													<div class="slider-item" id="evento_4" style="cursor: pointer;" onclick="abrirSlider(68)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/67f6459a36d22325273470.jpg"></div>
+														</div>
+														<p class="grey news-card__title">
+															Torneo Provincial de Vóley Sub-18
+															<br>
+															Fecha:
+															01/04/2025 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(68)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/67f6459a36d22325273470.jpg"></div>
+													                      </div>
+													                    <p >Torneo Provincial de Vóley Sub-18</p>
+													                    													                  </div> -->
+												
+													
+													<div class="slider-item" id="evento_5" style="cursor: pointer;" onclick="abrirSlider(66)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/67dd9203a5b7e870794900.jpg"></div>
+														</div>
+														<p class="grey news-card__title">
+															SAGSE Latam 2025
+															<br>
+															Fecha:
+															20/03/2025 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(66)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/67dd9203a5b7e870794900.jpg"></div>
+													                      </div>
+													                    <p >SAGSE Latam 2025</p>
+													                    													                  </div> -->
+												
+													
+													<div class="slider-item" id="evento_6" style="cursor: pointer;" onclick="abrirSlider(67)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/67dd70e7d9556708011135.jpg"></div>
+														</div>
+														<p class="grey news-card__title">
+															Entrega de elementos deportivos a escuelas
+															<br>
+															Fecha:
+															20/03/2025 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(67)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/67dd70e7d9556708011135.jpg"></div>
+													                      </div>
+													                    <p >Entrega de elementos deportivos a escuelas</p>
+													                    													                  </div> -->
+												
+													
+													<div class="slider-item" id="evento_7" style="cursor: pointer;" onclick="abrirSlider(64)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/67d7f00f7622c354291921.jpg"></div>
+														</div>
+														<p class="grey news-card__title">
+															Presentación nueva camiseta de Sarmiento
+															<br>
+															Fecha:
+															15/03/2025 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(64)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/67d7f00f7622c354291921.jpg"></div>
+													                      </div>
+													                    <p >Presentación nueva camiseta de Sarmiento</p>
+													                    													                  </div> -->
+												
+													
+													<div class="slider-item" id="evento_8" style="cursor: pointer;" onclick="abrirSlider(63)">
+														<div class="card mb-1">
+															<div class="background-image full-container lazyload" data-src="https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos/uploads/eventos/67d460571b07d298854210.jpg"></div>
+														</div>
+														<p class="grey news-card__title">
+															Charla &quot;Autocuidado: hablemos de nosotras&quot;
+															<br>
+															Fecha:
+															14/03/2025 
+
+																													</p>
+													</div>
+													<!-- <div class="card mb-1" style="cursor: pointer;" onclick="abrirSlider(63)">
+													                      <div class="background-image full-container" style="background-image: url(/uploads/eventos/67d460571b07d298854210.jpg"></div>
+													                      </div>
+													                    <p >Charla &quot;Autocuidado: hablemos de nosotras&quot;</p>
+													                    													                  </div> -->
+																							</div>
+											<div class="home-presente-slider__controls slider-controls">
+												<div class="slider-control slider-control--prev">
+													<img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-orange.svg" alt="Anterior">
+												</div>
+												<div class="slider-control slider-control--next">
+													<img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-orange.svg" alt="Siguiente">
+												</div>
+											</div>
+										</div>
+										<div class="text-align-center mt-5">
+											<h4 class="grey mb-3">¿Querés ver más?</h4>
+											<a href="/eventos" class="btn btn-orange elevation-2">Todas las Galerías</a>
+										</div>
+									</article>
+								</section>
+								<!-- PRESENTE -->
+							</div>
+
+
+							<!-- HOME MAIN CONTAINER -->
+						</main>
+						<!-- MAIN CONTAINER -->
+
+						<!-- VIDEO POPUP -->
+						<div class="video-popup">
+							<div class="video-popup__background animated fadeIn"></div>
+							<div class="video-popup__content">
+								<video id="video_instructivo" class="video-popup__video animated zoomIn" controls attrsrc="/frontend/videos/instructivo-fuera-linea.mp4"></video>
+							</div>
+							<span class="video-popup__close">
+								<img class="icon-sm" src="/frontend/images/icons/icon-close-white.svg" alt="">
+							</span>
+						</div>
+
+						<div class="modal fade modal_eventos" id="modal_eventos" tabindex="-1" role="dialog" aria-labelledby="video_evento" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered modal-dialog-evento" role="document">
+								<div class="modal-content">
+									<div class="modal-header modal-evento-header">
+										<h5 class="modal-title" id="modal-evento-titulo"></h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="modal-evento-body">
+											<div id="galeria_slider"></div>
+											<div class="galeria_slider-presente-slider__controls slider-controls">
+												<div class="slider-control slider-control--prev">
+													<img class="icon-lg" src="/frontend/images/icons/icon-arrow_left-orange.svg" alt="Anterior">
+												</div>
+												<div class="slider-control slider-control--next">
+													<img class="icon-lg" src="/frontend/images/icons/icon-arrow_right-orange.svg" alt="Siguiente">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div
+										class="modal-footer">
+																				<a href="" id="modal-evento-link-not" style="display:none" class="btn btn-danger boton-red" role="button" target="_blank" aria-pressed="true">Ver Noticia</a>
+
+										<button type="button" class="btn btn-amber elevation-1" data-dismiss="modal">Cerrar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+  
+             <!-- MAIN FOOTER -->
+ <style>
+  .footer-title-grey-2{
+    color:#606060;
+    font-size: 20px;
+    font-weight:600 !important;
+  }
+  .footer-bg-grey{
+    background-color: #efefef;
+  }
+  .footer-text{
+    font-size: 1.2em;
+    font-weight:lighter;
+    color: #adadad;
+    font-family: GeomanistMedium !important;
+  }
+
+
+  .main-footer{
+    font-family: Geomanist Bold, sans-serif !important;
+    font-size: 14px !important;
+  }
+  .footer-title-grey{
+    color:#535353;
+    font-size: 14px !important;
+    font-weight:600 !important;
+    line-height: 21px;
+  }
+
+  .pb-1{
+    line-height: 21px;
+  }
+
+ </style>
+
+ <footer class="main-footer footer-bg-grey footer-text">
+     <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="footer-title-grey-2">
+                      <div class="row pb-1">
+                        <div class="col-1">
+                          <img class="icon-2" src="/frontend/images/footer/oficinas.svg" alt="Facebook">
+                        </div>
+                        <div class="col-10 text-left pt-1 footer-title-grey-2">
+                          Oficinas
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="pb-2">
+                        <div class="footer-title-grey pb-1">
+                            Resistencia - Chaco
+                        </div>
+                        <div class="pb-1">
+                            Sede Central: Guemes 46
+                            <br>
+                            Nueva Sede: 9 de Julio 145
+                        </div>
+                    </div>
+                    <div class="pb-2">
+                        <div class="footer-title-grey">
+                            Saenz Peña - Chaco
+                        </div>
+                        <div class="pb-1">
+                            Direccón: San Martin s/n
+                        </div>
+                    </div>
+                    <div class="pb-2">
+                        <div class="footer-title-grey pb-1">
+                            Ciudad Autónoma de Buenos Aires
+                        </div>
+                        <div class="pb-1">
+                            Dirección: Corrientes 2959
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="text-left pt-1 footer-title-grey-2 ">
+                        Contacto
+                    </div>
+                    <div>
+                        <br>
+                        <div class="row pb-1">
+                          <div class="col-1">
+                            <img class="icon-3" src="/frontend/images/footer/telefono.svg" alt="Facebook">
+                          </div>
+                          <div class="col-10 text-left pt-1">
+                            Teléfono: 0362-4446750
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <img class="icon-3" src="/frontend/images/footer/fax.svg" alt="Facebook">
+                          </div>
+                          <div class="col-10 text-left pt-1">
+                            Fax 0362-4446750
+                          </div>
+                        </div>
+                    </div>
+                    <br><br><br><br>
+                    <div>
+                        <ul class="footer-social">
+                          <li class="footer-social-item">
+                            <a target="_blank" href="https://www.instagram.com/loteriachaquena/">
+                              <img class="icon-3" src="/frontend/images/footer/instagram.svg" alt="Youtube">
+                            </a>
+                          </li>
+                            <li class="footer-social-item">
+                              <a target="_blank" href="https://www.facebook.com/LoteriaChaquenaOficial/">
+                                <img class="icon-3" src="/frontend/images/footer/facebook.svg" alt="Facebook">
+                              </a>
+                            </li>
+                            <li class="footer-social-item">
+                              <a target="_blank" href="https://www.youtube.com/channel/UCUI-haWh0sI9ABHEFfGnHxw">
+                                <img class="icon-3" src="/frontend/images/footer/youtube.svg" alt="Youtube">
+                              </a>
+                            </li>
+                            <li class="footer-social-item">
+                              <a target="_blank" href="https://twitter.com/loteriachaquena">
+                                <img class="icon-3" src="/frontend/images/footer/twitter.svg" alt="Twitter">
+                              </a>
+                            </li>
+
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="footer-bottom">
+                <ul class="footer-links">
+                  <li class="footer-links-item">
+                    <a href="/loteria" class="grey-dark">Institucional</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/agencia_digital" class="grey-dark">Agencias</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="#" class="grey-dark">Juegos</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/juego/quiniela_chaquenia" class="grey-dark">Extractos</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/juego_responsable" class="grey-dark">Juego Responsable</a>
+                  </li>
+                  <li class="footer-links-item">
+                    <a href="/agencia_casino" class="grey-dark">Casino y Tragamonedas</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+        <div class="col-md-2 col-sm-12 col-xs-12">
+
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="row">
+                
+            </div>
+        </div>
+     </div>
+  </footer>  
+  						  <script src="/build/runtime.js"></script><script src="/build/frontend.js"></script>
+   <script src="/frontend/js/tiny-slider.js"></script>
+  <script src="/frontend/js/jquery.lazy.min.js"></script>
+  <script src="/frontend/js/jquery.lazy.plugins.min.js"></script>
+  <script src="/frontend/video/video.min.js"></script>
+
+  <script>
+  $(document).ready(function () {
+    $(function () {
+        var now = moment();
+        now.locale('es');
+        var clock = now.format('HH:mm A');
+        var date = now.format('dddd D [de] MMMM [de] YYYY');
+        $('#clock').html(clock);
+        $('#date').html(date);
+    });
+  });
+  </script>
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115097949-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115097949-1');
+  </script>
+
+  <script>
+    //para el lazy load de las imagenes
+    $(function() {
+      $('.lazyload').lazy();
+    });
+
+  </script>
+  
+
+<script>
+  $( document ).ready(() => {
+      $.get( "/api", function( data ) {
+          mostrarSorteoVivo(data.data);
+      });
+
+
+      setInterval(function() {
+      $.get( "/api", function( data ) {
+        mostrarSorteoVivo(data.data);
+      });
+    }, 60000);
+  });
+
+
+        let mercureUrl = '';
+    if(mercureUrl && mercureUrl!=''){
+      const url = new URL('');    
+      url.searchParams.append('topic', 'broadcast');
+              const eventSource = new EventSource(url);
+        eventSource.onmessage = event => {
+          sorteo_vivo = JSON.parse(event.data);
+
+
+          mostrarSorteoVivo(sorteo_vivo,true);
+        }
+    }
+    
+
+
+    function verResultadosEnVivo() {
+    if ($("#aviso_sorteo_vivo").attr('sorteo')=="vivo" || $("#aviso_sorteo_vivo").attr('sorteo')=="resultado") {
+      $('#modal_vivo').modal();
+    }
+  }
+
+  //ver que opcion mostrar del sorteo en vivo
+  function mostrarSorteoVivo(sorteo_vivo, mercure= false) {
+    //llega 1 si no existen ningun sorteo activo
+    if (sorteo_vivo == 1) {
+      $("#barra_sorteovivo").hide();
+      $("#popup_sorteovivo").hide();
+    }
+
+    //ahora me fijo segun el estado en el que mando
+    if (sorteo_vivo.estado == 1) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong>Próximamente</strong>")
+        $("#barra_sorteovivo").show();
+        $("#popup_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','')
+        $('#pop_titulo_sorteovivo').html('¡PRÓXIMAMENTE SORTEO !');
+        $('#pop_subtitulo_sorteovivo').html('Quiniela '+sorteo_vivo.sorteo);
+        $('#modal_vivo').modal('hide');
+      }
+    }
+
+    //en el caso de que sea en instantes
+    if (sorteo_vivo.estado == 2) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong>En instantes</strong>")
+        $("#barra_sorteovivo").show();
+        $("#popup_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','')
+        $('#pop_titulo_sorteovivo').html('¡EN INSTÁNTES SORTEO! ');
+        $('#pop_subtitulo_sorteovivo').html('Quiniela '+sorteo_vivo.sorteo);
+        $('#modal_vivo').modal('hide');
+      }
+    }
+
+    //en el caso de que sea en vivo
+    if (sorteo_vivo.estado == 3) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong style='cursor: pointer;' onclick='verResultadosEnVivo()'>Ver ahora</strong>");
+        cargar_modal_vivo(sorteo_vivo,1);
+        $("#popup_sorteovivo").show();
+        $("#barra_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','vivo')
+        $('#pop_titulo_sorteovivo').html('¡COMENZÓ EL SORTEO!');
+        $('#pop_subtitulo_sorteovivo').html('Mirá los resultados en vivo');
+
+        if(mercure){
+          $('#modal_vivo').modal();
+        }
+      }
+    }
+    //en el caso de que sea ver ultimos resultados
+    if (sorteo_vivo.estado == 4) {
+      if ($("#barra_sorteovivo").length) {
+        $("#sorteo_vivo").html("<strong style='cursor: pointer;' onclick='verResultadosEnVivo()'>Ultimos Resultados</strong>");
+        cargar_modal_vivo(sorteo_vivo,2);
+        $("#barra_sorteovivo").show();
+        $("#popup_sorteovivo").show();
+        $("#aviso_sorteo_vivo").attr('sorteo','resultado')
+        $('#pop_titulo_sorteovivo').html('¡MIRA LOS ULTIMOS RESULTADOS!');
+        $('#pop_subtitulo_sorteovivo').html('Quiniela '+sorteo_vivo.sorteo);
+        // $('#modal_vivo').modal('hide');
+      }
+    }
+  }
+
+  //cargar la modal de los resultados del sorteo en vivo
+  function cargar_modal_vivo(sorteo_vivo, envivo) {
+    if(sorteo_vivo.sorteo == 'Sorteo Bénefico'){
+      // console.log(sorteo_vivo.sorteo)
+      $("#parte_2_sorteo_vivo").hide()
+      $("#parte_1_sorteo_vivo").attr('class','col-md-12')
+    }else{
+      $("#parte_2_sorteo_vivo").show()
+    }
+    if (envivo == 1) {
+      //en caso de que se este sorteando en vivo 
+      $("#boton_imprimir_sorteo_vivo").hide();
+
+      $("#titulo_modal_vivo").html("Resultados en VIVO");
+      ultimo_check=`<img style="margin-left:5px;width:14px;height:14px;display:inline;" src="/backend/images/active.png" title="Último" />`;
+    } else {
+      //en caso de que ya haya finalizado el sorteo ( todavia no esta en los web service)
+
+      //la ruta para el link de imprimir
+      link_imprimir="/imprimir_sorteovivo/idsorteo";
+      link_imprimir=link_imprimir.replace("idsorteo", sorteo_vivo.id);
+      $("#boton_imprimir_sorteo_vivo").attr('href',link_imprimir);
+      $("#boton_imprimir_sorteo_vivo").show();
+
+      $("#titulo_modal_vivo").html("Últimos Resultados");
+
+      ultimo_check="";
+    }
+
+    if(typeof(sorteo_vivo.fecha) =="string" ){
+      if(sorteo_vivo.fecha.length > 0){
+        $('#sorteo_vivo_fecha').html(sorteo_vivo.fecha + " " + sorteo_vivo.hora);
+      }
+    }
+
+    $('#sorteo_vivo_numeroSorteo').html(sorteo_vivo.numeroSorteo);
+    var pad = "000000";
+    
+   
+    if(sorteo_vivo.sorteo == 'Sorteo Bénefico'){
+      var n = '5';
+      var corte = 5
+    }
+
+    var cantidadExtractos = 20
+    if(sorteo_vivo.sorteoVivoEspecialTipo){
+      var n = sorteo_vivo.sorteoVivoEspecialTipo.cantidadDigitos
+      var corte = sorteo_vivo.sorteoVivoEspecialTipo.cantidadDigitos
+      cantidadExtractos = sorteo_vivo.sorteoVivoEspecialTipo.cantidadExtractos
+    }else{
+       var n = '4';
+        var corte = 4
+    }
+    var result = (pad+n).slice(-pad.length);
+
+    if(sorteo_vivo.tieneCartones){
+      $('.ubicacion_header').text('Fracción');
+      lista_numeros1=`
+      <tr class="ubicacion1">
+        <td style="`+((1 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton1 !== null ? ('0000'+sorteo_vivo.numeroCarton1).slice(-corte)  : `` )+`</td>
+        <td style="`+((1 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton1 !== null ? ('0000'+sorteo_vivo.numeroCarton1).slice(-corte)  : `` )+`</td>
+      </tr>
+      <tr class="ubicacion2">
+        <td style="`+((2 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton2 !== null ? ('0000'+sorteo_vivo.numeroCarton2).slice(-corte)  : `` )+`</td>
+        <td style="`+((2 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.ubicacion2 !== null ? ('0000'+sorteo_vivo.ubicacion2).slice(-corte) : `` )+(2 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion3">
+        <td style="`+((3 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton3 !== null ? ('0000'+sorteo_vivo.numeroCarton3).slice(-corte)  : `` )+`</td>
+        <td style="`+((3 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion3 !== null ? ('0000'+sorteo_vivo.ubicacion3).slice(-corte) : `` )+(3 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion4">
+        <td style="`+((4 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton4 !== null ? ('0000'+sorteo_vivo.numeroCarton4).slice(-corte)  : `` )+`</td>
+        <td style="`+((4 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion4 !== null ? ('0000'+sorteo_vivo.ubicacion4).slice(-corte) : `` )+(4 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion5">
+        <td style="`+((5 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton5 !== null ? ('0000'+sorteo_vivo.numeroCarton5).slice(-corte)  : `` )+`</td>
+        <td style="`+((5 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion5 !== null ? ('0000'+sorteo_vivo.ubicacion5).slice(-corte) : `` )+(5 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion6">
+        <td style="`+((6 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton6 !== null ? ('0000'+sorteo_vivo.numeroCarton6).slice(-corte)  : `` )+`</td>
+        <td style="`+((6 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion6 !== null ?('0000'+sorteo_vivo.ubicacion6).slice(-corte) : `` )+(6 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion7">
+        <td style="`+((7 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton7 !== null ? ('0000'+sorteo_vivo.numeroCarton7).slice(-corte)  : `` )+`</td>
+        <td style="`+((7 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion7 !== null ? ('0000'+sorteo_vivo.ubicacion7).slice(-corte) : `` )+(7 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion8">
+        <td style="`+((8 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton8 !== null ? ('0000'+sorteo_vivo.numeroCarton8).slice(-corte)  : `` )+`</td>
+        <td style="`+((8 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion8 !== null ? ('0000'+sorteo_vivo.ubicacion8).slice(-corte) : `` )+(8 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion9">
+        <td style="`+((9 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton9 !== null ? ('0000'+sorteo_vivo.numeroCarton9).slice(-corte)  : `` )+`</td>
+        <td style="`+((9 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion9 !== null ? ('0000'+sorteo_vivo.ubicacion9).slice(-corte) : `` )+(9 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion10">
+        <td style="`+((10 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton10 !== null ? ('0000'+sorteo_vivo.numeroCarton10).slice(-corte)  : `` )+`</td>
+        <td style="`+((10 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion10 !== null ? ('0000'+sorteo_vivo.ubicacion10).slice(-corte) : `` )+(10 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+
+    lista_numeros2=`
+      <tr class="ubicacion11">
+        <td style="`+((11 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton11 !== null ? ('0000'+sorteo_vivo.numeroCarton11).slice(-corte)  : `` )+`</td>
+        <td style="`+((11 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion11 !== null ? ('0000'+sorteo_vivo.ubicacion11).slice(-corte) : `` )+(11 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion12">
+        <td style="`+((12 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton12 !== null ? ('0000'+sorteo_vivo.numeroCarton12).slice(-corte)  : `` )+`</td>
+        <td style="`+((12 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion12 !== null ? ('0000'+sorteo_vivo.ubicacion12).slice(-corte) : `` )+(12 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion13">
+        <td style="`+((13 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton13 !== null ? ('0000'+sorteo_vivo.numeroCarton13).slice(-corte)  : `` )+`</td>
+        <td style="`+((13 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion13 !== null ? ('0000'+sorteo_vivo.ubicacion13).slice(-corte) : `` )+(13 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion14">
+        <td style="`+((14 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton14 !== null ? ('0000'+sorteo_vivo.numeroCarton14).slice(-corte)  : `` )+`</td>
+        <td style="`+((14 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion14 !== null ? ('0000'+sorteo_vivo.ubicacion14).slice(-corte) : `` )+(14 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion15">
+        <td style="`+((15 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton15 !== null ? ('0000'+sorteo_vivo.numeroCarton15).slice(-corte)  : `` )+`</td>
+        <td style="`+((15 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion15 !== null ? ('0000'+sorteo_vivo.ubicacion15).slice(-corte) : `` )+(15 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion16">
+        <td style="`+((16 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton16 !== null ? ('0000'+sorteo_vivo.numeroCarton16).slice(-corte)  : `` )+`</td>
+        <td style="`+((16 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion16 !== null ? ('0000'+sorteo_vivo.ubicacion16).slice(-corte) : `` )+(16 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion17">
+        <td style="`+((17 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton17 !== null ? ('0000'+sorteo_vivo.numeroCarton17).slice(-corte)  : `` )+`</td>
+        <td style="`+((17 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion17 !== null ? ('0000'+sorteo_vivo.ubicacion17).slice(-corte) : `` )+(17 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion18">
+        <td style="`+((18 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton18 !== null ? ('0000'+sorteo_vivo.numeroCarton18).slice(-corte)  : `` )+`</td>
+        <td style="`+((18 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion18 !== null ? ('0000'+sorteo_vivo.ubicacion18).slice(-corte) : `` )+(18 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion19">
+        <td style="`+((19 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton19 !== null ? ('0000'+sorteo_vivo.numeroCarton19).slice(-corte)  : `` )+`</td>
+        <td style="`+((19 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion19 !== null ? ('0000'+sorteo_vivo.ubicacion19).slice(-corte) : `` )+(19 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion20">
+        <td style="`+((20 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.numeroCarton20 !== null ? ('0000'+sorteo_vivo.numeroCarton20).slice(-corte)  : `` )+`</td>
+        <td style="`+((20 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion20 !== null ? ('0000'+sorteo_vivo.ubicacion20).slice(-corte) : `` )+(20 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+    }else{
+      $('.ubicacion_header').text('Ubicación')
+      lista_numeros1=`
+      <tr class="ubicacion1">
+        <td scope="row">`+1+`</td>
+        <td style="`+((1 == sorteo_vivo.ultimaUbicacion || sorteo_vivo.estado == 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.ubicacion1 !== null ? ('0000'+sorteo_vivo.ubicacion1).slice(-corte)  : `` )+(1 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion2">
+        <td scope="row">`+2+`</td>
+        <td style="`+((2 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`" >`+ (sorteo_vivo.ubicacion2 !== null ? ('0000'+sorteo_vivo.ubicacion2).slice(-corte) : `` )+(2 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion3">
+        <td scope="row">`+3+`</td>
+        <td style="`+((3 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion3 !== null ? ('0000'+sorteo_vivo.ubicacion3).slice(-corte) : `` )+(3 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion4">
+        <td scope="row">`+4+`</td>
+        <td style="`+((4 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4) ? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion4 !== null ? ('0000'+sorteo_vivo.ubicacion4).slice(-corte) : `` )+(4 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion5">
+        <td scope="row">`+5+`</td>
+        <td style="`+((5 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion5 !== null ? ('0000'+sorteo_vivo.ubicacion5).slice(-corte) : `` )+(5 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion6">
+        <td scope="row">`+6+`</td>
+        <td style="`+((6 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion6 !== null ?('0000'+sorteo_vivo.ubicacion6).slice(-corte) : `` )+(6 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion7">
+        <td scope="row">`+7+`</td>
+        <td style="`+((7 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion7 !== null ? ('0000'+sorteo_vivo.ubicacion7).slice(-corte) : `` )+(7 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion8">
+        <td scope="row">`+8+`</td>
+        <td style="`+((8 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion8 !== null ? ('0000'+sorteo_vivo.ubicacion8).slice(-corte) : `` )+(8 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion9">
+        <td scope="row">`+9+`</td>
+        <td style="`+((9 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion9 !== null ? ('0000'+sorteo_vivo.ubicacion9).slice(-corte) : `` )+(9 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion10">
+        <td scope="row">`+10+`</td>
+        <td style="`+((10 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion10 !== null ? ('0000'+sorteo_vivo.ubicacion10).slice(-corte) : `` )+(10 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+
+    lista_numeros2=`
+      <tr class="ubicacion11">
+        <td scope="row">`+11+`</td>
+        <td style="`+((11 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion11 !== null ? ('0000'+sorteo_vivo.ubicacion11).slice(-corte) : `` )+(11 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion12">
+        <td scope="row">`+12+`</td>
+        <td style="`+((12 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion12 !== null ? ('0000'+sorteo_vivo.ubicacion12).slice(-corte) : `` )+(12 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion13">
+        <td scope="row">`+13+`</td>
+        <td style="`+((13 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion13 !== null ? ('0000'+sorteo_vivo.ubicacion13).slice(-corte) : `` )+(13 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion14">
+        <td scope="row">`+14+`</td>
+        <td style="`+((14 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion14 !== null ? ('0000'+sorteo_vivo.ubicacion14).slice(-corte) : `` )+(14 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion15">
+        <td scope="row">`+15+`</td>
+        <td style="`+((15 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion15 !== null ? ('0000'+sorteo_vivo.ubicacion15).slice(-corte) : `` )+(15 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion16">
+        <td scope="row">`+16+`</td>
+        <td style="`+((16 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion16 !== null ? ('0000'+sorteo_vivo.ubicacion16).slice(-corte) : `` )+(16 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion17">
+        <td scope="row">`+17+`</td>
+        <td style="`+((17 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion17 !== null ? ('0000'+sorteo_vivo.ubicacion17).slice(-corte) : `` )+(17 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion18">
+        <td scope="row">`+18+`</td>
+        <td style="`+((18 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion18 !== null ? ('0000'+sorteo_vivo.ubicacion18).slice(-corte) : `` )+(18 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion19">
+        <td scope="row">`+19+`</td>
+        <td style="`+((19 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion19 !== null ? ('0000'+sorteo_vivo.ubicacion19).slice(-corte) : `` )+(19 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>
+      <tr class="ubicacion20">
+        <td scope="row">`+20+`</td>
+        <td style="`+((20 == sorteo_vivo.ultimaUbicacion && sorteo_vivo.estado != 4)? 'font-size: 15px;text-shadow: -0.5px 0.5px, 0.4px 0.4px, 0.4px 0.4px;': `` )+`">`+ (sorteo_vivo.ubicacion20 !== null ? ('0000'+sorteo_vivo.ubicacion20).slice(-corte) : `` )+(20 == sorteo_vivo.ultimaUbicacion ? ultimo_check: `` )+`</td>
+      </tr>`;
+
+    }
+    
+   
+    
+    
+    $("#lista_vivo1").html(lista_numeros1);
+    $("#lista_vivo2").html(lista_numeros2);
+    for (var i = 1; i <= 20; i++) {
+        if (i > cantidadExtractos){
+            $('.ubicacion'+i).hide()
+        }
+        
+    }
+    
+
+    if(sorteo_vivo.sorteo == 'Sorteo Bénefico'){
+      // console.log(sorteo_vivo.sorteo)
+      $("#parte_2_sorteo_vivo").hide()
+    }else{
+     if (cantidadExtractos > 10){
+        $("#lista_vivo2").show();
+        $("#parte_2_sorteo_vivo").show()
+        $("#parte_1_sorteo_vivo").addClass('col-6')  
+        $("#parte_1_sorteo_vivo").removeClass('col-12')   
+
+      }else{
+        $("#lista_vivo2").hide()
+        $("#parte_2_sorteo_vivo").hide()   
+        $("#parte_1_sorteo_vivo").addClass('col-12')   
+        $("#parte_1_sorteo_vivo").removeClass('col-6')   
+      }
+    }
+    $("#modalidad_vivo").html(sorteo_vivo.sorteo);
+  }
+
+        sorteo_vivo={
+      ubicacion1:  5451 ,
+      ubicacion2:  3612 ,
+      ubicacion3:  6423 ,
+      ubicacion4:  5769 ,
+      ubicacion5:  4160 ,
+      ubicacion6:  3191 ,
+      ubicacion7:  6621 ,
+      ubicacion8:  2205 ,
+      ubicacion9:  1889 ,
+      ubicacion10: 7698 ,
+      ubicacion11: 3006 ,
+      ubicacion12: 0204 ,
+      ubicacion13: 9354 ,
+      ubicacion14: 3339 ,
+      ubicacion15: 2560 ,
+      ubicacion16: 2137 ,
+      ubicacion17: 1040 ,
+      ubicacion18: 8373 ,
+      ubicacion19:  0446 ,
+      ubicacion20:  7478 ,
+      estado: 4,
+      sorteo: "Nocturna",
+      numeroSorteo: "15376",
+      fecha: "02/11/2026 21:00",
+      ultimaUbicacion: "1",
+      id: 9998
+    };
+    mostrarSorteoVivo(sorteo_vivo);
+  </script>
+
+  <!-- Para el video en vivo de chaco tv -->
+  
+	<script>
+		$( document ).ready(function(){
+			// var player = videojs('my-video');
+      // const chacoTv = document.querySelector('.chaco-tv');
+      // const chacoTvOpen = document.querySelector('#img-open-chacotv');
+      // const chacoTvOpen2 = document.querySelector('#img-open-chacotv-banner');
+
+      // chacoTvOpen.addEventListener('click', () => {
+      //   chacoTv.classList.add('active');
+      //   player.play();
+      // });
+      // chacoTvOpen2.addEventListener('click', () => {
+      //   chacoTv.classList.add('active');
+      //   player.play();
+      // });
+      // const chacoTvClose = document.querySelector('.chaco-tv__close');
+      // chacoTvClose.addEventListener('click', () => {
+      //   chacoTv.classList.remove('active');
+      //   player.pause();
+      // });
+    })
+  </script>
+
+						<script src="/frontend/js/home.js"></script>
+						<script>
+							var o
+function mostrarLicitaciones() {
+opcion_licitacion = $("#opcion_licitaciones").val();
+url_lic ="/licitaciones?type=numero_lic"
+window.location.href = url_lic;
+
+}
+
+var eventos = []evento = {
+id: 71,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/69a5aa05b7152072390074.JPG",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/69a5aa05b7152072390074.JPG",
+
+tituloImagen: "",
+titulo: "Maratón Juego Responsable",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ababee670622074175.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ababee670622074175.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5abb16c0a0806597640.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5abb16c0a0806597640.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac92a9bd8608774523.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac92a9bd8608774523.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac93051cd317487017.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac93051cd317487017.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac9348a14783847485.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac9348a14783847485.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac937c71d630808232.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac937c71d630808232.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac93a5188687584721.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac93a5188687584721.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac9402fe8297772517.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac9402fe8297772517.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94385fb185362623.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94385fb185362623.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac9471822970767262.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac9471822970767262.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94a22fa824224668.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94a22fa824224668.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94b51ac193186259.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94b51ac193186259.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94d3669183527402.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ac94d3669183527402.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9cd9b1c007850061.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9cd9b1c007850061.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d1bfa7803111605.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d1bfa7803111605.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d52d2e682329010.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d52d2e682329010.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d6fc7f848231009.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d6fc7f848231009.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d952d5308357956.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9d952d5308357956.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9dedf92310733184.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9dedf92310733184.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9e2ab80833669297.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9e2ab80833669297.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9e51b9a989951597.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9e51b9a989951597.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9e7519e273170357.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9e7519e273170357.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9ea0eab220600870.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9ea0eab220600870.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9ef06b2017375617.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9ef06b2017375617.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9f39f87641439804.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ad9f39f87641439804.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae915cc17392205147.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae915cc17392205147.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae91c436a741562590.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae91c436a741562590.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae9251336147481868.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae9251336147481868.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae928a447206716570.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae928a447206716570.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae929facf568738056.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae929facf568738056.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae92af385181554786.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae92af385181554786.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae92c47e4123794269.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae92c47e4123794269.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae92e20ae569128684.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae92e20ae569128684.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae930ef8f040138949.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae930ef8f040138949.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae9326e8a635476108.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae9326e8a635476108.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae934cafa039569826.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae934cafa039569826.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae93823b6246823024.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5ae93823b6246823024.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affa7be07017569263.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affa7be07017569263.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affa9cad6441629417.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affa9cad6441629417.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affab1227800274627.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affab1227800274627.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affac9284753992145.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affac9284753992145.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb024f7076177933.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb024f7076177933.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb4e893541175667.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb4e893541175667.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb7de00562811761.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb7de00562811761.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb96a1f933398289.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affb96a1f933398289.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affba9b47457871170.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affba9b47457871170.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affbd44bb257839900.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affbd44bb257839900.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affc20080215765144.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affc20080215765144.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affc41dcc940931101.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5affc41dcc940931101.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16d42fa7012541539.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16d42fa7012541539.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16d709b8416193666.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16d709b8416193666.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16da636f136117470.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16da636f136117470.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16dd75c6951739980.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16dd75c6951739980.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16e0b08b298731098.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16e0b08b298731098.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16e571c0862263139.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16e571c0862263139.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16e896ad587238849.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16e896ad587238849.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eab589492373753.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eab589492373753.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eb90d2227150953.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eb90d2227150953.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eca9fc573160393.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eca9fc573160393.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16edd97f659262994.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16edd97f659262994.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eeef4f592244703.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16eeef4f592244703.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16f0af04033172206.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16f0af04033172206.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16f41acd623065992.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b16f41acd623065992.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38f5ba34257928863.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38f5ba34257928863.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38f848da765623542.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38f848da765623542.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38fa94c6295476931.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38fa94c6295476931.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38fe3d15706983000.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b38fe3d15706983000.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3901418a981300714.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3901418a981300714.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b39026ce0844263467.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b39026ce0844263467.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b39042e59879726140.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b39042e59879726140.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3905e8f0801559260.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3905e8f0801559260.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3909aace492827588.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3909aace492827588.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b390c54d1519049880.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b390c54d1519049880.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b390e3871577312325.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b390e3871577312325.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3910ca63274127655.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3910ca63274127655.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3914ed90740746265.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3914ed90740746265.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3919312c440124321.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b3919312c440124321.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b391b83c6236231517.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b391b83c6236231517.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b391f247e671595199.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b391f247e671595199.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b130de7500186168.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b130de7500186168.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b15f102929499270.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b15f102929499270.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b170e47596638158.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b170e47596638158.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b188e31595898669.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b188e31595898669.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b19b168146607345.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b19b168146607345.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b1b2cd2445450278.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b1b2cd2445450278.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b1cd5a5966194960.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b1cd5a5966194960.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b1e10cf717899576.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b1e10cf717899576.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b200fa0413724206.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b200fa0413724206.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b21a5a2116437626.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b21a5a2116437626.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b238ad2129362385.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b238ad2129362385.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b248f94502388017.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b248f94502388017.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b25b9ef017437039.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b25b9ef017437039.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b271ed6375181342.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b271ed6375181342.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b29c7c7812379692.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b29c7c7812379692.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b2ab126935773222.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a5b5b2ab126935773222.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615e334c742013506.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615e334c742013506.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615e7462718867472.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615e7462718867472.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615eb657139320699.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615eb657139320699.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615eff7f505928432.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615eff7f505928432.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615f3a52272258902.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b615f3a52272258902.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616063dc265862934.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616063dc265862934.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6160ba7d813355494.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6160ba7d813355494.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61610bcb272070190.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61610bcb272070190.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6161481d322853656.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6161481d322853656.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61617353837312736.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61617353837312736.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6161b755626518452.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6161b755626518452.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61621cb0267572935.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61621cb0267572935.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616265df407274627.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616265df407274627.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6162a163199061228.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6162a163199061228.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6162d579179086313.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b6162d579179086313.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61630d6f671774128.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b61630d6f671774128.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616342b7637769987.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616342b7637769987.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616373c3194085099.JPG"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/69a6b616373c3194085099.JPG",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)evento = {
+id: 70,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/683d9541ed17b879392358.jpg",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/683d9541ed17b879392358.jpg",
+
+tituloImagen: "",
+titulo: "Copa Lotería Chaqueña de Voleibol",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d9541f1837294664792.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d9541f1837294664792.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d954201597055904880.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d954201597055904880.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d954204fea155604615.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d954204fea155604615.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d9542074cb301679490.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d9542074cb301679490.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d954209d1a976176682.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d954209d1a976176682.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)evento = {
+id: 69,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/683d94c3ae766456962872.jpg",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/683d94c3ae766456962872.jpg",
+
+tituloImagen: "",
+titulo: "Visita estudiantes de Derecho",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3b5e6e767556050.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3b5e6e767556050.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3bc8cd342724299.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3bc8cd342724299.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3c2155988733422.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3c2155988733422.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3c7767896014251.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/683d94c3c7767896014251.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)evento = {
+id: 68,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67f6459a36d22325273470.jpg",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67f6459a36d22325273470.jpg",
+
+tituloImagen: "",
+titulo: "Torneo Provincial de Vóley Sub-18",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a3ae35990936608.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a3ae35990936608.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a3de42001679775.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a3de42001679775.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a40bca585425709.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a40bca585425709.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a45c72452709209.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67f6459a45c72452709209.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)evento = {
+id: 66,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67dd9203a5b7e870794900.jpg",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67dd9203a5b7e870794900.jpg",
+
+tituloImagen: "",
+titulo: "SAGSE Latam 2025",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd719f45016822932011.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd719f45016822932011.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd719f48764381877318.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd719f48764381877318.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd719f4bb6c378809694.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd719f4bb6c378809694.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd9138ab8fb577395233.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd9138ab8fb577395233.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd9138af343650326206.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd9138af343650326206.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)evento = {
+id: 67,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67dd70e7d9556708011135.jpg",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67dd70e7d9556708011135.jpg",
+
+tituloImagen: "",
+titulo: "Entrega de elementos deportivos a escuelas",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd70e7dff44593956526.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd70e7dff44593956526.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd70e7e7eb6059193742.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd70e7e7eb6059193742.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd70e7f0506715761934.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67dd70e7f0506715761934.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)evento = {
+id: 64,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67d7f00f7622c354291921.jpg",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67d7f00f7622c354291921.jpg",
+
+tituloImagen: "",
+titulo: "Presentación nueva camiseta de Sarmiento",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f7dac9521755905.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f7dac9521755905.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f84ad3394261142.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f84ad3394261142.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f8b1ac406445587.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f8b1ac406445587.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f92cd7046804881.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f92cd7046804881.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f9829d881760069.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f9829d881760069.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f9d4c4772528802.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d7f00f9d4c4772528802.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)evento = {
+id: 63,
+// imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67d460571b07d298854210.jpg",
+imagen: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/eventos/67d460571b07d298854210.jpg",
+
+tituloImagen: "",
+titulo: "Charla &quot;Autocuidado: hablemos de nosotras&quot;",
+descripcion: "",noticia : null,resources: [],
+videos: []
+}
+
+
+
+// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d4605720e4e897062605.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d4605720e4e897062605.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d460572348d679040620.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d460572348d679040620.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d46057258b1402811844.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d46057258b1402811844.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)// resource = {url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d4605727fe4374943054.jpg"}
+resource = {
+url: "https://loteria.chaco.gov.ar/uploads/cache/media/index_eventos_galeria/uploads/resources/67d4605727fe4374943054.jpg",
+epigrafe: ""
+}
+evento.resources.push(resource)eventos.push(evento)
+
+var slider_eventos = null
+function abrirSlider(evento_id) {
+
+if (slider_eventos) {
+
+slider_eventos.destroy()
+slider_eventos = null
+
+}
+// busco los datos del evento del cual voy a mostrar la modal
+evento = eventos.find(function (evento) {
+return evento.id === evento_id;
+});
+slider = '';
+// para la imagen principal del evento
+if (evento.imagen) {
+sliders = "<div class='slider-item'><img class='img-fluid evento_slider_element'   src='" + evento.imagen + "' alt=''><hr><br><div  style='text-align:center;'><h6 id='modal-evento-t-imagen'>" + evento.tituloImagen + "</h6></div></div>"
+}
+
+// ahora por cada imagen los seteo en la modal
+evento.resources.forEach(resource => {
+sliders = sliders + "<div class='slider-item'><img class='img-fluid evento_slider_element'   src='" + resource.url + "' alt=''><hr><br><div  style='text-align:center;'><h6 id='modal-evento-t-imagen'>" + resource.epigrafe + "</h6></div></div>"
+});
+
+svideos = ''
+evento.videos.forEach(video => {
+svideos = svideos + "<div class='slider-item'>" + "<div class='video-container' style='margin-left:50px;margin-right:50px;'>" + "<embed style='display:none;'' src='" + video.url + "' wmode='transparent' type='application/x-shockwave-flash'" + " width='420' height='315' allowfullscreen='true' title='Adobe Flash Player'></embed>" + "</div>" + "<hr>" + "<br>" + "<div style='width:50%;margin-left:auto;margin-right:auto;text-align:center;'><h5>" + video.titulo + "</h5></div>" + "</div>"
+});
+
+
+$('#galeria_slider').html(sliders + svideos);
+
+if (evento.noticia != '' && evento.noticia != null) {
+$('#modal-evento-link-not').attr('href', evento.noticia)
+$('#modal-evento-link-not').css('display', 'inline-block')
+
+} else {
+$('#modal-evento-link-not').css('display', 'none')
+}
+
+$('#modal-evento-titulo').html(evento.titulo)
+$('.tns-nav').html('');
+
+if (evento.resources.length > 0) {
+$('.galeria_slider-presente-slider__controls').show()
+mostrarSlider()
+} else {
+$('.galeria_slider-presente-slider__controls').hide()
+}
+$("#modal_eventos").modal();
+}
+
+
+$('#modal_eventos').on('hidden', function () {
+slider_eventos = null;
+});
+
+
+function mostrarSlider() {
+slider_eventos = tns({
+container: '#galeria_slider',
+items: 1,
+slideBy: 'page',
+autoplay: false,
+// autoplayButton: 'autoplay-button',
+gutter: 10,
+mouseDrag: true,
+controlsContainer: '.galeria_slider-presente-slider__controls',
+mouseDrag: true,
+loop: false,
+nav: false
+
+});
+}
+						</script>
+
+					</body>
+</html>

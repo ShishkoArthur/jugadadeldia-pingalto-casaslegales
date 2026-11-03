@@ -11,7 +11,7 @@ export function rgQuote(h, e, label) {
   return quote(h, { doc: 'rg:' + e.doc, text: e.quote }, label);
 }
 export function hostHtml(h, host, jur) {
-  const pre = /^(pba|caba|cba|cordoba)\./.exec(host);
+  const pre = /^(pba|caba|cba|cordoba|larioja)\./.exec(host);
   return '<span class="rl-host">' + (pre ? '<b>' + h.esc(pre[0]) + '</b>' + h.esc(host.slice(pre[0].length)) : h.esc(host)) + '</span>';
 }
 export function sectionHead(h, title, note) {

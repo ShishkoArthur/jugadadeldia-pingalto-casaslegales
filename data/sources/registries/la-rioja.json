@@ -1,0 +1,112 @@
+{
+ "id": "la-rioja",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "status": "official-list",
+ "regulator": {
+  "name": "Administración de Juegos de Azar de La Rioja",
+  "short": "AJALAR"
+ },
+ "list": {
+  "doc": "lri-plataformas",
+  "pattern": "<p class=\"[^\"]*wp-block-paragraph\"[^>]*>\\s*<a href=\"https?://(?<host>[^/\"?]+)[^\"]*\"",
+  "note": "WordPress post \"Lista de plataformas autorizadas\" (published 2025-02-26, modified 2026-09-02 per its meta tags). One link per paragraph. Fetched once with a transparent user agent."
+ },
+ "docs": {
+  "lri-plataformas": {
+   "url": "https://ajalar.com.ar/sitio/lista-de-plataformas-autorizadas/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "40697d00cfedc93b64d3b0aa76756841c15826c893c7211ee616b709d3b2ca32",
+   "file": "data/sources/registries/_docs/lri-plataformas.html"
+  },
+  "lri-autoexclusion": {
+   "url": "https://ajalar.com.ar/sitio/formulario-de-autoexclusion/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "419263a194c61cb050340986c0466a4467fcf483328dd7722399e55c9c815ea9",
+   "file": "data/sources/registries/_docs/lri-autoexclusion.html"
+  }
+ },
+ "quotes": {
+  "list": {
+   "doc": "lri-plataformas",
+   "text": "Lista de plataformas autorizadas",
+   "role": "list"
+  },
+  "betar": {
+   "doc": "lri-plataformas",
+   "text": "Todos los sitios de apuestas on line legales se identifican únicamente con el dominio «.bet.ar».",
+   "role": "domain"
+  },
+  "age": {
+   "doc": "lri-plataformas",
+   "text": "Toda actividad relacionada a la apuestas de juego de azar está prohibida para menores de 18 años.",
+   "role": "age",
+   "hidden": true
+  },
+  "date": {
+   "doc": "lri-plataformas",
+   "text": "26 de febrero de 2025",
+   "role": "date",
+   "hidden": true
+  },
+  "regulator": {
+   "doc": "lri-autoexclusion",
+   "text": "modalidades de juegos de azar autorizadas por AJALAR.",
+   "role": "regulator"
+  }
+ },
+ "law": [],
+ "lawNote": "No provincial law text saved; the list is a post of the regulator dated 26 February 2025.",
+ "licensees": [
+  {
+   "brand": "macgroup",
+   "host": "casinosmacgroup.bet.ar",
+   "evidence": {
+    "doc": "lri-plataformas",
+    "html": "<p class=\"has-black-color has-text-color has-link-color wp-elements-6 wp-block-paragraph\"> <a href=\"https://casinosmacgroup.bet.ar/\""
+   }
+  },
+  {
+   "brand": "playbet",
+   "host": "play.bet.ar",
+   "evidence": {
+    "doc": "lri-plataformas",
+    "html": "<p class=\"has-black-color has-text-color has-link-color wp-elements-7 wp-block-paragraph\"><a href=\"https://play.bet.ar/\""
+   }
+  },
+  {
+   "brand": "arbet",
+   "host": "arbet.bet.ar",
+   "evidence": {
+    "doc": "lri-plataformas",
+    "html": "<p class=\"has-black-color has-text-color has-link-color wp-elements-8 wp-block-paragraph\"><a href=\"https://www.arbet.bet.ar/?f=UIHall\""
+   }
+  },
+  {
+   "brand": "jugadon",
+   "host": "jugadon.bet.ar",
+   "evidence": {
+    "doc": "lri-plataformas",
+    "html": "<p class=\"has-black-color has-text-color has-link-color wp-elements-9 wp-block-paragraph\"><a href=\"https://jugadon.bet.ar/\""
+   }
+  },
+  {
+   "brand": "mitesoro",
+   "host": "mitesoro.bet.ar",
+   "evidence": {
+    "doc": "lri-plataformas",
+    "html": "<p class=\"has-black-color has-text-color has-link-color wp-elements-10 wp-block-paragraph\"><a href=\"https://mitesoro.bet.ar\""
+   }
+  },
+  {
+   "brand": "easybet",
+   "host": "larioja.easybet.bet.ar",
+   "evidence": {
+    "doc": "lri-plataformas",
+    "html": "<p class=\"wp-block-paragraph\"><a href=\"https://larioja.easybet.bet.ar\""
+   }
+  }
+ ]
+}

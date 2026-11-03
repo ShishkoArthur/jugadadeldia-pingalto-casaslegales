@@ -1,18 +1,21 @@
 // casaslegales.com page frame: head, sticky header, footer with the help block. Pages give { path, title, description, h1,
 // help, nav, ld } and a body string; the shared build (tools/render.mjs) passes the helper h.
 import { TILES } from './content/map.mjs';
+import { provData } from './content/provdata.mjs';
 const NAV = [
   ['/verificador', 'Verificador'],
   ['/licencias', 'Licencias'],
   ['/operadores', 'Operadores'],
-  ['/provincia/buenos-aires', 'Buenos Aires'],
-  ['/provincia/caba', 'CABA'],
-  ['/provincia/cordoba', 'Córdoba'],
+  ['/provincias', 'Provincias'],
+  ['/guia/como-verificar', 'Cómo verificar'],
   ['/juego-responsable', 'Ayuda'],
 ];
 const FOOT = [
   ['/guia/bet-ar', 'El dominio .bet.ar'],
   ['/guia/sitios-ilegales', 'Sitios sin licencia'],
+  ['/guia/menores', 'Menores y apuestas'],
+  ['/calculadora/margen', 'Calculadora de margen', 'bet'],
+  ['/guia/handicap', 'Qué es el hándicap', 'bet'],
   ['/metodologia', 'Metodología'],
   ['/redaccion', 'Redacción'],
   ['/registro-de-fuentes', 'Registro de fuentes'],
@@ -75,7 +78,7 @@ export function page(h, p, body) {
     '<button class="rl-ib" type="button" data-rl-theme aria-label="Cambiar entre tema claro y oscuro">' + MOON + SUN + '</button>' +
     (p.help ? '' : '<button class="rl-ib rl-bu" type="button" data-rl-menu aria-controls="rl-nav" aria-expanded="false" aria-label="Menú">' + BURGER + '</button>') + '</header>';
   const footer = '<footer class="rl-ft"><p>Sin enlaces a operadores ni bonos. No es asesoramiento legal: depende de la ley de tu provincia.</p>' +
-    '<nav aria-label="Pie">' + links(h, FOOT, p.path) + '</nav>' +
+    '<nav aria-label="Pie">' + links(h, p.help ? FOOT.filter(f => !f[2]) : FOOT, p.path) + '</nav>' +
     (p.help ? '<p><b class="rl-18">18+</b> Los juegos de apuestas son solo para mayores de 18 años.</p>' : helpBlock(h, p)) +
     '<p class="rl-fine">casaslegales.com · datos oficiales revisados el ' + h.fmtDate(h.checked) + ' · redacción independiente, sin acuerdos con operadores</p></footer>';
   const data = '<script type="application/json" id="rl-data">' + h.jsonScript(h.clientData()) + '</script>';
@@ -90,14 +93,15 @@ export function clientData(h) {
   for (const t of TILES) {
     const p = h.rg.prov(t.id), r = h.regs.find(x => x.id === t.id);
     const u = '/provincia/' + t.id;
-    j[t.id] = { n: p.name, c: r ? r.licensees.length : null, r: r ? r.regulator.short : null, d: r ? h.fmtDate(r.checked) : null,
-      l: p.line ? { p: p.line.phone, t: p.line.phoneTel } : null, u: h.built(u) ? u : null };
+    const x = provData(h).one(t.id);
+    const k = x.st === 'list' ? (x.n === 1 ? 'sitio en la lista oficial' : 'sitios en la lista oficial') : x.st === 'platform' ? (x.n === 1 ? 'plataforma enlazada por el regulador' : 'plataformas enlazadas por el regulador') : x.label;
+    const m = x.st === 'list' ? r.regulator.short + ' · revisado ' + h.fmtDate(r.checked) : x.st === 'platform' ? x.e.platforms.map(q => q.name).join(', ') + ' · copia del ' + h.fmtDate(x.date) :
+      x.st === 'none' ? 'No hay una lista oficial que podamos citar.' : x.e.reason === 'geo' ? 'La fuente oficial no abre desde fuera de Argentina: copia pendiente.' : 'La fuente oficial no está en condiciones de citarse.';
+    j[t.id] = { n: p.name, s: x.st, c: x.n, k, m, l: p.line ? { p: p.line.phone, t: p.line.phoneTel } : null, u: h.built(u) ? u : null };
   }
   return {
     j,
     crisis: { p: h.rg.crisis.phone, t: h.rg.crisis.phoneTel },
-    s: { dash: '-', noList: 'sin lista oficial verificada', one: 'sitio en la lista oficial', many: 'sitios en la lista oficial',
-      noListMeta: 'Todavía no guardamos la lista oficial de esta jurisdicción.', meta: '{r} · revisado {d}', help: 'Ayuda:',
-      helpNone: 'Sin línea provincial verificada. Línea nacional:', go: 'Ver {n}' },
+    s: { dash: '-', help: 'Ayuda:', helpNone: 'Sin línea provincial verificada. Línea nacional:', go: 'Ver {n}' },
   };
 }

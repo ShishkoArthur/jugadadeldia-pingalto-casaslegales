@@ -18,7 +18,7 @@ export const SITE = {
   fonts: ['gabarito-var-latin.woff2', 'ubuntu-sans-mono-var-latin.woff2'],
   preload: ['gabarito-var-latin.woff2'],
   images: SHOT_FILES(),
-  registries: ['buenos-aires', 'caba', 'cordoba'],
+  registries: ['buenos-aires', 'caba', 'cordoba', 'la-rioja', 'neuquen', 'rio-negro'],
   defaultJurisdiction: 'buenos-aires',
   gate: {
     rgBlock: /<aside class="rl-ay"/,
@@ -26,5 +26,5 @@ export const SITE = {
     age: /class="rl-18"[^>]*>18\+</,
     siteMenu: /<nav class="rl-nav"/,
   },
-  deployCheck: ['/', '/licencias', '/verificador', '/operadores', '/operador/betsson', '/operador/jugadon', '/verificar/zeus', '/guia/bet-ar', '/juego-responsable/autoexclusion', '/provincia/cordoba', '/juego-responsable', '/no-existe'],
+  deployCheck: ['/', '/licencias', '/verificador', '/operadores', '/operador/betsson', '/operador/jugadon', '/verificar/zeus', '/guia/bet-ar', '/juego-responsable/autoexclusion', '/provincia/cordoba', '/provincias', '/provincia/neuquen', '/provincia/entre-rios', '/provincia/salta', '/provincia/mendoza', '/guia/como-verificar', '/guia/menores', '/calculadora/margen', '/guia/handicap', '/juego-responsable', '/no-existe'],
 };

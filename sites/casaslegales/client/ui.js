@@ -1,4 +1,5 @@
 import { checkHost, anatomy } from '../../../engine/hostcheck.mjs';
+import { margin, parseOdd } from '../../../engine/odds.mjs';
 const root = document.documentElement;
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -64,8 +65,9 @@ function map(data) {
     panel.querySelector('h2').textContent = j.n;
     const num = panel.querySelector('.rl-num');
     num.firstChild.textContent = j.c === null ? s.dash : String(j.c);
-    num.querySelector('small').textContent = j.c === null ? s.noList : (j.c === 1 ? s.one : s.many);
-    panel.querySelector('[data-rl-meta]').textContent = j.c === null ? s.noListMeta : s.meta.replace('{r}', j.r).replace('{d}', j.d);
+    num.querySelector('small').textContent = j.k;
+    num.dataset.s = j.s;
+    panel.querySelector('[data-rl-meta]').textContent = j.m;
     const line = panel.querySelector('[data-rl-help]');
     line.textContent = '';
     if (j.l) { line.append(s.help + ' '); line.append(telLink(j.l)); } else { line.append(s.helpNone + ' '); line.append(telLink(data.crisis)); }
@@ -94,6 +96,56 @@ function filter() {
     rows.forEach(r => { const on = b.dataset.f === 'all' || r.dataset.j === b.dataset.f; r.hidden = !on; if (on) n++; });
     if (count) count.textContent = String(n);
   });
+}
+
+function statusFilter() {
+  const bar = document.querySelector('[data-rl-sfilter]');
+  if (!bar) return;
+  const rows = [...document.querySelectorAll('[data-rl-srows] tr[data-s]')];
+  bar.addEventListener('click', e => {
+    const b = e.target.closest('button[data-f]');
+    if (!b) return;
+    bar.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    rows.forEach(r => { r.hidden = !(b.dataset.f === 'all' || r.dataset.s === b.dataset.f); });
+  });
+}
+
+function marginCalc() {
+  const form = document.querySelector('[data-rl-margin]');
+  if (!form) return;
+  const dec = (x, d) => x.toFixed(d).replace('.', ',');
+  const pct = x => dec(x * 100, 2) + ' %';
+  const err = form.querySelector('[data-rl-merr]');
+  const rowsEl = form.querySelector('[data-rl-mrows]');
+  const third = form.querySelector('[data-third]');
+  const names3 = ['Local', 'Empate', 'Visitante'], names2 = ['Opción 1', 'Opción 2'];
+  const run = () => {
+    const k = form.querySelector('input[name=k]:checked').value === '2' ? 2 : 3;
+    third.closest('label').hidden = k === 2;
+    const vals = [0, 1, 2].slice(0, k).map(i => form.querySelector('input[name=o' + i + ']').value);
+    const odds = vals.map(parseOdd);
+    if (odds.some(o => o === null)) { err.hidden = false; return; }
+    err.hidden = true;
+    const m = margin(odds);
+    form.querySelector('[data-k=margin]').textContent = pct(m.margin);
+    form.querySelector('[data-k=payout]').textContent = pct(m.payout);
+    form.querySelector('[data-k=sum]').textContent = pct(m.sum);
+    const names = k === 2 ? names2 : names3;
+    rowsEl.textContent = '';
+    m.odds.forEach((o, i) => {
+      const tr = document.createElement('tr');
+      const th = document.createElement('th');
+      th.scope = 'row';
+      th.textContent = names[i];
+      tr.append(th);
+      [dec(o, 2), pct(m.implied[i]), dec(m.fairOdds[i], 2)].forEach(t => { const td = document.createElement('td'); td.textContent = t; tr.append(td); });
+      rowsEl.append(tr);
+    });
+  };
+  form.addEventListener('input', run);
+  form.addEventListener('change', run);
+  form.addEventListener('submit', e => { e.preventDefault(); run(); });
+  run();
 }
 
 function helpPick(data) {
@@ -175,6 +227,8 @@ theme();
 menu();
 map(data);
 filter();
+statusFilter();
+marginCalc();
 helpPick(data);
 footerLine(data);
 verifier();

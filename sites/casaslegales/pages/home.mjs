@@ -1,6 +1,7 @@
 import { TILES, CODE } from '../content/map.mjs';
 import { brandMatrix, splitAddress, tileLevel, countBy } from '../../../engine/registry.mjs';
 import { src, quote, hostHtml, sectionHead } from './parts.mjs';
+import { provData } from '../content/provdata.mjs';
 
 export const home = {
   path: '/',
@@ -17,12 +18,13 @@ export const home = {
     const by = countBy(h.regs);
     const def = h.site.defaultJurisdiction;
     const dj = h.rg.prov(def), dreg = h.reg(def);
+    const P = provData(h);
     const tiles = TILES.map(t => {
+      const x = P.one(t.id);
       const n = by[t.id];
-      const lvl = n === undefined ? 0 : tileLevel(n);
-      const name = h.rg.prov(t.id).name;
-      const label = name + ': ' + (n === undefined ? 'sin lista oficial verificada' : n + ' sitios en la lista oficial');
-      return '<button type="button" data-j="' + t.id + '" style="grid-area:' + t.area + '"' + (lvl ? ' class="rl-l' + lvl + '"' : '') + ' aria-pressed="' + (t.id === def) + '" aria-label="' + h.esc(label) + '">' + t.code + '</button>';
+      const cls = x.st === 'list' ? 'rl-l' + tileLevel(n) : x.st === 'platform' ? 'rl-pf' : x.st === 'blocked' ? 'rl-bk' : '';
+      const label = x.name + ': ' + (x.st === 'list' ? n + ' sitios en la lista oficial' : x.st === 'platform' ? x.label + ', ' + x.e.platforms.map(q => q.name).join(', ') : x.label);
+      return '<button type="button" data-j="' + t.id + '" style="grid-area:' + t.area + '"' + (cls ? ' class="' + cls + '"' : '') + ' aria-pressed="' + (t.id === def) + '" aria-label="' + h.esc(label) + '">' + t.code + '</button>';
     }).join('');
     const opts = TILES.map(t => [t.id, h.rg.prov(t.id).name]).sort((a, b) => a[1].localeCompare(b[1], 'es'))
       .map(([id, n]) => '<option value="' + id + '"' + (id === def ? ' selected' : '') + '>' + h.esc(n) + '</option>').join('');
@@ -34,11 +36,11 @@ export const home = {
       '<div class="rl-acts"><a class="rl-b1" href="' + h.href(h.built('/verificador') ? '/verificador' : '/licencias') + '">' + (h.built('/verificador') ? 'Verificar una dirección' : 'Ver las licencias') + '</a><a class="rl-b2" href="' + h.href('/metodologia') + '">Cómo lo verificamos</a></div>' +
       '</div><div class="rl-mapw" data-nosnippet><div class="rl-map" data-rl-map role="group" aria-label="Mapa de las jurisdicciones: la altura de cada ficha muestra cuántos sitios tiene su lista oficial">' + tiles + '</div>' +
       '<aside class="rl-panel" data-rl-panel aria-live="polite"><h2>' + h.esc(dj.name) + '</h2>' +
-      '<div class="rl-num">' + dreg.licensees.length + '<small>sitios en la lista oficial</small></div>' +
+      '<div class="rl-num" data-s="list">' + dreg.licensees.length + '<small>sitios en la lista oficial</small></div>' +
       '<p class="rl-meta" data-rl-meta>' + h.esc(dreg.regulator.short) + ' · revisado ' + h.fmtDate(dreg.checked) + '</p>' +
       '<p class="rl-line" data-rl-help>Ayuda: <a href="tel:' + h.esc(dj.line.phoneTel) + '">' + h.esc(dj.line.phone) + '</a></p>' +
       '<a class="rl-go" data-rl-go href="' + h.href('/provincia/' + def) + '">Ver ' + h.esc(dj.name) + '</a>' +
-      '<div class="rl-leg"><span><i style="--c:var(--t1)"></i>lista oficial verificada</span><span><i style="--c:var(--t0)"></i>sin lista verificada todavía</span></div>' +
+      '<div class="rl-leg"><span><i class="rl-s-list"></i>lista oficial verificada</span><span><i class="rl-s-platform"></i>plataforma provincial</span><span><i class="rl-s-none"></i>sin dato verificado</span><span><i class="rl-s-blocked"></i>no consultable</span></div>' +
       '</aside></div></section>';
 
     const regs = h.regs;
@@ -50,7 +52,7 @@ export const home = {
     }).join('') + '</tr>').join('');
     const table = '<section class="rl-sec">' + sectionHead(h, 'Licencias por provincia', h.t('{{brand_total}} marcas en {{reg_total}} listas oficiales · fuente y fecha abajo')) +
       '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-tbl">' + head + '<tbody>' + rows + '</tbody></table></div>' +
-      '<p class="rl-cap">Verde: figura en la lista oficial de esa jurisdicción. Gris: no figura en esa lista (no quiere decir que sea ilegal en otra provincia). Las demás provincias todavía no tienen una lista verificada acá.</p>' +
+      '<p class="rl-cap">Verde: figura en la lista oficial de esa jurisdicción. Gris: no figura en esa lista (no quiere decir que sea ilegal en otra provincia). Las demás jurisdicciones no tienen una lista verificada acá' + (h.built('/provincias') ? ': su estado está en <a href="' + h.href('/provincias') + '">provincias</a>' : '') + '.</p>' +
       regs.map(r => src(h, r.list.doc, h.rg.prov(r.id).name)).join('') + '</div></section>';
 
     const multi = splitAddress(matrix);
@@ -71,9 +73,13 @@ export const home = {
       ['/verificador', 'Verificá una dirección contra las listas'],
       ['/operadores', 'Fichas de operadores, con capturas propias'],
       ['/licencias', 'Registro de licencias, sitio por sitio'],
+      ['/provincias', 'Las 24 jurisdicciones, una por una'],
+      ['/guia/como-verificar', 'Cómo verificar un sitio paso a paso'],
       ['/provincia/buenos-aires', 'Provincia de Buenos Aires'],
       ['/provincia/caba', 'Ciudad de Buenos Aires'],
       ['/provincia/cordoba', 'Córdoba'],
+      ['/guia/menores', 'Menores y apuestas: la regla de los 18'],
+      ['/calculadora/margen', 'Calculadora de margen de cuotas'],
       ['/guia/bet-ar', 'Qué garantiza el dominio .bet.ar'],
       ['/guia/sitios-ilegales', 'Sitios sin licencia: riesgos y denuncias'],
       ['/juego-responsable', 'Ayuda y autoexclusión en tu provincia'],

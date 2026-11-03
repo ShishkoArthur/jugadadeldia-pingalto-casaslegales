@@ -2,12 +2,13 @@
 // Nothing is typed by hand: counts come from the registries, the tile map and the help package (tools/render.mjs fails on an
 // unknown token).
 import { TILES } from './map.mjs';
+import { provDocRows } from './provdata.mjs';
 import { total, countBy, brands, brandMatrix, multiJurisdiction, splitAddress } from '../../../engine/registry.mjs';
 import { fmtDate, fmtInt, addDays } from '../../../engine/format.mjs';
 
 export function facts(h) {
   const regs = h.regs, by = countBy(regs);
-  const docs = h.docs();
+  const docs = [...h.docs(), ...provDocRows(h)];
   const oldest = docs.map(d => d.fetched).sort()[0];
   const maxAge = Math.min(...regs.map(r => r.maxAgeDays), h.rg.pack.maxAgeDays);
   const f = {
@@ -20,6 +21,9 @@ export function facts(h) {
     pba_n: by['buenos-aires'],
     caba_n: by.caba,
     cba_n: by.cordoba,
+    lri_n: by['la-rioja'],
+    neu_n: by.neuquen,
+    rne_n: by['rio-negro'],
     doc_total: docs.length,
     quote_total: docs.reduce((n, d) => n + d.quotes, 0),
     rg_lines: Object.values(h.rg.disp.provinces).filter(x => x.line).length,

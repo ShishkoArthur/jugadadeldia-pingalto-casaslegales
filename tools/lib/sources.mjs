@@ -71,9 +71,17 @@ export function checkRegistry(r, { today, raw, names = brandNames(), fresh = tru
     if (l.ref && !list.text.includes(normalize(l.ref))) bad(at + ': act reference is not visible text');
     if (seen.has(l.host)) bad(at + ': duplicate host'); seen.add(l.host);
   }
-  // the list is complete: the pattern finds exactly these hosts in the document (nothing added, nothing missed)
+  // the list is complete: the pattern finds exactly these hosts in the document (nothing added, nothing missed);
+  // list.more: further pages of the same regulator that complete the list (each with its own pattern)
   try {
     const found = new Set([...list.clean.matchAll(new RegExp(r.list.pattern, 'g'))].map(m => hostKey(m.groups.host)));
+    for (const x of r.list.more || []) {
+      const d = docs[x.doc] && doc(x.doc);
+      if (!d) { bad('list.more: unknown document ' + x.doc); continue; }
+      const extra = [...d.clean.matchAll(new RegExp(x.pattern, 'g'))].map(m => hostKey(m.groups.host));
+      if (!extra.length) bad('list.more ' + x.doc + ': the pattern finds nothing');
+      extra.forEach(e => found.add(e));
+    }
     for (const h of found) if (!seen.has(h)) bad('the official list has ' + h + ' but the registry file does not');
     for (const h of seen) if (!found.has(h)) bad(h + ' is in the registry file but not in the official list');
   } catch (err) { bad('list pattern: ' + err.message); }

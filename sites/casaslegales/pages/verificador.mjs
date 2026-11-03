@@ -13,7 +13,7 @@ export const verificador = {
   id: 'verificador',
   kind: 'tool',
   title: '¿Es legal este sitio de apuestas? Verificador .bet.ar',
-  description: 'Pegá la dirección de un sitio de apuestas y fijate si figura en una lista oficial de PBA, CABA o Córdoba, de qué provincia es y la fecha de la lista.',
+  description: 'Pegá la dirección de un sitio de apuestas y fijate si figura en una de las {{reg_total}} listas oficiales que guardamos, de qué provincia es y su fecha.',
   h1: 'Verificador: pegá la dirección y mirá si figura en un registro oficial',
   ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ['/verificador', 'Verificador']])],
   render(h) {

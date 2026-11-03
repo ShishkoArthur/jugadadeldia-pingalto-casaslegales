@@ -13,6 +13,8 @@ import { execFileSync } from 'node:child_process';
 import { ROOT } from './env.mjs';
 import { loadRegistries, verifyRegistries, checkRegistry, brandNames } from './lib/sources.mjs';
 import { verifyLottery } from './lib/lottery-sources.mjs';
+import { checkProvinces } from './lib/provsources.mjs';
+import { loadRg } from './lib/sources.mjs';
 
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 casaslegales-check/1.0';
 const args = process.argv.slice(2);
@@ -55,6 +57,9 @@ if (args.includes('--recheck')) {
   process.exit(problems ? 1 : 0);
 }
 const logq = m => { if (!quiet || !m.startsWith('  ok')) console.log(m); };
-const n = verifyRegistries({ today, log: logq }) + verifyLottery({ today, log: logq });
+const provErrs = checkProvinces({ today, registryIds: loadRegistries().map(r => r.id), jurisdictions: loadRg().provinces.map(p => p.id) });
+provErrs.forEach(e => console.log('  BAD ' + e));
+if (!provErrs.length) logq('  ok provinces: every jurisdiction has one status');
+const n = verifyRegistries({ today, log: logq }) + verifyLottery({ today, log: logq }) + provErrs.length;
 console.log('verify-sources: ' + (n ? 'CHECKS FAILED: ' + n : 'all registry and lottery-rule checks passed'));
 process.exit(n ? 1 : 0);
