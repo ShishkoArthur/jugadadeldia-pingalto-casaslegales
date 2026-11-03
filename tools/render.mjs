@@ -91,6 +91,7 @@ async function build(id) {
     return (assets[name] = '/' + SITE.assetDir + '/' + file);
   };
   for (const f of SITE.fonts) emitAsset(f, readFileSync(join(dir, 'static/fonts', f)));
+  for (const f of SITE.images || []) emitAsset(f, readFileSync(join(dir, 'static', f)));
   const minCss = t => t.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '').replace(/\s{2,}/g, ' ').replace(/\s*([{};,>])\s*/g, '$1').replace(/;}/g, '}')
     .replace(/url\(fonts\/([\w.-]+\.woff2)\)/g, (m, f) => { if (!assets[f]) throw new Error('CSS: font not in config.fonts ' + f); return 'url(' + assets[f] + ')'; });
   for (const f of readdirSync(join(dir, 'css')).filter(f => f.endsWith('.css')).sort()) emitAsset(f, minCss(readFileSync(join(dir, 'css', f), 'utf8')));

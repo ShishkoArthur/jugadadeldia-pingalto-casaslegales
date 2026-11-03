@@ -31,7 +31,7 @@ export const home = {
       '<h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Qué casas de apuestas figuran en la lista oficial de cada provincia, con la cita del regulador y la fecha en que la copiamos. Sin enlaces a operadores, sin bonos. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p>' +
       '<div class="rl-pick"><label for="rl-pick">Elegí tu provincia</label><select id="rl-pick" data-rl-pick>' + opts + '</select></div>' +
-      '<div class="rl-acts"><a class="rl-b1" href="' + h.href('/licencias') + '">Ver las licencias</a><a class="rl-b2" href="' + h.href('/metodologia') + '">Cómo lo verificamos</a></div>' +
+      '<div class="rl-acts"><a class="rl-b1" href="' + h.href(h.built('/verificador') ? '/verificador' : '/licencias') + '">' + (h.built('/verificador') ? 'Verificar una dirección' : 'Ver las licencias') + '</a><a class="rl-b2" href="' + h.href('/metodologia') + '">Cómo lo verificamos</a></div>' +
       '</div><div class="rl-mapw" data-nosnippet><div class="rl-map" data-rl-map role="group" aria-label="Mapa de las jurisdicciones: la altura de cada ficha muestra cuántos sitios tiene su lista oficial">' + tiles + '</div>' +
       '<aside class="rl-panel" data-rl-panel aria-live="polite"><h2>' + h.esc(dj.name) + '</h2>' +
       '<div class="rl-num">' + dreg.licensees.length + '<small>sitios en la lista oficial</small></div>' +
@@ -68,10 +68,14 @@ export const home = {
       '</div></section>';
 
     const guides = [
+      ['/verificador', 'Verificá una dirección contra las listas'],
+      ['/operadores', 'Fichas de operadores, con capturas propias'],
       ['/licencias', 'Registro de licencias, sitio por sitio'],
       ['/provincia/buenos-aires', 'Provincia de Buenos Aires'],
       ['/provincia/caba', 'Ciudad de Buenos Aires'],
       ['/provincia/cordoba', 'Córdoba'],
+      ['/guia/bet-ar', 'Qué garantiza el dominio .bet.ar'],
+      ['/guia/sitios-ilegales', 'Sitios sin licencia: riesgos y denuncias'],
       ['/juego-responsable', 'Ayuda y autoexclusión en tu provincia'],
       ['/metodologia', 'Cómo verificamos cada dato'],
       ['/registro-de-fuentes', 'Todas las fuentes, con fecha'],

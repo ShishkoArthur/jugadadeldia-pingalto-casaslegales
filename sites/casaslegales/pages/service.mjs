@@ -1,5 +1,6 @@
 import { TILES } from '../content/map.mjs';
 import { rgQuote, sectionHead } from './parts.mjs';
+import { opData } from '../content/opdata.mjs';
 
 export const ayuda = {
   path: '/juego-responsable',
@@ -69,7 +70,7 @@ export const metodologia = {
       '<section class="rl-sec">' + sectionHead(h, 'Los cinco pasos de cada dato') + '<ol class="rl-steps">' + steps.map(([a, b]) => '<li><b>' + h.esc(a) + '</b><p>' + h.esc(b) + '</p></li>').join('') + '</ol></section>' +
       '<section class="rl-sec">' + sectionHead(h, 'Qué significa cada marca') + '<div class="rl-card">' + states + '</div></section>' +
       '<section class="rl-sec">' + sectionHead(h, 'Capturas y operadores') + '<div class="rl-two">' +
-      '<div class="rl-box"><h3>Solo páginas públicas</h3><p>Si mostramos una captura de un sitio de apuestas, es nuestra y de una página que cualquiera ve sin registrarse. No abrimos cuentas, no depositamos y no usamos capturas ajenas. Hoy el sitio no publica capturas.</p></div>' +
+      '<div class="rl-box"><h3>Solo páginas públicas</h3><p>Las capturas de sitios de apuestas son nuestras, de páginas que cualquiera ve sin registrarse, tomadas con un navegador automático desde fuera de Argentina. No abrimos cuentas, no depositamos y no usamos capturas ajenas. Rechazamos las cookies cuando el aviso lo permite y cerramos las ventanas emergentes antes de capturar. Si un sitio no se muestra desde nuestra ubicación, lo decimos y no publicamos imagen.</p><p>Lo que contamos de un operador (límites, medios de pago, textos de su pie de página) sale de una copia de su página pública guardada con fecha, y va como cita textual.</p></div>' +
       '<div class="rl-box"><h3>Sin enlaces ni acuerdos</h3><p>No enlazamos a ningún operador y no cobramos por aparecer. Las direcciones van como texto para que puedas compararlas con la barra de tu navegador.</p></div>' +
       '</div>' + (h.built('/registro-de-fuentes') ? '<p class="rl-note"><a href="' + h.href('/registro-de-fuentes') + '">Ver todas las fuentes con su fecha y su huella</a></p>' : '') + '</section>';
   },
@@ -113,9 +114,18 @@ export const fuentes = {
     return '<section class="rl-hero"><div><p class="rl-kick">' + h.t('{{doc_total}} documentos · {{quote_total}} citas') + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Cada documento oficial que usamos, con la fecha de nuestra copia y su huella digital (los primeros caracteres del SHA-256). Si una página oficial cambia, la huella cambia y lo revisamos.</p></div></section>' +
       '<section class="rl-sec"><div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Jurisdicción</th><th scope="col">Documento</th><th scope="col">Para qué</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
-      '<p class="rl-cap">' + h.t('Ningún documento tiene más de {{max_age}} días: la próxima revisión completa es antes del {{next_check}}.') + '</p></section>';
+      '<p class="rl-cap">' + h.t('Ningún documento tiene más de {{max_age}} días: la próxima revisión completa es antes del {{next_check}}.') + '</p></section>' + opDocs(h);
   },
 };
+
+function opDocs(h) {
+  const D = opData(h.today);
+  const cnt = slug => Object.values(D.data.quotes).filter(q => q.doc === slug).length;
+  const docs = Object.entries(D.data.docs).filter(([, d]) => !d.official).sort((a, b) => a[0].localeCompare(b[0]));
+  const rows = docs.map(([slug, d]) => { const u = new URL(d.url); return '<tr><th scope="row">' + h.esc(d.title || slug) + '</th><td class="rl-host">' + h.esc(u.hostname + (u.pathname === '/' ? '' : u.pathname)) + '</td><td>' + (d.kind === 'block' ? 'mensaje de bloqueo' : 'página pública') + '</td><td>' + h.fmtDate(d.fetched) + '</td><td class="rl-host">' + h.esc(d.sha256.slice(0, 12)) + '</td><td>' + cnt(slug) + '</td></tr>'; }).join('');
+  return '<section class="rl-sec">' + sectionHead(h, 'Páginas públicas de operadores', docs.length + ' copias · sin enlaces') + '<p class="rl-note">Copias de páginas que cualquiera ve sin registrarse, guardadas con fecha. La dirección va como texto: no enlazamos a operadores.</p>' +
+    '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Página</th><th scope="col">Dirección</th><th scope="col">Tipo</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></section>';
+}
 
 export const notFound = {
   path: '/404',

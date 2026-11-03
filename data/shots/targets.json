@@ -1,0 +1,163 @@
+{
+ "about": "Public pages of licensed operators captured for casaslegales.com by tools/capture-shots.mjs: no login, no registration, no deposit, cookies declined when the banner offers it. kind: home | footer | rg | tc | pay | block. save: keep the rendered DOM as a quotable document (data/sources/operators/_docs/<id>.html).",
+ "targets": [
+  {
+   "id": "betsson-entrada",
+   "brand": "betsson",
+   "url": "https://www.betsson.com.ar/",
+   "kind": "home",
+   "save": true
+  },
+  {
+   "id": "betsson-pba",
+   "brand": "betsson",
+   "url": "https://pba.betsson.bet.ar/",
+   "kind": "block",
+   "save": true
+  },
+  {
+   "id": "betsson-cba",
+   "brand": "betsson",
+   "url": "https://cba.betsson.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "betano-pba",
+   "brand": "betano",
+   "url": "https://www.betano.bet.ar/",
+   "kind": "block",
+   "save": true
+  },
+  {
+   "id": "bet365-ar",
+   "brand": "bet365",
+   "url": "https://www.bet365.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "betwarrior-pba",
+   "brand": "betwarrior",
+   "url": "https://betwarrior.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "betwarrior-caba",
+   "brand": "betwarrior",
+   "url": "https://caba.betwarrior.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "bplay-pba",
+   "brand": "bplay",
+   "url": "https://pba.bplay.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "bplay-caba",
+   "brand": "bplay",
+   "url": "https://caba.bplay.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "bplay-cba",
+   "brand": "bplay",
+   "url": "https://cordoba.bplay.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "sportsbet-pba",
+   "brand": "sportsbet",
+   "url": "https://pba.sports.bet.ar/",
+   "kind": "block",
+   "save": true
+  },
+  {
+   "id": "codere-caba",
+   "brand": "codere",
+   "url": "https://www.codere.bet.ar/",
+   "kind": "block"
+  },
+  {
+   "id": "jugadon-caba-pie",
+   "brand": "jugadon",
+   "url": "https://caba.jugadon.bet.ar/",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "jugadon-caba-jr",
+   "brand": "jugadon",
+   "url": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "kind": "rg",
+   "save": true
+  },
+  {
+   "id": "jugadon-caba-pagos",
+   "brand": "jugadon",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "kind": "pay",
+   "save": true
+  },
+  {
+   "id": "jugadon-cba-pie",
+   "brand": "jugadon",
+   "url": "https://cordoba.jugadon.bet.ar/",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "jugadon-cba-jr",
+   "brand": "jugadon",
+   "url": "https://cordoba.jugadon.bet.ar/reglamento/responsible-gaming/",
+   "kind": "rg",
+   "save": true
+  },
+  {
+   "id": "playcet-pie",
+   "brand": "playcet",
+   "url": "https://playcet.bet.ar/es",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "playcet-jr",
+   "brand": "playcet",
+   "url": "https://playcet.bet.ar/es/juego-responsable",
+   "kind": "rg",
+   "save": true
+  },
+  {
+   "id": "playcet-deposito",
+   "brand": "playcet",
+   "url": "https://playcet.bet.ar/es/metodos-de-deposito",
+   "kind": "pay",
+   "save": true
+  },
+  {
+   "id": "playcet-retiro",
+   "brand": "playcet",
+   "url": "https://playcet.bet.ar/es/metodos-de-retiro",
+   "kind": "pay",
+   "save": true
+  },
+  {
+   "id": "cbao-pie",
+   "brand": "casino-ba-online",
+   "url": "https://casinobuenosairesonline.bet.ar/",
+   "kind": "footer",
+   "save": true
+  },
+  {
+   "id": "cbao-jr",
+   "brand": "casino-ba-online",
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/juegoresponsable",
+   "kind": "rg"
+  },
+  {
+   "id": "cbao-tyc",
+   "brand": "casino-ba-online",
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/terminosycondiciones",
+   "kind": "tc"
+  }
+ ]
+}

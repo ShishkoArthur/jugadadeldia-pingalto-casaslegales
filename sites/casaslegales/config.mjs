@@ -2,6 +2,7 @@
 // Own URL scheme: no trailing slash, at most two levels (/provincia/cordoba -> file provincia/cordoba.html; Caddy tries
 // {path}.html). Own asset folder /_r/ with content-hash names only. Everything visible lives in this folder.
 import { extname } from 'node:path';
+import { SHOT_FILES } from './content/opdata.mjs';
 
 export const SITE = {
   id: 'casaslegales',
@@ -16,6 +17,7 @@ export const SITE = {
   notFoundFile: '404.html',
   fonts: ['gabarito-var-latin.woff2', 'ubuntu-sans-mono-var-latin.woff2'],
   preload: ['gabarito-var-latin.woff2'],
+  images: SHOT_FILES(),
   registries: ['buenos-aires', 'caba', 'cordoba'],
   defaultJurisdiction: 'buenos-aires',
   gate: {
@@ -24,5 +26,5 @@ export const SITE = {
     age: /class="rl-18"[^>]*>18\+</,
     siteMenu: /<nav class="rl-nav"/,
   },
-  deployCheck: ['/', '/licencias', '/provincia/buenos-aires', '/provincia/caba', '/provincia/cordoba', '/juego-responsable', '/redaccion', '/no-existe'],
+  deployCheck: ['/', '/licencias', '/verificador', '/operadores', '/operador/betsson', '/operador/jugadon', '/verificar/zeus', '/guia/bet-ar', '/juego-responsable/autoexclusion', '/provincia/cordoba', '/juego-responsable', '/no-existe'],
 };

@@ -1,0 +1,637 @@
+{
+ "about": "Facts of operator pages on casaslegales.com: verbatim quotes of saved copies of public pages (operators: rendered DOM without scripts, made by tools/capture-shots.mjs; official pages: copies shared with the registries and the help package). Checked by tools/verify-operators.mjs. Operator documents are cited as text, never linked.",
+ "checked": "2026-11-03",
+ "maxAgeDays": 100,
+ "docs": {
+  "betsson-entrada": {
+   "url": "https://www.betsson.com.ar/",
+   "finalUrl": "https://www.betsson.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 202,
+   "kind": "page",
+   "brand": "betsson",
+   "title": "Página de entrada de Betsson",
+   "file": "data/sources/operators/_docs/betsson-entrada.html",
+   "sha256": "697be9e341427467feb405869548ca3da193317f253a8397e1727d176e6dad66"
+  },
+  "betsson-pba": {
+   "url": "https://pba.betsson.bet.ar/",
+   "finalUrl": "https://pba.betsson.bet.ar/maintenance-pages/betsson.bet.ar/country-blocked.html",
+   "fetched": "2026-11-03",
+   "status": 202,
+   "kind": "block",
+   "brand": "betsson",
+   "title": "Betsson, subdominio bonaerense",
+   "file": "data/sources/operators/_docs/betsson-pba.html",
+   "sha256": "b99dda44e7b356d3a840c37e97c1a128d50fe6a0ec0469652968e80c1ffe7ee9"
+  },
+  "betano-pba": {
+   "url": "https://www.betano.bet.ar/",
+   "finalUrl": "https://www.betano.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 403,
+   "kind": "block",
+   "brand": "betano",
+   "title": "Betano",
+   "file": "data/sources/operators/_docs/betano-pba.html",
+   "sha256": "e164a3fc7480b52f49c8922d742e4b99bffe7c7691c6431dedca28917633a68a"
+  },
+  "sportsbet-pba": {
+   "url": "https://pba.sports.bet.ar/",
+   "finalUrl": "https://pba.sports.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 403,
+   "kind": "block",
+   "brand": "sportsbet",
+   "title": "Sportsbet, sitio bonaerense",
+   "file": "data/sources/operators/_docs/sportsbet-pba.html",
+   "sha256": "08abad2844e17a74435a285d7f6568ee1aafb9c1c586842bc0bf6b3722424d6d"
+  },
+  "jugadon-caba-pie": {
+   "url": "https://caba.jugadon.bet.ar/",
+   "finalUrl": "https://caba.jugadon.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "jugadon",
+   "title": "Jugadón CABA, pie de página",
+   "file": "data/sources/operators/_docs/jugadon-caba-pie.html",
+   "sha256": "26558e71f325aa3490e8fa5f21694d8d3311f0e81812cda4a3d29b84e03716e9"
+  },
+  "jugadon-caba-jr": {
+   "url": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "finalUrl": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "jugadon",
+   "title": "Jugadón CABA, juego responsable",
+   "file": "data/sources/operators/_docs/jugadon-caba-jr.html",
+   "sha256": "132a9cc02aef21f9dd13c46fc0b45e580c123a900643c15bcc461bf1828e83a9"
+  },
+  "jugadon-caba-pagos": {
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "finalUrl": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "jugadon",
+   "title": "Jugadón CABA, medios de pago",
+   "file": "data/sources/operators/_docs/jugadon-caba-pagos.html",
+   "sha256": "ca8da2f0625b894f8121c1415601794fef90bc53b06f4316dc8d7ea4d0d52254"
+  },
+  "jugadon-cba-pie": {
+   "url": "https://cordoba.jugadon.bet.ar/",
+   "finalUrl": "https://cordoba.jugadon.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "jugadon",
+   "title": "Jugadón Córdoba, pie de página",
+   "file": "data/sources/operators/_docs/jugadon-cba-pie.html",
+   "sha256": "6ff551620bb1ee446e08cfa9399612e83f7c7789becc830c2b6e3473c2745b89"
+  },
+  "jugadon-cba-jr": {
+   "url": "https://cordoba.jugadon.bet.ar/reglamento/responsible-gaming/",
+   "finalUrl": "https://cordoba.jugadon.bet.ar/reglamento/responsible-gaming/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "jugadon",
+   "title": "Jugadón Córdoba, juego responsable",
+   "file": "data/sources/operators/_docs/jugadon-cba-jr.html",
+   "sha256": "d6649d6cc2c30b7d8eeab42afadc2db02e78abf1ddbdcfa586c0e08eeb0367ee"
+  },
+  "playcet-pie": {
+   "url": "https://playcet.bet.ar/es",
+   "finalUrl": "https://playcet.bet.ar/es",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "playcet",
+   "title": "Playcet, pie de página",
+   "file": "data/sources/operators/_docs/playcet-pie.html",
+   "sha256": "75bc3abf1d5ec10459b0530478e757518b33c88089f7b5a84b332756814611f2"
+  },
+  "playcet-jr": {
+   "url": "https://playcet.bet.ar/es/juego-responsable",
+   "finalUrl": "https://playcet.bet.ar/es/juego-responsable",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "playcet",
+   "title": "Playcet, juego responsable",
+   "file": "data/sources/operators/_docs/playcet-jr.html",
+   "sha256": "5a0242126bb0280bfbd143048e30803bd22dd57c88f37b9bb2a1c5b14d7bf64b"
+  },
+  "playcet-deposito": {
+   "url": "https://playcet.bet.ar/es/metodos-de-deposito",
+   "finalUrl": "https://playcet.bet.ar/es/metodos-de-deposito",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "playcet",
+   "title": "Playcet, métodos de depósito",
+   "file": "data/sources/operators/_docs/playcet-deposito.html",
+   "sha256": "4f44832fce14c0a4dd87f156e1125066aa87dd940eb69476418fe2224bc0dbba"
+  },
+  "playcet-retiro": {
+   "url": "https://playcet.bet.ar/es/metodos-de-retiro",
+   "finalUrl": "https://playcet.bet.ar/es/metodos-de-retiro",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "playcet",
+   "title": "Playcet, métodos de retiro",
+   "file": "data/sources/operators/_docs/playcet-retiro.html",
+   "sha256": "846b04fc2eba805ef6e2a43fbb525ac3145afa368118dabdfa85c4cf74464b1b"
+  },
+  "cbao-pie": {
+   "url": "https://casinobuenosairesonline.bet.ar/",
+   "finalUrl": "https://casinobuenosairesonline.bet.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "kind": "page",
+   "brand": "casino-ba-online",
+   "title": "Casino Buenos Aires Online, pie de página",
+   "file": "data/sources/operators/_docs/cbao-pie.html",
+   "sha256": "8484ab2daf609ebb1bdd4776f81db32b2e2dd590c0d7f05500d4328357a7061f"
+  },
+  "ar-c-juegosegurolegal": {
+   "url": "https://juegosegurolegal.gob.ar/",
+   "fetched": "2026-11-01",
+   "status": 200,
+   "sha256": "782d662a7b0a4be70b0f42415eb7e3014621bd01498022be82c8136ab614b6a2",
+   "file": "data/sources/rg/_docs/ar-c-juegosegurolegal.html",
+   "kind": "official",
+   "official": true,
+   "title": "Juego Seguro y Legal (LOTBA)"
+  },
+  "ar-gob-proyecto-pe-2026-05-26": {
+   "url": "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-presento-un-proyecto-para-prevenir-la-ludopatia",
+   "fetched": "2026-11-01",
+   "status": 200,
+   "sha256": "d6931819062ee6caaae61f9ffa8cb082624662ce92fb04a203cc984e6d724b9e",
+   "file": "data/sources/rg/_docs/ar-gob-proyecto-pe-2026-05-26.html",
+   "kind": "official",
+   "official": true,
+   "title": "Gobierno nacional, proyecto de ley"
+  },
+  "cba-juegos-online": {
+   "url": "https://loteriadecordoba.com.ar/juegos/online",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "87e2d04637f9d7f8e4723884adbf36904a65f6243ed73686d2f4b254eebf8fe6",
+   "file": "data/sources/registries/_docs/cba-juegos-online.html",
+   "kind": "official",
+   "official": true,
+   "title": "Lotería de Córdoba, juego online"
+  }
+ },
+ "quotes": {
+  "betsson-entrada-elegi": {
+   "doc": "betsson-entrada",
+   "text": "Elegí desde dónde querés jugar:",
+   "brand": "betsson",
+   "topic": "block-chooser",
+   "label": "Página de entrada de betsson.com.ar"
+  },
+  "betsson-pba-bloqueo": {
+   "doc": "betsson-pba",
+   "text": "Debido a las leyes gobernantes que regulan los juegos en línea, esta página web no está disponible en esta jurisdicción.",
+   "brand": "betsson",
+   "topic": "block",
+   "label": "pba.betsson.bet.ar fuera de la provincia"
+  },
+  "sportsbet-bloqueo": {
+   "doc": "sportsbet-pba",
+   "text": "Solamente se aceptan jugadores de la provincia de Buenos Aires.",
+   "brand": "sportsbet",
+   "topic": "block",
+   "label": "pba.sports.bet.ar fuera de la provincia"
+  },
+  "jugadon-caba-licencia": {
+   "doc": "jugadon-caba-pie",
+   "text": "avalado por Lotería de la Ciudad de Buenos Aires, S.E. mediante Disposición N° DI-2021-468-GCABA-LOTBA, cuyo ámbito de aplicación se circunscribe a la Ciudad Autónoma de Buenos Aires.",
+   "brand": "jugadon",
+   "topic": "licence",
+   "label": "Pie de caba.jugadon.bet.ar"
+  },
+  "jugadon-caba-linea": {
+   "doc": "jugadon-caba-pie",
+   "text": "0800-666-6006 Línea de orientación por juego problemático.",
+   "brand": "jugadon",
+   "topic": "rg-help",
+   "label": "Pie de caba.jugadon.bet.ar"
+  },
+  "jugadon-caba-autoex": {
+   "doc": "jugadon-caba-jr",
+   "text": "Esta tiene una vigencia de hasta dos años y puede ser cancelada al año, presentando un certificado médico emitido por un psicólogo o médico psiquiatra, con fundamentación de su decisión.",
+   "brand": "jugadon",
+   "topic": "rg-selfex",
+   "label": "Autoexclusión (Ciudad)"
+  },
+  "jugadon-caba-tiempo": {
+   "doc": "jugadon-caba-jr",
+   "text": "Tiempo máximo de sesión o Tiempo máximo de juego: permite establecer límites diarios, semanales o mensuales.",
+   "brand": "jugadon",
+   "topic": "rg-time",
+   "label": "Límite de tiempo (Ciudad)"
+  },
+  "jugadon-caba-perdida": {
+   "doc": "jugadon-caba-jr",
+   "text": "Monto máximo perdido: permite establecer límites diarios, semanales o mensuales.",
+   "brand": "jugadon",
+   "topic": "rg-loss",
+   "label": "Límite de pérdida (Ciudad)"
+  },
+  "jugadon-caba-acreditado": {
+   "doc": "jugadon-caba-jr",
+   "text": "Monto máximo acreditado: permite establecer límites diarios, semanales o mensuales.",
+   "brand": "jugadon",
+   "topic": "rg-deposit",
+   "label": "Límite de depósito (Ciudad)"
+  },
+  "jugadon-caba-pausa": {
+   "doc": "jugadon-caba-jr",
+   "text": "Pausas: Permite determinar tiempo de pausa o descanso.",
+   "brand": "jugadon",
+   "topic": "rg-pause",
+   "label": "Pausa (Ciudad)"
+  },
+  "jugadon-caba-monitor": {
+   "doc": "jugadon-caba-jr",
+   "text": "Monitor de Actividad: presenta información detallada para que el usuario sea consciente y comprenda su comportamiento respecto al juego y su evolución.",
+   "brand": "jugadon",
+   "topic": "rg-check",
+   "label": "Monitor de actividad (Ciudad)"
+  },
+  "jugadon-caba-transfer": {
+   "doc": "jugadon-caba-pagos",
+   "text": "Disponemos de los siguientes medios de acreditación: TRANSFERENCIA BANCARIA",
+   "brand": "jugadon",
+   "topic": "pay",
+   "item": "Depósito: transferencia bancaria (Ciudad)",
+   "label": "Medios de pago de caba.jugadon.bet.ar"
+  },
+  "jugadon-caba-minmax": {
+   "doc": "jugadon-caba-pagos",
+   "text": "Importe máximo por transacción: $500.000 Depósito mínimo: $1.000",
+   "brand": "jugadon",
+   "topic": "pay",
+   "item": "Depósito: transferencia bancaria (Ciudad)",
+   "label": "Montos"
+  },
+  "jugadon-caba-titular": {
+   "doc": "jugadon-caba-pagos",
+   "text": "RECORDÁ que los pagos deben realizarse UNICAMENTE desde UNA CUENTA DE TU TITULARIDAD.",
+   "brand": "jugadon",
+   "topic": "pay",
+   "item": "Depósito: transferencia bancaria (Ciudad)",
+   "label": "Cuenta a tu nombre"
+  },
+  "jugadon-caba-retiro": {
+   "doc": "jugadon-caba-pagos",
+   "text": "los retiros se procesarán en un plazo máximo de setenta y dos (72) horas hábiles a partir de la solicitud.",
+   "brand": "jugadon",
+   "topic": "pay",
+   "item": "Retiro (Ciudad)",
+   "label": "Plazo"
+  },
+  "jugadon-caba-retiros-dia": {
+   "doc": "jugadon-caba-pagos",
+   "text": "Los Usuarios solo podrán realizar un máximo de TRES (3) retiros por día",
+   "brand": "jugadon",
+   "topic": "pay",
+   "item": "Retiro (Ciudad)",
+   "label": "Cantidad por día"
+  },
+  "jugadon-cba-licencia": {
+   "doc": "jugadon-cba-pie",
+   "text": "es un sitio operado por Slots Machines S.A. bajo permiso otorgado por LPCSE en la Resolución Nº 1689/23",
+   "brand": "jugadon",
+   "topic": "licence",
+   "label": "Pie de cordoba.jugadon.bet.ar"
+  },
+  "jugadon-cba-ambito": {
+   "doc": "jugadon-cba-pie",
+   "text": "El ámbito de aplicación se circunscribe a la Provincia de Córdoba.",
+   "brand": "jugadon",
+   "topic": "licence",
+   "label": "Pie de cordoba.jugadon.bet.ar"
+  },
+  "jugadon-cba-edad": {
+   "doc": "jugadon-cba-pie",
+   "text": "PROHIBIDA LA VENTA A MENORES DE 18 AÑOS",
+   "brand": "jugadon",
+   "topic": "rg-age",
+   "label": "Pie de cordoba.jugadon.bet.ar"
+  },
+  "jugadon-cba-deposito": {
+   "doc": "jugadon-cba-jr",
+   "text": "Decidí la cantidad máxima de dinero que podés ingresar en tu cuenta por día, semana o mes estableciendo un límite de depósito.",
+   "brand": "jugadon",
+   "topic": "rg-deposit",
+   "label": "Límite de depósito (Córdoba)"
+  },
+  "jugadon-cba-perdida": {
+   "doc": "jugadon-cba-jr",
+   "text": "Un límite de pérdida te permite definir la cantidad que podés perder cada día, semana o mes.",
+   "brand": "jugadon",
+   "topic": "rg-loss",
+   "label": "Límite de pérdida (Córdoba)"
+  },
+  "jugadon-cba-autoex": {
+   "doc": "jugadon-cba-jr",
+   "text": "La autoexclusión es personal, voluntaria e irrevocable.",
+   "brand": "jugadon",
+   "topic": "rg-selfex",
+   "label": "Autoexclusión (Córdoba)"
+  },
+  "jugadon-cba-salas": {
+   "doc": "jugadon-cba-jr",
+   "text": "Esta herramienta está disponible exclusivamente para las plataformas de juego online, pero el alcance del período de exclusión elegido se aplica integralmente en las salas y casinos de nuestra provincia.",
+   "brand": "jugadon",
+   "topic": "rg-selfex",
+   "label": "Autoexclusión temporal (Córdoba)"
+  },
+  "playcet-licencia": {
+   "doc": "playcet-pie",
+   "text": "bajo la licencia para el desarrollo de la actividad de juego bajo la modalidad On line otorgada por la Lotería de la Provincia de Córdoba S.E., mediante Resolución Nº 1689/23 del 01 de febrero de 2023.",
+   "brand": "playcet",
+   "topic": "licence",
+   "label": "Pie de playcet.bet.ar"
+  },
+  "playcet-ambito": {
+   "doc": "playcet-pie",
+   "text": "La oferta de entretenimiento disponible en el sitio se circunscribe al ámbito geográfico de la Provincia de Córdoba.",
+   "brand": "playcet",
+   "topic": "licence",
+   "label": "Pie de playcet.bet.ar"
+  },
+  "playcet-edad": {
+   "doc": "playcet-pie",
+   "text": "El contenido de Playcet es para mayores de 18 años",
+   "brand": "playcet",
+   "topic": "rg-age",
+   "label": "Aviso al entrar a playcet.bet.ar"
+  },
+  "playcet-deposito": {
+   "doc": "playcet-jr",
+   "text": "decidí la cantidad máxima de dinero que podes ingresar en tu cuenta por día, semana o mes estableciendo un límite de depósito.",
+   "brand": "playcet",
+   "topic": "rg-deposit",
+   "label": "Límite de depósito"
+  },
+  "playcet-perdida": {
+   "doc": "playcet-jr",
+   "text": "un limite de pérdida te permite definir la cantidad que podes perder cada día, semana o mes.",
+   "brand": "playcet",
+   "topic": "rg-loss",
+   "label": "Límite de pérdida"
+  },
+  "playcet-tiempo": {
+   "doc": "playcet-jr",
+   "text": "Límite de Tiempo: podrás establecer un límite específico para tiempo de juego.",
+   "brand": "playcet",
+   "topic": "rg-time",
+   "label": "Límite de tiempo"
+  },
+  "playcet-apuestas": {
+   "doc": "playcet-jr",
+   "text": "Límite de Apuestas: al elegir un límite de apuestas, vos determinas la cantidad máxima que deseas apostar, tanto en caso de ganancias como de pérdidas.",
+   "brand": "playcet",
+   "topic": "rg-bet",
+   "label": "Límite de apuestas"
+  },
+  "playcet-pausa": {
+   "doc": "playcet-jr",
+   "text": "Para eso podés definir una pausa de 3 horas a 23:00hs, las veces que quieras, según tu necesidad.",
+   "brand": "playcet",
+   "topic": "rg-pause",
+   "label": "Pausa"
+  },
+  "playcet-autoex": {
+   "doc": "playcet-jr",
+   "text": "Cada Provincia tiene su normativa, en Córdoba la validez del trámite se extiende a toda la provincia, es decir es Provincial.",
+   "brand": "playcet",
+   "topic": "rg-selfex",
+   "label": "Autoexclusión"
+  },
+  "playcet-transfer": {
+   "doc": "playcet-deposito",
+   "text": "Para realizar una transferencia accede a tu homebanking o billetera virtual e ingresa el CVU o Alias de Playcet.",
+   "brand": "playcet",
+   "topic": "pay",
+   "item": "Depósito: transferencia bancaria",
+   "label": "Cómo"
+  },
+  "playcet-titular": {
+   "doc": "playcet-deposito",
+   "text": "Es requisito que la cuenta bancaria utilizada se encuentre a tu nombre.",
+   "brand": "playcet",
+   "topic": "pay",
+   "item": "Depósito: transferencia bancaria",
+   "label": "Cuenta a tu nombre"
+  },
+  "playcet-debito": {
+   "doc": "playcet-deposito",
+   "text": "En la solapa DEPÓSITO ingresa el importe que deseas depositar en tu cuenta (Mínimo $ 2.000,00)",
+   "brand": "playcet",
+   "topic": "pay",
+   "item": "Depósito: tarjeta de débito",
+   "label": "Mínimo"
+  },
+  "playcet-retiro-plazo": {
+   "doc": "playcet-retiro",
+   "text": "El proceso de comprobaciones internas, así como la transferencia podrá tener una demora de hasta 48hs hábiles",
+   "brand": "playcet",
+   "topic": "pay",
+   "item": "Retiro: transferencia bancaria",
+   "label": "Plazo"
+  },
+  "playcet-retiro-cbu": {
+   "doc": "playcet-retiro",
+   "text": "Completa tu CBU/CVU (debe pertenecer al titular de la cuenta de juego)",
+   "brand": "playcet",
+   "topic": "pay",
+   "item": "Retiro: transferencia bancaria",
+   "label": "Cuenta a tu nombre"
+  },
+  "playcet-retiro-efectivo": {
+   "doc": "playcet-retiro",
+   "text": "Si realizó cargas de créditos mediante dinero en efectivo, el retiro del saldo de su cuenta sólo se podrá efectuar en dinero en efectivo.",
+   "brand": "playcet",
+   "topic": "pay",
+   "item": "Retiro: efectivo en salas",
+   "label": "Cuándo"
+  },
+  "cbao-edad": {
+   "doc": "cbao-pie",
+   "text": "Exclusivo para mayores de 18 años.",
+   "brand": "casino-ba-online",
+   "topic": "rg-age",
+   "label": "Pie de casinobuenosairesonline.bet.ar"
+  },
+  "cbao-linea": {
+   "doc": "cbao-pie",
+   "text": "Línea de contacto gratuita y confidencial de orientación al jugador: al 0800-666-6006",
+   "brand": "casino-ba-online",
+   "topic": "rg-help",
+   "label": "Pie de casinobuenosairesonline.bet.ar"
+  },
+  "caba-ilegal": {
+   "doc": "ar-c-juegosegurolegal",
+   "text": "El juego ilegal pone en riesgo a las personas, afecta a la comunidad y evade los controles que garantizan seguridad, transparencia y juego responsable.",
+   "topic": "illegal",
+   "jur": "caba",
+   "label": "Lotería de la Ciudad (LOTBA)"
+  },
+  "caba-denuncia": {
+   "doc": "ar-c-juegosegurolegal",
+   "text": "Si tenés información o indicios sobre posibles actividades de juego clandestino -como personas físicas involucradas, puntos de venta no autorizados, páginas web, perfiles en redes sociales u otros canales- podés realizar una denuncia de manera segura, anónima y confidencial.",
+   "topic": "report",
+   "jur": "caba",
+   "label": "Lotería de la Ciudad (LOTBA)"
+  },
+  "cba-estafa": {
+   "doc": "cba-juegos-online",
+   "text": "Riesgo de estafa en la gestión del saldo",
+   "topic": "illegal-risk",
+   "jur": "cordoba",
+   "label": "Lotería de Córdoba, columna «ILEGAL»"
+  },
+  "cba-manipulados": {
+   "doc": "cba-juegos-online",
+   "text": "Los juegos pueden estar manipulados",
+   "topic": "illegal-risk",
+   "jur": "cordoba",
+   "label": "Lotería de Córdoba, columna «ILEGAL»"
+  },
+  "cba-respaldo": {
+   "doc": "cba-juegos-online",
+   "text": "No hay respaldo ni seguridad para los jugadores compulsivos",
+   "topic": "illegal-risk",
+   "jur": "cordoba",
+   "label": "Lotería de Córdoba, columna «ILEGAL»"
+  },
+  "cba-controlado": {
+   "doc": "cba-juegos-online",
+   "text": "El juego está controlado por La Lotería de Córdoba",
+   "topic": "legal-side",
+   "jur": "cordoba",
+   "label": "Lotería de Córdoba, columna «LEGAL»"
+  },
+  "cba-herramientas": {
+   "doc": "cba-juegos-online",
+   "text": "Hay herramientas de protección y cuidados al apostador",
+   "topic": "legal-side",
+   "jur": "cordoba",
+   "label": "Lotería de Córdoba, columna «LEGAL»"
+  },
+  "cba-reporta": {
+   "doc": "cba-juegos-online",
+   "text": "Reportá un sitio de apuestas ilegal",
+   "topic": "report",
+   "jur": "cordoba",
+   "label": "Lotería de Córdoba"
+  },
+  "cba-denuncias-tel": {
+   "doc": "cba-juegos-online",
+   "text": "DENUNCIAS ANÓNIMAS DE JUEGO ILEGAL 0800 - 555 - 0606",
+   "topic": "report-phone",
+   "jur": "cordoba",
+   "label": "Lotería de Córdoba",
+   "phone": "0800-555-0606",
+   "phoneTel": "08005550606"
+  },
+  "nac-direcciones": {
+   "doc": "ar-gob-proyecto-pe-2026-05-26",
+   "text": "También estará prohibida la exhibición de direcciones de sitios de juego no autorizados en cualquier medio de comunicación.",
+   "topic": "bill",
+   "jur": "ar",
+   "label": "Proyecto de ley del Poder Ejecutivo (mayo de 2026), según argentina.gob.ar"
+  },
+  "nac-nic": {
+   "doc": "ar-gob-proyecto-pe-2026-05-26",
+   "text": "el NIC Argentina podrá suspender, inhabilitar o dar de baja dominios denunciados por las autoridades competentes en materia de juego ilegal.",
+   "topic": "bill",
+   "jur": "ar",
+   "label": "Proyecto de ley del Poder Ejecutivo (mayo de 2026), según argentina.gob.ar"
+  }
+ },
+ "brands": {
+  "betsson": {
+   "shots": [
+    "betsson-entrada",
+    "betsson-pba"
+   ]
+  },
+  "betano": {
+   "shots": [
+    "betano-pba"
+   ]
+  },
+  "bet365": {
+   "shots": []
+  },
+  "bplay": {
+   "shots": []
+  },
+  "betwarrior": {
+   "shots": []
+  },
+  "codere": {
+   "shots": []
+  },
+  "jugadon": {
+   "shots": [
+    "jugadon-caba-pie",
+    "jugadon-caba-jr",
+    "jugadon-caba-pagos",
+    "jugadon-cba-pie",
+    "jugadon-cba-jr"
+   ],
+   "compare": [
+    {
+     "jur": "caba",
+     "quote": "jugadon-caba-licencia",
+     "site": "DI-2021-468-GCABA-LOTBA",
+     "list": "1132/23"
+    },
+    {
+     "jur": "cordoba",
+     "quote": "jugadon-cba-licencia",
+     "site": "1689/23",
+     "list": "1889/23"
+    }
+   ]
+  },
+  "playcet": {
+   "shots": [
+    "playcet-pie",
+    "playcet-jr",
+    "playcet-deposito",
+    "playcet-retiro"
+   ],
+   "compare": [
+    {
+     "jur": "cordoba",
+     "quote": "playcet-licencia",
+     "site": "1689/23",
+     "list": "1889/23"
+    }
+   ]
+  },
+  "sportsbet": {
+   "shots": [
+    "sportsbet-pba"
+   ]
+  },
+  "casino-ba-online": {
+   "shots": [
+    "cbao-pie"
+   ]
+  }
+ }
+}

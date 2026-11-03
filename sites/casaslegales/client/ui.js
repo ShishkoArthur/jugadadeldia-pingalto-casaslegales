@@ -1,3 +1,4 @@
+import { checkHost, anatomy } from '../../../engine/hostcheck.mjs';
 const root = document.documentElement;
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -72,6 +73,7 @@ function map(data) {
     if (j.u) { go.hidden = false; go.href = j.u; go.textContent = s.go.replace('{n}', j.n); } else go.hidden = true;
     store.set('rl-prov', id);
     footerLine(data);
+verifier();
   };
   tiles.forEach(t => t.addEventListener('click', () => show(t.dataset.j)));
   if (pick) pick.addEventListener('change', () => show(pick.value));
@@ -102,9 +104,70 @@ function helpPick(data) {
     if (el) { location.hash = 'j-' + pick.value; el.focus({ preventScroll: true }); }
     store.set('rl-prov', pick.value);
     footerLine(data);
+verifier();
   });
   const saved = store.get('rl-prov');
   if (saved && [...pick.options].some(o => o.value === saved)) pick.value = saved;
+}
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+const fill = (t, o) => t.replace(/\{(\w+)\}/g, (m, k) => (o[k] != null ? o[k] : m));
+
+function verifier() {
+  const form = document.querySelector('[data-rl-ver]');
+  const V = json('rl-ver');
+  if (!form || !V) return;
+  const input = form.querySelector('input');
+  const out = form.querySelector('[data-rl-vout]');
+  const s = V.s;
+  const entries = V.e.map(e => ({ host: e.h, jur: e.j, brand: e.b, ref: e.r, page: e.u }));
+  const anat = a => {
+    const box = el('div', 'rl-anat');
+    const part = (cls, txt, lab) => { if (!txt) return; const sp = el('span', cls); sp.append(el('b', null, txt), el('small', null, lab)); box.append(sp); };
+    part('rl-a-sub', a.sub ? a.sub + '.' : '', 'subdominio');
+    part('rl-a-name', a.name, 'nombre');
+    part('rl-a-end' + (a.betAr ? ' rl-a-bet' : ''), '.' + a.ending, a.betAr ? 'terminación .bet.ar' : 'otra terminación');
+    return box;
+  };
+  const jur = id => V.j[id];
+  const run = (raw, push) => {
+    const r = checkHost(raw, entries);
+    out.textContent = '';
+    out.className = 'rl-vout rl-v-' + r.state;
+    if (r.state === 'empty') { out.append(el('p', 'rl-vwait', s.empty)); return; }
+    const head = el('div', 'rl-vhead');
+    head.append(el('i', r.state === 'listed' ? 'rl-y' : r.state === 'similar' ? 'rl-w' : 'rl-n'));
+    head.append(el('h2', null, r.state === 'listed' ? (r.how === 'subdomain' ? s.sub : s.listed) : r.state === 'similar' ? s.similar : s.none));
+    out.append(head, anat(r.anatomy), el('p', 'rl-vbet', r.anatomy.betAr ? s.bet : s.notBet));
+    const ul = el('ul', 'rl-vlist');
+    for (const m of r.matches) {
+      const j = jur(m.jur);
+      const o = { n: j.n, r: j.r, d: j.d, h: r.host, p: m.host, a: m.ref, b: m.brand };
+      const li = el('li');
+      li.append(el('span', 'rl-tag', j.c));
+      const txt = r.state === 'listed' ? (r.how === 'subdomain' ? fill(s.subOf, o) : fill(s.inList, o)) : fill(s[m.why] || s.name, o);
+      li.append(el('p', null, txt));
+      if (r.state === 'listed' && m.ref) li.append(el('p', 'rl-src', fill(s.act, o)));
+      const links = el('p', 'rl-vlinks');
+      if (m.page) { const a = el('a', null, fill(s.ficha, o)); a.href = m.page; links.append(a); }
+      if (j.u) { const a = el('a', null, fill(s.prov, o)); a.href = j.u; links.append(a); }
+      if (links.childNodes.length) li.append(links);
+      ul.append(li);
+    }
+    if (r.matches.length) out.append(ul);
+    if (r.state === 'none' || r.state === 'similar') out.append(el('p', 'rl-note', fill(s.noneLong, { lists: V.lists })));
+    if (push) { try { history.replaceState(null, '', location.pathname + '?d=' + encodeURIComponent(r.host)); } catch (e) { return; } }
+  };
+  form.addEventListener('submit', e => { e.preventDefault(); run(input.value, true); });
+  input.addEventListener('input', () => { if (anatomy(input.value)) run(input.value, false); });
+  form.querySelectorAll('[data-ex]').forEach(b => b.addEventListener('click', () => { input.value = b.dataset.ex; run(b.dataset.ex, true); }));
+  const q = new URLSearchParams(location.search).get('d');
+  if (q) { input.value = q; run(q, false); }
 }
 
 const data = json('rl-data');
@@ -114,3 +177,4 @@ map(data);
 filter();
 helpPick(data);
 footerLine(data);
+verifier();

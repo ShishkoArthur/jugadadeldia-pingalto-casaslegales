@@ -2,20 +2,23 @@
 // help, nav, ld } and a body string; the shared build (tools/render.mjs) passes the helper h.
 import { TILES } from './content/map.mjs';
 const NAV = [
+  ['/verificador', 'Verificador'],
   ['/licencias', 'Licencias'],
+  ['/operadores', 'Operadores'],
   ['/provincia/buenos-aires', 'Buenos Aires'],
   ['/provincia/caba', 'CABA'],
   ['/provincia/cordoba', 'Córdoba'],
-  ['/metodologia', 'Metodología'],
   ['/juego-responsable', 'Ayuda'],
 ];
 const FOOT = [
+  ['/guia/bet-ar', 'El dominio .bet.ar'],
+  ['/guia/sitios-ilegales', 'Sitios sin licencia'],
   ['/metodologia', 'Metodología'],
   ['/redaccion', 'Redacción'],
   ['/registro-de-fuentes', 'Registro de fuentes'],
   ['/juego-responsable', 'Juego responsable'],
 ];
-const HELP_NAV = [['/juego-responsable', 'Líneas de ayuda'], ['/redaccion', 'Quiénes somos']];
+const HELP_NAV = [['/juego-responsable', 'Líneas de ayuda'], ['/juego-responsable/autoexclusion', 'Autoexclusión'], ['/redaccion', 'Quiénes somos']];
 
 const MOON = '<svg class="rl-moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15 12.5A6.5 6.5 0 0 1 7.5 5a6.5 6.5 0 1 0 7.5 7.5z" fill="currentColor"/></svg>';
 const SUN = '<svg class="rl-sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><path d="M10 1.5v2.5M10 16v2.5M1.5 10H4M16 10h2.5M4 4l1.8 1.8M14.2 14.2 16 16M4 16l1.8-1.8M14.2 5.8 16 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
