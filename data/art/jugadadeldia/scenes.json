@@ -198,61 +198,61 @@
    "image": "jdd-sc-quiniela-redoblona-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-redoblona-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/brinco/": {
    "image": "jdd-sc-brinco-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-brinco-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/poceada/": {
    "image": "jdd-sc-poceada-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-poceada-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/truco/jugar/": {
    "image": "jdd-sc-truco-jugar-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-truco-jugar-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/truco/envido/": {
    "image": "jdd-sc-truco-envido-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-truco-envido-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/juegos-de-cartas/": {
    "image": "jdd-sc-juegos-de-cartas-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-juegos-de-cartas-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/generala/jugar/": {
    "image": "jdd-sc-generala-jugar-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-generala-jugar-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/generala/probabilidades/": {
    "image": "jdd-sc-generala-probabilidades-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-generala-probabilidades-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/chinchon/jugar/": {
    "image": "jdd-sc-chinchon-jugar-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-chinchon-jugar-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   },
   "/escoba-de-15/jugar/": {
    "image": "jdd-sc-escoba-de-15-jugar-r3",
    "file": "data/art/jugadadeldia/cut/jdd-sc-escoba-de-15-jugar-r3.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "accepted": "2026-11-03 owner (r3)"
   }
  }
 }

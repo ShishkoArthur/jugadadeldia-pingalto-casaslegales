@@ -22,12 +22,12 @@
    "transparent": 77,
    "size": "678x1411"
   },
-  "pa-sc-kit-sensibilidad-r3": {
+  "pa-sc-kit-sensibilidad-r5": {
    "pose": "chair",
-   "head": 388,
-   "scale": 0.546,
-   "transparent": 72,
-   "size": "516x1190"
+   "head": 373,
+   "scale": 0.568,
+   "transparent": null,
+   "size": "615x1232"
   },
   "pa-sc-kit-dpi-r2": {
    "pose": "table",
@@ -99,12 +99,12 @@
    "transparent": null,
    "size": "725x1180"
   },
-  "pa-sc-ff-codigos-r3": {
-   "pose": "wstool",
-   "head": 306,
-   "scale": 0.693,
-   "transparent": 75,
-   "size": "646x1557"
+  "pa-sc-ff-codigos-r5": {
+   "pose": "kneel",
+   "head": 410,
+   "scale": 0.517,
+   "transparent": null,
+   "size": "489x1119"
   },
   "pa-sc-valorant-r4": {
    "pose": "walk",
@@ -120,12 +120,12 @@
    "transparent": null,
    "size": "620x1857"
   },
-  "pa-sc-cs2-major-r3": {
-   "pose": "cushion",
-   "head": 464,
-   "scale": 0.457,
-   "transparent": 65,
-   "size": "765x829"
+  "pa-sc-cs2-major-r5": {
+   "pose": "jump",
+   "head": 330,
+   "scale": 0.642,
+   "transparent": null,
+   "size": "693x1456"
   },
   "pa-sc-lol-r4": {
    "pose": "stool",
@@ -134,19 +134,19 @@
    "transparent": null,
    "size": "691x1279"
   },
-  "pa-sc-esports-r3": {
+  "pa-sc-esports-r5": {
    "pose": "chair",
-   "head": 301,
-   "scale": 0.704,
-   "transparent": 76,
-   "size": "732x1449"
+   "head": 352,
+   "scale": 0.602,
+   "transparent": null,
+   "size": "853x1255"
   },
-  "pa-sc-esports-series-r3": {
-   "pose": "chair",
-   "head": 310,
-   "scale": 0.684,
-   "transparent": 75,
-   "size": "683x1502"
+  "pa-sc-esports-series-r5": {
+   "pose": "stool",
+   "head": 377,
+   "scale": 0.562,
+   "transparent": null,
+   "size": "632x1225"
   },
   "pa-sc-fortnite-nube-r4": {
    "pose": "jump",

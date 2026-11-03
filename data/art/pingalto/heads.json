@@ -138,5 +138,25 @@
  "pa-sc-clash-r5": {
   "top": 100,
   "chin": 420
+ },
+ "pa-sc-kit-sensibilidad-r5": {
+  "top": 22,
+  "chin": 395
+ },
+ "pa-sc-ff-codigos-r5": {
+  "top": 8,
+  "chin": 418
+ },
+ "pa-sc-cs2-major-r5": {
+  "top": 45,
+  "chin": 375
+ },
+ "pa-sc-esports-r5": {
+  "top": 20,
+  "chin": 372
+ },
+ "pa-sc-esports-series-r5": {
+  "top": 8,
+  "chin": 385
  }
 }

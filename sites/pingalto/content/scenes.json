@@ -58,30 +58,30 @@
    "alt": "Alt caminando con un router de wifi en la mano, mirándolo con desconfianza"
   },
   "/kit/sensibilidad": {
-   "image": "pa-sc-kit-sensibilidad-r3",
+   "image": "pa-sc-kit-sensibilidad-r5",
    "files": [
     {
-     "name": "scenes/kit-sensibilidad-143.webp",
-     "w": 143,
+     "name": "scenes/kit-sensibilidad-161.webp",
+     "w": 161,
      "h": 300,
-     "kb": 11
+     "kb": 12
     },
     {
-     "name": "scenes/kit-sensibilidad-266.webp",
-     "w": 266,
+     "name": "scenes/kit-sensibilidad-301.webp",
+     "w": 301,
      "h": 560,
-     "kb": 24
+     "kb": 26
     },
     {
-     "name": "scenes/kit-sensibilidad-399.webp",
-     "w": 399,
+     "name": "scenes/kit-sensibilidad-452.webp",
+     "w": 452,
      "h": 840,
-     "kb": 41
+     "kb": 43
     }
    ],
-   "ar": 0.4753,
-   "g": 0.7786,
-   "alt": "Alt sentada al lado de una mesita, moviendo el mouse sobre un pad negro"
+   "ar": 0.5379,
+   "g": 0.7982,
+   "alt": "Alt con auriculares moviendo el mouse sobre un pad negro con una mira dibujada"
   },
   "/kit/dpi": {
    "image": "pa-sc-kit-dpi-r2",
@@ -370,30 +370,30 @@
    "alt": "Alt sentada de costado en un banquito jugando con el celular en horizontal"
   },
   "/ff/codigos": {
-   "image": "pa-sc-ff-codigos-r3",
+   "image": "pa-sc-ff-codigos-r5",
    "files": [
     {
-     "name": "scenes/ff-codigos-137.webp",
-     "w": 137,
+     "name": "scenes/ff-codigos-144.webp",
+     "w": 144,
      "h": 300,
      "kb": 11
     },
     {
-     "name": "scenes/ff-codigos-256.webp",
-     "w": 256,
+     "name": "scenes/ff-codigos-268.webp",
+     "w": 268,
      "h": 560,
      "kb": 24
     },
     {
-     "name": "scenes/ff-codigos-384.webp",
-     "w": 384,
+     "name": "scenes/ff-codigos-403.webp",
+     "w": 403,
      "h": 840,
-     "kb": 39
+     "kb": 41
     }
    ],
-   "ar": 0.4571,
-   "g": 0.9399,
-   "alt": "Alt sentada con el celular, haciendo un gesto de alto con la mano"
+   "ar": 0.4793,
+   "g": 0.7453,
+   "alt": "Alt de rodillas con el celular en horizontal, festejando con el puño, y un paracaídas de juguete en el piso"
   },
   "/valorant": {
    "image": "pa-sc-valorant-r4",
@@ -448,30 +448,30 @@
    "alt": "Alt con una réplica de cosplay de un rifle de francotirador apoyada en el hombro, revisando la mira"
   },
   "/cs2/major": {
-   "image": "pa-sc-cs2-major-r3",
+   "image": "pa-sc-cs2-major-r5",
    "files": [
     {
-     "name": "scenes/cs2-major-284.webp",
-     "w": 284,
+     "name": "scenes/cs2-major-155.webp",
+     "w": 155,
      "h": 300,
-     "kb": 13
+     "kb": 11
     },
     {
-     "name": "scenes/cs2-major-529.webp",
-     "w": 529,
+     "name": "scenes/cs2-major-289.webp",
+     "w": 289,
      "h": 560,
-     "kb": 31
+     "kb": 25
     },
     {
-     "name": "scenes/cs2-major-794.webp",
-     "w": 794,
+     "name": "scenes/cs2-major-433.webp",
+     "w": 433,
      "h": 840,
-     "kb": 54
+     "kb": 40
     }
    ],
-   "ar": 0.9455,
-   "g": 0.6049,
-   "alt": "Alt sentada en un almohadón leyendo un cuaderno"
+   "ar": 0.5159,
+   "g": 0.8968,
+   "alt": "Alt saltando como hincha con bufanda, mano de goma y una réplica de juguete de una granada de humo"
   },
   "/lol": {
    "image": "pa-sc-lol-r4",
@@ -500,56 +500,56 @@
    "alt": "Alt sentada en un banquito lanzando un hechizo con una esfera de luz azul y dorada entre las manos"
   },
   "/esports": {
-   "image": "pa-sc-esports-r3",
+   "image": "pa-sc-esports-r5",
    "files": [
     {
-     "name": "scenes/esports-163.webp",
-     "w": 163,
+     "name": "scenes/esports-213.webp",
+     "w": 213,
+     "h": 300,
+     "kb": 15
+    },
+    {
+     "name": "scenes/esports-398.webp",
+     "w": 398,
+     "h": 560,
+     "kb": 33
+    },
+    {
+     "name": "scenes/esports-598.webp",
+     "w": 598,
+     "h": 840,
+     "kb": 55
+    }
+   ],
+   "ar": 0.7113,
+   "g": 0.8086,
+   "alt": "Alt sentada con auriculares y joystick, levantando el puño por la victoria"
+  },
+  "/esports/series": {
+   "image": "pa-sc-esports-series-r5",
+   "files": [
+    {
+     "name": "scenes/esports-series-166.webp",
+     "w": 166,
      "h": 300,
      "kb": 12
     },
     {
-     "name": "scenes/esports-304.webp",
-     "w": 304,
+     "name": "scenes/esports-series-310.webp",
+     "w": 310,
      "h": 560,
-     "kb": 27
+     "kb": 25
     },
     {
-     "name": "scenes/esports-456.webp",
-     "w": 456,
+     "name": "scenes/esports-series-465.webp",
+     "w": 465,
      "h": 840,
-     "kb": 45
+     "kb": 42
     }
    ],
-   "ar": 0.5432,
-   "g": 0.8942,
-   "alt": "Alt sentada en un almohadón aplaudiendo como si mirara una partida"
-  },
-  "/esports/series": {
-   "image": "pa-sc-esports-series-r3",
-   "files": [
-    {
-     "name": "scenes/esports-series-149.webp",
-     "w": 149,
-     "h": 300,
-     "kb": 11
-    },
-    {
-     "name": "scenes/esports-series-277.webp",
-     "w": 277,
-     "h": 560,
-     "kb": 24
-    },
-    {
-     "name": "scenes/esports-series-416.webp",
-     "w": 416,
-     "h": 840,
-     "kb": 40
-    }
-   ],
-   "ar": 0.4952,
-   "g": 0.9165,
-   "alt": "Alt sentada mostrando tres dedos, con una libretita en la rodilla"
+   "ar": 0.5542,
+   "g": 0.795,
+   "alt": "Alt con auriculares mostrando tres dedos y una pizarrita con tres círculos, dos pintados"
   }
  }
 }
