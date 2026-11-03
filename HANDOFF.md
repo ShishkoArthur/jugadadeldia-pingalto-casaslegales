@@ -61,9 +61,30 @@
 - **Ключи:** PandaScore, Supercell CR/BS — в `.env`, проверены. **Ждём от владельца:** Telegram-бот (сбои лент), Search Console (позже,
   «в гск добавлю потом»), автоисключение Mendoza и PDF к копиям (по желанию).
 - **Лимит:** не больше 2 агентов одновременно (владелец 03.11).
-- **Дальше:** автообновление (ленты на сервере по образцу gambeteo: выписки кинелы LOTBA/PBA/Córdoba/Tucumán → страницы результатов по
-  провинциям + 20 готовых сцен для них; киберспорт PandaScore; Supercell — Clash Royale/Brawl Stars страницы); тексты через Claude API;
-  P2-страницы планов; QA-проход всех трёх сайтов.
+- **Автообновление работает (03.11, раздел «Ленты» ниже, инструкция `docs/FEEDS.md`):** кинела jugadadeldia каждые 15 мин, киберспорт
+  и Supercell pingalto каждый час/сутки — на сервере, без агента. Telegram-хук готов, ждёт `TG_BOT_TOKEN`/`TG_CHAT_ID` от владельца.
+- **Дальше:** тексты через Claude API; P2-страницы планов (/quiniela/horarios/ — нужен источник праздников; /clash/mazos, /brawl);
+  QA-проход всех трёх сайтов; меню pingalto: Clash/Brawl пока без пункта «Juegos» (ссылки только из sitemap) — добавить в `content/visual.mjs`.
+
+## Ленты (03.11) — автообновление на сервере; jugadadeldia 55 стр., pingalto 30 стр.
+- **Как устроено:** `tools/feeds/run.mjs` + `lib.mjs` (общий движок), ленты `tools/feeds/<сайт>/*.mjs`, сервер — `bash tools/feeds-server.sh
+  <сайт> install|secrets|sync|run|status|logs`. У сайтов свои папки `/opt/web/<сайт>-feeds/`, cron-файлы (jdd `4,19,34,49 * * * *`, pa `23 * * * *`),
+  uid (47210/47220), образы и UA (`JugadaDelDia/1.0 (jugadadeldia.com)`, `Pingalto/1.0 (pingalto.com)`). Ключи — `secrets.env` (root 600,
+  `secrets` копирует из `.env` без вывода). Выход — `/opt/web/sites/<сайт>.com/data/feeds/` (защищён от deploy), страницы рисуют из JSON
+  в браузере. **Код лент выкладывается отдельно:** commit → `feeds-server.sh <сайт> sync`.
+- **jugadadeldia:** лента `quiniela` — LOTBA JSON (6 юрисдикций) + PDF IPLyC (pdftotext, 5 юрисдикций), сверка цифра в цифру («2 fuentes»),
+  расхождение — не публикуется; архив 120 дней (догружается по 60 тиражей за запуск), частоты 00–99 с chi². Устарело > 3 ч → «Sin datos al hh:mm».
+  **Новые страницы:** /quiniela/ (сетка дня), /quiniela/nacional/, /provincia/, /cordoba/, /santa-fe/, /entre-rios/, /mendoza/,
+  /quiniela/nacional-y-provincia/, /quiniela/extractos/, /quiniela/numeros-que-mas-salen/ (6 сцен из 20 готовых поставлены; блок помощи провинции).
+  Меню «Quiniela» ведёт на /quiniela/. **Не сделано:** Córdoba API (robots закрыт для ИИ — берём копии LOTBA/PBA), Tucumán (TLS-сертификат
+  не проверяется — не отключаем), Quini 6/Brinco (San Juan CAS отстаёт на 6 дней), /quiniela/horarios/ (нет источника праздников), San Juan,
+  Catamarca и др. провинции (своих лент нет). Оставшиеся 14 сцен ждут своих страниц (/quiniela/horarios/, /tombola/*, /burako/ …).
+- **pingalto:** `agenda` (PandaScore: CS2, Valorant, LoL, Dota 2, RL, EA FC; беттинг-бренды в названиях маскируются, «Datos: PandaScore»),
+  `clash` (123 карты), `brawl` (111 бойцов, ротация, пороги копов топа AR без имён). **Новые страницы:** /esports/agenda (по плану; это и есть
+  «calendario»), /clash/cartas, /brawl/brawlers, /brawl/eventos; блоки «Próximos partidos» на /esports, /cs2, /valorant, /lol. Стили лент —
+  `css/feeds.css` (ссылка из самого блока, общий layout не трогали). Рейтинг Path of Legend AR пуст (сезонный) — не показываем.
+- **Проверено 03.11:** `run` на сервере — все 4 ленты `updated`, health OK; живые страницы 200, данные видны; телефон 375 — без
+  горизонтальной прокрутки (/quiniela/provincia/, /esports/agenda).
 
 ## Сцены девушек (03.11) — на сайтах: pingalto 21 страница, jugadadeldia 22 страницы
 - **Живое:** у каждой контентной страницы своя сцена (те же девушка и одежда, сидя/в движении, действие по теме страницы). Без фигуры —
@@ -103,6 +124,8 @@
 - PNG (`data/img-review/*.png`) и вырезки `data/art/<сайт>/cut/` — только локально (не в git); на сайт идут `sites/<сайт>/static/scenes/`.
 
 ## Журнал
+- 03.11 — автообновление: ленты кинелы (jugadadeldia, 10 новых страниц) и киберспорта/Supercell (pingalto, 4 страницы + блоки) на сервере,
+  `docs/FEEDS.md` (раздел «Ленты» выше).
 - 03.11 — pingalto: меню «Juegos» и ряд игр на главной, свои фоны шапки по играм, сцены r4 «в игре» (CS2, Valorant, LoL, Fortnite + 5 для
   будущих страниц), официальных логотипов нет — разбор политик издателей (раздел «pingalto (03.11) — игры» ниже).
 - 03.11 — casaslegales: дизайн «01 Relieve alto» на живом сайте (изометрия, высота = число сайтов); третья выгрузка владельца → реестры

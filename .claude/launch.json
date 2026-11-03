@@ -20,6 +20,16 @@
         "4330"
       ],
       "port": 4330
+    },
+    {
+      "name": "pa-feeds",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve.mjs",
+        "pa-feeds",
+        "4342"
+      ],
+      "port": 4342
     }
   ]
 }
