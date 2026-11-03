@@ -21,15 +21,17 @@ HOST="${DEPLOY_USER:-root}@${DEPLOY_HOST:?}"
 SSHK=(-i "${DEPLOY_KEY/#\~/$HOME}" -o IdentitiesOnly=yes)
 
 block() {
-  local name="$1" domain="$1.com"
+  local name="$1" domain="$1.com" assets="/assets/*"
+  # each site keeps its own asset folder (casaslegales: /_r/); hashed names there are cached for a year, everything else is revalidated
+  case "$name" in casaslegales) assets="/_r/*" ;; esac
   cat <<EOF
 # >>> $name - $domain (repo ShishkoArthur/jugadadeldia-pingalto-casaslegales). Does not touch other blocks.
 $domain {
 	root * /srv/$domain
 	encode gzip
-	@assets path /assets/*
+	@assets path $assets
 	header @assets Cache-Control "public, max-age=31536000, immutable"
-	@fresh path / */ *.html /data/feeds/*
+	@fresh not path $assets
 	header @fresh Cache-Control "no-cache"
 	header X-Content-Type-Options nosniff
 	try_files {path} {path}.html {path}/index.html
