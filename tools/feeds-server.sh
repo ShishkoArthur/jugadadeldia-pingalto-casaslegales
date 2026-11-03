@@ -28,10 +28,13 @@ SITE="${1:-}"; shift || true
 case "$SITE" in
   jugadadeldia)
     CRON_SPEC='4,19,34,49 * * * *'; RUN_UID=47210; IMAGE=jugadadeldia-feeds:node24; APK='poppler-utils'
-    KEYS=(TG_BOT_TOKEN TG_CHAT_ID) ;;
+    KEYS=(TG_BOT_TOKEN TG_CHAT_ID)
+    # the feed "fuentes" reads the descriptions of the saved sources (JSON only, never the saved documents) for their expiry dates
+    SRC_SETS=(lottery rg truco generala chinchon escoba burako) ;;
   pingalto)
     CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK=''
-    KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID) ;;
+    KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID)
+    SRC_SETS=() ;;
   *) sed -n '2,24p' "$0"; exit 2 ;;
 esac
 BASE=/opt/web/$SITE-feeds
@@ -44,9 +47,15 @@ if [ -z "${DEPLOY_HOST:-}" ]; then for f in .env "$MAIN/.env"; do if [ -f "$f" ]
 HOST="${DEPLOY_USER:-root}@${DEPLOY_HOST}"
 SSH=(ssh -i "${DEPLOY_KEY/#\~/$HOME}" -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20)
 
+SRC_RULES=()
+if [ "${#SRC_SETS[@]}" -gt 0 ]; then
+  SRC_RULES=(--include='/data/' --include='/data/sources/')
+  for s in "${SRC_SETS[@]}"; do SRC_RULES+=(--include="/data/sources/$s/" --include="/data/sources/$s/*.json"); done
+fi
 SYNC_RULES=(
   --exclude='test/' --exclude='fixtures/' --exclude='*.test.mjs' --exclude='.DS_Store'
   --include='/package.json'
+  "${SRC_RULES[@]}"
   --include='/tools/' --include='/tools/feeds/' --include='/tools/feeds/lib.mjs' --include='/tools/feeds/run.mjs'
   --include="/tools/feeds/$SITE/***"
   --include='/engine/***'
@@ -146,7 +155,7 @@ cmd_sync() {
   rsync -rlt --delete --delete-excluded --chmod=D755,F644 "${SYNC_RULES[@]}" \
     --rsync-path="flock -w 120 $BASE/run.lock rsync" -e "${SSH[*]}" "$ROOT/" "$HOST:$BASE/app/"
   local ver; ver="$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo unknown)"
-  git -C "$ROOT" diff --quiet HEAD -- tools/feeds engine 2>/dev/null || ver="$ver+dirty"
+  git -C "$ROOT" diff --quiet HEAD -- tools/feeds engine data/sources 2>/dev/null || ver="$ver+dirty"
   "${SSH[@]}" "$HOST" "echo '$ver $(date -u +%FT%TZ)' > $BASE/state/app-version"
   echo "feeds-server $SITE: synced $ver ($(find "tools/feeds/$SITE" -maxdepth 1 -name '*.mjs' | wc -l) feed files)"
 }
@@ -184,6 +193,10 @@ for n, f in sorted(h['feeds'].items()):
     err = f['lastError']['at'] + ' ' + f['lastError']['message'][:70] if f.get('lastError') else '-'
     a = '-' if f['ageHours'] is None else '%.1f' % f['ageHours']
     print('   %-12s %-7s %8s %6s %-5s %-5s %s' % (n, f['cadence'] + ('' if f['enabled'] else '/off'), a, f['maxAgeHours'], 'YES' if f['stale'] else 'no', f['consecutiveFailures'], err))
+ex = h.get('expiries') or []
+if ex:
+    print('== expiries (%d; warn = days before the alert, 0 = alert only once expired):' % len(ex))
+    for x in ex: print('   %-10s %5s d  %-7s warn %-2s %-28s %s' % (x['until'], x['daysLeft'], x['state'].upper() if x['state'] != 'ok' else 'ok', x['warnDays'], x['id'][:28], x['what'][:90]))
 PY
 else echo "== health: no _health.json yet"; fi
 echo "== files in $OUT:"; ls -la --time-style=+%FT%TZ "$OUT" | tail -n +4 | awk '{print "   " $5 "\t" $6 "\t" $7}'

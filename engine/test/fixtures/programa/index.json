@@ -1,0 +1,7 @@
+{
+ "_fetched": "2026-11-03T21:00:00.000Z",
+ "https://quiniela.loteriadelaciudad.gob.ar/includes/descargaPrograma.php ano=2026&mes=11&version=1&juego=QUI": { "file": "not-loaded.html", "type": "text/html; charset=UTF-8" },
+ "https://quiniela.loteriadelaciudad.gob.ar/includes/descargaPrograma.php ano=2026&mes=11&version=0&juego=QUI": { "file": "202611QUI0.pdf", "type": "application/pdf" },
+ "https://quiniela.loteriadelaciudad.gob.ar/includes/descargaPrograma.php ano=2026&mes=12&version=1&juego=QUI": { "file": "not-loaded.html", "type": "text/html; charset=UTF-8" },
+ "https://quiniela.loteriadelaciudad.gob.ar/includes/descargaPrograma.php ano=2026&mes=12&version=0&juego=QUI": { "file": "not-loaded.html", "type": "text/html; charset=UTF-8" }
+}

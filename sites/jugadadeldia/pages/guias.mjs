@@ -13,6 +13,7 @@ import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { yearExact } from '../../../engine/lottery/simulate.mjs';
 import { xoshiro128ss } from '../../../engine/lottery/rng.mjs';
 import { STALE_HOURS } from '../../../engine/lottery/extract.mjs';
+import { parseProgramText, validateMonth, PROG_CODES, PROG_TYPES } from '../../../engine/lottery/programa.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn, tiles, ICONS } from './parts.mjs';
 
 const n = q => toNumber(q);
@@ -23,23 +24,18 @@ const sel = (name, opts) => '<select class="jg-se" name="' + name + '">' + opts.
 const ldQ = h => [webPage(h), crumbs(h, h.built('/quiniela/') ? [['/quiniela/', 'Quiniela']] : [])];
 
 // The LOTBA program of the month (saved PDF): every scheduled draw with date, time, type and the participating jurisdictions.
-const PROG_CODES = { 1: 'Ciudad', 2: 'Provincia', 3: 'Córdoba', 4: 'Santa Fe', 5: 'Uruguay', 6: 'Mendoza', 7: 'Entre Ríos' };
-const TYPES = { 'LA PREVIA': 'La Previa', 'LA PRIMERA': 'La Primera', MATUTINA: 'Matutina', VESPERTINA: 'Vespertina', NOCTURNA: 'Nocturna' };
+// Parsed and checked by engine/lottery/programa.mjs; the server feed programa.json (same parser) carries the newer programmes and the
+// page script prefers it when it reaches further.
 let PROGRAM = null;
 export function program() {
   if (PROGRAM) return PROGRAM;
   const doc = JSON.parse(readFileSync(join(ROOT, 'data/sources/lottery/lotba.json'), 'utf8')).docs['quiniela-programa'];
+  const f = /ano=(\d{4})&mes=(\d{2})/.exec(doc.form || '');
+  if (!f) throw new Error('program: no month in the form of the saved LOTBA program');
   const text = execFileSync('pdftotext', ['-layout', join(ROOT, doc.file), '-'], { encoding: 'utf8' });
-  const rows = [];
-  for (const line of text.split('\n')) {
-    const m = /^\s*(\d{5})\s+(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d\d:\d\d)\s+([1-7](?:\s+[1-7])*)\s+(LA PREVIA|LA PRIMERA|MATUTINA|VESPERTINA|NOCTURNA)\s/.exec(line);
-    if (!m) continue;
-    rows.push({ n: +m[1], d: m[4] + '-' + two(m[3]) + '-' + two(m[2]), t: m[5], type: TYPES[m[7]], j: m[6].split(/\s+/).map(Number) });
-  }
-  if (rows.length < 20) throw new Error('program: the LOTBA draw diagram was not found in ' + doc.file);
-  rows.sort((a, b) => a.n - b.n);
-  for (let i = 1; i < rows.length; i++) if (rows[i].n !== rows[i - 1].n + 1) throw new Error('program: draw numbers are not consecutive at ' + rows[i].n);
-  PROGRAM = { fetched: doc.fetched, rows, from: rows[0].d, to: rows[rows.length - 1].d };
+  const rows = parseProgramText(text, f[1] + '-' + f[2]);
+  const { from, to } = validateMonth(rows, f[1] + '-' + f[2]);
+  PROGRAM = { fetched: doc.fetched, rows, from, to };
   return PROGRAM;
 }
 
@@ -121,7 +117,7 @@ export const horarios = {
   data: () => { const p = program(); return { feed: '/data/feeds/', stale: STALE_HOURS, prog: { from: p.from, to: p.to, rows: p.rows.map(r => [r.d, r.t, r.type, r.j]) }, codes: PROG_CODES }; },
   render(h) {
     const p = program();
-    const types = Object.values(TYPES);
+    const types = PROG_TYPES.map(t => t.name);
     const times = Object.fromEntries(types.map(t => [t, [...new Set(p.rows.filter(r => r.type === t).map(r => r.t))]]));
     const codes = Object.keys(PROG_CODES).map(Number);
     const part = (t, c) => { const rs = p.rows.filter(r => r.type === t); const k = rs.filter(r => r.j.includes(c)).length; return k === rs.length ? '<span class="jg-ok">todos</span>' : k ? k + ' de ' + rs.length : '—'; };
@@ -136,7 +132,7 @@ export const horarios = {
       '<p class="jg-note">«Todos» quiere decir que esa jurisdicción participa en cada sorteo de ese turno del programa; si no, cuántos de los ' + p.rows.filter(r => r.type === types[0]).length + ' sorteos del turno.</p>' +
       cite(h, ['lotba.quiniela.jurisdictions', 'lotba.quiniela.jurisdictions-2', 'lotba.quiniela.saturday-nocturna']) + '</section>' +
       '<section class="jg-c w2"><span class="jg-sm">Lo que pasó de verdad</span><h2>Los días con sorteo en nuestro registro</h2><div data-o="days"><p class="jg-note">El registro se carga con JavaScript.</p></div><div data-o="off"></div></section>' +
-      '<section class="jg-c"><span class="jg-sm">Ojo</span><h2>Feriados</h2><p>El programa oficial que guardamos va del ' + dm(p.from) + ' al ' + dm(p.to) + '. Para otros días miramos lo que pasó: los días de semana sin ningún sorteo en el registro suelen ser feriados.</p><p class="jg-note">Si un feriado cambia el calendario, manda lo que diga tu agencia o el sitio de la lotería.</p>' +
+      '<section class="jg-c"><span class="jg-sm">Ojo</span><h2>Feriados</h2><p>El programa oficial que guardamos va <span data-o="span">del ' + dm(p.from) + ' al ' + dm(p.to) + '</span>. Para otros días miramos lo que pasó: los días de semana sin ningún sorteo en el registro suelen ser feriados.</p><p class="jg-note">Si un feriado cambia el calendario, manda lo que diga tu agencia o el sitio de la lotería.</p>' +
       tiles(h, [['/quiniela/', 'Quiniela de hoy', 'Las cabezas a medida que salen', '#ff5a3c', ICONS.balls], ['/quiniela/extractos/', 'Extractos anteriores', 'Buscá cualquier sorteo', '#2f7cf6', ICONS.book]]) + '</section></div>';
   },
 };

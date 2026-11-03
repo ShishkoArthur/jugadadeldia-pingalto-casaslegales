@@ -8,7 +8,7 @@ import { ROOT } from '../../../tools/env.mjs';
 import { loadLotteryFiles, verifyLottery } from '../../../tools/lib/lottery-sources.mjs';
 import { daysBetween } from '../../../engine/format.mjs';
 
-const GAME_MAX_AGE = 183;
+export const GAME_MAX_AGE = 183;
 const LOT_TITLES = {
   'lotba:quiniela-reglamento': 'Reglamento de La Quiniela de la Ciudad (Lotería de la Ciudad)',
   'lotba:quiniela-programa': 'Programa de sorteos de La Quiniela de la Ciudad, noviembre 2026',

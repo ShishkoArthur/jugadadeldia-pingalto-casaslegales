@@ -6,8 +6,10 @@
 //   default { name, cadence: 'run'|'hourly'|'daily', maxAgeHours, timeoutSec?, enabled?(env): boolean, async fetch(ctx), validate(raw), compute(raw, prev, ctx) }
 // 'run' feeds run on every call, 'hourly' when their file is older than 50 minutes, 'daily' when older than 20 hours (--force: always).
 // Files with other names (quiniela-parse.mjs) and modules without fetch/validate/compute are helpers and are skipped.
-// ctx (lib.mjs makeCtx): getJson/getText(url, { ttlHours, headers }), now, today(), prev (previous document or null), outDir,
-// env (process.env: keys come from the server's env file, never written anywhere).
+// ctx (lib.mjs makeCtx): getJson/getText/getBytes(url, { ttlHours, headers, method, body }), now, today(), prev (previous document
+// or null), outDir, force (--force given), env (process.env: keys come from the server's env file, never written anywhere).
+// A feed may list date-bound inputs in its data (expiries, see expiriesOf): _health.json shows them with days left and alerts once
+// when one enters its warning window or expires.
 // For each feed: fetch -> validate (throws on any deviation) -> compute -> <out>/<name>.json { name, updated, source, data }.
 // compute may return { __files: { <other name>: data }, ...data }: each extra document is written as <out>/<other name>.json the
 // same way (history archives). Files are written only on success: on failure the previous files stay (last good data is kept).
@@ -17,7 +19,7 @@
 import { readdirSync, existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { makeCtx, writeJsonAtomic, readJson, readFeed, UAS } from './lib.mjs';
+import { makeCtx, writeJsonAtomic, readJson, readFeed, zoneDate, UAS } from './lib.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const NAME_RE = /^[a-z0-9]+\.mjs$/;
@@ -61,6 +63,7 @@ export async function runFeed(feed, o) {
     ctx.prev = prev;
     ctx.outDir = o.out;
     ctx.env = o.env || {};
+    ctx.force = !!o.force;
     const limit = (feed.timeoutSec || 240) * 1000;
     const work = (async () => {
       const raw = await feed.fetch(ctx);
@@ -86,13 +89,33 @@ export async function runFeed(feed, o) {
 }
 
 const round2 = x => Math.round(x * 100) / 100;
+const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;
+const dayDiff = (a, b) => Math.round((Date.parse(b + 'T00:00:00Z') - Date.parse(a + 'T00:00:00Z')) / 864e5);
+
+// Date-bound inputs of a site (a draw programme, saved copies of rules and help documents): a feed lists them in its data as
+// expiries: [{ id, what, until: 'YYYY-MM-DD' (last valid day), warnDays }]. The health report lists all of them with days left
+// (Argentine date): 'expired' after until, 'soon' within warnDays (warnDays 0: no early warning), else 'ok'. Expired ones are problems.
+export function expiriesOf(docs, now) {
+  const today = zoneDate(now), out = [];
+  for (const [feed, doc] of docs) {
+    const list = doc && doc.data && Array.isArray(doc.data.expiries) ? doc.data.expiries : [];
+    for (const x of list) {
+      if (!x || typeof x.id !== 'string' || !DAY_RE.test(x.until || '')) continue;
+      const daysLeft = dayDiff(today, x.until), warn = Number.isInteger(x.warnDays) && x.warnDays > 0 ? x.warnDays : 0;
+      out.push({ id: x.id, what: String(x.what || ''), until: x.until, daysLeft, warnDays: warn, state: daysLeft < 0 ? 'expired' : warn && daysLeft <= warn ? 'soon' : 'ok', feed });
+    }
+  }
+  return out.sort((a, b) => a.until < b.until ? -1 : a.until > b.until ? 1 : a.id < b.id ? -1 : 1);
+}
 
 export function buildHealth(feeds, out, log, loadErrors, now, env = {}, site = '') {
-  const health = { generated: now.toISOString(), runner: UAS[site] || site, ok: true, problems: [], feeds: {} };
+  const health = { generated: now.toISOString(), runner: UAS[site] || site, ok: true, problems: [], feeds: {}, expiries: [] };
+  const docs = [];
   for (const e of loadErrors) { health.ok = false; health.problems.push('load ' + e.file + ': ' + e.error); }
   for (const feed of feeds) {
     const enabled = isOn(feed, env);
     const doc = readFeed(join(out, feed.name + '.json'));
+    if (enabled) docs.push([feed.name, doc]);
     const mine = log.filter(r => r && r.name === feed.name);
     const last = mine[mine.length - 1] || null;
     const lastOkRec = [...mine].reverse().find(r => r.ok) || null;
@@ -112,16 +135,23 @@ export function buildHealth(feeds, out, log, loadErrors, now, env = {}, site = '
     };
     if (stale) { health.ok = false; health.problems.push(feed.name + ': no good data for ' + (ageHours === null ? 'ever' : ageHours + ' h') + ' (limit ' + feed.maxAgeHours + ' h)'); }
   }
+  health.expiries = expiriesOf(docs, now);
+  for (const x of health.expiries) if (x.state === 'expired') { health.ok = false; health.problems.push('expired ' + x.until + ': ' + x.id + ' (' + x.what + ')'); }
   return health;
 }
 
-// Alerts on state changes only (a feed turns stale, or recovers), never on every failure.
+// Alerts on state changes only (a feed turns stale, or recovers; a date-bound input enters 'soon' or 'expired'), never on every failure.
 export function alertsFor(prev, next, site) {
   const out = [];
   for (const [n, f] of Object.entries(next.feeds)) {
     const was = prev && prev.feeds && prev.feeds[n];
     if (f.stale && !(was && was.stale)) out.push(site + ' ' + n + ': no fresh data (' + (f.ageHours === null ? 'never' : f.ageHours + ' h') + ', limit ' + f.maxAgeHours + ' h)' + (f.lastError ? ': ' + f.lastError.message.slice(0, 160) : ''));
     if (!f.stale && was && was.stale) out.push(site + ' ' + n + ': recovered');
+  }
+  const before = new Map(((prev && prev.expiries) || []).map(x => [x.id, x.state]));
+  for (const x of next.expiries || []) {
+    if (x.state === 'ok' || before.get(x.id) === x.state) continue;
+    out.push(site + ' ' + (x.state === 'expired' ? 'EXPIRED since ' + x.until : 'expires ' + x.until + ' (' + x.daysLeft + ' days)') + ': ' + x.id + ' - ' + x.what);
   }
   return out;
 }
@@ -172,7 +202,7 @@ export async function main(argv = process.argv.slice(2), env = process.env) {
     const cur = readFeed(join(o.out, feed.name + '.json'));
     const due = o.force || feed.cadence === 'run' || !cur || clock() - Date.parse(cur.updated) > DUE_MS[feed.cadence];
     if (!due) { console.log(feed.name + ': not due (' + feed.cadence + ', updated ' + cur.updated + ')'); continue; }
-    const r = await runFeed(feed, { out: o.out, cacheDir: o.cacheDir, fixtures: o.fixtures, now: o.now, ua: UAS[o.site], env });
+    const r = await runFeed(feed, { out: o.out, cacheDir: o.cacheDir, fixtures: o.fixtures, now: o.now, ua: UAS[o.site], env, force: o.force });
     log.push(r);
     console.log(feed.name + ': ' + (r.ok ? 'updated' : 'FAILED ' + r.error) + ' (' + r.ms + ' ms, ' + r.requests + ' requests)');
   }

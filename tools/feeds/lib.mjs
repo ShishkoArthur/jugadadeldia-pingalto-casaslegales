@@ -25,7 +25,7 @@ function parts(d, tz) {
 export const zoneDate = (d, tz = AR_TZ) => { const p = parts(d, tz); return p.year + '-' + p.month + '-' + p.day; };
 export const zoneTime = (d, tz = AR_TZ) => { const p = parts(d, tz); return p.hour + ':' + p.minute; };
 
-// ctx for feed.fetch(): getText/getJson(url, { ttlHours, headers, timeoutMs }); one request at a time, at least gapMs between
+// ctx for feed.fetch(): getText/getJson/getBytes(url, { ttlHours, headers, timeoutMs, method, body }); one request at a time, at least gapMs between
 // requests, 3 tries with pauses (not for 4xx), responses cached in cacheDir (a cache entry younger than ttlHours is used without a
 // request; headers are never cached or logged). fixtures: <dir>/index.json { url: file } replaces the network (tests).
 export function makeCtx(o = {}) {
@@ -34,20 +34,27 @@ export function makeCtx(o = {}) {
   const UA = o.ua || 'feeds/1.0';
   const requests = [];
   let last = 0;
-  const index = o.fixtures ? readJson(join(o.fixtures, 'index.json')) : null;
-  async function getText(url, opt = {}) {
+  const index = o.fixtures ? (existsSync(join(o.fixtures, 'index.json')) ? readJson(join(o.fixtures, 'index.json')) : {}) : null;
+  // binary: the body comes back as a Buffer (cached as base64); method/body: a form POST (the cache and fixture key then include the
+  // body: fixtures use "<url> <body>").
+  async function request(url, opt = {}, binary = false) {
+    const method = opt.method || 'GET', body = opt.body || null;
+    const key = method === 'GET' ? url : url + ' ' + (body || '');
+    const decode = c => binary ? Buffer.from(c, 'base64') : c;
     if (index) {
-      if (!index[url]) { const e = new Error('fixture missing for ' + url); e.status = 404; throw e; }
+      if (!index[key]) { const e = new Error('fixture missing for ' + key); e.status = 404; throw e; }
       requests.push({ url, from: 'fixture' });
-      const f = index[url];
+      const f = index[key];
       if (f && typeof f === 'object' && f.status) { const e = new Error('HTTP ' + f.status + ' ' + url); e.status = f.status; throw e; }
-      return { text: readFileSync(join(o.fixtures, f), 'utf8'), fetched: index._fetched || now.toISOString() };
+      const file = typeof f === 'object' ? f.file : f;
+      const raw = readFileSync(join(o.fixtures, file));
+      return { [binary ? 'buf' : 'text']: binary ? raw : raw.toString('utf8'), type: typeof f === 'object' && f.type || (file.endsWith('.pdf') ? 'application/pdf' : 'text/html'), fetched: index._fetched || now.toISOString() };
     }
-    const cf = o.cacheDir ? join(o.cacheDir, sha(url) + '.json') : null;
+    const cf = o.cacheDir ? join(o.cacheDir, sha(key) + '.json') : null;
     if (cf && opt.ttlHours && existsSync(cf)) {
       try {
         const c = readJson(cf);
-        if (c.url === url && Date.now() - Date.parse(c.fetched) < opt.ttlHours * 3600e3) { requests.push({ url, from: 'cache' }); return { text: c.body, fetched: c.fetched }; }
+        if (c.url === key && Date.now() - Date.parse(c.fetched) < opt.ttlHours * 3600e3) { requests.push({ url, from: 'cache' }); return { [binary ? 'buf' : 'text']: decode(c.body), type: c.type || '', fetched: c.fetched }; }
       } catch { /* a broken cache entry is fetched again */ }
     }
     let err;
@@ -56,13 +63,15 @@ export function makeCtx(o = {}) {
       if (wait > 0) await sleep(wait);
       last = Date.now();
       try {
-        const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: opt.accept || 'application/json', ...(opt.headers || {}) }, signal: AbortSignal.timeout(opt.timeoutMs || 30000), redirect: 'follow' });
+        const headers = { 'User-Agent': UA, Accept: opt.accept || 'application/json', ...(body ? { 'Content-Type': 'application/x-www-form-urlencoded' } : {}), ...(opt.headers || {}) };
+        const res = await fetch(url, { method, body, headers, signal: AbortSignal.timeout(opt.timeoutMs || 30000), redirect: 'follow' });
         if (res.status >= 400 && res.status < 500) { requests.push({ url, status: res.status }); const e = new Error('HTTP ' + res.status + ' ' + url); e.status = res.status; throw e; }
         if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + url);
-        const text = await res.text(), fetched = new Date().toISOString();
-        requests.push({ url, status: res.status, bytes: text.length });
-        if (cf && opt.ttlHours) { mkdirSync(o.cacheDir, { recursive: true }); writeJsonAtomic(cf, { url, fetched, body: text }); }
-        return { text, fetched };
+        const type = res.headers.get('content-type') || '';
+        const out = binary ? Buffer.from(await res.arrayBuffer()) : await res.text(), fetched = new Date().toISOString();
+        requests.push({ url, status: res.status, bytes: out.length });
+        if (cf && opt.ttlHours) { mkdirSync(o.cacheDir, { recursive: true }); writeJsonAtomic(cf, { url: key, fetched, type, body: binary ? out.toString('base64') : out }); }
+        return { [binary ? 'buf' : 'text']: out, type, fetched };
       } catch (e) { err = e; if (e.status >= 400 && e.status < 500) throw e; }
     }
     throw err;
@@ -70,9 +79,10 @@ export function makeCtx(o = {}) {
   return {
     now, requests,
     today: (tz = AR_TZ) => zoneDate(now, tz),
-    getText: (url, opt = {}) => getText(url, { accept: 'text/html,*/*', ...opt }),
+    getText: (url, opt = {}) => request(url, { accept: 'text/html,*/*', ...opt }),
+    getBytes: (url, opt = {}) => request(url, { accept: '*/*', ...opt }, true),
     async getJson(url, opt = {}) {
-      const r = await getText(url, opt);
+      const r = await request(url, opt);
       try { return { json: JSON.parse(r.text), fetched: r.fetched }; } catch { throw new Error('not JSON: ' + url); }
     },
   };

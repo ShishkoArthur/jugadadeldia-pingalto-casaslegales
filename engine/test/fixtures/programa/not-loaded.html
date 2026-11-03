@@ -1,0 +1,28 @@
+<style>
+ @font-face {
+    font-family: FontBookGotham;
+    src:url(fonts/GothamRounded-Book.otf);
+}
+.mensaje{width:50vw;padding:20px; text-align:center;border-radius:10px;background-color:red; color:#fff;margin:5vw auto;   font-family: FontBookGotham;}
+</style>
+<div class='mensaje'><p>El documento <b>202612QUI1.pdf</b> no fue cargado aún o no existe, inténtelo más tarde.</p><p>Esta ventana se cerrará automáticamente en <span id='counter'>10</span> segundo(s).</p></div><script type="text/javascript">
+
+
+
+function countdown() {
+
+    var i = document.getElementById('counter');
+
+    i.innerHTML = parseInt(i.innerHTML)-1;
+
+if (parseInt(i.innerHTML)<=0) {
+
+ window.close();
+
+}
+
+}
+
+setInterval(function(){ countdown(); },1000);
+
+</script>

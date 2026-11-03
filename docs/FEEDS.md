@@ -57,6 +57,40 @@
   `/quiniela/nacional-y-provincia/`, `/quiniela/extractos/` (архив, `?d=&j=&t=`), `/quiniela/numeros-que-mas-salen/` (тепловая карта против
   случайного розыгрыша xoshiro, chi²). Клиент — `sites/jugadadeldia/client/extractos.js`, стили — `css/extractos.css`.
 
+## jugadadeldia — программа тиражей LOTBA (`programa`, раз в сутки; к источнику — по необходимости)
+- **Зачем:** `/quiniela/horarios/` («¿Hay quiniela hoy?», обратный отсчёт, турно и юрисдикции) знает тиражи только из программы LOTBA.
+  Сохранённая при сборке копия (`data/sources/lottery`, версия «completa» за 11.2026) текстом покрывает лишь 02.11–12.11. Лента держит
+  свежую программу; страница в браузере берёт `programa.json`, если он доходит дальше сохранённой копии (иначе — копия, а за её пределами —
+  ответ по архиву тиражей, как раньше).
+- **Источник** (официальный, тот же публичный формуляр сайта, без личных данных; `robots.txt` хоста отвечает 404 = правил нет; UA ленты):
+  `POST quiniela.loteriadelaciudad.gob.ar/includes/descargaPrograma.php` `ano=YYYY&mes=MM&version=1|0&juego=QUI` — за текущий и следующий
+  месяц, обе версии. `version=1` «completa» (утверждённый документ; в 11.2026 второй лист диаграммы — картинка), `version=0` «simple»
+  (только диаграмма, весь месяц текстом). Ответ-PDF начинается с `<style>`-блока — PDF берём с `%PDF-`. Не загружен — HTML
+  «El documento … no fue cargado aún o no existe» (это не сбой).
+- **Когда спрашивает:** нет программы; новый месяц; 31 день без проверки; **последний день программы ближе 5 дней (или прошёл)** — тогда
+  каждый день. В остальные дни файл переписывается без запроса (`checked` = дата последнего запроса).
+- **Разбор и проверки** (`engine/lottery/programa.mjs`, общий со сборкой): в тексте есть «DIAGRAMA DE SORTEOS» и «<МЕСЯЦ> <ГОД>»; строка
+  тиража — номер, дата, время, коды юрисдикций 1–7 (1 Ciudad … 5 Uruguay … 7 Entre Ríos), тип (пробелы внутри слова «MAT UT INA»
+  игнорируются); незнакомая строка или тип — стоп. Даты внутри месяца, номера подряд, время и порядок турно внутри дня, Ciudad в каждом
+  тираже, перерыв без тиражей ≤ 4 дней; соседние месяцы продолжают нумерацию. Версии: «completa» главнее, «simple» дополняет только
+  когда совпадает с ней во всех общих тиражах (иначе — только completa и заметка). **Сверка с фактом:** номер тиража ↔ дата ↔ турно —
+  с архивом ленты `quiniela` (расхождение — стоп). Любой сбой — остаётся последний верный файл.
+- **Файл `programa.json`:** `from`, `to`, `checked`, `months` (версии, sha256 и размер PDF), `notes` («2026-12: not published yet»),
+  `rows` `[номер, дата, время, тип, [коды]]` (месяцы с прошлого по следующий), `expiries` — последний день программы.
+- **Сигнал:** если следующий месяц не вышел — молчим, пока программа не кончилась; на следующий день после `to` — одно сообщение
+  в Telegram (`EXPIRED since …: lotba-programa`) и строка в `problems`; страница сама переходит на ответ по архиву.
+
+## jugadadeldia — сроки источников (`fuentes`, раз в сутки, без сети)
+- Читает описания сохранённых источников (`data/sources/{lottery,rg,truco,generala,chinchon,escoba,burako}/*.json`; `sync` копирует только
+  JSON, без `_docs`) и кладёт в `fuentes.json` → `_health.json.expiries` последний день каждого: копии правил и страниц LOTBA/PBA/CAS —
+  `fetched + maxAgeDays` (183; после — сборка стоит); месячные программы, из которых цитируются цены и выплаты (`quiniela-programa`,
+  `loto-programa`), — последний день их месяца; пакет помощи (rg) — самая старая копия + 100 дней (после — строки скрываются, гейт сборки
+  падает); правила игр — самая старая копия + 183.
+- **Сигнал:** за 14 дней до срока (`soon`) и в день истечения (`expired`) — по одному сообщению на смену состояния; месячные программы —
+  только при истечении (они меняются каждый месяц). Истёкшее — в `problems`. `_health.json` публичный: там только источники этого сайта.
+- `status` печатает таблицу `== expiries`: дата, дней осталось, состояние, порог.
+- После обновления источников в репозитории: commit → `feeds-server.sh jugadadeldia sync` (иначе на сервере старые даты — ложная тревога).
+
 ## pingalto — киберспорт и Supercell
 - **`agenda` (раз в час, PandaScore free):** `/matches/{running,upcoming,past}?filter[videogame]=…` для cs-go (CS2), valorant,
   league-of-legends, dota-2, rl, fifa (EA FC) — ≈ 19 запросов из 1000/ч. Оставляем только поля для показа (команды, страна, счёт, время,
@@ -92,9 +126,14 @@
 | PandaScore 401/403 | `agenda` stale | токен/план: dashboard PandaScore; `secrets` |
 | Supercell 403 `accessDenied.invalidIp` | `clash`/`brawl` stale | IP сервера в developer.*.com должен быть 187.7.26.95 |
 | `scheduler stopped?` (health старше 2 ч) | `status` | cron-файл на месте? `docker` жив? `last-exit` 124 — таймаут |
+| `EXPIRED …: lotba-programa` | Telegram, `status` | программа следующего месяца не вышла: `run programa --force` позже; формуляр сменился — `programa.mjs` |
+| `program: unknown row layout` / `does not name` | `programa` fails | LOTBA сменил вёрстку PDF: `parseProgramText` + фикстуры `engine/test/fixtures/programa` |
+| `expires …` / `EXPIRED …` (не программа) | Telegram, `status` | обновить копию источника (половинная проверка ниже), commit → `sync` |
 
 ## Раз в полгода (агент)
 1. `bash tools/feeds-server.sh jugadadeldia status` и `… pingalto status`: health OK, нет stale, fails 0; `logs 300` — нет повторяющихся ошибок.
+   У jugadadeldia — таблица `== expiries`: всё, что истекает до следующей проверки, обновить сейчас (скачать копию, перепроверить цитаты,
+   `node tools/verify-sources.mjs` / `verify-rg.mjs`, commit, `sync`, deploy). Месячные программы (`*-programa`) — каждый месяц.
 2. `quiniela.json`: доля «2 fuentes» за неделю (норма — все, кроме Mendoza); `conflicts` пуст; `notes` без PBA-ошибок.
 3. Ключи: PandaScore токен жив, план бесплатный не сменился (условия: показ на своём сайте, подпись, без коэффициентов);
    Supercell ключи живы и привязаны к 187.7.26.95; robots.txt LOTBA/PBA не закрыли нас и ИИ; Córdoba/Tucumán — не изменилось ли (TLS).

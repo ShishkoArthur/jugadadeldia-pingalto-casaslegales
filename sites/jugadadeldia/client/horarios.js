@@ -60,6 +60,21 @@ function days() {
     order.map(w => '<div' + (per[w].w ? '' : ' class="z"') + '><span>' + DAYS[w] + '</span><b>' + per[w].w + '</b><small>de ' + per[w].t + '</small></div>').join('') + '</div>';
   out('off').innerHTML = off.length ? '<h3>De lunes a sábado sin ningún sorteo</h3><ul class="jg-chipl">' + off.map(x => '<li>' + DAYS[wd(x)].slice(0, 3) + ' ' + dm(x) + '</li>').join('') + '</ul><p class="jg-note">' + (off.length === 1 ? 'Es un día' : 'Son ' + off.length + ' días') + ' en el registro. Suelen coincidir con feriados nacionales.</p>' : '';
 }
+function useProgram(p) {
+  const ok = p && Array.isArray(p.rows) && p.rows.length && typeof p.from === 'string' && typeof p.to === 'string' && p.to > D.prog.to &&
+    p.rows.every(r => Array.isArray(r) && r.length === 5 && /^\d{4}-\d\d-\d\d$/.test(r[1]) && /^\d\d:\d\d$/.test(r[2]) && typeof r[3] === 'string' && Array.isArray(r[4]));
+  if (!ok) return false;
+  D.prog = { from: p.from, to: p.to, rows: p.rows.map(r => [r[1], r[2], r[3], r[4]]) };
+  const sp = out('span');
+  if (sp) sp.textContent = 'del ' + dm(p.from) + ' al ' + dm(p.to);
+  return true;
+}
+async function loadProgram() {
+  try {
+    const r = await fetch(D.feed + 'programa.json', { cache: 'no-cache' });
+    if (r.ok && useProgram((await r.json()).data)) { draw(); next(); }
+  } catch (e) { return; }
+}
 async function load() {
   try {
     const r = await fetch(D.feed + 'quiniela-archivo.json', { cache: 'no-cache' });
@@ -71,4 +86,4 @@ async function load() {
   }
   draw();
 }
-if (out('now')) { draw(); next(); setInterval(next, 1000); setInterval(draw, 60000); load(); }
+if (out('now')) { draw(); next(); setInterval(next, 1000); setInterval(draw, 60000); loadProgram(); load(); }

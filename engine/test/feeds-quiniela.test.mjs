@@ -2,7 +2,7 @@
 // (last good data stays on failure). Fixtures are real answers of 2026-11-02/03 (engine/test/fixtures/quiniela).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, mkdtempSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, mkdtempSync, writeFileSync, mkdirSync, existsSync, cpSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parseLotba, lotbaLatest, parsePbaText, frequency, chiSquareP, checkTwenty, ExtractError } from '../lottery/extract.mjs';
@@ -98,6 +98,7 @@ test('runner: fixtures run writes the feed and health; a failing run keeps the l
   writeFileSync(join(fixtures, 'quiniela/home.html'), '<script src="includes/resultados-data.php?sorteo=53116"></script>');
   writeFileSync(join(fixtures, 'quiniela/d16.js'), fx('lotba-53116.js'));
   writeFileSync(join(fixtures, 'quiniela/empty.js'), 'window.RESULTADOS_DATA = [];window.POZO_ULTIMO_SORTEO = 0;');
+  cpSync(new URL('./fixtures/programa/', import.meta.url), join(fixtures, 'programa'), { recursive: true });
   const quiet = console.log; console.log = () => {};
   const errs = console.error; console.error = () => {};
   try {
