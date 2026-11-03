@@ -4,6 +4,11 @@
 
 ## Три сайта
 
+## 2026-11-03 — логотипы: выбор владельца
+> «j con bolilla / p con eco / Sello en relieve»
+
+Следствия: `LOGO.pick` — jugadadeldia `j-bolilla`, pingalto `p-eco`, casaslegales `sello-relieve`; выложено 03.11, фавиконы на сайтах сверены.
+
 ## 2026-11-03 — Telegram-бот; сцены r5 приняты
 > «<токен бота> / с ботом закончил / сцены принимаю.» (в английской раскладке)
 
