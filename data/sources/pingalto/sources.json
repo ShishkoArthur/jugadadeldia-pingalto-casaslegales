@@ -1,0 +1,387 @@
+{
+ "site": "pingalto",
+ "checked": "2026-11-03",
+ "maxAgeDays": 180,
+ "docs": {
+  "valve-sdk": {
+   "url": "https://github.com/ValveSoftware/source-sdk-2013/blob/master/src/game/client/in_mouse.cpp",
+   "file": "data/sources/pingalto/_docs/valve-sdk-in-mouse.cpp.txt",
+   "type": "text",
+   "publisher": "Valve (Source SDK 2013, GitHub)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "0a260808daea045cbc35178cb348b7cca87849819453d8f5250a6b7a46956fdd",
+   "raw": "https://raw.githubusercontent.com/ValveSoftware/source-sdk-2013/master/src/game/client/in_mouse.cpp"
+  },
+  "frt": {
+   "url": "https://frameratetest.com/sensitivity-converter/",
+   "file": "data/sources/pingalto/_docs/frameratetest-converter.html",
+   "type": "html",
+   "publisher": "frameratetest.com",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "38943cfbbe9db629068aa4fa6d49ca6b0e61ecfb09e20b71345a74b73694d483"
+  },
+  "iso7810": {
+   "url": "https://en.wikipedia.org/wiki/ISO/IEC_7810",
+   "file": "data/sources/pingalto/_docs/wikipedia-iso-iec-7810.html",
+   "type": "html",
+   "publisher": "Wikipedia (CC BY-SA 4.0)",
+   "kind": "reference",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "fd278b7d5d550a083f7bfd4b497f87fedcfbbd06b5e92bb3717a1cb4fb7278dc"
+  },
+  "sube": {
+   "url": "https://www.pchardwarepro.com/cuanto-mide-la-tarjeta-sube/",
+   "file": "data/sources/pingalto/_docs/pchardwarepro-sube.html",
+   "type": "html",
+   "publisher": "pchardwarepro.com",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "f13344dcb6badb65ea6445a5ae512f1eeb4bf15de13e1098f384435ffee65d00"
+  },
+  "fiber": {
+   "url": "https://en.wikipedia.org/wiki/Optical_fiber",
+   "file": "data/sources/pingalto/_docs/wikipedia-optical-fiber.html",
+   "type": "html",
+   "publisher": "Wikipedia (CC BY-SA 4.0)",
+   "kind": "reference",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "2b51024562f6f9664b8a8532655924fbd18fad711962a0d53be7db34241768fa"
+  },
+  "refr": {
+   "url": "https://en.wikipedia.org/wiki/Refractive_index",
+   "file": "data/sources/pingalto/_docs/wikipedia-refractive-index.html",
+   "type": "html",
+   "publisher": "Wikipedia (CC BY-SA 4.0)",
+   "kind": "reference",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "6b96dcafeaad6988bf12435cad52211f4a33d7cf86e4917130821aa9383ad3a2"
+  },
+  "wd-capitals": {
+   "url": "https://query.wikidata.org/",
+   "file": "data/sources/pingalto/_docs/wikidata-capitals.json",
+   "type": "json",
+   "publisher": "Wikidata (CC0)",
+   "kind": "reference",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "452886a21999ccaaf4768f1299eb810ba8075a9ec8c2a085c6c1904b4f0d3430",
+   "query": "provinces of Argentina (P31 Q44753), capital (P36), coordinates of the capital (P625), labels es"
+  },
+  "wd-cities": {
+   "url": "https://query.wikidata.org/",
+   "file": "data/sources/pingalto/_docs/wikidata-cities.json",
+   "type": "json",
+   "publisher": "Wikidata (CC0)",
+   "kind": "reference",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "33ca86fc6530d3cf300b9b4b3fe3f8319325d29d43c633b7fcfbd2c77de36df2",
+   "query": "coordinates (P625) of Q1486 Buenos Aires, Q2887 Santiago de Chile, Q174 Sao Paulo, Q8652 Miami, labels es"
+  },
+  "valve-sdr": {
+   "url": "https://api.steampowered.com/ISteamApps/GetSDRConfig/v1/?appid=730",
+   "file": "data/sources/pingalto/_docs/valve-sdr-config.json",
+   "type": "json",
+   "publisher": "Valve (Steam Web API)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "efe2b2a4b816e65942831b33aaba3930789282f671b51b8d9dcac4a442598945"
+  },
+  "riot-latam": {
+   "url": "https://playvalorant.com/es-mx/news/announcements/estado-de-los-servidores-en-latinoamerica/",
+   "file": "data/sources/pingalto/_docs/riot-valorant-latam-servers.html",
+   "type": "html",
+   "publisher": "Riot Games (playvalorant.com)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "611680e996de84eb102bd6986ef0c20d71162db6cfabf2219fc5e442ad709e10",
+   "published": "2020-05-02"
+  },
+  "lolwiki": {
+   "url": "https://wiki.leagueoflegends.com/en-us/Server",
+   "file": "data/sources/pingalto/_docs/lolwiki-server.html",
+   "type": "html",
+   "publisher": "League of Legends Wiki (CC BY-SA)",
+   "kind": "community",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "6c928e5336246ae446ca6e78d2ddf2b149e0177102c7f1b515afc81a80039982"
+  },
+  "riot-val-faq": {
+   "url": "https://support.riotgames.com/es-mx/valorant/gameplay/valorant-competitive-mode-faq",
+   "file": "data/sources/pingalto/_docs/riot-valorant-competitive-faq.html",
+   "type": "html",
+   "publisher": "Riot Games (soporte)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "960a93094b5d3b06c47eae0ac8ca81d92090e88f77ceb5d1e723f0fa06bab766"
+  },
+  "riot-val-rr": {
+   "url": "https://support.riotgames.com/es-mx/valorant/gameplay/rank-rating-rr-for-iron-through-ascendant-ranks",
+   "file": "data/sources/pingalto/_docs/riot-valorant-rr.html",
+   "type": "html",
+   "publisher": "Riot Games (soporte)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "761ff381cccc814eb02c9539897f5a5af7bae936c4ebc407237c727bede0a6a9"
+  },
+  "riot-lol-tiers": {
+   "url": "https://support.riotgames.com/es-mx/league-of-legends/gameplay/ranked-tiers-divisions-and-queues",
+   "file": "data/sources/pingalto/_docs/riot-lol-tiers.html",
+   "type": "html",
+   "publisher": "Riot Games (soporte)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "13c3b94e28316ebc10f0b277cef4ba63681976c79a42e333e417bcf309522067"
+  },
+  "riot-lol-promo": {
+   "url": "https://support.riotgames.com/es-mx/league-of-legends/gameplay/placements-promotions-series-demotions-and-decay",
+   "file": "data/sources/pingalto/_docs/riot-lol-promotions.html",
+   "type": "html",
+   "publisher": "Riot Games (soporte)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "4b36339239bdaeee9d130d210ef1f5f52fe64cde9c16cea3207de211e29b96a5"
+  },
+  "aws-ddb": {
+   "url": "https://docs.aws.amazon.com/general/latest/gr/ddb.html",
+   "file": "data/sources/pingalto/_docs/aws-dynamodb-endpoints.html",
+   "type": "html",
+   "publisher": "Amazon Web Services (documentación)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "56014dc4b1fef3680cd5e1b2012bc710552956c33f6d03439770796a2315d678"
+  },
+  "earth": {
+   "url": "https://en.wikipedia.org/wiki/Earth_radius",
+   "file": "data/sources/pingalto/_docs/wikipedia-earth-radius.html",
+   "type": "html",
+   "publisher": "Wikipedia (CC BY-SA 4.0)",
+   "kind": "reference",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "2f125af9829ad05183846693860fc2a076eb80e47d5ad3f6daddb35e3f25fba0"
+  }
+ },
+ "facts": {
+  "yaw_source": {
+   "doc": "valve-sdk",
+   "quote": "static ConVar m_yaw( \"m_yaw\",\"0.022\", FCVAR_ARCHIVE, \"Mouse yaw factor.\" );",
+   "value": 0.022
+  },
+  "yaw_cs2": {
+   "doc": "frt",
+   "quote": "CS2 / CS:GO and other Source-engine games (Apex, TF2): yaw 0.022",
+   "value": 0.022
+  },
+  "yaw_valorant": {
+   "doc": "frt",
+   "quote": "Valorant: yaw 0.07",
+   "value": 0.07
+  },
+  "yaw_ow2": {
+   "doc": "frt",
+   "quote": "Overwatch 2: yaw 0.0066",
+   "value": 0.0066
+  },
+  "yaw_formula": {
+   "doc": "frt",
+   "quote": "Yaw is the degrees your view rotates per mouse count at sensitivity 1.",
+   "value": 1
+  },
+  "id1_mm": {
+   "doc": "iso7810",
+   "quote": "The ID-1 format specifies a size of 85.60 by 53.98 millimetres",
+   "value": 85.6,
+   "token": "85.60"
+  },
+  "id1_h_mm": {
+   "doc": "iso7810",
+   "quote": "The ID-1 format specifies a size of 85.60 by 53.98 millimetres",
+   "value": 53.98
+  },
+  "id1_use": {
+   "doc": "iso7810",
+   "quote": "Most banking cards and ID cards.",
+   "value": "ID-1",
+   "token": "cards"
+  },
+  "sube_mm": {
+   "doc": "sube",
+   "quote": "En el caso de las tarjetas SUBE, que se utilizan para el transporte público en Argentina, su tamaño es de 54 mm x 85,6 mm",
+   "value": 85.6,
+   "token": "85,6"
+  },
+  "fiber_n": {
+   "doc": "fiber",
+   "quote": "a core of doped silica with an index around 1.4475",
+   "value": 1.4475
+  },
+  "c_ms": {
+   "doc": "refr",
+   "quote": "c = 299792458 m/s",
+   "value": 299792458
+  },
+  "val_scl": {
+   "doc": "riot-latam",
+   "quote": "Instalamos el servidor de VALORANT en Santiago de Chile",
+   "value": "Santiago de Chile"
+  },
+  "val_scl_ar": {
+   "doc": "riot-latam",
+   "quote": "Este servidor brindará servicio a Argentina, Bolivia, Chile, Paraguay, Perú y Uruguay",
+   "value": "Argentina"
+  },
+  "lol_lan_mia": {
+   "doc": "riot-latam",
+   "quote": "Miami (donde se encuentran los servidores de League of Legends para LAN)",
+   "value": "Miami"
+  },
+  "lol_las_scl": {
+   "doc": "lolwiki",
+   "quote": "Latin America South LAS (LA2) June 3, 2013[3] Spanish Santiago, Chile",
+   "value": "Santiago",
+   "token": "Santiago, Chile"
+  },
+  "val_ranks": {
+   "doc": "riot-val-faq",
+   "quote": "Estos son los rangos: Hierro, Bronce, Plata, Oro, Platino, Diamante, Ascendente, Inmortal y Radiante.",
+   "value": [
+    "Hierro",
+    "Bronce",
+    "Plata",
+    "Oro",
+    "Platino",
+    "Diamante",
+    "Ascendente",
+    "Inmortal",
+    "Radiante"
+   ]
+  },
+  "val_levels": {
+   "doc": "riot-val-faq",
+   "quote": "A excepción de Radiante, cada rango tiene tres niveles.",
+   "value": 3,
+   "token": "tres"
+  },
+  "val_rr_up": {
+   "doc": "riot-val-rr",
+   "quote": "comenzarás con 50 de CR en el rango determinado y deberás llegar a 100 de CR para ascender",
+   "value": 100
+  },
+  "val_rr_start": {
+   "doc": "riot-val-rr",
+   "quote": "comenzarás con 50 de CR en el rango determinado",
+   "value": 50
+  },
+  "val_rr_after_up": {
+   "doc": "riot-val-rr",
+   "quote": "comenzarás en el siguiente rango con un mínimo de 10 de CR",
+   "value": 10
+  },
+  "val_rr_after_down": {
+   "doc": "riot-val-rr",
+   "quote": "Al descender, la cantidad más baja con la que podrás empezar en el nivel inferior es de 70 de CR.",
+   "value": 70
+  },
+  "val_protect": {
+   "doc": "riot-val-rr",
+   "quote": "mediante un ascenso o descenso, obtendrás 2 Protecciones de Rango",
+   "value": 2
+  },
+  "lol_tiers_n": {
+   "doc": "riot-lol-tiers",
+   "quote": "Los jugadores de las clasificatorias se dividen en diez niveles",
+   "value": 10,
+   "token": "diez"
+  },
+  "lol_tiers_low": {
+   "doc": "riot-lol-tiers",
+   "quote": "Hierro Hierro - Plata Bronce Hierro - Plata Plata Hierro - Oro Oro Plata - Platino Platino Oro - Esmeralda Esmeralda Platino - Diamante",
+   "value": [
+    "Hierro",
+    "Bronce",
+    "Plata",
+    "Oro",
+    "Platino",
+    "Esmeralda",
+    "Diamante"
+   ]
+  },
+  "lol_tiers_apex": {
+   "doc": "riot-lol-tiers",
+   "quote": "Maestro, Gran Maestro y Retador Si llegaste a Maestro",
+   "value": [
+    "Maestro",
+    "Gran Maestro",
+    "Retador"
+   ]
+  },
+  "lol_divs": {
+   "doc": "riot-lol-tiers",
+   "quote": "Los niveles de Hierro a Diamante tienen cuatro divisiones cada uno.",
+   "value": 4,
+   "token": "cuatro"
+  },
+  "lol_master_top": {
+   "doc": "riot-lol-tiers",
+   "quote": "Formas parte del 0.2% de los mejores jugadores del mundo",
+   "value": 0.2
+  },
+  "lol_lp_up": {
+   "doc": "riot-lol-promo",
+   "quote": "Al llegar a 100 PL dentro de una división, subirás a la siguiente de tu nivel actual.",
+   "value": 100
+  },
+  "aws_sp": {
+   "doc": "aws-ddb",
+   "quote": "South America (São Paulo) sa-east-1 dynamodb.sa-east-1.amazonaws.com",
+   "value": "dynamodb.sa-east-1.amazonaws.com"
+  },
+  "aws_va": {
+   "doc": "aws-ddb",
+   "quote": "US East (N. Virginia) us-east-1 dynamodb.us-east-1.amazonaws.com",
+   "value": "dynamodb.us-east-1.amazonaws.com"
+  },
+  "earth_r_km": {
+   "doc": "earth",
+   "quote": "the arithmetic mean radius is published by IUGG and NGA as 6,371.0087714 km",
+   "value": 6371.0087714,
+   "token": "6,371.0087714"
+  },
+  "val_rr_down_rule": {
+   "doc": "riot-val-rr",
+   "quote": "Para descender, deberás quedar en 0 de CR y perder una vez más.",
+   "value": 0
+  },
+  "lol_demote_div": {
+   "doc": "riot-lol-promo",
+   "quote": "si tienes 5 PL en Plata III y pierdes 20 PL en una partida, descenderás a Plata IV con 85 PL",
+   "value": 85
+  },
+  "lol_demote_tier": {
+   "doc": "riot-lol-promo",
+   "quote": "al descender un nivel, pasarás a 25, 50 o 75 PL según cuán alto determinemos que sea realmente tu nivel de habilidad",
+   "value": [
+    25,
+    50,
+    75
+   ]
+  }
+ }
+}

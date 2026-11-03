@@ -2,10 +2,10 @@
  {
   "section": "Inicio",
   "url": "/",
-  "title": "pingalto: herramientas de juegos y esports en hora argentina",
-  "titleLen": 60,
-  "h1": "Herramientas para tus juegos y esports en hora argentina",
-  "description": "Herramientas para tus juegos y esports pensadas desde Argentina: torneos en hora argentina, ping a los servidores, rankings y equipos argentinos.",
+  "title": "pingalto: herramientas para tus juegos, desde Argentina",
+  "titleLen": 55,
+  "h1": "¿Ping alto? Jugá con los números a favor",
+  "description": "Herramientas para gamers de Argentina: ping desde tu provincia, sensibilidad entre juegos, DPI del mouse y rangos de Valorant y LoL. Sin apuestas.",
   "keys": "бренд · esports 1.3k/18 (косвенно)",
   "kind": "hub",
   "wave": "P1",
@@ -13,7 +13,8 @@
   "ar": "Всё время — hora argentina (UTC−3, без летнего); фирменный блок ping из провинций до серверов в Santiago, São Paulo, Miami; аргентинские команды и игроки подсвечены в рейтингах; es-AR, «vos»",
   "data": "все ленты сайта",
   "auto": "собирается из лент при каждой пересборке",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Servicio",
@@ -21,7 +22,7 @@
   "title": "Quiénes hacemos pingalto",
   "titleLen": 24,
   "h1": "El equipo detrás de pingalto",
-  "description": "Quiénes hacemos pingalto: un sitio de herramientas para gamers de Argentina, sin apuestas ni tienda. Quién escribe y quién es Alt, la guía.",
+  "description": "Quiénes hacemos pingalto: una redacción chica que arma herramientas para gamers de Argentina, sin apuestas ni tienda. Qué hacemos y qué no.",
   "keys": "—",
   "kind": "service",
   "wave": "P1",
@@ -29,7 +30,8 @@
   "ar": "Сайт для игроков из Аргентины: es-AR, «vos», hora argentina; автор — отдельное имя (вопрос владельцу), Alt — гид, не автор",
   "data": "—",
   "auto": "статика",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Servicio",
@@ -37,7 +39,7 @@
   "title": "Cómo calculamos cada número de pingalto",
   "titleLen": 39,
   "h1": "Método: de dónde salen los números",
-  "description": "Cómo calculamos cada número: de dónde salen los datos, cómo pasamos todo a hora argentina y qué significa la probabilidad de una serie, sin apuestas.",
+  "description": "Cómo calculamos cada número de pingalto: de dónde salen los datos, cómo guardamos cada fuente con fecha y qué prueba el código antes de publicar.",
   "keys": "—",
   "kind": "service",
   "wave": "P1",
@@ -45,7 +47,8 @@
   "ar": "Время всегда в hora argentina (UTC−3), числа в формате es-AR (1.234,5), ping — от аргентинских городов; «вероятность серии» без ставок",
   "data": "—",
   "auto": "статика",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Servicio",
@@ -53,7 +56,7 @@
   "title": "Fuentes de datos y licencias de pingalto",
   "titleLen": 40,
   "h1": "Fuentes de datos y licencias",
-  "description": "Fuentes de datos de pingalto con licencia y fecha: rankings de las Américas, ligas de Latinoamérica y de Argentina, con la hora de cada actualización.",
+  "description": "Todas las fuentes de pingalto con editor, tipo, licencia y fecha de copia: Riot, Valve, Amazon, Wikipedia, Wikidata y referencias de la comunidad.",
   "keys": "—",
   "kind": "service",
   "wave": "P1",
@@ -61,15 +64,16 @@
   "ar": "Источники с региональным срезом: VRS Américas, лиги LATAM в Liquipedia, рейтинги Supercell по стране AR, дата-центры Valve в Sudamérica; время обновления — hora argentina",
   "data": "метаданные всех лент",
   "auto": "отметки свежести — из лент автоматически",
-  "notes": "CC-BY-SA требует атрибуции на страницах с данными Liquipedia"
+  "notes": "CC-BY-SA требует атрибуции на страницах с данными Liquipedia",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Servicio",
   "url": "/contacto",
   "title": "Contacto: errores, ideas y pedidos de herramientas",
   "titleLen": 50,
-  "h1": "Escribinos",
-  "description": "¿Viste un error en una herramienta o querés una nueva? Escribinos con la página, lo que cargaste y lo que esperabas. Respondemos en hora argentina.",
+  "h1": "Contacto",
+  "description": "Cómo avisarnos de un error en pingalto: qué datos sirven para encontrarlo y cómo revisar vos mismo cualquier número con su fuente y su fecha.",
   "keys": "—",
   "kind": "service",
   "wave": "P1",
@@ -77,7 +81,8 @@
   "ar": "Ответ в рабочие часы по hora argentina; в шаблоне ошибки теста ping — только провинция (без адреса и IP)",
   "data": "—",
   "auto": "статика",
-  "notes": "почта — только рабочая (как на blackjack.cab: неработающий адрес не публикуем)"
+  "notes": "почта — только рабочая (как на blackjack.cab: неработающий адрес не публикуем)",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Servicio",
@@ -85,7 +90,7 @@
   "title": "Aviso legal, privacidad y marcas de terceros",
   "titleLen": 44,
   "h1": "Aviso legal y privacidad",
-  "description": "Aviso legal y privacidad de pingalto: qué guardamos en tu navegador según la ley argentina de datos personales y por qué no hay apuestas ni compras.",
+  "description": "Aviso legal y privacidad de pingalto: qué guarda tu navegador, a qué servidores se conecta el test de ping y por qué no hay apuestas ni compras.",
   "keys": "—",
   "kind": "service",
   "wave": "P1",
@@ -93,7 +98,8 @@
   "ar": "Ley 25.326 de Protección de Datos Personales (Argentina) — что храним в браузере; отказ от аффилиации с издателями; без ставок, покупок и аккаунтов (аудитория молодая)",
   "data": "—",
   "auto": "статика",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Kit",
@@ -117,7 +123,7 @@
   "title": "Convertidor de sensibilidad entre juegos y cm/360",
   "titleLen": 49,
   "h1": "Convertidor de sensibilidad entre juegos",
-  "description": "Pasá tu sensibilidad de CS2 a Valorant, Fortnite y otros con cm/360 y eDPI, y mirá la de jugadores argentinos cuando ellos mismos la publicaron.",
+  "description": "Pasá tu sensibilidad de CS2 a Valorant, Overwatch 2 o Apex con el mismo giro de mano: cm/360, eDPI y la fuente de cada número.",
   "keys": "sensibilidad 2.2k/9 · convertidor de sensibilidad 600/26 · generador de sensibilidad 600/0 · conversor de sensibilidad 300/37",
   "kind": "tool",
   "wave": "P1",
@@ -125,15 +131,16 @@
   "ar": "Пресеты аргентинских про-игроков CS2/Valorant — только из их публикаций с датой (иначе блок скрыт); всё в сантиметрах; es-AR",
   "data": "константы поворота (yaw) из конфигов игр — проверить каждую, считает движок",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "«sensibilidad dental / en los dientes» — чужой интент, не цель"
+  "notes": "«sensibilidad dental / en los dientes» — чужой интент, не цель",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Kit",
   "url": "/kit/dpi",
   "title": "DPI del mouse: medí el tuyo con la tarjeta SUBE",
   "titleLen": 47,
-  "h1": "Analizador de DPI del mouse, con la SUBE como regla",
-  "description": "Medí el DPI real de tu mouse en el navegador con la tarjeta SUBE como regla: deslizás, comparás con el DPI de fábrica y sacás el eDPI de tu juego.",
+  "h1": "Medí el DPI real de tu mouse con la SUBE",
+  "description": "Medí el DPI real de tu mouse en el navegador usando la SUBE o una tarjeta bancaria como regla, compará con el de fábrica y calculá tu eDPI.",
   "keys": "what is a dpi setting 3.1k/1 · dpi 2k/9 · dpi analyzer 600/34 · dpi mouse 400/0 · que es dpi 300/0",
   "kind": "tool",
   "wave": "P1",
@@ -141,7 +148,8 @@
   "ar": "Эталон — карта SUBE или DNI, которая есть у каждого в Аргентине (формат ID-1 — проверить); номер карты не вводится и никуда не отправляется",
   "data": "только браузер (pointer events), данных не нужно",
   "auto": "статика",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Kit",
@@ -149,7 +157,7 @@
   "title": "Test de ping desde Argentina a servidores de juegos",
   "titleLen": 51,
   "h1": "Ping desde tu provincia a Santiago, São Paulo y Miami",
-  "description": "Medí el ping desde tu casa en Argentina a Santiago, São Paulo y Miami y mirá qué juego usa cada servidor. Es una guía: no reemplaza el ping del juego.",
+  "description": "El ping mínimo que permite la física desde tu provincia hasta Santiago, São Paulo y Miami, más una medición real desde tu conexión.",
   "keys": "— (не замеряли; в следующую выгрузку Ahrefs: «test de ping», «ping argentina»)",
   "kind": "tool",
   "wave": "P2",
@@ -157,7 +165,8 @@
   "ar": "Ядро AR-угла сайта: задержка из Аргентины до Santiago, São Paulo, Miami — где стоят серверы LATAM у Riot, Valve, Epic (проверить по официальным источникам); имя pingalto",
   "data": "только браузер + список точек: публичные эндпоинты облаков; дата-центры Valve — api.steampowered.com ISteamApps/GetSDRConfig (appid 730, 570) — проверить; расположение серверов игр — официальные страницы (цитаты)",
   "auto": "список точек и серверов — ежемесячная автопроверка источников; замер идёт в браузере посетителя, ничего не сохраняем и не отправляем",
-  "notes": "Переосмыслена из /kit/fps (калькулятор FPS без аргентинской привязки). Фирменная страница по имени сайта — вопрос владельцу: поднять в P1. Город, IP и результаты посетителя не сохраняем."
+  "notes": "Переосмыслена из /kit/fps (калькулятор FPS без аргентинской привязки). Фирменная страница по имени сайта — вопрос владельцу: поднять в P1. Город, IP и результаты посетителя не сохраняем.",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Kit",
@@ -194,10 +203,10 @@
  {
   "section": "Valorant",
   "url": "/valorant/rangos",
-  "title": "Rangos de Valorant en LATAM: orden, RR y partidas para subir",
-  "titleLen": 60,
-  "h1": "Rangos de Valorant en LATAM y calculadora de RR",
-  "description": "Los rangos de Valorant en orden, de Hierro a Radiante, y cuántas partidas te faltan para subir según tu RR. Con el ladder de la región LATAM.",
+  "title": "Rangos de Valorant en orden y calculadora de RR",
+  "titleLen": 47,
+  "h1": "Rangos de Valorant y calculadora de RR",
+  "description": "Los rangos de Valorant de Hierro a Radiante, cómo se sube con la CR (el RR) según Riot y cuántas partidas te faltan para tu objetivo con tus números.",
   "keys": "rangos valorant 1.4k/0 · rangos de valorant 700/0 · valorant rangos 200/0",
   "kind": "tool",
   "wave": "P1",
@@ -205,7 +214,8 @@
   "ar": "Регион LATAM (там играет Аргентина): публичный лидерборд Riot по региону — места Radiante/Inmortal (условия проверить); доли по рангам Riot не публикует — не печатаем; названия es-419",
   "data": "valorant-api.com competitivetiers (иконки, названия); правила RR — патч-ноты Riot (цитата)",
   "auto": "иконки — лента раз в сутки; правила — статика, перепроверка раз в полгода",
-  "notes": "долю игроков по рангам Riot не публикует — чужие проценты без источника не печатать"
+  "notes": "долю игроков по рангам Riot не публикует — чужие проценты без источника не печатать",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Valorant",
@@ -253,7 +263,7 @@
   "ar": "Callouts es-419 рядом с английскими (как говорят в LATAM-лобби); Ascent в матчах аргентинских команд (Liquipedia — проверить)",
   "data": "valorant-api.com /maps (callouts + координаты)",
   "auto": "лента раз в сутки (правки карты приходят сами)",
-  "notes": ""
+  "notes": "03.11: skipped in wave 1 - Riot publishes no callout list; community callouts are not a citable source."
  },
  {
   "section": "Valorant",
@@ -269,7 +279,7 @@
   "ar": "Callouts es-419 рядом с английскими; ротации — с примерами из матчей аргентинских команд (Liquipedia — проверить)",
   "data": "valorant-api.com /maps",
   "auto": "лента раз в сутки",
-  "notes": "чтобы не шаблон: у каждой карты своя дополнительная механика и свой текст"
+  "notes": "чтобы не шаблон: у каждой карты своя дополнительная механика и свой текст 03.11: skipped in wave 1 - Riot publishes no callout list; community callouts are not a citable source."
  },
  {
   "section": "Valorant",
@@ -381,7 +391,7 @@
   "ar": "Региональный лидерборд Premier «Sudamérica» (у Valve есть региональные таблицы — источник данных проверить); звания на испанском",
   "data": "Valve (блог, патч-ноты — цитаты)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": ""
+  "notes": "03.11: skipped in wave 1 - Valve publishes only the colour boundary every 5000 CS Rating points (release notes 10/10/2023); colour names, top band and any distribution have no official source."
  },
  {
   "section": "CS2",
@@ -498,10 +508,10 @@
  {
   "section": "League of Legends",
   "url": "/lol/rangos",
-  "title": "Rangos de LoL en LAS: divisiones, LP y calculadora",
+  "title": "Rangos de LoL en LAS: divisiones, PL y calculadora",
   "titleLen": 50,
   "h1": "Rangos de League of Legends en LAS",
-  "description": "Rangos de LoL en LAS de Hierro a Retador, cuántos LP da cada división y una calculadora para ver si llegás a tu objetivo en las partidas que te quedan.",
+  "description": "Rangos de League of Legends en LAS, de Hierro a Retador: divisiones, cuántos PL pide cada una según Riot y una calculadora de partidas.",
   "keys": "rangos lol 1.8k/0 · rangos de lol 700/0 · rangos del lol 400/0 · rangos en lol 200/0",
   "kind": "tool",
   "wave": "P1",
@@ -509,7 +519,8 @@
   "ar": "Сервер LAS; названия рангов es-419 (Hierro → Retador); доли игроков по рангам Riot не публикует — не печатаем",
   "data": "иконки — Data Dragon/CommunityDragon (условия — проверить); правила — Riot Support (цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "отличие от /valorant/rangos — другой вопрос («успею ли за N игр») и другой визуал"
+  "notes": "отличие от /valorant/rangos — другой вопрос («успею ли за N игр») и другой визуал",
+  "status": "live 2026-11-03"
  },
  {
   "section": "League of Legends",
@@ -770,10 +781,10 @@
  {
   "section": "Free Fire",
   "url": "/ff/sensibilidad",
-  "title": "Sensibilidad para Free Fire: generador según tu celular",
-  "titleLen": 55,
-  "h1": "Generador de sensibilidad para Free Fire",
-  "description": "Generá una sensibilidad inicial para Free Fire según el tamaño y el DPI de tu celular, con los modelos más usados en Argentina, y pasala a otro teléfono.",
+  "title": "Sensibilidad para Free Fire: calibrá la tuya paso a paso",
+  "titleLen": 56,
+  "h1": "Sensibilidad para Free Fire, calibrada en tu celular",
+  "description": "Encontrá tu sensibilidad de Free Fire en pocos intentos: probás en el juego, contestás si te pasaste o te quedaste corto y te damos el próximo valor.",
   "keys": "sensibilidad para free fire 6.3k/0 · generador de sensibilidad para free fire 800/0 · sensibilidad de free fire 500/0 · la mejor sensibilidad para free fire 400/0 · calibrador de sensibilidad 250/– · xenkzone sensibilidad 3.8k/0 (бренд, не цель)",
   "kind": "tool",
   "wave": "P1",
@@ -781,7 +792,8 @@
   "ar": "Пресеты для моделей телефонов, популярных в Аргентине (доли — StatCounter по AR, с датой; проверить)",
   "data": "диапазоны ползунков текущей версии (проверить), формула переноса — своя, объяснена",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "честно: «идеальной чувствительности нет»; без «тиров в голову», файлов и макросов"
+  "notes": "честно: «идеальной чувствительности нет»; без «тиров в голову», файлов и макросов",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Free Fire",

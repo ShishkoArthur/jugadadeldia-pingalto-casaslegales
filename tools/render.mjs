@@ -99,7 +99,7 @@ async function build(id) {
     const { minify } = await import('terser');
     const SRC = {};
     for (const f of readdirSync(join(dir, 'client')).filter(f => f.endsWith('.js'))) SRC[f] = join(dir, 'client', f);
-    for (const f of readdirSync(join(ROOT, 'engine')).filter(f => f.endsWith('.mjs'))) { if (SRC[f]) throw new Error('module name used twice: ' + f); SRC[f] = join(ROOT, 'engine', f); }
+    for (const sub of ['', ...(SITE.engineDirs || [])]) for (const f of readdirSync(join(ROOT, 'engine', sub)).filter(f => f.endsWith('.mjs'))) { if (SRC[f]) throw new Error('module name used twice: ' + f); SRC[f] = join(ROOT, 'engine', sub, f); }
     const done = {};
     const one = async (f, stack = []) => {
       if (done[f]) return done[f];

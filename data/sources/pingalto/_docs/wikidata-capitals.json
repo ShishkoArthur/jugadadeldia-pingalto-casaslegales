@@ -1,0 +1,560 @@
+{
+  "head" : {
+    "vars" : [ "prov", "provLabel", "cap", "capLabel", "coord" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44754"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44059"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-57.95 -34.933333333)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Buenos Aires"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "La Plata"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44756"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44162"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-65.779166666 -28.468611111)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Catamarca"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "San Fernando del Valle de Catamarca"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44757"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44206"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-58.986666666 -27.451388888)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Chaco"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Resistencia"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45007"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44208"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-65.1 -43.3)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Chubut"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Rawson"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44758"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44211"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-58.816666666 -27.483333333)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Corrientes"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Corrientes"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44759"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44210"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-64.183333333 -31.416666666)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Córdoba"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Córdoba"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44762"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44213"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-60.529722222 -31.733055555)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Entre Ríos"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Paraná"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44761"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44214"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-58.175833333 -26.184722222)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Formosa"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Formosa"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44764"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44217"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-65.299444444 -24.185555555)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Jujuy"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "San Salvador de Jujuy"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44795"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44215"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-64.290555555 -36.620277777)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de La Pampa"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Santa Rosa"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44796"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44236"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-66.855833333 -29.413055555)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de La Rioja"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "La Rioja"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44797"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44237"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-68.844444444 -32.889722222)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Mendoza"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Mendoza"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44798"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44238"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-55.896944444 -27.366666666)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Misiones"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Posadas"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44800"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44239"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-68.059194444 -38.951833333)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Neuquén"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Neuquén"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44802"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44240"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-63.0 -40.8)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Río Negro"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Viedma"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44803"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36307"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-65.410555555 -24.788333333)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Salta"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Salta"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44805"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44241"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-68.536388888 -31.5375)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de San Juan"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "San Juan"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44818"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44243"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-66.339166666 -33.299444444)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de San Luis"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "San Luis"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44821"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44242"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-69.216111111 -51.623333333)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Santa Cruz"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Río Gallegos"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44823"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44244"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-60.7 -31.633333333)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Santa Fe"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Santa Fe"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44827"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44253"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-64.266944444 -27.784444444)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Santiago del Estero"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Ciudad de Santiago del Estero"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44832"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44254"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-68.308055555 -54.807222222)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Ushuaia"
+      }
+    }, {
+      "prov" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44829"
+      },
+      "cap" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44255"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(-65.216666666 -26.816666666)"
+      },
+      "provLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "Provincia de Tucumán"
+      },
+      "capLabel" : {
+        "xml:lang" : "es",
+        "type" : "literal",
+        "value" : "San Miguel de Tucumán"
+      }
+    } ]
+  }
+}

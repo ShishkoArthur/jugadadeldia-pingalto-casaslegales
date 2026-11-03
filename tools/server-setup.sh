@@ -23,7 +23,12 @@ SSHK=(-i "${DEPLOY_KEY/#\~/$HOME}" -o IdentitiesOnly=yes)
 block() {
   local name="$1" domain="$1.com" assets="/assets/*"
   # each site keeps its own asset folder (casaslegales: /_r/); hashed names there are cached for a year, everything else is revalidated
-  case "$name" in casaslegales) assets="/_r/*" ;; esac
+  # pingalto: own asset folder /s/ and a 301 from any path ending in "/" (except the root) to the same path without it
+  local extra=""
+  case "$name" in
+    casaslegales) assets="/_r/*" ;;
+    pingalto) assets="/s/*"; extra=$'\t@slash path_regexp slash ^(.+)/$\n\tredir @slash {re.slash.1} permanent\n' ;;
+  esac
   cat <<EOF
 # >>> $name - $domain (repo ShishkoArthur/jugadadeldia-pingalto-casaslegales). Does not touch other blocks.
 $domain {
@@ -34,7 +39,7 @@ $domain {
 	@fresh not path $assets
 	header @fresh Cache-Control "no-cache"
 	header X-Content-Type-Options nosniff
-	try_files {path} {path}.html {path}/index.html
+${extra}	try_files {path} {path}.html {path}/index.html
 	file_server
 	handle_errors {
 		rewrite * /404.html

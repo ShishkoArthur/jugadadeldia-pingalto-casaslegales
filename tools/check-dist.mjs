@@ -118,7 +118,8 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
       const ogUrl = (H.match(/<meta property="og:url" content="([^"]+)"/) || [])[1];
       if (!/<meta property="og:title" content="[^"]+"/.test(H) || !/<meta property="og:description" content="[^"]+"/.test(H) || ogUrl !== ORIGIN + p.path) bad('og', f, 'og:title/og:description/og:url missing or wrong');
     }
-    // help and age
+    // help and age (only on gambling sites; a site without them sets gate.gambling = false in its config)
+    if (SITE.gate.gambling !== false) {
     if (!SITE.gate.age.test(H)) bad('age', f, 'no 18+ mark');
     if (!/href="tel:\d+"/.test(H)) bad('tel', f, 'no tel: link with digits (help line)');
     const helpMarked = SITE.gate.helpMark.test(H);
@@ -128,6 +129,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
     if (helpMarked) {
       if (SITE.gate.siteMenu.test(H)) bad('helpnav', f, 'site menu on a help page');
       for (const [, u] of H.matchAll(/href="(\/[^"#?]*)/g)) { const k = kindOf(u); if (k && S.BETTING_KINDS.includes(k)) { bad('helplink', f, 'help page links to a ' + k + ' page ' + u); break; } }
+    }
     }
     // weight: HTML + CSS + JS loaded with the page; fonts apart
     {
@@ -196,7 +198,9 @@ async function selftest(id) {
   for (const x of clean) console.log('   ' + x.code + ' ' + x.file + ' ' + x.msg);
   if (clean.length) fail++;
   const F = p => S.SITE.fileOf(p);
-  const A = F('/metodologia'), HOME = F('/'), HELP = F(S.PAGES.find(p => p.help).path), PROV = S.PAGES.find(p => p.kind === 'province').path;
+  const RG = S.SITE.gate.gambling !== false;
+  const A_PATH = S.SITE.gate.samplePage || '/metodologia';
+  const A = F(A_PATH), HOME = F('/'), HELP = RG ? F(S.PAGES.find(p => p.help).path) : null, PROV = RG ? S.PAGES.find(p => p.kind === 'province').path : null;
   const rep = (a, b) => s => { if (!s.includes(a)) throw new Error('selftest: missing "' + a.slice(0, 40) + '"'); return s.replace(a, b); };
   const body = x => rep('</main>', x + '</main>');
   const cyr = ch(0x43f, 0x440, 0x438);
@@ -241,7 +245,7 @@ async function selftest(id) {
     ['helplink', HELP, body('<a href="' + PROV + '">x</a>')],
     ['helpnav', HELP, body('<nav class="rl-nav" id="x"></nav>')],
     ['sitemap', 'sitemap.xml', rep('</urlset>', '<url><loc>https://' + S.SITE.domain + '/no-existe</loc></url></urlset>')],
-    ['sitemap', 'sitemap.xml', s => s.replace(/<url><loc>[^<]*\/metodologia<\/loc>[^\n]*\n?/, '')],
+    ['sitemap', 'sitemap.xml', s => s.replace(new RegExp('<url><loc>[^<]*' + A_PATH + '</loc>[^\\n]*\\n?'), '')],
     ['robots', 'robots.txt', () => 'User-agent: *\nDisallow: /\n'],
     ['comments', A, body('<!-- nota -->')],
     ['comments', A, body('<script>/* nota */</script>')],
@@ -258,7 +262,8 @@ async function selftest(id) {
     if (!hit) fail++;
     rmSync(tmp, { recursive: true, force: true });
   };
-  for (const [name, file, mut] of cases) await run(name, tmp => { const f = join(tmp, file); writeFileSync(f, mut(readFileSync(f, 'utf8'))); });
+  const RG_ONLY = new Set(['rgblock', 'tel', 'age', 'helpmark', 'helplink', 'helpnav']);
+  for (const [name, file, mut] of cases.filter(c => RG || !RG_ONLY.has(c[0]))) await run(name, tmp => { const f = join(tmp, file); writeFileSync(f, mut(readFileSync(f, 'utf8'))); });
   await run('comments', asset(/\.css$/, s => '/* x */' + s));
   await run('comments', asset(/\.js$/, s => '// x\n' + s));
   await run('cyrillic', asset(/\.js$/, s => s + 'var z="' + cyr + '";'));
