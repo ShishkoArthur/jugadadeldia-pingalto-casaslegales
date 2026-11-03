@@ -57,6 +57,10 @@ export const trucoHub = {
         ['/truco/valores-de-las-cartas/', 'Valores de las cartas', 'Qué carta mata a cuál', '#e0447a', ICONS.cards],
         ['/truco/senas/', 'Señas', 'Las nueve señas, con dibujo y entrenador', '#8b5cf6', ICONS.eye],
         ['/truco/envido/', 'Envido', 'Contá tus tantos y mirá qué chance tienen', '#2f7cf6', ICONS.calc],
+        ['/truco/reglas/', 'Reglas', 'Mano por mano, y quién gana con pardas', '#e8930c', ICONS.book],
+        ['/truco/puntos/', 'Cuánto vale cada canto', 'Envido, truco y falta, querido o no', '#16b38a', ICONS.calc],
+        ['/truco/quiero-o-no-quiero/', '¿Quiero o no quiero?', 'Entrenador en series de diez', '#8b5cf6', ICONS.hand],
+        ['/truco/flor/', 'La flor', 'Contraflor y probabilidad exacta', '#e0447a', ICONS.cards],
       ]) + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Reglas en un minuto</span><h2>Cómo se juega una mano</h2><ol><li>Cada uno recibe tres cartas. Se juegan hasta tres bazas: gana la mano quien gana dos.</li><li>Antes de tirar tu primera carta podés cantar <b>envido</b>: gana quien tenga más tantos.</li><li>En cualquier momento podés cantar <b>truco</b>: si te dicen «quiero», la mano vale ' + Object.keys(TRUCO_CALLS)[0] + ' puntos; si no, ganás uno.</li><li>El partido es a ' + R.target + ' puntos: los primeros ' + R.target / 2 + ' son las malas y los otros las buenas.</li></ol>' +
       cite(h, ['truco.hierarchy-bravas', 'truco.envido-before-card', 'truco.truco-no-querido', 'truco.target-30']) + '</section></div>';

@@ -14,7 +14,7 @@ const textOf = d => {
   return visibleText(fs.readFileSync(f, 'utf8'));
 };
 
-for (const game of ['generala', 'chinchon', 'escoba']) {
+for (const game of ['generala', 'chinchon', 'escoba', 'burako']) {
   const file = path.join(ROOT, 'data/sources', game, 'rules.json');
   test(game + ' rule sources: saved copies match their sha256, every quote is verbatim', { skip: !fs.existsSync(file) }, () => {
     const src = JSON.parse(fs.readFileSync(file, 'utf8'));

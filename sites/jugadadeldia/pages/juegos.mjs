@@ -121,6 +121,13 @@ export const juegosCartas = {
         ['/chinchon/jugar/', 'Chinchón', 'Robá, descartá y cortá', '#2f7cf6', ICONS.cards],
         ['/escoba-de-15/jugar/', 'Escoba de 15', 'Sumá 15 y barré la mesa', '#16b38a', ICONS.cards],
         ['/truco/anotador/', 'Anotador de truco', 'Con fósforos, malas y buenas', '#8b5cf6', ICONS.pencil],
+        ['/chinchon/', '¿Puedo cortar?', 'Cargá tus siete cartas de chinchón', '#16b38a', ICONS.hand],
+        ['/chinchon/anotador/', 'Anotador de chinchón', 'Hasta ' + LIMIT + ', con reenganche', '#e8930c', ICONS.pencil],
+        ['/escoba-de-15/', 'Buscador de escobas', 'Todas las sumas de 15 de la mesa', '#2f7cf6', ICONS.eye],
+      ]) + '</section><section class="jg-c w3"><span class="jg-sm">Con fichas y bolillas</span><h2>Burako y bolillero</h2>' + tiles(h, [
+        ['/burako/', 'Burako', 'Reglas y calculadora de la mano', '#8b5cf6', ICONS.calc],
+        ['/burako/anotador/', 'Anotador de burako', 'Mano por mano hasta la meta', '#e0447a', ICONS.pencil],
+        ['/bolillero/', 'Bolillero', 'Bingo en casa, con cartones para imprimir', '#ff5a3c', ICONS.balls],
       ]) + '</section><section class="jg-c w3"><span class="jg-sm">Con dados</span><h2>Dados</h2>' + tiles(h, [
         ['/generala/jugar/', 'Generala contra la compu', 'La compu difícil juega perfecto', '#e8930c', ICONS.dice],
         ['/generala/', 'Anotador de generala', 'De 2 a 8 jugadores, con ayuda', '#e0447a', ICONS.pencil],

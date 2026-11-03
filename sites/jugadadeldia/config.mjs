@@ -43,5 +43,5 @@ export const SITE = {
     offScheme: '/quienes-somos',
     decimalComma: true,
   },
-  deployCheck: ['/', '/quiniela/', '/quiniela/nacional/', '/quiniela/numeros-que-mas-salen/', '/data/feeds/quiniela.json', '/quiniela/cuanto-paga/', '/quiniela/redoblona/', '/quini-6/', '/truco/', '/truco/jugar/', '/truco/anotador/', '/generala/jugar/', '/chinchon/jugar/', '/escoba-de-15/jugar/', '/dados/', '/juego-responsable/', '/juego-responsable/caba/', '/quien-escribe/', '/de-donde-salen-los-datos/', '/truco', '/no-existe/'],
+  deployCheck: ['/', '/quiniela/', '/quiniela/horarios/', '/quiniela/simulador/', '/quini-6/controlar/', '/truco/reglas/', '/burako/', '/bolillero/', '/quiniela/nacional/', '/quiniela/numeros-que-mas-salen/', '/data/feeds/quiniela.json', '/quiniela/cuanto-paga/', '/quiniela/redoblona/', '/quini-6/', '/truco/', '/truco/jugar/', '/truco/anotador/', '/generala/jugar/', '/chinchon/jugar/', '/escoba-de-15/jugar/', '/dados/', '/juego-responsable/', '/juego-responsable/caba/', '/quien-escribe/', '/de-donde-salen-los-datos/', '/truco', '/no-existe/'],
 };

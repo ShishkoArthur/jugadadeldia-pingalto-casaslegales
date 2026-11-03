@@ -36,7 +36,7 @@ export function loadSources(today) {
     for (const x of f.facts || []) facts.set(x.id, { quote: x.quote, doc: f.id + ':' + x.doc, value: x.value });
   }
   const games = {};
-  for (const g of ['truco', 'generala', 'chinchon', 'escoba']) {
+  for (const g of ['truco', 'generala', 'chinchon', 'escoba', 'burako']) {
     const j = JSON.parse(readFileSync(join(ROOT, 'data/sources', g, 'rules.json'), 'utf8'));
     for (const [slug, d] of Object.entries(j.docs)) {
       const sha = createHash('sha256').update(readFileSync(join(ROOT, d.file))).digest('hex');
@@ -44,7 +44,7 @@ export function loadSources(today) {
       const age = daysBetween(d.fetched, today);
       if (age < 0 || age > GAME_MAX_AGE) throw new Error('sources: ' + g + ' document ' + slug + ' is ' + age + ' days old (max ' + GAME_MAX_AGE + ')');
       const key = g + ':' + slug;
-      docs.push({ key, group: { truco: 'Truco', generala: 'Generala', chinchon: 'Chinchón', escoba: 'Escoba de 15' }[g], title: d.title, url: d.url, fetched: d.fetched, maxAge: GAME_MAX_AGE,
+      docs.push({ key, group: { truco: 'Truco', generala: 'Generala', chinchon: 'Chinchón', escoba: 'Escoba de 15', burako: 'Burako' }[g], title: d.title, url: d.url, fetched: d.fetched, maxAge: GAME_MAX_AGE,
         quotes: Object.values(j.quotes).filter(q => q.doc === slug).length });
     }
     for (const [id, q] of Object.entries(j.quotes)) facts.set(g + '.' + id, { quote: q.text, doc: g + ':' + q.doc });

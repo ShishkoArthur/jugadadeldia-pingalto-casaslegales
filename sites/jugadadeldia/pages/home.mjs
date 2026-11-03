@@ -33,7 +33,9 @@ export const home = {
       '<section class="jg-c"><span class="jg-sm">Quini 6</span><h2>Controlá tu boleta</h2><div class="jg-six jg-demo" aria-hidden="true">' + ['04', '11', '17', '26', '33', '45'].map(n => '<input value="' + n + '" tabindex="-1" readonly>').join('') + '</div><p>Chance de los 6 en un sorteo: <b>' + oneIn(q6.rows[0].oneIn) + '</b></p>' + btn(h, '/quini-6/', 'Ir al Quini 6', true) + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Biblioteca</span><h2>Todo para tu jugada</h2>' + tiles(h, [
         ['/quiniela/', 'Quiniela de hoy', 'Las cabezas y los extractos de seis provincias', '#ff5a3c', ICONS.balls],
+        ['/quiniela/horarios/', '¿Hay quiniela hoy?', 'Horarios y cuenta regresiva al próximo sorteo', '#e8930c', ICONS.pin],
         ['/quiniela/cuanto-paga/', 'Cuánto paga la quiniela', 'A la cabeza, a los 5, 10 y 20, Ciudad y Provincia', '#16b38a', ICONS.calc],
+        ['/cuanto-devuelve-cada-juego/', 'Cuánto devuelve cada juego', 'De cada $ 100, lo que vuelve en premios', '#2f7cf6', ICONS.calc],
         ['/quini-6/', 'Quini 6', 'Las cinco modalidades y el control de tu boleta', '#2f7cf6', ICONS.check],
         ['/loto-plus/', 'Loto Plus y Brinco', 'Modalidades, número Plus y chances', '#8b5cf6', ICONS.balls],
         ['/telekino/', 'Telekino y Poceada', 'Cartones, aciertos y lo que va a premios', '#ff5a3c', ICONS.balls],
@@ -42,6 +44,7 @@ export const home = {
         ['/truco/valores-de-las-cartas/', 'Valores del truco', 'Qué carta mata a cuál, y las señas', '#ff5a3c', ICONS.cards],
         ['/generala/jugar/', 'Generala', 'Contra la compu, anotador y probabilidades', '#e8930c', ICONS.dice],
         ['/chinchon/jugar/', 'Chinchón y escoba', 'Cartas españolas contra la compu', '#2f7cf6', ICONS.hand],
+        ['/burako/', 'Burako', 'Reglas y calculadora de la mano', '#8b5cf6', ICONS.calc],
       ]) + '</section></div>';
   },
 };

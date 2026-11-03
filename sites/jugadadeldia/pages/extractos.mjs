@@ -44,6 +44,7 @@ export const quinielaHoy = {
       '<section class="jg-c w3"><span class="jg-tag">Hora argentina</span><h2>Las cabezas del día</h2>' + root('hoy') + loading + '</div></section>' +
       '<section class="jg-c w2"><span class="jg-sm">Por provincia</span><h2>El extracto de tu provincia</h2>' + provTiles(h) + '</section>' + chance +
       (h.built('/quiniela/cuanto-paga/') ? '<section class="jg-c w3"><span class="jg-sm">Si te tocó</span><h2>¿Cuánto paga?</h2><p>A 2 cifras a la cabeza, La Quiniela de la Ciudad paga ' + fmt(rules('quiniela', 'lotba-quiniela').pay[2].v, 0) + ' veces lo apostado; a 4 cifras, ' + fmt(rules('quiniela', 'lotba-quiniela').pay[4].v, 0) + '. La cuenta completa, con la chance de cada jugada:</p><div class="jg-r">' + btn(h, '/quiniela/cuanto-paga/', 'Calcular mi premio', true) + btn(h, '/quiniela/extractos/', 'Buscar un sorteo anterior') + '</div></section>' : '') +
+      '<section class="jg-c w3"><span class="jg-sm">Para entender la quiniela</span><h2>Herramientas</h2>' + tiles(h, [['/quiniela/horarios/', '¿Hay quiniela hoy?', 'Horarios y cuenta regresiva', '#e8930c', ICONS.pin], ['/quiniela/como-se-juega/', 'Cómo se juega', 'La boleta campo por campo', '#2f7cf6', ICONS.book], ['/quiniela/simulador/', 'Un año jugando', 'Simulador en pesos', '#8b5cf6', ICONS.calc], ['/cuanto-devuelve-cada-juego/', 'Cuánto devuelve cada juego', 'De cada $ 100', '#16b38a', ICONS.calc]]) + '</section>' +
       method(h) + '</div>';
   },
 };

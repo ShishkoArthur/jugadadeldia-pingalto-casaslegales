@@ -164,7 +164,19 @@
   { "id": "lotba.loto.multiplicador-fund", "value": 100, "valueText": "100,00%", "doc": "loto-programa",
     "quote": "Fondo General de Reserva 100,00%", "note": "the Multiplicador share of every ticket goes to the reserve fund, prizes are paid from it" },
   { "id": "lotba.loto.multiplicador-pay", "value": 2, "valueText": "DOS (2)", "doc": "loto-programa",
-    "quote": "Cada apuesta ganadora de esta modalidad obtendrá DOS (2) veces el importe del premio con el cual hayan sido favorecidas" }
+    "quote": "Cada apuesta ganadora de esta modalidad obtendrá DOS (2) veces el importe del premio con el cual hayan sido favorecidas" },
+  {"id":"lotba.quiniela.time-previa","value":"10:15","valueText":"10:15","doc":"quiniela-programa","quote":"53112 2/11/2026 10:15 1 2 3 4 6 7 LA PREVIA 3/11/2026 2/12/2026","note":"first row of the November 2026 draw diagram; the time is the same every day of the program"},
+  {"id":"lotba.quiniela.time-primera","value":"12:00","valueText":"12:00","doc":"quiniela-programa","quote":"53113 2/11/2026 12:00 1 2 3 4 6 7 LA PRIMERA 3/11/2026 2/12/2026"},
+  {"id":"lotba.quiniela.time-matutina","value":"15:00","valueText":"15:00","doc":"quiniela-programa","quote":"53114 2/11/2026 15:00 1 2 3 4 6 7 MATUTINA 3/11/2026 2/12/2026"},
+  {"id":"lotba.quiniela.time-vespertina","value":"18:00","valueText":"18:00","doc":"quiniela-programa","quote":"53115 2/11/2026 18:00 1 2 3 4 6 7 VESPERTINA 3/11/2026 2/12/2026"},
+  {"id":"lotba.quiniela.time-nocturna","value":"21:00","valueText":"21:00","doc":"quiniela-programa","quote":"53116 2/11/2026 21:00 1 2 3 4 6 7 NOCTURNA 3/11/2026 2/12/2026"},
+  {"id":"lotba.quiniela.saturday-nocturna","value":"21:00","valueText":"21:00","doc":"quiniela-programa","quote":"53141 7/11/2026 21:00 1 2 3 4 5 6 7 NOCTURNA 12/11/2026 11/12/2026","note":"Saturday 7/11 has the five draws; the next row is Monday 9/11 (no Sunday draw in the diagram)"},
+  {"id":"lotba.quiniela.ten-per-ticket","value":10,"valueText":"DIEZ (10)","doc":"quiniela-programa","quote":"Se admitirán DIEZ (10) pronósticos independientes por cada ticket tanto en canal Web como físico."},
+  {"id":"lotba.quiniela.cancel-15","value":15,"valueText":"QUINCE (15)","doc":"quiniela-programa","quote":"Para anular apuestas de QUINIELA DE LA CIUDAD, se tendrá como plazo máximo hasta QUINCE (15) minutos posteriores de la realización de esta"},
+  {"id":"lotba.quiniela.collect-where","value":"same point of sale, until the date on the extract","doc":"quiniela-programa","quote":"Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido realizadas y hasta la fecha consignada en el Extracto Oficial emitido para cada sorteo."},
+  {"id":"lotba.quiniela.big-prize","value":2100000,"valueText":"$2.100.000","doc":"quiniela-programa","quote":"Quedan exceptuados de lo dispuesto precedentemente los premios que superen la suma de PESOS DOS MILLONES CIEN MIL ($2.100.000.-), los cuales deberán cobrarse en Lotería de la Ciudad de Buenos Aires"},
+  {"id":"lotba.quiniela.jurisdictions","value":"Ciudad, Buenos Aires, Córdoba, Santa Fe, Uruguay, Mendoza, Entre Ríos","doc":"quiniela-programa","quote":"LOTBA = N° 1 Lotería de la Ciudad de Buenos Aires. BUENOS AIRES = N° 2 Instituto Provincial de Lotería y Casinos de la Provincia de Buenos Aires CORDOBA = N° 3 Lotería de la Provincia de Córdoba SANTA FE = N° 4 Caja de Asistencia Social de la Provincia de Santa Fe"},
+  {"id":"lotba.quiniela.jurisdictions-2","value":"Uruguay, Mendoza, Entre Ríos","doc":"quiniela-programa","quote":"URUGUAY = N° 5 Dirección Nacional de Loterías y Quinielas de la República Oriental del Uruguay MENDOZA=N° 6 Instituto Provincial de Juegos y Casinos de Mendoza ENTRE RIOS = N° 7 Instituto de Ayuda Financiera a la Acción Social de Entre Ríos"}
  ],
  "missing": [
   { "id": "lotba.redoblona.exacta-definition", "what": "which positions a Redoblona Exacta takes (the ratio 3500 is cited, the bet is not defined)",

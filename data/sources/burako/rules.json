@@ -1,0 +1,45 @@
+{
+  "id": "burako-rules",
+  "about": "Rules of burako used by the jugadadeldia pages /burako/ and /burako/anotador/ (hand calculator and scorer; no engine). Every quote is checked verbatim against the saved copy (engine/test/games-sources.test.mjs). Re-read every six months.",
+  "checked": "2026-11-03",
+  "docs": {
+    "gba-2026": {
+      "title": "Juegos Bonaerenses 2026 - Reglamento especifico: Burako (adultos mayores)",
+      "publisher": "Provincia de Buenos Aires, Juegos Bonaerenses",
+      "url": "https://juegos.gba.gob.ar/wp-content/uploads/2026/reglamentos/especificos/deportes_adultos_mayores/burako.pdf",
+      "file": "data/sources/burako/_docs/gba-2026-burako.pdf",
+      "fetched": "2026-11-03",
+      "status": 200,
+      "sha256": "e6fea21431fa150e70cd234fcac475c492eb2e3676a2a735c925dab568ca8f50"
+    }
+  },
+  "quotes": {
+    "goal-1500": { "doc": "gba-2026", "text": "Es un juego de fichas que se juega INDIVIDUAL cuyo objetivo es alcanzar los 1.500 puntos.", "uses": "anotador default target 1500" },
+    "two-players": { "doc": "gba-2026", "text": "LOS JUGADORES: DOS (2) jugadores/as POR MESA.", "uses": "/burako/ rules" },
+    "tiles-104": { "doc": "gba-2026", "text": "LAS FICHAS: 104 fichas numeradas.", "uses": "/burako/ set of tiles" },
+    "jokers-2": { "doc": "gba-2026", "text": "2 comodines de igual color.", "uses": "/burako/ set of tiles" },
+    "piles": { "doc": "gba-2026", "text": "2 MAZOS DE 12 (1 PARA CADA PARTICIPANTE EN SU ATRIL), 2 mazos de 11 fichas (1 muerto por JUGADOR) y 6 mazos de 10 fichas.", "uses": "/burako/ deal diagram" },
+    "v-1": { "doc": "gba-2026", "text": "Nº 1: 15 puntos.", "uses": "TILE values" },
+    "v-2": { "doc": "gba-2026", "text": "Nº 2: 20 puntos.", "uses": "TILE values" },
+    "v-3-7": { "doc": "gba-2026", "text": "Nº 3 al 7: 5 puntos.", "uses": "TILE values" },
+    "v-8-13": { "doc": "gba-2026", "text": "Nº 8 al 13: 10 puntos.", "uses": "TILE values" },
+    "v-joker": { "doc": "gba-2026", "text": "Comodines: 50 puntos.", "uses": "TILE values" },
+    "hand-minus": { "doc": "gba-2026", "text": "El puntaje de las fichas no bajadas se descuenta sin importar la existencia de canasta o no.", "uses": "calculator: tiles in hand subtract" },
+    "escalera": { "doc": "gba-2026", "text": "Escalera: la ficha número 1 puede comenzar los juegos o finalizarlos después del 13.", "uses": "/burako/ melds" },
+    "pierna": { "doc": "gba-2026", "text": "Pierna: No menos de 3 fichas del mismo número, cualquier color.", "uses": "/burako/ melds" },
+    "canasta": { "doc": "gba-2026", "text": "Canasta: 7 fichas como mínimo en juego de Pierna o Escalera. Pueden ser Puras (sin comodín) o Impuras (con comodín).", "uses": "/burako/ canasta" },
+    "pura-200": { "doc": "gba-2026", "text": "Canasta Pura: 200 puntos.", "uses": "calculator CANASTA.pura" },
+    "impura-100": { "doc": "gba-2026", "text": "Canasta Impura: 100 puntos.", "uses": "calculator CANASTA.impura" },
+    "two-jokers": { "doc": "gba-2026", "text": "Un juego puede tener hasta dos comodines siempre que la relación ficha comodín sea 2:1.", "uses": "/burako/ melds" },
+    "muerto-100": { "doc": "gba-2026", "text": "Por no comprar el muerto: 100 puntos en contra.", "uses": "calculator MUERTO" },
+    "two-is-joker": { "doc": "gba-2026", "text": "Además de los 2 comodines con figuras, en este juego las fichas Nº 2 también lo son.", "uses": "/burako/ jokers" },
+    "close-needs": { "doc": "gba-2026", "text": "Para poder cerrar la partida es condición necesaria que el jugador haya concretado una canasta Pura o Impura y que haya comprado el Muerto.", "uses": "¿puedo cerrar? checklist" },
+    "close-empty": { "doc": "gba-2026", "text": "Se corta con atril vacío o una (1) ficha.", "uses": "¿puedo cerrar? checklist" },
+    "close-100": { "doc": "gba-2026", "text": "Puntaje por cierre: 100 puntos.", "uses": "calculator CIERRE" },
+    "no-canasta-replay": { "doc": "gba-2026", "text": "En caso que se acabaran las fichas del mazo y ninguno de las dos participantes tuvieran canasta, la mano se juega de vuelta.", "uses": "/burako/ end of the stock" },
+    "stock-out": { "doc": "gba-2026", "text": "Si uno de los participantes tuviera canasta al terminar las fichas de los mazos, se contará normalmente sin incluir los 100 puntos por el cierre.", "uses": "calculator: no close bonus" },
+    "pozo-all": { "doc": "gba-2026", "text": "en caso de querer tomar el pozo debe tomarlo con todas las fichas depositadas en él.", "uses": "/burako/ turn" },
+    "discard": { "doc": "gba-2026", "text": "Luego de finalizar su jugada el jugador de turno debe dejar una ficha para arriba en el pozo para cederle el turno al siguiente jugador.", "uses": "/burako/ turn" },
+    "winner-both": { "doc": "gba-2026", "text": "En caso de que AMBOS PARTICIPANTES logren dicho objetivo, será ganador aquel que compute mayor puntaje en total.", "uses": "anotador: both over target" }
+  }
+}

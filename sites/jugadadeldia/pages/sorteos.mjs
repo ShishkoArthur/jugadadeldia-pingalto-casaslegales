@@ -3,7 +3,7 @@
 // visitor types the numbers of the draw - the site does not fetch or show results.
 import { odds, prizeShare, quini6PremioExtra, lotoPlusMultiplicador, quinielaPlusOdds } from '../../../engine/lottery/games.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
-import { hero, cite, crumbs, webPage, fmt, oneIn, money } from './parts.mjs';
+import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn } from './parts.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -41,7 +41,7 @@ export const quini6 = {
     const o = q6(), ex = quini6PremioExtra();
     const mod = (name, sub, body, c) => '<article class="jg-c jg-mod"><i class="jg-ba ' + c + '" aria-hidden="true">6</i><h3>' + name + '</h3><p class="jg-mu">' + sub + '</p>' + body + '</article>';
     const rowsWin = o.rows.filter(r => r.prize).map(r => '<li><b>' + r.hits + ' aciertos</b> ' + oneIn(r.oneIn) + '</li>').join('');
-    return hero(h, { kicker: 'Quini 6 · Lotería de Santa Fe', scene: 'quini-6', lede: 'Elegís ' + o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y jugás varios sorteos con la misma boleta. Acá está la chance exacta de cada premio, calculada sobre las ' + fmt(Number(o.combinations), 0) + ' combinaciones posibles.', actions: '<a class="jg-b p" href="#controlar">Controlar mi boleta</a>' }) +
+    return hero(h, { kicker: 'Quini 6 · Lotería de Santa Fe', scene: 'quini-6', lede: 'Elegís ' + o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y jugás varios sorteos con la misma boleta. Acá está la chance exacta de cada premio, calculada sobre las ' + fmt(Number(o.combinations), 0) + ' combinaciones posibles.', actions: '<a class="jg-b p" href="#controlar">Controlar mi boleta</a>' + btn(h, '/quini-6/controlar/', 'Varias boletas') + btn(h, '/quini-6/como-se-juega/', 'Cómo se juega') }) +
       '<div class="jg-mn jg-mods">' +
       mod('Tradicional', 'Primer Sorteo, 6 números', '<ul class="jg-ul">' + rowsWin + '</ul>', '') +
       mod('La Segunda', 'Otro sorteo con la misma boleta', '<ul class="jg-ul">' + rowsWin + '</ul><p class="jg-note">Con los dos sorteos, la chance de algún premio es ' + oneIn(o.oneInAnyPrizeTicket) + ' (en uno solo, ' + oneIn(o.oneInAnyPrize) + ').</p>', 'c2') +
@@ -112,7 +112,7 @@ export const telekino = {
   render(h) {
     const o = odds('pba-telekino');
     const board = '<div class="jg-board b5" aria-hidden="true">' + Array.from({ length: 25 }, (_, i) => '<i' + ([1, 3, 4, 6, 8, 9, 11, 12, 14, 15, 17, 19, 21, 22, 24].includes(i + 1) ? ' class="on"' : '') + '>' + (i + 1) + '</i>').join('') + '</div>';
-    return hero(h, { kicker: 'Telekino · Lotería de la Provincia', scene: 'telekino', lede: 'Un bingo televisado: tu cartón trae ' + o.pick + ' de los ' + o.pool + ' números, y del bolillero salen ' + o.drawn + '. Con ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + ' aciertos o más hay premio.', actions: '<a class="jg-b p" href="#controlar">Controlar mi cartón</a>' }) +
+    return hero(h, { kicker: 'Telekino · Lotería de la Provincia', scene: 'telekino', lede: 'Un bingo televisado: tu cartón trae ' + o.pick + ' de los ' + o.pool + ' números, y del bolillero salen ' + o.drawn + '. Con ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + ' aciertos o más hay premio.', actions: '<a class="jg-b p" href="#controlar">Controlar mi cartón</a>' + btn(h, '/telekino/controlar/', 'Grilla de 5 por 5') }) +
       '<div class="jg-mn">' +
       '<section class="jg-c"><span class="jg-sm">Un cartón de ejemplo</span><h2>' + o.pick + ' de ' + o.pool + '</h2>' + board + '<p class="jg-note">Cada cartón ya viene con sus 15 números.</p></section>' +
       '<section class="jg-c w2"><span class="jg-sm">Por aciertos</span><h2>Chance de cada categoría</h2>' + oddsTable(o, { only: r => r.hits >= 8 }) + '<p class="jg-hon">Chance de cobrar algo (11 aciertos o más): <b>' + oneIn(o.oneInAnyPrize) + '</b>. Con 10 o menos no hay premio.</p></section>' +

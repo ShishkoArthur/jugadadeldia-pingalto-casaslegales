@@ -114,6 +114,44 @@
    "g": 0.877,
    "alt": "Chica sentada en un banquito, comparando dos boletas en blanco, una en cada mano"
   },
+  "/quiniela/horarios/": {
+   "image": "jdd-sc-quiniela-horarios-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-horarios-320.webp",
+     "w": 320,
+     "h": 647,
+     "kb": 27
+    },
+    {
+     "name": "scenes/quiniela-horarios-480.webp",
+     "w": 480,
+     "h": 971,
+     "kb": 49
+    },
+    {
+     "name": "scenes/quiniela-horarios-720.webp",
+     "w": 720,
+     "h": 1456,
+     "kb": 90
+    },
+    {
+     "name": "scenes/quiniela-horarios-960.webp",
+     "w": 960,
+     "h": 1941,
+     "kb": 140
+    },
+    {
+     "name": "scenes/quiniela-horarios-1166.webp",
+     "w": 1166,
+     "h": 2358,
+     "kb": 135
+    }
+   ],
+   "ar": 0.4945,
+   "g": 0.9491,
+   "alt": "Chica dándose vuelta y mirando por encima del hombro mientras toca su reloj"
+  },
   "/quiniela/cuanto-paga/": {
    "image": "jdd-sc-quiniela-cuanto-paga-r2",
    "files": [
@@ -336,6 +374,76 @@
    "g": 0.6205,
    "alt": "Chica sentada en un almohadón con un bol de seis bolillas, sacando una"
   },
+  "/quini-6/controlar/": {
+   "image": "jdd-sc-quini-6-controlar-r2",
+   "files": [
+    {
+     "name": "scenes/quini-6-controlar-320.webp",
+     "w": 320,
+     "h": 762,
+     "kb": 32
+    },
+    {
+     "name": "scenes/quini-6-controlar-480.webp",
+     "w": 480,
+     "h": 1143,
+     "kb": 59
+    },
+    {
+     "name": "scenes/quini-6-controlar-720.webp",
+     "w": 720,
+     "h": 1714,
+     "kb": 106
+    },
+    {
+     "name": "scenes/quini-6-controlar-1010.webp",
+     "w": 1010,
+     "h": 2405,
+     "kb": 127
+    }
+   ],
+   "ar": 0.42,
+   "g": 0.9166,
+   "alt": "Chica parada con una boleta en una mano y el celular en la otra, controlando los números"
+  },
+  "/quini-6/como-se-juega/": {
+   "image": "jdd-sc-quini-6-como-se-juega-r2",
+   "files": [
+    {
+     "name": "scenes/quini-6-como-se-juega-320.webp",
+     "w": 320,
+     "h": 560,
+     "kb": 29
+    },
+    {
+     "name": "scenes/quini-6-como-se-juega-480.webp",
+     "w": 480,
+     "h": 840,
+     "kb": 50
+    },
+    {
+     "name": "scenes/quini-6-como-se-juega-720.webp",
+     "w": 720,
+     "h": 1260,
+     "kb": 90
+    },
+    {
+     "name": "scenes/quini-6-como-se-juega-960.webp",
+     "w": 960,
+     "h": 1680,
+     "kb": 135
+    },
+    {
+     "name": "scenes/quini-6-como-se-juega-1280.webp",
+     "w": 1280,
+     "h": 2240,
+     "kb": 201
+    }
+   ],
+   "ar": 0.5713,
+   "g": 0.8368,
+   "alt": "Chica sentada en el borde de una silla mostrando una bolilla, como quien explica"
+  },
   "/loto-plus/": {
    "image": "jdd-sc-loto-plus-r2",
    "files": [
@@ -437,6 +545,44 @@
    "ar": 0.3719,
    "g": 0.8963,
    "alt": "Chica caminando con un cartón de bingo en blanco en las manos"
+  },
+  "/telekino/controlar/": {
+   "image": "jdd-sc-telekino-controlar-r2",
+   "files": [
+    {
+     "name": "scenes/telekino-controlar-320.webp",
+     "w": 320,
+     "h": 321,
+     "kb": 18
+    },
+    {
+     "name": "scenes/telekino-controlar-480.webp",
+     "w": 480,
+     "h": 481,
+     "kb": 30
+    },
+    {
+     "name": "scenes/telekino-controlar-720.webp",
+     "w": 720,
+     "h": 722,
+     "kb": 54
+    },
+    {
+     "name": "scenes/telekino-controlar-960.webp",
+     "w": 960,
+     "h": 963,
+     "kb": 82
+    },
+    {
+     "name": "scenes/telekino-controlar-1280.webp",
+     "w": 1280,
+     "h": 1284,
+     "kb": 127
+    }
+   ],
+   "ar": 0.9972,
+   "g": 0.5876,
+   "alt": "Chica sentada en un almohadón con un cartón en blanco en la falda, tocando una casilla"
   },
   "/truco/": {
    "image": "jdd-sc-truco-r2",
@@ -578,6 +724,70 @@
    "g": 0.7885,
    "alt": "Chica sentada en una mesa anotando palitos en una libretita"
   },
+  "/truco/reglas/": {
+   "image": "jdd-sc-truco-reglas-r2",
+   "files": [
+    {
+     "name": "scenes/truco-reglas-320.webp",
+     "w": 320,
+     "h": 775,
+     "kb": 31
+    },
+    {
+     "name": "scenes/truco-reglas-480.webp",
+     "w": 480,
+     "h": 1162,
+     "kb": 55
+    },
+    {
+     "name": "scenes/truco-reglas-720.webp",
+     "w": 720,
+     "h": 1743,
+     "kb": 101
+    },
+    {
+     "name": "scenes/truco-reglas-988.webp",
+     "w": 988,
+     "h": 2392,
+     "kb": 118
+    }
+   ],
+   "ar": 0.413,
+   "g": 0.8832,
+   "alt": "Chica parada con un librito bajo el brazo, levantando el índice para explicar"
+  },
+  "/burako/": {
+   "image": "jdd-sc-burako-r2",
+   "files": [
+    {
+     "name": "scenes/burako-320.webp",
+     "w": 320,
+     "h": 782,
+     "kb": 43
+    },
+    {
+     "name": "scenes/burako-480.webp",
+     "w": 480,
+     "h": 1174,
+     "kb": 76
+    },
+    {
+     "name": "scenes/burako-720.webp",
+     "w": 720,
+     "h": 1761,
+     "kb": 138
+    },
+    {
+     "name": "scenes/burako-932.webp",
+     "w": 932,
+     "h": 2279,
+     "kb": 132
+    }
+   ],
+   "ar": 0.409,
+   "g": 0.8787,
+   "alt": "Chica sentada en un banquito con un atril de fichas en las rodillas, moviendo una ficha"
+  },
   "/generala/": {
    "image": "jdd-sc-generala-r2",
    "files": [
@@ -653,6 +863,82 @@
    "ar": 0.7085,
    "g": 0.6914,
    "alt": "Chica de rodillas que acaba de tirar dos dados"
+  },
+  "/chinchon/": {
+   "image": "jdd-sc-chinchon-r2",
+   "files": [
+    {
+     "name": "scenes/chinchon-320.webp",
+     "w": 320,
+     "h": 582,
+     "kb": 30
+    },
+    {
+     "name": "scenes/chinchon-480.webp",
+     "w": 480,
+     "h": 872,
+     "kb": 53
+    },
+    {
+     "name": "scenes/chinchon-720.webp",
+     "w": 720,
+     "h": 1309,
+     "kb": 92
+    },
+    {
+     "name": "scenes/chinchon-960.webp",
+     "w": 960,
+     "h": 1745,
+     "kb": 137
+    },
+    {
+     "name": "scenes/chinchon-1216.webp",
+     "w": 1216,
+     "h": 2210,
+     "kb": 138
+    }
+   ],
+   "ar": 0.5502,
+   "g": 0.7955,
+   "alt": "Chica sentada con siete cartas en abanico en una mano y un mate en la otra"
+  },
+  "/escoba-de-15/": {
+   "image": "jdd-sc-escoba-de-15-r2",
+   "files": [
+    {
+     "name": "scenes/escoba-de-15-320.webp",
+     "w": 320,
+     "h": 397,
+     "kb": 22
+    },
+    {
+     "name": "scenes/escoba-de-15-480.webp",
+     "w": 480,
+     "h": 596,
+     "kb": 38
+    },
+    {
+     "name": "scenes/escoba-de-15-720.webp",
+     "w": 720,
+     "h": 894,
+     "kb": 68
+    },
+    {
+     "name": "scenes/escoba-de-15-960.webp",
+     "w": 960,
+     "h": 1192,
+     "kb": 104
+    },
+    {
+     "name": "scenes/escoba-de-15-1280.webp",
+     "w": 1280,
+     "h": 1589,
+     "kb": 160
+    }
+   ],
+   "ar": 0.8055,
+   "g": 0.7935,
+   "alt": "Chica sentada en el borde de una mesa juntando cartas españolas en una pila"
   },
   "/quiniela/redoblona/": {
    "image": "jdd-sc-quiniela-redoblona-r3",
