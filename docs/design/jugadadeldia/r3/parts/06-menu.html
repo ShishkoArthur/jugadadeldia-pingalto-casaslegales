@@ -1,0 +1,169 @@
+<!-- name: Menú principal -->
+<!-- desc: Главное меню мобильной игры: HUD-плашки, колода карт с объёмными шарами, лидерборд выписки, кольца прогресса. Светлая — фарфор и закатное небо; тёмная — ночной синий и стекло. -->
+<!-- fonts: family=Kanit:wght@500;700;800&family=Inconsolata:wght@700 -->
+<style>
+.m06{--bg:#edf1f6;--sf:#fff;--s2:#f2f5f9;--fg:#0e1726;--mu:#4a5568;--ln:#dbe2ec;--ac:#ff6b35;--ai:#1b0a02;--al:#c4471a;--lk:#b53d12;--kb:#ffffff8c;--hb:linear-gradient(150deg,#ffd6bf,#ffeede 55%,#dff1ff);--hf:#0e1726;--hm:#3f4757;--cd:#fff;--sh:0 10px 30px -14px #0e17264d;--b1:#ff5a3c;--b2:#2f7cf6;--b3:#ffc22e;--b4:#16b38a;--b5:#8b5cf6;--fo:#2f7cf6;--d:"Kanit",system-ui,sans-serif;--m:"Inconsolata",ui-monospace,monospace;font:16px/1.5 var(--d);background:var(--bg);color:var(--fg);overflow-wrap:anywhere}
+.m06[data-mode="dark"]{--bg:#0a111c;--sf:#131c2b;--s2:#1b2638;--fg:#eef3fa;--mu:#a9b5c8;--ln:#28364c;--hb:linear-gradient(150deg,#152c45,#0d1a2c 60%,#1d1633);--hf:#f3f6fb;--hm:#b9c4d6;--cd:#1b2638;--sh:0 14px 34px -12px #000c;--fo:#ffc22e;--lk:var(--ac);--kb:#ffffff1a}
+.m06 :where(h1,h2,h3,p,ol){margin:0;padding:0}
+.m06 :where(a,button,input){font:inherit;color:inherit}
+.m06 :is(a,button,input):focus-visible{outline:3px solid var(--fo);outline-offset:3px}
+.m06 svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.m06-ba,.m06-six input,.m06-ib,.m06-rg,.m06-lb li:before,.m06-tg i,.m06-rs i{display:grid;place-items:center;flex:none}
+.m06-r{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.m06-h{padding:12px 24px}
+.m06-lg{display:flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;text-decoration:none;font:800 23px/1 var(--d)}
+.m06-lg b{color:var(--lk)}
+.m06-ba,.m06-six input{--s:44px;width:var(--s);height:var(--s);padding:0;border:0;border-radius:50%;background:radial-gradient(circle at 33% 25%,#ffffffe6 0 6%,#fff0 24%),radial-gradient(circle,#fff 0 37%,#0000 39%),radial-gradient(circle at 40% 34%,var(--c,var(--b1)),color-mix(in srgb,var(--c,var(--b1)) 58%,#000));box-shadow:inset -3px -5px 9px #0004,0 8px 16px -6px color-mix(in srgb,var(--c,var(--b1)) 70%,#0000);color:#101820;font:800 calc(var(--s)*.32)/1 var(--d);font-variant-numeric:tabular-nums;text-align:center}
+.m06-sg{display:flex;gap:4px;padding:4px;border-radius:24px;background:var(--s2)}
+.m06-sg>*{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:0;border-radius:99px;background:none;text-decoration:none;font-weight:500}
+.m06-sg [aria-current],.m06-sg [aria-pressed="true"]{background:var(--sf);box-shadow:0 2px 6px #0e172626,0 0 0 1px var(--ln);font-weight:700}
+.m06-ib{width:44px;height:44px;border:0;border-radius:14px;background:var(--sf);box-shadow:inset 0 -3px 0 var(--ln),var(--sh)}
+.m06-ib svg{width:22px}.m06-bu{display:none}
+.m06-hud{display:flex;flex-wrap:wrap;gap:8px;margin:0 24px 14px}
+.m06-hud span{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px 0 6px;border-radius:99px;background:var(--sf);box-shadow:0 0 0 1px var(--ln);font:700 13px var(--m)}
+.m06-hud i{width:24px;height:24px;border-radius:50%;background:var(--c,var(--b4));box-shadow:inset -2px -3px 4px #0003}
+.m06-hero{position:relative;display:grid;grid-template:"t s g"/minmax(0,1fr) 290px 250px;gap:28px;align-items:center;margin:0 24px;padding:40px 36px;border-radius:34px;background:var(--hb);color:var(--hf);box-shadow:var(--sh);overflow:clip}
+.m06-t{grid-area:t;position:relative}
+.m06-k{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:99px;background:var(--kb);color:var(--hf);font:700 12px var(--m);letter-spacing:.06em;text-transform:uppercase}
+.m06 h1{font:800 46px/1.02 var(--d);letter-spacing:-.03em;margin:16px 0 14px}
+.m06-t p{color:var(--hm);max-width:46ch;margin-bottom:24px}
+.m06-b{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border:0;border-radius:16px;background:var(--sf);color:var(--fg);font:700 16px/1 var(--d);text-decoration:none;box-shadow:inset 0 -4px 0 var(--ln),0 6px 14px -8px #0008}
+.m06 .m06-p{background:linear-gradient(#ff8a57,var(--ac));color:var(--ai);box-shadow:inset 0 -4px 0 var(--al),inset 0 2px 0 #fff6,0 10px 20px -8px #ff6b35aa}
+.m06-st{grid-area:s;position:relative;height:300px}
+.m06-st>div{position:absolute;inset:18px 10px 30px;border-radius:26px;background:var(--cd);box-shadow:var(--sh);color:var(--fg)}
+.m06-st>div:nth-child(1){transform:rotate(-9deg) translate(-16px,10px);background:color-mix(in srgb,var(--b2) 30%,var(--cd))}
+.m06-st>div:nth-child(2){transform:rotate(6deg) translate(14px,4px);background:color-mix(in srgb,var(--b3) 34%,var(--cd))}
+.m06-st>div:nth-child(3){display:flex;flex-direction:column;gap:12px;padding:20px}
+.m06-st small,.m06-c>small,.m06-sd small{font:700 12px var(--m);letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
+.m06-st b{font:800 22px/1.1 var(--d)}
+.m06-four{display:flex;gap:6px;justify-content:center;margin:auto 0}
+.m06-four .m06-ba{--s:54px}
+.m06-four .m06-ba:nth-child(2),.m06-six input:nth-child(2),.m06-lb li:nth-child(5n+2):before{--c:var(--b2)}
+.m06-four .m06-ba:nth-child(3),.m06-six input:nth-child(3),.m06-lb li:nth-child(5n+3):before{--c:var(--b3)}
+.m06-four .m06-ba:nth-child(4),.m06-six input:nth-child(4),.m06-lb li:nth-child(5n+4):before{--c:var(--b4)}
+.m06-six input:nth-child(5),.m06-lb li:nth-child(5n):before{--c:var(--b5)}.m06-six input:nth-child(6){--c:var(--b3)}
+.m06-xp{height:10px;border-radius:9px;background:linear-gradient(90deg,var(--b4),#5fe0b9)}
+.m06-girl{grid-area:g;position:relative;aspect-ratio:2/3;border-radius:30px;background:linear-gradient(170deg,#ffffff70,#ffffff10),linear-gradient(var(--b5),var(--b2));box-shadow:var(--sh);overflow:clip;color:#e9e4ff}
+.m06-girl svg{position:absolute;bottom:0;width:100%;fill:currentColor;stroke:none}
+.m06-girl span{position:absolute;left:12px;top:12px;padding:6px 10px;border-radius:99px;background:#0e1726b3;color:#fff;font:700 12px var(--m)}
+.m06-mn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:30px 24px 44px}
+.m06-c{min-width:0;padding:22px;border-radius:28px;background:var(--sf);box-shadow:var(--sh),inset 0 0 0 1px var(--ln)}
+.m06 h2{font:800 25px/1.1 var(--d);letter-spacing:-.02em;margin:6px 0 14px}
+.m06-tag{float:right;padding:5px 10px;border-radius:9px;background:var(--s2);color:var(--mu);font:700 12px var(--m)}
+.m06-q{grid-row:span 2;grid-column:span 2;display:flex;flex-direction:column;gap:14px}
+.m06-q h2{margin:0}
+.m06-hd{display:flex;align-items:center;gap:16px;padding:14px;border-radius:22px;background:var(--s2)}
+.m06-hd b{display:block;font:800 24px/1.1 var(--d)}.m06-hd .m06-ba{--s:92px;font-size:21px}.m06-hd small{color:var(--mu);font-size:14px}
+.m06-hd p{flex:1;min-width:0}
+.m06-rg{--v:100%;width:72px;height:72px;border-radius:50%;background:radial-gradient(closest-side,var(--s2) 76%,#0000 78%),conic-gradient(var(--rc,var(--b4)) var(--v),var(--ln) 0);font:700 13px/1.1 var(--m);text-align:center}
+.m06-lb{list-style:none;counter-reset:k;display:grid;grid:repeat(10,auto)/auto-flow minmax(0,1fr);gap:6px 14px}
+.m06-lb li{counter-increment:k;display:flex;align-items:center;gap:12px;min-height:40px;padding:4px 12px 4px 4px;border-radius:14px;background:var(--s2);font:700 20px/1 var(--m);letter-spacing:.06em}
+.m06-lb li:before{content:counter(k);width:32px;height:32px;border-radius:10px;background:color-mix(in srgb,var(--c,var(--b1)) 22%,var(--sf));font:800 14px/1 var(--d);letter-spacing:0}
+.m06 .m06-lb li:first-child{background:linear-gradient(90deg,#ffb38f,#ffe0cf);color:#1b0a02}
+.m06-ch{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.m06-ch span{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:12px;background:var(--s2);font-weight:500}
+.m06-win{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;padding:16px;border-radius:20px;background:linear-gradient(135deg,color-mix(in srgb,var(--b4) 22%,var(--sf)),var(--s2))}
+.m06-win b{font:800 44px/1 var(--d)}
+.m06-hon{margin-top:12px;padding:10px 12px;border-left:4px solid var(--b2);border-radius:4px 12px 12px 4px;background:var(--s2);font-size:14px;color:var(--mu)}
+.m06-six{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:14px}
+.m06-six input{--s:100%;height:auto;aspect-ratio:1;font-size:16px}
+.m06-ft2{justify-content:space-between;margin-top:14px}
+.m06-tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.m06-sd{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;border-radius:22px;background:var(--s2)}
+.m06-sd .m06-rg{width:84px;height:84px;font:800 26px/1 var(--d)}
+.m06-sd .m06-rg{--v:calc(17 / 30 * 100%);--rc:var(--ac)}.m06-sd+.m06-sd .m06-rg{--v:calc(9 / 30 * 100%);--rc:var(--b2)}
+.m06-sd h3{font:700 16px var(--d)}
+.m06-pz{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;min-height:24px;width:100%}
+.m06-pz+small{width:100%;border-top:2px solid var(--ln);padding-top:6px;text-align:center}
+.m06-pz i{width:22px;height:22px;border:3px solid var(--fg);border-radius:4px;background:linear-gradient(to top left,#0000 43%,var(--fg) 0 57%,#0000 0)}
+.m06 .m06-4{background:none}.m06 .m06-2{background:none;border-width:3px 0 0 3px}
+.m06-sd .m06-b{width:100%;min-height:42px}
+.m06-nw{width:100%;margin-top:12px}
+.m06-tl{grid-column:span 2}
+.m06-tg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.m06-tg a{display:flex;flex-direction:column;gap:10px;min-height:44px;padding:14px;border-radius:20px;background:var(--s2);text-decoration:none}
+.m06-tg i{width:52px;height:52px;border-radius:16px;background:linear-gradient(#ffffff59,#fff0 50%),var(--c,var(--b1));color:#fff;box-shadow:inset 0 -3px 0 #0003,0 6px 12px -6px var(--c,var(--b1))}
+.m06-tg svg{width:26px;stroke-width:2.4}
+.m06-tg b{display:block;font:700 16px/1.2 var(--d)}
+.m06-tg small{display:block;margin-top:4px;color:var(--mu);font-size:14px;line-height:1.35}
+.m06-ft{margin:0 24px 24px;padding:28px;border-radius:30px;background:#0e1726;color:#e8eef7}
+.m06[data-mode="dark"] .m06-ft{background:#05090f;box-shadow:inset 0 0 0 1px var(--ln)}
+.m06-ft>div{justify-content:space-between}
+.m06-ft .m06-sg{background:#ffffff14}
+.m06-ft .m06-sg a{color:#e8eef7}
+.m06-rs{margin-top:20px;padding:8px 16px 8px 8px;border-radius:18px;background:#ffffff12;flex-wrap:nowrap}
+.m06-rs i{width:44px;height:44px;border-radius:14px;background:var(--b3);color:#1a1300;font:800 15px var(--d);font-style:normal}
+.m06-rs a{display:inline-flex;min-height:40px;align-items:center;color:#ffd36b;font-weight:700}
+@container (max-width:620px){.m06-h{padding:8px 14px}.m06-lg{font-size:21px}.m06-lg .m06-ba{--s:38px}.m06-h .m06-sg{display:none}.m06 .m06-bu{display:grid}.m06-ib{width:42px;height:42px}
+.m06-hud{margin:0 14px 10px;gap:6px}.m06-hud span{font-size:12px;padding-right:10px}
+.m06-hero{grid-template:"t t" "s g"/minmax(0,1fr) 112px;gap:22px 12px;margin:0 10px;padding:24px 16px;border-radius:28px}.m06 h1{font-size:34px}.m06-t p{font-size:15px}
+.m06-st{height:200px}.m06-st>div{inset:8px 4px 10px}.m06-st>div:nth-child(3){padding:14px 12px;gap:8px}.m06-four{gap:3px}.m06-four .m06-ba{--s:42px}.m06-st b{font-size:18px}.m06-girl{border-radius:22px}.m06-girl span{left:6px;top:8px}
+.m06-mn{grid-template-columns:minmax(0,1fr);gap:18px;padding:22px 10px 30px}.m06-q,.m06-tl{grid-column:auto;grid-row:auto}.m06-c{padding:18px 14px;border-radius:24px}
+.m06-hd{gap:10px;padding:10px}.m06-hd .m06-ba{--s:76px;font-size:17px}.m06-hd b{font-size:19px}.m06-hd small{display:block;font-size:13px}.m06-rg{width:58px;height:58px;font-size:12px}
+.m06-lb{gap:6px 8px}.m06-lb li{gap:7px;padding-right:6px;font-size:16px;letter-spacing:.02em}.m06-lb li:before{width:28px;height:28px;font-size:13px}
+.m06-win b{font-size:38px}.m06-sd .m06-rg{width:72px;height:72px;font-size:22px}.m06-tg{grid-template-columns:minmax(0,1fr)}.m06-tg a{flex-direction:row;align-items:center}.m06-tg i{flex:none}
+.m06-ft{margin:0 10px 14px;padding:22px 16px}.m06-tag{float:none;display:inline-block}}
+</style>
+<div class="m06 mock" data-mode="light">
+<header class="m06-h m06-r">
+<a class=m06-lg href=#><i class=m06-ba aria-hidden=true>7</i><span>jugada<b>del</b>dia</span></a>
+<nav class=m06-sg aria-label=Principal><a href=# aria-current=page>Quiniela</a><a href=#>Quini 6</a><a href=#>Loterías</a><a href=#>Truco</a><a href=#>Juegos</a></nav>
+<button class=m06-ib aria-label="Cambiar tema"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+<button class="m06-ib m06-bu" aria-label=Menú><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+</header>
+<p class=m06-hud><span><i></i>5 sorteos por día</span><span><i style=--c:var(--b3)></i>24 jurisdicciones</span><span><i style=--c:var(--b2)></i>Truco y generala</span></p>
+<section class=m06-hero>
+<div class=m06-t>
+<span class=m06-k>Nocturna · Nacional</span>
+<h1>La quiniela de hoy, clara y sin humo</h1>
+<p>Extractos oficiales de cada provincia, cuánto paga cada apuesta y las chances reales. Y para la sobremesa: anotador de truco, generala y más.</p>
+<div class=m06-r><a class="m06-b m06-p" href=#>Ver la quiniela de hoy</a><a class=m06-b href=#>¿Cuánto paga?</a></div>
+</div>
+<div class=m06-st aria-hidden=true><div></div><div></div><div><small>Ejemplo ilustrativo</small><b>La cabeza</b><div class=m06-four><i class=m06-ba>4</i><i class=m06-ba>7</i><i class=m06-ba>2</i><i class=m06-ba>1</i></div><small>Sorteos de hoy</small><p class=m06-xp></p></div></div>
+<div class=m06-girl role=img aria-label=Ilustración><svg viewBox="0 0 200 300"><path d="M64 98c0-52 72-52 72 0v64c-12 10-60 10-72 0z" opacity=.55 /><ellipse cx=100 cy=98 rx=27 ry=33 /><path d="M90 128h20v40H90zM32 302c4-74 28-122 68-122s64 48 68 122z"/></svg><span>acá va ella</span></div>
+</section>
+<main class=m06-mn>
+<section class="m06-c m06-q">
+<div><span class=m06-tag>Ejemplo ilustrativo</span><h2>Quiniela de hoy</h2></div>
+<nav class="m06-sg m06-r" aria-label=Jurisdicción><a href=# aria-current=page>Nacional</a><a href=#>Provincia</a><a href=#>Tucumán</a><a href=#>Córdoba</a><a href=#>Santa Fe</a></nav>
+<div class="m06-sg m06-r" role=group aria-label=Sorteo><button>La Previa</button><button>Primera</button><button>Matutina</button><button>Vespertina</button><button aria-pressed=true>Nocturna</button></div>
+<div class=m06-hd><i class=m06-ba>4721</i><p><b>La cabeza: 4721</b><small>Actualizado 21:14 (hora argentina)</small></p><span class=m06-rg>5 de 5</span></div>
+<ol class=m06-lb><li>4721<li>0938<li>6154<li>2307<li>8862<li>1495<li>7030<li>3618<li>5276<li>9143<li>0582<li>6409<li>2851<li>7764<li>1327<li>4990<li>8215<li>3046<li>5573<li>9681</ol>
+</section>
+<section class=m06-c>
+<span class=m06-tag>ejemplo</span><h2>¿Cuánto paga?</h2>
+<p class=m06-ch><span>Apuesta $ 100</span><span>A la cabeza</span><span>2 cifras</span></p>
+<p class=m06-win>Cobrás <b>$ 7.000</b></p>
+<p class=m06-hon>Chance: 1 en 100 · por cada $ 100 apostados vuelven en promedio $ 70</p>
+</section>
+<section class=m06-c>
+<small>Quini 6</small><h2>Controlá tu boleta</h2>
+<div class=m06-six><input value=04 aria-label="Bola 1"><input value=11 aria-label="Bola 2"><input value=17 aria-label="Bola 3"><input value=26 aria-label="Bola 4"><input value=33 aria-label="Bola 5"><input value=45 aria-label="Bola 6"></div>
+<div class="m06-sg m06-r" role=group aria-label=Modalidad><button aria-pressed=true>Tradicional</button><button>La Segunda</button><button>Revancha</button><button>Siempre Sale</button></div>
+<div class="m06-ft2 m06-r"><p>Chance del pozo: <b>1 en 9.366.819</b></p><button class="m06-b m06-p">Controlar</button></div>
+</section>
+<section class=m06-c>
+<small>Sobremesa</small><h2>Anotador de truco</h2>
+<div class=m06-tr>
+<div class=m06-sd><span class=m06-rg>17</span><h3>Nosotros</h3><small>malas</small><p class=m06-pz><i></i><i></i><i></i></p><small>buenas</small><p class=m06-pz><i class=m06-2></i></p><button class=m06-b>+1</button></div>
+<div class=m06-sd><span class=m06-rg>9</span><h3>Ellos</h3><small>malas</small><p class=m06-pz><i></i><i class=m06-4></i></p><small>buenas</small><p class=m06-pz></p><button class=m06-b>+1</button></div>
+</div>
+<button class="m06-b m06-nw">Nuevo partido</button>
+</section>
+<section class="m06-c m06-tl">
+<small>Biblioteca</small><h2>Todo para tu jugada</h2>
+<div class=m06-tg>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx=12 cy=10 r=2.5 /></svg></i><span><b>Quiniela por provincia</b><small>Los extractos de las 24 jurisdicciones</small></span></a>
+<a href=#><i style=--c:var(--b4)><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6zM9 7h6M9 12h6M9 16h6"/></svg></i><span><b>Cuánto paga la quiniela</b><small>A la cabeza, a los 5, 10, 20 y redoblona</small></span></a>
+<a href=#><i style=--c:var(--b2)><svg viewBox="0 0 24 24"><circle cx=12 cy=12 r=9 /><path d="M8 12l3 3 5-6"/></svg></i><span><b>Controlar Quini 6</b><small>Las cuatro modalidades, en un toque</small></span></a>
+<a href=#><i style=--c:var(--b5)><svg viewBox="0 0 24 24"><circle cx=7.5 cy=16 r=4 /><circle cx=16.5 cy=16 r=4 /><circle cx=12 cy=8 r=4 /></svg></i><span><b>Loto Plus y Brinco</b><small>Pozos, chances y cómo se juega</small></span></a>
+<a href=#><i style=--c:#e0447a><svg viewBox="0 0 24 24"><path d="M5 4h10v16H5zM15 7l4 1-3 12-1-.3M10 8v8"/></svg></i><span><b>Valores del truco</b><small>Qué carta mata a cuál, y las señas</small></span></a>
+<a href=#><i style=--c:#e8930c><svg viewBox="0 0 24 24"><rect x=4 y=4 width=16 height=16 rx=4 /><path d="M9 9h0M15 9h0M12 12h0M9 15h0M15 15h0" stroke-width=3 /></svg></i><span><b>Generala: probabilidades</b><small>Servida, póker, escalera: la cuenta exacta</small></span></a>
+</div>
+</section>
+</main>
+<footer class=m06-ft>
+<div class=m06-r><b>Sin apuestas online, sin operadores: solo datos oficiales y la cuenta.</b><nav class="m06-sg m06-r" aria-label=Institucional><a href=#>Quiénes somos</a><a href=#>De dónde salen los datos</a><a href=#>Juego responsable</a></nav></div>
+<p class="m06-r m06-rs"><i>18+</i><span>Si el juego dejó de ser un juego: línea gratuita de tu provincia → <a href=#>Juego responsable</a></span></p>
+</footer>
+</div>

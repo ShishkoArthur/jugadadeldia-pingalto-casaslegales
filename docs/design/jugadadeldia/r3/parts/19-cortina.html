@@ -1,0 +1,155 @@
+<!-- name: Cortina -->
+<!-- desc: Графика «шторки»-перехода между эфирными блоками: диагональные срезы с градиентом маджента→оранжевый, шары скатываются колонкой по линии среза, широкий шрифт как у заставок; выписка — лента из 20 плиток в два ряда, «¿Cuánto paga?» — карточка со шкалой-дугой «вернётся в среднем 70 из 100». Светлая — розово-белый фон, градиенты насыщенные; тёмная — глубокий сливовый, градиенты светятся, акцент розовый. -->
+<!-- fonts: family=Syncopate:wght@700&family=Hind:wght@400;700 -->
+<style>
+.m19{--bg:#fff5f9;--pn:#fff;--fg:#1d0b19;--mu:#5b4256;--ln:#f0d6e4;--ac:#ad0f69;--g:linear-gradient(120deg,#a10f63,#c2410c);--so:#fde6f1;--bt:#1d0b19;--bo:#fff;--d:"Syncopate","Arial Black",sans-serif;font:17px/1.5 "Hind",system-ui,sans-serif;background:var(--bg);color:var(--fg);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.m19[data-mode="dark"]{--bg:#13060f;--pn:#1f0b19;--fg:#ffeef7;--mu:#d8bccd;--ln:#3d1a31;--ac:#ff6cb5;--so:#2c1124;--bt:#ffeef7;--bo:#1d0b19}
+.m19 :where(h1,h2,h3,p,ol){margin:0;padding:0}
+.m19 :where(a,button,input){font:inherit;color:inherit}
+.m19 :is(a,button,input):focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.m19 svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.m19 :is(h1,h2,h3,.m19-lg,.m19-x b){font-family:var(--d);font-weight:700;text-transform:uppercase;letter-spacing:-.02em}
+.m19-r{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.m19-h{padding:10px 28px;background:var(--pn);border-bottom:4px solid;border-image:var(--g) 1}
+.m19-lg{display:flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;text-decoration:none;font-size:17px}
+.m19-lg span{background:var(--g);-webkit-background-clip:text;background-clip:text;color:#0000}
+.m19[data-mode="dark"] .m19-lg span{background:linear-gradient(120deg,#ff6cb5,#ff9a5c);-webkit-background-clip:text;background-clip:text}
+.m19-ba,.m19-six input{display:grid;place-items:center;flex:none;width:64px;height:64px;border:0;border-radius:50%;color:#1d0b19;font:700 22px/1 var(--d);letter-spacing:-.04em;background:radial-gradient(circle at 32% 26%,#fff 0 5%,#fff0 20%),radial-gradient(circle,#fff 0 38%,#0000 39%),radial-gradient(circle at 36% 30%,#ff8fc8,#c4127a 55%,#7a0745);box-shadow:inset -5px -7px 12px #0006,0 12px 20px -10px #6b0640aa}
+.m19-ba:nth-child(even),.m19-six input:nth-child(even){background:radial-gradient(circle at 32% 26%,#fff 0 5%,#fff0 20%),radial-gradient(circle,#fff 0 38%,#0000 39%),radial-gradient(circle at 36% 30%,#ffc08a,#e8590c 55%,#8a2c05)}
+.m19-lg .m19-ba{width:36px;height:36px;font-size:12px}
+.m19-n{display:flex;flex-wrap:wrap;gap:4px}
+.m19-n>*{display:inline-flex;align-items:center;min-height:42px;padding:0 14px;border:0;border-radius:99px;background:none;text-decoration:none;font-weight:700;cursor:pointer}
+.m19-n [aria-current],.m19-n [aria-pressed="true"]{background:var(--g);color:#fff}
+.m19-ib{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--so);cursor:pointer}
+.m19-ib svg{width:22px}.m19-bu{display:none}
+.m19-hero{display:grid;grid-template-columns:minmax(0,1fr) 92px 280px;align-items:stretch;background:linear-gradient(105deg,#0000 60%,var(--so) 60%)}
+.m19-t{padding:48px 70px 52px 28px;background:var(--g);color:#fff;clip-path:polygon(0 0,100% 0,calc(100% - 60px) 100%,0 100%);margin-right:-60px}
+.m19-k{display:inline-block;padding:6px 12px;border:1px solid #fff9;border-radius:99px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.m19 h1{font-size:44px;line-height:1.02;margin:18px 0}
+.m19-t p{max-width:46ch;margin-bottom:24px}
+.m19-b{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border:2px solid currentColor;border-radius:99px;background:none;font-weight:700;text-decoration:none;cursor:pointer}
+.m19-t .m19-b1{background:#fff;color:#8a0c50;border-color:#fff}
+.m19 .m19-b2{background:var(--bt);color:var(--bo);border-color:var(--bt)}
+.m19-st{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding:20px 0;position:relative;z-index:1}
+.m19-st small{padding:4px 10px;border-radius:99px;background:var(--pn);font-size:13px;font-weight:700;line-height:1.2}
+.m19-st .m19-ba:nth-child(1){translate:22px}.m19-st .m19-ba:nth-child(2){translate:8px}.m19-st .m19-ba:nth-child(3){translate:-6px}.m19-st .m19-ba:nth-child(4){translate:-20px}
+.m19-girl{position:relative;margin:24px 28px 24px 0;aspect-ratio:2/3;align-self:center;background:linear-gradient(160deg,#ffb27a,#e0408f 55%,#6b0b4a);color:#ffd5ea;clip-path:polygon(30px 0,100% 0,calc(100% - 30px) 100%,0 100%);overflow:clip}
+.m19-girl svg{position:absolute;inset:auto 0 0;width:100%;fill:currentColor;stroke:none;opacity:.55}
+.m19-girl span{position:absolute;inset:auto 0 12px;text-align:center;color:#fff;font-size:14px;font-weight:700}
+.m19-mn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:44px 28px 56px}
+.m19-c{min-width:0;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:24px;background:var(--pn);box-shadow:0 0 0 1px var(--ln)}
+.m19 h2{font-size:22px;line-height:1.1}
+.m19-tag{align-self:flex-start;padding:2px 12px;border-radius:99px;background:var(--so);color:var(--ac);font-size:14px;font-weight:700}
+.m19 .m19-q{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:start}
+.m19-q>.m19-ex,.m19-q>.m19-n{grid-column:1/-1}
+.m19-q>.m19-tag{justify-self:start}
+.m19-hd{grid-area:1/2/3/3;display:grid;justify-items:end;align-content:start;text-align:right;padding:16px 22px;border-radius:20px;background:var(--g);color:#fff;clip-path:polygon(18px 0,100% 0,100% 100%,0 100%)}
+.m19-hd b{font:700 46px/1.1 var(--d);letter-spacing:-.04em}
+.m19-hd small{font-size:15px}
+.m19-c .m19-n>*{border:1px solid var(--ln)}
+.m19-ex{list-style:none;counter-reset:x;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}
+.m19-ex li{counter-increment:x;display:grid;gap:6px;padding:10px 6px 12px;border-radius:12px;background:var(--so);text-align:center;font:700 17px/1 var(--d);letter-spacing:-.06em}
+.m19-ex li:before{content:counter(x);font:700 14px/1 "Hind",sans-serif;letter-spacing:0;color:var(--mu)}
+.m19-ex li:first-child{background:var(--g);color:#fff}.m19-ex li:first-child:before{color:#fff}
+.m19-ch{display:flex;flex-wrap:wrap;gap:6px}
+.m19-ch span{padding:4px 12px;border-radius:99px;background:var(--so);font-weight:700;font-size:15px}
+.m19-gg{display:grid;place-items:end center;height:130px;border-radius:130px 130px 0 0;background:radial-gradient(circle at 50% 100%,var(--pn) 0 54%,#0000 55%),conic-gradient(from -90deg at 50% 100%,#c2410c,#ad0f69 126deg,var(--ln) 0 180deg,#0000 0);text-align:center;font-size:15px;color:var(--mu)}
+.m19-gg b{display:block;font:700 28px/1 var(--d);color:var(--fg);letter-spacing:-.04em}
+.m19-hon{font-size:15px;color:var(--mu);border-top:1px solid var(--ln);padding-top:10px}
+.m19-six{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.m19-six input{width:100%;height:auto;aspect-ratio:1;padding:0;text-align:center;font-size:14px}
+.m19-pz{margin-top:auto;justify-content:space-between}
+.m19-pz b{display:block;font:700 19px/1.2 var(--d);letter-spacing:-.04em}
+.m19-vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.m19-x{display:grid;gap:8px;align-content:start;padding:12px;border-radius:16px;background:var(--so)}
+.m19-x h3{font-size:12px;letter-spacing:0}
+.m19-x>b{font-size:40px;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:#0000}
+.m19[data-mode="dark"] .m19-x>b{background:linear-gradient(120deg,#ff6cb5,#ff9a5c);-webkit-background-clip:text;background-clip:text}
+.m19-x small{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mu)}
+.m19-pl{display:flex;flex-wrap:wrap;gap:5px;min-height:26px}
+.m19-pl i{width:24px;height:24px;border:3px solid var(--fg);border-radius:4px;background:linear-gradient(to top left,#0000 43%,var(--ac) 0 57%,#0000 0)}
+.m19 .m19-4{background:none}.m19 .m19-2{background:none;border-width:3px 0 0 3px}
+.m19-x .m19-b{min-height:44px;padding:0}
+.m19-tg{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.m19-tg h2{grid-column:1/-1;margin-top:8px}
+.m19-tg a{display:flex;align-items:center;gap:14px;padding:18px;border-radius:20px;background:linear-gradient(var(--pn),var(--pn)) padding-box,linear-gradient(120deg,var(--ln) 60%,#e8590c) border-box;border:2px solid #0000;text-decoration:none}
+.m19-tg i{flex:none;display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:var(--g);color:#fff}
+.m19-tg svg{width:24px}
+.m19-tg b{display:block;line-height:1.2}
+.m19-tg small{font-size:15px;color:var(--mu)}
+.m19-ft{padding:36px 28px 30px;background:#1d0b19;color:#ffeef7;border-top:6px solid;border-image:var(--g) 1}
+.m19-ft>div{justify-content:space-between}
+.m19-ft .m19-n a{text-decoration:underline}
+.m19-rg{margin-top:20px;display:flex;align-items:center;gap:14px;padding:6px 16px 6px 6px;border-radius:99px;background:#ffffff14}
+.m19-rg i{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--g);color:#fff;font:700 13px/1 var(--d);font-style:normal}
+.m19-rg a{display:inline-flex;align-items:center;min-height:40px;font-weight:700;color:#ff9fcd}
+@media (prefers-reduced-motion:no-preference){.m19-st .m19-ba{animation:m19-roll .9s ease-out both}.m19-st .m19-ba:nth-child(2){animation-delay:.15s}.m19-st .m19-ba:nth-child(3){animation-delay:.3s}.m19-st .m19-ba:nth-child(4){animation-delay:.45s}}
+@keyframes m19-roll{from{transform:translate(60px,-40px) rotate(-200deg);opacity:0}}
+@container (max-width:620px){.m19-h{padding:8px 14px}.m19-lg{font-size:14px}.m19-h .m19-n{display:none}.m19 .m19-bu{display:grid}
+.m19-hero{grid-template-columns:minmax(0,1fr) 120px;background:var(--so)}.m19-t{grid-column:1/-1;margin:0;padding:28px 14px 52px;clip-path:polygon(0 0,100% 0,100% calc(100% - 30px),0 100%)}.m19 h1{font-size:28px}
+.m19-st{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:8px;padding:10px 0 20px 14px;margin-top:-28px}.m19-st small{flex:1 1 100%;margin-right:auto;max-width:max-content}.m19-st .m19-ba{translate:none!important;width:52px;height:52px;font-size:18px}.m19-girl{margin:-30px 14px 20px 0;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%)}.m19-girl span{font-size:12px}
+.m19-mn{grid-template-columns:minmax(0,1fr);gap:18px;padding:28px 14px 40px}.m19 .m19-q{grid-template-columns:minmax(0,1fr)}.m19-hd{grid-area:auto;justify-items:start;text-align:left}.m19-c{padding:20px 14px}
+.m19-ex{grid:repeat(10,auto)/auto-flow minmax(0,1fr)}.m19-ex li{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:17px}
+.m19-tg{grid-template-columns:minmax(0,1fr)}.m19-ft{padding:30px 14px 24px}.m19-rg{border-radius:26px}}
+</style>
+<div class="m19 mock" data-mode="light">
+<header class="m19-h m19-r">
+<a class=m19-lg href=#><i class=m19-ba aria-hidden=true>21</i><span>jugadadeldia</span></a>
+<nav class=m19-n aria-label=Principal><a href=# aria-current=page>Quiniela</a><a href=#>Quini 6</a><a href=#>Loterías</a><a href=#>Truco</a><a href=#>Juegos</a></nav>
+<button class=m19-ib aria-label="Cambiar tema"><svg viewBox="0 0 24 24"><circle cx=12 cy=12 r=4 /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg></button>
+<button class="m19-ib m19-bu" aria-label=Menú><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+<section class=m19-hero>
+<div class=m19-t>
+<span class=m19-k>Nocturna · 21:00 · en vivo</span>
+<h1>La quiniela de hoy, clara y sin humo</h1>
+<p>Extractos oficiales de cada provincia, cuánto paga cada apuesta y las chances reales. Y para la sobremesa: anotador de truco, generala y más.</p>
+<div class=m19-r><a class="m19-b m19-b1" href=#>Ver la quiniela de hoy</a><a class=m19-b href=#>¿Cuánto paga?</a></div>
+</div>
+<div class=m19-st role=img aria-label="Bolillas 4, 7, 2, 1"><b class=m19-ba>4</b><b class=m19-ba>7</b><b class=m19-ba>2</b><b class=m19-ba>1</b><small>la cabeza 4721</small></div>
+<div class=m19-girl role=img aria-label=Ilustración><svg viewBox="0 0 200 300"><path d="M64 98c0-52 72-52 72 0v66c-12 10-60 10-72 0z" opacity=.6 /><ellipse cx=100 cy=98 rx=26 ry=32 /><path d="M90 126h20v40H90zM30 302c4-74 30-122 70-122s66 48 70 122z"/></svg><span>acá va ella</span></div>
+</section>
+<main class=m19-mn>
+<section class="m19-c m19-q">
+<span class=m19-tag>Ejemplo ilustrativo</span>
+<p class=m19-hd><small>La cabeza: 4721</small><b>4721</b><small>Actualizado 21:14 (hora argentina)</small></p>
+<h2>Quiniela de hoy</h2>
+<nav class=m19-n aria-label=Jurisdicción><a href=# aria-current=page>Nacional</a><a href=#>Provincia</a><a href=#>Tucumán</a><a href=#>Córdoba</a><a href=#>Santa Fe</a></nav>
+<div class=m19-n role=group aria-label=Sorteo><button>La Previa</button><button>Primera</button><button>Matutina</button><button>Vespertina</button><button aria-pressed=true>Nocturna</button></div>
+<ol class=m19-ex><li>4721<li>0938<li>6154<li>2307<li>8862<li>1495<li>7030<li>3618<li>5276<li>9143<li>0582<li>6409<li>2851<li>7764<li>1327<li>4990<li>8215<li>3046<li>5573<li>9681</ol>
+</section>
+<section class=m19-c>
+<span class=m19-tag>ejemplo</span><h2>¿Cuánto paga?</h2>
+<p class=m19-ch><span>Apuesta $ 100</span><span>A la cabeza</span><span>2 cifras</span></p>
+<p class=m19-gg>Cobrás<b>$ 7.000</b></p>
+<p class=m19-hon>Chance: 1 en 100 · por cada $ 100 apostados vuelven en promedio $ 70</p>
+</section>
+<section class=m19-c>
+<h2>Quini 6: controlá tu boleta</h2>
+<div class=m19-six><input value=04 aria-label="Bola 1"><input value=11 aria-label="Bola 2"><input value=17 aria-label="Bola 3"><input value=26 aria-label="Bola 4"><input value=33 aria-label="Bola 5"><input value=45 aria-label="Bola 6"></div>
+<div class=m19-n role=group aria-label=Modalidad><button aria-pressed=true>Tradicional</button><button>La Segunda</button><button>Revancha</button><button>Siempre Sale</button></div>
+<div class="m19-pz m19-r"><p>Chance del pozo<b>1 en 9.366.819</b></p><button class="m19-b m19-b2">Controlar</button></div>
+</section>
+<section class=m19-c>
+<h2>Anotador de truco</h2>
+<div class=m19-vs>
+<div class=m19-x><h3>Nosotros</h3><b>17</b><small>malas</small><p class=m19-pl><i></i><i></i><i></i></p><small>buenas</small><p class=m19-pl><i class=m19-2></i></p><button class="m19-b m19-b2">+1</button></div>
+<div class=m19-x><h3>Ellos</h3><b>9</b><small>malas</small><p class=m19-pl><i></i><i class=m19-4></i></p><small>buenas</small><p class=m19-pl></p><button class="m19-b m19-b2">+1</button></div>
+</div>
+<button class=m19-b>Nuevo partido</button>
+</section>
+<section class=m19-tg>
+<h2>Todo para tu jugada</h2>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11zM12 8v4"/></svg></i><span><b>Quiniela por provincia</b><small>Los extractos de las 24 jurisdicciones</small></span></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M4 19h16M7 16V9M12 16V5M17 16v-4"/></svg></i><span><b>Cuánto paga la quiniela</b><small>A la cabeza, a los 5, 10, 20 y redoblona</small></span></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 12l3 3 5-6"/></svg></i><span><b>Controlar Quini 6</b><small>Las cuatro modalidades, en un toque</small></span></a>
+<a href=#><i><svg viewBox="0 0 24 24"><circle cx=7.5 cy=16 r=4 /><circle cx=16.5 cy=16 r=4 /><circle cx=12 cy=8 r=4 /></svg></i><span><b>Loto Plus y Brinco</b><small>Pozos, chances y cómo se juega</small></span></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6zM12 7v10M9.5 9.5 12 7l2.5 2.5"/></svg></i><span><b>Valores del truco</b><small>Qué carta mata a cuál, y las señas</small></span></a>
+<a href=#><i><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM9 9h0M15 9h0M9 15h0M15 15h0M12 12h0"/></svg></i><span><b>Generala: probabilidades</b><small>Servida, póker, escalera: la cuenta exacta</small></span></a>
+</section>
+</main>
+<footer class=m19-ft>
+<div class=m19-r><b>Sin apuestas online, sin operadores: solo datos oficiales y la cuenta.</b><nav class=m19-n aria-label=Institucional><a href=#>Quiénes somos</a><a href=#>De dónde salen los datos</a><a href=#>Juego responsable</a></nav></div>
+<p class=m19-rg><i>18+</i><span>Si el juego dejó de ser un juego: línea gratuita de tu provincia → <a href=#>Juego responsable</a></span></p>
+</footer>
+</div>
