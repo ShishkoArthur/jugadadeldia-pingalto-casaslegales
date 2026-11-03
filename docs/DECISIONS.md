@@ -4,6 +4,17 @@
 
 ## Три сайта
 
+## 2026-11-03 — меньше потоков; ключи PandaScore и Supercell; 5 вариантов «Relieve»; выгрузка владельца
+> «Покажи сцены девушек когда будут готовы / /home/dev/jugadadeldia-pingalto-casaslegales/11111111111/ тут выгрузка / Для ревьюшника legales
+> сделай пожалуйста на основе шаблона что мы выбрали ещё около 5 вариантов. / Слишком много потоков одновременно запускаешь, процессор
+> загибается. / PandaScore … / Для Supercell как айпи разрешить? С которого будет доступ»
+
+Следствия: **одновременно не больше 2 агентов** (было 6). Ключи PandaScore, Clash Royale, Brawl Stars — в `.env` (`PANDASCORE_TOKEN`,
+`CR_API_KEY`, `BS_API_KEY`), Supercell привязан к 187.7.26.95 (только IPv4; запросы с сервера `-4`), все три проверены — 200.
+casaslegales — 5 вариантов от «02 Relieve». Выгрузка владельца `11111111111/` (сохранённые страницы Córdoba, Neuquén, Río Negro, Salta,
+Mendoza IPJyC и скриншоты операторов bet365, BetWarrior, bplay, Casino BA, Codere) → разложить по `docs/reference/owner-saves/` и
+`data/shots/`. Сцены девушек показаны в сводке (версия 4).
+
 ## 2026-11-03 — выбор: дизайн jugadadeldia, девушки
 > «jugadadeldia / дизайн 6 / девушка 10 / casaslegales.com / дизайн 2 / pingalto.com / девушка 9 / Распиши что ещё от меня нужно?»
 

@@ -1,0 +1,97 @@
+{
+ "bodyPx": 1500,
+ "medianSourceBody": 2251,
+ "scenes": {
+  "pa-sc-home": {
+   "body": 2260,
+   "scale": 0.664,
+   "offMedian": 0.4,
+   "transparent": 76,
+   "size": "588x1517"
+  },
+  "pa-sc-kit-ping": {
+   "body": 2251,
+   "scale": 0.666,
+   "offMedian": 0,
+   "transparent": 78,
+   "size": "545x1517"
+  },
+  "pa-sc-kit-sensibilidad": {
+   "body": 2240,
+   "scale": 0.67,
+   "offMedian": -0.5,
+   "transparent": 79,
+   "size": "504x1523"
+  },
+  "pa-sc-kit-dpi": {
+   "body": 2252,
+   "scale": 0.666,
+   "offMedian": 0,
+   "transparent": 79,
+   "size": "499x1511"
+  },
+  "pa-sc-tier-list": {
+   "body": 2263,
+   "scale": 0.663,
+   "offMedian": 0.5,
+   "transparent": 76,
+   "size": "571x1516"
+  },
+  "pa-sc-ff-sensibilidad": {
+   "body": 2253,
+   "scale": 0.666,
+   "offMedian": 0.1,
+   "transparent": 79,
+   "size": "485x1514"
+  },
+  "pa-sc-ff-nombres": {
+   "body": 2262,
+   "scale": 0.663,
+   "offMedian": 0.5,
+   "transparent": 78,
+   "size": "483x1511"
+  },
+  "pa-sc-ff-espacio-invisible": {
+   "body": 2255,
+   "scale": 0.665,
+   "offMedian": 0.2,
+   "transparent": 77,
+   "size": "575x1513"
+  },
+  "pa-sc-valorant-rangos": {
+   "body": 2195,
+   "scale": 0.683,
+   "offMedian": -2.5,
+   "transparent": 76,
+   "size": "658x1550"
+  },
+  "pa-sc-valorant-agentes": {
+   "body": 2246,
+   "scale": 0.668,
+   "offMedian": -0.2,
+   "transparent": 79,
+   "size": "470x1515"
+  },
+  "pa-sc-cs2-mira": {
+   "body": 2248,
+   "scale": 0.667,
+   "offMedian": -0.1,
+   "transparent": 76,
+   "size": "649x1516"
+  },
+  "pa-sc-lol-rangos": {
+   "body": 2233,
+   "scale": 0.672,
+   "offMedian": -0.8,
+   "transparent": 77,
+   "size": "535x1523"
+  },
+  "pa-sc-fortnite-nube": {
+   "body": 2245,
+   "scale": 0.668,
+   "offMedian": -0.3,
+   "transparent": 78,
+   "size": "525x1511"
+  }
+ }
+}

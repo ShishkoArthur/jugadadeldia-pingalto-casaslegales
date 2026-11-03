@@ -121,7 +121,7 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
 </style>
 <main class="wrap">
   <header style="display:grid;gap:10px">
-    <h1>Три сайта для Аргентины: круг 3</h1>
+    <h1>Три сайта для Аргентины</h1>
     <p class="lead">Обновлено 03.11 по вашим правкам: 20 новых дизайнов jugadadeldia, новые девушки для jugadadeldia и pingalto (светлая и тёмная тема — переключатель у каждого макета). Дизайны pingalto и casaslegales выбраны. Ниже — все страницы с title, H1, description и тем, что на странице аргентинского.</p>
     <ul class="status">
       <li><span class="dot"></span><span>Все три домена работают по https (пока заглушка, закрыта от индекса), www → основной адрес.</span></li>
@@ -131,6 +131,15 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
   </header>
 
   <div class="sites">${SITES.map(siteCard).join('')}</div>
+
+  <section class="need">
+    <h2>Сцены девушек на страницах</h2>
+    <p class="lead">Одна и та же девушка, своя поза и предмет на каждой странице; фон уже вырезан. Скажите, какие переделать (по адресу под картинкой).</p>
+    <div class="picks">
+      <a class="pick" href="girls/scenes-jdd.jpg"><span class="pick-k">jugadadeldia</span><span class="pick-v">32 сцены →</span><span class="pick-n">девушка 10</span></a>
+      <a class="pick" href="girls/scenes-pa.jpg"><span class="pick-k">pingalto</span><span class="pick-v">13 сцен →</span><span class="pick-n">девушка 9</span></a>
+    </div>
+  </section>
 
   <section class="qs">
     <h2>Вопросы к вам</h2>

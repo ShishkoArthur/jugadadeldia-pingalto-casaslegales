@@ -1,0 +1,198 @@
+{
+ "site": "jugadadeldia",
+ "base": "data/art/base/jugadadeldia/girl-base.png",
+ "pages": {
+  "/": {
+   "image": "jdd-sc-home",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-home.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/": {
+   "image": "jdd-sc-quiniela",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/nacional-y-provincia/": {
+   "image": "jdd-sc-quiniela-nacional-y-provincia",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-nacional-y-provincia.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/horarios/": {
+   "image": "jdd-sc-quiniela-horarios",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-horarios.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/cuanto-paga/": {
+   "image": "jdd-sc-quiniela-cuanto-paga",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-cuanto-paga.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/significado-de-los-numeros/": {
+   "image": "jdd-sc-quiniela-significado-de-los-numeros",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-significado-de-los-numeros.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/nacional/": {
+   "image": "jdd-sc-quiniela-nacional",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-nacional.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/provincia/": {
+   "image": "jdd-sc-quiniela-provincia",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-provincia.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/tucuman/": {
+   "image": "jdd-sc-quiniela-tucuman",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-tucuman.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/mendoza/": {
+   "image": "jdd-sc-quiniela-mendoza",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-mendoza.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/catamarca/": {
+   "image": "jdd-sc-quiniela-catamarca",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-catamarca.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/san-juan/": {
+   "image": "jdd-sc-quiniela-san-juan",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-san-juan.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela/cordoba/": {
+   "image": "jdd-sc-quiniela-cordoba",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-cordoba.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quini-6/": {
+   "image": "jdd-sc-quini-6",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quini-6.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quini-6/controlar/": {
+   "image": "jdd-sc-quini-6-controlar",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quini-6-controlar.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quini-6/como-se-juega/": {
+   "image": "jdd-sc-quini-6-como-se-juega",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quini-6-como-se-juega.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/loto-plus/": {
+   "image": "jdd-sc-loto-plus",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-loto-plus.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/quiniela-plus/": {
+   "image": "jdd-sc-quiniela-plus",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-plus.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/telekino/": {
+   "image": "jdd-sc-telekino",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-telekino.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/telekino/controlar/": {
+   "image": "jdd-sc-telekino-controlar",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-telekino-controlar.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/tombola/santiaguena/": {
+   "image": "jdd-sc-tombola-santiaguena",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-tombola-santiaguena.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/tombola/jujena/": {
+   "image": "jdd-sc-tombola-jujena",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-tombola-jujena.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/truco/": {
+   "image": "jdd-sc-truco",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-truco.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/truco/valores-de-las-cartas/": {
+   "image": "jdd-sc-truco-valores-de-las-cartas",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-truco-valores-de-las-cartas.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/truco/senas/": {
+   "image": "jdd-sc-truco-senas",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-truco-senas.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/truco/anotador/": {
+   "image": "jdd-sc-truco-anotador",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-truco-anotador.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/truco/reglas/": {
+   "image": "jdd-sc-truco-reglas",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-truco-reglas.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/burako/": {
+   "image": "jdd-sc-burako",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-burako.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/generala/": {
+   "image": "jdd-sc-generala",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-generala.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/dados/": {
+   "image": "jdd-sc-dados",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-dados.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/chinchon/": {
+   "image": "jdd-sc-chinchon",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-chinchon.webp",
+   "status": "review",
+   "alt": ""
+  },
+  "/escoba-de-15/": {
+   "image": "jdd-sc-escoba-de-15",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-escoba-de-15.webp",
+   "status": "review",
+   "alt": ""
+  }
+ }
+}

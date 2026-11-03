@@ -42,7 +42,9 @@
 - **Перепроверка:** до 09.02.2027 — `node tools/verify-rg.mjs --recheck --write` и `node tools/verify-sources.mjs --recheck --write`,
   иначе гейт `fresh` остановит выкладку.
 
-## Доступы (состояние 02.11)
+## Доступы (состояние 03.11)
+- Ключи в `.env` проверены 03.11: PandaScore (200), Supercell CR и BS (200 с сервера по IPv4, IP 187.7.26.95). Telegram-бот — ждём.
+
 | Что | Состояние | Кто |
 |---|---|---|
 | GitHub `git@github.com:ShishkoArthur/jugadadeldia-pingalto-casaslegales.git` | **push работает** (проверено 02.11, `main` отслеживает `origin/main`) | — |

@@ -1,0 +1,230 @@
+{
+ "bodyPx": 1500,
+ "medianSourceBody": 2305,
+ "scenes": {
+  "jdd-sc-home": {
+   "body": 2300,
+   "scale": 0.652,
+   "offMedian": -0.2,
+   "transparent": 80,
+   "size": "457x1505"
+  },
+  "jdd-sc-quiniela": {
+   "body": 2300,
+   "scale": 0.652,
+   "offMedian": -0.2,
+   "transparent": 79,
+   "size": "552x1505"
+  },
+  "jdd-sc-quiniela-nacional-y-provincia": {
+   "body": 2300,
+   "scale": 0.652,
+   "offMedian": -0.2,
+   "transparent": 78,
+   "size": "541x1505"
+  },
+  "jdd-sc-quiniela-horarios": {
+   "body": 2308,
+   "scale": 0.65,
+   "offMedian": 0.1,
+   "transparent": 80,
+   "size": "472x1505"
+  },
+  "jdd-sc-quiniela-cuanto-paga": {
+   "body": 2309,
+   "scale": 0.65,
+   "offMedian": 0.2,
+   "transparent": 80,
+   "size": "388x1505"
+  },
+  "jdd-sc-quiniela-significado-de-los-numeros": {
+   "body": 2308,
+   "scale": 0.65,
+   "offMedian": 0.1,
+   "transparent": 80,
+   "size": "398x1505"
+  },
+  "jdd-sc-quiniela-nacional": {
+   "body": 2306,
+   "scale": 0.65,
+   "offMedian": 0,
+   "transparent": 79,
+   "size": "594x1506"
+  },
+  "jdd-sc-quiniela-provincia": {
+   "body": 2299,
+   "scale": 0.652,
+   "offMedian": -0.3,
+   "transparent": 79,
+   "size": "558x1505"
+  },
+  "jdd-sc-quiniela-tucuman": {
+   "body": 2313,
+   "scale": 0.649,
+   "offMedian": 0.3,
+   "transparent": 80,
+   "size": "580x1505"
+  },
+  "jdd-sc-quiniela-mendoza": {
+   "body": 2303,
+   "scale": 0.651,
+   "offMedian": -0.1,
+   "transparent": 79,
+   "size": "443x1505"
+  },
+  "jdd-sc-quiniela-catamarca": {
+   "body": 2316,
+   "scale": 0.648,
+   "offMedian": 0.5,
+   "transparent": 80,
+   "size": "387x1505"
+  },
+  "jdd-sc-quiniela-san-juan": {
+   "body": 2308,
+   "scale": 0.65,
+   "offMedian": 0.1,
+   "transparent": 78,
+   "size": "561x1506"
+  },
+  "jdd-sc-quiniela-cordoba": {
+   "body": 2299,
+   "scale": 0.652,
+   "offMedian": -0.3,
+   "transparent": 80,
+   "size": "512x1505"
+  },
+  "jdd-sc-quini-6": {
+   "body": 2316,
+   "scale": 0.648,
+   "offMedian": 0.5,
+   "transparent": 80,
+   "size": "427x1505"
+  },
+  "jdd-sc-quini-6-controlar": {
+   "body": 2301,
+   "scale": 0.652,
+   "offMedian": -0.2,
+   "transparent": 79,
+   "size": "500x1505"
+  },
+  "jdd-sc-quini-6-como-se-juega": {
+   "body": 2320,
+   "scale": 0.647,
+   "offMedian": 0.7,
+   "transparent": 79,
+   "size": "633x1505"
+  },
+  "jdd-sc-loto-plus": {
+   "body": 2307,
+   "scale": 0.65,
+   "offMedian": 0.1,
+   "transparent": 79,
+   "size": "486x1506"
+  },
+  "jdd-sc-quiniela-plus": {
+   "body": 2305,
+   "scale": 0.651,
+   "offMedian": 0,
+   "transparent": 80,
+   "size": "427x1506"
+  },
+  "jdd-sc-telekino": {
+   "body": 2299,
+   "scale": 0.652,
+   "offMedian": -0.3,
+   "transparent": 80,
+   "size": "408x1505"
+  },
+  "jdd-sc-telekino-controlar": {
+   "body": 2297,
+   "scale": 0.653,
+   "offMedian": -0.3,
+   "transparent": 79,
+   "size": "556x1505"
+  },
+  "jdd-sc-tombola-santiaguena": {
+   "body": 2301,
+   "scale": 0.652,
+   "offMedian": -0.2,
+   "transparent": 79,
+   "size": "541x1505"
+  },
+  "jdd-sc-tombola-jujena": {
+   "body": 2303,
+   "scale": 0.651,
+   "offMedian": -0.1,
+   "transparent": 80,
+   "size": "418x1505"
+  },
+  "jdd-sc-truco": {
+   "body": 2309,
+   "scale": 0.65,
+   "offMedian": 0.2,
+   "transparent": 79,
+   "size": "532x1505"
+  },
+  "jdd-sc-truco-valores-de-las-cartas": {
+   "body": 2312,
+   "scale": 0.649,
+   "offMedian": 0.3,
+   "transparent": 80,
+   "size": "400x1505"
+  },
+  "jdd-sc-truco-senas": {
+   "body": 2296,
+   "scale": 0.653,
+   "offMedian": -0.4,
+   "transparent": 80,
+   "size": "393x1505"
+  },
+  "jdd-sc-truco-anotador": {
+   "body": 2300,
+   "scale": 0.652,
+   "offMedian": -0.2,
+   "transparent": 81,
+   "size": "397x1506"
+  },
+  "jdd-sc-truco-reglas": {
+   "body": 2308,
+   "scale": 0.65,
+   "offMedian": 0.1,
+   "transparent": 80,
+   "size": "426x1505"
+  },
+  "jdd-sc-burako": {
+   "body": 2300,
+   "scale": 0.652,
+   "offMedian": -0.2,
+   "transparent": 80,
+   "size": "423x1506"
+  },
+  "jdd-sc-generala": {
+   "body": 2305,
+   "scale": 0.651,
+   "offMedian": 0,
+   "transparent": 80,
+   "size": "463x1505"
+  },
+  "jdd-sc-dados": {
+   "body": 2309,
+   "scale": 0.65,
+   "offMedian": 0.2,
+   "transparent": 81,
+   "size": "373x1506"
+  },
+  "jdd-sc-chinchon": {
+   "body": 2311,
+   "scale": 0.649,
+   "offMedian": 0.3,
+   "transparent": 80,
+   "size": "414x1505"
+  },
+  "jdd-sc-escoba-de-15": {
+   "body": 2305,
+   "scale": 0.651,
+   "offMedian": 0,
+   "transparent": 80,
+   "size": "424x1506"
+  }
+ }
+}
