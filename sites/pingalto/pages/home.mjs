@@ -18,6 +18,11 @@ const ICON = {
   agent: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>',
   mira: '<circle cx="12" cy="12" r="2"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/>',
   nube: '<path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.5 3.5 0 0 0 7 18z"/>',
+  rank: '<path d="M5 20V11M12 20V5M19 20v-6"/>',
+  swiss: '<path d="M4 6h5l3 6h8M12 12l-3 6H4"/>',
+  bo: '<path d="M4 17c4 0 5-10 8-10s4 10 8 10"/>',
+  champ: '<path d="M12 3l3 6 6 1-4.5 4 1 6L12 17l-5.5 3 1-6L3 10l6-1z"/>',
+  code: '<rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 12h2M11 12h2M15 12h2"/>',
 };
 const TOOLS = [
   ['/kit/ping', 'ping', 'Ping desde tu provincia', 'Piso físico y medición real'],
@@ -32,6 +37,11 @@ const TOOLS = [
   ['/ff/nombres', 'name', 'Nombres para Free Fire', 'Letras y símbolos'],
   ['/ff/espacio-invisible', 'inv', 'Espacio invisible', 'Copiar y pegar'],
   ['/fortnite/nube', 'nube', 'Fortnite en la nube', 'Cuántos GB del plan'],
+  ['/cs2', 'rank', 'Ranking de CS2', 'El de Valve, con las Américas'],
+  ['/cs2/major', 'swiss', 'El Major de CS2', 'Fase suiza y chance de pasar'],
+  ['/esports/series', 'bo', 'Bo1, Bo3, Bo5', 'De un mapa a la serie'],
+  ['/lol', 'champ', 'Campeones de LoL', 'Por rol, con datos de Riot'],
+  ['/ff/codigos', 'code', 'Códigos de Free Fire', 'Canjealos sin estafas'],
 ];
 
 export const home = {

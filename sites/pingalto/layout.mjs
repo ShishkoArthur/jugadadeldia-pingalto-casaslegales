@@ -3,12 +3,12 @@
 // and a body string; the shared build (tools/render.mjs) passes the helper h.
 const NAV = [
   ['/kit/ping', 'Ping'],
-  ['/kit/sensibilidad', 'Sensibilidad'],
-  ['/kit/dpi', 'DPI'],
   ['/tier-list', 'Tier list'],
-  ['/ff/sensibilidad', 'Free Fire'],
-  ['/valorant/rangos', 'Valorant'],
-  ['/lol/rangos', 'LoL'],
+  ['/ff', 'Free Fire'],
+  ['/valorant', 'Valorant'],
+  ['/lol', 'LoL'],
+  ['/cs2', 'CS2'],
+  ['/esports', 'Esports'],
 ];
 const FOOT = [
   ['/equipo', 'Equipo'],
@@ -26,7 +26,7 @@ const THEME_JS = "try{var t=localStorage.getItem('pa-theme');if(t==='light'||t==
 const RIOT = 'pingalto isn\'t endorsed by Riot Games and doesn\'t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.';
 
 function links(h, list, current) {
-  return list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : '') + '>' + h.esc(label) + '</a>').join('');
+  return list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : current.startsWith(u + '/') ? ' aria-current="true"' : '') + '>' + h.esc(label) + '</a>').join('');
 }
 
 export function page(h, p, body) {

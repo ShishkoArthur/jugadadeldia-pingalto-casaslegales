@@ -8,8 +8,11 @@ import { valorantAgentes } from './valorant.mjs';
 import { ffNombres, ffEspacio } from './names.mjs';
 import { fortniteNube } from './fortnite.mjs';
 import { tierList } from './tier.mjs';
+import { esportsSeries, esportsHub } from './series.mjs';
+import { cs2Ranking, cs2Major } from './vrs.mjs';
+import { lolHub, valorantHub, ffHub, ffCodigos } from './hubs.mjs';
 import { equipo, metodo, datos, contacto, legal, notFound } from './service.mjs';
 
-export const PAGES = [home, ping, sensibilidad, dpi, tierList, ffSensibilidad, ffNombres, ffEspacio, valorantRangos, valorantAgentes, cs2Mira, lolRangos, fortniteNube, equipo, metodo, datos, contacto, legal];
+export const PAGES = [home, ping, sensibilidad, dpi, tierList, ffHub, ffSensibilidad, ffNombres, ffEspacio, ffCodigos, valorantHub, valorantRangos, valorantAgentes, cs2Ranking, cs2Major, cs2Mira, lolHub, lolRangos, fortniteNube, esportsHub, esportsSeries, equipo, metodo, datos, contacto, legal];
 export const NOT_FOUND = notFound;
 export const BETTING_KINDS = [];

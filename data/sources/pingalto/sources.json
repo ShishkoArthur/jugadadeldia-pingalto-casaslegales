@@ -307,6 +307,121 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "8d59c4af8cb733c6d675f0bef408be0b87ee591fe48a06c19881886a103d6709"
+  },
+  "vrs-americas": {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/f8c55f250fdef796d708aa32814587932154fa04/live/2026/standings_americas_2026_11_02.md",
+   "file": "data/sources/pingalto/_docs/valve-vrs-americas-2026-11-02.md",
+   "type": "text",
+   "publisher": "Valve (Regional Standings de CS2, GitHub)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "a9c0dd57a2c8a1b55e666881662eef99a5861e5f4e3e81fa0a52978f2eacdfa3",
+   "published": "2026-11-02"
+  },
+  "vrs-global": {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/f8c55f250fdef796d708aa32814587932154fa04/live/2026/standings_global_2026_11_02.md",
+   "file": "data/sources/pingalto/_docs/valve-vrs-global-2026-11-02.md",
+   "type": "text",
+   "publisher": "Valve (Regional Standings de CS2, GitHub)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "910e26dca938cab5483282f459203965766305d1504d4cb3cc89ced38b327b0b",
+   "published": "2026-11-02"
+  },
+  "vrs-readme": {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/f8c55f250fdef796d708aa32814587932154fa04/readme.md",
+   "file": "data/sources/pingalto/_docs/valve-vrs-readme.md.txt",
+   "type": "text",
+   "publisher": "Valve (Regional Standings, readme)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "9bd1c3e55ae7edf38305be2b4d2c52d25db4c69a9ceddd32903333511f9a7ccd"
+  },
+  "vrs-glicko": {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/f8c55f250fdef796d708aa32814587932154fa04/model/glicko.js",
+   "file": "data/sources/pingalto/_docs/valve-vrs-glicko.js.txt",
+   "type": "text",
+   "publisher": "Valve (modelo de Regional Standings, glicko.js)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "516206722f8f75463a9b39f8bc7e911a22c15023f0b2bfce4dbc06c2cc85afbd"
+  },
+  "vrs-ranking": {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/f8c55f250fdef796d708aa32814587932154fa04/model/ranking.js",
+   "file": "data/sources/pingalto/_docs/valve-vrs-ranking.js.txt",
+   "type": "text",
+   "publisher": "Valve (modelo de Regional Standings, ranking.js)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "b9b7ee076a44d65fc9d11377352ba628bebff20eddab32c1becae3cc3d79a5c2"
+  },
+  "vrs-fit": {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/f8c55f250fdef796d708aa32814587932154fa04/model/fit.js",
+   "file": "data/sources/pingalto/_docs/valve-vrs-fit.js.txt",
+   "type": "text",
+   "publisher": "Valve (modelo de Regional Standings, fit.js)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "89a1fbd2396b69ea4463cf8c12034e9cd872733cef6ae774c9a215dfdde11dd0"
+  },
+  "vrs-region": {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/f8c55f250fdef796d708aa32814587932154fa04/model/util/region.js",
+   "file": "data/sources/pingalto/_docs/valve-vrs-region.js.txt",
+   "type": "text",
+   "publisher": "Valve (modelo de Regional Standings, region.js)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "c42fd3ffcaf8a3b46399d2c90f1ece1f7994d984fb25d9924404641f0b8449ac"
+  },
+  "major-rules": {
+   "url": "https://github.com/ValveSoftware/counter-strike_rules_and_regs/blob/621b7d91b0a236044aed62a357fddc863dfaea49/major-supplemental-rulebook.md",
+   "file": "data/sources/pingalto/_docs/valve-major-rulebook.md.txt",
+   "type": "text",
+   "publisher": "Valve (CS Major Supplemental Rulebook, GitHub)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "5ba14b7b62e74ea0909ca452c5882d09cb334e61af87e97597721d773a06b21d",
+   "published": "2026-10-07"
+  },
+  "ddragon-lang": {
+   "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/es_AR/language.json",
+   "file": "data/sources/pingalto/_docs/ddragon-language-es-ar.json",
+   "type": "json",
+   "publisher": "Riot Games (Data Dragon, textos es_AR)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "6b7747bd73eb5bd8e4a223c0b5c51252c62469077908a45b6a0afaea56324e8b"
+  },
+  "garena-reward": {
+   "url": "https://cdn.wildflamestudio.com/common/web_event/tweb-event/rewardFF/dist/global/assets/js/main.008a8fca80df5f3a0059.js",
+   "file": "data/sources/pingalto/_docs/garena-ff-reward-main.js.txt",
+   "type": "html",
+   "publisher": "Garena (sitio oficial de canje de Free Fire)",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "f614e7a4701d1f622afafe339f3fdbe84f21f4ca28d88a358f017bea5d9bd2c5",
+   "page": "https://reward.ff.garena.com/es",
+   "note": "Spanish strings of the redemption site (NOTICE__LIST, error messages) inside its script bundle"
+  },
+  "ar-denuncia": {
+   "url": "https://www.argentina.gob.ar/justicia/convosenlaweb/denuncia",
+   "file": "data/sources/pingalto/_docs/argentina-convosenlaweb-denuncia.html",
+   "type": "html",
+   "publisher": "Ministerio de Justicia (Con Vos en la Web), argentina.gob.ar",
+   "kind": "official",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "45304a16e0f9f2c9e8b6fb2323dee29d4042516633826c9215f57d51864faeea"
   }
  },
  "facts": {
@@ -673,6 +788,261 @@
    "doc": "unicode-blocks",
    "quote": "2800..28FF; Braille Patterns",
    "value": "2800..28FF"
+  },
+  "vrs_fixed_rd": {
+   "doc": "vrs-ranking",
+   "quote": "glicko.setFixedRD( 75 ); // glicko -> elo",
+   "value": 75
+  },
+  "vrs_fit_rd": {
+   "doc": "vrs-fit",
+   "quote": "rd : 75,",
+   "value": 75
+  },
+  "vrs_400": {
+   "doc": "vrs-glicko",
+   "quote": "// rank delta of 400 points = 90% chance of victory",
+   "value": [
+    400,
+    "90%"
+   ]
+  },
+  "vrs_q": {
+   "doc": "vrs-glicko",
+   "quote": "const Q = Math.log(10) / 400;",
+   "value": 400
+  },
+  "vrs_g": {
+   "doc": "vrs-glicko",
+   "quote": "const g = 1 / Math.sqrt( 1 + ( 3*Q*Q*rdo*rdo*ONE_OVER_PI_SQUARED ) );",
+   "value": "3*Q*Q"
+  },
+  "vrs_ev": {
+   "doc": "vrs-glicko",
+   "quote": "const ev = 1 / ( 1 + Math.pow( 10, g*(r-ro)/(-400) ) );",
+   "value": "(-400)"
+  },
+  "vrs_ewr": {
+   "doc": "vrs-readme",
+   "quote": "Using the difference in point values, each match is then assigned an expected win rate.",
+   "value": "expected win rate"
+  },
+  "vrs_slope": {
+   "doc": "vrs-readme",
+   "quote": "The current model tends to underestimate win rates at the low end and overestimate at the high end.",
+   "value": "underestimate"
+  },
+  "vrs_rho": {
+   "doc": "vrs-readme",
+   "quote": "The correlation between the two (Spearman's rho in this case) is 0.98.",
+   "value": 0.98
+  },
+  "vrs_goal": {
+   "doc": "vrs-readme",
+   "quote": "We will use the Regional Standings to invite teams in future events, so the ideal model is one that predicts future match results.",
+   "value": "predicts future match results"
+  },
+  "vrs_ar": {
+   "doc": "vrs-region",
+   "quote": "{ countrycode : 'ar', region : 'SA' },",
+   "value": "ar"
+  },
+  "vrs_amer": {
+   "doc": "vrs-region",
+   "quote": "if ( region === 'NA' || region === 'SA' )",
+   "value": "SA"
+  },
+  "vrs_am_date": {
+   "doc": "vrs-americas",
+   "quote": "Regional Standings for Americas as of 2026_11_02",
+   "value": "2026_11_02"
+  },
+  "vrs_gl_date": {
+   "doc": "vrs-global",
+   "quote": "Standings as of 2026_11_02",
+   "value": "2026_11_02"
+  },
+  "major_32": {
+   "doc": "major-rules",
+   "quote": "The Major features 32 teams",
+   "value": 32
+  },
+  "major_s1": {
+   "doc": "major-rules",
+   "quote": "16 teams are invited to Stage 1 from the Valve Regional Standing.",
+   "value": 16
+  },
+  "major_s2": {
+   "doc": "major-rules",
+   "quote": "8 teams are invited to Stage 2 from the Valve Regional Standing.",
+   "value": 8
+  },
+  "major_s3": {
+   "doc": "major-rules",
+   "quote": "8 teams are invited to Stage 3 from the Valve Regional Standing.",
+   "value": 8
+  },
+  "major_regions": {
+   "doc": "major-rules",
+   "quote": "The three VRS regions are EU, Americas, and Asia, and these three lists are used for the purposes of invitation.",
+   "value": "Americas"
+  },
+  "major_assign": {
+   "doc": "major-rules",
+   "quote": "A roster's Regional Assignment is the region represented by the majority of its players.",
+   "value": "majority"
+  },
+  "major_identical": {
+   "doc": "major-rules",
+   "quote": "Teams play against opponents of identical W-L record.",
+   "value": "identical"
+  },
+  "major_3w3l": {
+   "doc": "major-rules",
+   "quote": "Three wins advance---Three losses eliminate",
+   "value": "Three"
+  },
+  "major_bo3": {
+   "doc": "major-rules",
+   "quote": "All elimination and advancement matches are to be best of three.",
+   "value": "best of three"
+  },
+  "major_bo1": {
+   "doc": "major-rules",
+   "quote": "All other matches are to be best of one.",
+   "value": "best of one"
+  },
+  "major_po_bo3": {
+   "doc": "major-rules",
+   "quote": "- 3 vs. 6 - All matches are best of three",
+   "value": "best of three"
+  },
+  "major_ban1": {
+   "doc": "major-rules",
+   "quote": "1. Team A removes 2 maps 1. Team B removes 3 maps 1. Team A removes 1 map 1. Team B chooses starting side",
+   "value": [
+    2,
+    3,
+    1
+   ]
+  },
+  "major_ban3": {
+   "doc": "major-rules",
+   "quote": "1. Team A removes 1 map 1. Team B removes 1 map 1. Team A picks the map 1 1. Team B chooses starting side on map 1 1. Team B picks map 2 1. Team A chooses starting side on map 2 1. Team B removes one map 1. Team A removes one map 1. Team B chooses starting side on map 3",
+   "value": "picks"
+  },
+  "major_active": {
+   "doc": "major-rules",
+   "quote": "The TO is to use the up-to-date in-game versions of the maps in the Active Duty Map Group.",
+   "value": "Active Duty"
+  },
+  "major_seed": {
+   "doc": "major-rules",
+   "quote": "Coming into the event, all 32 teams are sorted based on their current global standing in the",
+   "value": 32
+  },
+  "ff_code_len": {
+   "doc": "garena-reward",
+   "quote": "El código de canje tiene 12/16 caracteres, en combinación con letras mayúsculas y números.",
+   "value": [
+    12,
+    16
+   ]
+  },
+  "ff_code_exp": {
+   "doc": "garena-reward",
+   "quote": "Por favor, revisa la fecha de vencimiento del código. Cualquier código vencido no puede ser canjeado.",
+   "value": "vencido"
+  },
+  "ff_code_guest": {
+   "doc": "garena-reward",
+   "quote": "No podrás reclamar tus premios con cuentas de invitado, deberás vincular tu cuenta a Facebook o VK para poder recibir tus premios.",
+   "value": "invitado"
+  },
+  "ff_code_region": {
+   "doc": "garena-reward",
+   "quote": "Error, este código no es válido en tu región.",
+   "value": "región"
+  },
+  "ff_code_used": {
+   "doc": "garena-reward",
+   "quote": "Error, este código ya ha sido canjeado.",
+   "value": "canjeado"
+  },
+  "ff_code_expired": {
+   "doc": "garena-reward",
+   "quote": "No se puede canjear, el código ha expirado.",
+   "value": "expirado"
+  },
+  "ff_code_char": {
+   "doc": "garena-reward",
+   "quote": "No se puede canjear. Entra al juego y crea un personaje.",
+   "value": "personaje"
+  },
+  "ff_code_vault": {
+   "doc": "garena-reward",
+   "quote": "Los objetos de recompensa obtenidos serán mostrados en [tu colección] el lobby, el oro y los diamantes serán añadidos directamente a tu cuenta.",
+   "value": "tu colección"
+  },
+  "ar_denuncia": {
+   "doc": "ar-denuncia",
+   "quote": "Si fuiste víctima de un ciberdelito, denuncialo",
+   "value": "denuncialo"
+  },
+  "ar_ufeci": {
+   "doc": "ar-denuncia",
+   "quote": "Unidad Fiscal Especializada en Ciberdelincuencia (UFECI) Denunciá el grooming o cualquier otro delito informático. Sarmiento 663, Piso 6, Ciudad Autónoma de Buenos Aires. (54-11) 5071-0040",
+   "value": [
+    "UFECI",
+    "(54-11) 5071-0040"
+   ]
+  },
+  "ar_caba": {
+   "doc": "ar-denuncia",
+   "quote": "Podés hacerlo por teléfono, en línea o dirigiéndote a la Unidad de Orientación y Denuncia más cercana a tu domicilio. 0800-33-FISCAL (347225)",
+   "value": [
+    "0800-33-FISCAL",
+    "347225"
+   ]
+  },
+  "ar_102": {
+   "doc": "ar-denuncia",
+   "quote": "Llamá al 102 Una línea directa de la Secretaría Nacional de Niñez, Adolescencia y Familia (SENAF), que brinda un servicio gratuito y confidencial de atención especializada sobre los derechos de niños y adolescentes.",
+   "value": 102
+  },
+  "ar_upd": {
+   "doc": "ar-denuncia",
+   "quote": "Información actualizada en octubre de 2026",
+   "value": "octubre de 2026"
+  },
+  "major_bracket": {
+   "doc": "major-rules",
+   "quote": "- Bracket A: - 1 vs. 8 - 4 vs. 5 - Bracket B: - 2 vs. 7 - 3 vs. 6",
+   "value": [
+    8,
+    5,
+    7,
+    6
+   ]
+  },
+  "major_stage16": {
+   "doc": "major-rules",
+   "quote": "Swiss bracket - 16 Teams",
+   "value": 16
+  },
+  "major_r1": {
+   "doc": "major-rules",
+   "quote": "| 1 vs. 9 | | 2 vs. 10 | | 3 vs. 11 | | 4 vs. 12 | | 5 vs. 13 | | 6 vs. 14 | | 7 vs. 15 | | 8 vs. 16 |",
+   "value": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+   ]
   }
  }
 }

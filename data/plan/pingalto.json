@@ -106,8 +106,8 @@
   "url": "/tier-list",
   "title": "Tier list maker: armá tu tier list de cualquier juego",
   "titleLen": 53,
-  "h1": "Creador de tier list: armala y compará con el top argentino",
-  "description": "Armá tu tier list de cualquier juego arrastrando íconos, también desde el celular, y compará la de Brawl Stars o Clash Royale con el top de Argentina.",
+  "h1": "Creador de tier list: armá la tuya y compartila",
+  "description": "Armá tu tier list de Valorant, LoL o de lo que quieras arrastrando nombres, también desde el celular, y compartila con un link o como imagen.",
   "keys": "tier list 27k/2 · tier list maker 1.7k/2 · top tier list 300/64",
   "kind": "tool",
   "wave": "P1",
@@ -115,7 +115,8 @@
   "ar": "Сравнение с метой топ-200 Аргентины (рейтинги Supercell по стране AR — Brawl Stars, Clash Royale; проверить), шаблон «equipos argentinos de esports»; es-AR",
   "data": "valorant-api.com, Data Dragon (Riot), OpenDota/Steam CDN, Supercell API — только имена и иконки",
   "auto": "наборы иконок обновляются вместе с лентами игр (раз в сутки)",
-  "notes": "права на иконки — фан-политики издателей (некоммерческое); гача-игры (genshin/hsr/zzz/wuwa tier list 300–1.3k, KD 0–6) — вопрос владельцу"
+  "notes": "права на иконки — фан-политики издателей (некоммерческое); гача-игры (genshin/hsr/zzz/wuwa tier list 300–1.3k, KD 0–6) — вопрос владельцу",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Kit",
@@ -187,10 +188,10 @@
  {
   "section": "Valorant",
   "url": "/valorant",
-  "title": "Valorant en Argentina: rangos, miras, agentes y mapas",
-  "titleLen": 53,
-  "h1": "Valorant desde Argentina: todo para jugar mejor",
-  "description": "Valorant desde Argentina: rangos, miras, agentes y mapas en rotación, ping a los servidores de LATAM y los equipos argentinos en VCT, en hora argentina.",
+  "title": "Valorant en Argentina: rangos, agentes, mapas y servidor",
+  "titleLen": 56,
+  "h1": "Valorant desde Argentina",
+  "description": "Valorant desde Argentina: rangos y calculadora de RR, todos los agentes y roles, los mapas con sitios del juego y el servidor de Santiago que te toca.",
   "keys": "valorant 21k/64 (не цель) · valorant tracker 12k/45 (навигационный, не цель)",
   "kind": "hub",
   "wave": "P1",
@@ -198,7 +199,8 @@
   "ar": "Сервер LATAM (Santiago / Miami — проверить), ping из провинций, VCT Américas и Challengers с аргентинскими командами, время в hora argentina",
   "data": "valorant-api.com (неофициальный, без ключа): maps, agents, seasons",
   "auto": "лента на сервере раз в сутки",
-  "notes": ""
+  "notes": "03.11 wave 3: hub; maps with sites from client data, no competitive rotation (not in the data).",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Valorant",
@@ -236,10 +238,10 @@
  {
   "section": "Valorant",
   "url": "/valorant/agentes",
-  "title": "Agentes de Valorant: habilidades, roles y el más nuevo",
-  "titleLen": 54,
+  "title": "Agentes de Valorant: habilidades y roles en español",
+  "titleLen": 51,
   "h1": "Agentes de Valorant y sus habilidades",
-  "description": "Todos los agentes de Valorant con sus habilidades en español, filtro por rol, el más nuevo arriba y cuáles eligen los equipos argentinos en VCT.",
+  "description": "Todos los agentes de Valorant con sus habilidades en español, filtro por rol, comparador de a dos y el más nuevo arriba, con datos del cliente del juego.",
   "keys": "valorant new agent abilities 7k/0",
   "kind": "live",
   "wave": "P1",
@@ -247,7 +249,8 @@
   "ar": "Названия и описания es-419 (valorant-api.com); пики агентов в матчах VCT Américas / Challengers с аргентинскими командами (Liquipedia — проверить данные)",
   "data": "valorant-api.com /agents (есть локализация es-MX — проверить)",
   "auto": "лента раз в сутки; новый агент появляется сам",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Valorant",
@@ -348,10 +351,10 @@
  {
   "section": "CS2",
   "url": "/cs2",
-  "title": "Counter-Strike 2: ranking mundial y equipos argentinos",
-  "titleLen": 54,
-  "h1": "Counter-Strike 2: ranking de equipos, con los argentinos",
-  "description": "Ranking oficial de Valve de los equipos de CS2: el mundo, las Américas y dónde están los argentinos. Con calculadora de serie entre dos equipos.",
+  "title": "Ranking de CS2 de Valve: el mundo y las Américas",
+  "titleLen": 48,
+  "h1": "Ranking de equipos de CS2 de Valve",
+  "description": "El ranking oficial de Valve de los equipos de CS2: el mundo y las Américas, donde juega Argentina, y la chance entre dos equipos según el modelo de Valve.",
   "keys": "counter strike 2 2.6k/8 · cs2 2.4k/16 · counter strike 9.2k/17",
   "kind": "live",
   "wave": "P1",
@@ -359,7 +362,8 @@
   "ar": "VRS Américas + аргентинские команды подсвечены, движение за неделю; дата-центры Valve в Sudamérica (GetSDRConfig — проверить)",
   "data": "ValveSoftware/counter-strike_regional_standings (GitHub, открыто)",
   "auto": "лента на сервере раз в сутки (частоту публикации VRS — проверить)",
-  "notes": "команды с брендами букмекеров в названии скрыты (как в RinkMath)"
+  "notes": "команды с брендами букмекеров в названии скрыты (как в RinkMath) 03.11 wave 3: Valve VRS 2026-11-02 (global + Americas, GitHub, saved copy) with the head-to-head of Valve model (fit.js/glicko.js, RD 75). Teams are not marked as Argentine: Valve tables carry no nationality; betting-brand names masked.",
+  "status": "live 2026-11-03"
  },
  {
   "section": "CS2",
@@ -367,7 +371,7 @@
   "title": "Miras de CS2: creador de mira con código y comandos",
   "titleLen": 51,
   "h1": "Creador de miras para CS2",
-  "description": "Creá tu mira de CS2 con vista previa, copiá el código CSGO o los comandos para la consola y mirá las de jugadores argentinos, con su fuente.",
+  "description": "Armá tu mira de CS2 con vista previa y copiá el código nuevo que empieza con CS o los comandos de consola. Probado con códigos que exporta el juego.",
   "keys": "miras cs2 1k/0 · crosshair 600/5 · crosshair cs2 500/2 · donk crosshair 250/– · miras para cs2 200/0",
   "kind": "tool",
   "wave": "P1",
@@ -375,7 +379,8 @@
   "ar": "Миры аргентинских про — только со ссылкой на их публикацию и датой",
   "data": "формат share code (открытые реализации — проверить тестами)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "прицелы про — со ссылкой и датой"
+  "notes": "прицелы про — со ссылкой и датой",
+  "status": "live 2026-11-03"
  },
  {
   "section": "CS2",
@@ -396,10 +401,10 @@
  {
   "section": "CS2",
   "url": "/cs2/major",
-  "title": "Major de CS2: fase suiza, cuadro y hora argentina",
-  "titleLen": 49,
-  "h1": "Major de CS2 en hora argentina",
-  "description": "El Major de CS2 en hora argentina: fase suiza, cuadro de playoffs, probabilidad de pasar cada etapa y cómo les va a los equipos argentinos.",
+  "title": "Major de CS2: formato, fase suiza y chance de pasar",
+  "titleLen": 51,
+  "h1": "Cómo funciona el Major de CS2",
+  "description": "Cómo es el Major de CS2 según el reglamento de Valve: fases suizas, playoffs, cuándo se juega Bo1 o Bo3 y tu chance de pasar una fase, con cuenta exacta.",
   "keys": "major cs2 1.5k/0",
   "kind": "live",
   "wave": "P2",
@@ -407,7 +412,8 @@
   "ar": "Расписание в hora argentina; аргентинские и южноамериканские команды в Major и их шанс выйти из стадии",
   "data": "Liquipedia API + VRS",
   "auto": "лента раз в 6 ч в дни Major, иначе раз в сутки",
-  "notes": ""
+  "notes": "03.11 wave 3: Major Supplemental Rulebook (Valve GitHub) + exact Swiss calculator; no dates/hora argentina (no citable official schedule), no live bracket.",
+  "status": "live 2026-11-03"
  },
  {
   "section": "CS2",
@@ -492,10 +498,10 @@
  {
   "section": "League of Legends",
   "url": "/lol",
-  "title": "LoL en Argentina: rangos de LAS, meta pro y Worlds",
-  "titleLen": 50,
-  "h1": "League of Legends en LAS: rangos, meta y torneos",
-  "description": "League of Legends desde Argentina: rangos del servidor LAS, el meta del competitivo, Worlds en hora argentina y los argentinos en la liga de la región.",
+  "title": "LoL en Argentina: campeones por rol y rangos de LAS",
+  "titleLen": 51,
+  "h1": "League of Legends desde Argentina",
+  "description": "League of Legends desde Argentina: todos los campeones por rol con los datos de Riot en español, comparador de a dos y los rangos de LAS con calculadora.",
   "keys": "lol 20k/27 · league of legends 18k/66 (не цель)",
   "kind": "hub",
   "wave": "P1",
@@ -503,7 +509,8 @@
   "ar": "Регион LAS (Latinoamérica Sur) — сервер Аргентины (расположение — проверить), лига LATAM, аргентинские игроки; время в hora argentina",
   "data": "Data Dragon (Riot, без ключа); Leaguepedia — с P2",
   "auto": "лента раз в сутки",
-  "notes": "«1v1 lol», «lol superman», «lol surprise», «muñecas lol» — чужие интенты, не цель"
+  "notes": "«1v1 lol», «lol superman», «lol surprise», «muñecas lol» — чужие интенты, не цель 03.11 wave 3: Data Dragon 16.21.1 es_AR champions + language.json; meta/Worlds skipped (Leaguepedia/Liquipedia block AI agents, Riot production key).",
+  "status": "live 2026-11-03"
  },
  {
   "section": "League of Legends",
@@ -616,7 +623,7 @@
   "ar": "Фильтр Sudamérica в рейтинге OpenDota, аргентинские команды и игроки подсвечены; дата-центры Valve в Sudamérica",
   "data": "OpenDota API (бесплатно, 3000 запросов в день)",
   "auto": "лента на сервере раз в сутки (код готов в RinkMath: tools/feeds/dota2.mjs)",
-  "notes": "«dota colectivos / paro / empresa» — чужой интент"
+  "notes": "«dota colectivos / paro / empresa» — чужой интент 03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution."
  },
  {
   "section": "Dota 2",
@@ -632,7 +639,7 @@
   "ar": "Средний ранг игроков Аргентины против мира (OpenDota distributions, разрез по стране — проверить); медали на испанском (Heraldo → Inmortal)",
   "data": "OpenDota /distributions (бесплатно)",
   "auto": "лента раз в сутки",
-  "notes": ""
+  "notes": "03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution."
  },
  {
   "section": "Dota 2",
@@ -648,7 +655,7 @@
   "ar": "Срез про-пиков южноамериканских команд (OpenDota proMatches по командам региона)",
   "data": "OpenDota /heroStats",
   "auto": "лента раз в сутки",
-  "notes": ""
+  "notes": "03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution."
  },
  {
   "section": "Dota 2",
@@ -664,15 +671,15 @@
   "ar": "Расписание в hora argentina; южноамериканские команды на TI (история выступлений)",
   "data": "OpenDota leagues + Liquipedia",
   "auto": "лента в дни TI; история — статика",
-  "notes": ""
+  "notes": "03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution."
  },
  {
   "section": "Esports",
   "url": "/esports",
-  "title": "Calendario de esports del año en hora argentina",
-  "titleLen": 47,
-  "h1": "Calendario de esports",
-  "description": "Todos los torneos grandes del año en hora argentina: TI, Worlds, Majors de CS2, Champions, FFWS y más, con filtro por juego y los que tienen argentinos.",
+  "title": "Esports desde Argentina: ranking de CS2 y series",
+  "titleLen": 48,
+  "h1": "Esports desde Argentina",
+  "description": "Esports desde Argentina: el ranking de Valve de CS2 con las Américas, cómo funciona el Major y la probabilidad de un Bo3 o un Bo5, cada número con fuente.",
   "keys": "esports 1.3k/18",
   "kind": "hub",
   "wave": "P1",
@@ -680,7 +687,8 @@
   "ar": "Все даты в hora argentina; отметка турниров, где играют аргентинские команды",
   "data": "официальные анонсы организаторов (цитаты); с P2 — Liquipedia",
   "auto": "статика, перепроверка раз в полгода; с P2 — лента раз в сутки",
-  "notes": ""
+  "notes": "03.11 wave 3: hub of /cs2, /cs2/major, /esports/series; calendar skipped (no citable schedule source without keys).",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Esports",
@@ -688,7 +696,7 @@
   "title": "Bo1, Bo3, Bo5: probabilidad de ganar una serie",
   "titleLen": 46,
   "h1": "Probabilidad de ganar una serie Bo1, Bo3 o Bo5",
-  "description": "De la chance de ganar un mapa a la de ganar la serie: Bo1, Bo3 y Bo5 con todos los resultados posibles y ejemplos de equipos argentinos. Sin cuotas.",
+  "description": "De la chance de ganar un mapa a la de ganar la serie: Bo1, Bo3, Bo5 y Bo7 con cada resultado posible, el marcador en vivo y la cuenta al revés. Sin cuotas.",
   "keys": "— (0–10)",
   "kind": "tool",
   "wave": "P1",
@@ -696,7 +704,8 @@
   "ar": "Примеры подставляются из ближайших серий аргентинских команд (из лент); чистая математика без коэффициентов",
   "data": "чистая математика (engine/series.mjs из RinkMath)",
   "auto": "статика",
-  "notes": "без коэффициентов, только вероятность"
+  "notes": "без коэффициентов, только вероятность 03.11 wave 3: engine/games/series.mjs (exact DP, closed form, inverse, Swiss) + tests; example from VRS Americas.",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Esports",
@@ -765,10 +774,10 @@
  {
   "section": "Free Fire",
   "url": "/ff",
-  "title": "Free Fire en Argentina: sensibilidad, nombres y más",
-  "titleLen": 51,
+  "title": "Free Fire en Argentina: sensibilidad, nombres y códigos",
+  "titleLen": 55,
   "h1": "Free Fire: herramientas que sí sirven",
-  "description": "Herramientas de Free Fire que sí sirven, pensadas para Argentina: sensibilidad para tu celu, nombres con estilo y la liga de Latinoamérica. Sin diamantes.",
+  "description": "Herramientas de Free Fire que sí sirven, pensadas para Argentina: sensibilidad calibrada en tu celu, nombres con estilo y cómo canjear códigos sin estafas.",
   "keys": "free fire 69k/47 (не цель)",
   "kind": "hub",
   "wave": "P1",
@@ -776,7 +785,8 @@
   "ar": "Сервер Latinoamérica (там Аргентина), лига LATAM с аргентинскими командами, слова es-AR; честно «чего нет» (алмазы, хаки)",
   "data": "—",
   "auto": "из лент",
-  "notes": "не берём: diamantes/recarga/pagostore, hacks, macro, «archivos para dar tiros», cuentas gratis, xxx"
+  "notes": "не берём: diamantes/recarga/pagostore, hacks, macro, «archivos para dar tiros», cuentas gratis, xxx 03.11 wave 3: hub of FF tools + what the site will not do.",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Free Fire",
@@ -801,7 +811,7 @@
   "title": "Nombres para Free Fire: generador con letras y símbolos",
   "titleLen": 55,
   "h1": "Generador de nombres para Free Fire",
-  "description": "Creá nombres para Free Fire con letras raras y símbolos, contá los caracteres permitidos y probá ideas bien argentinas. Te avisamos si algo no se ve.",
+  "description": "Creá nombres para Free Fire con letras raras y símbolos, mirá cuántos caracteres ocupa cada versión y probá ideas bien argentinas, con ñ y tildes.",
   "keys": "nombres para free fire 23k/30 · nombre para free fire 6.4k/31 · nombres de free fire 1.7k/29 · creador de nombres 1.5k/36 · generador de nombres 1.2k/45 · nombres insanos 1.2k/2 · simbolos 1k/33 · letras 900/15",
   "kind": "tool",
   "wave": "P1",
@@ -809,7 +819,8 @@
   "ar": "Идеи с аргентинским сленгом (che, capo, pibe — словарь), фильтр мата с местными ругательствами; es-AR",
   "data": "Unicode (стандарт); лимит длины ника — проверить в игре",
   "auto": "статика",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Free Fire",
@@ -817,7 +828,7 @@
   "title": "Espacio invisible para Free Fire: copiar y pegar",
   "titleLen": 48,
   "h1": "Espacio invisible para Free Fire",
-  "description": "Copiá el espacio invisible para tu nombre de Free Fire con un toque, probá si se ve en la página y armá nicks con ñ y tildes sin que el juego los corte.",
+  "description": "Copiá el espacio invisible para tu nombre de Free Fire con un toque, probá cómo se ve acá mismo y armá un nick con espacio en el medio, con ñ y tildes.",
   "keys": "espacio para free fire 1.9k/0 · espacio invisible para free fire 1.7k/1 · espacio para nombre de free fire 900/0",
   "kind": "tool",
   "wave": "P1",
@@ -825,7 +836,8 @@
   "ar": "Слабая привязка: проверка символов на клиенте сервера Latinoamérica и ники с ñ и тильдами",
   "data": "Unicode; какие символы принимает игра — проверить",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": ""
+  "notes": "",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Free Fire",
@@ -881,7 +893,7 @@
   "title": "Códigos de Free Fire: cómo canjearlos sin caer en estafas",
   "titleLen": 57,
   "h1": "Cómo canjear códigos de Free Fire",
-  "description": "Cómo canjear códigos de Free Fire en el sitio oficial, cómo reconocer una estafa que te pide la clave o plata y dónde denunciarla en Argentina.",
+  "description": "Cómo canjear códigos de Free Fire en el sitio oficial, qué formato pide Garena, cómo reconocer una estafa que te pide la clave o plata y dónde denunciarla.",
   "keys": "codigos de free fire 3.2k/16 · códigos free fire hoy 2.4k/7 · codigos free fire 1.4k/2 · canjear códigos 1.3k/24 · códigos free fire 800/0 · canjear código 700/9",
   "kind": "tool",
   "wave": "P2",
@@ -889,7 +901,8 @@
   "ar": "Куда жаловаться на мошенничество в Аргентине (UFECI — Unidad Fiscal Especializada en Ciberdelincuencia, с цитатой; проверить); официальный сайт обмена для региона",
   "data": "правила — официальная страница Garena (цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "РИСК: списка «кодов на сегодня» нет — надёжного легального источника нет; бесплатных алмазов не обещаем"
+  "notes": "РИСК: списка «кодов на сегодня» нет — надёжного легального источника нет; бесплатных алмазов не обещаем 03.11 wave 3: Garena redemption site notice (12/16 chars, uppercase + digits) from its Spanish strings, scam checklist, argentina.gob.ar Con Vos en la Web (UFECI, 0800-33-FISCAL, 102). No code lists.",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Free Fire",
@@ -993,7 +1006,7 @@
   "title": "Fortnite en Xbox Cloud desde Argentina: datos e internet",
   "titleLen": 56,
   "h1": "Fortnite en Xbox Cloud Gaming desde Argentina: datos e internet",
-  "description": "Cuántos datos gasta Fortnite en Xbox Cloud Gaming desde Argentina, qué velocidad y qué ping hacen falta y cuántas horas te rinde el plan del celu.",
+  "description": "Cuántos datos mueve Fortnite en Xbox Cloud Gaming desde Argentina, qué velocidad pide Microsoft y cuántas horas te rinde el plan del celu.",
   "keys": "xbox cloud gaming fortnite 6.5k/4 · xbox fortnite 4.3k/3 · xbox cloud fortnite 2.5k/9 · fortnite xbox 2.2k/4 · fortnite cloud gaming 1.5k/0 · cloud gaming fortnite 1.3k/13 · fortnite xbox cloud 1k/6",
   "kind": "tool",
   "wave": "P1",
@@ -1001,7 +1014,8 @@
   "ar": "Доступность Xbox Cloud Gaming в Аргентине (цитата Microsoft — проверить), ГБ мобильных данных, задержка до ближайшего дата-центра",
   "data": "требования Microsoft (цитата)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "бесплатно ли без подписки — проверить; Game Pass не продвигать"
+  "notes": "бесплатно ли без подписки — проверить; Game Pass не продвигать",
+  "status": "live 2026-11-03"
  },
  {
   "section": "Fortnite",
