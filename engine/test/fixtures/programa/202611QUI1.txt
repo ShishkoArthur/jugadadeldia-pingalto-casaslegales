@@ -181,4 +181,707 @@ Sorteo    Fecha    Hora CDAD. BS. AS CBA.          URU. MZA. ETRS.      Tipo    
 53159 12/11/2026 15:00     1    2     3      4      5    6     7     MATUTINA     13/11/2026   14/12/2026
 53160 12/11/2026 18:00     1    2     3      4           6     7     VESPERTINA 13/11/2026     14/12/2026
 53161 12/11/2026 21:00     1    2     3      4      5    6     7     NOCTURNA     13/11/2026   14/12/2026
+*El inicio de pago de premios y la prescripción operarán al día hábil siguiente si aquel recayese en feriado o no laborable.
+
+
+
+FECHA DE INICIO DE PAGO DE PREMIOS EN LOS PUNTOS DE VENTA:
+
+         Para las jugadas de las modalidades La Previa, La Primera, Matutina y Vespertina programadas de lunes a
+         sábados, será el mismo día de la realización del sorteo, una vez que el sistema esté habilitado para realizar
+         dicha operación. En el caso que alguna de las modalidades mencionadas sea la última programada del día,
+         será el primer día posterior donde el sistema este habilitado.
+         Para las jugadas de la modalidad Nocturna programadas de lunes a viernes, será al día siguiente de la
+         realización del sorteo. En el caso que el sistema no estuviera habilitado ese día, será el primer día
+         posterior donde el mismo esté disponible.
+         Para las jugadas Nocturnas programadas los días sábado, será el día lunes posterior a la realización del
+         sorteo. En el caso que el sistema no estuviera habilitado ese día, será el primer día posterior donde el
+         mismo esté disponible.
+                                  QUINIELA POCEADA DE LA CIUDAD
+                                     MES DE NOVIEMBRE 2026
+
+LUGAR: Salón de sorteos de Lotería de la Ciudad de Buenos Aires o donde esta lo determine.
+PARTICIPACIÓN
+Es una modalidad en que el apostador deberá seleccionar OCHO (8) números de dos dígitos, desde el
+doble CERO (00) al NOVENTA Y NUEVE (99).
+APUESTAS
+
+Reglamento de juego y a la presente programación.
+
+símbolos y/o figuras establecidas para conformar una apuesta simple, apuestas que estarán
+comprendidas entre 9 y 20 números.
+
+VALOR DE LA APUESTA:
+APUESTA SIMPLE= OCHO (8) NÚMEROS = VALOR DE LA APUESTA: $ 1700 (PESOS UN MIL SETECIENTOS)
+APUESTAS MÚLTIPLES: QUE COMBINEN DE NUEVE (9) HASTA QUINCE (15) NÚMEROS y se detallan a
+continuación:
+
+                         Cantidad de Números
+                       Apostados en el Primer           Pronóstico Simple
+                                Sector
+                       9                          9 pronósticos Simples
+                       10                         45 pronósticos Simples
+                       11                         165 pronósticos Simples
+                       12                         495 pronósticos Simples
+                       13                         1.287 pronósticos Simples
+                       14                         3.003 pronósticos Simples
+                       15                         6.435 pronósticos Simples
+
+Los puntos de ventas autorizados podrán comercializar porcentuales de jugadas denominadas
+
+esta LOTERIA DE LA CIUDAD DE BUENOS AIRES.
+El público apostador se abstendrá de recibir comprobantes que no sean los extendidos por las máquinas
+terminales.
+
+MODO DE RESOLUCIÓN:
+Las suertes ganadoras se obtendrán por medio del sistema sorteador que Lotería de la Ciudad SE.
+determine, ya sea Sorteadores neumáticos, electrónicos, mecánicos y /o digitales.
+
+CIUDAD". Asimismo, para la determinación de los aciertos no se considerarán válidas las repeticiones
+numéricas de los dos últimos dígitos (Unidad y Decena), registrados en las veinte (20) ubicaciones
+correspondientes.
+
+procederá a reemplazarlos una vez finalizadas las veinte (20) extracciones. El orden de extracción estará
+dado por la ubicación en que se registre la repetición, comenzando en forma ascendente. En caso de que
+se realice una extracción adicional y la misma arroje una nueva repetición no se tomará en cuenta esa
+extracción, repitiéndose la mecánica tantas veces como repeticiones existiesen, a fin de obtener veinte
+(20) números distintos entre sí.
+
+FORMACIÓN DE POZOS:
+El pozo destinado para el pago de premios estará constituido por el CUARENTA Y CINCO POR CIENTO
+(45%) de la recaudación que obtenga esta modalidad de juego.
+
+PORCENTAJES ASIGNADOS A PREMIOS:
+El importe destinado al pago de aciertos será dividido de la siguiente forma:
+                  Primer Premio        8 aciertos       60,00 % del pozo de premios
+                  Segundo premio       7 aciertos       12,00 % del pozo de premios
+                  Tercer Premio        6 aciertos        7,00 % del pozo de premios
+                  Cuarto Premio         5 aciertos        5,50% del pozo de premios
+                  Agente Vendedor                        0,50 % del pozo de premios
+                  Fondo General de reserva               15,00 % del pozo de premios
+Las apuestas favorecidas con el Tercer Premio percibirán el DIEZ POR CIENTO (10%), distribuyéndose el
+mismo en partes iguales entre las apuestas ganadoras, estableciéndose que el importe mínimo a percibir
+será igual al valor establecido en esa jugada para una apuesta simple. En el caso que el monto a distribuir
+entre las apuestas, como premio unitario, sea inferior al valor establecido, se afectarán del FONDO
+GENERAL DEL RESERVA las sumas necesarias para abonar dichos premios.
+
+Los favorecidos con el cuarto premio (5 aciertos) sólo tendrán derecho a percibir el importe de la
+apuesta. El saldo remanente pasará a integrar el Fondo General de Reserva, y se deberá afectar ese
+Fondo cuando los aciertos superen el pozo destinado para esa categoría de premios.
+
+
+POZOS VACANTES:
+
+hayan alcanzado la totalidad de aciertos requeridos.
+En caso de producirse la vacancia del Primer premio de QUINIELA POCEADA DE LA CIUDAD, el monto
+generado en ese sorteo para ese premio incrementará el pozo de similar premio del sorteo siguiente,
+previa deducción de un DIEZ POR CIENTO (10%) que se destinará al Fondo General de Reserva.
+En caso de no haber ganador/es con el segundo o tercer premio el/los mismos se declarará vacante/s,
+pasando automáticamente sin interés ni actualizaciones de ninguna especie a integrar el pozo de la
+categoría de premio de que se trate en el siguiente sorteo.
+De la misma forma se procederá con el Premio Agente Vendedor.
+
+POZO ASEGURADO
+Se asegura un pozo mínimo para el Primer Premio la suma de PESOS CIEN MILLONES ($ 100.000.000.-),
+provenientes del Fondo General de Reserva
+
+ANULACION DE APUESTAS
+Para anular apuestas de POCEADA DE LA CIUDAD, se tendrá como plazo máximo hasta QUINCE (15)
+minutos posteriores de la realización de esta, pasado ese lapso el sistema no permitirá dicha operación.
+En caso de las apuestas múltiples realizadas en partes, no podrán ser anuladas por intermedio de la
+terminal de captura de apuestas, razón por la cual para efectuar estas anulaciones deberá enviar
+requerimiento mediante plataforma de autogestión dentro del plazo de TREINTA (30) minutos
+posteriores a la realización de la apuesta y hasta TREINTA (30) minutos antes del cierre del sorteo. Los
+Agentes Oficiales deberán resguardar todos los tickets de apuestas anuladas, ordenados por sorteo, los
+que deberán ser exhibidos y/o presentados ante el requerimiento de LOTERÍA DE LA CIUDAD DE BUENOS
+AIRES bajo apercibimiento de aplicar las sanciones previstas en el Reglamento para la Adjudicación y
+Explotación de Agencias Oficiales de Juego y Permisos Precarios aprobado por la Resolución de
+Directorio N° 31-LOTBA/25 o el que en el futuro dicte LOTBA. NO SE PODRÁN REALIZAR ANULACIONES
+UNA VEZ EXTINGUIDOS LOS PLAZOS DE TIEMPO MENCIONADOS PARA CADA TIPO DE OPERACIÓN
+PAGO DE LOS PREMIOS
+Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido
+realizadas y hasta la fecha consignada en el Extracto Oficial emitido para cada sorteo. El pago de premios
+en los puntos de venta se realizará conforme el siguiente esquema:
+
+        siguiente a la realización del sorteo, una vez que el sistema se encuentre habilitado para efectuar
+        dicha operación. En caso de que el sistema no se encontrara habilitado en dicha fecha, podrá
+        realizarse el primer día posterior en que el mismo se encuentre disponible.
+
+        inmediato posterior a la realización del sorteo, una vez que el sistema se encuentre habilitado
+        para efectuar dicha operación. En caso de que el sistema no se encontrara habilitado en dicha
+        fecha, podrá realizarse el primer día posterior en que el mismo se encuentre disponible.
+Quedan exceptuados de lo dispuesto precedentemente los premios que superen la suma de PESOS DOS
+MILLONES CIE MIL ($2.100.000.-), los cuales deberán cobrarse en Lotería de la Ciudad de Buenos Aires,
+sita en Carlos Pellegrini 657, Ciudad Autónoma de Buenos Aires, previa solicitud de turno a través de la
+página web oficial de LOTBA, www.loteriadelaciudad.gob.ar
+Los premios obtenidos por captura web, será acreditados de forma inmediata, sin tramitación previa, en
+la cuenta del usuario ganador.
+Los premios correspondientes a las provincias adheridas al sistema se abonarán en los entes encargados
+de la comercialización del juego, en dichos entes provinciales.
+Cuando se registren aciertos en apuestas múltiples, estas percibirán sus correspondientes premios
+acumulados conforme la desagregación en las apuestas simples que las componen.
+Asimismo, cabe aclarar que toda modificación de fechas para percibir los premios descriptos se
+informará a través del Ex
+PRESENTADOS AL COBRO DENTRO DE LA FECHA ESTABLECIDA PARA SU PRESCRIPCIÓN, SERÁN
+ABONADOS A PARTIR DEL PRIMER DÍA HÁBIL POSTERIOR A LA FECHA DE PRESCRIPCIÓN MENCIONADA
+
+Los tickets premiados emitidos por terminal en los Puntos de venta no serán válidos para justificar origen
+de fondos. Aquellos ganadores de premios que requieran algún comprobante de la operación podrán
+realizar el cobro correspondiente en la sede de LOTBA, oportunidad en la cual se aplican los controles de
+identidad y todo otro procedimiento pertinente a fin de dar cumplimiento a la normativa interna y
+externa en materia de prevención de lavado de activos y financiación del terrorismo.
+Las agencias oficiales de LOTERÍA DE LA CIUDAD DE BUENOS AIRES, que sean acreedores del premio
+estímulo, deberán hacer efectivo su cobro dentro de los plazos de prescripción establecidos
+precedentemente o aquellos que se establezcan en el Extracto Oficial del sorteo, aquel que le resulte
+más beneficioso.
+                                  DIAGRAMA DE APERTURA Y CIERRE
+    DIA DE SORTEO                             APERTURA                                   CIERRE
+ MARTES A VIERNES MISMO DIA DE REALIZACION DEL SORTEO A LAS 5 AM 10 MINUTOS ANTES
+ LUNES Y SÁBADOS        DOMINGO ANTERIOR A LAS 00:01 AM                          DEL INICIO DEL
+                                                                                 SORTEO
+En el caso que el lunes no se hayan programado sorteos, por consiguiente, no esté habilitado el sistema,
+la apertura operará el primer día posterior donde el mismo se encuentre operando.
+
+TRANSMISIÓN ARCHIVOS DE APUESTAS ENTES PROVINCIALES
+Los Entes Provinciales que comercializan el juego, determinarán el horario de apertura y cierre del
+Sistema de Captura de las apuestas en su jurisdicción. Deberán realizar la transmisión de los archivos de
+apuestas comercializadas de cada sorteo como máximo hasta 1 (una) hora antes de la hora de inicio del
+sorteo.
+                          DIAGRAMA DE SORTEOS POCEADA DE LA CIUDAD
+
+                                                         Inicio Pago
+                 Sorteo        Fecha          Hora                     Prescripción
+                                                          Premios
+                  9761        2/11/2026       21:00      3/11/2026      2/12/2026
+                  9762        3/11/2026       21:00      4/11/2026      3/12/2026
+                  9763        4/11/2026       21:00      5/11/2026      4/12/2026
+                  9764        5/11/2026       21:00      6/11/2026      9/12/2026
+                  9765        6/11/2026       21:00      12/11/2026    11/12/2026
+                  9766        7/11/2026       21:00      12/11/2026    11/12/2026
+                  9767        9/11/2026       21:00      12/11/2026    11/12/2026
+                  9768       10/11/2026       21:00      12/11/2026    11/12/2026
+                  9769       11/11/2026       21:00      12/11/2026    11/12/2026
+                  9770       12/11/2026       21:00      13/11/2026    14/12/2026
+                  9771       13/11/2026       21:00      16/11/2026    15/12/2026
+                  9772       14/11/2026       21:00      16/11/2026    15/12/2026
+                  9773       16/11/2026       21:00      17/11/2026    16/12/2026
+                  9774       17/11/2026       21:00      18/11/2026    17/12/2026
+
+                  9775       18/11/2026       21:00      19/11/2026    18/12/2026
+                  9776       19/11/2026       21:00      20/11/2026    21/12/2026
+                  9777       20/11/2026       21:00      24/11/2026    23/12/2026
+                  9778       21/11/2026       21:00      24/11/2026    23/12/2026
+                  9779       23/11/2026       21:00      24/11/2026    23/12/2026
+                  9780       24/11/2026       21:00      25/11/2026    28/12/2026
+                  9781       25/11/2026       21:00      26/11/2026    28/12/2026
+                  9782       26/11/2026       21:00      27/11/2026    28/12/2026
+                  9783       27/11/2026       21:00      30/11/2026    29/12/2026
+                  9784       28/11/2026       21:00      30/11/2026    29/12/2026
+                  9785       30/11/2026       21:00      1/12/2026     30/12/2026
+*El inicio de pago de premios y la prescripción podrán modificarse al día hábil siguiente si aquel recayese
+en feriado o no laborable.
+Los sorteos de QUINIELA POCEADA DE LA CIUDAD se resuelven por el extracto del último sorteo
+programado del día del juego QUINIELA DE LA CIUDAD de LOTERIA DE LA CIUDAD DE BUENOS
+AIRES
+
+FECHA INICIO DE PAGO DE PREMIOS EN LOS PUNTOS DE VENTA:
+       Para los sorteos programados de lunes a viernes, será al día siguiente de la realización del sorteo.
+       En el caso que el sistema no estuviera habilitado ese día, será el primer día posterior donde el
+       mismo esté disponible.
+       Para los sorteos programados los días sábado, será el día lunes posterior a la realización del
+       sorteo. En el caso que el sistema no estuviera habilitado ese día, será el primer día posterior
+       donde el mismo esté disponible.
+
+
+                                        TOMBOLINA DE LA CIUDAD
+                                         MES DE NOVIEMBRE 2026
+
+LUGAR: Salón de sorteos de Lotería de la Ciudad de Buenos Aires o donde esta lo determine.
+
+PARTICIPACIÓN
+El apostador deberá elegir indistintamente grupos de 3, 4, 5, 6 o 7 números de dos cifras cualesquiera
+entre DOBLE CERO (00) y el NOVENTA Y NUEVE (99) sin repetición.
+
+El apostador para hacerse acreedor a un premio, su apuesta deberá coincidir con el Extracto Oficial que
+se conforme para el sorteo apostado.
+Serán ganadoras aquellas apuestas que cumplan con el siguiente requisito:
+
+
+                            Números           Números        Relación de pago en
+                            Apostados         Acertados       veces lo apostado
+                                3                 3                   50
+                                 4                4                  140
+                                 4                3                   7
+                                 5                5                  700
+                                 5                4                   20
+                                 5                3                  2,5
+                                 6                6                 3.500
+                                 6                5                   70
+                                 6                4                   7
+                                 6                3                  1,5
+                                 7                7                 8.000
+                                 7                6                  500
+                                 7                5                   25
+                                 7                4                  2,5
+                                 7                3                   1
+
+Las apuestas, tendrán un rango comprendido entre un mínimo PESOS CIENTO CINCUETA ($150) y un
+máximo de PESOS UN MIL DOSCIENTOS ($1200).
+
+MODO DE RESOLUCIÓN
+Las suertes ganadoras se obtendrán por medio del sistema sorteador que Lotería de la Ciudad SE.
+determine, ya sea Sorteadores neumáticos, electrónicos, mecánicos y /o digitales.
+Los sorteos de "TOMBOLINA DE LA CIUDAD" se resolverán por el extracto de "QUINIELA DE LA CIUDAD".
+Asimismo, para la determinación de los aciertos no se considerarán válidas las repeticiones numéricas de
+los dos últimos dígitos (Unidad y Decena), registrados en las veinte (20) ubicaciones correspondientes.
+En caso de producirse repeticiones de números en el extracto de "QUINIELA DE LA CIUDAD", se
+procederá a reemplazarlos una vez finalizadas las veinte (20) extracciones.
+El orden de extracción estará dado por la ubicación en que se registre la repetición, comenzando en
+forma ascendente. En el caso que se realice una extracción adicional y la misma arroje una nueva
+repetición no se tomará en cuenta esa extracción, repitiéndose la mecánica tantas veces como
+repeticiones existiesen, a fin de obtener veinte (20) números distintos entre sí.
+
+APUESTAS
+
+juego y a la presente programación.
+LOTERIA DE LA CIUDAD DE BUENOS AIRES podrá limitar el volumen de las apuestas en los términos que
+se consideren convenientes.
+
+TOPE DE BANCA
+Cuando el monto de los aciertos producidos supere CINCO (5) veces para la QUINIELA DE LA CIUDAD y su
+modalidad TOMBOLINA DE LA CIUDAD, el monto de lo recaudado en la jugada o sorteo respectivo, se
+podrá implementar un Tope de Banca igual a los guarismos mencionados precedentemente para cada
+modalidad de juego. El Directorio de LOTERIA DE LA CIUDAD DE BUENOS AIRES determinará en esos
+casos la aplicación o no del aludido tope, dejándose constancia que en caso de aplicarse el Tope de
+Banca el pago de los premios se efectuará a prorrata, o sea, que se abonará en forma proporcional en
+todos los casos.
+
+ANULACIONES
+Se tendrá como plazo máximo para realizar la anulación hasta QUINCE (15) minutos posteriores de la
+realización de la apuesta, pasado ese lapso el sistema no permitirá la operación.
+No se podrá anular tickets si se hubiera producido el cierre de la captación de las mismas, aún en el caso
+de no haberse cumplido el lapso determinado para tal fin.
+Los Agentes Oficiales deberán resguardar todos los tickets de apuestas anuladas, ordenados por sorteo,
+los que deberán ser exhibidos y/o presentados ante el requerimiento de LOTERÍA DE LA CIUDAD DE
+BUENOS AIRES bajo apercibimiento de aplicar las sanciones previstas en el Reglamento para la
+Adjudicación y Explotación de Agencias Oficiales de Juego y Permisos Precarios aprobado por la
+Resolución de Directorio N° 31-LOTBA/25 o el que en el futuro dicte LOTBA.
+
+PAGO DE LOS PREMIOS
+Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido
+realizadas y hasta la fecha consignada en el Extracto Oficial emitido para cada sorteo.
+
+El pago de premios en los puntos de venta se realizará conforme el siguiente esquema:
+        Para las jugadas programadas de lunes a sábados, será el mismo día de la realización del sorteo,
+        una vez que el sistema de captura esté habilitado para realizar dicha operación. En el caso que se
+        resuelva con la última modalidad de Quiniela de la Ciudad programada del día, será el primer día
+        posterior donde el sistema este habilitado
+Quedan exceptuados de lo dispuesto precedentemente los premios que superen la suma de PESOS DOS
+MILLONES CIEN MIL ($2.100.000.-), los cuales deberán cobrarse en Lotería de la Ciudad de Buenos Aires,
+sita en Carlos Pellegrini 657, Ciudad Autónoma de Buenos Aires, previa solicitud de turno a través de la
+página web oficial de LOTBA, www.loteriadelaciudad.gob.ar
+Los premios mayores, siempre y cuando hubiesen sido presentados al cobro dentro de la fecha
+establecida para su prescripción, serán abonados a partir del primer día hábil posterior a la fecha de
+
+Asimismo, cabe aclarar que toda modificación de fechas para percibir los premios descriptos se
+informará a través del Extracto Oficial. Para el caso de las apuestas con aciertos que fueran efectuadas
+mediante canales de venta en línea, los premios se acreditarán en la cuenta juego que cada usuario
+registrado tendrá habilitada para tal fin, a partir de la habilitación del sistema que permite su pago.
+Los tickets premiados emitidos por terminal en los Puntos de venta no serán válidos para justificar origen
+de fondos. Aquellos ganadores de premios que requieran algún comprobante de la operación podrán
+realizar el cobro correspondiente en la sede de LOTBA, oportunidad en la cual se aplican los controles de
+identidad y todo otro procedimiento pertinente a fin de dar cumplimiento a la normativa interna y
+externa en materia de prevención de lavado de activos y financiación del terrorismo.
+APERTURA Y CIERRE DEL SISTEMA DE CAPTURA DE APUESTAS.
+
+                                    DIAGRAMA DE APERTURA Y CIERRE
+ DIA DE SORTEO                           APERTURA                          CIERRE
+MARTES A VIERNES           DIA ANTERIOR A LA REALIZACIÓN DEL
+                                                               10 MINUTOS ANTES DEL INICIO DEL
+                           SORTEO A LAS 17 HS.
+                                                               SORTEO
+LUNES Y SÁBADOS            DOMINGO ANTERIOR A LAS 00:01 AM
+
+*En el caso que el lunes no se hayan programado sorteos, por consiguiente, no esté habilitado el
+sistema, la apertura operará el primer día posterior donde el mismo se encuentre operando.
+
+                                       DIAGRAMA DE SORTEOS TOMBOLINA
+
+                                                               Inicio Pago
+        Sorteo               Fecha             Hora                                  Prescripción
+                                                                Premios
+         4780              2/11/2026           15:00            3/11/2026              2/12/2026
+
+         4781              3/11/2026           15:00            4/11/2026              3/12/2026
+
+         4782              4/11/2026           15:00            5/11/2026              4/12/2026
+
+         4783              5/11/2026           15:00            6/11/2026              9/12/2026
+
+         4784              6/11/2026           15:00           12/11/2026             11/12/2026
+
+         4785              7/11/2026           15:00           12/11/2026             11/12/2026
+
+         4786              9/11/2026           15:00           12/11/2026             11/12/2026
+
+         4787             10/11/2026           15:00           12/11/2026             11/12/2026
+
+         4788             11/11/2026           15:00           12/11/2026             11/12/2026
+
+         4789             12/11/2026           15:00           13/11/2026             14/12/2026
+
+         4790             13/11/2026           15:00           16/11/2026             15/12/2026
+
+         4791             14/11/2026           15:00           16/11/2026             15/12/2026
+
+         4792             16/11/2026           15:00           17/11/2026             16/12/2026
+
+         4793             17/11/2026           15:00           18/11/2026             17/12/2026
+
+         4794             18/11/2026           15:00           19/11/2026             18/12/2026
+
+         4795             19/11/2026           15:00           20/11/2026             21/12/2026
+
+         4796             20/11/2026           15:00           24/11/2026             23/12/2026
+
+         4797             21/11/2026           15:00           24/11/2026             23/12/2026
+
+         4798             23/11/2026           15:00           24/11/2026             23/12/2026
+
+         4799             24/11/2026           15:00           25/11/2026             28/12/2026
+
+         4800             25/11/2026           15:00           26/11/2026             28/12/2026
+
+         4801             26/11/2026           15:00           27/11/2026             28/12/2026
+
+         4802             27/11/2026           15:00           30/11/2026             29/12/2026
+
+         4803             28/11/2026           15:00           30/11/2026             29/12/2026
+
+         4804             30/11/2026           15:00            1/12/2026             30/12/2026
+
+
+*El inicio de pago de premios y la prescripción podrán modificarse al día hábil siguiente si aquel recayese en feriado o no
+laborable
+
+Los sorteos de TOMBOLINA DE LA CIUDAD se resuelven por el extracto de la modalidad MATUTINA del
+juego QUINIELA DE LA CIUDAD de LOTERIA DE LA CIUDAD DE BUENOS AIRES.
+
+FECHA INICIO DE PAGO DE PREMIOS EN LOS PUNTOS DE VENTA:
+Para las jugadas programadas de lunes a sábados, será el mismo día de la realización del sorteo, una vez
+que el sistema de captura esté habilitado para realizar dicha operación. En el caso que se resuelva con la
+última modalidad de Quiniela de la Ciudad programada del día, será el primer día posterior donde el
+sistema este habilitado.
+                                     QUINIELA YA DE LA CIUDAD
+                                    MES DE NOVIEMBRE DE 2026
+PARTICIPACIÓN:
+Para participar, el apostador deberá seleccionar mediante los canales disponibles de comercialización,
+un número de UNA (1), DOS (2) a TRES (3) dígitos, desde el CERO (0) al NOVECIENTOS NOVENTA Y
+NUEVE (999) como así también una ubicación o rango de ubicaciones dentro DIEZ (10) lugares, según lo
+
+
+MODO DE RESOLUCIÓN
+Los sorteos se resolverán por la ejecución, en el Sistema de Procesamiento, de una rutina random que
+proporciona el correspondiente extracto en forma azarosa. A tal fin, el sistema computarizado efectuará,
+al momento de la realización de las apuestas, un sorteo por cada ticket y/o comprobante de juego para
+determinar si las apuestas tienen o no aciertos.
+El ticket con la apuesta y el extracto, estarán identificados con un mismo número que establecerá la
+relación única entre ambos, y serán impresos por la Terminal de juego en forma conjunta o quedará
+integrado al comprobante electrónico de participación cuando la captura sea vía web. La rutina de
+generación de números aleatorios está certificada por un Laboratorio de ensayos y certificación.
+
+APUESTAS
+
+presente programación.
+
+Las apuestas se podrán realizar exclusivamente de la siguiente manera:
+       Al primer lugar de ubicación del extracto únicamente.
+       A los cinco (5) primeros lugares de ubicación del extracto, incluyendo la primera ubicación.
+       A los diez (10) lugares de ubicación en el extracto, tomando la totalidad del extracto obtenido.
+
+La opción de rango permite al apostador seleccionar la posición en el conjunto de números ganadores
+ubicación en el extracto-generado aleatoriamente.
+Se admitirán OCHO (8) pronósticos independientes por cada ticket, con el adicional que estos deben ser
+diferentes, por ejemplo:
+
+    TICKET PERMITIDO:                          TICKET NO PERMITIDO:
+    APUESTA 1: 32 desde 01 al 01               APUESTA 1: 32 desde 01 al 01
+    APUESTA 2: 32 desde 01 al 05               APUESTA 2: 32 desde 01 al 01
+    APUESTA 3: 32 desde 01 al 10               APUESTA 3: 32 desde 01 al 01
+    APUESTA 4: 25 desde 01 al 01               APUESTA 4: 32 desde 01 al 01
+    APUESTA 5: 25 desde 01 al 05               APUESTA 5: 32 desde 01 al 01
+    APUESTA 6: 25 desde 01 al 10               APUESTA 6: 32 desde 01 al 01
+    APUESTA 7: 33 desde 01 al 05               APUESTA 7: 32 desde 01 al 01
+    APUESTA 8: 33 desde 01 al 10               APUESTA 8: 32 desde 01 al 01
+
+
+LOTERIA DE LA CIUDAD DE BUENOS AIRES se reserva el derecho de establecer un corte en la
+comercialización en situaciones que lo amerite, las cuales serán determinadas en su oportunidad.
+
+ACIERTOS DIRECTOS
+Los aciertos directos de la Quiniela Ya se abonarán de la siguiente forma, incluido en monto de la
+apuesta:
+            Aciertos a una (1) cifra, Cinco (5) veces lo apostado.
+            Aciertos a dos (2) cifras, Cincuenta (50) veces lo apostado.
+            Aciertos a tres (3) cifras, Quinientas (500) veces lo apostado.
+El premio obtenido es el que resulta de dividir el importe de la apuesta por el rango de ubicaciones
+elegido para la misma. En el caso de que dentro del alcance se obtengan dos o más aciertos, los mismos
+se sumarán para determinar el pago del premio.
+
+ACIERTOS INDIRECTOS
+Para acceder a los aciertos indirectos, el pronóstico no deberá haber tenido premio alguno con aciertos
+directos. El mismo es sin costo adicional para el apostador.
+Existen 3 tipos de aciertos indirectos:
+Permutación: Se premia si los números de la apuesta realizada salen sorteados, pero de manera
+desordenada. Participan las apuestas de 2 (dos) y 3 (tres) cifras. Ej dos cifras: número apostado 32,
+número sorteado 23: tiene premio; Ej apuesta 3 cifras: número apostado 123, número sorteado el 321 ó
+312 ó 213 ó 231 ó 132: tiene premio.
+Si los números apostados son iguales entre sí, no aplica este tipo de acierto indirecto ya que no varía del
+número original (Ejemplo Nro.: 11; 22; 999, 888)
+
+Aproximación: Se premia el número anterior y/o el posterior del número apostado. Si salen sorteados
+los dos (anterior y posterior) o bien, se repite alguno en el alcance, se acumulan los premios obtenidos.
+Participan las apuestas de 3 (tres) cifras. Ej: número apostado 123, número sorteado el 122 y 124: tiene
+premio.
+Si el número original es 000:
+A) Aproximación anterior sería: 999
+B) Aproximación posterior sería: 001
+
+Si el número original es 999:
+A) Aproximación anterior sería: 998
+B) Aproximación posterior sería: 000
+
+Terminación: Se premia si la unidad y decena (últimos dos dígitos) del número de la apuesta realizada,
+salen sorteados, sumando todas las coincidencias para el cálculo del premio. Participan las apuestas de 3
+(tres) cifras. Ej: número apostado 123, número sorteado 23: tiene premio.
+
+Los aciertos indirectos de la Quiniela Ya se abonarán de la siguiente forma, incluido el importe apostado:
+
+        APUESTA DE                     PREMIO INDIRECTO                       CANTIDAD DE VECES
+                                                                                LO APOSTADO
+          2 CIFRAS     PERMUTACIÓN                                                      5
+                       APROXIMACIÓN (uno anterior y/o posterior)                        25
+          3 CIFRAS
+                       PERMUTACIÓN                                                      10
+                       TERMINACIÓN DE UNIDAD Y DECENA                                   5
+
+
+El premio obtenido, es el que resulta de dividir el importe de la apuesta por el rango de ubicaciones
+elegido para la misma. En el caso de que dentro del alcance se obtengan dos o más aciertos, los mismos
+se sumarán para determinar el pago del premio.
+Las categorías de los premios indirectos no son acumulables entre sí. A los efectos del escrutinio se
+buscará por categoría de premiación, y en el caso que exista premios en más de una categoría, se
+deberá comparar las premiaciones y pagará el de mayor monto. En el caso que los montos
+comparados por categoría sean iguales, se tomará el de mayor coeficiente de pago, es decir 1)
+Aproximación, 2) Permutación y 3) Terminación.
+Las apuestas a 1 (UNA) cifra no posee premios indirectos.
+
+VALOR DE LA APUESTA MÍNIMA
+PESOS CIENTO CINCUENTA ($150)
+VALOR DE LA APUESTA MÁXIMA
+PESOS DOS MIL ($2000.-).
+ANULACIONES
+Conforme al reglamento, no se podrá anular la apuesta, una vez emitido el ticket.
+
+APERTURA Y CIERRE DE CAPTURA PARA LOS SORTEOS
+
+CIERRE: el cierre operará en el mismo horario de cierre programado para cada tipo de modalidad (La
+Previa, La Primera, Matutina, Vespertina y Nocturna) del juego Quiniela de la Ciudad.
+APERTURA: UN (1) MINUTO después del horario de cierre programado de la modalidad anterior de
+Quiniela de la Ciudad, con excepción de los sorteos programados el primer día hábil posterior a los días
+donde no haya programados sorteos de Quiniela, que en ese caso la apertura operará luego de la
+liberación de premios del sorteo anterior inmediato programado.
+         DIAGRAMA DE SORTEOS QUINIELA YA DE LA CIUDAD
+
+                                             Inicio Pago
+Sorteo       Fecha      Hora       Tipo                    Prescripción
+                                               Premios
+5438        2/11/2026   10:15   LA PREVIA    3/11/2026      2/12/2026
+5439        2/11/2026   12:00   LA PRIMERA   3/11/2026      2/12/2026
+5440        2/11/2026   15:00   MATUTINA     3/11/2026      2/12/2026
+5441        2/11/2026   18:00   VESPERTINA   3/11/2026      2/12/2026
+5442        2/11/2026   21:00   NOCTURNA     3/11/2026      2/12/2026
+5443        3/11/2026   10:15   LA PREVIA    4/11/2026      3/12/2026
+5444        3/11/2026   12:00   LA PRIMERA   4/11/2026      3/12/2026
+5445        3/11/2026   15:00   MATUTINA     4/11/2026      3/12/2026
+5446        3/11/2026   18:00   VESPERTINA   4/11/2026      3/12/2026
+5447        3/11/2026   21:00   NOCTURNA     4/11/2026      3/12/2026
+5448        4/11/2026   10:15   LA PREVIA    5/11/2026      4/12/2026
+5449        4/11/2026   12:00   LA PRIMERA   5/11/2026      4/12/2026
+5450        4/11/2026   15:00   MATUTINA     5/11/2026      4/12/2026
+5451        4/11/2026   18:00   VESPERTINA   5/11/2026      4/12/2026
+5452        4/11/2026   21:00   NOCTURNA     5/11/2026      4/12/2026
+5453        5/11/2026   10:15   LA PREVIA    6/11/2026      9/12/2026
+5454        5/11/2026   12:00   LA PRIMERA   6/11/2026      9/12/2026
+5455        5/11/2026   15:00   MATUTINA     6/11/2026      9/12/2026
+5456        5/11/2026   18:00   VESPERTINA   6/11/2026      9/12/2026
+5457        5/11/2026   21:00   NOCTURNA     6/11/2026      9/12/2026
+5458        6/11/2026   10:15   LA PREVIA    12/11/2026    11/12/2026
+5459        6/11/2026   12:00   LA PRIMERA   12/11/2026    11/12/2026
+5460        6/11/2026   15:00   MATUTINA     12/11/2026    11/12/2026
+5461        6/11/2026   18:00   VESPERTINA   12/11/2026    11/12/2026
+5462        6/11/2026   21:00   NOCTURNA     12/11/2026    11/12/2026
+5463        7/11/2026   10:15   LA PREVIA    12/11/2026    11/12/2026
+5464        7/11/2026   12:00   LA PRIMERA   12/11/2026    11/12/2026
+5465        7/11/2026   15:00   MATUTINA     12/11/2026    11/12/2026
+5466        7/11/2026   18:00   VESPERTINA   12/11/2026    11/12/2026
+5467        7/11/2026   21:00   NOCTURNA     12/11/2026    11/12/2026
+5468        9/11/2026   10:15   LA PREVIA    12/11/2026    11/12/2026
+5469        9/11/2026   12:00   LA PRIMERA   12/11/2026    11/12/2026
+5470        9/11/2026   15:00   MATUTINA     12/11/2026    11/12/2026
+5471        9/11/2026   18:00   VESPERTINA   12/11/2026    11/12/2026
+5472        9/11/2026   21:00   NOCTURNA     12/11/2026    11/12/2026
+5473       10/11/2026   10:15   LA PREVIA    12/11/2026    11/12/2026
+5474       10/11/2026   12:00   LA PRIMERA   12/11/2026    11/12/2026
+5475       10/11/2026   15:00   MATUTINA     12/11/2026    11/12/2026
+5476       10/11/2026   18:00   VESPERTINA   12/11/2026    11/12/2026
+5477       10/11/2026   21:00   NOCTURNA     12/11/2026    11/12/2026
+5478       11/11/2026   10:15   LA PREVIA    12/11/2026    11/12/2026
+5479       11/11/2026   12:00   LA PRIMERA   12/11/2026    11/12/2026
+5480       11/11/2026   15:00   MATUTINA     12/11/2026    11/12/2026
+5481       11/11/2026   18:00   VESPERTINA   12/11/2026    11/12/2026
+5482       11/11/2026   21:00   NOCTURNA     12/11/2026    11/12/2026
+5483       12/11/2026   10:15   LA PREVIA    13/11/2026    14/12/2026
+5484       12/11/2026   12:00   LA PRIMERA   13/11/2026    14/12/2026
+5485       12/11/2026   15:00   MATUTINA     13/11/2026    14/12/2026
+5486       12/11/2026   18:00   VESPERTINA   13/11/2026    14/12/2026
+5487       12/11/2026   21:00   NOCTURNA     13/11/2026    14/12/2026
+                                           Inicio Pago
+Sorteo     Fecha      Hora       Tipo                    Prescripción
+                                             Premios
+ 5488    13/11/2026   10:15   LA PREVIA    16/11/2026    15/12/2026
+ 5489    13/11/2026   12:00   LA PRIMERA   16/11/2026    15/12/2026
+ 5490    13/11/2026   15:00   MATUTINA     16/11/2026    15/12/2026
+ 5491    13/11/2026   18:00   VESPERTINA   16/11/2026    15/12/2026
+ 5492    13/11/2026   21:00   NOCTURNA     16/11/2026    15/12/2026
+ 5493    14/11/2026   10:15   LA PREVIA    16/11/2026    15/12/2026
+ 5494    14/11/2026   12:00   LA PRIMERA   16/11/2026    15/12/2026
+ 5495    14/11/2026   15:00   MATUTINA     16/11/2026    15/12/2026
+ 5496    14/11/2026   18:00   VESPERTINA   16/11/2026    15/12/2026
+ 5497    14/11/2026   21:00   NOCTURNA     16/11/2026    15/12/2026
+ 5498    16/11/2026   10:15   LA PREVIA    17/11/2026    16/12/2026
+ 5499    16/11/2026   12:00   LA PRIMERA   17/11/2026    16/12/2026
+ 5500    16/11/2026   15:00   MATUTINA     17/11/2026    16/12/2026
+ 5501    16/11/2026   18:00   VESPERTINA   17/11/2026    16/12/2026
+ 5502    16/11/2026   21:00   NOCTURNA     17/11/2026    16/12/2026
+ 5503    17/11/2026   10:15   LA PREVIA    18/11/2026    17/12/2026
+ 5504    17/11/2026   12:00   LA PRIMERA   18/11/2026    17/12/2026
+ 5505    17/11/2026   15:00   MATUTINA     18/11/2026    17/12/2026
+ 5506    17/11/2026   18:00   VESPERTINA   18/11/2026    17/12/2026
+ 5507    17/11/2026   21:00   NOCTURNA     18/11/2026    17/12/2026
+ 5508    18/11/2026   10:15   LA PREVIA    19/11/2026    18/12/2026
+ 5509    18/11/2026   12:00   LA PRIMERA   19/11/2026    18/12/2026
+ 5510    18/11/2026   15:00   MATUTINA     19/11/2026    18/12/2026
+ 5511    18/11/2026   18:00   VESPERTINA   19/11/2026    18/12/2026
+ 5512    18/11/2026   21:00   NOCTURNA     19/11/2026    18/12/2026
+ 5513    19/11/2026   10:15   LA PREVIA    20/11/2026    21/12/2026
+ 5514    19/11/2026   12:00   LA PRIMERA   20/11/2026    21/12/2026
+ 5515    19/11/2026   15:00   MATUTINA     20/11/2026    21/12/2026
+ 5516    19/11/2026   18:00   VESPERTINA   20/11/2026    21/12/2026
+ 5517    19/11/2026   21:00   NOCTURNA     20/11/2026    21/12/2026
+ 5518    20/11/2026   10:15   LA PREVIA    24/11/2026    23/12/2026
+ 5519    20/11/2026   12:00   LA PRIMERA   24/11/2026    23/12/2026
+ 5520    20/11/2026   15:00   MATUTINA     24/11/2026    23/12/2026
+ 5521    20/11/2026   18:00   VESPERTINA   24/11/2026    23/12/2026
+ 5522    20/11/2026   21:00   NOCTURNA     24/11/2026    23/12/2026
+ 5523    21/11/2026   10:15   LA PREVIA    24/11/2026    23/12/2026
+ 5524    21/11/2026   12:00   LA PRIMERA   24/11/2026    23/12/2026
+ 5525    21/11/2026   15:00   MATUTINA     24/11/2026    23/12/2026
+ 5526    21/11/2026   18:00   VESPERTINA   24/11/2026    23/12/2026
+ 5527    21/11/2026   21:00   NOCTURNA     24/11/2026    23/12/2026
+ 5528    23/11/2026   10:15   LA PREVIA    24/11/2026    23/12/2026
+ 5529    23/11/2026   12:00   LA PRIMERA   24/11/2026    23/12/2026
+ 5530    23/11/2026   15:00   MATUTINA     24/11/2026    23/12/2026
+ 5531    23/11/2026   18:00   VESPERTINA   24/11/2026    23/12/2026
+ 5532    23/11/2026   21:00   NOCTURNA     24/11/2026    23/12/2026
+ 5533    24/11/2026   10:15   LA PREVIA    25/11/2026    28/12/2026
+ 5534    24/11/2026   12:00   LA PRIMERA   25/11/2026    28/12/2026
+ 5535    24/11/2026   15:00   MATUTINA     25/11/2026    28/12/2026
+ 5536    24/11/2026   18:00   VESPERTINA   25/11/2026    28/12/2026
+ 5537    24/11/2026   21:00   NOCTURNA     25/11/2026    28/12/2026
+*El inicio de pago de premios y la prescripción podrán modificarse al día hábil siguiente si aquel recayese en feriado o no
+laborable
+
+PAGO DE LOS PREMIOS
+Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido
+realizadas una vez que el sistema de captura esté habilitado para realizar dicha operación y hasta la
+fecha consignada en la presente programación.
+Quedan exceptuados de lo dispuesto precedentemente los premios que superen la suma de PESOS DOS
+MILLONES CIEN MIL ($2.100.000.-), los cuales deberán cobrarse en Lotería de la Ciudad de Buenos Aires,
+sita en Carlos Pellegrini 657, Ciudad Autónoma de Buenos Aires, previa solicitud de turno a través de la
+página web oficial de LOTBA, www.loteriadelaciudad.gob.ar.
+Los tickets premiados emitidos por terminal en los Puntos de venta no serán válidos para justificar origen
+de fondos. Aquellos ganadores de premios que requieran algún comprobante de la operación podrán
+realizar el cobro correspondiente en la sede de LOTBA, oportunidad en la cual se aplican los controles de
+identidad y todo otro procedimiento pertinente a fin de dar cumplimiento a la normativa interna y
+externa en materia de prevención de lavado de activos y financiación del terrorismo.
+Para el caso de las apuestas con aciertos que fueran efectuadas mediante canales de venta en línea, los
+premios se acreditarán en la cuenta juego que cada usuario registrado tendrá habilitada para tal fin, a
+partir de la habilitación del sistema que permite su pago.
+
+
+                                           SORTEO DE CLAVE DE LETRAS
+
+
+impresas cuatro letras, las cuales darán al poseedor de este, el derecho de participar en un sorteo
+llamado "CLAVE DE LETRAS", que se realizará con posterioridad al sorteo programado de "QUINIELA DE
+LA CIUDAD". Para el caso de la modalidad QUINIELA YA, el resultado se obtendrá según el apartado
+     Participarán solamente las apuestas que no hayan obtenido premio en la jugada de "QUINIELA DE LA
+
+                           DE LA CIUDAD, a la cual se haya apostado. Si LOTERIA DE LA CIUDAD DE BUENOS
+     AIRES programase una jugada a determinarse exclusivamente por un sorteo realizado por otro Ente
+     Administrador de Juego, la "CLAVE DE LETRAS" correspondiente, será determinada en la primera jugada
+
+
+     programación, se realizará el sorteo complementario correspondiente.
+
+     EXTRACCION "CLAVES DE LETRAS"
+     1) Las suertes ganadoras se obtendrán por medio del sistema sorteador que Lotería de la Ciudad SE.
+     determine, ya sea Sorteadores neumáticos, electrónicos, mecánicos y /o digitales. Para el caso de la
+
+
+     2) A tal fin, se sortearán CUATRO (4) letras que se ordenarán alfabéticamente comenzando primero a
+     ordenar la/s vocal/es si la/s hubiese y luego la/s consonantes si la/s hubiera/n.
+     3)
+     de QUINIELA DE LA CIUDAD un premio único de PESOS UN MIL ($1000.-).
+
+                   SORTEO DE TICKETS-RECIBOS NO GANADORES DE QUINIELA DE LA CIUDAD
+                                        MES DE NOVIEMBRE 2026
+
+             SALON DE SORTEOS DE LOTERIA DE LA CIUDAD DE BUENOS AIRES Ó DONDE ESTA LO DETERMINE
+
+                                               PREMIO           JUGADAS PARTICIPANTES
+SORTEO     DIA     EXTRACCIONES     PREMIO     AGENTE                                 QUINIELA PRESCRIPCIÓN
+                                                       QUINIELA POCEADA TOMBOLINA
+                                              VENDEDOR                                  YA
+                         1°        $ 250.000 $ 50.000
+                         2°        $ 150.000 $ 30.000      COMPRENDIDAS ENTRE EL DIA 29/10/26 HASTA
+2170 27/11/2026                                                       EL DIA 25/11/26
+                                                                                                           29/12/26
+                         3°        $ 100.000 $ 20.000
+
+
+
+     Para participar del sorteo, los apostadores deben previamente realizar la registración por única vez en la
+     página web https://www.otrachance.gob.ar, conforme las pautas establecidas en el Reglamento Otra
+     Chance.
+     Podrá realizarse la registración hasta las 00:00 horas del día de realización del SORTEO DE TICKETS-
+     RECIBOS NO GANADORES DE QUINIELA DE LA CIUDAD.
+     Se realizarán tres extracciones correspondientes a los titulares y tres extracciones correspondientes a los
+     suplentes. A los efectos de la determinación de los ganadores y/o suplentes, se conformará una base
+     única otorgándole a cada registro un numero de ID, sobre esta base se resolverá el ID que resulte
+     ganador del Sorteo. En cada sorteo, no se asignará más de un premio a un mismo número de
+     documento.
+
+     PREMIO TITULARES DE PUNTOS DE VENTA: Aquellos titulares de puntos de venta, vendedores de los
+     tickets-recibos sorteados y declarados ganadores en este sorteo, se harán acreedores a un premio único,
+     estableciéndose para tal retribución del 20% de los premios descriptos para el apostador, alcanzando
+     éstos un valor de PESOS CINCUENTA MIL ($50.000), PESOS TREINTA MIL ($30.000) y PESOS VEINTE MIL
+     ($20.000), para cada uno de ellos respectivamente.
+     En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES S sea favorecida como vendedora de apuestas
+     premiadas este premio, se considerarán como no asignado y pasará a engrosar el Fondo General de
+     Reserva. Todos los premios de este sorteo detallados de la presente programación serán solventados
+     por el Fondo General de Reserva.
+     RESULTADOS: Los resultados de los sorteos serán publicados en el Extracto Oficial que emita LOTERIA DE
+     LA CIUDAD DE BUENOS AIRES al efecto y su exhibición es obligatoria en todos los locales de venta.
 

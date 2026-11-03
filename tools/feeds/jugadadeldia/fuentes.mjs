@@ -2,14 +2,14 @@
 // descriptions synced with the feed code (data/sources/<set>/*.json, without the saved documents) and lists, for the health report,
 // the last day each input is valid:
 //   - lottery rules and pages (LOTBA, PBA, CAS): saved copy + maxAgeDays of its file (after that the build stops);
-//   - the monthly programmes cited for prices and ratios (a document fetched with a form "mes"): the last day of that month;
+//   - the monthly programmes (a document fetched with a form "mes") are not listed here: the feed precios checks every cited value
+//     against the programme of each new month and lists how far they are confirmed;
 //   - the help package (rg): oldest copy + maxAgeDays (after that its lines are hidden and the build gate fails);
 //   - card and dice game rules: oldest copy + GAME_MAX_AGE (sites/jugadadeldia/content/sources.mjs).
-// warnDays 14 (an alert two weeks ahead) except the monthly programmes (an alert only once the month is over: they change every month).
+// warnDays 14 (an alert two weeks ahead).
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { monthEnd } from '../../../engine/lottery/programa.mjs';
 
 const SRC = fileURLToPath(new URL('../../../data/sources/', import.meta.url));
 export const GAME_MAX_AGE = 183;
@@ -26,12 +26,9 @@ export function sourceExpiries(sets) {
   for (const f of sets.lottery || []) {
     for (const [slug, d] of Object.entries(f.docs || {})) {
       if (!DAY.test(d.fetched || '')) throw new Error('sources: ' + f.id + ' ' + slug + ' has no fetched date');
-      const form = /(?:^|&)ano=(\d{4})&mes=(\d{2})(?:&|$)/.exec(d.form || '');
-      if (form) out.push({ id: f.id + '-' + slug, what: f.id.toUpperCase() + ' ' + slug + ': monthly programme ' + form[1] + '-' + form[2] + ' cited for prices and ratios', until: monthEnd(form[1] + '-' + form[2]), warnDays: 0 });
-      else {
-        if (!(f.maxAgeDays > 0)) throw new Error('sources: ' + f.id + ' has no maxAgeDays');
-        out.push({ id: f.id + '-' + slug, what: f.id.toUpperCase() + ' ' + slug + ': saved copy of ' + d.fetched + ', max ' + f.maxAgeDays + ' days', until: plus(d.fetched, f.maxAgeDays), warnDays: WARN_DAYS });
-      }
+      if (/(?:^|&)ano=\d{4}&mes=\d{2}(?:&|$)/.test(d.form || '')) continue;
+      if (!(f.maxAgeDays > 0)) throw new Error('sources: ' + f.id + ' has no maxAgeDays');
+      out.push({ id: f.id + '-' + slug, what: f.id.toUpperCase() + ' ' + slug + ': saved copy of ' + d.fetched + ', max ' + f.maxAgeDays + ' days', until: plus(d.fetched, f.maxAgeDays), warnDays: WARN_DAYS });
     }
   }
   if (sets.rg) {

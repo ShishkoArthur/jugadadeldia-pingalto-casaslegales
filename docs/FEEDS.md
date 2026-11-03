@@ -80,14 +80,36 @@
 - **Сигнал:** если следующий месяц не вышел — молчим, пока программа не кончилась; на следующий день после `to` — одно сообщение
   в Telegram (`EXPIRED since …: lotba-programa`) и строка в `problems`; страница сама переходит на ответ по архиву.
 
+## jugadadeldia — цены месячных программ LOTBA (`precios`, раз в сутки; к источнику — как `programa`)
+- **Зачем:** цены меняются каждый месяц, владелец хочет вмешательства не чаще раза в полгода. Цены на страницах (минимальная ставка
+  кинелы, Poceada, Loto Plus, порог «премии в sede») браузер берёт из `precios.json` с датой и ссылкой; статическая копия
+  (`data/sources/lottery`, 11.2026) — только запасной вариант и для страницы без JS.
+- **Источник:** тот же формуляр, версия `1` («completa», с правилами): `quiniela.loteriadelaciudad.gob.ar` `juego=QUI` и
+  `loto.loteriadelaciudad.gob.ar` `juego=LTO` (robots.txt обоих — 404), этот и следующий месяц. Когда спрашивает: нет цен; новый месяц;
+  31 день без проверки; ближайшее «vigente hasta» ближе 5 дней (тогда каждый день). HTTP-кэш общий с `programa` (20 ч).
+- **Копии:** каждый PDF — на сервере в `state/docs/lotba-<QUI|LTO>-<месяц>-<sha256[:12]>.pdf` (не в публичной папке), sha256, размер и дата —
+  в `precios.json.docs`; хранятся 8 последних месяцев.
+- **Разбор** (`engine/lottery/precios.mjs`): документ называет игру и месяц; цена — строгий шаблон, цифры = слова (`esWords`: «PESOS CIENTO
+  CINCUENTA ($150)»); все вхождения — одна сумма; слова-опечатка рядом с верным вхождением допускаются (в 11.2026 «DOS MILLONES CIE MIL»).
+  Loto Plus — первая таблица тиражей: номера подряд, даты в месяце, обычные тиражи — одна цена (тираж со `*` — extraordinario, не цена).
+- **Проверки и сигнал:** диапазон; скачок против последнего верного (или против копии сборки) > 50 % (`MAX_JUMP`) или поле пропало →
+  **не публикуется**, остаётся последнее верное, `alerts` → одно сообщение в Telegram и строка в `problems`. Остальные значения, которые
+  сайт цитирует из этих программ (выплаты, доли фондов, правила, часы), проверяются по цитате дословно (часы — по строкам тиражей); все
+  на месте → `confirmed[doc]` продлевается до конца месяца; что-то пропало → сигнал «cited values not found any more» (сайт держит копию;
+  человек сверяет и обновляет `data/sources/lottery` — это редкое событие: выплаты стоят годами).
+- **Страница:** `<b data-price>` + `<small data-price-note>` (`sites/jugadadeldia/pages/precios.mjs`, `client/precios.js` через `jg.js`):
+  «(programa oficial de noviembre de 2026, vigente hasta el 30/11/2026; revisado el 3/11/2026)» со ссылкой на раздел programación;
+  после `until` без новой программы — «sin precio vigente» и «(el programa … venció el …)».
+- **Сроки в health:** `lotba-precios` (ближайшее `until` цен), `lotba-quiniela-programa`, `lotba-loto-programa` (до какого месяца
+  подтверждены остальные значения); все — сигнал только при истечении.
+
 ## jugadadeldia — сроки источников (`fuentes`, раз в сутки, без сети)
 - Читает описания сохранённых источников (`data/sources/{lottery,rg,truco,generala,chinchon,escoba,burako}/*.json`; `sync` копирует только
   JSON, без `_docs`) и кладёт в `fuentes.json` → `_health.json.expiries` последний день каждого: копии правил и страниц LOTBA/PBA/CAS —
-  `fetched + maxAgeDays` (183; после — сборка стоит); месячные программы, из которых цитируются цены и выплаты (`quiniela-programa`,
-  `loto-programa`), — последний день их месяца; пакет помощи (rg) — самая старая копия + 100 дней (после — строки скрываются, гейт сборки
+  `fetched + maxAgeDays` (183; после — сборка стоит); месячные программы (`quiniela-programa`, `loto-programa`) здесь не считаются —
+  их каждый месяц проверяет `precios`; пакет помощи (rg) — самая старая копия + 100 дней (после — строки скрываются, гейт сборки
   падает); правила игр — самая старая копия + 183.
-- **Сигнал:** за 14 дней до срока (`soon`) и в день истечения (`expired`) — по одному сообщению на смену состояния; месячные программы —
-  только при истечении (они меняются каждый месяц). Истёкшее — в `problems`. `_health.json` публичный: там только источники этого сайта.
+- **Сигнал:** за 14 дней до срока (`soon`) и в день истечения (`expired`) — по одному сообщению на смену состояния. Истёкшее — в `problems`. `_health.json` публичный: там только источники этого сайта.
 - `status` печатает таблицу `== expiries`: дата, дней осталось, состояние, порог.
 - После обновления источников в репозитории: commit → `feeds-server.sh jugadadeldia sync` (иначе на сервере старые даты — ложная тревога).
 
@@ -128,12 +150,15 @@
 | `scheduler stopped?` (health старше 2 ч) | `status` | cron-файл на месте? `docker` жив? `last-exit` 124 — таймаут |
 | `EXPIRED …: lotba-programa` | Telegram, `status` | программа следующего месяца не вышла: `run programa --force` позже; формуляр сменился — `programa.mjs` |
 | `program: unknown row layout` / `does not name` | `programa` fails | LOTBA сменил вёрстку PDF: `parseProgramText` + фикстуры `engine/test/fixtures/programa` |
+| `price … held back (jump/not found/…)` | Telegram, `problems` | сверить PDF в `state/docs/` с сайтом LOTBA; верная цена — поправить шаблон/порог в `engine/lottery/precios.mjs` |
+| `cited values not found any more: …` | Telegram, `problems` | LOTBA изменил выплаты/правила: новая копия в `data/sources/lottery`, `verify-sources`, deploy |
 | `expires …` / `EXPIRED …` (не программа) | Telegram, `status` | обновить копию источника (половинная проверка ниже), commit → `sync` |
 
 ## Раз в полгода (агент)
 1. `bash tools/feeds-server.sh jugadadeldia status` и `… pingalto status`: health OK, нет stale, fails 0; `logs 300` — нет повторяющихся ошибок.
    У jugadadeldia — таблица `== expiries`: всё, что истекает до следующей проверки, обновить сейчас (скачать копию, перепроверить цитаты,
-   `node tools/verify-sources.mjs` / `verify-rg.mjs`, commit, `sync`, deploy). Месячные программы (`*-programa`) — каждый месяц.
+   `node tools/verify-sources.mjs` / `verify-rg.mjs`, commit, `sync`, deploy). Месячные программы ведут ленты `programa` и `precios` сами;
+   смотреть только их `alerts` (если были) и что `lotba-precios` / `lotba-*-programa` впереди сегодняшней даты.
 2. `quiniela.json`: доля «2 fuentes» за неделю (норма — все, кроме Mendoza); `conflicts` пуст; `notes` без PBA-ошибок.
 3. Ключи: PandaScore токен жив, план бесплатный не сменился (условия: показ на своём сайте, подпись, без коэффициентов);
    Supercell ключи живы и привязаны к 187.7.26.95; robots.txt LOTBA/PBA не закрыли нас и ИИ; Córdoba/Tucumán — не изменилось ли (TLS).

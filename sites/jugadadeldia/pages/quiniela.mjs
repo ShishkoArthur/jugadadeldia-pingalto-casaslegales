@@ -5,6 +5,7 @@ import { directBet, payTable, redoblona } from '../../../engine/lottery/quiniela
 import { rules } from '../../../engine/lottery/rules.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn } from './parts.mjs';
+import { price, priceNote } from './precios.mjs';
 
 const J = { lotba: { id: 'lotba-quiniela', name: 'Ciudad', long: 'La Quiniela de la Ciudad', help: 'caba' }, pba: { id: 'pba-quiniela', name: 'Provincia', long: 'Quiniela de la Provincia de Buenos Aires', help: 'buenos-aires' } };
 const PLACES = [[1, 'A la cabeza'], [5, 'A los 5'], [10, 'A los 10'], [20, 'A los 20']];
@@ -29,7 +30,7 @@ export const cuantoPaga = {
       '<fieldset class="jg-fl"><legend>Lotería</legend><div class="jg-sg">' + radios('j', [['lotba', 'Ciudad (Nacional)'], ['pba', 'Provincia']], 'lotba') + '</div></fieldset>' +
       '<fieldset class="jg-fl"><legend>Cifras</legend><div class="jg-sg">' + radios('d', [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5', ' data-solo="pba"']], 2) + '</div></fieldset>' +
       '<fieldset class="jg-fl"><legend>Ubicación</legend><div class="jg-sg">' + radios('u', PLACES, 1) + '</div></fieldset>' +
-      '<label class="jg-fl"><span>Apostás (pesos)</span><input class="jg-in" name="a" type="text" inputmode="decimal" autocomplete="off" value="100" aria-describedby="jg-min"></label><p class="jg-note" id="jg-min">En la Ciudad la apuesta mínima es de ' + money(L.minBet.v) + ' por extracto.</p></form></section>' +
+      '<label class="jg-fl"><span>Apostás (pesos)</span><input class="jg-in" name="a" type="text" inputmode="decimal" autocomplete="off" value="100" aria-describedby="jg-min"></label><p class="jg-note" id="jg-min">En la Ciudad la apuesta mínima es de ' + price(h, 'lotba.quiniela.min-bet') + ' por extracto.' + priceNote(h, 'lotba.quiniela.min-bet') + '</p></form></section>' +
       '<section class="jg-c t2 jg-out" aria-live="polite"><span class="jg-sm">Si sale</span><p class="jg-win"><span>Cobrás</span><b data-o="pay">' + money(n(r.perHit)) + '</b></p><p class="jg-ch"><span data-o="times">' + r.ratio + ' veces lo apostado</span><span data-o="per">a la cabeza</span></p>' +
       '<p class="jg-hon">Chance: <b data-o="odds">' + oneIn(r.oneIn) + '</b> · de cada $ 100 apostados vuelven en promedio <b data-o="ev">' + money(n(r.evPer100)) + '</b></p>' +
       '<div class="jg-ret" aria-hidden="true"><div><span>Apostás</span><i style="--w:100%"></i><b>$ 100</b></div><div><span>Vuelve</span><i data-o="bar" style="--w:' + fmt(n(r.evPer100), 2).replace(',', '.') + '%"></i><b data-o="ev2">' + money(n(r.evPer100)) + '</b></div></div>' +

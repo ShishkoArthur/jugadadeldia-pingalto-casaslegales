@@ -15,6 +15,7 @@ import { xoshiro128ss } from '../../../engine/lottery/rng.mjs';
 import { STALE_HOURS } from '../../../engine/lottery/extract.mjs';
 import { parseProgramText, validateMonth, PROG_CODES, PROG_TYPES } from '../../../engine/lottery/programa.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn, tiles, ICONS } from './parts.mjs';
+import { price, priceNote } from './precios.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -53,7 +54,7 @@ export const comoSeJuega = {
     const r = directBet({ rules: 'lotba-quiniela', digits: 2, places: 5, stake: 500 });
     const demo = DEMO(), mine = demo[2].slice(2);
     const x20 = demo.map((v, i) => '<span class="' + (i < 5 ? 'in' : '') + (i < 5 && v.endsWith(mine) ? ' hit' : '') + '" data-i="' + (i + 1) + '"><small>' + (i + 1) + '</small>' + v.slice(0, 2) + '<b>' + v.slice(2) + '</b></span>').join('');
-    const min = h.src.value('lotba.quiniela.min-bet'), ten = h.src.value('lotba.quiniela.ten-per-ticket'), cancel = h.src.value('lotba.quiniela.cancel-15'), big = h.src.value('lotba.quiniela.big-prize');
+    const ten = h.src.value('lotba.quiniela.ten-per-ticket'), cancel = h.src.value('lotba.quiniela.cancel-15');
     return hero(h, { kicker: 'Quiniela · la boleta', lede: 'Un número, cuántas cifras, en qué lugar del extracto y cuánta plata. Armá tu jugada acá y mirá qué dice cada campo de la boleta y cuándo cobrás.', actions: '<a class="jg-b p" href="#boleta">Armar una boleta</a>' + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') }) +
       '<div class="jg-mn">' +
       '<section class="jg-c w2" id="boleta"><span class="jg-tag">Simulá</span><h2>Tu jugada</h2><form class="jg-f" data-boleta>' +
@@ -69,10 +70,10 @@ export const comoSeJuega = {
       '<section class="jg-c w2"><span class="jg-sm">Campo por campo</span><h2>Qué significa cada cosa</h2><ol class="jg-steps">' +
       '<li><b>El número</b>De 1 a ' + h.src.value('lotba.quiniela.digits-max') + ' cifras. Si jugás a 2 cifras, cuentan las dos últimas del número que sale; a 3, las tres últimas.</li>' +
       '<li><b>La ubicación</b>A la cabeza es el primer lugar del extracto. A los 5, 10 o 20 vale cualquiera de esos lugares, pero tu apuesta se reparte entre ellos.</li>' +
-      '<li><b>La lotería</b>Cada extracto (Ciudad, Provincia, Córdoba…) es un sorteo aparte. En la Ciudad la apuesta mínima es ' + money(min) + ' por extracto.</li>' +
+      '<li><b>La lotería</b>Cada extracto (Ciudad, Provincia, Córdoba…) es un sorteo aparte. En la Ciudad la apuesta mínima es ' + price(h, 'lotba.quiniela.min-bet') + ' por extracto.' + priceNote(h, 'lotba.quiniela.min-bet') + '</li>' +
       '<li><b>El importe</b>El premio incluye lo que apostaste. En un mismo ticket entran hasta ' + ten + ' jugadas.</li></ol>' +
       cite(h, ['lotba.quiniela.digits-max', 'lotba.quiniela.range-any', 'lotba.quiniela.drawn', 'lotba.quiniela.range-divide', 'lotba.quiniela.includes-stake', 'lotba.quiniela.min-bet', 'lotba.quiniela.ten-per-ticket']) + '</section>' +
-      '<section class="jg-c w3"><span class="jg-sm">Después del sorteo</span><h2>Cobrar o anular</h2><ol class="jg-steps"><li><b>Anular</b>Hasta ' + cancel + ' minutos después de hacer la jugada, y antes del cierre.</li><li><b>Cobrar</b>En la agencia donde jugaste, hasta la fecha que figura en el extracto oficial.</li><li><b>Premios grandes</b>Más de ' + money(big) + ' se cobran en la sede de Lotería de la Ciudad, con turno.</li></ol>' +
+      '<section class="jg-c w3"><span class="jg-sm">Después del sorteo</span><h2>Cobrar o anular</h2><ol class="jg-steps"><li><b>Anular</b>Hasta ' + cancel + ' minutos después de hacer la jugada, y antes del cierre.</li><li><b>Cobrar</b>En la agencia donde jugaste, hasta la fecha que figura en el extracto oficial.</li><li><b>Premios grandes</b>Más de ' + price(h, 'lotba.quiniela.big-prize') + ' se cobran en la sede de Lotería de la Ciudad, con turno.' + priceNote(h, 'lotba.quiniela.big-prize') + '</li></ol>' +
       cite(h, ['lotba.quiniela.cancel-15', 'lotba.quiniela.collect-where', 'lotba.quiniela.big-prize']) + '</section>' +
       '<section class="jg-c w3" data-quiz-q><span class="jg-tag">5 preguntas</span><h2>¿Lo entendiste?</h2><div class="jg-qz" data-o="quiz"><p class="jg-note">Las preguntas aparecen con JavaScript.</p></div><p class="jg-hon" data-o="qres" hidden></p></section></div>';
   },

@@ -17,7 +17,7 @@
 // turns stale or recovers raises an alert: sent to Telegram when TG_BOT_TOKEN and TG_CHAT_ID are set, otherwise only logged.
 // Exit code: 0 all good; 1 some enabled feed has no file younger than its maxAgeHours or failed to load; 2 bad arguments.
 import { readdirSync, existsSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { makeCtx, writeJsonAtomic, readJson, readFeed, zoneDate, UAS } from './lib.mjs';
 
@@ -64,6 +64,7 @@ export async function runFeed(feed, o) {
     ctx.outDir = o.out;
     ctx.env = o.env || {};
     ctx.force = !!o.force;
+    ctx.docsDir = o.docsDir || null;
     const limit = (feed.timeoutSec || 240) * 1000;
     const work = (async () => {
       const raw = await feed.fetch(ctx);
@@ -95,6 +96,13 @@ const dayDiff = (a, b) => Math.round((Date.parse(b + 'T00:00:00Z') - Date.parse(
 // Date-bound inputs of a site (a draw programme, saved copies of rules and help documents): a feed lists them in its data as
 // expiries: [{ id, what, until: 'YYYY-MM-DD' (last valid day), warnDays }]. The health report lists all of them with days left
 // (Argentine date): 'expired' after until, 'soon' within warnDays (warnDays 0: no early warning), else 'ok'. Expired ones are problems.
+// Things a person must look at (a price held back, a cited value that changed): a feed lists them in its data as
+// alerts: [{ id, text }]. Each id is alerted once, when it appears; while listed it is a problem of the health report.
+export function noticesOf(docs) {
+  const out = [];
+  for (const [feed, doc] of docs) for (const x of (doc && doc.data && Array.isArray(doc.data.alerts) ? doc.data.alerts : [])) if (x && typeof x.id === 'string') out.push({ id: x.id, text: String(x.text || '').slice(0, 300), feed });
+  return out;
+}
 export function expiriesOf(docs, now) {
   const today = zoneDate(now), out = [];
   for (const [feed, doc] of docs) {
@@ -136,6 +144,8 @@ export function buildHealth(feeds, out, log, loadErrors, now, env = {}, site = '
     if (stale) { health.ok = false; health.problems.push(feed.name + ': no good data for ' + (ageHours === null ? 'ever' : ageHours + ' h') + ' (limit ' + feed.maxAgeHours + ' h)'); }
   }
   health.expiries = expiriesOf(docs, now);
+  health.notices = noticesOf(docs);
+  for (const x of health.notices) { health.ok = false; health.problems.push('notice ' + x.id + ': ' + x.text); }
   for (const x of health.expiries) if (x.state === 'expired') { health.ok = false; health.problems.push('expired ' + x.until + ': ' + x.id + ' (' + x.what + ')'); }
   return health;
 }
@@ -148,6 +158,8 @@ export function alertsFor(prev, next, site) {
     if (f.stale && !(was && was.stale)) out.push(site + ' ' + n + ': no fresh data (' + (f.ageHours === null ? 'never' : f.ageHours + ' h') + ', limit ' + f.maxAgeHours + ' h)' + (f.lastError ? ': ' + f.lastError.message.slice(0, 160) : ''));
     if (!f.stale && was && was.stale) out.push(site + ' ' + n + ': recovered');
   }
+  const seen = new Set(((prev && prev.notices) || []).map(x => x.id));
+  for (const x of next.notices || []) if (!seen.has(x.id)) out.push(site + ' ' + x.text);
   const before = new Map(((prev && prev.expiries) || []).map(x => [x.id, x.state]));
   for (const x of next.expiries || []) {
     if (x.state === 'ok' || before.get(x.id) === x.state) continue;
@@ -202,7 +214,7 @@ export async function main(argv = process.argv.slice(2), env = process.env) {
     const cur = readFeed(join(o.out, feed.name + '.json'));
     const due = o.force || feed.cadence === 'run' || !cur || clock() - Date.parse(cur.updated) > DUE_MS[feed.cadence];
     if (!due) { console.log(feed.name + ': not due (' + feed.cadence + ', updated ' + cur.updated + ')'); continue; }
-    const r = await runFeed(feed, { out: o.out, cacheDir: o.cacheDir, fixtures: o.fixtures, now: o.now, ua: UAS[o.site], env, force: o.force });
+    const r = await runFeed(feed, { out: o.out, cacheDir: o.cacheDir, fixtures: o.fixtures, now: o.now, ua: UAS[o.site], env, force: o.force, docsDir: join(dirname(o.logFile), 'docs') });
     log.push(r);
     console.log(feed.name + ': ' + (r.ok ? 'updated' : 'FAILED ' + r.error) + ' (' + r.ms + ' ms, ' + r.requests + ' requests)');
   }

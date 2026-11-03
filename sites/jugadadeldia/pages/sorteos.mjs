@@ -4,6 +4,7 @@
 import { odds, prizeShare, quini6PremioExtra, lotoPlusMultiplicador, quinielaPlusOdds } from '../../../engine/lottery/games.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn } from './parts.mjs';
+import { price, priceNote } from './precios.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -76,7 +77,7 @@ export const lotoPlus = {
       '<article class="jg-c"><span class="jg-sm">Sale o Sale</span><h2>Gana quien más acierta</h2><p>Si nadie hace 6, cobran los de 5; si no, los de 4. Depende de las boletas vendidas, así que no tiene una chance fija.</p></article>' +
       '<section class="jg-c w2"><span class="jg-sm">Multiplicador</span><h2>El número Plus</h2>' + plusDial + '<p>Si hacés 6 aciertos en Tradicional, Match o Desquite <b>y</b> acertás el número Plus, cobrás ' + m.extraTimes + ' veces ese premio. Chance de que pase: <b>' + oneIn(m.oneIn) + '</b>.</p>' + cite(h, ['lotba.loto.plus-universe', 'lotba.loto.multiplicador-rule', 'lotba.loto.multiplicador-pay']) + '</section>' +
       shareCard('Loto Plus', n(prizeShare('lotba-loto-plus').per100), ['lotba.loto.fund', 'lotba.loto.modality-share', 'lotba.loto.tradicional-split', 'lotba.loto.match-split', 'lotba.loto.desquite-split', 'lotba.loto.saleosale-split', 'lotba.loto.multiplicador-fund'], h, ' La parte del Multiplicador va al fondo de reserva, por eso no cuenta.') +
-      '<section class="jg-c w3"><span class="jg-sm">Por aciertos</span><h2>Chance en un sorteo de 6 números</h2>' + oddsTable(o) + '<p class="jg-note">Según el programa oficial de noviembre de 2026, la jugada cuesta ' + money(h.src.value('lotba.loto.price')) + '.</p>' + cite(h, ['lotba.loto.price', 'lotba.loto.universe', 'lotba.loto.draws']) + '</section>' +
+      '<section class="jg-c w3"><span class="jg-sm">Por aciertos</span><h2>Chance en un sorteo de 6 números</h2>' + oddsTable(o) + '<p class="jg-note">La jugada cuesta ' + price(h, 'lotba.loto.price') + '.' + priceNote(h, 'lotba.loto.price') + '</p>' + cite(h, ['lotba.loto.price', 'lotba.loto.universe', 'lotba.loto.draws']) + '</section>' +
       checker(h, { game: 'loto', title: 'Controlá tu jugada', pick: 6, min: 0, max: 45, plus: true, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6 }, { id: 'ma', name: 'Match', drawn: 6 }, { id: 'de', name: 'Desquite', drawn: 6 }, { id: 'so', name: 'Sale o Sale', drawn: 6 }], notes: cite(h, ['lotba.loto.tradicional-split', 'lotba.loto.desquite-split', 'lotba.loto.saleosale-rule'], 'Las reglas, del reglamento') }) +
       '</div>';
   },
@@ -137,7 +138,7 @@ export const poceada = {
       '<section class="jg-c"><span class="jg-sm">Del 00 al 99</span><h2>Tus ' + o.pick + ' contra ' + o.drawn + '</h2>' + board + '<p class="jg-note"><span class="jg-key on"></span> salieron · <span class="jg-key me"></span> tus números (ejemplo)</p></section>' +
       '<section class="jg-c w2"><span class="jg-sm">Por aciertos</span><h2>Chance de cada premio</h2>' + oddsTable(o, { prizeLabel: r => (r.hits === 5 ? 'te devuelven la jugada' : r.prize ? 'premio' : '') }) + '<p class="jg-hon">Hay ' + fmt(Number(o.combinations), 0) + ' jugadas posibles de 8 números. Chance de cobrar algo: <b>' + oneIn(o.oneInAnyPrize) + '</b>.</p></section>' +
       shareCard('Poceada', n(prizeShare('lotba-poceada').per100), ['lotba.poceada.fund', 'lotba.poceada.split', 'lotba.poceada.split-agent', 'lotba.poceada.split-reserve'], h) +
-      '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Cómo se juega</h2><ul><li>Elegís 8 números distintos del 00 al 99.</li><li>Se toman 20 números distintos del sorteo.</li><li>Con 5 aciertos te devuelven lo que pagaste.</li><li>La apuesta simple cuesta ' + money(h.src.value('lotba.poceada.price')) + '.</li></ul>' + cite(h, ['lotba.poceada.pick', 'lotba.poceada.distinct', 'lotba.poceada.five-refund', 'lotba.poceada.price']) + '</section>' +
+      '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Cómo se juega</h2><ul><li>Elegís 8 números distintos del 00 al 99.</li><li>Se toman 20 números distintos del sorteo.</li><li>Con 5 aciertos te devuelven lo que pagaste.</li><li>La apuesta simple cuesta ' + price(h, 'lotba.poceada.price') + '.' + priceNote(h, 'lotba.poceada.price') + '</li></ul>' + cite(h, ['lotba.poceada.pick', 'lotba.poceada.distinct', 'lotba.poceada.five-refund', 'lotba.poceada.price']) + '</section>' +
       checker(h, { game: 'poceada', title: 'Controlá tu Poceada', pick: 8, min: 0, max: 99, sets: [{ id: 'pc', name: 'Los 20 números del sorteo', drawn: 20 }] }) + '</div>';
   },
 };

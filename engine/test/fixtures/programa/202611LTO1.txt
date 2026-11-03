@@ -1,0 +1,1086 @@
+                                                     LOTO PLUS
+                                              MES NOVIEMBRE 2026
+
+LUGAR: Salón de sorteos de Lotería de la Ciudad de Buenos Aires o donde esta lo determine
+                                              DIAGRAMA DE SORTEO
+
+
+                                        MES DE NOVIEMBRE
+
+
+                                                      Inicio Pago
+     Sorteo           Fecha             Hora                           Prescripción    valor apuesta
+                                                       Premios
+      3932          4/11/2026           22:00          5/11/2026        4/12/2026         $    4.000
+     3933*          7/11/2026           22:00         12/11/2026       11/12/2026         $    5.000
+      3934         11/11/2026           22:00         12/11/2026        11/12/2026        $    4.000
+      3935         14/11/2026           22:00         16/11/2026        15/12/2026        $    4.000
+      3936         18/11/2026           22:00         19/11/2026        18/12/2026        $    4.000
+      3937         21/11/2026           22:00         24/11/2026        23/12/2026        $    4.000
+      3938         25/11/2026           22:00         26/11/2026        28/12/2026        $    4.000
+      3939         28/11/2026           22:00         30/11/2026        29/12/2026        $    4.000
+Si el inicio de pago de premios y la prescripción recayese en feriado o no laborable, las mismas operarán al día hábil
+siguiente
+
+
+*SORTEO EXTRAORDINARIO (ver apartado)
+
+APUESTAS SIMPLES: participan de todas las modalidades
+
+APUESTAS MÚLTIPLES: Participan de todas las modalidades y se detallan a continuación:
+
+ Cantidad de Números Apostados en el Primer Sector                     Pronóstico Simple
+                              7                                      7 pronósticos Simples
+                              8                                     28 pronósticos Simples
+                              9                                     84 pronósticos Simples
+                             10                                     210 pronósticos Simples
+                             11                                     462 pronósticos Simples
+                             12                                     924 pronósticos Simples
+                             13                                    1.716 pronósticos Simples
+                             14                                    3.003 pronósticos Simples
+                             15                                    5.005 pronósticos Simples
+
+Con el objeto de determinar la configuración de los pozos por cada modalidad, el valor de la
+participación se distribuirá en cada modalidad conforme al siguiente esquema:
+
+                                           Modalidad             Porcentaje
+                                        TRADICIONAL                 22%
+                                        MATCH                       22%
+                                        DESQUITE                    20%
+                                        SALE O SALE                 10%
+                                        MULTIPLICADOR               26%
+
+
+
+
+                     DIAGRAMA DE APERTURA Y CIERRE EN JURISDICCIÓN DE C.A.B.A.
+                      APERTURA                                CIERRE
+        Domingo anterior a las 00:01 am Mismo día de realización del sorteo a las 21 hs.
+
+
+
+
+                                                                    IF-2026-43151620-GCABA-LOTBA
+
+
+                                                                    Página 1 de 17
+En el caso que el sistema no estuviera habilitado ese día, será el primer día posterior donde el mismo
+esté disponible.
+
+TRANSMISIÓN DE LOS ARCHIVOS DE APUESTAS ENTES PROVINCIALES:
+Los entes provinciales que comercializan el juego determinarán el horario de apertura y cierre del
+sistema de captura de las apuestas en su jurisdicción. Los entes Provinciales que comercializan el juego
+deberán realizar la transmisión de los archivos de apuestas comercializadas de cada sorteo como
+máximo hasta las 21:00 hs. del día de la realización de este.
+
+PARTICIPACIÓN:
+Para participar, el apostador deberá seleccionar mediante los canales disponibles de comercialización,
+un único pronóstico en cada ticket, que estará dividido en DOS (2) sectores independientes, conforme al
+siguiente esquema:
+
+PRIMER SECTOR: se deberá elegir, como mínimo, SEIS (6) números comprendidos entre el CERO (0) y el
+CUARENTA Y CINCO (45), incluidos ambos, estableciéndose que el CERO (0) es el primero o el más bajo y
+el CUARENTA Y CINCO (45) el último o el más alto de la serie de números intervinientes. Este sector será
+utilizado para determinar la premiación de las modalidades Tradicional, Match, Desquite, Sale o Sale y
+Multiplicador (juntamente con el segundo sector).
+SEGUNDO SECTOR: se deberá elegir, exclusivamente, UN (1) número adicional comprendido en el
+universo del CERO (0) al NUEVE (9) ambos inclusive, estableciéndose que el CERO (0) es el primero o el
+más bajo y el NUEVE (9) el último o el más alto de la serie de números intervinientes, este número se
+denomina “Plus”. Este sector, juntamente con el anterior, será utilizado para determinar la premiación
+de la modalidad Multiplicador.
+Entiéndase por pronóstico al conjunto de números seleccionados por el apostador y que deberán
+elegirse dentro del universo mencionado precedentemente para totalizar los números del primer y
+segundo sector.
+La participación en el juego LOTO PLUS comprende apostar todas sus modalidades de juego a saber:
+     • TRADICIONAL.
+     • MATCH.
+     • DESQUITE.
+     • SALE O SALE.
+     • MULTIPLICADOR.
+
+
+APUESTAS
+Los apostadores podrán efectuar apuestas de LOTO PLUS conforme al Reglamento de juego y a la
+presente programación.
+
+Se aceptarán dos tipos de pronósticos, los cuales podrán ser como se detallan seguidamente:
+             • SIMPLE contendrá SEIS (6) números en el primer sector CON UN (1) número (Plus)
+                 correspondiente a la modalidad Multiplicador en el segundo sector.
+             • MÚLTIPLES podrán combinar desde SIETE (7) hasta QUINCE (15) números en el primer
+                 sector y sólo UN (1) número (Plus) correspondiente a la modalidad Multiplicador en el
+                 segundo sector.
+Las apuestas múltiples ingresarán a proceso computarizado en forma directa por máquina terminal
+instalada en las Agencias Oficiales, Permisionarios o bocas de expendio, debidamente autorizadas por la
+LOTERÍA DE LA CIUDAD DE BUENOS AIRES y/o entidades coordinadoras del sistema, así como también a
+través del canal de captura Web.
+Los AGENTES OFICIALES AUTORIZADOS podrán comercializar exclusivamente, partes o porcentuales de
+Apuestas Múltiples. No podrán extender recibos que no sean los habilitados por máquina terminal o
+emitidos por LOTERÍA DE LA CIUDAD DE BUENOS AIRES.
+EL PÚBLICO APOSTADOR DEBE ABSTENERSE DE ACEPTAR RECIBOS QUE NO SEAN HABILITADOS Y
+AUTORIZADOS POR ESTE ENTE.
+
+ANULACION DE APUESTAS:
+Para anular apuestas de LOTO PLUS, se tendrá como plazo máximo hasta QUINCE (15) minutos
+posteriores de la realización de la misma, pasado ese lapso el sistema no permitirá dicha operación.
+En caso de las apuestas múltiples realizadas en partes, no podrán ser anuladas por intermedio de la
+terminal de captura de apuestas, razón por la cual para efectuar estas anulaciones deberá comunicarse
+
+
+
+
+                                                           IF-2026-43151620-GCABA-LOTBA
+
+
+                                                           Página 2 de 17
+con el CENTRO DE ATENCIÓN AL CLIENTE al 0800-333-1331; dentro del plazo de TREINTA (30) minutos
+posteriores a la realización de la apuesta.
+Los Agentes Oficiales deberán resguardar todos los tickets de apuestas anuladas, ordenados por sorteo,
+los que deberán ser exhibidos y/o presentados ante el requerimiento de LOTERÍA DE LA CIUDAD DE
+BUENOS AIRES bajo apercibimiento de aplicar las sanciones previstas en el Reglamento para la
+Adjudicación y Explotación de Agencias Oficiales de Juego y Permisos Precarios aprobado por la
+Resolución de Directorio N° 31-LOTBA/25 o el que en el futuro dicte LOTBA.
+NO SE PODRÁN REALIZAR ANULACIONES UNA VEZ EXTINGUIDOS LOS PLAZOS DE TIEMPO
+MENCIONADOS PARA CADA TIPO DE OPERACIÓN
+MODO DE RESOLUCIÓN
+Las suertes ganadoras se obtendrán por medio del sistema sorteador que Lotería de la Ciudad SE.
+determine, ya sea Sorteadores neumáticos, electrónicos, mecánicos y /o digitales.
+A tal fin, las extracciones de cada sorteo seguirán el siguiente esquema:
+    • Se realizará UNA (1) extracción correspondiente al Número Plus, comprendida en el universo del
+          CERO (0) al NUEVE (9) ambos inclusive, y servirán para resolver los premios de la modalidad
+          LOTO PLUS MULTIPLICADOR juntamente con los números extraídos para las demás modalidades.
+    • Se realizarán SEIS (6) extracciones, sin repetición de números, comprendidas en el universo del
+          CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+          modalidad del LOTO PLUS TRADICIONAL.
+    • Se realizarán SEIS (6) extracciones sin repetición de números comprendidas en el universo del
+          CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+          modalidad del LOTO PLUS MATCH.
+    • Se realizarán SEIS (6) extracciones sin repetición de números comprendidas en el universo del
+          CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+          modalidad del LOTO PLUS DESQUITE.
+    • Se realizarán SEIS (6) extracciones sin repetición de números comprendidas en el universo del
+          CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+          modalidad del LOTO PLUS SALE O SALE.
+Los resultados de los sorteos serán publicados en el Extracto Oficial que emita LOTERÍA DE LA CIUDAD DE
+BUENOS AIRES al efecto, el que estará disponible como mínimo durante la vigencia de cada sorteo, en
+todos los puntos de contacto con el público en general y los apostadores en particular.
+
+FORMACIÓN DEL POZO
+Se destinará para el pozo de premios de cada una de las modalidades de juego el CUARENTA Y CINCO
+POR CIENTO (45%), calculado respecto de la recaudación total obtenida en cada modalidad.
+
+ACIERTOS y PORCENTAJES ASIGNADOS A PREMIOS
+MODALIDAD "LOTO PLUS TRADICIONAL"
+Obtendrán premios en la modalidad TRADICIONAL aquellas apuestas que hayan acertado SEIS (6)
+aciertos; CINCO (5) aciertos, CUATRO (4) aciertos y a los Puntos de Venta vendedores de premios con 6
+aciertos.
+Los importes a premio de cada categoría estarán conformados según las siguientes previsiones y
+particularidades:
+
+
+
+                              PREMIO                               PORCENTAJE ASIGNADO
+       6 ACIERTOS                                               37,00%
+
+       5 ACIERTOS                                               15,00%
+       4 ACIERTOS                                               3,00%
+       Fondo General de Reserva                                 43,00%
+       Puntos de Venta vendedores de premios con 6 aciertos     2,00%
+
+La asignación de premios se realizará respecto a la escala de premios anteriormente mencionada. Esto
+implica que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad
+Tradicional quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente.
+
+
+
+                                                           IF-2026-43151620-GCABA-LOTBA
+
+
+                                                           Página 3 de 17
+Las apuestas ganadoras de cada categoría de premio, se dividirán proporcionalmente el importe al pozo
+de premios de la categoría en la que fuesen favorecidas, conforme al resultado del escrutinio de
+ganadores. Las apuestas favorecidas de 4 y 5 aciertos percibirán como mínimo el valor establecido en un
+pronóstico simple.
+Las agencias oficiales vendedores de apuestas con premios con SEIS (6) aciertos, se dividirán
+proporcionalmente el importe al pozo de premios de la categoría en la que fuesen favorecidas, conforme
+al resultado del escrutinio de ganadores.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+
+MODALIDAD "LOTO PLUS MATCH"
+Obtendrán premios en la modalidad MATCH aquellas apuestas que hayan acertado SEIS (6) aciertos;
+CINCO (5) aciertos, CUATRO (4) aciertos y a los Puntos de Venta vendedores de premios con 6 aciertos.
+Los importes a premio de cada categoría estarán conformados según las siguientes previsiones y
+particularidades:
+
+                               PREMIO                                  PORCENTAJE ASIGNADO
+
+     6 ACIERTOS                                                     37,00%
+     5 ACIERTOS                                                     15,00%
+     4 ACIERTOS                                                     3,00%
+     Fondo General de Reserva                                       43,00%
+     Puntos de Venta vendedores de premios con 6 aciertos           2,00%
+
+La asignación de premios se realizará respecto a la escala de premios anteriormente mencionada. Esto
+implica que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad Match
+quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente.
+Las apuestas ganadoras de cada categoría de premio, se dividirán proporcionalmente el importe al pozo
+de premios de la categoría en la que fuesen favorecidas, conforme al resultado del escrutinio de
+ganadores.
+Las apuestas favorecidas de 4 y 5 aciertos percibirán como mínimo el valor establecido en un pronóstico
+simple.
+Las agencias oficiales vendedoras de apuestas con premios con SEIS (6) aciertos, se dividirán
+proporcionalmente el importe al pozo de premios de la categoría en la que fuesen favorecidas, conforme
+al resultado del escrutinio de ganadores.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+
+MODALIDAD "LOTO DESQUITE"
+Obtendrán premios en la modalidad DESQUITE aquellas apuestas que hayan acertado SEIS (6) aciertos y
+a los Puntos de Venta vendedores de premios con 6 aciertos.
+Los importes a premio de cada categoría estarán conformados según las siguientes previsiones y
+particularidades:
+
+
+                               PREMIO                               PORCENTAJE ASIGNADO
+         6 ACIERTOS                                                40,00%
+         Fondo General de Reserva                                  58,00%
+         Puntos de Venta vendedores de premios con 6 aciertos      2,00%
+
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 4 de 17
+La asignación de premios se realizará respecto a la escala de premios anteriormente mencionada. Esto
+implica que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad
+Desquite quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente.
+Las apuestas ganadoras de cada categoría de premio, se dividirán proporcionalmente el importe al pozo
+de premios de la categoría en la que fuesen favorecidas, conforme al resultado del escrutinio de
+ganadores.
+Las Agencias Oficiales vendedores de apuestas con premios con SEIS (6) aciertos, se dividirán
+proporcionalmente el importe al pozo de premios de la categoría en la que fuesen favorecidas, conforme
+al resultado del escrutinio de ganadores.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+
+MODALIDAD SALE O SALE:
+En la modalidad SALE O SALE existirá un único nivel de premios y se premiarán las apuestas que
+obtengan la mayor cantidad de aciertos, es decir, que si no hubiere ganadores con SEIS (6) aciertos, se
+premiarán a los que obtengan CINCO (5), de no haberlos, se repetirá esa rutina hasta encontrar apuestas
+ganadoras.
+Los importes a premio estarán conformados según las siguientes previsiones y particularidades:
+
+                                PREMIO                PORCENTAJE ASIGNADO
+                        PREMIO MAYOR                  85,00%
+                        Fondo General de Reserva      15,00%
+
+La asignación de premios se realizará respecto a la escala de premios de antes mencionada. Esto implica
+que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad Sale o Sale
+quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente. Las apuestas ganadoras, se dividirán proporcionalmente el importe al “Premio Mayor”,
+conforme al resultado del escrutinio de ganadores.
+
+ACCION PREMIO ESPECIAL SALE O SALE PARA AGENTES OFICIALES
+Se otorgará un premio al/los agente/s vendedor/es de esta modalidad, el que estará calculado en base al
+2% del Premio Mayor de esta modalidad en el sorteo que corresponda y será solventado contra el Fondo
+General de Reserva.
+El Agente vendedor sólo percibirá el premio correspondiente cuando la/s apuesta/s ganadoras sean de
+SEIS (6) aciertos. Cuando ocurra el supuesto que el premio se distribuya entre la/s apuesta/s con CINCO
+(5) o menor cantidad de aciertos, no se asignará premio alguno.
+En caso de registrarse más de un ganador, el importe total calculado en el párrafo anterior se dividirá
+proporcionalmente entre cada uno de ellos.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieren corresponderle, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+retornará al Fondo General de Reserva.
+
+MODALIDAD "MULTIPLICADOR"
+Obtendrán premios en la modalidad MULTIPLICADOR aquellas apuestas que hayan acertado SEIS (6)
+aciertos en las modalidades Tradicional y/o Match y/o Desquite y a su vez acierten el NÚMERO PLUS. Los
+importes a premio de la recaudación estarán conforme a las siguientes previsiones y particularidades:
+
+                         Fondo General de Reserva              100,00%
+
+La asignación de premios se realizará respecto al escrutinio de ganadores que deberá buscar entre las
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 5 de 17
+apuestas realizadas a la modalidad Multiplicador quiénes acertaron las suertes extraídas en el sorteo de
+esta modalidad.
+Cada apuesta ganadora de esta modalidad obtendrá DOS (2) veces el importe del premio con el cual
+hayan sido favorecidas en alguna o algunas de las modalidades descriptas anteriormente, lo que implica
+que esa apuesta en el total del sorteo se habrá hecho acreedora a TRES (3) veces el premio inicialmente
+obtenido.
+Cada una de las Agencias Oficiales vendedores de las apuestas premiadas obtendrá un premio fijo
+conforme lo determinado en el punto “ASEGURADOS PARA PREMIOS”. Este premio se adicionará al
+proporcional del premio obtenido en la modalidad que corresponda por haber comercializado apuestas
+ganadoras con 6 aciertos.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+Los premios por los aciertos obtenidos en esta modalidad son acumulativos entre sí, lo que implica que
+en esta modalidad podrá existir desde una hasta cuatro asignaciones de premios por cada apuesta y/o
+agencia oficial vendedora.
+
+ASEGURADO PARA PREMIOS
+Se asegura un pozo mínimo conforme al siguiente esquema:
+
+
+                     MODALIDAD Y CATEGORÍA DE PREMIOS                  IMPORTE
+                  Tradicional 6 ACIERTOS                            $100.000.000,00.-
+                  Match 6 ACIERTOS                                  $100.000.000,00.-
+                  Desquite 6 ACIERTOS                               $100.000.000,00.-
+                  Premio agencia oficial modalidad Multiplicador    $500.000,00.-
+
+En el caso que luego del resultado del escrutinio de ganadores, de cualquier modalidad o categoría de
+premios, arroje premios unitarios menores al valor de venta de UNA (1) participación simple, LOTERÍA DE
+LA CIUDAD DE BUENOS AIRES, abonará como mínimo el valor de venta de UNA (1) participación simple.
+Los importes necesarios para soportar las diferencias que surjan de la aplicación de estas previsiones y
+particularidades, se afectarán del Fondo General de Reserva.
+Los importes necesarios para soportar los programas de premio de la modalidad MULTIPLICADOR se
+afectarán íntegramente del Fondo General de Reserva.
+
+POZOS VACANTES
+Serán declarados “vacantes de ganadores” todos aquellos premios en que no hubiere apuestas que
+hayan alcanzado la totalidad de aciertos requeridos conforme el apartado OBTENCIÓN DE PREMIOS y
+PORCENTAJES ASIGNADOS.
+En caso de registrarse vacancia en alguna de las categorías de SEIS (6) aciertos de las modalidades
+Tradicional, Match o Desquite, se deducirá el 10% de lo recaudado para esa categoría y cada sorteo que
+se trate con destino al Fondo General de Reserva.
+
+TRASLADO DE POZOS:
+El traslado de POZOS VACANTES se realiza de la siguiente manera:
+
+PREMIO                                               TRASLADO DE POZO
+TRADICIONAL SEIS (6) ACIERTOS
+TRADICIONAL CINCO (5) ACIERTOS
+TRADICIONAL CUATRO (4) ACIERTOS
+TRADICIONAL AGENCIERO SEIS (6) ACIERTOS              Se acumularán en su misma categoría del sorteo
+MATCH SEIS (6) ACIERTOS                              siguiente, o el que Lotería de la Ciudad determine.
+MATCH CINCO (5) ACIERTOS
+MATCH CUATRO (4) ACIERTOS
+MATCH AGENCIERO SEIS (6) ACIERTOS
+DESQUITE SEIS (6) ACIERTOS
+DESQUITE AGENCIERO SEIS (6) ACIERTOS
+
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 6 de 17
+PAGO DE LOS PREMIOS
+
+Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido
+realizadas, a partir del día siguiente al sorteo y una vez que el sistema se encuentre habilitado para
+efectuar dicha operación. En caso de que el sistema no estuviera habilitado en esa fecha, el cobro podrá
+realizarse el primer día posterior en que el mismo se encuentre disponible y hasta la fecha indicada en el
+Extracto Oficial emitido para cada sorteo, sin necesidad de tramitación previa.
+Se exceptúan de lo dispuesto precedentemente los premios de hasta PESOS DOS MILLONES CIEN MIL
+($2.100.000) que, por su monto, se encuentren alcanzados por retenciones tributarias, para cuyo cobro
+el apostador deberá registrarse previamente en la página web oficial de LOTBA,
+www.loteriadelaciudad.gob.ar., en la sección “Cobro de Premios”, antes de presentarse en el punto de
+venta.
+Asimismo, los premios superiores a la suma indicada deberán cobrarse en Lotería de la Ciudad de Buenos
+Aires, sita en Carlos Pellegrini 657, Ciudad Autónoma de Buenos Aires, previa solicitud de turno a través
+de la página web oficial de www.loteriadelaciudad.gob.ar/cobrodepremios.
+Los premios obtenidos por captura web, será acreditados de forma inmediata, sin tramitación previa, en
+la cuenta del usuario ganador, previa retención de las sumas tributarias que correspondan conforme la
+normativa vigente.
+Los premios correspondientes a las provincias adheridas al sistema se abonarán en los entes encargados
+de la comercialización del juego, en dichos entes provinciales.
+
+Cuando se registren aciertos en apuestas múltiples, estas percibirán sus correspondientes premios
+acumulados conforme la desagregación en las apuestas simples que las componen.
+Asimismo, cabe aclarar que toda modificación de fechas para percibir los premios descriptos se
+informará a través del Extracto Oficial.
+
+“LOS PREMIOS MAYORES, SIEMPRE Y CUANDO HUBIESEN SIDO PRESENTADOS AL COBRO DENTRO DE
+LA FECHA ESTABLECIDA PARA SU PRESCRIPCIÓN, SERÁN ABONADOS A PARTIR DEL PRIMER DÍA HÁBIL
+POSTERIOR A LA FECHA DE PRESCRIPCIÓN MENCIONADA PRECEDENTEMENTE”.
+Las agencias oficiales de LOTERÍA DE LA CIUDAD DE BUENOS AIRES, que sean acreedores del premio
+estímulo, deberán hacer efectivo su cobro dentro de los plazos de prescripción establecidos
+precedentemente o aquellos que se establezcan en el Extracto Oficial del sorteo, aquel que le resulte
+más beneficioso.
+
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 7 de 17
+                                          SORTEO LOTO PLUS EXTRAORDINARIO
+
+                                                             Inicio Pago
+     Sorteo              Fecha               Hora                               Prescripción       valor apuesta
+                                                              Premios
+      3933*            7/11/2026             22:00           12/11/2026          11/12/2026          $      5.000
+
+Si el inicio de pago de premios y la prescripción recayese en feriado o no laborable, las mismas operarán al día hábil siguiente
+
+
+APUESTAS SIMPLES: participan de todas las modalidades
+
+APUESTAS MÚLTIPLES: Participan de todas las modalidades y se detallan a continuación:
+
+ Cantidad de Números Apostados en el Primer Sector                              Pronóstico Simple
+                                  7                                          7 pronósticos Simples
+                                  8                                         28 pronósticos Simples
+                                  9                                         84 pronósticos Simples
+                                 10                                         210 pronósticos Simples
+                                 11                                         462 pronósticos Simples
+                                 12                                         924 pronósticos Simples
+                                 13                                        1.716 pronósticos Simples
+                                 14                                        3.003 pronósticos Simples
+                                 15                                        5.005 pronósticos Simples
+
+Con el objeto de determinar la configuración de los pozos por cada modalidad, el valor de la
+participación se distribuirá en cada modalidad conforme al siguiente esquema:
+
+                                                 Modalidad               Porcentaje
+                                              TRADICIONAL                   18%
+                                              MATCH                         18%
+                                              DESQUITE                      16%
+                                              SALE O SALE                   28%
+                                              MULTIPLICADOR                 20%
+
+
+
+
+                        DIAGRAMA DE APERTURA Y CIERRE EN JURISDICCIÓN DE C.A.B.A.
+                         APERTURA                                CIERRE
+         5/10/26 a las 05:00 am                           Mismo día de realización del sorteo a las 21 hs.
+
+
+En el caso que el sistema no estuviera habilitado ese día, será el primer día posterior donde el mismo
+esté disponible.
+
+TRANSMISIÓN DE LOS ARCHIVOS DE APUESTAS ENTES PROVINCIALES:
+Los entes provinciales que comercializan el juego determinarán el horario de apertura y cierre del
+sistema de captura de las apuestas en su jurisdicción. Los entes Provinciales que comercializan el juego
+deberán realizar la transmisión de los archivos de apuestas comercializadas de cada sorteo como
+máximo hasta las 21:00 hs. del día de la realización de este.
+
+PARTICIPACIÓN:
+Para participar, el apostador deberá seleccionar mediante los canales disponibles de comercialización,
+un único pronóstico en cada ticket, que estará dividido en DOS (2) sectores independientes, conforme al
+siguiente esquema:
+
+PRIMER SECTOR: se deberá elegir, como mínimo, SEIS (6) números comprendidos entre el CERO (0) y el
+CUARENTA Y CINCO (45), incluidos ambos, estableciéndose que el CERO (0) es el primero o el más bajo y
+el CUARENTA Y CINCO (45) el último o el más alto de la serie de números intervinientes. Este sector será
+utilizado para determinar la premiación de las modalidades Tradicional, Match, Desquite, Sale o Sale y
+Multiplicador (juntamente con el segundo sector).
+
+
+
+                                                                             IF-2026-43151620-GCABA-LOTBA
+
+
+                                                                             Página 8 de 17
+SEGUNDO SECTOR: se deberá elegir, exclusivamente, UN (1) número adicional comprendido en el
+universo del CERO (0) al NUEVE (9) ambos inclusive, estableciéndose que el CERO (0) es el primero o el
+más bajo y el NUEVE (9) el último o el más alto de la serie de números intervinientes, este número se
+denomina “Plus”. Este sector, juntamente con el anterior, será utilizado para determinar la premiación
+de la modalidad Multiplicador.
+Entiéndase por pronóstico al conjunto de números seleccionados por el apostador y que deberán
+elegirse dentro del universo mencionado precedentemente para totalizar los números del primer y
+segundo sector.
+La participación en el juego LOTO PLUS comprende apostar todas sus modalidades de juego a saber:
+    • TRADICIONAL.
+    • MATCH.
+    • DESQUITE.
+    • SALE O SALE.
+    • MULTIPLICADOR.
+
+
+APUESTAS
+Los apostadores podrán efectuar apuestas de LOTO PLUS conforme al Reglamento de juego y a la
+presente programación.
+
+Se aceptarán dos tipos de pronósticos, los cuales podrán ser como se detallan seguidamente:
+             • SIMPLE contendrá SEIS (6) números en el primer sector CON UN (1) número (Plus)
+                 correspondiente a la modalidad Multiplicador en el segundo sector.
+             • MÚLTIPLES podrán combinar desde SIETE (7) hasta QUINCE (15) números en el primer
+                 sector y sólo UN (1) número (Plus) correspondiente a la modalidad Multiplicador en el
+                 segundo sector.
+Las apuestas múltiples ingresarán a proceso computarizado en forma directa por máquina terminal
+instalada en las Agencias Oficiales, Permisionarios o bocas de expendio, debidamente autorizadas por la
+LOTERÍA DE LA CIUDAD DE BUENOS AIRES y/o entidades coordinadoras del sistema, así como también a
+través del canal de captura Web.
+Los AGENTES OFICIALES AUTORIZADOS podrán comercializar exclusivamente, partes o porcentuales de
+Apuestas Múltiples. No podrán extender recibos que no sean los habilitados por máquina terminal o
+emitidos por LOTERÍA DE LA CIUDAD DE BUENOS AIRES.
+EL PÚBLICO APOSTADOR DEBE ABSTENERSE DE ACEPTAR RECIBOS QUE NO SEAN HABILITADOS Y
+AUTORIZADOS POR ESTE ENTE.
+
+ANULACION DE APUESTAS:
+Para anular apuestas de LOTO PLUS, se tendrá como plazo máximo hasta QUINCE (15) minutos
+posteriores de la realización de la misma, pasado ese lapso el sistema no permitirá dicha operación.
+En caso de las apuestas múltiples realizadas en partes, no podrán ser anuladas por intermedio de la
+terminal de captura de apuestas, razón por la cual para efectuar estas anulaciones deberá comunicarse
+con el CENTRO DE ATENCIÓN AL CLIENTE al 0800-333-1331; dentro del plazo de TREINTA (30) minutos
+posteriores a la realización de la apuesta.
+Los Agentes Oficiales deberán resguardar todos los tickets de apuestas anuladas, ordenados por sorteo,
+los que deberán ser exhibidos y/o presentados ante el requerimiento de LOTERÍA DE LA CIUDAD DE
+BUENOS AIRES bajo apercibimiento de aplicar las sanciones previstas en el Reglamento para la
+Adjudicación y Explotación de Agencias Oficiales de Juego y Permisos Precarios aprobado por la
+Resolución de Directorio N° 31-LOTBA/25 o el que en el futuro dicte LOTBA.
+NO SE PODRÁN REALIZAR ANULACIONES UNA VEZ EXTINGUIDOS LOS PLAZOS DE TIEMPO
+MENCIONADOS PARA CADA TIPO DE OPERACIÓN
+MODO DE RESOLUCIÓN
+Las suertes ganadoras se obtendrán por medio del sistema sorteador que Lotería de la Ciudad SE.
+determine, ya sea Sorteadores neumáticos, electrónicos, mecánicos y /o digitales.
+A tal fin, las extracciones de cada sorteo seguirán el siguiente esquema:
+    • Se realizará UNA (1) extracción correspondiente al Número Plus, comprendida en el universo del
+          CERO (0) al NUEVE (9) ambos inclusive, y servirán para resolver los premios de la modalidad
+          LOTO PLUS MULTIPLICADOR juntamente con los números extraídos para las demás modalidades.
+    • Se realizarán SEIS (6) extracciones, sin repetición de números, comprendidas en el universo del
+          CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+          modalidad del LOTO PLUS TRADICIONAL.
+    • Se realizarán SEIS (6) extracciones sin repetición de números comprendidas en el universo del
+
+
+                                                           IF-2026-43151620-GCABA-LOTBA
+
+
+                                                           Página 9 de 17
+        CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+        modalidad del LOTO PLUS MATCH.
+    • Se realizarán SEIS (6) extracciones sin repetición de números comprendidas en el universo del
+        CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+        modalidad del LOTO PLUS DESQUITE.
+    • Se realizarán SEIS (6) extracciones sin repetición de números comprendidas en el universo del
+        CERO (0) al CUARENTA Y CINCO (45) ambos inclusive, y servirán para resolver los premios de la
+        modalidad del LOTO PLUS SALE O SALE.
+Los resultados de los sorteos serán publicados en el Extracto Oficial que emita LOTERÍA DE LA CIUDAD DE
+BUENOS AIRES al efecto, el que estará disponible como mínimo durante la vigencia de cada sorteo, en
+todos los puntos de contacto con el público en general y los apostadores en particular.
+
+FORMACIÓN DEL POZO
+Se destinará para el pozo de premios de cada una de las modalidades de juego el CUARENTA Y CINCO
+POR CIENTO (45%), calculado respecto de la recaudación total obtenida en cada modalidad.
+
+ACIERTOS y PORCENTAJES ASIGNADOS A PREMIOS
+MODALIDAD "LOTO PLUS TRADICIONAL"
+Obtendrán premios en la modalidad TRADICIONAL aquellas apuestas que hayan acertado SEIS (6)
+aciertos; CINCO (5) aciertos, CUATRO (4) aciertos y a los Puntos de Venta vendedores de premios con 6
+aciertos.
+Los importes a premio de cada categoría estarán conformados según las siguientes previsiones y
+particularidades:
+
+
+
+                              PREMIO                                 PORCENTAJE ASIGNADO
+       6 ACIERTOS                                                37,00%
+       5 ACIERTOS                                                15,00%
+       4 ACIERTOS                                                3,00%
+       Fondo General de Reserva                                  43,00%
+       Puntos de Venta vendedores de premios con 6 aciertos      2,00%
+
+La asignación de premios se realizará respecto a la escala de premios anteriormente mencionada. Esto
+implica que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad
+Tradicional quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente.
+Las apuestas ganadoras de cada categoría de premio, se dividirán proporcionalmente el importe al pozo
+de premios de la categoría en la que fuesen favorecidas, conforme al resultado del escrutinio de
+ganadores. Las apuestas favorecidas de 4 y 5 aciertos percibirán como mínimo el valor establecido en un
+pronóstico simple.
+Las agencias oficiales vendedores de apuestas con premios con SEIS (6) aciertos, se dividirán
+proporcionalmente el importe al pozo de premios de la categoría en la que fuesen favorecidas, conforme
+al resultado del escrutinio de ganadores.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+
+MODALIDAD "LOTO PLUS MATCH"
+Obtendrán premios en la modalidad MATCH aquellas apuestas que hayan acertado SEIS (6) aciertos;
+CINCO (5) aciertos, CUATRO (4) aciertos y a los Puntos de Venta vendedores de premios con 6 aciertos.
+Los importes a premio de cada categoría estarán conformados según las siguientes previsiones y
+particularidades:
+
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 10 de 17
+                               PREMIO                                  PORCENTAJE ASIGNADO
+
+     6 ACIERTOS                                                     37,00%
+     5 ACIERTOS                                                     15,00%
+     4 ACIERTOS                                                     3,00%
+     Fondo General de Reserva                                       43,00%
+     Puntos de Venta vendedores de premios con 6 aciertos           2,00%
+
+La asignación de premios se realizará respecto a la escala de premios anteriormente mencionada. Esto
+implica que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad Match
+quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente.
+Las apuestas ganadoras de cada categoría de premio, se dividirán proporcionalmente el importe al pozo
+de premios de la categoría en la que fuesen favorecidas, conforme al resultado del escrutinio de
+ganadores.
+Las apuestas favorecidas de 4 y 5 aciertos percibirán como mínimo el valor establecido en un pronóstico
+simple.
+Las agencias oficiales vendedoras de apuestas con premios con SEIS (6) aciertos, se dividirán
+proporcionalmente el importe al pozo de premios de la categoría en la que fuesen favorecidas, conforme
+al resultado del escrutinio de ganadores.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+
+MODALIDAD "LOTO DESQUITE"
+Obtendrán premios en la modalidad DESQUITE aquellas apuestas que hayan acertado SEIS (6) aciertos y
+a los Puntos de Venta vendedores de premios con 6 aciertos.
+Los importes a premio de cada categoría estarán conformados según las siguientes previsiones y
+particularidades:
+
+
+                               PREMIO                               PORCENTAJE ASIGNADO
+         6 ACIERTOS                                                40,00%
+         Fondo General de Reserva                                  58,00%
+         Puntos de Venta vendedores de premios con 6 aciertos      2,00%
+
+La asignación de premios se realizará respecto a la escala de premios anteriormente mencionada. Esto
+implica que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad
+Desquite quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente.
+Las apuestas ganadoras de cada categoría de premio, se dividirán proporcionalmente el importe al pozo
+de premios de la categoría en la que fuesen favorecidas, conforme al resultado del escrutinio de
+ganadores.
+Las Agencias Oficiales vendedores de apuestas con premios con SEIS (6) aciertos, se dividirán
+proporcionalmente el importe al pozo de premios de la categoría en la que fuesen favorecidas, conforme
+al resultado del escrutinio de ganadores.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+
+MODALIDAD SALE O SALE:
+En la modalidad SALE O SALE existirá un único nivel de premios y se premiarán las apuestas que
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 11 de 17
+obtengan la mayor cantidad de aciertos, es decir, que si no hubiere ganadores con SEIS (6) aciertos, se
+premiarán a los que obtengan CINCO (5), de no haberlos, se repetirá esa rutina hasta encontrar apuestas
+ganadoras.
+Los importes a premio estarán conformados según las siguientes previsiones y particularidades:
+
+                         Fondo General de Reserva              100,00%
+
+La asignación de premios se realizará respecto a la escala de premios de antes mencionada. Esto implica
+que el escrutinio de ganadores deberá buscar entre las apuestas realizadas a la modalidad Sale o Sale
+quiénes acertaron las suertes extraídas en el sorteo de esta modalidad.
+Cada apuesta ganadora obtendrá el mayor premio que registre en el escrutinio de ganadores de modo
+excluyente. Las apuestas ganadoras, se dividirán proporcionalmente el importe al “Premio Mayor”,
+conforme al resultado del escrutinio de ganadores.
+Para la conformación del Premio Mayor, se realizará un aporte en pesos argentinos equivalente a USD
+1.500.000 (DÓLARES ESTADOUNIDENSES UN MILLÓN QUINIENTOS MIL). El importe será abonado en
+moneda de curso legal de la República Argentina, tomando como referencia la cotización del dólar
+estadounidense tipo vendedor del Banco de la Nación Argentina vigente al día 6 de noviembre de 2026.
+LOTBA abonará íntegramente el Impuesto al Premio y cualquier otro tributo, retención o percepción
+que grave la operación, de manera que el beneficiario reciba un importe neto equivalente a USD
+1.500.000, convertido a pesos argentinos conforme la cotización indicada precedentemente.
+En caso de que dicha fecha resulte feriado o día inhábil, se tomará la cotización correspondiente al día
+hábil inmediato anterior.
+
+ACCION ESPECIAL PREMIO AGENCIERO SALE O SALE SORTEO EXTRAORDINARIO
+Se otorgará al/los Agente/s Vendedor/es del sorteo N° 3933 un premio equivalente al dos por ciento (2%)
+del Premio Mayor de esta modalidad. Dicho premio será abonado en pesos argentinos y será solventado
+con cargo al Fondo General de Reserva, tomando como referencia la cotización del dólar estadounidense
+tipo vendedor del Banco de la Nación Argentina vigente al día 6 de noviembre de 2026
+El Agente Vendedor, exclusivamente para el sorteo N° 3933, percibirá el premio agenciero
+correspondiente, cualquiera sea la cantidad de aciertos registrada por la/s apuesta/s ganadora/s que
+resulte/n beneficiaria/s del premio.
+En caso de registrarse más de un ganador, el importe total del premio agenciero se distribuirá en partes
+iguales entre ellos.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieren corresponderle, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+retornará al Fondo General de Reserva.
+
+MODALIDAD "MULTIPLICADOR"
+Obtendrán premios en la modalidad MULTIPLICADOR aquellas apuestas que hayan acertado SEIS (6)
+aciertos en las modalidades Tradicional y/o Match y/o Desquite y a su vez acierten el NÚMERO PLUS. Los
+importes a premio de la recaudación estarán conforme a las siguientes previsiones y particularidades:
+
+                         Fondo General de Reserva              100,00%
+
+La asignación de premios se realizará respecto al escrutinio de ganadores que deberá buscar entre las
+apuestas realizadas a la modalidad Multiplicador quiénes acertaron las suertes extraídas en el sorteo de
+esta modalidad.
+Cada apuesta ganadora de esta modalidad obtendrá DOS (2) veces el importe del premio con el cual
+hayan sido favorecidas en alguna o algunas de las modalidades descriptas anteriormente, lo que implica
+que esa apuesta en el total del sorteo se habrá hecho acreedora a TRES (3) veces el premio inicialmente
+obtenido.
+Cada una de las Agencias Oficiales vendedores de las apuestas premiadas obtendrá un premio fijo
+conforme lo determinado en el punto “ASEGURADOS PARA PREMIOS”. Este premio se adicionará al
+proporcional del premio obtenido en la modalidad que corresponda por haber comercializado apuestas
+ganadoras con 6 aciertos.
+En el caso que LOTERIA DE LA CIUDAD DE BUENOS AIRES sea favorecida como vendedora de apuestas
+premiadas, los proporcionales de los premios que le pudieran corresponder, se considerarán como no
+asignados. En virtud de ello, de existir otros vendedores premiados, el cálculo para determinar el premio
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 12 de 17
+proporcional unitario se realizará sobre el total de las apuestas premiadas menos la/s correspondientes a
+LOTBA. Para el caso de que LOTBA resultará única vendedora, dicho premio se declarará no asignado, y
+acumulará para el próximo sorteo.
+Los premios por los aciertos obtenidos en esta modalidad son acumulativos entre sí, lo que implica que
+en esta modalidad podrá existir desde una hasta cuatro asignaciones de premios por cada apuesta y/o
+agencia oficial vendedora.
+
+ASEGURADO PARA PREMIOS
+Se asegura un pozo mínimo conforme al siguiente esquema:
+
+
+                     MODALIDAD Y CATEGORÍA DE PREMIOS                  IMPORTE
+                  Tradicional 6 ACIERTOS                            $100.000.000,00.-
+                  Match 6 ACIERTOS                                  $100.000.000,00.-
+                  Desquite 6 ACIERTOS                               $100.000.000,00.-
+                  Premio agencia oficial modalidad Multiplicador    $500.000,00.-
+
+En el caso que luego del resultado del escrutinio de ganadores, de cualquier modalidad o categoría de
+premios, arroje premios unitarios menores al valor de venta de UNA (1) participación simple, LOTERÍA DE
+LA CIUDAD DE BUENOS AIRES, abonará como mínimo el valor de venta de UNA (1) participación simple.
+Los importes necesarios para soportar las diferencias que surjan de la aplicación de estas previsiones y
+particularidades, se afectarán del Fondo General de Reserva.
+Los importes necesarios para soportar los programas de premio de la modalidad MULTIPLICADOR se
+afectarán íntegramente del Fondo General de Reserva.
+
+POZOS VACANTES
+Serán declarados “vacantes de ganadores” todos aquellos premios en que no hubiere apuestas que
+hayan alcanzado la totalidad de aciertos requeridos conforme el apartado OBTENCIÓN DE PREMIOS y
+PORCENTAJES ASIGNADOS.
+En caso de registrarse vacancia en alguna de las categorías de SEIS (6) aciertos de las modalidades
+Tradicional, Match o Desquite, se deducirá el 10% de lo recaudado para esa categoría y cada sorteo que
+se trate con destino al Fondo General de Reserva.
+
+TRASLADO DE POZOS:
+El traslado de POZOS VACANTES se realiza de la siguiente manera:
+
+PREMIO                                               TRASLADO DE POZO
+TRADICIONAL SEIS (6) ACIERTOS
+TRADICIONAL CINCO (5) ACIERTOS
+TRADICIONAL CUATRO (4) ACIERTOS
+TRADICIONAL AGENCIERO SEIS (6) ACIERTOS              Se acumularán en su misma categoría del sorteo
+MATCH SEIS (6) ACIERTOS                              siguiente, o el que Lotería de la Ciudad determine.
+MATCH CINCO (5) ACIERTOS
+MATCH CUATRO (4) ACIERTOS
+MATCH AGENCIERO SEIS (6) ACIERTOS
+DESQUITE SEIS (6) ACIERTOS
+DESQUITE AGENCIERO SEIS (6) ACIERTOS
+
+PAGO DE LOS PREMIOS
+
+Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido
+realizadas, a partir del día siguiente al sorteo y una vez que el sistema se encuentre habilitado para
+efectuar dicha operación. En caso de que el sistema no estuviera habilitado en esa fecha, el cobro podrá
+realizarse el primer día posterior en que el mismo se encuentre disponible y hasta la fecha indicada en el
+Extracto Oficial emitido para cada sorteo, sin necesidad de tramitación previa.
+Se exceptúan de lo dispuesto precedentemente los premios de hasta PESOS DOS MILLONES CIEN MIL
+($2.100.000) que, por su monto, se encuentren alcanzados por retenciones tributarias, para cuyo cobro
+el apostador deberá registrarse previamente en la página web oficial de LOTBA,
+www.loteriadelaciudad.gob.ar., en la sección “Cobro de Premios”, antes de presentarse en el punto de
+venta.
+
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 13 de 17
+Asimismo, los premios superiores a la suma indicada deberán cobrarse en Lotería de la Ciudad de Buenos
+Aires, sita en Carlos Pellegrini 657, Ciudad Autónoma de Buenos Aires, previa solicitud de turno a través
+de la página web oficial de www.loteriadelaciudad.gob.ar/cobrodepremios.
+Los premios obtenidos por captura web, será acreditados de forma inmediata, sin tramitación previa, en
+la cuenta del usuario ganador, previa retención de las sumas tributarias que correspondan conforme la
+normativa vigente.
+Los premios correspondientes a las provincias adheridas al sistema se abonarán en los entes encargados
+de la comercialización del juego, en dichos entes provinciales.
+
+Cuando se registren aciertos en apuestas múltiples, estas percibirán sus correspondientes premios
+acumulados conforme la desagregación en las apuestas simples que las componen.
+Asimismo, cabe aclarar que toda modificación de fechas para percibir los premios descriptos se
+informará a través del Extracto Oficial.
+
+“LOS PREMIOS MAYORES, SIEMPRE Y CUANDO HUBIESEN SIDO PRESENTADOS AL COBRO DENTRO DE
+LA FECHA ESTABLECIDA PARA SU PRESCRIPCIÓN, SERÁN ABONADOS A PARTIR DEL PRIMER DÍA HÁBIL
+POSTERIOR A LA FECHA DE PRESCRIPCIÓN MENCIONADA PRECEDENTEMENTE”.
+Las agencias oficiales de LOTERÍA DE LA CIUDAD DE BUENOS AIRES, que sean acreedores del premio
+estímulo, deberán hacer efectivo su cobro dentro de los plazos de prescripción establecidos
+precedentemente o aquellos que se establezcan en el Extracto Oficial del sorteo, aquel que le resulte
+más beneficioso.
+
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 14 de 17
+                                                  LOTO 5 PLUS
+                                              MES NOVIEMBRE 2026
+
+LUGAR: Salón de sorteos de Lotería de la Ciudad de Buenos Aires o donde esta lo determine
+
+                                              DIAGRAMA DE SORTEO
+
+                                          MES DE NOVIEMBRE
+                                                        Inicio Pago
+     Sorteo            Fecha              Hora                            Prescripción     valor apuesta
+                                                         Premios
+      1469           7/11/2026            22:30          12/11/2026        11/12/2026          $ 1.000
+
+      1470           14/11/2026           22:30          16/11/2026        15/12/2026          $ 1.000
+
+      1471           21/11/2026           22:30          24/11/2026        23/12/2026          $ 1.000
+
+      1472           28/11/2026           22:30          30/11/2026        29/12/2026          $ 1.000
+
+
+El inicio de pago de premios y la prescripción podrán modificarse al día hábil siguiente si aquel recayese en feriado o
+no laborable.
+
+VALOR DE VENTA PRONÓSTICOS MÚLTIPLES: Se detalla a continuación:
+
+                            Cantidad de Números
+                                 Apostados                     Pronóstico Simple
+                           6                             6 pronósticos Simples
+                           7                             21 pronósticos Simples
+                           8                             56 pronósticos Simples
+                           9                             126 pronósticos Simples
+                           10                            252 pronósticos Simples
+                           11                            462 pronósticos Simples
+                           12                            792 pronósticos Simples
+                           13                            1287 pronósticos Simples
+                           14                            2002 pronósticos Simples
+                           15                            3003 pronósticos Simples
+
+
+
+                     DIAGRAMA DE APERTURA Y CIERRE EN JURISDICCIÓN DE C.A.B.A.
+                      APERTURA                                CIERRE
+        Domingo anterior a las 00:01 am Mismo día de realización del sorteo a las 21 hs.
+
+
+*En el caso que el sistema no estuviera habilitado ese día, será el primer día posterior donde el mismo
+esté disponible.
+
+TRANSMISIÓN DE LOS ARCHIVOS DE APUESTAS ENTES PROVINCIALES:
+Los entes provinciales que comercializan el juego determinarán el horario de apertura y cierre del
+sistema de captura de las apuestas en su jurisdicción. Asimismo, deberán realizar la transmisión de los
+archivos de apuestas comercializadas de cada sorteo como máximo hasta las 21 hs. del día de la
+realización del sorteo.
+
+PARTICIPACIÓN:
+Para participar en estos sorteos se deberán elegir y marcar en un volante o vocear, como mínimo, CINCO
+(5) números comprendidos entre el CERO (0) y el TREINTA Y SEIS (36), incluidos ambos, estableciéndose
+que el CERO (0) es el primero o el más bajo y el TREINTA Y SEIS (36) el último o el más alto de la serie de
+números intervinientes en el sorteo.
+Las suertes ganadoras se obtendrán por medio de una RULETA tipo FRANCESA. En caso de fuerza mayor o
+imposibilidad por parte de LOTERIA DE LA CIUDAD DE BUENOS AIRES de realizar el sorteo por el método
+mencionado anteriormente, el mismo será resuelto con el uso de sorteadores mecánicos,
+electromecánicos, neumáticos y/o digitales. A tal fin, se tirarán secuencialmente CINCO (5) bolas, las que
+a medida que se vayan encasillando se vocearán. En el supuesto que una bola se encasille en un número
+ya favorecido se declarará nula esa tirada y se repetirá el lanzamiento.
+
+
+
+                                                                     IF-2026-43151620-GCABA-LOTBA
+
+
+                                                                     Página 15 de 17
+Los resultados de los sorteos serán publicados en el Extracto Oficial que emita LOTERÍA DE LA CIUDAD DE
+BUENOS AIRES al efecto y su exhibición es obligatoria en todos los locales de venta.
+
+OBTENCION DE PREMIOS:
+Obtendrán premio todas las apuestas que obtengan CINCO (5), CUATRO (4) y TRES (3) aciertos de la
+totalidad de los números extraídos.
+
+FORMACION DEL POZO:
+El pozo a distribuir en premios se conformará con el CUARENTA Y CINCO POR CIENTO (45%) de la
+recaudación de juego.
+
+PORCENTAJES ASIGNADOS A PREMIOS:
+El pozo que se conforme para cada sorteo se distribuirá de la siguiente manera:
+PRIMER PREMIO: CINCO (5) aciertos el SESENTA POR CIENTO (60%) del pozo para premios.
+SEGUNDO PREMIO: CUATRO (4) aciertos el VEINTE POR CIENTO (20%) del pozo para premios.
+TERCER PREMIO: TRES (3) aciertos el DIECINUEVE POR CIENTO (19%) del pozo para premios*
+PREMIO AGENTE VENDEDOR DEL PRIMER PREMIO: UNO POR CIENTO (1%) del pozo para premios.
+
+*Los favorecidos con el tercer premio (3 aciertos) sólo tendrán derecho a percibir el importe de la
+apuesta. El saldo remanente pasará a integrar el Fondo General de Reserva, y se deberá afectar ese
+Fondo cuando los aciertos superen el pozo destinado para esa categoría de premios.
+
+APUESTAS
+Los apostadores podrán efectuar apuestas de LOTO 5 PLUS conforme al Reglamento de juego y a la
+presente programación.
+
+Se aceptarán dos tipos de pronósticos, los cuales podrán ser como se detallan seguidamente:
+SIMPLE contendrá CINCO (5) números
+MÚLTIPLES podrán combinar desde SEIS (6) hasta QUINCE (15) números.
+Las apuestas múltiples ingresarán a proceso computarizado en forma directa por máquina terminal
+instalada en las Agencias Oficiales, Permisionarios o bocas de expendio, debidamente autorizadas por la
+LOTERÍA DE LA CIUDAD DE BUENOS AIRES y/o entidades coordinadoras del sistema, así como también a
+través del canal de captura Web.
+Los AGENTES OFICIALES AUTORIZADOS podrán comercializar exclusivamente, partes o porcentuales de
+Apuestas Múltiples. No podrán extender recibos que no sean los habilitados por máquina terminal o
+emitidos por LOTERÍA DE LA CIUDAD DE BUENOS AIRES.
+ EL PÚBLICO APOSTADOR DEBE ABSTENERSE DE ACEPTAR RECIBOS QUE NO SEAN HABILITADOS Y
+AUTORIZADOS POR ESTE ENTE.
+
+ANULACION DE APUESTAS:
+Para anular apuestas de LOTO 5 PLUS, se tendrá como plazo máximo hasta QUINCE (15) minutos
+posteriores de la realización de la misma, pasado ese lapso el sistema no permitirá la operación.
+En caso de las apuestas múltiples realizadas en partes, no podrán ser anuladas por intermedio de la
+terminal de captura de apuestas, razón por la cual para efectuar estas anulaciones deberá comunicarse
+con el CENTRO DE ATENCIÓN AL CLIENTE al 0800-333-1331 dentro del plazo de TREINTA (30) minutos
+posteriores a la realización de la apuesta.
+Los Agentes Oficiales deberán resguardar todos los tickets de apuestas anuladas, ordenados por sorteo,
+los que deberán ser exhibidos y/o presentados ante el requerimiento de LOTERÍA DE LA CIUDAD DE
+BUENOS AIRES bajo apercibimiento de aplicar las sanciones previstas en el Reglamento para la
+Adjudicación y Explotación de Agencias Oficiales de Juego y Permisos Precarios aprobado por la
+Resolución de Directorio N° 31-LOTBA/25 o el que en el futuro dicte LOTBA.
+
+NO SE PODRAN REALIZAR ANULACIONES UNA VEZ EXTINGUIDOS LOS PLAZOS DE TIEMPO
+MENCIONADOS PARA CADA TIPO DE OPERACIÓN.
+
+POZOS VACANTES:
+ De existir pozos vacantes, en cualquier categoría, el monto generado en ese sorteo se incorporará sin
+intereses ni actualizaciones al monto destinado para el Pozo del Premio Mayor del “LOTO 5 PLUS” del
+sorteo siguiente o del que determine LOTERIA DE LA CIUDAD DE BUENOS AIRES.
+Premio Agenciero: en caso de registrarse vacancia se acumulará para los sorteos subsiguientes.
+
+
+
+
+                                                           IF-2026-43151620-GCABA-LOTBA
+
+
+                                                           Página 16 de 17
+POZO ASEGURADO:
+Se asegura como pozo mínimo para el Primer Premio, provenientes del Fondo General de Reserva:
+PESOS TREINTA Y CINCO MILLONES ($ 35.000.000.-),
+
+PAGO DE LOS PREMIOS
+Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido
+realizadas, a partir del día siguiente al sorteo y una vez que el sistema se encuentre habilitado para
+efectuar dicha operación. En caso de que el sistema no estuviera habilitado en esa fecha, el cobro podrá
+realizarse el primer día posterior en que el mismo se encuentre disponible y hasta la fecha indicada en el
+Extracto Oficial emitido para cada sorteo, sin necesidad de tramitación previa.
+Se exceptúan de lo dispuesto precedentemente los premios de hasta PESOS Se exceptúan de lo
+dispuesto precedentemente los premios de hasta PESOS DOS MILLONES CIEN MIL($2.100.000) que, por
+su monto, se encuentren alcanzados por retenciones tributarias, para cuyo cobro el apostador deberá
+registrarse previamente en la página web oficial de LOTBA, www.loteriadelaciudad.gob.ar., en la sección
+“Cobro de Premios”, antes de presentarse en el punto de venta.
+Asimismo, los premios superiores a la suma indicada deberán cobrarse en Lotería de la Ciudad de Buenos
+Aires, sita en Av. Santa Fe 4362(o donde LOTBA lo determine), Ciudad Autónoma de Buenos Aires, previa
+solicitud de turno a través de la página web oficial de www.loteriadelaciudad.gob.ar/cobrodepremios.
+Los premios obtenidos por captura web, será acreditados de forma inmediata, sin tramitación previa, en
+la cuenta del usuario ganador, previa retención de las sumas tributarias que correspondan conforme la
+normativa vigente.
+Los premios correspondientes a las provincias adheridas al sistema se abonarán en los entes encargados
+de la comercialización del juego, en dichos entes provinciales.
+Cuando se registren aciertos en apuestas múltiples, estas percibirán sus correspondientes premios
+acumulados conforme la desagregación en las apuestas simples que las componen.
+Asimismo, cabe aclarar que toda modificación de fechas para percibir los premios descriptos se
+informará a través del Extracto Oficial.
+
+“LOS PREMIOS MAYORES, SIEMPRE Y CUANDO HUBIESEN SIDO PRESENTADOS AL COBRO DENTRO DE
+LA FECHA ESTABLECIDA PARA SU PRESCRIPCIÓN, SERÁN ABONADOS A PARTIR DEL PRIMER DÍA HÁBIL
+POSTERIOR A LA FECHA DE PRESCRIPCIÓN MENCIONADA PRECEDENTEMENTE”.
+
+
+
+
+                                                            IF-2026-43151620-GCABA-LOTBA
+
+
+                                                            Página 17 de 17
+                                G O B I E R N O DE LA C I U D A D DE B U E N O S A I R E S
+             "2026 - Año del 30° Aniversario de la sanción de la Constitución de la Ciudad Autónoma de Buenos Aires"
+
+                                                   Hoja Adicional de Firmas
+                                                            Anexo
+
+Número: IF-2026-43151620-GCABA-LOTBA
+                                                      Buenos Aires, Viernes 25 de Septiembre de 2026
+
+Referencia: PROGRAMACION LOTO NOVIEMBRE
+
+
+El documento fue importado por el sistema GEDO con un total de 17 pagina/s.
+
+
+
+
+Digitally signed by Comunicaciones Oficiales
+Date: 2026.09.25 09:24:24 -03:00
+
+
+Natalia Luján Berzano
+Jefe de Departamento
+LOTERIA DE LA CIUDAD DE BUENOS AIRES S.A.U.
+MINISTERIO DE HACIENDA Y FINANZAS
+
+
+
+
+                                                                                             Digitally signed by Comunicaciones Oficiales
+                                                                                             Date: 2026.09.25 09:24:25 -03:00
+

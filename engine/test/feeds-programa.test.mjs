@@ -208,9 +208,7 @@ test('source expiries of jugadadeldia: lottery copies, monthly programmes, help 
   const sets = readSets();
   const ex = sourceExpiries(sets);
   const by = Object.fromEntries(ex.map(x => [x.id, x]));
-  const f = /ano=(\d{4})&mes=(\d{2})/.exec(sets.lottery.find(l => l.id === 'lotba').docs['quiniela-programa'].form);
-  assert.equal(by['lotba-quiniela-programa'].until, monthEnd(f[1] + '-' + f[2]));
-  assert.equal(by['lotba-quiniela-programa'].warnDays, 0);
+  assert.ok(!by['lotba-quiniela-programa'] && !by['lotba-loto-programa'], 'the monthly programmes are checked by the feed precios');
   const reg = sets.lottery.find(l => l.id === 'lotba').docs['quiniela-reglamento'];
   assert.equal(by['lotba-quiniela-reglamento'].until, addDays(reg.fetched, sets.lottery.find(l => l.id === 'lotba').maxAgeDays));
   assert.equal(by['lotba-quiniela-reglamento'].warnDays, 14);

@@ -99,10 +99,17 @@ test('runner: fixtures run writes the feed and health; a failing run keeps the l
   writeFileSync(join(fixtures, 'quiniela/d16.js'), fx('lotba-53116.js'));
   writeFileSync(join(fixtures, 'quiniela/empty.js'), 'window.RESULTADOS_DATA = [];window.POZO_ULTIMO_SORTEO = 0;');
   cpSync(new URL('./fixtures/programa/', import.meta.url), join(fixtures, 'programa'), { recursive: true });
+  const pr = join(fixtures, 'precios'), DOC = new URL('../../data/sources/lottery/_docs/', import.meta.url);
+  mkdirSync(pr, { recursive: true });
+  cpSync(new URL('lotba-quiniela-programa-2026-11.pdf', DOC), join(pr, 'qui.pdf'));
+  cpSync(new URL('lotba-loto-plus-programa-2026-11.pdf', DOC), join(pr, 'lto.pdf'));
+  cpSync(new URL('./fixtures/programa/not-loaded.html', import.meta.url), join(pr, 'no.html'));
+  const PF = j => 'https://' + (j === 'QUI' ? 'quiniela' : 'loto') + '.loteriadelaciudad.gob.ar/includes/descargaPrograma.php ano=2026&mes=';
+  writeFileSync(join(pr, 'index.json'), JSON.stringify({ [PF('QUI') + '11&version=1&juego=QUI']: { file: 'qui.pdf', type: 'application/pdf' }, [PF('LTO') + '11&version=1&juego=LTO']: { file: 'lto.pdf', type: 'application/pdf' }, [PF('QUI') + '12&version=1&juego=QUI']: { file: 'no.html', type: 'text/html' }, [PF('LTO') + '12&version=1&juego=LTO']: { file: 'no.html', type: 'text/html' } }));
   const quiet = console.log; console.log = () => {};
   const errs = console.error; console.error = () => {};
   try {
-    const rc = await main(['--site', 'jugadadeldia', '--out', out, '--fixtures', fixtures, '--now', '2026-11-02T23:30:00Z'], {});
+    const rc = await main(['--site', 'jugadadeldia', '--out', out, '--fixtures', fixtures, '--log', join(dir, 'state/_log.json'), '--now', '2026-11-02T23:30:00Z'], {});
     assert.equal(rc, 0);
     const q = JSON.parse(readFileSync(join(out, 'quiniela.json'), 'utf8'));
     assert.equal(q.data.draws.at(-1).j.caba[0].slice(0, 4), '2875');
@@ -111,7 +118,7 @@ test('runner: fixtures run writes the feed and health; a failing run keeps the l
     writeFileSync(join(fixtures, 'quiniela/home.html'), 'broken');
     index[L + 'includes/resultados-data.php?sorteo=53116'] = { status: 500 };
     writeFileSync(join(fixtures, 'quiniela/index.json'), JSON.stringify(index));
-    const rc2 = await main(['--site', 'jugadadeldia', '--out', out, '--fixtures', fixtures, '--now', '2026-11-03T05:00:00Z'], {});
+    const rc2 = await main(['--site', 'jugadadeldia', '--out', out, '--fixtures', fixtures, '--log', join(dir, 'state/_log.json'), '--now', '2026-11-03T05:00:00Z'], {});
     const h = JSON.parse(readFileSync(join(out, '_health.json'), 'utf8'));
     assert.equal(h.feeds.quiniela.consecutiveFailures, 1, 'no source answered: the run fails');
     assert.equal(rc2, 1, 'and the data is older than maxAgeHours');

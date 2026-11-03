@@ -1,4 +1,5 @@
 import { $, store, json } from './kit.js';
+import './precios.js';
 const root = document.documentElement;
 
 function theme() {
