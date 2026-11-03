@@ -29,7 +29,7 @@ node tools/render.mjs "$SITE"
 node tools/check-dist.mjs "$SITE"
 DIST="$WT/dist/$SITE"
 REMOTE=/opt/web/sites/$DOMAIN; TMP=/opt/web/.incoming-$DOMAIN
-tar -C "$DIST" -cf - . | ssh "${SSHK[@]}" "$HOST" "rm -rf $TMP && mkdir -p $TMP $REMOTE && tar -C $TMP -xf - && rsync -a --delete --filter='P /_ref/' --filter='P /data/feeds/' --exclude=/_ref/ --exclude=/data/feeds/ $TMP/ $REMOTE/ && rm -rf $TMP"
+tar -C "$DIST" -cf - . | ssh "${SSHK[@]}" "$HOST" "rm -rf $TMP && mkdir -p $TMP $REMOTE && tar -C $TMP -xf - && rsync -a --delete --filter='P /_ref/' --filter='P /data/' --exclude=/_ref/ --exclude=/data/feeds/ $TMP/ $REMOTE/ && rm -rf $TMP"
 # the shared Caddyfile is edited by other projects too: our block must be there
 ssh "${SSHK[@]}" "$HOST" "grep -q '^# >>> $SITE ' /opt/web/caddy/Caddyfile" || { echo "ERROR: the $SITE block is missing from the shared Caddyfile - run: bash tools/server-setup.sh $SITE install"; exit 1; }
 [ "$(curl -sk -o /dev/null -w '%{http_code}' --resolve "$DOMAIN:443:$DEPLOY_HOST" "https://$DOMAIN/")" = 200 ] || { echo "ERROR: origin TLS for $DOMAIN is not answering 200"; exit 1; }
