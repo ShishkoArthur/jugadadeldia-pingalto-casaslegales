@@ -44,8 +44,14 @@
 `mendoza-ipjyc-inicio`. Списки Río Negro (3) и Neuquén (6) не изменились. Mendoza: на главной списка .bet.ar нет — статус
 «sin dato verificado»; там есть плитка-ссылка на **https://ipjyc.gob.ar/wp/** — её сохранить следующей (`mendoza-plataformas`, вероятно там список).
 
-**Ещё нужно:** `cba-juegos-online` (https://loteriadecordoba.com.ar/juegos/online — прислана была другая страница), всё по Santa Fe,
-`mendoza-plataformas` (ipjyc.gob.ar/wp/), `mendoza-autoexclusion`. PDF не пришли — желательно.
+Santa Fe (вторая выгрузка): `santa-fe-inicio`, `santa-fe-juego-compulsivo`, `santa-fe-historia`, `santa-fe-resena-de-juegos`. На главной
+Лотереи .bet.ar нет — статус «sin dato verificado»; линия APRECOD 0800-268-5640 и регулятор теперь из живых копий (не Wayback).
+Сайт Лотереи переделан: старый адрес `index.php/juego-responsable` теперь, судя по меню, `/juego-responsable-3/`.
+
+**Ещё нужно:** `cba-juegos-online` (https://loteriadecordoba.com.ar/juegos/online — прислана была другая страница);
+Santa Fe — `santa-fe-plataformas` (вероятно https://www.loteriasantafe.gov.ar/casinos/), `santa-fe-juego-responsable`
+(https://www.loteriasantafe.gov.ar/juego-responsable-3/ — там автоисключение; сейчас оно из Wayback 2025);
+Mendoza — `mendoza-plataformas` (ipjyc.gob.ar/wp/), `mendoza-autoexclusion`. PDF не пришли — желательно.
 
 Сохранено было «Веб-страница полностью» (DOM после браузера: ссылки стали абсолютными, у пустых атрибутов `=""`). Это тоже годится:
 цитаты сверяются по видимому тексту, а HTML-доказательства строк списка агент берёт дословно из присланной копии. Но `view-source`

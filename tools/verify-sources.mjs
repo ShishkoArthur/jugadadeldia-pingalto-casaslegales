@@ -34,7 +34,7 @@ if (args.includes('--recheck')) {
   const write = args.includes('--write'), names = brandNames();
   let problems = 0;
   for (const r of loadRegistries()) {
-    const held = Object.entries(r.docs).filter(([, d]) => d.pendingOwnerCopy || isAiBlocked(d.url));
+    const held = Object.entries(r.docs).filter(([, d]) => d.pendingOwnerCopy || d.copiedBy === 'owner' || isAiBlocked(d.url));
     if (held.length) { console.log('  skip ' + r.id + ': ' + held.map(([s]) => s).join(', ') + ' - robots.txt blocks AI crawlers; the owner saves these pages (docs/reference/owner-saves/README.md)'); continue; }
     const fresh = {};
     for (const [slug, d] of Object.entries(r.docs)) {

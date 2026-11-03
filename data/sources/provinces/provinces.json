@@ -81,6 +81,14 @@
    "sha256": "8378c98abbc580dd754404f7cd4c2c9103c088ca70b31b0c69aee409c4c4e92b",
    "file": "data/sources/provinces/_docs/mendoza-ipjyc-inicio.html",
    "copiedBy": "owner"
+  },
+  "santa-fe-inicio": {
+   "url": "https://www.loteriasantafe.gov.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "737203406cf7dec68ddd3d19bd2ba0d0283ee8128f216fef96f3afea8dbfc86b",
+   "file": "data/sources/provinces/_docs/santa-fe-inicio.html",
+   "copiedBy": "owner"
   }
  },
  "jurisdictions": {
@@ -268,9 +276,21 @@
    "note": "Excluded source (docs/research/APIS-2026-11-02.md, F): robots.txt limits automated access (6 requests per hour, 03-12 UTC) and the site showed inserted third-party gambling content."
   },
   "santa-fe": {
-   "status": "blocked",
-   "reason": "geo",
-   "note": "loteriasantafe.gov.ar: timeout from this machine and 403 from the server (2026-11-01). Not bypassed; copies from a browser in Argentina pending (docs/reference/owner-saves/)."
+   "status": "none",
+   "reason": "no-list",
+   "seen": [
+    {
+     "doc": "santa-fe-inicio",
+     "noBetAr": true
+    }
+   ],
+   "quotes": {
+    "minors": {
+     "doc": "santa-fe-inicio",
+     "text": "El acceso a las plataformas de apuestas está prohibido por ley para niñas, niños y adolescentes."
+    }
+   },
+   "note": "Home page of Lotería de Santa Fe saved by the owner from a browser in Argentina on 2026-11-03 (from our machines: timeout / 403; not bypassed). No .bet.ar address and no list of online platforms; the menu links /casinos/, /juego-responsable-3/ and /denuncia-juego-ilegal/, not saved yet. If /casinos/ (or another page) lists the online platforms, build data/sources/registries/santa-fe.json from an owner copy of it."
   },
   "mendoza": {
    "status": "none",

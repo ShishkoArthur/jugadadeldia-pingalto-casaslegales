@@ -165,12 +165,12 @@ export const PROV_COPY = {
     lead: 'No publicamos qué plataformas habilitó Chubut: la única fuente oficial no está en condiciones de citarse. Hasta tener una copia confiable, esta página no afirma nada sobre sitios.',
   },
   'santa-fe': {
-    status: 'blocked',
+    status: 'none',
     title: 'Apuestas online legales en Santa Fe: estado de las licencias',
-    description: 'Apuestas online en Santa Fe: el sitio de la Lotería no abre desde fuera de Argentina, así que no listamos licencias hasta tener la copia. Ayuda verificada.',
-    h1: 'Santa Fe: lo que todavía no pudimos verificar',
-    checked: 'El sitio de la Lotería de Santa Fe no responde desde nuestras conexiones fuera de Argentina. No intentamos saltar ese bloqueo: esperamos una copia hecha desde un navegador en Argentina.',
-    lead: 'Hay noticias sobre licencias de apuestas online en Santa Fe, pero no las repetimos sin la lista oficial. Lo que sí está verificado, con copia archivada, es la ayuda de la provincia.',
+    description: 'Apuestas online en Santa Fe: qué muestra la portada de la Lotería, por qué todavía no listamos licencias y dónde pedir ayuda gratis.',
+    h1: 'Santa Fe: sin una lista oficial de sitios verificada',
+    checked: 'El sitio de la Lotería de Santa Fe no responde desde nuestras conexiones fuera de Argentina, así que su portada la guardamos desde un navegador en Argentina. Su menú tiene una sección de casinos y otra de juego responsable, que todavía no revisamos; en la portada no hay ninguna dirección .bet.ar.',
+    lead: 'Hay noticias sobre licencias de apuestas online en Santa Fe, pero no las repetimos sin la lista oficial: en la portada de la Lotería que guardamos no está. Lo que sí está verificado es la línea de ayuda gratuita de la provincia.',
   },
   mendoza: {
     status: 'none',

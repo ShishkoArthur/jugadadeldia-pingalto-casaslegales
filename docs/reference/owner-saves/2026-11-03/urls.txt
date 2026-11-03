@@ -9,3 +9,7 @@ ar-q-ijan-juego-responsable https://ijan-neuquen.com/juego_responsable.php
 ar-x-loteria-juego-responsable https://www.loteriadecordoba.com.ar/juego-responsable
 mendoza-ipjyc-inicio https://www.mendoza.gob.ar/juegosycasinos/
 santa-fe-afiche-juego-responsable.jpg image only, source page not recorded (Loteria de Santa Fe poster), not used on the site
+santa-fe-inicio https://www.loteriasantafe.gov.ar/
+santa-fe-juego-compulsivo https://www.santafe.gob.ar/ms/juegocompulsivo/
+santa-fe-historia https://www.loteriasantafe.gov.ar/historia/
+santa-fe-resena-de-juegos https://www.loteriasantafe.gov.ar/resena-de-juegos/

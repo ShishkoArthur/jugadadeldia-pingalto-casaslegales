@@ -640,8 +640,7 @@
      "free": true,
      "hours": "todos los días del año, de 8 a 24hs",
      "whatsapp": "341-540-7653",
-     "archived": true,
-     "note": "Archived copy (web.archive.org); the live site does not answer from our machines. Snapshot of santafe.gob.ar/ms/juegocompulsivo/ of 2026-07-14; the Lotería page (snapshot 2025-08-13) gives the same line. Provincial addictions line (APRECOD), not gambling-only.",
+     "note": "Live page saved by the owner from a browser in Argentina on 2026-11-03 (from our machines the site does not answer); the Lotería page (Wayback 2025-08-13) gives the same line. Provincial addictions line (APRECOD), not gambling-only.",
      "also": [
       {
        "quote": "de manera gratuita a través del 0800-268-5640 y por mensaje al WhatsApp 341-540-7653, todos los días del año, de 8 a 24hs.",
@@ -649,7 +648,7 @@
       }
      ],
      "quote": "pone a disposición un Centro de Orientación y Atención Virtual que brinda escucha profesional de manera gratuita a través del 0800-268-5640 y por mensaje al WhatsApp 341-540-7653, todos los días del año, de 8 a 24hs.",
-     "doc": "ar-s-ms-juego-compulsivo-wayback-2026-07-14"
+     "doc": "santa-fe-juego-compulsivo"
     }
    ],
    "selfExclusion": [
@@ -666,9 +665,8 @@
      "name": "Caja de Asistencia Social - Lotería de Santa Fe",
      "short": "Lotería de Santa Fe",
      "role": "provincial lottery and casinos",
-     "quote": "Caja de Asistencia Social - Lotería de Santa Fe Primera Junta 2724, Ciudad de Santa Fe",
-     "doc": "ar-s-loteria-juego-responsable-wayback-2025-08-13",
-     "archived": true
+     "quote": "En el año 1.938 por la Ley N° 2.608 nace la Caja de Asistencia Social de la Provincia - Lotería de Santa Fe",
+     "doc": "santa-fe-historia"
     }
    ],
    "verify": [
@@ -687,6 +685,14 @@
       "web.archive.org snapshots of loteriasantafe.gov.ar (2025-08-13) and santafe.gob.ar/ms/juegocompulsivo/ (2026-07-14) — used"
      ],
      "result": "live official pages unreachable; line taken from archived official pages"
+    },
+    {
+     "date": "2026-11-03",
+     "tried": [
+      "owner copies from a browser in Argentina: loteriasantafe.gov.ar home, /historia/, /resena-de-juegos/ and santafe.gob.ar/ms/juegocompulsivo/ — used (line and regulator)",
+      "not saved yet: loteriasantafe.gov.ar/juego-responsable-3/ (self-exclusion still from Wayback 2025) and /casinos/"
+     ],
+     "result": "help line and regulator from live owner copies; self-exclusion still archived"
     }
    ]
   },
@@ -1263,19 +1269,28 @@
    "sha256": "d361d998771f4719c434fd499fb071c9702270983f4e6c3c5c9e8bd40145e542",
    "file": "data/sources/rg/_docs/ar-s-loteria-juego-responsable-wayback-2025-08-13.html"
   },
-  "ar-s-ms-juego-compulsivo-wayback-2026-07-14": {
-   "url": "https://web.archive.org/web/20260714063341/https://www.santafe.gob.ar/ms/juegocompulsivo/",
-   "fetched": "2026-11-01",
-   "status": 200,
-   "sha256": "3dd34645c077f9b9bea2f07b39b1b97143cb885008266900fd86c9ec9095d57f",
-   "file": "data/sources/rg/_docs/ar-s-ms-juego-compulsivo-wayback-2026-07-14.html"
-  },
   "ar-z-loas-guia-padres-docentes": {
    "url": "https://loteriadesantacruz.gob.ar/wp-content/uploads/2025/01/Guia-para-Padre-y-Docentes.pdf",
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "889ea46685087f2246caf339d54680f17560666ecdabca5a28d7eb9bb4699415",
    "file": "data/sources/rg/_docs/ar-z-loas-guia-padres-docentes.pdf"
+  },
+  "santa-fe-juego-compulsivo": {
+   "url": "https://www.santafe.gob.ar/ms/juegocompulsivo/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "ca90bce32dc02a93d50c9dcb57ff80044f6244bd22a954903956536ed3ce322c",
+   "file": "data/sources/rg/_docs/santa-fe-juego-compulsivo.html",
+   "copiedBy": "owner"
+  },
+  "santa-fe-historia": {
+   "url": "https://www.loteriasantafe.gov.ar/historia/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "7b6717fb8d9c51b3fbfaab96a3bd67665619bfcfdbb160bca4b3c92f20fe8199",
+   "file": "data/sources/rg/_docs/santa-fe-historia.html",
+   "copiedBy": "owner"
   }
  }
 }

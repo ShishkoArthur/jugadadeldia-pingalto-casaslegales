@@ -61,14 +61,14 @@
   движок труко 1×1 и 2×2 + боты, generala (оптимальный бот), chinchón, escoba de 15 (`engine/*`, `docs/ENGINE-TRUCO.md`,
   `docs/ENGINE-GAMES.md`; 160 тестов). Страницы игр jugadadeldia — живые (волна 1).
 - **Потом:** сцены девушек (jugadadeldia — вставить в `figure.jg-girl`); тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
-  ждём токен); копии страниц от владельца: 03.11 пришли 10 (раздел «casaslegales (03.11) — копии и скриншоты владельца»); ещё нужны
-  Córdoba juegos/online, Santa Fe, Mendoza ipjyc.gob.ar/wp/ и автоисключение — `docs/reference/owner-saves/README.md`; ключи PandaScore/Supercell — от владельца.
+  ждём токен); копии страниц от владельца: 03.11 пришли 14 (раздел «casaslegales (03.11) — копии и скриншоты владельца»); ещё нужны
+  Córdoba juegos/online, Santa Fe /casinos/ и /juego-responsable-3/, Mendoza ipjyc.gob.ar/wp/ и автоисключение — `docs/reference/owner-saves/README.md`; ключи PandaScore/Supercell — от владельца.
 - Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
-- 03.11 — casaslegales: копии и скриншоты владельца встали на место (10 страниц регуляторов, 12 скриншотов 5 операторов из AR),
-  Mendoza «no consultable» → «sin dato verificado» (раздел ниже).
+- 03.11 — casaslegales: копии и скриншоты владельца встали на место (14 страниц регуляторов, 12 скриншотов 5 операторов из AR),
+  Mendoza и Santa Fe «no consultable» → «sin dato verificado» (раздел ниже).
 - 03.11 — jugadadeldia волна 1 выложена: дизайн «06 Menú principal», 45 страниц + 404 (кинела, 6 лотерей, труко и игры против
   компьютера, служебные, помощь по провинциям), индекс открыт (раздел «jugadadeldia» ниже).
 - 03.11 — pingalto волна 3 выложена: /cs2 (Valve VRS), /cs2/major, /esports/series, /esports, /lol, /valorant, /ff, /ff/codigos
@@ -195,8 +195,15 @@
   вошёл). Блок «No pudimos ver su sitio» на этих фичах → «Desde fuera de Argentina» (наши 403 остаются списком). Цитат из картинок не берём:
   инструменты JR/оплаты этих марок по-прежнему без текста. Не взяли: `Fondo-Banner-Slider.png` (талисман лотереи, не оператор),
   афиша Santa Fe сохранена только как справка.
+- **Santa Fe** (вторая выгрузка `2222/`, разобрана и удалена): главная Лотереи, /historia/, /resena-de-juegos/, santafe.gob.ar/ms/juegocompulsivo/
+  → owner-saves. Главная (`provinces.json` `santa-fe-inicio`): .bet.ar нет → blocked/geo → none/no-list, цитата о запрете для несовершеннолетних;
+  в меню /casinos/, /juego-responsable-3/, /denuncia-juego-ilegal/ (не сохранены). Пакет помощи: линия APRECOD 0800-268-5640 — из живой копии
+  (`santa-fe-juego-compulsivo`, Wayback-копия 2026-07-14 удалена), регулятор — цитата «Ley N° 2.608» со страницы /historia/;
+  автоисключение — пока Wayback 2025. `registries/santa-fe.json` не заводили — списка нет. jugadadeldia тоже читает пакет помощи:
+  собирается, но не выкладывался (в рабочем дереве чужие несохранённые картинки) — подхватит при своей выкладке.
+- **Recheck:** `verify-rg --recheck` и `verify-sources --recheck` теперь пропускают и `copiedBy: "owner"` (раньше качали бы снова).
 - **Ещё нужно от владельца:** Córdoba https://loteriadecordoba.com.ar/juegos/online (вместо неё пришла juego-responsable; `cba-juegos-online`
-  pending до 11.02.2027), всё по Santa Fe, Mendoza ipjyc.gob.ar/wp/ + автоисключение, PDF к копиям; тексты (view-source) JR/оплат bet365,
+  pending до 11.02.2027), Santa Fe /casinos/ (вероятный список) и /juego-responsable-3/, Mendoza ipjyc.gob.ar/wp/ + автоисключение, PDF к копиям; тексты (view-source) JR/оплат bet365,
   BetWarrior, bplay, Codere — для цитат и /guia/mercado-pago.
 
 ## casaslegales (03.11) — волна 4 выложена (63 страницы + 404)
