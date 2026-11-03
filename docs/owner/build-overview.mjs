@@ -137,7 +137,9 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
     <p class="lead">Одна и та же девушка, своя поза и предмет на каждой странице; фон уже вырезан. Скажите, какие переделать (по адресу под картинкой).</p>
     <div class="picks">
       <a class="pick" href="girls/scenes-jdd.jpg"><span class="pick-k">jugadadeldia</span><span class="pick-v">32 сцены →</span><span class="pick-n">девушка 10</span></a>
-      <a class="pick" href="girls/scenes-pa.jpg"><span class="pick-k">pingalto</span><span class="pick-v">13 сцен →</span><span class="pick-n">девушка 9</span></a>
+      <a class="pick" href="girls/scenes-pa.jpg"><span class="pick-k">pingalto</span><span class="pick-v">сцены страниц →</span><span class="pick-n">девушка 9</span></a>
+      <a class="pick" href="girls/scenes-pa-games.jpg"><span class="pick-k">pingalto · новое</span><span class="pick-v">девушка «в игре» →</span><span class="pick-n">CS2, Valorant, LoL, Fortnite, Dota 2, RL, FC, Brawl, Clash</span></a>
+      <a class="pick" href="girls/bg-pa.jpg"><span class="pick-k">pingalto · новое</span><span class="pick-v">фоны шапки игр →</span><span class="pick-n">свои, без чужих логотипов</span></a>
     </div>
   </section>
 
