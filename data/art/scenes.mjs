@@ -40,6 +40,11 @@ const SEATS = {
   kneel: null,
 };
 const S = SEATS;
+// Round 4 (/ff: two tries failed the standard - legs apart, then a view under the hem and the jacket off the arms - so /ff keeps
+// its r3 scene; data/img-review/pa-sc-ff-r4*.png are kept as rejected).
+// Round 4 (owner 2026-11-03: "she could hold an AWP in CS2 or portray something from the game"): pingalto game pages get the
+// girl "in the game" with an obviously harmless cosplay or toy prop; no logos, no copied characters, nothing aimed at the viewer.
+const COSPLAY = 'Every prop is an obviously harmless cosplay or toy prop (painted foam, plastic or 3D-printed, matte, with visible seams), never realistic; any glow is a soft light effect. She never points anything at the viewer or at anyone. No blood, no violence, no real weapons, no game characters, no game interface, no skins, no loot boxes, no monitors, no screens. Any headphones or phone is plain matte black with no logos and no lights.';
 
 export const SITES = {
   jugadadeldia: {
@@ -116,13 +121,18 @@ export const SITES = {
       '/lol/rangos': ['chair', `She sits on ${S.chair}, knees together, a compact plain black keyboard with blank keys (no letters, no symbols, no lights) resting on her lap, typing on it with both hands`, 'calm focused smile'],
       '/ff': ['walk', `She runs toward the camera in a light jog mid-stride, holding ${PHONE} in one hand, looking back over her shoulder with her hair swinging; both platform sandals stay close to the ground, and her bare legs are evenly lit from the front with natural skin colour down to the ankles, with no green light reflected on them`, 'excited thrilled grin', { round: 'r3' }],
       '/ff/codigos': ['wstool', `She sits on ${S.wstool}, legs crossed at the knee, holding ${PHONE} in one hand and raising the other hand with the palm out toward the viewer in a stop gesture`, 'wary skeptical look, one eyebrow raised, lips pressed', { round: 'r3' }],
-      '/valorant': ['walk', `She walks toward the camera mid-step, putting ${HEADSET} on her head with both hands`, 'confident ready-to-play smile', { round: 'r3' }],
-      '/cs2': ['table', `She sits on the edge of ${S.table}, legs crossed at the knee, holding a small white board with five light blue horizontal bars of different lengths, the longest at the top (a simple bar chart, no letters, no numbers), and pointing at the top bar with one finger`, 'impressed smile', { round: 'r3' }],
+      '/valorant': ['walk', `She strides to one side mid-step like a game agent using an ability: her right arm swings up and out to the side and releases a small glowing ball of soft pink and white light that floats in the air just beyond her open fingertips, away from the viewer; her left hand touches the ear cup of ${HEADSET} worn on her head; her hair swings with the motion`, 'focused determined look with a small smile, eyes on the glowing ball', { round: 'r4', cosplay: true, keepAll: true }],
+      '/cs2': ['stand', `She stands relaxed in a three-quarter turn, weight on one leg, holding a long bolt-action sniper rifle replica as a cosplay prop: the barrel rests on her right shoulder and points straight up at the ceiling behind her, her right hand loosely on the grip, her left hand lifting the big round scope close to her eye as if checking it; the replica is obviously a painted foam and 3D-printed prop with visible seams, mostly matte black with white panels and bright orange stripes and a bright orange tip, nothing green on it`, 'cool confident half smile, one eye narrowed as if checking the scope', { round: 'r4', cosplay: true }],
       '/cs2/major': ['cushion', `She sits on ${S.cushion} with her legs folded together to one side, a small open plain black notebook on her lap, its white pages showing only thin grey lines (no words), tracing a line on the page with one fingertip while reading`, 'concentrated reading look', { round: 'r3' }],
-      '/lol': ['wstool', `She sits on ${S.wstool}, legs crossed at the knee, ${HEADSET} around her neck, holding a fan of small blank pastel cards (pink, lilac and light blue, no pictures, no text) in one hand and pulling one card out with the other; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'playful choosing look', { round: 'r3' }],
+      '/lol': ['stool', `She sits on ${S.stool}, legs crossed at the knee, leaning forward a little like a mage casting a spell: both hands are cupped around a glowing orb of soft blue and golden light the size of a grapefruit that hovers just above her palms at chest height, lighting her face from below; a few strands of her hair lift as if in a magic breeze; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'mysterious concentrated smile, eyes on the orb', { round: 'r4', cosplay: true }],
       '/esports': ['chair', `She sits on ${S.chair}, knees together, leaning forward, ${HEADSET} around her neck, clapping her hands enthusiastically as if watching a great match; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'thrilled cheering smile, mouth open', { round: 'r3' }],
       '/esports/series': ['chair', `She sits on ${S.chair}, legs crossed at the knee, ${NOTEPAD} resting on her knee, holding up three fingers of one hand toward the viewer as if saying best of three, ${PENCIL} in the other hand`, 'explaining friendly smile', { round: 'r3' }],
-      '/fortnite/nube': ['walk', `She walks mid-step, looking up and pointing excitedly up at the sky with one hand, ${PHONE} in the other hand`, 'excited delighted smile'],
+      '/fortnite/nube': ['jump', `She does a playful victory dance emote mid-hop, one knee lifted, one arm pumping up in the air, the other hand holding an oversized cartoon toy pickaxe as a cosplay prop resting on her shoulder: a chunky soft foam pickaxe with a pastel purple head, a white handle and a pink grip, clearly a toy`, 'goofy joyful laugh', { round: 'r4', cosplay: true }],
+      '/dota2': ['walk', `She strides forward mid-step like a wizard on the move, planting a tall cosplay wizard staff on the floor beside her with one hand: a twisted light wooden staff taller than her head with a softly glowing amber crystal at the top, clearly a foam and resin prop; her other hand is raised at shoulder height, fingers spread, as if channeling a spell`, 'playful dramatic look, one eyebrow raised', { round: 'r4', cosplay: true, retry: 1 }],
+      '/rocket-league': ['kneel', `She kneels on the floor sitting back on her heels, knees together, holding a plain black remote control for toy cars in both hands with its short antenna up; on the floor in front of her knees is a small toy RC car (bright orange body, black wheels, small blue toy rocket boosters at the back) nudging a white-and-light-blue ball the size of a grapefruit`, 'competitive excited grin, eyes on the car', { round: 'r4', cosplay: true, keepAll: true }],
+      '/fc': ['stand', `She stands on one leg doing a playful football trick, the sole of her raised platform sandal resting on top of a classic white football with black pentagons on the floor in front of her, holding ${PHONE} in one hand and glancing down at it, the other arm out for balance`, 'confident playful smile', { round: 'r4', keepAll: true }],
+      '/brawl': ['jump', `She does a light playful jump, knees bent, holding ${PHONE} vertically in one hand with her thumb on it, and holding up in the other hand a small glowing purple toy cube as a fantasy prop, as if she just picked up a power-up`, 'mischievous thrilled grin', { round: 'r4', cosplay: true }],
+      '/clash': ['chair', `She sits on ${S.chair}, legs crossed at the knee, wearing a small shiny gold toy plastic crown with pink plastic gems tilted on her head, holding ${PHONE} vertically in one hand and tapping it with the thumb, while the other hand lifts a small pink teardrop-shaped plush toy`, 'royal playful smirk, chin up', { round: 'r4', cosplay: true }],
     },
   },
 };
@@ -163,15 +173,20 @@ export const ALT = {
     '/ff/nombres': 'Alt de rodillas escribiendo en el celular',
     '/ff/espacio-invisible': 'Alt girándose y pellizcando el aire, como si agarrara un espacio invisible',
     '/ff/codigos': 'Alt sentada con el celular, haciendo un gesto de alto con la mano',
-    '/valorant': 'Alt caminando mientras se pone los auriculares',
+    '/valorant': 'Alt con auriculares lanzando una bolita de luz rosa, como un agente que usa una habilidad',
     '/valorant/rangos': 'Alt saltando y festejando con el puño en alto',
     '/valorant/agentes': 'Alt sentada con auriculares, hablando con su equipo',
-    '/cs2': 'Alt sentada en una mesa señalando un gráfico de barras',
+    '/cs2': 'Alt con una réplica de cosplay de un rifle de francotirador apoyada en el hombro, revisando la mira',
     '/cs2/major': 'Alt sentada en un almohadón leyendo un cuaderno',
     '/cs2/mira': 'Alt haciendo un círculo con los dedos frente a un ojo, como una mira',
-    '/lol': 'Alt sentada eligiendo una carta de colores de un abanico',
+    '/lol': 'Alt sentada en un banquito lanzando un hechizo con una esfera de luz azul y dorada entre las manos',
     '/lol/rangos': 'Alt sentada con un teclado en las piernas',
-    '/fortnite/nube': 'Alt caminando y señalando el cielo con el celular en la mano',
+    '/fortnite/nube': 'Alt bailando un festejo con un pico gigante de goma apoyado en el hombro',
+    '/dota2': 'Alt sentada con un báculo de cosplay con un cristal ámbar, como si lanzara un hechizo',
+    '/rocket-league': 'Alt de rodillas manejando un autito a control remoto que empuja una pelota',
+    '/fc': 'Alt pisando una pelota de fútbol con el celular en la mano',
+    '/brawl': 'Alt dando un saltito con el celular y un cubito violeta de juguete que brilla',
+    '/clash': 'Alt sentada con una corona de juguete, jugando con el celular',
     '/esports': 'Alt sentada en un almohadón aplaudiendo como si mirara una partida',
     '/esports/series': 'Alt sentada mostrando tres dedos, con una libretita en la rodilla',
   },
@@ -197,8 +212,9 @@ function prompt(s, pose, scene, expr, o) {
   const props = o.keepAll
     ? 'Every prop is held by her, touches her body or lies right next to her as described.'
     : 'Every prop is held by her or touches her body; nothing floats separately.';
+  const extra = o.cosplay ? COSPLAY : s.extra;
   const drinks = o.mate ? 'no alcohol, no other drinks besides the mate' : 'no drinks or alcohol';
-  return `Edit of the reference image: the same woman in a new pose and action. Use the woman from the reference image as the character: exactly the same woman, same face, same facial features, same hair, same body proportions. ${s.who} Outfit, complete and worn correctly, exactly as in the reference: ${s.outfit}. Pose and action: ${scene}. Lively, natural, dynamic body language, a candid moment in the middle of the action, not a stiff catalogue pose. Her face is clearly visible: ${expr}.${modest} Wide full-length shot taken from the same camera distance as the reference image, so her head is the same size in the frame as in the reference: ${frame}; nothing cropped. ${props} Adult woman with natural adult proportions, tasteful, fully clothed, not revealing, not sexualized. Photorealistic photo, soft even studio lighting, sharp focus, natural skin texture, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background or floor, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, seat or props. No logos, no brand marks, no flags, no numbers, no words or letters anywhere, no symbols on any prop. ${s.extra} No money, no banknotes, no coins, no gambling chips, ${drinks}, no cigarettes, no visible phone screens, no trophies, no prizes, no celebration of winning money. Final check: the whole figure including both legs and both shoes${seat ? ' and the whole seat' : ''} is visible inside the frame, and the outfit is complete and worn correctly.`;
+  return `Edit of the reference image: the same woman in a new pose and action. Use the woman from the reference image as the character: exactly the same woman, same face, same facial features, same hair, same body proportions. ${s.who} Outfit, complete and worn correctly, exactly as in the reference: ${s.outfit}. Pose and action: ${scene}. Lively, natural, dynamic body language, a candid moment in the middle of the action, not a stiff catalogue pose. Her face is clearly visible: ${expr}.${modest} Wide full-length shot taken from the same camera distance as the reference image, so her head is the same size in the frame as in the reference: ${frame}; nothing cropped. ${props} Adult woman with natural adult proportions, tasteful, fully clothed, not revealing, not sexualized. Photorealistic photo, soft even studio lighting, sharp focus, natural skin texture, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background or floor, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, seat or props. No logos, no brand marks, no flags, no numbers, no words or letters anywhere, no symbols on any prop. ${extra} No money, no banknotes, no coins, no gambling chips, ${drinks}, no cigarettes, no visible phone screens, no trophies, no prizes, no celebration of winning money. Final check: the whole figure including both legs and both shoes${seat ? ' and the whole seat' : ''} is visible inside the frame, and the outfit is complete and worn correctly.`;
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

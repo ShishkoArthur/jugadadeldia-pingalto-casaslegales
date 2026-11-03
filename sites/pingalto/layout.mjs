@@ -1,13 +1,12 @@
 // pingalto.com page frame: head, sticky header with the logo (home link), menu (burger on phones) and theme switch; footer
 // "sin apuestas, sin skins, sin cajas" with the trademark note. Pages give { path, title, description, h1, ld, scripts, riot }
 // and a body string; the shared build (tools/render.mjs) passes the helper h.
+import { GAMES, sectionOf } from './content/visual.mjs';
+
 const NAV = [
   ['/kit/ping', 'Ping'],
   ['/tier-list', 'Tier list'],
-  ['/ff', 'Free Fire'],
-  ['/valorant', 'Valorant'],
-  ['/lol', 'LoL'],
-  ['/cs2', 'CS2'],
+  ['games', 'Juegos'],
   ['/esports', 'Esports'],
 ];
 const FOOT = [
@@ -25,8 +24,17 @@ const THEME_JS = "try{var t=localStorage.getItem('pa-theme');if(t==='light'||t==
 // Riot Games legal notice (Riot "Legal Jibber Jabber", docs/research/APIS-2026-11-02.md B.2) on pages about Valorant and LoL.
 const RIOT = 'pingalto isn\'t endorsed by Riot Games and doesn\'t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.';
 
+// "Juegos": a menu button with the game list (hover with a close delay or click on wide screens, an open list in the phone menu);
+// each game is its monogram and name in our own type, no publisher logo (data/sources/pingalto/brand-policies.json).
+function games(h, current) {
+  const list = GAMES.filter(g => h.built(g.path));
+  if (!list.length) return '';
+  const sec = sectionOf(current), on = !!(sec && list.some(g => g.id === sec.id));
+  const items = list.map(g => '<a class="pa-gmi pa-g-' + g.id + '" href="' + h.href(g.path) + '"' + (sec && sec.id === g.id ? (current === g.path ? ' aria-current="page"' : ' aria-current="true"') : '') + '><i aria-hidden="true">' + h.esc(g.mono) + '</i><span>' + h.esc(g.name) + '</span></a>').join('');
+  return '<div class="pa-dd" data-pa-dd><button type="button" aria-expanded="false" aria-controls="pa-ddp"' + (on ? ' data-on' : '') + '>Juegos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="pa-ddp" id="pa-ddp">' + items + '</div></div>';
+}
 function links(h, list, current) {
-  return list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : current.startsWith(u + '/') ? ' aria-current="true"' : '') + '>' + h.esc(label) + '</a>').join('');
+  return list.filter(([u]) => u === 'games' || h.built(u)).map(([u, label]) => u === 'games' ? games(h, current) : '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : current.startsWith(u + '/') ? ' aria-current="true"' : '') + '>' + h.esc(label) + '</a>').join('');
 }
 
 export function page(h, p, body) {
@@ -61,7 +69,7 @@ export function page(h, p, body) {
     '<button class="pa-ib pa-bu" type="button" data-pa-menu aria-controls="pa-nv" aria-expanded="false" aria-label="Menú">' + BURGER + '</button></header>';
   const footer = '<footer class="pa-ft"><p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>' +
     '<nav aria-label="Pie">' + links(h, FOOT, p.path) + '</nav>' +
-    '<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor. Cada número tiene su fuente en la página de datos.</small>' +
+    '<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor y no usa sus logos ni su arte: los fondos y Alt son ilustraciones propias hechas con IA. Cada número tiene su fuente en la página de datos.</small>' +
     (p.riot ? '<small lang="en">' + h.esc(RIOT) + '</small>' : '') + '</footer>';
   const data = p.data ? '<script type="application/json" id="pa-d">' + h.jsonScript(p.data(h)) + '</script>' : '';
   const js = ['pa.js', ...(p.scripts || [])].map(s => '<script type="module" src="' + h.asset(s) + '"></script>').join('');

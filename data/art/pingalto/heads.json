@@ -90,5 +90,41 @@
  "pa-sc-ff-r3": {
   "top": 4,
   "chin": 318
+ },
+ "pa-sc-valorant-r4": {
+  "top": 12,
+  "chin": 300
+ },
+ "pa-sc-cs2-r4": {
+  "top": 278,
+  "chin": 550
+ },
+ "pa-sc-lol-r4": {
+  "top": 10,
+  "chin": 358
+ },
+ "pa-sc-fortnite-nube-r4": {
+  "top": 20,
+  "chin": 305
+ },
+ "pa-sc-dota2-r4": {
+  "top": 8,
+  "chin": 315
+ },
+ "pa-sc-rocket-league-r4": {
+  "top": 8,
+  "chin": 425
+ },
+ "pa-sc-fc-r4": {
+  "top": 8,
+  "chin": 305
+ },
+ "pa-sc-brawl-r4": {
+  "top": 5,
+  "chin": 305
+ },
+ "pa-sc-clash-r4": {
+  "top": 118,
+  "chin": 400
  }
 }

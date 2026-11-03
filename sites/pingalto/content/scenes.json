@@ -318,30 +318,30 @@
    "alt": "Alt sentada con un teclado en las piernas"
   },
   "/fortnite/nube": {
-   "image": "pa-sc-fortnite-nube-r2",
+   "image": "pa-sc-fortnite-nube-r4",
    "files": [
     {
-     "name": "scenes/fortnite-nube-128.webp",
-     "w": 128,
+     "name": "scenes/fortnite-nube-149.webp",
+     "w": 149,
      "h": 300,
-     "kb": 10
+     "kb": 11
     },
     {
-     "name": "scenes/fortnite-nube-239.webp",
-     "w": 239,
+     "name": "scenes/fortnite-nube-278.webp",
+     "w": 278,
      "h": 560,
-     "kb": 22
+     "kb": 24
     },
     {
-     "name": "scenes/fortnite-nube-358.webp",
-     "w": 358,
+     "name": "scenes/fortnite-nube-417.webp",
+     "w": 417,
      "h": 840,
-     "kb": 37
+     "kb": 40
     }
    ],
-   "ar": 0.4259,
-   "g": 0.9897,
-   "alt": "Alt caminando y señalando el cielo con el celular en la mano"
+   "ar": 0.496,
+   "g": 0.9864,
+   "alt": "Alt bailando un festejo con un pico gigante de goma apoyado en el hombro"
   },
   "/ff": {
    "image": "pa-sc-ff-r3",
@@ -396,56 +396,56 @@
    "alt": "Alt sentada con el celular, haciendo un gesto de alto con la mano"
   },
   "/valorant": {
-   "image": "pa-sc-valorant-r3",
+   "image": "pa-sc-valorant-r4",
    "files": [
     {
-     "name": "scenes/valorant-151.webp",
-     "w": 151,
+     "name": "scenes/valorant-164.webp",
+     "w": 164,
+     "h": 300,
+     "kb": 11
+    },
+    {
+     "name": "scenes/valorant-305.webp",
+     "w": 305,
+     "h": 560,
+     "kb": 24
+    },
+    {
+     "name": "scenes/valorant-458.webp",
+     "w": 458,
+     "h": 840,
+     "kb": 41
+    }
+   ],
+   "ar": 0.5453,
+   "g": 0.9768,
+   "alt": "Alt con auriculares lanzando una bolita de luz rosa, como un agente que usa una habilidad"
+  },
+  "/cs2": {
+   "image": "pa-sc-cs2-r4",
+   "files": [
+    {
+     "name": "scenes/cs2-114.webp",
+     "w": 114,
      "h": 300,
      "kb": 9
     },
     {
-     "name": "scenes/valorant-283.webp",
-     "w": 283,
+     "name": "scenes/cs2-212.webp",
+     "w": 212,
      "h": 560,
-     "kb": 21
+     "kb": 20
     },
     {
-     "name": "scenes/valorant-424.webp",
-     "w": 424,
+     "name": "scenes/cs2-318.webp",
+     "w": 318,
      "h": 840,
-     "kb": 36
+     "kb": 33
     }
    ],
-   "ar": 0.5045,
-   "g": 0.9647,
-   "alt": "Alt caminando mientras se pone los auriculares"
-  },
-  "/cs2": {
-   "image": "pa-sc-cs2-r3",
-   "files": [
-    {
-     "name": "scenes/cs2-216.webp",
-     "w": 216,
-     "h": 300,
-     "kb": 14
-    },
-    {
-     "name": "scenes/cs2-403.webp",
-     "w": 403,
-     "h": 560,
-     "kb": 29
-    },
-    {
-     "name": "scenes/cs2-604.webp",
-     "w": 604,
-     "h": 840,
-     "kb": 48
-    }
-   ],
-   "ar": 0.7195,
-   "g": 0.9183,
-   "alt": "Alt sentada en una mesa señalando un gráfico de barras"
+   "ar": 0.3789,
+   "g": 1,
+   "alt": "Alt con una réplica de cosplay de un rifle de francotirador apoyada en el hombro, revisando la mira"
   },
   "/cs2/major": {
    "image": "pa-sc-cs2-major-r3",
@@ -474,30 +474,30 @@
    "alt": "Alt sentada en un almohadón leyendo un cuaderno"
   },
   "/lol": {
-   "image": "pa-sc-lol-r3",
+   "image": "pa-sc-lol-r4",
    "files": [
     {
-     "name": "scenes/lol-176.webp",
-     "w": 176,
+     "name": "scenes/lol-173.webp",
+     "w": 173,
      "h": 300,
      "kb": 12
     },
     {
-     "name": "scenes/lol-329.webp",
-     "w": 329,
+     "name": "scenes/lol-323.webp",
+     "w": 323,
      "h": 560,
-     "kb": 27
+     "kb": 26
     },
     {
-     "name": "scenes/lol-494.webp",
-     "w": 494,
+     "name": "scenes/lol-484.webp",
+     "w": 484,
      "h": 840,
-     "kb": 45
+     "kb": 44
     }
    ],
-   "ar": 0.5879,
-   "g": 0.9084,
-   "alt": "Alt sentada eligiendo una carta de colores de un abanico"
+   "ar": 0.5767,
+   "g": 0.8194,
+   "alt": "Alt sentada en un banquito lanzando un hechizo con una esfera de luz azul y dorada entre las manos"
   },
   "/esports": {
    "image": "pa-sc-esports-r3",

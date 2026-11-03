@@ -1,4 +1,5 @@
-// Accepted page scenes -> files the site build serves.
+// Accepted page scenes -> files the site build serves. A scene in review goes live only when the agent checked it at full size
+// (field checked, owner rule 2026-11-03: deploy at once); the owner then accepts it or asks for another.
 // data/art/<site>/scenes.json (status accepted) + cut-outs data/art/<site>/cut/<id>.webp (one scale by head size, build-scenes.mjs)
 // -> sites/<site>/static/scenes/<slug>-<w>.webp and sites/<site>/content/scenes.json { rule, pages: { url: { files: [{ name, w, h }], ar, g, alt } } }.
 // Each cut-out is trimmed to the figure's bounding box (alpha > 40) plus a small margin (top 3 %, sides 3 %, bottom 1 % of its height),
@@ -30,7 +31,7 @@ mkdirSync(OUT, { recursive: true });
 const pages = {};
 let bytes = 0;
 for (const [url, e] of Object.entries(man.pages)) {
-  if (e.status !== 'accepted' || !built.has(url)) continue;
+  if (!(e.status === 'accepted' || (e.status === 'review' && e.checked)) || !built.has(url)) continue;
   const alt = ALT[site][url];
   if (!alt) throw new Error(url + ': no alt text in ALT of scenes.mjs');
   const src = join(ROOT, e.file);

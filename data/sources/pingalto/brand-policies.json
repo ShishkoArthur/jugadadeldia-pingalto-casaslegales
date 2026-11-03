@@ -1,0 +1,84 @@
+{
+ "about": "Fan content and brand policies of the publishers whose games pingalto covers (owner 2026-11-03: game logos and header art). Each quote is verbatim in the saved copy (engine/test/pingalto-brands.test.mjs). Decision per publisher: whether an official logo or key art may appear on pingalto now (no monetisation) and what changes if an affiliate button is ever added. robots.txt of every host was read before downloading; hosts that answer 403 to us (fortnite.com, fankit.supercell.com, epicgames.com/help) were not fetched again.",
+ "checked": "2026-11-03",
+ "site": "pingalto",
+ "docs": {
+  "riot-ljj": { "url": "https://www.riotgames.com/en/legal", "file": "data/sources/pingalto/_docs/riot-legal-jibber-jabber.html", "type": "html", "publisher": "Riot Games, Legal Jibber Jabber", "fetched": "2026-11-03", "status": 200, "sha256": "04b2f929aa0af0a00e1e9e743bd6e61d24b198570974e5caad1b5ee15376d1fd", "robots": "User-agent * allowed; no AI crawler rule" },
+  "supercell-fcp": { "url": "https://supercell.com/en/fan-content-policy/", "file": "data/sources/pingalto/_docs/supercell-fan-content-policy.html", "type": "html", "publisher": "Supercell, Fan Content Policy", "fetched": "2026-11-03", "status": 200, "sha256": "1dca545b206d0a012c11fc94e6d11903f45c3c475ececfa50bc1f597bd7b0359", "robots": "Disallow empty for *" },
+  "epic-fcp": { "url": "https://legal.epicgames.com/en-US/epicgames/fan-art-policy", "file": "data/sources/pingalto/_docs/epic-fan-content-policy.html", "type": "html", "publisher": "Epic Games, Fan Content Policy", "fetched": "2026-11-03", "status": 200, "sha256": "502f1ed196e1cf36e4e10ce529c3350e2e32c7e662e981266a701655e1f6f3ad", "robots": "Claude-User and Claude-SearchBot explicitly allowed" },
+  "valve-legal": { "url": "https://store.steampowered.com/legal/?l=english", "file": "data/sources/pingalto/_docs/valve-steam-legal.html", "type": "html", "publisher": "Valve, Steam legal information", "fetched": "2026-11-03", "status": 200, "sha256": "16e1b86c8d95fc87970563a8a4fc0b7128eb29e0d731011ffec73a7b7025a618", "robots": "/legal not disallowed" },
+  "valve-video": { "url": "https://store.steampowered.com/video_policy?l=english", "file": "data/sources/pingalto/_docs/valve-video-policy.html", "type": "html", "publisher": "Valve Video Policy", "fetched": "2026-11-03", "status": 200, "sha256": "ed0eb226cab935d396052ba365769e7982f131a875fe223661ccb8117e8ddb58", "robots": "/video_policy not disallowed" }
+ },
+ "publishers": {
+  "riot": {
+   "games": ["valorant", "lol"],
+   "quotes": [
+    { "doc": "riot-ljj", "q": "Unless you have a written license agreement with us, you may not use any of our logos or trademarks anywhere in your Project or on any website, advertising material, video, or other publication." },
+    { "doc": "riot-ljj", "q": "grants you a personal, non-exclusive, non-sublicenseable, non-transferable, revocable, limited license for you to use, display and create derivative works based upon Riot's IP, strictly for noncommercial (except as specifically provided below) community use." },
+    { "doc": "riot-ljj", "q": "You may not create commercial Projects, including any Project that crowdsources any portion of its funding, any Project that involves a business or legal entity" },
+    { "doc": "riot-ljj", "q": "We permit individual players to promote their Projects on websites, streams, or videos and passively generate revenue through appropriate advertisements" },
+    { "doc": "riot-ljj", "q": "was created under Riot Games' \"Legal Jibber Jabber\" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project." }
+   ],
+   "logo": false,
+   "keyArt": "allowed only noncommercially with the Legal Jibber Jabber notice; not used (no asset we may fetch and our own backgrounds suffice)",
+   "now": "Game names in our own type only, no Riot logo; our own background. Footer keeps the Riot notice on Valorant and LoL pages.",
+   "ifAffiliate": "Riot IP use is noncommercial except passive ads by individual players and API projects with a key: an affiliate button would need a written Riot licence for any Riot art; names in text stay nominative."
+  },
+  "valve": {
+   "games": ["cs2", "dota2"],
+   "quotes": [
+    { "doc": "valve-legal", "q": "Counter-Strike, the Counter-Strike logo, Source, the Source logo, Counter-Strike: Condition Zero, Portal, the Portal logo, Dota, the Dota 2 logo, and Defense of the Ancients are trademarks and/or registered trademarks of Valve Corporation." },
+    { "doc": "valve-video", "q": "We encourage our users to make videos using Valve game content, such as playthrough or instruction videos or SFM movies." },
+    { "doc": "valve-video", "q": "We're not fine with taking assets from our games (e.g. voice, music, items) and distributing those separately." }
+   ],
+   "logo": false,
+   "keyArt": "no fan-site licence published (the video policy covers videos only)",
+   "now": "No Valve logo or screenshot; our own background (an original desert town, no copied map). Names in text only.",
+   "ifAffiliate": "Nothing to remove: no Valve asset is used."
+  },
+  "epic": {
+   "games": ["fortnite", "rocket-league"],
+   "quotes": [
+    { "doc": "epic-fcp", "q": "\"Fan Content\" means: your personal, non-commercial (i) fan art (such as artwork, photographs, videos, and other materials) that is based on the Epic IP; and (ii) Epic IP-related websites and apps that are freely accessible to the public." },
+    { "doc": "epic-fcp", "q": "Fan Content must have no commercial (i.e., monetary) objective." },
+    { "doc": "epic-fcp", "q": "Portions of the materials used are trademarks and/or copyrighted works of Epic Games, Inc. All rights reserved by Epic. This material is not official and is not endorsed by Epic." },
+    { "doc": "epic-fcp", "q": "The colors of a logo should not be altered, and the design and appearance of the logo should not be modified or adapted into a new logo." }
+   ],
+   "logo": "allowed by the policy for a free non-commercial fan site, unaltered and with the Epic disclaimer on the page",
+   "used": false,
+   "why": "No official logo file we may fetch: fortnite.com and epicgames.com/help answer 403 to us (not bypassed). The owner may save the logo from an official Epic page; we then host it unaltered and add the disclaimer. Rocket League (Psyonix, an Epic studio) has no own published fan policy; no logo either way until a page exists.",
+   "now": "Fortnite name in our own type; our own cartoon island background.",
+   "ifAffiliate": "Any monetary objective ends the permission: remove every Epic logo and art before an affiliate button goes live."
+  },
+  "supercell": {
+   "games": ["brawl", "clash"],
+   "quotes": [
+    { "doc": "supercell-fcp", "q": "Permitted Fan Content normally includes for example non-commercial fan-generated online guides and guide apps, fan meetups, fan pages and gameplay videos as long as they follow this Policy." },
+    { "doc": "supercell-fcp", "q": "You can't modify Supercell Assets without our express permission." },
+    { "doc": "supercell-fcp", "q": "or contains other objectionable content, including but not limited to drugs, alcohol, tobacco products, gambling, weapons or political ads." },
+    { "doc": "supercell-fcp", "q": "This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: www.supercell.com/fan-content-policy." }
+   ],
+   "logo": "allowed from the official fan kit, unmodified, with the Supercell notice",
+   "used": false,
+   "why": "No Brawl Stars or Clash Royale page is built yet, and the fan kit host (fankit.supercell.com) answers 403 to us. When the pages exist the owner downloads the game logos from the fan kit; we host them unmodified with the notice.",
+   "now": "Nothing shown until the pages exist.",
+   "ifAffiliate": "Ads are allowed, but no Supercell asset may sit next to gambling: an affiliate button for betting means no Supercell logos on the site."
+  },
+  "garena": {
+   "games": ["ff"],
+   "quotes": [],
+   "logo": false,
+   "why": "No public fan content or brand policy found (search 2026-11-03, ff.garena.com and ffsupport.garena.com); Garena enforces its marks.",
+   "now": "Free Fire name in our own type; our own tropical island background.",
+   "ifAffiliate": "Nothing to remove."
+  },
+  "ea": {
+   "games": ["fc"],
+   "quotes": [],
+   "logo": false,
+   "why": "No public fan content policy found; ea.com robots.txt reserves all rights against scraping and text mining, so no copy was saved.",
+   "now": "No EA FC page yet; scene ready, no logo.",
+   "ifAffiliate": "Nothing to remove."
+  }
+ }
+}

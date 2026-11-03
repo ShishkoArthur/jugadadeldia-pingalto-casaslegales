@@ -106,19 +106,19 @@
    "transparent": 75,
    "size": "646x1557"
   },
-  "pa-sc-valorant-r3": {
+  "pa-sc-valorant-r4": {
    "pose": "walk",
-   "head": 299,
-   "scale": 0.709,
-   "transparent": 76,
-   "size": "752x1615"
+   "head": 288,
+   "scale": 0.736,
+   "transparent": null,
+   "size": "838x1644"
   },
-  "pa-sc-cs2-r3": {
-   "pose": "table",
-   "head": 293,
-   "scale": 0.724,
-   "transparent": 73,
-   "size": "1036x1505"
+  "pa-sc-cs2-r4": {
+   "pose": "stand",
+   "head": 272,
+   "scale": 0.779,
+   "transparent": null,
+   "size": "620x1857"
   },
   "pa-sc-cs2-major-r3": {
    "pose": "cushion",
@@ -127,12 +127,12 @@
    "transparent": 65,
    "size": "765x829"
   },
-  "pa-sc-lol-r3": {
-   "pose": "wstool",
-   "head": 307,
-   "scale": 0.691,
-   "transparent": 76,
-   "size": "818x1483"
+  "pa-sc-lol-r4": {
+   "pose": "stool",
+   "head": 348,
+   "scale": 0.609,
+   "transparent": null,
+   "size": "691x1279"
   },
   "pa-sc-esports-r3": {
    "pose": "chair",
@@ -148,12 +148,47 @@
    "transparent": 75,
    "size": "683x1502"
   },
-  "pa-sc-fortnite-nube-r2": {
+  "pa-sc-fortnite-nube-r4": {
+   "pose": "jump",
+   "head": 285,
+   "scale": 0.744,
+   "transparent": null,
+   "size": "760x1667"
+  },
+  "pa-sc-dota2-r4": {
    "pose": "walk",
-   "head": 289,
-   "scale": 0.734,
-   "transparent": 77,
-   "size": "643x1675"
+   "head": 307,
+   "scale": 0.691,
+   "transparent": null,
+   "size": "802x1572"
+  },
+  "pa-sc-rocket-league-r4": {
+   "pose": "kneel",
+   "head": 417,
+   "scale": 0.508,
+   "transparent": null,
+   "size": "782x1045"
+  },
+  "pa-sc-fc-r4": {
+   "pose": "stand",
+   "head": 297,
+   "scale": 0.714,
+   "transparent": null,
+   "size": "742x1629"
+  },
+  "pa-sc-brawl-r4": {
+   "pose": "jump",
+   "head": 300,
+   "scale": 0.707,
+   "transparent": null,
+   "size": "716x1347"
+  },
+  "pa-sc-clash-r4": {
+   "pose": "chair",
+   "head": 282,
+   "scale": 0.752,
+   "transparent": null,
+   "size": "857x1654"
   }
  }
 }

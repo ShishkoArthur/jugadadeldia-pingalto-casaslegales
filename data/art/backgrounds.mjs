@@ -1,0 +1,63 @@
+// pingalto hero backgrounds, one per game (owner 2026-11-03: "game logos are missing, maybe screenshots in the header background").
+// No publisher allows us an official screenshot or key art that we can fetch (data/sources/pingalto/brand-policies.json), so every
+// background is our own generated scene in the mood of the game: no people, no characters, no logos, no interface, no text, no
+// copied map layout. The page lays a theme-coloured veil over it (sites/pingalto/css/pa.css .pa-hbg), so the scene can be rich.
+// node data/art/backgrounds.mjs            -> data/art/pingalto/bg-jobs.json (then node tools/gen-image.mjs data/art/pingalto/bg-jobs.json)
+// node data/art/backgrounds.mjs --build    -> data/img-review/pa-bg-<game>.png -> sites/pingalto/static/bg/bg-<game>-<w>.webp
+//                                             (widths W, each file under MAX_KB) + data/img-review/contact-pingalto-bg.jpg
+import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const HERE = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(HERE, '../..');
+const W = [480, 960, 1600];
+const MAX_KB = 80;
+
+const COMMON = 'Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map.';
+
+export const BG = {
+  cs2: 'An original fictional sun-baked Mediterranean desert town seen from a high three-quarter aerial angle like a tactical overview: sandy beige stone walls, narrow alleys, arches, a few wooden crates and plain blue-grey doors, two open plazas, long shadows of late afternoon sun, warm dust in the air.',
+  valorant: 'An original futuristic plaza at dusk with clean geometric concrete architecture, sharp angular walls and ramps, soft coral-red and teal neon light strips along the edges, light haze, polished floor reflecting the neon, a calm violet sky.',
+  lol: 'An original fantasy valley at dusk seen from above: a winding river through a lush jungle between two distant ancient stone towers on opposite sides, glowing blue and golden magical light rising softly from the river, mist between the trees, painterly light.',
+  ff: 'An original tropical island seen from the air at golden hour: a small coastal village with colourful tin roofs, palm jungle, a few stacked shipping containers in plain colours, a winding dirt road, turquoise sea, a few distant orange-and-white parachutes floating in the warm sky.',
+  fortnite: 'An original bright cartoon-style 3D island landscape: rolling grassy hills in warm yellow-green, a cute small village with pastel houses, a floating rock island in the sky, and on the horizon a soft wall of swirling purple-pink storm clouds, playful saturated colours.',
+  esports: 'An empty esports arena before the show: a large stage with a long table of empty gaming chairs, a huge truss light rig with pink, violet and cyan beams cutting through haze, rows of empty seats in the dark, large blank dark screens with nothing on them.',
+};
+
+const jobs = () => Object.entries(BG).map(([id, scene]) => ({
+  id: 'pa-bg-' + id, page: id, aspectRatio: '21:9', resolution: '2K', refs: [],
+  note: 'pingalto hero background ' + id, prompt: scene + ' ' + COMMON,
+}));
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  if (!process.argv.includes('--build')) {
+    const j = jobs();
+    writeFileSync(join(HERE, 'pingalto/bg-jobs.json'), JSON.stringify(j, null, 1) + '\n');
+    console.log('bg jobs: ' + j.length + ', longest prompt ' + Math.max(...j.map(x => x.prompt.length)));
+  } else {
+    const sharp = (await import('sharp')).default;
+    const OUT = join(ROOT, 'sites/pingalto/static/bg');
+    rmSync(OUT, { recursive: true, force: true });
+    mkdirSync(OUT, { recursive: true });
+    const tiles = [];
+    for (const id of Object.keys(BG)) {
+      const src = join(ROOT, 'data/img-review/pa-bg-' + id + '.png');
+      if (!existsSync(src)) { console.log(id + ': missing ' + src); continue; }
+      const sizes = [];
+      for (const w of W) {
+        let q = 62, buf;
+        do { buf = await sharp(src).resize({ width: w }).webp({ quality: q, effort: 6, smartSubsample: true }).toBuffer(); q -= 6; } while (buf.length > MAX_KB * 1024 && q > 20);
+        writeFileSync(join(OUT, 'bg-' + id + '-' + w + '.webp'), buf);
+        sizes.push(w + ':' + Math.round(buf.length / 1024) + 'KB');
+      }
+      tiles.push(await sharp(src).resize({ width: 640 }).jpeg({ quality: 80 }).toBuffer());
+      console.log(id + ': ' + sizes.join(' '));
+    }
+    if (tiles.length) {
+      const comp = tiles.map((b, i) => ({ input: b, left: (i % 2) * 650, top: Math.floor(i / 2) * 284 }));
+      await sharp({ create: { width: 1290, height: Math.ceil(tiles.length / 2) * 284, channels: 3, background: '#222' } }).composite(comp).jpeg({ quality: 80 }).toFile(join(ROOT, 'data/img-review/contact-pingalto-bg.jpg'));
+    }
+    console.log(readdirSync(OUT).length + ' files in ' + OUT);
+  }
+}

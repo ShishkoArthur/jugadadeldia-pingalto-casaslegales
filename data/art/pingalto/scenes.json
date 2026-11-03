@@ -75,10 +75,10 @@
    "accepted": "2026-11-03 owner"
   },
   "/fortnite/nube": {
-   "image": "pa-sc-fortnite-nube-r2",
-   "file": "data/art/pingalto/cut/pa-sc-fortnite-nube-r2.webp",
-   "status": "accepted",
-   "accepted": "2026-11-03 owner"
+   "image": "pa-sc-fortnite-nube-r4",
+   "file": "data/art/pingalto/cut/pa-sc-fortnite-nube-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
   },
   "/ff": {
    "image": "pa-sc-ff-r3",
@@ -93,16 +93,16 @@
    "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
   },
   "/valorant": {
-   "image": "pa-sc-valorant-r3",
-   "file": "data/art/pingalto/cut/pa-sc-valorant-r3.webp",
-   "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "image": "pa-sc-valorant-r4",
+   "file": "data/art/pingalto/cut/pa-sc-valorant-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
   },
   "/cs2": {
-   "image": "pa-sc-cs2-r3",
-   "file": "data/art/pingalto/cut/pa-sc-cs2-r3.webp",
-   "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "image": "pa-sc-cs2-r4",
+   "file": "data/art/pingalto/cut/pa-sc-cs2-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
   },
   "/cs2/major": {
    "image": "pa-sc-cs2-major-r3",
@@ -111,10 +111,10 @@
    "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
   },
   "/lol": {
-   "image": "pa-sc-lol-r3",
-   "file": "data/art/pingalto/cut/pa-sc-lol-r3.webp",
-   "status": "accepted",
-   "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+   "image": "pa-sc-lol-r4",
+   "file": "data/art/pingalto/cut/pa-sc-lol-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
   },
   "/esports": {
    "image": "pa-sc-esports-r3",
@@ -127,6 +127,36 @@
    "file": "data/art/pingalto/cut/pa-sc-esports-series-r3.webp",
    "status": "accepted",
    "accepted": "2026-11-03 reviewed by the agent at full size (owner standard 03.11)"
+  },
+  "/dota2": {
+   "image": "pa-sc-dota2-r4",
+   "file": "data/art/pingalto/cut/pa-sc-dota2-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
+  },
+  "/rocket-league": {
+   "image": "pa-sc-rocket-league-r4",
+   "file": "data/art/pingalto/cut/pa-sc-rocket-league-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
+  },
+  "/fc": {
+   "image": "pa-sc-fc-r4",
+   "file": "data/art/pingalto/cut/pa-sc-fc-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
+  },
+  "/brawl": {
+   "image": "pa-sc-brawl-r4",
+   "file": "data/art/pingalto/cut/pa-sc-brawl-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
+  },
+  "/clash": {
+   "image": "pa-sc-clash-r4",
+   "file": "data/art/pingalto/cut/pa-sc-clash-r4.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (cosplay or toy prop, outfit complete, modest, no logos); waits for the owner"
   }
  }
 }

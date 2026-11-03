@@ -1,6 +1,7 @@
 // Small shared pieces of pingalto pages: number format, source line and quote, hero, structured data.
 import { readFileSync } from 'node:fs';
 import { fmt, fmtFixed, fmtPct, fmtInput } from '../../../engine/games/num.mjs';
+import { bgOf, bgName } from '../content/visual.mjs';
 export { fmt, fmtFixed, fmtPct, fmtInput };
 
 const KIND = { official: ['oficial', 'pa-of'], community: ['comunidad', 'pa-cm'], reference: ['referencia', ''] };
@@ -18,10 +19,15 @@ export function quote(h, factId, lang = 'en') {
   return '<blockquote class="pa-q" cite="' + h.esc(d.url) + '"' + (lang ? ' lang="' + lang + '"' : '') + '>«' + h.esc(f.quote) + '»<cite lang="es">' + kindTag(h, d.kind) + ' <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.publisher) + '</a> · ' + h.esc(host(d.url)) + ' · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
 }
 // Hero: hubs get the big layout (girl: true), tool pages a compact one with a narrower figure column; a page without an accepted
-// scene (service pages) gets the text-only hero.
+// scene (service pages) gets the text-only hero. A page of a game section (content/visual.mjs) lays our own background of that game
+// under a veil in the theme colour: --hb1 on phones, --hb2 on wide screens (the browser fetches only the one it shows).
+export function heroBg(h, path = h.page.path) {
+  const id = bgOf(path);
+  return id ? { cls: ' pa-hb', style: ' style="--hb1:url(' + h.asset(bgName(id, 960)) + ');--hb2:url(' + h.asset(bgName(id, 1600)) + ')"' } : { cls: '', style: '' };
+}
 export function hero(h, { ey, sub, girl = false, buttons = '' }) {
-  const art = girlCard(h);
-  return '<section class="pa-he' + (art ? (girl ? '' : ' pa-tl') : ' pa-sm') + '"><div><p class="pa-ey">' + h.esc(ey) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
+  const art = girlCard(h), bg = heroBg(h);
+  return '<section class="pa-he' + (art ? (girl ? '' : ' pa-tl') : ' pa-sm') + bg.cls + '"' + bg.style + '><div><p class="pa-ey">' + h.esc(ey) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
     (sub ? '<p class="pa-sb">' + sub + '</p>' : '') + (buttons ? '<div class="pa-bt">' + buttons + '</div>' : '') + '</div>' + art + '</section>';
 }
 // Alt's card with the page scene (sites/pingalto/content/scenes.json, data/art/publish-scenes.mjs). The figure fills its frame: the

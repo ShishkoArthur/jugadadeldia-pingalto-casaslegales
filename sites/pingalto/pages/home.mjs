@@ -4,6 +4,7 @@ import { cm360, convertSens, edpi } from '../../../engine/games/sens.mjs';
 import { greatCircleKm, fibreRttMs } from '../../../engine/games/geo.mjs';
 import { sensGames } from '../content/games.mjs';
 import { fmt, girlCard, ldPage } from './parts.mjs';
+import { GAMES, BG_W, bgName, hasBg } from '../content/visual.mjs';
 
 const ICON = {
   ping: '<path d="M3 13h4l2-5 4 10 2-5h6"/>',
@@ -75,6 +76,9 @@ export const home = {
       '<p class="pa-sb">Ping desde tu provincia, sensibilidad entre juegos, DPI real del mouse y rangos de Valorant y LoL. Cada número con su fuente, sin humo y sin vender nada.</p>' +
       '<div class="pa-bt"><a class="pa-b1" href="' + h.href('/kit/ping') + '">Medí tu ping</a><a href="' + h.href('/kit/sensibilidad') + '">Pasá tu sensibilidad</a></div></div>' + girlCard(h) + '</section>';
     const apps = '<nav class="pa-ap" aria-labelledby="h-tools"><h2 id="h-tools">Herramientas</h2><ul>' + TOOLS.filter(([u]) => h.built(u)).map(([u, ic, t, s]) => '<li><a href="' + h.href(u) + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + ICON[ic] + '</svg><b>' + t + '</b><span>' + s + '</span></a></li>').join('') + '</ul></nav>';
-    return hero + strip + '<div class="pa-gd">' + sens + ladder + '</div>' + apps;
+    const gl = GAMES.filter(g => h.built(g.path));
+    const img = g => hasBg(g.id) ? '<img src="' + h.asset(bgName(g.id, BG_W[0])) + '" srcset="' + BG_W.slice(0, 2).map(w => h.asset(bgName(g.id, w)) + ' ' + w + 'w').join(', ') + '" sizes="(max-width:680px) 92vw, 240px" width="480" height="206" alt="' + h.esc(g.alt) + '" aria-hidden="true" loading="lazy" decoding="async">' : '';
+    const games = gl.length ? '<nav class="pa-gms" aria-labelledby="h-games"><h2 id="h-games">Juegos</h2><ul>' + gl.map(g => '<li><a class="pa-gm pa-g-' + g.id + '" href="' + h.href(g.path) + '">' + img(g) + '<i aria-hidden="true">' + h.esc(g.mono) + '</i><b>' + h.esc(g.name) + '</b><span>' + h.esc(g.tag) + '</span></a></li>').join('') + '</ul></nav>' : '';
+    return hero + strip + games + '<div class="pa-gd">' + sens + ladder + '</div>' + apps;
   },
 };
