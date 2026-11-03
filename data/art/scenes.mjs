@@ -133,10 +133,18 @@ export const SITES = {
       '/esports/series': ['stool', `She sits on ${S.stool}, legs crossed at the knee, wearing ${HEADSET} on her head, holding up three fingers of her right hand toward the viewer as if saying best of three; her left hand holds on her knee a small white board showing three empty circles in a row drawn in black marker, the first two circles filled in purple, no numbers and no letters; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'confident explaining smile, one eyebrow raised', { round: 'r5', cosplay: true }],
       '/fortnite/nube': ['jump', `She does a playful victory dance emote mid-hop, one knee lifted, one arm pumping up in the air, the other hand holding an oversized cartoon toy pickaxe as a cosplay prop resting on her shoulder: a chunky soft foam pickaxe with a pastel purple head, a white handle and a pink grip, clearly a toy`, 'goofy joyful laugh', { round: 'r4', cosplay: true }],
       '/dota2': ['stand', `She stands in a dynamic three-quarter stance, weight on her back leg, mid-swing like a hero about to throw a hook: her right hand grips a chunky grey plastic chain and swings it up over her right shoulder, so a cosplay replica of a big curved meat hook hangs behind her shoulder; her left hand holds the loose end of the chain low at her hip. The hook is a single large curved hook as long as her forearm with a blunt rounded tip, a clean grey weathered-metal paint finish, clearly a lightweight foam and 3D-printed prop with visible seams; no blood, no red stains, no rust. The hook points up and away behind her, never at the viewer. Exactly two arms and two hands, both fully inside the jacket sleeves`, 'pretty, friendly and confident: a soft natural smile, relaxed natural eyes looking at the viewer, a gentle playful glint', { round: 'r5', cosplay: true }],
-      '/rocket-league': ['kneel', `She kneels on the floor sitting back on her heels, knees together, holding a plain black remote control for toy cars in both hands with its short antenna up; on the floor in front of her knees is a small toy RC car (bright orange body, black wheels, small blue toy rocket boosters at the back) nudging a white-and-light-blue ball the size of a grapefruit`, 'competitive excited grin, eyes on the car', { round: 'r4', cosplay: true, keepAll: true }],
-      '/fc': ['stand', `She stands on one leg doing a playful football trick, the sole of her raised platform sandal resting on top of a classic white football with black pentagons on the floor in front of her, holding ${PHONE} in one hand and glancing down at it, the other arm out for balance`, 'confident playful smile', { round: 'r4', keepAll: true }],
+      '/rl': ['kneel', `She kneels on the floor sitting back on her heels, knees together, holding a plain black remote control for toy cars in both hands with its short antenna up; on the floor in front of her knees is a small toy RC car (bright orange body, black wheels, small blue toy rocket boosters at the back) nudging a white-and-light-blue ball the size of a grapefruit`, 'competitive excited grin, eyes on the car', { round: 'r4', cosplay: true, keepAll: true, slug: 'rocket-league' }],
+      '/eafc': ['stand', `She stands on one leg doing a playful football trick, the sole of her raised platform sandal resting on top of a classic white football with black pentagons on the floor in front of her, holding ${PHONE} in one hand and glancing down at it, the other arm out for balance`, 'confident playful smile', { round: 'r4', keepAll: true, slug: 'fc' }],
       '/brawl': ['jump', `She does a light playful jump, knees bent, holding ${PHONE} vertically in one hand with her thumb on it, and holding up in the other hand a small glowing purple toy cube as a fantasy prop, as if she just picked up a power-up`, 'mischievous thrilled grin', { round: 'r4', cosplay: true }],
       '/clash': ['chair', `She sits on ${S.chair}, legs crossed at the knee, sitting upright like a playful queen, wearing a small shiny golden toy plastic crown on top of her head. She has exactly two arms and two hands, both clearly visible and anatomically correct, each coming out of one jacket sleeve: her right hand holds ${PHONE} vertically at chest height and taps it with the thumb; her left hand rests flat on her knee. Nothing else in her hands, no other arms, hands or fingers anywhere in the image`, 'royal playful smirk, chin up, looking at the viewer', { round: 'r5', cosplay: true }],
+      '/clash/mazos': ['stool', `She sits on ${S.stool}, legs crossed at the knee, holding up in her left hand a wide fan of eight oversized plain playing cards with plain purple backs facing the viewer (no symbols, no pictures, no text), and pulling one card out of the fan with her right hand to swap it; a small toy potion bottle (a round clear plastic flask with a cork and glowing pink-purple liquid) stands on the floor touching her shoe; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'thoughtful strategic smile, one eyebrow raised, looking at the viewer', { round: 'r6', cosplay: true, keepAll: true }],
+      '/brawl/meta': ['chair', `She sits on ${S.chair}, body turned three-quarters to the side, legs crossed at the knee, holding ${PHONE} vertically in her left hand and pointing at it with her right index finger as if showing a friend the best pick; a small glowing purple toy gem (a faceted plastic crystal the size of a plum) rests on her knee; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'excited know-it-all grin, looking at the viewer', { round: 'r6', cosplay: true }],
+      '/esports/sistema-suizo': ['stand', `She stands next to a small white easel board on a plain light wooden tripod, drawing with a black marker in her right hand: the board shows only a neat bracket tree of thin black lines with small empty boxes connected left to right, no letters, no numbers; her left hand on her hip, ${HEADSET} around her neck; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'confident teacher smile, looking back at the viewer over her shoulder', { round: 'r6', cosplay: true, keepAll: true }],
+      '/esports/argentinos': ['jump', `She jumps lightly like a fan cheering for her country's team, knees bent, a plain knitted fan scarf with wide light sky-blue and white horizontal stripes (no symbols, no sun, no text) held up above her head stretched between both hands; ${HEADSET} around her neck; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'joyful shouting cheer, eyes shining', { round: 'r6', cosplay: true }],
+      '/lol/worlds': ['stool', `She sits on ${S.stool}, legs crossed at the knee, as a fan in the stands of a big final: she holds up in her right hand a glowing plastic light stick shining soft blue and gold, and in her left hand on her knee a small plain dark blue foam cushion; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'thrilled hopeful smile, eyes up as if watching a big stage', { round: 'r6', cosplay: true }],
+      '/valorant/mapas/ascent': ['kneel', `She kneels on the floor sitting back on her heels, knees together, leaning over a large plain sheet of light grey paper lying flat on the floor in front of her knees with a simple top-down floor plan sketched in thin black lines (corridors, two open squares, no letters, no numbers); with her right hand she places a small glowing pink plastic token on the plan; ${HEADSET} worn on her head; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'focused tactical look with a small smile', { round: 'r6', cosplay: true, keepAll: true }],
+      '/valorant/champions': ['walk', `She strides forward mid-step like a player walking out onto a stage, ${HEADSET} worn on her head, her right hand raised waving to a crowd and her left hand holding a small glowing pink and coral light stick down at her side; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'proud confident smile, chin up', { round: 'r6', cosplay: true }],
+      '/dota2/ti': ['chair', `She sits on ${S.chair}, legs crossed at the knee, as a fan watching a big final: she holds with both hands on her knee a plain round cosplay shield replica the size of a dinner plate, painted silver-green with a simple raised rim and no emblem, no symbols, clearly painted foam; ${HEADSET} around her neck; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders`, 'excited nervous smile, biting her lower lip, eyes up as if watching a big screen', { round: 'r6', cosplay: true }],
     },
   },
 };
@@ -171,14 +179,6 @@ export const ALT = {
     '/chinchon/jugar/': 'Chica acomodando las siete cartas de su mano de chinchón',
     '/escoba-de-15/jugar/': 'Chica de rodillas juntando cuatro cartas del piso con la mano',
     '/dados/': 'Chica de rodillas que acaba de tirar dos dados',
-  },
-  pingalto: {
-    '/': 'Alt, la guía de pingalto, sentada en un banquito jugando con un joystick',
-    '/kit/ping': 'Alt caminando con un router de wifi en la mano, mirándolo con desconfianza',
-    '/kit/sensibilidad': 'Alt con auriculares moviendo el mouse sobre un pad negro con una mira dibujada',
-    '/kit/dpi': 'Alt sentada en una mesa alineando el mouse con una tarjeta de plástico',
-    '/tier-list': 'Alt pegando un papelito en una tabla de tier list',
-    '/ff': 'Alt sentada de costado en un banquito jugando con el celular en horizontal',
     '/quiniela/horarios/': 'Chica dándose vuelta y mirando por encima del hombro mientras toca su reloj',
     '/quini-6/controlar/': 'Chica parada con una boleta en una mano y el celular en la otra, controlando los números',
     '/quini-6/como-se-juega/': 'Chica sentada en el borde de una silla mostrando una bolilla, como quien explica',
@@ -187,6 +187,14 @@ export const ALT = {
     '/burako/': 'Chica sentada en un banquito con un atril de fichas en las rodillas, moviendo una ficha',
     '/chinchon/': 'Chica sentada con siete cartas en abanico en una mano y un mate en la otra',
     '/escoba-de-15/': 'Chica sentada en el borde de una mesa juntando cartas españolas en una pila',
+  },
+  pingalto: {
+    '/': 'Alt, la guía de pingalto, sentada en un banquito jugando con un joystick',
+    '/kit/ping': 'Alt caminando con un router de wifi en la mano, mirándolo con desconfianza',
+    '/kit/sensibilidad': 'Alt con auriculares moviendo el mouse sobre un pad negro con una mira dibujada',
+    '/kit/dpi': 'Alt sentada en una mesa alineando el mouse con una tarjeta de plástico',
+    '/tier-list': 'Alt pegando un papelito en una tabla de tier list',
+    '/ff': 'Alt sentada de costado en un banquito jugando con el celular en horizontal',
     '/ff/sensibilidad': 'Alt sentada jugando con el celular en horizontal',
     '/ff/nombres': 'Alt de rodillas escribiendo en el celular',
     '/ff/espacio-invisible': 'Alt girándose y pellizcando el aire, como si agarrara un espacio invisible',
@@ -201,19 +209,27 @@ export const ALT = {
     '/lol/rangos': 'Alt sentada con un teclado en las piernas',
     '/fortnite/nube': 'Alt bailando un festejo con un pico gigante de goma apoyado en el hombro',
     '/dota2': 'Alt revoleando sobre el hombro una réplica de cosplay de un gancho gigante con cadena',
-    '/rocket-league': 'Alt de rodillas manejando un autito a control remoto que empuja una pelota',
-    '/fc': 'Alt pisando una pelota de fútbol con el celular en la mano',
     '/brawl': 'Alt dando un saltito con el celular y un cubito violeta de juguete que brilla',
     '/clash': 'Alt sentada con una corona de juguete, jugando con el celular',
     '/esports': 'Alt sentada con auriculares y joystick, levantando el puño por la victoria',
     '/esports/series': 'Alt con auriculares mostrando tres dedos y una pizarrita con tres círculos, dos pintados',
+    '/rl': 'Alt de rodillas manejando un autito a control remoto que empuja una pelota',
+    '/eafc': 'Alt pisando una pelota de fútbol con el celular en la mano',
+    '/clash/mazos': 'Alt sentada con un abanico de ocho cartas, cambiando una, y una pocioncita de juguete en el piso',
+    '/brawl/meta': 'Alt sentada mostrando el celular con el dedo, con una gema violeta de juguete en la rodilla',
+    '/esports/sistema-suizo': 'Alt dibujando con un marcador el cuadro de un torneo en una pizarra',
+    '/esports/argentinos': 'Alt saltando como hincha con una bufanda celeste y blanca en alto',
+    '/lol/worlds': 'Alt sentada como hincha en una final, con una barra de luz azul y dorada',
+    '/valorant/mapas/ascent': 'Alt de rodillas sobre un plano dibujado en el piso, poniendo una ficha rosa que brilla',
+    '/valorant/champions': 'Alt caminando hacia el escenario con auriculares, saludando al público',
+    '/dota2/ti': 'Alt sentada mirando una final con un escudo de cosplay en las rodillas',
   },
 };
 
 export const slug = (url) => url === '/' ? 'home' : url.replace(/^\/|\/$/g, '').replace(/\//g, '-');
 export const sceneOpts = (site, url) => SITES[site].scenes[url][3] || {};
 export const roundOf = (site, url) => sceneOpts(site, url).round || ROUND;
-export const jobId = (site, url) => `${SITES[site].prefix}-${slug(url)}-${roundOf(site, url)}`;
+export const jobId = (site, url) => `${SITES[site].prefix}-${sceneOpts(site, url).slug || slug(url)}-${roundOf(site, url)}`;
 export const isSeated = (site, url) => SITES[site].scenes[url][0] in SEATS;
 
 const ASPECT = { stand: '2:3', walk: '2:3', turn: '2:3', jump: '2:3', stool: '3:4', wstool: '3:4', chair: '3:4', table: '3:4', kneel: '3:4', cushion: '4:5' };

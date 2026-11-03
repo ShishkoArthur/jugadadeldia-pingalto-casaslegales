@@ -158,5 +158,21 @@
  "pa-sc-esports-series-r5": {
   "top": 8,
   "chin": 385
+ },
+ "pa-sc-clash-mazos-r6": {
+  "top": 5,
+  "chin": 312
+ },
+ "pa-sc-lol-worlds-r6": {
+  "top": 5,
+  "chin": 322
+ },
+ "pa-sc-valorant-champions-r6": {
+  "top": 14,
+  "chin": 294
+ },
+ "pa-sc-brawl-meta-r6": {
+  "top": 5,
+  "chin": 345
  }
 }

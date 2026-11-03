@@ -24,6 +24,9 @@ const ICON = {
   bo: '<path d="M4 17c4 0 5-10 8-10s4 10 8 10"/>',
   champ: '<path d="M12 3l3 6 6 1-4.5 4 1 6L12 17l-5.5 3 1-6L3 10l6-1z"/>',
   code: '<rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 12h2M11 12h2M15 12h2"/>',
+  deck: '<rect x="4" y="5" width="10" height="14" rx="2"/><path d="M14 7l5 1.5-3 11-4-1"/>',
+  map: '<path d="M4 6l5-2 6 2 5-2v14l-5 2-6-2-5 2z"/><path d="M9 4v14M15 6v14"/>',
+  flag: '<path d="M5 21V4M5 4h12l-2 4 2 4H5"/>',
 };
 const TOOLS = [
   ['/kit/ping', 'ping', 'Ping desde tu provincia', 'Piso físico y medición real'],
@@ -43,6 +46,11 @@ const TOOLS = [
   ['/esports/series', 'bo', 'Bo1, Bo3, Bo5', 'De un mapa a la serie'],
   ['/lol', 'champ', 'Campeones de LoL', 'Por rol, con datos de Riot'],
   ['/ff/codigos', 'code', 'Códigos de Free Fire', 'Canjealos sin estafas'],
+  ['/esports/sistema-suizo', 'swiss', 'Simulador de fase suiza', '16 equipos, reglas de Valve'],
+  ['/clash/mazos', 'deck', 'Mazos de Clash Royale', 'Contra el top argentino'],
+  ['/valorant/mapas/ascent', 'map', 'Callouts de Ascent', 'En español y en inglés'],
+  ['/dota2', 'rank', 'Ranking de Dota 2', 'Elo propio, con Sudamérica'],
+  ['/esports/argentinos', 'flag', 'Argentinos en esports', 'Por juego y por equipo'],
 ];
 
 export const home = {

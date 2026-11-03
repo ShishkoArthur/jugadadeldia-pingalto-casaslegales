@@ -53,7 +53,7 @@ export const lolHub = {
     const ar = sec('Desde Argentina', '<div class="pa-two"><div><p>Los nombres, títulos y roles están en el español de Argentina que Riot publica en sus datos del juego (es_AR). Los rangos de LAS, con cuántos PL pide cada división y una calculadora de partidas, en <a href="' + h.href('/lol/rangos') + '">rangos de LoL</a>.</p>' + quote(h, 'lol_lan_mia', 'es') + '</div>' +
       '<div><p>Armá tu tier list de campeones y compartila en el <a href="' + h.href('/tier-list') + '">creador de tier list</a>, y medí tu ping desde tu provincia en el <a href="' + h.href('/kit/ping') + '">test de ping</a>.</p><p class="pa-src">Lo que no mostramos: qué campeones se eligen o ganan más en el competitivo o en la cola clasificatoria. Esos datos necesitan una clave de Riot para productos aprobados o fuentes que no podemos copiar.</p></div></div>');
     return hero(h, { ey: 'LoL · ' + fmt(C.list.length, 0) + ' campeones · versión ' + C.version, girl: true, sub: 'Todos los campeones con sus roles y las notas de Riot en español, un comparador de a dos y la calculadora de rangos de LAS. Datos del juego, sin win rates inventados.' }) +
-      tools + '<div class="pa-gd"><div class="pa-w2">' + bars + '</div><div class="pa-w4 pa-c"><h3>Notas de Riot, en promedio</h3>' + avgInfo(C) + '</div></div>' + (h.built('/esports/agenda') ? agendaBlock(h, 'lol', 'Próximos partidos de LoL') : '') + sec('Todos los campeones', grid) + about + ar;
+      tools + sec('Torneos', cards(h, [['/lol/worlds', 'Worlds en hora argentina', 'El mundial partido por partido, con lo que se juega hoy.'], ['/lol/msi', 'MSI', 'La última edición del torneo de mitad de año, con su campeón.']])) + '<div class="pa-gd"><div class="pa-w2">' + bars + '</div><div class="pa-w4 pa-c"><h3>Notas de Riot, en promedio</h3>' + avgInfo(C) + '</div></div>' + (h.built('/esports/agenda') ? agendaBlock(h, 'lol', 'Próximos partidos de LoL') : '') + sec('Todos los campeones', grid) + about + ar;
   },
 };
 function avgInfo(C) {
@@ -72,6 +72,9 @@ const VAL = [
   ['/kit/sensibilidad', 'Sensibilidad desde otro juego', 'Pasá tu sensibilidad de CS2 u Overwatch 2 a Valorant con el mismo giro.'],
   ['/kit/ping', 'Ping a Santiago', 'Tu ping desde la provincia hasta el servidor de Valorant de la región.'],
   ['/tier-list', 'Tier list de agentes o mapas', 'Armá la tuya y compartila con un link.'],
+  ['/valorant/mapas/ascent', 'Callouts de Ascent', 'El mapa con los nombres en español y en inglés, y un juego para aprenderlos.'],
+  ['/valorant/mapas/split', 'Callouts de Split', 'Cada zona de Split en los dos idiomas que se escuchan en LATAM.'],
+  ['/valorant/champions', 'VCT en hora argentina', 'Champions, Masters y la liga de Américas, con los equipos argentinos marcados.'],
 ];
 export const valorantHub = {
   path: '/valorant',

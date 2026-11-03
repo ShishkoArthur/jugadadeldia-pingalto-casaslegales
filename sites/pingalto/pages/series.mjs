@@ -72,6 +72,12 @@ const HUB = [
   ['/cs2', 'Ranking de CS2 de Valve', 'Todos los equipos del mundo y de las Américas, con la chance entre dos según el modelo de Valve.'],
   ['/cs2/major', 'El Major de CS2, explicado', 'Tres fases suizas, playoffs, cuándo se juega Bo1 y cuándo Bo3, y tu chance de pasar una fase.'],
   ['/esports/series', 'Probabilidad de una serie', 'De la chance de un mapa a la de un Bo3 o Bo5, con cada resultado y el marcador en vivo.'],
+  ['/esports/sistema-suizo', 'Simulador de fase suiza', 'Cargá 16 equipos y mirá quién hace 3-0, quién pasa y quién se va 0-3, con las reglas de cruces de Valve.'],
+  ['/esports/argentinos', 'Argentinos en los esports', 'Los jugadores argentinos con equipo hoy, juego por juego, y sus próximos partidos.'],
+  ['/esports/latam', 'Ligas de Latinoamérica', 'Qué torneos con equipos de la región se juegan esta semana.'],
+  ['/lol/worlds', 'Worlds de LoL', 'El mundial de League of Legends en hora argentina, fase por fase.'],
+  ['/valorant/champions', 'VCT de Valorant', 'Champions, Masters y la liga de Américas con los equipos argentinos marcados.'],
+  ['/dota2', 'Ranking de Dota 2', 'Nuestro Elo con las series de seis meses, con Sudamérica y cara a cara.'],
   ['/kit/ping', 'Ping desde tu provincia', 'Cuánto tarda tu conexión hasta los servidores de Santiago, São Paulo y Miami.'],
 ];
 

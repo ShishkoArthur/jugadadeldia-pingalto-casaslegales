@@ -6,11 +6,11 @@ import { hero, ldPage, sec } from './parts.mjs';
 import { GAMES } from '../../../tools/feeds/pingalto/agenda.mjs';
 import { ATTRIBUTION } from '../../../tools/feeds/pingalto/supercell.mjs';
 
-const FEED = '/data/feeds/';
-const css = h => '<link rel="stylesheet" href="' + h.asset('feeds.css') + '">';
-const wait = '<p class="pa-fdw" data-fdw>Cargando…</p><noscript><p class="pa-note">Esta lista se arma con JavaScript desde nuestra copia de los datos.</p></noscript>';
-const PS = '<p class="pa-src pa-fds">Datos: <a href="https://pandascore.co/" rel="noopener">PandaScore</a> · horarios en hora argentina · se revisa cada hora</p>';
-const SC = '<p class="pa-src pa-fds" lang="en">' + ATTRIBUTION + '</p>';
+export const FEED = '/data/feeds/';
+export const css = h => '<link rel="stylesheet" href="' + h.asset('feeds.css') + '">';
+export const wait = '<p class="pa-fdw" data-fdw>Cargando…</p><noscript><p class="pa-note">Esta lista se arma con JavaScript desde nuestra copia de los datos.</p></noscript>';
+export const PS = '<p class="pa-src pa-fds">Datos: <a href="https://pandascore.co/" rel="noopener">PandaScore</a> · horarios en hora argentina · se revisa cada hora</p>';
+export const SC = '<p class="pa-src pa-fds" lang="en">' + ATTRIBUTION + '</p>';
 
 // Next matches of one game, for its hub page (/cs2, /valorant, /lol): a slot the client fills from the agenda feed.
 export function agendaBlock(h, game, title = 'Próximos partidos') {

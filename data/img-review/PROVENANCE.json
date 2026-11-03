@@ -3046,5 +3046,130 @@
   "created": "2026-11-03T18:01:03.893Z",
   "note": "page scene /esports/series, round r5, pose stool (copy of pa-sc-esports-series-r5-try1.png, chosen by the agent)",
   "checked": "2026-11-03 agent at full size: chosen - three fingers, board with three circles (two filled), headphones, legs crossed, full figure"
+ },
+ "pa-bg-clash": {
+  "file": "pa-bg-clash.png",
+  "prompt": "An original cheerful medieval arena seen from above in bright cartoon 3D style: a grassy field split by a small blue river with two little wooden bridges, two tiny stone castles with rounded towers and red and blue pennant-less roofs at opposite ends, soft clouds and warm sunlight. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map.",
+  "refs": [],
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "2d5799dcbafbb1b59825532e1e07c18e",
+  "sourceUrl": "https://file.aiquickdraw.com/as/2d5799dcbafbb1b59825532e1e07c18e_1793734202596.jpeg",
+  "created": "2026-11-03T19:30:12.331Z",
+  "note": "pingalto hero background clash",
+  "checked": null
+ },
+ "pa-bg-brawl": {
+  "file": "pa-bg-brawl.png",
+  "prompt": "An original playful cartoon 3D desert-western playground arena seen from above: colourful wooden crates, cactus bushes, tall grass patches, sand paths and bright candy-coloured walls, glowing purple gems scattered, sunny saturated colours. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map.",
+  "refs": [],
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "ee9ec85edf274475f3a97a24386c7f39",
+  "sourceUrl": "https://tempfile.aiquickdraw.com/ggc/ee9ec85edf274475f3a97a24386c7f39_1793734179745.jpeg",
+  "created": "2026-11-03T19:29:45.900Z",
+  "note": "pingalto hero background brawl",
+  "checked": null
+ },
+ "pa-bg-dota2": {
+  "file": "pa-bg-dota2.png",
+  "prompt": "An original dark fantasy battlefield seen from a high aerial angle at dusk: a wide river crossing a forest diagonally between two distant ruined stone fortresses, one bathed in warm green-gold light and the other in cold crimson-violet light, glowing ancient trees, drifting embers and mist. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map.",
+  "refs": [],
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "11e0c34bbe6dfd2d3e9bf71686141369",
+  "sourceUrl": "https://file.aiquickdraw.com/as/11e0c34bbe6dfd2d3e9bf71686141369_1793734242912.jpeg",
+  "created": "2026-11-03T19:30:47.787Z",
+  "note": "pingalto hero background dota2",
+  "checked": null
+ },
+ "pa-sc-valorant-champions-r6": {
+  "file": "pa-sc-valorant-champions-r6.png",
+  "prompt": "Edit of the reference image: the same woman in a new pose and action. Use the woman from the reference image as the character: exactly the same woman, same face, same facial features, same hair, same body proportions. She is a young adult woman, 22 years old (adult), light olive skin, pastel pink shoulder-length shag haircut with curtain bangs, defined black winged eyeliner, a small silver septum ring, silver ear cuffs, black-ink tattoos on her forearms, natural adult proportions. Outfit, complete and worn correctly, exactly as in the reference: the same purple-and-black tartan mini skirt; the same fitted black cropped t-shirt; the same oversized washed-black denim jacket, worn properly: pulled fully up onto BOTH shoulders, both arms all the way inside both sleeves, the collar sitting around her neck, the jacket open at the front; it does not slip off either shoulder (unlike the reference, where it hangs off one shoulder); the sleeves pushed up to just below the elbows so her forearm tattoos show; the same black chunky platform sandals; bare legs, no tights, no stockings, no socks above the ankle. Pose and action: She strides forward mid-step like a player walking out onto a stage, plain matte black over-ear headphones without logos or lights worn on her head, her right hand raised waving to a crowd and her left hand holding a small glowing pink and coral light stick down at her side; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders. Lively, natural, dynamic body language, a candid moment in the middle of the action, not a stiff catalogue pose. Her face is clearly visible: proud confident smile, chin up. Wide full-length shot taken from the same camera distance as the reference image, so her head is the same size in the frame as in the reference: her entire body from the top of her hair down to the soles of her shoes fits inside the frame, with empty green margin above the head and below the feet; nothing cropped. Every prop is held by her or touches her body; nothing floats separately. Adult woman with natural adult proportions, tasteful, fully clothed, not revealing, not sexualized. Photorealistic photo, soft even studio lighting, sharp focus, natural skin texture, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background or floor, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, seat or props. No logos, no brand marks, no flags, no numbers, no words or letters anywhere, no symbols on any prop. Every prop is an obviously harmless cosplay or toy prop (painted foam, plastic or 3D-printed, matte, with visible seams), never realistic; any glow is a soft light effect. She never points anything at the viewer or at anyone. No blood, no violence, no real weapons, no game characters, no game interface, no skins, no loot boxes, no monitors, no screens. Any headphones or phone is plain matte black with no logos and no lights. No money, no banknotes, no coins, no gambling chips, no drinks or alcohol, no cigarettes, no visible phone screens, no trophies, no prizes, no celebration of winning money. Final check: the whole figure including both legs and both shoes is visible inside the frame, and the outfit is complete and worn correctly.",
+  "refs": [
+   "https://pingalto.com/_ref/girl-base.jpg"
+  ],
+  "aspectRatio": "2:3",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "c596ee1af748dfc0926dc1a402e1f4d8",
+  "sourceUrl": "https://file.aiquickdraw.com/as/c596ee1af748dfc0926dc1a402e1f4d8_1793734299632.jpeg",
+  "created": "2026-11-03T19:31:41.244Z",
+  "note": "page scene /valorant/champions, round r6, pose walk",
+  "checked": null
+ },
+ "pa-sc-clash-mazos-r6": {
+  "file": "pa-sc-clash-mazos-r6.png",
+  "prompt": "Edit of the reference image: the same woman in a new pose and action. Use the woman from the reference image as the character: exactly the same woman, same face, same facial features, same hair, same body proportions. She is a young adult woman, 22 years old (adult), light olive skin, pastel pink shoulder-length shag haircut with curtain bangs, defined black winged eyeliner, a small silver septum ring, silver ear cuffs, black-ink tattoos on her forearms, natural adult proportions. Outfit, complete and worn correctly, exactly as in the reference: the same purple-and-black tartan mini skirt; the same fitted black cropped t-shirt; the same oversized washed-black denim jacket, worn properly: pulled fully up onto BOTH shoulders, both arms all the way inside both sleeves, the collar sitting around her neck, the jacket open at the front; it does not slip off either shoulder (unlike the reference, where it hangs off one shoulder); the sleeves pushed up to just below the elbows so her forearm tattoos show; the same black chunky platform sandals; bare legs, no tights, no stockings, no socks above the ankle. Pose and action: She sits on a plain white round stool with four thin white legs, legs crossed at the knee, holding up in her left hand a wide fan of eight oversized plain playing cards with plain purple backs facing the viewer (no symbols, no pictures, no text), and pulling one card out of the fan with her right hand to swap it; a small toy potion bottle (a round clear plastic flask with a cork and glowing pink-purple liquid) stands on the floor touching her shoe; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders. Lively, natural, dynamic body language, a candid moment in the middle of the action, not a stiff catalogue pose. Her face is clearly visible: thoughtful strategic smile, one eyebrow raised, looking at the viewer. Modest pose: knees kept together or legs crossed, the skirt hem stays in place on her thighs, nothing visible under the hem; the camera is at her eye level, straight on, never from below. Wide full-length shot taken from the same camera distance as the reference image, so her head is the same size in the frame as in the reference: her whole seated figure from the top of her hair down to the soles of her shoes, including the whole seat down to the bottom of its legs, fits inside the frame with empty green margin on every side; nothing cropped. Every prop is held by her, touches her body or lies right next to her as described. Adult woman with natural adult proportions, tasteful, fully clothed, not revealing, not sexualized. Photorealistic photo, soft even studio lighting, sharp focus, natural skin texture, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background or floor, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, seat or props. No logos, no brand marks, no flags, no numbers, no words or letters anywhere, no symbols on any prop. Every prop is an obviously harmless cosplay or toy prop (painted foam, plastic or 3D-printed, matte, with visible seams), never realistic; any glow is a soft light effect. She never points anything at the viewer or at anyone. No blood, no violence, no real weapons, no game characters, no game interface, no skins, no loot boxes, no monitors, no screens. Any headphones or phone is plain matte black with no logos and no lights. No money, no banknotes, no coins, no gambling chips, no drinks or alcohol, no cigarettes, no visible phone screens, no trophies, no prizes, no celebration of winning money. Final check: the whole figure including both legs and both shoes and the whole seat is visible inside the frame, and the outfit is complete and worn correctly.",
+  "refs": [
+   "https://pingalto.com/_ref/girl-base.jpg"
+  ],
+  "aspectRatio": "3:4",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "c97c7d384eca5c2f6ff92d6156c96474",
+  "sourceUrl": "https://file.aiquickdraw.com/as/c97c7d384eca5c2f6ff92d6156c96474_1793734908391.jpeg",
+  "created": "2026-11-03T19:41:54.634Z",
+  "note": "page scene /clash/mazos, round r6, pose stool",
+  "checked": null
+ },
+ "pa-sc-lol-worlds-r6": {
+  "file": "pa-sc-lol-worlds-r6.png",
+  "prompt": "Edit of the reference image: the same woman in a new pose and action. Use the woman from the reference image as the character: exactly the same woman, same face, same facial features, same hair, same body proportions. She is a young adult woman, 22 years old (adult), light olive skin, pastel pink shoulder-length shag haircut with curtain bangs, defined black winged eyeliner, a small silver septum ring, silver ear cuffs, black-ink tattoos on her forearms, natural adult proportions. Outfit, complete and worn correctly, exactly as in the reference: the same purple-and-black tartan mini skirt; the same fitted black cropped t-shirt; the same oversized washed-black denim jacket, worn properly: pulled fully up onto BOTH shoulders, both arms all the way inside both sleeves, the collar sitting around her neck, the jacket open at the front; it does not slip off either shoulder (unlike the reference, where it hangs off one shoulder); the sleeves pushed up to just below the elbows so her forearm tattoos show; the same black chunky platform sandals; bare legs, no tights, no stockings, no socks above the ankle. Pose and action: She sits on a plain white round stool with four thin white legs, legs crossed at the knee, as a fan in the stands of a big final: she holds up in her right hand a glowing plastic light stick shining soft blue and gold, and in her left hand on her knee a small plain dark blue foam cushion; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders. Lively, natural, dynamic body language, a candid moment in the middle of the action, not a stiff catalogue pose. Her face is clearly visible: thrilled hopeful smile, eyes up as if watching a big stage. Modest pose: knees kept together or legs crossed, the skirt hem stays in place on her thighs, nothing visible under the hem; the camera is at her eye level, straight on, never from below. Wide full-length shot taken from the same camera distance as the reference image, so her head is the same size in the frame as in the reference: her whole seated figure from the top of her hair down to the soles of her shoes, including the whole seat down to the bottom of its legs, fits inside the frame with empty green margin on every side; nothing cropped. Every prop is held by her or touches her body; nothing floats separately. Adult woman with natural adult proportions, tasteful, fully clothed, not revealing, not sexualized. Photorealistic photo, soft even studio lighting, sharp focus, natural skin texture, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background or floor, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, seat or props. No logos, no brand marks, no flags, no numbers, no words or letters anywhere, no symbols on any prop. Every prop is an obviously harmless cosplay or toy prop (painted foam, plastic or 3D-printed, matte, with visible seams), never realistic; any glow is a soft light effect. She never points anything at the viewer or at anyone. No blood, no violence, no real weapons, no game characters, no game interface, no skins, no loot boxes, no monitors, no screens. Any headphones or phone is plain matte black with no logos and no lights. No money, no banknotes, no coins, no gambling chips, no drinks or alcohol, no cigarettes, no visible phone screens, no trophies, no prizes, no celebration of winning money. Final check: the whole figure including both legs and both shoes and the whole seat is visible inside the frame, and the outfit is complete and worn correctly.",
+  "refs": [
+   "https://pingalto.com/_ref/girl-base.jpg"
+  ],
+  "aspectRatio": "3:4",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "e1153ebf25e426e3b6aaecf8b1f606cc",
+  "sourceUrl": "https://file.aiquickdraw.com/as/e1153ebf25e426e3b6aaecf8b1f606cc_1793734891599.jpeg",
+  "created": "2026-11-03T19:41:38.416Z",
+  "note": "page scene /lol/worlds, round r6, pose stool",
+  "checked": null
+ },
+ "pa-sc-brawl-meta-r6": {
+  "file": "pa-sc-brawl-meta-r6.png",
+  "prompt": "Edit of the reference image: the same woman in a new pose and action. Use the woman from the reference image as the character: exactly the same woman, same face, same facial features, same hair, same body proportions. She is a young adult woman, 22 years old (adult), light olive skin, pastel pink shoulder-length shag haircut with curtain bangs, defined black winged eyeliner, a small silver septum ring, silver ear cuffs, black-ink tattoos on her forearms, natural adult proportions. Outfit, complete and worn correctly, exactly as in the reference: the same purple-and-black tartan mini skirt; the same fitted black cropped t-shirt; the same oversized washed-black denim jacket, worn properly: pulled fully up onto BOTH shoulders, both arms all the way inside both sleeves, the collar sitting around her neck, the jacket open at the front; it does not slip off either shoulder (unlike the reference, where it hangs off one shoulder); the sleeves pushed up to just below the elbows so her forearm tattoos show; the same black chunky platform sandals; bare legs, no tights, no stockings, no socks above the ankle. Pose and action: She sits on a simple plain white chair with a straight back and four thin white legs, body turned three-quarters to the side, legs crossed at the knee, holding a black smartphone in a plain matte black case seen from the back (screen not visible, no logo) vertically in her left hand and pointing at it with her right index finger as if showing a friend the best pick; a small glowing purple toy gem (a faceted plastic crystal the size of a plum) rests on her knee; both of her arms are fully inside the sleeves of the denim jacket, which sits on both shoulders. Lively, natural, dynamic body language, a candid moment in the middle of the action, not a stiff catalogue pose. Her face is clearly visible: excited know-it-all grin, looking at the viewer. Modest pose: knees kept together or legs crossed, the skirt hem stays in place on her thighs, nothing visible under the hem; the camera is at her eye level, straight on, never from below. Wide full-length shot taken from the same camera distance as the reference image, so her head is the same size in the frame as in the reference: her whole seated figure from the top of her hair down to the soles of her shoes, including the whole seat down to the bottom of its legs, fits inside the frame with empty green margin on every side; nothing cropped. Every prop is held by her or touches her body; nothing floats separately. Adult woman with natural adult proportions, tasteful, fully clothed, not revealing, not sexualized. Photorealistic photo, soft even studio lighting, sharp focus, natural skin texture, natural hands with five fingers. Background: flat solid pure bright chroma key green (#00FF00), evenly lit, no vignette, no gradient, no shadows on the background or floor, no floor line, no room. No green color anywhere on her clothes, hair, skin, makeup, shoes, seat or props. No logos, no brand marks, no flags, no numbers, no words or letters anywhere, no symbols on any prop. Every prop is an obviously harmless cosplay or toy prop (painted foam, plastic or 3D-printed, matte, with visible seams), never realistic; any glow is a soft light effect. She never points anything at the viewer or at anyone. No blood, no violence, no real weapons, no game characters, no game interface, no skins, no loot boxes, no monitors, no screens. Any headphones or phone is plain matte black with no logos and no lights. No money, no banknotes, no coins, no gambling chips, no drinks or alcohol, no cigarettes, no visible phone screens, no trophies, no prizes, no celebration of winning money. Final check: the whole figure including both legs and both shoes and the whole seat is visible inside the frame, and the outfit is complete and worn correctly.",
+  "refs": [
+   "https://pingalto.com/_ref/girl-base.jpg"
+  ],
+  "aspectRatio": "3:4",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "ff8b1162bc1df8c47b0d5640439173e2",
+  "sourceUrl": "https://file.aiquickdraw.com/as/ff8b1162bc1df8c47b0d5640439173e2_1793735720770.jpeg",
+  "created": "2026-11-03T19:55:25.715Z",
+  "note": "page scene /brawl/meta, round r6, pose chair",
+  "checked": null
+ },
+ "pa-bg-rl": {
+  "file": "pa-bg-rl.png",
+  "prompt": "An original futuristic indoor sports stadium at night seen from high in the stands: a huge empty glossy turf pitch with glowing orange and blue boundary lines curving up the walls, two big empty goals with glowing frames, a large shiny football resting at center, light beams through haze. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map.",
+  "refs": [],
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "075684c3529d3c881d7ffbfc7c4971b1",
+  "sourceUrl": "https://file.aiquickdraw.com/as/075684c3529d3c881d7ffbfc7c4971b1_1793735815788.jpeg",
+  "created": "2026-11-03T19:57:02.276Z",
+  "note": "pingalto hero background rl",
+  "checked": null
+ },
+ "pa-bg-eafc": {
+  "file": "pa-bg-eafc.png",
+  "prompt": "An original big football stadium at night seen from the upper stands: a perfect green pitch with fresh white lines under bright floodlights, empty seats in light-blue and white tones, a light mist, confetti-free, a warm glow over the field. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map.",
+  "refs": [],
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "model": "nano-banana-pro",
+  "taskId": "feb1eb5d764097a063a7ec74922dd45a",
+  "sourceUrl": "https://tempfile.aiquickdraw.com/ggc/feb1eb5d764097a063a7ec74922dd45a_1793735852478.jpeg",
+  "created": "2026-11-03T19:57:39.929Z",
+  "note": "pingalto hero background eafc",
+  "checked": null
  }
 }

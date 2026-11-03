@@ -101,3 +101,14 @@ test('dotaelo: forfeits and series without a winner are left out, brands masked'
   assert.ok(!JSON.stringify(out).includes('Parimatch'));
   assert.ok(out.rows.some(r => r.sa));
 });
+
+test('wilson interval', async () => {
+  const { wilson, below } = await import('../games/stats.mjs');
+  const [lo, hi] = wilson(3, 4);
+  assert.ok(Math.abs(lo - 0.3006) < 1e-3 && Math.abs(hi - 0.9544) < 1e-3);
+  assert.deepEqual(wilson(0, 0), [0, 1]);
+  const [a, b] = wilson(500, 1000);
+  assert.ok(Math.abs(a - 0.469) < 1e-3 && Math.abs(b - 0.531) < 1e-3);
+  assert.throws(() => wilson(5, 4), /bad counts/);
+  assert.equal(below([1, 2, 3, 4], 3), 0.5);
+});

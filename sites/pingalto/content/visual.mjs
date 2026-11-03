@@ -11,6 +11,11 @@ export const GAMES = [
   { id: 'valorant', name: 'Valorant', mono: 'VAL', tag: 'Shooter táctico 5 contra 5', path: '/valorant', match: ['/valorant'], alt: 'Ilustración propia: plaza futurista con luces de neón' },
   { id: 'lol', name: 'League of Legends', short: 'LoL', mono: 'LoL', tag: 'MOBA de Riot', path: '/lol', match: ['/lol'], alt: 'Ilustración propia: valle de fantasía con un río y dos torres de piedra' },
   { id: 'cs2', name: 'Counter-Strike 2', short: 'CS2', mono: 'CS2', tag: 'Shooter táctico de Valve', path: '/cs2', match: ['/cs2'], alt: 'Ilustración propia: pueblo del desierto visto desde arriba' },
+  { id: 'dota2', name: 'Dota 2', mono: 'D2', tag: 'MOBA de Valve', path: '/dota2', match: ['/dota2'], alt: 'Ilustración propia: campo de batalla de fantasía con un río entre dos fortalezas' },
+  { id: 'clash', name: 'Clash Royale', mono: 'CR', tag: 'Cartas y torres en el celu', path: '/clash', match: ['/clash'], alt: 'Ilustración propia: arena medieval de dibujo animado con un río y dos castillos' },
+  { id: 'brawl', name: 'Brawl Stars', mono: 'BS', tag: 'Peleas de tres contra tres', path: '/brawl', match: ['/brawl'], alt: 'Ilustración propia: arena de dibujo animado con cajas, cactus y gemas' },
+  { id: 'rl', name: 'Rocket League', mono: 'RL', tag: 'Fútbol con autos', path: '/rl', match: ['/rl'], alt: 'Ilustración propia: estadio futurista con una pelota gigante en el centro' },
+  { id: 'eafc', name: 'EA Sports FC', short: 'FC', mono: 'FC', tag: 'Fútbol competitivo', path: '/eafc', match: ['/eafc'], alt: 'Ilustración propia: estadio de fútbol de noche con las luces encendidas' },
   { id: 'fortnite', name: 'Fortnite', mono: 'FN', tag: 'Battle royale, también en la nube', path: '/fortnite/nube', match: ['/fortnite'], alt: 'Ilustración propia: isla de dibujo animado con una tormenta violeta' },
 ];
 const SECTIONS = [...GAMES, { id: 'esports', match: ['/esports'] }];

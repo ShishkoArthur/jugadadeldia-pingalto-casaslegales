@@ -189,6 +189,34 @@
    "scale": 0.662,
    "transparent": null,
    "size": "521x1427"
+  },
+  "pa-sc-clash-mazos-r6": {
+   "pose": "stool",
+   "head": 307,
+   "scale": 0.691,
+   "transparent": null,
+   "size": "784x1495"
+  },
+  "pa-sc-brawl-meta-r6": {
+   "pose": "chair",
+   "head": 340,
+   "scale": 0.624,
+   "transparent": null,
+   "size": "914x1318"
+  },
+  "pa-sc-lol-worlds-r6": {
+   "pose": "stool",
+   "head": 317,
+   "scale": 0.669,
+   "transparent": null,
+   "size": "845x1481"
+  },
+  "pa-sc-valorant-champions-r6": {
+   "pose": "walk",
+   "head": 280,
+   "scale": 0.757,
+   "transparent": null,
+   "size": "865x1723"
   }
  }
 }

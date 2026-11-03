@@ -12,6 +12,7 @@ export const EVENTS = [
   { k: 'msi', g: 'lol', league: 300, name: 'MSI' },
   { k: 'champions', g: 'valorant', league: 4531, name: 'VCT Champions', pick: /^Champions \d{4}$/ },
   { k: 'masters', g: 'valorant', league: 4531, name: 'VCT Masters', pick: /^Masters /, n: 2 },
+  { k: 'americas', g: 'valorant', league: 4531, name: 'VCT Américas', pick: /^Americas Stage \d/ },
   { k: 'ti', g: 'dota2', league: 4106, name: 'The International', pick: /^\d{4}$/ },
   { k: 'rlcs-worlds', g: 'rl', league: 4834, name: 'RLCS World Championship' },
   { k: 'rlcs-major', g: 'rl', league: 4694, name: 'RLCS Major', n: 2 },

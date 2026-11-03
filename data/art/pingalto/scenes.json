@@ -17,8 +17,8 @@
   "/kit/sensibilidad": {
    "image": "pa-sc-kit-sensibilidad-r5",
    "file": "data/art/pingalto/cut/pa-sc-kit-sensibilidad-r5.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2-4 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos or text); waits for the owner"
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
   },
   "/kit/dpi": {
    "image": "pa-sc-kit-dpi-r2",
@@ -83,14 +83,14 @@
   "/ff": {
    "image": "pa-sc-ff-r5",
    "file": "data/art/pingalto/cut/pa-sc-ff-r5.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos); waits for the owner"
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
   },
   "/ff/codigos": {
    "image": "pa-sc-ff-codigos-r5",
    "file": "data/art/pingalto/cut/pa-sc-ff-codigos-r5.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2-4 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos or text); waits for the owner"
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
   },
   "/valorant": {
    "image": "pa-sc-valorant-r4",
@@ -107,8 +107,8 @@
   "/cs2/major": {
    "image": "pa-sc-cs2-major-r5",
    "file": "data/art/pingalto/cut/pa-sc-cs2-major-r5.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2-4 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos or text); waits for the owner"
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
   },
   "/lol": {
    "image": "pa-sc-lol-r4",
@@ -119,28 +119,28 @@
   "/esports": {
    "image": "pa-sc-esports-r5",
    "file": "data/art/pingalto/cut/pa-sc-esports-r5.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2-4 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos or text); waits for the owner"
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
   },
   "/esports/series": {
    "image": "pa-sc-esports-series-r5",
    "file": "data/art/pingalto/cut/pa-sc-esports-series-r5.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2-4 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos or text); waits for the owner"
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
   },
   "/dota2": {
    "image": "pa-sc-dota2-r5",
    "file": "data/art/pingalto/cut/pa-sc-dota2-r5.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos); waits for the owner"
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
   },
-  "/rocket-league": {
+  "/rl": {
    "image": "pa-sc-rocket-league-r4",
    "file": "data/art/pingalto/cut/pa-sc-rocket-league-r4.webp",
    "status": "accepted",
    "accepted": "2026-11-03 owner (r4: accepted except /clash and /dota2)"
   },
-  "/fc": {
+  "/eafc": {
    "image": "pa-sc-fc-r4",
    "file": "data/art/pingalto/cut/pa-sc-fc-r4.webp",
    "status": "accepted",
@@ -155,8 +155,32 @@
   "/clash": {
    "image": "pa-sc-clash-r5",
    "file": "data/art/pingalto/cut/pa-sc-clash-r5.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r5: \"сцены принимаю\")"
+  },
+  "/clash/mazos": {
+   "image": "pa-sc-clash-mazos-r6",
+   "file": "data/art/pingalto/cut/pa-sc-clash-mazos-r6.webp",
    "status": "review",
-   "checked": "2026-11-03 agent at full size, chosen of 2 candidates (two arms and hands, jacket on both shoulders and arms in the sleeves, modest, cosplay or toy prop, no logos); waits for the owner"
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text"
+  },
+  "/lol/worlds": {
+   "image": "pa-sc-lol-worlds-r6",
+   "file": "data/art/pingalto/cut/pa-sc-lol-worlds-r6.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text"
+  },
+  "/valorant/champions": {
+   "image": "pa-sc-valorant-champions-r6",
+   "file": "data/art/pingalto/cut/pa-sc-valorant-champions-r6.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text"
+  },
+  "/brawl/meta": {
+   "image": "pa-sc-brawl-meta-r6",
+   "file": "data/art/pingalto/cut/pa-sc-brawl-meta-r6.webp",
+   "status": "review",
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete, jacket on both shoulders, legs crossed, blank black phone, toy gem, no logos"
   }
  }
 }

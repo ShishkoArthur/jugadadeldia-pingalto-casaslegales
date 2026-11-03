@@ -397,3 +397,21 @@ h2{font-size:23px}
 .pa-gm span{font-size:12px}
 }
 @media (prefers-reduced-motion:reduce){.pa-gm,.pa-gm img{transition:none}.pa-gm:hover,.pa-gm:hover img{transform:none}}
+.pa-g-dota2{--g1:#c8452f;--g2:#3a2550}.pa-g-clash{--g1:#3f7fe0;--g2:#d9a63c}.pa-g-brawl{--g1:#f2b81c;--g2:#9b4ff0}.pa-g-rl{--g1:#ff8a2a;--g2:#2a6fe0}.pa-g-eafc{--g1:#25a564;--g2:#4f8fc9}
+.pa-f textarea{width:100%;padding:10px 14px;border-radius:16px;border:1.5px solid var(--ln);background:var(--p2);color:var(--fg);font:600 15px/1.5 "Be Vietnam Pro",sans-serif;resize:vertical}
+.pa-f textarea:focus{border-color:var(--vi);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--vi) 30%,transparent)}
+.pa-ssb{display:flex;width:150px;height:12px;border-radius:6px;overflow:hidden;background:var(--p2)}
+.pa-ssb i{width:calc(var(--v)*1%)}
+.pa-ss0{background:#0b8f7f}.pa-ss1{background:#3fc1a9}.pa-ss2{background:#9fdcc9}.pa-ss3{background:#f3b3cf}.pa-ss4{background:#e8679c}.pa-ss5{background:#ad1c6c}
+.pa-cm{grid-template-columns:minmax(0,8fr) minmax(0,4fr);align-items:start}
+.pa-cm>.pa-out{position:sticky;top:84px}
+.pa-cmap{display:block;width:100%;height:auto;margin-top:12px}
+.pa-cmap rect{fill:var(--p2)}
+.pa-cp{cursor:pointer;outline:none}
+.pa-cp circle{fill:var(--c);stroke:var(--pn);stroke-width:4}
+.pa-cp text{font:600 24px "Be Vietnam Pro",sans-serif;fill:var(--fg);text-anchor:middle;paint-order:stroke;stroke:var(--p2);stroke-width:6px;pointer-events:none}
+.pa-cp-a{--c:#e8457f}.pa-cp-b{--c:#2f6fdb}.pa-cp-c{--c:#d9a63c}.pa-cp-m{--c:#7c4ddb}.pa-cp-t{--c:#f07a2a}.pa-cp-d{--c:#0b8f7f}
+.pa-cp:hover circle,.pa-cp:focus-visible circle,.pa-cp.pa-on circle{stroke:var(--fg);stroke-width:7}
+.pa-quiz .pa-cp text{display:none}
+@media (max-width:900px){.pa-cm{grid-template-columns:minmax(0,1fr)}.pa-cm>.pa-out{position:static}.pa-cp text{font-size:30px}}
+@media (max-width:680px){.pa-ssb{width:90px}}

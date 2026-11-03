@@ -45,6 +45,51 @@
   "prompt": "An original bright cartoon-style 3D island landscape: rolling grassy hills in warm yellow-green, a cute small village with pastel houses, a floating rock island in the sky, and on the horizon a soft wall of swirling purple-pink storm clouds, playful saturated colours. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map."
  },
  {
+  "id": "pa-bg-dota2",
+  "page": "dota2",
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "refs": [],
+  "note": "pingalto hero background dota2",
+  "prompt": "An original dark fantasy battlefield seen from a high aerial angle at dusk: a wide river crossing a forest diagonally between two distant ruined stone fortresses, one bathed in warm green-gold light and the other in cold crimson-violet light, glowing ancient trees, drifting embers and mist. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map."
+ },
+ {
+  "id": "pa-bg-clash",
+  "page": "clash",
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "refs": [],
+  "note": "pingalto hero background clash",
+  "prompt": "An original cheerful medieval arena seen from above in bright cartoon 3D style: a grassy field split by a small blue river with two little wooden bridges, two tiny stone castles with rounded towers and red and blue pennant-less roofs at opposite ends, soft clouds and warm sunlight. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map."
+ },
+ {
+  "id": "pa-bg-brawl",
+  "page": "brawl",
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "refs": [],
+  "note": "pingalto hero background brawl",
+  "prompt": "An original playful cartoon 3D desert-western playground arena seen from above: colourful wooden crates, cactus bushes, tall grass patches, sand paths and bright candy-coloured walls, glowing purple gems scattered, sunny saturated colours. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map."
+ },
+ {
+  "id": "pa-bg-rl",
+  "page": "rl",
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "refs": [],
+  "note": "pingalto hero background rl",
+  "prompt": "An original futuristic indoor sports stadium at night seen from high in the stands: a huge empty glossy turf pitch with glowing orange and blue boundary lines curving up the walls, two big empty goals with glowing frames, a large shiny football resting at center, light beams through haze. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map."
+ },
+ {
+  "id": "pa-bg-eafc",
+  "page": "eafc",
+  "aspectRatio": "21:9",
+  "resolution": "2K",
+  "refs": [],
+  "note": "pingalto hero background eafc",
+  "prompt": "An original big football stadium at night seen from the upper stands: a perfect green pitch with fresh white lines under bright floodlights, empty seats in light-blue and white tones, a light mist, confetti-free, a warm glow over the field. Wide cinematic background for the header of a gaming website, stylized semi-realistic 3D render with soft depth of field, rich colour, gentle haze, calm composition without one strong focal point. Completely empty of people: no people, no characters, no creatures, no silhouettes of people. No text, no letters, no numbers, no logos, no symbols, no flags, no game interface, no crosshair, no health bars, no weapons, no vehicles with markings. An original place, not a copy of any real game map."
+ },
+ {
   "id": "pa-bg-esports",
   "page": "esports",
   "aspectRatio": "21:9",
