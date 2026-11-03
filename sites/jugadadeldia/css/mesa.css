@@ -1,5 +1,5 @@
 .jg-cd{--k:var(--b2);position:relative;display:inline-grid;grid-template-rows:auto 1fr auto;justify-items:center;align-items:center;flex:none;width:74px;aspect-ratio:2/3;padding:6px 4px;border:0;border-radius:12px;background:#fffdf7;color:var(--k);box-shadow:0 0 0 1px #0e172626,0 8px 16px -10px #0008;font:800 22px/1 var(--d);text-align:center;user-select:none;-webkit-user-select:none}
-.jg-cd[data-s=e]{--k:#2563c9}.jg-cd[data-s=b]{--k:#13805f}.jg-cd[data-s=o]{--k:#c98a00}.jg-cd[data-s=c]{--k:#cf2f63}
+.jg-cd[data-s=e]{--k:#2563c9}.jg-cd[data-s=b]{--k:#13805f}.jg-cd[data-s=o]{--k:#9a6800}.jg-cd[data-s=c]{--k:#cf2f63}
 .jg-cd svg{width:62%;height:auto;aspect-ratio:1;color:var(--k);fill:none;stroke:var(--k);stroke-width:2}
 .jg-cd small{font:700 11px var(--m);color:#5b6475}
 .jg-cd.jk{--k:#8b5cf6;background:linear-gradient(160deg,#fff,#efe7ff)}

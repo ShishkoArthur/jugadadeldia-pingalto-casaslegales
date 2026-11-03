@@ -8,7 +8,7 @@ const hostOf = u => new URL(u).hostname.replace(/^www\./, '');
 function quote(h, e) {
   if (!e || !e.quote) return '';
   const d = h.doc('rg:' + e.doc);
-  return '<details class="jg-src" data-nosnippet><summary>De dónde sale</summary><blockquote>' + h.esc(e.quote) + '</blockquote><cite>' +
+  return '<details class="jg-src" data-nosnippet><summary>De dónde sale</summary><blockquote>' + h.esc(e.quote).replace(/@/g, '<span>@</span>') + '</blockquote><cite>' +
     h.esc(e.name || d.jurName) + ' · <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(hostOf(d.url)) + '</a> · revisado el ' + h.fmtDate(d.fetched) + '</cite></details>';
 }
 const provinces = h => h.rg.pack.provinces.map(p => ({ ...h.rg.prov(p.id), raw: p })).sort((a, b) => a.name.localeCompare(b.name, 'es'));

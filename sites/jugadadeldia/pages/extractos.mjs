@@ -21,7 +21,7 @@ const loading = '<p class="jg-xw" data-xw>Cargando los extractos…</p><noscript
 const pageData = h => ({ feed: FEED, stale: STALE_HOURS, paths: Object.fromEntries(PROV_PAGES.filter(([, u]) => h.built(u))) });
 
 function method(h, { two = true } = {}) {
-  return '<section class="jg-c w3"><span class="jg-sm">De dónde salen</span><h2>Cómo armamos cada extracto</h2><ul class="jg-ul">' +
+  return '<section class="jg-c w3"><span class="jg-sm">De dónde salen</span><h2>Cómo armamos cada extracto</h2><ul class="jg-ul tx">' +
     '<li>Leemos los resultados oficiales de <b>La Quiniela de la Ciudad (LOTBA)</b>, que publica en la misma página los extractos de la Ciudad, la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza.</li>' +
     (two ? '<li>Los comparamos con el <b>extracto oficial de la Provincia de Buenos Aires</b> (IPLyC), que trae Provincia, Ciudad, Córdoba, Santa Fe y Entre Ríos del mismo turno. Si las dos copias coinciden cifra por cifra, el sorteo lleva la marca <b>2 fuentes</b>; si difieren en una sola cifra, no lo mostramos.</li>' : '<li>Mendoza solo llega por la copia de LOTBA: lleva la marca <b>1 fuente</b>.</li>') +
     '<li>Lo revisamos cada 15 minutos desde nuestro servidor. Si una fuente no responde, queda la última copia buena; si pasan más de ' + STALE_HOURS + ' horas sin poder revisar, la página lo dice y no muestra el día como si estuviera al día.</li>' +
