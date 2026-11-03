@@ -60,11 +60,14 @@
   движок труко 1×1 и 2×2 + боты, generala (оптимальный бот), chinchón, escoba de 15 (`engine/*`, `docs/ENGINE-TRUCO.md`,
   `docs/ENGINE-GAMES.md`; 160 тестов). Страницы игр jugadadeldia — после выбора дизайна.
 - **Потом:** оформление jugadadeldia после выбора; сцены девушек; тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
-  ждём токен); Santa Fe/Mendoza — файлы от владельца в `docs/reference/owner-saves/`; ключи PandaScore/Supercell — от владельца.
+  ждём токен); копии страниц от владельца (Córdoba, Neuquén, Río Negro, Salta — robots закрыт для ИИ; Santa Fe, Mendoza — гео-блок):
+  список и инструкция — `docs/reference/owner-saves/README.md`, сохранить до конца января 2027; ключи PandaScore/Supercell — от владельца.
 - Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
+- 03.11 — casaslegales волна 4 выложена: копии сайтов с закрытым для ИИ robots → `pendingOwnerCopy`, 5 страниц оператор × провинция,
+  /calculadora/cuotas, /calculadora/combinada, /guia/ley-federal (раздел ниже).
 - 03.11 — pingalto волна 2 выложена: формат чисел es-AR во всех инструментах (+ гейт), /tier-list, /valorant/agentes, /cs2/mira,
   /ff/nombres, /ff/espacio-invisible, /fortnite/nube (раздел «pingalto» ниже).
 - 03.11 — casaslegales волна 3 выложена: 24 страницы провинций, /provincias, реестры La Rioja/Neuquén/Río Negro, 4 гайда (раздел ниже).
@@ -112,6 +115,29 @@
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
 - **Дальше:** девушка (выбор владельца) → сцены; хабы /valorant, /cs2, /ff, /fortnite, /esports; /esports/series (математика серий из
   RinkMath); ленты (OpenDota, VRS, PandaScore) — по слову владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos.
+
+## casaslegales (03.11) — волна 4 выложена (63 страницы + 404)
+- **Robots (TRAPS 03.11):** документы с loteriadecordoba.com.ar, ijan-neuquen.com, loteriaderionegro.gob.ar, enrejasalta.com.ar (10 страниц,
+  в реестрах, `provinces.json`, пакете помощи, операторах) помечены `pendingOwnerCopy: true` — факты на сайте остались, но **агенты их больше
+  не качают**: `verify-sources --recheck` пропускает такие реестры, `verify-rg --recheck` — такие документы; `verify-sources` падает, если
+  документ с такого хоста без пометки и без `copiedBy: "owner"` (`tools/lib/ownercopy.mjs`, список хостов `AI_BLOCKED_HOSTS`). Сборка
+  печатает список «owner copies pending» с остатком дней (истекают 09–11.02.2027). Владелец сохраняет из Chrome (Ctrl+U → Ctrl+S + PDF) по
+  `docs/reference/owner-saves/README.md` (там же Santa Fe и Mendoza); подмена — `node tools/owner-copy.mjs <slug> <file> --date … --write`
+  → `npm test`. /registro-de-fuentes помечает такие копии.
+- **Новые страницы:** /operador/{betsson/buenos-aires, betsson/caba, betsson/cordoba, betano/buenos-aires, bplay/cordoba} (`content/opprov.mjs`,
+  `pages/opprov.mjs`; только где марка в проверенном списке, сборка падает при другом адресе): таблица-diff версий марки по всем спискам
+  (отличия подсвечены, код считает), «¿Estás en el sitio de …?» (engine/hostcheck в браузере), что видели на этом адресе, помощь провинции.
+  Схема адресов: третий уровень разрешён только `/operador/<марка>/<провинция>`. Ссылки на них — из карты лицензий страницы оператора.
+- /calculadora/cuotas — decimal/fraccional/americana, вероятность, снятие маржи 2–3 исходов в любом формате; /calculadora/combinada —
+  кэф комбинированной, «1 из N», маржа = 1 − Π devoluciones, «лестница» на 6 матчах-примерах (`engine/odds.mjs`: parseFractional,
+  parseAmerican, toFractional, toAmerican, convertOdd, parlay; тесты `engine/test/odds-formats.test.mjs`). В плане добавлена /calculadora/cuotas.
+- /guia/ley-federal (по плану; это и есть «publicidad»): таймлайн Diputados 27.11.2024 → комиссии Сената 26.03.2025 → пленарий 15.10.2025 →
+  проект Ejecutivo 26.05.2026 → moción de preferencia 29.10.2026; цитаты о рекламе обоих проектов (новые `law[].also` в пакете помощи,
+  сверены побайтно); 10 из 28 проектов Сената о рекламе — считает код по копии страницы Сената.
+- **Не сделано и почему:** /guia/mercado-pago — Mercado Pago текстом есть только у Jugadón CABA (нужны ≥ 3 оператора; bet365, BetWarrior,
+  bplay, Codere отдают 403 из Польши — нужен Chrome владельца из AR); /guia/impuestos — нужны цитаты ARCA и юр. проверка (P3);
+  bplay/santa-fe, betano/mendoza, betwarrior/mendoza — нет проверенного списка. **Дальше:** jugadon/la-rioja (данные есть), /operador/stake,
+  super7, betfun, play-uzu; копии владельца → Santa Fe/Mendoza в реестры.
 
 ## casaslegales (03.11) — волна 3 выложена (55 страниц + 404, индекс открыт)
 - **Волна 3 (живое):** /provincias (таблица 24 юрисдикций, фильтр по статусу, на телефоне — карточки) · /provincia/<все 24> ·

@@ -14,7 +14,7 @@ import { quote, sectionHead } from './parts.mjs';
 const DE = { IPLyC: 'del IPLyC', 'Lotería de Córdoba': 'de la Lotería de Córdoba', 'Lotería de Río Negro': 'de la Lotería de Río Negro' };
 const actOf = (h, r, cell) => {
   if (cell.ref) return cell.ref;
-  const lic = r.quotes.licence && /Resoluci[oó]n[^.]*?\d+\/\d+/.exec(r.quotes.licence.text);
+  const lic = r.quotes.licence && /Resoluci[oó]n\D*\d+\/\d+/.exec(r.quotes.licence.text);
   return lic ? lic[0] + ' (la misma para toda la lista)' : 'la lista no lo indica por sitio';
 };
 
