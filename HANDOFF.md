@@ -66,6 +66,7 @@
 ## Журнал
 - 03.11 — pingalto волна 2 выложена: формат чисел es-AR во всех инструментах (+ гейт), /tier-list, /valorant/agentes, /cs2/mira,
   /ff/nombres, /ff/espacio-invisible, /fortnite/nube (раздел «pingalto» ниже).
+- 03.11 — casaslegales волна 3 выложена: 24 страницы провинций, /provincias, реестры La Rioja/Neuquén/Río Negro, 4 гайда (раздел ниже).
 - 03.11 — casaslegales волна 2 выложена: 10 операторов со своими скриншотами, /verificador, 5 проверок брендов, 3 гайда, автоисключение.
 - 03.11 — движок трёх сайтов (render, гейты + selftest, deploy, источники с цитатами) и каркас casaslegales.com выложен
   (9 страниц + 404, индекс открыт). Раздел «Движок и выкладка» выше. /quienes-escriben → /redaccion (автор только на jugadadeldia).
@@ -111,7 +112,31 @@
 - **Дальше:** девушка (выбор владельца) → сцены; хабы /valorant, /cs2, /ff, /fortnite, /esports; /esports/series (математика серий из
   RinkMath); ленты (OpenDota, VRS, PandaScore) — по слову владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos.
 
-## casaslegales (03.11) — волна 2 выложена (29 страниц + 404, индекс открыт)
+## casaslegales (03.11) — волна 3 выложена (55 страниц + 404, индекс открыт)
+- **Волна 3 (живое):** /provincias (таблица 24 юрисдикций, фильтр по статусу, на телефоне — карточки) · /provincia/<все 24> ·
+  /guia/como-verificar · /guia/menores · /calculadora/margen · /guia/handicap. Меню: Verificador, Licencias, Provincias, Cómo verificar,
+  Operadores, Ayuda; провинции PBA/CABA/Córdoba ушли из меню (есть хаб); калькулятор и hándicap в подвале скрыты на страницах помощи (гейт helplink).
+- **Статусы (код считает, не руками):** «lista oficial verificada» = реестр в `data/sources/registries/` — PBA 7, CABA 11, Córdoba 4,
+  **La Rioja 6** (AJALAR, пост 26.02.2025), **Neuquén 6** (IJAN: La Neuquina Online со страницы «Juego legal» + таблица «CASINOS ONLINE
+  PERMITIDOS»; две страницы — новое поле `list.more` в `tools/lib/sources.mjs`), **Río Negro 3** (блок «Jugá online en los sitios autorizados»
+  на главной Лотереи). Остальные 18 — `data/sources/provinces/provinces.json` (проверка `tools/lib/provsources.mjs`, вызывается из
+  `verify-sources.mjs` и при сборке): «plataforma provincial» — Entre Ríos (IAFAS Play), Misiones (GuazuBet, QuinApp), Chaco (Interbet),
+  Corrientes (La Correntina Online): byte-доказательство ссылки + проверка, что других .bet.ar-ссылок в копии нет; «sin dato verificado» —
+  Salta, Tucumán, San Juan, TdF, Santa Cruz (копия главной/страницы, проверено «нет .bet.ar»), Jujuy (только JS-оболочка), San Luis,
+  Catamarca, La Pampa, Formosa, Santiago del Estero (не нашли/таймаут); «no consultable» — Chubut (исключён), Santa Fe, Mendoza (гео-блок,
+  не обходили; ждём копии владельца). Без гео-обхода и без обхода защиты. robots у Neuquén/Río Negro/Salta закрыт для ClaudeBot (Cloudflare),
+  `*` разрешён с `use=reference` — по прецеденту Córdoba: одна загрузка с прозрачным UA `casaslegales-check/1.0`, только справка.
+- **Страница провинции:** свой рельеф-мини-карта (плитка провинции подсвечена) + чипы статуса/линии/автоисключения/18+/даты; тело по
+  статусу (список · платформа · «что проверили» · почему не цитируем); помощь и автоисключение из пакета RG. Текст — `content/provcopy.mjs`,
+  сборка падает, если статус в тексте ≠ статус в данных. Новые реестры подтянулись в /licencias, /verificador, карту главной, операторов:
+  BetWarrior теперь и в Neuquén, Jugadón — и в La Rioja (jugadon.bet.ar), `check`-строки обновлены.
+- **Гайды:** `engine/odds.mjs` (+ `engine/test/odds.test.mjs`): маржа/честные кофы из десятичных кэфов, расчёт азиатского hándicap
+  (целые/половины/четверти); калькулятор работает в браузере тем же модулем. /guia/menores — 18+ из цитат регуляторов (8 юрисдикций) и
+  операторов + проект закона (media sanción). /registro-de-fuentes включает копии из `data/sources/provinces`.
+- **Перепроверка:** все новые копии от 03.11 — свежи до 11.02.2027 (`verify-sources.mjs --recheck` перекачивает реестры; копии
+  `data/sources/provinces/` пока перекачивать руками тем же UA).
+
+## casaslegales (03.11) — волна 2 (29 страниц + 404)
 - **Живое (новое):** /verificador · /operadores · /operador/{betsson, betano, bet365, bplay, betwarrior, codere, jugadon, playcet, sportsbet,
   casino-buenos-aires-online} · /verificar/{zeus, tucan-win, betbox, 1win, betonwin} · /guia/bet-ar · /guia/sitios-ilegales ·
   /juego-responsable/autoexclusion (страница помощи). Меню: Verificador, Licencias, Operadores, 3 провинции, Ayuda; гайды — в подвале.
@@ -133,5 +158,7 @@
   иначе «no figura en las listas que revisamos» (≠ нелегально). Данные встроены, сеть не нужна; `?d=` для ссылки.
 - **Проверки брендов** `/verificar/*`: сборка ищет имя в сыром HTML трёх копий списков и падает, если нашла; Stake не брали (есть в PBA).
 - **План** `data/plan/casaslegales.json` синхронизирован (title/H1/description построенных, поле `live`).
-- **Дальше:** Chrome владельца из AR — скриншоты bet365/BetWarrior/bplay/Codere/Betano (+ их JR/T&C → цитаты); P2: /operador/stake,
-  super7, betfun, play-uzu; operator × provincia; /guia/mercado-pago (нужны оплаты ≥ 3 операторов); Mendoza/Santa Fe (файлы владельца).
+- **Дальше:** Chrome владельца из AR — скриншоты bet365/BetWarrior/bplay/Codere/Betano (+ их JR/T&C → цитаты) и копии списков Mendoza/Santa Fe
+  (`docs/reference/owner-saves/`) → перевести их в «lista oficial»; P2: /operador/stake, super7, betfun, play-uzu, casino-club (Río Negro);
+  operator × provincia; /guia/mercado-pago (нужны оплаты ≥ 3 операторов); `--recheck` для `data/sources/provinces`; verificador может
+  отдельно показывать «plataforma provincial» (сейчас такие адреса — «no figura en las listas»).
