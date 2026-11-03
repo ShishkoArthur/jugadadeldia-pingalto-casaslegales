@@ -18,14 +18,16 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "390394fa4f5a689a38922c478d25ed50f15e23326545abf5b869c0d193b5dd89",
-   "file": "data/sources/registries/_docs/rne-inicio.html"
+   "file": "data/sources/registries/_docs/rne-inicio.html",
+   "pendingOwnerCopy": true
   },
   "rne-rionegrina-online": {
    "url": "https://www.loteriaderionegro.gob.ar/la-rionegrina-online",
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "2fe0e330b7ece81b3cca94b0d29a286f36c3d464a209900e4fdf1d0c9e9bfd88",
-   "file": "data/sources/registries/_docs/rne-rionegrina-online.html"
+   "file": "data/sources/registries/_docs/rne-rionegrina-online.html",
+   "pendingOwnerCopy": true
   }
  },
  "quotes": {

@@ -185,7 +185,8 @@
    "file": "data/sources/registries/_docs/cba-juegos-online.html",
    "kind": "official",
    "official": true,
-   "title": "Lotería de Córdoba, juego online"
+   "title": "Lotería de Córdoba, juego online",
+   "pendingOwnerCopy": true
   }
  },
  "quotes": {

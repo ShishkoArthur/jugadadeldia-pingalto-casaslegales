@@ -10,6 +10,7 @@ import { pathToFileURL } from 'node:url';
 import { ROOT } from './env.mjs';
 import { loadRegistries, verifyRegistries, brandNames, loadRg } from './lib/sources.mjs';
 import { verify as verifyRg, displayable, freshness } from './verify-rg.mjs';
+import { ownerCopyReminder } from './lib/ownercopy.mjs';
 import { fmtDate, fmtInt } from '../engine/format.mjs';
 
 export const SITES = ['jugadadeldia', 'pingalto', 'casaslegales'];
@@ -46,6 +47,7 @@ async function build(id) {
   const fr = freshness(rgPack, TODAY);
   const staleRg = Object.keys(rgPack.docs).filter(s => !fr.docOk(s));
   if (staleRg.length) throw new Error('help package: documents older than ' + fr.maxAge + ' days: ' + staleRg.join(', ') + ' (node tools/verify-rg.mjs --recheck --write)');
+  if ((SITE.registries || []).length) ownerCopyReminder(TODAY, m => console.log('render ' + id + ': ' + m));
   const allRegs = loadRegistries();
   const regs = (SITE.registries || []).map(r => allRegs.find(x => x.id === r) || (() => { throw new Error('no registry ' + r); })());
   const disp = displayable(rgPack, TODAY);

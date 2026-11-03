@@ -24,14 +24,16 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "b5db3b8d384557e25df2a775dbe262869829e965f33fa3552a550d7a0a28750f",
-   "file": "data/sources/registries/_docs/neu-juego-legal.html"
+   "file": "data/sources/registries/_docs/neu-juego-legal.html",
+   "pendingOwnerCopy": true
   },
   "neu-casinos": {
    "url": "https://ijan-neuquen.com/casinos.php",
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "91bfd63bc833b52e9fd0ec8ab6a3ecddb29fe6d5c77c30395a7783f0dd280dd3",
-   "file": "data/sources/registries/_docs/neu-casinos.html"
+   "file": "data/sources/registries/_docs/neu-casinos.html",
+   "pendingOwnerCopy": true
   }
  },
  "quotes": {

@@ -18,7 +18,8 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "87e2d04637f9d7f8e4723884adbf36904a65f6243ed73686d2f4b254eebf8fe6",
-   "file": "data/sources/registries/_docs/cba-juegos-online.html"
+   "file": "data/sources/registries/_docs/cba-juegos-online.html",
+   "pendingOwnerCopy": true
   }
  },
  "quotes": {

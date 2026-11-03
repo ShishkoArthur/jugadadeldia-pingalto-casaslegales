@@ -245,6 +245,7 @@ export async function recheck({ write = false, only = null, today = new Date().t
   for (const [slug, d] of Object.entries(pack.docs)) {
     if (only && !only.has(slug)) { skipped++; continue; }
     if (d.refresh === 'manual') { log(`  manual ${slug}: not downloaded (${d.url})`); skipped++; continue; }
+    if (d.pendingOwnerCopy) { log(`  owner copy ${slug}: not downloaded, robots.txt blocks AI crawlers (${d.url})`); skipped++; continue; }
     const ext = path.extname(d.file);
     const f = path.join(tmp, slug + ext);
     const { status, finalUrl } = download(d.url, f);

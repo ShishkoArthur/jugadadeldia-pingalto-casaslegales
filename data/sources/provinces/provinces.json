@@ -43,7 +43,8 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "805c3b21fede578c9cb407040f7d191451cce3c979d7b92f8ea07d7d2ac3dccd",
-   "file": "data/sources/provinces/_docs/sal-enreja-juego-autorizado.html"
+   "file": "data/sources/provinces/_docs/sal-enreja-juego-autorizado.html",
+   "pendingOwnerCopy": true
   },
   "tuc-caja-popular-inicio": {
    "url": "https://www.cajapopular.gov.ar/",

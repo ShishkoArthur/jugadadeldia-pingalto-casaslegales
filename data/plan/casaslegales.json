@@ -162,9 +162,9 @@
  {
   "section": "Провинции",
   "url": "/provincia/cordoba",
-  "title": "Apuestas online legales en Córdoba: las 4 plataformas",
-  "titleLen": 53,
-  "h1": "Córdoba: las 4 plataformas de juego online habilitadas",
+  "title": "Apuestas online legales en Córdoba: las {{cba_n}} plataformas",
+  "titleLen": 61,
+  "h1": "Córdoba: las {{cba_n}} plataformas de juego online habilitadas",
   "description": "Apuestas online legales en Córdoba: las plataformas habilitadas por la Lotería de Córdoba, sus dominios y las herramientas de control LUCA y NoVa+.",
   "keys": "casino online cordoba 2.6k/39 · casas de apuestas cordoba 150/- · apuestas deportivas cordoba 150/37 · casa de apuestas cordoba 100/0 · apuestas online cordoba 100/55 · apuestas deportivas cordoba argentina 90/-",
   "kind": "province",
@@ -306,10 +306,10 @@
  {
   "section": "Провинции",
   "url": "/provincia/rio-negro",
-  "title": "Juego online legal en Río Negro: las 3 plataformas",
-  "titleLen": 50,
-  "h1": "Río Negro: los 3 sitios autorizados por la Lotería",
-  "description": "Juego online legal en Río Negro: los 3 sitios que la Lotería muestra como autorizados, su plataforma de quiniela y la autoexclusión por dos años.",
+  "title": "Juego online legal en Río Negro: las {{rne_n}} plataformas",
+  "titleLen": 58,
+  "h1": "Río Negro: los {{rne_n}} sitios autorizados por la Lotería",
+  "description": "Juego online legal en Río Negro: los {{rne_n}} sitios que la Lotería muestra como autorizados, su plataforma de quiniela y la autoexclusión por dos años.",
   "keys": "casino del rio online 1.4k/20 · casino club online bariloche 150/26",
   "kind": "province",
   "wave": "P2",
@@ -988,7 +988,8 @@
   "data": "реестр провинции + публичная страница провинциальной версии (снимок)",
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
-  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель"
+  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
+  "live": "2026-11-03"
  },
  {
   "section": "Оператор × провинция",
@@ -1005,7 +1006,8 @@
   "data": "реестр провинции + публичная страница провинциальной версии (снимок)",
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
-  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель"
+  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
+  "live": "2026-11-03"
  },
  {
   "section": "Оператор × провинция",
@@ -1022,7 +1024,8 @@
   "data": "реестр провинции + публичная страница провинциальной версии (снимок)",
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
-  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель"
+  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
+  "live": "2026-11-03"
  },
  {
   "section": "Оператор × провинция",
@@ -1030,7 +1033,7 @@
   "title": "Betano en Provincia de Buenos Aires: licencia y dominio",
   "titleLen": 55,
   "h1": "Betano en PBA: qué licencia tiene",
-  "description": "Betano en Provincia de Buenos Aires: qué licencia tiene del IPLyC, con qué dominio opera y en qué se diferencia de su versión en la Ciudad o en Mendoza.",
+  "description": "Betano en Provincia de Buenos Aires: qué licencia tiene del IPLyC, con qué dominio opera y en qué se diferencia de su versión en la Ciudad.",
   "keys": "betano pba 24k/18 · betano provincia de buenos aires 1.7k/59 · betano provincia 900/-",
   "kind": "legal-check",
   "wave": "P2",
@@ -1039,7 +1042,8 @@
   "data": "реестр провинции + публичная страница провинциальной версии (снимок)",
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
-  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель"
+  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
+  "live": "2026-11-03"
  },
  {
   "section": "Оператор × провинция",
@@ -1107,7 +1111,8 @@
   "data": "реестр провинции + публичная страница провинциальной версии (снимок)",
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
-  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель"
+  "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
+  "live": "2026-11-03"
  },
  {
   "section": "Оператор × провинция",
@@ -1506,7 +1511,8 @@
   "data": "hcdn.gob.ar, senado.gob.ar, argentina.gob.ar (уже в пакете docs/reference/rg-ar-gambeteo/_docs)",
   "auto": "хеш страницы экспедиента Сената раз в неделю — ключевой риск для сайта",
   "rg": true,
-  "notes": "При принятии закона — пересмотр всего сайта (реклама/упоминания брендов)"
+  "notes": "При принятии закона — пересмотр всего сайта (реклама/упоминания брендов)",
+  "live": "2026-11-03"
  },
  {
   "section": "Гайды и инструменты",
@@ -1613,11 +1619,29 @@
  },
  {
   "section": "Гайды и инструменты",
+  "url": "/calculadora/cuotas",
+  "title": "Conversor de cuotas: decimal, fraccional y americana",
+  "titleLen": 52,
+  "h1": "Conversor de cuotas: decimal, fraccional, americana y probabilidad",
+  "description": "Pasá una cuota de decimal a fraccional o americana, mirá su probabilidad implícita y sacale el margen de la casa a un mercado de dos o tres resultados.",
+  "keys": "— (не проверено в Ahrefs)",
+  "kind": "tool",
+  "wave": "P2",
+  "tool": "Conversor decimal / fraccional / americana, вероятность, снятие маржи (2–3 исхода, любой формат); визуал «лестница» частых кэфов",
+  "ar": "Десятичные cuotas как на сайтах .bet.ar",
+  "data": "engine/odds.mjs (тесты engine/test/odds-formats.test.mjs)",
+  "auto": "не требует",
+  "rg": true,
+  "notes": "Добавлено в волне 4 (03.11) по задаче",
+  "live": "2026-11-03"
+ },
+ {
+  "section": "Гайды и инструменты",
   "url": "/calculadora/combinada",
   "title": "Apuestas combinadas: cómo se multiplica el margen",
   "titleLen": 49,
   "h1": "Combinadas: por qué el margen crece con cada selección",
-  "description": "Por qué el margen crece con cada selección de una combinada: una calculadora con partidos de la Liga Profesional y la probabilidad real de acertar todas.",
+  "description": "Por qué el margen crece con cada selección de una combinada: la cuota total, la probabilidad de acertar todas y cuánto vuelve en promedio, calculados.",
   "keys": "—",
   "kind": "tool",
   "wave": "P3",
@@ -1626,7 +1650,8 @@
   "data": "engine/odds.mjs",
   "auto": "не требует",
   "rg": true,
-  "notes": ""
+  "notes": "",
+  "live": "2026-11-03"
  },
  {
   "section": "Помощь",

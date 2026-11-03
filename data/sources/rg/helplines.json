@@ -950,6 +950,14 @@
     {
      "quote": "la norma prohíbe el acceso de niñas, niños y adolescentes menores de 18 años a sitios y plataformas de juegos de azar y apuestas, de pronósticos y apuestas deportivas en línea.",
      "doc": "ar-hcdn-media-sancion-2024-11-27"
+    },
+    {
+     "quote": "prohíbe la promoción y patrocinio de los juegos de azar, de pronósticos y apuestas deportivas y de apuestas en línea; así como también los bonos de bienvenida y la participación de los influencers",
+     "doc": "ar-hcdn-media-sancion-2024-11-27"
+    },
+    {
+     "quote": "la prohibición de publicidad de juegos de apuestas online; y la limitación de publicidad en la transmisión de futbol profesional",
+     "doc": "ar-hcdn-media-sancion-2024-11-27"
     }
    ]
   },
@@ -967,6 +975,14 @@
     {
      "quote": "INGRESO DEL DICTAMEN A LA MESA DE ENTRADAS 26-03-2025 SIN FECHA",
      "doc": "ar-senado-cd-26-24"
+    },
+    {
+     "quote": "FECHA DE MOCION DE PREFERENCIA: 29-10-2026",
+     "doc": "ar-senado-cd-26-24"
+    },
+    {
+     "quote": "DE SALUD ORDEN DE GIRO: 1 26-03-2025 DE LEGISLACIÓN GENERAL ORDEN DE GIRO: 2 26-03-2025 DE JUSTICIA Y ASUNTOS PENALES ORDEN DE GIRO: 3 26-03-2025",
+     "doc": "ar-senado-cd-26-24"
     }
    ]
   },
@@ -982,7 +998,25 @@
    "date": "2026-05-26",
    "summary": "The national Government sent its own bill (Prevención de Ludopatía y Regulación de Juegos de Azar en Línea) to Congress.",
    "quote": "El Gobierno nacional presentó ante el Congreso el Proyecto de Ley de Prevención de Ludopatía y Regulación de Juegos de Azar en Línea.",
-   "doc": "ar-gob-proyecto-pe-2026-05-26"
+   "doc": "ar-gob-proyecto-pe-2026-05-26",
+   "also": [
+    {
+     "quote": "En materia de publicidad, el proyecto prohíbe la promoción, patrocinio y difusión de plataformas ilegales en televisión, radio, vía pública, redes sociales y entornos digitales.",
+     "doc": "ar-gob-proyecto-pe-2026-05-26"
+    },
+    {
+     "quote": "Cualquier entidad, agencia, medio de comunicación o creador de contenido tendrá que verificar que el operador promocionado cuente con autorización oficial.",
+     "doc": "ar-gob-proyecto-pe-2026-05-26"
+    },
+    {
+     "quote": "la publicidad de los operadores autorizados no podrá estar protagonizada o dirigida a menores ni asociar el juego con el éxito económico, laboral o social.",
+     "doc": "ar-gob-proyecto-pe-2026-05-26"
+    },
+    {
+     "quote": "las entidades financieras, proveedores de servicios de pago o de activos virtuales (criptomonedas) tienen prohibido ofrecer sus servicios a operadores de juegos de azar no autorizados.",
+     "doc": "ar-gob-proyecto-pe-2026-05-26"
+    }
+   ]
   }
  ],
  "closed": [
@@ -1041,7 +1075,8 @@
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "d4d78efe65a0cabeeb2ccd4ff74a6bfbd23f0fb989e52c07a1b654f22e9100eb",
-   "file": "data/sources/rg/_docs/ar-x-loteria-juego-responsable.html"
+   "file": "data/sources/rg/_docs/ar-x-loteria-juego-responsable.html",
+   "pendingOwnerCopy": true
   },
   "ar-e-iafas-prevenjuego": {
    "url": "https://www.iafas.gov.ar/juego-responsable/prevenjuego/",
@@ -1069,14 +1104,16 @@
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "bf579cd3e349d51f67917a7d935acadc27a60587564eb5efb38466876b85ac34",
-   "file": "data/sources/rg/_docs/ar-q-ijan-juego-responsable.html"
+   "file": "data/sources/rg/_docs/ar-q-ijan-juego-responsable.html",
+   "pendingOwnerCopy": true
   },
   "ar-r-loteria-autoexclusion": {
    "url": "https://www.loteriaderionegro.gob.ar/juego-responsable/autoexclusion",
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "6b69564b4a3bfa44fa67f64f72ce34b79141a2cfe3fe875187cb8c2a2ddef215",
-   "file": "data/sources/rg/_docs/ar-r-loteria-autoexclusion.html"
+   "file": "data/sources/rg/_docs/ar-r-loteria-autoexclusion.html",
+   "pendingOwnerCopy": true
   },
   "ar-msal-0800-salud-mental": {
    "url": "https://www.argentina.gob.ar/node/356435",
@@ -1132,7 +1169,8 @@
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "d2e03313b93f54d271e6608ba60a08529e896dbc7c880132db99f441f8cf1b96",
-   "file": "data/sources/rg/_docs/ar-a-enreja-jr.html"
+   "file": "data/sources/rg/_docs/ar-a-enreja-jr.html",
+   "pendingOwnerCopy": true
   },
   "ar-n-iplyc-portal": {
    "url": "https://www.loteriademisiones.com.ar/portal/",

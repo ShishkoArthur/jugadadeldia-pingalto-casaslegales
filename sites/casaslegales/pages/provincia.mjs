@@ -59,7 +59,7 @@ function others(h, x) {
       '</ul></article>').join('') + '</div></section>';
 }
 
-function help(h, x) {
+export function help(h, x) {
   const j = x.j, parts = [];
   if (j.line) parts.push('<div class="rl-box"><h3>' + h.esc(j.line.name) + '</h3><a class="rl-tel" href="tel:' + h.esc(j.line.phoneTel) + '">' + h.esc(j.line.phone) + '</a>' +
     (j.line.free ? '<p>Línea gratuita.</p>' : '') + (j.line.hours ? '<p>' + h.esc(j.line.hours) + '.</p>' : '') + rgQuote(h, j.line, j.line.name) + '</div>');

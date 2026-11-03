@@ -10,7 +10,9 @@ import { operatorPages } from './operador.mjs';
 import { verificador } from './verificador.mjs';
 import { checkPages } from './verificar.mjs';
 import { betAr, ilegales, operadores, autoexclusion } from './guias.mjs';
+import { calcCuotas, calcCombinada, leyFederal } from './guias4.mjs';
+import { opProvPages } from './opprov.mjs';
 
-export const PAGES = [home, licencias, verificador, operadores, ...operatorPages, provincias, ...provinces, ...checkPages, betAr, ilegales, comoVerificar, menores, calcMargen, handicap, ayuda, autoexclusion, metodologia, redaccion, fuentes];
+export const PAGES = [home, licencias, verificador, operadores, ...operatorPages, ...opProvPages, provincias, ...provinces, ...checkPages, betAr, ilegales, comoVerificar, menores, calcMargen, handicap, calcCuotas, calcCombinada, leyFederal, ayuda, autoexclusion, metodologia, redaccion, fuentes];
 export const NOT_FOUND = notFound;
 export const BETTING_KINDS = ['registry', 'province', 'operator', 'tool'];

@@ -1,5 +1,5 @@
 import { checkHost, anatomy } from '../../../engine/hostcheck.mjs';
-import { margin, parseOdd } from '../../../engine/odds.mjs';
+import { margin, parseOdd, parseAny, convertOdd, toFractional, toAmerican, parlay } from '../../../engine/odds.mjs';
 const root = document.documentElement;
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -222,6 +222,133 @@ function verifier() {
   if (q) { input.value = q; run(q, false); }
 }
 
+const cdec = (x, d) => x.toFixed(d).replace('.', ',');
+const cpct = (x, d) => cdec(x * 100, d) + ' %';
+const camer = v => (v > 0 ? '+' : String.fromCharCode(0x2212)) + cdec(Math.abs(v), Number.isInteger(Math.round(Math.abs(v) * 100) / 100) ? 0 : 2);
+const cfrac = f => (f.exact ? '' : String.fromCharCode(0x2248) + ' ') + f.text;
+const fmtMoney = n => '$ ' + Math.round(n).toLocaleString('es-AR');
+const fmtOf = form => { const r = form.querySelector('input[name=f]:checked'); return r ? r.value : 'decimal'; };
+
+function convCalc() {
+  const form = document.querySelector('[data-rl-conv]');
+  if (!form) return;
+  const err = form.querySelector('[data-rl-cerr]');
+  const set = (k, t) => { const e = form.querySelector('[data-k=' + k + ']'); if (e) e.textContent = t; };
+  const run = () => {
+    const c = convertOdd(form.querySelector('input[name=q]').value, fmtOf(form));
+    if (!c) { err.hidden = false; return; }
+    err.hidden = true;
+    set('dec', cdec(c.decimal, 2));
+    set('frac', cfrac(c.fractional));
+    set('am', camer(c.american));
+    set('imp', cpct(c.implied, 1));
+    const bar = form.querySelector('[data-k=bar]');
+    if (bar) bar.style.setProperty('--w', (100 * c.implied).toFixed(2) + '%');
+  };
+  form.addEventListener('input', run);
+  form.addEventListener('change', run);
+  form.addEventListener('submit', e => { e.preventDefault(); run(); });
+}
+
+function novigCalc() {
+  const form = document.querySelector('[data-rl-novig]');
+  if (!form) return;
+  const err = form.querySelector('[data-rl-nerr]');
+  const rows = form.querySelector('[data-rl-nrows]');
+  const sum = form.querySelector('[data-rl-nsum]');
+  const run = () => {
+    const f = fmtOf(form);
+    const vals = [0, 1, 2].map(i => form.querySelector('input[name=o' + i + ']').value.trim());
+    const odds = vals.map((v, i) => (i === 2 && !v ? 'skip' : parseAny(v, f))).filter(v => v !== 'skip');
+    if (odds.length < 2 || odds.some(o => o === null)) { err.hidden = false; return; }
+    err.hidden = true;
+    const m = margin(odds);
+    sum.textContent = '';
+    sum.append('Suma de probabilidades ', el('b', null, cpct(m.sum, 2)), ' ' + String.fromCharCode(0xb7) + ' margen ', el('b', null, cpct(m.margin, 2)));
+    rows.textContent = '';
+    m.odds.forEach((o, i) => {
+      const tr = document.createElement('tr');
+      const th = document.createElement('th');
+      th.scope = 'row';
+      th.textContent = 'Resultado ' + (i + 1);
+      tr.append(th);
+      const fo = m.fairOdds[i];
+      [cdec(o, 2), cpct(m.implied[i], 1), cpct(m.fairProb[i], 1), cdec(fo, 2) + ' ' + String.fromCharCode(0xb7) + ' ' + cfrac(toFractional(fo)) + ' ' + String.fromCharCode(0xb7) + ' ' + camer(toAmerican(fo))].forEach(t => { const td = document.createElement('td'); td.textContent = t; tr.append(td); });
+      rows.append(tr);
+    });
+  };
+  form.addEventListener('input', run);
+  form.addEventListener('change', run);
+  form.addEventListener('submit', e => { e.preventDefault(); run(); });
+}
+
+function parlayCalc() {
+  const form = document.querySelector('[data-rl-parlay]');
+  if (!form) return;
+  const box = form.querySelector('[data-rl-legs]');
+  const tpl = form.querySelector('[data-rl-legt]');
+  const err = form.querySelector('[data-rl-perr]');
+  const set = (k, t) => { const e = form.querySelector('[data-k=' + k + ']'); if (e) e.textContent = t; };
+  const legsEl = () => [...box.querySelectorAll('[data-leg]')];
+  const run = () => {
+    const legs = legsEl().map(fs => {
+      const odds = [...fs.querySelectorAll('input:not([type=radio])')].map(i => parseOdd(i.value));
+      const r = fs.querySelector('input[type=radio]:checked');
+      return { odds, pick: r ? Number(r.value) : 0 };
+    });
+    if (!legs.length || legs.some(l => l.odds.some(o => o === null))) { err.hidden = false; return; }
+    err.hidden = true;
+    const p = parlay(legs);
+    set('odd', cdec(p.odd, 2));
+    set('one', '1 en ' + cdec(p.oneIn, 1));
+    set('edge', cpct(p.edge, 1));
+    set('ret', fmtMoney(1000 * p.payout));
+  };
+  const add = () => {
+    const n = legsEl().length;
+    if (n >= 8) return;
+    const frag = tpl.content.cloneNode(true);
+    frag.querySelector('legend').textContent = 'Selección ' + (n + 1);
+    frag.querySelectorAll('input').forEach(i => {
+      i.name = i.name.replace('l99', 'l' + n);
+      if (i.getAttribute('aria-label')) i.setAttribute('aria-label', i.getAttribute('aria-label').replace(/\d+/, String(n + 1)));
+      if (i.type !== 'radio') i.value = '';
+    });
+    box.append(frag);
+    const first = box.lastElementChild && box.lastElementChild.querySelector('input');
+    if (first) first.focus();
+    run();
+  };
+  form.querySelector('[data-rl-add]').addEventListener('click', add);
+  form.querySelector('[data-rl-del]').addEventListener('click', () => { const l = legsEl(); if (l.length > 1) { l[l.length - 1].remove(); run(); } });
+  form.addEventListener('input', run);
+  form.addEventListener('change', run);
+  form.addEventListener('submit', e => { e.preventDefault(); run(); });
+}
+
+function provCheck() {
+  const form = document.querySelector('[data-rl-pchk]');
+  const D = json('rl-pchk');
+  if (!form || !D) return;
+  const out = form.querySelector('[data-rl-pchk-out]');
+  const input = form.querySelector('input');
+  const entries = D.e.map(e => ({ host: e.h, jur: e.j }));
+  const run = () => {
+    const r = checkHost(input.value, entries);
+    out.className = 'rl-pchk-out';
+    if (r.state === 'empty') { out.textContent = ''; return; }
+    const here = r.matches.filter(m => m.jur === D.jur);
+    const o = { h: r.host, b: D.b, p: D.j[D.jur], x: D.host, n: D.s.n, m: [...new Set(r.matches.map(m => m.host))].join(', '), o: [...new Set(r.matches.map(m => D.j[m.jur]))].join(', ') };
+    let k = 'none';
+    if (r.state === 'listed') k = here.length ? (r.how === 'subdomain' ? 'under' : 'yes') : 'other';
+    else if (r.state === 'similar') k = 'similar';
+    out.classList.add(k === 'yes' || k === 'under' ? 'rl-pk-y' : k === 'other' ? 'rl-pk-w' : 'rl-pk-n');
+    out.textContent = fill(D.s[k], o);
+  };
+  form.addEventListener('submit', e => { e.preventDefault(); run(); });
+  input.addEventListener('input', run);
+}
+
 const data = json('rl-data');
 theme();
 menu();
@@ -232,3 +359,7 @@ marginCalc();
 helpPick(data);
 footerLine(data);
 verifier();
+convCalc();
+novigCalc();
+parlayCalc();
+provCheck();

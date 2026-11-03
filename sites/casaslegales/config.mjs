@@ -1,6 +1,6 @@
 // casaslegales.com - site settings read by the shared build tools (tools/render.mjs, tools/check-dist.mjs, tools/deploy.sh).
 // Own URL scheme: no trailing slash, at most two levels (/provincia/cordoba -> file provincia/cordoba.html; Caddy tries
-// {path}.html). Own asset folder /_r/ with content-hash names only. Everything visible lives in this folder.
+// {path}.html; the only third level is operator x province, /operador/<brand>/<jurisdiction>). Own asset folder /_r/ with content-hash names only. Everything visible lives in this folder.
 import { extname } from 'node:path';
 import { SHOT_FILES } from './content/opdata.mjs';
 
@@ -12,7 +12,7 @@ export const SITE = {
   ogLocale: 'es_AR',
   assetDir: '_r',
   assetName: (name, hash) => hash.slice(0, 12) + extname(name),
-  pathRe: /^\/$|^\/[a-z0-9]+(-[a-z0-9]+)*(\/[a-z0-9]+(-[a-z0-9]+)*)?$/,
+  pathRe: /^\/$|^\/[a-z0-9]+(-[a-z0-9]+)*(\/[a-z0-9]+(-[a-z0-9]+)*)?$|^\/operador\/[a-z0-9]+(-[a-z0-9]+)*\/[a-z0-9]+(-[a-z0-9]+)*$/,
   fileOf: p => (p === '/' ? 'index.html' : p.slice(1) + '.html'),
   notFoundFile: '404.html',
   fonts: ['gabarito-var-latin.woff2', 'ubuntu-sans-mono-var-latin.woff2'],
@@ -26,5 +26,5 @@ export const SITE = {
     age: /class="rl-18"[^>]*>18\+</,
     siteMenu: /<nav class="rl-nav"/,
   },
-  deployCheck: ['/', '/licencias', '/verificador', '/operadores', '/operador/betsson', '/operador/jugadon', '/verificar/zeus', '/guia/bet-ar', '/juego-responsable/autoexclusion', '/provincia/cordoba', '/provincias', '/provincia/neuquen', '/provincia/entre-rios', '/provincia/salta', '/provincia/mendoza', '/guia/como-verificar', '/guia/menores', '/calculadora/margen', '/guia/handicap', '/juego-responsable', '/no-existe'],
+  deployCheck: ['/', '/licencias', '/verificador', '/operadores', '/operador/betsson', '/operador/jugadon', '/verificar/zeus', '/guia/bet-ar', '/juego-responsable/autoexclusion', '/provincia/cordoba', '/provincias', '/provincia/neuquen', '/provincia/entre-rios', '/provincia/salta', '/provincia/mendoza', '/guia/como-verificar', '/guia/menores', '/calculadora/margen', '/guia/handicap', '/operador/betsson/caba', '/operador/bplay/cordoba', '/calculadora/cuotas', '/calculadora/combinada', '/guia/ley-federal', '/juego-responsable', '/no-existe'],
 };

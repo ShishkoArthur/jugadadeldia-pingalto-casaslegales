@@ -6,6 +6,7 @@
 // node tools/verify-sources.mjs --recheck [--write]
 //   downloads every registry document again (one request per second) and runs the same checks on the fresh copy; with --write a
 //   copy that passes replaces the saved one (sha256, fetched = today). A change in the list is reported, never written silently.
+//   Registries with a document from a site that blocks AI crawlers (tools/lib/ownercopy.mjs) are skipped: the owner saves those.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -15,6 +16,7 @@ import { loadRegistries, verifyRegistries, checkRegistry, brandNames } from './l
 import { verifyLottery } from './lib/lottery-sources.mjs';
 import { checkProvinces } from './lib/provsources.mjs';
 import { loadRg } from './lib/sources.mjs';
+import { isAiBlocked, ownerCopyProblems } from './lib/ownercopy.mjs';
 
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 casaslegales-check/1.0';
 const args = process.argv.slice(2);
@@ -32,6 +34,8 @@ if (args.includes('--recheck')) {
   const write = args.includes('--write'), names = brandNames();
   let problems = 0;
   for (const r of loadRegistries()) {
+    const held = Object.entries(r.docs).filter(([, d]) => d.pendingOwnerCopy || isAiBlocked(d.url));
+    if (held.length) { console.log('  skip ' + r.id + ': ' + held.map(([s]) => s).join(', ') + ' - robots.txt blocks AI crawlers; the owner saves these pages (docs/reference/owner-saves/README.md)'); continue; }
     const fresh = {};
     for (const [slug, d] of Object.entries(r.docs)) {
       try { fresh[slug] = fetchDoc(d.url); } catch (e) { fresh[slug] = { status: 0, body: '', err: e.message }; }
@@ -57,7 +61,7 @@ if (args.includes('--recheck')) {
   process.exit(problems ? 1 : 0);
 }
 const logq = m => { if (!quiet || !m.startsWith('  ok')) console.log(m); };
-const provErrs = checkProvinces({ today, registryIds: loadRegistries().map(r => r.id), jurisdictions: loadRg().provinces.map(p => p.id) });
+const provErrs = checkProvinces({ today, registryIds: loadRegistries().map(r => r.id), jurisdictions: loadRg().provinces.map(p => p.id) }).concat(ownerCopyProblems());
 provErrs.forEach(e => console.log('  BAD ' + e));
 if (!provErrs.length) logq('  ok provinces: every jurisdiction has one status');
 const n = verifyRegistries({ today, log: logq }) + verifyLottery({ today, log: logq }) + provErrs.length;
