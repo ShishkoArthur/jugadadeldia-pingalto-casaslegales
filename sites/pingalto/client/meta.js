@@ -34,7 +34,8 @@ async function mazos(el) {
   const pick = el.querySelector('[data-pick]'), out = el.querySelector('[data-deck]');
   const drawPick = () => {
     const list = cards.filter(c => !q || c.n.toLowerCase().includes(q));
-    pick.innerHTML = '<div class="pa-fdf"><label class="pa-f"><span>Buscar carta</span><input type="search" data-q value="' + esc(q) + '" placeholder="Hog Rider" autocomplete="off"></label></div><ul class="pa-fdcs pa-scr">' + list.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="' + deck.includes(c.id) + '"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>' + typeOf(c.id) + '</small></button></li>').join('') + '</ul>';
+    if (!pick.querySelector('[data-list]')) pick.innerHTML = '<div class="pa-fdf"><label class="pa-f"><span>Buscar carta</span><input type="search" data-q value="' + esc(q) + '" placeholder="Hog Rider" autocomplete="off"></label></div><div data-list></div>';
+    pick.querySelector('[data-list]').innerHTML = '<ul class="pa-fdcs pa-scr">' + list.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="' + deck.includes(c.id) + '"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>' + typeOf(c.id) + '</small></button></li>').join('') + '</ul>';
   };
   const drawDeck = () => {
     const cs = deck.map(id => byId.get(id));
@@ -60,7 +61,7 @@ async function mazos(el) {
   const toggle = id => { const i = deck.indexOf(id); if (i >= 0) deck.splice(i, 1); else if (deck.length < 8) deck.push(id); drawPick(); drawDeck(); };
   const click = ev => { const b = ev.target.closest('[data-id]'); if (b) toggle(Number(b.dataset.id)); };
   pick.addEventListener('click', click); out.addEventListener('click', click);
-  pick.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); const pos = ev.target.selectionStart; drawPick(); const i = pick.querySelector('[data-q]'); i.focus(); i.setSelectionRange(pos, pos); } });
+  pick.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); drawPick(); } });
   el.querySelector('[data-clear]').addEventListener('click', () => { deck.length = 0; drawPick(); drawDeck(); });
   el.querySelector('[data-top]').addEventListener('click', () => {
     if (!mt) return;

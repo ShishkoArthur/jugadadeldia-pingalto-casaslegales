@@ -15,6 +15,7 @@
 --gl:linear-gradient(180deg,#ffffff1f,#fff0 55%);--sh:0 1px 0 #ffffff14 inset,0 18px 40px -24px #000;--rim:#ffffff1f;--hd:#110e1dd9;color-scheme:dark}
 
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
 body{background:var(--bg);color:var(--fg);font:16px/1.55 "Be Vietnam Pro",system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;overflow-x:clip}
 a{color:inherit}
@@ -227,8 +228,13 @@ textarea{width:100%;padding:12px 14px;border-radius:16px;border:1.5px solid var(
 .pa-nv a{padding:0 10px;font-size:14px}
 .pa-tool{grid-template-columns:minmax(0,1fr)}
 .pa-three{grid-template-columns:minmax(0,1fr)}
+.pa-pg{margin:-40px 32px 0;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 10px}
+.pa-pg>div:first-child{grid-column:1/-1}
+.pa-gg{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:6px}
 }
 @media (max-width:860px){
+h1{font-size:clamp(34px,6.2vw,56px)}
+.pa-sm h1,.pa-tl h1{font-size:clamp(32px,5.6vw,44px)}
 .pa-he,.pa-he.pa-tl{grid-template-columns:minmax(0,1fr) 260px;gap:24px 28px}
 .pa-hd{padding:8px 12px;gap:6px}
 .pa-lg{font-size:21px}
@@ -413,5 +419,6 @@ h2{font-size:23px}
 .pa-cp-a{--c:#e8457f}.pa-cp-b{--c:#2f6fdb}.pa-cp-c{--c:#d9a63c}.pa-cp-m{--c:#7c4ddb}.pa-cp-t{--c:#f07a2a}.pa-cp-d{--c:#0b8f7f}
 .pa-cp:hover circle,.pa-cp:focus-visible circle,.pa-cp.pa-on circle{stroke:var(--fg);stroke-width:7}
 .pa-quiz .pa-cp text{display:none}
+.pa-cp text.pa-cs{text-anchor:start;transform:translateX(-14px)}.pa-cp text.pa-ce{text-anchor:end;transform:translateX(14px)}
 @media (max-width:900px){.pa-cm{grid-template-columns:minmax(0,1fr)}.pa-cm>.pa-out{position:static}.pa-cp text{font-size:30px}}
 @media (max-width:680px){.pa-ssb{width:90px}}

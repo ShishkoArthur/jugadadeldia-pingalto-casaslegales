@@ -14,12 +14,16 @@ async function clash(el) {
   const draw = () => {
     const cards = d.cards.filter(c => (!r || c.r === r) && (e === '' || String(c.e) === e || (e === '7' && c.e >= 7)) && (!q || c.n.toLowerCase().includes(q)));
     const tot = {}; for (const c of d.cards) tot[c.r] = (tot[c.r] || 0) + 1;
-    el.innerHTML = stamp(doc, 72) +
+    const box = el.querySelector('[data-list]');
+    if (!box) {
+      el.innerHTML = stamp(doc, 72) +
       '<p class="pa-x">' + d.cards.length + ' cartas: ' + RORD.filter(k => tot[k]).map(k => tot[k] + ' ' + (tot[k] === 1 ? RAR[k].toLowerCase() : PL[k])).join(', ') + ' · ' + d.cards.filter(c => c.evo).length + ' con evolución</p>' +
       '<div class="pa-fdf"><label class="pa-f"><span>Buscar</span><input type="search" data-q value="' + esc(q) + '" placeholder="Knight" autocomplete="off"></label>' +
       '<label class="pa-f"><span>Rareza</span><select data-r><option value="">Todas</option>' + RORD.map(k => '<option value="' + k + '"' + (k === r ? ' selected' : '') + '>' + RAR[k] + '</option>').join('') + '</select></label>' +
-      '<label class="pa-f"><span>Elixir</span><select data-e><option value="">Todos</option>' + [1, 2, 3, 4, 5, 6, 7].map(x => '<option value="' + x + '"' + (String(x) === e ? ' selected' : '') + '>' + (x === 7 ? '7 o más' : x) + '</option>').join('') + '</select></label></div>' +
-      '<ul class="pa-fdcs">' + cards.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="' + deck.includes(c.id) + '"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>' + RAR[c.r] + (c.evo ? ' · evo' : '') + (added.has(c.id) ? ' · nueva' : '') + '</small></button></li>').join('') + '</ul>' +
+      '<label class="pa-f"><span>Elixir</span><select data-e><option value="">Todos</option>' + [1, 2, 3, 4, 5, 6, 7].map(x => '<option value="' + x + '"' + (String(x) === e ? ' selected' : '') + '>' + (x === 7 ? '7 o más' : x) + '</option>').join('') + '</select></label></div><div data-list></div>';
+      return draw();
+    }
+    box.innerHTML = '<ul class="pa-fdcs">' + cards.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="' + deck.includes(c.id) + '"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>' + RAR[c.r] + (c.evo ? ' · evo' : '') + (added.has(c.id) ? ' · nueva' : '') + '</small></button></li>').join('') + '</ul>' +
       (cards.length ? '' : '<p>Ninguna carta con esos filtros.</p>');
   };
   const drawDeck = () => {
@@ -33,7 +37,7 @@ async function clash(el) {
       '<ul class="pa-fdcs">' + cs.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="true"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>sacar</small></button></li>').join('') + '</ul>';
   };
   const toggle = id => { const i = deck.indexOf(id); if (i >= 0) deck.splice(i, 1); else if (deck.length < 8) deck.push(id); draw(); drawDeck(); };
-  el.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); const pos = ev.target.selectionStart; draw(); const i = el.querySelector('[data-q]'); i.focus(); i.setSelectionRange(pos, pos); } });
+  el.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); draw(); } });
   el.addEventListener('change', ev => { if (ev.target.matches('[data-r]')) { r = ev.target.value; draw(); } if (ev.target.matches('[data-e]')) { e = ev.target.value; draw(); } });
   const click = ev => { const b = ev.target.closest('.pa-fdcd'); if (b) toggle(Number(b.dataset.id)); };
   el.addEventListener('click', click);
@@ -48,12 +52,16 @@ async function brawl(el) {
   const draw = () => {
     const list = d.brawlers.filter(b => !q || b.n.toLowerCase().includes(q)).sort((a, b) => a.n < b.n ? -1 : 1);
     const newest = d.brawlers.find(b => b.id === d.newest);
-    el.innerHTML = stamp(doc, 30) + '<p class="pa-x">' + d.brawlers.length + ' brawlers · el más nuevo en la API: <b>' + esc(tc(newest.n)) + '</b></p>' +
-      '<div class="pa-fdf"><label class="pa-f"><span>Buscar</span><input type="search" data-q value="' + esc(q) + '" placeholder="Shelly" autocomplete="off"></label></div>' +
-      '<div class="pa-tw"><table class="pa-tb"><thead><tr><th>Brawler</th><th>Habilidades estelares</th><th>Gadgets</th></tr></thead><tbody>' +
+    const box = el.querySelector('[data-list]');
+    if (!box) {
+      el.innerHTML = stamp(doc, 30) + '<p class="pa-x">' + d.brawlers.length + ' brawlers · el más nuevo en la API: <b>' + esc(tc(newest.n)) + '</b></p>' +
+      '<div class="pa-fdf"><label class="pa-f"><span>Buscar</span><input type="search" data-q value="' + esc(q) + '" placeholder="Shelly" autocomplete="off"></label></div><div data-list></div>';
+      return draw();
+    }
+    box.innerHTML = '<div class="pa-tw"><table class="pa-tb"><thead><tr><th>Brawler</th><th>Habilidades estelares</th><th>Gadgets</th></tr></thead><tbody>' +
       list.map(b => '<tr><td><b>' + esc(tc(b.n)) + '</b>' + (b.id === d.newest ? ' <span class="pa-tag">nuevo</span>' : '') + '</td><td>' + b.sp.map(x => esc(tc(x))).join('<br>') + '</td><td>' + b.gd.map(x => esc(tc(x))).join('<br>') + '</td></tr>').join('') + '</tbody></table></div>';
   };
-  el.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); const pos = ev.target.selectionStart; draw(); const i = el.querySelector('[data-q]'); i.focus(); i.setSelectionRange(pos, pos); } });
+  el.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); draw(); } });
   draw();
 }
 

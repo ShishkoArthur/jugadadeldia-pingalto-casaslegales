@@ -305,13 +305,15 @@ export function callouts(h, id) {
 // Spanish label as players say it: the zone first (A Principal, Mid Pizza), the spawns as Aparición atacante / defensora.
 const fullEs = c => /^(Atacantes|Defensores)$/.test(c.sup) ? c.es + (c.sup === 'Atacantes' ? ' atacante' : ' defensora') : c.sup + ' ' + c.es;
 const grp = s => /^A/.test(s) ? 'a' : /^B/.test(s) ? 'b' : /^C/.test(s) ? 'c' : /^Mid/.test(s) ? 'm' : /^Ata/.test(s) ? 't' : 'd';
+// labels near the left/right edge are anchored inward so the phone size (30 units) is not cut by the viewBox
+const edge = (x, W, n) => { const half = n * 0.55 * 30 / 2; return x - half < 8 ? ' class="pa-cs"' : x + half > W - 8 ? ' class="pa-ce"' : ''; };
 function mapSvg(h, C) {
   const xs = C.list.map(c => c.x), ys = C.list.map(c => c.y);
   const x0 = Math.min(...xs) - 0.06, x1 = Math.max(...xs) + 0.06, y0 = Math.min(...ys) - 0.05, y1 = Math.max(...ys) + 0.05;
   const W = 1000, H = Math.round((W * (y1 - y0)) / (x1 - x0));
   const X = x => Math.round(((x - x0) / (x1 - x0)) * W), Y = y => Math.round(((y - y0) / (y1 - y0)) * H);
   return '<svg class="pa-cmap" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Puntos de los callouts de ' + h.esc(C.name) + ' en el mapa"><rect width="' + W + '" height="' + H + '" rx="24"/>' +
-    C.list.map((c, i) => '<g class="pa-cp pa-cp-' + grp(c.sup) + '" data-i="' + i + '" tabindex="0" role="button" aria-label="' + h.esc(fullEs(c)) + '"><circle cx="' + X(c.x) + '" cy="' + Y(c.y) + '" r="15"/><text x="' + X(c.x) + '" y="' + (Y(c.y) - 22) + '" data-es="' + h.esc(fullEs(c)) + '" data-en="' + h.esc(c.enSup + ' ' + c.en) + '">' + h.esc(fullEs(c)) + '</text></g>').join('') + '</svg>';
+    C.list.map((c, i) => '<g class="pa-cp pa-cp-' + grp(c.sup) + '" data-i="' + i + '" tabindex="0" role="button" aria-label="' + h.esc(fullEs(c)) + '"><circle cx="' + X(c.x) + '" cy="' + Y(c.y) + '" r="15"/><text x="' + X(c.x) + '" y="' + (Y(c.y) - 22) + '"' + edge(X(c.x), W, Math.max(fullEs(c).length, (c.enSup + ' ' + c.en).length)) + ' data-es="' + h.esc(fullEs(c)) + '" data-en="' + h.esc(c.enSup + ' ' + c.en) + '">' + h.esc(fullEs(c)) + '</text></g>').join('') + '</svg>';
 }
 function mapPage(id, meta) {
   return {

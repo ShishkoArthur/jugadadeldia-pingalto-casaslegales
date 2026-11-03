@@ -12,7 +12,7 @@
 .pa-fdmla{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--vi) 45%,var(--ln))}
 .pa-fdh{font:800 18px "M PLUS Rounded 1c",sans-serif;font-variant-numeric:tabular-nums}
 .pa-fdh span{font:600 13px "Be Vietnam Pro",sans-serif;color:var(--mu)}
-.pa-fdh .pa-fdlive{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--pk);color:#fff}
+.pa-fdh .pa-fdlive{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--pk);color:var(--on)}
 .pa-fdtt{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-weight:600}
 .pa-fdtm{min-width:0}
 .pa-fdwin{font-weight:800;color:var(--tl)}
@@ -41,15 +41,16 @@
 .pa-fdev b{font:800 18px "M PLUS Rounded 1c",sans-serif}
 .pa-fdev span{color:var(--mu);font-size:13px}
 @media (max-width:680px){
-.pa-fdm{grid-template-columns:58px minmax(0,1fr);gap:10px;padding:10px 12px}
+.pa-fdm{grid-template-columns:68px minmax(0,1fr);gap:10px;padding:10px 12px}
 .pa-fdh{font-size:16px}
+.pa-fdh span{font-size:12px}
 .pa-fdf{grid-template-columns:1fr}
 .pa-fdcs{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 .pa-evh{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
 .pa-evh h3{margin:2px 0 0;font-size:22px}
 .pa-evs{flex:none;padding:4px 12px;border-radius:99px;background:var(--p2);font-size:13px;font-weight:600}
-.pa-evs-running{background:var(--pk);color:#fff}
+.pa-evs-running{background:var(--pk);color:var(--on)}
 .pa-evk{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0 14px}
 .pa-evk div{padding:12px 14px;border-radius:16px;background:var(--pn);box-shadow:0 0 0 1px var(--ln);min-width:0}
 .pa-evk small{display:block;color:var(--mu);font-size:12px}
