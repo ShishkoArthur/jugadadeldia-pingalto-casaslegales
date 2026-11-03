@@ -57,7 +57,8 @@
 - Сводка владельцу (планы с title/H1/description/AR, макеты, девушки, вопросы): https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS —
   сборка `node docs/owner/build-overview.mjs`, вопросы `docs/owner/questions.json`, публиковать тем же путём `docs/owner/overview.html`.
 - **В работе (агенты 03.11):** casaslegales волна 2 (операторы со своими скриншотами, `/verificador`, проверки нелицензированных, гайды);
-  pingalto каркас + P1-инструменты без ключей; движок лотерей jugadadeldia (`engine/lottery`, регламенты с цитатами); движок труко + боты.
+  pingalto каркас + P1-инструменты без ключей. **Готово:** движок лотерей (`engine/lottery`, 139 цитат, пробелы — `docs/ENGINE-LOTTERY.md`) и
+  движок труко 1×1 + боты facil/normal/dificil (`engine/truco`, `engine/cards`, `docs/ENGINE-TRUCO.md`; 2×2 — позже).
 - **Потом:** оформление jugadadeldia после выбора; сцены девушек; тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
   ждём токен); Santa Fe/Mendoza — файлы от владельца в `docs/reference/owner-saves/`; ключи PandaScore/Supercell — от владельца.
 - Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
