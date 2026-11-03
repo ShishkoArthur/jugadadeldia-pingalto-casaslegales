@@ -1,0 +1,240 @@
+{
+ "id": "truco-rules",
+ "about": "Rules of truco argentino used by engine/truco. Every quote is checked verbatim against the saved copy (engine/test/truco-sources.test.mjs). Re-read the documents every six months.",
+ "checked": "2026-11-03",
+ "docs": {
+  "gba-2026": {
+   "title": "Juegos Bonaerenses 2026 - Reglamento especifico: Truco (adultos mayores)",
+   "publisher": "Provincia de Buenos Aires, Juegos Bonaerenses",
+   "url": "https://juegos.gba.gob.ar/wp-content/uploads/2026/reglamentos/especificos/deportes_adultos_mayores/truco.pdf",
+   "file": "data/sources/truco/_docs/gba-2026-truco.pdf",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "cb274728fd0b1d809c596dba39adf62b0a8cd8352e0111e6765f241e843184f6"
+  },
+  "juegosdesalon": {
+   "title": "Reglamento de Truco (www.juegosdesalon.com), copia publicada por Folklore Tradiciones",
+   "publisher": "juegosdesalon.com / folkloretradiciones.com.ar",
+   "url": "https://www.folkloretradiciones.com.ar/reglamento%20truco.pdf",
+   "file": "data/sources/truco/_docs/juegosdesalon-reglamento-truco.pdf",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "62df90408b85557dc994cd2a19f6a3e3c9d15d5817dee1bc676455245b128643"
+  },
+  "ludoteka": {
+   "title": "Ludoteka - Truco (Truco Argentino): reglas",
+   "publisher": "Ludoteka",
+   "url": "https://www.ludoteka.com/clasika/truco.html",
+   "file": "data/sources/truco/_docs/ludoteka-truco.html",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "41739fec82709a8a72efd6263f63287d9b71f0ba678039df7411be0ea614eab9"
+  },
+  "catamarca-rentas": {
+   "title": "Reglamento Truco del XXI Encuentro Nacional de Empleados de Rentas",
+   "publisher": "Agencia de Recaudacion de Catamarca (arcat.gob.ar), Direccion General de Rentas",
+   "url": "https://dgrentas.arcat.gob.ar/olimpiadas/reglamentos/truco.pdf",
+   "file": "data/sources/truco/_docs/catamarca-rentas-reglamento-truco.pdf",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "fe2694d46095b2f28ac7a61bc172f84b3291f06ba7cda279d7da501eede75a67"
+  }
+ },
+ "quotes": {
+  "hierarchy-bravas": {
+   "doc": "gba-2026",
+   "text": "EL AS DE ESPADAS. EL AS DE BASTOS. EL SIETE DE ESPADAS. EL SIETE DE OROS. Estas cuatro (4) cartas son las llamadas BRAVAS.",
+   "uses": "engine/truco/cards.mjs POWER 14-11"
+  },
+  "hierarchy-rest": {
+   "doc": "gba-2026",
+   "text": "A estas le siguen por orden: LOS TRES, LOS DOS, LOS ASES “FALSOS” (ases de copa y oro) LOS REYES, LOS CABALLOS, LAS SOTAS, LOS SIETE “FALSOS” (siete de basto y siete de copa) LOS SEIS, LOS CINCO y por último LOS CUATRO.",
+   "uses": "engine/truco/cards.mjs POWER 10-1"
+  },
+  "hierarchy-rest-2": {
+   "doc": "juegosdesalon",
+   "text": "treses, doses, ases (sólo los de copas y oros), reyes, caballos, sotas, sietes (sólo los de copas y bastos), seis, cincos y cuatros.",
+   "uses": "engine/truco/cards.mjs POWER 10-1 (second source)"
+  },
+  "envido-figures-zero": {
+   "doc": "juegosdesalon",
+   "text": "Para la flor y el envido las cartas negras valen 0; las cartas restantes tienen el valor en puntos que señala su índice.",
+   "uses": "engine/truco/cards.mjs ENVIDO_VALUE"
+  },
+  "envido-count": {
+   "doc": "juegosdesalon",
+   "text": "Para el envido, sólo si se tienen dos cartas del mismo palo se añaden 20 puntos al valor absoluto de esas dos cartas; en caso contrario, el valor del envido es sólo el de la carta más \"alta\".",
+   "uses": "engine/truco/cards.mjs envidoPoints"
+  },
+  "envido-max-33": {
+   "doc": "juegosdesalon",
+   "text": "el envido más alto vale 33 tantos y es el de la mano que cuenta con el seis y siete del mismo palo",
+   "uses": "engine/test lock: max envido 33"
+  },
+  "envido-three-of-suit": {
+   "doc": "juegosdesalon",
+   "text": "el valor de su envido sería de 20 puntos más el valor de sus dos cartas más altas.",
+   "uses": "engine/truco/cards.mjs envidoPoints (three of a suit, sin flor)"
+  },
+  "envido-tie-mano": {
+   "doc": "gba-2026",
+   "text": "En caso de empate en el número de tantos, del envido querido, ganará la mano.",
+   "uses": "engine/truco/game.mjs envido winner"
+  },
+  "envido-before-card": {
+   "doc": "gba-2026",
+   "text": "Se deberá proponer el envido antes de jugar alguna de las tres (3) cartas",
+   "uses": "engine/truco/game.mjs envidoOpen"
+  },
+  "envido-table-ee": {
+   "doc": "gba-2026",
+   "text": "Envido / envido querido 4 puntos",
+   "uses": "engine/truco/rules.mjs envidoQuieroValue"
+  },
+  "envido-table-er-no": {
+   "doc": "gba-2026",
+   "text": "Envido / real envido no querido 2 puntos",
+   "uses": "engine/truco/rules.mjs envidoNoQuieroValue"
+  },
+  "envido-table-eer": {
+   "doc": "gba-2026",
+   "text": "Envido / Envido / Real Envido querido 7 puntos",
+   "uses": "engine/truco/rules.mjs envidoQuieroValue"
+  },
+  "envido-table-eerf-no": {
+   "doc": "gba-2026",
+   "text": "Envido / Envido / Real Envido / Falta Envido no 7 puntos",
+   "uses": "engine/truco/rules.mjs envidoNoQuieroValue"
+  },
+  "envido-table-r": {
+   "doc": "gba-2026",
+   "text": "Real Envido no querido 1 punto Real Envido querido 3 puntos",
+   "uses": "engine/truco/rules.mjs"
+  },
+  "envido-no-quiero": {
+   "doc": "juegosdesalon",
+   "text": "Si el no quiero contesta al primer envite del equipo que la había echado, éste gana 1 tanto; si había otros revires, el equipo al que le ha sido rechazada la última proposición gana los tantos \"queridos\" hasta ese momento.",
+   "uses": "engine/truco/rules.mjs envidoNoQuieroValue"
+  },
+  "falta-malas-wins-match": {
+   "doc": "gba-2026",
+   "text": "Los mismos serán los necesarios para concluir un chico, en caso de estar en tantos “malos”, en caso de estar en tantos “buenos” cobrará los tantos que al contrario le falte para concluir el chico.",
+   "uses": "engine/truco/rules.mjs falta 'malas-wins-match'"
+  },
+  "falta-leader-to-win": {
+   "doc": "juegosdesalon",
+   "text": "Falta envido: Voz que propone que el envido valga el número de tantos necesarios para que el bando que va por delante gane el juego.",
+   "uses": "engine/truco/rules.mjs falta 'leader-to-win'"
+  },
+  "falta-leader-to-stage-a": {
+   "doc": "catamarca-rentas",
+   "text": "Voz que propone que el envido valga el número de tantos necesarios para que el bando que va por delante pase a las buenas (si están",
+   "uses": "engine/truco/rules.mjs falta 'leader-to-stage'"
+  },
+  "falta-leader-to-stage-b": {
+   "doc": "catamarca-rentas",
+   "text": "en las malas) o gane el partido (si están en las buenas).",
+   "uses": "engine/truco/rules.mjs falta 'leader-to-stage'"
+  },
+  "truco-callado": {
+   "doc": "gba-2026",
+   "text": "Si se juega de callado, es decir, sin que nadie pronuncie la palabra “truco”, el ganador cobrará un (1) solo tanto.",
+   "uses": "engine/truco/game.mjs truco level 1"
+  },
+  "truco-no-querido": {
+   "doc": "gba-2026",
+   "text": "En este caso el que hizo la “invitación” cobrará un (1) tanto.",
+   "uses": "engine/truco/game.mjs noQuiero"
+  },
+  "truco-retruco-values": {
+   "doc": "gba-2026",
+   "text": "El TRUCO querido y ganado valdrá dos (2) TANTOS El RETRUCO querido y ganado valdrá tres (3) tantos",
+   "uses": "engine/truco/game.mjs levels 2, 3"
+  },
+  "retruco-by-challenged": {
+   "doc": "gba-2026",
+   "text": "solamente puede retrucar el bando previamente convidado.",
+   "uses": "engine/truco/game.mjs truco.holder"
+  },
+  "vale-cuatro": {
+   "doc": "gba-2026",
+   "text": "Como su nombre lo indica el que gana esta baza gana cuatro (4) TANTOS. Si no se acepta, el que lo echó (al vale 4) ganará solo tres (3) TANTOS como si hubiese ganado RETRUCO.",
+   "uses": "engine/truco/game.mjs level 4"
+  },
+  "parda-first": {
+   "doc": "gba-2026",
+   "text": "Cuando esto ocurra, en la segunda mano, “sale” jugando “la mano” y ganará el que “hace” la segunda mano",
+   "uses": "engine/truco/game.mjs handWinner, next lead after parda"
+  },
+  "parda-all-three": {
+   "doc": "gba-2026",
+   "text": "Si ocurre este episodio, ganarán los jugadores o el jugador, que ha sido mano al comienzo del juego.",
+   "uses": "engine/truco/game.mjs handWinner"
+  },
+  "parda-next-decides": {
+   "doc": "juegosdesalon",
+   "text": "Si hay un empate, el truco lo gana el bando vencedor en la baza siguiente. Si se empatan las tres bazas, gana el equipo del mano.",
+   "uses": "engine/truco/game.mjs handWinner"
+  },
+  "parda-one-each": {
+   "doc": "ludoteka",
+   "text": "En caso de que cada pareja gane una baza y otra quede en empate, gana la pareja que antes haya conseguido la suya.",
+   "uses": "engine/truco/game.mjs handWinner (won first, then parda)"
+  },
+  "mazo-before-cards": {
+   "doc": "gba-2026",
+   "text": "Cuando antes de jugar ninguna carta se va un bando “a baraja” sin decir palabra, queda terminado, ese tiro y el bando contrario, yéndose también a baraja cobrará dos (2) tantos a favor.",
+   "uses": "engine/truco/rules.mjs mazoNoCardPoints"
+  },
+  "flor-three": {
+   "doc": "gba-2026",
+   "text": "Si un jugador tiene tres cartas del mismo palo, debe cantar flor antes de pasar a la fase de truco y se llevará tres tantos.",
+   "uses": "engine/truco/game.mjs singFlor"
+  },
+  "flor-cancels-envido": {
+   "doc": "gba-2026",
+   "text": "Si algún jugador tiene flor el lance de envido no se disputa, y queda anulada cualquier posible apuesta que se hubiera realizado antes de que le llegase el turno.",
+   "uses": "engine/truco/game.mjs singFlor"
+  },
+  "flor-achico": {
+   "doc": "gba-2026",
+   "text": "Con flor me achico: no entrar a valorar sobre quién tiene la mejor flor. En este caso, quien cantó primero flor obtendrá 4 tantos.",
+   "uses": "engine/truco/rules.mjs FLOR_POINTS.achico"
+  },
+  "contraflor": {
+   "doc": "gba-2026",
+   "text": "Contra flor: supone plantear una apuesta de 6 tantos, sobre quién tiene la mejor combinación. Si el adversario no acepta contra flor quien la planteó se lleva 4 tantos.",
+   "uses": "engine/truco/rules.mjs FLOR_POINTS"
+  },
+  "contraflor-resto": {
+   "doc": "gba-2026",
+   "text": "Contra flor al resto: si se acepta, quien gane esa apuesta gana el chico. Si no se acepta, la pareja que lanzó esa apuesta gana 4 tantos.",
+   "uses": "engine/truco/game.mjs contraflorResto"
+  },
+  "flor-value": {
+   "doc": "juegosdesalon",
+   "text": "Para conocer el valor de la flor se suman 20 puntos a los índices de las cartas que la componen.",
+   "uses": "engine/truco/cards.mjs florPoints"
+  },
+  "target-30": {
+   "doc": "juegosdesalon",
+   "text": "Sumar los 30 tantos (15 malos -los primeros- y 15 buenos -los segundos-) necesarios para ganar un chico.",
+   "uses": "engine/truco/rules.mjs target 30"
+  },
+  "target-40": {
+   "doc": "gba-2026",
+   "text": "La partida se jugará a 1 chico de cuarenta (40) tantos.",
+   "uses": "engine/truco/rules.mjs target 40"
+  },
+  "malas-buenas-40": {
+   "doc": "gba-2026",
+   "text": "MALAS: son los primeros 20 tantos y BUENAS los restantes 20 tantos.",
+   "uses": "engine/truco/rules.mjs buenasAt"
+  },
+  "flor-optional": {
+   "doc": "catamarca-rentas",
+   "text": "Antes del inicio del partido se debe decidir si se juega con flor.",
+   "uses": "engine/truco/rules.mjs flor true/false"
+  }
+ }
+}
