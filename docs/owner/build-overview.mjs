@@ -8,12 +8,12 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const q = JSON.parse(readFileSync(join(ROOT, 'docs/owner/questions.json'), 'utf8'));
 const SITES = [
-  { id: 'jugadadeldia', name: 'jugadadeldia.com', theme: 'Кинела, лотереи, труко и местные игры', girl: 'contact-jdd-girls-r2.jpg',
-    designFile: 'r2/five-variants-2026-11-02.html', designWant: 5, designNote: '5 вариантов дизайна «Bolillero», игровее и мультяшнее', girlNote: 'вариантов девушки 01: моложе, юбка или шорты' },
-  { id: 'pingalto', name: 'pingalto.com', theme: 'Киберспорт и инструменты для игр', girl: 'contact-pa-girls-r2.jpg',
-    designFile: 'r2/five-variants-2026-11-02.html', designWant: 5, designNote: '5 вариантов дизайна «Cromo», без растянутого заголовка', girlNote: 'вариантов девушки 01: юбка, шорты, платье' },
+  { id: 'jugadadeldia', name: 'jugadadeldia.com', theme: 'Кинела, лотереи, труко и местные игры', girl: 'contact-jdd-girls-r3.jpg',
+    designFile: 'r3/twenty-variants-2026-11-03.html', designWant: 20, designNote: '20 новых вариантов: Golosinas без мультяшности, игра, киоск, эфир', girlNote: '10 новых девушек 20–25 в современной одежде' },
+  { id: 'pingalto', name: 'pingalto.com', theme: 'Киберспорт и инструменты для игр', girl: 'contact-pa-girls-r3.jpg',
+    designFile: 'r2/five-variants-2026-11-02.html', designWant: 5, chosen: 'Выбран вариант 2 «Holo pastel»', designNote: 'Варианты «Cromo» (ваш выбор — 2)', girlNote: '10 вариантов в современной одежде, без колготок' },
   { id: 'casaslegales', name: 'casaslegales.com', theme: 'Лицензии и обзоры букмекеров, без людей', girl: null,
-    designFile: 'r2/six-concepts-2026-11-02.html', designWant: 6, designNote: 'новые концепции после ресёрча' },
+    designFile: 'r2/six-concepts-2026-11-02.html', designWant: 6, chosen: 'Выбран вариант 2 «Relieve» — сайт строится', designNote: 'Концепции (ваш выбор — 2)' },
 ];
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -36,7 +36,8 @@ for (const s of SITES) {
   s.concept = concept(s.id);
   const design = join(ROOT, `docs/design/${s.id}/${s.designFile}`);
   s.design = existsSync(design) ? `designs/${s.id}.html` : null;
-  s.ready = existsSync(join(ROOT, `docs/design/${s.id}/r2/parts`)) ? readdirSync(join(ROOT, `docs/design/${s.id}/r2/parts`)).filter(f => f.endsWith('.html')).length : 0;
+  const partsDir = join(ROOT, `docs/design/${s.id}/${dirname(s.designFile)}/parts`);
+  s.ready = existsSync(partsDir) ? readdirSync(partsDir).filter(f => f.endsWith('.html')).length : 0;
   if (s.design) files[s.design] = design;
   if (s.girl && existsSync(join(ROOT, 'data/img-review', s.girl))) files[`girls/${s.girl}`] = join(ROOT, 'data/img-review', s.girl);
   else s.girl = null;
@@ -47,7 +48,7 @@ const siteCard = s => `
   <header class="site-head"><h2>${esc(s.name)}</h2><p>${esc(s.theme)}</p></header>
   <ul class="concept">${s.concept.map(c => `<li>${md(c)}</li>`).join('')}</ul>
   <div class="picks">
-    <a class="pick" ${s.design ? `href="${s.design}"` : 'aria-disabled="true"'}><span class="pick-k">Дизайн</span><span class="pick-v">${s.design ? esc(s.designNote) + ' →' : 'делаются'}</span><span class="pick-n">${s.design && s.ready >= s.designWant ? `Выберите номер 1–${s.designWant}` : `готово ${s.ready} из ${s.designWant}, ссылка та же`}</span></a>
+    <a class="pick" ${s.design ? `href="${s.design}"` : 'aria-disabled="true"'}><span class="pick-k">Дизайн</span><span class="pick-v">${s.design ? esc(s.designNote) + ' →' : 'делаются'}</span><span class="pick-n">${s.chosen ? esc(s.chosen) : s.design && s.ready >= s.designWant ? `Выберите номер 1–${s.designWant}` : `готово ${s.ready} из ${s.designWant}, ссылка та же`}</span></a>
     ${s.id === 'casaslegales'
       ? `<div class="pick"><span class="pick-k">Иллюстрации</span><span class="pick-v">Свои скриншоты публичных страниц</span><span class="pick-n">Девушки нет</span></div>`
       : `<a class="pick" ${s.girl ? `href="girls/${s.girl}"` : 'aria-disabled="true"'}><span class="pick-k">Девушка</span><span class="pick-v">${s.girl ? esc(s.girlNote) + ' →' : 'генерируются'}</span><span class="pick-n">Выберите номер</span></a>`}
@@ -120,8 +121,8 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
 </style>
 <main class="wrap">
   <header style="display:grid;gap:10px">
-    <h1>Три сайта для Аргентины: круг 2</h1>
-    <p class="lead">Обновлено по вашим правкам: варианты выбранных дизайнов (светлая и тёмная тема — переключатель у каждого), новые концепции casaslegales, варианты девушек. Ниже — все страницы с title, H1, description и тем, что на странице аргентинского.</p>
+    <h1>Три сайта для Аргентины: круг 3</h1>
+    <p class="lead">Обновлено 03.11 по вашим правкам: 20 новых дизайнов jugadadeldia, новые девушки для jugadadeldia и pingalto (светлая и тёмная тема — переключатель у каждого макета). Дизайны pingalto и casaslegales выбраны. Ниже — все страницы с title, H1, description и тем, что на странице аргентинского.</p>
     <ul class="status">
       <li><span class="dot"></span><span>Все три домена работают по https (пока заглушка, закрыта от индекса), www → основной адрес.</span></li>
       <li><span class="dot"></span><span>GitHub: код сохраняется в репозиторий.</span></li>
