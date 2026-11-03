@@ -72,6 +72,7 @@ export const home = {
       ['/verificador', 'Verificá una dirección contra las listas'],
       ['/operadores', 'Fichas de operadores, con capturas propias'],
       ['/licencias', 'Registro de licencias, sitio por sitio'],
+      ['/casinos-online-legales', 'Casinos online: qué listas los nombran'],
       ['/provincias', 'Las 24 jurisdicciones, una por una'],
       ['/guia/como-verificar', 'Cómo verificar un sitio paso a paso'],
       ['/provincia/buenos-aires', 'Provincia de Buenos Aires'],

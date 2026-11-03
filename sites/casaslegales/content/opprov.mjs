@@ -50,4 +50,52 @@ export const OPPROV = [
     description: 'BetWarrior en Mendoza: la dirección que figura en la lista del IPJyC, mza.betwarrior.bet.ar, y qué cambia frente a sus versiones en otras provincias.',
     h1: 'BetWarrior en Mendoza: la dirección que autoriza el IPJyC',
   },
+  {
+    brand: 'betano', jur: 'caba', host: 'betano.bet.ar',
+    title: 'Betano en CABA: la resolución de LOTBA',
+    description: 'Betano en la Ciudad de Buenos Aires: la resolución de LOTBA que lo autoriza, su dominio y qué cambia frente a la versión de Provincia de Buenos Aires.',
+    h1: 'Betano en la Ciudad de Buenos Aires: autorización de LOTBA',
+  },
+  {
+    brand: 'bplay', jur: 'buenos-aires', host: 'pba.bplay.bet.ar',
+    title: 'bplay en Provincia de Buenos Aires: licencia y dominio',
+    description: 'bplay en Provincia de Buenos Aires: la licencia del IPLyC, el dominio bonaerense y en qué se diferencia de la versión de bplay en la Ciudad o en Córdoba.',
+    h1: 'bplay en PBA: licencia del IPLyC',
+  },
+  {
+    brand: 'bplay', jur: 'caba', host: 'caba.bplay.bet.ar',
+    title: 'bplay en CABA: disposición de LOTBA y dominio',
+    description: 'bplay en la Ciudad de Buenos Aires: la disposición de LOTBA que figura en su lista, el dominio caba.bplay.bet.ar y qué cambia frente a otras provincias.',
+    h1: 'bplay en la Ciudad: la disposición de LOTBA y caba.bplay.bet.ar',
+  },
+  {
+    brand: 'betwarrior', jur: 'buenos-aires', host: 'betwarrior.bet.ar',
+    title: 'BetWarrior en Provincia de Buenos Aires: licencia y dominio',
+    description: 'BetWarrior en Provincia de Buenos Aires: la licencia del IPLyC, la dirección betwarrior.bet.ar y por qué en la Ciudad y en Mendoza figura con otra.',
+    h1: 'BetWarrior en PBA: la licencia del IPLyC y su dirección',
+  },
+  {
+    brand: 'jugadon', jur: 'caba', host: 'caba.jugadon.bet.ar',
+    title: 'Jugadón en CABA: autorización de LOTBA',
+    description: 'Jugadón en la Ciudad de Buenos Aires: la disposición de LOTBA que lo habilita, su dominio caba.jugadon.bet.ar y en qué se diferencia de otras provincias.',
+    h1: 'Jugadón en la Ciudad: la disposición de LOTBA',
+  },
+  {
+    brand: 'jugadon', jur: 'cordoba', host: 'cordoba.jugadon.bet.ar',
+    title: 'Jugadón en Córdoba: licencia de la Lotería y dominio',
+    description: 'Jugadón en Córdoba: la resolución de la Lotería de Córdoba, el dominio cordoba.jugadon.bet.ar y qué cambia frente a la Ciudad, La Rioja y Santa Fe.',
+    h1: 'Jugadón en Córdoba: licencia y dominio cordoba.jugadon.bet.ar',
+  },
+  {
+    brand: 'jugadon', jur: 'la-rioja', host: 'jugadon.bet.ar',
+    title: 'Jugadón en La Rioja: ¿quién lo autoriza?',
+    description: 'Jugadón en La Rioja: quién lo autoriza, qué dice el regulador riojano AJALAR, con qué dominio opera y cómo verificarlo si estás en la provincia.',
+    h1: 'Jugadón en La Rioja: qué dice el regulador',
+  },
+  {
+    brand: 'super7', jur: 'mendoza', host: 'mdz.super7.bet.ar',
+    title: 'Super7 en Mendoza: licencia del IPJyC y dominio',
+    description: 'Super7 en Mendoza: la dirección mdz.super7.bet.ar que publica el IPJyC y por qué en la Ciudad de Buenos Aires figura con un dominio .com.ar.',
+    h1: 'Super7 en Mendoza: la dirección que publica el IPJyC',
+  },
 ];

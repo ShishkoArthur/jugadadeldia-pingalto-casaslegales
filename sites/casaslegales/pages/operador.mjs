@@ -39,7 +39,7 @@ function checks(h, o, row) {
 
 // Santa Fe publishes two lists on one page (CASINOS ONLINE, APUESTAS DEPORTIVAS): the categories of each address, read from the saved copy
 let sfeCache = null;
-function sfeCats(h) {
+export function sfeCats(h) {
   if (sfeCache) return sfeCache;
   const r = h.regs.find(x => x.id === 'santa-fe');
   sfeCache = {};

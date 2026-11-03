@@ -312,4 +312,12 @@ export const UNLISTED = [
     title: '¿Es legal Betonwin en Argentina? Qué dicen los registros',
     description: '¿Betonwin tiene licencia en Argentina? La buscamos en las {{reg_total}} listas oficiales que guardamos y te mostramos el resultado, con fecha y sin links.',
     h1: '¿Betonwin figura en algún registro oficial de Argentina?' },
+  { slug: 'mystake', name: 'MyStake', tokens: ['mystake'], keyword: 'mystake casino online',
+    title: '¿Es legal MyStake en Argentina? Qué dicen los registros',
+    description: '¿MyStake tiene licencia en alguna provincia argentina? Lo buscamos en las {{reg_total}} listas oficiales que guardamos: resultado con fecha y cita de cada regulador.',
+    h1: '¿MyStake figura en algún registro oficial de Argentina?' },
+  { slug: 'jugabet', name: 'Jugabet', tokens: ['jugabet'], keyword: 'jugabet casino online',
+    title: '¿Es legal Jugabet en Argentina? Qué dicen los registros',
+    description: 'Jugabet y la ley argentina: si figura o no en las {{reg_total}} listas provinciales de juego online que guardamos, revisadas una por una, y cómo verificarlo vos.',
+    h1: '¿Jugabet figura en algún registro oficial de Argentina?' },
 ];

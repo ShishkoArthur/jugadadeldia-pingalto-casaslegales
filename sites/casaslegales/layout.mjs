@@ -13,6 +13,7 @@ const NAV = [
   ['/juego-responsable', 'Ayuda'],
 ];
 const FOOT = [
+  ['/casinos-online-legales', 'Casinos online legales', 'bet'],
   ['/guia/bet-ar', 'El dominio .bet.ar'],
   ['/guia/sitios-ilegales', 'Sitios sin licencia'],
   ['/guia/menores', 'Menores y apuestas'],
@@ -25,6 +26,9 @@ const FOOT = [
   ['/redaccion', 'Redacción'],
   ['/registro-de-fuentes', 'Registro de fuentes'],
   ['/juego-responsable', 'Juego responsable'],
+  ['/aviso-legal', 'Aviso legal'],
+  ['/privacidad', 'Privacidad'],
+  ['/contacto', 'Contacto'],
 ];
 const HELP_NAV = [['/juego-responsable', 'Líneas de ayuda'], ['/juego-responsable/autoexclusion', 'Autoexclusión'], ['/redaccion', 'Quiénes somos']];
 

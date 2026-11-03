@@ -53,8 +53,10 @@ function checker(h, o, row) {
     '<p class="rl-pchk-out" data-rl-pchk-out aria-live="polite"></p></form><script type="application/json" id="rl-pchk">' + h.jsonScript(data) + '</script>';
 }
 
-function siteSeen(h, o, D) {
-  const mine = x => { try { return hostKey(x) === o.host || hostKey(x).endsWith('.' + o.host); } catch { return false; } };
+function siteSeen(h, o, D, row) {
+  const under = (k, host) => k === host || k.endsWith('.' + host);
+  const others = [...new Set(Object.values(row.cells).filter(Boolean).map(c => c.host))].filter(x => x !== o.host && under(x, o.host));
+  const mine = x => { try { const k = hostKey(x); return under(k, o.host) && !others.some(y => under(k, y)); } catch { return false; } };
   const listed = new Set((D.data.brands[o.brand] || { shots: [] }).shots);
   const shots = Object.values(D.shots).filter(s => s.brand === o.brand && mine(s.url));
   const figs = shots.filter(s => listed.has(s.id)).map(s => shotFigure(h, s, s.ok ? 'Página de entrada' : 'Lo que muestra fuera de su provincia')).join('');
@@ -102,7 +104,7 @@ export function opProvPage(o) {
       const links = [['/operador/' + o.brand, 'Ficha completa de ' + row.name], ...OPPROV.filter(y => y.brand === o.brand && y.jur !== o.jur).map(y => ['/operador/' + y.brand + '/' + y.jur, row.name + ' en ' + h.rg.prov(y.jur).name]),
         ['/provincia/' + o.jur, 'Todos los sitios de la lista de ' + prov], ['/guia/como-verificar', 'Cómo verificar un sitio']].filter(([u]) => h.built(u));
       const next = '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + '<div class="rl-gd">' + links.map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div></section>';
-      return hero + addr + diff + chk + siteSeen(h, o, D) + help(h, x) + next;
+      return hero + addr + diff + chk + siteSeen(h, o, D, row) + help(h, x) + next;
     },
   };
 }
