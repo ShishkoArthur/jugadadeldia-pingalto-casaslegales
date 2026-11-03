@@ -128,10 +128,10 @@ export const ffCodigos = {
   render(h) {
     const L = h.pa.fact('ff_code_len');
     const page = h.pa.doc('garena-reward').page;
-    const tool = '<div class="pa-tool pa-oo"><form class="pa-c pa-fm" id="pa-cf" autocomplete="off"><h2>¿Tiene el formato correcto?</h2>' +
+    const tool = '<div class="pa-tool"><form class="pa-c pa-fm" id="pa-cf" autocomplete="off"><h2>¿Tiene el formato correcto?</h2>' +
       field('cf-in', 'Pegá el código', '<input id="cf-in" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40" placeholder="por ejemplo ABCD1234EFGH">', 'No lo mandamos a ningún lado: se revisa en tu navegador.') +
       '<p class="pa-src">Revisamos solo lo que publica Garena: largo de ' + L.join(' o ') + ' caracteres, letras mayúsculas y números. Si el formato está bien, eso no dice si el código es válido, si venció o si es de tu región: eso lo sabe solo el sitio oficial.</p></form>' +
-      '<div class="pa-c pa-out" aria-live="polite"><p class="pa-x">Resultado</p><p class="pa-big pa-nk" data-o="st">-</p><p class="pa-say" data-o="say">Pegá un código y te decimos si cumple el formato que pide Garena.</p><p class="pa-code"><code data-o="clean"></code></p>' +
+      '<div class="pa-c pa-out" aria-live="polite"><p class="pa-x">Resultado</p><p class="pa-big pa-nk" data-o="st">-</p><p class="pa-say" data-o="say">Pegá un código y te decimos si cumple el formato que pide Garena.</p><p class="pa-code" hidden><code data-o="clean"></code></p>' +
       '<div class="pa-share"><button type="button" data-copy="clean" hidden>Copiar el código limpio</button><output data-o="copied"></output></div></div></div>';
     const how = sec('Cómo canjearlo en el sitio oficial', '<div class="pa-two"><div><ol class="pa-steps"><li><span>Entrá a <a href="' + h.esc(page) + '" rel="noopener">reward.ff.garena.com</a>, el sitio de canje de Garena. Escribí la dirección vos: no entres desde links que te mandan por mensaje.</span></li><li><span>Iniciá sesión con la misma cuenta vinculada que usás en el juego.</span></li><li><span>Pegá el código y confirmá. Si sale bien, la recompensa llega al juego.</span></li></ol>' + quote(h, 'ff_code_guest', 'es') + '</div>' +
       '<div>' + quote(h, 'ff_code_len', 'es') + quote(h, 'ff_code_exp', 'es') + quote(h, 'ff_code_vault', 'es') + '</div></div>');

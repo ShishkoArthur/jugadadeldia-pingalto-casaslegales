@@ -10,7 +10,7 @@ if (D && f) {
     const raw = inp.value;
     const clean = raw.replace(INV, '').toUpperCase();
     copy.hidden = true;
-    out('clean', '');
+    out('clean', '').parentNode.hidden = true;
     if (!raw.trim()) { out('st', '-'); out('say', 'Pegá un código y te decimos si cumple el formato que pide Garena.'); return; }
     const bad = [...clean].filter(c => !/[A-Z0-9]/.test(c));
     const okLen = D.len.includes(clean.length);
@@ -20,7 +20,7 @@ if (D && f) {
     if (!bad.length && okLen) {
       out('st', 'Formato correcto');
       out('say', clean.length + ' caracteres, solo mayúsculas y números' + (notes.length ? ' (' + notes.join('; ') + ')' : '') + '. Ahora probalo en el sitio oficial: solo ahí sabés si es válido, si venció o si es de tu región.');
-      out('clean', clean); copy.hidden = false;
+      out('clean', clean).parentNode.hidden = false; copy.hidden = false;
     } else {
       out('st', 'No cumple el formato');
       const why = [];
