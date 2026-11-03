@@ -51,36 +51,17 @@
 
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
-## Следующее — первая задача нового чата (владелец 02.11: «сразу начал подготавливать список страниц под все три сайта, шаблон,
-## девушки (2 штуки кроме третьего сайта), апи который необходимы для автообновления чтобы перепроверять сайты только раз в пол года»)
-1. `git push -u origin main` (как только ключ добавлен); проверить токен Cloudflare (`GET /zones`, только имена).
-2. **Список страниц для трёх сайтов** (по `docs/research/KEYWORDS-2026-11-02.md`, «как можно больше страниц, даже 0–10 частотки», но у каждой —
-   свой инструмент/визуал) → одной страницей-артефактом владельцу (с телефона). Агентами параллельно, по сайту на агента. Учесть:
-   - **jugadadeldia:** топ — кинела по провинциям (Tucumán 546k/0, Catamarca, San Juan, Jujuy — KD 0), quini 6, telekino, loto plus,
-     «controlar quini 6» 65k/2, tómbolas (santiagueña 151k, jujeña 61k/0); труко (valores, señas, anotador, reglas — KD 0), burako, chinchón,
-     generala, escoba, «tirador de dados» 5,4k/0. **Ловушка:** «quiniela enzo / confiable / online», «lotería mundial(es)», «notitimba»,
-     «ruta 1000» — бренды сторонних сайтов и, вероятно, нелегальной онлайн-кинелы: не продвигать; на casaslegales возможны страницы
-     «¿Es legal …?» с цитатами регуляторов.
-   - **pingalto:** спрос на соревновательный киберспорт в AR мал («dota 2» 2,3k, «esports» 1,3k; «dota» — ещё и автобусная компания DOTA);
-     основной спрос — **игровые утилиты**: fortnite tracker 53k/5, valorant tracker 12k, тир-листы, ранги (rangos valorant/lol — KD 0),
-     прицелы/«miras», чувствительность (Free Fire 6,3k/0), коды, карты (ascent, split), Free Fire (free fire max 58k/9), Brawl Stars 44k,
-     Clash Royale 27k, Rocket League 17k/11, counter strike 1.6. Строить «математика и инструменты игр» + киберспорт (сетки, шансы серий).
-     **Не брать**: взрослый мусор (rule 34, xxx), покупку/пополнение (diamantes, recarga — коммерция), кейсы и скины.
-   - **casaslegales:** бренды огромные и навигационные (betsson 1,9 млн, betano 1,33 млн, bet365 1 млн, bplay 109k/**0**, «betsson pba»
-     149k, «betano pba» 24k/18, «bet365 argentina» 13k/25); страницы: обзор оператора + «¿Es legal en mi provincia?», реестр лицензий по
-     провинциям, «casinos online legales», методика; навигационный интент (iniciar sesión) — не цель.
-3. **Шаблоны:** по 10 живых HTML-макетов на каждый сайт (три разных мира, не похожие на RinkMath и gambeteo) → выбор владельца.
-4. **Девушки (2):** jugadadeldia — образ по теме (кинела/карты; внешность — спросить), pingalto — «альт» ~20 лет (цветные волосы,
-   пирсинг, тёмная одежда, явно взрослая, не откровенно); по 10 вариантов → выбор → база → сцены. casaslegales — без людей.
-5. **API для автообновления «раз в полгода»** — список источников с условиями использования (как ресёрч NBA в RinkMath): выписки кинелы по
-   провинциям (PBA — JSON без ключа, проверено), Quini 6/Brinco (Santa Fe — гео-блок, нужен Chrome владельца), Loto Plus, Telekino, тómbolas;
-   киберспорт и игры (OpenDota — бесплатно; HLTV запрещает сбор; Liquipedia API, PandaScore, Riot API, Fortnite/Valorant трекеры — условия);
-   реестры лицензий провинций для casaslegales (LOTBA, IPLyC и др.). Ленты — на сервере по образцу gambeteo (без минут GitHub Actions).
-6. Затем по PLAYBOOK §17.1: каркас (техника gambeteo/RinkMath, облик — новый у каждого), движки с тестами, источники с цитатами,
-   инструменты, тексты (Claude API, es-AR), сцены, QA, выкладка (+ `.claude/settings.json` с правилом деплоя, как в canadabetting).
-
-## Вопросы владельцу (одним сообщением, с вариантом по умолчанию) — PLAYBOOK §2
-Авторы (по одному на сайт?), индекс (сразу целиком?), внешность девушки jugadadeldia, приоритетные операторы для casaslegales.
+## Состояние и следующее (03.11)
+- **Выбор владельца:** pingalto — дизайн r2 «02 Holo pastel»; casaslegales — r2 «02 Relieve». **Ждём:** jugadadeldia — дизайн из 20
+  (`docs/design/jugadadeldia/r3/`) и девушка из 10 (`contact-jdd-girls-r3.jpg`); pingalto — девушка из 10 (`contact-pa-girls-r3.jpg`).
+- Сводка владельцу (планы с title/H1/description/AR, макеты, девушки, вопросы): https://claude.ai/artifact/GHyiNUXUDLCApby67KxLtS —
+  сборка `node docs/owner/build-overview.mjs`, вопросы `docs/owner/questions.json`, публиковать тем же путём `docs/owner/overview.html`.
+- **В работе (агенты 03.11):** casaslegales волна 2 (операторы со своими скриншотами, `/verificador`, проверки нелицензированных, гайды);
+  pingalto каркас + P1-инструменты без ключей; движок лотерей jugadadeldia (`engine/lottery`, регламенты с цитатами); движок труко + боты.
+- **Потом:** оформление jugadadeldia после выбора; сцены девушек; тексты через Claude API; автообновление (ленты на сервере, Telegram-бот —
+  ждём токен); Santa Fe/Mendoza — файлы от владельца в `docs/reference/owner-saves/`; ключи PandaScore/Supercell — от владельца.
+- Решения 03.11 (DECISIONS): индекс открыт весь, выкладка сразу, автор Denis Krazok только на jugadadeldia, игры против компьютера — да,
+  pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
 - 03.11 — движок трёх сайтов (render, гейты + selftest, deploy, источники с цитатами) и каркас casaslegales.com выложен
