@@ -140,6 +140,7 @@ details.sec>summary .n{font:500 13px var(--m);color:var(--mute)}
       <a class="pick" href="girls/scenes-pa.jpg"><span class="pick-k">pingalto</span><span class="pick-v">сцены страниц →</span><span class="pick-n">девушка 9</span></a>
       <a class="pick" href="girls/scenes-jdd-more.jpg"><span class="pick-k">jugadadeldia · ещё</span><span class="pick-v">10 сцен для новых страниц →</span><span class="pick-n">redoblona, brinco, poceada, truco, generala, chinchón, escoba</span></a>
       <a class="pick" href="girls/scenes-pa-more.jpg"><span class="pick-k">pingalto · ещё</span><span class="pick-v">9 сцен для новых страниц →</span><span class="pick-n">/ff, /ff/codigos, /valorant, /cs2, /cs2/major, /lol, /esports, /esports/series, /kit/sensibilidad</span></a>
+      <a class="pick" href="girls/scenes-pa-r5.jpg"><span class="pick-k">pingalto · новое</span><span class="pick-v">8 переделанных сцен →</span><span class="pick-n">/ff, /ff/codigos, /cs2/major, /esports, /esports/series, /kit/sensibilidad, /dota2, /clash</span></a>
       <a class="pick" href="girls/scenes-pa-games.jpg"><span class="pick-k">pingalto · новое</span><span class="pick-v">девушка «в игре» →</span><span class="pick-n">CS2, Valorant, LoL, Fortnite, Dota 2, RL, FC, Brawl, Clash</span></a>
       <a class="pick" href="girls/bg-pa.jpg"><span class="pick-k">pingalto · новое</span><span class="pick-v">фоны шапки игр →</span><span class="pick-n">свои, без чужих логотипов</span></a>
     </div>
