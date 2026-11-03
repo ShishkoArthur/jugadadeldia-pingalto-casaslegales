@@ -64,6 +64,8 @@
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
+- 03.11 — pingalto волна 2 выложена: формат чисел es-AR во всех инструментах (+ гейт), /tier-list, /valorant/agentes, /cs2/mira,
+  /ff/nombres, /ff/espacio-invisible, /fortnite/nube (раздел «pingalto» ниже).
 - 03.11 — casaslegales волна 2 выложена: 10 операторов со своими скриншотами, /verificador, 5 проверок брендов, 3 гайда, автоисключение.
 - 03.11 — движок трёх сайтов (render, гейты + selftest, deploy, источники с цитатами) и каркас casaslegales.com выложен
   (9 страниц + 404, индекс открыт). Раздел «Движок и выкладка» выше. /quienes-escriben → /redaccion (автор только на jugadadeldia).
@@ -80,25 +82,34 @@
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
 
-## pingalto (03.11) — каркас и 6 инструментов P1 выложены, индекс открыт
-- **Живое:** https://pingalto.com/ · /kit/ping · /kit/sensibilidad · /kit/dpi · /ff/sensibilidad · /valorant/rangos · /lol/rangos ·
-  /equipo · /metodo · /datos · /contacto · /legal (+404 «Ping perdido»; `/путь/` → 301 без слэша — Caddy `server-setup.sh pingalto update`).
+## pingalto (03.11) — волна 2 выложена: 18 страниц + 404, индекс открыт
+- **Живое:** https://pingalto.com/ · /kit/ping · /kit/sensibilidad · /kit/dpi · **/tier-list** · /ff/sensibilidad · **/ff/nombres** ·
+  **/ff/espacio-invisible** · /valorant/rangos · **/valorant/agentes** · **/cs2/mira** · /lol/rangos · **/fortnite/nube** · /equipo · /metodo ·
+  /datos · /contacto · /legal (+404 «Ping perdido»; `/путь/` → 301 без слэша — Caddy `server-setup.sh pingalto update`).
 - **Устройство:** `sites/pingalto/` — дизайн r2 «02 Holo pastel», классы `pa-*`, ассеты `/s/<имя>.<10 hex>.<ext>` (год кэша), шрифты
   M PLUS Rounded 1c 800 + Be Vietnam Pro 400/600 (свои woff2). Не азарт: `gate.gambling = false` (без блока помощи/18+), selftest pingalto
-  в `npm test`. Девушка — заглушка-карточка «ALT · GUÍA» (`pages/parts.mjs` girlCard), автора нет («redacción»). Riot-текст в подвале
-  страниц Valorant/LoL и главной (`riot: true`).
-- **Движки** `engine/games/*` (чистые, тест-замки `engine/test/games.test.mjs`): sens (yaw, cm/360, eDPI), dpi, geo (гаверсинус, пол
-  по волокну), ping, bisect (калибровка FF делением пополам), ladder (точная цепь Маркова: подъём/перенос/понижение; сверено с МК).
-- **Источники** `data/sources/pingalto/sources.json` + `_docs/` (17 документов, sha256, цитаты дословно, значение внутри цитаты, свежесть
-  ≤ 180 дн. — проверка при сборке, `content/src.mjs`; тест порчи `engine/test/pingalto-sources.test.mjs`). Перепроверка вручную до 02.05.2027
-  (скрипта `--recheck` для pingalto пока нет). Yaw: Valve SDK (0,022, офиц.) + frameratetest.com (CS2/Apex 0,022, Valorant 0,07, OW2 0,0066 —
-  «comunidad»). Ранги/правила CR и PL — support.riotgames.com es-mx; серверы — playvalorant (2020) и LoL Wiki; SDR Valve (пинги от eze);
-  ID-1 — Wikipedia, SUBE — pchardwarepro; c, n=1,4475, радиус Земли — Wikipedia; координаты — Wikidata; AWS endpoints — docs.aws.
-- **Пропущено:** /cs2/premier и /cs2/rangos (Valve публикует только «граница цвета каждые 5000 CS Rating», цвета/доли — без источника),
-  /valorant/mapas/ascent и /split (у Riot нет списка callouts), Fortnite в конвертере (нет значения Epic, у сообществ расходится),
-  перенос FF-чувствительности между телефонами (Garena не публикует формулу). Живой пинг — только São Paulo и Virginia (AWS);
-  Santiago/Miami — только расчёт (у AWS нет публичных точек там; sa-west-1 отвечает, но не в документации — не используем).
-- **Дальше:** девушка (выбор владельца) → сцены; страницы P2 из `data/plan/pingalto.json`; ленты (OpenDota, VRS) — по слову владельца.
+  в `npm test`. Девушка — заглушка-карточка «ALT · GUÍA» (`pages/parts.mjs` girlCard; владелец не выбрал), автора нет («redacción»).
+  Riot-текст в подвале страниц Valorant/LoL/tier-list и главной (`riot: true`).
+- **Числа es-AR (волна 2):** `engine/games/num.mjs` — свой форматтер (запятая, точка тысяч «1.234» одинаково во всех браузерах),
+  `parseNum` читает «1,25» и «1.25» (в целых полях «1.600» = 1600), `fmtInput` для значений полей. Поля — `type="text"` + `inputmode`,
+  без `type="number"`. Гейт `decimal` в check-dist (включается `gate.decimalComma` в config; исключения `decimalOk`: CS 1.6, CC BY-SA 4.0;
+  `<code>`/цитаты не проверяются) + тест `engine/test/pingalto-numbers.test.mjs`.
+- **Движки** `engine/games/*` (тесты `games`, `xhair`, `pingalto-tools2`, `pingalto-numbers`): sens, dpi, geo, ping, bisect, ladder;
+  **xhair** (код прицела CS2 формата 30.09.2026 «CS»+44 знака — порт MIT akiver/csgo-sharecode, сверен с его тест-кодами, 2 из них
+  экспортированы игрой 1.41.8.8; консольные команды; превью SVG), **fancy** (13 стилей Unicode, каждый проверен через NFKC), **tier**
+  (состояние тир-листа в адресе), **stream** (ГБ/час из Мбит/с).
+- **Источники** `data/sources/pingalto/sources.json` + `_docs/` (30 документов, 63 цитаты; sha256, свежесть ≤ 180 дн. при сборке).
+  Новое: патч-ноты CS2 (Steam News API, офиц.), csgo-sharecode (3 файла, MIT), valorant-api.com agents/maps/version (es-MX, читаются
+  целиком), Data Dragon champion es_AR 16.21.1 (офиц.), xbox.com/es-AR/cloud-gaming и Xbox Wire 09.06.2022 (Аргентина, Fortnite без
+  подписки, 10/20 Мбит/с, 5 ГГц), Unicode Blocks 18.0.0, Wikipedia (U+3164). Перепроверка вручную до 02.05.2027 (скрипта `--recheck` нет).
+  Обновить снимки valorant-api/Data Dragon — перекачать файл, пересчитать sha256 (новый агент появится сам).
+- **Честные пропуски волны 2:** /ff/max (официальных требований Garena/Play Store в HTML нет — только сторонние статьи 2021),
+  /valorant/mira (формат кода Valorant официально не описан; сообщество — частично; без проверки в клиенте не делаем),
+  /esports/calendario (без ленты не делаем), лимит длины ника FF и список допустимых символов (Garena не публикует — страница считает
+  и предупреждает), тир-лист «vs топ Аргентины» (нужен ключ Supercell), прицелы аргентинских про (только из их публикаций — не нашли),
+  клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
+- **Дальше:** девушка (выбор владельца) → сцены; хабы /valorant, /cs2, /ff, /fortnite, /esports; /esports/series (математика серий из
+  RinkMath); ленты (OpenDota, VRS, PandaScore) — по слову владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos.
 
 ## casaslegales (03.11) — волна 2 выложена (29 страниц + 404, индекс открыт)
 - **Живое (новое):** /verificador · /operadores · /operador/{betsson, betano, bet365, bplay, betwarrior, codere, jugadon, playcet, sportsbet,
