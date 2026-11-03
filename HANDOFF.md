@@ -146,6 +146,7 @@
   og:image на сайтах нет (twitter:card summary) — делать отдельно, если владелец захочет превью ссылок.
 
 ## Журнал
+- 03.11 — jugadadeldia волна 2: +19 страниц (74 из 111), бурако по регламенту Juegos Bonaerenses, часы кинелы из программы LOTBA (раздел «jugadadeldia — волна 2»).
 - 03.11 — логотипы и фавиконы трёх сайтов (раздел «Логотипы и фавиконы» выше), сравнение `docs/owner/logos-2026-11-03.html`.
 - 03.11 — девушки на jugadadeldia и pingalto крупнее и чётче: файлы из полноразмерных вырезок (320–1280w, q88), рамки 340–380 px
   на ПК, на телефоне карточка под текстом ~330 px, `sizes` по реальным рамкам (раздел «Сцены девушек»).
@@ -182,6 +183,33 @@
   `data/img-review/`), 10 макетов jugadadeldia (`docs/design/jugadadeldia/`). Дальше — макеты pingalto и casaslegales.
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
+
+## jugadadeldia (03.11) — волна 2 выложена: 74 страницы из 111 плана + 404, индекс открыт
+- **Новые 19 (все 200, гейты и `npm test` зелёные):** /quiniela/como-se-juega/ (интерактивная boleta на примерном экстракте из
+  xoshiro-сида + квиз 5 вопросов), /quiniela/simulador/ (yearExact + 10 000 лет МК с сидом, кривая и гистограмма), /quiniela/horarios/
+  (программа LOTBA ноябрь, разбор PDF при сборке `program()` в `pages/guias.mjs`; «hoy/mañana», обратный отсчёт; дни без тиражей — из
+  архива ленты), /cuanto-devuelve-cada-juego/, /quini-6/como-se-juega/ (volante), /quini-6/controlar/ (до 10 билетов × модальности + Premio
+  Extra, только localStorage), /telekino/controlar/ (сетка 5×5), /truco/reglas/ («¿quién ganó la mano?» на `handWinner`), /truco/puntos/
+  (цепочки envido/truco, falta по счёту), /truco/quiero-o-no-quiero/ (тренажёр: envidoVsRandom / bazasVsRandom, честная оговорка «рука
+  соперника — любая»), /truco/flor/, /chinchon/ («¿puedo cortar?» на canCut/bestSplit), /chinchon/anotador/, /escoba-de-15/ (buscador
+  `captures` + подсчёт руки `scoreHand`), /burako/ + /burako/anotador/ (калькулятор руки), /bolillero/ (crypto, голос, печатные cartones
+  3×9), /glosario/, /politica-de-privacidad/. Сцены поставлены у 8 (horarios, quini-6 ×2, telekino/controlar, truco/reglas, burako,
+  chinchon, escoba-de-15); новых картинок не делали.
+- **Источники:** `data/sources/burako/` — регламент Juegos Bonaerenses 2026 Burako (robots `*` разрешает, 27 цитат, тест
+  games-sources); значения BURAKO в `pages/cartas.mjs` при сборке сверяются с текстом цитат. В `lotba.json` +8 фактов (часы 5 турно,
+  суббота, 10 jugadas на ticket, отмена 15 мин, где получать, премии > $ 2.100.000 в LOTBA, участники 1–7).
+- **Честно:** /quini-6/como-se-juega/ — без цены и часов (программа Santa Fe не доступна), заголовок/описание переименованы, план обновлён.
+  Бурако: регламент не говорит прямо, что выложенные фишки идут в плюс, — калькулятор их суммирует, с выключателем и пометкой.
+- **Не построено (37) и почему:** кинела Tucumán (TLS-сертификат), Catamarca, San Juan, Corrientes, Chaco, Formosa, Misiones, Salta,
+  Santiago, Neuquén, Río Negro, Chubut, Jujuy, San Luis, La Rioja, La Pampa, Santa Cruz, TDF — нет ленты (LOTBA/PBA их не публикуют);
+  /tombola/ и 5 tómbolas, /poceada/chaquena/, /loto-5/, /raspaditas/ — нет официального регламента (`gaps.json`); /quiniela/significado-de-
+  los-numeros/ — только пресса, официального источника таблицы нет; /calendario-de-sorteos/ — программы LOTBA покрывают 2–12.11, Quini 6/
+  Telekino дней нет в цитатах; /premios-e-impuestos/ — нет сохранённого закона ARCA; /quini-6/probabilidades/, /quini-6/pozo-extra/ — то же,
+  что уже на /quini-6/ (дубль); /burako/jugar/ — нет движка; /loba/, /tute/, /dados/juegos-con-dados/ — нет источника правил.
+  Сцены ждут: /quiniela/significado…, tucuman, catamarca, san-juan, /tombola/santiaguena/, /tombola/jujena/ (+ ещё 6 из 20).
+- **Дальше:** программа LOTBA на вторую половину ноября (после 12.11 /quiniela/horarios/ отвечает по архиву, не по программе) —
+  скачать, обновить `quiniela-programa` (sha256), `node tools/verify-sources.mjs`; найти официальный источник «significado» и закон о
+  налоге на премии; ленты других провинций — если появятся официальные источники.
 
 ## jugadadeldia (03.11) — волна 1 выложена: 45 страниц + 404, индекс открыт
 - **Живое:** https://jugadadeldia.com/ · /quiniela/cuanto-paga/ · /quiniela/redoblona/ · /quini-6/ · /loto-plus/ · /brinco/ · /telekino/ ·
