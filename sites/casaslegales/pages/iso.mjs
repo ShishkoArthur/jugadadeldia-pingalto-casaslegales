@@ -4,13 +4,14 @@
 // (static tiles). Heights are computed here, never typed in a page.
 import { TILES } from '../content/map.mjs';
 
-// height in px at scale 1: list = 10 + 6 per site, provincial platform 12, no source 6, no data 4
+// height in px at scale 1: list = 8 + 7 * sqrt(sites) (grows with the list but stays low enough not to hide the tiles behind),
+// provincial platform 9, no source 5, no data 3
 export function isoHeight(st, n) {
   if (st === 'list') {
     if (!Number.isInteger(n) || n < 0) throw new Error('isoHeight: bad count ' + n);
-    return 10 + 6 * n;
+    return Math.round(8 + 7 * Math.sqrt(n));
   }
-  return st === 'platform' ? 12 : st === 'blocked' ? 6 : 4;
+  return st === 'platform' ? 9 : st === 'blocked' ? 5 : 3;
 }
 
 // tiles: id -> { kind: list|platform|none|blocked|yes|no, h, on, label, attrs, href, title }

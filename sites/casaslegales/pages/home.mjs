@@ -24,7 +24,7 @@ export const home = {
       const label = x.name + ': ' + (x.st === 'list' ? x.n + ' sitios en la lista oficial' : x.st === 'platform' ? x.label + ', ' + x.e.platforms.map(q => q.name).join(', ') : x.label);
       return { kind: x.st, h: isoHeight(x.st, x.n), on: t.id === def, label: t.id === def ? t.code + (x.n !== null ? ' · ' + x.n : '') : null,
         attrs: ' type="button" data-j="' + t.id + '" aria-pressed="' + (t.id === def) + '" aria-label="' + h.esc(label) + '"' };
-    }, { size: 'l', tag: 'button', group: true, aria: 'Mapa de las jurisdicciones: la altura de cada ficha es la cantidad de sitios de su lista oficial', ladder: isoLadder(h, P) });
+    }, { size: 'l', tag: 'button', group: true, aria: 'Mapa de las jurisdicciones: cuantos más sitios tiene su lista oficial, más alta es la ficha', ladder: isoLadder(h, P) });
     const opts = TILES.map(t => [t.id, h.rg.prov(t.id).name]).sort((a, b) => a[1].localeCompare(b[1], 'es'))
       .map(([id, n]) => '<option value="' + id + '"' + (id === def ? ' selected' : '') + '>' + h.esc(n) + '</option>').join('');
     const ver = h.built('/verificador');

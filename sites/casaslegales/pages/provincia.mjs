@@ -12,7 +12,7 @@ export function relief(h, P, cur, { links = false, cls: clsOf = null, tip = null
     const label = x.name + ': ' + (tip ? tip(x) : x.label);
     const on = x.id === cur;
     const href = links && h.built('/provincia/' + x.id) ? h.href('/provincia/' + x.id) : null;
-    return { kind, h: clsOf ? (kind === 'list' ? 28 : kind === 'blocked' ? 6 : 4) : isoHeight(x.st, x.n), on,
+    return { kind, h: clsOf ? (kind === 'list' ? 22 : kind === 'blocked' ? 5 : 3) : isoHeight(x.st, x.n), on,
       label: on ? x.code + (!clsOf && x.n !== null ? ' · ' + x.n : '') : null, href, attrs: href ? ' aria-label="' + h.esc(label) + '"' : '', title: href ? null : label };
   }, { size: 'm', aria: links ? 'Mapa de las 24 jurisdicciones: cada ficha lleva a su página' : aria });
 }
