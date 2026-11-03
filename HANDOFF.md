@@ -66,6 +66,8 @@
   pingalto без Roblox, будущая кнопка партнёрки — позже по слову владельца.
 
 ## Журнал
+- 03.11 — pingalto волна 3 выложена: /cs2 (Valve VRS), /cs2/major, /esports/series, /esports, /lol, /valorant, /ff, /ff/codigos
+  (раздел «pingalto (03.11) — волна 3» ниже).
 - 03.11 — casaslegales волна 4 выложена: копии сайтов с закрытым для ИИ robots → `pendingOwnerCopy`, 5 страниц оператор × провинция,
   /calculadora/cuotas, /calculadora/combinada, /guia/ley-federal (раздел ниже).
 - 03.11 — pingalto волна 2 выложена: формат чисел es-AR во всех инструментах (+ гейт), /tier-list, /valorant/agentes, /cs2/mira,
@@ -86,6 +88,30 @@
   `data/img-review/`), 10 макетов jugadadeldia (`docs/design/jugadadeldia/`). Дальше — макеты pingalto и casaslegales.
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
+
+## pingalto (03.11) — волна 3 выложена: 26 страниц + 404, индекс открыт
+- **Новое (живое):** **/cs2** (Valve VRS 02.11.2026: мир 376 и Америки 87, Америки подсвечены в мировой таблице, поиск по команде/игроку,
+  «cara a cara» — шанс по формуле модели Valve) · **/cs2/major** (регламент Major с GitHub Valve: фазы, Bo1/Bo3, пик-бан, точный
+  калькулятор швейцарки с сеткой рекордов) · **/esports/series** (Bo1/3/5/7, шанс по каждому мапу, счёт по ходу, обратная задача,
+  кривые) · **/esports** (хаб) · **/lol** (173 чемпиона Data Dragon 16.21.1 es_AR: роли из language.json, оценки Riot 1–10, сравнение) ·
+  **/valorant** и **/ff** (хабы) · **/ff/codigos** (формат 12/16 из текста сайта обмена Garena, сообщения об ошибках, чек-лист мошенничества,
+  куда заявлять в Аргентине — argentina.gob.ar «Con Vos en la Web»: UFECI, 0800-33-FISCAL, 102). Меню: Ping, Tier list, Free Fire, Valorant,
+  LoL, CS2, Esports (раздел подсвечен и на подстраницах); на главной +5 плиток.
+- **Движки:** `engine/games/series.mjs` (точная ДП серии, закрытая формула, `mapChanceFor`, `swiss` по правилу Valve — Bo3 при 2 победах
+  или 2 поражениях, `swissCounts`), `vrs.mjs` (разбор таблиц VRS, `expected` = priorWinExpectation Valve с RD 75 — тест сверяет с портом их
+  кода; маскировка названий с брендами ставок: BETBOOM, 1win, Betclic, SportsBetExpert…), `seriesviz.mjs` (SVG кривых и сетки, таблицы —
+  одни и те же в сборке и браузере). Тесты `engine/test/pingalto-series.test.mjs` (МК, перебор, порт Valve).
+- **Источники (+11, 44 цитаты):** VRS americas/global 2026_11_02, readme, glicko.js, ranking.js, fit.js, region.js (коммит f8c55f2),
+  Major Supplemental Rulebook (коммит 621b7d9), Data Dragon language es_AR, бандл сайта обмена Garena (испанские строки NOTICE__LIST,
+  тип html — теги внутри строк снимаются), argentina.gob.ar/justicia/convosenlaweb/denuncia. Content/vrs.mjs падает, если дата файла,
+  RD или константа 400 разошлись с цитатой. **VRS обновлять руками** (Valve выкладывает новую таблицу примерно раз в месяц):
+  скачать оба .md с raw.githubusercontent.com по новому коммиту, поменять url/sha256/даты и цитаты `vrs_am_date`, `vrs_gl_date`.
+- **Честно не делали:** аргентинские команды не помечены (в таблицах Valve нет национальности; Wikidata SPARQL закрыт robots, Liquipedia
+  закрыта для ИИ); /dota2* (api.opendota.com в robots запрещает ClaudeBot), /lol/meta, Worlds (Leaguepedia/Liquipedia закрыты для ИИ,
+  Riot — ключ), /cs2/mapas (Valve не называет мапы Active Duty в регламенте; Steam API закрыт robots для всех), /valorant/mapas
+  (ротации нет в данных клиента), расписание Major/календарь в hora argentina (нет цитируемой даты), списки кодов FF.
+- **Внимание:** документ `lolwiki` (wiki.leagueoflegends.com, факт `lol_las_scl` на /lol/rangos и /kit/ping) скачан до правила 03.11 —
+  их robots запрещает ClaudeBot. Нужна копия владельца или замена источника (на /lol его уже не используем).
 
 ## pingalto (03.11) — волна 2 выложена: 18 страниц + 404, индекс открыт
 - **Живое:** https://pingalto.com/ · /kit/ping · /kit/sensibilidad · /kit/dpi · **/tier-list** · /ff/sensibilidad · **/ff/nombres** ·
@@ -113,8 +139,8 @@
   /esports/calendario (без ленты не делаем), лимит длины ника FF и список допустимых символов (Garena не публикует — страница считает
   и предупреждает), тир-лист «vs топ Аргентины» (нужен ключ Supercell), прицелы аргентинских про (только из их публикаций — не нашли),
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
-- **Дальше:** девушка (выбор владельца) → сцены; хабы /valorant, /cs2, /ff, /fortnite, /esports; /esports/series (математика серий из
-  RinkMath); ленты (OpenDota, VRS, PandaScore) — по слову владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos.
+- **Дальше:** девушка pa-girl-r3-09 → сцены; хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
+  владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
 
 ## casaslegales (03.11) — волна 4 выложена (63 страницы + 404)
 - **Robots (TRAPS 03.11):** документы с loteriadecordoba.com.ar, ijan-neuquen.com, loteriaderionegro.gob.ar, enrejasalta.com.ar (10 страниц,
