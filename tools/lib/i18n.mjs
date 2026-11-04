@@ -236,7 +236,8 @@ export function htmlToEn(html, { tr, mapPath, origin, quoteNote, where = '' }) {
       if (quoteNote) {
         const inner = t.v.replace(/^<blockquote[^>]*>/, '').replace(/<\/blockquote>$/, '');
         const sub = htmlToEn('<body>' + inner, { tr, mapPath, origin, where }).replace(/^<body>/, '');
-        out += quoteNote(sub);
+        // no English note for data quoted as evidence (JSON, lists of numbers) or when nothing changed
+        if (sub !== inner && !/^\s*[{["]/.test(dec(inner.replace(/<[^>]+>/g, '')))) out += quoteNote(sub);
       }
       continue;
     }
@@ -354,7 +355,7 @@ export function codeToEn(src, file, { mem, onMiss, mapPath }) {
     const key = file + ' :: ' + s.value;
     let en;
     if (Object.hasOwn(mem.code, key)) en = mem.code[key];
-    else { onMiss({ kind: 'code', file, s: s.value, ctx: s.ctx }); miss++; continue; }
+    else { onMiss({ kind: 'code', file, s: s.value, ctx: s.ctx, tpl: s.tpl }); miss++; continue; }
     if (en === s.value) continue;
     res += src.slice(at, s.start) + (s.tpl ? en.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${') : JSON.stringify(en));
     at = s.end;
@@ -370,7 +371,7 @@ export function codeProblem(src, out, tpl) {
   const tags = s => (s.match(/<[^>]+>/g) || []).sort().join(' ');
   if (tags(src) !== tags(out)) return 'HTML tags must stay exactly: ' + (tags(src) || '(none)');
   const [a, , b] = edge(src), [c, , d] = edge(out);
-  if (a !== c || b !== d) return 'keep the leading/trailing spaces exactly ("' + a + '" ... "' + b + '")';
+  if (a !== c || (b !== d && !(d === '' && /[(\[\u201c\u00ab"']$/.test(out)))) return 'keep the leading/trailing spaces exactly ("' + a + '" ... "' + b + '")';
   if (tpl && (/`/.test(out) || /\$\{/.test(out))) return 'no backtick or ${ in a template part';
   return numbersProblem(numEn(src), out);
 }
@@ -385,7 +386,8 @@ const STRONG_RE = new RegExp('(?<![\\p{L}\\p{N}])(' + ES_STRONG.join('|') + ')(?
 const PAIR_RE = /(?<![\p{L}\p{N}])(de|la|el|y|en|es|se|su|lo|al|un|con)\s+(la|el|los|las|un|una|de|del|su|sus|lo)(?![\p{L}\p{N}])/giu;
 export function spanishLeft(text, allow = []) {
   let t = ' ' + text + ' ';
-  for (const a of [...allow].sort((x, y) => y.length - x.length)) if (a) t = t.split(a).join(' • ');
+  const reEsc = x => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  for (const a of [...new Set(allow)].sort((x, y) => y.length - x.length)) if (a) t = t.replace(new RegExp('(?<![\\p{L}\\p{N}])' + reEsc(a) + '(?![\\p{L}\\p{N}])', 'gu'), ' • ');
   const hits = [];
   for (const re of [STRONG_RE, PAIR_RE]) for (const m of t.matchAll(re)) hits.push(m[0] + ' | ' + t.slice(Math.max(0, m.index - 40), m.index + 40).replace(/\s+/g, ' ').trim());
   return hits;

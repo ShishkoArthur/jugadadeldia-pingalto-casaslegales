@@ -14,7 +14,11 @@
   "data": "ленты кинелы и лотерей + движок труко",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/",
+  "titleEn": "Jugada del Día: quiniela, lotteries and truco, with numbers",
+  "descriptionEn": "What each quiniela bet pays in pesos, the real odds of Quini 6 and Argentine lotteries, plus truco, generala and chinchón against the computer.",
+  "h1En": "The play of the day"
  },
  {
   "section": "Quiniela",
@@ -32,7 +36,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "«quiniela en vivo» 490k — на хаб (автообновление), отдельной «en vivo» нет: живой ленты во время тиража нет, обещать нельзя. Бренды-ловушки (enzo, notitimba, ruta 1000, mundial, al minuto, san diego, ya, timba) не берём.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/",
+  "titleEn": "Quiniela results today (Argentina): cabezas by province",
+  "descriptionEn": "Today's quiniela live, checked every 15 minutes: cabezas and extractos for Nacional, Provincia, Córdoba, Santa Fe, Tucumán, Chaco and more.",
+  "h1En": "Quiniela today, live: all the cabezas"
  },
  {
   "section": "Quiniela",
@@ -50,7 +58,11 @@
   "auto": "лента каждые 15 мин",
   "rg": true,
   "notes": "Аудит 04.11: интент «quiniela <турно>» — результаты турно; раньше ключи висели на /quiniela/horarios/.",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/nocturna/",
+  "titleEn": "Quiniela Nocturna today, live: Nacional, Provincia and more",
+  "descriptionEn": "Today's Quiniela Nocturna, 21:00 draw: the cabeza and all 20 numbers for Nacional, Provincia, Córdoba, Santa Fe, Entre Ríos and Mendoza.",
+  "h1En": "Quiniela Nocturna today"
  },
  {
   "section": "Quiniela",
@@ -68,7 +80,11 @@
   "auto": "лента каждые 15 мин",
   "rg": true,
   "notes": "Аудит 04.11: интент «quiniela <турно>» — результаты турно; раньше ключи висели на /quiniela/horarios/.",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/matutina/",
+  "titleEn": "Quiniela Matutina today: Nacional and Provincia cabezas",
+  "descriptionEn": "Today's Quiniela Matutina, 15:00 draw: cabezas and extractos for Nacional, Provincia, Córdoba, Santa Fe, Entre Ríos and Mendoza, plus the week.",
+  "h1En": "Quiniela Matutina today"
  },
  {
   "section": "Quiniela",
@@ -86,7 +102,11 @@
   "auto": "лента каждые 15 мин",
   "rg": true,
   "notes": "Аудит 04.11: интент «quiniela <турно>» — результаты турно; раньше ключи висели на /quiniela/horarios/.",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/vespertina/",
+  "titleEn": "Quiniela Vespertina today: Nacional and Provincia cabezas",
+  "descriptionEn": "Today's Quiniela Vespertina, 18:00 draw: cabezas and extractos for Nacional, Provincia, Córdoba, Santa Fe, Entre Ríos and Mendoza, plus the week.",
+  "h1En": "Quiniela Vespertina today"
  },
  {
   "section": "Quiniela",
@@ -104,7 +124,11 @@
   "auto": "лента каждые 15 мин",
   "rg": true,
   "notes": "Аудит 04.11: интент «quiniela <турно>» — результаты турно; раньше ключи висели на /quiniela/horarios/.",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/la-primera/",
+  "titleEn": "Quiniela La Primera today: cabezas for each province",
+  "descriptionEn": "Today's quiniela La Primera, 12:00 draw: the cabeza and all 20 numbers for Nacional, Provincia, Córdoba, Santa Fe, Entre Ríos and Mendoza.",
+  "h1En": "Quiniela La Primera today"
  },
  {
   "section": "Quiniela",
@@ -122,7 +146,11 @@
   "auto": "лента каждые 15 мин",
   "rg": true,
   "notes": "Аудит 04.11: интент «quiniela <турно>» — результаты турно; раньше ключи висели на /quiniela/horarios/.",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/la-previa/",
+  "titleEn": "Quiniela La Previa today: cabezas for each province",
+  "descriptionEn": "Today's quiniela La Previa, 10:15 draw: the first draw of the day with its cabeza and 20 numbers for Nacional, Provincia and more.",
+  "h1En": "Quiniela La Previa today"
  },
  {
   "section": "Quiniela",
@@ -140,7 +168,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "KD 6 при 114k — лучший ключ кинелы по соотношению.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/nacional-and-provincia/",
+  "titleEn": "Quiniela Nacional and Provincia today, draw by draw",
+  "descriptionEn": "Today's Nacional and Provincia from the same draw, side by side, La Previa to Nocturna, with matching endings marked. Pick the draw.",
+  "h1En": "Nacional and Provincia, side by side"
  },
  {
   "section": "Quiniela",
@@ -158,7 +190,11 @@
   "auto": "feriados — ежегодно лентой/выгрузкой; расписание — автопроверка источников раз в месяц",
   "rg": true,
   "notes": "Аудит 04.11: ключи турно перенесены на страницы результатов турно (/quiniela/nocturna/ и др.) — интент «что выпало», а не «во сколько»; здесь остаются «hay quiniela hoy» и часы.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/draw-times/",
+  "titleEn": "Quiniela draw times: is there a draw today?",
+  "descriptionEn": "Is there a quiniela today? The answer for today and tomorrow from the official schedule and draw log, plus draw times from La Previa to Nocturna.",
+  "h1En": "Is there a quiniela today? All draw times"
  },
  {
   "section": "Quiniela",
@@ -175,7 +211,11 @@
   "data": "архив лент (накапливаем с запуска; PBA — исторические выписки по дате)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/extractos/",
+  "titleEn": "Past quiniela results (extractos) by date",
+  "descriptionEn": "Find the extracto of any quiniela draw from recent months by date, province and draw, and see when a number came up on the cabeza.",
+  "h1En": "Past quiniela results (extractos)"
  },
  {
   "section": "Quiniela",
@@ -193,7 +233,11 @@
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
   "notes": "Если коэффициенты совпадают во всех юрисдикциях — один набор, иначе выбор провинции.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/payouts/",
+  "titleEn": "How much does the quiniela pay? Prize calculator in pesos",
+  "descriptionEn": "Work out what the quiniela pays by province, digits and position: on the cabeza, first 5, 10 or 20. The prize in pesos and the real chance.",
+  "h1En": "How much does the quiniela pay?"
  },
  {
   "section": "Quiniela",
@@ -210,7 +254,11 @@
   "data": "регламент юрисдикций (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/redoblona/",
+  "titleEn": "Redoblona: what it is, what it pays and the odds",
+  "descriptionEn": "What the redoblona is in the quiniela, what it pays in pesos under your province's official rules and its real odds, number by number.",
+  "h1En": "Redoblona: what it pays and the odds"
  },
  {
   "section": "Quiniela",
@@ -227,7 +275,11 @@
   "data": "регламент PBA/LOTBA (цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/how-to-play/",
+  "titleEn": "How to play the quiniela: the ticket step by step",
+  "descriptionEn": "How to play the quiniela, field by field: number, digits, position and amount in pesos, as on the shop ticket, and what counts as a prize.",
+  "h1En": "How to play the quiniela"
  },
  {
   "section": "Quiniela",
@@ -245,7 +297,11 @@
   "auto": "статика; копии официальных страниц — maxAgeDays 100 (online.json), перепроверить до 11.02.2027",
   "rg": true,
   "live": "2026-11-04",
-  "notes": "Аудит 04.11 §6.5, решение владельца 04.11 («давай»). Ключ был вне плана. 18+, блок помощи, ссылки на /juego-responsable/."
+  "notes": "Аудит 04.11 §6.5, решение владельца 04.11 («давай»). Ключ был вне плана. 18+, блок помощи, ссылки на /juego-responsable/.",
+  "urlEn": "/en/quiniela/online/",
+  "titleEn": "Online quiniela: can you play? Legal status by province",
+  "descriptionEn": "Online quiniela: which official lotteries sell online, what each province says with its citation, how to spot an unauthorized site, and 18+.",
+  "h1En": "Can you play the quiniela online?"
  },
  {
   "section": "Quiniela",
@@ -279,7 +335,11 @@
   "data": "архив лент + считает движок (engine/, тест-замки)",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/most-drawn-numbers/",
+  "titleEn": "Most drawn quiniela numbers: does knowing help?",
+  "descriptionEn": "The most drawn quiniela numbers in each province, on a heat map compared with a random draw. See why overdue numbers signal nothing.",
+  "h1En": "The most drawn numbers, put to the test"
  },
  {
   "section": "Quiniela",
@@ -297,7 +357,11 @@
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
   "notes": "Движок и симулятор — из kenomath (horizon/lifetime).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/simulator/",
+  "titleEn": "Simulator: a year playing the quiniela, in pesos",
+  "descriptionEn": "Simulate a year of quiniela with your bet in pesos, digits and position: the balance curve and how thousands of simulated years end. No promises.",
+  "h1En": "A year playing the quiniela"
  },
  {
   "section": "Quiniela por provincia",
@@ -315,7 +379,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/nacional/",
+  "titleEn": "Quiniela Nacional today: the Nocturna and every draw",
+  "descriptionEn": "Today's Quiniela Nacional (City of Buenos Aires), La Previa to the 21:00 Nocturna: the latest draw in large type, the week and what your number pays.",
+  "h1En": "Quiniela Nacional today"
  },
  {
   "section": "Quiniela por provincia",
@@ -333,7 +401,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/provincia/",
+  "titleEn": "Buenos Aires Province quiniela: today's extractos",
+  "descriptionEn": "Today's Buenos Aires Province quiniela: the day's official extracto, the last seven days and what your number paid, plus local help.",
+  "h1En": "Quiniela Provincia"
  },
  {
   "section": "Quiniela por provincia",
@@ -352,7 +424,11 @@
   "rg": true,
   "notes": "Самый сильный ключ сайта: 546k + 450k при KD 0. Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
   "live": "2026-11-04",
-  "unblocked": "2026-11-04: feed provincias (Caja Popular API with the public Sectigo DV R36 intermediate pinned; TLS check kept)"
+  "unblocked": "2026-11-04: feed provincias (Caja Popular API with the public Sectigo DV R36 intermediate pinned; TLS check kept)",
+  "urlEn": "/en/quiniela/tucuman/",
+  "titleEn": "Tucumán quiniela today: results of the latest draw",
+  "descriptionEn": "Today's Tucumán quiniela: results of the five Caja Popular draws, Matutino to Nocturno, the latest extracto and earlier ones.",
+  "h1En": "Tucumán quiniela today"
  },
  {
   "section": "Quiniela por provincia",
@@ -370,7 +446,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/mendoza/",
+  "titleEn": "Mendoza quiniela today: results of every draw",
+  "descriptionEn": "Today's Mendoza quiniela: results of every draw and the week's cabezas, from the official copy published by LOTBA, plus the Mendoza help line.",
+  "h1En": "Mendoza quiniela"
  },
  {
   "section": "Quiniela por provincia",
@@ -405,7 +485,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/san-juan/",
+  "titleEn": "San Juan quiniela today: Vespertina, Nocturna and more",
+  "descriptionEn": "Today's San Juan quiniela: the Vespertina, the Tarde and the Nocturna from Caja de Acción Social, with the full extracto and earlier draws.",
+  "h1En": "San Juan quiniela today"
  },
  {
   "section": "Quiniela por provincia",
@@ -423,7 +507,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/cordoba/",
+  "titleEn": "Córdoba quiniela: today's and past extractos",
+  "descriptionEn": "Córdoba quiniela: extractos for today and the week, from the official LOTBA and Provincia copies compared number by number, with local help.",
+  "h1En": "Córdoba quiniela"
  },
  {
   "section": "Quiniela por provincia",
@@ -441,7 +529,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/entre-rios/",
+  "titleEn": "Entre Ríos quiniela: results of the day",
+  "descriptionEn": "Entre Ríos quiniela: the day's results and the week's extractos, from the official LOTBA and Provincia copies compared digit by digit.",
+  "h1En": "Entre Ríos quiniela"
  },
  {
   "section": "Quiniela por provincia",
@@ -459,7 +551,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/corrientes/",
+  "titleEn": "Corrientes quiniela today: results of every draw",
+  "descriptionEn": "Today's Quiniela Correntina: the cabeza and extracto of each draw, La Previa to Nocturna, from the official Lotería Chaqueña copy.",
+  "h1En": "Quiniela Correntina today"
  },
  {
   "section": "Quiniela por provincia",
@@ -477,7 +573,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "«quiniela chaqueña mundial» не берём (бренд-ловушка «mundial»). Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/chaco/",
+  "titleEn": "Quiniela Chaqueña today: results and extractos",
+  "descriptionEn": "Today's Quiniela Chaqueña: the cabeza and 20 numbers from La Previa to Nocturna, from the official Lotería Chaqueña page, and past extractos.",
+  "h1En": "Quiniela Chaqueña today"
  },
  {
   "section": "Quiniela por provincia",
@@ -512,7 +612,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/quiniela/misiones/",
+  "titleEn": "Quiniela Misionera today: extractos and Misionera Plus",
+  "descriptionEn": "Today's Quiniela Misionera: the latest extracto of each draw from the Misiones IPLyC, La Previa to Nocturna, and the Misionera Plus numbers.",
+  "h1En": "Quiniela Misionera today"
  },
  {
   "section": "Quiniela por provincia",
@@ -530,7 +634,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Сайт Santa Fe гео-блокирует наш сервер — лента через другой источник или Chrome владельца. Без ленты страницу не выпускать; вступления и порядок блоков у провинций разные (не шаблон).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela/santa-fe/",
+  "titleEn": "Santa Fe quiniela: results and draws",
+  "descriptionEn": "Santa Fe quiniela: results of each draw and the week's extractos, from the official LOTBA and Provincia de Buenos Aires copies, compared.",
+  "h1En": "Santa Fe quiniela"
  },
  {
   "section": "Quiniela por provincia",
@@ -735,7 +843,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Хаб и «resultados» — один интент, одна страница.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quini-6/",
+  "titleEn": "Quini 6 results: latest draw and ticket check",
+  "descriptionEn": "Quini 6 results: the numbers of the latest published draw of Tradicional, La Segunda, Revancha and Siempre Sale, your ticket check and each chance.",
+  "h1En": "Quini 6: results and your ticket check"
  },
  {
   "section": "Quini 6",
@@ -753,7 +865,11 @@
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
   "notes": "Номера билета в URL не кладём (приватность).",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quini-6/check/",
+  "titleEn": "Check Quini 6: review several tickets at once",
+  "descriptionEn": "Check your Quini 6: enter your tickets and the extracto, and see the matches for each in Tradicional, La Segunda, Revancha, Siempre Sale and Extra.",
+  "h1En": "Check your Quini 6"
  },
  {
   "section": "Quini 6",
@@ -771,7 +887,11 @@
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
   "notes": "Цена меняется — автопроверка источника раз в месяц обязательна.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quini-6/how-to-play/",
+  "titleEn": "How to play Quini 6: modes and prizes",
+  "descriptionEn": "How to play Quini 6: you mark six numbers from 00 to 45 and choose modes. What each wins, how many draws your ticket plays and the exact chance.",
+  "h1En": "How to play Quini 6"
  },
  {
   "section": "Quini 6",
@@ -836,7 +956,11 @@
   "data": "feed loterias: LOTBA JSON with prizes, checked against CAS; checker prefilled with the latest draw",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/loto-plus/",
+  "titleEn": "Loto Plus results: latest draw, prizes and ticket check",
+  "descriptionEn": "Loto Plus results: the latest Tradicional, Match, Desquite and Sale o Sale draws, the Número Plus, winners, prizes, and a check for your ticket.",
+  "h1En": "Loto Plus: results and game modes"
  },
  {
   "section": "Loterías",
@@ -869,7 +993,11 @@
   "data": "оператор и регламент Quiniela Plus — найти и процитировать; лента — официальный сайт",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/quiniela-plus/",
+  "titleEn": "Quiniela Plus: check your bet with the latest Nocturna",
+  "descriptionEn": "Quiniela Plus from Provincia: 8 numbers against the 20 of the Nocturna. Exact odds for 8 to 5 matches, Súper Plus, Chance Plus and your check.",
+  "h1En": "Quiniela Plus"
  },
  {
   "section": "Loterías",
@@ -886,7 +1014,11 @@
   "data": "feed loterias: telekino.com.ar, checked against CAS; checker prefilled with the latest draw",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/telekino/",
+  "titleEn": "Telekino results: latest draw and ticket check",
+  "descriptionEn": "Telekino results: the 15 numbers of the latest draw and the Rekino ones, a one-tap check of your ticket and the exact odds for 15 to 11 matches.",
+  "h1En": "Telekino: results and ticket check"
  },
  {
   "section": "Loterías",
@@ -903,7 +1035,11 @@
   "data": "лента Telekino",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/telekino/check/",
+  "titleEn": "Check your Telekino ticket: mark your numbers",
+  "descriptionEn": "Check your Telekino ticket on a 5 by 5 grid: mark your 15 numbers and the draw matches light up, with their category and the Rekino.",
+  "h1En": "Check your Telekino ticket"
  },
  {
   "section": "Loterías",
@@ -920,7 +1056,11 @@
   "data": "feed loterias: only the CAS San Juan copy (Santa Fe geo-blocked); behind > 0 -> pending note + link to the official Santa Fe extract",
   "auto": "лента на сервере (образец gambeteo tools/feeds-server.sh): опрос в окна тиражей → проверка → JSON в data/feeds/; сбой — остаются последние верные данные, устарели — блок честно скрывается",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/brinco/",
+  "titleEn": "Brinco results: latest draw and odds",
+  "descriptionEn": "Brinco results: the numbers of the latest published draw and the Junior, a check for your bet and the odds of 6 to 3 matches against Quini 6.",
+  "h1En": "Brinco: results and odds"
  },
  {
   "section": "Loterías",
@@ -937,7 +1077,11 @@
   "data": "регламенты юрисдикций с Poceada (какие — выяснить) + считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/poceada/",
+  "titleEn": "Quiniela Poceada de la Ciudad: how it works and odds",
+  "descriptionEn": "How the Poceada de la Ciudad works: 8 numbers from 00 to 99 against 20 drawn. The exact odds of 8, 7, 6 or 5 matches and a check for your bet.",
+  "h1En": "La Poceada"
  },
  {
   "section": "Loterías",
@@ -986,7 +1130,11 @@
   "data": "регламенты (доли фонда, премии — цитаты) + считает движок (engine/, тест-замки)",
   "auto": "статика; регламент — в data/sources с цитатой, автопроверка источника раз в месяц, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/payback-by-game/",
+  "titleEn": "How much does each game pay back? Quiniela, Quini 6, Loto",
+  "descriptionEn": "Of every $ 100 you play, how much returns as prizes in the quiniela, Quini 6, Loto, Telekino and Tombolina, according to each official rules.",
+  "h1En": "Of every $ 100, how much comes back"
  },
  {
   "section": "Loterías",
@@ -1137,7 +1285,11 @@
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
   "notes": "Не азартная — без блока помощи и 18+. «el gran truco», «truco blyts», «one truco» — бренды приложений, не берём; «truco de gta», «dulce o truco» — чужой интент.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/",
+  "titleEn": "Argentine truco: rules, card values, señas and scorekeeper",
+  "descriptionEn": "Argentine truco from start to finish: rules, card values, señas and a scorekeeper. Deal a hand and see your envido and its odds against another.",
+  "h1En": "Argentine truco"
  },
  {
   "section": "Truco",
@@ -1154,7 +1306,11 @@
   "data": "правила труко (источник — регламент/книга, цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/card-values/",
+  "titleEn": "Truco card values: chart from highest to lowest",
+  "descriptionEn": "Truco values from highest to lowest: the ancho de espadas on top and all 40 cards in order. Tap one to see what it beats. Printable cheat sheet.",
+  "h1En": "Truco card values"
  },
  {
   "section": "Truco",
@@ -1172,7 +1328,11 @@
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
   "notes": "Хорошее место для девушки сайта — серия сцен.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/senas/",
+  "titleEn": "Truco señas: all of them, with pictures and meaning",
+  "descriptionEn": "All the Argentine truco señas with pictures and meaning, plus a trainer to guess which card your partner is signaling, against the clock.",
+  "h1En": "Truco señas"
  },
  {
   "section": "Truco",
@@ -1190,7 +1350,11 @@
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
   "notes": "«anotador» 4k — общий ключ, страница может его взять как главный анотадор сайта.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/scorekeeper/",
+  "titleEn": "Online truco scorekeeper: to 15 or 30, with matchsticks",
+  "descriptionEn": "Online truco scorekeeper for your phone: to 15 or 30, malas and buenas, with matchsticks in groups of five as at the table. Undo and full screen.",
+  "h1En": "Truco scorekeeper"
  },
  {
   "section": "Truco",
@@ -1207,7 +1371,11 @@
   "data": "правила труко (источник — цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/rules/",
+  "titleEn": "Argentine truco rules, hand by hand",
+  "descriptionEn": "Argentine truco rules hand by hand: the deal, envido, truco, retruco and vale cuatro, what you can call at each point and what happens if you refuse.",
+  "h1En": "Truco rules"
  },
  {
   "section": "Truco",
@@ -1224,7 +1392,11 @@
   "data": "правила (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/points/",
+  "titleEn": "Truco points: what each call is worth",
+  "descriptionEn": "Truco points calculator: pick the sequence of calls, from envido to falta envido or truco to vale cuatro, and see the value with quiero and no quiero.",
+  "h1En": "What each call is worth in truco"
  },
  {
   "section": "Truco",
@@ -1241,7 +1413,11 @@
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/envido/",
+  "titleEn": "Envido: how to count your tantos and your odds",
+  "descriptionEn": "Count your envido tantos with your three cards and see your odds of beating a random hand, calculated over all possible combinations.",
+  "h1En": "Envido: count your tantos"
  },
  {
   "section": "Truco",
@@ -1259,7 +1435,11 @@
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
   "notes": "Самый трудоёмкий инструмент сайта — отдельной волной.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/play/",
+  "titleEn": "Play truco online free against the computer",
+  "descriptionEn": "Play Argentine truco online against the computer, no sign-up and no money involved. Three levels, with or without flor, and a review of each hand.",
+  "h1En": "Play truco against the computer"
  },
  {
   "section": "Truco",
@@ -1276,7 +1456,11 @@
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/quiero-or-no-quiero/",
+  "titleEn": "Quiero or no quiero? Truco and envido trainer",
+  "descriptionEn": "Quiero or no quiero? Train your truco and envido decisions with random hands and compare each answer with the engine's math, in sets of ten.",
+  "h1En": "Quiero or no quiero?"
  },
  {
   "section": "Truco",
@@ -1293,7 +1477,11 @@
   "data": "считает движок (engine/, тест-замки) + правила (цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/truco/flor/",
+  "titleEn": "Flor in truco: rules and probability",
+  "descriptionEn": "Flor in Argentine truco: when you play with flor and when not, the contraflor and “con flor me achico”, and the exact probability of being dealt one.",
+  "h1En": "Flor in truco"
  },
  {
   "section": "Juegos",
@@ -1311,7 +1499,11 @@
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
   "notes": "«significado de las cartas españolas», «tirada de cartas» — гадание, не берём.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/card-games/",
+  "titleEn": "Spanish-deck card games played in Argentina",
+  "descriptionEn": "The Spanish-deck card and dice games of the Argentine table: truco, chinchón, escoba de 15 and generala, to play against the computer or keep score.",
+  "h1En": "Card and dice games"
  },
  {
   "section": "Juegos",
@@ -1328,7 +1520,11 @@
   "data": "правила бурако (цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/burako/",
+  "titleEn": "Burako: rules, canastas and what each one is worth",
+  "descriptionEn": "Burako with the Juegos Bonaerenses rules: pure and impure canastas, the muerto and a calculator that adds up your hand's points in seconds.",
+  "h1En": "Burako"
  },
  {
   "section": "Juegos",
@@ -1345,7 +1541,11 @@
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/burako/scorekeeper/",
+  "titleEn": "Burako scorekeeper: online sheet for 2 or 4",
+  "descriptionEn": "Online burako scorekeeper for two players or two pairs: a hand-by-hand sheet up to the target you choose, with the hand calculator included.",
+  "h1En": "Burako scorekeeper"
  },
  {
   "section": "Juegos",
@@ -1378,7 +1578,11 @@
   "data": "правила (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/chinchon/",
+  "titleEn": "Chinchón: rules and when you can go out",
+  "descriptionEn": "Chinchón rules and when you can go out: enter your seven cards and see the best combinations, how many points you keep and whether you have chinchón.",
+  "h1En": "Chinchón: rules and going out"
  },
  {
   "section": "Juegos",
@@ -1395,7 +1599,11 @@
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/chinchon/scorekeeper/",
+  "titleEn": "Online chinchón scorekeeper, with re-entry",
+  "descriptionEn": "Online chinchón scorekeeper: score to 101 or whatever you choose, minus ten for going out with everything, re-entry and the final table of who is out.",
+  "h1En": "Chinchón scorekeeper"
  },
  {
   "section": "Juegos",
@@ -1412,7 +1620,11 @@
   "data": "свой движок",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/chinchon/play/",
+  "titleEn": "Play chinchón online free",
+  "descriptionEn": "Play chinchón online against the computer, free and with no sign-up: draw, discard and go out when you can, with the Juegos Bonaerenses rules.",
+  "h1En": "Play chinchón"
  },
  {
   "section": "Juegos",
@@ -1429,7 +1641,11 @@
   "data": "правила генералы (цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/generala/",
+  "titleEn": "Generala: online scorekeeper, points and rules",
+  "descriptionEn": "Online generala scorekeeper for 2 to 8 players: escalera, full, póker, generala and servida, with a helper that tells you where to score each roll.",
+  "h1En": "Generala: scorekeeper and points"
  },
  {
   "section": "Juegos",
@@ -1446,7 +1662,11 @@
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/generala/odds/",
+  "titleEn": "Generala odds: servida and in three rolls",
+  "descriptionEn": "Generala odds: the chance of each play on the first roll (servida) and in three rolls if you keep dice, calculated exactly by our code.",
+  "h1En": "The odds of each play"
  },
  {
   "section": "Juegos",
@@ -1463,7 +1683,11 @@
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/generala/play/",
+  "titleEn": "Play generala online against the computer",
+  "descriptionEn": "Play generala online against the computer, which plays optimal strategy on hard. At the end, see which rolls you strayed from the best play.",
+  "h1En": "Play generala"
  },
  {
   "section": "Juegos",
@@ -1480,7 +1704,11 @@
   "data": "считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/dice/",
+  "titleEn": "Online dice roller: 1 to 10 dice, for generala",
+  "descriptionEn": "Online dice roller: 1 to 10 dice, 4 to 20 sides, with sum and history. Shortcut for generala with five dice and a chart of results.",
+  "h1En": "Roll the dice"
  },
  {
   "section": "Juegos",
@@ -1513,7 +1741,11 @@
   "data": "правила (цитата) + считает движок (engine/, тест-замки)",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/escoba-de-15/",
+  "titleEn": "Escoba de 15: rules and escoba finder",
+  "descriptionEn": "Escoba de 15 with our rules: enter the table cards and yours, and the finder shows every sum of 15 and whether there is an escoba. Also count the hand.",
+  "h1En": "Escoba de 15"
  },
  {
   "section": "Juegos",
@@ -1530,7 +1762,11 @@
   "data": "свой движок",
   "auto": "статика, перепроверка раз в полгода",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/escoba-de-15/play/",
+  "titleEn": "Play escoba de 15 online free",
+  "descriptionEn": "Play escoba de 15 online against the computer, free and with no sign-up, with a notice of the escobas you missed after each play.",
+  "h1En": "Play escoba de 15"
  },
  {
   "section": "Juegos",
@@ -1582,7 +1818,11 @@
   "auto": "статика, перепроверка раз в полгода",
   "rg": true,
   "notes": "«bingo» 6,6k неоднозначен (залы и онлайн-бинго) — поэтому rg: true; без ссылок на залы и онлайн-бинго.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/bolillero/",
+  "titleEn": "Online bolillero: bingo and family lottery",
+  "descriptionEn": "Online bolillero to play bingo or family lottery at home: draw balls from 1 to 90 with voice, a board of drawn numbers and printable cards.",
+  "h1En": "Bolillero to play at home"
  },
  {
   "section": "Juego responsable",
@@ -1600,7 +1840,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи (isHelpPage): короткое меню помощи, без игрового меню и инструментов.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/",
+  "titleEn": "Responsible gambling: free help in your province",
+  "descriptionEn": "If gambling stopped being a game, here is free help in your province: helpline, self-exclusion and who answers, plus the national line.",
+  "h1En": "Help when gambling stops being a game"
  },
  {
   "section": "Juego responsable",
@@ -1617,7 +1861,11 @@
   "data": "пакет помощи data/sources/rg/ (из docs/reference/rg-ar-gambeteo; свежесть ≤ 100 дней, иначе сборка падает)",
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/self-exclusion/",
+  "titleEn": "Gambling self-exclusion: how to request it by province",
+  "descriptionEn": "Gambling self-exclusion in each Argentine province: how long it lasts, where to request it and what the official page says, in a comparison table.",
+  "h1En": "Self-exclusion, province by province"
  },
  {
   "section": "Juego responsable",
@@ -1635,7 +1883,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/caba/",
+  "titleEn": "Compulsive gambling help in Ciudad de Buenos Aires",
+  "descriptionEn": "Help for compulsive gambling in Ciudad de Buenos Aires: helpline 0800-666-6006, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Ciudad de Buenos Aires"
  },
  {
   "section": "Juego responsable",
@@ -1653,7 +1905,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/buenos-aires/",
+  "titleEn": "Compulsive gambling help in Provincia de Buenos Aires",
+  "descriptionEn": "Help for compulsive gambling in Provincia de Buenos Aires: helpline 0800-444-4000, self-exclusion and who regulates, with official sources for each fact.",
+  "h1En": "Help in Provincia de Buenos Aires"
  },
  {
   "section": "Juego responsable",
@@ -1671,7 +1927,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/cordoba/",
+  "titleEn": "Compulsive gambling help in Córdoba",
+  "descriptionEn": "Help for compulsive gambling in Córdoba: helpline 0800-777-2983 and who regulates, with the official source for each fact. No ads.",
+  "h1En": "Help in Córdoba"
  },
  {
   "section": "Juego responsable",
@@ -1689,7 +1949,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/tucuman/",
+  "titleEn": "Compulsive gambling help in Tucumán",
+  "descriptionEn": "Help for compulsive gambling in Tucumán: helpline 0800 555 7678, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Tucumán"
  },
  {
   "section": "Juego responsable",
@@ -1707,7 +1971,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/mendoza/",
+  "titleEn": "Compulsive gambling help in Mendoza",
+  "descriptionEn": "Help for compulsive gambling in Mendoza: helpline (0261) 424-7536, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Mendoza"
  },
  {
   "section": "Juego responsable",
@@ -1725,7 +1993,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/san-juan/",
+  "titleEn": "Compulsive gambling help in San Juan",
+  "descriptionEn": "Help for compulsive gambling in San Juan: helpline 0800 999 1314, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in San Juan"
  },
  {
   "section": "Juego responsable",
@@ -1743,7 +2015,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/entre-rios/",
+  "titleEn": "Compulsive gambling help in Entre Ríos",
+  "descriptionEn": "Help for compulsive gambling in Entre Ríos: helpline 0800-888-2202, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Entre Ríos"
  },
  {
   "section": "Juego responsable",
@@ -1761,7 +2037,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/santa-fe/",
+  "titleEn": "Compulsive gambling help in Santa Fe",
+  "descriptionEn": "Help for compulsive gambling in Santa Fe: helpline 0800-268-5640, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Santa Fe"
  },
  {
   "section": "Juego responsable",
@@ -1779,7 +2059,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/chaco/",
+  "titleEn": "Compulsive gambling help in Chaco",
+  "descriptionEn": "Help for compulsive gambling in Chaco: helpline 0800-888-2008, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Chaco"
  },
  {
   "section": "Juego responsable",
@@ -1797,7 +2081,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/misiones/",
+  "titleEn": "Compulsive gambling help in Misiones",
+  "descriptionEn": "Help for compulsive gambling in Misiones: helpline 0800-888-LUDO, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Misiones"
  },
  {
   "section": "Juego responsable",
@@ -1815,7 +2103,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/neuquen/",
+  "titleEn": "Compulsive gambling help in Neuquén",
+  "descriptionEn": "Help for compulsive gambling in Neuquén: helpline (0299) 4038900, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Neuquén"
  },
  {
   "section": "Juego responsable",
@@ -1833,7 +2125,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/rio-negro/",
+  "titleEn": "Compulsive gambling help in Río Negro",
+  "descriptionEn": "Help for compulsive gambling in Río Negro: helpline 0800-222-1700, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Río Negro"
  },
  {
   "section": "Juego responsable",
@@ -1851,7 +2147,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "Страница помощи; индексировать — по решению владельца.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/santiago-del-estero/",
+  "titleEn": "Compulsive gambling help in Santiago del Estero",
+  "descriptionEn": "Help for compulsive gambling in Santiago del Estero: helpline (0385) 428-8850 and who regulates, with the official source for each fact.",
+  "h1En": "Help in Santiago del Estero"
  },
  {
   "section": "Juego responsable",
@@ -1869,7 +2169,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/la-pampa/",
+  "titleEn": "Compulsive gambling help in La Pampa",
+  "descriptionEn": "Help for compulsive gambling in La Pampa: helpline 2954- 433974, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in La Pampa"
  },
  {
   "section": "Juego responsable",
@@ -1887,7 +2191,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/tierra-del-fuego/",
+  "titleEn": "Compulsive gambling help in Tierra del Fuego",
+  "descriptionEn": "Help for compulsive gambling in Tierra del Fuego: helpline 02901-433515 and who regulates, with the official source for each fact.",
+  "h1En": "Help in Tierra del Fuego"
  },
  {
   "section": "Juego responsable",
@@ -1905,7 +2213,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/salta/",
+  "titleEn": "Compulsive gambling help in Salta",
+  "descriptionEn": "Help for compulsive gambling in Salta: national helpline, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Salta"
  },
  {
   "section": "Juego responsable",
@@ -1923,7 +2235,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/corrientes/",
+  "titleEn": "Compulsive gambling help in Corrientes",
+  "descriptionEn": "Help for compulsive gambling in Corrientes: national helpline, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in Corrientes"
  },
  {
   "section": "Juego responsable",
@@ -1941,7 +2257,11 @@
   "auto": "автопроверка пакета помощи раз в месяц (sources), гейт свежести 100 дней",
   "rg": false,
   "notes": "В пакете только самоисключение или линии ещё в verify — выпускать, когда цитаты подтверждены.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/la-rioja/",
+  "titleEn": "Compulsive gambling help in La Rioja",
+  "descriptionEn": "Help for compulsive gambling in La Rioja: national helpline, self-exclusion and who regulates, with the official source for each fact.",
+  "h1En": "Help in La Rioja"
  },
  {
   "section": "Servicio",
@@ -1958,7 +2278,11 @@
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/about-us/",
+  "titleEn": "About Jugada del Día: what it is and what it isn't",
+  "descriptionEn": "About us: Jugada del Día explains prizes and odds for the quiniela, Argentine lotteries and truco. No betting and no links to operators.",
+  "h1En": "About us"
  },
  {
   "section": "Servicio",
@@ -1975,7 +2299,11 @@
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/author/",
+  "titleEn": "Who writes Jugada del Día: the author",
+  "descriptionEn": "Who writes Jugada del Día: the person in charge of the texts, how we check every number against official Argentine sources and how we use AI.",
+  "h1En": "Who writes"
  },
  {
   "section": "Servicio",
@@ -1992,7 +2320,11 @@
   "data": "data/sources + статусы лент",
   "auto": "статусы — из лент автоматически",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/where-the-data-comes-from/",
+  "titleEn": "Where the data comes from and how we calculate",
+  "descriptionEn": "Where the data comes from: each lottery and game rulebook we use, with its source, the copy date and how we calculate prizes and odds.",
+  "h1En": "Where the data comes from"
  },
  {
   "section": "Servicio",
@@ -2009,7 +2341,11 @@
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/glossary/",
+  "titleEn": "Quiniela and truco glossary: cabeza, redoblona, envido",
+  "descriptionEn": "Glossary of the quiniela and truco as spoken in Argentina: cabeza, redoblona, a los 5, envido and more, each term with the tool that works it out.",
+  "h1En": "Glossary"
  },
  {
   "section": "Servicio",
@@ -2026,6 +2362,10 @@
   "data": "—",
   "auto": "статика, перепроверка раз в полгода",
   "rg": true,
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/privacy-policy/",
+  "titleEn": "Privacy policy of Jugada del Día",
+  "descriptionEn": "Privacy policy of Jugada del Día: what your browser stores, like score sheets, what we don't collect and how to ask us to delete or fix something.",
+  "h1En": "Privacy policy"
  }
 ]

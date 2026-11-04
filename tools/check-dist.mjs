@@ -11,6 +11,8 @@ import { parse as parseJs } from 'acorn';
 import { ROOT } from './env.mjs';
 import { loadSite, LIMITS, decode } from './render.mjs';
 import { isOperatorHost } from './lib/operators.mjs';
+import { sitePath } from './lib/i18n.mjs';
+import { i18nGate } from './lib/i18n-check.mjs';
 import { verifyRegistries, loadRegistries, loadRg } from './lib/sources.mjs';
 import { verify as verifyRg, freshness } from './verify-rg.mjs';
 import { isOwnerDoc, docMaxAge, docUntil } from './lib/ownercopy.mjs';
@@ -43,7 +45,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
   const bad = (code, f, m) => problems.push({ code, file: f ? relative(dist, f) : '', msg: m });
   const ORIGIN = 'https://' + SITE.domain;
   const files = walk(dist), htmls = files.filter(f => f.endsWith('.html'));
-  const pageByFile = new Map(S.PAGES.map(p => [join(dist, SITE.fileOf(p.path)), p]));
+  const pageByFile = new Map([...S.PAGES, ...S.PAGES_EN].map(p => [join(dist, SITE.fileOf(p.path)), p]));
   const notFoundFile = join(dist, SITE.notFoundFile);
   const html = Object.fromEntries(htmls.map(f => [f, readFileSync(f, 'utf8')]));
   // the server's lookup (Caddy try_files {path} {path}.html {path}/index.html)
@@ -64,13 +66,13 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
     const h1 = (H.match(/<h1[\s>]/g) || []).length;
     if (h1 !== 1) bad('h1', f, 'H1 count ' + h1);
     const hl = (H.match(/<html lang="([^"]+)"/) || [])[1];
-    if (hl !== SITE.htmlLang) bad('langattr', f, 'html lang="' + hl + '"');
+    if (hl !== (p && p.lang === 'en' ? 'en' : SITE.htmlLang)) bad('langattr', f, 'html lang="' + hl + '"');
     if (/\{\{[^}]*\}\}/.test(H.replace(/<script[\s\S]*?<\/script>/g, ''))) bad('placeholder', f, 'unfilled {{token}}');
     if (/\bundefined\b|\bNaN\b|\[object Object\]|\bnull\b/.test(vis)) bad('junk', f, 'undefined/NaN/null/[object Object] in text');
     const bm = (vis + ' ' + decode((H.match(/<title>([^<]*)/) || [])[1] || '') + ' ' + decode((H.match(/name="description" content="([^"]*)"/) || [])[1] || '')).match(BAIT);
     if (bm) bad('bait', f, 'bait words "' + bm[0] + '"');
     if (PROMISE.test(vis)) bad('promise', f, 'promise of a date');
-    if (SITE.gate.decimalComma) {
+    if (SITE.gate.decimalComma && !(p && p.lang === 'en')) {
       if (/<input\b[^>]*\stype="number"/.test(H)) bad('decimal', f, 'number input (shows the decimal point of the visitor system; use text + inputmode)');
       if (/<input\b(?![^>]*type="(range|hidden)")[^>]*\svalue="-?\d+\.\d+"/.test(H)) bad('decimal', f, 'input value with a decimal point');
       const dm = visibleText(H.replace(/<(code|pre|kbd|samp)\b[\s\S]*?<\/\1>/gi, ' ')).replace(SITE.gate.decimalOk || /$^/g, ' ').match(/(?<![\w.,\/:+-])\d+\.\d{1,2}(?![\d.,\w])/);
@@ -101,7 +103,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
       if (u.startsWith('#')) { if (u.length > 1 && !ids(f).has(u.slice(1))) bad('anchor', f, 'dangling anchor ' + u); continue; }
       if (!u.startsWith('/')) { bad('link', f, 'relative or empty link "' + u + '"'); continue; }
       const base = u.split(/[?#]/)[0];
-      if (!isAsset(base) && !SITE.pathRe.test(base)) { bad('urlscheme', f, 'link outside the URL scheme of the site ' + u); continue; }
+      if (!isAsset(base) && !sitePath(SITE, base)) { bad('urlscheme', f, 'link outside the URL scheme of the site ' + u); continue; }
       const tf = resolveFile(base);
       if (!tf) { bad('link', f, 'dead link ' + u); continue; }
       const hash = u.split('#')[1];
@@ -186,7 +188,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
   const sm = existsSync(join(dist, 'sitemap.xml')) ? readFileSync(join(dist, 'sitemap.xml'), 'utf8') : '';
   if (!sm.includes('<urlset')) bad('sitemap', null, 'no sitemap.xml');
   const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map(m => m[1]);
-  const want = new Set(S.PAGES.map(p => ORIGIN + p.path));
+  const want = new Set([...S.PAGES, ...S.PAGES_EN].map(p => ORIGIN + p.path));
   for (const l of locs) if (!want.has(l)) bad('sitemap', null, 'sitemap has ' + l + ' (not a built page or another host)');
   for (const u of want) if (!locs.includes(u)) bad('sitemap', null, 'sitemap misses ' + u);
   const rb = existsSync(join(dist, 'robots.txt')) ? readFileSync(join(dist, 'robots.txt'), 'utf8') : '';
@@ -218,6 +220,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
     const rgMsgs = [];
     if (verifyRg({ today, log: m => { if (m.startsWith('  BAD') && !/older than/.test(m)) rgMsgs.push(m.trim()); } })) rgMsgs.forEach(m => bad('verify', null, m));
   }
+  if (S.PAGES_EN.length) i18nGate({ S, dist, html, pageByFile, bad, sitemap: sm });
   return { problems, pages: htmls.length, files: files.length };
 }
 // the gate "fresh": every registry and help-package copy older than its docMaxAge (or dated in the future), as "<set> <slug> copied ..."
@@ -326,6 +329,22 @@ async function selftest(id) {
       ['oplink', OL, s => need(s).replace(offA, m => m.replace('rel="nofollow noopener"', 'rel="noopener"'))],
       ['oplink', OL, s => need(s).replace(offA, m => m.replace(/(https:\/\/[^"\/]+\/)"/, '$1?utm_source=casaslegales"'))],
       ['helplink', HELP, s => { const m = need(readFileSync(join(base, OL), 'utf8')).match(/<a class="rl-off[^>]*>/)[0]; return s.replace('</main>', m + 'x</a></main>'); }],
+    );
+  }
+  // English versions (tools/lib/i18n-check.mjs)
+  const EN1 = S.PAGES_EN.find(p => p.esPath === A_PATH) || S.PAGES_EN[0];
+  if (EN1) {
+    const E = F(EN1.path), ES1 = F(EN1.esPath), other = S.PAGES.find(p => p.path !== EN1.esPath && !p.help && S.PAGES_EN.some(e => e.esPath === p.path));
+    cases.push(
+      ['hreflang', E, s => s.replace(/<link rel="alternate" hreflang="x-default"[^>]*>/, '')],
+      ['hreflang', ES1, s => s.replace(/(<link rel="alternate" hreflang="en" href=")[^"]*"/, '$1https://' + S.SITE.domain + '/en/no-page/"')],
+      ['langattr', E, s => s.replace('<html lang="en"', '<html lang="' + S.SITE.htmlLang + '"')],
+      ['langlink', E, body('<a href="' + other.path + '">x</a>')],
+      ['langlink', ES1, body('<a href="' + S.PAGES_EN.find(p => p.esPath === other.path).path + '">x</a>')],
+      ['langswitch', E, s => s.replace(/<a\b([^>]*)\shreflang="[^"]*"/g, '<a$1')],
+      ['spanish', E, body('<p>Mirá cuánto paga la quiniela de hoy en tu provincia</p>')],
+      ['decimal', E, body('<p>Pays 2,5 times</p>')],
+      ['oglocale', E, s => s.replace(/<meta property="og:locale" content="[^"]*"/, '<meta property="og:locale" content="es_AR"')],
     );
   }
   if (S.SITE.gate.decimalComma) cases.push(['decimal', A, body('<p>Sensibilidad 0.39</p>')], ['decimal', A, body('<input id="z" type="number" value="1">')]);
