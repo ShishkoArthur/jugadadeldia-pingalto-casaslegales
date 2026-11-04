@@ -1,5 +1,5 @@
 {
- "total": 2.3193,
+ "total": 7.5958,
  "runs": [
   {
    "at": "2026-11-04T12:21:12.652Z",
@@ -36,6 +36,54 @@
    "site": "jugadadeldia",
    "what": "strings",
    "usd": 0.0131
+  },
+  {
+   "at": "2026-11-04T13:38:59.471Z",
+   "site": "pingalto",
+   "what": "meta",
+   "usd": 0.1377
+  },
+  {
+   "at": "2026-11-04T13:39:03.781Z",
+   "site": "casaslegales",
+   "what": "meta",
+   "usd": 0.3265
+  },
+  {
+   "at": "2026-11-04T13:42:03.322Z",
+   "site": "casaslegales",
+   "what": "meta",
+   "usd": 0.0949
+  },
+  {
+   "at": "2026-11-04T13:53:12.573Z",
+   "site": "pingalto",
+   "what": "strings",
+   "usd": 1.9141
+  },
+  {
+   "at": "2026-11-04T13:57:00.855Z",
+   "site": "casaslegales",
+   "what": "strings",
+   "usd": 2.0232
+  },
+  {
+   "at": "2026-11-04T13:58:36.077Z",
+   "site": "pingalto",
+   "what": "review",
+   "usd": 0.2918
+  },
+  {
+   "at": "2026-11-04T14:00:04.547Z",
+   "site": "casaslegales",
+   "what": "strings",
+   "usd": 0.188
+  },
+  {
+   "at": "2026-11-04T14:03:31.454Z",
+   "site": "pingalto",
+   "what": "strings",
+   "usd": 0.3003
   }
  ]
 }

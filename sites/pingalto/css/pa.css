@@ -75,6 +75,10 @@ html.pa-lock{overflow:hidden}
 .pa-zh kbd{padding:1px 6px;border-radius:6px;background:var(--p2);font:600 12px "Be Vietnam Pro",sans-serif}
 .pa-ib{width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--p2);color:var(--fg);cursor:pointer;flex:none}
 .pa-ib svg{width:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.pa-lang{font:800 14px/1 "M PLUS Rounded 1c",system-ui,sans-serif;letter-spacing:.04em;text-decoration:none}
+.pa-lang:hover{color:var(--vi)}
+.pa-qen{margin:-4px 0 14px;padding:0 14px 0 18px;color:var(--mu);font-size:.94em}
+.pa-qen b{font-weight:600;color:var(--fg)}
 .pa-bu{display:none}
 .pa-sun{display:none}
 :root[data-theme=dark] .pa-sun{display:block}:root[data-theme=dark] .pa-moon{display:none}
@@ -278,6 +282,8 @@ h1{font-size:clamp(34px,6.2vw,56px)}
 .pa-lg{font-size:21px}
 .pa-bu{display:grid}
 .pa-hd .pa-ib:first-of-type{margin-left:auto}
+.pa-hd .pa-lang{margin-left:auto}
+.pa-hd .pa-lang~.pa-ib{margin-left:0}
 .pa-nv{display:none;position:absolute;left:0;right:0;top:100%;height:calc(100dvh - var(--pa-hh,61px));margin:0;flex-direction:column;gap:0;padding:0 16px 40px;border-radius:0;border-top:1px solid var(--ln);background:var(--bg);overflow:auto;overscroll-behavior:contain}
 .pa-nv.pa-open{display:flex}
 .pa-qb{display:block;position:sticky;top:0;z-index:1;margin:0 -16px 4px;padding:12px 16px 10px;background:var(--bg)}

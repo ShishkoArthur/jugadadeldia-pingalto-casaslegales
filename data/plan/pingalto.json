@@ -14,7 +14,11 @@
   "data": "все ленты сайта",
   "auto": "собирается из лент при каждой пересборке",
   "notes": "",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en",
+  "titleEn": "pingalto: gaming tools and esports from Argentina",
+  "h1En": "High ping? Play with the numbers on your side",
+  "descriptionEn": "Free tools for your games from Argentina: ping to game servers, sensitivity converter, ranks, crosshairs and esports in Argentina time. No bets, no skins."
  },
  {
   "section": "Servicio",
@@ -31,7 +35,11 @@
   "data": "—",
   "auto": "статика",
   "notes": "",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/team",
+  "titleEn": "Who makes pingalto: the team behind the site",
+  "descriptionEn": "Who makes pingalto: a small newsroom building tools for gamers in Argentina, with no betting and no store. What we do and what we don't.",
+  "h1En": "The team behind pingalto"
  },
  {
   "section": "Servicio",
@@ -48,7 +56,11 @@
   "data": "—",
   "auto": "статика",
   "notes": "",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/method",
+  "titleEn": "How pingalto calculates every number",
+  "descriptionEn": "How we calculate every number on pingalto: where the data comes from, how we save each source with its date, and what the code tests before publishing.",
+  "h1En": "Method: where the numbers come from"
  },
  {
   "section": "Servicio",
@@ -65,7 +77,11 @@
   "data": "метаданные всех лент",
   "auto": "отметки свежести — из лент автоматически",
   "notes": "CC-BY-SA требует атрибуции на страницах с данными Liquipedia",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/data",
+  "titleEn": "pingalto data sources and licenses",
+  "descriptionEn": "Every pingalto source with publisher, type, license and copy date: Riot, Valve, Amazon, Wikipedia, Wikidata and community references.",
+  "h1En": "Data sources and licenses"
  },
  {
   "section": "Servicio",
@@ -82,7 +98,11 @@
   "data": "—",
   "auto": "статика",
   "notes": "почта — только рабочая (как на blackjack.cab: неработающий адрес не публикуем)",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/contact",
+  "titleEn": "Contact: errors, ideas and tool requests",
+  "descriptionEn": "How to report a mistake on pingalto: what details help us find it, and how to check any number yourself with its source and its date.",
+  "h1En": "Contact"
  },
  {
   "section": "Servicio",
@@ -99,7 +119,11 @@
   "data": "—",
   "auto": "статика",
   "notes": "",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/legal",
+  "titleEn": "Legal notice, privacy and third-party trademarks",
+  "descriptionEn": "Legal notice and privacy for pingalto: what your browser stores, which servers the ping test connects to, and why there is no betting or buying.",
+  "h1En": "Legal notice and privacy"
  },
  {
   "section": "Kit",
@@ -116,7 +140,11 @@
   "data": "valorant-api.com, Data Dragon (Riot), OpenDota/Steam CDN, Supercell API — только имена и иконки",
   "auto": "наборы иконок обновляются вместе с лентами игр (раз в сутки)",
   "notes": "права на иконки — фан-политики издателей (некоммерческое); гача-игры (genshin/hsr/zzz/wuwa tier list 300–1.3k, KD 0–6) — вопрос владельцу",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/tier-list",
+  "titleEn": "Tier list maker: make a tier list for any game",
+  "descriptionEn": "Make your Valorant, LoL or any other tier list by dragging names, on your phone too, and share it with a link or as an image.",
+  "h1En": "Tier list maker: build yours and share it"
  },
  {
   "section": "Kit",
@@ -133,7 +161,11 @@
   "data": "константы поворота (yaw) из конфигов игр — проверить каждую, считает движок",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "«sensibilidad dental / en los dientes» — чужой интент, не цель 04.11 audit: title lists the four games (convertidor 600 > conversor 300).",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/kit/sensitivity",
+  "titleEn": "Sensitivity converter: CS2, Valorant, OW2 and Apex",
+  "descriptionEn": "Convert your sensitivity from CS2 to Valorant, Overwatch 2 or Apex with the same hand movement: cm/360, eDPI and the source of each number.",
+  "h1En": "Sensitivity converter between games"
  },
  {
   "section": "Kit",
@@ -150,7 +182,11 @@
   "data": "только браузер (pointer events), данных не нужно",
   "auto": "статика",
   "notes": "04.11 audit: title covers «dpi analyzer».",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/kit/dpi",
+  "titleEn": "DPI analyzer: measure your mouse's real DPI",
+  "descriptionEn": "Measure your mouse's real DPI in the browser using a SUBE card or bank card as a ruler, compare it to the factory DPI and work out your eDPI.",
+  "h1En": "Measure your mouse's real DPI with a SUBE card"
  },
  {
   "section": "Kit",
@@ -167,7 +203,11 @@
   "data": "только браузер + список точек: публичные эндпоинты облаков; дата-центры Valve — api.steampowered.com ISteamApps/GetSDRConfig (appid 730, 570) — проверить; расположение серверов игр — официальные страницы (цитаты)",
   "auto": "список точек и серверов — ежемесячная автопроверка источников; замер идёт в браузере посетителя, ничего не сохраняем и не отправляем",
   "notes": "Переосмыслена из /kit/fps (калькулятор FPS без аргентинской привязки). Фирменная страница по имени сайта — вопрос владельцу: поднять в P1. Город, IP и результаты посетителя не сохраняем.",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/kit/ping",
+  "titleEn": "Ping test from Argentina to game servers",
+  "descriptionEn": "The minimum ping physics allows from your province to Santiago, São Paulo and Miami, plus a real measurement from your own connection.",
+  "h1En": "Ping from your province to Santiago, São Paulo and Miami"
  },
  {
   "section": "Kit",
@@ -200,7 +240,11 @@
   "data": "valorant-api.com (неофициальный, без ключа): maps, agents, seasons",
   "auto": "лента на сервере раз в сутки",
   "notes": "03.11 wave 3: hub; maps with sites from client data, no competitive rotation (not in the data).",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/valorant",
+  "titleEn": "Valorant in Argentina: ranks, agents, maps, server",
+  "descriptionEn": "Valorant from Argentina: ranks and RR calculator, every agent and role, maps with in-game sites, and the Santiago server you get.",
+  "h1En": "Valorant from Argentina"
  },
  {
   "section": "Valorant",
@@ -217,7 +261,11 @@
   "data": "valorant-api.com competitivetiers (иконки, названия); правила RR — патч-ноты Riot (цитата)",
   "auto": "иконки — лента раз в сутки; правила — статика, перепроверка раз в полгода",
   "notes": "долю игроков по рангам Riot не публикует — чужие проценты без источника не печатать",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/valorant/ranks",
+  "titleEn": "Valorant ranks in order and RR calculator",
+  "descriptionEn": "Valorant ranks from Iron to Radiant, how RR works to rank up according to Riot, and how many matches you need for your goal with your numbers.",
+  "h1En": "Valorant ranks and RR calculator"
  },
  {
   "section": "Valorant",
@@ -250,7 +298,11 @@
   "data": "valorant-api.com /agents (есть локализация es-MX — проверить)",
   "auto": "лента раз в сутки; новый агент появляется сам",
   "notes": "",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/valorant/agents",
+  "titleEn": "Valorant agents: every ability and role explained",
+  "descriptionEn": "Every Valorant agent with their abilities, a role filter, a side-by-side comparison and the newest agent on top, with data from the game client.",
+  "h1En": "Valorant agents and their abilities"
  },
  {
   "section": "Valorant",
@@ -267,7 +319,11 @@
   "data": "valorant-api.com /maps (callouts + координаты)",
   "auto": "лента раз в сутки (правки карты приходят сами)",
   "notes": "03.11: skipped in wave 1 - Riot publishes no callout list; community callouts are not a citable source. 03.11 wave 4: description changed to what the data supports (plan: \"Mapa interactivo de Ascent con los callouts en español y en inglés, control de mid y tiempos a cada sitio. Lo que se dice en las partidas de LATAM.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/valorant/maps/ascent",
+  "titleEn": "Ascent callouts in Valorant: interactive map",
+  "descriptionEn": "Interactive Ascent map with callouts in Spanish and English as the game has them, by zone, and a game to learn them before you play.",
+  "h1En": "Ascent: interactive map with callouts"
  },
  {
   "section": "Valorant",
@@ -284,7 +340,11 @@
   "data": "valorant-api.com /maps",
   "auto": "лента раз в сутки",
   "notes": "чтобы не шаблон: у каждой карты своя дополнительная механика и свой текст 03.11: skipped in wave 1 - Riot publishes no callout list; community callouts are not a citable source. 03.11 wave 4: title changed to what the data supports (plan: \"Split en Valorant: callouts en español, rotaciones y mapa\"). 03.11 wave 4: h1 changed to what the data supports (plan: \"Split: callouts en español y rotaciones\"). 03.11 wave 4: description changed to what the data supports (plan: \"Split con callouts en español e inglés, rotaciones entre A y B por mid y cuánto tarda cada una. Para coordinar mejor en las partidas de LATAM.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/valorant/maps/split",
+  "titleEn": "Split Valorant callouts: map in English and Spanish",
+  "descriptionEn": "Interactive Split map with callouts in Spanish and English as the game has them, by zone, and a game to learn them before you play.",
+  "h1En": "Split: map with callouts"
  },
  {
   "section": "Valorant",
@@ -333,7 +393,11 @@
   "data": "Liquipedia API (CC-BY-SA, лимиты; ключ LPDB — проверить)",
   "auto": "лента раз в 6 ч в дни турниров, иначе раз в сутки",
   "notes": "03.11 wave 4: description changed to what the data supports (plan: \"VCT en hora argentina: cuadro de Champions y Masters, la liga de las Américas y los equipos argentinos, con la probabilidad de cada serie según el ranking.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/valorant/champions",
+  "titleEn": "VCT: Champions, Masters and Americas, Argentina time",
+  "descriptionEn": "Valorant VCT in Argentina time: the Champions bracket and the last two Masters, the Americas league, and Argentine teams marked.",
+  "h1En": "VCT: Champions, Masters and the Americas league"
  },
  {
   "section": "Valorant",
@@ -366,7 +430,11 @@
   "data": "ValveSoftware/counter-strike_regional_standings (GitHub, открыто)",
   "auto": "лента на сервере раз в сутки (частоту публикации VRS — проверить)",
   "notes": "команды с брендами букмекеров в названии скрыты (как в RinkMath) 03.11 wave 3: Valve VRS 2026-11-02 (global + Americas, GitHub, saved copy) with the head-to-head of Valve model (fit.js/glicko.js, RD 75). Teams are not marked as Argentine: Valve tables carry no nationality; betting-brand names masked. 04.11 audit: /cs2 became the CS2 hub (intent «counter strike»): Steam requirements + does-it-run check, download time, Valve SDR points near Argentina, start steps, CS 1.6 on Steam; the VRS ranking is a section (#ranking).",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/cs2",
+  "titleEn": "CS2 from Argentina: PC requirements and VRS ranking",
+  "descriptionEn": "CS2 is free on Steam: whether it runs on Valve's minimum specs, how long the download takes, servers near Argentina and the official team ranking.",
+  "h1En": "Counter-Strike 2 from Argentina"
  },
  {
   "section": "CS2",
@@ -383,7 +451,11 @@
   "data": "формат share code (открытые реализации — проверить тестами)",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "прицелы про — со ссылкой и датой 04.11 audit: title covers «crosshair cs2».",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/cs2/crosshair",
+  "titleEn": "CS2 crosshair maker with code and commands",
+  "descriptionEn": "Build your CS2 crosshair with a preview and copy the new code starting with CS or the console commands. Tested with codes the game exports.",
+  "h1En": "CS2 crosshair maker"
  },
  {
   "section": "CS2",
@@ -416,7 +488,11 @@
   "data": "Liquipedia API + VRS",
   "auto": "лента раз в 6 ч в дни Major, иначе раз в сутки",
   "notes": "03.11 wave 3: Major Supplemental Rulebook (Valve GitHub) + exact Swiss calculator; no dates/hora argentina (no citable official schedule), no live bracket.",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/cs2/major",
+  "titleEn": "CS2 Major: format, Swiss stage and chance to advance",
+  "descriptionEn": "How the CS2 Major works under Valve's rules: Swiss stages, playoffs, when Bo1 or Bo3 is played, and your chance to advance, with exact math.",
+  "h1En": "How the CS2 Major works"
  },
  {
   "section": "CS2",
@@ -513,7 +589,11 @@
   "data": "Data Dragon (Riot, без ключа); Leaguepedia — с P2",
   "auto": "лента раз в сутки",
   "notes": "«1v1 lol», «lol superman», «lol surprise», «muñecas lol» — чужие интенты, не цель 03.11 wave 3: Data Dragon 16.21.1 es_AR champions + language.json; meta/Worlds skipped (Leaguepedia/Liquipedia block AI agents, Riot production key).",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/lol",
+  "titleEn": "LoL in Argentina: champions by role and LAS ranks",
+  "descriptionEn": "League of Legends from Argentina: every champion by role with Riot data, a side-by-side comparison, and the LAS ranks with a progress calculator.",
+  "h1En": "League of Legends from Argentina"
  },
  {
   "section": "League of Legends",
@@ -530,7 +610,11 @@
   "data": "иконки — Data Dragon/CommunityDragon (условия — проверить); правила — Riot Support (цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "отличие от /valorant/rangos — другой вопрос («успею ли за N игр») и другой визуал",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/lol/ranks",
+  "titleEn": "LoL ranks on LAS: divisions, LP and calculator",
+  "descriptionEn": "League of Legends ranks on LAS, Iron to Challenger: divisions, how many LP each one asks for according to Riot, and a match calculator.",
+  "h1En": "League of Legends ranks on LAS"
  },
  {
   "section": "League of Legends",
@@ -563,7 +647,11 @@
   "data": "Liquipedia/Leaguepedia",
   "auto": "лента в дни турнира; история — статика",
   "notes": "03.11 wave 4: description changed to what the data supports (plan: \"Worlds de LoL en hora argentina: formato suizo y playoffs, probabilidad de cada Bo5, campeones históricos por región y cómo le fue a Latinoamérica.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/lol/worlds",
+  "titleEn": "LoL Worlds in Argentina time: format and bracket",
+  "descriptionEn": "League of Legends Worlds in Argentina time: play-in, Swiss stage and playoffs match by match, what's on today, results and the champion.",
+  "h1En": "League of Legends Worlds in Argentina time"
  },
  {
   "section": "League of Legends",
@@ -580,7 +668,11 @@
   "data": "Liquipedia/Leaguepedia",
   "auto": "лента в дни турнира",
   "notes": "03.11 wave 4: description changed to what the data supports (plan: \"El MSI de League of Legends en hora argentina: qué es, cómo es el formato, el cuadro con la probabilidad de cada Bo5 y qué región ganó cada año.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/lol/msi",
+  "titleEn": "LoL MSI in Argentina time: format and bracket",
+  "descriptionEn": "League of Legends MSI in Argentina time: what it is, how it's played, the last edition's bracket match by match and who won.",
+  "h1En": "League of Legends MSI"
  },
  {
   "section": "League of Legends",
@@ -629,7 +721,11 @@
   "data": "OpenDota API (бесплатно, 3000 запросов в день)",
   "auto": "лента на сервере раз в сутки (код готов в RinkMath: tools/feeds/dota2.mjs)",
   "notes": "«dota colectivos / paro / empresa» — чужой интент 03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution. 03.11 wave 4: h1 changed to what the data supports (plan: \"Dota 2: ranking de equipos en vivo, con Sudamérica\"). 03.11 wave 4: description changed to what the data supports (plan: \"Ranking de equipos de Dota 2 al día: el mundo y Sudamérica, con los argentinos marcados, la forma del último mes y la chance de cada serie Bo1 a Bo5.\"). 04.11 audit: /dota2 became the Dota 2 game page (intent «dota 2»): Steam appdetails 570 for Argentina (free, Windows/Mac/Linux, 60 GB, minimum quoted) + does-it-run check and download time, start steps (bots first, quoted), Valve SDR points of app 570 in South America with typical pings and the fibre floor, our Elo ranking as a section (#ranking), agenda, TI. No OpenDota.",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/dota2",
+  "titleEn": "Dota 2 from Argentina: requirements, servers, ranking",
+  "descriptionEn": "Dota 2 is free on Steam: whether it runs on Valve's minimum specs, how long the download takes, servers near Argentina and a team ranking.",
+  "h1En": "Dota 2 from Argentina"
  },
  {
   "section": "Dota 2",
@@ -678,7 +774,11 @@
   "data": "OpenDota leagues + Liquipedia",
   "auto": "лента в дни TI; история — статика",
   "notes": "03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution. 03.11 wave 4: description changed to what the data supports (plan: \"The International de Dota 2 en hora argentina: cuadro, partidos, chance de cada serie, ganadores y premios de cada edición y cómo le fue a Sudamérica.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/dota2/ti",
+  "titleEn": "The International (Dota 2): bracket in Argentina time",
+  "descriptionEn": "The International of Dota 2 in Argentina time: the last edition's bracket stage by stage, every result, the champion and South American teams.",
+  "h1En": "The International of Dota 2"
  },
  {
   "section": "Esports",
@@ -695,7 +795,11 @@
   "data": "официальные анонсы организаторов (цитаты); с P2 — Liquipedia",
   "auto": "статика, перепроверка раз в полгода; с P2 — лента раз в сутки",
   "notes": "03.11 wave 3: hub of /cs2, /cs2/major, /esports/series; calendar skipped (no citable schedule source without keys).",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/esports",
+  "titleEn": "Esports from Argentina: CS2 ranking and series",
+  "descriptionEn": "Esports from Argentina: Valve's CS2 ranking with the Americas, how the Major works and the odds of a Bo3 or Bo5, each number with its source.",
+  "h1En": "Esports from Argentina"
  },
  {
   "section": "Esports",
@@ -712,7 +816,26 @@
   "data": "чистая математика (engine/series.mjs из RinkMath)",
   "auto": "статика",
   "notes": "без коэффициентов, только вероятность 03.11 wave 3: engine/games/series.mjs (exact DP, closed form, inverse, Swiss) + tests; example from VRS Americas.",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/esports/series",
+  "titleEn": "Bo1, Bo3, Bo5: chance of winning a series",
+  "descriptionEn": "From the chance of winning a map to winning the series: Bo1, Bo3, Bo5 and Bo7 with every possible result, live score and reverse math. No odds.",
+  "h1En": "Chance of winning a Bo1, Bo3 or Bo5 series"
+ },
+ {
+  "section": "Esports",
+  "url": "/esports/glosario",
+  "title": "Glosario de esports: Bo3, VRS, eDPI, LAS, meta y más",
+  "h1": "Glosario de esports",
+  "description": "Las palabras de los esports y los juegos competitivos explicadas en una línea: Bo1, Bo3, sistema suizo, VRS, MMR, eDPI, cm/360, LAS, meta y tier list.",
+  "keys": "",
+  "kind": "live",
+  "wave": "P2",
+  "status": "live 2026-11-04",
+  "urlEn": "/en/esports/glossary",
+  "titleEn": "Esports glossary: Bo3, VRS, eDPI, LAS, meta and more",
+  "descriptionEn": "Esports and competitive game terms explained in one line: Bo1, Bo3, Swiss system, VRS, MMR, eDPI, cm/360, LAS, meta and tier list.",
+  "h1En": "Esports glossary"
  },
  {
   "section": "Esports",
@@ -730,7 +853,11 @@
   "auto": "лента раз в 1–6 ч",
   "notes": "блокер — условия API (ресёрч другого агента)",
   "live": "2026-11-03",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/esports/schedule",
+  "titleEn": "Esports matches today in Argentina time",
+  "descriptionEn": "Today's and this week's esports matches in Argentina time, game by game, with Argentine teams on top and where to watch on official channels.",
+  "h1En": "Today's esports schedule"
  },
  {
   "section": "Esports",
@@ -747,7 +874,11 @@
   "data": "Liquipedia (CC-BY-SA)",
   "auto": "лента раз в неделю",
   "notes": "03.11 wave 4: title changed to what the data supports (plan: \"Jugadores argentinos en los esports: equipos y logros\"). 03.11 wave 4: description changed to what the data supports (plan: \"Jugadores argentinos en los esports: en qué equipo están hoy, sus mejores resultados y en qué juego compiten, de CS2 y Valorant a LoL y Free Fire.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/esports/argentine-players",
+  "titleEn": "Argentine esports players: teams and matches",
+  "descriptionEn": "Argentine esports players with a team today: which game and which club, who plays abroad, and the upcoming matches where they appear.",
+  "h1En": "Argentine players in esports"
  },
  {
   "section": "Esports",
@@ -764,7 +895,11 @@
   "data": "математика; рейтинги — по желанию из VRS",
   "auto": "статика",
   "notes": "03.11 wave 4: description changed to what the data supports (plan: \"Simulá una fase suiza de 16 equipos con rankings reales o propios y mirá la chance de 3-0, de pasar o de 0-3, con los equipos argentinos marcados.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/esports/swiss-system",
+  "titleEn": "Swiss system in esports: how it works and simulator",
+  "descriptionEn": "Simulate a 16-team Swiss stage with Valve's ranking or your own and see the chance of 3-0, advancing or 0-3, with the Major's pairing rules.",
+  "h1En": "Swiss stage simulator"
  },
  {
   "section": "Esports",
@@ -781,7 +916,11 @@
   "data": "Liquipedia",
   "auto": "лента раз в неделю",
   "notes": "03.11 wave 4: description changed to what the data supports (plan: \"Las ligas de esports de Latinoamérica juego por juego, CS2, Valorant, LoL, Free Fire y más, con los líderes de hoy y los equipos argentinos.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/esports/latam",
+  "titleEn": "Latin America esports leagues: what to watch in each game",
+  "descriptionEn": "Esports leagues with Latin American teams this week, game by game: the next match in Argentina time and which ones have Argentine teams playing.",
+  "h1En": "Latin America esports leagues"
  },
  {
   "section": "Free Fire",
@@ -798,7 +937,11 @@
   "data": "—",
   "auto": "из лент",
   "notes": "не берём: diamantes/recarga/pagostore, hacks, macro, «archivos para dar tiros», cuentas gratis, xxx 03.11 wave 3: hub of FF tools + what the site will not do. 04.11 audit: hub got match facts, official download table (Play, App Store AR) and hacker/report block; title covers descarga and MAX.",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/ff",
+  "titleEn": "Free Fire in Argentina: download, MAX, sensitivity and more",
+  "descriptionEn": "Free Fire from Argentina: what a match is like, where to get the official download, Free Fire or MAX, tuned sensitivity, stylish names and scam-free codes.",
+  "h1En": "Free Fire from Argentina"
  },
  {
   "section": "Free Fire",
@@ -815,7 +958,11 @@
   "data": "диапазоны ползунков текущей версии (проверить), формула переноса — своя, объяснена",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "честно: «идеальной чувствительности нет»; без «тиров в голову», файлов и макросов",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/ff/sensitivity",
+  "titleEn": "Free Fire sensitivity: calibrate yours step by step",
+  "descriptionEn": "Find your Free Fire sensitivity in a few tries: test it in the game, tell us if you overshot or fell short, and we give you the next value to try.",
+  "h1En": "Free Fire sensitivity, calibrated on your phone"
  },
  {
   "section": "Free Fire",
@@ -832,7 +979,11 @@
   "data": "Unicode (стандарт); лимит длины ника — проверить в игре",
   "auto": "статика",
   "notes": "",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/ff/names",
+  "titleEn": "Free Fire names: generator with fancy letters and symbols",
+  "descriptionEn": "Create Free Fire names with fancy letters and symbols, see how many characters each version takes, and try very Argentine ideas, with ñ and accents.",
+  "h1En": "Free Fire name generator"
  },
  {
   "section": "Free Fire",
@@ -849,7 +1000,11 @@
   "data": "Unicode; какие символы принимает игра — проверить",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/ff/invisible-space",
+  "titleEn": "Free Fire invisible space: copy and paste",
+  "descriptionEn": "Copy the invisible space for your Free Fire name with one tap, preview how it looks right here and build a nickname with a gap, with ñ and accents.",
+  "h1En": "Invisible space for Free Fire"
  },
  {
   "section": "Free Fire",
@@ -866,7 +1021,11 @@
   "data": "Google Play / App Store / Garena (цитаты)",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "без ссылок на APK 03.11 wave 4: skipped - Garena and Play Store publish no requirements in HTML; only third-party articles. 04.11 audit: built without official requirements (Garena publishes none): Garena own words (Firelink, Ultra HD), Google Play AR/US and App Store AR/US listings; in our AR copies MAX has no Install button and is not found in the AR App Store.",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/ff/max",
+  "titleEn": "Free Fire MAX in Argentina: what changes and can you get it",
+  "descriptionEn": "Free Fire MAX vs Free Fire: what changes per Garena, if it's on Argentina's Google Play and App Store, its size and why one account works on both.",
+  "h1En": "Free Fire MAX or Free Fire: which to download in Argentina"
  },
  {
   "section": "Free Fire",
@@ -915,7 +1074,11 @@
   "data": "правила — официальная страница Garena (цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "РИСК: списка «кодов на сегодня» нет — надёжного легального источника нет; бесплатных алмазов не обещаем 03.11 wave 3: Garena redemption site notice (12/16 chars, uppercase + digits) from its Spanish strings, scam checklist, argentina.gob.ar Con Vos en la Web (UFECI, 0800-33-FISCAL, 102). No code lists.",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/ff/codes",
+  "titleEn": "Free Fire codes: how to redeem them without getting scammed",
+  "descriptionEn": "How to redeem Free Fire codes on the official site, Garena's format, how to spot a scam asking for your password or money, and where to report it.",
+  "h1En": "How to redeem Free Fire codes"
  },
  {
   "section": "Free Fire",
@@ -996,7 +1159,11 @@
   "data": "см. /fortnite/temporada",
   "auto": "из ленты сезона",
   "notes": "не берём: pavos, crew, tienda/skins (вопрос), xxx/rule 34, apk 03.11 wave 4: skipped - only one Fortnite tool so far (/fortnite/nube) and no hub scene; Epic pages answer 403. 04.11 audit: built as «how to play from Argentina on each device» (Google Play AR listing, Wikipedia, Xbox Cloud); season, ranks and tracker not shown (fortnite.com 403; tracker needs a fortnite-api.com key from the owner).",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/fortnite",
+  "titleEn": "Fortnite in Argentina: how to play it free on every device",
+  "descriptionEn": "How to play Fortnite free from Argentina on Android, iPhone, PC or console: which store works, what happens on iPhone and how to play it in the cloud.",
+  "h1En": "Fortnite from Argentina: where and how to play it"
  },
  {
   "section": "Fortnite",
@@ -1029,7 +1196,11 @@
   "data": "требования Microsoft (цитата)",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "бесплатно ли без подписки — проверить; Game Pass не продвигать",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/fortnite/cloud",
+  "titleEn": "Fortnite on Xbox Cloud from Argentina: data and internet",
+  "descriptionEn": "How much data Fortnite uses on Xbox Cloud Gaming from Argentina, what speed Microsoft asks for and how many hours your phone plan lasts.",
+  "h1En": "Fortnite on Xbox Cloud Gaming from Argentina: data and internet"
  },
  {
   "section": "Fortnite",
@@ -1094,7 +1265,11 @@
   "data": "Supercell Brawl Stars API /events/rotation",
   "auto": "лента раз в 3 ч",
   "notes": "не берём: rule 34/xxx/porno, gemas",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/brawl",
+  "titleEn": "Brawl Stars in Argentina: brawlers, meta and events",
+  "descriptionEn": "Brawl Stars from Argentina: all the brawlers, the meta of Argentina's top players and today's events with time left until they change, in Argentina time.",
+  "h1En": "Brawl Stars: brawlers, meta and events"
  },
  {
   "section": "Brawl Stars",
@@ -1112,7 +1287,11 @@
   "auto": "лента раз в сутки",
   "notes": "страницы отдельных бравлеров не делаем (шаблон); ключ Supercell — шаг владельца 04.11 audit: title covers «personajes de brawl stars».",
   "live": "2026-11-03",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/brawl/brawlers",
+  "titleEn": "Brawl Stars brawlers: every character and ability",
+  "descriptionEn": "All Brawl Stars brawlers with their star powers and gadgets, the newest one, and the trophies needed for the first 200 spots in Argentina.",
+  "h1En": "All Brawl Stars brawlers"
  },
  {
   "section": "Brawl Stars",
@@ -1129,7 +1308,11 @@
   "data": "Supercell API /rankings + /battlelog",
   "auto": "лента раз в сутки",
   "notes": "03.11 wave 4: description changed to what the data supports (plan: \"El meta de Brawl Stars según las partidas del top 200 de Argentina y del mundo: qué brawlers usan en cada modo y con qué win rate, con su intervalo.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/brawl/meta",
+  "titleEn": "Brawl Stars meta: what Argentina's best players use",
+  "descriptionEn": "The Brawl Stars meta from recent matches of Argentina's best 100 players: which brawlers they pick in each mode and map and how much they win.",
+  "h1En": "Brawl Stars meta"
  },
  {
   "section": "Brawl Stars",
@@ -1147,7 +1330,11 @@
   "auto": "лента раз в 1–3 ч",
   "notes": "",
   "live": "2026-11-03",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/brawl/events",
+  "titleEn": "Brawl Stars events today: maps and modes in Argentina time",
+  "descriptionEn": "Today's Brawl Stars events with their map, mode and time left until they change, in Argentina time, from the official rotation we check every hour.",
+  "h1En": "Today's Brawl Stars events"
  },
  {
   "section": "Brawl Stars",
@@ -1180,7 +1367,11 @@
   "data": "Supercell Clash Royale API",
   "auto": "лента раз в сутки",
   "notes": "не берём: rule 34/xxx, store, apk, «códigos» с сайтов-агрегаторов 03.11 wave 4: description changed to what the data supports (plan: \"Clash Royale desde Argentina: armá y calificá tu mazo, mirá todas las cartas y los mazos que usan los mejores jugadores de Argentina esta temporada.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/clash",
+  "titleEn": "Clash Royale in Argentina: decks, cards and meta",
+  "descriptionEn": "Clash Royale from Argentina: build your deck and compare it, see all the cards and what the best players from the country's top clans use today.",
+  "h1En": "Clash Royale: decks, cards and meta"
  },
  {
   "section": "Clash Royale",
@@ -1197,7 +1388,11 @@
   "data": "Supercell Clash Royale API /cards (ключ + IP сервера): имена, эликсир, редкость, иконки",
   "auto": "лента раз в сутки (новые карты появляются сами)",
   "notes": "03.11 wave 4: title changed to what the data supports (plan: \"Mazos de Clash Royale: armá y calificá tu mazo\"). 03.11 wave 4: description changed to what the data supports (plan: \"Armá tu mazo de Clash Royale y mirá elixir promedio, ciclo y defensa aérea, con una nota por roles y la comparación con los mazos del top argentino.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/clash/decks",
+  "titleEn": "Clash Royale decks: build yours and compare it",
+  "descriptionEn": "Build your Clash Royale deck and see average elixir, cycle, curve and card types, and how it compares with the decks of Argentina's best players.",
+  "h1En": "Clash Royale deck builder"
  },
  {
   "section": "Clash Royale",
@@ -1214,7 +1409,11 @@
   "data": "Supercell CR API rankings/battlelog (доступность рейтингов — проверить)",
   "auto": "лента раз в сутки",
   "notes": "03.11 wave 4: description changed to what the data supports (plan: \"Los mazos que más usan los mejores jugadores de Clash Royale en Argentina y en el mundo, con win rate e intervalo de confianza. Se actualiza solo.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/clash/meta",
+  "titleEn": "Best Clash Royale decks in Argentina: the meta",
+  "descriptionEn": "The cards and decks Argentina's best Clash Royale players use today, based on the official Supercell API. It updates by itself every day.",
+  "h1En": "The Clash Royale meta decks"
  },
  {
   "section": "Clash Royale",
@@ -1232,7 +1431,11 @@
   "auto": "лента раз в сутки",
   "notes": "",
   "live": "2026-11-03",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/clash/cards",
+  "titleEn": "Clash Royale cards: elixir cost and rarity of each one",
+  "descriptionEn": "Every Clash Royale card with its elixir cost, rarity and evolution, plus filters and the average elixir of an eight-card deck you build yourself.",
+  "h1En": "All Clash Royale cards"
  },
  {
   "section": "Rocket League",
@@ -1249,7 +1452,11 @@
   "data": "анонсы Psyonix",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "официального API нет; не берём торговлю предметами 03.11 wave 4: title changed to what the data supports (plan: \"Rocket League en Argentina: rangos, MMR y autos\"). 03.11 wave 4: h1 changed to what the data supports (plan: \"Rocket League: rangos, MMR y autos\"). 03.11 wave 4: description changed to what the data supports (plan: \"Rocket League desde Argentina: rangos y MMR, autos y hitbox, ping al servidor de Sudamérica y los equipos argentinos en la RLCS de la región.\").",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-03",
+  "urlEn": "/en/rl",
+  "titleEn": "Rocket League in Argentina: RLCS, champions and Argentines",
+  "descriptionEn": "Rocket League from Argentina: the latest world championship and RLCS Majors in Argentina time, who won each one and the Argentine players with a team.",
+  "h1En": "Rocket League: the RLCS from Argentina"
  },
  {
   "section": "Rocket League",
@@ -1330,7 +1537,11 @@
   "data": "EA (цитаты)",
   "auto": "статика, перепроверка раз в полгода",
   "notes": "«fifa 26» частично = Mundial 2026 — смешанный интент; адрес без года, год — в title (переживёт FC 27) 03.11 wave 4: title changed to what the data supports (plan: \"EA Sports FC 26: versiones, química y argentinos\"). 03.11 wave 4: h1 changed to what the data supports (plan: \"EA Sports FC 26\"). 03.11 wave 4: description changed to what the data supports (plan: \"EA Sports FC 26: qué cambia entre PS4, PS5, PC y Switch, cómo funciona la química y qué lugar tienen los argentinos y la Liga Profesional en el juego.\"). 04.11 audit: FC 27 on PC from the Steam AR listing (price, min/rec requirements); console versions not shown (EA blocks robots).",
-  "status": "live 2026-11-04"
+  "status": "live 2026-11-04",
+  "urlEn": "/en/eafc",
+  "titleEn": "EA Sports FC 27 from Argentina: PC requirements and esports",
+  "descriptionEn": "EA Sports FC 27 from Argentina: requirements and Steam price, the latest FC Pro world championship match by match and Argentine players competing.",
+  "h1En": "EA Sports FC 27 from Argentina: PC and competitive"
  },
  {
   "section": "EA FC",

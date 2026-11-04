@@ -17,6 +17,11 @@ export const SITE = {
   name: 'pingalto',
   htmlLang: 'es-AR',
   ogLocale: 'es_AR',
+  // English version /en/... (docs/I18N.md): same scheme without a trailing slash, home /en (file en.html); quotes of publishers keep
+  // their language and get an English rendering after them
+  langs: ['es', 'en'],
+  // allow: team names of the saved VRS tables that look Spanish to the gate (they stay as the teams write them)
+  i18n: { quoteNote: en => '<p class="pa-qen" lang="en"><b>In English:</b> ' + en + '</p>', allow: ['los kogutos', 'LOS NINOS'], citeEn: true },
   assetDir: 's',
   assetName: (name, hash) => base(name) + '.' + hash.slice(0, 10) + extname(name),
   pathRe: new RegExp('^/$|^/' + SEG + '(/' + SEG + '){0,2}$'),
