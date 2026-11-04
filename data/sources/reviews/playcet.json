@@ -1,0 +1,165 @@
+{
+ "brand": "playcet",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "playcet.bet.ar"
+ ],
+ "status": {
+  "playcet.bet.ar": {
+   "status": "open",
+   "note": "Opens (/es); age-confirmation modal appears on inner pages (text behind it was readable, modal not clicked); sportsbook is an embedded iframe — odds not collected",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://playcet.bet.ar/es",
+   "file": "data/sources/reviews/playcet/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "42a3ad9862ad1f0093ca66caecbe2bfc6e6ef75fd102afc20f01a2384f6c8a9b"
+  },
+  "metodos-de-deposito": {
+   "url": "https://playcet.bet.ar/es/metodos-de-deposito",
+   "file": "data/sources/reviews/playcet/_docs/metodos-de-deposito.txt",
+   "date": "2026-11-04",
+   "sha256": "6a01c60a566aa3c61e2d50fbb8ee0ec121715bdba901a27efdba9068b455daf3"
+  },
+  "metodos-de-retiro": {
+   "url": "https://playcet.bet.ar/es/metodos-de-retiro",
+   "file": "data/sources/reviews/playcet/_docs/metodos-de-retiro.txt",
+   "date": "2026-11-04",
+   "sha256": "48a89ec5cf27b248f9a46805608c59cc63ef075bf4b5d225f99e078034484bef"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "CET S.A. - Concesionaria de Entretenimientos y Turismo - DARUMA SAM S.A. - UT",
+    "cuit": "30-71769938-2",
+    "regulator": "Lotería de la Provincia de Córdoba S.E.",
+    "act": "Resolución Nº 1689/23",
+    "actDate": "2023-02-01"
+   },
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es",
+   "date": "2026-11-04",
+   "quote": "playcet.bet.ar es un sitio operado por CET S.A. - Concesionaria de Entretenimientos y Turismo - DARUMA SAM S.A. - UT, CUIT Nº 30-71769938-2, bajo la licencia para el desarrollo de la actividad de juego bajo la modalidad On line otorgada por la Lotería de la Provincia de Córdoba S.E., mediante Resolución Nº 1689/23 del 01 de febrero de 2023.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Limited to Provincia de Córdoba",
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es",
+   "date": "2026-11-04",
+   "quote": "La oferta de entretenimiento disponible en el sitio se circunscribe al ámbito geográfico de la Provincia de Córdoba.",
+   "doc": "home"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es",
+   "date": "2026-11-04",
+   "quote": "Prohibida la venta a menores de 18 años.",
+   "doc": "home"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "live chat"
+   ],
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es",
+   "date": "2026-11-04",
+   "quote": "Chat en vivo",
+   "doc": "home"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Lotería de Córdoba — 0-800-777 AYUDA (2983), 24 h"
+   },
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es",
+   "date": "2026-11-04",
+   "quote": "Si tiene problemas con el juego recurra al 0-800-777 AYUDA (2983). Ayuda al jugador compulsivo las 24Hrs Los 365 días del año.",
+   "doc": "home"
+  },
+  {
+   "field": "casino.exists",
+   "value": {
+    "exists": true,
+    "live": true,
+    "gamesShownInSlotsLink": 695,
+    "note": "'Mostrar todos 695' on the slots row and 'Mostrar todos 208' on a second row"
+   },
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es",
+   "date": "2026-11-04",
+   "quote": "Mostrar todos 695",
+   "doc": "home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "cash at the operator's 18 gaming rooms (DNI)",
+    "bank transfer",
+    "DEBIN",
+    "debit card"
+   ],
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es/metodos-de-deposito",
+   "date": "2026-11-04",
+   "quote": "Acércate a la CAJA de cualquiera de nuestras salas de juego, presenta tu DNI y solicita realizar un Depósito en tu cuenta (Mínimo $ 0,00).",
+   "doc": "metodos-de-deposito"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "bank transfer to own CBU/CVU (if deposited by bank)",
+    "cash at a gaming room (if deposited in cash)"
+   ],
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es/metodos-de-retiro",
+   "date": "2026-11-04",
+   "quote": "Si realizó cargas de créditos mediante dinero en efectivo, el retiro del saldo de su cuenta sólo se podrá efectuar en dinero en efectivo.",
+   "doc": "metodos-de-retiro"
+  },
+  {
+   "field": "payments.minWithdrawal",
+   "value": {
+    "amount": 2000,
+    "currency": "ARS"
+   },
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es/metodos-de-retiro",
+   "date": "2026-11-04",
+   "quote": "(Mínimo $ 2.000,00)",
+   "doc": "metodos-de-retiro"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": "bank transfer up to 48 business hours; cash over ARS 500,000/day approved within 24 business hours",
+   "host": "playcet.bet.ar",
+   "url": "https://playcet.bet.ar/es/metodos-de-retiro",
+   "date": "2026-11-04",
+   "quote": "podrá tener una demora de hasta 48hs hábiles",
+   "doc": "metodos-de-retiro"
+  }
+ ],
+ "shots": [
+  {
+   "view": "age-gate",
+   "file": "data/shots/playcet/review-2026-11-04-age-gate.png",
+   "url": "https://playcet.bet.ar/es/metodos-de-deposito",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "89f1aa0ed947fffc2e99f330ea3d8877105f782f6613a163284393fe866db24d",
+   "note": "Age-confirmation modal over the deposit methods page (not clicked)"
+  }
+ ]
+}
