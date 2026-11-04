@@ -13,7 +13,8 @@ import { quote, sectionHead, officialLinks, brandLink } from './parts.mjs';
 import { codeOf } from './opparts.mjs';
 import { brandNames } from '../../../tools/lib/sources.mjs';
 
-const hasCasino = r => (r.facts || []).some(f => f.field.startsWith('casino.') && !isAbsence(f.value));
+// a casino page needs at least two different casino facts (for example live casino and providers), otherwise the review section is enough
+const hasCasino = r => new Set((r.facts || []).filter(f => f.field.startsWith('casino.') && !isAbsence(f.value) && f.value !== false).map(f => f.field)).size >= 2;
 const BRANDS = Object.entries(loadReviews()).filter(([, r]) => hasCasino(r)).map(([b]) => b);
 const fit = (a, b) => (a.length <= 60 ? a : b);
 const fitD = (a, b) => (a.length <= 155 ? a : b);

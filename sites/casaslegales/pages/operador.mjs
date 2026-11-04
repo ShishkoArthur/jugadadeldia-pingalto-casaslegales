@@ -12,6 +12,9 @@ import { src, quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
 import { help } from './provincia.mjs';
 import { ROOT } from '../../../tools/env.mjs';
 import { review } from '../content/reviews.mjs';
+import { loadReviews } from '../../../tools/lib/revsources.mjs';
+import { brandNames, loadRegistries, loadRg } from '../../../tools/lib/sources.mjs';
+import { SITE } from '../config.mjs';
 import { SECTIONS, reviewSection, summary, toc, reviewShots, viewLabel } from './review.mjs';
 
 const SHOT_LABEL = { home: 'Página de entrada', parked: 'Lo que muestra la dirección', footer: 'Pie de página', rg: 'Juego responsable', sports: 'Apuestas deportivas', pay: 'Medios de pago', tc: 'Términos y condiciones', block: 'Lo que muestra fuera de su provincia' };
@@ -233,16 +236,49 @@ function nextSection(h, row) {
   return '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + '<div class="rl-gd">' + links.map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div></section>';
 }
 
+// Title, H1 and description follow the search intent of a brand query (owner 2026-11-04, keyword audit): a brand with review data
+// is a review ("reseña"), every brand page names its official site; numbers of lists come from the registries.
+const SHORT = { 'buenos-aires': 'PBA', caba: 'CABA' };
+const GROUPS = [['sportsbook', 'deportes'], ['sportsbook.odds1x2', 'cuotas'], ['casino', 'casino'], ['app', 'app'], ['payments', 'pagos'], ['rg', 'juego responsable']];
+function reviewLead(h, o, R) {
+  const hosts = [...new Set(R.r.facts.map(f => new URL(R.doc(f.doc).url).hostname.replace(/^www\./, '')).filter(x => !/^support\.|^ayuda\.|^help\./.test(x)))];
+  const has = GROUPS.filter(([k]) => R.r.facts.some(f => f.field === k || f.field.startsWith(k + '.'))).map(([, w]) => w);
+  return 'Recorrimos ' + joinY(hosts) + ' desde Argentina, sin abrir cuenta: ' + joinY(has) + '. Cada dato va con la cita de su página y la fecha. ' + o.lead;
+}
+export function opCopy(o) {
+  const name = brandNames()[o.brand];
+  const regs = loadRegistries().filter(r => SITE.registries.includes(r.id)), jurs = regs.filter(r => r.licensees.some(l => l.brand === o.brand)).map(r => r.id);
+  const provName = Object.fromEntries(loadRg().provinces.map(p => [p.id, p.name]));
+  const fit = (n, ...xs) => xs.find(x => x.length <= n) || xs.at(-1);
+  const rv = loadReviews()[o.brand];
+  if (rv && (rv.facts || []).length) {
+    const has = GROUPS.filter(([k]) => rv.facts.some(f => f.field === k || f.field.startsWith(k + '.'))).map(([, w]) => w);
+    const list = has.length < 2 ? has.join('') : has.slice(0, -1).join(', ') + ' y ' + has.at(-1);
+    return {
+      title: fit(60, name + ' Argentina: reseña, licencias y sitio oficial', name + ': reseña, licencias y sitio oficial', name + ': reseña y sitio oficial'),
+      h1: name + ' en Argentina: reseña con datos, licencias y sitio oficial' + (jurs.length > 1 ? ' por provincia' : ''),
+      description: fit(155, 'Reseña de ' + name + ' en Argentina con datos de su sitio (' + list + '), sus licencias y el sitio oficial ' + (jurs.length > 1 ? 'de cada provincia.' : 'de ' + provName[jurs[0]] + '.'),
+        'Reseña de ' + name + ' en Argentina con datos de su sitio (' + list + '), licencias y sitio oficial' + (jurs.length > 1 ? ' por provincia.' : '.'),
+        'Reseña de ' + name + ' con datos de su sitio (' + list + '), licencias y sitio oficial.'),
+    };
+  }
+  const where = jurs.length === 1 ? (SHORT[jurs[0]] || provName[jurs[0]]) : null;
+  return {
+    title: where ? fit(60, name + ': licencia en ' + where + ' y sitio oficial', name + ': licencia y sitio oficial') : fit(60, name + ' Argentina: licencias y sitio oficial por provincia', name + ': licencias y sitio oficial por provincia', name + ': licencias y sitio oficial'),
+    h1: o.h1, description: o.description,
+  };
+}
 export function operatorPage(o) {
+  const c = opCopy(o);
   return {
     path: '/operador/' + o.slug,
     id: 'operador-' + o.slug,
     kind: 'operator',
     jurisdiction: o.jurisdiction,
     brand: o.brand,
-    title: o.title,
-    description: o.description,
-    h1: o.h1,
+    title: c.title,
+    description: c.description,
+    h1: c.h1,
     ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ...(h.built('/operadores') ? [['/operadores', 'Operadores']] : []), ['/operador/' + o.slug, h.names[o.brand]]])],
     render(h) {
       const D = opData(h.today);
@@ -252,7 +288,7 @@ export function operatorPage(o) {
       const R = review(h.today, o.brand), isRev = !!(R && R.r.facts.length);
       if (/rese[nñ]a/i.test(h.page.title + h.page.h1 + h.page.description) !== isRev) throw new Error('/operador/' + o.slug + ': title/H1/description ' + (isRev ? 'must say «reseña» (review data exists)' : 'say «reseña» but there is no review data'));
       const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + (isRev ? 'Reseña con datos · sitio visto desde Argentina el ' + h.fmtDate(R.r.collected) + ' · listas copiadas el ' : 'Ficha de operador · listas copiadas el ') + h.fmtDate(h.regs.map(r => r.checked).sort()[0]) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
-        '<p class="rl-lead">' + h.esc(isRev && o.reviewLead ? o.reviewLead : o.lead) + '</p>' + officialLinks(h, o.brand, h.regs.filter(r => row.cells[r.id]).map(r => r.id)) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
+        '<p class="rl-lead">' + h.esc(isRev ? o.reviewLead || reviewLead(h, o, R) : o.lead) + '</p>' + officialLinks(h, o.brand, h.regs.filter(r => row.cells[r.id]).map(r => r.id)) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
         '<div class="rl-big"><b>' + n + '<small> de ' + h.regs.length + '</small></b><span>listas oficiales que revisamos lo nombran</span><small>' + h.esc(o.angle) + '</small></div></section>';
       const aid = o.platform ? help(h, { j: h.rg.prov(o.jurisdiction), name: h.rg.prov(o.jurisdiction).name }) : '';
       if (isRev) {
@@ -265,7 +301,7 @@ export function operatorPage(o) {
         };
         const sec = SECTIONS.map(x => reviewSection(h, R, x, extra)).join('');
         return hero + toc(h, [['capturas', 'Capturas']]) + summary(h, R, { lists: n, total: h.regs.length, rgCount: rgN, casinoPath }) + sec +
-          mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D, R) + aid + nextSection(h, row);
+          mapSection(h, o, row) + (R.pre('licence').length ? reviewSection(h, R, ['pie', 'La licencia según el pie de cada sitio', 'licence']) : '') + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D, R) + aid + nextSection(h, row);
       }
       return hero + mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D) + toolsSection(h, o, D) + aid + nextSection(h, row);
     },

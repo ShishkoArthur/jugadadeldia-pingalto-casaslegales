@@ -40,6 +40,10 @@ const F = {
   'payments.methods': ['Medios de pago', 'quote'],
   'payments.withdrawalTime': ['Plazo de retiro', 'quote'],
   'payments.limits': ['Límites de pago', 'quote'],
+  'payments.limitsPublished': ['Límites de depósito y retiro', 'quote'],
+  'payments.withdrawalConditions': ['Condiciones para retirar', 'quote'],
+  'payments.depositTime': ['Plazo de depósito', 'quote'],
+  'payments.methodsPage': ['Página de medios de pago', 'quote'],
   'sportsbook.markets': ['Mercados', 'quote'],
   'sportsbook.liveCount': ['Eventos en vivo', 'quote'],
   'sportsbook.virtuals': ['Deportes virtuales', 'yes'],
@@ -80,8 +84,10 @@ const labelOf = field => {
   if (F[field]) return F[field][0];
   const m = /^rg\.(.+)$/.exec(field);
   if (m) { const k = m[1].replace(/Limit$/, ''); if (LABEL_RG[k] || LABEL_RG[m[1]]) return LABEL_RG[k] || LABEL_RG[m[1]]; }
-  throw new Error('review: no label for the field ' + field + ' (add it to pages/review.mjs)');
+  return null;
 };
+const warned = new Set();
+const known = f => { if (labelOf(f.field)) return true; if (!warned.has(f.field)) { warned.add(f.field); console.log('review: field ' + f.field + ' has no label in pages/review.mjs - not shown'); } return false; };
 const modeOf = field => (F[field] || [null, 'quote'])[1];
 const NON_SPORT = new Set(['Mercados Especiales', 'Película']);
 const PROMO = /\btop ?\d+|torneo|reward|drop|bono|bonus|promo|gratis|jackpot|zaira|exclusiv/i;
@@ -110,22 +116,21 @@ const chips = (h, items, what = 'todos') => items.length <= 12 ? chipRow(h, item
 export function sportsOf(R) {
   const f = R.one('sportsbook.sports');
   if (!f) return null;
-  const names = R.inDoc(f, f.value.names || f.value);
+  const names = f.value && (f.value.names || f.value);
+  if (!Array.isArray(names) || !R.found(f, names)) return null;
   const sports = names.filter(n => !NON_SPORT.has(n));
   return { f, names, sports, other: names.filter(n => NON_SPORT.has(n)) };
 }
 export function providersOf(R) {
   const f = R.one('casino.providers');
-  return f ? { f, names: R.inDoc(f, f.value.names || f.value) } : null;
+  const names = f && f.value && (f.value.names || f.value);
+  return f && Array.isArray(names) && R.found(f, names) ? { f, names } : null;
 }
 export function marginOf(R) {
   const f = R.one('sportsbook.odds1x2');
   if (!f) return null;
-  const rows = f.value.matches.map(m => {
-    R.inDoc(f, [m.home, m.away]);
-    R.oddsInDoc(f, m.odds);
-    return { ...m, m: margin(m.odds).margin };
-  });
+  const rows = ((f.value || {}).matches || []).filter(m => Array.isArray(m.odds) && m.odds.length >= 2 && R.found(f, [m.home, m.away]) && R.oddsFound(f, m.odds)).map(m => ({ ...m, m: margin(m.odds).margin }));
+  if (!rows.length) return null;
   const avg = rows.reduce((a, r) => a + r.m, 0) / rows.length;
   return { f, rows, avg, min: Math.min(...rows.map(r => r.m)), max: Math.max(...rows.map(r => r.m)), date: R.doc(f.doc).date };
 }
@@ -140,14 +145,14 @@ function moneyOf(R, f) {
 function valueHtml(h, R, f) {
   const mode = modeOf(f.field);
   if (f.quote == null && isAbsence(f.value)) return '<b class="rl-fno">No lo encontramos en esa página</b>';
-  if (mode === 'chips') return chips(h, R.inDoc(f, f.value));
+  if (mode === 'chips') return Array.isArray(f.value) && R.found(f, f.value) ? chips(h, f.value) : '';
   if (mode === 'yes') return f.value === true ? '<b class="rl-fyes">Sí</b>' : f.value === false ? '<b>No</b>' : '';
   if (mode === 'money') { const s = moneyOf(R, f); return s ? '<b class="rl-fnum">' + h.esc(s) + '</b>' : ''; }
-  if (mode === 'sports') { const s = sportsOf(R); return '<b class="rl-fnum">' + s.sports.length + ' deportes</b>' + chips(h, s.sports) + (s.other.length ? '<p class="rl-src">La lista trae ' + s.names.length + ' entradas: no contamos como deporte ' + s.other.map(x => '«' + h.esc(x) + '»').join(' ni ') + '.</p>' : ''); }
-  if (mode === 'providers') { const p = providersOf(R); return '<b class="rl-fnum">' + p.names.length + ' proveedores</b>' + chips(h, p.names); }
-  if (mode === 'categories') { const all = R.inDoc(f, f.value), kept = all.filter(x => !PROMO.test(x)); return '<b class="rl-fnum">' + all.length + ' categorías</b>' + chips(h, kept) + (kept.length < all.length ? '<p class="rl-src">No listamos ' + (all.length - kept.length) + ' categorías que son promociones o rankings del propio sitio.</p>' : ''); }
-  if (mode === 'markets') { const v = f.value; R.inDoc(f, String(v.match).split(/\s+vs\.?\s+/i)); return '<b class="rl-fnum">' + fmtInt(v.markets) + ' mercados</b><p>' + h.esc(v.match) + (v.competition ? ' · ' + h.esc(v.competition) : '') + '. Contamos los títulos de mercado de la pestaña «Todos» de ese partido.</p>'; }
-  if (mode === 'licence') { const v = f.value; R.inDoc(f, [v.operator, v.act].filter(Boolean)); return '<p><b>' + h.esc(v.operator) + '</b>' + (v.act ? '<br><span class="rl-host">' + h.esc(v.act) + '</span>' : '') + '</p>'; }
+  if (mode === 'sports') { const s = sportsOf(R); if (!s || s.f !== f) return ''; return '<b class="rl-fnum">' + s.sports.length + ' deportes</b>' + chips(h, s.sports) + (s.other.length ? '<p class="rl-src">La lista trae ' + s.names.length + ' entradas: no contamos como deporte ' + s.other.map(x => '«' + h.esc(x) + '»').join(' ni ') + '.</p>' : ''); }
+  if (mode === 'providers') { const p = providersOf(R); if (!p || p.f !== f) return ''; return '<b class="rl-fnum">' + p.names.length + ' proveedores</b>' + chips(h, p.names); }
+  if (mode === 'categories') { if (!Array.isArray(f.value) || !R.found(f, f.value)) return ''; const all = f.value, kept = all.filter(x => !PROMO.test(x)); return '<b class="rl-fnum">' + all.length + ' categorías</b>' + chips(h, kept) + (kept.length < all.length ? '<p class="rl-src">No listamos ' + (all.length - kept.length) + ' categorías que son promociones o rankings del propio sitio.</p>' : ''); }
+  if (mode === 'markets') { const v = f.value, seen = R.found(f, String(v.match).split(/\s+vs\.?\s+/i)); return '<b class="rl-fnum">' + fmtInt(v.markets) + ' mercados</b><p>' + (seen ? h.esc(v.match.replace(/\s+vs\.?\s+/i, ' – ')) + (v.competition && R.found(f, [v.competition]) ? ' · ' + h.esc(v.competition) : '') + '. ' : '') + 'Contamos los títulos de mercado de la página de ese partido, el ' + h.fmtDate(R.doc(f.doc).date) + '.</p>'; }
+  if (mode === 'licence') { const v = f.value || {}; if (!v.operator || !R.found(f, [v.operator, v.act].filter(Boolean))) return ''; return '<p><b>' + h.esc(v.operator) + '</b>' + (v.act ? '<br><span class="rl-host">' + h.esc(v.act) + '</span>' : '') + '</p>'; }
   return '';
 }
 // one item per field, in the order of F; when two pages say it, both show, each with its source
@@ -155,7 +160,7 @@ const HIDE = new Set(['payments.currency']);
 const ORDER = Object.keys(F);
 const rank = f => { const i = ORDER.indexOf(f.field); return (f.quote == null && isAbsence(f.value) ? 2000 : 0) + (i < 0 ? 999 : i); };
 function factList(h, R, facts) {
-  const fields = [...new Set(facts.filter(f => !HIDE.has(f.field)).sort((a, b) => rank(a) - rank(b)).map(f => f.field))];
+  const fields = [...new Set(facts.filter(f => !HIDE.has(f.field) && known(f)).sort((a, b) => rank(a) - rank(b)).map(f => f.field))];
   return '<dl class="rl-fl">' + fields.map(k => '<div class="rl-fi"><dt>' + h.esc(labelOf(k)) + '</dt><dd>' + facts.filter(f => f.field === k).map(f => '<div class="rl-fv">' + valueHtml(h, R, f) + cite(h, R, f) + '</div>').join('') + '</dd></div>').join('') + '</dl>';
 }
 const none = (h, why) => '<p class="rl-sd"><b>Sin dato:</b> ' + h.esc(why) + '</p>';
@@ -170,7 +175,7 @@ function marginBlock(h, R, M) {
 }
 
 export function reviewSection(h, R, [id, title, prefix], extra = {}) {
-  const facts = R.pre(prefix).filter(f => f.field !== 'sportsbook.odds1x2');
+  const facts = R.pre(prefix).filter(f => f.field !== 'sportsbook.odds1x2' && known(f));
   const M = prefix === 'sportsbook' ? marginOf(R) : null;
   const add = extra[id] || '';
   const body = (facts.length ? factList(h, R, facts) : '') + (M ? marginBlock(h, R, M) : '') + add;
@@ -180,7 +185,7 @@ export function reviewSection(h, R, [id, title, prefix], extra = {}) {
 // the summary card: facts only, each computed from the data above (or "sin dato")
 export function summary(h, R, { lists, total, rgCount, casinoPath }) {
   const S = sportsOf(R), P = providersOf(R), M = marginOf(R);
-  const dep = R.all('payments.depositMethods').sort((a, b) => b.value.length - a.value.length)[0], live = R.one('sportsbook.live');
+  const deps = R.all('payments.depositMethods'), dep = deps.filter(f => Array.isArray(f.value) && R.found(f, f.value)).sort((a, b) => b.value.length - a.value.length)[0], live = R.one('sportsbook.live');
   const real = f => f && !isAbsence(f.value) && f.value !== false;
   const cas = [R.one('casino.exists'), R.one('casino.live'), P && P.f].find(real);
   const app = R.pre('app').find(real);
@@ -194,7 +199,7 @@ export function summary(h, R, { lists, total, rgCount, casinoPath }) {
     t('Apuestas en vivo', live ? (live.value ? 'Sí' : 'No') : null, live ? 'según su página' : SIN),
     t('Casino', cas ? 'Sí' : null, cas ? (P ? P.names.length + ' proveedores' : 'sección propia') : SIN, cas ? (casinoPath && h.built(casinoPath) ? h.href(casinoPath) : '#casino') : ''),
     t('App', app ? 'Mencionada' : null, app ? 'en su sitio' : SIN, app ? '#app' : ''),
-    t('Medios de pago', dep ? String(R.inDoc(dep, dep.value).length) : null, dep ? 'para depositar, en la lista más larga que publica' : SIN, dep ? '#pagos' : ''),
+    t('Medios de pago', dep ? String(dep.value.length) : deps.length ? 'Publicados' : null, dep ? 'para depositar, en la lista más larga que publica' : deps.length ? 'ver la cita en pagos' : SIN, deps.length ? '#pagos' : ''),
     t('Retiro', wtTxt.length ? wtTxt[0] : null, wtTxt.length ? 'el plazo más corto que publica' : SIN, wtTxt.length ? '#pagos' : ''),
     t('Juego responsable', rgCount ? String(rgCount) : null, rgCount ? (rgCount === 1 ? 'herramienta citada' : 'herramientas citadas') : SIN, rgCount ? '#juego-responsable' : ''),
     t('Margen medido', M ? pct(M.avg) : null, M ? '1X2, ' + M.rows.length + ' partidos, ' + h.fmtDate(M.date) : 'no copiamos cuotas', M ? '#deportes' : ''),

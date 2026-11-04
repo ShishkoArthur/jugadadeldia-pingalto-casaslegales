@@ -1,13 +1,14 @@
-// Operator pages of casaslegales.com (/operador/<slug>). Title, description and H1 follow data/plan/casaslegales.json.
+// Operator pages of casaslegales.com (/operador/<slug>). The title is built by pages/operador.mjs opCopy (search intent, owner 2026-11-04);
+// h1/description below are used until the brand has review data (then opCopy writes them too). reviewLead replaces lead on a review.
 // Licences come only from the verified registries; quotes, screenshots and block pages from data/sources/operators/operators.json
 // and data/shots/shots.json. "check" lines are conditions on the verified data that the copy relies on: the build stops when
 // one is false (for example a brand that leaves a list).
 export const OPS = [
   {
     slug: 'betsson', brand: 'betsson',
-    title: 'Betsson Argentina: reseña, licencias y sitio oficial',
-    description: 'Reseña de Betsson en Argentina con datos de su sitio: deportes, cuotas, casino, pagos y retiros, juego responsable y sitio oficial por provincia.',
-    h1: 'Betsson en Argentina: reseña con datos, licencias y sitio oficial por provincia',
+    title: 'Betsson en Argentina: licencias, dominios y provincias',
+    description: 'Betsson en las listas oficiales de PBA, CABA y Córdoba: una dirección distinta en cada una, capturas propias de su sitio y fecha de revisión.',
+    h1: 'Betsson en Argentina: en qué provincias tiene licencia y con qué dominio',
     reviewLead: 'Recorrimos el sitio de Betsson para la Provincia de Buenos Aires desde Argentina, sin abrir cuenta: qué deportes y mercados tiene, sus cuotas, el casino, los medios de pago, la atención y las herramientas de juego responsable. Cada dato va con la cita de su página y la fecha. Además, las tres listas oficiales que la nombran, cada una con otra dirección.',
     lead: 'Betsson es el caso más claro de «misma marca, otra dirección»: cada lista oficial nombra una dirección distinta, y la de la Ciudad no termina en .bet.ar.',
     check: [['caba', 'betsson.com.ar'], ['buenos-aires', 'pba.betsson.bet.ar'], ['cordoba', 'cba.betsson.bet.ar'], ['la-rioja', null], ['neuquen', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],

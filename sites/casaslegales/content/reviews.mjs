@@ -34,15 +34,17 @@ export function review(today, brand) {
     for (const it of items) if (!t.includes(normalize(String(it)).toLowerCase())) throw new Error('review ' + brand + ' ' + f.field + ': "' + it + '" is not in the copy ' + f.doc);
     return items;
   };
+  const found = (f, items) => { const t = normalize(text(f.doc)).toLowerCase(); return items.every(it => t.includes(normalize(String(it)).toLowerCase())); };
   // decimal odds as the page prints them (7.80 or 7,80)
   const oddsInDoc = (f, odds) => {
     const t = text(f.doc);
     for (const o of odds) { const a = o.toFixed(2); if (!t.includes(a) && !t.includes(a.replace('.', ','))) throw new Error('review ' + brand + ' ' + f.field + ': odd ' + a + ' is not in the copy ' + f.doc); }
     return odds;
   };
+  const oddsFound = (f, odds) => { const t = text(f.doc); return odds.every(o => typeof o === 'number' && (t.includes(o.toFixed(2)) || t.includes(o.toFixed(2).replace('.', ',')))); };
   const shots = (r.shots || []).map(s => ({ ...s, brand, name: reviewShotName(brand, s.view) })).filter(s => fs.existsSync(path.join(ROOT, SHOT_DIR, s.name)));
   for (const s of shots) { const a = daysBetween(s.date, today); if (a < 0 || a > (r.maxAgeDays || 100)) throw new Error('review ' + brand + ': shot ' + s.view + ' taken ' + s.date + ' (max 100 days)'); }
-  return { r, brand, one, all, pre, inDoc, oddsInDoc, shots, doc: slug => r.docs[slug] };
+  return { r, brand, one, all, pre, inDoc, found, oddsInDoc, oddsFound, shots, doc: slug => r.docs[slug] };
 }
 export function reviewShotFiles() {
   const out = [];
