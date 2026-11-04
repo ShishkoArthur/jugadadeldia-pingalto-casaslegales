@@ -245,7 +245,7 @@
   помощь, FAQ. Без названий операторов и ссылок на них (только сайты лотерей/регуляторов). Источники — `data/sources/lottery/online.json`
   (копии страниц из `registries/_docs`, байт в байт, maxAgeDays 100 → перепроверить до 11.02.2027) + 5 фактов `lotba.json`, 1 `pba.json`.
   Новых страниц из сети не качали. Ссылок на casaslegales нет.
-- **Сцены провинций** (без новых картинок): готовые принятые сцены недостроенных страниц перенесены — бolillero (/tombola/santiaguena/) →
+- **Сцены провинций** (без новых картинок): готовые принятые сцены недостроенных страниц перенесены — bolillero (/tombola/santiaguena/) →
   /quiniela/chaco/, тетрадь (/quiniela/significado-de-los-numeros/) → /quiniela/corrientes/, мешочек (/tombola/jujena/) → /quiniela/misiones/
   (в `data/art/jugadadeldia/scenes.json` у старых строк `status: moved`, alt — в `scenes.mjs`). **Когда эти три страницы будут строиться — им
   нужны новые сцены.** Без сцены: /quiniela/santa-fe/, /entre-rios/, турно-страницы (сцена Catamarca с орехами — региональная, не ставили).
