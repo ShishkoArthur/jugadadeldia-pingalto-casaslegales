@@ -121,8 +121,29 @@
   `docs/REVIEW-EN-jugadadeldia.md`, 21 правка внесена. Формат: «$ 1,234.50» (песо), «4 Nov 2026», время 24 ч, «Argentina time».
 - **Потрачено:** ≈ $2,3 (план $0,25, строки ≈ $1,8, ревью $0,23) — `data/i18n/_spend.json`.
 - **При правке испанского текста jdd:** сборка назовёт новые строки → `node tools/translate.mjs jugadadeldia` (центы) → коммит памяти.
-- **Дальше:** pingalto и casaslegales — по `docs/I18N.md` §4 (слот переключателя в их layout уже есть). Не сделано: английская 404 (одна,
+- **Дальше:** casaslegales — по `docs/I18N.md` §4 (pingalto сделан, раздел ниже) (слот переключателя в их layout уже есть). Не сделано: английская 404 (одна,
   испанская); «A 30»-подобные склейки в инструментах проверять живьём.
+
+## pingalto `/en` (04.11) — выложен, 50 страниц
+- **Адреса** без слэша, как испанские: главная `/en` (файл `en.html`; `/en/` → 301), `/en/kit/sensitivity`, `/en/valorant/ranks`,
+  `/en/cs2/crosshair`, `/en/esports/schedule`, `/en/clash/cards`… Правило адресов — `urlRule` в `data/i18n/pingalto-glossary.json`
+  (translate.mjs `--meta` берёт его из глоссария). Строка плана для `/esports/glosario` добавлена (её не было). Titles под английский
+  поиск поправлены руками (6 шт.), «top N»/«guarantee» переписаны (гейт bait).
+- **Глоссарий:** ранги Valorant/LoL официальными английскими именами, CR → RR, PL → LP, mira → crosshair, «hora argentina» → Argentina time,
+  LAS, провинции, игры, турниры. Словарь `sites/pingalto/i18n/en.mjs`: меню (Games / Esports / Kit / About), поиск, подвал; `DATA` — строки,
+  которые страницы отдают модулям в JSON (`#pa-d`: ступени рангов, единица RR/LP, ползунки Free Fire, роли и статы LoL, наборы tier list,
+  подписи пинга) — layout переводит их через `h.tr`.
+- **Цитаты:** английские (`lang="en"`, 84 шт.) — без «In English», испанские — с пересказом (`.pa-qen`); строка источника внутри цитаты
+  (`<cite>`: «official … copy from 3 Nov 2026») переводится (`SITE.i18n.citeEn`, общий движок, на jdd выключено).
+- **Valorant agents:** имена умений и ролей — из официального английского клиента (valorant-api.com en-US, по uuid/slot), строки агентов
+  переведены заново с этим списком. Ленты (PandaScore, Supercell) на `/en` — английские подписи; «Nombre oculto»/«Otros» из лент — через
+  `client/fdkit.js` WORDS. Таблица callouts: испанский столбец `translate="no"`.
+- **Ревью Opus** (6 стр.: /en 9, kit/ping 7, valorant/agents 5 → исправлено, team 8, ff 9, kit/sensitivity 7) — `docs/REVIEW-EN-pingalto.md`,
+  14 правок авто + ручные (раздел в конце файла).
+- **Проверено живьём** 375/1280: `/en`, kit/sensitivity, esports/schedule, valorant/ranks (калькулятор), clash/cards, cs2/crosshair, lol,
+  kit/ping — переключатель ES, hreflang es-AR/en/x-default, меню (бургер и мега-панель), поиск «sensitivity» → `/en/kit/sensitivity`,
+  без переполнения и ошибок консоли; sitemap 100 адресов с alternates.
+- **Потрачено:** $2,64 (план $0,14, строки $2,21, ревью $0,29). Испанский VRS с новыми командами → сборка назовёт строки → `node tools/translate.mjs pingalto`.
 
 ## Ленты casaslegales и обслуживание раз в полгода (04.11) — работает, `docs/MAINTENANCE.md`
 - **Сервер:** `feeds-server.sh casaslegales` — `/opt/web/casaslegales-feeds/`, cron `37 6 * * *` UTC, uid 47230, UA `Casaslegales/1.0

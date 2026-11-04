@@ -3432,6 +3432,7 @@
   "sites/pingalto/client/callouts.js :: sc": "sc",
   "sites/pingalto/client/callouts.js :: sel": "sel",
   "sites/pingalto/client/callouts.js :: ¡Bien! Era <b>": "Nice! It was <b>",
+  "sites/pingalto/client/champs.js ::  (de 1 a 10)": " (1 to 10)",
   "sites/pingalto/client/champs.js ::  campeones": " champions",
   "sites/pingalto/client/champs.js ::  campeón": " champion",
   "sites/pingalto/client/champs.js :: NFD": "NFD",

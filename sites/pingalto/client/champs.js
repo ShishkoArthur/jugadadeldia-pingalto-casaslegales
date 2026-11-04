@@ -28,7 +28,7 @@ if (D && list) {
     if (!a || !b) return;
     const row = (l, x, y) => '<tr><td>' + l + '</td><td class="pa-n">' + x + '</td><td class="pa-n">' + y + '</td></tr>';
     out('cmp', '<table class="pa-tb"><thead><tr><th></th><th class="pa-n">' + esc(a[1]) + '</th><th class="pa-n">' + esc(b[1]) + '</th></tr></thead><tbody>' +
-      D.info.map((l, i) => row(l + ' (1 a 10)', fmt(a[3][i], 0), fmt(b[3][i], 0))).join('') + row('Tipo de recurso', esc(a[4] || '-'), esc(b[4] || '-')) +
+      D.info.map((l, i) => row(l + ' (de 1 a 10)', fmt(a[3][i], 0), fmt(b[3][i], 0))).join('') + row('Tipo de recurso', esc(a[4] || '-'), esc(b[4] || '-')) +
       D.stats.map((l, i) => row(esc(l), fmt(a[5][i], 3), fmt(b[5][i], 3))).join('') + '</tbody></table>');
     if (push) setParams({ a: A.value, b: B.value });
   };
