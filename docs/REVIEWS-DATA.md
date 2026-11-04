@@ -28,7 +28,7 @@ Owner 04.11: casaslegales becomes a review site («ссылки ставим, к
 | brand | facts | sportsbook | casino | app | payments | account | support | rg | licence | shots | hosts: status |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | betsson | 44 | 5 | 4 | 3 | 8 | 3 | 3 | 4 | 1 | 6 | pba.betsson.bet.ar: open; ofertas.pba.betsson.bet.ar: bot-check; www.betsson.bet.ar: open; caba.betsson.bet.ar: open; cba.betsson.bet.ar: open |
-| betano | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
+| betano | 22 | 4 | 1 | 3 | 5 | 3 | · | 3 | 1 | 5 | www.betano.bet.ar: open; support.betano.bet.ar: open; www.betano.bet.ar/casino/: blank |
 | bet365 | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | bplay | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | betwarrior | — | · | · | · | · | · | · | · | · | 0 | not visited yet |

@@ -1,0 +1,460 @@
+{
+ "brand": "betano",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.betano.bet.ar",
+  "support.betano.bet.ar",
+  "www.betano.bet.ar/casino/"
+ ],
+ "status": {
+  "www.betano.bet.ar": {
+   "status": "open",
+   "note": "Opens from AR exit; province chooser modal (PBA/CABA/MDZ) — PBA confirmed; OneTrust 'Rechazar todo' clicked. betano.bet.ar = www.betano.bet.ar",
+   "date": "2026-11-04"
+  },
+  "support.betano.bet.ar": {
+   "status": "open",
+   "note": "Zendesk help center (betanoba.zendesk.com redirects here)",
+   "date": "2026-11-04"
+  },
+  "www.betano.bet.ar/casino/": {
+   "status": "blank",
+   "note": "Casino lobby rendered an empty page twice (10 s wait); providers not collected",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "pba-home-footer": {
+   "url": "https://www.betano.bet.ar/",
+   "file": "data/sources/reviews/betano/_docs/pba-home-footer.txt",
+   "date": "2026-11-04",
+   "sha256": "f5b63a4c7121dc7a7580e909cee96170445a857e075f1e99c3a2bae2114750e9"
+  },
+  "celular": {
+   "url": "https://www.betano.bet.ar/celular/",
+   "file": "data/sources/reviews/betano/_docs/celular.txt",
+   "date": "2026-11-04",
+   "sha256": "e708afde03dc906f4a30ff6c656c15d571bcb01ae468bf713bfc7e633301846e"
+  },
+  "liga-profesional": {
+   "url": "https://www.betano.bet.ar/sport/futbol/argentina/liga-profesional/195785/",
+   "file": "data/sources/reviews/betano/_docs/liga-profesional.txt",
+   "date": "2026-11-04",
+   "sha256": "db82be0c41833845d38fdb27474190a5fe3c8bdc981905737daa7aebead656b7"
+  },
+  "match-aldosivi-river": {
+   "url": "https://www.betano.bet.ar/cuotas-de-partido/ca-aldosivi-river-plate/90893613/",
+   "file": "data/sources/reviews/betano/_docs/match-aldosivi-river.txt",
+   "date": "2026-11-04",
+   "sha256": "6da43a1a09fa08f0134265f4b2b0c688bf48b0b0f18d64707128e6db4a35ba93"
+  },
+  "help-metodos-de-pago": {
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14902980883869",
+   "file": "data/sources/reviews/betano/_docs/help-metodos-de-pago.txt",
+   "date": "2026-11-04",
+   "sha256": "a81d0f41feaed0fff983f929c331c68696218b94a77aa0b96e05b526e4e5ddd8"
+  },
+  "help-retiro-tiempo": {
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14907689357469",
+   "file": "data/sources/reviews/betano/_docs/help-retiro-tiempo.txt",
+   "date": "2026-11-04",
+   "sha256": "7abef0d5db9c000c55093f878ab3ca7b5308df8e1cec04627f1a9fdd5bbf1b0e"
+  },
+  "help-verificar-cuenta": {
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14915052139933",
+   "file": "data/sources/reviews/betano/_docs/help-verificar-cuenta.txt",
+   "date": "2026-11-04",
+   "sha256": "7b9e5b89a5e37d78528adc713dbd662de52ee7026deea8a467af6eb7909f2795"
+  },
+  "juego-responsable": {
+   "url": "https://www.betano.bet.ar/articulo/politica-de-juego-responsable-y-proteccion-del-jugador/1017638/",
+   "file": "data/sources/reviews/betano/_docs/juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "1eec8fb6207afca21cbf9ff5bed18c08e1fac96f37afcc606854fbb399a361c8"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Insipia LTD., Sucursal Argentina - Atlantica de Juegos S.A. - Unión Transitoria",
+    "regulator": "Instituto Provincial de Loterías y Casinos de Buenos Aires",
+    "act": "Resolución N.º 16-IPLYCMGGP-2024",
+    "actDate": "2024-01-10",
+    "term": "29/12/2020 - 29/12/2035"
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "El operador está autorizado para llevar a cabo juegos operados por internet según la Resolución N.º 16-IPLYCMGGP-2024 de 10 de enero 2024 con el Instituto Provincial de Loterías y Casinos de Buenos Aires. Fecha de inicio: 29/12/2020 - Fecha de finalización: 29/12/2035.",
+   "doc": "pba-home-footer"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Offer limited to Provincia de Buenos Aires; province chooser asks for the province on the user's DNI",
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "La oferta de entretenimiento disponible en el sitio está limitada al ámbito geográfico de la Provincia de Buenos Aires.",
+   "doc": "pba-home-footer"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Debés tener al menos 18 años para participar en actividades de juego",
+   "doc": "pba-home-footer"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Lotería de la Provincia de Buenos Aires — Juego Responsable; free line 0800 444 4000",
+    "url": "https://www.loteria.gba.gov.ar/index.php/133-juego-responsable"
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "o llamar a la línea gratuita de orientación de la Lotería Provincial al número 08004444000",
+   "doc": "pba-home-footer"
+  },
+  {
+   "field": "app.mentioned",
+   "value": true,
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Viví la experiencia Betano estés donde estés gracias a nuestra web y app móvil para Android y iOS.",
+   "doc": "pba-home-footer"
+  },
+  {
+   "field": "app.ios",
+   "value": {
+    "available": true,
+    "store": "https://itunes.apple.com/ar/app/betano/id1105421899"
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/celular/",
+   "date": "2026-11-04",
+   "quote": "Descargar en la Apple Store | https://itunes.apple.com/ar/app/betano/id1105421899",
+   "doc": "celular"
+  },
+  {
+   "field": "app.android",
+   "value": {
+    "available": true,
+    "store": null,
+    "link": "https://www.betano.bet.ar/android/",
+    "note": "operator's own Android download page, not Google Play; not followed"
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/celular/",
+   "date": "2026-11-04",
+   "quote": "Descargar nuestra aplicación para Android | https://www.betano.bet.ar/android/",
+   "doc": "celular"
+  },
+  {
+   "field": "sportsbook.sports",
+   "value": {
+    "count": 29,
+    "names": [
+     "Fútbol",
+     "Tenis",
+     "Básquet",
+     "Béisbol",
+     "Voleibol",
+     "Esports",
+     "Hockey Hielo",
+     "Fórmula 1",
+     "Fútbol americano",
+     "Rugby Union",
+     "Rugby League",
+     "Artes Marciales Mixtas",
+     "Deportes de motor",
+     "Tenis de mesa",
+     "Golf",
+     "Boxeo",
+     "Bádminton",
+     "Handball",
+     "Deportes de invierno",
+     "Ciclismo",
+     "Dardos",
+     "Futsal",
+     "Snooker",
+     "Waterpolo",
+     "Floorball",
+     "Criquet",
+     "Lacrosse",
+     "Curling",
+     "Bandy"
+    ],
+    "note": "DEPORTES menu; 'Entretenimiento' (non-sport) excluded from count"
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/sport/futbol/argentina/liga-profesional/195785/",
+   "date": "2026-11-04",
+   "quote": "DEPORTES Fútbol Tenis Básquet Béisbol",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": true,
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/sport/futbol/argentina/liga-profesional/195785/",
+   "date": "2026-11-04",
+   "quote": "APUESTAS EN VIVO",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/sport/futbol/argentina/liga-profesional/195785/",
+   "date": "2026-11-04",
+   "quote": "CASINO EN VIVO",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.marketsOneMatch",
+   "value": {
+    "match": "CA Aldosivi vs River Plate",
+    "competition": "Liga Profesional",
+    "markets": 459,
+    "method": "distinct data-marketid blocks in tab Todo after scrolling (includes player props)"
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/cuotas-de-partido/ca-aldosivi-river-plate/90893613/",
+   "date": "2026-11-04",
+   "quote": "Resultado del partido Goles totales Más/Menos Doble oportunidad",
+   "doc": "match-aldosivi-river"
+  },
+  {
+   "field": "sportsbook.odds1x2",
+   "value": {
+    "capturedAt": "2026-11-04T09:10Z",
+    "tz": "UTC",
+    "matches": [
+     {
+      "home": "CA Aldosivi",
+      "away": "River Plate",
+      "kickoff": "05/11 18:00",
+      "odds": [
+       7.5,
+       4.4,
+       1.45
+      ]
+     },
+     {
+      "home": "Gimnasia y Esgrima La Plata",
+      "away": "CA Belgrano",
+      "kickoff": "05/11 22:15",
+      "odds": [
+       2.27,
+       3.45,
+       3.1
+      ]
+     },
+     {
+      "home": "Barracas Central",
+      "away": "Racing Club",
+      "kickoff": "06/11 18:00",
+      "odds": [
+       2.18,
+       3.15,
+       3.65
+      ]
+     },
+     {
+      "home": "CA Independiente",
+      "away": "Deportivo Riestra",
+      "kickoff": "06/11 22:00",
+      "odds": [
+       1.65,
+       3.55,
+       6.2
+      ]
+     },
+     {
+      "home": "San Lorenzo",
+      "away": "CA Platense",
+      "kickoff": "06/11 22:00",
+      "odds": [
+       2.62,
+       2.92,
+       3.05
+      ]
+     }
+    ]
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/sport/futbol/argentina/liga-profesional/195785/",
+   "date": "2026-11-04",
+   "quote": "CA ALDOSIVI RIVER PLATE 1 7.50 X 4.40 2 1.45",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "Transferencia Bancaria CVU/Alias o DEBIN",
+    "Billetera Mercado Pago",
+    "Pago en efectivo (Pago24, Cobro Express, RapiPago y más)",
+    "Apple Pay",
+    "Tarjeta de débito (Visa o Mastercard)"
+   ],
+   "host": "support.betano.bet.ar",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14902980883869",
+   "date": "2026-11-04",
+   "quote": "Podés depositar a través de: Transferencia Bancaria CVU/Alias o DEBIN. Billetera Mercado Pago. Pago en efectivo en Pago24, Cobro Express, RapiPago y más. Apple Pay. Tarjeta de débito (Visa o Mastercard).",
+   "doc": "help-metodos-de-pago"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "CBU/CVU/Alias",
+    "Mercado Pago (if deposited via Mercado Pago)"
+   ],
+   "host": "support.betano.bet.ar",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14902980883869",
+   "date": "2026-11-04",
+   "quote": "Podés utilizar CBU, CVU o Alias. Si realizaste tu depósito a través de Mercado Pago, podrás retirar mediante Mercado Pago.",
+   "doc": "help-metodos-de-pago"
+  },
+  {
+   "field": "payments.limitsPublished",
+   "value": {
+    "public": false,
+    "note": "min/max and times are only in the account area (/myaccount/payment-methods/), not opened"
+   },
+   "host": "support.betano.bet.ar",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14902980883869",
+   "date": "2026-11-04",
+   "quote": "Para consultar los montos mínimos y máximos, tiempos de acreditación y detalles de cada método, ingresá aquí.",
+   "doc": "help-metodos-de-pago"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Account CUIT must match the withdrawal account",
+   "host": "support.betano.bet.ar",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14902980883869",
+   "date": "2026-11-04",
+   "quote": "Importante: El CUIT de la cuenta debe coincidir con el registrado en Betano.",
+   "doc": "help-metodos-de-pago"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": "Depends on method; final credit depends on the bank; per-method times not public",
+   "host": "support.betano.bet.ar",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14907689357469",
+   "date": "2026-11-04",
+   "quote": "El tiempo de procesamiento depende del método de retirada seleccionado.",
+   "doc": "help-retiro-tiempo"
+  },
+  {
+   "field": "payments.withdrawalConditions",
+   "value": [
+    "withdraw only to a method used for a successful deposit",
+    "wager 100% of the deposit before withdrawing (T&C 4.8)"
+   ],
+   "host": "support.betano.bet.ar",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14907689357469",
+   "date": "2026-11-04",
+   "quote": "Debés apostar el 100% del total de tu depósito antes de poder solicitar un retiro (cumpliendo con el Término 4.8).",
+   "doc": "help-retiro-tiempo"
+  },
+  {
+   "field": "account.kyc",
+   "value": "KYC mandatory; documents within 30 days of registration, otherwise limits or suspension",
+   "host": "support.betano.bet.ar",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14915052139933",
+   "date": "2026-11-04",
+   "quote": "Tenés que enviar los documentos necesarios dentro de los 30 días posteriores a tu registro.",
+   "doc": "help-verificar-cuenta"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "deposit limits",
+    "reality checks",
+    "time-out",
+    "self-exclusion"
+   ],
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/articulo/politica-de-juego-responsable-y-proteccion-del-jugador/1017638/",
+   "date": "2026-11-04",
+   "quote": "Límites de Depósito – te permite establecer y gestionar la cantidad de dinero que deseás depositar. Comprobaciones de la realidad: te recuerdan cuánto tiempo llevás jugando.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "time-out and self-exclusion",
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/articulo/politica-de-juego-responsable-y-proteccion-del-jugador/1017638/",
+   "date": "2026-11-04",
+   "quote": "Tiempo fuera y autoexclusión – si deseás tomarte un breve descanso o un periodo más largo alejado del juego.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Lotería de la Provincia de Buenos Aires — autoexclusión",
+    "url": "https://loteria.gba.gob.ar/juego-compulsivo#autoexclusion"
+   },
+   "host": "www.betano.bet.ar",
+   "url": "https://www.betano.bet.ar/articulo/politica-de-juego-responsable-y-proteccion-del-jugador/1017638/",
+   "date": "2026-11-04",
+   "quote": "podés registrarte en el sitio web de la Lotería Provincial, donde podrás completar una solicitud de autoexclusión.",
+   "doc": "juego-responsable"
+  }
+ ],
+ "shots": [
+  {
+   "view": "home",
+   "file": "data/shots/betano/review-2026-11-04-home.png",
+   "url": "https://www.betano.bet.ar/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "57501ce67a742d78e7a890dc38b81f457449eedca9415dadd3c2301a35b6ba38",
+   "note": "Footer view (licence text, payment logos, app badges); top of home is promo-heavy"
+  },
+  {
+   "view": "match-markets",
+   "file": "data/shots/betano/review-2026-11-04-match-markets.png",
+   "url": "https://www.betano.bet.ar/cuotas-de-partido/ca-aldosivi-river-plate/90893613/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "79b1627f0d9bb1c7baaac7dfea63682dcd0ba565832c2ee7548ad63f601eb639"
+  },
+  {
+   "view": "sportsbook",
+   "file": "data/shots/betano/review-2026-11-04-sportsbook.png",
+   "url": "https://www.betano.bet.ar/sport/futbol/argentina/liga-profesional/195785/",
+   "date": "2026-11-04",
+   "width": 780,
+   "height": 277,
+   "sha256": "541b2536ce8d9f2aae4a040c10ce77d4b6baf5dd431c0252672ec472dfe90f20",
+   "note": "Cropped to the match list (feature tiles and right promo column removed)"
+  },
+  {
+   "view": "payments",
+   "file": "data/shots/betano/review-2026-11-04-payments.png",
+   "url": "https://support.betano.bet.ar/hc/es-ar/articles/14902980883869",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "62e128046f4d4af0d8c53a9eddd38b2fd1602123953863b3db2f3d7521420ff4"
+  },
+  {
+   "view": "rg",
+   "file": "data/shots/betano/review-2026-11-04-rg.png",
+   "url": "https://www.betano.bet.ar/articulo/politica-de-juego-responsable-y-proteccion-del-jugador/1017638/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "83abc465f194880ee8a77569da47d73751ccc6868b4680269bf7bdc549003563"
+  }
+ ]
+}
