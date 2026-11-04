@@ -158,6 +158,10 @@
   og:image на сайтах нет (twitter:card summary) — делать отдельно, если владелец захочет превью ссылок.
 
 ## Журнал
+- 04.11 — jugadadeldia аудит (`docs/AUDIT-JUGADADELDIA-2026-11-04.md`): +5 страниц турно (/quiniela/nocturna/, /matutina/, /vespertina/,
+  /la-primera/, /la-previa/), Quini 6 «50 %» исправлено (4.683.410 разных / 6.492.584 тиражей), 7 других правок чисел/UI, карточки «¿Ya salió?»,
+  Quiniela Plus берёт последнюю Nocturna PBA из ленты, title по интенту; 79 стр. выложено. **Не синхронизировано на сервер:** кэш PBA «вчера» 3 ч
+  в `tools/feeds/jugadadeldia/quiniela.mjs` — `feeds-server.sh jugadadeldia sync` после того, как чужой WIP `provincias*.mjs` будет закоммичен.
 - 04.11 — casaslegales — обзорник: «Ir al sitio oficial» по провинциям (гейт-allowlist), обзоры Betsson и Betano, /operador/betsson/casino,
   title/H1 операторов по интенту (раздел «casaslegales (04.11) — обзорник» ниже).
 - 03.11 — QA трёх сайтов: 18 находок P1/P2 исправлено и выложено, P3 и вопрос о сцене на телефоне — `docs/QA-2026-11-03.md`; скрипты `tools/qa/`.
@@ -200,7 +204,13 @@
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
 
-## jugadadeldia (03.11) — волна 2 выложена: 74 страницы из 111 плана + 404, индекс открыт
+## jugadadeldia (04.11) — аудит: 79 страниц, турно, правки чисел
+- Отчёт — `docs/AUDIT-JUGADADELDIA-2026-11-04.md` (ключи, интент/title топ-40, ошибки в числах, UX, blackjack.cab, что расширить).
+- Новое: страницы турно (`pages/extractos.mjs` `turnPages`, режим `turno` в `client/extractos.js`; час — из программы LOTBA `program()`),
+  карточки результатов на лотереях (`results()` в `pages/sorteos.mjs`), автоподстановка Nocturna PBA в /quiniela-plus/ (`D.fill` в `client/sorteo.js`).
+- Деньги: `money()`/`pesos()` — целые без копеек, иначе 2 знака. Ключи турно в плане перенесены с /quiniela/horarios/ на турно-страницы.
+- Открыто: синк ленты (выше в журнале); «2 fuentes» за 27–31.10 нет (архив только LOTBA); вопрос владельцу о сцене до инструмента на телефоне — без ответа.
+
 - **Новые 19 (все 200, гейты и `npm test` зелёные):** /quiniela/como-se-juega/ (интерактивная boleta на примерном экстракте из
   xoshiro-сида + квиз 5 вопросов), /quiniela/simulador/ (yearExact + 10 000 лет МК с сидом, кривая и гистограмма), /quiniela/horarios/
   (программа LOTBA ноябрь, разбор PDF при сборке `program()` в `pages/guias.mjs`; «hoy/mañana», обратный отсчёт; дни без тиражей — из
