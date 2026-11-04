@@ -16,7 +16,7 @@ export const REV_DIR = path.join(ROOT, 'data/sources/reviews');
 const MAX_AGE = 100;
 
 // a fact of absence ("not published on the page we checked") has no quote; it still names the copy that was read
-export const isAbsence = v => v === false || (!!v && typeof v === 'object' && (v.published === false || v.found === false));
+export const isAbsence = v => v === false || (!!v && typeof v === 'object' && ['published', 'found', 'listed', 'shown', 'available', 'exists'].some(k => v[k] === false));
 export function loadReviews(dir = REV_DIR) {
   if (!fs.existsSync(dir)) return {};
   return Object.fromEntries(fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort().map(f => [f.slice(0, -5), JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'))]));

@@ -104,12 +104,14 @@ export const SECTIONS = [
 const pct = x => (x * 100).toFixed(1).replace('.', ',') + ' %';
 const odd = x => x.toFixed(2).replace('.', ',');
 
+// the saved copies write links and images as [link "text" -> url] and [alt text]: on the page the quote shows what a visitor reads
+export const readable = q => String(q).replace(/\[link "([^"]*)" -> [^\]]*\]/g, '$1').replace(/\[[^\]]*\blogo\b[^\]]*\]\s*/gi, '').replace(/\[([^\]]{1,60})\]/g, '$1').replace(/\s+/g, ' ').trim();
 function cite(h, R, f) {
   const d = R.doc(f.doc), u = new URL(d.url), where = hostKey(d.url) + (u.pathname === '/' ? '' : u.pathname.replace(/\/$/, ''));
   const tail = '<span class="rl-host">' + h.esc(where) + '</span> · copia del ' + h.fmtDate(d.date);
   if (f.quote == null && isAbsence(f.value)) return '<p class="rl-src">Lo buscamos en ' + tail + '</p>';
   if (CTA.test(f.quote)) return '<p class="rl-src">Lo vimos en ' + tail + '</p>';
-  return '<blockquote class="rl-q">«' + h.esc(f.quote).replace(/@/g, '<span>@</span>') + '»<cite>' + tail + '</cite></blockquote>';
+  return '<blockquote class="rl-q">«' + h.esc(readable(f.quote)).replace(/@/g, '<span>@</span>') + '»<cite>' + tail + '</cite></blockquote>';
 }
 const chipRow = (h, items) => '<div class="rl-chips rl-chips-s">' + items.map(x => '<span>' + h.esc(x) + '</span>').join('') + '</div>';
 const chips = (h, items, what = 'todos') => items.length <= 12 ? chipRow(h, items) : chipRow(h, items.slice(0, 10)) + '<details class="rl-more"><summary>Ver ' + (what === 'todos' ? 'los ' + items.length : what) + '</summary>' + chipRow(h, items.slice(10)) + '</details>';
@@ -189,9 +191,10 @@ export function summary(h, R, { lists, total, rgCount, casinoPath }) {
   const real = f => f && !isAbsence(f.value) && f.value !== false;
   const cas = [R.one('casino.exists'), R.one('casino.live'), P && P.f].find(real);
   const app = R.pre('app').find(real);
-  const wt = R.one('payments.withdrawalTimes');
-  const hours = x => { const m = /(\d+)\s*(hora|d[ií]a|minuto)/i.exec(x); return m ? +m[1] * (/^h/i.test(m[2]) ? 1 : /^m/i.test(m[2]) ? 1 / 60 : 24) : Infinity; };
-  const wtTxt = wt ? [...wt.quote.matchAll(/([^:.]+):\s*(Hasta [^.]+)/gi)].map(m => m[2].trim().toLowerCase()).sort((a, b) => hours(a) - hours(b)) : [];
+  // withdrawal times as the pages write them ("Hasta 24 horas hábiles", "1-4 horas", "1-2 días laborables"): the shortest upper bound
+  const DUR = /(hasta\s+)?(\d+(?:\s*-\s*\d+)?)\s*(minutos?|horas?(?:\s+h[aá]biles)?|d[ií]as?(?:\s+(?:h[aá]biles|laborables))?)/gi;
+  const hours = (n, u) => +String(n).split('-').pop().trim() * (/^h/i.test(u) ? 1 : /^m/i.test(u) ? 1 / 60 : 24);
+  const wtTxt = R.all('payments.withdrawalTimes').filter(f => f.quote).flatMap(f => [...readable(f.quote).matchAll(DUR)].map(m => ({ txt: m[0].trim().toLowerCase(), h: hours(m[2], m[3]) }))).sort((a, b) => a.h - b.h).map(x => x.txt);
   const t = (k, v, sub, href) => '<div class="rl-rsi' + (v === null ? ' rl-rsn' : '') + '"><span>' + h.esc(k) + '</span><b>' + (v === null ? 'Sin dato' : h.esc(v)) + '</b>' + (sub ? '<small>' + (href ? '<a href="' + href + '">' + h.esc(sub) + '</a>' : h.esc(sub)) + '</small>' : '') + '</div>';
   const tiles = [
     t('Listas oficiales', lists + ' de ' + total, 'que revisamos la nombran', '#licencias'),

@@ -142,7 +142,7 @@ export const telekino = {
 
 export const poceada = {
   path: '/poceada/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'],
-  title: 'Poceada de la Ciudad: cómo funciona y qué chance tiene',
+  title: 'Quiniela Poceada de la Ciudad: cómo funciona y chances',
   h1: 'La Poceada',
   description: 'Cómo funciona la Poceada de la Ciudad: 8 números del 00 al 99 contra 20 sorteados. La chance exacta de 8, 7, 6 o 5 aciertos y el control de tu jugada.',
   ld: h => [webPage(h), crumbs(h, [])],

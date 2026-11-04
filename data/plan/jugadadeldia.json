@@ -19,8 +19,8 @@
  {
   "section": "Quiniela",
   "url": "/quiniela/",
-  "title": "Quiniela de hoy en vivo: cabezas y extractos por provincia",
-  "titleLen": 58,
+  "title": "Quiniela de hoy en vivo: resultados y cabezas por provincia",
+  "titleLen": 59,
   "h1": "Quiniela de hoy en vivo: todas las cabezas",
   "description": "La quiniela de hoy en vivo, revisada cada 15 minutos: las cabezas de la Previa a la Nocturna y los 20 números de seis jurisdicciones, de copias oficiales.",
   "keys": "quiniela 1410k/43 · quiniela de hoy 1080k/55 · quiniela en vivo 490k/18 · quiniela hoy 273k/24 · resultado de la quiniela 189k/28 · resultado de la quiniela de hoy 107k/54 · resultados quiniela 85k/49 · que salio en la quiniela 23k/51 · que salio en la quiniela hoy 19k/51 · quiniela de hoy todas las cabezas 20k/39 · quiniela hoy todas las cabezas 14k/56 · sorteo de quiniela 41k/43 · quiniela de hoy todas 33k/39 · quiniela vivo 134k/43 · quiniela de hoy vivo 44k/54 · quiniela de hoy en vivo 37k/46 · quiniela en vivo de hoy 20k/36",
@@ -127,8 +127,8 @@
  {
   "section": "Quiniela",
   "url": "/quiniela/nacional-y-provincia/",
-  "title": "Quiniela Nacional y Provincia de hoy, turno por turno",
-  "titleLen": 53,
+  "title": "Quiniela Nacional y Provincia de hoy en vivo, turno a turno",
+  "titleLen": 59,
   "h1": "Nacional y Provincia, lado a lado",
   "description": "La Nacional y la Provincia de hoy, del mismo turno y lado a lado, de la Previa a la Nocturna, con las terminaciones que coinciden marcadas. Elegí el turno.",
   "keys": "quiniela nacional y provincia nocturna de hoy 21 hs 114k/6 · quiniela nacional y provincia 83k/44 · quiniela nacional y provincia en vivo 44k/29 · resultado de la quiniela nacional y provincia nocturna de hoy 32k/16 · quiniela nacional y provincia de hoy 26k/48 · resultado de la quiniela nacional y provincia 24k/36 · quiniela nacional y provincia nocturna 20k/32",
@@ -163,8 +163,8 @@
  {
   "section": "Quiniela",
   "url": "/quiniela/extractos/",
-  "title": "Extractos de la quiniela: buscá cualquier sorteo por fecha",
-  "titleLen": 58,
+  "title": "Extractos de la quiniela de ayer y anteriores, por fecha",
+  "titleLen": 56,
   "h1": "Extractos anteriores de la quiniela",
   "description": "Buscá el extracto de cualquier sorteo de la quiniela de los últimos meses por fecha, provincia y turno, y fijate cuándo salió un número a la cabeza.",
   "keys": "quiniela de ayer 20k/7 · que numero salio en la quiniela ayer 600/40 · que salio en la quiniela ayer 500/50 · qué salió anoche en la quiniela 400/58 · que salio anoche en la quiniela 350/57",
@@ -902,7 +902,7 @@
  {
   "section": "Loterías",
   "url": "/poceada/",
-  "title": "Poceada de la Ciudad: cómo funciona y qué chance tiene",
+  "title": "Quiniela Poceada de la Ciudad: cómo funciona y chances",
   "titleLen": 54,
   "h1": "La Poceada",
   "description": "Cómo funciona la Poceada de la Ciudad: 8 números del 00 al 99 contra 20 sorteados. La chance exacta de 8, 7, 6 o 5 aciertos y el control de tu jugada.",

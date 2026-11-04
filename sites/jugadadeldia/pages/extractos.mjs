@@ -35,7 +35,7 @@ const provTiles = (h, except) => tiles(h, PROV_PAGES.filter(([id, u]) => u !== e
 
 export const quinielaHoy = {
   path: '/quiniela/', kind: 'lottery', section: 'quiniela', css: ['extractos.css'], js: ['extractos.js'],
-  title: 'Quiniela de hoy en vivo: cabezas y extractos por provincia',
+  title: 'Quiniela de hoy en vivo: resultados y cabezas por provincia',
   h1: 'Quiniela de hoy en vivo: todas las cabezas',
   description: 'La quiniela de hoy en vivo, revisada cada 15 minutos: las cabezas de la Previa a la Nocturna y los 20 números de seis jurisdicciones, de copias oficiales.',
   ld: h => [webPage(h), crumbs(h, [])],
@@ -109,7 +109,7 @@ export const provPages = [
 
 export const nacionalYProvincia = {
   path: '/quiniela/nacional-y-provincia/', kind: 'lottery', section: 'quiniela', css: ['extractos.css'], js: ['extractos.js'],
-  title: 'Quiniela Nacional y Provincia de hoy, turno por turno',
+  title: 'Quiniela Nacional y Provincia de hoy en vivo, turno a turno',
   h1: 'Nacional y Provincia, lado a lado',
   description: 'La Nacional y la Provincia de hoy, del mismo turno y lado a lado, de la Previa a la Nocturna, con las terminaciones que coinciden marcadas. Elegí el turno.',
   ld: h => [webPage(h), crumbs(h, h.built('/quiniela/') ? [['/quiniela/', 'Quiniela de hoy']] : [])],
@@ -124,7 +124,7 @@ export const nacionalYProvincia = {
 
 export const extractosPage = {
   path: '/quiniela/extractos/', kind: 'lottery', section: 'quiniela', css: ['extractos.css'], js: ['extractos.js'],
-  title: 'Extractos de la quiniela: buscá cualquier sorteo por fecha',
+  title: 'Extractos de la quiniela de ayer y anteriores, por fecha',
   h1: 'Extractos anteriores de la quiniela',
   description: 'Buscá el extracto de cualquier sorteo de la quiniela de los últimos meses por fecha, provincia y turno, y fijate cuándo salió un número a la cabeza.',
   ld: h => [webPage(h), crumbs(h, h.built('/quiniela/') ? [['/quiniela/', 'Quiniela de hoy']] : [])],
