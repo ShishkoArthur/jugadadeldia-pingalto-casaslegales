@@ -1,0 +1,451 @@
+{
+ "brand": "bplay",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "pba.bplay.bet.ar",
+  "deportespba.bplay.bet.ar",
+  "ayudapba.bplay.bet.ar"
+ ],
+ "status": {
+  "pba.bplay.bet.ar": {
+   "status": "open",
+   "note": "Opens; a sign-in popup appears automatically (closed with X, nothing entered); cookie banner offers only 'Aceptar' (left untouched)",
+   "date": "2026-11-04"
+  },
+  "deportespba.bplay.bet.ar": {
+   "status": "open",
+   "note": "Sportsbook subdomain",
+   "date": "2026-11-04"
+  },
+  "ayudapba.bplay.bet.ar": {
+   "status": "partial",
+   "note": "Help centre home opens; article 'Cómo verificar mi cuenta' returned CloudFront 403; no payments section in the help centre",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "pba-home": {
+   "url": "https://pba.bplay.bet.ar/",
+   "file": "data/sources/reviews/bplay/_docs/pba-home.txt",
+   "date": "2026-11-04",
+   "sha256": "f785dfa9cfcddae287a17a20ac2cc5f3dbe76392e0f74a4d1556b76716fa9797"
+  },
+  "liga-profesional": {
+   "url": "https://deportespba.bplay.bet.ar/competicion/2530-liga-profesional-argentina",
+   "file": "data/sources/reviews/bplay/_docs/liga-profesional.txt",
+   "date": "2026-11-04",
+   "sha256": "123d74743ac41460920ab9e036a8664c4fe86b8a5f4e638966db335ff57a4c73"
+  },
+  "juego-responsable": {
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "file": "data/sources/reviews/bplay/_docs/juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "cbeee382f4210071d84f24e72da9154324f1af5e94f8ed00594ff42072d82811"
+  },
+  "tyc": {
+   "url": "https://pba.bplay.bet.ar/terminos-y-condiciones",
+   "file": "data/sources/reviews/bplay/_docs/tyc.txt",
+   "date": "2026-11-04",
+   "sha256": "9742b3dd81729e9c53de01c2baac90ef8e53cd874454cb7d4e184e2ddf54286e"
+  },
+  "slots": {
+   "url": "https://pba.bplay.bet.ar/slots",
+   "file": "data/sources/reviews/bplay/_docs/slots.txt",
+   "date": "2026-11-04",
+   "sha256": "cb22a91f7de1ca7231720211facc93d67dcd106122a38daf34c064d2e8bb0142"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "BOLDT SA-SG DIGITAL UK HOLDINGS LIMITED UT",
+    "regulator": "Lotería de La Provincia de Buenos Aires",
+    "act": [
+     "Resolución Nº 2020-795-GDEBA-IPLYCMJGM",
+     "Resolución Nº 2022-363-GDEBA-IPLYCMJGM"
+    ]
+   },
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "pba.bplay.bet.ar es un sitio operado por BOLDT SA-SG DIGITAL UK HOLDINGS LIMITED UT bajo permiso otorgado por Lotería de La Provincia de Buenos Aires en la Resolución Nº 2020-795-GDEBA-IPLYCMJGM y Resolución Nº 2022-363-GDEBA-IPLYCMJGM.",
+   "doc": "pba-home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Limited to Provincia de Buenos Aires",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "El ámbito de aplicación se circunscribe a la Provincia de Buenos Aires.",
+   "doc": "pba-home"
+  },
+  {
+   "field": "sportsbook.sports",
+   "value": {
+    "count": 32,
+    "names": [
+     "Fútbol",
+     "Tenis",
+     "Baloncesto",
+     "eSports",
+     "Voleibol",
+     "Fútbol Americano",
+     "Motor",
+     "Béisbol",
+     "Boxeo",
+     "Rugby Union",
+     "Rugby League",
+     "Hockey sobre hielo",
+     "Tenis de mesa",
+     "Motociclismo",
+     "MMA",
+     "Golf",
+     "Bádminton",
+     "Balonmano",
+     "Biatlón",
+     "Ciclismo",
+     "Cricket",
+     "Curling",
+     "Dardos",
+     "Esquí alpino",
+     "Fútbol Australiano",
+     "Fútbol sala",
+     "Hockey sobre hierba",
+     "Snooker",
+     "Squash",
+     "Vela",
+     "Waterpolo",
+     "Floorball"
+    ],
+    "note": "Deportes menu; 'Especiales' excluded"
+   },
+   "host": "deportespba.bplay.bet.ar",
+   "url": "https://deportespba.bplay.bet.ar/competicion/2530-liga-profesional-argentina",
+   "date": "2026-11-04",
+   "quote": "Deportes En vivo (84) Fútbol Tenis Baloncesto",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": {
+    "live": true,
+    "eventsLiveAtCapture": 84
+   },
+   "host": "deportespba.bplay.bet.ar",
+   "url": "https://deportespba.bplay.bet.ar/competicion/2530-liga-profesional-argentina",
+   "date": "2026-11-04",
+   "quote": "Deportes En vivo (84)",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.marketsOneMatch",
+   "value": {
+    "match": "Aldosivi vs River Plate",
+    "competition": "Liga Profesional Argentina",
+    "markets": "+184",
+    "method": "'+ N' more-markets indicator on the competition list (in addition to the shown 1X2 and totals)"
+   },
+   "host": "deportespba.bplay.bet.ar",
+   "url": "https://deportespba.bplay.bet.ar/competicion/2530-liga-profesional-argentina",
+   "date": "2026-11-04",
+   "quote": "River Plate 1.43 [...] + 184",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.odds1x2",
+   "value": {
+    "capturedAt": "2026-11-04T09:20Z",
+    "tz": "UTC",
+    "matches": [
+     {
+      "home": "Aldosivi",
+      "away": "River Plate",
+      "kickoff": "jue. 5 nov. 18:00",
+      "odds": [
+       7.75,
+       4.5,
+       1.43
+      ]
+     },
+     {
+      "home": "Gimnasia de La Plata",
+      "away": "Belgrano",
+      "kickoff": "jue. 5 nov. 22:15",
+      "odds": [
+       2.27,
+       3.35,
+       3.25
+      ]
+     },
+     {
+      "home": "CA Barracas Central",
+      "away": "Racing Club",
+      "kickoff": "vie. 6 nov. 18:00",
+      "odds": [
+       2.2,
+       3.2,
+       3.6
+      ]
+     },
+     {
+      "home": "Independiente",
+      "away": "Deportivo Riestra",
+      "kickoff": "vie. 6 nov. 22:00",
+      "odds": [
+       1.68,
+       3.5,
+       5.9
+      ]
+     },
+     {
+      "home": "San Lorenzo de Almagro",
+      "away": "Platense",
+      "kickoff": "vie. 6 nov. 22:00",
+      "odds": [
+       2.6,
+       2.92,
+       3.1
+      ]
+     }
+    ]
+   },
+   "host": "deportespba.bplay.bet.ar",
+   "url": "https://deportespba.bplay.bet.ar/competicion/2530-liga-profesional-argentina",
+   "date": "2026-11-04",
+   "quote": "Aldosivi River Plate ¿Quién ganará el partido? Aldosivi 7.75 Empate 4.50 River Plate 1.43",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "deposit limits daily/weekly/monthly",
+    "access time bands",
+    "visible clock and balance",
+    "alert after 3 h of session, then hourly",
+    "end-of-session summary"
+   ],
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "Configuración en el perfil del jugador de límites de depósito diario, semanal y mensual y de límites o bandas horarias de acceso a la Plataforma.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.sessionLimit",
+   "value": "access time bands; 3-hour session alert",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "Emisión de alertas cuando hayan transcurrido más de 3 (tres) horas del inicio de la sesión, repitiendo la misma cada nueva hora cumplida.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "time-out ('Desconectate por un tiempo') and self-exclusion programme",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "En bplay podés suspender temporalmente tu Cuenta de Juego en la sección Juego Responsable en tu perfil de usuario, desde la opción de “Desconectate por un tiempo”",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Programa de Prevención y Asistencia al Juego Compulsivo (Lotería de la Provincia de Buenos Aires)"
+   },
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "Dicho programa se encuentra en plena adherencia al Programa de Prevención y Asistencia al Juego Compulsivo, un programa creado por la Lotería de la Provincia de Buenos Aires en 2005",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": {
+    "source": "footer logos only",
+    "logos": [
+     "Mercado Pago",
+     "Transferencia Bancaria",
+     "Total Coin",
+     "Modo",
+     "Personal Pay",
+     "Claro Pay",
+     "Cabal",
+     "Uala",
+     "NaranjaX",
+     "Casino Trilenium"
+    ]
+   },
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "Mercado Pago | Transferencia Bancaria | Total Coin | Modo | Personal Pay | Claro Pay | Cabal | Uala | NaranjaX | Casino Trilenium",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Sign-up requests are checked to keep minors out",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "Verificación minuciosa de todas las solicitudes de alta para evitar el registro de menores de edad.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "account.age",
+   "value": "18+ (minors are 'Usuarios Prohibidos')",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/terminos-y-condiciones",
+   "date": "2026-11-04",
+   "quote": "Menores de 18 años de edad, y los incapacitados legalmente o por resolución judicial",
+   "doc": "tyc"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Operator may request documents at any time to verify identity",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/terminos-y-condiciones",
+   "date": "2026-11-04",
+   "quote": "el Licenciatario podrá, en cualquier momento, solicitar al Usuario la documentación e información adicional que considere necesaria a fin de realizar la correcta verificación de la identidad e identificación del Usuario.",
+   "doc": "tyc"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Registered users residing in Provincia de Buenos Aires, playing from anywhere in the country",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/terminos-y-condiciones",
+   "date": "2026-11-04",
+   "quote": "Podrán jugar aquellos Usuarios que se encuentren registrados y cuya residencia se ubique en la Provincia de Buenos Aires desde cualquier lugar del país.",
+   "doc": "tyc"
+  },
+  {
+   "field": "payments.withdrawalConditions",
+   "value": "Wager 80% of deposits to withdraw free of charge; otherwise costs may be deducted; withdrawals pass an approval process",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/terminos-y-condiciones",
+   "date": "2026-11-04",
+   "quote": "El Usuario se compromete a jugar el 80% del dinero depositado en su Cuenta de Juego.",
+   "doc": "tyc"
+  },
+  {
+   "field": "casino.exists",
+   "value": true,
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/slots",
+   "date": "2026-11-04",
+   "quote": "Slots Casino en vivo Juegos de mesa Video Bingo Jackpot",
+   "doc": "slots"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/slots",
+   "date": "2026-11-04",
+   "quote": "Casino en vivo",
+   "doc": "slots"
+  },
+  {
+   "field": "casino.providers",
+   "value": {
+    "count": 13,
+    "scope": "slots filter",
+    "names": [
+     "Pragmatic Play",
+     "Games Global",
+     "Playtech",
+     "Red Tiger",
+     "Ainsworth",
+     "Big Time Gaming",
+     "No Limit",
+     "Hacksaw",
+     "Zitro",
+     "NetEnt",
+     "Synot",
+     "Redrake",
+     "CT Interactive"
+    ]
+   },
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/slots",
+   "date": "2026-11-04",
+   "quote": "Pragmatic Play | Games global | Playtech | Red Tiger | Ainsworth | Big Time Gaming | No Limit | Hacksaw | Zitro | NetEnt | Synot | Redrake | Ct Interactive",
+   "doc": "slots"
+  },
+  {
+   "field": "casino.categories",
+   "value": [
+    "Slots",
+    "Casino en vivo",
+    "Juegos de mesa",
+    "Video Bingo",
+    "Jackpot"
+   ],
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/slots",
+   "date": "2026-11-04",
+   "quote": "Slots Casino en vivo Juegos de mesa Video Bingo Jackpot",
+   "doc": "slots"
+  },
+  {
+   "field": "casino.volatilityFilter",
+   "value": [
+    "Baja",
+    "Media Baja",
+    "Media",
+    "Media Alta",
+    "Alta",
+    "Muy Alta"
+   ],
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/slots",
+   "date": "2026-11-04",
+   "quote": "Volatilidad Baja Media Baja Media Media Alta Alta Muy Alta",
+   "doc": "slots"
+  },
+  {
+   "field": "app.mentioned",
+   "value": "'Instalar bplay' link in the menu (store pages not checked)",
+   "host": "pba.bplay.bet.ar",
+   "url": "https://pba.bplay.bet.ar/slots",
+   "date": "2026-11-04",
+   "quote": "Instalar bplay",
+   "doc": "slots"
+  }
+ ],
+ "shots": [
+  {
+   "view": "sportsbook",
+   "file": "data/shots/bplay/review-2026-11-04-sportsbook.png",
+   "url": "https://deportespba.bplay.bet.ar/competicion/2530-liga-profesional-argentina",
+   "date": "2026-11-04",
+   "width": 706,
+   "height": 457,
+   "sha256": "2310baeb019a00186870fc6f0805412eb1545f2bb8f060946a344549539285a7",
+   "note": "Right promo column cropped out"
+  },
+  {
+   "view": "rg",
+   "file": "data/shots/bplay/review-2026-11-04-rg.png",
+   "url": "https://pba.bplay.bet.ar/juego-responsable",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 385,
+   "sha256": "41fd9c8812bd0c3d7504c0dfebcba2094bc7d43c707cbb56212d3bf59001ba1e",
+   "note": "Cropped above the cookie banner"
+  },
+  {
+   "view": "casino",
+   "file": "data/shots/bplay/review-2026-11-04-casino.png",
+   "url": "https://pba.bplay.bet.ar/slots",
+   "date": "2026-11-04",
+   "width": 166,
+   "height": 312,
+   "sha256": "85268b46999f21b1f4ee83f865912715b910c801d0aa0dce25f65fbe43f0c27b",
+   "note": "Cropped to the provider filter dialog (lobby behind it shows promo banners)"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+URL: https://pba.bplay.bet.ar/juego-responsable
+Captured: 2026-11-04
+---
+[Text of the page's sections, including collapsed ones (paragraph/list text):]
+Jugar debe ser una actividad recreativa, de entretenimiento y distracción, sin consecuencias adversas. Por este motivo desarrollamos un Programa de Juego Responsable, en articulación con la normativa legal vigente. Dicho programa se encuentra en plena adherencia al Programa de Prevención y Asistencia al Juego Compulsivo, un programa creado por la Lotería de la Provincia de Buenos Aires en 2005
+[...]
+Control de gastos y tiempos
+Verificación minuciosa de todas las solicitudes de alta para evitar el registro de menores de edad.
+Configuración en el perfil del jugador de límites de depósito diario, semanal y mensual y de límites o bandas horarias de acceso a la Plataforma.
+Verificación de la condición de autoexcluido del jugador.
+Reloj y saldo siempre visible, indicando el tiempo que el usuario lleva logueado y el dinero disponible en su cuenta.
+Emisión de alertas cuando hayan transcurrido más de 3 (tres) horas del inicio de la sesión, repitiendo la misma cada nueva hora cumplida.
+Notificación al finalizar cada sesión de juego, informando al jugador el tiempo de juego, dinero apostado, premios obtenidos y otra información.
+Tiempo Fuera
+En bplay podés suspender temporalmente tu Cuenta de Juego en la sección Juego Responsable en tu perfil de usuario, desde la opción de “Desconectate por un tiempo” si vos o tu entorno considera que tu manera de apostar se ha tornado peligrosa.
+[...]
+[Footer payment logos (image alt text):]
+Mercado Pago | Transferencia Bancaria | Total Coin | Modo | Personal Pay | Claro Pay | Cabal | Uala | NaranjaX | Casino Trilenium
+[Footer badges (image alt text):]
+Línea Atención PBA | mayor de 18 | Autoexclusión | Lotería PBA | Prevención del Juego
