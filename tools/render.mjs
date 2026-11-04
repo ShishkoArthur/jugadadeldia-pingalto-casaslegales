@@ -241,7 +241,7 @@ export async function build(id, { collect = false, out = null } = {}) {
         const p = { ...P, lang: 'en', esPath: P.path, enPath: m.path, title: m.title, description: m.description, h1: m.h1 };
         if (p.title.length > LIMITS.title) throw new Error(`${m.path}: title ${p.title.length} > ${LIMITS.title}: ${p.title}`);
         if (p.description.length < LIMITS.descMin || p.description.length > LIMITS.descMax) throw new Error(`${m.path}: description ${p.description.length} chars, outside ${LIMITS.descMin}-${LIMITS.descMax}: ${p.description}`);
-        emit(p, SITE.fileOf(m.path), html => htmlToEn(html, { tr: trEn, mapPath: toEn, origin: ORIGIN, quoteNote: SITE.i18n && SITE.i18n.quoteNote, where: m.path }));
+        emit(p, SITE.fileOf(m.path), html => htmlToEn(html, { tr: trEn, mapPath: toEn, origin: ORIGIN, quoteNote: SITE.i18n && SITE.i18n.quoteNote, citeEn: !!(SITE.i18n && SITE.i18n.citeEn), where: m.path }));
       }
     } finally { h.lang = 'es'; h.site = siteEs; h.asset = assetEs; }
     if (misses.size && !collect) {

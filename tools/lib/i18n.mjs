@@ -208,8 +208,9 @@ function pieces(items) {
   return [...raw(lead), { raw: false, items: core }, ...raw(tail)];
 }
 
-// en version of a finished page. opts: { tr, mapPath(esPath) -> enPath|null, origin, quoteNote(enHtml) -> html, where }
-export function htmlToEn(html, { tr, mapPath, origin, quoteNote, where = '' }) {
+// en version of a finished page. opts: { tr, mapPath(esPath) -> enPath|null, origin, quoteNote(enHtml) -> html, citeEn, where }
+// citeEn (SITE.i18n.citeEn): the <cite> source line inside a quote is translated too (the quoted words stay as they are)
+export function htmlToEn(html, { tr, mapPath, origin, quoteNote, citeEn = false, where = '' }) {
   const bodyAt = html.search(/<body[\s>]/);
   const head = bodyAt > 0 ? html.slice(0, bodyAt) : '', body = bodyAt > 0 ? html.slice(bodyAt) : html;
   const toks = tokenize(body);
@@ -232,10 +233,12 @@ export function htmlToEn(html, { tr, mapPath, origin, quoteNote, where = '' }) {
     if (t.k === 'text' || (t.k === 'tag' && !t.block) || (t.k === 'atom' && !t.quote && t.name !== 'script' && t.name !== 'style')) { run.push(t.k === 'tag' ? { ...t, v: attrsEn(t.v, tr, where) } : t); continue; }
     flush();
     if (t.k === 'atom' && t.quote) {
-      out += t.v.replace(/^<blockquote\b/, m => m + (/\slang=/.test(t.v.slice(0, t.v.indexOf('>'))) ? '' : ' lang="es-AR"'));
+      let bq = t.v.replace(/^<blockquote\b/, m => m + (/\slang=/.test(t.v.slice(0, t.v.indexOf('>'))) ? '' : ' lang="es-AR"'));
+      if (citeEn) bq = bq.replace(/<cite\b[^>]*>[\s\S]*?<\/cite>/g, c => htmlToEn('<body>' + c.replace(/^<cite\b([^>]*?)\slang="[^"]*"/, '<cite$1').replace(/^<cite\b/, '<cite lang="en"'), { tr, mapPath, origin, where }).replace(/^<body>/, ''));
+      out += bq;
       // a quote that is already English (lang="en" on the blockquote) needs no English rendering
       if (quoteNote && !/^<blockquote\b[^>]*\slang="en/.test(t.v)) {
-        const inner = t.v.replace(/^<blockquote[^>]*>/, '').replace(/<\/blockquote>$/, '');
+        const inner = (citeEn ? t.v.replace(/<cite\b[^>]*>[\s\S]*?<\/cite>/g, '') : t.v).replace(/^<blockquote[^>]*>/, '').replace(/<\/blockquote>$/, '');
         const sub = htmlToEn('<body>' + inner, { tr, mapPath, origin, where }).replace(/^<body>/, '');
         // no English note for data quoted as evidence (JSON, lists of numbers) or when nothing changed
         if (sub !== inner && !/^\s*[{["]/.test(dec(inner.replace(/<[^>]+>/g, '')))) out += quoteNote(sub);
