@@ -16,3 +16,8 @@ export const officialHost = l => new URL(officialUrl(l)).hostname;
 export function officialHosts(regs) {
   return new Set(regs.flatMap(r => r.licensees.map(officialHost)));
 }
+// provincial platforms that the regulator itself links from its own site (data/sources/provinces, verified by tools/lib/provsources.mjs):
+// the same rule, the address as the regulator's page links it
+export function platformHosts(provinces) {
+  return new Set(Object.values(provinces.jurisdictions).flatMap(j => (j.platforms || []).map(officialHost)));
+}

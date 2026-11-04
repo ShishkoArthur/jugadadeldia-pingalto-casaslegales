@@ -5,6 +5,7 @@ import { isoMap, isoHeight } from './iso.mjs';
 import { PROV_COPY } from '../content/provcopy.mjs';
 import { provData, pdQuote, pdSrc, STATUS_LABEL } from '../content/provdata.mjs';
 import { brandMatrix, distinctHosts } from '../../../engine/registry.mjs';
+import { officialUrl } from '../content/official.mjs';
 import { src, quote, rgQuote, hostHtml, sectionHead, brandLink, officialLink } from './parts.mjs';
 
 export function relief(h, P, cur, { links = false, cls: clsOf = null, tip = null, aria = null } = {}) {
@@ -149,13 +150,18 @@ function listBody(h, P, x, o) {
   return list + asked(h, P, x, o) + others(h, x) + who + extra + report + ageQ + help(h, x);
 }
 
+// the address the regulator's own page links (content/official.mjs), same rules as the list links
+function platformLink(h, p, d) {
+  const u = officialUrl(p);
+  return '<a class="rl-off rl-off-s" href="' + h.esc(u) + '" rel="nofollow noopener" target="_blank"><span>Ir al sitio oficial (' + h.esc(p.name) + ')</span><small>' + h.esc(new URL(u).hostname) + ' · enlazado por ' + h.esc(d.host) + '</small></a>';
+}
 function platformBody(h, P, x, o) {
   const e = x.e;
   const cards = '<section class="rl-sec">' + sectionHead(h, e.platforms.length === 1 ? 'La plataforma que enlaza el regulador' : 'Las plataformas que enlaza el regulador', 'enlace en su sitio oficial, sin lista de otros operadores') +
     '<div class="rl-plat" data-nosnippet>' + e.platforms.map(p => {
       const d = P.doc(p.evidence.doc);
       return '<article><h3>' + h.esc(p.name) + '</h3>' + hostHtml(h, p.host) + (p.quote ? pdQuote(h, P, p.quote, x.j.regulator ? x.j.regulator.name : x.name) : '<p class="rl-note">El enlace está en el portal del regulador, sin texto propio que citar.</p>') +
-        '<p class="rl-src">Enlazada desde ' + h.esc(d.host) + ' · copia del ' + h.fmtDate(d.fetched) + '</p></article>';
+        '<p class="rl-src">Enlazada desde ' + h.esc(d.host) + ' · copia del ' + h.fmtDate(d.fetched) + '</p>' + platformLink(h, p, d) + '</article>';
     }).join('') + '</div>' +
     '<p class="rl-note">Qué quiere decir: el sitio oficial del regulador manda a esta dirección para jugar online. No encontramos una lista de otros operadores habilitados en ' + h.esc(x.name) + ', así que no decimos que no existan ni cuáles serían.</p>' +
     [...new Set(e.platforms.map(p => p.evidence.doc))].map(d => pdSrc(h, P, d)).join('') + '</section>';
