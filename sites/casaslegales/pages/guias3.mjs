@@ -10,6 +10,7 @@ import { opData, quotesOf } from '../content/opdata.mjs';
 import { anat, opQuote, listsDate } from './opparts.mjs';
 import { quote, rgQuote, sectionHead, hostHtml, brandLink } from './parts.mjs';
 import { relief } from './provincia.mjs';
+import { otherCalcs } from './guias5.mjs';
 
 const go = (h, list) => '<div class="rl-gd">' + list.filter(([u]) => h.built(u)).map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div>';
 const dec = (x, d = 2) => x.toFixed(d).replace('.', ',');
@@ -115,7 +116,7 @@ export const calcMargen = {
     const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">Calculadora · sin datos de operadores</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Las cuotas de un mercado esconden una comisión: si sumás la probabilidad que implica cada cuota, el total pasa del 100 %. Esa diferencia es el margen. Escribí las cuotas decimales de un partido y la calculadora hace la cuenta.</p></div>' +
       '<div class="rl-box"><h3>La cuenta</h3><p class="rl-form">suma = 1/cuota₁ + 1/cuota₂ + …</p><p class="rl-form">margen = suma − 1</p><p class="rl-form">devolución = 1 / suma · se queda la casa = 1 − devolución</p><p>Cuota sin margen = cuota × suma. Es la cuota que pagaría una casa que no cobra nada.</p></div></section>';
-    const steps = '<details class="rl-box"><summary>Paso a paso, con el ejemplo</summary><ol>' +
+    const steps = '<details class="rl-box"><summary>Cómo se calcula, paso a paso</summary><ol>' +
       m.odds.map((o, i) => '<li>' + names[i] + ': 1 / ' + dec(o) + ' = ' + dec(m.implied[i], 4) + '</li>').join('') +
       '<li>Suma: ' + m.implied.map(p => dec(p, 4)).join(' + ') + ' = ' + dec(m.sum, 4) + ', o sea ' + pct(m.sum) + '</li>' +
       '<li>Margen: ' + dec(m.sum, 4) + ' − 1 = ' + pct(m.margin) + '</li>' +
@@ -129,7 +130,7 @@ export const calcMargen = {
       '<div class="rl-box"><h3>Qué te dice</h3><p>Cuánto se queda la casa, en promedio, de todo lo apostado en ese mercado si el dinero se reparte según sus cuotas. Con el ejemplo 1X2, de cada $ 1.000 apostados vuelven $ ' + fmtInt(Math.round(1000 * m.payout)) + ' y la casa se queda $ ' + fmtInt(1000 - Math.round(1000 * m.payout)) + ' (' + pct(1 - m.payout) + ').</p>' +
         '<p>El margen (' + pct(m.margin) + ') es otra forma de decir lo mismo: se mide sobre la suma de probabilidades y no sobre lo apostado, por eso da un poco más. Los sitios y las notas suelen usar el margen; para comparar dos mercados, usá siempre la misma de las dos cifras.</p></div>' +
       '<div class="rl-box"><h3>Qué no te dice</h3><p>Quién va a ganar el partido ni si una apuesta conviene. Un margen más bajo no cambia que, a la larga, la casa cobra su parte. Si sentís que el juego dejó de ser un juego, la línea de ayuda está abajo.</p></div></div></section>';
-    return hero + how + exs + read + '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + go(h, [['/guia/handicap', 'Qué es el hándicap, con fútbol argentino'], ['/guia/como-verificar', 'Cómo verificar un sitio'], ['/juego-responsable', 'Ayuda en tu provincia']]) + '</section>';
+    return hero + how + exs + read + otherCalcs(h, '/calculadora/margen') + '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + go(h, [['/guia/apuestas-deportivas', 'Cómo funcionan las apuestas deportivas'], ['/guia/como-verificar', 'Cómo verificar un sitio'], ['/juego-responsable', 'Ayuda en tu provincia']]) + '</section>';
   },
 };
 
@@ -143,9 +144,9 @@ export const handicap = {
   path: '/guia/handicap',
   id: 'guia-handicap',
   kind: 'guide',
-  title: 'Qué es el hándicap en apuestas, con fútbol argentino',
-  description: 'Qué es el hándicap en apuestas deportivas y cómo se resuelve cada línea, con un clásico de Avellaneda de ejemplo: enteros, medios y cuartos, calculados.',
-  h1: 'Hándicap en apuestas: qué es y cómo se resuelve cada línea',
+  title: 'Hándicap asiático en apuestas: qué es y cómo se resuelve',
+  description: 'Qué es el hándicap asiático en apuestas y cómo se resuelve cada línea, entera, media o cuarto, con un clásico de Avellaneda; y qué cambia en el europeo.',
+  h1: 'Hándicap asiático en apuestas: qué es y cómo se resuelve cada línea',
   ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ['/guia/handicap', 'Hándicap']])],
   render(h) {
     const team = 'Racing', rival = 'Independiente';
@@ -189,6 +190,6 @@ export const handicap = {
     return hero + '<section class="rl-sec">' + sectionHead(h, 'Cada línea, cada resultado', 'G gana · D se devuelve · P pierde') + grid + '</section>' + kinds +
       '<section class="rl-sec">' + sectionHead(h, 'Calculá tu hándicap', 'cualquier línea de −3 a +3, en cuartos') + '<div class="rl-card">' + calc + '</div></section>' +
       '<section class="rl-sec">' + sectionHead(h, 'Cuánto vuelve en los cuartos', 'cuota de ejemplo, no de un sitio real') + '<div class="rl-two">' + rows + '</div>' +
-      '<p class="rl-note">El hándicap cambia cómo se reparte el resultado, no el margen de la casa: las cuotas de cada línea también lo traen.' + (h.built('/calculadora/margen') ? ' Podés medirlo con la <a href="' + h.href('/calculadora/margen') + '">calculadora de margen</a>.' : '') + '</p></section>' + euro;
+      '<p class="rl-note">El hándicap cambia cómo se reparte el resultado, no el margen de la casa: las cuotas de cada línea también lo traen.' + (h.built('/calculadora/margen') ? ' Podés medirlo con la <a href="' + h.href('/calculadora/margen') + '">calculadora de margen</a>.' : '') + '</p></section>' + euro + otherCalcs(h, '/guia/handicap');
   },
 };

@@ -14,12 +14,14 @@ const NAV = [
 ];
 const FOOT = [
   ['/casinos-online-legales', 'Casinos online legales', 'bet'],
+  ['/guia/apuestas-deportivas', 'Cómo funcionan las apuestas', 'bet'],
+  ['/guia/glosario', 'Glosario de apuestas', 'bet'],
   ['/guia/bet-ar', 'El dominio .bet.ar'],
   ['/guia/sitios-ilegales', 'Sitios sin licencia'],
   ['/guia/menores', 'Menores y apuestas'],
   ['/calculadora/margen', 'Calculadora de margen', 'bet'],
-  ['/guia/handicap', 'Qué es el hándicap', 'bet'],
-  ['/calculadora/cuotas', 'Conversor de cuotas', 'bet'],
+  ['/guia/handicap', 'Hándicap asiático', 'bet'],
+  ['/calculadora/cuotas', 'Calculadora de cuotas', 'bet'],
   ['/calculadora/combinada', 'Combinadas y margen', 'bet'],
   ['/guia/ley-federal', 'Ley federal: estado del proyecto'],
   ['/metodologia', 'Metodología'],

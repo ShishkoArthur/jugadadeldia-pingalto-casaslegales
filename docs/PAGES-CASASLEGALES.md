@@ -156,6 +156,14 @@ P1 (37, из них служебных и помощи — 8):
   `/operador/casino-magic-online` (марка в списке Неукена; `/verificar/casino-magic` без ключей); «<бренд> casino» → `/operador/<бренд>/casino`,
   где страница казино есть (Betsson, bet365, bplay); у Betano лобби казино при сборе пустое — ключ остаётся на обзоре.
 
+## Гайды «как» (04.11) — что добавилось в плане
+- `/guia/apuestas-deportivas` — «Apuestas deportivas online en Argentina: cómo funcionan» (55); ключи apuestas deportivas 9.3k,
+  apuestas online 5.1k (с `/operadores`), apuestas deportivas argentina 1.8k (с главной), cash out ≈ 0.5k.
+- `/guia/glosario` — «Glosario de apuestas: cuota, margen, hándicap y licencias» (57).
+- Переименованы по Ahrefs 04.11: `/guia/handicap` → «Hándicap asiático en apuestas: qué es y cómo se resuelve» (56),
+  `/calculadora/cuotas` → «Calculadora de cuotas: decimal, fraccional y americana» (54), `/calculadora/combinada` → «Apuestas
+  combinadas: qué son y cómo se multiplica el margen» (59). Полные строки — `data/plan/casaslegales.json`.
+
 ## Страницы по разделам
 
 ### Главная и реестры

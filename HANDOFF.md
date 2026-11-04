@@ -162,6 +162,7 @@
   /la-primera/, /la-previa/), Quini 6 «50 %» исправлено (4.683.410 разных / 6.492.584 тиражей), 7 других правок чисел/UI, карточки «¿Ya salió?»,
   Quiniela Plus берёт последнюю Nocturna PBA из ленты, title по интенту; 79 стр. выложено. **Не синхронизировано на сервер:** кэш PBA «вчера» 3 ч
   в `tools/feeds/jugadadeldia/quiniela.mjs` — `feeds-server.sh jugadadeldia sync` после того, как чужой WIP `provincias*.mjs` будет закоммичен.
+- 04.11 — casaslegales — гайды: /guia/apuestas-deportivas, /guia/glosario, paso a paso на cuotas/combinada, «Otras calculadoras», title по Ahrefs.
 - 04.11 — casaslegales — обзорник: «Ir al sitio oficial» по провинциям (гейт-allowlist), обзоры Betsson и Betano, /operador/betsson/casino,
   title/H1 операторов по интенту (раздел «casaslegales (04.11) — обзорник» ниже).
 - 03.11 — QA трёх сайтов: 18 находок P1/P2 исправлено и выложено, P3 и вопрос о сцене на телефоне — `docs/QA-2026-11-03.md`; скрипты `tools/qa/`.
@@ -396,6 +397,13 @@
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
 - **Дальше:** хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
+
+## casaslegales (04.11) — гайды «как»: `/guia/apuestas-deportivas`, `/guia/glosario`, paso a paso калькуляторов, выложено
+- `pages/guias5.mjs`: гайд по ставкам (boleto, шаги, рынки, en vivo, cash out, маржа, где легально с кнопками «Ir» 8 списков и 4
+  платформ, перед ставкой) и глоссарий (32 термина); `otherCalcs()` — блок «Otras calculadoras» на 4 калькуляторах. Движок:
+  `single`, `cashOut` в `engine/odds.mjs` + `engine/test/odds-guide.test.mjs`. Title по Ahrefs (1 260 ед.): hándicap → «asiático»,
+  cuotas → «Calculadora de cuotas», combinada → «qué son». Ключи плана перенесены (/operadores и главная → гайд). Отчёт — §«Сделано
+  04.11 (гайды)» в `docs/AUDIT-CASASLEGALES-2026-11-04.md`.
 
 ## casaslegales (04.11) — аудит страниц вне `/operador/*`: отчёт `docs/AUDIT-CASASLEGALES-2026-11-04.md`, выложено
 - Калькуляторы: 76 чисел сверены независимым пересчётом — арифметика верна; исправлен смысл: «маржа» ≠ «сколько оставляет казино»

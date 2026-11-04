@@ -139,3 +139,26 @@ export function parlay(legs) {
   });
   return { ...steps[steps.length - 1], steps };
 }
+
+// Single bet: what a stake at a decimal odd pays if it wins (stake included), the profit, and the implied probability.
+export function single(stake, odd) {
+  const o = parseOdd(odd);
+  if (o === null) throw new Error('single: bad odd ' + odd);
+  if (!(Number.isFinite(stake) && stake > 0)) throw new Error('single: bad stake ' + stake);
+  return { stake, odd: o, pays: stake * o, profit: stake * (o - 1), implied: 1 / o };
+}
+
+// Cash out: a bet of stake at the placed odd is still open and the same pick now has live odds (the whole live market, pick =
+// index of the pick). Value at the live odd = stake x placed / live odd: the stake that, bet now at the live odd, would pay the
+// same if the pick wins. That live odd is shortened by the margin of the live market, so it overstates what the open bet is worth;
+// the fair value removes the margin (stake x placed x fair probability of the pick = expected payout). The site decides what it
+// offers; the fair value is the number to compare the offer with.
+export function cashOut(stake, placed, live, pick) {
+  const p = parseOdd(placed);
+  if (p === null) throw new Error('cashOut: bad placed odd ' + placed);
+  if (!(Number.isFinite(stake) && stake > 0)) throw new Error('cashOut: bad stake ' + stake);
+  const m = margin(live);
+  if (!Number.isInteger(pick) || pick < 0 || pick >= m.odds.length) throw new Error('cashOut: bad pick ' + pick);
+  const potential = stake * p;
+  return { potential, liveOdd: m.odds[pick], atLive: potential / m.odds[pick], fair: potential * m.fairProb[pick], liveMargin: m.margin, fairProb: m.fairProb[pick] };
+}

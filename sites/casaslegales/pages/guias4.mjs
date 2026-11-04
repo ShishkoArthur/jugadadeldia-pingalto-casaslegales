@@ -9,6 +9,7 @@ import { visibleText } from '../../../engine/text.mjs';
 import { fmtInt, daysBetween } from '../../../engine/format.mjs';
 import { provData } from '../content/provdata.mjs';
 import { rgQuote, sectionHead } from './parts.mjs';
+import { otherCalcs } from './guias5.mjs';
 
 const ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 const go = (h, list) => '<div class="rl-gd">' + list.filter(([u]) => h.built(u)).map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div>';
@@ -24,10 +25,10 @@ export const calcCuotas = {
   path: '/calculadora/cuotas',
   id: 'calculadora-cuotas',
   kind: 'tool',
-  title: 'Conversor de cuotas: decimal, fraccional y americana',
+  title: 'Calculadora de cuotas: decimal, fraccional y americana',
   description: 'Pasá una cuota de decimal a fraccional o americana, mirá su probabilidad implícita y sacale el margen de la casa a un mercado de dos o tres resultados.',
-  h1: 'Conversor de cuotas: decimal, fraccional, americana y probabilidad',
-  ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ['/calculadora/cuotas', 'Conversor de cuotas']])],
+  h1: 'Calculadora de cuotas: conversor decimal, fraccional, americana y probabilidad',
+  ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ['/calculadora/cuotas', 'Calculadora de cuotas']])],
   render(h) {
     const c0 = convertOdd('2,50');
     const tiles = '<div class="rl-mout rl-cout" data-rl-cout aria-live="polite"><div><b data-k="dec">' + dec(c0.decimal) + '</b><span>decimal</span></div><div><b data-k="frac">' + frac(c0.fractional) + '</b><span>fraccional</span></div><div><b data-k="am">' + am(c0.american) + '</b><span>americana</span></div><div><b data-k="imp">' + pct(c0.implied) + '</b><span>probabilidad implícita</span></div></div>' +
@@ -50,11 +51,19 @@ export const calcCuotas = {
     const read = '<section class="rl-sec">' + sectionHead(h, 'Qué es la probabilidad implícita') + '<div class="rl-two">' +
       '<div class="rl-box"><h3>Lo que dice</h3><p>Una cuota de ' + dec(c0.decimal) + ' paga $ ' + fmtInt(Math.round(1000 * c0.decimal)) + ' por $ 1.000 apostados, lo apostado incluido. Para que esa apuesta fuera pareja, el resultado tendría que darse ' + pct(c0.implied) + ' de las veces.</p></div>' +
       '<div class="rl-box"><h3>Lo que no dice</h3><p>No es la probabilidad real: trae el margen de la casa adentro, por eso las probabilidades de un mismo mercado suman más del 100 %. Y ninguna cuota dice quién va a ganar.</p></div></div></section>';
-    return hero + '<section class="rl-sec">' + sectionHead(h, 'Convertí una cuota', 'acepta 2,50 o 2.50 · 3/2 · +150 o −200') + '<div class="rl-card">' + conv + '</div></section>' +
+    const lo = convertOdd('1,50');
+    const fr = toFractional(c0.decimal);
+    const steps = '<details class="rl-box"><summary>Cómo se calcula, paso a paso (con ' + dec(c0.decimal) + ')</summary><ol>' +
+      '<li>Fraccional: ' + dec(c0.decimal) + ' − 1 = ' + dec(c0.decimal - 1) + ' = ' + fr.text + ' (ganancia por cada peso)</li>' +
+      '<li>Americana, cuota de 2 o más: (' + dec(c0.decimal) + ' − 1) × 100 = ' + am(c0.american) + ' (ganancia con 100)</li>' +
+      '<li>Americana, cuota menor que 2: 100 / (' + dec(lo.decimal) + ' − 1) = ' + dec(100 / (lo.decimal - 1), 0) + ', con signo menos: ' + am(lo.american) + ' (lo que apostás para ganar 100)</li>' +
+      '<li>Probabilidad implícita: 1 / ' + dec(c0.decimal) + ' = ' + dec(c0.implied, 4) + ' = ' + pct(c0.implied) + '</li>' +
+      '<li>Sin margen, ' + TWO.join(' y ') + ': 1 / ' + dec(m.odds[0]) + ' + 1 / ' + dec(m.odds[1]) + ' = ' + dec(m.sum, 4) + '; cuota justa = ' + dec(m.odds[0]) + ' × ' + dec(m.sum, 4) + ' = ' + dec(m.fairOdds[0]) + '</li></ol></details>';
+    return hero + '<section class="rl-sec">' + sectionHead(h, 'Convertí una cuota', 'acepta 2,50 o 2.50 · 3/2 · +150 o −200') + '<div class="rl-card">' + conv + '</div>' + steps + '</section>' +
       '<section class="rl-sec">' + sectionHead(h, 'Las cuotas más comunes, en los tres formatos') + ladder + '</section>' + read +
       '<section class="rl-sec">' + sectionHead(h, 'Sacale el margen a un mercado', 'cuotas de ejemplo: más o menos de 2,5 goles') + '<div class="rl-card">' + nv + '</div>' +
       '<p class="rl-note">La cuota justa reparte el margen en proporción a cada probabilidad (el método más simple; hay otros). Es la cuota que pagaría una casa que no cobra nada, no una predicción.</p></section>' +
-      '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + go(h, [['/calculadora/margen', 'Calculadora de margen de un mercado'], ['/calculadora/combinada', 'Qué pasa con el margen en una combinada'], ['/guia/handicap', 'Qué es el hándicap'], ['/juego-responsable', 'Ayuda en tu provincia']]) + '</section>';
+      otherCalcs(h, '/calculadora/cuotas') + '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + go(h, [['/guia/apuestas-deportivas', 'Cómo funcionan las apuestas deportivas'], ['/juego-responsable', 'Ayuda en tu provincia']]) + '</section>';
   },
 };
 
@@ -72,9 +81,9 @@ export const calcCombinada = {
   path: '/calculadora/combinada',
   id: 'calculadora-combinada',
   kind: 'tool',
-  title: 'Apuestas combinadas: cómo se multiplica el margen',
+  title: 'Apuestas combinadas: qué son y cómo se multiplica el margen',
   description: 'Por qué el margen crece con cada selección de una combinada: la cuota total, la probabilidad de acertar todas y cuánto vuelve en promedio, calculados.',
-  h1: 'Combinadas: por qué el margen crece con cada selección',
+  h1: 'Apuestas combinadas: qué son y por qué el margen crece con cada selección',
   ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ['/calculadora/combinada', 'Combinadas']])],
   render(h) {
     const legs = LEGS.map(([a, b, odds, pick]) => ({ odds, pick }));
@@ -99,12 +108,18 @@ export const calcCombinada = {
       '<p class="rl-lead">En una combinada las cuotas se multiplican, y con ellas se multiplica lo que se queda la casa. Con una selección del ejemplo la casa se queda ' + pct(one.edge) + ' de lo apostado; con ' + P.legs + ' selecciones, ' + pct(P.edge) + '. La cuota total crece mucho más rápido que lo que vuelve en promedio.</p></div>' +
       '<div class="rl-box"><h3>La cuenta</h3><p class="rl-form">cuota total = c₁ × c₂ × … × cₙ</p><p class="rl-form">vuelve = d₁ × d₂ × … × dₙ</p><p>dᵢ es la devolución teórica de cada partido (1 / suma de sus probabilidades implícitas). Se queda la casa = 1 − vuelve.</p>' +
       '<p>El margen de la combinada, medido como en la <a href="' + h.href('/calculadora/margen') + '">calculadora de margen</a>, es s₁ × s₂ × … × sₙ − 1 (sᵢ: suma de cada partido): con las ' + P.legs + ' selecciones, ' + pct(sums.reduce((a, b) => a * b, 1) - 1) + '. Las dos cifras crecen juntas.</p></div></section>';
+    const L3 = legs.slice(0, 3).map(l => margin(l.odds));
+    const stepsC = '<details class="rl-box"><summary>Cómo se calcula, paso a paso (con las tres selecciones de ejemplo)</summary><ol>' +
+      '<li>Cuota total: ' + P3.steps.map(s => dec(s.pickOdd)).join(' × ') + ' = ' + dec(P3.odd) + '; con $ ' + fmtInt(stake) + ' cobrás $ ' + fmtInt(Math.round(stake * P3.odd)) + ' si salen las tres</li>' +
+      L3.map((mm, i) => '<li>Selección ' + (i + 1) + ': 1 / ' + mm.odds.map(o => dec(o)).join(' + 1 / ') + ' = ' + dec(mm.sum, 4) + '; devolución 1 / ' + dec(mm.sum, 4) + ' = ' + pct(mm.payout, 2) + '</li>').join('') +
+      '<li>Vuelve: ' + L3.map(mm => pct(mm.payout, 2)).join(' × ') + ' = ' + pct(P3.payout, 2) + '; se queda la casa 1 − ' + pct(P3.payout, 2) + ' = ' + pct(P3.edge, 2) + '</li>' +
+      '<li>Acertar las tres, sin margen: ' + legs.slice(0, 3).map((l, i) => pct(L3[i].fairProb[l.pick], 2)).join(' × ') + ' = ' + pct(P3.prob, 2) + ', o sea 1 en ' + dec(P3.oneIn, 1) + '</li></ol></details>';
     const honest = '<section class="rl-sec">' + sectionHead(h, 'Lo que conviene saber') + '<div class="rl-two">' +
       '<div class="rl-box"><h3>Una cuota alta no es una oportunidad</h3><p>Con las ' + P.legs + ' selecciones del ejemplo la cuota total es ' + dec(P.odd) + ': $ ' + fmtInt(stake) + ' pagarían $ ' + fmtInt(Math.round(stake * P.odd)) + '. Pero acertar todas pasa 1 vez cada ' + dec(P.oneIn, 0) + ', y a la larga vuelven $ ' + fmtInt(Math.round(stake * P.payout)) + ' de cada $ ' + fmtInt(stake) + '.</p></div>' +
       '<div class="rl-box"><h3>Qué supone la cuenta</h3><p>Que los partidos son independientes y que las cuotas sin margen son las probabilidades reales. Ninguna de las dos se cumple siempre; por eso el resultado es un promedio de largo plazo, no una predicción. Si el juego dejó de ser un juego, la línea de ayuda está abajo.</p></div></div></section>';
     return hero + '<section class="rl-sec">' + sectionHead(h, 'La escalera del margen', 'cada fila suma una selección') + lad + '</section>' +
-      '<section class="rl-sec">' + sectionHead(h, 'Calculá tu combinada', 'cuotas decimales, de 1 a 8 selecciones') + '<div class="rl-card">' + tool + '</div></section>' + honest +
-      '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + go(h, [['/calculadora/margen', 'Margen de un solo mercado'], ['/calculadora/cuotas', 'Conversor de cuotas'], ['/juego-responsable', 'Ayuda en tu provincia']]) + '</section>';
+      '<section class="rl-sec">' + sectionHead(h, 'Calculá tu combinada', 'cuotas decimales, de 1 a 8 selecciones') + '<div class="rl-card">' + tool + '</div>' + stepsC + '</section>' + honest +
+      otherCalcs(h, '/calculadora/combinada') + '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + go(h, [['/guia/apuestas-deportivas', 'Cómo funcionan las apuestas deportivas'], ['/juego-responsable', 'Ayuda en tu provincia']]) + '</section>';
   },
 };
 

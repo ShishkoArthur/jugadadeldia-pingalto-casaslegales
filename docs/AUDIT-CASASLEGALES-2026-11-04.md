@@ -131,3 +131,23 @@
 8. Выгрузка Ahrefs по калькуляторам (≈ 200 ед.) — понять спрос до расширения.
 9. План: перенести ключи betsson caba → `/operador/betsson/caba`, casino magic online → `/operador/casino-magic-online`,
    betsson/betano/bet365 → `/operador/<бренд>`.
+
+## Сделано 04.11 (гайды)
+
+- **`/guia/apuestas-deportivas`** — «Apuestas deportivas online en Argentina: cómo funcionan» (55): boleto-пример, 5 шагов ставки,
+  кф ↔ вероятность, карточки рынков (1X2, más/menos, ambos marcan, hándicap asiático, combinada) с маржой и выплатой, en vivo и
+  **cash out** (справедливая стоимость открытой ставки = потенциальная выплата × вероятность без маржи в лайве — `cashOut` в
+  `engine/odds.mjs`, тесты `engine/test/odds-guide.test.mjs`), маржа «из $ 1.000 возвращается …», где легально — карта 24 юрисдикций,
+  8 списков со всеми кнопками «Ir» (`officialLink`), 4 платформы провинций с кнопками (правило из e7f6d13), перед ставкой (18+,
+  верификатор, автоисключение). Ключи в плане перенесены: apuestas deportivas 9,3k и apuestas online 5,1k — с `/operadores`,
+  apuestas deportivas argentina 1,8k — с главной; плюс «cash out» (≈ 0,5k вместе).
+- **`/guia/glosario`** — 32 термина в 3 группах (кф и рынки · лицензии · помощь), у каждого строка и ссылка на страницу с расчётом
+  или источником; 8 регуляторов (IPLyC, LOTBA, …) — из реестров, число адресов считает код; JSON-LD `DefinedTermSet`.
+- **«Cómo se calcula, paso a paso»** на `/calculadora/cuotas` и `/calculadora/combinada` (как на марже); блок **«Otras calculadoras»**
+  на четырёх калькуляторах (margen, cuotas, combinada, hándicap) + глоссарий; в подвале — гайд и глоссарий.
+- **Ahrefs (AR, matching, 60 строк, `keyword,volume,difficulty`): 1 260 единиц** (счётчик 251 528 → 252 788), файл
+  `data/keywords/matching-cl-calc-ar-…json`. Спрос: handicap asiatico 600/4 (+ хвост ≈ 0,4k) → `/guia/handicap` переименован в
+  «Hándicap asiático en apuestas: qué es y cómo se resuelve»; calculadora de cuotas 200/49 (интент смешанный: рассрочка, payway) →
+  «Calculadora de cuotas: decimal, fraccional y americana»; que es una apuesta combinada 100/13 → «Apuestas combinadas: qué son y
+  cómo se multiplica el margen»; cash out ≈ 0,5k → раздел гайда `#cash-out`; ambos marcan ≈ 0,1k → карточка гайда; «margen de apuestas»,
+  «cuotas decimales», «como calcular cuotas» — нет спроса. «cuotas» 3,7k/13 не привязан: интент — рассрочка.
