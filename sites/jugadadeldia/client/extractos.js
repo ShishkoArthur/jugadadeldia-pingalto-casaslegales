@@ -104,8 +104,8 @@ async function jur(el) {
   checker(m, id, mine);
 }
 
-function checker(m, id, mine) {
-  const f = $('[data-xchk]'), out = $('[data-xchk-out]');
+function checker(m, id, mine, sel = '', get = e => nums(e.j[id][0])) {
+  const f = $('[data-xchk' + sel + ']'), out = $('[data-xchk-out' + sel + ']');
   if (!f || !out) return;
   const run = () => {
     const raw = (f.elements.n.value || '').replace(/\D/g, '');
@@ -116,7 +116,7 @@ function checker(m, id, mine) {
     const places = f.elements.u ? Number(f.elements.u.value) : 20;
     const rows = [];
     for (const e of [...mine].reverse()) {
-      const list = nums(e.j[id][0]);
+      const list = get(e);
       const at = list.map((v, i) => Number(v) % mod === num ? i + 1 : 0).filter(Boolean);
       if (!at.length) continue;
       let pay = '';
@@ -126,7 +126,7 @@ function checker(m, id, mine) {
       }
       rows.push('<li><b>' + esc(tName(m, e.t)) + ' del ' + esc(day(e.d)) + '</b>: ' + (at[0] === 1 ? 'a la cabeza' : 'en el lugar ' + at[0]) + (at.length > 1 ? ' (y ' + (at.length - 1) + (at.length === 2 ? ' vez' : ' veces') + ' más)' : '') + pay + '</li>');
     }
-    out.innerHTML = rows.length ? '<ul class="jg-ul">' + rows.join('') + '</ul>' : '<p>El ' + esc(raw) + ' no salió en ninguno de los ' + mine.length + ' sorteos de la semana.</p>';
+    out.innerHTML = rows.length ? '<ul class="jg-ul">' + rows.join('') + '</ul>' : '<p>El ' + esc(raw) + ' no salió en ninguno de los ' + mine.length + ' sorteos de ' + (new Set(mine.map(e => e.d)).size === 1 ? 'ese día' : 'los últimos ' + new Set(mine.map(e => e.d)).size + ' días') + '.</p>';
   };
   f.addEventListener('input', run);
   f.addEventListener('submit', e => { e.preventDefault(); run(); });
@@ -271,7 +271,141 @@ async function turno(el) {
   draw();
 }
 
-const MODES = { hoy, jur, nyp, ext, freq, turno };
+const PV = {};
+const pnums = e => e.n.match(/\d{4}/g);
+const pbadge = e => e.c ? '<span class="jg-xb ok" title="La página oficial coincide con nuestras copias de LOTBA y la Provincia">verificada</span>' : '<span class="jg-xb">1 fuente</span>';
+function pmeta(m, id) {
+  const J = m.jurs.find(x => x.id === id);
+  if (!J) return null;
+  const order = J.turnos.map(t => t.id);
+  const mine = m.draws.filter(e => e.j === id).sort((a, b) => a.d < b.d ? -1 : a.d > b.d ? 1 : order.indexOf(a.t) - order.indexOf(b.t));
+  const seen = new Set(mine.map(e => e.t));
+  const tl = J.turnos.filter(t => seen.has(t.id));
+  return { J, mine, tl: tl.length ? tl : J.turnos, meta: { turnos: J.turnos } };
+}
+const ptime = (t, e) => (e && e.h) || (P.times && P.times[t.id]) || '';
+const cab = v => '<span>' + v.slice(0, 2) + '<b>' + v.slice(2, 4) + '</b></span>';
+
+async function pv(el) {
+  const id = el.dataset.jur;
+  const doc = await load('provincias'), m = doc.data, now = nowAr();
+  const x = pmeta(m, id);
+  if (!x) { fail(el, 'Todavía no tenemos extractos de esta provincia.'); return; }
+  const { J, mine, tl, meta } = x;
+  if (!mine.length) { el.innerHTML = status(doc) + '<p class="jg-xh">Todavía no tenemos extractos de la ' + esc(J.long) + '.</p>'; return; }
+  const last = mine[mine.length - 1];
+  let cur = last;
+  const draw = () => {
+    const d = cur.d, isToday = d === now.d;
+    let lead;
+    if (isToday) lead = '<p class="jg-xh"><b>Hoy, ' + esc(day(d)) + '</b></p>';
+    else if (cur === last || d === last.d) {
+      const next = P.times ? tl.map(t => P.times[t.id]).filter(v => v && v > now.t).sort()[0] : null;
+      lead = '<p class="jg-xh">Hoy todavía no hay sorteos de la ' + esc(J.long) + '. El último día con sorteos: <b>' + esc(day(d)) + '</b>.' + (next ? ' El primero de hoy sale a las <b>' + esc(next) + '</b>.' : '') + '</p>';
+    } else lead = '<p class="jg-xh">Sorteos del <b>' + esc(day(d)) + '</b> · <button type="button" class="jg-lk" data-back>Volver al último</button></p>';
+    const chips = tl.map(t => {
+      const e = mine.find(z => z.d === d && z.t === t.id), tm = ptime(t, e);
+      if (e) return '<button type="button" class="jg-pk" data-k="' + e.d + '|' + e.t + '" aria-pressed="' + (e === cur ? 'true' : 'false') + '" aria-label="' + esc(t.name + ': ' + pnums(e)[0]) + '"><small>' + esc(t.name) + (tm ? ' · ' + esc(tm) : '') + '</small>' + cab(pnums(e)[0]) + '</button>';
+      const later = isToday && tm && tm > now.t;
+      return '<div class="jg-pk off"><small>' + esc(t.name) + (tm ? ' · ' + esc(tm) : '') + '</small><span class="jg-xe">' + (later ? 'a las ' + esc(tm) : isToday ? 'todavía no' : '—') + '</span></div>';
+    }).join('');
+    const tn = tName(meta, cur.t), tm = ptime({ id: cur.t }, cur);
+    el.innerHTML = status(doc) + lead + '<div class="jg-pt" role="group" aria-label="Sorteos del día">' + chips + '</div>' +
+      '<div class="jg-xd"><h3>' + (cur === last ? 'Último sorteo: ' : '') + esc(tn) + ' del ' + esc(day(cur.d)) + '</h3><p class="jg-xh">' + (cur.s ? 'Sorteo N° ' + cur.s : '') + (tm ? ' · ' + esc(tm) + ' hs' : '') + ' ' + pbadge(cur) + '</p>' +
+      extract(pnums(cur), { label: 'Extracto de la ' + J.long }) + '</div>';
+  };
+  const pick = k => { const [d, t] = k.split('|'); const e = mine.find(z => z.d === d && z.t === t); if (e) { cur = e; draw(); } };
+  el.addEventListener('click', ev => { if (ev.target.closest('[data-back]')) { cur = last; draw(); return; } const b = ev.target.closest('button[data-k]'); if (b) pick(b.dataset.k); });
+  PV[id] = { doc, m, x, pick: k => { pick(k); el.scrollIntoView({ block: 'start' }); }, cur: () => cur };
+  draw();
+  checker(meta, id, mine, '="' + id + '"', pnums);
+}
+
+async function pvweek(el) {
+  const id = el.dataset.jur;
+  const doc = await load('provincias'), m = doc.data;
+  const x = pmeta(m, id);
+  if (!x || !x.mine.length) { fail(el, 'Todavía no hay sorteos para mostrar.'); return; }
+  const days = [...new Set(x.mine.map(e => e.d))].reverse();
+  el.innerHTML = '<div class="jg-tw"><table class="jg-tbl jg-xg' + (x.tl.length < 4 ? ' jg-xt1' : '') + '"><thead><tr><th>Día</th>' + x.tl.map(t => '<th>' + esc(t.name) + '</th>').join('') + '</tr></thead><tbody>' +
+    days.map(d => '<tr><th scope="row">' + esc(day(d)) + '</th>' + x.tl.map(t => {
+      const e = x.mine.find(z => z.d === d && z.t === t.id);
+      return e ? '<td><button type="button" class="jg-xc" data-k="' + d + '|' + t.id + '">' + cab(pnums(e)[0]) + '</button></td>' : '<td class="jg-xe">—</td>';
+    }).join('') + '</tr>').join('') + '</tbody></table></div>';
+  el.addEventListener('click', ev => { const b = ev.target.closest('button[data-k]'); if (b && PV[id]) PV[id].pick(b.dataset.k); });
+}
+
+async function pvarch(el) {
+  const id = el.dataset.jur;
+  const doc = await load('provincias-archivo'), m = doc.data;
+  const x = pmeta(m, id);
+  if (!x || !x.mine.length) { fail(el, 'El archivo todavía está vacío.'); return; }
+  const r = $('[data-xrange="' + id + '"]');
+  const dates = [...new Set(x.mine.map(e => e.d))].reverse();
+  if (r) r.textContent = 'Archivo: ' + dates.length + (dates.length === 1 ? ' día' : ' días') + ', del ' + dm(dates[dates.length - 1]) + ' al ' + dm(dates[0]);
+  let d = dates[0], t = null;
+  const draw = () => {
+    const list = x.mine.filter(e => e.d === d);
+    if (!list.some(e => e.t === t)) t = list[list.length - 1].t;
+    const e = list.find(z => z.t === t);
+    el.innerHTML = '<div class="jg-x3"><label class="jg-fl"><span>Día</span><select class="jg-se" data-f="d">' + dates.map(v => '<option value="' + v + '"' + (v === d ? ' selected' : '') + '>' + esc(day(v)) + '</option>').join('') + '</select></label>' +
+      '<label class="jg-fl"><span>Sorteo</span><select class="jg-se" data-f="t">' + list.map(z => '<option value="' + z.t + '"' + (z.t === t ? ' selected' : '') + '>' + esc(tName(x.meta, z.t)) + '</option>').join('') + '</select></label></div>' +
+      '<p class="jg-xh"><b>' + esc(tName(x.meta, e.t)) + '</b> del ' + esc(day(e.d)) + (e.s ? ' · Sorteo N° ' + e.s : '') + (e.h ? ' · ' + esc(e.h) + ' hs' : '') + ' ' + pbadge(e) + '</p>' + extract(pnums(e));
+  };
+  el.addEventListener('change', ev => { const f = ev.target.dataset.f; if (f === 'd') d = ev.target.value; if (f === 't') t = ev.target.value; if (f) draw(); });
+  draw();
+}
+
+async function pvfreq(el) {
+  const id = el.dataset.jur;
+  const doc = await load('provincias-archivo'), m = doc.data;
+  const x = pmeta(m, id);
+  if (!x || !x.mine.length) { fail(el, 'El archivo todavía está vacío.'); return; }
+  const n = x.mine.length, head = new Array(100).fill(0), all = new Array(100).fill(0);
+  for (const e of x.mine) pnums(e).forEach((v, i) => { const k = Number(v.slice(2)); all[k]++; if (!i) head[k]++; });
+  let wide = false;
+  const draw = () => {
+    const counts = wide ? all : head, e = wide ? n * 20 / 100 : n / 100;
+    const chi = counts.reduce((s, o) => s + (o - e) ** 2 / e, 0), p = chiSquareP(chi, 99);
+    const order = counts.map((c, i) => [i, c]).sort((a, b) => b[1] - a[1] || a[0] - b[0]);
+    el.innerHTML = '<div class="jg-sg" role="group" aria-label="Qué contamos"><button type="button" data-a="0" aria-pressed="' + !wide + '">A la cabeza</button><button type="button" data-a="1" aria-pressed="' + wide + '">Los 20 lugares</button></div>' +
+      '<p class="jg-xh">' + n + (n === 1 ? ' sorteo' : ' sorteos') + ' en el archivo · lo esperable para cada terminación: <b>' + fmt(e, 2) + '</b></p>' +
+      heat(counts, e, 'Veces que salió cada terminación') +
+      (n >= 30 ? '<p>Más veces: ' + order.slice(0, 5).map(([i, c]) => '<b>' + String(i).padStart(2, '0') + '</b> (' + c + ')').join(', ') + '. Menos: ' + order.slice(-5).reverse().map(([i, c]) => '<b>' + String(i).padStart(2, '0') + '</b> (' + c + ')').join(', ') + '.</p><p class="jg-hon">Chi cuadrado: <b>' + fmt(chi, 1) + '</b>. Con 99 grados de libertad, el puro azar da un desorden así o mayor en el <b>' + fmt(p * 100, 0) + ' %</b> de los casos.</p>' : '<p class="jg-hon">Con ' + n + ' sorteos todavía es muy poco para comparar con el azar: hacen falta al menos 30. El archivo crece con cada sorteo.</p>');
+  };
+  el.addEventListener('click', ev => { const b = ev.target.closest('button[data-a]'); if (b) { wide = b.dataset.a === '1'; draw(); } });
+  draw();
+}
+
+async function otras(el) {
+  const doc = await load('provincias'), m = doc.data, now = nowAr();
+  const cards = m.jurs.map(J => {
+    const x = pmeta(m, J.id);
+    if (!x || !x.mine.length) return '';
+    const d = x.mine[x.mine.length - 1].d, list = x.mine.filter(e => e.d === d);
+    const href = P.ppaths && P.ppaths[J.id];
+    const body = '<b>' + esc(J.long) + '</b><small>' + (d === now.d ? 'Hoy' : esc(day(d))) + (J.via ? ' · copia de ' + esc(J.via) : '') + '</small><ul>' +
+      list.map(e => '<li><small>' + esc(tName(x.meta, e.t)) + '</small>' + cab(pnums(e)[0]) + '</li>').join('') + '</ul>';
+    return href ? '<a class="jg-pc" href="' + href + '">' + body + '</a>' : '<div class="jg-pc">' + body + '</div>';
+  }).join('');
+  el.innerHTML = status(doc) + '<div class="jg-pcs">' + cards + '</div>';
+}
+
+async function tprov(el) {
+  const T = el.dataset.t;
+  const doc = await load('provincias'), m = doc.data;
+  const rows = m.jurs.map(J => {
+    const x = pmeta(m, J.id);
+    const e = x && [...x.mine].reverse().find(z => z.t === T);
+    if (!e) return '';
+    const href = P.ppaths && P.ppaths[J.id];
+    return '<tr><th scope="row">' + (href ? '<a href="' + href + '">' + esc(J.name) + '</a>' : esc(J.name)) + '</th><td>' + esc(tName(x.meta, T)) + '<small>' + esc(day(e.d)) + (e.h ? ' · ' + esc(e.h) + ' hs' : '') + '</small></td><td>' + (href ? '<a class="jg-xc" href="' + href + '">' + cab(pnums(e)[0]) + '</a>' : cab(pnums(e)[0])) + '</td></tr>';
+  }).join('');
+  if (!rows) { const s = el.closest('section'); if (s) s.hidden = true; return; }
+  el.innerHTML = status(doc) + '<div class="jg-tw"><table class="jg-tbl jg-xg jg-xt1 jg-xtp"><thead><tr><th>Provincia</th><th>Sorteo</th><th>Cabeza</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+}
+
+const MODES = { hoy, jur, nyp, ext, freq, turno, pv, pvweek, pvarch, pvfreq, otras, tprov };
 for (const el of $$('[data-xq]')) {
   const fn = MODES[el.dataset.xq];
   if (fn) fn(el).catch(() => fail(el, 'No pudimos cargar los extractos. Probá de nuevo en un rato.'));

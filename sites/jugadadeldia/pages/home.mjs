@@ -32,13 +32,15 @@ export const home = {
       '<section class="jg-c"><span class="jg-tag">Ejemplo</span><h2>¿Cuánto paga?</h2><p class="jg-ch"><span>Apuesta $ 100</span><span>A la cabeza</span><span>2 cifras</span></p><p class="jg-win">Cobrás <b>' + money(toNumber(two.perHit)) + '</b></p><p class="jg-hon">Chance: ' + oneIn(two.oneIn) + ' · por cada $ 100 apostados vuelven en promedio ' + money(toNumber(two.evPer100)) + '</p>' + btn(h, '/quiniela/redoblona/', '¿Y la redoblona?') + '</section>' +
       '<section class="jg-c"><span class="jg-sm">Quini 6</span><h2>Controlá tu boleta</h2><div class="jg-six jg-demo" aria-hidden="true">' + ['04', '11', '17', '26', '33', '45'].map(n => '<input value="' + n + '" tabindex="-1" readonly>').join('') + '</div><p>Chance de los 6 en un sorteo: <b>' + oneIn(q6.rows[0].oneIn) + '</b></p>' + btn(h, '/quini-6/', 'Ir al Quini 6', true) + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Biblioteca</span><h2>Todo para tu jugada</h2>' + tiles(h, [
-        ['/quiniela/', 'Quiniela de hoy', 'Las cabezas y los extractos de seis provincias', '#ff5a3c', ICONS.balls],
+        ['/quiniela/', 'Quiniela de hoy', 'Las cabezas y los extractos, provincia por provincia', '#ff5a3c', ICONS.balls],
+        ['/quiniela/tucuman/', 'Quiniela de Tucumán', 'Los cinco sorteos de la Caja Popular, del Matutino al Nocturno', '#16b38a', ICONS.pin],
+        ['/quiniela/chaco/', 'Chaqueña, Correntina y más', 'Chaco, Corrientes, San Juan y Misiones', '#8b5cf6', ICONS.pin],
         ['/quiniela/horarios/', '¿Hay quiniela hoy?', 'Horarios y cuenta regresiva al próximo sorteo', '#e8930c', ICONS.pin],
         ['/quiniela/cuanto-paga/', 'Cuánto paga la quiniela', 'A la cabeza, a los 5, 10 y 20, Ciudad y Provincia', '#16b38a', ICONS.calc],
         ['/cuanto-devuelve-cada-juego/', 'Cuánto devuelve cada juego', 'De cada $ 100, lo que vuelve en premios', '#2f7cf6', ICONS.calc],
-        ['/quini-6/', 'Quini 6', 'Las cinco modalidades y el control de tu boleta', '#2f7cf6', ICONS.check],
-        ['/loto-plus/', 'Loto Plus y Brinco', 'Modalidades, número Plus y chances', '#8b5cf6', ICONS.balls],
-        ['/telekino/', 'Telekino y Poceada', 'Cartones, aciertos y lo que va a premios', '#ff5a3c', ICONS.balls],
+        ['/quini-6/', 'Quini 6', 'El último sorteo publicado y el control de tu boleta', '#2f7cf6', ICONS.check],
+        ['/loto-plus/', 'Loto Plus y Brinco', 'Resultados, número Plus y chances', '#8b5cf6', ICONS.balls],
+        ['/telekino/', 'Telekino y Poceada', 'Resultados, cartones y lo que va a premios', '#ff5a3c', ICONS.balls],
         ['/truco/jugar/', 'Truco contra la compu', 'Tres niveles, con o sin flor', '#e0447a', ICONS.cards],
         ['/truco/anotador/', 'Anotador de truco', 'Con fósforos, malas y buenas', '#16b38a', ICONS.pencil],
         ['/truco/valores-de-las-cartas/', 'Valores del truco', 'Qué carta mata a cuál, y las señas', '#ff5a3c', ICONS.cards],

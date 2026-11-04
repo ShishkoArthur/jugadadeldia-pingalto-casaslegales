@@ -1,4 +1,4 @@
-import { $, $$, page, store } from './kit.js';
+import { $, $$, page, store, esc, pesos, fmt } from './kit.js';
 import { STALE_HOURS } from '../../../engine/lottery/extract.mjs';
 
 const D = page();
@@ -95,6 +95,59 @@ async function fill(btn) {
     if (readBalls($('[data-balls="mine"]', form)).length === D.pick) check();
   } catch (err) { note.textContent = 'No pudimos traer el extracto. Copialo del extracto oficial.'; }
 }
+const TZ = 'America/Argentina/Buenos_Aires';
+const SRCS = { CL: '2 fuentes: Lotería de la Ciudad y CAS San Juan', CT: '2 fuentes: telekino.com.ar y CAS San Juan', C: '1 fuente: copia de la CAS San Juan', L: '1 fuente: Lotería de la Ciudad', T: '1 fuente: telekino.com.ar' };
+const dmy = d => +d.slice(8, 10) + '/' + +d.slice(5, 7);
+const dayName = d => DAYS[new Date(d + 'T12:00:00Z').getUTCDay()] + ' ' + dmy(d);
+const hhmm = iso => new Intl.DateTimeFormat('es-AR', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso));
+const ymd = iso => new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(iso));
+function fillDraw(L, e, note) {
+  if (!form) return;
+  for (const [k, [id]] of Object.entries(L.sets)) {
+    if (!id || !e.mods[k]) continue;
+    const list = e.mods[k].split(' ');
+    const area = $('[data-many="' + id + '"]', form);
+    if (area) { area.value = list.join(' '); continue; }
+    $$('input', $('[data-balls="' + id + '"]', form)).forEach((el, i) => { el.value = list[i] || ''; });
+  }
+  if (L.plus && form.elements[L.plus]) form.elements[L.plus].value = e.plus || '';
+  const n = $('[data-lot-fill]', form.parentNode) || document.createElement('p');
+  n.className = 'jg-note'; n.setAttribute('data-lot-fill', '');
+  n.textContent = note;
+  if (!n.parentNode) form.parentNode.insertBefore(n, form);
+  if (readBalls($('[data-balls="mine"]', form)).length === D.pick) check();
+}
+function drawHtml(L, g, e) {
+  const sets = Object.entries(L.sets).filter(([k]) => e.mods[k]).map(([k, [, name]]) => '<div class="jg-lm"><h3>' + esc(name) + '</h3><p class="jg-lb">' + e.mods[k].split(' ').map(v => '<i>' + v + '</i>').join('') + '</p></div>').join('');
+  const plus = e.plus ? '<div class="jg-lm"><h3>Número Plus</h3><p class="jg-lb"><i class="p">' + esc(e.plus) + '</i></p></div>' : '';
+  const prizes = e.prizes && e.prizes.length ? '<div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Modalidad</th><th class="n">Aciertos</th><th class="n">Ganadores</th><th class="n">Premio por ganador</th></tr></thead><tbody>' +
+    e.prizes.map(r => '<tr><td>' + esc(r.mod) + '</td><td class="n">' + r.hits + '</td><td class="n">' + (r.winners ? fmt(r.winners, 0) : 'vacante') + '</td><td class="n">' + (r.winners ? pesos(r.each) : '—') + '</td></tr>').join('') + '</tbody></table></div>' +
+    (e.pozo ? '<p class="jg-note">Pozo estimado que informa la Lotería de la Ciudad para este sorteo: <b>' + pesos(e.pozo) + '</b>.</p>' : '') : '';
+  return '<p class="jg-xh"><b>Sorteo N° ' + e.s + '</b> del ' + esc(dayName(e.d)) + ' <span class="jg-xb' + (e.src && e.src.length > 1 ? ' ok' : '') + '">' + esc(SRCS[e.src] || '') + '</span></p><div class="jg-lms">' + sets + plus + '</div>' + prizes;
+}
+async function lot(el) {
+  const L = D.lot;
+  const r = await fetch(L.feed, { cache: 'no-cache' });
+  if (!r.ok) throw new Error(r.status);
+  const doc = await r.json(), g = doc.data.games[L.game];
+  if (!g || !g.draws || !g.draws.length) return;
+  const now = new Date().toISOString();
+  const stale = Date.now() - Date.parse(doc.updated) > L.stale * 3600e3;
+  const when = (ymd(doc.updated) === ymd(now) ? 'hoy' : 'el ' + dayName(ymd(doc.updated))) + ' a las ' + hhmm(doc.updated);
+  const head = stale ? '<p class="jg-xs no" role="status"><b>Sin datos al ' + hhmm(now) + '.</b> No pudimos revisar las fuentes desde ' + esc(when) + ' (hora argentina): puede haber un sorteo más nuevo que este. Mirá ' + '<a href="' + L.official[0] + '" rel="noopener">' + esc(L.official[1]) + '</a>.</p>' : '<p class="jg-xs" role="status">Revisado ' + esc(when) + ' · hora argentina</p>';
+  const behind = g.behind > 0 && g.expected ? '<p class="jg-xs no"><b>Pendiente de publicación oficial.</b> La copia oficial de San Juan todavía no publicó el sorteo del ' + esc(dayName(g.expected)) + (g.behind > 1 ? ' (faltan ' + g.behind + ' sorteos)' : '') + '. Abajo, el último que publicó. Los números del ' + esc(dmy(g.expected)) + ' están en <a href="' + L.official[0] + '" rel="noopener">' + esc(L.official[1]) + '</a>.</p>' : '';
+  let cur = g.draws[0];
+  const draw = () => {
+    el.innerHTML = head + behind + (g.draws.length > 1 ? '<label class="jg-fl jg-xsel"><span>Sorteo</span><select class="jg-se" data-lot-sel>' + g.draws.map((e, i) => '<option value="' + e.s + '"' + (e === cur ? ' selected' : '') + '>N° ' + e.s + ' · ' + esc(dayName(e.d)) + (i === 0 ? ' (el último publicado)' : '') + '</option>').join('') + '</select></label>' : '') + drawHtml(L, g, cur) +
+      '<p class="jg-note">Para cobrar manda el extracto oficial: <a href="' + L.official[0] + '" rel="noopener">' + esc(L.official[1]) + '</a>.</p>';
+  };
+  el.addEventListener('change', ev => { if (!ev.target.matches('[data-lot-sel]')) return; cur = g.draws.find(e => String(e.s) === ev.target.value) || cur; draw(); fillDraw(L, cur, 'Cargamos los números del sorteo N° ' + cur.s + ' del ' + dayName(cur.d) + '.'); });
+  draw();
+  const typed = form && Object.values(L.sets).some(([id]) => { if (!id) return false; const box = $('[data-balls="' + id + '"]', form), area = $('[data-many="' + id + '"]', form); return (box && $$('input', box).some(i => i.value)) || (area && area.value); });
+  if (!typed) fillDraw(L, cur, 'Ya cargamos los números del sorteo N° ' + cur.s + ' del ' + dayName(cur.d) + '. Escribí tu jugada y tocá Controlar.');
+}
+const lotEl = $('[data-lot]');
+if (lotEl && D.lot) lot(lotEl).catch(() => { lotEl.insertAdjacentHTML('beforeend', '<p class="jg-xs no">No pudimos cargar el último sorteo. Probá de nuevo en un rato.</p>'); });
 if (form) {
   form.addEventListener('click', e => { const b = e.target.closest('[data-fill]'); if (b) fill(b); });
   const saved = store.get('jg-boleta-' + D.game);

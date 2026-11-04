@@ -266,6 +266,38 @@
    "g": 0.7979,
    "alt": "Chica sentada de costado en una silla, mostrando una boleta junto a la cara"
   },
+  "/quiniela/tucuman/": {
+   "image": "jdd-sc-quiniela-tucuman-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-tucuman-320.webp",
+     "w": 320,
+     "h": 733,
+     "kb": 24
+    },
+    {
+     "name": "scenes/quiniela-tucuman-480.webp",
+     "w": 480,
+     "h": 1100,
+     "kb": 43
+    },
+    {
+     "name": "scenes/quiniela-tucuman-720.webp",
+     "w": 720,
+     "h": 1650,
+     "kb": 76
+    },
+    {
+     "name": "scenes/quiniela-tucuman-1020.webp",
+     "w": 1020,
+     "h": 2338,
+     "kb": 97
+    }
+   ],
+   "ar": 0.4363,
+   "g": 0.8596,
+   "alt": "Chica de vestido rojo ofreciendo un limón amarillo con las dos manos, con una pierna levantada atrás"
+  },
   "/quiniela/mendoza/": {
    "image": "jdd-sc-quiniela-mendoza-r2",
    "files": [
@@ -297,6 +329,44 @@
    "ar": 0.4344,
    "g": 0.8967,
    "alt": "Chica sentada en un banquito, sacando una uva de un racimo violeta"
+  },
+  "/quiniela/san-juan/": {
+   "image": "jdd-sc-quiniela-san-juan-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-san-juan-320.webp",
+     "w": 320,
+     "h": 702,
+     "kb": 30
+    },
+    {
+     "name": "scenes/quiniela-san-juan-480.webp",
+     "w": 480,
+     "h": 1053,
+     "kb": 52
+    },
+    {
+     "name": "scenes/quiniela-san-juan-720.webp",
+     "w": 720,
+     "h": 1580,
+     "kb": 93
+    },
+    {
+     "name": "scenes/quiniela-san-juan-960.webp",
+     "w": 960,
+     "h": 2107,
+     "kb": 141
+    },
+    {
+     "name": "scenes/quiniela-san-juan-1096.webp",
+     "w": 1096,
+     "h": 2405,
+     "kb": 115
+    }
+   ],
+   "ar": 0.4557,
+   "g": 0.9761,
+   "alt": "Chica caminando al sol, haciéndose sombra con la mano y con una boleta en la otra"
   },
   "/quiniela/cordoba/": {
    "image": "jdd-sc-quiniela-cordoba-r2",

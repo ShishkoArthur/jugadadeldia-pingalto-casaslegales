@@ -18,6 +18,7 @@ const LOT_TITLES = {
   'pba:quiniela-reglamento': 'Reglamento del Juego de Quiniela (Lotería de la Provincia de Buenos Aires)',
   'pba:juegos-tradicionales': 'Juegos tradicionales (Lotería de la Provincia de Buenos Aires)',
   'pba:telekino-reglamento': 'Reglamento del Telekino (IPLyC Provincia de Buenos Aires), copia publicada por Mendoza',
+  'cajapopular:tipo-sorteo': 'Tipos de sorteo de la Quiniela de Tucumán y su hora (Caja Popular de Ahorros, API del sitio de resultados)',
   'cas:quini6-reglamento': 'Reglamento del Quini 6 y Brinco (Lotería de Santa Fe), copia publicada por Lotería de Río Negro',
 };
 

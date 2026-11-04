@@ -44,6 +44,20 @@ export const quienEscribe = {
   },
 };
 
+// Where the results come from (server feeds, docs/FEEDS.md): official pages read every 15 minutes or every hour, never by hand.
+const FEEDS = [
+  ['Quiniela de la Ciudad, la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza', 'https://quiniela.loteriadelaciudad.gob.ar/', 'LOTBA, comparada con el extracto de la Provincia (IPLyC)', '/quiniela/'],
+  ['Quiniela de Tucumán', 'https://resultadosquiniela.cajapopular.gov.ar/', 'Caja Popular de Ahorros: una sola copia oficial', '/quiniela/tucuman/'],
+  ['Quiniela de San Juan', 'https://cas.gob.ar/', 'Caja de Acción Social: una sola copia oficial', '/quiniela/san-juan/'],
+  ['Quiniela Chaqueña y Correntina', 'https://loteria.chaco.gov.ar/', 'Lotería Chaqueña: la página se usa solo si sus extractos de la Ciudad, la Provincia y Córdoba coinciden con los nuestros', '/quiniela/chaco/'],
+  ['Quiniela Misionera y Misionera Plus', 'https://www.loteriademisiones.com.ar/portal/', 'IPLyC Misiones: la página se usa solo si sus extractos de LOTBA, la Provincia y Santa Fe coinciden con los nuestros', '/quiniela/misiones/'],
+  ['Loto Plus', 'https://loto.loteriadelaciudad.gob.ar/', 'Lotería de la Ciudad, comparada con la copia de la CAS de San Juan', '/loto-plus/'],
+  ['Telekino', 'https://www.telekino.com.ar/', 'sitio oficial del Telekino, comparado con la copia de la CAS de San Juan', '/telekino/'],
+  ['Quini 6 y Brinco', 'https://cas.gob.ar/juegos/sorteos/resultados', 'solo la copia de la CAS de San Juan: la Lotería de Santa Fe no responde a nuestro servidor; si la copia se atrasa, la página lo dice', '/quini-6/'],
+];
+const feeds = h => '<section class="jg-c w3"><span class="jg-sm">Resultados</span><h2>De dónde copiamos los sorteos</h2><p>Los resultados no se escriben a mano: un programa en nuestro servidor lee las páginas oficiales, revisa cada número y publica una copia. Si una fuente falla o se atrasa, la página lo dice.</p><div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Juego</th><th>Fuente y control</th></tr></thead><tbody>' +
+  FEEDS.map(([g, url, how, path]) => '<tr><td>' + (h.built(path) ? '<a href="' + h.href(path) + '">' + h.esc(g) + '</a>' : h.esc(g)) + '</td><td><a href="' + url + '" rel="noopener">' + h.esc(new URL(url).hostname.replace(/^www\./, '')) + '</a> · ' + h.esc(how) + '</td></tr>').join('') + '</tbody></table></div></section>';
+
 export const fuentes = {
   path: '/de-donde-salen-los-datos/', kind: 'service',
   title: 'De dónde salen los datos y cómo calculamos',
@@ -68,7 +82,7 @@ export const fuentes = {
       '<section class="jg-c">' + ICONS.calc.replace('<svg', '<svg class="jg-ic"') + '<h2>Cuentas exactas</h2><p>Las chances se calculan con fracciones exactas sobre todas las combinaciones posibles, sin redondeos en el medio.</p></section>' +
       '<section class="jg-c">' + ICONS.check.replace('<svg', '<svg class="jg-ic"') + '<h2>Pruebas</h2><p>Cada constante del código (por ejemplo, cuántas veces paga una apuesta) se compara con la cita del reglamento. Si no coinciden, no hay publicación.</p></section>' +
       '<section class="jg-c">' + ICONS.dice.replace('<svg', '<svg class="jg-ic"') + '<h2>Simulación de control</h2><p>Además del cálculo exacto, una simulación con semilla fija tiene que dar lo mismo dentro del margen esperado.</p></section>' +
-      lotGroups +
+      lotGroups + feeds(h) +
       '<section class="jg-c w3"><span class="jg-sm">Ayuda</span><h2>Líneas de ayuda y autoexclusión</h2>' + table(rgRows) + '</section>' + miss + '</div>';
   },
 };

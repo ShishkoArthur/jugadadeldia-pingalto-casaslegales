@@ -16,13 +16,22 @@ const PROV_PAGES = [
   ['santa-fe', '/quiniela/santa-fe/'], ['entre-rios', '/quiniela/entre-rios/'], ['mendoza', '/quiniela/mendoza/'],
 ];
 export const PROV_PATH = Object.fromEntries(PROV_PAGES);
+// Provinces with their own official page in the feed `provincias` (tools/feeds/jugadadeldia/provincias.mjs): built in pages/provincias.mjs.
+export const PV_PAGES = [
+  ['tucuman', '/quiniela/tucuman/', 'Quiniela de Tucumán', 'Caja Popular, cinco sorteos'],
+  ['chaco', '/quiniela/chaco/', 'Quiniela Chaqueña', 'Lotería Chaqueña'],
+  ['corrientes', '/quiniela/corrientes/', 'Quiniela Correntina', 'Copia de la Lotería Chaqueña'],
+  ['san-juan', '/quiniela/san-juan/', 'Quiniela de San Juan', 'Caja de Acción Social'],
+  ['misiones', '/quiniela/misiones/', 'Quiniela Misionera', 'IPLyC Misiones, con la Plus'],
+];
+const pvPaths = h => Object.fromEntries(PV_PAGES.filter(([, u]) => h.built(u)).flatMap(([id, u]) => id === 'misiones' ? [[id, u], ['misiones-plus', u]] : [[id, u]]));
 const COLORS = ['#ff5a3c', '#2f7cf6', '#16b38a', '#8b5cf6', '#e8930c', '#e0447a'];
 
-const root = (mode, extra = '') => '<div class="jg-xq" data-xq="' + mode + '"' + extra + ' aria-live="polite">';
-const loading = '<p class="jg-xw" data-xw>Cargando los extractos…</p><noscript><p class="jg-note">Los extractos se muestran con JavaScript desde nuestra copia de los datos oficiales. Las fuentes están al final de la página.</p></noscript>';
-const pageData = h => ({ feed: FEED, stale: STALE_HOURS, paths: Object.fromEntries(PROV_PAGES.filter(([, u]) => h.built(u))), tpaths: Object.fromEntries(TURNS.filter(x => h.built(x.path)).map(x => [x.t, x.path])) });
+export const root = (mode, extra = '') => '<div class="jg-xq" data-xq="' + mode + '"' + extra + ' aria-live="polite">';
+export const loading = '<p class="jg-xw" data-xw>Cargando los extractos…</p><noscript><p class="jg-note">Los extractos se muestran con JavaScript desde nuestra copia de los datos oficiales. Las fuentes están al final de la página.</p></noscript>';
+export const pageData = h => ({ feed: FEED, stale: STALE_HOURS, paths: Object.fromEntries(PROV_PAGES.filter(([, u]) => h.built(u))), ppaths: pvPaths(h), tpaths: Object.fromEntries(TURNS.filter(x => h.built(x.path)).map(x => [x.t, x.path])) });
 
-function method(h, { two = true } = {}) {
+export function method(h, { two = true } = {}) {
   return '<section class="jg-c w3"><span class="jg-sm">De dónde salen</span><h2>Cómo armamos cada extracto</h2><ul class="jg-ul tx">' +
     '<li>Leemos los resultados oficiales de <b>La Quiniela de la Ciudad (LOTBA)</b>, que publica en la misma página los extractos de la Ciudad, la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza.</li>' +
     (two ? '<li>Los comparamos con el <b>extracto oficial de la Provincia de Buenos Aires</b> (IPLyC), que trae Provincia, Ciudad, Córdoba, Santa Fe y Entre Ríos del mismo turno. Si las dos copias coinciden cifra por cifra, el sorteo lleva la marca <b>2 fuentes</b>; si difieren en una sola cifra, no lo mostramos.</li>' : '<li>Mendoza solo llega por la copia de LOTBA: lleva la marca <b>1 fuente</b>.</li>') +
@@ -30,21 +39,23 @@ function method(h, { two = true } = {}) {
     '<li>La copia vale como información. Para cobrar manda el extracto oficial que tiene tu agencia.</li></ul>' +
     '<p class="jg-note">Fuentes: <a href="https://quiniela.loteriadelaciudad.gob.ar/" rel="noopener">quiniela.loteriadelaciudad.gob.ar</a> · <a href="https://loteria.gba.gob.ar/" rel="noopener">loteria.gba.gob.ar</a>. ' + (h.built('/de-donde-salen-los-datos/') ? '<a href="' + h.href('/de-donde-salen-los-datos/') + '">Más sobre nuestros datos</a>.' : '') + '</p></section>';
 }
-const chance = '<section class="jg-c"><span class="jg-sm">La chance</span><h2>Ningún número avisa</h2><p>Cada terminación de dos cifras tiene la misma chance en cada lugar: <b>1 en 100</b>. Lo que salió ayer no cambia lo que sale hoy.</p></section>';
-const provTiles = (h, except) => tiles(h, PROV_PAGES.filter(([id, u]) => u !== except).map(([id, u], i) => [u, 'Quiniela ' + (id === 'caba' ? 'Nacional' : id === 'buenos-aires' ? 'de la Provincia' : 'de ' + J[id].name), id === 'mendoza' ? 'Copia de LOTBA' : 'LOTBA y Provincia, comparadas', COLORS[i % COLORS.length], ICONS.pin]));
+export const chance = '<section class="jg-c"><span class="jg-sm">La chance</span><h2>Ningún número avisa</h2><p>Cada terminación de dos cifras tiene la misma chance en cada lugar: <b>1 en 100</b>. Lo que salió ayer no cambia lo que sale hoy.</p></section>';
+export const provTiles = (h, except) => tiles(h, [...PROV_PAGES.map(([id, u]) => [u, 'Quiniela ' + (id === 'caba' ? 'Nacional' : id === 'buenos-aires' ? 'de la Provincia' : 'de ' + J[id].name), id === 'mendoza' ? 'Copia de LOTBA' : 'LOTBA y Provincia, comparadas']), ...PV_PAGES.map(([, u, t, sub]) => [u, t, sub])]
+  .filter(([u]) => u !== except).map(([u, t, sub], i) => [u, t, sub, COLORS[i % COLORS.length], ICONS.pin]));
+const otras = h => PV_PAGES.some(([, u]) => h.built(u)) ? '<section class="jg-c w3"><span class="jg-tag">Más provincias</span><h2>Tucumán, Chaco, Corrientes, San Juan y Misiones</h2>' + root('otras') + loading + '</div><p class="jg-note">Cada provincia tiene sus propios turnos y horarios: tocá una para ver sus extractos completos.</p></section>' : '';
 
 export const quinielaHoy = {
   path: '/quiniela/', kind: 'lottery', section: 'quiniela', css: ['extractos.css'], js: ['extractos.js'],
   title: 'Quiniela de hoy en vivo: resultados y cabezas por provincia',
   h1: 'Quiniela de hoy en vivo: todas las cabezas',
-  description: 'La quiniela de hoy en vivo, revisada cada 15 minutos: las cabezas de la Previa a la Nocturna y los 20 números de seis jurisdicciones, de copias oficiales.',
+  description: 'La quiniela de hoy en vivo, revisada cada 15 minutos: cabezas y extractos de la Nacional, la Provincia, Córdoba, Santa Fe, Tucumán, Chaco y más.',
   ld: h => [webPage(h), crumbs(h, [])],
   data: pageData,
   render(h) {
-    return hero(h, { kicker: 'Quiniela · extractos de hoy', scene: 'quiniela', lede: 'Las cabezas de cada turno en la Ciudad, la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza, a medida que salen: revisamos las fuentes oficiales cada 15 minutos. Tocá una cabeza para ver los 20 números del extracto.' }) +
+    return hero(h, { kicker: 'Quiniela · extractos de hoy', scene: 'quiniela', lede: 'Las cabezas de cada turno en la Ciudad, la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza, a medida que salen, y más abajo Tucumán, Chaco, Corrientes, San Juan y Misiones: revisamos las fuentes oficiales cada 15 minutos. Tocá una cabeza para ver los 20 números del extracto.' }) +
       '<div class="jg-mn">' +
       '<section class="jg-c w3"><span class="jg-tag">Hora argentina</span><h2>Las cabezas del día</h2>' + root('hoy') + loading + '</div></section>' +
-      '<section class="jg-c w2"><span class="jg-sm">Por provincia</span><h2>El extracto de tu provincia</h2>' + provTiles(h) + '</section>' + chance +
+      otras(h) + '<section class="jg-c w2"><span class="jg-sm">Por provincia</span><h2>El extracto de tu provincia</h2>' + provTiles(h) + '</section>' + chance +
       '<section class="jg-c w3"><span class="jg-sm">Por turno</span><h2>Un turno en todas las provincias</h2>' + turnTiles(h) + '</section>' +
       (h.built('/quiniela/cuanto-paga/') ? '<section class="jg-c w3"><span class="jg-sm">Si te tocó</span><h2>¿Cuánto paga?</h2><p>A 2 cifras a la cabeza, La Quiniela de la Ciudad paga ' + fmt(rules('quiniela', 'lotba-quiniela').pay[2].v, 0) + ' veces lo apostado; a 4 cifras, ' + fmt(rules('quiniela', 'lotba-quiniela').pay[4].v, 0) + '. La cuenta completa, con la chance de cada jugada:</p><div class="jg-r">' + btn(h, '/quiniela/cuanto-paga/', 'Calcular mi premio', true) + btn(h, '/quiniela/extractos/', 'Buscar un sorteo anterior') + '</div></section>' : '') +
       '<section class="jg-c w3"><span class="jg-sm">Para entender la quiniela</span><h2>Herramientas</h2>' + tiles(h, [['/quiniela/horarios/', '¿Hay quiniela hoy?', 'Horarios y cuenta regresiva', '#e8930c', ICONS.pin], ['/quiniela/como-se-juega/', 'Cómo se juega', 'La boleta campo por campo', '#2f7cf6', ICONS.book], ['/quiniela/simulador/', 'Un año jugando', 'Simulador en pesos', '#8b5cf6', ICONS.calc], ['/cuanto-devuelve-cada-juego/', 'Cuánto devuelve cada juego', 'De cada $ 100', '#16b38a', ICONS.calc]]) + '</section>' +
@@ -171,6 +182,7 @@ const TURN_TEXT = {
   PRIM: { title: n => 'Quiniela La Primera de hoy: cabezas de cada provincia', d: x => 'La Primera de la quiniela de hoy, de las ' + x + ': la cabeza y los 20 números de la Nacional, la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza.' },
   PREV: { title: n => 'Quiniela La Previa de hoy: cabezas de cada provincia', d: x => 'La Previa de la quiniela de hoy, de las ' + x + ': el primer sorteo del día con su cabeza y los 20 números de la Nacional, la Provincia y más.' },
 };
+const TURN_PV = { NOCT: 'La Nocturna', MATU: 'La Matutina', VESP: 'La Vespertina', PRIM: 'La Primera', PREV: 'La Previa' };
 const turnName = t => PROG_TYPES.find(x => x.turno === t).name;
 const turnTime = t => { const name = turnName(t), set = [...new Set(program().rows.filter(r => r.type === name).map(r => r.t))]; return set.join(' / '); };
 const turnTiles = (h, except) => tiles(h, TURNS.filter(x => x.path !== except).map((x, i) => [x.path, turnName(x.t), 'a las ' + turnTime(x.t), COLORS[(i + 2) % COLORS.length], ICONS.pin]));
@@ -189,6 +201,7 @@ function turnPage(T) {
         '<div class="jg-mn">' +
         '<section class="jg-c w3" id="turno"><span class="jg-tag">' + h.esc(name) + ' · ' + time + ' hs</span><h2>La ' + h.esc(name) + ', provincia por provincia</h2>' + root('turno', ' data-t="' + T.t + '"') + loading + '</div></section>' +
         '<section class="jg-c w3"><span class="jg-sm">La semana</span><h2>Las cabezas de la ' + h.esc(name) + ', día por día</h2><div data-xtweek><p class="jg-xw">Cargando…</p></div></section>' +
+        (PV_PAGES.some(([, u]) => h.built(u)) ? '<section class="jg-c w3"><span class="jg-sm">Otras provincias</span><h2>' + h.esc(TURN_PV[T.t]) + ' en otras provincias</h2>' + root('tprov', ' data-t="' + T.t + '"') + loading + '</div><p class="jg-note">Cada lotería sortea a su hora: la hora de cada provincia es la que publica su lotería, si la publica.</p></section>' : '') +
         (T.t === 'NOCT' && h.built('/quiniela-plus/') ? '<section class="jg-c w2"><span class="jg-sm">Con la Nocturna</span><h2>Quiniela Plus</h2><p>La Quiniela Plus de la Provincia se resuelve con los 20 números de la Nocturna de la Provincia, de lunes a sábados a las ' + h.src.value('pba.qplus.nocturna') + '.</p><div class="jg-r">' + btn(h, '/quiniela-plus/', 'Controlar mi Quiniela Plus', true) + btn(h, '/quiniela/nacional-y-provincia/', 'Nacional y Provincia, lado a lado') + '</div>' + cite(h, ['pba.qplus.nocturna']) + '</section>' : '') +
         chance +
         '<section class="jg-c w3"><span class="jg-sm">Los otros turnos</span><h2>Toda la quiniela del día</h2>' + turnTiles(h, T.path) + '<div class="jg-r">' + btn(h, '/quiniela/', 'Todas las cabezas de hoy', true) + btn(h, '/quiniela/horarios/', '¿Hay quiniela hoy?') + btn(h, '/quiniela/extractos/', 'Buscar un sorteo anterior') + '</div>' + cite(h, [T.fact], 'El horario, del programa oficial') + '</section>' +

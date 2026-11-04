@@ -1,0 +1,61 @@
+{
+ "id": "cajapopular",
+ "operator": "Caja Popular de Ahorros de la Provincia de Tucumán (Quiniela de Tucumán)",
+ "checked": "2026-11-04",
+ "maxAgeDays": 183,
+ "note": "Official results site resultadosquiniela.cajapopular.gov.ar (SPA). Its public API api/tipo-sorteo/ lists the draw types of the Quiniela de Tucumán with their hour (hora_sorteo). The server sends only the leaf certificate; the copy was fetched with the public intermediate Sectigo Public Server Authentication CA DV R36 pinned in tools/feeds/jugadadeldia/provincias-parse.mjs (chain, dates and host name still checked). Type 11 is a second NOCTURNO at 20:00 (created 2024-12-24); the feed maps type 5 (22:00) and 11 to the Nocturno turn and keeps the hour of each draw.",
+ "docs": {
+  "tipo-sorteo": {
+   "url": "https://resultadosquiniela.cajapopular.gov.ar/api/tipo-sorteo/",
+   "linkedFrom": "https://resultadosquiniela.cajapopular.gov.ar/",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "57d7ecfba95578296eef0decde48ac09ab3803e6a0bd4b1aae7dc83e7c1c28a8",
+   "file": "data/sources/lottery/_docs/cajapopular-tipo-sorteo.json"
+  }
+ },
+ "facts": [
+  {
+   "id": "cajapopular.quiniela.time-matutino",
+   "value": "11:30",
+   "valueText": "11:30:00",
+   "doc": "tipo-sorteo",
+   "quote": "\"id\":1,\"tipo\":\"MATUTINO\",\"fecha_creacion\":\"2023-07-24T09:05:31.197455\",\"hora_sorteo\":\"11:30:00\""
+  },
+  {
+   "id": "cajapopular.quiniela.time-vespertino",
+   "value": "14:30",
+   "valueText": "14:30:00",
+   "doc": "tipo-sorteo",
+   "quote": "\"id\":2,\"tipo\":\"VESPERTINO\",\"fecha_creacion\":\"2023-07-24T09:05:39.923713\",\"hora_sorteo\":\"14:30:00\""
+  },
+  {
+   "id": "cajapopular.quiniela.time-siesta",
+   "value": "17:30",
+   "valueText": "17:30:00",
+   "doc": "tipo-sorteo",
+   "quote": "\"id\":3,\"tipo\":\"DE LA SIESTA\",\"fecha_creacion\":\"2023-07-24T09:05:55.594959\",\"hora_sorteo\":\"17:30:00\""
+  },
+  {
+   "id": "cajapopular.quiniela.time-tarde",
+   "value": "19:30",
+   "valueText": "19:30:00",
+   "doc": "tipo-sorteo",
+   "quote": "\"id\":4,\"tipo\":\"DE LA TARDE\",\"fecha_creacion\":\"2023-07-24T09:06:10.364528\",\"hora_sorteo\":\"19:30:00\""
+  },
+  {
+   "id": "cajapopular.quiniela.time-nocturno-20",
+   "value": "20:00",
+   "valueText": "20:00:00",
+   "doc": "tipo-sorteo",
+   "quote": "\"id\":11,\"tipo\":\"NOCTURNO\",\"fecha_creacion\":\"2024-12-24T15:56:05.026991\",\"hora_sorteo\":\"20:00:00\""
+  },
+  {
+   "id": "cajapopular.quiniela.time-nocturno",
+   "value": "22:00",
+   "valueText": "22:00:00",
+   "doc": "tipo-sorteo",
+   "quote": "\"id\":5,\"tipo\":\"NOCTURNO\",\"fecha_creacion\":\"2023-07-24T09:06:18.707023\",\"hora_sorteo\":\"22:00:00\""
+  }
+ ]
+}

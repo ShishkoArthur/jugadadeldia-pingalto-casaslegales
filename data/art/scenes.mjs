@@ -193,6 +193,8 @@ export const ALT = {
     '/burako/': 'Chica sentada en un banquito con un atril de fichas en las rodillas, moviendo una ficha',
     '/chinchon/': 'Chica sentada con siete cartas en abanico en una mano y un mate en la otra',
     '/escoba-de-15/': 'Chica sentada en el borde de una mesa juntando cartas españolas en una pila',
+    '/quiniela/tucuman/': 'Chica de vestido rojo ofreciendo un limón amarillo con las dos manos, con una pierna levantada atrás',
+    '/quiniela/san-juan/': 'Chica caminando al sol, haciéndose sombra con la mano y con una boleta en la otra',
   },
   pingalto: {
     '/': 'Alt, la guía de pingalto, sentada en un banquito jugando con un joystick',

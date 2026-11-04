@@ -158,6 +158,9 @@
   og:image на сайтах нет (twitter:card summary) — делать отдельно, если владелец захочет превью ссылок.
 
 ## Журнал
+- 04.11 — jugadadeldia: результаты из новых лент — 5 страниц кинелы провинций (/quiniela/tucuman/, /san-juan/, /chaco/, /corrientes/,
+  /misiones/ + Misionera Plus), результаты на /quini-6/, /brinco/ (с «pendiente», когда CAS отстаёт), /loto-plus/ (выплаты), /telekino/;
+  блоки провинций на /quiniela/ и турно-страницах; часы Tucumán с цитатой (раздел «jugadadeldia (04.11) — результаты провинций и лото»).
 - 04.11 — jugadadeldia аудит (`docs/AUDIT-JUGADADELDIA-2026-11-04.md`): +5 страниц турно (/quiniela/nocturna/, /matutina/, /vespertina/,
   /la-primera/, /la-previa/), Quini 6 «50 %» исправлено (4.683.410 разных / 6.492.584 тиражей), 7 других правок чисел/UI, карточки «¿Ya salió?»,
   Quiniela Plus берёт последнюю Nocturna PBA из ленты, title по интенту; 79 стр. выложено. **Не синхронизировано на сервер:** кэш PBA «вчера» 3 ч
@@ -204,6 +207,29 @@
   `data/img-review/`), 10 макетов jugadadeldia (`docs/design/jugadadeldia/`). Дальше — макеты pingalto и casaslegales.
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
+
+## jugadadeldia (04.11) — результаты провинций и лото: 84 страницы
+- **Новые страницы** (`pages/provincias.mjs`, клиент — режимы `pv`/`pvweek`/`pvarch`/`pvfreq` в `client/extractos.js`, лента `provincias`):
+  /quiniela/tucuman/ (главный ключ 546k: «último sorteo y los cinco de hoy» — чипы турно дня, крупный экстракт, «¿salió mi número?», дни,
+  архив по дате, частоты 00–99 с χ² от 30 тиражей, часы), /quiniela/san-juan/, /quiniela/chaco/, /quiniela/corrientes/ (копия Lotería
+  Chaqueña), /quiniela/misiones/ (+ блок Misionera Plus). Свой порядок блоков и вступления у каждой; бейдж «1 fuente» (Tucumán, San Juan) или
+  «verificada» (`c` > 0: страница Chaco/Misiones совпала с нашими LOTBA/PBA). «Sin datos al hh:mm» — при возрасте ленты > `maxAgeHours`.
+  Сцены tucuman и san-juan поставлены (alt в `data/art/scenes.mjs`), у Chaco/Corrientes/Misiones сцен нет.
+- **Часы Tucumán — с цитатой:** `data/sources/lottery/cajapopular.json` — копия `api/tipo-sorteo/` (JSON, sha256, 6 фактов: 11:30, 14:30,
+  17:30, 19:30, 22:00 и второй Nocturno 20:00), скачана с закреплённым промежуточным Sectigo DV R36 (проверка TLS не отключалась).
+  Часы других провинций не показываем (в ленте они — сетка LOTBA, не цитата). Тест `lottery-sources` — дата 04.11.
+- **Лото** (`live()` в `pages/sorteos.mjs`, `lot()` в `client/sorteo.js`, `css/loterias.css`, лента `loterias`): последний тираж по
+  модальностям, выбор из истории (до 30), бейдж «2 fuentes» (LOTBA/telekino.com.ar + CAS) или «1 fuente: copia de la CAS»; Loto Plus —
+  ганадоры и премии как у LOTBA («vacante»), pozo estimado; `behind > 0` → «Pendiente de publicación oficial. La copia oficial de San Juan
+  todavía no publicó el sorteo del …» + ссылка на экстракт Lotería de Santa Fe (`index.php/resultados/quini-6|brinco?view=resultados`).
+  Контроль ниже заполняется числами показанного тиража (если посетитель сам не ввёл), выбор другого тиража — перезаполняет.
+- **Хабы:** /quiniela/ — блок «Más provincias» (карточки с cabezas последнего дня), плитки провинций, меню «Quiniela» (+5), главная (+2 плитки),
+  турно-страницы — «La Nocturna/Matutina… en otras provincias» (своя дата и час, если лотерея его публикует), /de-donde-salen-los-datos/ —
+  таблица «De dónde copiamos los sorteos». Title/description по интенту: /quiniela/, 5 провинций, /quini-6/, /loto-plus/, /telekino/, /brinco/
+  (план синхронизирован, у провинций `live` 04.11, у Tucumán `blocked` → `unblocked`).
+- **Не сделано:** /quini-6/controlar/ и /telekino/controlar/ не берут тираж из ленты (только основные страницы); Tómbola tucumana — нет
+  источника; xlsx Lotería Correntina как вторая копия — не разобран; /quiniela/extractos/ и /numeros-que-mas-salen/ — только LOTBA/PBA
+  (у провинций свой архив и частоты на их страницах). Архив провинций сейчас 2–3 дня, растёт (лента догружает по 1 дню до 21 дня назад).
 
 ## jugadadeldia (04.11) — аудит: 79 страниц, турно, правки чисел
 - Отчёт — `docs/AUDIT-JUGADADELDIA-2026-11-04.md` (ключи, интент/title топ-40, ошибки в числах, UX, blackjack.cab, что расширить).

@@ -1,10 +1,11 @@
 // Draw games: Quini 6, Loto Plus, Brinco, Telekino, Poceada de la Ciudad, Quiniela Plus. Odds from engine/lottery/games.mjs
-// (exact hypergeometric counts), prize shares from the cited regulations, and a manual checker (client/sorteo.js): the
-// visitor types the numbers of the draw - the site does not fetch or show results.
+// (exact hypergeometric counts), prize shares from the cited regulations, and a checker (client/sorteo.js): Quini 6, Brinco, Loto Plus
+// and Telekino show the latest official draw from the feed and fill the checker with it; Poceada and Quiniela Plus as before.
 import { odds, prizeShare, quini6PremioExtra, lotoPlusMultiplicador, quinielaPlusOdds } from '../../../engine/lottery/games.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn } from './parts.mjs';
 import { price, priceNote } from './precios.mjs';
+import lotFeed from '../../../tools/feeds/jugadadeldia/loterias.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -38,21 +39,43 @@ function results(h, { game, who, url, host, extra = '' }) {
     '<p class="jg-mu">Con esos números, controlá tu boleta abajo: la comparación es exacta y se hace en tu teléfono.</p></section>';
 }
 
+// Latest results from the server feed `loterias` (tools/feeds/jugadadeldia/loterias.mjs -> /data/feeds/loterias.json): the browser
+// draws the latest draw of the game (client/sorteo.js), with the prizes when the source states them, a note when the official copy is
+// behind the schedule (`behind`), and fills the manual checker below with those numbers. The static text says where the official
+// numbers are, for visitors without JavaScript and when the feed is late.
+const LOT = {
+  'quini-6': { sets: { tradicional: ['tr', 'Tradicional'], segunda: ['se', 'La Segunda'], revancha: ['re', 'Revancha'], 'siempre-sale': ['ss', 'Siempre Sale'] },
+    official: ['https://loteriasantafe.gov.ar/index.php/resultados/quini-6?view=resultados', 'el extracto oficial de la Lotería de Santa Fe'] },
+  brinco: { sets: { tradicional: ['br', 'Brinco'], junior: ['', 'Brinco Junior'] },
+    official: ['https://loteriasantafe.gov.ar/index.php/resultados/brinco?view=resultados', 'el extracto oficial de la Lotería de Santa Fe'] },
+  'loto-plus': { sets: { tradicional: ['tr', 'Tradicional'], match: ['ma', 'Match'], desquite: ['de', 'Desquite'], 'sale-o-sale': ['so', 'Sale o Sale'] }, plus: 'plusOut',
+    official: ['https://loto.loteriadelaciudad.gob.ar/', 'los resultados oficiales de la Lotería de la Ciudad'] },
+  telekino: { sets: { telekino: ['tk', 'Telekino'], rekino: ['rk', 'Rekino'] },
+    official: ['https://www.telekino.com.ar/', 'el sitio oficial del Telekino'] },
+};
+const lotData = game => ({ feed: '/data/feeds/loterias.json', game, stale: lotFeed.maxAgeHours, ...LOT[game] });
+function live(h, { game, name, who, url, host, cas }) {
+  return '<section class="jg-c w3 jg-resu" id="resultados"><span class="jg-tag">Resultados</span><h2>Resultados del ' + name + ': el último sorteo</h2>' +
+    '<div class="jg-lot" data-lot aria-live="polite"><p>Los números oficiales los publica <b>' + who + '</b> en <a href="' + url + '" rel="noopener">' + host + '</a> y están en el extracto de tu agencia. Acá mostramos la última copia oficial que pudimos leer' + (cas ? ': la que publica la Caja de Acción Social de San Juan, que vende el ' + name + '.' : '.') + '</p>' +
+    '<noscript><p class="jg-note">Los números se muestran con JavaScript desde nuestra copia de los datos oficiales.</p></noscript></div>' +
+    '<p class="jg-mu">Con esos números ya cargados, controlá tu ' + (game === 'telekino' ? 'cartón' : 'boleta') + ' abajo: la comparación es exacta y se hace en tu teléfono.</p></section>';
+}
+
 const q6 = () => odds('cas-quini6-tradicional');
 export const quini6 = {
-  path: '/quini-6/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'],
-  title: 'Quini 6: controlá tu boleta y la chance de cada premio',
-  h1: 'Quini 6: controlá tu boleta y mirá tus chances',
-  description: 'Controlá tu boleta del Quini 6 con el extracto oficial: Tradicional, La Segunda, Revancha, Siempre Sale y Premio Extra, y la chance de cada premio.',
+  path: '/quini-6/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
+  title: 'Quini 6: resultados del último sorteo y control de boleta',
+  h1: 'Quini 6: resultados y control de tu boleta',
+  description: 'Resultados del Quini 6: los números del último sorteo publicado de Tradicional, La Segunda, Revancha y Siempre Sale, el control de tu boleta y cada chance.',
   ld: h => [webPage(h), crumbs(h, [])],
-  data: () => ({ game: 'quini6', min: 0, max: 45, pick: 6, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'se', name: 'La Segunda', drawn: 6, win: [6, 5, 4] }, { id: 're', name: 'Revancha', drawn: 6, win: [6] }, { id: 'ss', name: 'Siempre Sale', drawn: 6, win: 'most' }], extra: 'quini6' }),
+  data: () => ({ game: 'quini6', min: 0, max: 45, pick: 6, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'se', name: 'La Segunda', drawn: 6, win: [6, 5, 4] }, { id: 're', name: 'Revancha', drawn: 6, win: [6] }, { id: 'ss', name: 'Siempre Sale', drawn: 6, win: 'most' }], extra: 'quini6', lot: lotData('quini-6') }),
   render(h) {
     const o = q6(), ex = quini6PremioExtra();
     const mod = (name, sub, body, c) => '<article class="jg-c jg-mod"><i class="jg-ba ' + c + '" aria-hidden="true">6</i><h3>' + name + '</h3><p class="jg-mu">' + sub + '</p>' + body + '</article>';
     const rowsWin = o.rows.filter(r => r.prize).map(r => '<li><b>' + r.hits + ' aciertos</b> ' + oneIn(r.oneIn) + '</li>').join('');
-    return hero(h, { kicker: 'Quini 6 · Lotería de Santa Fe', scene: 'quini-6', lede: 'Elegís ' + o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y jugás varios sorteos con la misma boleta. Acá está la chance exacta de cada premio, calculada sobre las ' + fmt(Number(o.combinations), 0) + ' combinaciones posibles.', actions: '<a class="jg-b p" href="#controlar">Controlar mi boleta</a>' + btn(h, '/quini-6/controlar/', 'Varias boletas') + btn(h, '/quini-6/como-se-juega/', 'Cómo se juega') }) +
+    return hero(h, { kicker: 'Quini 6 · Lotería de Santa Fe', scene: 'quini-6', lede: 'Elegís ' + o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y jugás varios sorteos con la misma boleta. Acá está la chance exacta de cada premio, calculada sobre las ' + fmt(Number(o.combinations), 0) + ' combinaciones posibles.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi boleta</a>' + btn(h, '/quini-6/controlar/', 'Varias boletas') + btn(h, '/quini-6/como-se-juega/', 'Cómo se juega') }) +
       '<div class="jg-mn jg-mods">' +
-      results(h, { game: 'del Quini 6', who: 'la Lotería de Santa Fe', url: 'https://www.loteriasantafe.gov.ar/', host: 'loteriasantafe.gov.ar' }) +
+      live(h, { game: 'quini-6', name: 'Quini 6', who: 'la Lotería de Santa Fe', url: LOT['quini-6'].official[0], host: 'loteriasantafe.gov.ar', cas: true }) +
       mod('Tradicional', 'Primer Sorteo, 6 números', '<ul class="jg-ul">' + rowsWin + '</ul>', '') +
       mod('La Segunda', 'Otro sorteo con la misma boleta', '<ul class="jg-ul">' + rowsWin + '</ul><p class="jg-note">Con los dos sorteos, la chance de algún premio es ' + oneIn(o.oneInAnyPrizeTicket) + ' (en uno solo, ' + oneIn(o.oneInAnyPrize) + ').</p>', 'c2') +
       mod('Revancha', 'Solo paga con 6 aciertos', '<ul class="jg-ul"><li><b>6 aciertos</b> ' + oneIn(o.rows[0].oneIn) + '</li></ul>', 'c3') +
@@ -74,19 +97,19 @@ export const anyLoto = () => {
   return 1 / (1 - (1 - n(t.pAnyPrize)) * (1 - n(m.pAnyPrize)) * (1 - n(d.pAnyPrize)));
 };
 export const lotoPlus = {
-  path: '/loto-plus/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'],
-  title: 'Loto Plus: controlá tu jugada y la chance de cada modalidad',
-  h1: 'Loto Plus: modalidades y chances',
-  description: 'Loto Plus: Tradicional, Match, Desquite, Sale o Sale y el Multiplicador con el número Plus, la chance de cada premio y el control de tu jugada.',
+  path: '/loto-plus/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
+  title: 'Loto Plus: resultados del último sorteo, premios y control',
+  h1: 'Loto Plus: resultados y modalidades',
+  description: 'Resultados del Loto Plus: el último sorteo de Tradicional, Match, Desquite y Sale o Sale, el número Plus, ganadores y premios, y el control de tu jugada.',
   ld: h => [webPage(h), crumbs(h, [])],
-  data: () => ({ game: 'loto', min: 0, max: 45, pick: 6, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'ma', name: 'Match', drawn: 6, win: [6, 5, 4] }, { id: 'de', name: 'Desquite', drawn: 6, win: [6] }, { id: 'so', name: 'Sale o Sale', drawn: 6, win: 'most' }], extra: 'loto' }),
+  data: () => ({ game: 'loto', min: 0, max: 45, pick: 6, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'ma', name: 'Match', drawn: 6, win: [6, 5, 4] }, { id: 'de', name: 'Desquite', drawn: 6, win: [6] }, { id: 'so', name: 'Sale o Sale', drawn: 6, win: 'most' }], extra: 'loto', lot: lotData('loto-plus') }),
   render(h) {
     const o = odds('lotba-loto-plus-tradicional'), m = lotoPlusMultiplicador();
     const tiers = '<ul class="jg-ul">' + o.rows.filter(r => r.prize).map(r => '<li><b>' + r.hits + ' aciertos</b> ' + oneIn(r.oneIn) + '</li>').join('') + '</ul>';
     const plusDial = '<div class="jg-dial" aria-hidden="true">' + Array.from({ length: 10 }, (_, i) => '<i class="jg-ba' + (i === 7 ? ' c4' : ' c2') + '">' + i + '</i>').join('') + '</div>';
-    return hero(h, { kicker: 'Loto Plus · Lotería de la Ciudad', scene: 'loto-plus', lede: o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y un número Plus del 0 al ' + (m.pPlus.d - 1n) + '. Cada modalidad tiene su propio sorteo y sus propios premios.', actions: '<a class="jg-b p" href="#controlar">Controlar mi jugada</a>' }) +
+    return hero(h, { kicker: 'Loto Plus · Lotería de la Ciudad', scene: 'loto-plus', lede: o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y un número Plus del 0 al ' + (m.pPlus.d - 1n) + '. Cada modalidad tiene su propio sorteo y sus propios premios.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi jugada</a>' }) +
       '<div class="jg-mn">' +
-      results(h, { game: 'del Loto Plus', who: 'la Lotería de la Ciudad', url: 'https://loto.loteriadelaciudad.gob.ar/', host: 'loto.loteriadelaciudad.gob.ar' }) +
+      live(h, { game: 'loto-plus', name: 'Loto Plus', who: 'la Lotería de la Ciudad', url: 'https://loto.loteriadelaciudad.gob.ar/', host: 'loto.loteriadelaciudad.gob.ar' }) +
       '<article class="jg-c"><span class="jg-sm">Tradicional y Match</span><h2>6, 5 o 4 aciertos</h2>' + tiers + '<p class="jg-note">Cada una con su sorteo de 6 números. Con Tradicional, Match y Desquite juntos, la chance de algún premio es ' + oneIn(anyLoto()) + ' (sin contar Sale o Sale).</p></article>' +
       '<article class="jg-c"><span class="jg-sm">Desquite</span><h2>Solo los 6</h2><p class="jg-win"><span>Chance</span><b>' + oneIn(o.rows[0].oneIn) + '</b></p></article>' +
       '<article class="jg-c"><span class="jg-sm">Sale o Sale</span><h2>Gana quien más acierta</h2><p>Si nadie hace 6, cobran los de 5; si no, los de 4. Depende de las boletas vendidas, así que no tiene una chance fija.</p></article>' +
@@ -99,18 +122,18 @@ export const lotoPlus = {
 };
 
 export const brinco = {
-  path: '/brinco/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'],
-  title: 'Brinco: chances por aciertos y control de tu jugada',
-  h1: 'Brinco: chances y control',
-  description: 'Brinco: seis números del 00 al 39, premios de 6 a 3 aciertos con su chance exacta, la comparación con el Quini 6 y el control de tu jugada con el extracto.',
+  path: '/brinco/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
+  title: 'Brinco: resultados del último sorteo y chances',
+  h1: 'Brinco: resultados y chances',
+  description: 'Resultados del Brinco: los números del último sorteo publicado y del Junior, el control de tu jugada y la chance de 6 a 3 aciertos frente al Quini 6.',
   ld: h => [webPage(h), crumbs(h, [])],
-  data: () => ({ game: 'brinco', min: 0, max: 39, pick: 6, sets: [{ id: 'br', name: 'Sorteo del Brinco', drawn: 6, win: [6, 5, 4, 3] }] }),
+  data: () => ({ game: 'brinco', min: 0, max: 39, pick: 6, sets: [{ id: 'br', name: 'Sorteo del Brinco', drawn: 6, win: [6, 5, 4, 3] }], lot: lotData('brinco') }),
   render(h) {
     const b = odds('cas-brinco'), q = q6();
     const ratio = Number(q.combinations) / Number(b.combinations);
-    return hero(h, { kicker: 'Brinco · Lotería de Santa Fe', scene: 'brinco', lede: 'Como el Quini 6, pero con ' + b.pool + ' números en vez de ' + q.pool + '. Parece poco, y cambia mucho la chance.', actions: '<a class="jg-b p" href="#controlar">Controlar mi jugada</a>' }) +
+    return hero(h, { kicker: 'Brinco · Lotería de Santa Fe', scene: 'brinco', lede: 'Como el Quini 6, pero con ' + b.pool + ' números en vez de ' + q.pool + '. Parece poco, y cambia mucho la chance.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi jugada</a>' }) +
       '<div class="jg-mn">' +
-      results(h, { game: 'del Brinco', who: 'la Lotería de Santa Fe', url: 'https://www.loteriasantafe.gov.ar/', host: 'loteriasantafe.gov.ar' }) +
+      live(h, { game: 'brinco', name: 'Brinco', who: 'la Lotería de Santa Fe', url: LOT.brinco.official[0], host: 'loteriasantafe.gov.ar', cas: true }) +
       '<section class="jg-c w2"><span class="jg-sm">Brinco contra Quini 6</span><h2>Los 6 aciertos</h2><div class="jg-vs"><div><b>' + oneIn(b.rows[0].oneIn) + '</b><span class="jg-bar"><i style="width:' + Math.round(100 / ratio) + '%"></i></span><small>Brinco, ' + b.pool + ' números</small></div><div><b>' + oneIn(q.rows[0].oneIn) + '</b><span class="jg-bar"><i style="width:100%"></i></span><small>Quini 6, ' + q.pool + ' números</small></div></div>' +
       '<p class="jg-hon">Sacar los 6 en el Brinco es unas <b>' + fmt(ratio, 1) + '</b> veces más fácil que en un sorteo del Quini 6. Y con 3 aciertos ya recuperás lo que pagaste.</p></section>' +
       shareCard('Brinco', n(prizeShare('cas-brinco').per100), ['cas.brinco.nominal', 'cas.brinco.pool', 'cas.brinco.split'], h) +
@@ -120,18 +143,18 @@ export const brinco = {
 };
 
 export const telekino = {
-  path: '/telekino/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'],
-  title: 'Telekino: controlá tu cartón, premios y chances',
-  h1: 'Telekino: controlá tu cartón',
-  description: 'Telekino: tu cartón tiene 15 números del 1 al 25 y salen 15. La chance exacta de 15 a 11 aciertos, el Rekino y el control de tu cartón con el sorteo.',
+  path: '/telekino/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
+  title: 'Telekino: resultados del último sorteo y control del cartón',
+  h1: 'Telekino: resultados y control de tu cartón',
+  description: 'Resultados del Telekino: los 15 números del último sorteo y los del Rekino, el control de tu cartón con un toque y la chance exacta de 15 a 11 aciertos.',
   ld: h => [webPage(h), crumbs(h, [])],
-  data: () => ({ game: 'telekino', min: 1, max: 25, pick: 15, sets: [{ id: 'tk', name: 'Telekino', drawn: 15, win: [15, 14, 13, 12, 11] }, { id: 'rk', name: 'Rekino', drawn: 15, win: 'most' }] }),
+  data: () => ({ game: 'telekino', min: 1, max: 25, pick: 15, sets: [{ id: 'tk', name: 'Telekino', drawn: 15, win: [15, 14, 13, 12, 11] }, { id: 'rk', name: 'Rekino', drawn: 15, win: 'most' }], lot: lotData('telekino') }),
   render(h) {
     const o = odds('pba-telekino');
     const board = '<div class="jg-board b5" aria-hidden="true">' + Array.from({ length: 25 }, (_, i) => '<i' + ([1, 3, 4, 6, 8, 9, 11, 12, 14, 15, 17, 19, 21, 22, 24].includes(i + 1) ? ' class="on"' : '') + '>' + (i + 1) + '</i>').join('') + '</div>';
-    return hero(h, { kicker: 'Telekino · Lotería de la Provincia', scene: 'telekino', lede: 'Un bingo televisado: tu cartón trae ' + o.pick + ' de los ' + o.pool + ' números, y del bolillero salen ' + o.drawn + '. Con ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + ' aciertos o más hay premio.', actions: '<a class="jg-b p" href="#controlar">Controlar mi cartón</a>' + btn(h, '/telekino/controlar/', 'Grilla de 5 por 5') }) +
+    return hero(h, { kicker: 'Telekino · Lotería de la Provincia', scene: 'telekino', lede: 'Un bingo televisado: tu cartón trae ' + o.pick + ' de los ' + o.pool + ' números, y del bolillero salen ' + o.drawn + '. Con ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + ' aciertos o más hay premio.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi cartón</a>' + btn(h, '/telekino/controlar/', 'Grilla de 5 por 5') }) +
       '<div class="jg-mn">' +
-      results(h, { game: 'del Telekino', who: 'la Lotería de la Provincia de Buenos Aires', url: 'https://loteria.gba.gob.ar/', host: 'loteria.gba.gob.ar', extra: ' El sorteo sale por televisión: los números del Telekino y del Rekino van por separado.' }) +
+      live(h, { game: 'telekino', name: 'Telekino', who: 'el sitio oficial del Telekino', url: 'https://www.telekino.com.ar/', host: 'telekino.com.ar' }) +
       '<section class="jg-c"><span class="jg-sm">Un cartón de ejemplo</span><h2>' + o.pick + ' de ' + o.pool + '</h2>' + board + '<p class="jg-note">Cada cartón ya viene con sus 15 números.</p></section>' +
       '<section class="jg-c w2"><span class="jg-sm">Por aciertos</span><h2>Chance de cada categoría</h2>' + oddsTable(o, { only: r => r.hits >= 8 }) + '<p class="jg-hon">Chance de cobrar algo (11 aciertos o más): <b>' + oneIn(o.oneInAnyPrize) + '</b>. Con 10 o menos no hay premio.</p></section>' +
       shareCard('Telekino', n(prizeShare('pba-telekino').per100), ['pba.telekino.fund', 'pba.telekino.split'], h, ' Incluye los premios en especie del primer premio.') +
