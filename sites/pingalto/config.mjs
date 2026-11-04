@@ -27,7 +27,10 @@ export const SITE = {
   preload: ['rounded-800-latin.woff2', 'vietnam-400-latin.woff2'],
   engineDirs: ['games'],
   registries: [],
+  // site search (tools/lib/search.mjs, engine/search.mjs, client/pa.js): one index per language, loaded on the first search
+  search: { file: lang => (lang === 'es' ? '' : '/' + lang) + '/indice.json' },
   gate: {
+    menuAll: 'data-pa-all',
     gambling: false,
     samplePage: '/metodo',
     siteMenu: /<nav class="pa-nv"/,

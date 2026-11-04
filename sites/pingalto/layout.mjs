@@ -1,18 +1,13 @@
-// pingalto.com page frame: head, sticky header with the logo (home link), menu (burger on phones) and theme switch; footer
+// pingalto.com page frame: head, sticky header with the logo (home link), the whole menu (content/menu.mjs; burger on phones), search
+// and theme switch; footer
 // "sin apuestas, sin skins, sin cajas" with the trademark note. Pages give { path, title, description, h1, ld, scripts, riot }
 // and a body string; the shared build (tools/render.mjs) passes the helper h.
-import { GAMES, sectionOf } from './content/visual.mjs';
+import { mainNav, crumbsLd } from './content/menu.mjs';
 import { LOGO as MARKS } from './logo.mjs';
 import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
 
 const MARK = logoSvg(MARKS, MARKS.pick, { mode: 'page', attrs: ' class="pa-lgm" aria-hidden="true"' });
 
-const NAV = [
-  ['/kit/ping', 'Ping'],
-  ['/tier-list', 'Tier list'],
-  ['games', 'Juegos'],
-  ['/esports', 'Esports'],
-];
 const FOOT = [
   ['/equipo', 'Equipo'],
   ['/metodo', 'Método'],
@@ -27,22 +22,17 @@ const THEME_JS = "try{var t=localStorage.getItem('pa-theme');if(t==='light'||t==
 // Riot Games legal notice (Riot "Legal Jibber Jabber", docs/research/APIS-2026-11-02.md B.2) on pages about Valorant and LoL.
 const RIOT = 'pingalto isn\'t endorsed by Riot Games and doesn\'t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.';
 
-// "Juegos": a menu button with the game list (hover with a close delay or click on wide screens, an open list in the phone menu);
-// each game is its monogram and name in our own type, no publisher logo (data/sources/pingalto/brand-policies.json).
-function games(h, current) {
-  const list = GAMES.filter(g => h.built(g.path));
-  if (!list.length) return '';
-  const sec = sectionOf(current), on = !!(sec && list.some(g => g.id === sec.id));
-  const items = list.map(g => '<a class="pa-gmi pa-g-' + g.id + '" href="' + h.href(g.path) + '"' + (sec && sec.id === g.id ? (current === g.path ? ' aria-current="page"' : ' aria-current="true"') : '') + '><i aria-hidden="true">' + h.esc(g.mono) + '</i><span>' + h.esc(g.name) + '</span></a>').join('');
-  return '<div class="pa-dd" data-pa-dd><button type="button" aria-expanded="false" aria-controls="pa-ddp"' + (on ? ' data-on' : '') + '>Juegos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="pa-ddp" id="pa-ddp">' + items + '</div></div>';
-}
 function links(h, list, current) {
-  return list.filter(([u]) => u === 'games' || h.built(u)).map(([u, label]) => u === 'games' ? games(h, current) : '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : current.startsWith(u + '/') ? ' aria-current="true"' : '') + '>' + h.esc(label) + '</a>').join('');
+  return list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : '') + '>' + h.esc(label) + '</a>').join('');
 }
+const FIND = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg>';
+// Language switcher slot (i18n agent): return the switcher markup for this page here; it sits between the menu and the search button.
+const langSlot = (h, p) => '';
 
 export function page(h, p, body) {
   const url = 'https://' + h.site.domain + p.path;
-  const ld = (p.ld || []).map(o => '<script type="application/ld+json">' + h.jsonScript(o) + '</script>').join('');
+  const crumb = p.is404 ? null : crumbsLd(h, p);
+  const ld = [...(p.ld || []).filter(o => !(crumb && o && o['@type'] === 'BreadcrumbList')), crumb].filter(Boolean).map(o => '<script type="application/ld+json">' + h.jsonScript(o) + '</script>').join('');
   const head = [
     '<meta charset="utf-8">',
     '<meta name="viewport" content="width=device-width,initial-scale=1">',
@@ -65,7 +55,8 @@ export function page(h, p, body) {
     ld,
   ].join('');
   const header = '<header class="pa-hd"><a class="pa-lg" href="/" aria-label="pingalto, inicio">' + MARK + '<span>ping<b>alto</b></span></a>' +
-    '<nav class="pa-nv" id="pa-nv" aria-label="Principal">' + links(h, NAV, p.path) + '</nav>' +
+    mainNav(h, p) + langSlot(h, p) +
+    '<button class="pa-ib pa-fb" type="button" data-pa-find data-pa-idx="' + h.site.search.file(h.lang || 'es') + '" aria-label="Buscar en pingalto" aria-keyshortcuts="/">' + FIND + '</button>' +
     '<button class="pa-ib" type="button" data-pa-theme aria-label="Cambiar entre tema claro y oscuro">' + MOON + SUN + '</button>' +
     '<button class="pa-ib pa-bu" type="button" data-pa-menu aria-controls="pa-nv" aria-expanded="false" aria-label="Menú">' + BURGER + '</button></header>';
   const footer = '<footer class="pa-ft"><p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>' +
