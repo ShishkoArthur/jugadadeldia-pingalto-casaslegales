@@ -4,10 +4,10 @@
 // No ratings, no bonuses, no promotions: the page reports what the site shows and links only to the address of the official list.
 import { margin } from '../../../engine/odds.mjs';
 import { hostKey } from '../../../engine/registry.mjs';
-import { fmtInt } from '../../../engine/format.mjs';
+import { fmtInt, addDays } from '../../../engine/format.mjs';
 import { sectionHead, officialLinks } from './parts.mjs';
 import { anat } from './opparts.mjs';
-import { isAbsence } from '../../../tools/lib/revsources.mjs';
+import { isAbsence, REVIEW_MAX_AGE } from '../../../tools/lib/revsources.mjs';
 
 // field -> label (es-AR) and how its value shows: chips (items checked against the copy), yes, money, count or quote only
 const F = {
@@ -227,7 +227,14 @@ export function summary(h, R, { lists, total, rgCount, casinoPath, missingLink }
   const miss = tiles.filter(x => x.none).map(x => x.none.toLowerCase());
   return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje') + '<div class="rl-rs">' + tiles.filter(x => x.html).map(x => x.html).join('') + '</div>' +
     (miss.length ? '<p class="rl-cap"><b>Sin dato:</b> ' + h.esc(miss.length < 2 ? miss.join('') : miss.slice(0, -1).join(', ') + ' y ' + miss.at(-1)) + '. No lo vimos en las páginas públicas que guardamos' + (missingLink ? ' (<a href="#sin-ver">por qué</a>)' : '') + '.</p>' : '') +
-    '<p class="rl-cap">Cada número sale de una página pública del operador o de una lista oficial, con su cita más abajo. No ponemos notas ni puntajes: no abrimos cuentas ni probamos depósitos o retiros.</p></section>';
+    '<p class="rl-cap">Cada número sale de una página pública del operador o de una lista oficial, con su cita más abajo. No ponemos notas ni puntajes: no abrimos cuentas ni probamos depósitos o retiros.' + dataDate(h, R) + '</p></section>';
+}
+// when the review data were copied and when they are copied again (REVIEW_MAX_AGE: the owner collects them every half year)
+export function dataDate(h, R) {
+  const ds = [...Object.values(R.r.docs || {}).map(d => d.date), ...(R.r.shots || []).map(x => x.date)].filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d || '')).sort();
+  if (!ds.length) return '';
+  const max = R.r.maxAgeDays || REVIEW_MAX_AGE;
+  return ' Copiamos estas páginas ' + (ds[0] === ds.at(-1) ? 'el ' + h.fmtDate(ds[0]) : 'entre el ' + h.fmtDate(ds[0]) + ' y el ' + h.fmtDate(ds.at(-1))) + ' y las volvemos a copiar como máximo cada ' + max + ' días: próxima revisión antes del ' + h.fmtDate(addDays(ds[0], max)) + '.';
 }
 export function toc(h, extra = [], only = null) {
   const items = [['resumen', 'Resumen'], ['ingresar', 'Sitio oficial'], ...SECTIONS.filter(([id]) => !only || only.includes(id)).map(([id, t]) => [id, t]), ['licencias', 'Licencias'], ...extra];
