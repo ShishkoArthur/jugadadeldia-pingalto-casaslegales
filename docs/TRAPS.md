@@ -170,3 +170,6 @@
 - **04.11 — robots.txt меняются:** серверная перепроверка casaslegales (`listas`) в первый же запуск нашла, что hcdn.gob.ar закрыт для
   ИИ-краулеров (копию 01.11 взяли из gambeteo). Правило: любой наш скачивающий код сначала читает robots.txt (`robots-txt.mjs`: мы и
   любой ИИ-агент; 5xx у robots = «нельзя»), закрытый сайт — в `AI_BLOCKED_HOSTS` и `pendingOwnerCopy`, копию сохраняет владелец.
+- **04.11 — уточнение к правилу robots:** «закрыт для ИИ» бывает разный. Запрет только для ботов обучения (ClaudeBot, anthropic-ai, Claude-Web)
+  при `*: Allow, use=reference` → можно открыть в Chrome владельца по его просьбе. Явный `Disallow` для Claude-User или Claude-Code → нельзя
+  никак (Río Negro, HCDN) — только копия владельца руками.
