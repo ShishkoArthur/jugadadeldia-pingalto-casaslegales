@@ -28,6 +28,8 @@ export const SITE = {
   engineDirs: ['games', 'lottery', 'cards', 'truco', 'generala', 'chinchon', 'escoba'],
   registries: [],
   defaultJurisdiction: 'buenos-aires',
+  // site search (tools/lib/search.mjs, engine/search.mjs, client/busca.js): one index per language, loaded on the first search
+  search: { file: lang => (lang === 'es' ? '' : '/' + lang) + '/busqueda.json' },
   noPerson: false,
   gate: {
     rgBlock: /<aside class="jg-rg"/,
@@ -36,6 +38,7 @@ export const SITE = {
     helpAttr: 'data-jg-ayuda',
     age: /class="jg-18"[^>]*>18\+</,
     siteMenu: /<nav class="jg-menu"/,
+    menuAll: 'data-jg-all',
     navSample: '<nav class="jg-menu" id="x"></nav>',
     noRgKinds: ['game'],
     samplePage: '/quienes-somos/',

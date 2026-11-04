@@ -1,7 +1,8 @@
-// jugadadeldia.com page frame (design r3 "06 Menu principal"): sticky header with the ball logo, top menu, full menu panel,
-// theme switch; footer with the help block on quiniela and lottery pages. Pages give { path, title, description, h1, kind,
-// section, help, jurisdiction, css, js, data, ld } and a body string; the shared build (tools/render.mjs) passes the helper h.
-import { MENU, TOP, HELP_NAV, FOOT } from './content/menu.mjs';
+// jugadadeldia.com page frame (design r3 "06 Menu principal"): sticky header with the ball logo, the whole menu (content/menu.mjs;
+// a panel per section, burger on phones), search, theme switch; footer with the help block on quiniela and lottery pages.
+// Pages give { path, title, description, h1, kind, section, help, jurisdiction, css, js, data, ld } and a body string; the shared
+// build (tools/render.mjs) passes the helper h.
+import { mainNav, crumbsLd, HELP_NAV, FOOT } from './content/menu.mjs';
 import { LOGO } from './logo.mjs';
 import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
 import { isLead } from './pages/parts.mjs';
@@ -12,19 +13,14 @@ const ICON = {
   moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>',
   sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>',
   burger: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>',
+  find: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg>',
 };
 const THEME_JS = "try{var t=localStorage.getItem('jg-tema');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')";
 
 const linkList = (h, list, current) => list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : '') + '>' + h.esc(label) + '</a>').join('');
 
-function menuPanel(h, p) {
-  const groups = MENU.map(g => {
-    const items = g.items.filter(([u]) => h.built(u));
-    if (!items.length) return '';
-    return '<div class="jg-mg"><b>' + h.esc(g.name) + '</b>' + linkList(h, items, p.path) + '</div>';
-  }).join('');
-  return '<div class="jg-panel" id="jg-panel" hidden><div class="jg-pin">' + groups + '</div></div>';
-}
+// Language switcher slot (i18n agent): return the switcher markup for this page here; it sits between the menu and the search button.
+const langSlot = (h, p) => '';
 
 export function helpBlock(h, p) {
   const j = h.rg.prov(p.jurisdiction || h.site.defaultJurisdiction);
@@ -51,7 +47,8 @@ function footer(h, p) {
 
 export function page(h, p, body) {
   const url = 'https://' + h.site.domain + p.path;
-  const ld = (p.ld || []).map(o => '<script type="application/ld+json">' + h.jsonScript(o) + '</script>').join('');
+  const crumb = p.is404 ? null : crumbsLd(h, p);
+  const ld = [...(p.ld || []).filter(o => !(crumb && o && o['@type'] === 'BreadcrumbList')), crumb].filter(Boolean).map(o => '<script type="application/ld+json">' + h.jsonScript(o) + '</script>').join('');
   const css = ['jg.css', ...(p.css || [])];
   const head = [
     '<meta charset="utf-8">',
@@ -76,11 +73,11 @@ export function page(h, p, body) {
   ].join('');
   const nav = p.help
     ? '<nav class="jg-sg jg-hnav" aria-label="Ayuda">' + linkList(h, HELP_NAV, p.path) + '</nav>'
-    : '<nav class="jg-menu jg-sg" aria-label="Principal">' + TOP.filter(([u]) => h.built(u)).map(([u, label, sec]) => '<a href="' + h.href(u) + '"' + (u === p.path || sec === p.section ? ' aria-current="' + (u === p.path ? 'page' : 'true') + '"' : '') + '>' + h.esc(label) + '</a>').join('') + '</nav>';
-  const header = '<header class="jg-h"><a class="jg-lg" href="/">' + MARK + '<span>jugada<b>del</b>día</span></a>' + nav +
+    : mainNav(h, p);
+  const header = '<header class="jg-h"><a class="jg-lg" href="/">' + MARK + '<span>jugada<b>del</b>día</span></a>' + nav + langSlot(h, p) +
+    '<button class="jg-ib jg-fb" type="button" data-jg-find data-jg-idx="' + h.site.search.file(h.lang || 'es') + '" aria-label="Buscar en Jugada del Día" aria-keyshortcuts="/">' + ICON.find + '</button>' +
     '<button class="jg-ib" type="button" data-jg-tema aria-label="Cambiar entre tema claro y oscuro">' + ICON.moon + ICON.sun + '</button>' +
-    (p.help ? '' : '<button class="jg-ib jg-bu" type="button" data-jg-menu aria-controls="jg-panel" aria-expanded="false" aria-label="Menú">' + ICON.burger + '</button>') + '</header>' +
-    (p.help ? '' : menuPanel(h, p));
+    (p.help ? '' : '<button class="jg-ib jg-bu" type="button" data-jg-menu aria-controls="jg-nav" aria-expanded="false" aria-label="Menú">' + ICON.burger + '</button>') + '</header>';
   const data = '<script type="application/json" id="jg-data">' + h.jsonScript(h.clientData()) + '</script>' +
     (p.data ? '<script type="application/json" id="jg-page">' + h.jsonScript(p.data(h)) + '</script>' : '');
   const js = ['jg.js', ...(p.js || [])].map(f => '<script type="module" src="' + h.asset(f) + '"></script>').join('');
