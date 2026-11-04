@@ -21,14 +21,80 @@ function theme() {
   });
 }
 
+const WIDE = '(min-width: 1080px)';
+const wide = () => matchMedia(WIDE).matches;
+const hoverable = () => wide() && matchMedia('(hover: hover)').matches;
+let locked = 0;
+const lock = on => { locked = Math.max(0, locked + (on ? 1 : -1)); root.classList.toggle('rl-lock', locked > 0); };
+
+// the whole menu: a panel per section on wide screens (hover with a 300 ms close delay, or click; Esc closes), an accordion in the
+// burger panel below 1080 px (scroll inside the panel, the page locked on html only)
 function menu() {
-  const btn = document.querySelector('[data-rl-menu]');
   const nav = document.getElementById('rl-nav');
-  if (!btn || !nav) return;
-  const set = open => { nav.classList.toggle('rl-open', open); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); };
-  btn.addEventListener('click', () => set(!nav.classList.contains('rl-open')));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
-  nav.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  if (!nav) return;
+  const btn = document.querySelector('[data-rl-menu]');
+  const top = nav.closest('header');
+  const dds = [...nav.querySelectorAll('[data-rl-dd]')];
+  let t = 0, panel = false;
+  const isOpen = d => d.classList.contains('rl-ddo');
+  const set = (d, open) => { d.classList.toggle('rl-ddo', open); d.firstElementChild.setAttribute('aria-expanded', open ? 'true' : 'false'); };
+  const closeAll = keep => dds.forEach(d => { if (d !== keep) set(d, false); });
+  for (const d of dds) {
+    d.firstElementChild.addEventListener('click', () => {
+      clearTimeout(t);
+      const open = hoverable() && Date.now() - (+d.dataset.hov || 0) < 700 ? true : !isOpen(d);
+      if (wide()) closeAll(d);
+      set(d, open);
+    });
+    d.addEventListener('mouseenter', () => { if (!hoverable()) return; clearTimeout(t); if (!isOpen(d)) d.dataset.hov = Date.now(); closeAll(d); set(d, true); });
+    d.addEventListener('mouseleave', () => { if (!hoverable()) return; clearTimeout(t); t = setTimeout(() => set(d, false), 300); });
+    d.addEventListener('focusout', e => { if (wide() && !d.contains(e.relatedTarget)) set(d, false); });
+  }
+  const setPanel = open => {
+    if (open === panel || !btn) return;
+    panel = open;
+    if (open) nav.style.setProperty('--rl-hh', Math.round(top.getBoundingClientRect().bottom) + 'px');
+    nav.classList.toggle('rl-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    lock(open);
+    if (open) {
+      dds.forEach(d => set(d, d.firstElementChild.hasAttribute('data-on')));
+      const cur = nav.querySelector('[aria-current="page"]');
+      if (cur) cur.scrollIntoView({ block: 'center' });
+    }
+  };
+  if (btn) btn.addEventListener('click', () => setPanel(!panel));
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const d = dds.find(isOpen);
+    if (wide() && d) { set(d, false); d.firstElementChild.focus(); } else if (panel) { setPanel(false); btn.focus(); }
+  });
+  document.addEventListener('click', e => { if (wide() && !nav.contains(e.target)) closeAll(); });
+  matchMedia(WIDE).addEventListener('change', () => { setPanel(false); closeAll(); });
+  const q = nav.querySelector('[data-rl-q]'), qr = nav.querySelector('[data-rl-qr]');
+  if (q && qr) {
+    let box = null;
+    const run = () => { const on = !!q.value.trim(); nav.classList.toggle('rl-nqon', on); qr.hidden = !on; if (box) box.run(); };
+    q.addEventListener('focus', () => buscar().then(m => { if (!box) { box = m.searchBox(q, qr, 'rl-nq', () => setPanel(false)); run(); } }));
+    q.addEventListener('input', run);
+  }
+}
+
+// search: code and index load on the first use (client/buscar.js)
+let searchMod = null;
+const buscar = () => (searchMod = searchMod || import('./buscar.js'));
+function search() {
+  const b = document.querySelector('[data-rl-find]');
+  if (!b) return;
+  const open = () => buscar().then(m => m.open(b, lock));
+  b.addEventListener('click', open);
+  document.addEventListener('keydown', e => {
+    if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
+    const x = e.target;
+    if (x && (x.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(x.tagName))) return;
+    e.preventDefault();
+    open();
+  });
 }
 
 function telLink(line) {
@@ -409,6 +475,7 @@ function revisado() {
 const data = json('rl-data');
 theme();
 menu();
+search();
 map(data);
 filter();
 statusFilter();

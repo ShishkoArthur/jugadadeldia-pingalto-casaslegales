@@ -1,17 +1,10 @@
-// casaslegales.com page frame: head, sticky header, footer with the help block. Pages give { path, title, description, h1,
+// casaslegales.com page frame: head, sticky header with the whole menu (content/menu.mjs) and the search, footer with the help block. Pages give { path, title, description, h1,
 // help, nav, ld } and a body string; the shared build (tools/render.mjs) passes the helper h.
 import { TILES } from './content/map.mjs';
 import { provData } from './content/provdata.mjs';
 import { LOGO as MARKS } from './logo.mjs';
 import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
-const NAV = [
-  ['/verificador', 'Verificador'],
-  ['/licencias', 'Licencias'],
-  ['/operadores', 'Operadores'],
-  ['/provincias', 'Provincias'],
-  ['/guia/como-verificar', 'Cómo verificar'],
-  ['/juego-responsable', 'Ayuda'],
-];
+import { mainNav, crumbsLd } from './content/menu.mjs';
 const FOOT = [
   ['/casinos-online-legales', 'Casinos online legales', 'bet'],
   ['/guia/apuestas-deportivas', 'Cómo funcionan las apuestas', 'bet'],
@@ -37,8 +30,12 @@ const HELP_NAV = [['/juego-responsable', 'Líneas de ayuda'], ['/juego-responsab
 const MOON = '<svg class="rl-moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15 12.5A6.5 6.5 0 0 1 7.5 5a6.5 6.5 0 1 0 7.5 7.5z" fill="currentColor"/></svg>';
 const SUN = '<svg class="rl-sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><path d="M10 1.5v2.5M10 16v2.5M1.5 10H4M16 10h2.5M4 4l1.8 1.8M14.2 14.2 16 16M4 16l1.8-1.8M14.2 5.8 16 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 const LOGO = logoSvg(MARKS, MARKS.pick, { mode: 'page', attrs: ' class="rl-lgm" aria-hidden="true"' });
+const FIND = '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="m13 13 5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
 const BURGER = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
 const THEME_JS = "try{var t=localStorage.getItem('rl-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')";
+
+// Language switcher slot (i18n agent): return the switcher markup for this page here; it sits between the menu and the search button.
+const langSlot = (h, p) => '';
 
 function links(h, list, current) {
   return list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : '') + '>' + h.esc(label) + '</a>').join('');
@@ -59,7 +56,8 @@ export function helpBlock(h, p) {
 export function page(h, p, body) {
   const url = 'https://' + h.site.domain + p.path;
   const title = p.title;
-  const ld = (p.ld || []).map(o => '<script type="application/ld+json">' + h.jsonScript(o) + '</script>').join('');
+  const crumb = p.is404 ? null : crumbsLd(h, p);
+  const ld = [...(p.ld || []).filter(o => !(crumb && o && o['@type'] === 'BreadcrumbList')), crumb].filter(Boolean).map(o => '<script type="application/ld+json">' + h.jsonScript(o) + '</script>').join('');
   const head = [
     '<meta charset="utf-8">',
     '<meta name="viewport" content="width=device-width,initial-scale=1">',
@@ -83,8 +81,9 @@ export function page(h, p, body) {
   ].join('');
   const nav = p.help
     ? '<nav class="rl-hnav" aria-label="Ayuda">' + links(h, HELP_NAV, p.path) + '</nav>'
-    : '<nav class="rl-nav" id="rl-nav" aria-label="Principal">' + links(h, NAV, p.path) + '</nav>';
-  const header = '<header class="rl-top"><a class="rl-logo" href="/">' + LOGO + '<span>casas<b>legales</b></span></a>' + nav +
+    : mainNav(h, p);
+  const header = '<header class="rl-top"><a class="rl-logo" href="/">' + LOGO + '<span>casas<b>legales</b></span></a>' + nav + langSlot(h, p) +
+    '<button class="rl-ib rl-fb" type="button" data-rl-find data-rl-idx="' + h.site.search.file(h.lang || 'es') + '" aria-label="Buscar en casaslegales" aria-keyshortcuts="/">' + FIND + '</button>' +
     '<button class="rl-ib" type="button" data-rl-theme aria-label="Cambiar entre tema claro y oscuro">' + MOON + SUN + '</button>' +
     (p.help ? '' : '<button class="rl-ib rl-bu" type="button" data-rl-menu aria-controls="rl-nav" aria-expanded="false" aria-label="Menú">' + BURGER + '</button>') + '</header>';
   const footer = '<footer class="rl-ft"><p>Sin bonos ni afiliados: solo enlazamos la dirección que publica cada lista oficial. No es asesoramiento legal: depende de la ley de tu provincia.</p>' +

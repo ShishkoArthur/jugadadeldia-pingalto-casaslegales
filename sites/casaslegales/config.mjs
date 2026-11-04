@@ -25,6 +25,8 @@ export const SITE = {
   images: [...SHOT_FILES(), ...reviewShotFiles()],
   registries: ['buenos-aires', 'caba', 'cordoba', 'la-rioja', 'neuquen', 'rio-negro', 'santa-fe', 'mendoza'],
   defaultJurisdiction: 'buenos-aires',
+  // site search (tools/lib/search.mjs, engine/search.mjs, client/buscar.js): one index per language, loaded on the first search
+  search: { file: lang => (lang === 'es' ? '' : '/' + lang) + '/buscador.json' },
   gate: {
     // owner 2026-11-04: links to operators only to the exact hosts the verified official lists of this site link, and to the provincial
     // platforms a regulator links from its own page (content/official.mjs)
@@ -33,6 +35,7 @@ export const SITE = {
     helpMark: /<body[^>]*\sdata-calma[\s>]/,
     age: /class="rl-18"[^>]*>18\+</,
     siteMenu: /<nav class="rl-nav"/,
+    menuAll: 'data-rl-all',
     // every brand of a verified list shown in a registry table or list is a link to its operator page (owner 2026-11-03)
     brandLinks: {
       scope: /<(table|ul|div) class="(rl-tbl|rl-reg|rl-sites|rl-dom|rl-opcs|rl-law)[" ]/g,
