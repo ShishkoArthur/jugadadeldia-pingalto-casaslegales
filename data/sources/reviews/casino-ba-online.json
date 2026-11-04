@@ -1,0 +1,200 @@
+{
+ "brand": "casino-ba-online",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "casinobuenosairesonline.bet.ar",
+  "caba.casinobuenosairesonline.bet.ar",
+  "ayuda.casinobuenosairesonline.bet.ar"
+ ],
+ "status": {
+  "casinobuenosairesonline.bet.ar": {
+   "status": "open",
+   "note": "Landing page",
+   "date": "2026-11-04"
+  },
+  "caba.casinobuenosairesonline.bet.ar": {
+   "status": "open",
+   "note": "Platform pages open from AR exit (they returned region_not_supported from Poland on 03.11)",
+   "date": "2026-11-04"
+  },
+  "ayuda.casinobuenosairesonline.bet.ar": {
+   "status": "open",
+   "note": "Salesforce help centre",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "landing": {
+   "url": "https://casinobuenosairesonline.bet.ar/",
+   "file": "data/sources/reviews/casino-ba-online/_docs/landing.txt",
+   "date": "2026-11-04",
+   "sha256": "411565157c8b89022475f290226c014707bfa6fa52143f31a1e8957eb3a76f68"
+  },
+  "ayuda-deposito-montos": {
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Cu%C3%A1les-son-los-montos-m%C3%ADnimo-y-m%C3%A1ximo-de-dep%C3%B3sito",
+   "file": "data/sources/reviews/casino-ba-online/_docs/ayuda-deposito-montos.txt",
+   "date": "2026-11-04",
+   "sha256": "1e5d1077130b63db53cc5df2f55bf49cb5f3ebc88d084cca6e7619400d744d30"
+  },
+  "ayuda-retiro-plazo": {
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Ya-solicit%C3%A9-mi-retiro-cu%C3%A1l-es-el-plazo-de-acreditaci%C3%B3n",
+   "file": "data/sources/reviews/casino-ba-online/_docs/ayuda-retiro-plazo.txt",
+   "date": "2026-11-04",
+   "sha256": "1cab8b91f1e1ba094eff2701f68148530f0121d00852a017f178b71c662da53f"
+  },
+  "juego-responsable": {
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/juegoresponsable",
+   "file": "data/sources/reviews/casino-ba-online/_docs/juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "d2996b018e7e46d50174057ab9237e1e8b19f285b891660e703f256894382a4a"
+  }
+ },
+ "facts": [
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "casinobuenosairesonline.bet.ar",
+   "url": "https://casinobuenosairesonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Exclusivo para mayores de 18 años.",
+   "doc": "landing"
+  },
+  {
+   "field": "app.ios",
+   "value": {
+    "available": true,
+    "store": "https://apps.apple.com/ar/app/casino-buenos-aires-online/id6447068287"
+   },
+   "host": "casinobuenosairesonline.bet.ar",
+   "url": "https://casinobuenosairesonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "| https://apps.apple.com/ar/app/casino-buenos-aires-online/id6447068287",
+   "doc": "landing"
+  },
+  {
+   "field": "sportsbook.exists",
+   "value": true,
+   "host": "casinobuenosairesonline.bet.ar",
+   "url": "https://casinobuenosairesonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "CASINO, POKER ONLINE Y APUESTAS DEPORTIVAS",
+   "doc": "landing"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "caba.casinobuenosairesonline.bet.ar",
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/juegoresponsable",
+   "date": "2026-11-04",
+   "quote": "CASINO EN VIVO",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "credit cards",
+    "bank transfer",
+    "physical cashier (cash)",
+    "pre-carga"
+   ],
+   "host": "ayuda.casinobuenosairesonline.bet.ar",
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Cu%C3%A1les-son-los-montos-m%C3%ADnimo-y-m%C3%A1ximo-de-dep%C3%B3sito",
+   "date": "2026-11-04",
+   "quote": "¿Cómo depositar en las cajas Físicas?",
+   "doc": "ayuda-deposito-montos"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": "not stated; depends on financial services and T&C",
+   "host": "ayuda.casinobuenosairesonline.bet.ar",
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Cu%C3%A1les-son-los-montos-m%C3%ADnimo-y-m%C3%A1ximo-de-dep%C3%B3sito",
+   "date": "2026-11-04",
+   "quote": "La cantidad mínima y máxima que se puede depositar en un día dependerá de los límites impuestos por los servicios financieros",
+   "doc": "ayuda-deposito-montos"
+  },
+  {
+   "field": "support.email",
+   "value": "consultas@casinobuenosairesonline.bet.ar",
+   "host": "ayuda.casinobuenosairesonline.bet.ar",
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Cu%C3%A1les-son-los-montos-m%C3%ADnimo-y-m%C3%A1ximo-de-dep%C3%B3sito",
+   "date": "2026-11-04",
+   "quote": "consultas@casinobuenosairesonline.bet.ar",
+   "doc": "ayuda-deposito-montos"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": "up to 5 business days; account verification mandatory (LOTBA)",
+   "host": "ayuda.casinobuenosairesonline.bet.ar",
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Ya-solicit%C3%A9-mi-retiro-cu%C3%A1l-es-el-plazo-de-acreditaci%C3%B3n",
+   "date": "2026-11-04",
+   "quote": "El plazo de acreditación puede ser de hasta 5 días hábiles dependiendo de si ya verificaste o no tu cuenta, condición obligatoria según la normativa de LOTBA.",
+   "doc": "ayuda-retiro-plazo"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Verification mandatory under LOTBA rules",
+   "host": "ayuda.casinobuenosairesonline.bet.ar",
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Ya-solicit%C3%A9-mi-retiro-cu%C3%A1l-es-el-plazo-de-acreditaci%C3%B3n",
+   "date": "2026-11-04",
+   "quote": "condición obligatoria según la normativa de LOTBA.",
+   "doc": "ayuda-retiro-plazo"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "deposit limit (day/week/month)",
+    "wager limit (week)",
+    "loss limit (week)",
+    "time limit"
+   ],
+   "host": "caba.casinobuenosairesonline.bet.ar",
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/juegoresponsable",
+   "date": "2026-11-04",
+   "quote": "Límite de depósitos: limita cuánto puedes depositar durante un día, una semana o un mes.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "time-out, quick exit (12 h), self-exclusion",
+   "host": "caba.casinobuenosairesonline.bet.ar",
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/juegoresponsable",
+   "date": "2026-11-04",
+   "quote": "evitará que puedas iniciar sesión durante las próximas 12 (doce) horas.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "CABA free line 0800-666-6006"
+   },
+   "host": "caba.casinobuenosairesonline.bet.ar",
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/juegoresponsable",
+   "date": "2026-11-04",
+   "quote": "Línea de contacto gratuita y confidencial de orientación al jugador: al 0800-666-6006",
+   "doc": "juego-responsable"
+  }
+ ],
+ "shots": [
+  {
+   "view": "payments",
+   "file": "data/shots/casino-ba-online/review-2026-11-04-payments.png",
+   "url": "https://ayuda.casinobuenosairesonline.bet.ar/s/article/Cu%C3%A1les-son-los-montos-m%C3%ADnimo-y-m%C3%A1ximo-de-dep%C3%B3sito",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "3ce28d142245057c93670007e2d3f573acbc5d91e9a24692d36ff1f5c968dcfe",
+   "note": "WhatsApp contact banner in the side column kept"
+  },
+  {
+   "view": "rg",
+   "file": "data/shots/casino-ba-online/review-2026-11-04-rg.png",
+   "url": "https://caba.casinobuenosairesonline.bet.ar/es-ar/pages/juegoresponsable",
+   "date": "2026-11-04",
+   "width": 761,
+   "height": 457,
+   "sha256": "e7f88577883d9d2af13fb5c86a889d23b8caf42d346ccca0974c8d8df830a405",
+   "note": "Cropped right of the bottom-left survey pop-up"
+  }
+ ]
+}
