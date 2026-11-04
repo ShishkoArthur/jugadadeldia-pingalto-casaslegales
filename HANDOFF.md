@@ -70,6 +70,18 @@
   Повторить: `node tools/qa/live-pass.cjs --site <сайт>` → `node tools/qa/summary.cjs …` (+ `tools/qa/links.cjs`).
 - **Дальше:** тексты через Claude API; P2-страницы плана jugadadeldia. pingalto: всё, что можно честно, построено (волна 4); оставшиеся 39 страниц плана — с причинами в «pingalto волна 4».
 
+## Ленты casaslegales и обслуживание раз в полгода (04.11) — работает, `docs/MAINTENANCE.md`
+- **Сервер:** `feeds-server.sh casaslegales` — `/opt/web/casaslegales-feeds/`, cron `37 6 * * *` UTC, uid 47230, UA `Casaslegales/1.0
+  (casaslegales.com)`, TG-ключи в secrets. Ленты `listas` (раз в месяц перекачивает официальные страницы, robots.txt — мы и любой
+  ИИ-краулер; те же проверки, что сборка; без изменений → новая серверная копия и «revisada el …» на страницах через
+  `/data/feeds/listas.json`; изменился список → не публикуется, Telegram с «Added/Removed») и `plazos` (сроки копий владельца, обзоров,
+  операторов; **одно** напоминание за 21 день до первого срока — ожидается 19.01.2027). Первый прогон 04.11: 38 ok, 16 копий владельца,
+  4 не открылись (Tucumán TLS, mendoza.gob.ar 403, e-legis robots 500), hcdn.gob.ar закрыт для ИИ → стал копией владельца. status OK.
+- **Сроки:** обзоры и копии операторов — 180 дней (`REVIEW_MAX_AGE`, подпись «próxima revisión antes del …» в Resumen); реестры, провинции,
+  помощь — 100. **Предложение владельцу:** списки лицензий у закрытых для ИИ сайтов — тоже 180 (помощь остаётся 100), тогда один визит в полгода.
+- **Перед выкладкой после ~февраля 2027:** `bash tools/feeds-server.sh casaslegales pull --write` → `npm test` → commit → `sync` (casaslegales и
+  jugadadeldia — общий пакет помощи) → deploy. `sync` теперь шлёт только `git archive HEAD` (TRAPS 04.11 исправлено); jdd и pingalto пересинхронизированы, health OK.
+
 ## Ленты (03.11) — автообновление на сервере; jugadadeldia 55 стр., pingalto 30 стр.
 - **Как устроено:** `tools/feeds/run.mjs` + `lib.mjs` (общий движок), ленты `tools/feeds/<сайт>/*.mjs`, сервер — `bash tools/feeds-server.sh
   <сайт> install|secrets|sync|run|status|logs`. У сайтов свои папки `/opt/web/<сайт>-feeds/`, cron-файлы (jdd `4,19,34,49 * * * *`, pa `23 * * * *`),
