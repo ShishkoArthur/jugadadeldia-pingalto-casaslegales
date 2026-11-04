@@ -5,7 +5,9 @@
  "hosts": [
   "betwarrior.bet.ar",
   "apuestas.betwarrior.bet.ar",
-  "caba.betwarrior.bet.ar"
+  "caba.betwarrior.bet.ar",
+  "mza.betwarrior.bet.ar",
+  "betwarriormza.zendesk.com"
  ],
  "status": {
   "betwarrior.bet.ar": {
@@ -22,6 +24,16 @@
    "status": "error",
    "note": "Redirects to /es-ar/sports/home; after ~20 s shows 'ALGO SALIÓ MAL' (error page) — sportsbook, odds, casino not collected",
    "date": "2026-11-04"
+  },
+  "mza.betwarrior.bet.ar": {
+   "status": "open",
+   "note": "Mendoza site opens after ~20 s (/es-ar/sports/home); lobby content still loading; footer readable",
+   "date": "2026-11-04"
+  },
+  "betwarriormza.zendesk.com": {
+   "status": "open",
+   "note": "Mendoza help centre (via redirect.betwarrior.bet.ar)",
+   "date": "2026-11-04"
   }
  },
  "docs": {
@@ -36,6 +48,18 @@
    "file": "data/sources/reviews/betwarrior/_docs/faq.txt",
    "date": "2026-11-04",
    "sha256": "d0257b0f5d25f985bea83b411664e890a95f04b59f6972753f1c56085d07dd36"
+  },
+  "mza-home": {
+   "url": "https://mza.betwarrior.bet.ar/es-ar/sports/home",
+   "file": "data/sources/reviews/betwarrior/_docs/mza-home.txt",
+   "date": "2026-11-04",
+   "sha256": "9de075cbc1b5f0b11397c239a06b83b4fa3665bbd9fbf303f0863ef73712964c"
+  },
+  "mza-help-depositos": {
+   "url": "https://betwarriormza.zendesk.com/hc/es-ar/sections/17080265524881",
+   "file": "data/sources/reviews/betwarrior/_docs/mza-help-depositos.txt",
+   "date": "2026-11-04",
+   "sha256": "0854c3e275b3ffe00c5020f84b7d68ed786ff6902c7cc6d5930c37a766573d8b"
   }
  },
  "facts": [
@@ -182,7 +206,84 @@
    "date": "2026-11-04",
    "quote": "opciones de autoexclusión temporal",
    "doc": "faq"
+  },
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "BINBAIRES S.A. - ONDISS S.A. - Unión Transitoria",
+    "cuit": "30-71790846-1",
+    "act": null
+   },
+   "host": "mza.betwarrior.bet.ar",
+   "url": "https://mza.betwarrior.bet.ar/es-ar/sports/home",
+   "date": "2026-11-04",
+   "quote": "mza.betwarrior.bet.ar es un sitio operado por BINBAIRES S.A. - ONDISS S.A. - Unión Transitoria, CUIT 30-71790846-1",
+   "doc": "mza-home"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "mza.betwarrior.bet.ar",
+   "url": "https://mza.betwarrior.bet.ar/es-ar/sports/home",
+   "date": "2026-11-04",
+   "quote": "Solo para mayores de 18 años.",
+   "doc": "mza-home"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Mendoza player line (0261) 424-7536; programajuegoresponsablemza@gmail.com"
+   },
+   "host": "mza.betwarrior.bet.ar",
+   "url": "https://mza.betwarrior.bet.ar/es-ar/sports/home",
+   "date": "2026-11-04",
+   "quote": "Línea de contacto gratuita y confidencial de orientación al jugador: al (0261) 424-7536",
+   "doc": "mza-home"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": true,
+   "host": "mza.betwarrior.bet.ar",
+   "url": "https://mza.betwarrior.bet.ar/es-ar/sports/home",
+   "date": "2026-11-04",
+   "quote": "DEPORTES EN VIVO CASINO CASINO EN VIVO",
+   "doc": "mza-home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "Transferencias Bancarias",
+    "Tarjetas de Débito por Mercado Pago",
+    "Dinero en Cuenta por Mercado Pago",
+    "Tarjetas de Crédito por Mercado Pago"
+   ],
+   "host": "betwarriormza.zendesk.com",
+   "url": "https://betwarriormza.zendesk.com/hc/es-ar/sections/17080265524881",
+   "date": "2026-11-04",
+   "quote": "Transferencias Bancarias Tarjetas de Débito por Mercado Pago Dinero en Cuenta por Mercado Pago Tarjetas de Crédito por Mercado Pago",
+   "doc": "mza-help-depositos"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "chat"
+   ],
+   "host": "betwarriormza.zendesk.com",
+   "url": "https://betwarriormza.zendesk.com/hc/es-ar/sections/17080265524881",
+   "date": "2026-11-04",
+   "quote": "Chatea con nosotros",
+   "doc": "mza-help-depositos"
   }
  ],
- "shots": []
+ "shots": [
+  {
+   "view": "payments",
+   "file": "data/shots/betwarrior/review-2026-11-04-payments.png",
+   "url": "https://betwarriormza.zendesk.com/hc/es-ar/sections/17080265524881",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "881d1d25079ac224bd602c9f419ffd20a8dae1d124cb0c9100b89e2f524a49d0"
+  }
+ ]
 }
