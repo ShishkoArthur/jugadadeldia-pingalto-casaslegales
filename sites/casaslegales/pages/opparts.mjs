@@ -4,6 +4,7 @@ import { CODE } from '../content/map.mjs';
 import { isoMap } from './iso.mjs';
 import { anatomy } from '../../../engine/hostcheck.mjs';
 import { docOf } from '../content/opdata.mjs';
+const decodePath = p => { try { return decodeURIComponent(p); } catch (e) { return p; } };
 
 // state(jid) -> 'yes' | 'no' | 'na'; label(jid) -> the address listed there, shown in the tile title
 export function licenceMap(h, { state, title, label = () => '' }) {
@@ -40,7 +41,7 @@ export function shotFigure(h, s, label) {
       '<figcaption><b>' + h.esc(label) + '</b> Captura de la página pública (Argentina) · ' + h.fmtDate(s.date) + '</figcaption></figure>';
   }
   const u = new URL(s.finalUrl || s.url);
-  return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(u.hostname + (u.pathname === '/' ? '' : u.pathname)) + '</span></div>' +
+  return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(u.hostname + (u.pathname === '/' ? '' : decodePath(u.pathname))) + '</span></div>' +
     '<img src="' + h.asset('shots/' + s.id + '.webp') + '" width="' + s.width + '" height="' + s.height + '" loading="lazy" decoding="async" alt="' + h.esc(label + ': ' + u.hostname) + '">' +
     '<figcaption><b>' + h.esc(label) + '</b> Captura propia de la página pública · ' + h.fmtDate(s.date) + '</figcaption></figure>';
 }

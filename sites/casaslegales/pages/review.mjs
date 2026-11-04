@@ -116,8 +116,9 @@ const odd = x => x.toFixed(2).replace('.', ',');
 
 // the saved copies write links and images as [link "text" -> url] and [alt text]: on the page the quote shows what a visitor reads
 export const readable = q => String(q).replace(/\s*(?:\||->)\s*https?:\/\/\S+/g, '').replace(/\s*\[(?:\.\.\.|…)\]\s*/g, ' \u2026 ').replace(/\[link "([^"]*)" -> [^\]]*\]/g, '$1').replace(/\[[^\]]*\blogo\b[^\]]*\]\s*/gi, '').replace(/\[([^\]]{1,60})\]/g, '$1').replace(/\s+/g, ' ').trim();
+const decodePath = p => { try { return decodeURIComponent(p); } catch (e) { return p; } };
 export function cite(h, R, f) {
-  const d = R.doc(f.doc), u = new URL(d.url), where = hostKey(d.url) + (u.pathname === '/' ? '' : u.pathname.replace(/\/$/, ''));
+  const d = R.doc(f.doc), u = new URL(d.url), where = hostKey(d.url) + (u.pathname === '/' ? '' : decodePath(u.pathname.replace(/\/$/, '')));
   const tail = '<span class="rl-host">' + h.esc(where) + '</span> · copia del ' + h.fmtDate(d.date);
   if (f.quote == null && isAbsence(f.value)) return '<p class="rl-src">Lo buscamos en ' + tail + '</p>';
   const txt = readable(f.quote);
@@ -244,7 +245,7 @@ export function reviewShots(h, R, label) {
   return R.shots.map(s => {
     const u = new URL(s.url);
     const name = h.names[R.brand];
-    return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(hostKey(s.url) + (u.pathname === '/' ? '' : u.pathname)) + '</span></div>' +
+    return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(hostKey(s.url) + (u.pathname === '/' ? '' : decodePath(u.pathname))) + '</span></div>' +
       '<img src="' + h.asset('shots/' + s.name) + '" width="' + s.width + '" height="' + s.height + '" loading="lazy" decoding="async" alt="' + h.esc(label(s.view) + ' de ' + name + ', vista desde Argentina') + '">' +
       '<figcaption><b>' + h.esc(label(s.view)) + '</b> Captura propia de la página pública, desde Argentina, sin cuenta · ' + h.fmtDate(s.date) + '</figcaption></figure>';
   }).join('');

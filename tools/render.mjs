@@ -78,7 +78,7 @@ export async function build(id, { collect = false, out = null } = {}) {
   };
   // every saved document the site can cite, registry ones by slug and help ones as "rg:<slug>"
   const DOCS = {};
-  const pathShort = u => { const x = new URL(u); const s = (x.pathname + x.search).replace(/\/$/, ''); return s.length > 34 ? s.slice(0, 33) + '…' : s; };
+  const pathShort = u => { const x = new URL(u); let s = (x.pathname + x.search).replace(/\/$/, ''); try { s = decodeURIComponent(s); } catch (e) {} return s.length > 34 ? s.slice(0, 33) + '…' : s; };
   for (const r of regs) for (const [slug, d] of Object.entries(r.docs)) {
     if (DOCS[slug]) throw new Error('document slug used twice: ' + slug);
     const quotes = Object.values(r.quotes).filter(q => q.doc === slug).length + r.licensees.filter(l => l.evidence.doc === slug).length + (r.law || []).filter(l => l.date && l.date.doc === slug).length;
