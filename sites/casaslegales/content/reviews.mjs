@@ -1,9 +1,9 @@
 // Build-time access to the review facts (data/sources/reviews/<brand>.json), verified first (tools/lib/revsources.mjs): a quote
-// not found verbatim, a changed copy or a copy older than 100 days stops the build. Lists and odds that a page shows beyond the
+// not found verbatim, a changed copy or a copy older than REVIEW_MAX_AGE (180) days stops the build. Lists and odds that a page shows beyond the
 // quote are checked here against the same saved copy (every item, every odd), so nothing on a review is typed by hand.
 import fs from 'node:fs';
 import path from 'node:path';
-import { checkReviews, loadReviews, docText } from '../../../tools/lib/revsources.mjs';
+import { checkReviews, loadReviews, docText, REVIEW_MAX_AGE } from '../../../tools/lib/revsources.mjs';
 import { ROOT } from '../../../tools/env.mjs';
 import { normalize } from '../../../engine/text.mjs';
 import { daysBetween } from '../../../engine/format.mjs';
@@ -43,7 +43,7 @@ export function review(today, brand) {
   };
   const oddsFound = (f, odds) => { const t = text(f.doc); return odds.every(o => typeof o === 'number' && (t.includes(o.toFixed(2)) || t.includes(o.toFixed(2).replace('.', ',')))); };
   const shots = (r.shots || []).map(s => ({ ...s, brand, name: reviewShotName(brand, s.view) })).filter(s => fs.existsSync(path.join(ROOT, SHOT_DIR, s.name)));
-  for (const s of shots) { const a = daysBetween(s.date, today); if (a < 0 || a > (r.maxAgeDays || 100)) throw new Error('review ' + brand + ': shot ' + s.view + ' taken ' + s.date + ' (max 100 days)'); }
+  for (const s of shots) { const a = daysBetween(s.date, today); if (a < 0 || a > (r.maxAgeDays || REVIEW_MAX_AGE)) throw new Error('review ' + brand + ': shot ' + s.view + ' taken ' + s.date + ' (max ' + (r.maxAgeDays || REVIEW_MAX_AGE) + ' days)'); }
   return { r, brand, one, all, pre, inDoc, found, oddsInDoc, oddsFound, shots, doc: slug => r.docs[slug] };
 }
 export function reviewShotFiles() {

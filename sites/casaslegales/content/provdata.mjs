@@ -5,6 +5,8 @@ import { checkProvinces, loadProvinces } from '../../../tools/lib/provsources.mj
 import { hostKey } from '../../../engine/registry.mjs';
 import { TILES } from './map.mjs';
 
+const rvAttr = (h, key, d) => ' data-rv="' + h.esc(key) + '" data-rvd="' + h.esc(d.fetched) + '"';
+
 export const STATUS_LABEL = {
   list: 'lista oficial verificada',
   platform: 'plataforma provincial',
@@ -46,11 +48,11 @@ export function provData(h) {
 
 export function pdQuote(h, P, q, label) {
   const d = P.doc(q.doc);
-  return '<blockquote class="rl-q" cite="' + h.esc(d.url) + '">«' + h.esc(q.text) + '»<cite>' + h.esc(label) + ' · <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
+  return '<blockquote class="rl-q" cite="' + h.esc(d.url) + '">«' + h.esc(q.text) + '»<cite' + rvAttr(h, 'pv:' + q.doc, d) + '>' + h.esc(label) + ' · <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
 }
 export function pdSrc(h, P, slug, extra = '') {
   const d = P.doc(slug);
-  return '<p class="rl-src">Fuente: <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host + (d.path && d.path !== '/' ? d.path : '')) + '</a> · copia guardada el ' + h.fmtDate(d.fetched) + (extra ? ' · ' + extra : '') + '</p>';
+  return '<p class="rl-src"' + rvAttr(h, 'pv:' + slug, d) + '>Fuente: <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host + (d.path && d.path !== '/' ? d.path : '')) + '</a> · copia guardada el ' + h.fmtDate(d.fetched) + (extra ? ' · ' + extra : '') + '</p>';
 }
 
 // saved copies of data/sources/provinces for the sources register (same columns as the registry documents)
@@ -63,7 +65,7 @@ export function provDocRows(h) {
       Object.values(e.quotes || {}).filter(q => q.doc === slug).length + (e.report && e.report.doc === slug ? 1 : 0);
     const u = new URL(d.url);
     const ps = (u.pathname + u.search).replace(/\/$/, '');
-    rows.push({ slug, ...d, jurName: h.rg.prov(id).name, host: u.hostname.replace(/^www\./, ''), pathShort: ps.length > 34 ? ps.slice(0, 33) + '…' : ps,
+    rows.push({ slug, key: 'pv:' + slug, ...d, jurName: h.rg.prov(id).name, host: u.hostname.replace(/^www\./, ''), pathShort: ps.length > 34 ? ps.slice(0, 33) + '…' : ps,
       use: e.status === 'platform' && (e.platforms || []).some(p => p.evidence.doc === slug) ? 'plataforma enlazada por el regulador' : (e.seen || []).some(s => s.doc === slug) ? 'revisada: sin lista de sitios online' : 'denuncias de juego ilegal',
       quotes: quotes + ((e.seen || []).some(s => s.doc === slug) ? 1 : 0) });
   }

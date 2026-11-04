@@ -1,7 +1,7 @@
 {
  "about": "Facts of operator pages on casaslegales.com: verbatim quotes of saved copies of public pages (operators: rendered DOM without scripts, made by tools/capture-shots.mjs; official pages: copies shared with the registries and the help package). Checked by tools/verify-operators.mjs. Operator documents are cited as text, never linked.",
  "checked": "2026-11-03",
- "maxAgeDays": 100,
+ "maxAgeDays": 180,
  "docs": {
   "betsson-entrada": {
    "url": "https://www.betsson.com.ar/",

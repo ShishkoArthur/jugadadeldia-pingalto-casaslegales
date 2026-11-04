@@ -2,7 +2,8 @@
 // what an operator's own public pages say about sports, casino, app, payments, account, support and responsible gaming,
 // collected from a browser in Argentina without an account. Same rules as the registries and the operator facts: the saved
 // text has the sha256 written in the file, every quote is found verbatim in it (whitespace and typographic marks normalized,
-// never across an "[...]" cut of the excerpt), the copy is not older than maxAgeDays (100), and every fact names its copy, URL and date.
+// never across an "[...]" cut of the excerpt), the copy is not older than maxAgeDays (REVIEW_MAX_AGE, 180: the owner collects
+// the reviews again every half year, docs/MAINTENANCE.md), and every fact names its copy, URL and date.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -13,7 +14,7 @@ import { daysBetween } from '../../engine/format.mjs';
 import { brandNames } from './sources.mjs';
 
 export const REV_DIR = path.join(ROOT, 'data/sources/reviews');
-const MAX_AGE = 100;
+export const REVIEW_MAX_AGE = 180;
 
 // a fact of absence ("not published on the page we checked") has no quote; it still names the copy that was read
 export const isAbsence = v => v === false || (!!v && typeof v === 'object' && ['published', 'found', 'listed', 'shown', 'available', 'exists'].some(k => v[k] === false));
@@ -36,7 +37,7 @@ export function checkReviews({ today, all = loadReviews(), fresh = true, names =
     const bad = m => errs.push('reviews/' + file + ': ' + m);
     if (r.brand !== file) bad('brand "' + r.brand + '" differs from the file name');
     if (!names[r.brand]) bad('brand ' + r.brand + ' has no display name in data/sources/brands.json');
-    const maxAge = r.maxAgeDays || MAX_AGE;
+    const maxAge = r.maxAgeDays || REVIEW_MAX_AGE;
     const texts = {};
     for (const [slug, d] of Object.entries(r.docs || {})) {
       if (!/^https:\/\//.test(d.url || '')) bad(slug + ': url must be https');

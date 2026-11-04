@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Live data of jugadadeldia.com and pingalto.com on our server (docs/FEEDS.md). The server is SHARED with other sites: for a site
+# Live data of jugadadeldia.com, pingalto.com and casaslegales.com on our server (docs/FEEDS.md). The server is SHARED with other sites: for a site
 # this script only creates/changes /opt/web/<site>-feeds/, /etc/cron.d/<site>-feeds and files in /opt/web/sites/<site>.com/data/feeds/.
 # Each site has its own folder, cron file, minute, uid, image tag and User-Agent (the sites must not look like a network).
 # Feeds run from cron inside a throwaway container (nothing installed on the host), as an unprivileged uid, code read-only.
@@ -7,7 +7,10 @@
 # Usage (from the repository on the development machine; host and key from .env, values are never printed):
 #   bash tools/feeds-server.sh <site> install       idempotent: dirs, image, runner script, cron file
 #   bash tools/feeds-server.sh <site> secrets       copy this site's keys from .env to the server (chmod 600, root only)
-#   bash tools/feeds-server.sh <site> sync          copy what the feeds need (tools/feeds, engine) to the server
+#   bash tools/feeds-server.sh <site> sync          copy what the feeds need (tools/feeds, engine, source JSON) from the last COMMIT (git
+#                                                   archive HEAD, like deploy.sh: uncommitted files of other agents never ship)
+#   bash tools/feeds-server.sh <site> stage <dir>   write that same file set into <dir> (no server; used by the tests)
+#   bash tools/feeds-server.sh casaslegales pull [--write]   copies the server rechecked -> repository (pull-apply.mjs; dry run without --write)
 #   bash tools/feeds-server.sh <site> run [names] [--force]   run now (--once; waits up to 60 s for a running job) and show the log
 #   bash tools/feeds-server.sh <site> status        cron, image, synced version, _health.json summary, last log lines
 #   bash tools/feeds-server.sh <site> logs [lines]  tail of the runner log
@@ -35,17 +38,28 @@ case "$SITE" in
     CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK=''
     KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID)
     SRC_SETS=() ;;
-  *) sed -n '2,24p' "$0"; exit 2 ;;
+  casaslegales)
+    # daily; the feed listas goes to the network about once a month (tools/feeds/casaslegales/listas.mjs)
+    CRON_SPEC='37 6 * * *'; RUN_UID=47230; IMAGE=casaslegales-feeds:node24; APK='poppler-utils'
+    KEYS=(TG_BOT_TOKEN TG_CHAT_ID)
+    SRC_SETS=(registries provinces rg operators reviews)
+    EXTRA_RULES=(--include='/data/sources/brands.json' --include='/data/shots/' --include='/data/shots/shots.json'
+      --include='/tools/env.mjs' --include='/tools/verify-rg.mjs' --include='/tools/lib/' --include='/tools/lib/*.mjs')
+    HEALTH_MAX_H=26 ;;
+  *) sed -n '2,28p' "$0"; exit 2 ;;
 esac
+: "${HEALTH_MAX_H:=2}"; EXTRA_RULES=("${EXTRA_RULES[@]+"${EXTRA_RULES[@]}"}")
 BASE=/opt/web/$SITE-feeds
 OUT=/opt/web/sites/$SITE.com/data/feeds
 CRON=/etc/cron.d/$SITE-feeds
 
 MAIN=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null || echo "$ROOT/.git")")
-if [ -z "${DEPLOY_HOST:-}" ]; then for f in .env "$MAIN/.env"; do if [ -f "$f" ]; then set -a; . "$f"; set +a; break; fi; done; fi
-: "${DEPLOY_HOST:?DEPLOY_HOST missing in .env}" "${DEPLOY_KEY:?DEPLOY_KEY missing in .env}"
-HOST="${DEPLOY_USER:-root}@${DEPLOY_HOST}"
-SSH=(ssh -i "${DEPLOY_KEY/#\~/$HOME}" -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20)
+server() {
+  if [ -z "${DEPLOY_HOST:-}" ]; then for f in .env "$MAIN/.env"; do if [ -f "$f" ]; then set -a; . "$f"; set +a; break; fi; done; fi
+  : "${DEPLOY_HOST:?DEPLOY_HOST missing in .env}" "${DEPLOY_KEY:?DEPLOY_KEY missing in .env}"
+  HOST="${DEPLOY_USER:-root}@${DEPLOY_HOST}"
+  SSH=(ssh -i "${DEPLOY_KEY/#\~/$HOME}" -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20)
+}
 
 SRC_RULES=()
 if [ "${#SRC_SETS[@]}" -gt 0 ]; then
@@ -55,7 +69,7 @@ fi
 SYNC_RULES=(
   --exclude='test/' --exclude='fixtures/' --exclude='*.test.mjs' --exclude='.DS_Store'
   --include='/package.json'
-  "${SRC_RULES[@]}"
+  "${SRC_RULES[@]+"${SRC_RULES[@]}"}" "${EXTRA_RULES[@]+"${EXTRA_RULES[@]}"}"
   --include='/tools/' --include='/tools/feeds/' --include='/tools/feeds/lib.mjs' --include='/tools/feeds/run.mjs'
   --include="/tools/feeds/$SITE/***"
   --include='/engine/***'
@@ -63,11 +77,12 @@ SYNC_RULES=(
 )
 
 remote() {
-  { printf 'SITE=%q BASE=%q OUT=%q CRON=%q CRON_SPEC=%q IMAGE=%q RUN_UID=%q APK=%q\n' "$SITE" "$BASE" "$OUT" "$CRON" "$CRON_SPEC" "$IMAGE" "$RUN_UID" "$APK"; cat; } \
+  { printf 'SITE=%q BASE=%q OUT=%q CRON=%q CRON_SPEC=%q IMAGE=%q RUN_UID=%q APK=%q HEALTH_MAX_H=%q\n' "$SITE" "$BASE" "$OUT" "$CRON" "$CRON_SPEC" "$IMAGE" "$RUN_UID" "$APK" "$HEALTH_MAX_H"; cat; } \
     | "${SSH[@]}" "$HOST" bash -s -- "$@"
 }
 
 cmd_install() {
+  server
   remote <<'REMOTE'
 set -euo pipefail
 command -v docker >/dev/null || { echo "docker not found on the server" >&2; exit 1; }
@@ -141,6 +156,7 @@ REMOTE
 
 # keys of this site only, from the local .env to the server; values never printed (only names and whether they are set)
 cmd_secrets() {
+  server
   local body="" set=() unset=()
   for k in "${KEYS[@]}"; do
     v="${!k:-}"
@@ -150,17 +166,44 @@ cmd_secrets() {
   echo "secrets: set ${set[*]:-none}; not in .env: ${unset[*]:-none}"
 }
 
+# the committed file set (git archive HEAD, filtered by SYNC_RULES) in a directory; nothing from the working tree
+cmd_stage() {
+  local dir="$1"; [ -n "$dir" ] || { echo "usage: stage <dir>" >&2; exit 2; }
+  local tmp; tmp=$(mktemp -d "${TMPDIR:-/tmp}/feeds-stage.XXXXXX")
+  git -C "$ROOT" archive HEAD -- package.json tools engine data/sources data/shots/shots.json 2>/dev/null | tar -x -C "$tmp" \
+    || { rm -rf "$tmp"; echo "feeds-server: git archive HEAD failed" >&2; exit 1; }
+  mkdir -p "$dir"
+  rsync -rlt --delete --delete-excluded --chmod=D755,F644 "${SYNC_RULES[@]}" "$tmp/" "$dir/"
+  rm -rf "$tmp"
+}
+
 cmd_sync() {
+  server
   "${SSH[@]}" "$HOST" "test -x $BASE/bin/run.sh" || { echo "feeds-server: not installed (bash tools/feeds-server.sh $SITE install)" >&2; exit 1; }
-  rsync -rlt --delete --delete-excluded --chmod=D755,F644 "${SYNC_RULES[@]}" \
-    --rsync-path="flock -w 120 $BASE/run.lock rsync" -e "${SSH[*]}" "$ROOT/" "$HOST:$BASE/app/"
+  local stage; stage=$(mktemp -d "${TMPDIR:-/tmp}/feeds-sync.XXXXXX")
+  cmd_stage "$stage/app"
+  rsync -rlt --delete --chmod=D755,F644 --rsync-path="flock -w 120 $BASE/run.lock rsync" -e "${SSH[*]}" "$stage/app/" "$HOST:$BASE/app/"
   local ver; ver="$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo unknown)"
-  git -C "$ROOT" diff --quiet HEAD -- tools/feeds engine data/sources 2>/dev/null || ver="$ver+dirty"
   "${SSH[@]}" "$HOST" "echo '$ver $(date -u +%FT%TZ)' > $BASE/state/app-version"
-  echo "feeds-server $SITE: synced $ver ($(find "tools/feeds/$SITE" -maxdepth 1 -name '*.mjs' | wc -l) feed files)"
+  echo "feeds-server $SITE: synced commit $ver ($(find "$stage/app/tools/feeds/$SITE" -maxdepth 1 -name '*.mjs' | wc -l) feed files, $(find "$stage/app" -type f | wc -l) files)"
+  rm -rf "$stage"
+  git -C "$ROOT" diff --quiet HEAD -- tools/feeds tools/lib engine data/sources 2>/dev/null \
+    || echo "note: uncommitted changes in tools/feeds, tools/lib, engine or data/sources were NOT synced (commit first)"
+}
+
+# casaslegales: the copies the server rechecked (state/docs/listas) and listas.json -> .cache/feeds-pull/ -> pull-apply.mjs
+cmd_pull() {
+  [ "$SITE" = casaslegales ] || { echo "pull: only casaslegales keeps rechecked copies" >&2; exit 2; }
+  server
+  local dir="$ROOT/.cache/feeds-pull/$SITE"
+  rm -rf "$dir"; mkdir -p "$dir/docs"
+  rsync -rt -e "${SSH[*]}" "$HOST:$BASE/state/docs/listas" "$dir/docs/" 2>/dev/null || { echo "pull: no rechecked copies on the server yet" >&2; exit 1; }
+  rsync -t -e "${SSH[*]}" "$HOST:$OUT/listas.json" "$dir/listas.json"
+  node "$ROOT/tools/feeds/casaslegales/pull-apply.mjs" "$dir" "$@"
 }
 
 cmd_run() {
+  server
   for a in "$@"; do [[ "$a" =~ ^([a-z0-9]+|--force)$ ]] || { echo "bad argument: $a" >&2; exit 2; }; done
   remote "$@" <<'REMOTE'
 LOG=$BASE/logs/runner.log
@@ -173,6 +216,7 @@ REMOTE
 }
 
 cmd_status() {
+  server
   remote <<'REMOTE'
 echo "== cron: $( [ -f "$CRON" ] && grep -v '^#' "$CRON" | grep run.sh || echo 'MISSING')"
 echo "== image: $(docker image inspect -f '{{.Created}}' "$IMAGE" 2>/dev/null || echo MISSING), built $(cat "$BASE/state/image-built" 2>/dev/null || echo '?')"
@@ -181,12 +225,13 @@ echo "== keys: $(sed -n 's/=.*//p' "$BASE/secrets.env" 2>/dev/null | tr '\n' ' '
 echo "== last exit: $(cat "$BASE/state/last-exit" 2>/dev/null || echo 'never ran') (0 ok, 1 stale/broken feed, 3 not synced, 124 timeout)"
 H="$OUT/_health.json"
 if [ -f "$H" ]; then
-  python3 - "$H" <<'PY'
+  python3 - "$H" "$HEALTH_MAX_H" <<'PY'
 import json, sys, datetime
 h = json.load(open(sys.argv[1]))
+limit = float(sys.argv[2])
 gen = datetime.datetime.fromisoformat(h['generated'].replace('Z', '+00:00'))
 age = (datetime.datetime.now(datetime.timezone.utc) - gen).total_seconds() / 3600
-print('== health: %s, generated %s (%.1f h ago)%s' % ('OK' if h['ok'] else 'PROBLEMS', h['generated'], age, '  <-- scheduler stopped?' if age > 2 else ''))
+print('== health: %s, generated %s (%.1f h ago)%s' % ('OK' if h['ok'] else 'PROBLEMS', h['generated'], age, '  <-- scheduler stopped?' if age > limit else ''))
 for p in h.get('problems', []): print('   ! ' + p)
 print('   %-12s %-7s %8s %6s %-5s %-5s %s' % ('feed', 'cadence', 'age h', 'max h', 'stale', 'fails', 'last error'))
 for n, f in sorted(h['feeds'].items()):
@@ -205,6 +250,7 @@ REMOTE
 }
 
 cmd_logs() {
+  server
   local n="${1:-80}"; [[ "$n" =~ ^[0-9]+$ ]] || n=80
   remote "$n" <<'REMOTE'
 tail -n "$1" "$BASE/logs/runner.log" 2>/dev/null || echo "(no log)"
@@ -212,6 +258,7 @@ REMOTE
 }
 
 cmd_uninstall() {
+  server
   remote <<'REMOTE'
 rm -f "$CRON" && echo "removed $CRON; $BASE and $OUT are kept"
 REMOTE
@@ -221,9 +268,11 @@ case "${1:-}" in
   install) cmd_install ;;
   secrets) cmd_secrets ;;
   sync) cmd_sync ;;
+  stage) shift; cmd_stage "${1:-}" ;;
+  pull) shift; cmd_pull "$@" ;;
   run) shift; cmd_run "$@" ;;
   status) cmd_status ;;
   logs) shift; cmd_logs "$@" ;;
   uninstall) cmd_uninstall ;;
-  *) sed -n '2,24p' "$0"; exit 2 ;;
+  *) sed -n '2,28p' "$0"; exit 2 ;;
 esac

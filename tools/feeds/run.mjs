@@ -1,6 +1,6 @@
-// Live-data runner for jugadadeldia.com and pingalto.com (owner guide: docs/FEEDS.md). On the server it runs from cron inside a
+// Live-data runner for jugadadeldia.com, pingalto.com and casaslegales.com (owner guide: docs/FEEDS.md). On the server it runs from cron inside a
 // throwaway container (tools/feeds-server.sh); each site has its own folder, cron file, user and User-Agent.
-//   node tools/feeds/run.mjs --site <jugadadeldia|pingalto> [names...] [--force] [--out <dir>] [--cache <dir>] [--log <file>]
+//   node tools/feeds/run.mjs --site <jugadadeldia|pingalto|casaslegales> [names...] [--force] [--out <dir>] [--cache <dir>] [--log <file>]
 //                            [--feeds-dir <dir>] [--fixtures <dir>] [--now <ISO time>]
 // A feed is tools/feeds/<site>/<name>.mjs (name: lowercase letters and digits) exporting
 //   default { name, cadence: 'run'|'hourly'|'daily', maxAgeHours, timeoutSec?, enabled?(env): boolean, async fetch(ctx), validate(raw), compute(raw, prev, ctx) }

@@ -5,6 +5,8 @@
 //   none     - a copy marked noBetAr really has no .bet.ar address (the page says "no list found on <host>");
 //   blocked  - no documents and no claims, only the reason.
 // Together with the registries every one of the 24 jurisdictions has exactly one status.
+// copies(slug) -> fresh HTML or null (server recheck, tools/feeds/casaslegales/listas.mjs): the given copies replace the saved ones
+// (no sha256 or age check for them) and every claim on a document without a fresh copy is skipped.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -18,7 +20,7 @@ export const STATUSES = ['list', 'platform', 'none', 'blocked'];
 export const REASONS = { none: ['no-list', 'script-only', 'not-found'], blocked: ['excluded', 'geo'] };
 export const loadProvinces = () => JSON.parse(fs.readFileSync(path.join(ROOT, FILE), 'utf8'));
 
-export function checkProvinces({ today, data = loadProvinces(), registryIds = [], jurisdictions = [] } = {}) {
+export function checkProvinces({ today, data = loadProvinces(), registryIds = [], jurisdictions = [], copies = null } = {}) {
   const errs = [];
   const bad = m => errs.push('provinces: ' + m);
   const maxAge = data.maxAgeDays || 100;
@@ -26,6 +28,7 @@ export function checkProvinces({ today, data = loadProvinces(), registryIds = []
   for (const [slug, d] of Object.entries(data.docs || {})) {
     if (!/^https:\/\//.test(d.url || '')) bad(slug + ': url must be https');
     if (d.status !== 200) bad(slug + ': status ' + d.status);
+    if (copies) { const h = copies(slug); if (h != null) cache[slug] = { raw: h, clean: stripComments(h), text: visibleText(h) }; continue; }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(d.fetched || '')) bad(slug + ': no fetched date');
     else { const a = daysBetween(d.fetched, today); if (a < 0 || a > maxAge) bad(slug + ': copied ' + d.fetched + ', ' + a + ' days old (max ' + maxAge + ')'); }
     const f = path.join(ROOT, d.file || '');
@@ -35,7 +38,9 @@ export function checkProvinces({ today, data = loadProvinces(), registryIds = []
     const raw = buf.toString('utf8');
     cache[slug] = { raw, clean: stripComments(raw), text: visibleText(raw) };
   }
+  const skip = slug => !!copies && !!(data.docs || {})[slug] && !cache[slug];
   const quote = (at, x) => {
+    if (x && skip(x.doc)) return;
     if (!x || !cache[x.doc]) { bad(at + ': unknown document ' + (x && x.doc)); return; }
     if (!x.text || !cache[x.doc].text.includes(normalize(x.text))) bad(at + ': quote not found verbatim in ' + x.doc + ': "' + String(x.text).slice(0, 60) + '"');
   };
@@ -53,6 +58,7 @@ export function checkProvinces({ today, data = loadProvinces(), registryIds = []
       for (const p of j.platforms || []) {
         const at = id + ' platform ' + p.host;
         const e = p.evidence || {};
+        if (skip(e.doc)) { used.add(e.doc); continue; }
         if (!cache[e.doc] || !e.html) { bad(at + ': no evidence'); continue; }
         seenDocs.add(e.doc); used.add(e.doc);
         if (!cache[e.doc].clean.includes(e.html)) bad(at + ': evidence not found byte for byte in ' + e.doc);
@@ -68,6 +74,7 @@ export function checkProvinces({ today, data = loadProvinces(), registryIds = []
       }
     } else if (j.platforms) bad(id + ': platforms only with status platform');
     for (const s of j.seen || []) {
+      if (skip(s.doc)) { used.add(s.doc); continue; }
       if (!cache[s.doc]) { bad(id + ' seen: unknown document ' + s.doc); continue; }
       used.add(s.doc);
       if (s.noBetAr && /\.bet\.ar\b/i.test(cache[s.doc].raw)) bad(id + ': ' + s.doc + ' is marked noBetAr but mentions .bet.ar');

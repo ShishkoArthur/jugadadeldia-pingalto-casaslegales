@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, renameSync } from '
 import { join, dirname } from 'node:path';
 import { createHash } from 'node:crypto';
 
-export const UAS = { jugadadeldia: 'JugadaDelDia/1.0 (jugadadeldia.com)', pingalto: 'Pingalto/1.0 (pingalto.com)' };
+export const UAS = { jugadadeldia: 'JugadaDelDia/1.0 (jugadadeldia.com)', pingalto: 'Pingalto/1.0 (pingalto.com)', casaslegales: 'Casaslegales/1.0 (casaslegales.com)' };
 export const AR_TZ = 'America/Argentina/Buenos_Aires';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const sha = s => createHash('sha1').update(s).digest('hex').slice(0, 16);

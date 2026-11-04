@@ -70,7 +70,7 @@ async function build(id) {
   for (const r of regs) for (const [slug, d] of Object.entries(r.docs)) {
     if (DOCS[slug]) throw new Error('document slug used twice: ' + slug);
     const quotes = Object.values(r.quotes).filter(q => q.doc === slug).length + r.licensees.filter(l => l.evidence.doc === slug).length + (r.law || []).filter(l => l.date && l.date.doc === slug).length;
-    DOCS[slug] = { ...d, slug, jur: r.id, jurName: provName[r.id], host: new URL(d.url).hostname.replace(/^www\./, ''), pathShort: pathShort(d.url), use: r.list.doc === slug ? 'lista oficial de licencias' : 'norma', quotes };
+    DOCS[slug] = { ...d, slug, key: slug, jur: r.id, jurName: provName[r.id], host: new URL(d.url).hostname.replace(/^www\./, ''), pathShort: pathShort(d.url), use: r.list.doc === slug ? 'lista oficial de licencias' : 'norma', quotes };
   }
   const { citations } = await import('./verify-rg.mjs');
   const cites = citations(rgPack);
@@ -78,7 +78,7 @@ async function build(id) {
     const p = rgPack.provinces.find(x => JSON.stringify(x).includes('"' + slug + '"'));
     const isLaw = (rgPack.law || []).some(f => f.doc === slug || (f.also || []).some(a => a.doc === slug));
     const isCrisis = ((rgPack.national || {}).crisis || []).some(e => e.doc === slug);
-    DOCS['rg:' + slug] = { ...d, slug, jur: p ? p.id : 'ar', jurName: p ? p.name : 'Argentina', host: new URL(d.url).hostname.replace(/^www\./, ''), pathShort: pathShort(d.url),
+    DOCS['rg:' + slug] = { ...d, slug, key: 'rg:' + slug, jur: p ? p.id : 'ar', jurName: p ? p.name : 'Argentina', host: new URL(d.url).hostname.replace(/^www\./, ''), pathShort: pathShort(d.url),
       use: isCrisis ? 'línea nacional de salud mental' : isLaw ? 'proyecto de ley federal' : 'ayuda, edad y autoexclusión', quotes: cites.filter(c => c[2] === slug).length };
   }
   const checked = [...regs.map(r => r.checked), rgPack.checked].sort()[0];

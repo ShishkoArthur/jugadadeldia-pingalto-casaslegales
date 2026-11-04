@@ -381,6 +381,31 @@ function provCheck() {
   input.addEventListener('input', run);
 }
 
+function revisado() {
+  const els = [...document.querySelectorAll('[data-rv]')];
+  const sum = document.querySelector('[data-rv-sum]');
+  if (!els.length) return;
+  const day = /^\d{4}-\d{2}-\d{2}$/;
+  const fmt = d => d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4);
+  fetch('/data/feeds/listas.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(j => {
+    const docs = j && j.data && j.data.docs;
+    if (!docs) return;
+    let n = 0, last = '';
+    for (const node of els) {
+      const d = docs[node.dataset.rv];
+      if (!d || d.state !== 'ok' || !day.test(d.revisado || '')) continue;
+      if (node.tagName === 'TD') n++;
+      if (d.revisado > last) last = d.revisado;
+      if (d.revisado <= (node.dataset.rvd || '')) continue;
+      node.appendChild(el('span', 'rl-rv', ' · revisada el ' + fmt(d.revisado) + ', sin cambios'));
+    }
+    if (sum && n && last) {
+      sum.textContent = 'Revisión automática mensual: el ' + fmt(last) + ', ' + n + ' de ' + els.filter(x => x.tagName === 'TD').length + ' documentos de esta tabla seguían iguales en la página oficial (citas y listas). Los demás los guarda una persona desde un navegador.';
+      sum.hidden = false;
+    }
+  }).catch(() => {});
+}
+
 const data = json('rl-data');
 theme();
 menu();
@@ -396,3 +421,4 @@ novigCalc();
 parlayCalc();
 hcpCalc();
 provCheck();
+revisado();

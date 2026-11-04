@@ -6,13 +6,15 @@ import { officialUrl, DEAD } from '../content/official.mjs';
 export function brandLink(h, brand, text) {
   return '<a href="' + h.href(opPath(brand)) + '">' + h.esc(text === undefined ? h.names[brand] : text) + '</a>';
 }
+// data-rv: the key of the copy in /data/feeds/listas.json (server recheck); ui.js adds "revisada el ..." when it is newer than data-rvd
+export const rvAttr = (h, key, d) => ' data-rv="' + h.esc(key) + '" data-rvd="' + h.esc(d.fetched) + '"';
 export function src(h, slug, extra = '') {
   const d = h.doc(slug);
-  return '<p class="rl-src">Fuente: <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia guardada el ' + h.fmtDate(d.fetched) + (extra ? ' · ' + extra : '') + '</p>';
+  return '<p class="rl-src"' + rvAttr(h, slug, d) + '>Fuente: <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia guardada el ' + h.fmtDate(d.fetched) + (extra ? ' · ' + extra : '') + '</p>';
 }
 export function quote(h, q, label) {
   const d = h.doc(q.doc);
-  return '<blockquote class="rl-q" cite="' + h.esc(d.url) + '">«' + h.esc(q.text).replace(/@/g, '<span>@</span>') + '»<cite>' + h.esc(label) + ' · <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
+  return '<blockquote class="rl-q" cite="' + h.esc(d.url) + '">«' + h.esc(q.text).replace(/@/g, '<span>@</span>') + '»<cite' + rvAttr(h, q.doc, d) + '>' + h.esc(label) + ' · <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia del ' + h.fmtDate(d.fetched) + '</cite></blockquote>';
 }
 export function rgQuote(h, e, label) {
   return quote(h, { doc: 'rg:' + e.doc, text: e.quote }, label);

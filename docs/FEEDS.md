@@ -1,4 +1,4 @@
-# Ленты (автообновление) — jugadadeldia.com и pingalto.com
+# Ленты (автообновление) — jugadadeldia.com, pingalto.com, casaslegales.com
 
 Владелец 03.11: «Делай автообновление, бот скину позже». Ленты работают **на нашем сервере** (cron + одноразовый Docker-контейнер),
 без GitHub Actions и без агента. Страницы рисуют данные **в браузере** из `/data/feeds/<имя>.json` (сайт пересобирать не нужно);
@@ -15,21 +15,24 @@
   дописать оба ключа в `.env` → `bash tools/feeds-server.sh <сайт> secrets` (для каждого сайта).
 - Сервер (у каждого сайта своё — сайты не выглядят сетью):
 
-| | jugadadeldia | pingalto |
-|---|---|---|
-| папка | `/opt/web/jugadadeldia-feeds/` | `/opt/web/pingalto-feeds/` |
-| cron | `/etc/cron.d/jugadadeldia-feeds`, `4,19,34,49 * * * *` UTC | `/etc/cron.d/pingalto-feeds`, `23 * * * *` UTC |
-| образ | `jugadadeldia-feeds:node24` (node:24-alpine + poppler-utils) | `pingalto-feeds:node24` (node:24-alpine) |
-| uid | 47210 | 47220 |
-| User-Agent | `JugadaDelDia/1.0 (jugadadeldia.com)` | `Pingalto/1.0 (pingalto.com)` |
-| ключи (`secrets.env`, root 600) | только TG_* (когда будут) | PANDASCORE_TOKEN, CR_API_KEY, BS_API_KEY, TG_* |
-| выход | `/opt/web/sites/jugadadeldia.com/data/feeds/` | `/opt/web/sites/pingalto.com/data/feeds/` |
+| | jugadadeldia | pingalto | casaslegales |
+|---|---|---|---|
+| папка | `/opt/web/jugadadeldia-feeds/` | `/opt/web/pingalto-feeds/` | `/opt/web/casaslegales-feeds/` |
+| cron | `/etc/cron.d/jugadadeldia-feeds`, `4,19,34,49 * * * *` UTC | `/etc/cron.d/pingalto-feeds`, `23 * * * *` UTC | `/etc/cron.d/casaslegales-feeds`, `37 6 * * *` UTC (раз в сутки) |
+| образ | `jugadadeldia-feeds:node24` (node:24-alpine + poppler-utils) | `pingalto-feeds:node24` (node:24-alpine) | `casaslegales-feeds:node24` (node:24-alpine + poppler-utils) |
+| uid | 47210 | 47220 | 47230 |
+| User-Agent | `JugadaDelDia/1.0 (jugadadeldia.com)` | `Pingalto/1.0 (pingalto.com)` | `Casaslegales/1.0 (casaslegales.com)` |
+| ключи (`secrets.env`, root 600) | TG_* | PANDASCORE_TOKEN, CR_API_KEY, BS_API_KEY, TG_* | TG_* |
+| выход | `/opt/web/sites/jugadadeldia.com/data/feeds/` | `/opt/web/sites/pingalto.com/data/feeds/` | `/opt/web/sites/casaslegales.com/data/feeds/` |
 
   Контейнер: код только на чтение, `--read-only`, без capabilities, 512 МБ, 0,5 CPU, таймаут 15 мин, `flock` (два запуска не пересекаются),
   лог `logs/runner.log` (ротация 1 МБ × 4), образ пересобирается раз в 30 дней (удаляется только наш старый образ).
   `deploy.sh` не трогает `data/feeds/` (фильтр rsync), раннер перед каждым запуском возвращает владельца папки (ловушка gambeteo EACCES).
 - Команды (с машины разработки): `bash tools/feeds-server.sh <сайт> install | secrets | sync | run [имена] [--force] | status | logs | uninstall`.
   После правки кода лент: commit → `sync` (ленты выкладываются отдельно от сайта!) → `run --force` → `status`.
+  **`sync` берёт только последний коммит** (`git archive HEAD`, как deploy; с 04.11): незакоммиченные файлы — свои и чужих агентов —
+  на сервер не уезжают, `sync` об этом пишет строкой `note: uncommitted changes … were NOT synced`. `stage <папка>` — тот же набор
+  файлов локально (тест `engine/test/feeds-casaslegales.test.mjs` сверяет его с HEAD побайтно).
   Локально: `node tools/feeds/run.mjs --site <сайт> [имя] --out <папка>` (ключи pingalto — из окружения).
 
 ## jugadadeldia — кинела (`quiniela`, каждые 15 мин)
@@ -181,6 +184,40 @@
 - Supercell Fan Content Policy: на каждой странице текст «This material is unofficial and is not endorsed by Supercell…», без логотипов и
   арта карт, ничего не продаём. JSON pingalto — обработанные данные (не зеркало ответов API).
 
+## casaslegales — перепроверка официальных страниц (`listas`, раз в сутки; в сеть — раз в месяц)
+- **Зачем:** у сайта 8 официальных списков, страницы провинций и пакет помощи; копии старше 100 дней останавливают выкладку,
+  а список регулятора может поменяться. Лента раз в месяц (28 дней; сразу — после `sync` с изменёнными данными; при сбое — повтор через
+  3 дня только упавших страниц, 14 дней, дальше — снова раз в месяц) скачивает каждую страницу, которую серверу **можно** качать, и
+  прогоняет те же проверки, что сборка: `checkRegistry` (цитаты дословно, HTML-доказательство каждой строки побайтно, список полон),
+  `checkProvinces` (с `copies`: проверяется только свежая страница), цитаты пакета помощи (PDF — `pdftotext`).
+- **Не качает никогда:** копии владельца (`copiedBy: "owner"`, `pendingOwnerCopy`, хосты `AI_BLOCKED_HOSTS`, `refresh: "manual"`) и любую
+  страницу, чей `robots.txt` закрывает нас или **любого** ИИ-краулера (ClaudeBot, GPTBot, Google-Extended, CCBot … — `robots-txt.mjs`);
+  такая страница → состояние `robots` + одно сообщение «сохраняет владелец».
+- **Итог по каждой копии** (`listas.json → data.docs[<ключ>]`, ключ — slug реестра, `pv:<slug>` провинций, `rg:<slug>` помощи):
+  `ok` — всё сошлось: серверная копия заменена (`state/docs/listas/<ключ>.<ext>`), `revisado` = сегодня, sha256, размер;
+  `changed` — список или цитата изменились: **ничего не публикуется**, `revisado` остаётся прежним, свежая копия — в
+  `state/docs/listas-pending/`, в Telegram — одно сообщение с разницей («Added: … Removed: …», id по хешу разницы — повтор не шлётся);
+  `unreachable` — не открылась (`since`, `reason`); `robots`; `owner`. Сроки (`expiries`): `revisado + maxAgeDays` каждой страницы.
+- **Сайт:** даты на страницах — из сборки («copia guardada el …»); рядом с каждой копией, которую сервер перепроверил позже,
+  браузер дописывает «· revisada el dd/mm/aaaa, sin cambios» (`client/ui.js` → `revisado()`, атрибуты `data-rv`/`data-rvd` у
+  `src()`/`quote()` в `pages/parts.mjs`, `pdSrc`/`pdQuote` в `content/provdata.mjs`, колонка «Copia» в `/registro-de-fuentes` + строка
+  «Revisión automática mensual …»). Пересборка на сервере не нужна (выбрано вместо схемы gambeteo `site-server.sh`: ни одной
+  серверной сборки, сайт = коммит).
+- **В репозиторий** (чтобы гейт свежести пропустил следующую выкладку): `bash tools/feeds-server.sh casaslegales pull` (сухой прогон) →
+  `pull --write` — берёт только `ok`-копии новее наших и только если байты совпадают с записанным sha256; меняет файл, `sha256`,
+  `fetched` (= день проверки сервером) во всех наборах с тем же slug и адресом (реестр, провинции, помощь, операторы) → `npm test` → commit
+  → `sync` → deploy. Делает агент при любой выкладке после ~февраля 2027 и в полугодовой проверке (`docs/MAINTENANCE.md`).
+
+## casaslegales — сроки того, что сервер обновить не может (`plazos`, раз в сутки, без сети)
+- Из синхронизированных JSON: копии владельца (реестры Córdoba, Neuquén, Río Negro, Santa Fe, Mendoza; провинция Salta; копии владельца в пакете
+  помощи) — `fetched + maxAgeDays` набора (100); данные обзоров (`data/sources/reviews/<марка>.json`) — самая старая копия/скриншот/статус
+  + **180 дней** (`REVIEW_MAX_AGE`, владелец пересобирает обзоры раз в полгода); копии страниц операторов и скриншоты (`operators.json`,
+  `maxAgeDays` 180).
+- **Одно напоминание:** за 21 день до первого срока (из `plazos` и `listas`) — одно сообщение в Telegram со всем, что истекает в
+  ближайшие 60 дней, по группам: 1) сохранить из Chrome (адреса, до какого числа), 2) что сервер не смог обновить, 3) обзоры через
+  Chrome + VPN AR, 4) копии и скриншоты операторов. id `reminder-<первый срок>` — раз на цикл; пока висит — `health` PROBLEMS.
+  Отдельные сроки — `warnDays 0` (сообщение только в день истечения).
+
 ## Что ломается и как
 | Симптом | Где видно | Что делать |
 |---|---|---|
@@ -197,8 +234,12 @@
 | `price … held back (jump/not found/…)` | Telegram, `problems` | сверить PDF в `state/docs/` с сайтом LOTBA; верная цена — поправить шаблон/порог в `engine/lottery/precios.mjs` |
 | `cited values not found any more: …` | Telegram, `problems` | LOTBA изменил выплаты/правила: новая копия в `data/sources/lottery`, `verify-sources`, deploy |
 | `expires …` / `EXPIRED …` (не программа) | Telegram, `status` | обновить копию источника (половинная проверка ниже), commit → `sync` |
+| `… changed on the official page` (casaslegales) | Telegram, `listas.json → changes`, `status` | `pull` не возьмёт эту копию; скачать страницу, прочитать, поправить `data/sources/...` руками (новые/ушедшие адреса — с HTML-доказательством), `npm test`, commit → `sync` → deploy |
+| `… now keeps AI crawlers or us out` (casaslegales) | Telegram | больше не качаем: пометить документ `pendingOwnerCopy: true`, адрес — в `owner-saves/README.md`, commit → `sync` |
+| `casaslegales reminder: …` | Telegram (за 21 день) | `docs/MAINTENANCE.md`: владелец сохраняет страницы / собирает обзоры, агент раскладывает (`owner-copy.mjs`, `pull --write`) |
 
 ## Раз в полгода (агент)
+Полный чек-лист трёх сайтов с датами — **`docs/MAINTENANCE.md`**. Здесь — только ленты.
 1. `bash tools/feeds-server.sh jugadadeldia status` и `… pingalto status`: health OK, нет stale, fails 0; `logs 300` — нет повторяющихся ошибок.
    У jugadadeldia — таблица `== expiries`: всё, что истекает до следующей проверки, обновить сейчас (скачать копию, перепроверить цитаты,
    `node tools/verify-sources.mjs` / `verify-rg.mjs`, commit, `sync`, deploy). Месячные программы ведут ленты `programa` и `precios` сами;
