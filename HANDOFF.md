@@ -282,8 +282,6 @@
   по-турецки — вид под юбку), /valorant/mapas/split (куртка не на руках), /valorant/mapas/ascent (вид под юбку). Без сцены пока:
   /brawl/brawlers, /brawl/eventos, /clash/meta, /lol/msi, /esports/latam, /valorant/mapas/ascent и /split — следующим раундом брать
   только стоячие позы (сидя в мини модель часто ломает скромность).
-- **GitHub push не работает** (04.11): `Permission denied (publickey)` для `~/.ssh/jpc_ed25519` — коммиты лежат локально (main впереди
-  origin); владельцу — проверить deploy key в репозитории на GitHub.
 
 ## pingalto (04.11) — аудит: 49 страниц + 404, отчёт `docs/AUDIT-PINGALTO-2026-11-04.md`
 - **Новое/переделано (выложено):** /cs2 — хаб игры (требования Steam AR + «¿Te corre CS2?», время загрузки, пинги Valve SDR, CS 1.6
