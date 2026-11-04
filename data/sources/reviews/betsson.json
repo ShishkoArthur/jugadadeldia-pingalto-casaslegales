@@ -1,0 +1,827 @@
+{
+ "brand": "betsson",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "pba.betsson.bet.ar",
+  "ofertas.pba.betsson.bet.ar",
+  "www.betsson.bet.ar",
+  "caba.betsson.bet.ar",
+  "cba.betsson.bet.ar"
+ ],
+ "status": {
+  "pba.betsson.bet.ar": {
+   "status": "open",
+   "note": "Loads from AR VPN exit; OneTrust cookie banner, Reject All clicked",
+   "date": "2026-11-04"
+  },
+  "ofertas.pba.betsson.bet.ar": {
+   "status": "bot-check",
+   "note": "App link (nav 'App' -> bga.onelink.me -> ofertas.pba.betsson.bet.ar/betsson-app) shows 'Max challenge attempts exceeded'; app store availability not verified",
+   "date": "2026-11-04"
+  },
+  "www.betsson.bet.ar": {
+   "status": "open",
+   "note": "Province chooser (www.betsson.com.ar redirects here)",
+   "date": "2026-11-04"
+  },
+  "caba.betsson.bet.ar": {
+   "status": "open",
+   "note": "Actual CABA site (registry lists betsson.com.ar, which redirects to the chooser)",
+   "date": "2026-11-04"
+  },
+  "cba.betsson.bet.ar": {
+   "status": "open",
+   "note": "",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "pba-home": {
+   "url": "https://pba.betsson.bet.ar/",
+   "file": "data/sources/reviews/betsson/_docs/pba-home.txt",
+   "date": "2026-11-04",
+   "sha256": "c1cd32fadbcb674bc5d75ad30ffbc625d10c9df092991add52b94b4e8a016113"
+  },
+  "pba-sports": {
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas",
+   "file": "data/sources/reviews/betsson/_docs/pba-sports.txt",
+   "date": "2026-11-04",
+   "sha256": "7ae3ef2d796025e69210e9427502013611426f8b985d7f7d649ada2dd3461724"
+  },
+  "pba-futbol-argentina": {
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas/futbol/argentina",
+   "file": "data/sources/reviews/betsson/_docs/pba-futbol-argentina.txt",
+   "date": "2026-11-04",
+   "sha256": "635081553bd37ddda7b09c64d50da7a97b3df2afc1b5091962c1e9f9bb98fbf9"
+  },
+  "pba-match-aldosivi-river": {
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas/futbol/argentina/argentina-liga-profesional/aldosivi-river-plate",
+   "file": "data/sources/reviews/betsson/_docs/pba-match-aldosivi-river.txt",
+   "date": "2026-11-04",
+   "sha256": "ea4618b5dc8ec76bfe664f8e52e9769220ef9d2b741b2bcf02dc80e7a4301840"
+  },
+  "pba-casino": {
+   "url": "https://pba.betsson.bet.ar/casino",
+   "file": "data/sources/reviews/betsson/_docs/pba-casino.txt",
+   "date": "2026-11-04",
+   "sha256": "529fafaa0e2cd995183d5392157ad749ccf2c6262b86fdcb837af009b8d78f11"
+  },
+  "pba-help-pagos": {
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "file": "data/sources/reviews/betsson/_docs/pba-help-pagos.txt",
+   "date": "2026-11-04",
+   "sha256": "d6ac0018f537c110a6d4845827a383fd323696c65fe67b69962fd07ef8c34a4b"
+  },
+  "pba-faq-retiros": {
+   "url": "https://support.pba.betsson.bet.ar/es?faq=8742",
+   "file": "data/sources/reviews/betsson/_docs/pba-faq-retiros.txt",
+   "date": "2026-11-04",
+   "sha256": "50c8e467f69ebec1f485ae31f278227aae879598796f7fb9cf8bc5ec9aa24ab1"
+  },
+  "pba-juego-responsable": {
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "file": "data/sources/reviews/betsson/_docs/pba-juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "50dacfca817865abe29fcbeb2f7051fdc9a3ad331677e640f09aec96cbda0b80"
+  },
+  "pba-tyc": {
+   "url": "https://pba.betsson.bet.ar/terminos-y-condiciones",
+   "file": "data/sources/reviews/betsson/_docs/pba-tyc.txt",
+   "date": "2026-11-04",
+   "sha256": "d6c8da110b7ef17b990204a38cdf0820b8859b89edee4f6e848d26f8517a3b9c"
+  },
+  "pba-reglas-casino": {
+   "url": "https://pba.betsson.bet.ar/reglas-juegos/casino",
+   "file": "data/sources/reviews/betsson/_docs/pba-reglas-casino.txt",
+   "date": "2026-11-04",
+   "sha256": "d35fb3d3365a7973da18fe9db318c3557856d55c0ee64348aaba5c541c45b0a8"
+  },
+  "entrada-www": {
+   "url": "https://www.betsson.bet.ar/",
+   "file": "data/sources/reviews/betsson/_docs/entrada-www.txt",
+   "date": "2026-11-04",
+   "sha256": "6fa55672db8ed2798bf974d527992908adeecfb6b128c390a0ebd8cb461107f0"
+  },
+  "caba-home": {
+   "url": "https://caba.betsson.bet.ar/",
+   "file": "data/sources/reviews/betsson/_docs/caba-home.txt",
+   "date": "2026-11-04",
+   "sha256": "5af3fadad9634be56acef959146537482ce8936616b25399cce9ecee9dbdc849"
+  },
+  "cba-home": {
+   "url": "https://cba.betsson.bet.ar/",
+   "file": "data/sources/reviews/betsson/_docs/cba-home.txt",
+   "date": "2026-11-04",
+   "sha256": "6bd3a568c2ccb2469c577ae2978fbab6f2dc7c6df59a2b11cf294dd5dd8fca93"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Casino de Victoria S.A.-Betsson Malta Holding Limited UT",
+    "cuit": "33-71726663-9",
+    "regulator": "Instituto Provincial de Lotería y Casinos de la Provincia de Buenos Aires",
+    "act": "RESO-2020-795-GDEBA-IPLYCMJGM",
+    "actDate": "2020-12-29"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "pba.betsson.bet.ar un sitio operado por Casino de Victoria S.A.-Betsson Malta Holding Limited UT, CUIT Nº 33-71726663-9, bajo la licencia para el desarrollo de la actividad de juego bajo la modalidad On line otorgada por Instituto Provincial de Lotería y Casinos de la Provincia de Buenos Aires, mediante Resolución Nº RESO-2020-795-GDEBA-IPLYCMJGM del 29 de diciembre de 2020.",
+   "doc": "pba-home"
+  },
+  {
+   "field": "sportsbook.streaming",
+   "value": true,
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Transmisiones en Vivo",
+   "doc": "pba-home"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Casino en vivo Jugá ahora Ruleta en vivo Blackjack en vivo",
+   "doc": "pba-home"
+  },
+  {
+   "field": "app.mentioned",
+   "value": true,
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "App de Betsson",
+   "doc": "pba-home"
+  },
+  {
+   "field": "sportsbook.sports",
+   "value": {
+    "count": 35,
+    "names": [
+     "Ajedrez",
+     "Artes Marciales Mixtas",
+     "Badminton",
+     "Balonmano",
+     "Bandy",
+     "Básquet",
+     "Béisbol",
+     "Billar",
+     "Boxeo",
+     "Ciclismo",
+     "Dardos",
+     "Deportes de invierno",
+     "Deportes de Motor",
+     "Deportes Gaélicos",
+     "Esports",
+     "Floorball",
+     "Fórmula 1",
+     "Fútbol",
+     "Fútbol Americano",
+     "Futsal",
+     "Golf",
+     "Hockey Sobre Hielo",
+     "Hockey sobre hierba",
+     "Mercados Especiales",
+     "Motorbikes",
+     "Película",
+     "Reglas Australianas",
+     "Rugby League",
+     "Rugby Union",
+     "Speedway",
+     "Squash",
+     "Tenis",
+     "Tenis de mesa",
+     "Voley",
+     "Waterpolo"
+    ],
+    "note": "A-Z list; includes non-sport entries Mercados Especiales and Película"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas",
+   "date": "2026-11-04",
+   "quote": "A-Z Ajedrez Artes Marciales Mixtas Badminton",
+   "doc": "pba-sports"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": true,
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas",
+   "date": "2026-11-04",
+   "quote": "Transmisiones en vivo",
+   "doc": "pba-sports"
+  },
+  {
+   "field": "sportsbook.marketsOneMatch",
+   "value": {
+    "match": "Aldosivi vs River Plate",
+    "competition": "Argentina Liga Profesional",
+    "markets": 151,
+    "method": "count of market headings in tab Todos"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas/futbol/argentina/argentina-liga-profesional/aldosivi-river-plate",
+   "date": "2026-11-04",
+   "quote": "Ganador del partido Ganador del partido - Pago Anticipado Total de goles",
+   "doc": "pba-match-aldosivi-river"
+  },
+  {
+   "field": "sportsbook.odds1x2",
+   "value": {
+    "capturedAt": "2026-11-04T08:52Z",
+    "tz": "UTC",
+    "matches": [
+     {
+      "home": "Aldosivi",
+      "away": "River Plate",
+      "kickoff": "Mañana 6:00 p. m.",
+      "odds": [
+       7.8,
+       4.3,
+       1.43
+      ]
+     },
+     {
+      "home": "Gimnasia La Plata",
+      "away": "Belgrano",
+      "kickoff": "Mañana 10:15 p. m.",
+      "odds": [
+       2.22,
+       3.3,
+       3.25
+      ]
+     },
+     {
+      "home": "Barracas Central",
+      "away": "Racing Club",
+      "kickoff": "6 nov, 18:00",
+      "odds": [
+       2.12,
+       3.2,
+       3.7
+      ]
+     },
+     {
+      "home": "Independiente",
+      "away": "Deportivo Riestra",
+      "kickoff": "6 nov, 22:00",
+      "odds": [
+       1.6,
+       3.6,
+       6.3
+      ]
+     },
+     {
+      "home": "San Lorenzo",
+      "away": "Platense",
+      "kickoff": "6 nov, 22:00",
+      "odds": [
+       2.55,
+       2.92,
+       3.05
+      ]
+     }
+    ]
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas/futbol/argentina",
+   "date": "2026-11-04",
+   "quote": "Aldosivi River Plate Ganador del partido Aldosivi 7.80 Empate 4.30 River Plate 1.43",
+   "doc": "pba-futbol-argentina"
+  },
+  {
+   "field": "casino.exists",
+   "value": true,
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/casino",
+   "date": "2026-11-04",
+   "quote": "Casino Casino En Vivo Jackpots",
+   "doc": "pba-casino"
+  },
+  {
+   "field": "casino.providers",
+   "value": {
+    "count": 42,
+    "names": [
+     "PlaynGo",
+     "Amusnet",
+     "Elk Studios",
+     "Light And Wonder",
+     "Games Global",
+     "GamesInc",
+     "Evolution",
+     "Novomatic (Greentube)",
+     "Pragmatic Play",
+     "Red Tiger",
+     "NetEnt",
+     "Playtech",
+     "Thunderbolt",
+     "Endorphina",
+     "Habanero",
+     "Playson",
+     "Wazdan",
+     "Iron Dog",
+     "Red Rake",
+     "ISoftBet",
+     "Wizard Games",
+     "1x2 Gaming",
+     "Hacksaw",
+     "Synot",
+     "Bang Bang",
+     "Blueprint",
+     "NoLimitCity",
+     "Big Time Gaming",
+     "Slotmill",
+     "Kalamba",
+     "Spribe",
+     "Konami",
+     "Sneaky Slots",
+     "Rubyplay",
+     "Vibra",
+     "Aviator Studio",
+     "Gaming Realms",
+     "Push Gaming",
+     "3 Oaks Gaming",
+     "SmartSoft",
+     "Barbara Bang",
+     "Prospect Gaming"
+    ]
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/casino",
+   "date": "2026-11-04",
+   "quote": "Proveedor (42) Más Populares PlaynGo Amusnet Elk Studios",
+   "doc": "pba-casino"
+  },
+  {
+   "field": "casino.categories",
+   "value": [
+    "Juegos nuevos",
+    "Top 10",
+    "Juega Con Zaira",
+    "Torneo De Rubyplay",
+    "Exclusivos de Betsson",
+    "Juegos de Crash",
+    "Megaways",
+    "Drops and wins",
+    "Rewards Burst",
+    "Los más populares",
+    "Jackpot exclusivo",
+    "Juegos con compra de bono",
+    "Juegos de mesa",
+    "Tragamonedas",
+    "Jackpots",
+    "Casino en vivo",
+    "Todos los juegos"
+   ],
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/casino",
+   "date": "2026-11-04",
+   "quote": "Categorías del casino Juegos nuevos Top 10",
+   "doc": "pba-casino"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "AstroPay",
+    "Tarjetas de Débito (Visa, MasterCard)",
+    "Cupón de Pago (PagoFacil)",
+    "DEBIN",
+    "Cobro Express",
+    "Pago 24",
+    "Mercado Pago"
+   ],
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Ofrecemos los siguientes métodos para depositar: AstroPay Tarjetas de Débito (Visa, MasterCard) Cupón de Pago (PagoFacil) DEBIN Cobro Express Pago 24 Mercado Pago",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 500,
+    "currency": "ARS"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Cantidad mínima: 500 ARSCantidad máxima variable según cada método",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "payments.maxDeposit",
+   "value": "varies by method",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Cantidad máxima variable según cada método",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "Pago Bancario",
+    "Mercado Pago",
+    "AstroPay"
+   ],
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Ofrecemos los siguientes métodos de pago para retiros: Pago Bancario. Mercado Pago.",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "payments.minWithdrawal",
+   "value": {
+    "amount": 1000,
+    "currency": "ARS"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Cantidad mínima de retiro: 1.000 ARS",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "payments.maxWithdrawal",
+   "value": "varies by method; Mercado Pago max 60 transactions/month",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Cantidad máxima de retiro variable según lo permitido por el método de pago utilizado.",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "payments.currency",
+   "value": "ARS",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Cantidad mínima de retiro: 1.000 ARS",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "live chat",
+    "email",
+    "callback request"
+   ],
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Chat en vivo Respuesta habitual en: 1 minuto E-mail Respuesta habitual en: 1 hora",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "support.hours",
+   "value": "24/7, Spanish",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "quote": "Nuestro servicio de Atención al Cliente está disponible en español las 24 horas del día, los 7 días de la semana.",
+   "doc": "pba-help-pagos"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": {
+    "review": "generally within 24 working hours if account verified",
+    "Pago Bancario": "up to 2 business days",
+    "Astropay": "up to 24 business hours",
+    "Mercado Pago": "up to 24 business hours"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/es?faq=8742",
+   "date": "2026-11-04",
+   "quote": "Pago Bancario: Hasta 2 días hábiles. Astropay: Hasta 24 horas hábiles. Mercado Pago: Hasta 24 horas hábiles.",
+   "doc": "pba-faq-retiros"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "daily/weekly/monthly wager limit",
+    "loss limit",
+    "deposit limit",
+    "session time limit (daily/weekly/monthly)",
+    "reality check (default after 3 h, then every 60 min)",
+    "self-assessment test"
+   ],
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "date": "2026-11-04",
+   "quote": "Puedes establecer límites diarios, semanales o mensuales sobre cuánto puedes apostar, perder, depositar en tu cuenta",
+   "doc": "pba-juego-responsable"
+  },
+  {
+   "field": "rg.sessionLimit",
+   "value": true,
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "date": "2026-11-04",
+   "quote": "Tienes la facultad de establecer un límite de tiempo de la sesión",
+   "doc": "pba-juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "pauses from 24 hours up to 2 years of self-exclusion",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "date": "2026-11-04",
+   "quote": "con pausas que van desde 24 horas hasta 2 años de autoexclusión",
+   "doc": "pba-juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Registro de Autoexclusión, Instituto Provincial de Lotería y Casinos (PBA)",
+    "url": "https://loteria.gba.gob.ar/juego-compulsivo"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "date": "2026-11-04",
+   "quote": "El Registro de Autoexclusión es un servicio gratuito que ofrece el Instituto Provincial de Lotería y Casinos de la Provincia de Buenos Aires",
+   "doc": "pba-juego-responsable"
+  },
+  {
+   "field": "support.email",
+   "value": "support@betsson.bet.ar",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "date": "2026-11-04",
+   "quote": "Simplemente, envía un correo electrónico a support@betsson.bet.ar",
+   "doc": "pba-juego-responsable"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/terminos-y-condiciones",
+   "date": "2026-11-04",
+   "quote": "tener más de 18 años de edad;",
+   "doc": "pba-tyc"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Player must be geographically in Provincia de Buenos Aires",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/terminos-y-condiciones",
+   "date": "2026-11-04",
+   "quote": "estar geográficamente en jurisdicción de la Provincia de Buenos Aires;",
+   "doc": "pba-tyc"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Identity and source-of-funds checks at account opening and periodically",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/terminos-y-condiciones",
+   "date": "2026-11-04",
+   "quote": "al momento de la apertura de una cuenta, y también periódicamente, realizamos comprobaciones para asegurarnos de que usted es quien dice ser y que los fondos que utiliza para jugar son suyos propios",
+   "doc": "pba-tyc"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "date": "2026-11-04",
+   "quote": "Es ilegal que cualquier persona menor de 18 años abra una cuenta o apueste con Betsson.",
+   "doc": "pba-juego-responsable"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Account must be verified before the first withdrawal is approved",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://support.pba.betsson.bet.ar/es?faq=8742",
+   "date": "2026-11-04",
+   "quote": "antes de solicitar tu 1er retiro, tu cuenta debe estar obligatoriamente verificada antes que sea aprobado",
+   "doc": "pba-faq-retiros"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "Tarjetas de Débito (Visa, MasterCard, Maestro)",
+    "DEBIN",
+    "Paysafecard",
+    "Cobro Express",
+    "Pago Facil",
+    "Pago 24",
+    "Mercado Pago",
+    "AstroPay"
+   ],
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Ofrecemos los siguientes métodos para depositar: Tarjetas de Débito (Visa, MasterCard, Maestro) DEBIN Paysafecard Cobro Express Pago Facil Pago 24 Mercado Pago AstroPay",
+   "doc": "pba-home"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 500,
+    "currency": "ARS"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Cantidad mínima: 500 ARS",
+   "doc": "pba-home"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "email",
+    "live chat",
+    "callback request"
+   ],
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Podés comunicarte con nosotros por correo electrónico, chat en vivo o solicitar una llamada.",
+   "doc": "pba-home"
+  },
+  {
+   "field": "support.hours",
+   "value": "24/7",
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Atención al cliente 24/7",
+   "doc": "pba-home"
+  },
+  {
+   "field": "casino.rtpPublished",
+   "value": {
+    "published": false,
+    "where": "not found on casino game rules page"
+   },
+   "host": "pba.betsson.bet.ar",
+   "url": "https://pba.betsson.bet.ar/reglas-juegos/casino",
+   "date": "2026-11-04",
+   "quote": null,
+   "doc": "pba-reglas-casino"
+  },
+  {
+   "field": "app.ios",
+   "value": {
+    "available": true,
+    "store": "https://apps.apple.com/ar/app/betsson-apuestas-deportivas/id6502189510"
+   },
+   "host": "www.betsson.bet.ar",
+   "url": "https://www.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Download on the App Store | https://apps.apple.com/ar/app/betsson-apuestas-deportivas/id6502189510",
+   "doc": "entrada-www"
+  },
+  {
+   "field": "app.android",
+   "value": {
+    "available": true,
+    "store": null,
+    "link": "https://inroute.betsson.bet.ar/pba-download-android-app",
+    "note": "direct download link (PBA), not a Google Play page; not followed"
+   },
+   "host": "www.betsson.bet.ar",
+   "url": "https://www.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Download Android app | https://inroute.betsson.bet.ar/pba-download-android-app",
+   "doc": "entrada-www"
+  },
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Betsson Malta Holding Limited-Casino de Victoria S.A.",
+    "cuit": "30-71727906-5",
+    "regulator": "Lotería de la Ciudad de Buenos Aires, S.E.",
+    "act": "DI-2021-1166-GCABA-LOTBA",
+    "actDate": "2021-09-10"
+   },
+   "host": "caba.betsson.bet.ar",
+   "url": "https://caba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "caba.betsson.bet.ar un sitio operado por Betsson Malta Holding Limited-Casino de Victoria S.A. CUIT Nº 30-71727906-5. Bajo permiso de agencia de juego en línea otorgado por Lotería de la Ciudad de Buenos Aires, S.E. mediante Disposición Nº DI-2021-1166-GCABA-LOTBA el 10 de septiembre de 2021.",
+   "doc": "caba-home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Offer limited to CABA",
+   "host": "caba.betsson.bet.ar",
+   "url": "https://caba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "La oferta de entretenimiento disponible en el sitio se circunscribe al ámbito geográfico de la Ciudad Autónoma de Buenos Aires.",
+   "doc": "caba-home"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 500,
+    "currency": "ARS"
+   },
+   "host": "caba.betsson.bet.ar",
+   "url": "https://caba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Cantidad mínima: 500 ARS",
+   "doc": "caba-home"
+  },
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Online Cordoba Betsson Malta Holding Limited - Casino Victoria S.A - Union Transitoria",
+    "cuit": "30-71772488-3",
+    "regulator": "Loteria de la Provincia de Cordoba, S.E.",
+    "act": "Resolución del Directorio Nº 1689/23 Serie \"1\"",
+    "actDate": "2023-02-01"
+   },
+   "host": "cba.betsson.bet.ar",
+   "url": "https://cba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "cba.betsson.bet.ar un sitio operado por Online Cordoba Betsson Malta Holding Limited - Casino Victoria S.A - Union Transitoria CUIT Nº30-71772488-3.",
+   "doc": "cba-home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Offer limited to Provincia de Córdoba",
+   "host": "cba.betsson.bet.ar",
+   "url": "https://cba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "La oferta de entretenimiento disponible en el sitio se circunscribe al ámbito geográfico de la Provincia de Cordoba.",
+   "doc": "cba-home"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 500,
+    "currency": "ARS"
+   },
+   "host": "cba.betsson.bet.ar",
+   "url": "https://cba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Cantidad mínima: 500 ARS",
+   "doc": "cba-home"
+  }
+ ],
+ "shots": [
+  {
+   "view": "sportsbook",
+   "file": "data/shots/betsson/review-2026-11-04-sportsbook.png",
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas/futbol/argentina",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "dce35655c92fd5dacb19b914e8a804bd675b5a651e992d26a9ffc29640099314"
+  },
+  {
+   "view": "match-markets",
+   "file": "data/shots/betsson/review-2026-11-04-match-markets.png",
+   "url": "https://pba.betsson.bet.ar/apuestas-deportivas/futbol/argentina/argentina-liga-profesional/aldosivi-river-plate",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "426a3041abcfbec7554dbde9a2c638725b25e0bb0c7cf695d14cffb73eed8191"
+  },
+  {
+   "view": "casino",
+   "file": "data/shots/betsson/review-2026-11-04-casino.png",
+   "url": "https://pba.betsson.bet.ar/casino",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 315,
+   "sha256": "f04e9d43fd9ad3e58a43e37954571c15c086f36f1863407c0338b6bfc804cc42",
+   "note": "Filtros panel open (providers); cropped above game tiles"
+  },
+  {
+   "view": "payments",
+   "file": "data/shots/betsson/review-2026-11-04-payments.png",
+   "url": "https://support.pba.betsson.bet.ar/?category=M%C3%A9todos-de-pago",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "19c8b5bf59035b56ab884357a987b5743daa1ded1273e6fceae5e6d4f3d7cb6a"
+  },
+  {
+   "view": "rg",
+   "file": "data/shots/betsson/review-2026-11-04-rg.png",
+   "url": "https://pba.betsson.bet.ar/juego-responsable/information",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "256eeaaee4087a1971aee96133f8f469d2eb6ac0f7589ffc24cd45cbf6048fda"
+  },
+  {
+   "view": "home",
+   "file": "data/shots/betsson/review-2026-11-04-home.png",
+   "url": "https://pba.betsson.bet.ar/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "91258786440df5a0ff9f18b4b93003988c28c8fcb46b92a342e6fa6fad0f41b3",
+   "note": "Scrolled below the promo hero and carousel"
+  }
+ ]
+}
