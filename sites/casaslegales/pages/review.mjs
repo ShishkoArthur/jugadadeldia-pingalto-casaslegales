@@ -67,6 +67,7 @@ const F = {
   'support.language': ['Idioma', 'quote'],
   'support.helpCenter': ['Centro de ayuda', 'quote'],
   'sportsbook.sports': ['Deportes en su lista A-Z', 'sports'],
+  'sportsbook.exists': ['Apuestas deportivas', 'yes'],
   'sportsbook.live': ['Apuestas en vivo', 'yes'],
   'sportsbook.streaming': ['Transmisiones en vivo', 'yes'],
   'sportsbook.cashout': ['Cierre de apuesta (cash out)', 'yes'],
@@ -229,7 +230,7 @@ export function reviewShots(h, R, label) {
       '<figcaption><b>' + h.esc(label(s.view)) + '</b> Captura propia de la página pública, desde Argentina, sin cuenta · ' + h.fmtDate(s.date) + '</figcaption></figure>';
   }).join('');
 }
-export const VIEW_LABEL = { home: 'Página de inicio', sportsbook: 'Apuestas deportivas', 'match-markets': 'Mercados de un partido', casino: 'Casino', 'live-casino': 'Casino en vivo', payments: 'Medios de pago', rg: 'Juego responsable', app: 'App', support: 'Atención al cliente', footer: 'Pie de página' };
+export const VIEW_LABEL = { 'age-gate': 'Aviso de mayoría de edad', home: 'Página de inicio', sportsbook: 'Apuestas deportivas', 'match-markets': 'Mercados de un partido', casino: 'Casino', 'live-casino': 'Casino en vivo', payments: 'Medios de pago', rg: 'Juego responsable', app: 'App', support: 'Atención al cliente', footer: 'Pie de página' };
 export const viewLabel = v => VIEW_LABEL[v] || 'Página pública';
 
 // "Cómo entrar al sitio oficial" (login intent): the address each list names, a button to it, how to tell it from a copy. We never
