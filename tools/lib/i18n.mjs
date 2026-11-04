@@ -233,7 +233,8 @@ export function htmlToEn(html, { tr, mapPath, origin, quoteNote, where = '' }) {
     flush();
     if (t.k === 'atom' && t.quote) {
       out += t.v.replace(/^<blockquote\b/, m => m + (/\slang=/.test(t.v.slice(0, t.v.indexOf('>'))) ? '' : ' lang="es-AR"'));
-      if (quoteNote) {
+      // a quote that is already English (lang="en" on the blockquote) needs no English rendering
+      if (quoteNote && !/^<blockquote\b[^>]*\slang="en/.test(t.v)) {
         const inner = t.v.replace(/^<blockquote[^>]*>/, '').replace(/<\/blockquote>$/, '');
         const sub = htmlToEn('<body>' + inner, { tr, mapPath, origin, where }).replace(/^<body>/, '');
         // no English note for data quoted as evidence (JSON, lists of numbers) or when nothing changed
