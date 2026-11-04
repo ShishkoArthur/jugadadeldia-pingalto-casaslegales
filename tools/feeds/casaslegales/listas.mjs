@@ -1,6 +1,6 @@
 // Monthly server recheck of the official pages casaslegales.com is built from (docs/FEEDS.md, casaslegales): the licence registries
-// (data/sources/registries), the province pages (data/sources/provinces) and the help package (data/sources/rg). The feed runs
-// daily from cron and goes to the network only when it is due (dueReason): first run, the synced data changed, 28 days since the
+// (data/sources/registries), the province pages (data/sources/provinces) and the help package (data/sources/rg). The feed runs on
+// every (daily) cron call and goes to the network only when it is due (dueReason): first run, the synced data changed, 28 days since the
 // last full check, or a retry 3 days after a failure (only the failing pages, for 14 days; after that only monthly).
 // Never fetched: copies the owner saves from his browser (copiedBy "owner", pendingOwnerCopy, sites in AI_BLOCKED_HOSTS, refresh
 // "manual") and any page whose robots.txt keeps us or any AI crawler out (robots-txt.mjs; that page raises an alert once).
@@ -164,7 +164,7 @@ export function judge(raw, prevData, docsDir) {
 
 export default {
   name: 'listas',
-  cadence: 'daily',
+  cadence: 'run',
   maxAgeHours: 72,
   timeoutSec: 780,
   async fetch(ctx) {

@@ -76,7 +76,7 @@ export function reminder(today, own, listas) {
 
 export default {
   name: 'plazos',
-  cadence: 'daily',
+  cadence: 'run',
   maxAgeHours: 72,
   async fetch(ctx) {
     let listas = null;
