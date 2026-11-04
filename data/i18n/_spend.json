@@ -1,5 +1,5 @@
 {
- "total": 7.5958,
+ "total": 7.9461,
  "runs": [
   {
    "at": "2026-11-04T12:21:12.652Z",
@@ -84,6 +84,12 @@
    "site": "pingalto",
    "what": "strings",
    "usd": 0.3003
+  },
+  {
+   "at": "2026-11-04T14:16:56.864Z",
+   "site": "casaslegales",
+   "what": "review",
+   "usd": 0.3503
   }
  ]
 }

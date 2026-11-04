@@ -56,4 +56,9 @@ export const UI = {
   'Líneas y autoexclusión de cada provincia': 'Helplines and self-exclusion in every province',
   'Sin bonos ni afiliados: solo enlazamos la dirección que publica cada lista oficial. No es asesoramiento legal: depende de la ley de tu provincia.': 'No bonuses, no affiliates: we only link the address each official list publishes. Not legal advice: it depends on your province\'s law.',
   'gratuita ': 'free ',
+  'provincia': 'province',
+  'subdominio': 'subdomain',
+  'marca': 'brand',
+  'otra terminación': 'other ending',
+  'Las direcciones oficiales, parte por parte:': 'The official addresses, part by part:',
 };

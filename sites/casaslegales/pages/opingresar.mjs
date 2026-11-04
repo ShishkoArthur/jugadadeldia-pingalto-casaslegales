@@ -16,6 +16,7 @@ import { rowOf } from './operador.mjs';
 import { quote, sectionHead, officialLink, brandLink } from './parts.mjs';
 import { cite, storeLinks } from './review.mjs';
 import { codeOf } from './opparts.mjs';
+import { tr, and } from '../content/lang.mjs';
 import { SITE } from '../config.mjs';
 
 // per brand: the search phrase the title answers, and notes on the copies that the page relies on (each text is checked in its copy)
@@ -39,7 +40,7 @@ const ING = {
   },
 };
 export const ING_BRANDS = Object.keys(ING);
-const joinY = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' y ' + a.at(-1);
+const joinY = (a, h) => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + (h ? and(h) : ' y ') + a.at(-1);
 const joinO = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' o ' + a.at(-1);
 const SHORT = { 'buenos-aires': 'PBA', caba: 'CABA' };
 
@@ -63,7 +64,7 @@ function addrSvg(h, groups) {
   const W = Math.max(340, 52 + maxC * CW + 20), RH = 112;
   const rows = groups.map((g, i) => {
     const a = anatomy(g.host), y = i * RH;
-    const segs = [[a.sub ? a.sub + '.' : '', 'ia-sub', /^(pba|caba|cba|mza|mdz|cordoba|mendoza)$/.test(a.sub) ? 'provincia' : 'subdominio'], [a.name, 'ia-name', 'marca'], ['.' + a.ending, a.betAr ? 'ia-bet' : 'ia-end', a.betAr ? '.bet.ar' : 'otra terminación']].filter(s => s[0]);
+    const segs = [[a.sub ? a.sub + '.' : '', 'ia-sub', tr(h, /^(pba|caba|cba|mza|mdz|cordoba|mendoza)$/.test(a.sub) ? 'provincia' : 'subdominio')], [a.name, 'ia-name', tr(h, 'marca')], ['.' + a.ending, a.betAr ? 'ia-bet' : 'ia-end', a.betAr ? '.bet.ar' : tr(h, 'otra terminación')]].filter(s => s[0]);
     let x = 52;
     const lines = [0, 0];
     const parts = segs.map(([txt, cls, lab]) => {
@@ -77,12 +78,12 @@ function addrSvg(h, groups) {
         '<path class="ia-br" d="M' + (x0 + 2) + ' ' + (y + 66) + 'v5h' + (w - 4) + 'v-5M' + cx + ' ' + (y + 71) + 'v' + (line ? 19 : 5) + '"/>' +
         '<text class="ia-lab" x="' + lx + '" y="' + (y + (line ? 101 : 87)) + '">' + h.esc(lab) + '</text>';
     }).join('');
-    return '<text class="ia-tag" x="0" y="' + (y + 13) + '">' + h.esc(g.jurs.map(r => codeOf(r.id)).join(' · ') + ' — ' + joinY(g.jurs.map(r => r.regulator.short))) + '</text>' +
+    return '<text class="ia-tag" x="0" y="' + (y + 13) + '">' + h.esc(g.jurs.map(r => codeOf(r.id)).join(' · ') + ' — ' + joinY(g.jurs.map(r => r.regulator.short), h)) + '</text>' +
       '<rect class="ia-bar" x="0" y="' + (y + 24) + '" width="' + W + '" height="40" rx="12"/>' +
       '<path class="ia-lock" d="M18 ' + (y + 42) + 'v-4a6 6 0 0 1 12 0v4M15 ' + (y + 42) + 'h18v12h-18z"/>' + parts;
   }).join('');
   const H = groups.length * RH;
-  return '<svg class="rl-ia" viewBox="-2 0 ' + (W + 4) + ' ' + H + '" role="img" aria-label="' + h.esc('Las direcciones oficiales, parte por parte: ' + groups.map(g => g.host + ' (' + g.jurs.map(r => codeOf(r.id)).join(', ') + ')').join('; ')) + '" style="max-width:' + Math.round((W + 4) * 1.3) + 'px">' + rows + '</svg>';
+  return '<svg class="rl-ia" viewBox="-2 0 ' + (W + 4) + ' ' + H + '" role="img" aria-label="' + h.esc(tr(h, 'Las direcciones oficiales, parte por parte: ') + groups.map(g => g.host + ' (' + g.jurs.map(r => codeOf(r.id)).join(', ') + ')').join('; ')) + '" style="max-width:' + Math.round((W + 4) * 1.3) + 'px">' + rows + '</svg>';
 }
 
 function copyOf(brand) {
