@@ -121,9 +121,9 @@
  {
   "section": "Kit",
   "url": "/kit/sensibilidad",
-  "title": "Convertidor de sensibilidad entre juegos y cm/360",
-  "titleLen": 49,
-  "h1": "Convertidor de sensibilidad entre juegos",
+  "title": "Conversor de sensibilidad: CS2, Valorant, OW2 y Apex",
+  "titleLen": 52,
+  "h1": "Conversor de sensibilidad entre juegos",
   "description": "Pasá tu sensibilidad de CS2 a Valorant, Overwatch 2 o Apex con el mismo giro de mano: cm/360, eDPI y la fuente de cada número.",
   "keys": "sensibilidad 2.2k/9 · convertidor de sensibilidad 600/26 · generador de sensibilidad 600/0 · conversor de sensibilidad 300/37",
   "kind": "tool",
@@ -132,14 +132,14 @@
   "ar": "Пресеты аргентинских про-игроков CS2/Valorant — только из их публикаций с датой (иначе блок скрыт); всё в сантиметрах; es-AR",
   "data": "константы поворота (yaw) из конфигов игр — проверить каждую, считает движок",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "«sensibilidad dental / en los dientes» — чужой интент, не цель",
-  "status": "live 2026-11-03"
+  "notes": "«sensibilidad dental / en los dientes» — чужой интент, не цель 04.11 audit: title «Conversor» (query form).",
+  "status": "live 2026-11-04"
  },
  {
   "section": "Kit",
   "url": "/kit/dpi",
-  "title": "DPI del mouse: medí el tuyo con la tarjeta SUBE",
-  "titleLen": 47,
+  "title": "DPI analyzer: medí el DPI real de tu mouse con la SUBE",
+  "titleLen": 54,
   "h1": "Medí el DPI real de tu mouse con la SUBE",
   "description": "Medí el DPI real de tu mouse en el navegador usando la SUBE o una tarjeta bancaria como regla, compará con el de fábrica y calculá tu eDPI.",
   "keys": "what is a dpi setting 3.1k/1 · dpi 2k/9 · dpi analyzer 600/34 · dpi mouse 400/0 · que es dpi 300/0",
@@ -149,8 +149,8 @@
   "ar": "Эталон — карта SUBE или DNI, которая есть у каждого в Аргентине (формат ID-1 — проверить); номер карты не вводится и никуда не отправляется",
   "data": "только браузер (pointer events), данных не нужно",
   "auto": "статика",
-  "notes": "",
-  "status": "live 2026-11-03"
+  "notes": "04.11 audit: title covers «dpi analyzer».",
+  "status": "live 2026-11-04"
  },
  {
   "section": "Kit",
@@ -354,10 +354,10 @@
  {
   "section": "CS2",
   "url": "/cs2",
-  "title": "Ranking de CS2 de Valve: el mundo y las Américas",
-  "titleLen": 48,
-  "h1": "Ranking de equipos de CS2 de Valve",
-  "description": "El ranking oficial de Valve de los equipos de CS2: el mundo y las Américas, donde juega Argentina, y la chance entre dos equipos según el modelo de Valve.",
+  "title": "Counter-Strike 2 desde Argentina: requisitos, ping y ranking",
+  "titleLen": 60,
+  "h1": "Counter-Strike 2 desde Argentina",
+  "description": "CS2 es gratis en Steam: si te corre según el mínimo de Valve, cuánto tarda la descarga, los servidores cerca de Argentina y el ranking oficial de equipos.",
   "keys": "counter strike 2 2.6k/8 · cs2 2.4k/16 · counter strike 9.2k/17",
   "kind": "live",
   "wave": "P1",
@@ -365,8 +365,8 @@
   "ar": "VRS Américas + аргентинские команды подсвечены, движение за неделю; дата-центры Valve в Sudamérica (GetSDRConfig — проверить)",
   "data": "ValveSoftware/counter-strike_regional_standings (GitHub, открыто)",
   "auto": "лента на сервере раз в сутки (частоту публикации VRS — проверить)",
-  "notes": "команды с брендами букмекеров в названии скрыты (как в RinkMath) 03.11 wave 3: Valve VRS 2026-11-02 (global + Americas, GitHub, saved copy) with the head-to-head of Valve model (fit.js/glicko.js, RD 75). Teams are not marked as Argentine: Valve tables carry no nationality; betting-brand names masked.",
-  "status": "live 2026-11-03"
+  "notes": "команды с брендами букмекеров в названии скрыты (как в RinkMath) 03.11 wave 3: Valve VRS 2026-11-02 (global + Americas, GitHub, saved copy) with the head-to-head of Valve model (fit.js/glicko.js, RD 75). Teams are not marked as Argentine: Valve tables carry no nationality; betting-brand names masked. 04.11 audit: /cs2 became the CS2 hub (intent «counter strike»): Steam requirements + does-it-run check, download time, Valve SDR points near Argentina, start steps, CS 1.6 on Steam; the VRS ranking is a section (#ranking).",
+  "status": "live 2026-11-04"
  },
  {
   "section": "CS2",
@@ -786,10 +786,10 @@
  {
   "section": "Free Fire",
   "url": "/ff",
-  "title": "Free Fire en Argentina: sensibilidad, nombres y códigos",
-  "titleLen": 55,
-  "h1": "Free Fire: herramientas que sí sirven",
-  "description": "Herramientas de Free Fire que sí sirven, pensadas para Argentina: sensibilidad calibrada en tu celu, nombres con estilo y cómo canjear códigos sin estafas.",
+  "title": "Free Fire en Argentina: descarga, MAX, sensibilidad y más",
+  "titleLen": 57,
+  "h1": "Free Fire desde Argentina",
+  "description": "Free Fire desde Argentina: cómo es una partida, dónde bajarlo oficial, Free Fire o MAX, sensibilidad calibrada, nombres con estilo y códigos sin estafas.",
   "keys": "free fire 69k/47 (не цель)",
   "kind": "hub",
   "wave": "P1",
@@ -797,8 +797,8 @@
   "ar": "Сервер Latinoamérica (там Аргентина), лига LATAM с аргентинскими командами, слова es-AR; честно «чего нет» (алмазы, хаки)",
   "data": "—",
   "auto": "из лент",
-  "notes": "не берём: diamantes/recarga/pagostore, hacks, macro, «archivos para dar tiros», cuentas gratis, xxx 03.11 wave 3: hub of FF tools + what the site will not do.",
-  "status": "live 2026-11-03"
+  "notes": "не берём: diamantes/recarga/pagostore, hacks, macro, «archivos para dar tiros», cuentas gratis, xxx 03.11 wave 3: hub of FF tools + what the site will not do. 04.11 audit: hub got match facts, official download table (Play, App Store AR) and hacker/report block; title covers descarga and MAX.",
+  "status": "live 2026-11-04"
  },
  {
   "section": "Free Fire",
@@ -854,10 +854,10 @@
  {
   "section": "Free Fire",
   "url": "/ff/max",
-  "title": "Free Fire MAX: ¿corre en mi celular? Requisitos",
-  "titleLen": 47,
-  "h1": "Free Fire MAX: requisitos y diferencias con Free Fire",
-  "description": "¿Free Fire MAX corre en tu celular? Cargá RAM, versión y espacio libre y mirá si anda, según los requisitos oficiales y los celus más usados en Argentina.",
+  "title": "Free Fire MAX en Argentina: qué cambia y si podés bajarlo",
+  "titleLen": 57,
+  "h1": "Free Fire MAX o Free Fire: cuál bajar en Argentina",
+  "description": "Free Fire MAX o Free Fire: qué cambia según Garena, si aparece en Google Play y App Store de Argentina, cuánto ocupa y por qué tu cuenta sirve en los dos.",
   "keys": "free fire max 58k/9",
   "kind": "tool",
   "wave": "P1",
@@ -865,7 +865,8 @@
   "ar": "Сравнение с моделями, популярными в Аргентине (StatCounter AR — проверить); без APK",
   "data": "Google Play / App Store / Garena (цитаты)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "без ссылок на APK 03.11 wave 4: skipped - Garena and Play Store publish no requirements in HTML; only third-party articles."
+  "notes": "без ссылок на APK 03.11 wave 4: skipped - Garena and Play Store publish no requirements in HTML; only third-party articles. 04.11 audit: built without official requirements (Garena publishes none): Garena own words (Firelink, Ultra HD), Google Play AR/US and App Store AR/US listings; in our AR copies MAX has no Install button and is not found in the AR App Store.",
+  "status": "live 2026-11-04"
  },
  {
   "section": "Free Fire",
@@ -983,10 +984,10 @@
  {
   "section": "Fortnite",
   "url": "/fortnite",
-  "title": "Fortnite en Argentina: temporada, rangos y herramientas",
-  "titleLen": 55,
-  "h1": "Fortnite: temporada, rangos y más",
-  "description": "Fortnite desde Argentina: cuándo termina la temporada en hora argentina, rangos, ping al servidor de Brasil y cómo jugar en la nube con datos del celu.",
+  "title": "Fortnite en Argentina: cómo jugarlo gratis en cada aparato",
+  "titleLen": 58,
+  "h1": "Fortnite desde Argentina: dónde y cómo jugarlo",
+  "description": "Cómo jugar Fortnite gratis desde Argentina en Android, iPhone, compu o consola: qué tienda sirve, qué pasa en iPhone y cómo jugarlo en la nube sin bajarlo.",
   "keys": "fortnite 104k/49 (не цель) · fortnite gg 14k/0 (навигационный)",
   "kind": "hub",
   "wave": "P1",
@@ -994,7 +995,8 @@
   "ar": "Регион матчмейкинга Brasil (где играют аргентинцы — проверить), ping до São Paulo, конец сезона в hora argentina",
   "data": "см. /fortnite/temporada",
   "auto": "из ленты сезона",
-  "notes": "не берём: pavos, crew, tienda/skins (вопрос), xxx/rule 34, apk 03.11 wave 4: skipped - only one Fortnite tool so far (/fortnite/nube) and no hub scene; Epic pages answer 403."
+  "notes": "не берём: pavos, crew, tienda/skins (вопрос), xxx/rule 34, apk 03.11 wave 4: skipped - only one Fortnite tool so far (/fortnite/nube) and no hub scene; Epic pages answer 403. 04.11 audit: built as «how to play from Argentina on each device» (Google Play AR listing, Wikipedia, Xbox Cloud); season, ranks and tracker not shown (fortnite.com 403; tracker needs a fortnite-api.com key from the owner).",
+  "status": "live 2026-11-04"
  },
  {
   "section": "Fortnite",
@@ -1097,8 +1099,8 @@
  {
   "section": "Brawl Stars",
   "url": "/brawl/brawlers",
-  "title": "Brawlers de Brawl Stars: todos, con habilidades y gadgets",
-  "titleLen": 57,
+  "title": "Personajes de Brawl Stars: todos los brawlers y habilidades",
+  "titleLen": 59,
   "h1": "Todos los brawlers de Brawl Stars",
   "description": "Todos los brawlers de Brawl Stars con sus habilidades estelares y gadgets, el más nuevo y las copas que piden los 200 mejores puestos de Argentina.",
   "keys": "brawl stars personajes 1.7k/0 · personajes de brawl stars 1.1k/0 · brawlers 1k/10 · brawlers de brawl stars 350/1 · todos los brawlers 300/0 · spike 2.2k/0 · edgar 1.9k/0 · leon 1.2k/0 · mandy 900/0 · melodie 900/0 · colette 700/0",
@@ -1108,9 +1110,9 @@
   "ar": "Какие бравлеры чаще у топ-200 Аргентины (Supercell rankings AR)",
   "data": "Supercell Brawl Stars API (ключ бесплатный, привязан к IP сервера) /brawlers; редкость/класс — Brawlify API (неофициальный, условия)",
   "auto": "лента раз в сутки",
-  "notes": "страницы отдельных бравлеров не делаем (шаблон); ключ Supercell — шаг владельца",
+  "notes": "страницы отдельных бравлеров не делаем (шаблон); ключ Supercell — шаг владельца 04.11 audit: title covers «personajes de brawl stars».",
   "live": "2026-11-03",
-  "status": "live 2026-11-03"
+  "status": "live 2026-11-04"
  },
  {
   "section": "Brawl Stars",
@@ -1316,10 +1318,10 @@
  {
   "section": "EA FC",
   "url": "/eafc",
-  "title": "EA Sports FC en esports: el mundial y los argentinos",
-  "titleLen": 52,
-  "h1": "EA Sports FC: el competitivo desde Argentina",
-  "description": "EA Sports FC en esports desde Argentina: el último FC Pro World Championship partido por partido, el campeón y los jugadores argentinos con equipo.",
+  "title": "EA Sports FC 27 desde Argentina: requisitos en PC y esports",
+  "titleLen": 59,
+  "h1": "EA Sports FC 27 desde Argentina: PC y competitivo",
+  "description": "EA Sports FC 27 desde Argentina: requisitos y precio en Steam, el último mundial FC Pro partido por partido y los jugadores argentinos que compiten.",
   "keys": "fc 26 12k/2 · fifa 26 6.6k/2 · ea sports fc 26 2.6k/4 · ea fc 26 1.5k/11",
   "kind": "hub",
   "wave": "P2",
@@ -1327,8 +1329,8 @@
   "ar": "Аргентинцы и Liga Profesional Argentina в игре (лицензия LPF в FC 26 — проверить)",
   "data": "EA (цитаты)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "«fifa 26» частично = Mundial 2026 — смешанный интент; адрес без года, год — в title (переживёт FC 27) 03.11 wave 4: title changed to what the data supports (plan: \"EA Sports FC 26: versiones, química y argentinos\"). 03.11 wave 4: h1 changed to what the data supports (plan: \"EA Sports FC 26\"). 03.11 wave 4: description changed to what the data supports (plan: \"EA Sports FC 26: qué cambia entre PS4, PS5, PC y Switch, cómo funciona la química y qué lugar tienen los argentinos y la Liga Profesional en el juego.\").",
-  "status": "live 2026-11-03"
+  "notes": "«fifa 26» частично = Mundial 2026 — смешанный интент; адрес без года, год — в title (переживёт FC 27) 03.11 wave 4: title changed to what the data supports (plan: \"EA Sports FC 26: versiones, química y argentinos\"). 03.11 wave 4: h1 changed to what the data supports (plan: \"EA Sports FC 26\"). 03.11 wave 4: description changed to what the data supports (plan: \"EA Sports FC 26: qué cambia entre PS4, PS5, PC y Switch, cómo funciona la química y qué lugar tienen los argentinos y la Liga Profesional en el juego.\"). 04.11 audit: FC 27 on PC from the Steam AR listing (price, min/rec requirements); console versions not shown (EA blocks robots).",
+  "status": "live 2026-11-04"
  },
  {
   "section": "EA FC",

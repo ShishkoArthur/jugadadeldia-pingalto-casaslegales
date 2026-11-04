@@ -16,7 +16,7 @@ export const GAMES = [
   { id: 'brawl', name: 'Brawl Stars', mono: 'BS', tag: 'Peleas de tres contra tres', path: '/brawl', match: ['/brawl'], alt: 'Ilustración propia: arena de dibujo animado con cajas, cactus y gemas' },
   { id: 'rl', name: 'Rocket League', mono: 'RL', tag: 'Fútbol con autos', path: '/rl', match: ['/rl'], alt: 'Ilustración propia: estadio futurista con una pelota gigante en el centro' },
   { id: 'eafc', name: 'EA Sports FC', short: 'FC', mono: 'FC', tag: 'Fútbol competitivo', path: '/eafc', match: ['/eafc'], alt: 'Ilustración propia: estadio de fútbol de noche con las luces encendidas' },
-  { id: 'fortnite', name: 'Fortnite', mono: 'FN', tag: 'Battle royale, también en la nube', path: '/fortnite/nube', match: ['/fortnite'], alt: 'Ilustración propia: isla de dibujo animado con una tormenta violeta' },
+  { id: 'fortnite', name: 'Fortnite', mono: 'FN', tag: 'Battle royale gratis, también en la nube', path: '/fortnite', match: ['/fortnite'], alt: 'Ilustración propia: isla de dibujo animado con una tormenta violeta' },
 ];
 const SECTIONS = [...GAMES, { id: 'esports', match: ['/esports'] }];
 

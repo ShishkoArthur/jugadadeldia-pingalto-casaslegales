@@ -5,6 +5,7 @@
 import { agents } from './valorant.mjs';
 import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
 import { agendaBlock } from './feeds.mjs';
+import { itunes, play, millions } from '../content/stores.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
@@ -102,6 +103,7 @@ export const valorantHub = {
 };
 
 const FF = [
+  ['/ff/max', 'Free Fire o MAX', 'Qué cambia, si aparece en las tiendas de Argentina y cuál bajar.'],
   ['/ff/sensibilidad', 'Sensibilidad, calibrada', 'Encontrá tu número en pocos intentos, probando en el juego.'],
   ['/ff/nombres', 'Nombres con estilo', 'Letras raras y símbolos que el juego muestra, con el conteo de caracteres.'],
   ['/ff/espacio-invisible', 'Espacio invisible', 'Copiá el carácter invisible para tu nick con un toque.'],
@@ -110,14 +112,26 @@ const FF = [
 export const ffHub = {
   path: '/ff',
   kind: 'hub',
-  title: 'Free Fire en Argentina: sensibilidad, nombres y códigos',
-  description: 'Herramientas de Free Fire que sí sirven, pensadas para Argentina: sensibilidad calibrada en tu celu, nombres con estilo y cómo canjear códigos sin estafas.',
-  h1: 'Free Fire: herramientas que sí sirven',
+  title: 'Free Fire en Argentina: descarga, MAX, sensibilidad y más',
+  description: 'Free Fire desde Argentina: cómo es una partida, dónde bajarlo oficial, Free Fire o MAX, sensibilidad calibrada, nombres con estilo y códigos sin estafas.',
+  h1: 'Free Fire desde Argentina',
   ld: h => ldPage(h),
   render(h) {
+    const [min, rivals] = h.pa.fact('ff_match'), squad = h.pa.fact('ff_squad');
+    const ios = itunes(h, 'itunes-ff-ar'), ff = play(h, 'play-ff-ar');
+    if (!ios.found || !ff.install) throw new Error('ff hub: Free Fire missing from a saved store listing for Argentina');
+    const facts = '<div class="pa-gd"><section class="pa-c pa-w2"><p class="pa-big">' + fmt(rivals + 1, 0) + '</p><p>jugadores por partida: caés en paracaídas en una isla y gana el último que queda.</p></section>' +
+      '<section class="pa-c pa-w2"><p class="pa-big">' + fmt(min, 0) + ' <small>min</small></p><p>dura cada partida, según la ficha oficial del juego.</p></section>' +
+      '<section class="pa-c pa-w2"><p class="pa-big">' + fmt(squad, 0) + '</p><p>jugadores como máximo por escuadra, con chat de voz.</p></section></div>';
+    const get = sec('Dónde bajarlo, oficial', '<div class="pa-two"><div><div class="pa-tw"><table class="pa-tb"><tbody>' +
+      '<tr><td>Android</td><td>Google Play · ' + fmt(millions(ff.downloads), 0) + ' M+ descargas · Garena no publica cuánto ocupa</td></tr>' +
+      '<tr><td>iPhone</td><td>App Store de Argentina · pide iOS ' + h.esc(ios.minOs.replace(/\.0$/, '')) + ' o más nuevo · ' + fmt(ios.bytes / 1e9, 2) + ' GB</td></tr></tbody></table></div>' +
+      '<p class="pa-src">Garena no publica requisitos mínimos de RAM ni de versión de Android. Su sitio dice que anda en casi todos los celulares.</p>' + srcLine(h, 'play-ff-ar') + srcLine(h, 'itunes-ff-ar') + '</div>' +
+      '<div>' + quote(h, 'ff_match', 'es') + quote(h, 'ff_any_phone', 'es') + quote(h, 'ff_buy', 'es') + '</div></div>');
+    const hack = sec('Hackers y cuentas suspendidas', '<div class="pa-two"><div>' + quote(h, 'ff_report', 'es') + quote(h, 'ff_ban', 'es') + srcLine(h, 'garena-ff-faq') + '</div><div><p>Si alguien hace trampa, reportalo desde la partida: no hace falta nada más. Y no instales «paneles», «regedit» ni APK modificadas: Garena las cuenta como programas de terceros y suspende la cuenta.</p></div></div>');
     const no = sec('Lo que no vas a encontrar acá', '<div class="pa-three"><div class="pa-c"><h3>Diamantes gratis</h3><p>No existen generadores de diamantes. Las páginas que los prometen buscan tu cuenta o tus datos.</p></div><div class="pa-c"><h3>Hacks, archivos y APK</h3><p>Nada que modifique el juego ni descargas por fuera de la tienda: te pueden bloquear la cuenta.</p></div><div class="pa-c"><h3>Listas de códigos</h3><p>No hay una lista oficial que podamos citar con fecha, así que no publicamos códigos: te explicamos cómo canjear los que te lleguen por vías oficiales.</p></div></div>');
-    return hero(h, { ey: 'Free Fire · desde Argentina', girl: true, sub: 'Herramientas que funcionan en el navegador, sin descargas, sin pedirte la cuenta y sin vender nada.' }) +
-      sec('Herramientas', cards(h, FF)) + no;
+    return hero(h, { ey: 'Free Fire · desde Argentina', girl: true, sub: 'Cómo es una partida, dónde se baja oficial, si te conviene MAX y herramientas que funcionan en el navegador, sin pedirte la cuenta y sin vender nada.' }) +
+      sec('Herramientas', cards(h, FF)) + facts + get + hack + no;
   },
 };
 

@@ -422,3 +422,10 @@ h2{font-size:23px}
 .pa-cp text.pa-cs{text-anchor:start;transform:translateX(-14px)}.pa-cp text.pa-ce{text-anchor:end;transform:translateX(14px)}
 @media (max-width:900px){.pa-cm{grid-template-columns:minmax(0,1fr)}.pa-cm>.pa-out{position:static}.pa-cp text{font-size:30px}}
 @media (max-width:680px){.pa-ssb{width:90px}}
+.pa-rq{display:grid;gap:8px;margin:4px 0 6px}
+.pa-rq li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;align-items:center;margin:0}
+.pa-rq b{display:grid;place-items:center;height:30px;border-radius:10px;font-size:13px;background:var(--p2)}
+.pa-rq li[data-st="ok"] b{background:#0b8f7f;color:#fff}
+.pa-rq li[data-st="no"] b{background:#e8457f;color:#fff}
+.pa-rq small{color:var(--mu)}
+.pa-tb samp{font:inherit}

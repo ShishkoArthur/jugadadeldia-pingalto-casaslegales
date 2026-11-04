@@ -7,6 +7,7 @@ import { swissSvg, swissRecords } from '../../../engine/games/seriesviz.mjs';
 import { vrs, rowsForClient } from '../content/vrs.mjs';
 import { fmt, fmtPct, fmtInput, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
 import { agendaBlock } from './feeds.mjs';
+import { cs2Req, cs2ReqData, cs2About, cs2Servers, cs16 } from './games2.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const SHOW = 30;
@@ -28,12 +29,12 @@ const optLabel = r => r.team + ' · ' + r.rank + '.º del mundo';
 
 export const cs2Ranking = {
   path: '/cs2',
-  kind: 'live',
-  title: 'Ranking de CS2 de Valve: el mundo y las Américas',
-  description: 'El ranking oficial de Valve de los equipos de CS2: el mundo y las Américas, donde juega Argentina, y la chance entre dos equipos según el modelo de Valve.',
-  h1: 'Ranking de equipos de CS2 de Valve',
-  scripts: ['vrs.js', 'agenda.js'],
-  data: h => { const V = vrs(h); return { gl: rowsForClient(V.gl.rows, true), am: V.am.rows.map(r => [r.rank, r.global]), show: SHOW }; },
+  kind: 'hub',
+  title: 'Counter-Strike 2 desde Argentina: requisitos, ping y ranking',
+  description: 'CS2 es gratis en Steam: si te corre según el mínimo de Valve, cuánto tarda la descarga, los servidores cerca de Argentina y el ranking oficial de equipos.',
+  h1: 'Counter-Strike 2 desde Argentina',
+  scripts: ['req.js', 'vrs.js', 'agenda.js'],
+  data: h => { const V = vrs(h); return { gl: rowsForClient(V.gl.rows, true), am: V.am.rows.map(r => [r.rank, r.global]), show: SHOW, ...cs2ReqData(h) }; },
   ld: h => ldPage(h),
   render(h) {
     const V = vrs(h), E = h2h(V);
@@ -61,8 +62,11 @@ export const cs2Ranking = {
     const ar = sec('Argentina en el ranking', '<div class="pa-two"><div><p>Valve asigna cada plantel a una región según de dónde son la mayoría de sus jugadores. En su código, Argentina está en Sudamérica, y Sudamérica cuenta como Américas, junto con Norteamérica.</p>' + quote(h, 'major_assign') + quote(h, 'vrs_ar') + quote(h, 'vrs_amer') + '</div>' +
       '<div><p>Valve no publica la nacionalidad de cada jugador en estas tablas, así que no marcamos equipos como argentinos. Buscá el tuyo por nombre o por un jugador en la tabla de arriba.</p><p>Valve tiene un punto de su red en Buenos Aires: tu ping hasta ahí, y hasta Santiago o São Paulo, en el <a href="' + h.href('/kit/ping') + '">test de ping</a>. Cómo usa Valve estas tablas para invitar al Major, en <a href="' + h.href('/cs2/major') + '">el Major de CS2 explicado</a>.</p></div></div>');
     const when = sec('Cada cuánto cambia', '<p>Valve sube una tabla nueva a su repositorio cada tanto. La que ves es la del ' + h.fmtDate(V.date) + ', copiada el ' + h.fmtDate(h.pa.doc('vrs-americas').fetched) + '. Por ahora la actualizamos a mano: si ves una más nueva en el repositorio de Valve, esta ya quedó vieja.</p>');
-    return hero(h, { ey: 'CS2 · ranking de Valve · ' + h.fmtDate(V.date), sub: 'Los ' + fmt(V.gl.rows.length, 0) + ' equipos del ranking oficial de Valve, las Américas aparte y la chance entre dos equipos con la fórmula del propio modelo de Valve.' }) +
-      '<div class="pa-tool">' + duel + list + '</div>' + (h.built('/esports/agenda') ? agendaBlock(h, 'cs2', 'Próximos partidos de CS2') : '') + sec('El mundo y las Américas', chart) + model + ar + when;
+    const B = cs2About(h);
+    const tools = sec('Herramientas para CS2', '<div class="pa-hub">' + [['/cs2/mira', 'Mira con código', 'Armá tu mira, copiá el código del juego o pegá uno para verlo.'], ['/kit/sensibilidad', 'Sensibilidad desde otro juego', 'Pasá la de Valorant u Overwatch 2 con el mismo giro.'], ['/kit/dpi', 'DPI real del mouse', 'Medilo con la tarjeta SUBE.'], ['/kit/ping', 'Test de ping', 'Tu ping desde tu provincia a los puntos de Valve.'], ['/cs2/major', 'El Major explicado', 'Fases, Bo1 y Bo3, y la chance de pasar la suiza.'], ['/esports/series', 'Bo1, Bo3, Bo5', 'De la chance por mapa a la chance de la serie.']].filter(([u]) => h.built(u)).map(([u, t, x]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + x + '</p></a>').join('') + '</div>');
+    const rank = '<section class="pa-sec" id="ranking"><h2>Ranking de equipos de Valve</h2><p>El ranking oficial con el que Valve invita a sus torneos: los ' + fmt(V.gl.rows.length, 0) + ' equipos del mundo, las Américas aparte y la chance entre dos equipos con la fórmula de su propio modelo. Tabla del ' + h.fmtDate(V.date) + '.</p></section>';
+    return hero(h, { ey: 'CS2 · gratis en Steam · desde Argentina', girl: true, sub: 'Si tu compu lo corre según Valve, cuánto tarda la descarga, los servidores más cerca y el ranking oficial de equipos, con las fuentes a la vista.', buttons: '<a class="pa-b1" href="#pa-rq">¿Me corre?</a><a href="#ranking">Ranking</a>' }) +
+      B.facts + cs2Req(h) + B.steps + tools + cs2Servers(h) + rank + '<div class="pa-tool">' + duel + list + '</div>' + (h.built('/esports/agenda') ? agendaBlock(h, 'cs2', 'Próximos partidos de CS2') : '') + sec('El mundo y las Américas', chart) + model + ar + when + cs16(h);
   },
 };
 
@@ -105,7 +109,7 @@ export const cs2Major = {
     const veto = sec('Cómo se eligen los mapas', '<div class="pa-two"><div class="pa-c"><h3>Bo1</h3><ol class="pa-steps"><li><span>El mejor sembrado elige ser equipo A o B.</span></li><li><span>A saca ' + b1a + ' mapas.</span></li><li><span>B saca ' + b1b + '.</span></li><li><span>A saca ' + b1c + ' más; se juega el que queda.</span></li><li><span>B elige de qué lado empieza.</span></li></ol>' + quote(h, 'major_ban1') + '</div>' +
       '<div class="pa-c"><h3>Bo3</h3><ol class="pa-steps"><li><span>A saca un mapa y B saca otro.</span></li><li><span>A elige el mapa 1 y B, de qué lado empieza.</span></li><li><span>B elige el mapa 2 y A, el lado.</span></li><li><span>B saca uno, A saca otro y el que queda es el mapa 3.</span></li></ol>' + quote(h, 'major_ban3') + '</div></div>' +
       '<p class="pa-note" style="margin-top:14px">Las dos cuentas dan un grupo de ' + pool1 + ' mapas: en el Bo1 se sacan ' + (b1a + b1b + b1c) + ' y se juega 1; en el Bo3 se sacan 4, se eligen 2 y queda 1. Valve no nombra los mapas en el reglamento: dice que se usa el grupo Active Duty del juego.</p>' + quote(h, 'major_active'));
-    const ar = sec('Cómo llega un equipo argentino', '<div class="pa-two"><div><p>Las invitaciones salen del ranking de Valve por región. Argentina está en Sudamérica y Sudamérica cuenta como Américas, así que un equipo con mayoría de jugadores argentinos compite por los lugares de las Américas.</p>' + quote(h, 'major_regions') + quote(h, 'vrs_ar') + '</div><div><p>Mirá en qué puesto de las Américas está cada equipo en el <a href="' + h.href('/cs2') + '">ranking de CS2</a>, y la chance de un Bo3 o un Bo5 mapa por mapa en la <a href="' + h.href('/esports/series') + '">calculadora de series</a>.</p><p class="pa-src">Fechas y horarios del próximo Major en hora argentina: todavía no los mostramos, porque no tenemos una fuente oficial con fecha que podamos citar.</p></div></div>');
+    const ar = sec('Cómo llega un equipo argentino', '<div class="pa-two"><div><p>Las invitaciones salen del ranking de Valve por región. Argentina está en Sudamérica y Sudamérica cuenta como Américas, así que un equipo con mayoría de jugadores argentinos compite por los lugares de las Américas.</p>' + quote(h, 'major_regions') + quote(h, 'vrs_ar') + '</div><div><p>Mirá en qué puesto de las Américas está cada equipo en el <a href="' + h.href('/cs2#ranking') + '">ranking de CS2</a>, y la chance de un Bo3 o un Bo5 mapa por mapa en la <a href="' + h.href('/esports/series') + '">calculadora de series</a>.</p><p class="pa-src">Fechas y horarios del próximo Major en hora argentina: todavía no los mostramos, porque no tenemos una fuente oficial con fecha que podamos citar.</p></div></div>');
     return hero(h, { ey: 'CS2 · Major · reglamento de Valve', sub: fmt(h.pa.fact('major_32'), 0) + ' equipos, tres fases suizas y playoffs. Acá está cada regla con la cita de Valve, cuándo se juega Bo1 o Bo3 y una cuenta exacta de tu chance de pasar una fase.' }) +
       fmtSec + tool + rules + veto + ar;
   },

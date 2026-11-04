@@ -15,9 +15,9 @@ const EX = { from: 'cs2', to: 'valorant', s: 1.25, dpi: 800, dpi2: 800 };
 export const sensibilidad = {
   path: '/kit/sensibilidad',
   kind: 'tool',
-  title: 'Convertidor de sensibilidad entre juegos y cm/360',
+  title: 'Conversor de sensibilidad: CS2, Valorant, OW2 y Apex',
   description: 'Pasá tu sensibilidad de CS2 a Valorant, Overwatch 2 o Apex con el mismo giro de mano: cm/360, eDPI y la fuente de cada número.',
-  h1: 'Convertidor de sensibilidad entre juegos',
+  h1: 'Conversor de sensibilidad entre juegos',
   scripts: ['sens.js'],
   data: h => ({ games: sensGames(h).map(g => ({ id: g.id, name: g.name, short: g.short, yaw: g.yaw })) }),
   ld: h => ldPage(h, [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: h.page.h1, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web', inLanguage: 'es-AR', isAccessibleForFree: true, url: 'https://' + h.site.domain + h.page.path }]),
@@ -56,7 +56,7 @@ export const sensibilidad = {
 export const dpi = {
   path: '/kit/dpi',
   kind: 'tool',
-  title: 'DPI del mouse: medí el tuyo con la tarjeta SUBE',
+  title: 'DPI analyzer: medí el DPI real de tu mouse con la SUBE',
   description: 'Medí el DPI real de tu mouse en el navegador usando la SUBE o una tarjeta bancaria como regla, compará con el de fábrica y calculá tu eDPI.',
   h1: 'Medí el DPI real de tu mouse con la SUBE',
   scripts: ['dpi.js'],

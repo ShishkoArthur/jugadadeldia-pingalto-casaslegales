@@ -56,7 +56,7 @@ export const clashCartas = {
 export const brawlBrawlers = {
   path: '/brawl/brawlers',
   kind: 'tool',
-  title: 'Brawlers de Brawl Stars: todos, con habilidades y gadgets',
+  title: 'Personajes de Brawl Stars: todos los brawlers y habilidades',
   h1: 'Todos los brawlers de Brawl Stars',
   description: 'Todos los brawlers de Brawl Stars con sus habilidades estelares y gadgets, el más nuevo y las copas que piden los 200 mejores puestos de Argentina.',
   scripts: ['supercell.js'],

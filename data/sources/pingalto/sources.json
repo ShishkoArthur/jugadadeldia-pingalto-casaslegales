@@ -1,6 +1,6 @@
 {
  "site": "pingalto",
- "checked": "2026-11-03",
+ "checked": "2026-11-04",
  "maxAgeDays": 180,
  "docs": {
   "valve-sdk": {
@@ -432,6 +432,140 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "33f74b812e5698a252e08f6dc1582735dd102127a451e6fb2858b1161f5700fc"
+  },
+  "steam-cs2": {
+   "url": "https://store.steampowered.com/api/appdetails?appids=730&cc=ar&l=spanish",
+   "file": "data/sources/pingalto/_docs/steam-appdetails-730-ar.json",
+   "type": "json",
+   "publisher": "Valve (Steam, ficha de Counter-Strike 2 para Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "67f3e7a1cac0c385428d3b78f2a38d23ace9dc05932f463a087321171ef87494",
+   "page": "https://store.steampowered.com/app/730/"
+  },
+  "steam-cs16": {
+   "url": "https://store.steampowered.com/api/appdetails?appids=10&cc=ar&l=spanish",
+   "file": "data/sources/pingalto/_docs/steam-appdetails-10-ar.json",
+   "type": "json",
+   "publisher": "Valve (Steam, ficha de Counter-Strike para Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "a670a9ed1a7b42a9496fe430ee249df6df668824244b8cb36226b1ad083994e5",
+   "page": "https://store.steampowered.com/app/10/"
+  },
+  "steam-fc27": {
+   "url": "https://store.steampowered.com/api/appdetails?appids=4080220&cc=ar&l=spanish",
+   "file": "data/sources/pingalto/_docs/steam-appdetails-4080220-ar.json",
+   "type": "json",
+   "publisher": "Valve (Steam, ficha de EA Sports FC 27 para Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "2ecfd7c8069a404ca335bf8ad58e5fcc61defa61e91203bc52962ea5aee1db97",
+   "page": "https://store.steampowered.com/app/4080220/"
+  },
+  "garena-ff-es": {
+   "url": "https://ff.garena.com/es/",
+   "file": "data/sources/pingalto/_docs/garena-ff-es.html",
+   "type": "html",
+   "publisher": "Garena (sitio oficial de Free Fire)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "eb4e9f65d148e9d01ee745f51484ec6376a6df4f4ef20de5c46553d17cc5a2f2"
+  },
+  "garena-ff-faq": {
+   "url": "https://ff.garena.com/es/faq/",
+   "file": "data/sources/pingalto/_docs/garena-ff-faq-es.html",
+   "type": "html",
+   "publisher": "Garena (preguntas frecuentes de Free Fire)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "eb4f176c47d3828309af28338b376c9fb0cd4ecc73b759be6b0fcfe7c967304e"
+  },
+  "play-ff-ar": {
+   "url": "https://play.google.com/store/apps/details?id=com.dts.freefireth&hl=es_419&gl=AR",
+   "file": "data/sources/pingalto/_docs/play-freefire-ar.html",
+   "type": "html",
+   "publisher": "Google Play (ficha de Free Fire, Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "76fc8a336068eb57cb9ec20a426555a4a261811581ced532b6f9113fd734ef74"
+  },
+  "play-ffmax-ar": {
+   "url": "https://play.google.com/store/apps/details?id=com.dts.freefiremax&hl=es_419&gl=AR",
+   "file": "data/sources/pingalto/_docs/play-freefiremax-ar.html",
+   "type": "html",
+   "publisher": "Google Play (ficha de Free Fire MAX, Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "e4778da35a9173a4e37b77ee2cb05bd27e775ffef2008b1ed4bf0d7dc404ff9a"
+  },
+  "play-ffmax-us": {
+   "url": "https://play.google.com/store/apps/details?id=com.dts.freefiremax&hl=es_419&gl=US",
+   "file": "data/sources/pingalto/_docs/play-freefiremax-us.html",
+   "type": "html",
+   "publisher": "Google Play (ficha de Free Fire MAX, Estados Unidos)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "8d79c14d44de20b8b94f450a96df5696eb8477952b1e832b3deb751a4cf6cd36"
+  },
+  "play-fortnite-ar": {
+   "url": "https://play.google.com/store/apps/details?id=com.epicgames.fortnite&hl=es_419&gl=AR",
+   "file": "data/sources/pingalto/_docs/play-fortnite-ar.html",
+   "type": "html",
+   "publisher": "Google Play (ficha de Fortnite, Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "b2930401c1fc0d5422373ef6f967de2676ecda5a780557cdce318e6bdc1fed95"
+  },
+  "itunes-ff-ar": {
+   "url": "https://itunes.apple.com/lookup?id=1300146617&country=ar",
+   "file": "data/sources/pingalto/_docs/itunes-lookup-freefire-ar.json",
+   "type": "json",
+   "publisher": "Apple (App Store, búsqueda de Free Fire en Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "367ce1d1ad13ffd9c05b365d571cc72e3fd84a92a5e69d0aa1296a990ef356f5",
+   "page": "https://apps.apple.com/ar/app/id1300146617"
+  },
+  "itunes-ffmax-ar": {
+   "url": "https://itunes.apple.com/lookup?id=1480516829&country=ar",
+   "file": "data/sources/pingalto/_docs/itunes-lookup-freefiremax-ar.json",
+   "type": "json",
+   "publisher": "Apple (App Store, búsqueda de Free Fire MAX en Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047"
+  },
+  "itunes-ffmax-us": {
+   "url": "https://itunes.apple.com/lookup?id=1480516829&country=us",
+   "file": "data/sources/pingalto/_docs/itunes-lookup-freefiremax-us.json",
+   "type": "json",
+   "publisher": "Apple (App Store, búsqueda de Free Fire MAX en Estados Unidos)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "04263a67025174803bba2090ee05090ac7241ba808c41b96e938a2d49579a05f"
+  },
+  "wp-fortnite": {
+   "url": "https://en.wikipedia.org/wiki/Fortnite",
+   "file": "data/sources/pingalto/_docs/wikipedia-fortnite.html",
+   "type": "html",
+   "publisher": "Wikipedia (Fortnite)",
+   "kind": "reference",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "a66f93f96dad32a6f0fe0b9a0cfff1ab54ae820c1fbe8682fd5ec7b2a5fc3475"
   }
  },
  "facts": {
@@ -1078,6 +1212,138 @@
    "doc": "major-rules",
    "quote": "Teams are not to play the same opponent twice in the same stage, if possible.",
    "value": "if possible"
+  },
+  "ff_max_premium": {
+   "doc": "garena-ff-es",
+   "quote": "Free Fire MAX está diseñado exclusivamente para ofrecer una experiencia premium en Battle Royale.",
+   "value": "premium"
+  },
+  "ff_max_firelink": {
+   "doc": "garena-ff-es",
+   "quote": "Disfruta de una variedad de emocionantes modos de juego con todos los jugadores de Free Fire a través de la exclusiva tecnología Firelink.",
+   "value": "Firelink"
+  },
+  "ff_max_uhd": {
+   "doc": "garena-ff-es",
+   "quote": "Experimenta el combate como nunca antes con resoluciones Ultra HD y efectos impresionantes.",
+   "value": "Ultra HD"
+  },
+  "ff_any_phone": {
+   "doc": "garena-ff-es",
+   "quote": "Free Fire, un juego gratis de sobrevivencia, accesible para casi todos los teléfonos inteligentes en el mundo.",
+   "value": "casi todos los teléfonos"
+  },
+  "ff_match": {
+   "doc": "play-ff-ar",
+   "quote": "Cada partida de 10 minutos te coloca en una isla remota en donde te enfrentas contra otros 49 jugadores, todos con un mismo objetivo: sobrevivir.",
+   "value": [
+    10,
+    49
+   ]
+  },
+  "ff_squad": {
+   "doc": "play-ff-ar",
+   "quote": "Crea escuadras de hasta 4 jugadores y empieza a comunicarte con tu escuadra desde el primer momento.",
+   "value": 4
+  },
+  "ff_dl": {
+   "doc": "play-ff-ar",
+   "quote": "1,000 M+ Descargas",
+   "value": "1,000 M+"
+  },
+  "ff_buy": {
+   "doc": "play-ff-ar",
+   "quote": "Compras integradas en el juego (incluye elementos aleatorios)",
+   "value": "elementos aleatorios"
+  },
+  "ff_max_dl": {
+   "doc": "play-ffmax-ar",
+   "quote": "500 M+ Descargas",
+   "value": "500 M+"
+  },
+  "ff_max_pc": {
+   "doc": "play-ffmax-ar",
+   "quote": "Disponible en Android, Windows*",
+   "value": [
+    "Android",
+    "Windows"
+   ]
+  },
+  "ff_report": {
+   "doc": "garena-ff-faq",
+   "quote": "Usa la función de reporte en el juego.",
+   "value": "reporte"
+  },
+  "ff_ban": {
+   "doc": "garena-ff-faq",
+   "quote": "Suspenderemos las cuentas que usen hacks.",
+   "value": "hacks"
+  },
+  "fn_modes": {
+   "doc": "play-fortnite-ar",
+   "quote": "JUEGOS EN LA APLICACIÓN DE FORTNITE PARA DISPOSITIVOS MÓVILES: - Battle Royale - Blitz Royale - Cero construcción - Fortnite: Orígenes (OG) - LEGO Fortnite - Fortnite Festival - Juegos creados por desarrolladores",
+   "value": [
+    "Battle Royale",
+    "Cero construcción",
+    "LEGO Fortnite",
+    "Fortnite Festival"
+   ]
+  },
+  "fn_free": {
+   "doc": "play-fortnite-ar",
+   "quote": "Juega gratis miles de juegos de acción multijugador hechos por desarrolladores",
+   "value": "gratis"
+  },
+  "fn_dl": {
+   "doc": "play-fortnite-ar",
+   "quote": "10 M+ Descargas",
+   "value": "10 M+"
+  },
+  "fn_buy": {
+   "doc": "play-fortnite-ar",
+   "quote": "Los usuarios interactúan y Compras en el juego",
+   "value": "Compras en el juego"
+  },
+  "fn_ranked": {
+   "doc": "play-fortnite-ar",
+   "quote": "Entra al combate en los modos Clasificatoria para entrar a los torneos de Fortnite Competitivo",
+   "value": "Clasificatoria"
+  },
+  "fn_ios_us": {
+   "doc": "wp-fortnite",
+   "quote": "It was returned to the US storefront on May 20, 2025.",
+   "value": "US"
+  },
+  "fn_ios_eu": {
+   "doc": "wp-fortnite",
+   "quote": "The iOS version returned for European users via the Epic Game Store following its launch in Europe on August 16, 2024",
+   "value": "European"
+  },
+  "fn_cloud": {
+   "doc": "wp-fortnite",
+   "quote": "Since May 5, 2022, the game can also be played via Xbox Cloud Gaming and GeForce Now on Android, macOS, iOS and iPadOS devices.",
+   "value": "Xbox Cloud Gaming"
+  },
+  "fn_platforms": {
+   "doc": "wp-fortnite",
+   "quote": "Platforms macOS[c] Windows PlayStation 4 Xbox One iOS[c] Nintendo Switch Android[c] Xbox Series X/S PlayStation 5 Nintendo Switch 2",
+   "value": [
+    "Windows",
+    "PlayStation 4",
+    "PlayStation 5",
+    "Xbox One",
+    "Xbox Series X/S",
+    "Nintendo Switch",
+    "Nintendo Switch 2",
+    "Android",
+    "iOS",
+    "macOS"
+   ]
+  },
+  "fn_mac": {
+   "doc": "wp-fortnite",
+   "quote": "The macOS client of both Battle Royale and Save the World, while downloadable, will not be able to be updated as well due to app signing restrictions.",
+   "value": "macOS"
   }
  }
 }

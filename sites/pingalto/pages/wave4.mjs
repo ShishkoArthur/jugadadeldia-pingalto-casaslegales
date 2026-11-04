@@ -4,6 +4,7 @@
 // brawlmeta), the Swiss stage simulator with Valve's pairing rules and the Valorant callout maps from the client data.
 // The browser draws the feed data (client/events.js, client/meta.js, client/supercell.js, client/agenda.js); the page carries the
 // frame, the method, the attribution and what we do not show and why.
+import { fcPc } from './games2.mjs';
 import { hero, ldPage, sec, quote, srcLine, fmt } from './parts.mjs';
 import { agendaBlock, FEED, css, wait, PS, SC } from './feeds.mjs';
 import { vrs } from '../content/vrs.mjs';
@@ -163,17 +164,17 @@ export const rlHub = {
 export const eafcHub = {
   path: '/eafc',
   kind: 'hub',
-  title: 'EA Sports FC en esports: el mundial y los argentinos',
-  h1: 'EA Sports FC: el competitivo desde Argentina',
-  description: 'EA Sports FC en esports desde Argentina: el último FC Pro World Championship partido por partido, el campeón y los jugadores argentinos con equipo.',
+  title: 'EA Sports FC 27 desde Argentina: requisitos en PC y esports',
+  h1: 'EA Sports FC 27 desde Argentina: PC y competitivo',
+  description: 'EA Sports FC 27 desde Argentina: requisitos y precio en Steam, el último mundial FC Pro partido por partido y los jugadores argentinos que compiten.',
   scripts: ['events.js', 'agenda.js'],
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'EA Sports FC · competitivo', girl: true, sub: 'El mundial de FC Pro con los horarios de Argentina, el camino de cada jugador y los argentinos que compiten con camiseta de un club o de un equipo de esports.' }) +
-      sec('El último FC Pro World Championship', box('event', ' data-ev="fc-worlds"') + PS, 'mundial') +
+    return css(h) + hero(h, { ey: 'EA Sports FC · PC y competitivo', girl: true, sub: 'Qué pide FC 27 en la compu según Steam y el mundial de FC Pro con los horarios de Argentina, el camino de cada jugador y los argentinos que compiten.' }) +
+      fcPc(h) + sec('El último FC Pro World Championship', box('event', ' data-ev="fc-worlds"') + PS, 'mundial') +
       agendaBlock(h, 'eafc', 'Próximos partidos de EA Sports FC') +
       sec('Argentinos en EA Sports FC', box('argentinos', ' data-g="fifa"')) +
-      sec('Lo que no mostramos', '<ul class="pa-dot"><li>Valoraciones de jugadores, química de Ultimate Team y diferencias entre consolas: EA no permite que robots lean su sitio y no copiamos sitios no oficiales.</li><li>Sobres, monedas o FC Points: nada de compras ni de cajas sorpresa.</li></ul>');
+      sec('Lo que no mostramos', '<ul class="pa-dot"><li>Valoraciones de jugadores, química de Ultimate Team, versiones de consola y su precio: EA no permite que robots lean su sitio y no copiamos sitios no oficiales.</li><li>Sobres, monedas o FC Points: nada de compras ni de cajas sorpresa.</li></ul>');
   },
 };
 
