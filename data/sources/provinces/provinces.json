@@ -51,7 +51,9 @@
    "fetched": "2026-11-03",
    "status": 200,
    "sha256": "5c01cedda0a087ae1423f2ba5a1b080b0cf2b3cecd8109aa657f0d2b1e0bb892",
-   "file": "data/sources/provinces/_docs/tuc-caja-popular-inicio.html"
+   "file": "data/sources/provinces/_docs/tuc-caja-popular-inicio.html",
+   "refresh": "manual",
+   "refreshWhy": "our server cannot connect to cajapopular.gov.ar (connection timeout from the UK, 2026-11-04); the owner saves it from Chrome in Argentina"
   },
   "sju-cas-inicio": {
    "url": "https://www.cas.gob.ar/",

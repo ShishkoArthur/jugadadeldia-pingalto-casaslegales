@@ -253,4 +253,9 @@ test('copy age by who saves it (owner 2026-11-04): owner copies 180 days, downlo
     const d = t.set === 'provinces' ? inputs.src.provinces.docs[t.slug] : t.set === 'rg' ? inputs.src.rg.docs[t.slug] : inputs.src.registries.find(r => 'registry:' + r.id === t.set).docs[t.slug];
     assert.equal(t.maxAge, isOwnerDoc(d) ? 180 : 100, t.key);
   }
+  // pages our server cannot open (2026-11-04: timeout, 403, robots 500) are owner copies: never fetched, 180 days
+  for (const k of ['rg:ar-t-caja-popular-juego-responsable', 'rg:ar-m-ipjyc-juego-responsable', 'rg:ar-t-ley-8986', 'pv:tuc-caja-popular-inicio']) {
+    const t = targets(inputs.src).find(x => x.key === k);
+    assert.ok(t && t.owner && t.maxAge === 180, k);
+  }
 });

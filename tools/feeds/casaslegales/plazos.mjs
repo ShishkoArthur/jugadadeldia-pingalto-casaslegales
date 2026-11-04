@@ -68,7 +68,7 @@ export function reminder(today, own, listas) {
   const list = (xs, f, n = 12) => xs.slice(0, n).map(f).join('; ') + (xs.length > n ? '; and ' + (xs.length - n) + ' more' : '');
   const g = k => due.filter(x => x.kind === k);
   const parts = ['casaslegales reminder: the first input expires on ' + dm(first) + ' (' + days(today, first) + ' days). The live site keeps working, but deploys stop and help lines hide when copies are too old.'];
-  if (g('owner').length) parts.push('1) Save from your Chrome (Ctrl+U, Ctrl+S, page source .html; Santa Fe and Mendoza from Argentina): ' + list(g('owner'), x => x.id.replace(/^owner-/, '') + ' ' + short(x.url) + ' until ' + dm(x.until)) + '. How: docs/reference/owner-saves/README.md.');
+  if (g('owner').length) parts.push('1) Save from your Chrome (Ctrl+U, Ctrl+S, page source .html; Santa Fe, Mendoza and Tucumán from Argentina): ' + list(g('owner'), x => x.id.replace(/^owner-/, '') + ' ' + short(x.url) + ' until ' + dm(x.until)) + '. How: docs/reference/owner-saves/README.md.');
   if (g('server').length) parts.push('2) Our server could not refresh (save these from Chrome in Argentina too): ' + list(g('server'), x => x.id + ' until ' + dm(x.until) + ' (' + x.state + ')') + '.');
   if (g('review').length) parts.push('3) Collect the reviews again from Chrome with the Argentine VPN (docs/REVIEWS-DATA.md): ' + list(g('review'), x => x.id.replace(/^review-/, '') + ' until ' + dm(x.until), 30) + '.');
   if (g('operators').length) parts.push('4) Operator copies and screenshots (node tools/capture-shots.mjs, Chrome in Argentina for geo-blocked ones): ' + list(g('operators'), x => x.id + ' until ' + dm(x.until)) + '.');

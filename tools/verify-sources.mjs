@@ -16,7 +16,7 @@ import { loadRegistries, verifyRegistries, checkRegistry, brandNames } from './l
 import { verifyLottery } from './lib/lottery-sources.mjs';
 import { checkProvinces } from './lib/provsources.mjs';
 import { loadRg } from './lib/sources.mjs';
-import { isAiBlocked, ownerCopyProblems } from './lib/ownercopy.mjs';
+import { isOwnerDoc, ownerCopyProblems } from './lib/ownercopy.mjs';
 
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 casaslegales-check/1.0';
 const args = process.argv.slice(2);
@@ -34,7 +34,7 @@ if (args.includes('--recheck')) {
   const write = args.includes('--write'), names = brandNames();
   let problems = 0;
   for (const r of loadRegistries()) {
-    const held = Object.entries(r.docs).filter(([, d]) => d.pendingOwnerCopy || d.copiedBy === 'owner' || isAiBlocked(d.url));
+    const held = Object.entries(r.docs).filter(([, d]) => isOwnerDoc(d));
     if (held.length) { console.log('  skip ' + r.id + ': ' + held.map(([s]) => s).join(', ') + ' - robots.txt blocks AI crawlers; the owner saves these pages (docs/reference/owner-saves/README.md)'); continue; }
     const fresh = {};
     for (const [slug, d] of Object.entries(r.docs)) {

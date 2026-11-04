@@ -1102,7 +1102,9 @@
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "a0cada19b066c476b7f5c62707e266c16e5999daeab6e44717b73b01bff826d2",
-   "file": "data/sources/rg/_docs/ar-m-ipjyc-juego-responsable.html"
+   "file": "data/sources/rg/_docs/ar-m-ipjyc-juego-responsable.html",
+   "refresh": "manual",
+   "refreshWhy": "mendoza.gob.ar answers HTTP 403 to our server (2026-11-04); the owner saves it from Chrome in Argentina"
   },
   "ar-q-ijan-juego-responsable": {
    "url": "https://ijan-neuquen.com/juego_responsable.php",
@@ -1161,14 +1163,18 @@
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "c0f4855f19febf3454a2ace18da27541b15f6a34385ac34f86508322f2020191",
-   "file": "data/sources/rg/_docs/ar-t-caja-popular-juego-responsable.html"
+   "file": "data/sources/rg/_docs/ar-t-caja-popular-juego-responsable.html",
+   "refresh": "manual",
+   "refreshWhy": "our server cannot connect to cajapopular.gov.ar (connection timeout from the UK, 2026-11-04); the owner saves it from Chrome in Argentina"
   },
   "ar-t-ley-8986": {
    "url": "https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/pdf/28536.pdf",
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "40c5b2b4a9f6c8c21d783c264fd0d87b239164f2e6f2c4ca30d3b90997b8164f",
-   "file": "data/sources/rg/_docs/ar-t-ley-8986.pdf"
+   "file": "data/sources/rg/_docs/ar-t-ley-8986.pdf",
+   "refresh": "manual",
+   "refreshWhy": "e-legis-ar.msal.gov.ar answers HTTP 500 for robots.txt (by the robots rules: do not fetch, 2026-11-04) and no other official copy of the law text was found; the owner saves the PDF from Chrome"
   },
   "ar-a-enreja-jr": {
    "url": "https://www.enrejasalta.com.ar/jr.php",

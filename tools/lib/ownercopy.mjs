@@ -28,7 +28,7 @@ export function allSourceDocs() {
 }
 
 export function ownerCopyPending() {
-  return allSourceDocs().filter(x => x.doc.pendingOwnerCopy);
+  return allSourceDocs().filter(x => x.doc.pendingOwnerCopy || (x.doc.refresh === 'manual' && x.doc.copiedBy !== 'owner'));
 }
 
 // a document from an AI-blocking site must be either an owner copy or marked as pending one

@@ -7,8 +7,8 @@
 обходить не стали — нужен браузер из Аргентины.
 
 Сборка casaslegales печатает актуальный список «owner copies pending» с числом оставшихся дней. Копия владельца годится **180 дней**
-(решение владельца 04.11; правило в одном месте — `tools/lib/copyage.mjs`): новость Diputados (копия 01.11) истекает **30.04.2027**,
-остальные 16 копий (03.11) — **02.05.2027**. Telegram-напоминание придёт **09.04.2027** (за 21 день до первого срока) одним списком
+(решение владельца 04.11; правило в одном месте — `tools/lib/copyage.mjs`): копии 01.11 (новость Diputados, помощь Mendoza и Tucumán,
+ley 8986) истекают **30.04.2027**, остальные 17 (03.11) — **02.05.2027**. Telegram-напоминание придёт **09.04.2027** (за 21 день до первого срока) одним списком
 вместе с обзорами и операторами; дальше — раз в полгода. Страницы, которые сервер качает сам, живут 100 дней и обновляются им каждый месяц.
 
 ## Что сохранить
@@ -34,12 +34,15 @@
 | Mendoza | https://www.ipjyc.gob.ar/JEL/ (сайт «Juego En Línea Mendoza» IPJyC) | `mendoza-plataformas` | блок «PLATAFORMAS DE JUEGO EN LÍNEA» (7 адресов .bet.ar) |
 | Mendoza | страница автоисключения IPJyC (меню «Juego responsable» → «Autoexclusión») | `mendoza-autoexclusion` | срок, как подать |
 | Nación | https://www.hcdn.gob.ar/prensa/noticia/OBTUVO-MEDIA-SANCION-UN-PROYECTO-DE-PREVENCION-DE-LUDOPATIA-Y-REGULACION-DE-LAS-CIBERAPUESTAS/ | `ar-hcdn-media-sancion-2024-11-27` | новость Diputados о media sanción (27.11.2024); robots.txt закрыт для ИИ (найдено сервером 04.11) |
+| Mendoza | https://www.mendoza.gob.ar/juegosycasinos/juego-responsable/ | `ar-m-ipjyc-juego-responsable` | линия (0261) 424-7536, WhatsApp, RUAM (автоисключение 3 месяца – 5 лет); серверу отвечает 403 — из Аргентины |
+| Tucumán | https://www.cajapopular.gov.ar/ | `tuc-caja-popular-inicio` | главная Caja Popular (жалобы на нелегальную игру); сервер не может подключиться (таймаут) — из Аргентины |
+| Tucumán | https://www.cajapopular.gov.ar/index.php/1249-2/ | `ar-t-caja-popular-juego-responsable` | juego responsable Caja Popular; тот же таймаут — из Аргентины |
+| Tucumán | https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/pdf/28536.pdf | `ar-t-ley-8986` | **сам PDF** закона 8986 («Сохранить как», файл `ar-t-ley-8986.pdf`): автоисключение «seis (6) meses»; robots.txt отвечает 500 (по правилам robots — нельзя), другой официальной копии текста не нашли |
 
-**Сервер не смог обновить сам (04.11, лента `listas`; войдут в напоминание за 21 день):** `tuc-caja-popular-inicio` и
-`ar-t-caja-popular-juego-responsable` (cajapopular.gov.ar, Tucumán — сертификат TLS не проходит проверку, отключать её нельзя),
-`ar-m-ipjyc-juego-responsable` (mendoza.gob.ar — 403 серверу в Великобритании, сохранять из Аргентины), `ar-t-ley-8986`
-(e-legis-ar.msal.gov.ar — robots.txt отвечает 500, по правилам robots это «нельзя»; сохранить сам PDF через «Сохранить как»).
-Если сервер их снова откроет — обновит сам, и они пропадут из напоминания.
+**Четыре последние строки (04.11):** раньше их качал сервер, 04.11 он их не открыл: `cajapopular.gov.ar` — таймаут подключения
+из Великобритании (это не TLS: у www-сайта цепочка Let's Encrypt, она проверяется; закреплённый промежуточный Sectigo DV R36 из ленты
+`provincias` относится к `resultadosquiniela.cajapopular.gov.ar` и здесь не помогает), mendoza.gob.ar — 403, e-legis — robots 500.
+Обходить не стали; теперь это копии владельца (`refresh: "manual"`, 180 дней, сервер их не качает).
 
 Если адрес из таблицы открывается не на ту страницу — сохранить ту, где есть нужное, и записать её адрес в `urls.txt`
 (строка: `имя-файла адрес`). Для Santa Fe и Mendoza `urls.txt` нужен всегда.

@@ -27,7 +27,7 @@ import os from 'node:os';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { decodeEntities, normalize, visibleText, hasQuote } from '../engine/text.mjs';
-import { isAiBlocked, docMaxAge } from './lib/ownercopy.mjs';
+import { isOwnerDoc, docMaxAge } from './lib/ownercopy.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PACK = path.join(ROOT, 'data/sources/rg/helplines.json');
@@ -248,7 +248,7 @@ export async function recheck({ write = false, only = null, today = new Date().t
   for (const [slug, d] of Object.entries(pack.docs)) {
     if (only && !only.has(slug)) { skipped++; continue; }
     if (d.refresh === 'manual') { log(`  manual ${slug}: not downloaded (${d.url})`); skipped++; continue; }
-    if (d.pendingOwnerCopy || d.copiedBy === 'owner' || isAiBlocked(d.url)) { log(`  owner copy ${slug}: not downloaded, the owner saves this page from his browser (${d.url})`); skipped++; continue; }
+    if (isOwnerDoc(d)) { log(`  owner copy ${slug}: not downloaded, the owner saves this page from his browser (${d.url})`); skipped++; continue; }
     const ext = path.extname(d.file);
     const f = path.join(tmp, slug + ext);
     const { status, finalUrl } = download(d.url, f);
