@@ -207,7 +207,10 @@ test('pull-apply: server copies replace older repository copies (bytes, sha256, 
   assert.equal(applyPull({ root, listas: listasData, docsDir, write: true, log: () => {} }).applied, 0);
 });
 
-test('feeds-server.sh stage ships the last commit only (git archive HEAD)', { skip: spawnSync('git', ['--version']).status !== 0 && 'no git' }, () => {
+// only in a checkout (deploy.sh runs the tests in an exported copy without .git)
+const top = spawnSync('git', ['-C', ROOT, 'rev-parse', '--show-toplevel'], { encoding: 'utf8' });
+const inCheckout = top.status === 0 && join(top.stdout.trim(), '/') === join(ROOT, '/');
+test('feeds-server.sh stage ships the last commit only (git archive HEAD)', { skip: !inCheckout && 'not a git checkout' }, () => {
   const dir = tmp('stage');
   const r = spawnSync('bash', [join(ROOT, 'tools/feeds-server.sh'), 'casaslegales', 'stage', join(dir, 'app')], { encoding: 'utf8' });
   assert.equal(r.status, 0, r.stderr);
