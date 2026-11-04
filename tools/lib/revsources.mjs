@@ -61,8 +61,9 @@ export function checkReviews({ today, all = loadReviews(), fresh = true, names =
       if (x.host && hostKey(x.host) !== hostKey(d.url) && !hostKey(d.url).endsWith('.' + hostKey(x.host))) bad(at + ': host ' + x.host + ' is not the host (or a parent of the host) of its copy');
       if (x.quote == null && isAbsence(x.value)) continue;
       if (!x.quote || !String(x.quote).trim()) { bad(at + ': no quote'); continue; }
-      const q = normalize(String(x.quote));
-      if (!texts[x.doc] || !texts[x.doc].some(p => p.includes(q))) bad(at + ' not found verbatim in ' + x.doc + ': "' + q.slice(0, 70) + '"');
+      // a quote with "[...]" is several verbatim pieces of the same copy, each found on its own
+      const pieces = String(x.quote).split(/\s*\[(?:\.\.\.|…)\]\s*/).map(normalize).filter(Boolean);
+      for (const q of pieces) if (!texts[x.doc] || !texts[x.doc].some(p => p.includes(q))) bad(at + ' not found verbatim in ' + x.doc + ': "' + q.slice(0, 70) + '"');
     }
     for (const [h, s] of Object.entries(r.status || {})) if (s.date && fresh) { const a = daysBetween(s.date, today); if (a < 0 || a > maxAge) bad('status of ' + h + ' dated ' + s.date); }
   }

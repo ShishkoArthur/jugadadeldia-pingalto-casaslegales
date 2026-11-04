@@ -52,6 +52,9 @@ const F = {
   'casino.rtpPublished': ['Publica el RTP', 'quote'],
   'casino.gameCount': ['Cantidad de juegos', 'quote'],
   'casino.slots': ['Tragamonedas', 'yes'],
+  'casino.volatilityFilter': ['Filtro por volatilidad', 'quote'],
+  'casino.searchByProvider': ['Búsqueda por proveedor', 'quote'],
+  'casino.jackpotFilter': ['Filtro de pozos', 'quote'],
   'casino.bingo': ['Bingo', 'yes'],
   'casino.poker': ['Póker', 'yes'],
   'app.store': ['Tiendas de apps', 'quote'],
@@ -105,7 +108,7 @@ const pct = x => (x * 100).toFixed(1).replace('.', ',') + ' %';
 const odd = x => x.toFixed(2).replace('.', ',');
 
 // the saved copies write links and images as [link "text" -> url] and [alt text]: on the page the quote shows what a visitor reads
-export const readable = q => String(q).replace(/\[link "([^"]*)" -> [^\]]*\]/g, '$1').replace(/\[[^\]]*\blogo\b[^\]]*\]\s*/gi, '').replace(/\[([^\]]{1,60})\]/g, '$1').replace(/\s+/g, ' ').trim();
+export const readable = q => String(q).replace(/\s*\[(?:\.\.\.|…)\]\s*/g, ' \u2026 ').replace(/\[link "([^"]*)" -> [^\]]*\]/g, '$1').replace(/\[[^\]]*\blogo\b[^\]]*\]\s*/gi, '').replace(/\[([^\]]{1,60})\]/g, '$1').replace(/\s+/g, ' ').trim();
 function cite(h, R, f) {
   const d = R.doc(f.doc), u = new URL(d.url), where = hostKey(d.url) + (u.pathname === '/' ? '' : u.pathname.replace(/\/$/, ''));
   const tail = '<span class="rl-host">' + h.esc(where) + '</span> · copia del ' + h.fmtDate(d.date);
@@ -140,7 +143,7 @@ function moneyOf(R, f) {
   const v = f.value;
   if (!v || typeof v !== 'object' || !Number.isInteger(v.amount)) return null;
   const s = fmtInt(v.amount) + ' ' + v.currency;
-  if (!f.quote.includes(fmtInt(v.amount)) && !f.quote.includes(String(v.amount))) throw new Error('review ' + R.brand + ' ' + f.field + ': amount ' + v.amount + ' is not in its quote');
+  if (!f.quote || (!f.quote.includes(fmtInt(v.amount)) && !f.quote.includes(String(v.amount)))) return null;
   return s;
 }
 
@@ -153,7 +156,7 @@ function valueHtml(h, R, f) {
   if (mode === 'sports') { const s = sportsOf(R); if (!s || s.f !== f) return ''; return '<b class="rl-fnum">' + s.sports.length + ' deportes</b>' + chips(h, s.sports) + (s.other.length ? '<p class="rl-src">La lista trae ' + s.names.length + ' entradas: no contamos como deporte ' + s.other.map(x => '«' + h.esc(x) + '»').join(' ni ') + '.</p>' : ''); }
   if (mode === 'providers') { const p = providersOf(R); if (!p || p.f !== f) return ''; return '<b class="rl-fnum">' + p.names.length + ' proveedores</b>' + chips(h, p.names); }
   if (mode === 'categories') { if (!Array.isArray(f.value) || !R.found(f, f.value)) return ''; const all = f.value, kept = all.filter(x => !PROMO.test(x)); return '<b class="rl-fnum">' + all.length + ' categorías</b>' + chips(h, kept) + (kept.length < all.length ? '<p class="rl-src">No listamos ' + (all.length - kept.length) + ' categorías que son promociones o rankings del propio sitio.</p>' : ''); }
-  if (mode === 'markets') { const v = f.value, seen = R.found(f, String(v.match).split(/\s+vs\.?\s+/i)); return '<b class="rl-fnum">' + fmtInt(v.markets) + ' mercados</b><p>' + (seen ? h.esc(v.match.replace(/\s+vs\.?\s+/i, ' – ')) + (v.competition && R.found(f, [v.competition]) ? ' · ' + h.esc(v.competition) : '') + '. ' : '') + 'Contamos los títulos de mercado de la página de ese partido, el ' + h.fmtDate(R.doc(f.doc).date) + '.</p>'; }
+  if (mode === 'markets') { const v = f.value || {}; if (!Number.isInteger(v.markets)) return ''; const seen = R.found(f, String(v.match).split(/\s+vs\.?\s+/i)); return '<b class="rl-fnum">' + fmtInt(v.markets) + ' mercados</b><p>' + (seen ? h.esc(v.match.replace(/\s+vs\.?\s+/i, ' – ')) + (v.competition && R.found(f, [v.competition]) ? ' · ' + h.esc(v.competition) : '') + '. ' : '') + 'Contamos los títulos de mercado de la página de ese partido, el ' + h.fmtDate(R.doc(f.doc).date) + '.</p>'; }
   if (mode === 'licence') { const v = f.value || {}; if (!v.operator || !R.found(f, [v.operator, v.act].filter(Boolean))) return ''; return '<p><b>' + h.esc(v.operator) + '</b>' + (v.act ? '<br><span class="rl-host">' + h.esc(v.act) + '</span>' : '') + '</p>'; }
   return '';
 }
