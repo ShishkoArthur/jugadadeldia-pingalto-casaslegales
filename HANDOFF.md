@@ -267,6 +267,24 @@
 - **Дальше:** (сцены — сделаны 03.11, см. «Сцены девушек»); ленты результатов (по слову владельца) → /quiniela/, провинции, Quini 6 hoy;
   P2 из плана; перепроверка программ LOTBA (ежемесячно, `maxAgeDays` 183) и пакета помощи до 09.02.2027.
 
+## pingalto (04.11) — /dota2 стала страницей игры; сцены r7 (на сайте 37 сцен)
+- **/dota2** (`pages/dota2.mjs`, клиент `d2req.js`): «Dota 2 desde Argentina: requisitos, servidores y ranking» (56) — факты Steam AR
+  (appdetails 570: gratis, Windows/Mac/Linux, 60 GB, español de Hispanoamérica), «¿Te corre Dota 2?» против минимума Valve + время
+  загрузки, «qué es» и «cómo empezar» (цитаты Steam: более ста героев, все бесплатны, начинать с ботов), точки сети Valve для Dota 2
+  (GetSDRConfig 570: Буэнос-Айрес → Сантьяго 20, Сан-Паулу 27, Лима 49 мс + физический пол из /kit/ping), наш Elo — раздел `#ranking`,
+  агенда, TI, «para padres» (цитата Steam о содержании). OpenDota не используется. +2 копии источников, +5 цитат. План и PAGES обновлены.
+  Ссылки «ranking de Dota 2» ведут на `/dota2#ranking`, плитка главной — «¿Te corre Dota 2?».
+- **Сцены r7** (проверены мной в полном размере, `review` + `checked`, сводка `data/img-review/contact-pingalto-scenes-r7.jpg`):
+  /ff/max (стоя, телефон горизонтально, игрушечная стенка из голубых блоков; 1-я попытка — присед с коленями врозь, отклонена),
+  /clash/cartas (карта и зелье), /esports/agenda (табурет, бумажный планер; псевдотекст на планере закрашен цветом бумаги),
+  /dota2/ti (r6, щит; вторая попытка удалась). **/fortnite** — та же принятая r4 (кирка-эмоут), что и на /fortnite/nube (опция `slug`).
+  r6 отмечены accepted (владелец 04.11). **Отклонены** (`data/img-review/*-try1/2.png`): /fortnite/nube r7 и /brawl/brawlers (сидя
+  по-турецки — вид под юбку), /valorant/mapas/split (куртка не на руках), /valorant/mapas/ascent (вид под юбку). Без сцены пока:
+  /brawl/brawlers, /brawl/eventos, /clash/meta, /lol/msi, /esports/latam, /valorant/mapas/ascent и /split — следующим раундом брать
+  только стоячие позы (сидя в мини модель часто ломает скромность).
+- **GitHub push не работает** (04.11): `Permission denied (publickey)` для `~/.ssh/jpc_ed25519` — коммиты лежат локально (main впереди
+  origin); владельцу — проверить deploy key в репозитории на GitHub.
+
 ## pingalto (04.11) — аудит: 49 страниц + 404, отчёт `docs/AUDIT-PINGALTO-2026-11-04.md`
 - **Новое/переделано (выложено):** /cs2 — хаб игры (требования Steam AR + «¿Te corre CS2?», время загрузки, пинги Valve SDR, CS 1.6
   в Steam, рейтинг VRS — раздел `#ranking`); **/fortnite** (как играть из Аргентины на каждом устройстве) и **/ff/max** (FF или MAX:
