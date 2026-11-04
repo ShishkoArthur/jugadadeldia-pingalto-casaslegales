@@ -1,5 +1,5 @@
 import { kdPlan, everyN, cleanName, PLACES } from '../../../engine/games/fnstats.mjs';
-import { $, $$, data, out, params, setParams, share, fmt, fmtPct, parseNum, esc } from './kit.js';
+import { $, $$, data, out, params, setParams, share, fmt, fmtPct, fmtInput, parseNum, esc } from './kit.js';
 
 const D = data();
 const f = $('#pa-ft');
@@ -141,6 +141,7 @@ if (D && f) {
     cards(o);
     modes(ra.stats);
     slot('ftkd').hidden = false;
+    if (!k.dataset.typed) k.value = fmtInput(Math.floor(o.kd) + 1, 1);
     kdCalc();
     if (b) {
       if (!rb.ok) { out('ftvs', ''); msg(fail(rb.error, b, rb.retryAfter)); }
@@ -149,14 +150,15 @@ if (D && f) {
     } else out('ftvs', '');
   }
 
-  f.addEventListener('submit', e => { e.preventDefault(); run(); });
+  const show = () => { if (box.getBoundingClientRect().top > innerHeight * 0.5) box.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); };
+  f.addEventListener('submit', e => { e.preventDefault(); n.blur(); v.blur(); run().then(show); });
   p.addEventListener('change', () => { if (n.value.trim()) run(); });
   w.addEventListener('change', () => { if (n.value.trim()) run(); });
-  k.addEventListener('input', kdCalc);
+  k.addEventListener('input', () => { k.dataset.typed = '1'; kdCalc(); });
   share();
   const q = params();
   if (q.get('p') && $$('option', p).some(o => o.value === q.get('p'))) p.value = q.get('p');
   if (q.get('w') && $$('option', w).some(o => o.value === q.get('w'))) w.value = q.get('w');
   if (q.get('vs')) v.value = q.get('vs').slice(0, D.max);
-  if (q.get('n')) { n.value = q.get('n').slice(0, D.max); run(false); }
+  if (q.get('n')) { n.value = q.get('n').slice(0, D.max); f.parentElement.parentElement.classList.add('pa-ftq'); run(false); }
 }

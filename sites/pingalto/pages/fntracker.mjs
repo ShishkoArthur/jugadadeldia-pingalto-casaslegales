@@ -69,6 +69,6 @@ export const fortniteTracker = {
     const bg = heroBg(h);
     const head = '<section class="pa-he pa-sm' + bg.cls + '"' + bg.style + '><div><p class="pa-ey">Fortnite · estadísticas · por nombre de Epic</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="pa-sb">Escribí el nombre de Epic de cualquier jugador y mirá sus victorias, K/D y partidas por modo. Gratis, sin cuenta y sin skins.</p></div></section>';
-    return head + '<div class="pa-tool pa-ft"><div class="pa-ftl">' + form + girlCard(h) + '</div>' + out + '</div>' + words + modes + priv + name + src;
+    return head + '<div class="pa-tool pa-ftr"><div class="pa-ftl">' + form + girlCard(h) + '</div>' + out + '</div>' + words + modes + priv + name + src;
   },
 };

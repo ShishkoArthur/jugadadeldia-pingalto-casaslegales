@@ -24,12 +24,31 @@
 
 ## Что идёт само (без людей)
 - **jugadadeldia:** кинела каждые 15 мин, провинции, лото, программа и цены LOTBA, сроки источников (`fuentes`) — Telegram за 14 дней.
-- **pingalto:** расписание PandaScore, Clash Royale, Brawl Stars, рейтинги — каждый час/сутки.
+- **pingalto:** расписание PandaScore, Clash Royale, Brawl Stars, рейтинги — каждый час/сутки; трекер Fortnite — по запросу через
+  контейнер `pingalto-fnapi` (watchdog и Telegram, раздел ниже).
 - **casaslegales:** `listas` — раз в месяц скачивает каждую официальную страницу, которую серверу можно качать, и сверяет цитаты и
   полноту списков; без изменений → новая дата «revisada el …» на страницах (через `/data/feeds/listas.json`), серверная копия
   обновлена; изменилось → не публикуется, сообщение с разницей (кто добавлен/убран). `plazos` — сроки того, что сервер не обновит,
   и одно напоминание за 21 день.
 - Образы контейнеров пересобираются раз в 30 дней (обновления Node и poppler), логи ротируются.
+
+## Трекер Fortnite pingalto (`/fortnite/tracker`, контейнер `pingalto-fnapi`)
+- **Само:** контейнер с `restart unless-stopped` и healthcheck; watchdog `/etc/cron.d/pingalto-fnapi` (каждые 5 мин) пересоздаёт
+  остановленный или unhealthy контейнер и пишет в Telegram (не чаще раза в 6 ч). Сервис сам шлёт Telegram после 5 сбоев fortnite-api.com
+  подряд и сразу при 401 («renew FORTNITE_API_KEY»), потом «OK again». Логи Docker ротируются (1 МБ × 3), имён игроков в них нет.
+- **Проверка:** `bash tools/fnapi-server.sh status` (контейнер, health, ключи — только имена, версия кода, watchdog) и `logs 100`;
+  снаружи `curl -s 'https://pingalto.com/api/fn/stats?name=Ninja' | head -c 200`.
+- **Ключ fortnite-api.com** (бесплатный, выдаётся в dash.fortnite-api.com после входа через Discord — **это делает владелец**):
+  если пришёл Telegram про 401 или страница отвечает «fortnite-api.com no responde» — владелец берёт новый ключ на dash.fortnite-api.com
+  и кладёт его в `.env` (`FORTNITE_API_KEY=…`, значение никуда не копировать) → агент: `bash tools/fnapi-server.sh secrets` (копирует ключи
+  на сервер без вывода и перезапускает контейнер) → `status`. Лимит ключа на 04.11 — 180 запросов в минуту (заголовок `x-rate-limit-*`);
+  у нас потолок 60/мин (`FN.globalPerMin` в `engine/games/fnstats.mjs`), его менять вместе с текстом страницы (числа берутся оттуда же).
+- **Перезапуск / новый код:** правка `tools/fnapi/*` или `engine/games/fnstats.mjs` → commit → `bash tools/fnapi-server.sh sync`
+  (копирует закоммиченное и перезапускает); просто перезапуск — `bash tools/fnapi-server.sh restart`; обновить образ Node (раз в полгода) —
+  `bash tools/fnapi-server.sh install` (идемпотентно: образ `--pull`, watchdog, пересоздание). Caddy-маршрут — в нашем блоке
+  (`tools/server-setup.sh pingalto update`).
+- **Если API поменяет формат:** прокси отвечает `upstream` и шлёт Telegram («200 with an unknown shape»); поля — `shapeStats` в
+  `engine/games/fnstats.mjs`, тест `engine/test/pingalto-fntracker.test.mjs`.
 
 ## Что может сделать только владелец
 1. **Копии сайтов, закрытых для ИИ, и гео-блок** (Chrome на компьютере, `Ctrl+U` → `Ctrl+S`, «только HTML»; Santa Fe и Mendoza — из
@@ -43,7 +62,7 @@
 2. **Обзоры** (27 марок): Chrome с VPN-выходом в Буэнос-Айресе, только публичные страницы, без входа и депозитов (порядок — `docs/REVIEWS-DATA.md`).
    Агент ведёт сбор через Chrome владельца (как 04.11) — владельцу нужно только включить VPN и Chrome с расширением.
 3. **Search Console** — добавить три сайта (обещано «в гск добавлю потом»); раз в полгода посмотреть покрытие и ошибки.
-4. **Ключи** — если сервис сменил условия: PandaScore (токен, бесплатный план), Supercell (ключи привязаны к IP 187.7.26.95),
+4. **Ключи** — если сервис сменил условия: fortnite-api.com (ключ из dash.fortnite-api.com, раздел «Трекер Fortnite»), PandaScore (токен, бесплатный план), Supercell (ключи привязаны к IP 187.7.26.95),
    Telegram-бот @jpc_avisos_bot, Cloudflare (токен должен видеть три зоны), Ahrefs (общий лимит рабочего пространства).
 
 **Решение владельца 04.11** («да, продлевай до 180 дней», `docs/DECISIONS.md`): копии владельца (сайты, закрытые для ИИ, и гео-блок) —

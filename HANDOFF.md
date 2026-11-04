@@ -84,7 +84,7 @@
   «Cómo armamos» по 3 буквы на 10 страницах кинелы); выложено, повторный проход чистый. Осталось P3 (список в отчёте) и **вопрос
   владельцу: на телефоне на страницах-инструментах сцена стоит до инструмента** (предложение — сцену после инструмента, как на столах jdd).
   Повторить: `node tools/qa/live-pass.cjs --site <сайт>` → `node tools/qa/summary.cjs …` (+ `tools/qa/links.cjs`).
-- **Дальше:** тексты через Claude API; P2-страницы плана jugadadeldia. pingalto: всё, что можно честно, построено (волна 4); оставшиеся 39 страниц плана — с причинами в «pingalto волна 4».
+- **Дальше:** тексты через Claude API; P2-страницы плана jugadadeldia. pingalto: всё, что можно честно, построено (волна 4) + трекер Fortnite (04.11, раздел ниже); оставшиеся страницы плана — с причинами в «pingalto волна 4».
 
 ## Меню и поиск (04.11) — на всех трёх сайтах, выложено (DECISIONS 04.11 «подменю разделов», «все страницы в меню», «поиск»)
 - **Меню = все страницы сайта**, само: `tools/lib/navtree.mjs` раскладывает построенные страницы по правилам `sites/<сайт>/content/menu.mjs`
@@ -123,6 +123,33 @@
 - **При правке испанского текста jdd:** сборка назовёт новые строки → `node tools/translate.mjs jugadadeldia` (центы) → коммит памяти.
 - **Три сайта с `/en` (04.11):** jdd, pingalto и casaslegales (разделы ниже). Не сделано: английская 404 (одна, испанская);
   «A 30»-подобные склейки в инструментах проверять живьём.
+
+## pingalto `/fortnite/tracker` (04.11) — трекер Fortnite выложен (+ `/en/fortnite/tracker`; DECISIONS 04.11 «ключ fortnite-api.com»)
+- **Страница:** поиск по имени Epic (3–16 символов: буквы, цифры, пробел, `.`, `-`, `_`), «с чем играет» (всё / клавиатура и мышь / джойстик /
+  тач), период (всё время / сезон), второй игрок для сравнения; ссылка `?n=&vs=&p=&w=` открывается сразу с результатом. Первый экран —
+  6 больших чисел (победы, «из 100 матчей», K/D, убийства за матч, матчи, часы) с фразой под каждым, затем таблица по режимам с местами
+  (solo 10/25, duo 5/12, squad 3/6 — как отдаёт API), уровень боевого пропуска, последний матч в hora argentina, калькулятор «сколько до K/D».
+  Честные блоки: как сделать статистику публичной, имя Epic а не PSN/Xbox, «datos de fortnite-api.com, no afiliado a Epic Games», без скинов
+  и магазина. Сцена — r4 Fortnite (файлы `/fortnite`). Код: `sites/pingalto/pages/fntracker.mjs`, `client/fntracker.js`,
+  общие правила `engine/games/fnstats.mjs` (лимиты, проверка имени, белый список полей, K/D-план), тест `engine/test/pingalto-fntracker.test.mjs`.
+  Гейт `bait` ловит «top 10» — на странице «entre los 10 primeros» / «first 10».
+- **Прокси:** `tools/fnapi/server.mjs` + `core.mjs`, контейнер **`pingalto-fnapi`** (node:24-alpine, uid 47221, read-only, 128 МБ, 0,25 CPU,
+  64 pids, restart unless-stopped, сеть `web_default` без портов, healthcheck), `/opt/web/pingalto-fnapi/` (app, secrets.env root 600 —
+  `FORTNITE_API_KEY`, `TG_*`), watchdog `/etc/cron.d/pingalto-fnapi` каждые 5 мин (остановлен/unhealthy → пересоздать + Telegram).
+  Caddy (наш блок): `handle /api/fn/* → reverse_proxy pingalto-fnapi:8787`. `GET /api/fn/stats?name=&platform=&window=` → только нужные поля;
+  ошибки `bad_name` 400, `not_found`/`no_matches` 404, `private` 403, `rate_ip` 429 (+ Retry-After), `busy` 503, `upstream` 502; `/api/fn/health`.
+  Лимиты: 10/мин на посетителя (IP из CF-Connecting-IP только если соединение пришло с адреса Cloudflare), 60/мин к API на весь сайт
+  (ключ даёт 180/мин — заголовки `x-rate-limit-*`), кэш 10 мин на имя+период (все 4 платформы одним ответом; «private» — 2 мин),
+  таймаут 8 с, одинаковые запросы ждут один вызов. Имена в логи не пишутся. Telegram: 5 сбоев API подряд или сразу 401 (ключ) — не чаще раза в 6 ч,
+  и «OK again». Управление: `bash tools/fnapi-server.sh install|secrets|sync|restart|status|logs` (sync — только закоммиченное).
+  `telegram()` теперь в `tools/feeds/lib.mjs` (им пользуются и ленты).
+- **Проверено живьём 04.11:** `/fortnite/tracker?n=Ninja` → 11.458 побед, K/D 10,16, таблица режимов; `?n=Ninja&vs=SypherPK` — сравнение;
+  несуществующее имя → «No hay ninguna cuenta de Epic…»; `a<b` → «El nombre … no sirve» (в браузере, без запроса); 11 быстрых поисков →
+  «Hiciste muchas búsquedas seguidas: esperá N segundos» (429 с 11-го в минуту); сезон без матчей → «no jugó ninguna partida en este período»;
+  `/en/fortnite/tracker` — английские фразы и формат чисел. 375 и 1280 без горизонтальной прокрутки; на ПК 6 чисел в первом экране, на
+  телефоне по ссылке `?n=` результат сразу под шапкой, после «Buscar» — прокрутка к результату. Соседи после Caddy — 200.
+- **Ловушка (исправлено):** класс `.pa-ft` — это подвал сайта; у трекера `.pa-ftr`. Колонка результатов — `minmax(0,1fr)`, иначе таблица
+  режимов растягивает её шире телефона.
 
 ## pingalto `/en` (04.11) — выложен, 50 страниц
 - **Адреса** без слэша, как испанские: главная `/en` (файл `en.html`; `/en/` → 301), `/en/kit/sensitivity`, `/en/valorant/ranks`,
