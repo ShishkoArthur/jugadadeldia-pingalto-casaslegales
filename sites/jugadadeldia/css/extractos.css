@@ -5,7 +5,7 @@
 .jg-xs.no b{color:var(--no)}
 .jg-xh{margin:10px 0;font-size:16px}
 .jg-xb{display:inline-flex;align-items:center;min-height:24px;margin-left:6px;padding:0 8px;border-radius:8px;background:var(--s2);color:var(--mu);font:700 12px var(--m);vertical-align:middle}
-.jg-xb.ok{background:color-mix(in srgb,var(--b4) 22%,var(--sf));color:var(--ok)}
+.jg-xb.ok{background:color-mix(in srgb,var(--b4) 14%,var(--sf));color:var(--ok)}
 .jg-xg{min-width:560px}
 .jg-xg.jg-xt1{min-width:0}
 .jg-xg th small{display:block;font-weight:500;letter-spacing:0;text-transform:none}
@@ -29,6 +29,8 @@
 .jg-xx li b{color:var(--lk)}
 .jg-xx li:first-child{background:color-mix(in srgb,var(--b3) 30%,var(--sf))}
 .jg-xx li:first-child i{color:var(--fg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .jg-xx ol:first-child li:first-child b{color:var(--fg)}}
+:root[data-theme=dark] .jg-xx ol:first-child li:first-child b{color:var(--fg)}
 .jg-xx ol+ol li:first-child{background:var(--s2)}
 .jg-xx li.on{box-shadow:inset 0 0 0 2px var(--b4);background:color-mix(in srgb,var(--b4) 18%,var(--sf))}
 .jg-xt{margin:4px 0 6px}
@@ -39,9 +41,12 @@
 .jg-xf{display:grid;gap:12px}
 .jg-xo{margin-top:12px}
 .jg-xm{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;margin:8px 0}
-.jg-xm i{display:grid;place-items:center;aspect-ratio:1;border-radius:7px;font-style:normal;font-variant-numeric:tabular-nums;background:color-mix(in srgb,var(--b1) calc(max(var(--v),0)*80%),color-mix(in srgb,var(--b2) calc(max(calc(var(--v)*-1),0)*55%),var(--s2)))}
+.jg-xm i{display:grid;place-items:center;aspect-ratio:1;border-radius:7px;font-style:normal;font-variant-numeric:tabular-nums;background:color-mix(in srgb,var(--b1) calc(max(var(--v),0)*var(--hk,80%)),color-mix(in srgb,var(--b2) calc(max(calc(var(--v)*-1),0)*55%),var(--s2)))}
 .jg-xm b{font:700 12px/1 var(--m)}
 .jg-xm small{font:500 10px/1 var(--m);color:var(--mu)}
+.jg-xm i[style] small{color:inherit}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .jg-xm{--hk:60%}}
+:root[data-theme=dark] .jg-xm{--hk:60%}
 @media (max-width:760px){
 .jg-x2{grid-template-columns:1fr}
 .jg-x3{grid-template-columns:1fr}

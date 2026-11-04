@@ -11,5 +11,5 @@
 .jg-xs.no b{color:var(--no)}
 .jg-xh{margin:10px 0;font-size:16px}
 .jg-xb{display:inline-flex;align-items:center;min-height:24px;margin-left:6px;padding:0 8px;border-radius:8px;background:var(--s2);color:var(--mu);font:700 12px var(--m);vertical-align:middle}
-.jg-xb.ok{background:color-mix(in srgb,var(--b4) 22%,var(--sf));color:var(--ok)}
+.jg-xb.ok{background:color-mix(in srgb,var(--b4) 14%,var(--sf));color:var(--ok)}
 .jg-xsel{max-width:360px;margin-bottom:8px}

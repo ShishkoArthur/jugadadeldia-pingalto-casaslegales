@@ -9,7 +9,8 @@ const KEY = 'jg-generala-v1';
 const seed = () => crypto.getRandomValues(new Uint32Array(1))[0];
 let S = null, cfg = null, bot = null, keep = [], busy = false, rolling = false;
 
-function fresh(level) { cfg = { level, bs: seed() }; S = newGame(RULESETS.ruibal, { players: 2, seed: seed() }); bot = createBot(level, cfg.bs); keep = []; save(); }
+let turnId = 0;
+function fresh(level) { turnId++; busy = false; cfg = { level, bs: seed() }; S = newGame(RULESETS.ruibal, { players: 2, seed: seed() }); bot = createBot(level, cfg.bs); keep = []; save(); }
 function save() { store.set(KEY, JSON.stringify({ cfg, s: serialize(S) })); }
 function load() { try { const x = JSON.parse(store.get(KEY) || 'null'); if (!x) return false; cfg = x.cfg; S = deserialize(x.s); bot = createBot(cfg.level, cfg.bs + S.log.length); return !S.over; } catch (e) { return false; } }
 
@@ -58,14 +59,17 @@ async function doRoll(k) {
   await wait(450);
 }
 async function botTurn() {
+  const g = turnId;
   busy = true;
   while (!S.over && S.turn === 1) {
     render();
     await wait(700);
+    if (g !== turnId) return;
     const a = bot.choose(S);
     if (a.type === 'roll') {
-      if (S.dice && a.keep.length) { const used = []; keep = a.keep.map(v => { const i = S.dice.findIndex((x, j) => x === v && !used.includes(j)); used.push(i); return i; }); render(); await wait(600); }
+      if (S.dice && a.keep.length) { const used = []; keep = a.keep.map(v => { const i = S.dice.findIndex((x, j) => x === v && !used.includes(j)); used.push(i); return i; }); render(); await wait(600); if (g !== turnId) return; }
       await doRoll(a.keep);
+      if (g !== turnId) return;
     } else {
       S = apply(S, a);
       out('say').hidden = false;

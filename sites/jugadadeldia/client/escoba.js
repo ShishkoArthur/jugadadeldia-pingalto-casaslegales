@@ -56,14 +56,18 @@ async function act(a) {
   render();
   await botLoop();
 }
+let loopId = 0;
 async function botLoop() {
+  const g = ++loopId;
   while (!S.over && toAct(S) === 1) {
     busy = true; render();
     await wait(700);
+    if (g !== loopId) return;
     const no = S.hand.no, a = bot.choose(observation(S, 1));
     S = apply(S, a); save(); sound.play('card');
     busy = false;
     if (S.hand.no !== no || S.over) await showEnd(no);
+    if (g !== loopId) return;
     render();
   }
   busy = false; render();

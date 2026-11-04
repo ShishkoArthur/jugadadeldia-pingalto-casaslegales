@@ -12,6 +12,7 @@
 .jg-x20 span.in{box-shadow:inset 0 0 0 2px var(--b2)}
 .jg-x20 span.hit{background:color-mix(in srgb,var(--b4) 35%,var(--sf));box-shadow:inset 0 0 0 2px var(--b4)}
 .jg-x20 b{color:var(--lk)}
+.jg-x20 span.hit b,.jg-x20 span.hit small{color:var(--fg)}
 .jg-bars{display:grid;gap:8px;margin:12px 0}
 .jg-bars>div{display:grid;grid-template-columns:minmax(110px,190px) minmax(0,1fr) 78px;align-items:center;gap:10px;font-size:15px}
 .jg-bars>div>i{display:block;height:20px;width:var(--w);min-width:3px;border-radius:7px;background:linear-gradient(90deg,var(--c,var(--b2)),color-mix(in srgb,var(--c,var(--b2)) 55%,#fff))}

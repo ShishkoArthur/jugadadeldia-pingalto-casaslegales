@@ -37,7 +37,7 @@ h1.jg-h1.sm{font-size:32px;margin:6px 0}
 @keyframes jgpop{from{transform:scale(.7);opacity:0}}
 .jg-bazas{display:grid;grid-template-columns:repeat(3,minmax(0,92px));gap:10px;justify-content:center}
 .jg-baza{display:grid;justify-items:center;gap:6px;padding:8px 4px;border-radius:16px;background:#ffffff14}
-.jg-baza small{font:700 11px var(--m);color:#cfeee0;text-align:center}
+.jg-baza>small{font:700 11px var(--m);color:#cfeee0;text-align:center}
 .jg-baza.gan{box-shadow:inset 0 0 0 2px #ffd36b}
 .jg-baza.per{opacity:.8}
 .jg-baza .jg-cd{width:60px;font-size:18px}
@@ -109,7 +109,7 @@ h1.jg-h1.sm{font-size:32px;margin:6px 0}
 .jg-sheet tr.tot td{background:var(--sf);font-weight:800}
 .jg-tablecards{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:120px;padding:10px;border-radius:20px;background:#ffffff12}
 .jg-pile{display:grid;justify-items:center;gap:4px}
-.jg-pile small{font:700 11px var(--m);color:#cfeee0}
+.jg-pile>small{font:700 11px var(--m);color:#cfeee0}
 .jg-dfelt{min-height:320px;margin-bottom:22px}.jg-dfelt .jg-win{background:#ffffff1f;color:#fff}
 [data-gen] .jg-table{grid-template-columns:300px minmax(0,1fr)}
 [data-gen] .jg-felt{min-height:440px}
@@ -125,7 +125,7 @@ h1.jg-h1.sm{font-size:26px}.jg-score b{font-size:26px}.jg-pz{width:20px;height:2
 .jg-seg{display:flex;padding:3px;border-radius:15px;background:var(--s2);box-shadow:inset 0 0 0 1px var(--ln)}
 .jg-cfg .jg-seg label{display:block;position:relative}
 .jg-seg input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.jg-seg span{display:grid;place-items:center;min-height:38px;padding:0 14px;border-radius:12px;font:700 15px var(--d);white-space:nowrap}
+.jg-seg span{display:grid;place-items:center;min-height:40px;padding:0 14px;border-radius:12px;font:700 15px var(--d);white-space:nowrap}
 .jg-seg input:checked+span{background:linear-gradient(#ff8a57,var(--ac));color:var(--ai)}
 .jg-seg input:focus-visible+span{outline:3px solid var(--ac);outline-offset:2px}
 .jg-f4{grid-template-columns:minmax(0,1fr) minmax(0,2.4fr) minmax(0,1fr);grid-template-areas:"t t t" "l m r" "me me me" "c c c" "sn sn sn";justify-items:stretch;align-items:center;align-content:start;gap:10px}
