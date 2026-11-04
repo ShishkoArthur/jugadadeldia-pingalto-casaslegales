@@ -1,0 +1,118 @@
+{
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto/?fecha_sorteo=2026-11-03": {
+  "file": "01-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18464": {
+  "file": "02-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18463": {
+  "file": "03-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18461": {
+  "file": "04-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18460": {
+  "file": "05-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18458": {
+  "file": "06-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto/?fecha_sorteo=2026-11-02": {
+  "file": "07-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18457": {
+  "file": "08-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18456": {
+  "file": "09-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18455": {
+  "file": "10-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18453": {
+  "file": "11-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto-registro/?id=18452": {
+  "file": "12-resultadosquiniela.json",
+  "type": "text/html"
+ },
+ "https://cas.gob.ar/?fecha=2026-11-03": {
+  "file": "13-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/?fecha=2026-11-02": {
+  "file": "14-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/03-11-2026/PRE": {
+  "file": "15-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/03-11-2026/PRI": {
+  "file": "16-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/03-11-2026/MAT": {
+  "file": "17-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/03-11-2026/Ves": {
+  "file": "18-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/03-11-2026/NOC": {
+  "file": "19-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/02-11-2026/PRE": {
+  "file": "20-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/02-11-2026/PRI": {
+  "file": "21-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/02-11-2026/MAT": {
+  "file": "22-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/02-11-2026/Ves": {
+  "file": "23-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/02-11-2026/NOC": {
+  "file": "24-loteria.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://www.loteriademisiones.com.ar/portal/juegos/quiniela-la-previa/": {
+  "file": "25-loteriademisiones.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://www.loteriademisiones.com.ar/portal/juegos/quiniela-primera-matutina/": {
+  "file": "26-loteriademisiones.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://www.loteriademisiones.com.ar/portal/juegos/quiniela-matutina/": {
+  "file": "27-loteriademisiones.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://www.loteriademisiones.com.ar/portal/juegos/quiniela-vespertina/": {
+  "file": "28-loteriademisiones.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://www.loteriademisiones.com.ar/portal/juegos/quiniela-nocturna/": {
+  "file": "29-loteriademisiones.html",
+  "type": "text/html; charset=UTF-8"
+ }
+}

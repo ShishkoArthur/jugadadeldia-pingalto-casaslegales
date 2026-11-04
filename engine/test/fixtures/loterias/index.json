@@ -1,0 +1,54 @@
+{
+ "https://loto.loteriadelaciudad.gob.ar/": {
+  "file": "01-loto.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://loto.loteriadelaciudad.gob.ar/includes/resultados-data.php?sorteo=3932": {
+  "file": "02-loto.js",
+  "type": "application/javascript; charset=utf-8"
+ },
+ "https://loto.loteriadelaciudad.gob.ar/includes/resultados-data.php?sorteo=3931": {
+  "file": "03-loto.js",
+  "type": "application/javascript; charset=utf-8"
+ },
+ "https://loto.loteriadelaciudad.gob.ar/includes/resultados-data.php?sorteo=3930": {
+  "file": "04-loto.js",
+  "type": "application/javascript; charset=utf-8"
+ },
+ "https://www.telekino.com.ar/": {
+  "file": "05-telekino.html",
+  "type": "text/html; charset=utf-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=loto": {
+  "file": "06-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=loto&fecha=2026-10-28": {
+  "file": "07-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=telekino": {
+  "file": "08-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=telekino&fecha=2026-10-25": {
+  "file": "09-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=quini6": {
+  "file": "10-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=quini6&fecha=2026-10-25": {
+  "file": "11-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=brinco": {
+  "file": "12-cas.html",
+  "type": "text/html; charset=UTF-8"
+ },
+ "https://cas.gob.ar/juegos/sorteos/resultados?juego=brinco&fecha=2026-10-18": {
+  "file": "13-cas.html",
+  "type": "text/html; charset=UTF-8"
+ }
+}

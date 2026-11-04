@@ -99,6 +99,8 @@ test('runner: fixtures run writes the feed and health; a failing run keeps the l
   writeFileSync(join(fixtures, 'quiniela/d16.js'), fx('lotba-53116.js'));
   writeFileSync(join(fixtures, 'quiniela/empty.js'), 'window.RESULTADOS_DATA = [];window.POZO_ULTIMO_SORTEO = 0;');
   cpSync(new URL('./fixtures/programa/', import.meta.url), join(fixtures, 'programa'), { recursive: true });
+  cpSync(new URL('./fixtures/provincias/', import.meta.url), join(fixtures, 'provincias'), { recursive: true });
+  cpSync(new URL('./fixtures/loterias/', import.meta.url), join(fixtures, 'loterias'), { recursive: true });
   const pr = join(fixtures, 'precios'), DOC = new URL('../../data/sources/lottery/_docs/', import.meta.url);
   mkdirSync(pr, { recursive: true });
   cpSync(new URL('lotba-quiniela-programa-2026-11.pdf', DOC), join(pr, 'qui.pdf'));
