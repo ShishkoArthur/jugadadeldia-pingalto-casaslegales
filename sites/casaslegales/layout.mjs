@@ -5,6 +5,7 @@ import { provData } from './content/provdata.mjs';
 import { LOGO as MARKS } from './logo.mjs';
 import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
 import { mainNav, crumbsLd } from './content/menu.mjs';
+import { tr, date, loc } from './content/lang.mjs';
 const FOOT = [
   ['/casinos-online-legales', 'Casinos online legales', 'bet'],
   ['/guia/apuestas-deportivas', 'Cómo funcionan las apuestas', 'bet'],
@@ -34,8 +35,14 @@ const FIND = '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8
 const BURGER = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
 const THEME_JS = "try{var t=localStorage.getItem('rl-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')";
 
-// Language switcher slot (i18n agent): return the switcher markup for this page here; it sits between the menu and the search button.
-const langSlot = (h, p) => '';
+// language switcher between the menu and the search button: the other language of this page (none on the 404 or without a pair)
+const langSlot = (h, p) => {
+  const o = (h.langs ? h.langs() : []).find(x => !x.current);
+  if (!o || p.is404) return '';
+  const label = o.lang === 'en' ? 'English version' : 'Versión en español';
+  return '<a class="rl-ib rl-lang" href="' + o.href + '" hreflang="' + o.code + '" lang="' + o.code + '" translate="no" aria-label="' + label + '" title="' + label + '">' + o.lang.toUpperCase() + '</a>';
+};
+
 
 function links(h, list, current) {
   return list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : '') + '>' + h.esc(label) + '</a>').join('');
@@ -82,7 +89,7 @@ export function page(h, p, body) {
   const nav = p.help
     ? '<nav class="rl-hnav" aria-label="Ayuda">' + links(h, HELP_NAV, p.path) + '</nav>'
     : mainNav(h, p);
-  const header = '<header class="rl-top"><a class="rl-logo" href="/">' + LOGO + '<span>casas<b>legales</b></span></a>' + nav + langSlot(h, p) +
+  const header = '<header class="rl-top"><a class="rl-logo" href="/">' + LOGO + '<span translate="no">casas<b>legales</b></span></a>' + nav + langSlot(h, p) +
     '<button class="rl-ib rl-fb" type="button" data-rl-find data-rl-idx="' + h.site.search.file(h.lang || 'es') + '" aria-label="Buscar en casaslegales" aria-keyshortcuts="/">' + FIND + '</button>' +
     '<button class="rl-ib" type="button" data-rl-theme aria-label="Cambiar entre tema claro y oscuro">' + MOON + SUN + '</button>' +
     (p.help ? '' : '<button class="rl-ib rl-bu" type="button" data-rl-menu aria-controls="rl-nav" aria-expanded="false" aria-label="Menú">' + BURGER + '</button>') + '</header>';
@@ -103,14 +110,14 @@ export function clientData(h) {
     const p = h.rg.prov(t.id), r = h.regs.find(x => x.id === t.id);
     const u = '/provincia/' + t.id;
     const x = provData(h).one(t.id);
-    const k = x.st === 'list' ? (x.n === 1 ? 'sitio en la lista oficial' : 'sitios en la lista oficial') : x.st === 'platform' ? (x.n === 1 ? 'plataforma enlazada por el regulador' : 'plataformas enlazadas por el regulador') : x.label;
-    const m = x.st === 'list' ? r.regulator.short + ' · revisado ' + h.fmtDate(r.checked) : x.st === 'platform' ? x.e.platforms.map(q => q.name).join(', ') + ' · copia del ' + h.fmtDate(x.date) :
-      x.st === 'none' ? 'No hay una lista oficial que podamos citar.' : x.e.reason === 'geo' ? 'La fuente oficial no abre desde fuera de Argentina: copia pendiente.' : 'La fuente oficial no está en condiciones de citarse.';
-    j[t.id] = { n: p.name, co: t.code, s: x.st, c: x.n, k, m, l: p.line ? { p: p.line.phone, t: p.line.phoneTel } : null, u: h.built(u) ? u : null };
+    const k = tr(h, x.st === 'list' ? (x.n === 1 ? 'sitio en la lista oficial' : 'sitios en la lista oficial') : x.st === 'platform' ? (x.n === 1 ? 'plataforma enlazada por el regulador' : 'plataformas enlazadas por el regulador') : x.label);
+    const m = x.st === 'list' ? r.regulator.short + tr(h, ' · revisado ') + date(h, r.checked) : x.st === 'platform' ? x.e.platforms.map(q => q.name).join(', ') + tr(h, ' · copia del ') + date(h, x.date) :
+      tr(h, x.st === 'none' ? 'No hay una lista oficial que podamos citar.' : x.e.reason === 'geo' ? 'La fuente oficial no abre desde fuera de Argentina: copia pendiente.' : 'La fuente oficial no está en condiciones de citarse.');
+    j[t.id] = { n: p.name, co: t.code, s: x.st, c: x.n, k, m, l: p.line ? { p: p.line.phone, t: p.line.phoneTel } : null, u: h.built(u) ? loc(h, h.href(u)) : null };
   }
   return {
     j,
     crisis: { p: h.rg.crisis.phone, t: h.rg.crisis.phoneTel },
-    s: { dash: '-', help: 'Ayuda:', helpNone: 'Sin línea provincial verificada. Línea nacional:', go: 'Ver {n}' },
+    s: { dash: '-', help: tr(h, 'Ayuda:'), helpNone: tr(h, 'Sin línea provincial verificada. Línea nacional:'), go: tr(h, 'Ver {n}') },
   };
 }

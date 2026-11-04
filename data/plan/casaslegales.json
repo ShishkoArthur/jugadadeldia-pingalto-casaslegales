@@ -15,14 +15,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Формула «depende de la ley de tu provincia; no es asesoramiento legal» в первом экране; ни одной ссылки на операторов",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en",
+  "titleEn": "Legal betting sites in Argentina, by province",
+  "descriptionEn": "Which betting sites are licensed in your province: map of Argentina's 24 jurisdictions, regulator, .bet.ar domains and check date.",
+  "h1En": "Legal betting sites: which site is authorized in your province"
  },
  {
   "section": "Главная и реестры",
   "url": "/licencias",
-  "title": "Registro de licencias de apuestas online por provincia",
-  "titleLen": 54,
-  "h1": "Registro de licencias: sitio por sitio y provincia por provincia",
+  "title": "Casinos y apuestas online legales: registro de licencias",
+  "titleLen": 56,
+  "h1": "Registro de licencias: qué sitios de apuestas y casino online son legales, provincia por provincia",
   "description": "Registro de licencias de juego online en Argentina: los 48 sitios de 8 listas oficiales, con su dirección, provincia, acto y fecha de copia.",
   "keys": "casinos online argentina legales 3.6k/43 · casinos online legales en argentina 450/61 · casinos legales argentina 300/- · casinos legales 250/- · casinos legales online argentina 150/- · casinos legales online 150/52",
   "kind": "registry",
@@ -33,7 +37,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Главная таблица сайта; всё остальное ссылается сюда",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/licenses",
+  "titleEn": "Legal online casinos and betting sites: license register",
+  "descriptionEn": "Register of online gambling licenses in Argentina: 48 sites from 8 official lists, with address, province, official act and copy date.",
+  "h1En": "License register: which betting and online casino sites are legal, province by province"
  },
  {
   "section": "Главная и реестры",
@@ -51,7 +59,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Отвечает честно на «¿cómo saber si estoy en el sitio oficial?» без ссылки на оператора; навигационный интент не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/site-checker",
+  "titleEn": "Is this betting site legal? .bet.ar site checker",
+  "descriptionEn": "Paste a betting site's address and see if it appears in one of the 8 official lists we keep, which province it is from and its date.",
+  "h1En": "Site checker: paste the address and see if it is on an official register"
  },
  {
   "section": "Главная и реестры",
@@ -69,7 +81,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/provinces",
+  "titleEn": "Online gambling by province: regulator and licensed sites",
+  "descriptionEn": "Online gambling in Argentina's 24 jurisdictions: who regulates each, whether there is an official site list, the helpline and self-exclusion, dated.",
+  "h1En": "Online gambling in the 24 jurisdictions: who regulates and what is verified"
  },
  {
   "section": "Главная и реестры",
@@ -87,7 +103,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без рейтингов «лучший» (гейт приманок)",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operators",
+  "titleEn": "Betting operators with a provincial license in Argentina",
+  "descriptionEn": "Operators with a provincial license: how many of the official lists we review include each one, with which address, and profile pages with screenshots.",
+  "h1En": "Operators with a provincial license: profile pages with check dates"
  },
  {
   "section": "Главная и реестры",
@@ -105,7 +125,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Высокий KD — страница-опора для ссылок; без «casino online gratis» и бонусов",
-  "live": true
+  "live": true,
+  "urlEn": "/en/legal-online-casinos",
+  "titleEn": "Online casino in Argentina: legal sites by province",
+  "descriptionEn": "Online casino in Argentina: what it is, the house edge (roulette and RTP, calculated), slots and live casino, and which sites are on each official list.",
+  "h1En": "Online casino in Argentina: how it works and which sites are legal in your province"
  },
  {
   "section": "Главная и реестры",
@@ -140,7 +164,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/buenos-aires",
+  "titleEn": "Legal online betting in Buenos Aires Province",
+  "descriptionEn": "Legal online betting in Buenos Aires Province: the 7 sites on the IPLyC official list, provincial law Ley 15.079, the helpline and self-exclusion.",
+  "h1En": "Buenos Aires Province: the 7 online gambling licenses and how to recognize them"
  },
  {
   "section": "Провинции",
@@ -158,7 +186,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/caba",
+  "titleEn": "Legal online betting in CABA: sites LOTBA authorized",
+  "descriptionEn": "Betting sites authorized by LOTBA in the City of Buenos Aires: each agency with its Disposición and year, and how not to confuse a city site with PBA.",
+  "h1En": "City of Buenos Aires: betting sites authorized by LOTBA"
  },
  {
   "section": "Провинции",
@@ -176,7 +208,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/cordoba",
+  "titleEn": "Legal online betting in Córdoba: the 4 platforms",
+  "descriptionEn": "Legal online betting in Córdoba: the platforms authorized by the Lotería de Córdoba, their domains, and the LUCA and NoVa+ control tools.",
+  "h1En": "Córdoba: the 4 authorized online gambling platforms"
  },
  {
   "section": "Провинции",
@@ -194,7 +230,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/mendoza",
+  "titleEn": "Legal online betting in Mendoza: the 7 platforms",
+  "descriptionEn": "Legal online betting in Mendoza: the 7 platforms the IPJyC authorizes with their .bet.ar address, Ley 9267, the helpline and self-exclusion.",
+  "h1En": "Mendoza: the 7 platforms authorized by the IPJyC"
  },
  {
   "section": "Провинции",
@@ -212,7 +252,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/santa-fe",
+  "titleEn": "Legal online betting in Santa Fe: the 4 platforms",
+  "descriptionEn": "Santa Fe: the 4 .bet.ar addresses the Lotería publishes as authorized, provincial law Ley 14.235, the helpline and self-exclusion.",
+  "h1En": "Santa Fe: the 4 authorized online gambling platforms"
  },
  {
   "section": "Провинции",
@@ -230,14 +274,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/entre-rios",
+  "titleEn": "Legal online gambling in Entre Ríos: the IAFAS platform",
+  "descriptionEn": "Entre Ríos: the online gambling platform IAFAS links on its official site, with copy date, the Prevenjuego line and one-year self-exclusion.",
+  "h1En": "Entre Ríos: IAFAS Play, the platform the regulator links"
  },
  {
   "section": "Провинции",
   "url": "/provincia/jujuy",
-  "title": "Juego online en Jujuy: qué pudimos verificar",
-  "titleLen": 44,
-  "h1": "Jujuy: sin una lista oficial que podamos citar",
+  "title": "¿Es legal apostar online en Jujuy? Lo que verificamos",
+  "titleLen": 53,
+  "h1": "¿Es legal apostar online en Jujuy? Sin una lista oficial que podamos citar",
   "description": "Juego online en Jujuy: por qué no publicamos plataformas autorizadas por InProJuy, qué intentamos revisar y qué ayuda nacional tenés mientras tanto.",
   "keys": "bplay jujuy 1.3k/0 · betwarrior jujuy 350/24",
   "kind": "province",
@@ -248,14 +296,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/jujuy",
+  "titleEn": "Is online betting legal in Jujuy? What we checked",
+  "descriptionEn": "Online gambling in Jujuy: why we don't list sites authorized by InProJuy, what we tried to check, and what national help you have meanwhile.",
+  "h1En": "Is online betting legal in Jujuy? No official list we can cite"
  },
  {
   "section": "Провинции",
   "url": "/provincia/salta",
-  "title": "Juego online en Salta: qué publica el ENREJA",
-  "titleLen": 44,
-  "h1": "Salta: no encontramos una lista oficial de sitios online",
+  "title": "¿Es legal apostar online en Salta? Lo que publica el ENREJA",
+  "titleLen": 59,
+  "h1": "¿Es legal apostar online en Salta? No hay una lista oficial de sitios",
   "description": "Juego online en Salta: qué dice la página de juego autorizado del ENREJA, por qué no publicamos una lista de sitios y dónde pedir ayuda o la autoexclusión.",
   "keys": "betwarrior salta 900/0",
   "kind": "province",
@@ -266,14 +318,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/salta",
+  "titleEn": "Is online betting legal in Salta? What ENREJA publishes",
+  "descriptionEn": "Online gambling in Salta: what ENREJA's authorized gambling page says, why we don't publish a list of sites, and where to get help or self-exclusion.",
+  "h1En": "Is online betting legal in Salta? There is no official list of sites"
  },
  {
   "section": "Провинции",
   "url": "/provincia/chubut",
-  "title": "Juego online en Chubut: por qué no lo citamos",
-  "titleLen": 45,
-  "h1": "Chubut: una fuente que no podemos usar",
+  "title": "¿Es legal el juego online en Chubut? Por qué no lo citamos",
+  "titleLen": 58,
+  "h1": "¿Es legal el juego online en Chubut? Una fuente que no podemos usar",
   "description": "Juego online en Chubut: por qué no usamos el sitio de la Lotería del Chubut como fuente, qué no afirmamos y dónde pedir ayuda mientras tanto.",
   "keys": "betwarrior chubut 300/- · casino club trelew online 200/49 · casino club online comodoro rivadavia 250/38",
   "kind": "province",
@@ -284,7 +340,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/chubut",
+  "titleEn": "Is online gambling legal in Chubut? Why we don't cite it",
+  "descriptionEn": "Online gambling in Chubut: why we don't use the Lotería del Chubut site as a source, what we don't claim, and where to get help in the meantime.",
+  "h1En": "Is online gambling legal in Chubut? A source we can't use"
  },
  {
   "section": "Провинции",
@@ -302,7 +362,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/neuquen",
+  "titleEn": "Legal online gambling in Neuquén: what IJAN allows",
+  "descriptionEn": "Legal online gambling in Neuquén: La Neuquina Online and the online casinos the IJAN permits, 6 .bet.ar addresses with dates, plus help and self-exclusion.",
+  "h1En": "Neuquén: the 6 online platforms authorized by the IJAN"
  },
  {
   "section": "Провинции",
@@ -320,7 +384,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/rio-negro",
+  "titleEn": "Legal online gambling in Río Negro: the 3 platforms",
+  "descriptionEn": "Legal online gambling in Río Negro: the 3 sites the Lotería shows as authorized, its quiniela platform and the two-year self-exclusion.",
+  "h1En": "Río Negro: the 3 sites authorized by the Lotería"
  },
  {
   "section": "Провинции",
@@ -338,7 +406,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/misiones",
+  "titleEn": "Legal online gambling in Misiones: Guazubet and QuinApp",
+  "descriptionEn": "Misiones: the two .bet.ar platforms the IPLyC portal links, with copy date, the rule for adults 18 and over, the helpline and self-exclusion.",
+  "h1En": "Misiones: GuazuBet and QuinApp, the IPLyC platforms"
  },
  {
   "section": "Провинции",
@@ -356,7 +428,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/chaco",
+  "titleEn": "Legal online gambling in Chaco: the Interbet platform",
+  "descriptionEn": "Chaco: the Interbet platform the Lotería Chaqueña links under “Play Online”, the number to report illegal gambling and 4-year self-exclusion.",
+  "h1En": "Chaco: Interbet, the Lotería Chaqueña platform"
  },
  {
   "section": "Провинции",
@@ -374,7 +450,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/corrientes",
+  "titleEn": "Legal online gambling in Corrientes: La Correntina Online",
+  "descriptionEn": "Corrientes: the online quiniela the Lotería Correntina links on its official site, with quote and copy date, and how to ask for one-year self-exclusion.",
+  "h1En": "Corrientes: La Correntina Online, the Lotería's quiniela"
  },
  {
   "section": "Провинции",
@@ -392,14 +472,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/la-rioja",
+  "titleEn": "Legal online gambling in La Rioja: what AJALAR authorized",
+  "descriptionEn": "Legal online gambling in La Rioja: the 6 platforms on AJALAR's list, their .bet.ar domain, the age 18 rule and how to self-exclude.",
+  "h1En": "La Rioja: the 6 platforms authorized by AJALAR"
  },
  {
   "section": "Провинции",
   "url": "/provincia/san-luis",
-  "title": "Juego online en San Luis: qué pudimos verificar",
-  "titleLen": 47,
-  "h1": "San Luis: sin una fuente oficial verificada",
+  "title": "¿Es legal apostar online en San Luis? Lo que verificamos",
+  "titleLen": 56,
+  "h1": "¿Es legal apostar online en San Luis? Sin una fuente oficial verificada",
   "description": "Juego online en San Luis: no encontramos una página oficial con plataformas autorizadas, así que no nombramos sitios. Qué revisamos y la ayuda nacional.",
   "keys": "jugadon san luis 400/0",
   "kind": "province",
@@ -410,14 +494,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/san-luis",
+  "titleEn": "Is online betting legal in San Luis? What we checked",
+  "descriptionEn": "Online gambling in San Luis: we found no official page listing authorized platforms, so we name no sites. What we checked and national help.",
+  "h1En": "Is online betting legal in San Luis? No verified official source"
  },
  {
   "section": "Провинции",
   "url": "/provincia/santa-cruz",
-  "title": "Juego online en Santa Cruz: qué dice la Lotería",
-  "titleLen": 47,
-  "h1": "Santa Cruz: la Lotería para Obras de Acción Social y el juego online",
+  "title": "¿Es legal el juego online en Santa Cruz? Qué dice la Lotería",
+  "titleLen": 60,
+  "h1": "¿Es legal el juego online en Santa Cruz? Lo que publica la Lotería",
   "description": "Juego online en Santa Cruz: qué revisamos en el sitio de la Lotería para Obras de Acción Social, la regla de los 18 años y por qué no hay lista de sitios.",
   "keys": "casino club online rio gallegos 250/24 · casino club online río gallegos 200/48",
   "kind": "province",
@@ -428,14 +516,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/santa-cruz",
+  "titleEn": "Is online gambling legal in Santa Cruz? Lotería status",
+  "descriptionEn": "Online gambling in Santa Cruz: what we checked on the Lotería para Obras de Acción Social site, the age-18 rule and why there is no list of sites.",
+  "h1En": "Is online gambling legal in Santa Cruz? What the Lotería publishes"
  },
  {
   "section": "Провинции",
   "url": "/provincia/tucuman",
-  "title": "Juego online en Tucumán: estado y regulador",
-  "titleLen": 43,
-  "h1": "Tucumán: la Caja Popular y el juego online",
+  "title": "¿Es legal el juego online en Tucumán? Estado y regulador",
+  "titleLen": 56,
+  "h1": "¿Es legal el juego online en Tucumán? Lo que publica la Caja Popular",
   "description": "Juego online en Tucumán: qué revisamos en el sitio de la Caja Popular de Ahorros, la ley 8986 de autoexclusión, la línea 0800 y por qué no hay lista acá.",
   "keys": "—",
   "kind": "province",
@@ -446,14 +538,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без найденного режима страница тонкая — либо объединить P3 в один раздел /provincias, либо ждать данных",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/tucuman",
+  "titleEn": "Is online gambling legal in Tucumán? Status and regulator",
+  "descriptionEn": "Online gambling in Tucumán: what we checked on the Caja Popular de Ahorros site, self-exclusion Ley 8986, the 0800 line and why there is no list here.",
+  "h1En": "Is online gambling legal in Tucumán? What the Caja Popular publishes"
  },
  {
   "section": "Провинции",
   "url": "/provincia/san-juan",
-  "title": "Juego online en San Juan: estado y regulador",
-  "titleLen": 44,
-  "h1": "San Juan: la Caja de Acción Social y el juego online",
+  "title": "¿Es legal el juego online en San Juan? Estado y regulador",
+  "titleLen": 57,
+  "h1": "¿Es legal el juego online en San Juan? Lo que publica la Caja de Acción Social",
   "description": "Juego online en San Juan: qué revisamos en el sitio de la Caja de Acción Social, por qué no hay lista de sitios y cómo pedir la autoexclusión de 4 años.",
   "keys": "—",
   "kind": "province",
@@ -464,14 +560,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без найденного режима страница тонкая — либо объединить P3 в один раздел /provincias, либо ждать данных",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/san-juan",
+  "titleEn": "Is online gambling legal in San Juan? Status and regulator",
+  "descriptionEn": "Online gambling in San Juan: what we checked on the Caja de Acción Social site, why there is no list of sites and how to request 4-year self-exclusion.",
+  "h1En": "Is online gambling legal in San Juan? What the Caja de Acción Social publishes"
  },
  {
   "section": "Провинции",
   "url": "/provincia/catamarca",
-  "title": "Juego online en Catamarca: estado y regulador",
-  "titleLen": 45,
-  "h1": "Catamarca: sin una fuente oficial verificada",
+  "title": "¿Es legal el juego online en Catamarca? Estado",
+  "titleLen": 46,
+  "h1": "¿Es legal el juego online en Catamarca? Sin una fuente oficial verificada",
   "description": "Juego online en Catamarca: los sitios oficiales que probamos no respondieron, así que no publicamos plataformas. Qué revisamos y la ayuda nacional.",
   "keys": "—",
   "kind": "province",
@@ -482,14 +582,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без найденного режима страница тонкая — либо объединить P3 в один раздел /provincias, либо ждать данных",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/catamarca",
+  "titleEn": "Is online gambling legal in Catamarca? Status",
+  "descriptionEn": "Online gambling in Catamarca: the official sites we tried did not respond, so we publish no platforms. What we checked and national help.",
+  "h1En": "Is online gambling legal in Catamarca? No verified official source"
  },
  {
   "section": "Провинции",
   "url": "/provincia/la-pampa",
-  "title": "Juego online en La Pampa: estado y regulador",
-  "titleLen": 44,
-  "h1": "La Pampa: sin una lista oficial verificada",
+  "title": "¿Es legal el juego online en La Pampa? Estado y ayuda",
+  "titleLen": 53,
+  "h1": "¿Es legal el juego online en La Pampa? Sin una lista oficial verificada",
   "description": "Juego online en La Pampa: por qué no publicamos plataformas, qué intentamos revisar y la línea de ayuda y autoexclusión que sí verificamos.",
   "keys": "—",
   "kind": "province",
@@ -500,14 +604,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без найденного режима страница тонкая — либо объединить P3 в один раздел /provincias, либо ждать данных",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/la-pampa",
+  "titleEn": "Is online gambling legal in La Pampa? Status and help",
+  "descriptionEn": "Online gambling in La Pampa: why we publish no platforms, what we tried to check, and the help and self-exclusion line we did verify.",
+  "h1En": "Is online gambling legal in La Pampa? No verified official list"
  },
  {
   "section": "Провинции",
   "url": "/provincia/santiago-del-estero",
-  "title": "Juego online en Santiago del Estero: estado",
-  "titleLen": 43,
-  "h1": "Santiago del Estero: la Caja Social y el juego online",
+  "title": "¿Es legal el juego online en Santiago del Estero?",
+  "titleLen": 49,
+  "h1": "¿Es legal el juego online en Santiago del Estero? Lo que publica la Caja Social",
   "description": "Juego online en Santiago del Estero: qué sabemos de la Caja Social, por qué no hay lista de sitios acá y el teléfono de su programa de juego responsable.",
   "keys": "—",
   "kind": "province",
@@ -518,14 +626,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без найденного режима страница тонкая — либо объединить P3 в один раздел /provincias, либо ждать данных",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/santiago-del-estero",
+  "titleEn": "Is online gambling legal in Santiago del Estero?",
+  "descriptionEn": "Online gambling in Santiago del Estero: what we know about the Caja Social, why there is no list of sites here and its responsible gambling phone.",
+  "h1En": "Is online gambling legal in Santiago del Estero? What the Caja Social publishes"
  },
  {
   "section": "Провинции",
   "url": "/provincia/tierra-del-fuego",
-  "title": "Juego online en Tierra del Fuego: estado",
-  "titleLen": 40,
-  "h1": "Tierra del Fuego: el IPRA y el juego online",
+  "title": "¿Es legal el juego online en Tierra del Fuego?",
+  "titleLen": 46,
+  "h1": "¿Es legal el juego online en Tierra del Fuego? Lo que publica el IPRA",
   "description": "Juego online en Tierra del Fuego: qué muestra el sitio del IPRA, por qué no publicamos una lista de sitios y el teléfono de su programa de ayuda.",
   "keys": "—",
   "kind": "province",
@@ -536,14 +648,18 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без найденного режима страница тонкая — либо объединить P3 в один раздел /provincias, либо ждать данных",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/tierra-del-fuego",
+  "titleEn": "Is online gambling legal in Tierra del Fuego?",
+  "descriptionEn": "Online gambling in Tierra del Fuego: what the IPRA site shows, why we publish no list of sites, and the phone of its help program.",
+  "h1En": "Is online gambling legal in Tierra del Fuego? What the IPRA publishes"
  },
  {
   "section": "Провинции",
   "url": "/provincia/formosa",
-  "title": "Juego online en Formosa: estado y regulador",
-  "titleLen": 43,
-  "h1": "Formosa: sin una fuente oficial verificada",
+  "title": "¿Es legal el juego online en Formosa? Estado",
+  "titleLen": 44,
+  "h1": "¿Es legal el juego online en Formosa? Sin una fuente oficial verificada",
   "description": "Juego online en Formosa: no encontramos una página oficial del regulador con plataformas online, así que no nombramos sitios. Qué revisamos y la ayuda.",
   "keys": "—",
   "kind": "province",
@@ -554,7 +670,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Без найденного режима страница тонкая — либо объединить P3 в один раздел /provincias, либо ждать данных",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/province/formosa",
+  "titleEn": "Is online gambling legal in Formosa? Status",
+  "descriptionEn": "Online gambling in Formosa: we found no official regulator page with online platforms, so we name no sites. What we checked and help.",
+  "h1En": "Is online gambling legal in Formosa? No verified official source"
  },
  {
   "section": "Операторы",
@@ -572,7 +692,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; ключи входа (iniciar sesión, login) — на /operador/betsson/ingresar (04.11)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/betsson",
+  "titleEn": "Betsson Argentina: review, licenses and official site",
+  "descriptionEn": "Betsson in Argentina reviewed: its site's sports, odds, casino, app, payments and responsible gambling, plus licenses and the official site by province.",
+  "h1En": "Betsson in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
@@ -590,7 +714,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; ключи входа (iniciar sesión, login) — на /operador/betano/ingresar (04.11)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/betano",
+  "titleEn": "Betano Argentina: review, licenses and official site",
+  "descriptionEn": "Betano in Argentina reviewed: its site's sports, odds, casino, app, payments and responsible gambling, plus licenses and the official site by province.",
+  "h1En": "Betano in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
@@ -604,7 +732,11 @@
   "h1": "Cómo ingresar a Betano y Betano Casino: el sitio de tu provincia",
   "description": "Cómo iniciar sesión en Betano: el sitio oficial que nombra la lista de tu provincia (PBA, CABA o Mendoza), cómo no caer en copias, la app y la contraseña.",
   "titleLen": 55,
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/betano/log-in",
+  "titleEn": "Betano log in: your province's official site",
+  "descriptionEn": "How to log in to Betano: the official site named on your province's list (PBA, CABA or Mendoza), how to avoid copies, the app and your password.",
+  "h1En": "How to log in to Betano and Betano Casino: your province's site"
  },
  {
   "section": "Операторы",
@@ -622,7 +754,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Отделить «bet365 states / legal states / new user promo» (США) — не цель; Без ссылки на оператора, без бонусов/кодов; ключи входа (iniciar sesión, login) — на /operador/bet365/ingresar (04.11)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/bet365",
+  "titleEn": "bet365 Argentina: review, licenses and official site",
+  "descriptionEn": "bet365 in Argentina reviewed: sports, casino, payments and responsible gambling on its site, its licenses and the official site for each province.",
+  "h1En": "bet365 in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
@@ -640,7 +776,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/bplay",
+  "titleEn": "bplay Argentina: review, licenses and official site",
+  "descriptionEn": "bplay in Argentina reviewed: its site's sports, odds, casino, app, payments and responsible gambling, plus licenses and the official site by province.",
+  "h1En": "bplay in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
@@ -658,7 +798,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/betwarrior",
+  "titleEn": "BetWarrior Argentina: review, licenses and official site",
+  "descriptionEn": "BetWarrior in Argentina reviewed: sports, app, payments and responsible gambling on its site, its licenses and the official site for each province.",
+  "h1En": "BetWarrior in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
@@ -676,7 +820,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/codere",
+  "titleEn": "Codere Argentina: review, licenses and official site",
+  "descriptionEn": "Codere in Argentina reviewed: its site's sports, odds, casino, app, payments and responsible gambling, plus licenses and the official site by province.",
+  "h1En": "Codere in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
@@ -694,15 +842,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/jugadon",
+  "titleEn": "Jugadón Argentina: review, licenses and official site",
+  "descriptionEn": "Jugadón in Argentina reviewed: casino, payments and responsible gambling on its site, its licenses and the official site for each province.",
+  "h1En": "Jugadón in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
   "url": "/operador/playcet",
-  "title": "Playcet: licencia en Córdoba y sitio oficial",
-  "titleLen": 44,
-  "h1": "Playcet: qué es, quién la autoriza y dónde funciona",
-  "description": "Playcet en la lista oficial de la Lotería de Córdoba: su dominio, lo que dice su pie de página, límites de juego y medios de pago según sus páginas.",
+  "title": "Playcet Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 52,
+  "h1": "Playcet en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Playcet en Argentina con datos de su sitio (casino, pagos y juego responsable), sus licencias y el sitio oficial de Córdoba.",
   "keys": "playcet 32k/0 · playcet cordoba 2.8k/5 · playcet córdoba 1.6k/- · playcet casino 2.4k/0 · playcet online 700/4 · playcet casino online 800/5",
   "kind": "review",
   "wave": "P1",
@@ -712,7 +864,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/playcet",
+  "titleEn": "Playcet Argentina: review, licenses and official site",
+  "descriptionEn": "Review of Playcet in Argentina with data from its site (casino, payments and responsible gambling), its licenses and the official Córdoba site.",
+  "h1En": "Playcet in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
@@ -730,15 +886,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Ключ «sportsbet io» 500/56 — офшорный бренд: объяснить различие только с цитатами реестров; юр. проверка формулировки; Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/sportsbet",
+  "titleEn": "Sportsbet Argentina: review, licenses and official site",
+  "descriptionEn": "Sportsbet in Argentina reviewed: sports, casino, payments and responsible gambling on its site, its licenses and the official site for each province.",
+  "h1En": "Sportsbet in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
   "url": "/operador/casino-buenos-aires-online",
-  "title": "Casino Buenos Aires Online: licencia en CABA y sitio oficial",
-  "titleLen": 60,
-  "h1": "Casino Buenos Aires Online: qué es y quién lo autoriza",
-  "description": "Casino Buenos Aires Online en la lista de LOTBA: su dominio, la disposición que lo autoriza, la línea de ayuda de su pie de página y una captura propia.",
+  "title": "Casino Buenos Aires Online: reseña y sitio oficial",
+  "titleLen": 50,
+  "h1": "Casino Buenos Aires Online en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Casino Buenos Aires Online en Argentina con datos de su sitio (deportes, casino, app, pagos y juego responsable), licencias y sitio oficial.",
   "keys": "casino buenos aires online 10k/7 · casino de buenos aires online 900/0",
   "kind": "review",
   "wave": "P1",
@@ -748,15 +908,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/casino-buenos-aires-online",
+  "titleEn": "Casino Buenos Aires Online: review and official site",
+  "descriptionEn": "Review of Casino Buenos Aires Online with data from its site (sports, casino, app, payments and responsible gambling), licenses and official site.",
+  "h1En": "Casino Buenos Aires Online in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/casino-club",
-  "title": "Casino Club Online: licencias y sitio oficial por provincia",
-  "titleLen": 59,
-  "h1": "Casino Club Online: en qué provincias está habilitado",
-  "description": "Casino Club Online figura con la misma dirección, casinoclubonline.bet.ar, en las listas oficiales de Mendoza y de Río Negro. Regulador, fecha y fuente.",
+  "title": "Casino Club Online: reseña, licencias y sitio oficial",
+  "titleLen": 53,
+  "h1": "Casino Club Online en Argentina: reseña con datos, licencias y sitio oficial por provincia",
+  "description": "Reseña de Casino Club Online en Argentina con datos de su sitio (casino, pagos y juego responsable), sus licencias y el sitio oficial de cada provincia.",
   "keys": "casino club online 15k/14 · casino online club 150/55",
   "kind": "review",
   "wave": "P1",
@@ -766,7 +930,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "P1 при условии подтверждения реестров РН/Мендосы до выпуска; Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/casino-club",
+  "titleEn": "Casino Club Online: review, licenses and official site",
+  "descriptionEn": "Review of Casino Club Online in Argentina with data from its site (casino, payments, responsible gambling), licenses and each province's official site.",
+  "h1En": "Casino Club Online in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
@@ -784,7 +952,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Нужна юр. проверка формулировки про stake.com (только «no figura en el registro de …»); аудитория — не молодёжь, но бренд популярен у стримеров; Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/stake",
+  "titleEn": "Stake: Buenos Aires Province license, official site",
+  "descriptionEn": "Stake in Argentina: listed by the IPLyC of Buenos Aires Province as pba.stake.bet.ar; stake.com is not on any of the lists we checked.",
+  "h1En": "Stake in Argentina: which address is licensed and which is not"
  },
  {
   "section": "Операторы",
@@ -806,10 +978,10 @@
  {
   "section": "Операторы",
   "url": "/operador/super7",
-  "title": "Super7 Argentina: licencias y sitio oficial por provincia",
-  "titleLen": 57,
-  "h1": "Super7: dónde está habilitado y con qué dirección",
-  "description": "Super7 en las listas oficiales de la Ciudad y de Mendoza: super7.com.ar con disposición de LOTBA y mdz.super7.bet.ar del IPJyC. Con fecha y fuente.",
+  "title": "Super7 Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 51,
+  "h1": "Super7 en Argentina: reseña con datos, licencias y sitio oficial por provincia",
+  "description": "Reseña de Super7 en Argentina con datos de su sitio (deportes, casino y juego responsable), sus licencias y el sitio oficial de cada provincia.",
   "keys": "super7 400/0 · super7 mendoza 400/33 · super7 casino 200/1 · super7 caba 150/-",
   "kind": "review",
   "wave": "P2",
@@ -819,15 +991,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/super7",
+  "titleEn": "Super7 Argentina: review, licenses and official site",
+  "descriptionEn": "Review of Super7 in Argentina with data from its site (sports, casino, responsible gambling), its licenses and each province's official site.",
+  "h1En": "Super7 in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
   "url": "/operador/betfun",
-  "title": "Betfun: licencia en CABA y sitio oficial",
-  "titleLen": 40,
-  "h1": "Betfun: la plataforma habilitada por LOTBA en la Ciudad",
-  "description": "Betfun en la lista de LOTBA: su dominio .bet.ar, la disposición de la lista, el permiso que cita su pie de página y quién figura como titular. Con captura.",
+  "title": "Betfun Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 51,
+  "h1": "Betfun en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Betfun en Argentina con datos de su sitio (app, pagos y juego responsable), sus licencias y el sitio oficial de Ciudad Autónoma de Buenos Aires.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -837,15 +1013,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/betfun",
+  "titleEn": "Betfun Argentina: review, licenses and official site",
+  "descriptionEn": "Review of Betfun in Argentina with its site data (app, payments, responsible gambling), licenses and the official Ciudad Autónoma de Buenos Aires site.",
+  "h1En": "Betfun in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/play-uzu",
-  "title": "Play Uzu: licencia en CABA y sitio oficial",
-  "titleLen": 42,
-  "h1": "Play Uzu: qué es y quién la autoriza",
-  "description": "Play Uzu en la lista de la Lotería de la Ciudad: su dominio playuzu.bet.ar, la disposición de LOTBA que figura y lo que muestra su sitio fuera del país.",
+  "title": "Play Uzu Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 53,
+  "h1": "Play Uzu en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Play Uzu en Argentina con datos de su sitio (casino, pagos y juego responsable), licencias y sitio oficial.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -855,15 +1035,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/play-uzu",
+  "titleEn": "Play Uzu Argentina: review, licenses and official site",
+  "descriptionEn": "Review of Play Uzu in Argentina with data from its site (casino, payments and responsible gambling), licenses and the official site.",
+  "h1En": "Play Uzu in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/city-center-online",
-  "title": "City Center Online: licencia en Santa Fe y sitio oficial",
-  "titleLen": 56,
-  "h1": "City Center Online: dónde figura y con qué dirección",
-  "description": "City Center Online en la lista de plataformas habilitadas de la Lotería de Santa Fe: su dirección citycenteronline.bet.ar, la ley que cita y la fecha.",
+  "title": "City Center Online: reseña, licencias y sitio oficial",
+  "titleLen": 53,
+  "h1": "City Center Online en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de City Center Online en Argentina con datos de su sitio (deportes), sus licencias y el sitio oficial de Santa Fe.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -873,15 +1057,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/city-center-online",
+  "titleEn": "City Center Online: review, licenses and official site",
+  "descriptionEn": "Review of City Center Online in Argentina with data from its site (sports), its licenses and the official Santa Fe site.",
+  "h1En": "City Center Online in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/casinos-del-rio",
-  "title": "Casinos del Río: licencia en Río Negro y sitio oficial",
-  "titleLen": 54,
-  "h1": "Casinos del Río: qué hay en la dirección que lista Río Negro",
-  "description": "Casinos del Río en la lista de la Lotería de Río Negro: su dirección casinosdelrio.bet.ar, qué muestra esa página y las dos plataformas que nombra.",
+  "title": "Casinos del Río Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 60,
+  "h1": "Casinos del Río en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Casinos del Río en Argentina: lo que muestra su sitio, lo que no pudimos ver, sus licencias y el sitio oficial de Río Negro.",
   "keys": "casino del rio online 1.4k/20",
   "kind": "review",
   "wave": "P2",
@@ -891,15 +1079,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/casinos-del-rio",
+  "titleEn": "Casinos del Río Argentina: review, licenses, official site",
+  "descriptionEn": "Review of Casinos del Río in Argentina: what its site shows, what we could not see, its licenses and the official Río Negro site.",
+  "h1En": "Casinos del Río in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/la-neuquina-online",
-  "title": "La Neuquina Online: licencia en Neuquén y sitio oficial",
-  "titleLen": 55,
-  "h1": "La Neuquina Online: la plataforma de juego online que nombra el IJAN",
-  "description": "La Neuquina Online: la plataforma que el IJAN nombra aparte de los casinos online permitidos de Neuquén, su dominio .bet.ar, la fuente y cómo verificarla.",
+  "title": "La Neuquina Online: reseña, licencias y sitio oficial",
+  "titleLen": 53,
+  "h1": "La Neuquina Online en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de La Neuquina Online en Argentina: lo que muestra su sitio, lo que no pudimos ver, sus licencias y el sitio oficial de Neuquén.",
   "keys": "—",
   "kind": "review",
   "wave": "P3",
@@ -909,7 +1101,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Может хватить блока на /provincia/neuquen; Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/la-neuquina-online",
+  "titleEn": "La Neuquina Online: review, licenses and official site",
+  "descriptionEn": "Review of La Neuquina Online in Argentina: what its site shows, what we could not see, its licenses and the official Neuquén site.",
+  "h1En": "La Neuquina Online in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
@@ -927,7 +1123,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Может хватить блока на /provincia/rio-negro; Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/la-rionegrina-online",
+  "titleEn": "La Rionegrina Online: Río Negro license, official site",
+  "descriptionEn": "La Rionegrina Online: the gaming platform of the Lotería de Río Negro, how the Lotería itself describes it, its .bet.ar domain and provincial help.",
+  "h1En": "La Rionegrina Online: the platform of the Lotería de Río Negro"
  },
  {
   "section": "Операторы",
@@ -1000,10 +1200,10 @@
  {
   "section": "Операторы",
   "url": "/operador/mac-group",
-  "title": "MAC Group Argentina: licencias y sitio oficial por provincia",
-  "titleLen": 60,
-  "h1": "Casino MAC Group: dónde figura y con qué dirección",
-  "description": "Casino MAC Group en las listas oficiales de La Rioja (AJALAR) y Neuquén (IJAN): la misma dirección, casinosmacgroup.bet.ar, en las dos. Con fecha y fuente.",
+  "title": "MAC Group Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 54,
+  "h1": "MAC Group en Argentina: reseña con datos, licencias y sitio oficial por provincia",
+  "description": "Reseña de MAC Group en Argentina con datos de su sitio (pagos), sus licencias y el sitio oficial de cada provincia.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -1013,15 +1213,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/mac-group",
+  "titleEn": "MAC Group Argentina: review, licenses and official site",
+  "descriptionEn": "Review of MAC Group in Argentina with data from its site (payments), its licenses and each province's official site.",
+  "h1En": "MAC Group in Argentina: review with data, licenses and official site by province"
  },
  {
   "section": "Операторы",
   "url": "/operador/playbet",
-  "title": "PlayBet Casino: licencia en La Rioja y sitio oficial",
-  "titleLen": 52,
-  "h1": "PlayBet Casino: dónde figura y con qué dirección",
-  "description": "PlayBet Casino en la lista oficial de AJALAR, en La Rioja: su dirección play.bet.ar, que no lleva el nombre completo, y una captura de su pie de página.",
+  "title": "PlayBet Casino Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 59,
+  "h1": "PlayBet Casino en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de PlayBet Casino en Argentina: lo que muestra su sitio (pagos), lo que no pudimos ver, sus licencias y el sitio oficial de La Rioja.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -1031,7 +1235,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/playbet",
+  "titleEn": "PlayBet Casino Argentina: review, licenses, official site",
+  "descriptionEn": "Review of PlayBet Casino in Argentina: what its site shows (payments), what we could not see, its licenses and the official La Rioja site.",
+  "h1En": "PlayBet Casino in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
@@ -1049,7 +1257,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/arbet",
+  "titleEn": "ARBET: La Rioja license and official site",
+  "descriptionEn": "ARBET on the AJALAR list of authorized platforms in La Rioja: its address arbet.bet.ar, the source and date, and what happened when we tried to view it.",
+  "h1En": "ARBET: who authorizes it and with which address"
  },
  {
   "section": "Операторы",
@@ -1067,15 +1279,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/mitesoro",
+  "titleEn": "mitesoro: La Rioja license and official site",
+  "descriptionEn": "mitesoro is on the AJALAR list with the address mitesoro.bet.ar. When we opened it, it showed a Wix page with no site connected. With date.",
+  "h1En": "mitesoro: on the La Rioja list, but its address shows no site"
  },
  {
   "section": "Операторы",
   "url": "/operador/easybet",
-  "title": "easybet: licencia en La Rioja y sitio oficial",
-  "titleLen": 45,
-  "h1": "easybet en La Rioja: licencia, dominio y quién lo opera",
-  "description": "easybet en la lista de AJALAR con la dirección larioja.easybet.bet.ar: la resolución y la empresa que cita su pie de página, con captura propia y fecha.",
+  "title": "easybet Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 52,
+  "h1": "easybet en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de easybet en Argentina: lo que muestra su sitio, lo que no pudimos ver, sus licencias y el sitio oficial de La Rioja.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -1085,15 +1301,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/easybet",
+  "titleEn": "easybet Argentina: review, licenses and official site",
+  "descriptionEn": "Review of easybet in Argentina: what its site shows, what we could not see, its licenses and the official La Rioja site.",
+  "h1En": "easybet in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/casino-magic-online",
-  "title": "Casino Magic Online: licencia en Neuquén y sitio oficial",
-  "titleLen": 56,
-  "h1": "Casino Magic Online: quién lo autoriza y con qué dirección",
-  "description": "Casino Magic Online en la tabla de casinos online permitidos del IJAN, en Neuquén: su dirección casinomagiconline.bet.ar, la fuente y la fecha de la copia.",
+  "title": "Casino Magic Online: reseña, licencias y sitio oficial",
+  "titleLen": 54,
+  "h1": "Casino Magic Online en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Casino Magic Online en Argentina con datos de su sitio (deportes y juego responsable), sus licencias y el sitio oficial de Neuquén.",
   "keys": "casino magic online 9.2k/38 · casino magic neuquén online 1.1k/41 · casino online magic 1.1k/45",
   "kind": "review",
   "wave": "P2",
@@ -1103,15 +1323,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/casino-magic-online",
+  "titleEn": "Casino Magic Online: review, licenses and official site",
+  "descriptionEn": "Review of Casino Magic Online in Argentina with data from its site (sports and responsible gambling), its licenses and the official Neuquén site.",
+  "h1En": "Casino Magic Online in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/maverick-online",
-  "title": "Maverick Online: licencia en Neuquén y sitio oficial",
-  "titleLen": 52,
-  "h1": "Maverick Online: dónde está habilitado",
-  "description": "Maverick Online en la lista de casinos online permitidos del IJAN, en Neuquén: su dirección maverickonline.bet.ar y lo que muestra fuera de la provincia.",
+  "title": "Maverick Online Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 60,
+  "h1": "Maverick Online en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Maverick Online en Argentina con datos de su sitio (casino y pagos), sus licencias y el sitio oficial de Neuquén.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -1121,15 +1345,19 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/maverick-online",
+  "titleEn": "Maverick Online Argentina: review, licenses, official site",
+  "descriptionEn": "Review of Maverick Online in Argentina with data from its site (casino and payments), its licenses and the official Neuquén site.",
+  "h1En": "Maverick Online in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Операторы",
   "url": "/operador/aladdin-online",
-  "title": "Aladdin Online: licencia en Neuquén y sitio oficial",
-  "titleLen": 51,
-  "h1": "Aladdin Online: el nombre de la lista y el de la dirección",
-  "description": "Aladdin Online figura en la lista del IJAN, en Neuquén, con la dirección aladdincasino.bet.ar: el nombre y el dominio no coinciden. Fuente, fecha, captura.",
+  "title": "Aladdin Online Argentina: reseña, licencias y sitio oficial",
+  "titleLen": 59,
+  "h1": "Aladdin Online en Argentina: reseña con datos, licencias y sitio oficial",
+  "description": "Reseña de Aladdin Online en Argentina: lo que muestra su sitio (casino), lo que no pudimos ver, sus licencias y el sitio oficial de Neuquén.",
   "keys": "—",
   "kind": "review",
   "wave": "P2",
@@ -1139,7 +1367,11 @@
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
   "notes": "Без ссылки на оператора, без бонусов/кодов; страница по слову владельца 03.11 («каждый бренд кликабелен»)",
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/aladdin-online",
+  "titleEn": "Aladdin Online Argentina: review, licenses, official site",
+  "descriptionEn": "Review of Aladdin Online in Argentina: what its site shows (casino), what we could not see, its licenses and the official Neuquén site.",
+  "h1En": "Aladdin Online in Argentina: review with data, licenses and official site"
  },
  {
   "section": "Оператор × провинция",
@@ -1157,7 +1389,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betsson/buenos-aires",
+  "titleEn": "Betsson in Buenos Aires Province: license and domain",
+  "descriptionEn": "Betsson in Buenos Aires Province: the IPLyC license, the pba.betsson.bet.ar domain and how it differs from the City of Buenos Aires and Córdoba versions.",
+  "h1En": "Betsson in PBA: the IPLyC license and the pba.betsson.bet.ar domain"
  },
  {
   "section": "Оператор × провинция",
@@ -1175,7 +1411,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betsson/caba",
+  "titleEn": "Betsson in CABA: LOTBA authorization and domain",
+  "descriptionEn": "Betsson in the City of Buenos Aires: the LOTBA authorization, why its domain ends in .com.ar and what changes from the Buenos Aires Province version.",
+  "h1En": "Betsson in the City: what LOTBA authorized"
  },
  {
   "section": "Оператор × провинция",
@@ -1193,7 +1433,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betsson/cordoba",
+  "titleEn": "Betsson in Córdoba: license from the Lotería and domain",
+  "descriptionEn": "Betsson in Córdoba: the Lotería de Córdoba license, the cba.betsson.bet.ar domain and how it differs from the Buenos Aires and City versions.",
+  "h1En": "Betsson in Córdoba: license and the cba.betsson.bet.ar domain"
  },
  {
   "section": "Оператор × провинция",
@@ -1211,7 +1455,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betano/buenos-aires",
+  "titleEn": "Betano in Buenos Aires Province: license and domain",
+  "descriptionEn": "Betano in Buenos Aires Province: which IPLyC license it holds, which domain it uses and how it differs from its version in the City of Buenos Aires.",
+  "h1En": "Betano in PBA: what license it has"
  },
  {
   "section": "Оператор × провинция",
@@ -1229,7 +1477,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Сначала разрешить расхождение прессы (Betano vs RushBet); Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betano/mendoza",
+  "titleEn": "Betano in Mendoza: is it on the IPJyC list?",
+  "descriptionEn": "Betano in Mendoza: what the IPJyC list says, the mza.betano.bet.ar domain and how it differs from the Buenos Aires Province and City addresses.",
+  "h1En": "Betano in Mendoza: what the IPJyC list says"
  },
  {
   "section": "Оператор × провинция",
@@ -1247,7 +1499,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betano/caba",
+  "titleEn": "Betano in CABA: the LOTBA resolution",
+  "descriptionEn": "Betano in the City of Buenos Aires: the LOTBA resolution that authorizes it, its domain and what changes versus the Buenos Aires Province version.",
+  "h1En": "Betano in the City of Buenos Aires: LOTBA authorization"
  },
  {
   "section": "Оператор × провинция",
@@ -1265,7 +1521,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/bplay/santa-fe",
+  "titleEn": "bplay in Santa Fe: license and domain",
+  "descriptionEn": "bplay in Santa Fe: the address published by the Lotería de Santa Fe, with no provincial subdomain, and how it differs from its versions in other provinces.",
+  "h1En": "bplay in Santa Fe: the address the Lotería publishes"
  },
  {
   "section": "Оператор × провинция",
@@ -1283,7 +1543,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/bplay/cordoba",
+  "titleEn": "bplay in Córdoba: license and domain",
+  "descriptionEn": "bplay in Córdoba: the Lotería de Córdoba license, bplay's Córdoba domain and what changes compared with its versions in other Argentine provinces.",
+  "h1En": "bplay in Córdoba: Lotería de Córdoba license"
  },
  {
   "section": "Оператор × провинция",
@@ -1335,7 +1599,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/bplay/buenos-aires",
+  "titleEn": "bplay in Buenos Aires Province: license and domain",
+  "descriptionEn": "bplay in Buenos Aires Province: the IPLyC license, the provincial domain and how it differs from the bplay version in the City or in Córdoba.",
+  "h1En": "bplay in PBA: IPLyC license"
  },
  {
   "section": "Оператор × провинция",
@@ -1353,7 +1621,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Added 03.11: the brand is in this verified list with its own address; demand from data/keywords. Navigational intent is not the goal.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betwarrior/buenos-aires",
+  "titleEn": "BetWarrior in Buenos Aires Province: license and domain",
+  "descriptionEn": "BetWarrior in Buenos Aires Province: the IPLyC license, the betwarrior.bet.ar address and why the City and Mendoza list it with a different one.",
+  "h1En": "BetWarrior in PBA: the IPLyC license and its address"
  },
  {
   "section": "Оператор × провинция",
@@ -1371,7 +1643,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Added 03.11: the brand is in this verified list with its own address; demand from data/keywords. Navigational intent is not the goal.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/bplay/caba",
+  "titleEn": "bplay in CABA: LOTBA disposición and domain",
+  "descriptionEn": "bplay in the City of Buenos Aires: the LOTBA disposición (regulator's order) on its list, the caba.bplay.bet.ar domain, and how it differs elsewhere.",
+  "h1En": "bplay in the City: the LOTBA disposición and caba.bplay.bet.ar"
  },
  {
   "section": "Оператор × провинция",
@@ -1389,7 +1665,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/betwarrior/mendoza",
+  "titleEn": "BetWarrior in Mendoza: IPJyC license",
+  "descriptionEn": "BetWarrior in Mendoza: the address on the IPJyC list, mza.betwarrior.bet.ar, and what changes compared with its versions in other provinces.",
+  "h1En": "BetWarrior in Mendoza: the address the IPJyC authorizes"
  },
  {
   "section": "Оператор × провинция",
@@ -1424,7 +1704,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Сначала найти источник AJALAR; Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/jugadon/la-rioja",
+  "titleEn": "Jugadón in La Rioja: who authorizes it?",
+  "descriptionEn": "Jugadón in La Rioja: who authorizes it, what the La Rioja regulator AJALAR says, which domain it uses and how to check it if you are in the province.",
+  "h1En": "Jugadón in La Rioja: what the regulator says"
  },
  {
   "section": "Оператор × провинция",
@@ -1442,7 +1726,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Делать только если версии реально различаются; иначе ключи — якорем на странице оператора. Навигационный интент — не цель",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/jugadon/caba",
+  "titleEn": "Jugadón in CABA: LOTBA authorization",
+  "descriptionEn": "Jugadón in the City of Buenos Aires: the LOTBA disposición that authorizes it, its caba.jugadon.bet.ar domain and how it differs from other provinces.",
+  "h1En": "Jugadón in the City: the LOTBA disposición"
  },
  {
   "section": "Оператор × провинция",
@@ -1460,7 +1748,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Added 03.11: the brand is in this verified list with its own address; demand from data/keywords. Navigational intent is not the goal.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/super7/mendoza",
+  "titleEn": "Super7 in Mendoza: IPJyC license and domain",
+  "descriptionEn": "Super7 in Mendoza: the mdz.super7.bet.ar address published by the IPJyC and why the City of Buenos Aires lists it with a .com.ar domain.",
+  "h1En": "Super7 in Mendoza: the address the IPJyC publishes"
  },
  {
   "section": "Оператор × провинция",
@@ -1478,7 +1770,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Added 03.11: the brand is in this verified list with its own address; demand from data/keywords. Navigational intent is not the goal.",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/operator/jugadon/cordoba",
+  "titleEn": "Jugadón in Córdoba: license from the Lotería and domain",
+  "descriptionEn": "Jugadón in Córdoba: the Lotería de Córdoba resolution, the cordoba.jugadon.bet.ar domain and what changes versus the City, La Rioja and Santa Fe.",
+  "h1En": "Jugadón in Córdoba: license and the cordoba.jugadon.bet.ar domain"
  },
  {
   "section": "Проверка бренда",
@@ -1496,7 +1792,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Юр. проверка до выпуска; никаких утверждений «ilegal» без цитаты; не ссылаться на сайт бренда. Casino Magic / Casino del Litoral могут оказаться лицензированы — тогда перенести в /operador/",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/check/1win",
+  "titleEn": "Is 1win legal in Argentina? What the registers say",
+  "descriptionEn": "Is 1win legal in Argentina? We searched for the brand in the 8 official lists we keep and show what we found, with date and source.",
+  "h1En": "Is 1win on any official register in Argentina?"
  },
  {
   "section": "Проверка бренда",
@@ -1514,7 +1814,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Юр. проверка до выпуска; никаких утверждений «ilegal» без цитаты; не ссылаться на сайт бренда. Casino Magic / Casino del Litoral могут оказаться лицензированы — тогда перенести в /operador/",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/check/mystake",
+  "titleEn": "Is MyStake legal in Argentina? What the registers say",
+  "descriptionEn": "Does MyStake have a license in any Argentine province? We searched the 8 official lists we keep: result with date and a quote from each regulator.",
+  "h1En": "Is MyStake on any official register in Argentina?"
  },
  {
   "section": "Проверка бренда",
@@ -1532,7 +1836,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Юр. проверка до выпуска; никаких утверждений «ilegal» без цитаты; не ссылаться на сайт бренда. Casino Magic / Casino del Litoral могут оказаться лицензированы — тогда перенести в /operador/",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/check/jugabet",
+  "titleEn": "Is Jugabet legal in Argentina? What the registers say",
+  "descriptionEn": "Jugabet and Argentine law: whether it appears in the 8 provincial online gambling lists we keep, checked one by one, and how to check it yourself.",
+  "h1En": "Is Jugabet on any official register in Argentina?"
  },
  {
   "section": "Проверка бренда",
@@ -1550,7 +1858,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Юр. проверка до выпуска; никаких утверждений «ilegal» без цитаты; не ссылаться на сайт бренда. Casino Magic / Casino del Litoral могут оказаться лицензированы — тогда перенести в /operador/",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/check/zeus",
+  "titleEn": "Is Zeus casino legal in Argentina? What the registers say",
+  "descriptionEn": "Is Zeus casino on an official list? We searched the 8 lists we keep: result with date, source and how you can check it yourself.",
+  "h1En": "Is Zeus casino on any official register in Argentina?"
  },
  {
   "section": "Проверка бренда",
@@ -1568,7 +1880,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Юр. проверка до выпуска; никаких утверждений «ilegal» без цитаты; не ссылаться на сайт бренда. Casino Magic / Casino del Litoral могут оказаться лицензированы — тогда перенести в /operador/",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/check/tucan-win",
+  "titleEn": "Is Tucan Win legal in Argentina? What the registers say",
+  "descriptionEn": "Tucan Win in Argentina: what we found searching the brand in the 8 official lists we keep, with date, and what it means not to be listed.",
+  "h1En": "Is Tucan Win on any official register in Argentina?"
  },
  {
   "section": "Проверка бренда",
@@ -1586,7 +1902,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Юр. проверка до выпуска; никаких утверждений «ilegal» без цитаты; не ссылаться на сайт бренда. Casino Magic / Casino del Litoral могут оказаться лицензированы — тогда перенести в /operador/",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/check/betonwin",
+  "titleEn": "Is Betonwin legal in Argentina? What the registers say",
+  "descriptionEn": "Does Betonwin have a license in Argentina? We searched the 8 official lists we keep and show the result, with date and no links.",
+  "h1En": "Is Betonwin on any official register in Argentina?"
  },
  {
   "section": "Проверка бренда",
@@ -1604,7 +1924,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Юр. проверка до выпуска; никаких утверждений «ilegal» без цитаты; не ссылаться на сайт бренда. Casino Magic / Casino del Litoral могут оказаться лицензированы — тогда перенести в /operador/",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/check/betbox",
+  "titleEn": "Is Betbox legal in Argentina? What the registers say",
+  "descriptionEn": "Betbox and licenses in Argentina: the result of searching the 8 official lists we keep, with the date of the check and the source.",
+  "h1En": "Is Betbox on any official register in Argentina?"
  },
  {
   "section": "Проверка бренда",
@@ -1673,7 +1997,11 @@
   "auto": "хеш-монитор страницы регулятора раз в месяц (сервер); изменение → письмо и пометка «проверить»; на странице дата последней сверки; полная перепроверка раз в полгода",
   "rg": true,
   "notes": "Честно: CABA перечисляет betsson.com.ar и super7.com.ar — не всё легальное заканчивается на .bet.ar",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/guide/bet-ar",
+  "titleEn": "What is the .bet.ar domain and why it matters",
+  "descriptionEn": "What the .bet.ar domain is, how to read each province's subdomain, what regulators say and why two legal City sites don't use it.",
+  "h1En": "The .bet.ar domain: what it guarantees and what it doesn't"
  },
  {
   "section": "Гайды и инструменты",
@@ -1725,7 +2053,11 @@
   "auto": "не требует (чистый расчёт)",
   "rg": true,
   "notes": "Не обещать выигрыш; объясняет, почему длинная дистанция в минус · 04.11: «Otras calculadoras»; «margen de apuestas» в Ahrefs без спроса",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/calculator/margin",
+  "titleEn": "Odds margin calculator: how much the bookmaker keeps",
+  "descriptionEn": "Margin calculator: enter the decimal odds of a market and see how much the bookmaker keeps, the implied probability and the odds without margin.",
+  "h1En": "Margin calculator: what the bookmaker charges on each odds"
  },
  {
   "section": "Гайды и инструменты",
@@ -1743,7 +2075,11 @@
   "auto": "не требует",
   "rg": true,
   "notes": "04.11: «asiático» в title/H1 по выгрузке cl-calc (handicap asiatico 600/4); «Otras calculadoras»",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/guide/handicap",
+  "titleEn": "Asian handicap in betting: what it is and how it settles",
+  "descriptionEn": "What the Asian handicap is in betting and how each line settles, whole, half or quarter, with an Avellaneda derby; and what changes in the European one.",
+  "h1En": "Asian handicap in betting: what it is and how each line settles"
  },
  {
   "section": "Гайды и инструменты",
@@ -1761,7 +2097,11 @@
   "auto": "хеш страницы экспедиента Сената раз в неделю — ключевой риск для сайта",
   "rg": true,
   "notes": "При принятии закона — пересмотр всего сайта (реклама/упоминания брендов)",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/guide/federal-law",
+  "titleEn": "Federal online gambling law: where it stands",
+  "descriptionEn": "Where the federal online gambling and betting advertising law stands in Argentina: Diputados, the Senate and the Executive's bill, with each date.",
+  "h1En": "Federal online betting and advertising law: status of the bill"
  },
  {
   "section": "Гайды и инструменты",
@@ -1830,7 +2170,11 @@
   "auto": "перепроверка раз в полгода",
   "rg": true,
   "notes": "Без названий нелицензированных брендов без цитаты",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/guide/illegal-sites",
+  "titleEn": "Illegal betting sites: what the provinces say",
+  "descriptionEn": "What the City and Córdoba say about unlicensed betting sites, which risks they point out, how to report them and how to check an address yourself.",
+  "h1En": "Unlicensed betting sites: risks, warning signs and where to report"
  },
  {
   "section": "Гайды и инструменты",
@@ -1882,7 +2226,11 @@
   "auto": "не требует",
   "rg": true,
   "notes": "04.11: title по выгрузке cl-calc; «Cómo se calcula, paso a paso» + «Otras calculadoras». «cuotas» 3.7k/13 не привязан: интент — рассрочка",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/calculator/odds",
+  "titleEn": "Odds calculator: decimal, fractional and American",
+  "descriptionEn": "Convert odds from decimal to fractional or American, see the implied probability and remove the bookmaker's margin from a two- or three-outcome market.",
+  "h1En": "Odds calculator: decimal, fractional, American and probability converter"
  },
  {
   "section": "Гайды и инструменты",
@@ -1900,7 +2248,11 @@
   "auto": "не требует",
   "rg": true,
   "notes": "04.11: title по выгрузке cl-calc; «Cómo se calcula, paso a paso» + «Otras calculadoras»",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/calculator/parlay",
+  "titleEn": "Parlay bets: what they are and how the margin multiplies",
+  "descriptionEn": "Why the margin grows with each selection in a parlay: the total odds, the probability of getting all right and the average return, calculated.",
+  "h1En": "Parlay bets: why the margin grows with each selection"
  },
  {
   "section": "Гайды и инструменты",
@@ -1918,7 +2270,11 @@
   "auto": "не требует (кнопки «Ir» и счётчики — из реестров при сборке)",
   "rg": true,
   "notes": "Аудит 04.11 §6.2; ключи перенесены с /operadores и с главной",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/guide/sports-betting",
+  "titleEn": "Online sports betting in Argentina: how it works",
+  "descriptionEn": "How online sports betting works: odds and probability, 1X2, over/under, both teams to score, handicap, parlays, cash out, margin and where it is legal.",
+  "h1En": "Online sports betting: how a bet works and where it is legal"
  },
  {
   "section": "Гайды и инструменты",
@@ -1936,7 +2292,11 @@
   "auto": "не требует",
   "rg": true,
   "notes": "Аудит 04.11 §6.6",
-  "live": "2026-11-04"
+  "live": "2026-11-04",
+  "urlEn": "/en/guide/glossary",
+  "titleEn": "Betting glossary: odds, margin, handicap and licenses",
+  "descriptionEn": "Glossary of sports betting and licenses in Argentina: odds, margin, Asian and European handicap, parlay, cash out, .bet.ar, IPLyC, LOTBA and more.",
+  "h1En": "Betting and licensing glossary, one line per term"
  },
  {
   "section": "Помощь",
@@ -1954,7 +2314,11 @@
   "auto": "verify-rg раз в месяц; сборка падает при устаревании",
   "rg": true,
   "notes": "isHelpPage: нет меню операторов и инструментов",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling",
+  "titleEn": "Responsible gambling in Argentina: help in your province",
+  "descriptionEn": "Help with gambling in Argentina: your province's free helpline, the crisis line and how self-exclusion works. No ads and no betting links.",
+  "h1En": "Help with gambling: helplines and programs in your province"
  },
  {
   "section": "Помощь",
@@ -1972,7 +2336,11 @@
   "auto": "verify-rg раз в месяц",
   "rg": true,
   "notes": "isHelpPage",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/responsible-gambling/self-exclusion",
+  "titleEn": "Self-exclusion from online gambling by province: how to ask",
+  "descriptionEn": "Self-exclusion in each Argentine province: how long it lasts per the official page, from months to years, who runs it and where to ask. No ads.",
+  "h1En": "Self-exclusion: how to ask in each province and how long it lasts"
  },
  {
   "section": "Помощь",
@@ -2007,7 +2375,11 @@
   "auto": "обновлять при изменении процесса",
   "rg": true,
   "notes": "Доверие YMYL до открытия индекса",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/methodology",
+  "titleEn": "Methodology: how we check licenses and operators",
+  "descriptionEn": "How we check licenses: each provincial regulator's register, a dated copy, the source quote and screenshots of public pages only.",
+  "h1En": "How we work: registers, quotes, screenshots and dates"
  },
  {
   "section": "Служебные",
@@ -2025,7 +2397,11 @@
   "auto": "по слову владельца",
   "rg": true,
   "notes": "Владелец 03.11: Denis Krazok — только jugadadeldia; здесь «redacción», schema Organization, без Person",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/editorial-team",
+  "titleEn": "Editorial team: who we are and how we work",
+  "descriptionEn": "Who makes casaslegales.com: an editorial team with no bylines or affiliates, writing with AI help and checking each fact against the official register.",
+  "h1En": "The editorial team: who we are and how we work"
  },
  {
   "section": "Служебные",
@@ -2043,7 +2419,11 @@
   "auto": "автоматически из пакета источников при сборке",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/source-log",
+  "titleEn": "Sources register: every fact with its quote and date",
+  "descriptionEn": "Every official source we use: regulator, address, date of the copy, digital fingerprint and number of quotes, for each Argentine province.",
+  "h1En": "Register of official sources used on the site"
  },
  {
   "section": "Служебные",
@@ -2051,7 +2431,7 @@
   "title": "Aviso legal: sin asesoramiento legal ni afiliados",
   "titleLen": 49,
   "h1": "Aviso legal",
-  "description": "Aviso legal de casaslegales.com: no damos asesoramiento legal, no tenemos acuerdos ni links con operadores y lo que vale es siempre la ley de tu provincia.",
+  "description": "Aviso legal de casaslegales.com: no damos asesoramiento legal, sin acuerdos con operadores ni links de afiliado; lo que vale es la ley de tu provincia.",
   "keys": "—",
   "kind": "service",
   "wave": "P1",
@@ -2061,7 +2441,11 @@
   "auto": "по необходимости",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/legal-notice",
+  "titleEn": "Legal notice: no legal advice, no affiliates",
+  "descriptionEn": "Legal notice of casaslegales.com: we give no legal advice, have no deals with operators and use no affiliate links; your province's law is what counts.",
+  "h1En": "Legal notice"
  },
  {
   "section": "Служебные",
@@ -2079,7 +2463,11 @@
   "auto": "—",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/contact",
+  "titleEn": "Contact: corrections and questions",
+  "descriptionEn": "Spotted an error in a register or profile page? What details help us find it (province, site, official source) and how to check it yourself meanwhile.",
+  "h1En": "Contact and corrections"
  },
  {
   "section": "Служебные",
@@ -2097,7 +2485,11 @@
   "auto": "—",
   "rg": true,
   "notes": "",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/privacy",
+  "titleEn": "Privacy and personal data on casaslegales.com",
+  "descriptionEn": "Privacy on casaslegales.com: no personal data, no cookies, no analytics; what your browser stores and what happens to the address you check.",
+  "h1En": "Privacy"
  },
  {
   "section": "Гайды и инструменты",
@@ -2115,7 +2507,11 @@
   "auto": "",
   "rg": true,
   "notes": "wave 3 (03.11), not in the original plan",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/guide/how-to-check",
+  "titleEn": "How to check if a betting site is legal in Argentina",
+  "descriptionEn": "How to check a betting site in five steps: full address, your province, the official list letter by letter, .bet.ar and what to do if it's not listed.",
+  "h1En": "How to check if a betting site is licensed in your province"
  },
  {
   "section": "Гайды и инструменты",
@@ -2133,7 +2529,11 @@
   "auto": "",
   "rg": true,
   "notes": "wave 3 (03.11), not in the original plan",
-  "live": "2026-11-03"
+  "live": "2026-11-03",
+  "urlEn": "/en/guide/minors",
+  "titleEn": "Minors and online betting: the age-18 rule in Argentina",
+  "descriptionEn": "What Argentine regulators say about minors and online betting: official quotes on age 18, what sites show, and the federal bill.",
+  "h1En": "Minors and online betting: what the provinces say about age 18"
  },
  {
   "section": "Операторы",
@@ -2147,7 +2547,11 @@
   "h1": "Betsson Casino: qué juegos muestra y en qué provincias tiene licencia",
   "description": "Betsson Casino en Argentina: qué juegos y proveedores muestra su sitio, si tiene casino en vivo y en qué provincias tiene licencia, con fecha.",
   "titleLen": 59,
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/betsson/casino",
+  "titleEn": "Betsson Casino in Argentina: games, providers, license",
+  "descriptionEn": "Betsson Casino in Argentina: which games and providers its site shows, whether it has live casino and in which provinces it is licensed, with date.",
+  "h1En": "Betsson Casino: which games it shows and where it is licensed"
  },
  {
   "section": "Операторы",
@@ -2161,7 +2565,11 @@
   "h1": "Cómo ingresar a Betsson: el sitio oficial de tu provincia",
   "description": "Cómo iniciar sesión en Betsson: el sitio oficial que nombra la lista de tu provincia (PBA, CABA o Córdoba), cómo no caer en copias, la app y la contraseña.",
   "titleLen": 56,
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/betsson/log-in",
+  "titleEn": "Betsson log in: the official site for your province",
+  "descriptionEn": "How to log in to Betsson: the official site named by your province's list (PBA, CABA or Córdoba), how to avoid copies, the app and your password.",
+  "h1En": "How to log in to Betsson: the official site for your province"
  },
  {
   "section": "Операторы",
@@ -2175,7 +2583,11 @@
   "h1": "bet365 Casino: qué juegos muestra y en qué provincias tiene licencia",
   "description": "bet365 Casino en Argentina: qué juegos y proveedores muestra su sitio, si tiene casino en vivo y en qué provincias tiene licencia, con fecha.",
   "titleLen": 58,
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/bet365/casino",
+  "titleEn": "bet365 Casino in Argentina: games, providers, license",
+  "descriptionEn": "bet365 Casino in Argentina: which games and providers its site shows, whether it has live casino and in which provinces it is licensed, with date.",
+  "h1En": "bet365 Casino: which games it shows and where it is licensed"
  },
  {
   "section": "Операторы",
@@ -2189,7 +2601,11 @@
   "h1": "bet365 login: cómo ingresar al sitio oficial en Argentina",
   "description": "Para iniciar sesión en bet365 entrá al sitio oficial de tu provincia (PBA o CABA): la dirección es una sola. Cómo reconocerlo, la app y la contraseña.",
   "titleLen": 57,
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/bet365/log-in",
+  "titleEn": "bet365 login: how to reach the official site in Argentina",
+  "descriptionEn": "To log in to bet365, go to the official site for your province (PBA or CABA): there is only one address. How to spot it, the app and password.",
+  "h1En": "bet365 login: how to reach the official site in Argentina"
  },
  {
   "section": "Операторы",
@@ -2203,6 +2619,10 @@
   "h1": "bplay Casino: qué juegos muestra y en qué provincias tiene licencia",
   "description": "bplay Casino en Argentina: qué juegos y proveedores muestra su sitio, si tiene casino en vivo y en qué provincias tiene licencia, con fecha.",
   "titleLen": 57,
-  "live": true
+  "live": true,
+  "urlEn": "/en/operator/bplay/casino",
+  "titleEn": "bplay Casino in Argentina: games, providers, license",
+  "descriptionEn": "bplay Casino in Argentina: which games and providers its site shows, whether it has live casino and in which provinces it is licensed, with date.",
+  "h1En": "bplay Casino: which games it shows and where it is licensed"
  }
 ]

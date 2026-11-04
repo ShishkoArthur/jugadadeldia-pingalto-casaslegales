@@ -320,7 +320,7 @@ export function operatorPage(o) {
       checks(h, o, row);
       const n = presence(row), all = entries(h);
       const R = review(h.today, o.brand), isRev = !!(R && R.r.facts.length);
-      if (/rese[nñ]a/i.test(h.page.title + h.page.h1 + h.page.description) !== isRev) throw new Error('/operador/' + o.slug + ': title/H1/description ' + (isRev ? 'must say «reseña» (review data exists)' : 'say «reseña» but there is no review data'));
+      if ((h.lang === 'en' ? /review/i : /rese[nñ]a/i).test(h.page.title + h.page.h1 + h.page.description) !== isRev) throw new Error('/operador/' + o.slug + ': title/H1/description ' + (isRev ? 'must say «reseña» (review data exists)' : 'say «reseña» but there is no review data'));
       const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + (isRev ? 'Reseña con datos · sitio visto desde Argentina el ' + h.fmtDate(R.r.collected) + ' · listas copiadas el ' : 'Ficha de operador · listas copiadas el ') + h.fmtDate(h.regs.map(r => r.checked).sort()[0]) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
         '<p class="rl-lead">' + h.esc(isRev ? o.reviewLead || reviewLead(h, o, R) : o.lead) + '</p>' + officialLinks(h, o.brand, h.regs.filter(r => row.cells[r.id]).map(r => r.id)) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
         '<div class="rl-big"><b>' + n + '<small> de ' + h.regs.length + '</small></b><span>listas oficiales que revisamos lo nombran</span><small>' + h.esc(o.angle) + '</small></div></section>';

@@ -64,6 +64,8 @@ html.rl-lock{overflow:hidden}
 :root[data-theme=dark] .rl-moon{display:none}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .rl-sun{display:block}:root:not([data-theme=light]) .rl-moon{display:none}}
 html:not(.js) .rl-ib{display:none}
+.rl-lang{font:800 14px/1 var(--m);letter-spacing:.04em;text-decoration:none}
+html:not(.js) .rl-lang{display:grid}
 .rl-main{max-width:1240px;margin:0 auto;padding:0 16px}
 .rl-hero{display:grid;gap:8px;padding:16px 0 24px}
 .rl-kick{font:700 13px/1.4 var(--m);color:var(--ac);text-transform:uppercase;letter-spacing:.06em}
@@ -119,6 +121,8 @@ html:not(.js) .rl-ib{display:none}
 .rl-src a{color:var(--mu)}
 .rl-q{border-left:5px solid var(--t1);padding:4px 0 4px 14px;font-size:18px;font-weight:500}
 .rl-q cite{display:block;font:500 13px/1.45 var(--m);color:var(--mu);font-style:normal;margin-top:6px;overflow-wrap:anywhere}
+.rl-qen{margin:8px 0 0;padding:8px 12px;border-radius:10px;background:var(--pa);border:1px dashed var(--ln);font-size:15px;line-height:1.5;color:var(--fg)}
+.rl-qen b{font:700 12px/1.4 var(--m);text-transform:uppercase;letter-spacing:.05em;color:var(--mu);display:block;margin-bottom:2px}
 .rl-main h1,.rl-src{overflow-wrap:break-word}
 .rl-sites h3 a,.rl-dom h3 a,.rl-cl li>a{display:inline-block;padding-block:8px}
 .rl-gd{display:grid;gap:0 28px;padding-bottom:40px}
@@ -214,7 +218,7 @@ html{scroll-padding-top:88px}
 .rl-chips span{border-radius:10px;padding:4px 10px;background:var(--t1);color:var(--ink);font-weight:700;font-size:14px;box-shadow:-3px 3px 0 var(--sd)}
 @media (min-width:760px){.rl-hnav{display:flex}.rl-hnav a+a{display:inline-flex}}
 @media (max-width:759px){.rl-xo{padding:0;background:var(--bg)}.rl-xk{width:100%;height:100dvh;max-height:100dvh;border:0;border-radius:0;box-shadow:none}.rl-xh{display:none}}
-@media (max-width:400px){.rl-top{gap:6px;padding:0 12px}.rl-logo{font-size:19px;gap:8px}.rl-logo svg{width:34px;height:34px}}
+@media (max-width:400px){.rl-top{gap:6px;padding:0 12px}.rl-logo{font-size:19px;gap:8px}.rl-logo svg{width:34px;height:34px}.rl-lang{width:36px}}
 @media (min-width:1080px){
 .rl-bu{display:none}
 .rl-nav,html:not(.js) .rl-nav{display:flex;position:static;height:auto;flex-direction:row;gap:2px;padding:0;background:none;border:0;overflow:visible}

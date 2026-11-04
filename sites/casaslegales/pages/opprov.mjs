@@ -10,6 +10,7 @@ import { rowOf, entries } from './operador.mjs';
 import { anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
 import { relief, help } from './provincia.mjs';
 import { quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
+import { trAll } from '../content/lang.mjs';
 
 const DE = { IPLyC: 'del IPLyC', 'Lotería de Córdoba': 'de la Lotería de Córdoba', 'Lotería de Río Negro': 'de la Lotería de Río Negro', 'Lotería de Santa Fe': 'de la Lotería de Santa Fe', IPJyC: 'del IPJyC' };
 const actOf = (h, r, cell) => {
@@ -46,9 +47,9 @@ function diffTable(h, o, row) {
 function checker(h, o, row) {
   const all = entries(h);
   const data = { jur: o.jur, b: row.name, host: o.host, j: Object.fromEntries(h.regs.map(r => [r.id, h.rg.prov(r.id).name])), e: all.map(x => ({ h: x.host, j: x.jur })),
-    s: { yes: 'Sí: {h} es la dirección de {b} que figura en la lista de {p}.', under: 'Es una página dentro de {m}, la dirección de {b} que figura en la lista de {p}.',
+    s: trAll(h, { yes: 'Sí: {h} es la dirección de {b} que figura en la lista de {p}.', under: 'Es una página dentro de {m}, la dirección de {b} que figura en la lista de {p}.',
       other: '{h} figura en la lista de {o}, no en la de {p}. En {p}, {b} figura como {x}.', similar: '{h} no figura en ninguna lista: se parece a {m}, pero no es la misma dirección. En {p}, {b} figura como {x}.',
-      none: '{h} no figura en ninguna de las {n} listas que revisamos. En {p}, {b} figura como {x}.', n: String(h.regs.length) } };
+      none: '{h} no figura en ninguna de las {n} listas que revisamos. En {p}, {b} figura como {x}.', n: String(h.regs.length) }) };
   return '<form class="rl-pchk" data-rl-pchk novalidate><label for="rl-pchk-in">Pegá la dirección que tenés abierta</label><div class="rl-pchk-row"><input id="rl-pchk-in" inputmode="url" autocomplete="off" spellcheck="false" placeholder="' + h.esc(o.host) + '"><button type="submit" class="rl-b1">Comparar</button></div>' +
     '<p class="rl-pchk-out" data-rl-pchk-out aria-live="polite"></p></form><script type="application/json" id="rl-pchk">' + h.jsonScript(data) + '</script>';
 }

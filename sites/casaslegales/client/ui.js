@@ -1,6 +1,9 @@
 import { checkHost, anatomy } from '../../../engine/hostcheck.mjs';
 import { margin, parseOdd, parseAny, convertOdd, toFractional, toAmerican, parlay, settleHandicap, handicapLabel, handicapReturn } from '../../../engine/odds.mjs';
 const root = document.documentElement;
+const EN = /^en/.test(root.lang || '');
+const PCT = EN ? '%' : ' %';
+const num = (x, d) => (EN ? x.toFixed(d) : x.toFixed(d).replace('.', ','));
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) { return null; } return v; },
@@ -182,8 +185,8 @@ function statusFilter() {
 function marginCalc() {
   const form = document.querySelector('[data-rl-margin]');
   if (!form) return;
-  const dec = (x, d) => x.toFixed(d).replace('.', ',');
-  const pct = x => dec(x * 100, 2) + ' %';
+  const dec = num;
+  const pct = x => dec(x * 100, 2) + PCT;
   const err = form.querySelector('[data-rl-merr]');
   const rowsEl = form.querySelector('[data-rl-mrows]');
   const third = form.querySelector('[data-third]');
@@ -293,11 +296,11 @@ function verifier() {
   if (q) { input.value = q; run(q, false); }
 }
 
-const cdec = (x, d) => x.toFixed(d).replace('.', ',');
-const cpct = (x, d) => cdec(x * 100, d) + ' %';
+const cdec = num;
+const cpct = (x, d) => cdec(x * 100, d) + PCT;
 const camer = v => (v > 0 ? '+' : String.fromCharCode(0x2212)) + cdec(Math.abs(v), Number.isInteger(Math.round(Math.abs(v) * 100) / 100) ? 0 : 2);
 const cfrac = f => (f.exact ? '' : String.fromCharCode(0x2248) + ' ') + f.text;
-const fmtMoney = n => '$ ' + Math.round(n).toLocaleString('es-AR');
+const fmtMoney = n => '$ ' + Math.round(n).toLocaleString(EN ? 'en-US' : 'es-AR');
 const fmtOf = form => { const r = form.querySelector('input[name=f]:checked'); return r ? r.value : 'decimal'; };
 
 function convCalc() {
@@ -408,13 +411,14 @@ function hcpCalc() {
     const line = Number(form.querySelector('[name=l]').value);
     const a = goals(form.querySelector('[name=a]').value), b = goals(form.querySelector('[name=b]').value);
     const o = parseOdd(form.querySelector('[name=o]').value);
-    const st = Number(String(form.querySelector('[name=s]').value).replace(/\./g, '').replace(',', '.'));
+    const sv = String(form.querySelector('[name=s]').value);
+    const st = Number(EN ? sv.replace(/,/g, '') : sv.replace(/\./g, '').replace(',', '.'));
     if (a === null || b === null || o === null || !(st > 0) || !Number.isFinite(line)) { err.hidden = false; return; }
     err.hidden = true;
     const k = handicapLabel(settleHandicap(line, a - b));
     const r = handicapReturn(line, a - b, o, st);
     set('res', HCP_WORD[k]);
-    set('adj', cdec(a + line, 2).replace(/0+$/, '').replace(/,$/, '').replace(/^-/, String.fromCharCode(0x2212)) + ' a ' + b);
+    set('adj', cdec(a + line, 2).replace(/0+$/, '').replace(/[.,]$/, '').replace(/^-/, String.fromCharCode(0x2212)) + ' a ' + b);
     set('ret', fmtMoney(r));
     const net = Math.round(r - st);
     set('net', (net > 0 ? '+' : net < 0 ? String.fromCharCode(0x2212) : '') + fmtMoney(Math.abs(net)));
@@ -452,7 +456,7 @@ function revisado() {
   const sum = document.querySelector('[data-rv-sum]');
   if (!els.length) return;
   const day = /^\d{4}-\d{2}-\d{2}$/;
-  const fmt = d => d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4);
+  const fmt = d => (EN ? new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(d + 'T12:00:00Z')) : d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4));
   fetch('/data/feeds/listas.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(j => {
     const docs = j && j.data && j.data.docs;
     if (!docs) return;

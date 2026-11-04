@@ -15,9 +15,13 @@ export const SITE = {
   name: 'casaslegales',
   htmlLang: 'es-AR',
   ogLocale: 'es_AR',
+  // English version (docs/I18N.md, owner 2026-11-04): /en + the same scheme with English words (/en, /en/operator/betsson,
+  // /en/province/cordoba); official quotes stay in Spanish with a labelled English rendering after them
+  langs: ['es', 'en'],
+  i18n: { quoteNote: en => '<p class="rl-qen" lang="en"><b>Translation (not official):</b> ' + en + '</p>', allow: ['apuestas @', 'ayuda @', '0-800-777 AYUDA'] },
   assetDir: '_r',
   assetName: (name, hash) => hash.slice(0, 12) + extname(name),
-  pathRe: /^\/$|^\/[a-z0-9]+(-[a-z0-9]+)*(\/[a-z0-9]+(-[a-z0-9]+)*)?$|^\/operador\/[a-z0-9]+(-[a-z0-9]+)*\/[a-z0-9]+(-[a-z0-9]+)*$/,
+  pathRe: /^\/$|^\/[a-z0-9]+(-[a-z0-9]+)*(\/[a-z0-9]+(-[a-z0-9]+)*)?$|^\/(operador|operator)\/[a-z0-9]+(-[a-z0-9]+)*\/[a-z0-9]+(-[a-z0-9]+)*$/,
   fileOf: p => (p === '/' ? 'index.html' : p.slice(1) + '.html'),
   notFoundFile: '404.html',
   fonts: ['gabarito-var-latin.woff2', 'ubuntu-sans-mono-var-latin.woff2'],
@@ -47,5 +51,5 @@ export const SITE = {
       ],
     },
   },
-  deployCheck: ['/', '/licencias', '/verificador', '/operadores', '/operador/betsson', '/operador/jugadon', '/verificar/zeus', '/guia/bet-ar', '/juego-responsable/autoexclusion', '/provincia/cordoba', '/provincias', '/provincia/neuquen', '/provincia/entre-rios', '/provincia/salta', '/provincia/mendoza', '/guia/como-verificar', '/guia/menores', '/calculadora/margen', '/guia/handicap', '/operador/betsson/caba', '/operador/bplay/cordoba', '/operador/casino-club', '/operador/la-neuquina-online', '/operador/betfun', '/operador/mitesoro', '/calculadora/cuotas', '/calculadora/combinada', '/guia/apuestas-deportivas', '/guia/glosario', '/guia/ley-federal', '/juego-responsable', '/casinos-online-legales', '/operador/jugadon/la-rioja', '/operador/super7/mendoza', '/verificar/mystake', '/verificar/jugabet', '/aviso-legal', '/privacidad', '/contacto', '/no-existe'],
+  deployCheck: ['/', '/licencias', '/verificador', '/operadores', '/operador/betsson', '/operador/jugadon', '/verificar/zeus', '/guia/bet-ar', '/juego-responsable/autoexclusion', '/provincia/cordoba', '/provincias', '/provincia/neuquen', '/provincia/entre-rios', '/provincia/salta', '/provincia/mendoza', '/guia/como-verificar', '/guia/menores', '/calculadora/margen', '/guia/handicap', '/operador/betsson/caba', '/operador/bplay/cordoba', '/operador/casino-club', '/operador/la-neuquina-online', '/operador/betfun', '/operador/mitesoro', '/calculadora/cuotas', '/calculadora/combinada', '/guia/apuestas-deportivas', '/guia/glosario', '/guia/ley-federal', '/juego-responsable', '/casinos-online-legales', '/operador/jugadon/la-rioja', '/operador/super7/mendoza', '/verificar/mystake', '/verificar/jugabet', '/aviso-legal', '/privacidad', '/contacto', '/en', '/en/operator/betsson', '/en/province/cordoba', '/en/site-checker', '/en/operator/betsson/log-in', '/en/guide/bet-ar', '/no-existe'],
 };

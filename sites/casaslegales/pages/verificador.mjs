@@ -8,6 +8,7 @@ import { opPath } from '../content/operators.mjs';
 import { entries } from './operador.mjs';
 import { officialUrl, DEAD } from '../content/official.mjs';
 import { go } from './licencias.mjs';
+import { trAll, date, loc, and } from '../content/lang.mjs';
 
 const EXAMPLES = ['pba.betsson.bet.ar', 'betsson.com', 'bplay.bet.ar', 'betano.bet.ar', 'sportsbet.io'];
 
@@ -23,17 +24,17 @@ export const verificador = {
     const all = entries(h);
     const pages = Object.fromEntries(h.regs.flatMap(r => r.licensees.map(l => [l.brand, h.href(opPath(l.brand))])));
     const data = {
-      e: all.map(e => { const l = h.reg(e.jur).licensees.find(x => x.host === e.host); return { h: e.host, j: e.jur, b: h.names[e.brand], r: l.ref || null, u: pages[e.brand], o: DEAD[l.host] ? null : officialUrl(l) }; }),
-      j: Object.fromEntries(h.regs.map(r => [r.id, { n: h.rg.prov(r.id).name, c: CODE[r.id], r: r.regulator.short, d: h.fmtDate(h.doc(r.list.doc).fetched), u: h.built('/provincia/' + r.id) ? '/provincia/' + r.id : null }])),
-      s: {
+      e: all.map(e => { const l = h.reg(e.jur).licensees.find(x => x.host === e.host); return { h: e.host, j: e.jur, b: h.names[e.brand], r: l.ref || null, u: loc(h, pages[e.brand]), o: DEAD[l.host] ? null : officialUrl(l) }; }),
+      j: Object.fromEntries(h.regs.map(r => [r.id, { n: h.rg.prov(r.id).name, c: CODE[r.id], r: r.regulator.short, d: date(h, h.doc(r.list.doc).fetched), u: h.built('/provincia/' + r.id) ? loc(h, '/provincia/' + r.id) : null }])),
+      s: trAll(h, {
         listed: 'Figura en una lista oficial', sub: 'Es una subdirección de una dirección de la lista', similar: 'Dirección parecida: ojo', none: 'No figura en las listas que revisamos', empty: 'Escribí una dirección, por ejemplo pba.ejemplo.bet.ar',
         inList: 'Figura en la lista de {n} ({r}, copia del {d})', subOf: '{h} es parte de {p}, que figura en la lista de {n} ({r}, copia del {d}). La lista nombra {p}, no esta dirección exacta.',
         parent: 'La lista no nombra {h}: nombra {p} ({n}). Fijate que la dirección completa sea igual.', name: 'Mismo nombre que {p} ({n}), pero con otra terminación. No es la dirección de la lista.',
         typo: 'Se parece a {p} ({n}): difiere en una o dos letras. Revisá letra por letra.', contains: 'Contiene el nombre de {p} ({n}), pero no es esa dirección.',
         noneLong: 'No está en las listas oficiales de {lists} que revisamos. Eso no quiere decir que sea ilegal en otra provincia: todavía no verificamos las demás listas. Para saber si está habilitado donde vivís, buscalo en la lista oficial de tu provincia.',
         bet: 'Termina en .bet.ar', notBet: 'No termina en .bet.ar', act: 'Autorizado por {a}', ficha: 'Ver la ficha de {b}', prov: 'Ver la lista de {n}', off: 'Ir al sitio oficial ({n})', offNote: 'Dirección que publica la lista oficial, sin códigos de afiliado. Solo mayores de 18.',
-      },
-      lists: h.regs.map(r => CODE[r.id]).slice(0, -1).join(', ') + ' y ' + CODE[h.regs.at(-1).id],
+      }),
+      lists: h.regs.map(r => CODE[r.id]).slice(0, -1).join(', ') + and(h) + CODE[h.regs.at(-1).id],
     };
     for (const x of EXAMPLES) if (checkHost(x, all).state === 'empty') throw new Error('verificador: bad example ' + x);
     const hero = '<section class="rl-hero rl-vf"><div><p class="rl-kick">' + h.t('{{lic_total}} direcciones de {{reg_total}} listas oficiales · copiadas el ') + listsDate(h) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +

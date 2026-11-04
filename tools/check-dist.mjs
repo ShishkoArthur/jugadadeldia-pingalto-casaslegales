@@ -159,8 +159,9 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
     }
     }
     // brand links (gate.brandLinks): inside the registry tables and lists of the site, an element whose whole text is the name of
-    // a listed brand must sit inside an <a> to that brand's page
-    if (G.brandLinks) for (const box of containers(H, G.brandLinks.scope)) for (const { name, href } of brandPairs) {
+    // a listed brand must sit inside an <a> to that brand's page (its English page on an English page)
+    if (G.brandLinks) for (const box of containers(H, G.brandLinks.scope)) for (const { name, href: esHref } of brandPairs) {
+      const href = p && p.lang === 'en' ? (S.PAGES_EN.find(x => x.esPath === esHref) || {}).path || esHref : esHref;
       const re = new RegExp('>\\s*' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*<', 'g');
       for (const m of box.matchAll(re)) {
         const a = box.lastIndexOf('<a ', m.index), c = box.lastIndexOf('</a>', m.index);
