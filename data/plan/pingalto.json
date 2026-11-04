@@ -979,7 +979,7 @@
   "ar": "Регистрация для региона Latinoamérica, даты прошлых открытий в hora argentina",
   "data": "Garena (цитаты)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "без APK 03.11 wave 4: skipped - no dated official page we could read (Garena advance server site not checked against robots/terms)."
+  "notes": "без APK 03.11 wave 4: skipped - no dated official page we could read (Garena advance server site not checked against robots/terms). 04.11 academy: ff-advance.ff.garena.com answers 403 Forbidden to the robots.txt and to every page from our server (plain text, no CDN), the browser could not open it either; Garena's own pages we keep (ff.garena.com/es, FAQ) do not mention it. Not built: needs an owner copy of the official page (docs/reference/owner-saves/)."
  },
  {
   "section": "Fortnite",

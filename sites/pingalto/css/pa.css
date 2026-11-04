@@ -429,3 +429,19 @@ h2{font-size:23px}
 .pa-rq li[data-st="no"] b{background:#e8457f;color:#fff}
 .pa-rq small{color:var(--mu)}
 .pa-tb samp{font:inherit}
+.pa-acg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:20px}
+.pa-acf{display:grid;gap:8px;align-content:start}
+.pa-acf p+p{font-size:14px;color:var(--mu)}
+.pa-acs h3{margin-bottom:12px}
+.pa-ac .pa-steps li{padding:12px 14px;border-radius:18px;background:var(--pn);box-shadow:0 0 0 1px var(--ln)}
+.pa-ac .pa-tw{margin:10px 0}
+.pa-acr td:first-child{font-weight:600}
+.pa-ac>.pa-src{margin-top:12px}
+.pa-gls{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.pa-gl{margin:0;display:grid;gap:6px;align-content:start;scroll-margin-top:90px}
+.pa-gl h3 small{font:600 13px "Be Vietnam Pro",sans-serif;color:var(--mu)}
+.pa-gl p{font-size:15px}
+.pa-gl .pa-gll{font-size:14px;font-weight:600}
+.pa-glh{box-shadow:var(--sh),0 0 0 2px var(--vi)}
+#pa-gs{display:grid;gap:14px}
+.pa-ac samp{font:inherit}

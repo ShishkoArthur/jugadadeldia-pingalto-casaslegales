@@ -8,6 +8,7 @@ import { fcPc } from './games2.mjs';
 import { hero, ldPage, sec, quote, srcLine, fmt } from './parts.mjs';
 import { agendaBlock, FEED, css, wait, PS, SC } from './feeds.mjs';
 import { vrs } from '../content/vrs.mjs';
+import { rlStart, clashStart, brawlStart } from './academy.mjs';
 import { dota2Hub } from './dota2.mjs';
 
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
@@ -48,7 +49,7 @@ export const clashHub = {
   ld: h => ldPage(h),
   render(h) {
     return css(h) + hero(h, { ey: 'Clash Royale · desde Argentina', girl: true, sub: 'Herramientas con la API oficial de Supercell: tu mazo, todas las cartas y lo que juegan hoy los mejores del país.' }) +
-      sec('Herramientas', cards(h, CLASH)) +
+      clashStart(h) + sec('Herramientas', cards(h, CLASH)) +
       sec('Lo que más usa el top argentino', box('clashmeta', ' data-n="10" data-decks="no"') + SC + '<p>' + link(h, '/clash/meta', 'Ver el meta completo y los mazos repetidos') + '</p>');
   },
 };
@@ -102,7 +103,7 @@ export const brawlHub = {
   ld: h => ldPage(h),
   render(h) {
     return css(h) + hero(h, { ey: 'Brawl Stars · desde Argentina', girl: true, sub: 'La rotación de ahora, los brawlers que más eligen los mejores del país y todas las herramientas, con la API oficial de Supercell.' }) +
-      sec('Herramientas', cards(h, BRAWL)) +
+      brawlStart(h) + sec('Herramientas', cards(h, BRAWL)) +
       sec('Ahora en la rotación', box('brawl-events') + SC, 'eventos') +
       sec('Lo más elegido por el top argentino', box('brawlmeta', ' data-n="10"') + '<p>' + link(h, '/brawl/meta', 'Por modo, por mapa y con cuánto ganan') + '</p>');
   },
@@ -135,7 +136,7 @@ export const rlHub = {
   ld: h => ldPage(h),
   render(h) {
     return css(h) + hero(h, { ey: 'Rocket League · RLCS', girl: true, sub: 'El competitivo de Rocket League con los horarios de Argentina: el mundial, los Majors, los campeones y los argentinos que juegan en equipos.' }) +
-      sec('Los campeones de la temporada', box('champs', ' data-g="rl"') + PS) +
+      rlStart(h) + sec('Los campeones de la temporada', box('champs', ' data-g="rl"') + PS) +
       sec('El último mundial', box('event', ' data-ev="rlcs-worlds"'), 'mundial') +
       agendaBlock(h, 'rl', 'Próximos partidos de Rocket League') +
       sec('Argentinos en Rocket League', box('argentinos', ' data-g="rl"')) +

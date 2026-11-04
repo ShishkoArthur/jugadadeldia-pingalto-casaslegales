@@ -79,6 +79,7 @@ const HUB = [
   ['/valorant/champions', 'VCT de Valorant', 'Champions, Masters y la liga de Américas con los equipos argentinos marcados.'],
   ['/dota2#ranking', 'Ranking de Dota 2', 'Nuestro Elo con las series de seis meses, con Sudamérica y cara a cara.'],
   ['/kit/ping', 'Ping desde tu provincia', 'Cuánto tarda tu conexión hasta los servidores de Santiago, São Paulo y Miami.'],
+  ['/esports/glosario', 'Glosario de esports', 'Bo3, VRS, eDPI, LAS, meta: cada palabra en una línea, con la herramienta que la explica.'],
 ];
 
 export const esportsHub = {

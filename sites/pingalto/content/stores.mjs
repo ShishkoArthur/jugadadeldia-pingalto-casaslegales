@@ -50,3 +50,15 @@ export function play(h, slug) {
   return { downloads: m[1], install: !!m[3] };
 }
 export const millions = s => { const m = /^([\d.,]+) M\+$/.exec(s); if (!m) throw new Error('not a download band ' + s); return +m[1].replace(/,/g, ''); };
+
+// A Steam listing that no longer sells the game (Rocket League left the Steam store when it went free-to-play on the Epic Games
+// Store): no price and not marked free, but the requirements the publisher wrote are still there.
+export function steamReq(h, slug, appid) {
+  const raw = h.pa.json(slug)[String(appid)];
+  if (!raw || !raw.success || !raw.data) throw new Error(slug + ': Steam appdetails without data');
+  const d = raw.data;
+  const min = reqList(d.pc_requirements && d.pc_requirements.minimum, slug + ' pc minimum');
+  const rec = reqList(d.pc_requirements && d.pc_requirements.recommended, slug + ' pc recommended');
+  if (!min || !rec) throw new Error(slug + ': no PC requirements');
+  return { appid, name: d.name, platforms: d.platforms, min, rec, ramGb: gb(min.Memoria), recRamGb: gb(rec.Memoria), diskGb: gb(min.Almacenamiento) };
+}

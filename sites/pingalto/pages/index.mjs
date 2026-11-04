@@ -15,7 +15,8 @@ import { equipo, metodo, datos, contacto, legal, notFound } from './service.mjs'
 import { FEED_PAGES } from './feeds.mjs';
 import { WAVE4 } from './wave4.mjs';
 import { fortniteHub, ffMax } from './games2.mjs';
+import { glosario } from './academy.mjs';
 
-export const PAGES = [home, ping, sensibilidad, dpi, tierList, ffHub, ffSensibilidad, ffNombres, ffEspacio, ffCodigos, ffMax, valorantHub, valorantRangos, valorantAgentes, cs2Ranking, cs2Major, cs2Mira, lolHub, lolRangos, fortniteHub, fortniteNube, esportsHub, esportsSeries, ...FEED_PAGES, ...WAVE4, equipo, metodo, datos, contacto, legal];
+export const PAGES = [home, ping, sensibilidad, dpi, tierList, ffHub, ffSensibilidad, ffNombres, ffEspacio, ffCodigos, ffMax, valorantHub, valorantRangos, valorantAgentes, cs2Ranking, cs2Major, cs2Mira, lolHub, lolRangos, fortniteHub, fortniteNube, esportsHub, esportsSeries, glosario, ...FEED_PAGES, ...WAVE4, equipo, metodo, datos, contacto, legal];
 export const NOT_FOUND = notFound;
 export const BETTING_KINDS = [];

@@ -587,6 +587,109 @@
    "fetched": "2026-11-04",
    "status": 200,
    "sha256": "e44b5135cfe1891214951b9760eec4449000c9a2545bfcc94a580c523d8d37ef"
+  },
+  "riot-lol-req": {
+   "url": "https://support.riotgames.com/es-mx/league-of-legends/performance/minimum-and-recommended-system-requirements-league-of-legends",
+   "file": "data/sources/pingalto/_docs/riot-lol-requirements-es-mx.html",
+   "type": "html",
+   "publisher": "Riot Games (soporte de League of Legends)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "59ae6f597c622c25a24b405f1f1a10d3d501beff0dde291e6e8e646d609c96c1"
+  },
+  "riot-val-req": {
+   "url": "https://support.riotgames.com/es-mx/valorant/support-tools/minimum-recommended-pc-specs",
+   "file": "data/sources/pingalto/_docs/riot-valorant-requirements-es-mx.html",
+   "type": "html",
+   "publisher": "Riot Games (soporte de Valorant)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "c0605ce2675de8faca10c870a14b22d06e5fffc4f99bd2c6635423d8bc144048"
+  },
+  "lol-home": {
+   "url": "https://www.leagueoflegends.com/es-mx/",
+   "file": "data/sources/pingalto/_docs/leagueoflegends-home-es-mx.html",
+   "type": "html",
+   "publisher": "Riot Games (leagueoflegends.com)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "1a773566b8983e371049f59151a4d561bdf28170613a6711e14f315e241bc30a"
+  },
+  "val-home": {
+   "url": "https://playvalorant.com/es-mx/",
+   "file": "data/sources/pingalto/_docs/playvalorant-home-es-mx.html",
+   "type": "html",
+   "publisher": "Riot Games (playvalorant.com)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "b3ae4129fb8437617a6572d47611b25f202fdc15e16cd7e2d3e02a646fc7b000"
+  },
+  "steam-rl": {
+   "url": "https://store.steampowered.com/api/appdetails?appids=252950&cc=ar&l=spanish",
+   "file": "data/sources/pingalto/_docs/steam-appdetails-252950-ar.json",
+   "type": "json",
+   "publisher": "Valve (Steam, ficha de Rocket League para Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "b11d7ce6526b4348c93fcedc551d972a569055acfb4efc2a076587c3252e88cf",
+   "page": "https://store.steampowered.com/app/252950/"
+  },
+  "wp-rl": {
+   "url": "https://en.wikipedia.org/wiki/Rocket_League",
+   "file": "data/sources/pingalto/_docs/wikipedia-rocket-league.html",
+   "type": "html",
+   "publisher": "Wikipedia (Rocket League)",
+   "kind": "reference",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "80a381455d7e5b52bd6536414e14089c7da96fffb61c3bd2df29e6d35ba6e52b"
+  },
+  "play-cr-ar": {
+   "url": "https://play.google.com/store/apps/details?id=com.supercell.clashroyale&hl=es_419&gl=AR",
+   "file": "data/sources/pingalto/_docs/play-clashroyale-ar.html",
+   "type": "html",
+   "publisher": "Google Play (ficha de Clash Royale, Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "9d3b8f26b52c4397a3ef4c8b0d9fc7497a8b9ed737338fe9c2a684e4a7f5a550"
+  },
+  "play-bs-ar": {
+   "url": "https://play.google.com/store/apps/details?id=com.supercell.brawlstars&hl=es_419&gl=AR",
+   "file": "data/sources/pingalto/_docs/play-brawlstars-ar.html",
+   "type": "html",
+   "publisher": "Google Play (ficha de Brawl Stars, Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "4da1072a6aee8a40061072d82a28b69783eff9a8d5c532139ada5ee1e02744aa"
+  },
+  "itunes-cr-ar": {
+   "url": "https://itunes.apple.com/lookup?id=1053012308&country=ar",
+   "file": "data/sources/pingalto/_docs/itunes-lookup-clashroyale-ar.json",
+   "type": "json",
+   "publisher": "Apple (App Store, búsqueda de Clash Royale en Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "1d0402269fdb7642423e58199e7edd4da9ac8a992431891eb3466e87c8993f7b",
+   "page": "https://apps.apple.com/ar/app/id1053012308"
+  },
+  "itunes-bs-ar": {
+   "url": "https://itunes.apple.com/lookup?id=1229016807&country=ar",
+   "file": "data/sources/pingalto/_docs/itunes-lookup-brawlstars-ar.json",
+   "type": "json",
+   "publisher": "Apple (App Store, búsqueda de Brawl Stars en Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "f97677e939f0d2668b7e90370673f65911bb64a2b67e09e5dc32c753f501773d",
+   "page": "https://apps.apple.com/ar/app/id1229016807"
   }
  },
  "facts": {
@@ -1390,6 +1493,247 @@
    "doc": "steam-dota2",
    "quote": "Dota 2 contiene violencia fantástica, consumo de alcohol y desnudos parciales",
    "value": "violencia fantástica"
+  },
+  "lol_free": {
+   "doc": "lol-home",
+   "quote": "un MOBA 5v5 en el que dos equipos se enfrentan para destruir el nexo enemigo Juega gratis",
+   "value": "gratis"
+  },
+  "lol_req_os": {
+   "doc": "riot-lol-req",
+   "quote": "League of Legends solo es compatible con Windows y macOS.",
+   "value": [
+    "Windows",
+    "macOS"
+   ]
+  },
+  "lol_req_warn": {
+   "doc": "riot-lol-req",
+   "quote": "Si tu equipo cumple únicamente los requisitos mínimos, es posible que tengas problemas de rendimiento.",
+   "value": "problemas de rendimiento"
+  },
+  "lol_req_cpu": {
+   "doc": "riot-lol-req",
+   "quote": "Procesador Intel: Core i3-530 AMD: FX-4100 ARM: no compatible Intel: Core i5-8250 AMD: Ryzen 3 1200",
+   "value": [
+    "Core i3-530",
+    "FX-4100",
+    "Core i5-8250",
+    "Ryzen 3 1200"
+   ]
+  },
+  "lol_req_vram": {
+   "doc": "riot-lol-req",
+   "quote": "Memoria gráfica 1 GB 2 GB",
+   "value": [
+    1,
+    2
+   ]
+  },
+  "lol_req_disk": {
+   "doc": "riot-lol-req",
+   "quote": "Espacio de almacenamiento disponible 16 GB en disco duro 16 GB en disco sólido",
+   "value": 16
+  },
+  "lol_req_win": {
+   "doc": "riot-lol-req",
+   "quote": "Windows 10 (compilación 19041 o posterior), Windows 11 (TPM 2.0 debe estar activado)",
+   "value": "19041"
+  },
+  "lol_req_ram": {
+   "doc": "riot-lol-req",
+   "quote": "Memoria RAM 2 GB 4 GB",
+   "value": [
+    2,
+    4
+   ]
+  },
+  "lol_req_mac": {
+   "doc": "riot-lol-req",
+   "quote": "Espacio de almacenamiento disponible 40 GB 40 GB Versiones del SO macOS 12 macOS 12 Memoria unificada (UMA) 8 GB 8 GB",
+   "value": [
+    40,
+    "macOS 12",
+    8
+   ]
+  },
+  "lol_req_m1": {
+   "doc": "riot-lol-req",
+   "quote": "Procesador Apple: M1 Apple: M1",
+   "value": "M1"
+  },
+  "lol_req_dx": {
+   "doc": "riot-lol-req",
+   "quote": "ahora el juego requiere el nivel de característica 11_00 de DirectX 11",
+   "value": "DirectX 11"
+  },
+  "val_free": {
+   "doc": "val-home",
+   "quote": "VALORANT: un juego de disparos táctico 5v5 con agentes que poseen habilidades únicas JUEGA GRATIS",
+   "value": "GRATIS"
+  },
+  "val_req_fps": {
+   "doc": "riot-val-req",
+   "quote": "Requisitos mínimos (30 FPS) Requisitos recomendados (60 FPS) Requisitos elevados (144 FPS)",
+   "value": [
+    30,
+    60,
+    144
+   ]
+  },
+  "val_req_cpu": {
+   "doc": "riot-val-req",
+   "quote": "PROCESADOR Intel i3-540 AMD Athlon 200GE ARM: no compatible Intel i3-4150 AMD Ryzen 3 1200 ARM: no compatible Intel i5-9400F a 2,90 GHz AMD Ryzen 5 2600X",
+   "value": [
+    "i3-540",
+    "Athlon 200GE",
+    "i3-4150",
+    "Ryzen 3 1200",
+    "i5-9400F",
+    "Ryzen 5 2600X"
+   ]
+  },
+  "val_req_gpu": {
+   "doc": "riot-val-req",
+   "quote": "TARJETA GRÁFICA Intel HD 4000 AMD Radeon R5 220 NVIDIA GeForce GT 730 AMD Radeon R7 240 NVIDIA GTX 1050 Ti AMD Radeon R7 370 Intel Arc A310",
+   "value": [
+    "Intel HD 4000",
+    "AMD Radeon R5 220",
+    "NVIDIA GeForce GT 730",
+    "AMD Radeon R7 240",
+    "NVIDIA GTX 1050 Ti",
+    "AMD Radeon R7 370",
+    "Intel Arc A310"
+   ]
+  },
+  "val_req_ram": {
+   "doc": "riot-val-req",
+   "quote": "MEMORIA RAM 4 GB",
+   "value": 4
+  },
+  "val_req_vram": {
+   "doc": "riot-val-req",
+   "quote": "Si tu sistema usa una tarjeta gráfica dedicada, también necesitarás al menos 1 GB de VRAM.",
+   "value": 1
+  },
+  "val_req_os": {
+   "doc": "riot-val-req",
+   "quote": "Windows 10 (compilación 19041 o posterior) de 64 bits Windows 11 de 64 bits",
+   "value": "19041"
+  },
+  "val_req_dx": {
+   "doc": "riot-val-req",
+   "quote": "Debe ser compatible con DirectX 11.",
+   "value": "DirectX 11"
+  },
+  "val_req_w11": {
+   "doc": "riot-val-req",
+   "quote": "Para Windows 11 también se requiere TPM 2.0 y arranque seguro de UEFI.",
+   "value": "TPM 2.0"
+  },
+  "val_req_cloud": {
+   "doc": "riot-val-req",
+   "quote": "VALORANT no es compatible con el juego en la nube ni las máquinas virtuales.",
+   "value": "nube"
+  },
+  "rl_f2p": {
+   "doc": "wp-rl",
+   "quote": "Psyonix transitioned Rocket League to a free-to-play model on all platforms on September 23, 2020.",
+   "value": "free-to-play"
+  },
+  "rl_epic": {
+   "doc": "wp-rl",
+   "quote": "As part of this transition, the Windows version of the game was moved off Steam onto the Epic Games Store.",
+   "value": "Epic Games Store"
+  },
+  "rl_steam_keep": {
+   "doc": "wp-rl",
+   "quote": "Players that had already owned the Steam version prior to the change were still able to download, update the game and play it with cross-play with other platforms",
+   "value": "Steam"
+  },
+  "rl_noplus": {
+   "doc": "wp-rl",
+   "quote": "The free-to-play version eliminated the need for players to have console subscription services like PlayStation Plus or Nintendo Switch Online to be able to play.",
+   "value": [
+    "PlayStation Plus",
+    "Nintendo Switch Online"
+   ]
+  },
+  "rl_mac": {
+   "doc": "wp-rl",
+   "quote": "Versions for macOS and Linux were also released in 2016, but support for their online services was dropped in 2020.",
+   "value": [
+    "macOS",
+    "Linux"
+   ]
+  },
+  "rl_platforms": {
+   "doc": "wp-rl",
+   "quote": "Platforms PlayStation 4 Windows Xbox One macOS[d] Linux[d] Nintendo Switch",
+   "value": [
+    "PlayStation 4",
+    "Windows",
+    "Xbox One",
+    "Nintendo Switch"
+   ]
+  },
+  "cr_free": {
+   "doc": "play-cr-ar",
+   "quote": "Descargar y jugar a Clash Royale es gratis, pero puedes utilizar dinero real para comprar algunos artículos, incluso artículos aleatorios.",
+   "value": "gratis"
+  },
+  "cr_nobuy": {
+   "doc": "play-cr-ar",
+   "quote": "Si no deseas gastar dinero real en el juego, desactiva las compras integradas en los ajustes de tu dispositivo.",
+   "value": "desactiva las compras integradas"
+  },
+  "cr_age": {
+   "doc": "play-cr-ar",
+   "quote": "Para mayores de 10 años",
+   "value": 10
+  },
+  "cr_pc": {
+   "doc": "play-cr-ar",
+   "quote": "Disponible en Android, Windows",
+   "value": [
+    "Android",
+    "Windows"
+   ]
+  },
+  "cr_pvp": {
+   "doc": "play-cr-ar",
+   "quote": "Lucha en partidas multijugador PvP de cartas y estrategia con jugadores de todo el mundo.",
+   "value": "PvP"
+  },
+  "cr_clan": {
+   "doc": "play-cr-ar",
+   "quote": "Únete a un clan o crea uno con otros jugadores para compartir cartas",
+   "value": "clan"
+  },
+  "bs_free": {
+   "doc": "play-bs-ar",
+   "quote": "Descargar y jugar a Brawl Stars es gratis, pero puedes utilizar dinero real para comprar algunos artículos (artículos aleatorios incluidos).",
+   "value": "gratis"
+  },
+  "bs_nobuy": {
+   "doc": "play-bs-ar",
+   "quote": "Si no quieres comprar artículos del juego con dinero real, deshabilita las compras integradas en los ajustes de tu dispositivo.",
+   "value": "deshabilita las compras integradas"
+  },
+  "bs_age": {
+   "doc": "play-bs-ar",
+   "quote": "Para mayores de 10 años",
+   "value": 10
+  },
+  "bs_3v3": {
+   "doc": "play-bs-ar",
+   "quote": "Disputa batallas 3c3 con jugadores de todas partes del mundo.",
+   "value": "3c3"
+  },
+  "bs_short": {
+   "doc": "play-bs-ar",
+   "quote": "Juega con tus amigos o en solitario en una gran variedad de modos de juego de menos de tres minutos.",
+   "value": "tres minutos"
   }
  }
 }
