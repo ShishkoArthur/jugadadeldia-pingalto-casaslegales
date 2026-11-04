@@ -30,7 +30,7 @@ function updateDate(h, factId) {
 export const cs2Mira = {
   path: '/cs2/mira',
   kind: 'tool',
-  title: 'Miras de CS2: creador de mira con código y comandos',
+  title: 'Miras de CS2: creador de crosshair con código y comandos',
   description: 'Armá tu mira de CS2 con vista previa y copiá el código nuevo que empieza con CS o los comandos de consola. Probado con códigos que exporta el juego.',
   h1: 'Creador de miras para CS2',
   scripts: ['xhair.js'],

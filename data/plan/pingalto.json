@@ -121,9 +121,9 @@
  {
   "section": "Kit",
   "url": "/kit/sensibilidad",
-  "title": "Conversor de sensibilidad: CS2, Valorant, OW2 y Apex",
-  "titleLen": 52,
-  "h1": "Conversor de sensibilidad entre juegos",
+  "title": "Convertidor de sensibilidad: CS2, Valorant, OW2 y Apex",
+  "titleLen": 54,
+  "h1": "Convertidor de sensibilidad entre juegos",
   "description": "Pasá tu sensibilidad de CS2 a Valorant, Overwatch 2 o Apex con el mismo giro de mano: cm/360, eDPI y la fuente de cada número.",
   "keys": "sensibilidad 2.2k/9 · convertidor de sensibilidad 600/26 · generador de sensibilidad 600/0 · conversor de sensibilidad 300/37",
   "kind": "tool",
@@ -132,7 +132,7 @@
   "ar": "Пресеты аргентинских про-игроков CS2/Valorant — только из их публикаций с датой (иначе блок скрыт); всё в сантиметрах; es-AR",
   "data": "константы поворота (yaw) из конфигов игр — проверить каждую, считает движок",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "«sensibilidad dental / en los dientes» — чужой интент, не цель 04.11 audit: title «Conversor» (query form).",
+  "notes": "«sensibilidad dental / en los dientes» — чужой интент, не цель 04.11 audit: title lists the four games (convertidor 600 > conversor 300).",
   "status": "live 2026-11-04"
  },
  {
@@ -354,7 +354,7 @@
  {
   "section": "CS2",
   "url": "/cs2",
-  "title": "Counter-Strike 2 desde Argentina: requisitos, ping y ranking",
+  "title": "Counter-Strike 2 (CS2) desde Argentina: requisitos y ranking",
   "titleLen": 60,
   "h1": "Counter-Strike 2 desde Argentina",
   "description": "CS2 es gratis en Steam: si te corre según el mínimo de Valve, cuánto tarda la descarga, los servidores cerca de Argentina y el ranking oficial de equipos.",
@@ -371,8 +371,8 @@
  {
   "section": "CS2",
   "url": "/cs2/mira",
-  "title": "Miras de CS2: creador de mira con código y comandos",
-  "titleLen": 51,
+  "title": "Miras de CS2: creador de crosshair con código y comandos",
+  "titleLen": 56,
   "h1": "Creador de miras para CS2",
   "description": "Armá tu mira de CS2 con vista previa y copiá el código nuevo que empieza con CS o los comandos de consola. Probado con códigos que exporta el juego.",
   "keys": "miras cs2 1k/0 · crosshair 600/5 · crosshair cs2 500/2 · donk crosshair 250/– · miras para cs2 200/0",
@@ -382,7 +382,7 @@
   "ar": "Миры аргентинских про — только со ссылкой на их публикацию и датой",
   "data": "формат share code (открытые реализации — проверить тестами)",
   "auto": "статика, перепроверка раз в полгода",
-  "notes": "прицелы про — со ссылкой и датой",
+  "notes": "прицелы про — со ссылкой и датой 04.11 audit: title covers «crosshair cs2».",
   "status": "live 2026-11-03"
  },
  {

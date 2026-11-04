@@ -30,7 +30,7 @@ const optLabel = r => r.team + ' · ' + r.rank + '.º del mundo';
 export const cs2Ranking = {
   path: '/cs2',
   kind: 'hub',
-  title: 'Counter-Strike 2 desde Argentina: requisitos, ping y ranking',
+  title: 'Counter-Strike 2 (CS2) desde Argentina: requisitos y ranking',
   description: 'CS2 es gratis en Steam: si te corre según el mínimo de Valve, cuánto tarda la descarga, los servidores cerca de Argentina y el ranking oficial de equipos.',
   h1: 'Counter-Strike 2 desde Argentina',
   scripts: ['req.js', 'vrs.js', 'agenda.js'],

@@ -256,6 +256,16 @@
 - **Дальше:** (сцены — сделаны 03.11, см. «Сцены девушек»); ленты результатов (по слову владельца) → /quiniela/, провинции, Quini 6 hoy;
   P2 из плана; перепроверка программ LOTBA (ежемесячно, `maxAgeDays` 183) и пакета помощи до 09.02.2027.
 
+## pingalto (04.11) — аудит: 49 страниц + 404, отчёт `docs/AUDIT-PINGALTO-2026-11-04.md`
+- **Новое/переделано (выложено):** /cs2 — хаб игры (требования Steam AR + «¿Te corre CS2?», время загрузки, пинги Valve SDR, CS 1.6
+  в Steam, рейтинг VRS — раздел `#ranking`); **/fortnite** (как играть из Аргентины на каждом устройстве) и **/ff/max** (FF или MAX:
+  Garena, Play AR/US, App Store AR/US) — новые; /ff дополнен; /eafc — FC 27 в Steam. Title: /kit/dpi, /kit/sensibilidad,
+  /brawl/brawlers, /cs2/mira. Ключи: покрыто title 58 → 66 ключей (370k → 561k показов). Ошибок в числах не найдено (сверка в отчёте).
+- **Код:** `sites/pingalto/content/stores.mjs` (Steam appdetails, iTunes lookup, Google Play — проверка формы), `pages/games2.mjs`,
+  клиенты `req.js`, `fnhub.js`, `ffmax.js`. +13 копий источников (fetched 04.11, срок 180 дн.).
+- **Ждёт владельца:** ключ fortnite-api.com (трекер 53k; вход через Discord — сам), сцены для /fortnite и /ff/max.
+- **Дальше (отчёт §6):** хаб Dota 2 как у CS2, FF Advance, «cómo empezar» + глоссарий по образцу blackjack.cab, /cs16.
+
 ## pingalto (03.11) — волна 4 выложена: 47 страниц из 86 плана + 404 (было 30)
 - **Новое (живое, 17):** хабы со сценами «в игре» **/dota2** (наш Elo по сериям PandaScore за 180 дней, Sudamérica, cara a cara, бэктест
   ~68 % за 60 дней), **/clash**, **/brawl**, **/rl**, **/eafc**; **/dota2/ti**, **/lol/worlds** (идёт сейчас, четвертьфиналы в hora
