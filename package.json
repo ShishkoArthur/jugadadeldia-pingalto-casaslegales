@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tools/check-code-lang.mjs && node --test \"engine/test/*.test.mjs\" && node tools/verify-rg.mjs -q && node tools/verify-sources.mjs -q && node tools/verify-operators.mjs -q && node tools/check-dist.mjs casaslegales --selftest && node tools/check-dist.mjs pingalto --selftest && node tools/check-dist.mjs jugadadeldia --selftest",
+    "test": "node tools/check-code-lang.mjs && node --test \"engine/test/*.test.mjs\" && node tools/verify-rg.mjs -q && node tools/verify-sources.mjs -q && node tools/verify-operators.mjs -q && node tools/verify-reviews.mjs -q && node tools/verify-reviews.mjs --selftest && node tools/check-dist.mjs casaslegales --selftest && node tools/check-dist.mjs pingalto --selftest && node tools/check-dist.mjs jugadadeldia --selftest",
     "build": "node tools/render.mjs",
     "check": "node tools/check-dist.mjs",
-    "verify": "node tools/verify-rg.mjs -q && node tools/verify-sources.mjs -q && node tools/verify-operators.mjs -q",
+    "verify": "node tools/verify-rg.mjs -q && node tools/verify-sources.mjs -q && node tools/verify-operators.mjs -q && node tools/verify-reviews.mjs -q",
     "serve": "node tools/serve.mjs",
     "deploy": "bash tools/deploy.sh"
   },

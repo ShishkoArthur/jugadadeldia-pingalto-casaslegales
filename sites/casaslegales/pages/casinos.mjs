@@ -52,7 +52,7 @@ export const casinos = {
     const legend = '<div class="rl-leg"><span><i class="rl-s-list"></i>la lista nombra el casino online</span><span><i class="rl-s-platform"></i>lista de juego online, sin separar</span><span><i class="rl-s-none"></i>sin lista verificada</span></div>';
     const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + h.t('{{reg_total}} listas oficiales') + ' · copiadas el ' + listsDate(h) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">En Argentina no hay una lista nacional: cada provincia publica la suya. De las ' + L.length + ' listas oficiales que guardamos, ' + exp.length + ' separan el casino online de las apuestas deportivas. Las otras ' + gen.length + ' autorizan sitios de juego online sin decir, sitio por sitio, qué juegos tiene cada uno.</p>' +
-      '<p class="rl-note">Sin enlaces a operadores, sin bonos. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
+      '<p class="rl-note">Sin bonos ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
       '<div class="rl-pvv">' + map + '<p class="rl-pvn"><b>' + nCasino + '</b><span>direcciones figuran como casino online en ' + exp.map(x => x.prov).join(' y ') + '</span></p>' + legend + '</div></section>';
 
     const expSec = '<section class="rl-sec">' + sectionHead(h, 'Las listas que nombran el casino online', 'citas textuales de cada regulador') + '<div class="rl-law">' +

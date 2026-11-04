@@ -54,6 +54,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
   const sizeOf = f => (existsSync(f) ? statSync(f).size : 0);
 
   const G = SITE.gate;
+  const officialHosts = G.officialLinks ? G.officialLinks.hosts() : new Set();
   const brandPairs = G.brandLinks ? G.brandLinks.names() : [];
   for (const f of htmls) {
     const H = html[f], p = pageByFile.get(f), is404 = f === notFoundFile, vis = visibleText(H);
@@ -92,7 +93,7 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
       if (/^https?:/.test(u)) {
         let host; try { host = new URL(u).hostname; } catch { bad('link', f, 'bad URL ' + u); continue; }
         if (host === SITE.domain) { bad('link', f, 'absolute link to the own domain ' + u + ' (use a path)'); continue; }
-        if (isOperatorHost(host)) bad('operator', f, 'link to a betting operator ' + u);
+        if (isOperatorHost(host) && !officialHosts.has(host)) bad('operator', f, 'link to a betting operator ' + u + (officialHosts.size ? ' (only the exact hosts of the verified official lists may be linked)' : ''));
         if (AFFIL.test(u)) bad('affiliate', f, 'affiliate link ' + u);
         continue;
       }
@@ -106,6 +107,18 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
       if (hash && html[tf] && !ids(tf).has(hash)) bad('anchor', f, 'dangling anchor ' + u);
     }
     if (/\srel="[^"]*\bsponsored\b/.test(H)) bad('affiliate', f, 'rel=sponsored');
+    // official links (gate.officialLinks, owner 2026-11-04): an <a> to a host of a verified official list carries rel="nofollow noopener",
+    // goes to the bare address (https, path "/", no query, no fragment) and never sits on a help page
+    for (const [tag] of H.matchAll(/<a\b[^>]*>/gi)) {
+      const href = decode((tag.match(/\shref="([^"]*)"/) || [])[1] || '');
+      if (!/^https?:/i.test(href)) continue;
+      let x; try { x = new URL(href); } catch { continue; }
+      if (!isOperatorHost(x.hostname)) continue;
+      const rel = ((tag.match(/\srel="([^"]*)"/) || [])[1] || '').split(/\s+/);
+      if (!rel.includes('nofollow') || !rel.includes('noopener')) bad('oplink', f, 'operator link without rel="nofollow noopener" ' + href);
+      if (x.protocol !== 'https:' || x.search || x.hash || href.includes('?') || href.includes('#') || x.pathname !== '/' || x.username || x.port) bad('oplink', f, 'operator link is not the bare official address (https, path /, no query) ' + href);
+      if (p && p.help) bad('helplink', f, 'help page links to an operator ' + href);
+    }
     for (const [, src] of H.matchAll(/\ssrc="([^"]+)"/g)) {
       if (src.startsWith('/') && !existsSync(join(dist, src))) bad('src', f, 'missing file ' + src);
       if (/^https?:/.test(src)) { try { if (isOperatorHost(new URL(src).hostname)) bad('operator', f, 'resource from an operator ' + src); } catch { bad('src', f, 'bad src ' + src); } }
@@ -264,7 +277,7 @@ async function selftest(id) {
     ['extstyle', A, rep('</head>', '<link rel="stylesheet" href="https://cdn.example.com/x.css"></head>')],
     ['jsonld', A, body('<script type="application/ld+json">{oops</script>')],
     ['operator', A, body('<a href="https://pba.ejemplo.bet.ar/">x</a>')],
-    ['operator', A, body('<a href="https://www.betsson.com.ar/">x</a>')],
+    ['operator', A, body('<a href="https://www.betsson.com/" rel="nofollow noopener">x</a>')],
     ['affiliate', A, body('<a href="https://example.org/oferta?btag=123">x</a>')],
     ['weight', A, body('<p hidden>' + 'x'.repeat(170 * 1024) + '</p>')],
     ['rgblock', A, s => s.replace(S.SITE.gate.rgBlock, '<aside class="otra"')],
@@ -297,6 +310,16 @@ async function selftest(id) {
   if (S.SITE.noPerson !== false) cases.push(['jsonld', A, body('<script type="application/ld+json">{"@type":"Person","name":"x"}</script>')]);
   if (G.noRgKinds && G.rgSample) { const NR = S.PAGES.find(p => G.noRgKinds.includes(p.kind)); if (NR) cases.push(['rgblock', F(NR.path), body(G.rgSample)]); }
   for (const [path, fn] of (G.brandLinks && G.brandLinks.corrupt) || []) cases.push(['brandlink', F(path), fn]);
+  if (G.officialLinks) {
+    const OL = F(G.officialLinks.sample), offA = /<a class="rl-off[^"]*" href="https:\/\/([^"\/]+)\/" rel="nofollow noopener"/;
+    const need = s => { if (!offA.test(s)) throw new Error('selftest: no official link on ' + G.officialLinks.sample); return s; };
+    cases.push(
+      ['operator', OL, s => need(s).replace(offA, m => m.replace(/https:\/\/[^"\/]+\//, 'https://pba.ejemplo.bet.ar/'))],
+      ['oplink', OL, s => need(s).replace(offA, m => m.replace('rel="nofollow noopener"', 'rel="noopener"'))],
+      ['oplink', OL, s => need(s).replace(offA, m => m.replace(/(https:\/\/[^"\/]+\/)"/, '$1?utm_source=casaslegales"'))],
+      ['helplink', HELP, s => { const m = need(readFileSync(join(base, OL), 'utf8')).match(/<a class="rl-off[^>]*>/)[0]; return s.replace('</main>', m + 'x</a></main>'); }],
+    );
+  }
   if (S.SITE.gate.decimalComma) cases.push(['decimal', A, body('<p>Sensibilidad 0.39</p>')], ['decimal', A, body('<input id="z" type="number" value="1">')]);
   const RG_ONLY = new Set(['rgblock', 'tel', 'age', 'helpmark', 'helplink', 'helpnav']);
   for (const [name, file, mut] of cases.filter(c => RG || !RG_ONLY.has(c[0]))) await run(name, tmp => { const f = join(tmp, file); writeFileSync(f, mut(readFileSync(f, 'utf8'))); });

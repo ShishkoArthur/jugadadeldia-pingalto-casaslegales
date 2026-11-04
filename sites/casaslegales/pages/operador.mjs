@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { OPS, slugOf } from '../content/operators.mjs';
 import { opData, quotesOf, shotsOf, docOf, quoteById } from '../content/opdata.mjs';
 import { licenceMap, mapLegend, anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
-import { src, quote, sectionHead, brandLink } from './parts.mjs';
+import { src, quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
 import { help } from './provincia.mjs';
 import { ROOT } from '../../../tools/env.mjs';
 
@@ -243,7 +243,7 @@ export function operatorPage(o) {
       checks(h, o, row);
       const n = presence(row), all = entries(h);
       const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">Ficha de operador · listas copiadas el ' + h.fmtDate(h.regs.map(r => r.checked).sort()[0]) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
-        '<p class="rl-lead">' + h.esc(o.lead) + '</p><p class="rl-note">Sin enlaces al operador, sin promociones. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
+        '<p class="rl-lead">' + h.esc(o.lead) + '</p>' + officialLinks(h, o.brand, h.regs.filter(r => row.cells[r.id]).map(r => r.id)) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
         '<div class="rl-big"><b>' + n + '<small> de ' + h.regs.length + '</small></b><span>listas oficiales que revisamos lo nombran</span><small>' + h.esc(o.angle) + '</small></div></section>';
       const aid = o.platform ? help(h, { j: h.rg.prov(o.jurisdiction), name: h.rg.prov(o.jurisdiction).name }) : '';
       return hero + mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D) + toolsSection(h, o, D) + aid + nextSection(h, row);

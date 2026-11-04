@@ -13,13 +13,13 @@ export const avisoLegal = {
   id: 'aviso-legal',
   kind: 'service',
   title: 'Aviso legal: sin asesoramiento legal ni afiliados',
-  description: 'Aviso legal de casaslegales.com: no damos asesoramiento legal, no tenemos acuerdos ni links con operadores y lo que vale es siempre la ley de tu provincia.',
+  description: 'Aviso legal de casaslegales.com: no damos asesoramiento legal, sin acuerdos con operadores ni links de afiliado; lo que vale es la ley de tu provincia.',
   h1: 'Aviso legal',
   ld: h => [h.webPage()],
   render(h) {
     const items = [
       ['No es asesoramiento legal', 'Mostramos lo que publica cada regulador provincial, con la cita y la fecha de nuestra copia. Lo que vale es la ley de tu provincia y la lista oficial vigente: si hay una diferencia entre este sitio y la página del regulador, manda la del regulador.'],
-      ['Sin acuerdos con operadores', 'No cobramos por aparecer, no tenemos programas de afiliados y no publicamos bonos, códigos ni promociones. No enlazamos a ningún sitio de apuestas: las direcciones van como texto.'],
+      ['Sin acuerdos con operadores', 'No cobramos por aparecer, no tenemos programas de afiliados y no publicamos bonos, códigos ni promociones. Los botones «Ir al sitio oficial» llevan a la dirección que publica la lista oficial de cada provincia, sin códigos de seguimiento.'],
       ['Solo para mayores de 18', 'Los juegos de azar y las apuestas están prohibidos para menores de 18 años. Este sitio informa sobre licencias; no invita a jugar.'],
       ['Las listas cambian', h.t('Revisamos las {{reg_total}} listas oficiales que guardamos al menos cada {{max_age}} días. Entre una revisión y otra, un regulador puede sumar o sacar un sitio: cada página dice la fecha de la copia que usa.')],
       ['Marcas y capturas', 'Los nombres de operadores, loterías e institutos son de sus dueños y los usamos solo para identificarlos. Las capturas son nuestras, de páginas públicas, sin abrir cuentas ni depositar.'],

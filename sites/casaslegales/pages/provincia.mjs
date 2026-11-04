@@ -3,7 +3,7 @@ import { isoMap, isoHeight } from './iso.mjs';
 import { PROV_COPY } from '../content/provcopy.mjs';
 import { provData, pdQuote, pdSrc, STATUS_LABEL } from '../content/provdata.mjs';
 import { brandMatrix, distinctHosts } from '../../../engine/registry.mjs';
-import { src, quote, rgQuote, hostHtml, sectionHead, brandLink } from './parts.mjs';
+import { src, quote, rgQuote, hostHtml, sectionHead, brandLink, officialLink } from './parts.mjs';
 
 export function relief(h, P, cur, { links = false, cls: clsOf = null, tip = null, aria = null } = {}) {
   return isoMap(h, t => {
@@ -45,7 +45,8 @@ function hero(h, P, x, o) {
 
 function sites(h, r) {
   return '<ul class="rl-sites" data-nosnippet>' + r.licensees.map(l => '<li><h3>' + brandLink(h, l.brand) + '</h3>' + hostHtml(h, l.host) +
-    (l.ref ? '<span class="rl-ref">Autorizado por ' + h.esc(l.ref) + '</span>' : '') + '</li>').join('') + '</ul>';
+    (l.ref ? '<span class="rl-ref">Autorizado por ' + h.esc(l.ref) + '</span>' : '') + officialLink(h, r.id, l.brand, { small: true, host: l.host }) + '</li>').join('') + '</ul>' +
+    '<p class="rl-offn">Cada botón lleva a la dirección que publica la lista oficial, sin códigos de afiliado. Solo mayores de 18.</p>';
 }
 
 function others(h, x) {

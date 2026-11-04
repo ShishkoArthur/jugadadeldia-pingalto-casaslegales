@@ -85,7 +85,7 @@ export function page(h, p, body) {
   const header = '<header class="rl-top"><a class="rl-logo" href="/">' + LOGO + '<span>casas<b>legales</b></span></a>' + nav +
     '<button class="rl-ib" type="button" data-rl-theme aria-label="Cambiar entre tema claro y oscuro">' + MOON + SUN + '</button>' +
     (p.help ? '' : '<button class="rl-ib rl-bu" type="button" data-rl-menu aria-controls="rl-nav" aria-expanded="false" aria-label="Menú">' + BURGER + '</button>') + '</header>';
-  const footer = '<footer class="rl-ft"><p>Sin enlaces a operadores ni bonos. No es asesoramiento legal: depende de la ley de tu provincia.</p>' +
+  const footer = '<footer class="rl-ft"><p>Sin bonos ni afiliados: solo enlazamos la dirección que publica cada lista oficial. No es asesoramiento legal: depende de la ley de tu provincia.</p>' +
     '<nav aria-label="Pie">' + links(h, p.help ? FOOT.filter(f => !f[2]) : FOOT, p.path) + '</nav>' +
     (p.help ? '<p><b class="rl-18">18+</b> Los juegos de apuestas son solo para mayores de 18 años.</p>' : helpBlock(h, p)) +
     '<p class="rl-fine">casaslegales.com · datos oficiales revisados el ' + h.fmtDate(h.checked) + ' · redacción independiente, sin acuerdos con operadores</p></footer>';

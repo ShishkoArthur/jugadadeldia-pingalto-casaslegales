@@ -31,7 +31,7 @@ export const home = {
     const hero = '<section class="rl-hero rl-hero-home"><div class="rl-htxt">' +
       '<p class="rl-kick">' + h.t('{{jur_total}} jurisdicciones · {{reg_total}} listas oficiales verificadas · revisado {{checked}}') + '</p>' +
       '<h1>' + h.esc(h.page.h1) + '</h1>' +
-      '<p class="rl-lead">Qué casas de apuestas figuran en la lista oficial de cada provincia, con la cita del regulador y la fecha en que la copiamos. Sin enlaces a operadores, sin bonos. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p>' +
+      '<p class="rl-lead">Qué casas de apuestas figuran en la lista oficial de cada provincia, con la cita del regulador y la fecha en que la copiamos. Sin bonos ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p>' +
       '<div class="rl-pick"><label for="rl-pick">Elegí tu provincia</label><select id="rl-pick" data-rl-pick>' + opts + '</select></div>' +
       '</div><div class="rl-hside"><aside class="rl-panel" data-rl-panel aria-live="polite"><h2>' + h.esc(dj.name) + '</h2>' +
       '<div class="rl-num" data-s="list">' + dreg.licensees.length + '<small>sitios en la lista oficial</small></div>' +

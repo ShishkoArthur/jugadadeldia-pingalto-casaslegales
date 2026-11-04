@@ -9,7 +9,7 @@ import { provData } from '../content/provdata.mjs';
 import { rowOf, entries } from './operador.mjs';
 import { anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
 import { relief, help } from './provincia.mjs';
-import { quote, sectionHead, brandLink } from './parts.mjs';
+import { quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
 
 const DE = { IPLyC: 'del IPLyC', 'Lotería de Córdoba': 'de la Lotería de Córdoba', 'Lotería de Río Negro': 'de la Lotería de Río Negro', 'Lotería de Santa Fe': 'de la Lotería de Santa Fe', IPJyC: 'del IPJyC' };
 const actOf = (h, r, cell) => {
@@ -90,11 +90,11 @@ export function opProvPage(o) {
         (sameHost.length ? ' La misma dirección figura también en la lista de ' + sameHost.map(y => h.rg.prov(y.id).name).join(' y ') + ', con otro regulador.' : '');
       const map = relief(h, P, o.jur, { cls: y => row.cells[y.id] ? 'rl-s-list' : h.regs.some(z => z.id === y.id) ? 'rl-s-none' : 'rl-s-blocked', tip: y => row.cells[y.id] ? 'figura en la lista oficial' : 'no figura o sin lista verificada' });
       const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + brandLink(h, o.brand, row.name) + h.esc(' × ' + prov) + ' · lista copiada el ' + h.fmtDate(listDoc.fetched) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
-        '<p class="rl-lead">' + h.esc(lead) + '</p><p class="rl-note">Sin enlaces al operador, sin promociones. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
+        '<p class="rl-lead">' + h.esc(lead) + '</p><p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
         '<div class="rl-pvv">' + map + '<p class="rl-pvn"><b>' + T.n + '</b><span>' + (T.n === 1 ? 'lista oficial nombra a ' : 'listas oficiales de las que revisamos nombran a ') + h.esc(row.name) + '</span></p><p class="rl-pvcap">' + h.esc(prov) + ' resaltada; en verde, donde figura</p></div></section>';
       const licQuote = r.quotes.licences || r.quotes.licence || r.quotes.list;
       const addr = '<section class="rl-sec">' + sectionHead(h, 'La dirección que figura en ' + prov, 'copiada de la lista oficial') + '<div class="rl-two">' +
-        '<div class="rl-box"><h3>' + h.esc(o.host) + '</h3>' + anat(h, o.host) + (cell.ref ? '<p class="rl-ref">Autorizado por ' + h.esc(cell.ref) + '</p>' : '') +
+        '<div class="rl-box"><h3>' + h.esc(o.host) + '</h3>' + anat(h, o.host) + (cell.ref ? '<p class="rl-ref">Autorizado por ' + h.esc(cell.ref) + '</p>' : '') + officialLinks(h, o.brand, [o.jur]) +
         '<p class="rl-src">' + h.esc(r.regulator.name) + ' · <a href="' + h.esc(listDoc.url) + '" rel="noopener">' + h.esc(listDoc.host) + '</a> · copia del ' + h.fmtDate(listDoc.fetched) + ' · ' + r.licensees.length + ' sitios en la lista</p></div>' +
         '<div class="rl-box"><h3>Qué dice el regulador</h3>' + (licQuote ? quote(h, licQuote, r.regulator.name) : '') + (r.quotes.betar ? quote(h, r.quotes.betar, r.regulator.name) : '') +
         (anatomy(o.host).betAr ? '' : '<p>Esta dirección no termina en .bet.ar y aun así es la que figura en la lista de ' + h.esc(prov) + '. Por eso la terminación sola no alcanza: hay que comparar con la lista.</p>') + '</div></div></section>';

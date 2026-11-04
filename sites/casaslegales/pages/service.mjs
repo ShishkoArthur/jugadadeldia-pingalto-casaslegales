@@ -72,7 +72,7 @@ export const metodologia = {
       '<section class="rl-sec">' + sectionHead(h, 'Qué significa cada marca') + '<div class="rl-card">' + states + '</div></section>' +
       '<section class="rl-sec">' + sectionHead(h, 'Capturas y operadores') + '<div class="rl-two">' +
       '<div class="rl-box"><h3>Solo páginas públicas</h3><p>Las capturas de sitios de apuestas son nuestras, de páginas que cualquiera ve sin registrarse, tomadas con un navegador automático desde fuera de Argentina. No abrimos cuentas, no depositamos y no usamos capturas ajenas. Rechazamos las cookies cuando el aviso lo permite y cerramos las ventanas emergentes antes de capturar. Si un sitio no se muestra desde nuestra ubicación, lo decimos y no publicamos imagen.</p><p>Lo que contamos de un operador (límites, medios de pago, textos de su pie de página) sale de una copia de su página pública guardada con fecha, y va como cita textual.</p></div>' +
-      '<div class="rl-box"><h3>Sin enlaces ni acuerdos</h3><p>No enlazamos a ningún operador y no cobramos por aparecer. Las direcciones van como texto para que puedas compararlas con la barra de tu navegador.</p></div>' +
+      '<div class="rl-box"><h3>Enlaces oficiales, sin acuerdos</h3><p>No cobramos por aparecer y no usamos links de afiliado. El botón «Ir al sitio oficial» lleva solo a la dirección exacta que publica la lista oficial de esa provincia, sin parámetros de seguimiento. Un programa revisa cada enlace antes de publicar.</p></div>' +
       '</div>' + (h.built('/registro-de-fuentes') ? '<p class="rl-note"><a href="' + h.href('/registro-de-fuentes') + '">Ver todas las fuentes con su fecha y su huella</a></p>' : '') + '</section>';
   },
 };
@@ -88,7 +88,7 @@ export const redaccion = {
   render(h) {
     return '<section class="rl-hero"><div><p class="rl-kick">Redacción de casaslegales.com</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Somos un equipo editorial. No firmamos con nombres propios: lo que respalda cada página no es una firma, sino la fuente oficial que está al lado de cada dato.</p></div>' +
-      '<div class="rl-box"><h3>Independientes</h3><div class="rl-chips"><span>sin publicidad</span><span>sin afiliados</span><span>sin enlaces a operadores</span></div></div></section>' +
+      '<div class="rl-box"><h3>Independientes</h3><div class="rl-chips"><span>sin publicidad</span><span>sin afiliados</span><span>solo enlaces oficiales</span></div></div></section>' +
       '<section class="rl-sec">' + sectionHead(h, 'Cómo escribimos') + '<div class="rl-two">' +
       '<div class="rl-box"><h3>Con ayuda de IA, contra las fuentes</h3><p>Los textos se redactan con ayuda de inteligencia artificial. Los datos no salen de la memoria de nadie: licencias, normas y teléfonos se copian de documentos oficiales guardados, y un programa comprueba cada cita antes de publicar.</p></div>' +
       '<div class="rl-box"><h3>Lenguaje simple</h3><p>Escribimos para quien recién llega al tema: frases cortas, la respuesta primero y un esquema en lugar de párrafos largos. Si algo no está verificado, lo decimos y no lo afirmamos.</p></div>' +

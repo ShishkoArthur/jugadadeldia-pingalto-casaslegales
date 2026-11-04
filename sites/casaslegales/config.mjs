@@ -4,7 +4,8 @@
 import { extname } from 'node:path';
 import { SHOT_FILES } from './content/opdata.mjs';
 import { opPath } from './content/operators.mjs';
-import { brandNames } from '../../tools/lib/sources.mjs';
+import { brandNames, loadRegistries } from '../../tools/lib/sources.mjs';
+import { officialHosts } from './content/official.mjs';
 
 export const SITE = {
   id: 'casaslegales',
@@ -23,6 +24,8 @@ export const SITE = {
   registries: ['buenos-aires', 'caba', 'cordoba', 'la-rioja', 'neuquen', 'rio-negro', 'santa-fe', 'mendoza'],
   defaultJurisdiction: 'buenos-aires',
   gate: {
+    // owner 2026-11-04: links to operators only to the exact hosts the verified official lists of this site link (content/official.mjs)
+    officialLinks: { hosts: () => officialHosts(loadRegistries().filter(r => SITE.registries.includes(r.id))), sample: '/operador/betsson' },
     rgBlock: /<aside class="rl-ay"/,
     helpMark: /<body[^>]*\sdata-calma[\s>]/,
     age: /class="rl-18"[^>]*>18\+</,

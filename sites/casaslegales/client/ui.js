@@ -180,7 +180,7 @@ function verifier() {
   const input = form.querySelector('input');
   const out = form.querySelector('[data-rl-vout]');
   const s = V.s;
-  const entries = V.e.map(e => ({ host: e.h, jur: e.j, brand: e.b, ref: e.r, page: e.u }));
+  const entries = V.e.map(e => ({ host: e.h, jur: e.j, brand: e.b, ref: e.r, page: e.u, off: e.o }));
   const anat = a => {
     const box = el('div', 'rl-anat');
     const part = (cls, txt, lab) => { if (!txt) return; const sp = el('span', cls); sp.append(el('b', null, txt), el('small', null, lab)); box.append(sp); };
@@ -212,6 +212,7 @@ function verifier() {
       if (m.page) { const a = el('a', null, fill(s.ficha, o)); a.href = m.page; links.append(a); }
       if (j.u) { const a = el('a', null, fill(s.prov, o)); a.href = j.u; links.append(a); }
       if (links.childNodes.length) li.append(links);
+      if (r.state === 'listed' && m.off) { const a = el('a', 'rl-off rl-off-s'); a.href = m.off; a.rel = 'nofollow noopener'; a.target = '_blank'; a.append(el('span', null, fill(s.off, o)), el('small', null, new URL(m.off).hostname)); li.append(a, el('p', 'rl-offn', s.offNote)); }
       ul.append(li);
     }
     if (r.matches.length) out.append(ul);
