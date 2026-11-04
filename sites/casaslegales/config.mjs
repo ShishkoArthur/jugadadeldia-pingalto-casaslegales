@@ -42,7 +42,7 @@ export const SITE = {
       names: () => Object.entries(brandNames()).map(([brand, name]) => ({ name, href: opPath(brand) })),
       corrupt: [
         ['/licencias', s => s.replace(/(<th scope="row">)<a href="\/operador\/[^"]+">([^<]+)<\/a>/, '$1$2')],
-        ['/provincia/cordoba', s => s.replace(/(<ul class="rl-sites"[^>]*><li><h3>)<a href="\/operador\/[^"]+">([^<]+)<\/a>/, '$1$2')],
+        ['/provincia/cordoba', s => s.replace(/(<ul class="rl-sites"[^>]*><li><h3[^>]*>)<a href="\/operador\/[^"]+">([^<]+)<\/a>/, '$1$2')],
         ['/operadores', s => s.replace(/<a class="rl-opc" href="\/operador\/[^"]+">/, '<a class="rl-opc" href="/operador/betsson">').replace(/(<a class="rl-opc" href="\/operador\/betsson">[\s\S]*?)<a class="rl-opc" href="\/operador\/betsson">/, '$1<a class="rl-opc" href="/operador/bet365">')],
       ],
     },
