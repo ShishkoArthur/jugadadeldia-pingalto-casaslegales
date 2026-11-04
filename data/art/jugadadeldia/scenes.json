@@ -35,8 +35,17 @@
   "/quiniela/significado-de-los-numeros/": {
    "image": "jdd-sc-quiniela-significado-de-los-numeros-r2",
    "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-significado-de-los-numeros-r2.webp",
+   "status": "moved",
+   "accepted": "2026-11-03 owner",
+   "movedTo": "/quiniela/corrientes/"
+  },
+  "/quiniela/corrientes/": {
+   "image": "jdd-sc-quiniela-significado-de-los-numeros-r2",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-quiniela-significado-de-los-numeros-r2.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 owner"
+   "accepted": "2026-11-03 owner",
+   "reusedFrom": "/quiniela/significado-de-los-numeros/",
+   "reused": "2026-11-04 (ready scene, no new image)"
   },
   "/quiniela/nacional/": {
    "image": "jdd-sc-quiniela-nacional-r2",
@@ -125,14 +134,32 @@
   "/tombola/santiaguena/": {
    "image": "jdd-sc-tombola-santiaguena-r2",
    "file": "data/art/jugadadeldia/cut/jdd-sc-tombola-santiaguena-r2.webp",
+   "status": "moved",
+   "accepted": "2026-11-03 owner",
+   "movedTo": "/quiniela/chaco/"
+  },
+  "/quiniela/chaco/": {
+   "image": "jdd-sc-tombola-santiaguena-r2",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-tombola-santiaguena-r2.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 owner"
+   "accepted": "2026-11-03 owner",
+   "reusedFrom": "/tombola/santiaguena/",
+   "reused": "2026-11-04 (ready scene, no new image)"
   },
   "/tombola/jujena/": {
    "image": "jdd-sc-tombola-jujena-r2",
    "file": "data/art/jugadadeldia/cut/jdd-sc-tombola-jujena-r2.webp",
+   "status": "moved",
+   "accepted": "2026-11-03 owner",
+   "movedTo": "/quiniela/misiones/"
+  },
+  "/quiniela/misiones/": {
+   "image": "jdd-sc-tombola-jujena-r2",
+   "file": "data/art/jugadadeldia/cut/jdd-sc-tombola-jujena-r2.webp",
    "status": "accepted",
-   "accepted": "2026-11-03 owner"
+   "accepted": "2026-11-03 owner",
+   "reusedFrom": "/tombola/jujena/",
+   "reused": "2026-11-04 (ready scene, no new image)"
   },
   "/truco/": {
    "image": "jdd-sc-truco-r2",

@@ -190,6 +190,44 @@
    "g": 0.8528,
    "alt": "Chica sentada en el borde de una mesa blanca, anotando en una boleta con un lápiz"
   },
+  "/quiniela/corrientes/": {
+   "image": "jdd-sc-quiniela-significado-de-los-numeros-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-corrientes-320.webp",
+     "w": 320,
+     "h": 522,
+     "kb": 24
+    },
+    {
+     "name": "scenes/quiniela-corrientes-480.webp",
+     "w": 480,
+     "h": 783,
+     "kb": 44
+    },
+    {
+     "name": "scenes/quiniela-corrientes-720.webp",
+     "w": 720,
+     "h": 1174,
+     "kb": 84
+    },
+    {
+     "name": "scenes/quiniela-corrientes-960.webp",
+     "w": 960,
+     "h": 1566,
+     "kb": 133
+    },
+    {
+     "name": "scenes/quiniela-corrientes-1280.webp",
+     "w": 1280,
+     "h": 2087,
+     "kb": 208
+    }
+   ],
+   "ar": 0.6132,
+   "g": 0.7654,
+   "alt": "Chica de rodillas abrazando un cuaderno, con un dedo en el mentón, pensando"
+  },
   "/quiniela/nacional/": {
    "image": "jdd-sc-quiniela-nacional-r2",
    "files": [
@@ -653,6 +691,76 @@
    "ar": 0.9972,
    "g": 0.5876,
    "alt": "Chica sentada en un almohadón con un cartón en blanco en la falda, tocando una casilla"
+  },
+  "/quiniela/chaco/": {
+   "image": "jdd-sc-tombola-santiaguena-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-chaco-320.webp",
+     "w": 320,
+     "h": 412,
+     "kb": 27
+    },
+    {
+     "name": "scenes/quiniela-chaco-480.webp",
+     "w": 480,
+     "h": 618,
+     "kb": 51
+    },
+    {
+     "name": "scenes/quiniela-chaco-720.webp",
+     "w": 720,
+     "h": 927,
+     "kb": 98
+    },
+    {
+     "name": "scenes/quiniela-chaco-960.webp",
+     "w": 960,
+     "h": 1236,
+     "kb": 156
+    },
+    {
+     "name": "scenes/quiniela-chaco-1280.webp",
+     "w": 1280,
+     "h": 1648,
+     "kb": 249
+    }
+   ],
+   "ar": 0.7768,
+   "g": 0.6113,
+   "alt": "Chica de rodillas girando la manija de un bolillero chico de alambre"
+  },
+  "/quiniela/misiones/": {
+   "image": "jdd-sc-tombola-jujena-r2",
+   "files": [
+    {
+     "name": "scenes/quiniela-misiones-320.webp",
+     "w": 320,
+     "h": 947,
+     "kb": 42
+    },
+    {
+     "name": "scenes/quiniela-misiones-480.webp",
+     "w": 480,
+     "h": 1420,
+     "kb": 78
+    },
+    {
+     "name": "scenes/quiniela-misiones-720.webp",
+     "w": 720,
+     "h": 2130,
+     "kb": 147
+    },
+    {
+     "name": "scenes/quiniela-misiones-814.webp",
+     "w": 814,
+     "h": 2408,
+     "kb": 130
+    }
+   ],
+   "ar": 0.338,
+   "g": 0.7951,
+   "alt": "Chica parada mirando dentro de una bolsita tejida a rayas de colores"
   },
   "/truco/": {
    "image": "jdd-sc-truco-r2",

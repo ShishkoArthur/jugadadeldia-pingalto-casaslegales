@@ -195,6 +195,9 @@ export const ALT = {
     '/escoba-de-15/': 'Chica sentada en el borde de una mesa juntando cartas españolas en una pila',
     '/quiniela/tucuman/': 'Chica de vestido rojo ofreciendo un limón amarillo con las dos manos, con una pierna levantada atrás',
     '/quiniela/san-juan/': 'Chica caminando al sol, haciéndose sombra con la mano y con una boleta en la otra',
+    '/quiniela/chaco/': 'Chica de rodillas girando la manija de un bolillero chico de alambre',
+    '/quiniela/corrientes/': 'Chica de rodillas abrazando un cuaderno, con un dedo en el mentón, pensando',
+    '/quiniela/misiones/': 'Chica parada mirando dentro de una bolsita tejida a rayas de colores',
   },
   pingalto: {
     '/': 'Alt, la guía de pingalto, sentada en un banquito jugando con un joystick',
