@@ -10,6 +10,7 @@ import crypto from 'node:crypto';
 import { ROOT } from '../env.mjs';
 import { visibleText, normalize } from '../../engine/text.mjs';
 import { daysBetween } from '../../engine/format.mjs';
+import { docMaxAge } from './ownercopy.mjs';
 
 const FILE = 'data/sources/operators/operators.json';
 const SHOTS = 'data/shots/shots.json';
@@ -25,7 +26,7 @@ export function checkOperators({ today, data = loadOperators(), shots = loadShot
     if (!/^https:\/\//.test(d.url || '')) bad(slug + ': url must be https');
     if ((d.status < 200 || d.status > 299) && d.kind !== 'block') bad(slug + ': status ' + d.status + ' (only block pages may be quoted with a status outside 2xx)');
     if (!/^\d{4}-\d{2}-\d{2}$/.test(d.fetched || '')) bad(slug + ': no fetched date');
-    else if (fresh) { const a = daysBetween(d.fetched, today); if (a < 0 || a > maxAge) bad(slug + ': copied ' + d.fetched + ', ' + a + ' days old (max ' + maxAge + ') - capture again: node tools/capture-shots.mjs'); }
+    else if (fresh) { const a = daysBetween(d.fetched, today), lim = docMaxAge(d, data.maxAgeDays); if (a < 0 || a > lim) bad(slug + ': copied ' + d.fetched + ', ' + a + ' days old (max ' + lim + ') - capture again: node tools/capture-shots.mjs'); }
     const f = path.join(ROOT, d.file || '');
     if (!d.file || !fs.existsSync(f)) { bad(slug + ': saved copy missing ' + d.file); continue; }
     const buf = fs.readFileSync(f);

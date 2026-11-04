@@ -19,7 +19,7 @@ import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { loadRegistries, checkRegistry, brandNames, loadRg } from '../../lib/sources.mjs';
 import { checkProvinces, loadProvinces } from '../../lib/provsources.mjs';
-import { isAiBlocked } from '../../lib/ownercopy.mjs';
+import { isOwnerDoc, docMaxAge } from '../../lib/ownercopy.mjs';
 import { citations, hasQuote, normalize, visibleText } from '../../verify-rg.mjs';
 import { robotsVerdict } from './robots-txt.mjs';
 
@@ -29,7 +29,7 @@ const sha256 = b => createHash('sha256').update(b).digest('hex');
 const days = (a, b) => Math.round((Date.parse(b + 'T00:00:00Z') - Date.parse(a + 'T00:00:00Z')) / 864e5);
 const plus = (d, n) => new Date(Date.parse(d + 'T00:00:00Z') + n * 864e5).toISOString().slice(0, 10);
 const maxDay = (...xs) => xs.filter(x => DAY.test(x || '')).sort().at(-1) || null;
-export const isOwnerDoc = d => !!(d.pendingOwnerCopy || d.copiedBy === 'owner' || isAiBlocked(d.url) || d.refresh === 'manual');
+export { isOwnerDoc };
 export const fileKey = key => key.replace(':', '_');
 // findings of a registry belong to the whole registry (one check of all its pages); the other sets are checked page by page
 export const scopeOf = t => t.set.startsWith('registry:') ? t.set : t.key;
@@ -39,10 +39,10 @@ export function targets(src = loadSources()) {
   const out = [];
   for (const r of src.registries) {
     const owner = Object.values(r.docs).some(isOwnerDoc);
-    for (const [slug, d] of Object.entries(r.docs)) out.push({ key: slug, set: 'registry:' + r.id, slug, url: d.url, ext: extname(d.file) || '.html', maxAge: r.maxAgeDays || 100, owner, fetched: d.fetched, sha256: d.sha256 });
+    for (const [slug, d] of Object.entries(r.docs)) out.push({ key: slug, set: 'registry:' + r.id, slug, url: d.url, ext: extname(d.file) || '.html', maxAge: docMaxAge(d, r.maxAgeDays), owner, fetched: d.fetched, sha256: d.sha256 });
   }
-  for (const [slug, d] of Object.entries(src.provinces.docs || {})) out.push({ key: 'pv:' + slug, set: 'provinces', slug, url: d.url, ext: extname(d.file) || '.html', maxAge: src.provinces.maxAgeDays || 100, owner: isOwnerDoc(d), fetched: d.fetched, sha256: d.sha256 });
-  for (const [slug, d] of Object.entries(src.rg.docs || {})) out.push({ key: 'rg:' + slug, set: 'rg', slug, url: d.url, ext: extname(d.file) || '.html', maxAge: src.rg.maxAgeDays || 100, owner: isOwnerDoc(d), fetched: d.fetched, sha256: d.sha256 });
+  for (const [slug, d] of Object.entries(src.provinces.docs || {})) out.push({ key: 'pv:' + slug, set: 'provinces', slug, url: d.url, ext: extname(d.file) || '.html', maxAge: docMaxAge(d, src.provinces.maxAgeDays), owner: isOwnerDoc(d), fetched: d.fetched, sha256: d.sha256 });
+  for (const [slug, d] of Object.entries(src.rg.docs || {})) out.push({ key: 'rg:' + slug, set: 'rg', slug, url: d.url, ext: extname(d.file) || '.html', maxAge: docMaxAge(d, src.rg.maxAgeDays), owner: isOwnerDoc(d), fetched: d.fetched, sha256: d.sha256 });
   return out;
 }
 export function loadSources() {

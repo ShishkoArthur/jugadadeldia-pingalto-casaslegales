@@ -212,8 +212,14 @@ test('source expiries of jugadadeldia: lottery copies, monthly programmes, help 
   const reg = sets.lottery.find(l => l.id === 'lotba').docs['quiniela-reglamento'];
   assert.equal(by['lotba-quiniela-reglamento'].until, addDays(reg.fetched, sets.lottery.find(l => l.id === 'lotba').maxAgeDays));
   assert.equal(by['lotba-quiniela-reglamento'].warnDays, 14);
-  const oldestRg = Object.values(sets.rg.docs).map(d => d.fetched).sort()[0];
-  assert.equal(by['rg-package'].until, addDays(oldestRg, sets.rg.maxAgeDays));
+  const lim = d => d.copiedBy === 'owner' || d.pendingOwnerCopy ? 180 : sets.rg.maxAgeDays;
+  const firstRg = Object.values(sets.rg.docs).map(d => addDays(d.fetched, lim(d))).sort()[0];
+  assert.equal(by['rg-package'].until, firstRg, 'help package: the first copy to expire (owner copies 180 days)');
+  const online = sets.lottery.find(l => l.id === 'online');
+  const [ownSlug, ownDoc] = Object.entries(online.docs).find(([, d]) => d.copiedBy === 'owner');
+  assert.equal(by['online-' + ownSlug].until, addDays(ownDoc.fetched, 180), 'an owner copy in a lottery file: 180 days');
+  const [dlSlug, dlDoc] = Object.entries(online.docs).find(([, d]) => !d.copiedBy && !d.pendingOwnerCopy && !/loteriadecordoba|ijan-neuquen|loteriaderionegro|enrejasalta|hcdn/.test(d.url));
+  assert.equal(by['online-' + dlSlug].until, addDays(dlDoc.fetched, online.maxAgeDays), 'a downloaded copy: maxAgeDays of its file');
   for (const g of ['truco', 'generala', 'chinchon', 'escoba', 'burako']) assert.ok(by['rules-' + g], g);
   assert.ok(!ex.some(x => /casas|operator|registr|gambeteo|pingalto/i.test(x.id + ' ' + x.what)), 'only this site\'s own sources (the health file is public)');
   const raw = await fuentes.fetch();

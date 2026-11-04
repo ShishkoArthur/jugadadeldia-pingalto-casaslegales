@@ -55,13 +55,13 @@ export const metodologia = {
       ['Guardamos una copia con fecha', 'Descargamos la página tal como está y guardamos su huella digital (SHA-256). Así sabemos si la página oficial cambió desde nuestra copia.'],
       ['Copiamos la cita textual', 'Cada dato lleva una frase literal de esa copia: el nombre del sitio, su dirección, el número de disposición o el teléfono.'],
       ['La compilación lo comprueba', 'Antes de publicar, un programa compara cada cita con la copia guardada, letra por letra, y revisa que la lista esté completa. Si algo no coincide, el sitio no se publica.'],
-      ['Mostramos la fecha', h.t('Cada dato dice cuándo copiamos su fuente. Una copia de más de {{max_age}} días frena la publicación hasta que la volvemos a revisar.')],
+      ['Mostramos la fecha', h.t('Cada dato dice cuándo copiamos su fuente. Una copia de más de {{max_age}} días frena la publicación hasta que la volvemos a revisar. Si el sitio oficial no deja entrar a programas como el nuestro y la copia la guarda una persona desde su navegador, el plazo es de {{owner_max_age}} días.')],
     ];
     const stats = '<div class="rl-stats" data-nosnippet>' +
       '<div><b>' + h.t('{{doc_total}}') + '</b><span>documentos oficiales guardados</span></div>' +
       '<div><b>' + h.t('{{quote_total}}') + '</b><span>citas comprobadas</span></div>' +
       '<div><b>' + h.t('{{reg_total}}') + '</b><span>listas de licencias</span></div>' +
-      '<div><b>' + h.t('{{max_age}}') + '</b><span>días como máximo sin revisar</span></div></div>';
+      '<div><b>' + h.t('{{max_age}}') + '</b><span>días como máximo sin revisar una copia descargada</span></div></div>';
     const states = '<ul class="rl-states">' +
       '<li><i class="rl-y" aria-hidden="true"></i><p><b>Figura en la lista oficial.</b> El regulador publica esa dirección entre los sitios autorizados.</p></li>' +
       '<li><i class="rl-n" aria-hidden="true"></i><p><b>No figura.</b> No está en esa lista. No quiere decir que sea ilegal en otra provincia.</p></li>' +
@@ -115,7 +115,7 @@ export const fuentes = {
     return '<section class="rl-hero"><div><p class="rl-kick">' + h.t('{{doc_total}} documentos · {{quote_total}} citas') + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Cada documento oficial que usamos, con la fecha de nuestra copia y su huella digital (los primeros caracteres del SHA-256). Si una página oficial cambia, la huella cambia y lo revisamos.' + (docs.some(d => d.pendingOwnerCopy) ? ' Algunos reguladores piden en su robots.txt que no los lean programas de inteligencia artificial: esas páginas no las vuelve a descargar ningún programa nuestro, las guarda una persona desde su navegador.' : '') + '</p></div></section>' +
       '<section class="rl-sec"><div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Jurisdicción</th><th scope="col">Documento</th><th scope="col">Para qué</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
-      '<p class="rl-cap">' + h.t('Ningún documento tiene más de {{max_age}} días: la próxima revisión completa es antes del {{next_check}}.') + '</p><p class="rl-cap" data-rv-sum hidden></p></section>' + opDocs(h);
+      '<p class="rl-cap">' + h.t('Ningún documento descargado tiene más de {{max_age}} días ni ninguna copia guardada a mano más de {{owner_max_age}}: la próxima revisión es antes del {{next_check}}.') + '</p><p class="rl-cap" data-rv-sum hidden></p></section>' + opDocs(h);
   },
 };
 

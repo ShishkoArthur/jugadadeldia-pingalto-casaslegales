@@ -223,3 +223,34 @@ test('feeds-server.sh stage ships the last commit only (git archive HEAD)', { sk
   const hashes = spawnSync('git', ['hash-object', '--stdin-paths'], { input: files.map(f => join(dir, 'app', f)).join('\n'), encoding: 'utf8' }).stdout.trim().split('\n');
   files.forEach((f, i) => assert.equal(hashes[i], tree.get(f), f + ' differs from HEAD'));
 });
+
+test('copy age by who saves it (owner 2026-11-04): owner copies 180 days, downloaded copies the maxAgeDays of their set', async () => {
+  const { OWNER_COPY_MAX_AGE, AUTO_MAX_AGE, docMaxAge, docUntil, isOwnerDoc } = await import('../../tools/lib/copyage.mjs');
+  const { freshness } = await import('../../tools/verify-rg.mjs');
+  const { REVIEW_MAX_AGE } = await import('../../tools/lib/revsources.mjs');
+  assert.equal(OWNER_COPY_MAX_AGE, 180);
+  assert.equal(AUTO_MAX_AGE, 100);
+  assert.equal(REVIEW_MAX_AGE, OWNER_COPY_MAX_AGE, 'reviews are collected by the owner too');
+  const auto = { url: 'https://www.loteria.gba.gob.ar/x', fetched: '2026-11-03', status: 200 };
+  const kinds = [{ copiedBy: 'owner' }, { pendingOwnerCopy: true }, { refresh: 'manual' }, { url: 'https://www.hcdn.gob.ar/x' }];
+  for (const k of kinds) { const d = { ...auto, ...k }; assert.ok(isOwnerDoc(d)); assert.equal(docMaxAge(d, 100), 180); assert.equal(docMaxAge(d, 183), 180); }
+  assert.equal(docMaxAge(auto, 100), 100);
+  assert.equal(docMaxAge(auto, 183), 183);
+  assert.equal(docMaxAge(auto, undefined), 100);
+  assert.equal(docUntil({ ...auto, copiedBy: 'owner' }, 100), '2027-05-02');
+  assert.equal(docUntil(auto, 100), '2027-02-11');
+  // the help package: on day 150 an owner copy is fresh and a downloaded one is stale; the day after 180 both are
+  const pack = { maxAgeDays: 100, docs: { own: { ...auto, copiedBy: 'owner' }, dl: { ...auto } } };
+  const f150 = freshness(pack, '2027-04-02'), f181 = freshness(pack, '2027-05-03');
+  assert.equal(f150.docOk('own'), true);
+  assert.equal(f150.docOk('dl'), false);
+  assert.equal(f181.docOk('own'), false);
+  assert.equal(f150.limit('own'), 180);
+  // the feeds use the same rule: plazos lists owner copies with 180 days, listas dates a downloaded page with its set
+  const inputs = loadInputs();
+  for (const x of ownerExpiries(inputs).filter(x => x.kind === 'owner')) assert.match(x.what, /max 180 days/, x.id);
+  for (const t of targets(inputs.src)) {
+    const d = t.set === 'provinces' ? inputs.src.provinces.docs[t.slug] : t.set === 'rg' ? inputs.src.rg.docs[t.slug] : inputs.src.registries.find(r => 'registry:' + r.id === t.set).docs[t.slug];
+    assert.equal(t.maxAge, isOwnerDoc(d) ? 180 : 100, t.key);
+  }
+});

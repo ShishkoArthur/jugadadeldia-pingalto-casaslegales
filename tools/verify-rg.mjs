@@ -27,7 +27,7 @@ import os from 'node:os';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { decodeEntities, normalize, visibleText, hasQuote } from '../engine/text.mjs';
-import { isAiBlocked } from './lib/ownercopy.mjs';
+import { isAiBlocked, docMaxAge } from './lib/ownercopy.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PACK = path.join(ROOT, 'data/sources/rg/helplines.json');
@@ -66,18 +66,20 @@ export function citations(pack) {
   return out;
 }
 
-// Freshness of a package at a date: a document is fresh when its status is 200 and its "fetched" is 0..maxAgeDays old; an
-// entry (line, self-exclusion, age, regulator) is fresh when its document and every "also" document are fresh.
+// Freshness of a package at a date: a document is fresh when its status is 200 and its "fetched" is 0..docMaxAge old (maxAgeDays
+// of the package; OWNER_COPY_MAX_AGE for an owner copy, tools/lib/ownercopy.mjs); an entry (line, self-exclusion, age, regulator)
+// is fresh when its document and every "also" document are fresh.
 export function freshness(pack, today) {
   const maxAge = pack.maxAgeDays || 100;
+  const limit = slug => docMaxAge((pack.docs || {})[slug], pack.maxAgeDays);
   const docOk = slug => {
     const d = (pack.docs || {})[slug];
     if (!d || d.status !== 200 || !d.fetched) return false;
     const a = (Date.parse(today) - Date.parse(d.fetched)) / 864e5;
-    return a >= 0 && a <= maxAge;
+    return a >= 0 && a <= limit(slug);
   };
   const entryOk = e => !!e && docOk(e.doc) && (e.also || []).every(a => docOk(a.doc));
-  return { maxAge, docOk, entryOk };
+  return { maxAge, limit, docOk, entryOk };
 }
 // What the site may show at a date: per jurisdiction the first fresh line / self-exclusion entry and a fresh age; the stale ones
 // are listed (hidden). crisis: the fresh national crisis lines (empty -> the build must fail).
@@ -126,9 +128,9 @@ export function verify({ pack = JSON.parse(fs.readFileSync(PACK, 'utf8')), today
     const sha = crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
     if (sha !== d.sha256) fail(`${slug}: sha256 mismatch`);
     else if (d.status !== 200) fail(`${slug}: status ${d.status} (only 200 may be quoted)`);
-    else if (!(age(d.fetched) >= 0 && age(d.fetched) <= maxAge)) {
-      if (crisisDocs.has(slug)) fail(`${slug}: fetched ${d.fetched} — older than ${maxAge} days, and it holds the NATIONAL crisis line (shown on every page)`);
-      else log(`  STALE ${slug}: fetched ${d.fetched} — older than ${maxAge} days; entries citing it are hidden on the site${d.stale ? ` (last try ${d.stale.lastTry}: ${d.stale.reason})` : ''}`);
+    else if (!(age(d.fetched) >= 0 && age(d.fetched) <= docMaxAge(d, pack.maxAgeDays))) {
+      if (crisisDocs.has(slug)) fail(`${slug}: fetched ${d.fetched} — older than ${docMaxAge(d, pack.maxAgeDays)} days, and it holds the NATIONAL crisis line (shown on every page)`);
+      else log(`  STALE ${slug}: fetched ${d.fetched} — older than ${docMaxAge(d, pack.maxAgeDays)} days; entries citing it are hidden on the site${d.stale ? ` (last try ${d.stale.lastTry}: ${d.stale.reason})` : ''}`);
     } else ok(`${slug}: sha256 ${sha.slice(0, 12)}… ${d.fetched}${d.stale ? ` (recheck failing since ${d.stale.since}: ${d.stale.reason})` : ''}`);
   }
 

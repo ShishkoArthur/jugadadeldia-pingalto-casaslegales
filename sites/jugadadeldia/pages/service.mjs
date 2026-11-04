@@ -3,6 +3,7 @@
 import { hero, crumbs, ICONS } from './parts.mjs';
 import { lotteryMissing } from '../../../tools/lib/lottery-sources.mjs';
 import { daysBetween } from '../../../engine/format.mjs';
+import { docMaxAge } from '../../../tools/lib/copyage.mjs';
 
 const TG = 'https://t.me/deniskrazok';
 const ldBasic = h => [h.webPage(), crumbs(h, [])];
@@ -74,7 +75,7 @@ export const fuentes = {
     };
     const table = (rows) => '<div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Documento</th><th class="n">Copia</th><th class="n">Citas</th><th>Estado</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
     const lotGroups = groups.map(g => '<section class="jg-c w3"><span class="jg-sm">' + h.esc(g) + '</span><h2>' + h.esc(g) + '</h2>' + table(docs.filter(d => d.group === g).map(d => row(d.title, d.url, d.fetched, d.maxAge, d.quotes)).join('')) + '</section>').join('');
-    const rgRows = rg.map(d => row(d.jurName + ' · ' + d.use, d.url, d.fetched, h.rg.pack.maxAgeDays, d.quotes)).join('');
+    const rgRows = rg.map(d => row(d.jurName + ' · ' + d.use, d.url, d.fetched, docMaxAge(d, h.rg.pack.maxAgeDays), d.quotes)).join('');
     const missing = [...lotteryMissing().values()];
     const miss = missing.length ? '<section class="jg-c w3"><span class="jg-sm">Lo que no encontramos</span><h2>Sin reglamento, sin cuenta</h2><p>Si no encontramos un reglamento oficial, la página de ese juego no muestra premios. Hoy faltan ' + missing.length + ' piezas, por ejemplo la quiniela de Córdoba, la de Mendoza y las tómbolas del norte.</p></section>' : '';
     return hero(h, { kicker: 'Fuentes · ' + docs.length + ' documentos', scene: 'fuentes', lede: 'Cada premio, regla y chance sale de un documento oficial que guardamos con su fecha. Si la copia envejece o la cita no coincide, la página no se publica.' }) +

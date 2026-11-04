@@ -14,6 +14,7 @@ import { ROOT } from '../env.mjs';
 import { visibleText, normalize, stripComments } from '../../engine/text.mjs';
 import { hostKey } from '../../engine/registry.mjs';
 import { daysBetween } from '../../engine/format.mjs';
+import { docMaxAge } from './ownercopy.mjs';
 
 const FILE = 'data/sources/provinces/provinces.json';
 export const STATUSES = ['list', 'platform', 'none', 'blocked'];
@@ -23,14 +24,13 @@ export const loadProvinces = () => JSON.parse(fs.readFileSync(path.join(ROOT, FI
 export function checkProvinces({ today, data = loadProvinces(), registryIds = [], jurisdictions = [], copies = null } = {}) {
   const errs = [];
   const bad = m => errs.push('provinces: ' + m);
-  const maxAge = data.maxAgeDays || 100;
   const cache = {};
   for (const [slug, d] of Object.entries(data.docs || {})) {
     if (!/^https:\/\//.test(d.url || '')) bad(slug + ': url must be https');
     if (d.status !== 200) bad(slug + ': status ' + d.status);
     if (copies) { const h = copies(slug); if (h != null) cache[slug] = { raw: h, clean: stripComments(h), text: visibleText(h) }; continue; }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(d.fetched || '')) bad(slug + ': no fetched date');
-    else { const a = daysBetween(d.fetched, today); if (a < 0 || a > maxAge) bad(slug + ': copied ' + d.fetched + ', ' + a + ' days old (max ' + maxAge + ')'); }
+    else { const a = daysBetween(d.fetched, today), maxAge = docMaxAge(d, data.maxAgeDays); if (a < 0 || a > maxAge) bad(slug + ': copied ' + d.fetched + ', ' + a + ' days old (max ' + maxAge + ')'); }
     const f = path.join(ROOT, d.file || '');
     if (!d.file || !fs.existsSync(f)) { bad(slug + ': saved copy missing ' + d.file); continue; }
     const buf = fs.readFileSync(f);

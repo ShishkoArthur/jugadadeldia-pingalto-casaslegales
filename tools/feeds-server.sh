@@ -33,7 +33,9 @@ case "$SITE" in
     CRON_SPEC='4,19,34,49 * * * *'; RUN_UID=47210; IMAGE=jugadadeldia-feeds:node24; APK='poppler-utils'
     KEYS=(TG_BOT_TOKEN TG_CHAT_ID)
     # the feed "fuentes" reads the descriptions of the saved sources (JSON only, never the saved documents) for their expiry dates
-    SRC_SETS=(lottery rg truco generala chinchon escoba burako) ;;
+    SRC_SETS=(lottery rg truco generala chinchon escoba burako)
+    # how long a copy stays fresh (owner copy or downloaded): one dependency-free file
+    EXTRA_RULES=(--include='/tools/lib/' --include='/tools/lib/copyage.mjs') ;;
   pingalto)
     CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK=''
     KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID)

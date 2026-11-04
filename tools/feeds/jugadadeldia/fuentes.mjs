@@ -1,15 +1,18 @@
 // Expiry dates of the saved sources jugadadeldia.com is built from (docs/FEEDS.md, half-year check). No network: it reads the source
 // descriptions synced with the feed code (data/sources/<set>/*.json, without the saved documents) and lists, for the health report,
 // the last day each input is valid:
-//   - lottery rules and pages (LOTBA, PBA, CAS): saved copy + maxAgeDays of its file (after that the build stops);
+//   - lottery rules and pages (LOTBA, PBA, CAS): saved copy + maxAgeDays of its file, OWNER_COPY_MAX_AGE for an owner copy
+//     (tools/lib/copyage.mjs; after that the build stops);
 //   - the monthly programmes (a document fetched with a form "mes") are not listed here: the feed precios checks every cited value
 //     against the programme of each new month and lists how far they are confirmed;
-//   - the help package (rg): oldest copy + maxAgeDays (after that its lines are hidden and the build gate fails);
+//   - the help package (rg): the first day a copy turns too old, copy + docMaxAge (after that its lines are hidden and the build
+//     gate fails);
 //   - card and dice game rules: oldest copy + GAME_MAX_AGE (sites/jugadadeldia/content/sources.mjs).
 // warnDays 14 (an alert two weeks ahead).
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { docMaxAge, docUntil } from '../../lib/copyage.mjs';
 
 const SRC = fileURLToPath(new URL('../../../data/sources/', import.meta.url));
 export const GAME_MAX_AGE = 183;
@@ -28,13 +31,14 @@ export function sourceExpiries(sets) {
       if (!DAY.test(d.fetched || '')) throw new Error('sources: ' + f.id + ' ' + slug + ' has no fetched date');
       if (/(?:^|&)ano=\d{4}&mes=\d{2}(?:&|$)/.test(d.form || '')) continue;
       if (!(f.maxAgeDays > 0)) throw new Error('sources: ' + f.id + ' has no maxAgeDays');
-      out.push({ id: f.id + '-' + slug, what: f.id.toUpperCase() + ' ' + slug + ': saved copy of ' + d.fetched + ', max ' + f.maxAgeDays + ' days', until: plus(d.fetched, f.maxAgeDays), warnDays: WARN_DAYS });
+      out.push({ id: f.id + '-' + slug, what: f.id.toUpperCase() + ' ' + slug + ': saved copy of ' + d.fetched + ', max ' + docMaxAge(d, f.maxAgeDays) + ' days', until: docUntil(d, f.maxAgeDays), warnDays: WARN_DAYS });
     }
   }
   if (sets.rg) {
-    const o = oldest(sets.rg.docs), max = sets.rg.maxAgeDays || 100;
+    const o = oldest(sets.rg.docs);
     if (!o) throw new Error('sources: the help package has no dated documents');
-    out.push({ id: 'rg-package', what: 'help package (lines, self-exclusion, ages): ' + Object.keys(sets.rg.docs).length + ' copies, oldest ' + o + ', max ' + max + ' days', until: plus(o, max), warnDays: WARN_DAYS });
+    const first = Object.values(sets.rg.docs).filter(d => DAY.test(d.fetched || '')).map(d => ({ d, until: docUntil(d, sets.rg.maxAgeDays) })).sort((a, b) => a.until < b.until ? -1 : 1)[0];
+    out.push({ id: 'rg-package', what: 'help package (lines, self-exclusion, ages): ' + Object.keys(sets.rg.docs).length + ' copies, oldest ' + o + ', first to expire ' + first.d.fetched + ' (max ' + docMaxAge(first.d, sets.rg.maxAgeDays) + ' days)', until: first.until, warnDays: WARN_DAYS });
   }
   for (const [g, j] of Object.entries(sets.games || {})) {
     const o = oldest(j.docs);

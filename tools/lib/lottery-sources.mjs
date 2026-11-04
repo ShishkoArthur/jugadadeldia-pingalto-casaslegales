@@ -12,6 +12,7 @@ import { execFileSync } from 'node:child_process';
 import { ROOT } from '../env.mjs';
 import { normalize, visibleText, hasQuote } from '../../engine/text.mjs';
 import { daysBetween } from '../../engine/format.mjs';
+import { docMaxAge } from './ownercopy.mjs';
 
 export const LOTTERY_DIR = path.join(ROOT, 'data/sources/lottery');
 
@@ -54,7 +55,7 @@ export function checkLotteryFile(f, { today, seen = new Set() } = {}) {
     if (!d.url || !/^https:\/\//.test(d.url)) bad(slug + ': url must be https');
     if (d.status !== 200) bad(slug + ': status ' + d.status + ' (only 200 may be quoted)');
     if (!d.fetched || !/^\d{4}-\d{2}-\d{2}$/.test(d.fetched)) bad(slug + ': no fetched date');
-    else if (today) { const age = daysBetween(d.fetched, today); if (age < 0 || age > maxAge) bad(slug + ': fetched ' + d.fetched + ' is ' + age + ' days old (max ' + maxAge + ') - download the document again and re-verify every quote'); }
+    else if (today) { const age = daysBetween(d.fetched, today), lim = docMaxAge(d, maxAge); if (age < 0 || age > lim) bad(slug + ': fetched ' + d.fetched + ' is ' + age + ' days old (max ' + lim + ') - download the document again and re-verify every quote'); }
     const abs = path.join(ROOT, d.file || '');
     if (!d.file || !fs.existsSync(abs)) { bad(slug + ': saved document missing ' + d.file); continue; }
     if (crypto.createHash('sha256').update(fs.readFileSync(abs)).digest('hex') !== d.sha256) bad(slug + ': sha256 mismatch');

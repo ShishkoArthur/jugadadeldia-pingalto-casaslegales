@@ -1,8 +1,9 @@
 // Expiry dates of the casaslegales.com inputs our server cannot refresh by itself (docs/MAINTENANCE.md). No network: it reads the
 // source descriptions synced with the feed code (JSON only, never the saved documents) and the last listas.json:
-//   - owner copies (pages of sites that keep AI crawlers out, or geo-blocked outside Argentina): saved copy + maxAgeDays of its set;
+//   - owner copies (pages of sites that keep AI crawlers out, or geo-blocked outside Argentina): saved copy + OWNER_COPY_MAX_AGE
+//     (180 days, tools/lib/copyage.mjs; owner 2026-11-04);
 //   - review data of each brand (data/sources/reviews, collected from the owner's Chrome with an Argentine VPN exit): oldest copy,
-//     screenshot or host status + maxAgeDays (REVIEW_MAX_AGE, 180 days: the owner collects them again every half year);
+//     screenshot or host status + maxAgeDays (REVIEW_MAX_AGE = OWNER_COPY_MAX_AGE, 180 days: the owner collects them every half year);
 //   - operator copies and screenshots (data/sources/operators, data/shots): oldest + maxAgeDays of operators.json.
 // Every entry has warnDays 0 (an alert only once expired). Instead, REMINDER_DAYS (21) before the first expiry of anything (these
 // entries and the pages of listas.json) one reminder goes to Telegram with everything that expires within REMINDER_SPAN days of it,
@@ -10,7 +11,8 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadSources, isOwnerDoc } from './listas.mjs';
+import { loadSources } from './listas.mjs';
+import { isOwnerDoc, docMaxAge } from '../../lib/ownercopy.mjs';
 import { loadReviews, REVIEW_MAX_AGE } from '../../lib/revsources.mjs';
 
 export const REMINDER_DAYS = 21, REMINDER_SPAN = 60;
@@ -34,9 +36,9 @@ export function ownerExpiries({ src, reviews, operators, shots }) {
   const owner = (set, slug, d, maxAge) => out.push({ id: 'owner-' + slug, kind: 'owner', url: d.url, what: 'owner copy ' + slug + ' (' + set + '): ' + short(d.url) + ', saved ' + d.fetched + ', max ' + maxAge + ' days', until: plus(d.fetched, maxAge), warnDays: 0 });
   const seen = new Set();
   const once = (set, slug, d, maxAge) => { if (!DAY.test(d.fetched || '') || seen.has(slug)) return; seen.add(slug); owner(set, slug, d, maxAge); };
-  for (const r of src.registries) for (const [slug, d] of Object.entries(r.docs)) if (isOwnerDoc(d)) once('registry ' + r.id, slug, d, r.maxAgeDays || 100);
-  for (const [slug, d] of Object.entries(src.provinces.docs || {})) if (isOwnerDoc(d)) once('provinces', slug, d, src.provinces.maxAgeDays || 100);
-  for (const [slug, d] of Object.entries(src.rg.docs || {})) if (isOwnerDoc(d)) once('help package', slug, d, src.rg.maxAgeDays || 100);
+  for (const r of src.registries) for (const [slug, d] of Object.entries(r.docs)) if (isOwnerDoc(d)) once('registry ' + r.id, slug, d, docMaxAge(d, r.maxAgeDays));
+  for (const [slug, d] of Object.entries(src.provinces.docs || {})) if (isOwnerDoc(d)) once('provinces', slug, d, docMaxAge(d, src.provinces.maxAgeDays));
+  for (const [slug, d] of Object.entries(src.rg.docs || {})) if (isOwnerDoc(d)) once('help package', slug, d, docMaxAge(d, src.rg.maxAgeDays));
   for (const [brand, r] of Object.entries(reviews || {})) {
     const o = oldest([...Object.values(r.docs || {}).map(d => d.date), ...(r.shots || []).map(s => s.date), ...Object.values(r.status || {}).map(s => s.date)]);
     if (!o) continue;

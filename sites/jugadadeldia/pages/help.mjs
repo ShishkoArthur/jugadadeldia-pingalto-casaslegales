@@ -1,6 +1,6 @@
 // Help pages of jugadadeldia.com (help: true): no game menu, no links to quiniela, lottery or game pages (gates helpnav and
 // helplink). Every line, term and age comes from the help package data/sources/rg/ (quotes checked by tools/verify-rg.mjs,
-// older than 100 days stops the build).
+// a copy older than its limit stops the build: 100 days, 180 for an owner copy, tools/lib/copyage.mjs).
 import { crumbs } from './parts.mjs';
 
 const ld = h => [h.webPage(), crumbs(h, h.page.path === '/juego-responsable/' ? [] : [['/juego-responsable/', 'Juego responsable']])];

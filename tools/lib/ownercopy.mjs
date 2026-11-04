@@ -3,14 +3,13 @@
 // Copies already saved from them stay (the facts on the site keep their quotes), marked pendingOwnerCopy: true; the owner saves
 // the same pages from his own browser (docs/reference/owner-saves/README.md) and tools/owner-copy.mjs swaps the copy in
 // (copiedBy: "owner", pendingOwnerCopy removed). The build prints the pending list as a reminder; it does not fail.
+// Both kinds of owner copy are fresh for OWNER_COPY_MAX_AGE days (tools/lib/copyage.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT } from '../env.mjs';
 import { daysBetween } from '../../engine/format.mjs';
-
-export const AI_BLOCKED_HOSTS = ['loteriadecordoba.com.ar', 'ijan-neuquen.com', 'loteriaderionegro.gob.ar', 'enrejasalta.com.ar', 'hcdn.gob.ar'];
-const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
-export const isAiBlocked = url => AI_BLOCKED_HOSTS.some(h => hostOf(url) === h || hostOf(url).endsWith('.' + h));
+import { AI_BLOCKED_HOSTS, isAiBlocked, isOwnerDoc, docMaxAge, docUntil, OWNER_COPY_MAX_AGE, AUTO_MAX_AGE } from './copyage.mjs';
+export { AI_BLOCKED_HOSTS, isAiBlocked, isOwnerDoc, docMaxAge, docUntil, OWNER_COPY_MAX_AGE, AUTO_MAX_AGE };
 
 const read = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'));
 // every saved document of every source set: { set, file (json), slug, doc }
@@ -38,7 +37,7 @@ export function ownerCopyProblems() {
     .map(x => 'owner copies: ' + x.set + ' ' + x.slug + ' (' + x.doc.url + ') comes from a site that blocks AI crawlers in robots.txt; mark it pendingOwnerCopy or swap in the owner copy (tools/owner-copy.mjs)');
 }
 
-export function ownerCopyReminder(today, log = console.log, maxAge = 100) {
+export function ownerCopyReminder(today, log = console.log, maxAge = OWNER_COPY_MAX_AGE) {
   const list = ownerCopyPending();
   if (!list.length) return 0;
   const seen = new Map();

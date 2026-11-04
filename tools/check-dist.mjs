@@ -13,6 +13,7 @@ import { loadSite, LIMITS, decode } from './render.mjs';
 import { isOperatorHost } from './lib/operators.mjs';
 import { verifyRegistries, loadRegistries, loadRg } from './lib/sources.mjs';
 import { verify as verifyRg, freshness } from './verify-rg.mjs';
+import { isOwnerDoc, docMaxAge, docUntil } from './lib/ownercopy.mjs';
 import { daysBetween } from '../engine/format.mjs';
 
 const BUDGET = 160 * 1024;
@@ -208,17 +209,24 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
       if (n) bad('comments', f, n + ' JS comment(s)');
     }
   }
-  // sources: byte-for-byte verification and freshness (any document older than its maxAgeDays fails the gate)
+  // sources: byte-for-byte verification and freshness (any document older than its docMaxAge fails the gate: maxAgeDays of its set,
+  // OWNER_COPY_MAX_AGE for an owner copy, tools/lib/copyage.mjs)
   {
     const msgs = [];
     if (verifyRegistries({ today, log: m => { if (m.startsWith('  BAD')) msgs.push(m.trim()); } })) msgs.filter(m => !/days old/.test(m)).forEach(m => bad('verify', null, m));
-    for (const r of loadRegistries()) for (const [slug, d] of Object.entries(r.docs)) { const a = daysBetween(d.fetched, today); if (a < 0 || a > (r.maxAgeDays || 100)) bad('fresh', null, r.id + ' ' + slug + ' copied ' + d.fetched + ' (' + a + ' days)'); }
-    const pack = loadRg(), fr = freshness(pack, today);
-    for (const s of Object.keys(pack.docs)) if (!fr.docOk(s)) bad('fresh', null, 'help package ' + s + ' copied ' + pack.docs[s].fetched);
+    for (const m of staleCopies(today)) bad('fresh', null, m);
     const rgMsgs = [];
     if (verifyRg({ today, log: m => { if (m.startsWith('  BAD') && !/older than/.test(m)) rgMsgs.push(m.trim()); } })) rgMsgs.forEach(m => bad('verify', null, m));
   }
   return { problems, pages: htmls.length, files: files.length };
+}
+// the gate "fresh": every registry and help-package copy older than its docMaxAge (or dated in the future), as "<set> <slug> copied ..."
+export function staleCopies(today, regs = loadRegistries(), pack = loadRg()) {
+  const out = [];
+  for (const r of regs) for (const [slug, d] of Object.entries(r.docs)) { const a = daysBetween(d.fetched, today); if (a < 0 || a > docMaxAge(d, r.maxAgeDays)) out.push(r.id + ' ' + slug + ' copied ' + d.fetched + ' (' + a + ' days, max ' + docMaxAge(d, r.maxAgeDays) + ')'); }
+  const fr = freshness(pack, today);
+  for (const s of Object.keys(pack.docs)) if (!fr.docOk(s)) out.push('help package ' + s + ' copied ' + pack.docs[s].fetched + ' (max ' + fr.limit(s) + ' days)');
+  return out;
 }
 function createHashHex(buf) { return createHash('sha256').update(buf).digest('hex'); }
 // the HTML of every element opened by a tag matching scope (a global RegExp whose group 1 is the tag name), nesting counted
@@ -330,6 +338,22 @@ async function selftest(id) {
   await run('extrafile', tmp => writeFileSync(join(tmp, 'notas.exe'), 'x'));
   await run('missing', tmp => rmSync(join(tmp, A)));
   await run('fresh', () => {}, { today: '2099-01-01' });
+  // owner copies live OWNER_COPY_MAX_AGE days, downloaded copies the maxAgeDays of their set (owner 2026-11-04): on the last valid day
+  // of an owner copy the gate does not name it, the day after it does; a downloaded copy is named the day after its own last day,
+  // while the owner copy is still fresh
+  {
+    const regs = loadRegistries(), pack = loadRg();
+    const all = [...regs.flatMap(r => Object.entries(r.docs).map(([slug, d]) => ({ name: r.id + ' ' + slug + ' ', d, max: r.maxAgeDays }))),
+      ...Object.entries(pack.docs).map(([slug, d]) => ({ name: 'help package ' + slug + ' ', d, max: pack.maxAgeDays }))];
+    const own = all.filter(x => isOwnerDoc(x.d)), auto = all.filter(x => !isOwnerDoc(x.d));
+    const day = (d, n) => new Date(Date.parse(d + 'T00:00:00Z') + n * 864e5).toISOString().slice(0, 10);
+    const named = (today, x) => staleCopies(today, regs, pack).some(m => m.startsWith(x.name));
+    const o = own.sort((a, b) => a.d.fetched < b.d.fetched ? 1 : -1)[0], a = auto.sort((x, y) => x.d.fetched < y.d.fetched ? 1 : -1)[0];
+    const ok = !!o && !!a && docMaxAge(o.d, o.max) > docMaxAge(a.d, a.max) && !named(docUntil(o.d, o.max), o) && named(day(docUntil(o.d, o.max), 1), o) &&
+      named(day(docUntil(a.d, a.max), 1), a) && !named(day(docUntil(a.d, a.max), 1), o);
+    console.log((ok ? '  ok    ' : '  BAD   ') + 'corruption "fresh" (owner copy ' + (o ? o.name.trim() + ' ' + docMaxAge(o.d, o.max) : '-') + ' days, downloaded copy ' + (a ? a.name.trim() + ' ' + docMaxAge(a.d, a.max) : '-') + ' days)');
+    if (!ok) fail++;
+  }
   // a registry quote changed in the saved document: byte-for-byte verification must fail (restored right after)
   {
     const r = loadRegistries()[0], d = Object.values(r.docs)[0], fpath = join(ROOT, d.file), old = readFileSync(fpath);

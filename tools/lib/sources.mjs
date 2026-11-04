@@ -1,6 +1,7 @@
 // Facts with sources: licence registries (data/sources/registries/*.json) and the help package (data/sources/rg/helplines.json).
 // verifyRegistries() is the byte-level check of every registry fact against its saved document; the build refuses to start when
-// it finds a problem, so the site never shows an unverified licence. Freshness: a document older than maxAgeDays is an error.
+// it finds a problem, so the site never shows an unverified licence. Freshness: a document older than docMaxAge (tools/lib/ownercopy.mjs:
+// maxAgeDays of the registry, OWNER_COPY_MAX_AGE for an owner copy) is an error.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -8,6 +9,7 @@ import { ROOT } from '../env.mjs';
 import { visibleText, normalize, stripComments } from '../../engine/text.mjs';
 import { hostKey } from '../../engine/registry.mjs';
 import { daysBetween } from '../../engine/format.mjs';
+import { docMaxAge, isOwnerDoc } from './ownercopy.mjs';
 
 const REG_DIR = path.join(ROOT, 'data/sources/registries');
 export const readJson = f => JSON.parse(fs.readFileSync(path.isAbsolute(f) ? f : path.join(ROOT, f), 'utf8'));
@@ -27,12 +29,11 @@ export function checkRegistry(r, { today, raw, names = brandNames(), fresh = tru
   const cache = new Map();
   const doc = slug => { if (!cache.has(slug)) { const h = rawOf(slug); cache.set(slug, h == null ? null : { raw: h, clean: stripComments(h), text: visibleText(h) }); } return cache.get(slug); };
   if (!r.id || !/^[a-z-]+$/.test(r.id)) bad('bad id');
-  const maxAge = r.maxAgeDays || 100;
   for (const [slug, d] of Object.entries(docs)) {
     if (!d.url || !/^https:\/\//.test(d.url)) bad(slug + ': url must be https');
     if (d.status !== 200) bad(slug + ': status ' + d.status + ' (only 200 may be quoted)');
     if (!d.fetched || !/^\d{4}-\d{2}-\d{2}$/.test(d.fetched)) bad(slug + ': no fetched date');
-    else if (fresh) { const age = daysBetween(d.fetched, today); if (age < 0 || age > maxAge) bad(slug + ': fetched ' + d.fetched + ' is ' + age + ' days old (max ' + maxAge + ') - run node tools/verify-sources.mjs --recheck --write'); }
+    else if (fresh) { const age = daysBetween(d.fetched, today), maxAge = docMaxAge(d, r.maxAgeDays); if (age < 0 || age > maxAge) bad(slug + ': fetched ' + d.fetched + ' is ' + age + ' days old (max ' + maxAge + ') - ' + (isOwnerDoc(d) ? 'the owner saves it again (docs/reference/owner-saves/README.md)' : 'run node tools/verify-sources.mjs --recheck --write')); }
     if (!raw) {
       const f = path.join(ROOT, d.file || '');
       if (!d.file || !fs.existsSync(f)) { bad(slug + ': saved document missing ' + d.file); continue; }

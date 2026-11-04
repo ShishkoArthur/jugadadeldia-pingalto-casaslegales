@@ -4,13 +4,14 @@
 import { TILES } from './map.mjs';
 import { provDocRows } from './provdata.mjs';
 import { total, countBy, brands, brandMatrix, multiJurisdiction, splitAddress } from '../../../engine/registry.mjs';
-import { fmtDate, fmtInt, addDays } from '../../../engine/format.mjs';
+import { fmtDate, fmtInt } from '../../../engine/format.mjs';
+import { OWNER_COPY_MAX_AGE, docUntil } from '../../../tools/lib/copyage.mjs';
 
 export function facts(h) {
   const regs = h.regs, by = countBy(regs);
   const docs = [...h.docs(), ...provDocRows(h)];
-  const oldest = docs.map(d => d.fetched).sort()[0];
   const maxAge = Math.min(...regs.map(r => r.maxAgeDays), h.rg.pack.maxAgeDays);
+  const firstExpiry = docs.map(d => docUntil(d, maxAge)).sort()[0];
   const f = {
     jur_total: TILES.length,
     reg_total: regs.length,
@@ -30,8 +31,9 @@ export function facts(h) {
     quote_total: docs.reduce((n, d) => n + d.quotes, 0),
     rg_lines: Object.values(h.rg.disp.provinces).filter(x => x.line).length,
     max_age: maxAge,
+    owner_max_age: OWNER_COPY_MAX_AGE,
     checked: fmtDate(h.checked),
-    next_check: fmtDate(addDays(oldest, maxAge)),
+    next_check: fmtDate(firstExpiry),
   };
   for (const [k, v] of Object.entries(f)) if (typeof v === 'number') f[k] = fmtInt(v);
   return f;

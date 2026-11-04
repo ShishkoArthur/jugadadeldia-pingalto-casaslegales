@@ -7,6 +7,7 @@ import { join } from 'node:path';
 import { ROOT } from '../../../tools/env.mjs';
 import { loadLotteryFiles, verifyLottery } from '../../../tools/lib/lottery-sources.mjs';
 import { daysBetween } from '../../../engine/format.mjs';
+import { docMaxAge } from '../../../tools/lib/copyage.mjs';
 
 export const GAME_MAX_AGE = 183;
 const LOT_TITLES = {
@@ -41,7 +42,7 @@ export function loadSources(today) {
     for (const [slug, d] of Object.entries(f.docs || {})) {
       const key = f.id + ':' + slug;
       if (!LOT_TITLES[key]) throw new Error('sources: no title for lottery document ' + key);
-      docs.push({ key, group: 'Loterías', title: LOT_TITLES[key], url: d.linkedFrom || d.url, fetched: d.fetched, maxAge: f.maxAgeDays, quotes: (f.facts || []).filter(x => x.doc === slug).length });
+      docs.push({ key, group: 'Loterías', title: LOT_TITLES[key], url: d.linkedFrom || d.url, fetched: d.fetched, maxAge: docMaxAge(d, f.maxAgeDays), quotes: (f.facts || []).filter(x => x.doc === slug).length });
     }
     for (const x of f.facts || []) facts.set(x.id, { quote: x.quote, doc: f.id + ':' + x.doc, value: x.value });
   }
