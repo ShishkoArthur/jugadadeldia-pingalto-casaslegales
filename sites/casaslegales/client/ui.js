@@ -1,5 +1,5 @@
 import { checkHost, anatomy } from '../../../engine/hostcheck.mjs';
-import { margin, parseOdd, parseAny, convertOdd, toFractional, toAmerican, parlay } from '../../../engine/odds.mjs';
+import { margin, parseOdd, parseAny, convertOdd, toFractional, toAmerican, parlay, settleHandicap, handicapLabel, handicapReturn } from '../../../engine/odds.mjs';
 const root = document.documentElement;
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -132,6 +132,7 @@ function marginCalc() {
     const m = margin(odds);
     form.querySelector('[data-k=margin]').textContent = pct(m.margin);
     form.querySelector('[data-k=payout]').textContent = pct(m.payout);
+    form.querySelector('[data-k=keep]').textContent = pct(1 - m.payout);
     form.querySelector('[data-k=sum]').textContent = pct(m.sum);
     const names = k === 2 ? names2 : names3;
     rowsEl.textContent = '';
@@ -330,6 +331,33 @@ function parlayCalc() {
   form.addEventListener('submit', e => { e.preventDefault(); run(); });
 }
 
+const HCP_WORD = { win: 'gana', 'half-win': 'mitad gana, mitad vuelve', push: 'se devuelve', 'half-lose': 'mitad pierde, mitad vuelve', lose: 'pierde' };
+function hcpCalc() {
+  const form = document.querySelector('[data-rl-hcp]');
+  if (!form) return;
+  const err = form.querySelector('[data-rl-herr]');
+  const set = (k, t) => { const e = form.querySelector('[data-k=' + k + ']'); if (e) e.textContent = t; };
+  const goals = v => (/^\d{1,2}$/.test(String(v).trim()) && Number(v) <= 20 ? Number(v) : null);
+  const run = () => {
+    const line = Number(form.querySelector('[name=l]').value);
+    const a = goals(form.querySelector('[name=a]').value), b = goals(form.querySelector('[name=b]').value);
+    const o = parseOdd(form.querySelector('[name=o]').value);
+    const st = Number(String(form.querySelector('[name=s]').value).replace(/\./g, '').replace(',', '.'));
+    if (a === null || b === null || o === null || !(st > 0) || !Number.isFinite(line)) { err.hidden = false; return; }
+    err.hidden = true;
+    const k = handicapLabel(settleHandicap(line, a - b));
+    const r = handicapReturn(line, a - b, o, st);
+    set('res', HCP_WORD[k]);
+    set('adj', cdec(a + line, 2).replace(/0+$/, '').replace(/,$/, '').replace(/^-/, String.fromCharCode(0x2212)) + ' a ' + b);
+    set('ret', fmtMoney(r));
+    const net = Math.round(r - st);
+    set('net', (net > 0 ? '+' : net < 0 ? String.fromCharCode(0x2212) : '') + fmtMoney(Math.abs(net)));
+  };
+  form.addEventListener('input', run);
+  form.addEventListener('change', run);
+  form.addEventListener('submit', e => { e.preventDefault(); run(); });
+}
+
 function provCheck() {
   const form = document.querySelector('[data-rl-pchk]');
   const D = json('rl-pchk');
@@ -366,4 +394,5 @@ verifier();
 convCalc();
 novigCalc();
 parlayCalc();
+hcpCalc();
 provCheck();

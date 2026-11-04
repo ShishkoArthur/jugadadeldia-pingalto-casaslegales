@@ -107,20 +107,27 @@ export const calcMargen = {
       mm.implied.map((p, i) => '<i style="--w:' + (100 * p / Math.max(mm.sum, 1)).toFixed(2) + '%"><span>' + h.esc(labels[i]) + ' ' + pct(p, 1) + '</span></i>').join('') + '</div>' +
       '<p class="rl-mcap"><b>' + pct(mm.sum) + '</b> en total · lo que pasa del 100 % es el margen: <b>' + pct(mm.margin) + '</b></p>';
     const inputs = names.map((n, i) => '<label><span>' + n + '</span><input inputmode="decimal" autocomplete="off" name="o' + i + '" value="' + EX.odds[i] + '" aria-label="Cuota decimal: ' + n + '"' + (i === 2 ? ' data-third' : '') + '></label>').join('');
-    const out = '<div class="rl-mout" data-rl-mout aria-live="polite"><div><b data-k="margin">' + pct(m.margin) + '</b><span>margen de la casa</span></div><div><b data-k="payout">' + pct(m.payout) + '</b><span>devolución teórica</span></div><div><b data-k="sum">' + pct(m.sum) + '</b><span>suma de probabilidades</span></div></div>' +
+    const out = '<div class="rl-mout rl-cout" data-rl-mout aria-live="polite"><div><b data-k="margin">' + pct(m.margin) + '</b><span>margen (lo que pasa del 100 %)</span></div><div><b data-k="keep">' + pct(1 - m.payout) + '</b><span>se queda la casa de lo apostado</span></div><div><b data-k="payout">' + pct(m.payout) + '</b><span>devolución teórica</span></div><div><b data-k="sum">' + pct(m.sum) + '</b><span>suma de probabilidades</span></div></div>' +
       '<table class="rl-reg rl-mtbl"><thead><tr><th scope="col">Resultado</th><th scope="col">Cuota</th><th scope="col">Prob. implícita</th><th scope="col">Cuota sin margen</th></tr></thead><tbody data-rl-mrows>' +
       m.odds.map((o, i) => '<tr><th scope="row">' + names[i] + '</th><td>' + dec(o) + '</td><td>' + pct(m.implied[i]) + '</td><td>' + dec(m.fairOdds[i]) + '</td></tr>').join('') + '</tbody></table>';
     const tool = '<form class="rl-calc" data-rl-margin novalidate><fieldset><legend>Mercado</legend><label class="rl-rad"><input type="radio" name="k" value="3" checked> Tres resultados (1X2)</label><label class="rl-rad"><input type="radio" name="k" value="2"> Dos resultados</label></fieldset>' +
       '<div class="rl-oin">' + inputs + '</div><p class="rl-merr" data-rl-merr hidden>Escribí cuotas decimales mayores que 1, por ejemplo 1,85.</p>' + out + '</form>';
     const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">Calculadora · sin datos de operadores</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Las cuotas de un mercado esconden una comisión: si sumás la probabilidad que implica cada cuota, el total pasa del 100 %. Esa diferencia es el margen. Escribí las cuotas decimales de un partido y la calculadora hace la cuenta.</p></div>' +
-      '<div class="rl-box"><h3>La cuenta</h3><p class="rl-form">margen = 1/cuota₁ + 1/cuota₂ + … − 1</p><p>Cuota sin margen = cuota × suma de probabilidades. Es la cuota que pagaría una casa que no cobra nada.</p></div></section>';
-    const how = '<section class="rl-sec">' + sectionHead(h, 'Calculá el margen', 'acepta coma o punto: 1,85 o 1.85') + '<div class="rl-card">' + tool + '</div></section>';
+      '<div class="rl-box"><h3>La cuenta</h3><p class="rl-form">suma = 1/cuota₁ + 1/cuota₂ + …</p><p class="rl-form">margen = suma − 1</p><p class="rl-form">devolución = 1 / suma · se queda la casa = 1 − devolución</p><p>Cuota sin margen = cuota × suma. Es la cuota que pagaría una casa que no cobra nada.</p></div></section>';
+    const steps = '<details class="rl-box"><summary>Paso a paso, con el ejemplo</summary><ol>' +
+      m.odds.map((o, i) => '<li>' + names[i] + ': 1 / ' + dec(o) + ' = ' + dec(m.implied[i], 4) + '</li>').join('') +
+      '<li>Suma: ' + m.implied.map(p => dec(p, 4)).join(' + ') + ' = ' + dec(m.sum, 4) + ', o sea ' + pct(m.sum) + '</li>' +
+      '<li>Margen: ' + dec(m.sum, 4) + ' − 1 = ' + pct(m.margin) + '</li>' +
+      '<li>Devolución: 1 / ' + dec(m.sum, 4) + ' = ' + pct(m.payout) + '; la casa se queda ' + pct(1 - m.payout) + '</li>' +
+      '<li>Cuota sin margen del local: ' + dec(m.odds[0]) + ' × ' + dec(m.sum, 4) + ' = ' + dec(m.fairOdds[0]) + '</li></ol></details>';
+    const how = '<section class="rl-sec">' + sectionHead(h, 'Calculá el margen', 'acepta coma o punto: 1,85 o 1.85') + '<div class="rl-card">' + tool + '</div>' + steps + '</section>';
     const exs = '<section class="rl-sec">' + sectionHead(h, 'Dos ejemplos, calculados', 'cuotas de ejemplo, no de un sitio real') + '<div class="rl-two">' +
       '<div class="rl-box"><h3>Un partido de la Liga Profesional, 1X2</h3><p>Cuotas ' + EX.odds.join(' · ') + ' para local, empate y visitante.</p>' + bar(m, names) + '</div>' +
       '<div class="rl-box"><h3>Más o menos de 2,5 goles</h3><p>Cuotas ' + EX.two.join(' · ') + '.</p>' + bar(m2, ['Más', 'Menos']) + '</div></div></section>';
     const read = '<section class="rl-sec">' + sectionHead(h, 'Cómo leer el resultado') + '<div class="rl-two">' +
-      '<div class="rl-box"><h3>Qué te dice</h3><p>Cuánto se queda la casa, en promedio, sobre todo lo apostado en ese mercado si el dinero se reparte según sus cuotas. Con el ejemplo 1X2, de cada $ 1.000 apostados la devolución teórica es de $ ' + fmtInt(Math.round(1000 * m.payout)) + '.</p></div>' +
+      '<div class="rl-box"><h3>Qué te dice</h3><p>Cuánto se queda la casa, en promedio, de todo lo apostado en ese mercado si el dinero se reparte según sus cuotas. Con el ejemplo 1X2, de cada $ 1.000 apostados vuelven $ ' + fmtInt(Math.round(1000 * m.payout)) + ' y la casa se queda $ ' + fmtInt(1000 - Math.round(1000 * m.payout)) + ' (' + pct(1 - m.payout) + ').</p>' +
+        '<p>El margen (' + pct(m.margin) + ') es otra forma de decir lo mismo: se mide sobre la suma de probabilidades y no sobre lo apostado, por eso da un poco más. Los sitios y las notas suelen usar el margen; para comparar dos mercados, usá siempre la misma de las dos cifras.</p></div>' +
       '<div class="rl-box"><h3>Qué no te dice</h3><p>Quién va a ganar el partido ni si una apuesta conviene. Un margen más bajo no cambia que, a la larga, la casa cobra su parte. Si sentís que el juego dejó de ser un juego, la línea de ayuda está abajo.</p></div></div></section>';
     return hero + how + exs + read + '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + go(h, [['/guia/handicap', 'Qué es el hándicap, con fútbol argentino'], ['/guia/como-verificar', 'Cómo verificar un sitio'], ['/juego-responsable', 'Ayuda en tu provincia']]) + '</section>';
   },
@@ -161,8 +168,27 @@ export const handicap = {
       '<article><h3>Entera: −1, 0, +1</h3><p>Puede haber empate después de sumar la línea. En ese caso te devuelven lo apostado.</p></article>' +
       '<article><h3>Media: −0,5, −1,5</h3><p>Nunca hay empate con la línea: la apuesta se gana o se pierde entera.</p></article>' +
       '<article><h3>Cuarto: −0,25, −0,75</h3><p>Es media apuesta en cada una de las dos líneas vecinas. −0,75 es la mitad en −0,5 y la mitad en −1.</p></article></div></section>';
+    const opts = [];
+    for (let l = -3; l <= 3.0001; l += 0.25) opts.push(Math.round(l * 100) / 100);
+    const ex = { line: -0.75, a: 2, b: 1 };
+    const exS = settleHandicap(ex.line, ex.a - ex.b), exK = handicapLabel(exS);
+    const calc = '<form class="rl-calc" data-rl-hcp novalidate><div class="rl-oin">' +
+      '<label><span>Línea de tu equipo</span><select name="l" aria-label="Línea de hándicap">' + opts.map(l => '<option value="' + l + '"' + (l === ex.line ? ' selected' : '') + '>' + lineTxt(l) + '</option>').join('') + '</select></label>' +
+      '<label><span>Goles de tu equipo</span><input name="a" inputmode="numeric" autocomplete="off" value="' + ex.a + '"></label>' +
+      '<label><span>Goles del rival</span><input name="b" inputmode="numeric" autocomplete="off" value="' + ex.b + '"></label>' +
+      '<label><span>Cuota decimal</span><input name="o" inputmode="decimal" autocomplete="off" value="' + dec(odd) + '"></label>' +
+      '<label><span>Monto en $</span><input name="s" inputmode="numeric" autocomplete="off" value="' + stake + '"></label></div>' +
+      '<p class="rl-merr" data-rl-herr hidden>Escribí goles enteros (0 a 20), una cuota decimal mayor que 1 y un monto.</p>' +
+      '<div class="rl-mout rl-cout" aria-live="polite"><div class="rl-hres"><b data-k="res">' + h.esc(WORD[exK]) + '</b><span>resultado de la apuesta</span></div>' +
+      '<div><b data-k="adj">' + dec(ex.a + ex.line, 2).replace(/0+$/, '').replace(/,$/, '') + ' a ' + ex.b + '</b><span>marcador con la línea</span></div>' +
+      '<div><b data-k="ret">$ ' + fmtInt(Math.round(handicapReturn(ex.line, ex.a - ex.b, odd, stake))) + '</b><span>vuelve, con lo apostado</span></div>' +
+      '<div><b data-k="net">' + (handicapReturn(ex.line, ex.a - ex.b, odd, stake) - stake >= 0 ? '+' : '−') + '$ ' + fmtInt(Math.abs(Math.round(handicapReturn(ex.line, ex.a - ex.b, odd, stake) - stake))) + '</b><span>ganancia o pérdida</span></div></div></form>';
+    const euro = '<section class="rl-sec">' + sectionHead(h, 'Hándicap europeo: otra apuesta', 'no confundir con el asiático') + '<div class="rl-two">' +
+      '<div class="rl-box"><h3>Asiático (esta página)</h3><p>Dos resultados: tu equipo o el rival. Si con la línea queda empate, te devuelven lo apostado. Las líneas pueden ser enteras, medias o cuartos.</p></div>' +
+      '<div class="rl-box"><h3>Europeo o de 3 vías</h3><p>Tres resultados, como un 1X2: local, empate con el hándicap y visitante. Con ' + team + ' (−1) y un 2-1, gana la opción «empate (−1)»: no hay devolución. Las líneas son siempre enteras.</p></div></div></section>';
     return hero + '<section class="rl-sec">' + sectionHead(h, 'Cada línea, cada resultado', 'G gana · D se devuelve · P pierde') + grid + '</section>' + kinds +
+      '<section class="rl-sec">' + sectionHead(h, 'Calculá tu hándicap', 'cualquier línea de −3 a +3, en cuartos') + '<div class="rl-card">' + calc + '</div></section>' +
       '<section class="rl-sec">' + sectionHead(h, 'Cuánto vuelve en los cuartos', 'cuota de ejemplo, no de un sitio real') + '<div class="rl-two">' + rows + '</div>' +
-      '<p class="rl-note">El hándicap cambia cómo se reparte el resultado, no el margen de la casa: las cuotas de cada línea también lo traen.' + (h.built('/calculadora/margen') ? ' Podés medirlo con la <a href="' + h.href('/calculadora/margen') + '">calculadora de margen</a>.' : '') + '</p></section>';
+      '<p class="rl-note">El hándicap cambia cómo se reparte el resultado, no el margen de la casa: las cuotas de cada línea también lo traen.' + (h.built('/calculadora/margen') ? ' Podés medirlo con la <a href="' + h.href('/calculadora/margen') + '">calculadora de margen</a>.' : '') + '</p></section>' + euro;
   },
 };

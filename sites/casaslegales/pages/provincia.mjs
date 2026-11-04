@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { TILES } from '../content/map.mjs';
 import { isoMap, isoHeight } from './iso.mjs';
 import { PROV_COPY } from '../content/provcopy.mjs';
@@ -62,6 +64,43 @@ function others(h, x) {
       '</ul></article>').join('') + '</div></section>';
 }
 
+const ROOT = fileURLToPath(new URL('../../../', import.meta.url));
+const fold = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+// "Is <brand> legal in <province>?" for provinces without a verified list: what the saved official pages say about the brand
+// (occurrences counted in the raw copies) and where the brand does figure, from the verified lists.
+function asked(h, P, x, o) {
+  if (!o.ask || !o.ask.length) return '';
+  const matrix = brandMatrix(h.regs, h.names);
+  if (x.reg) return o.ask.map(b => {
+    const row = matrix.find(r => r.brand === b);
+    if (!row) throw new Error('/provincia/' + x.id + ': asked brand ' + b + ' is in no verified list');
+    if (row.cells[x.id]) throw new Error('/provincia/' + x.id + ': ' + b + ' is in this list; the question block is for brands that are not');
+    const where = h.regs.filter(r => row.cells[r.id]);
+    return '<section class="rl-sec">' + sectionHead(h, '¿Buscás ' + row.name + '?', 'no es de esta lista') + '<div class="rl-box"><p><b>' + h.esc(row.name) + ' no figura en la lista oficial de ' + h.esc(x.name) + '</b> (' + x.reg.licensees.length + ' sitios, copia del ' + h.fmtDate(h.doc(x.reg.list.doc).fetched) + '). ' +
+      'Figura en ' + (where.length === 1 ? 'la lista de ' : 'las listas de ') + where.map(r => h.esc(h.rg.prov(r.id).name) + ' (<span class="rl-host">' + h.esc(row.cells[r.id].host) + '</span>)').join(', ') + ': es otra jurisdicción, con su propio regulador.</p>' +
+      '<p>' + brandLink(h, b, 'Ficha de ' + row.name) + '</p></div></section>';
+  }).join('');
+  const slugs = [...new Set([...(x.e.platforms || []).map(p => p.evidence.doc), ...(x.e.seen || []).map(s => s.doc)])];
+  const raw = slugs.map(sl => fold(fs.readFileSync(ROOT + P.doc(sl).file, 'utf8')));
+  const code = id => TILES.find(t => t.id === id).code;
+  return o.ask.map(b => {
+    const row = matrix.find(r => r.brand === b);
+    if (!row) throw new Error('/provincia/' + x.id + ': asked brand ' + b + ' is in no verified list');
+    const name = row.name, terms = [...new Set([fold(name), fold(name).replace(/\s+/g, '')])];
+    const hits = raw.reduce((n, t) => n + terms.reduce((m, w) => m + t.split(w).length - 1, 0), 0);
+    if (hits) throw new Error('/provincia/' + x.id + ': ' + name + ' appears in an official copy; rewrite the answer by hand');
+    const where = h.regs.filter(r => row.cells[r.id]);
+    const src = slugs.length ? 'En ' + (slugs.length === 1 ? 'la página oficial de ' + x.name + ' que copiamos' : 'las ' + slugs.length + ' páginas oficiales de ' + x.name + ' que copiamos') + ' (' + slugs.map(sl => P.doc(sl).host).join(', ') + ') el nombre «' + name + '» no aparece ninguna vez.' :
+      'No tenemos una página oficial de ' + x.name + ' que podamos revisar' + '.';
+    return '<section class="rl-sec">' + sectionHead(h, '¿' + name + ' es legal en ' + x.name + '?', 'lo que dicen las fuentes que guardamos') + '<div class="rl-two">' +
+      '<div class="rl-box"><h3>No lo podemos confirmar</h3><p>' + h.esc(src) + ' Sin una lista oficial de ' + h.esc(x.name) + ' no afirmamos que ' + h.esc(name) + ' esté habilitado ahí, ni que no lo esté.</p></div>' +
+      '<div class="rl-box"><h3>Dónde sí figura</h3><p>' + brandLink(h, b, name) + ' figura en ' + (where.length === 1 ? 'la lista oficial de ' : where.length + ' listas oficiales: ') + where.map(r => h.esc(h.rg.prov(r.id).name) + ' (<span class="rl-host">' + h.esc(row.cells[r.id].host) + '</span>)').join(', ') + '. Una licencia de otra jurisdicción no vale en ' + h.esc(x.name) + '.</p></div></div>' +
+      '<p class="rl-note">Copias del ' + listsDateOf(h) + '. Si ' + h.esc(x.name) + ' publica una lista, la sumamos y esta respuesta cambia.</p></section>';
+  }).join('');
+}
+const listsDateOf = h => h.fmtDate(h.regs.map(r => h.doc(r.list.doc).fetched).sort().at(-1));
+
 export function help(h, x) {
   const j = x.j, parts = [];
   if (j.line) parts.push('<div class="rl-box"><h3>' + h.esc(j.line.name) + '</h3><a class="rl-tel" href="tel:' + h.esc(j.line.phoneTel) + '">' + h.esc(j.line.phone) + '</a>' +
@@ -107,10 +146,10 @@ function listBody(h, P, x, o) {
   const extra = tools.length ? '<section class="rl-sec">' + sectionHead(h, o.toolsTitle || 'Herramientas del regulador') + '<div class="rl-law">' + tools.map(q => '<article>' + quote(h, q, r.regulator.short) + '</article>').join('') + '</div></section>' : '';
   const report = r.quotes.report ? '<section class="rl-sec">' + sectionHead(h, 'Denunciar juego ilegal') + quote(h, r.quotes.report, r.regulator.short) + '</section>' : '';
   const ageQ = !x.j.age && r.quotes.age ? '<section class="rl-sec">' + sectionHead(h, 'Edad mínima') + quote(h, r.quotes.age, r.regulator.short) + '</section>' : age(h, x);
-  return list + others(h, x) + who + extra + report + ageQ + help(h, x);
+  return list + asked(h, P, x, o) + others(h, x) + who + extra + report + ageQ + help(h, x);
 }
 
-function platformBody(h, P, x) {
+function platformBody(h, P, x, o) {
   const e = x.e;
   const cards = '<section class="rl-sec">' + sectionHead(h, e.platforms.length === 1 ? 'La plataforma que enlaza el regulador' : 'Las plataformas que enlaza el regulador', 'enlace en su sitio oficial, sin lista de otros operadores') +
     '<div class="rl-plat" data-nosnippet>' + e.platforms.map(p => {
@@ -122,7 +161,7 @@ function platformBody(h, P, x) {
     [...new Set(e.platforms.map(p => p.evidence.doc))].map(d => pdSrc(h, P, d)).join('') + '</section>';
   const who = x.j.regulator ? '<section class="rl-sec">' + sectionHead(h, 'Quién regula') + '<div class="rl-two">' + regulatorBox(h, x) +
     (e.report ? '<div class="rl-box"><h3>Denunciar juego ilegal</h3>' + pdQuote(h, P, e.report, x.j.regulator.name) + '</div>' : '') + '</div></section>' : '';
-  return cards + who + age(h, x) + help(h, x);
+  return cards + asked(h, P, x, o) + who + age(h, x) + help(h, x);
 }
 
 function seenBody(h, P, x, o) {
@@ -137,7 +176,7 @@ function seenBody(h, P, x, o) {
     '<div class="rl-two">' + boxes.join('') + '</div>' +
     '<p class="rl-note">Que no haya lista acá no quiere decir que no haya sitios habilitados en ' + h.esc(x.name) + ', ni que los haya. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></section>';
   const who = x.j.regulator ? '<section class="rl-sec">' + sectionHead(h, 'Quién regula') + '<div class="rl-two">' + regulatorBox(h, x) + '</div></section>' : '';
-  return what + who + age(h, x) + help(h, x) + nextSteps(h);
+  return what + asked(h, P, x, o) + who + age(h, x) + help(h, x) + nextSteps(h);
 }
 
 export function province(id) {
@@ -155,7 +194,7 @@ export function province(id) {
     render(h) {
       const P = provData(h), x = P.one(id);
       if (x.st !== o.status) throw new Error('/provincia/' + id + ': the copy is written for status ' + o.status + ' but the verified data says ' + x.st);
-      const body = x.st === 'list' ? listBody(h, P, x, o) : x.st === 'platform' ? platformBody(h, P, x) : seenBody(h, P, x, o);
+      const body = x.st === 'list' ? listBody(h, P, x, o) : x.st === 'platform' ? platformBody(h, P, x, o) : seenBody(h, P, x, o);
       return hero(h, P, x, o) + body;
     },
   };

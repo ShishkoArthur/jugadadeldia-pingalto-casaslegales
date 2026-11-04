@@ -3,6 +3,7 @@ import { brandMatrix, splitAddress } from '../../../engine/registry.mjs';
 import { isoMap, isoHeight, isoLadder } from './iso.mjs';
 import { src, quote, hostHtml, sectionHead, brandLink } from './parts.mjs';
 import { provData } from '../content/provdata.mjs';
+import { go } from './licencias.mjs';
 
 export const home = {
   path: '/',
@@ -56,9 +57,9 @@ export const home = {
 
     const multi = splitAddress(matrix);
     const dom = '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de tu provincia?', h.t('{{split_total}} marcas cambian de dirección según la jurisdicción')) +
-      '<p class="rl-note">La misma marca puede tener una dirección distinta en cada provincia. En la lista oficial figura una dirección exacta: mirá la dirección completa, no solo el nombre de la marca.</p>' +
+      '<p class="rl-note">La misma marca puede tener una dirección distinta en cada provincia. En la lista oficial figura una dirección exacta: mirá la dirección completa, no solo el nombre de la marca. «Ir» abre la dirección de la lista de esa provincia, sin códigos de afiliado; solo mayores de 18.</p>' +
       '<div class="rl-dom" data-nosnippet>' + multi.map(row => '<article><h3>' + brandLink(h, row.brand, row.name) + '</h3><ul>' +
-        regs.filter(r => row.cells[r.id]).map(r => '<li><span class="rl-tag">' + h.esc(CODE[r.id]) + '</span>' + hostHtml(h, row.cells[r.id].host) + '</li>').join('') +
+        regs.filter(r => row.cells[r.id]).map(r => '<li><span class="rl-tag">' + h.esc(CODE[r.id]) + '</span>' + hostHtml(h, row.cells[r.id].host) + go(h, r, r.licensees.find(l => l.brand === row.brand && l.host === row.cells[r.id].host)) + '</li>').join('') +
         '</ul></article>').join('') + '</div></section>';
 
     const pba = h.reg('buenos-aires'), caba = h.reg('caba'), cba = h.reg('cordoba');

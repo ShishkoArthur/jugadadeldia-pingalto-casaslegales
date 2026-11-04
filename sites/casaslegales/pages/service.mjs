@@ -124,7 +124,7 @@ function opDocs(h) {
   const cnt = slug => Object.values(D.data.quotes).filter(q => q.doc === slug).length;
   const docs = Object.entries(D.data.docs).filter(([, d]) => !d.official).sort((a, b) => a[0].localeCompare(b[0]));
   const rows = docs.map(([slug, d]) => { const u = new URL(d.url); return '<tr><th scope="row">' + (d.brand && h.names[d.brand] ? brandLink(h, d.brand, d.title || slug) : h.esc(d.title || slug)) + '</th><td class="rl-host">' + h.esc(u.hostname + (u.pathname === '/' ? '' : u.pathname)) + '</td><td>' + (d.kind === 'block' ? 'mensaje de bloqueo' : 'página pública') + '</td><td>' + h.fmtDate(d.fetched) + '</td><td class="rl-host">' + h.esc(d.sha256.slice(0, 12)) + '</td><td>' + cnt(slug) + '</td></tr>'; }).join('');
-  return '<section class="rl-sec">' + sectionHead(h, 'Páginas públicas de operadores', docs.length + ' copias · sin enlaces') + '<p class="rl-note">Copias de páginas que cualquiera ve sin registrarse, guardadas con fecha. La dirección va como texto: no enlazamos a operadores.</p>' +
+  return '<section class="rl-sec">' + sectionHead(h, 'Páginas públicas de operadores', docs.length + ' copias con fecha') + '<p class="rl-note">Copias de páginas que cualquiera ve sin registrarse, guardadas con fecha. La dirección de la copia va como texto; el botón al sitio oficial está en la ficha de cada marca y lleva solo a la dirección que publica la lista.</p>' +
     '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Página</th><th scope="col">Dirección</th><th scope="col">Tipo</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></section>';
 }
 
