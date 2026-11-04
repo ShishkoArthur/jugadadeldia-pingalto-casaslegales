@@ -1,8 +1,10 @@
 // es-AR numbers for pingalto: decimal comma and a dot for thousands ("1.234,5"), the same output in Node (build) and every
 // browser (no Intl grouping rules, which differ between engines for four-digit numbers). parseNum reads what people type:
 // "1,25" and "1.25" are both 1.25; "1.234" is 1234 in a whole-number field and 1.234 in a decimal one; "1.234,5" is 1234.5.
+// English pages (<html lang="en">, docs/I18N.md) get English separators: "1,234.5", "55%"; Node and Spanish pages are unchanged.
+const en = () => typeof document !== 'undefined' && !!document.documentElement && /^en/.test(document.documentElement.lang || '');
 function group(int) {
-  return int.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return int.replace(/\B(?=(\d{3})+(?!\d))/g, en() ? ',' : '.');
 }
 function render(n, digits, keepZeros, name) {
   if (!Number.isFinite(n)) throw new Error(name + ': not a number ' + n);
@@ -11,7 +13,7 @@ function render(n, digits, keepZeros, name) {
   if (!keepZeros && t.includes('.')) t = t.replace(/0+$/, '').replace(/\.$/, '');
   const [i, f] = t.split('.');
   const zero = !/[1-9]/.test(t);
-  return (n < 0 && !zero ? '-' : '') + group(i) + (f ? ',' + f : '');
+  return (n < 0 && !zero ? '-' : '') + group(i) + (f ? (en() ? '.' : ',') + f : '');
 }
 // Up to `digits` decimals, trailing zeros dropped: fmt(1234.5, 2) -> "1.234,5".
 export function fmt(n, digits) {
@@ -23,11 +25,11 @@ export function fmtFixed(n, digits) {
 }
 // Percent from a 0..1 share: "55 %".
 export function fmtPct(x, digits) {
-  return fmt(x * 100, digits) + '\u00a0%';
+  return fmt(x * 100, digits) + (en() ? '%' : '\u00a0%');
 }
 // Value for an input field: as fmt, without thousands dots so the visitor can edit it ("1600", "0,393").
 export function fmtInput(n, digits) {
-  return fmt(n, digits).replace(/\./g, '');
+  return fmt(n, digits).replace(en() ? /,/g : /\./g, '');
 }
 // Number typed by a visitor; NaN when it is not one. whole = true for fields that only take whole numbers (DPI, points).
 export function parseNum(input, { whole = false } = {}) {
