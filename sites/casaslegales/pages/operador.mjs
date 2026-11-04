@@ -15,7 +15,7 @@ import { review } from '../content/reviews.mjs';
 import { loadReviews } from '../../../tools/lib/revsources.mjs';
 import { brandNames, loadRegistries, loadRg } from '../../../tools/lib/sources.mjs';
 import { SITE } from '../config.mjs';
-import { SECTIONS, reviewSection, summary, toc, reviewShots, viewLabel } from './review.mjs';
+import { SECTIONS, reviewSection, summary, toc, reviewShots, viewLabel, enterSection, appExtra } from './review.mjs';
 
 const SHOT_LABEL = { home: 'Página de entrada', parked: 'Lo que muestra la dirección', footer: 'Pie de página', rg: 'Juego responsable', sports: 'Apuestas deportivas', pay: 'Medios de pago', tc: 'Términos y condiciones', block: 'Lo que muestra fuera de su provincia' };
 const RG_ORDER = ['rg-deposit', 'rg-loss', 'rg-bet', 'rg-time', 'rg-pause', 'rg-selfex', 'rg-check', 'rg-age', 'rg-help'];
@@ -298,9 +298,10 @@ export function operatorPage(o) {
           casino: h.built(casinoPath) ? '<p class="rl-note"><a href="' + h.href(casinoPath) + '">' + h.esc(row.name) + ' Casino: juegos, proveedores y en qué provincias tiene licencia</a></p>' : '',
           'juego-responsable': rgN === 0 ? '' : toolsSection(h, o, D, 'rg') + '<p class="rl-note">Que una herramienta figure acá no quiere decir que la hayamos probado: no abrimos cuentas. Las herramientas que exige cada provincia y sus líneas de ayuda están más abajo y en la página de cada provincia.</p>',
           pagos: toolsSection(h, o, D, 'pay'),
+          app: appExtra(h, R),
         };
         const sec = SECTIONS.map(x => reviewSection(h, R, x, extra)).join('');
-        return hero + toc(h, [['capturas', 'Capturas']]) + summary(h, R, { lists: n, total: h.regs.length, rgCount: rgN, casinoPath }) + sec +
+        return hero + toc(h, [['capturas', 'Capturas']]) + summary(h, R, { lists: n, total: h.regs.length, rgCount: rgN, casinoPath }) + enterSection(h, R, o, row) + sec +
           mapSection(h, o, row) + (R.pre('licence').length ? reviewSection(h, R, ['pie', 'La licencia según el pie de cada sitio', 'licence']) : '') + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D, R) + aid + nextSection(h, row);
       }
       return hero + mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D) + toolsSection(h, o, D) + aid + nextSection(h, row);

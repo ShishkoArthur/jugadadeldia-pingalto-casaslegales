@@ -5,7 +5,8 @@
 import { margin } from '../../../engine/odds.mjs';
 import { hostKey } from '../../../engine/registry.mjs';
 import { fmtInt } from '../../../engine/format.mjs';
-import { sectionHead } from './parts.mjs';
+import { sectionHead, officialLinks } from './parts.mjs';
+import { anat } from './opparts.mjs';
 import { isAbsence } from '../../../tools/lib/revsources.mjs';
 
 // field -> label (es-AR) and how its value shows: chips (items checked against the copy), yes, money, count or quote only
@@ -53,6 +54,8 @@ const F = {
   'casino.gameCount': ['Cantidad de juegos', 'quote'],
   'casino.slots': ['Tragamonedas', 'yes'],
   'casino.volatilityFilter': ['Filtro por volatilidad', 'quote'],
+  'licence.claimed': ['Licencia que declara el sitio', 'quote'],
+  'licence.age': ['Edad que declara el sitio', 'quote'],
   'casino.searchByProvider': ['Búsqueda por proveedor', 'quote'],
   'casino.jackpotFilter': ['Filtro de pozos', 'quote'],
   'casino.bingo': ['Bingo', 'yes'],
@@ -214,7 +217,7 @@ export function summary(h, R, { lists, total, rgCount, casinoPath }) {
     '<p class="rl-cap">Cada número sale de una página pública del operador o de una lista oficial, con su cita más abajo. No ponemos notas ni puntajes: no abrimos cuentas ni probamos depósitos o retiros.</p></section>';
 }
 export function toc(h, extra = []) {
-  const items = [['resumen', 'Resumen'], ...SECTIONS.map(([id, t]) => [id, t]), ['licencias', 'Licencias'], ...extra];
+  const items = [['resumen', 'Resumen'], ['ingresar', 'Sitio oficial'], ...SECTIONS.map(([id, t]) => [id, t]), ['licencias', 'Licencias'], ...extra];
   return '<nav class="rl-toc" aria-label="En esta reseña">' + items.map(([id, t]) => '<a href="#' + id + '">' + h.esc(t) + '</a>').join('') + '</nav>';
 }
 export function reviewShots(h, R, label) {
@@ -228,3 +231,42 @@ export function reviewShots(h, R, label) {
 }
 export const VIEW_LABEL = { home: 'Página de inicio', sportsbook: 'Apuestas deportivas', 'match-markets': 'Mercados de un partido', casino: 'Casino', 'live-casino': 'Casino en vivo', payments: 'Medios de pago', rg: 'Juego responsable', app: 'App', support: 'Atención al cliente', footer: 'Pie de página' };
 export const viewLabel = v => VIEW_LABEL[v] || 'Página pública';
+
+// "Cómo entrar al sitio oficial" (login intent): the address each list names, a button to it, how to tell it from a copy. We never
+// link a login page and never log in: the official address is enough to find the site's own "Ingresar" button.
+export function enterSection(h, R, o, row) {
+  const jurs = h.regs.filter(r => row.cells[r.id]);
+  const hosts = [...new Set(jurs.map(r => row.cells[r.id].host))];
+  const only = R ? R.all('account.provinceRestriction') : [];
+  const items = jurs.map(r => '<li><span class="rl-tag">' + h.esc(r.id === 'buenos-aires' ? 'PBA' : r.id === 'caba' ? 'CABA' : h.rg.prov(r.id).name) + '</span>' + anat(h, row.cells[r.id].host) + '</li>').join('');
+  return '<section class="rl-sec" id="ingresar">' + sectionHead(h, 'Cómo entrar al sitio oficial de ' + row.name, hosts.length === 1 ? 'una sola dirección en las listas' : hosts.length + ' direcciones, una por lista') +
+    '<div class="rl-two"><div class="rl-box"><h3>La dirección según cada lista</h3><ul class="rl-enter">' + items + '</ul>' + officialLinks(h, o.brand, jurs.map(r => r.id), { note: false, small: true }) +
+    '<p>Entrá con la dirección de la provincia donde estás: el botón para ingresar a tu cuenta está en ese sitio. Nosotros no enlazamos páginas de acceso ni pedimos datos.</p></div>' +
+    '<div class="rl-box"><h3>Para no caer en una copia</h3><ol class="rl-chk"><li>Compará la barra del navegador con la dirección de la lista, letra por letra.</li><li>No entres desde anuncios, mensajes o perfiles que te pasen un enlace: escribí la dirección o usá un enlace oficial.</li><li>Un sitio que pide depositar a una cuenta personal o por chat no es el sitio de la lista.</li>' +
+    (h.built('/verificador') ? '<li>¿Dudás? Pegá la dirección en el <a href="' + h.href('/verificador') + '">verificador</a>.</li>' : '') + '</ol>' +
+    only.map(f => cite(h, R, f)).join('') + '</div></div></section>';
+}
+// "App" with the store listings the operator's own page links (taken from its verified quote); an Android link that does not go
+// to Google Play is said as it is (a file from the operator's site), never linked
+const STORE = /https?:\/\/(?:apps\.apple\.com|itunes\.apple\.com|play\.google\.com)\/[^\s|»"]+/i;
+export function storeLinks(h, R) {
+  const out = [], notes = [];
+  for (const f of R.pre('app')) {
+    if (!f.quote) continue;
+    const m = STORE.exec(f.quote), any = /https?:\/\/[^\s|»"]+/.exec(f.quote);
+    if (m) {
+      const u = new URL(m[0]), apple = /apple/.test(u.hostname);
+      const clean = 'https://' + u.hostname + u.pathname + (u.hostname === 'play.google.com' && u.searchParams.get('id') ? '?id=' + encodeURIComponent(u.searchParams.get('id')) : '');
+      out.push('<a class="rl-off rl-off-s rl-store" href="' + h.esc(clean) + '" rel="nofollow noopener" target="_blank"><span>' + (apple ? 'Ver en App Store' : 'Ver en Google Play') + '</span><small>enlace de ' + h.esc(hostKey(R.doc(f.doc).url)) + '</small></a>');
+    } else if (any && /android/i.test(f.field + f.quote)) {
+      notes.push('<p class="rl-note">Para Android, su página enlaza ' + h.esc(new URL(any[0]).hostname) + ', no Google Play: la app se baja desde el sitio del operador. Hacelo solo desde la dirección oficial de tu provincia.</p>');
+    }
+  }
+  return out.length || notes.length ? (out.length ? '<div class="rl-offs">' + out.join('') + '</div>' : '') + notes.join('') : '';
+}
+export function appExtra(h, R) {
+  if (!R.pre('app').length) return '';
+  const st = storeLinks(h, R);
+  return (st ? '<div class="rl-box rl-appb"><h3>Dónde bajar la app oficial</h3>' + st + '<p class="rl-offn">Los enlaces salen de la página del operador que copiamos. Una app con otro nombre o de otro desarrollador puede ser una copia.</p></div>' : '') +
+    (h.built('/guia/apps-oficiales') ? '<p class="rl-note"><a href="' + h.href('/guia/apps-oficiales') + '">Cómo reconocer la app oficial de tu provincia</a></p>' : '');
+}
