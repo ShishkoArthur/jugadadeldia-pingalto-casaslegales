@@ -86,6 +86,28 @@
   Повторить: `node tools/qa/live-pass.cjs --site <сайт>` → `node tools/qa/summary.cjs …` (+ `tools/qa/links.cjs`).
 - **Дальше:** тексты через Claude API; P2-страницы плана jugadadeldia. pingalto: всё, что можно честно, построено (волна 4); оставшиеся 39 страниц плана — с причинами в «pingalto волна 4».
 
+## Меню и поиск (04.11) — на всех трёх сайтах, выложено (DECISIONS 04.11 «подменю разделов», «все страницы в меню», «поиск»)
+- **Меню = все страницы сайта**, само: `tools/lib/navtree.mjs` раскладывает построенные страницы по правилам `sites/<сайт>/content/menu.mjs`
+  (раздел → группа → страница; хаб первым, дальше волна и порядок плана; провинции и бренды-проверки — по алфавиту). Новая страница попадает в
+  свой раздел сама; не подошла ни под одно правило — в «Más páginas» последнего раздела (тогда дописать правило/подпись в `LABEL`).
+  pingalto: Juegos (игра → её страницы) · Esports · Kit · Nosotros; jugadadeldia: Quiniela (Hoy / Por turno / Por provincia / Para entenderla) ·
+  Loterías · Truco · Juegos (игра → Jugar/Anotador…) · Ayuda · El sitio; casaslegales: Operadores (бренд → Casino · Cómo ingresar · провинции) ·
+  Provincias · Licencias · Guías · Ayuda · Redacción. ПК: панель раздела по наведению (закрытие через 300 мс) и по клику, Tab/Enter/Esc,
+  aria-expanded; телефон/планшет (pingalto < 861, jdd < 1001, casaslegales < 1080 px): бургер → панель на всю высоту, аккордеон, текущая открыта,
+  блок прокрутки только на `html`, цели ≥ 44 px. Страницы помощи — только короткое меню помощи. Хлебные крошки JSON-LD — из того же дерева.
+- **Поиск по содержимому:** после сборки `tools/lib/search.mjs` даёт id всем H2/H3 и пишет индекс на язык (`/indice.json` pingalto,
+  `/busqueda.json` jdd, `/buscador.json` casaslegales; английский — `/en/…`): H1, title, description, ключи плана, вопросы FAQ, разделы с началом
+  текста (без таблиц, цитат, «Cargando…»). Поиск — `engine/search.mjs` (без акцентов, префиксы, опечатки), UI — `client/find.js` / `busca.js` /
+  `buscar.js`, грузятся при первом открытии; кнопка-лупа в шапке, «/» на ПК, поле в меню телефона, ↑↓ Enter Esc, переход к якорю раздела.
+  На страницах помощи результаты только помощь и служебные (флаг `x`). gzip: pingalto 29 КБ, jdd 19 КБ, casaslegales 33 КБ.
+- **Гейты** `check-dist`: `menu` (каждая страница sitemap своего языка в `<nav data-*-all>` ровно один раз; на помощи полного меню нет) и `search`
+  (индекс языка = страницы sitemap); оба в selftest. Тест движка — `engine/test/search.test.mjs`.
+- **Слот языка:** `langSlot(h, p)` в `layout.mjs` каждого сайта (между меню и лупой); в jdd его уже заполнил агент i18n. Новые строки меню/поиска
+  на английском берутся из памяти перевода (`node tools/translate.mjs <сайт>`).
+- **Вес:** pingalto `/cs2` 157 КБ из 160 (данные VRS 24 КБ в странице) — при росте облегчать страницу, не бюджет (TRAPS).
+- Проверено Playwright 375/768/1280 × обе темы (локально и на живых): подменю, клавиатура, без переполнения и ошибок консоли; «tucuman»,
+  «cuanto paga», «envido», «betsson ingresar», «sensibilidad», «major» находят нужные страницы.
+
 ## Английская версия `/en/` (04.11) — jugadadeldia выложен (85 страниц), инструкция `docs/I18N.md`
 - **Движок (общий):** второй проход сборки (`h.lang='en'`, путь страницы остаётся испанским) → `htmlToEn()` (`tools/lib/i18n.mjs`): словарь
   `sites/<сайт>/i18n/en.mjs` (меню/шапка/подвал) → память `data/i18n/<сайт>-en.json` (числа/даты — слоты `{N}`, новые даты не требуют
