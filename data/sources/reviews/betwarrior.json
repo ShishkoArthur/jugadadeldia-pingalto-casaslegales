@@ -1,0 +1,90 @@
+{
+ "brand": "betwarrior",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "betwarrior.bet.ar",
+  "apuestas.betwarrior.bet.ar"
+ ],
+ "status": {
+  "betwarrior.bet.ar": {
+   "status": "open",
+   "note": "Marketing portal (sign-up links go to onboarding.betwarrior.bet.ar, not opened); no licence footer text",
+   "date": "2026-11-04"
+  },
+  "apuestas.betwarrior.bet.ar": {
+   "status": "empty",
+   "note": "'ARMÁ TU JUGADA' coupon builder for agencies (Jujuy/Salta); rendered empty",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://betwarrior.bet.ar/",
+   "file": "data/sources/reviews/betwarrior/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "b209bec5ac6a56a37d445573a679123330298707e3438f04affc067d6086e8d4"
+  }
+ },
+ "facts": [
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "BetWarrior es una plataforma de apuestas deportivas y casino online para mayores de 18 años",
+   "doc": "home"
+  },
+  {
+   "field": "payments.currency",
+   "value": "ARS",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "gestionar depósitos y retiros en pesos",
+   "doc": "home"
+  },
+  {
+   "field": "support.hours",
+   "value": "24 h",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "También contamos con asistencia disponible las 24 horas",
+   "doc": "home"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "deposit limits",
+    "wager limits",
+    "session time limits"
+   ],
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "herramientas para establecer límites de depósito, apuesta y tiempo de sesión",
+   "doc": "home"
+  },
+  {
+   "field": "app.mentioned",
+   "value": true,
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "DESCARGAR APP",
+   "doc": "home"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": true,
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "apostar en vivo",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

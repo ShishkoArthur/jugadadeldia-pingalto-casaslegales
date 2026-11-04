@@ -31,7 +31,7 @@ Owner 04.11: casaslegales becomes a review site («ссылки ставим, к
 | betano | 22 | 4 | 1 | 3 | 5 | 3 | · | 3 | 1 | 5 | www.betano.bet.ar: open; support.betano.bet.ar: open; www.betano.bet.ar/casino/: blank |
 | bet365 | 21 | 3 | 3 | · | 5 | · | 2 | 4 | 1 | 3 | www.bet365.bet.ar: partial; help.bet365.bet.ar: open; juegoresponsable.bet365.bet.ar: open; casino.bet365.bet.ar: open |
 | bplay | 22 | 4 | 5 | 1 | 2 | 3 | · | 4 | 1 | 3 | pba.bplay.bet.ar: open; deportespba.bplay.bet.ar: open; ayudapba.bplay.bet.ar: partial |
-| betwarrior | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
+| betwarrior | 6 | 1 | · | 1 | 1 | 1 | 1 | 1 | · | 0 | betwarrior.bet.ar: open; apuestas.betwarrior.bet.ar: empty |
 | codere | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | sportsbet | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | jugadon | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
