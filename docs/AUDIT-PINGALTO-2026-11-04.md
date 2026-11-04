@@ -149,3 +149,20 @@ Fortnite, Free Fire; нет у LoL, Valorant, Dota 2, Clash, Brawl, RL. Глос
 
 **Вопросы владельцу:** (1) ключ fortnite-api.com для трекера (регистрация через Discord на dash.fortnite-api.com — сделать самому,
 ключ положить в `.env`); (2) сцены для /fortnite и /ff/max.
+
+## Сделано 04.11 (академия)
+
+- **«Cómo empezar desde Argentina»** — первый раздел после hero на /lol, /valorant, /rl, /clash, /brawl (`pages/academy.mjs`, `#empezar`):
+  карточки (цена, где идёт, сервер + физический пол пинга от CABA до Santiago и типичный пинг Valve Буэнос-Айрес → Сантьяго, диск/RAM),
+  5 шагов карточками со ссылками на наши инструменты и рангами (/lol/rangos, /valorant/rangos), таблица требований и «Lo que dice la
+  fuente, tal cual» (цитаты под катом). Источники: Riot support es-mx (LoL, Valorant), главные leagueoflegends.com / playvalorant.com
+  («Juega gratis»), Steam appdetails 252950 (RL: в Steam больше не продаётся, требования Psyonix остались; Epic и rocketleague.com —
+  Cloudflare-челлендж, не берём), Wikipedia (F2P с 2020, Epic, без PS Plus, Mac/Linux без онлайна), Google Play AR и iTunes lookup AR
+  (Clash Royale, Brawl Stars: бесплатно, +10, iOS-минимум, размер). +10 копий, +38 цитат; `steamReq()` в `content/stores.mjs`.
+  Сервер RL и Supercell — честно «не публикуют, пинг не выдумываем».
+- **/esports/glosario** — 41 термин (Bo1/Bo3/Bo5, sistema suizo, Major, VRS, Elo, MMR, RR, PL, eDPI, cm/360, LAS/LAN, meta, tier list…),
+  по строке + ссылка на страницу/инструмент; поиск и фильтр по темам (`client/gloss.js`), DefinedTermSet в JSON-LD; карточка на /esports.
+- **Free Fire Advance** — не построено: ff-advance.ff.garena.com отвечает 403 Forbidden и на robots.txt, и на любую страницу с нашего
+  сервера (простой текст, без CDN), в браузере тоже не открылся; на сохранённых страницах Garena (ff.garena.com/es, FAQ) о нём ни слова.
+  Нужна копия владельца из браузера (`docs/reference/owner-saves/`) — тогда страница `/ff/servidor-avanzado` (план, P3).
+- Выложено, живьём проверены 5 хабов и глоссарий, 375/1280 без горизонтальной прокрутки.

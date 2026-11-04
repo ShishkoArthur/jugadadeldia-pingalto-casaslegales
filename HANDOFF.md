@@ -267,6 +267,13 @@
 - **Дальше:** (сцены — сделаны 03.11, см. «Сцены девушек»); ленты результатов (по слову владельца) → /quiniela/, провинции, Quini 6 hoy;
   P2 из плана; перепроверка программ LOTBA (ежемесячно, `maxAgeDays` 183) и пакета помощи до 09.02.2027.
 
+## pingalto (04.11) — академия: «Cómo empezar» на 5 хабах и /esports/glosario
+- /lol, /valorant, /rl, /clash, /brawl открываются блоком «Cómo empezar desde Argentina» (`pages/academy.mjs`): цена, платформы, сервер и
+  пол пинга, требования из Riot support / Steam / Google Play AR / App Store AR с цитатами, 5 шагов со ссылками на инструменты.
+- Новая `/esports/glosario` (41 термин, поиск и фильтр). Итог — в `docs/AUDIT-PINGALTO-2026-11-04.md` «Сделано 04.11 (академия)».
+- Free Fire Advance не сделан: официальный сайт отдаёт 403 → нужна копия владельца. **git push не проходит** (GitHub: Permission denied
+  (publickey) для `~/.ssh/jpc_ed25519`, 04.11 ~09:50 UTC) — коммиты локально, выкладка идёт из HEAD; проверить ключ на GitHub.
+
 ## pingalto (04.11) — /dota2 стала страницей игры; сцены r7 (на сайте 37 сцен)
 - **/dota2** (`pages/dota2.mjs`, клиент `d2req.js`): «Dota 2 desde Argentina: requisitos, servidores y ranking» (56) — факты Steam AR
   (appdetails 570: gratis, Windows/Mac/Linux, 60 GB, español de Hispanoamérica), «¿Te corre Dota 2?» против минимума Valve + время
