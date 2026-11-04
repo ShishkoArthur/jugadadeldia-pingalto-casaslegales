@@ -86,6 +86,22 @@
   Повторить: `node tools/qa/live-pass.cjs --site <сайт>` → `node tools/qa/summary.cjs …` (+ `tools/qa/links.cjs`).
 - **Дальше:** тексты через Claude API; P2-страницы плана jugadadeldia. pingalto: всё, что можно честно, построено (волна 4); оставшиеся 39 страниц плана — с причинами в «pingalto волна 4».
 
+## Английская версия `/en/` (04.11) — jugadadeldia выложен (85 страниц), инструкция `docs/I18N.md`
+- **Движок (общий):** второй проход сборки (`h.lang='en'`, путь страницы остаётся испанским) → `htmlToEn()` (`tools/lib/i18n.mjs`): словарь
+  `sites/<сайт>/i18n/en.mjs` (меню/шапка/подвал) → память `data/i18n/<сайт>-en.json` (числа/даты — слоты `{N}`, новые даты не требуют
+  перевода); английские браузерные модули (литералы из памяти); `num.mjs` — английские разделители при `<html lang=en>`; hreflang es-AR/en/
+  x-default + sitemap с alternates; переключатель `h.langs()` (у jdd — «EN/ES» в шапке, `hreflang` + `translate="no"`); цитаты остаются
+  испанскими + «In English:» (`SITE.i18n.quoteNote`). Сборка API не зовёт: нет строки → падает со списком → `node tools/translate.mjs <сайт>`.
+- **Гейты:** hreflang (взаимность, x-default, sitemap), langlink, langswitch, spanish (эвристика + `keep` глоссария + имена учреждений из
+  пакета помощи + цепочки имён «Instituto … de …»), decimal (запятая на en), oglocale, langattr, urlscheme `/en`+схема; все в selftest.
+- **jugadadeldia:** адреса `/en/…` (`/en/quiniela/payouts/`, `/en/truco/play/`, `/en/responsible-gambling/…`, `/en/author/`) — план
+  `urlEn/titleEn/descriptionEn/h1En`; глоссарий `data/i18n/jugadadeldia-glossary.json`. Ревью Opus (6 стр., 8–9/10) —
+  `docs/REVIEW-EN-jugadadeldia.md`, 21 правка внесена. Формат: «$ 1,234.50» (песо), «4 Nov 2026», время 24 ч, «Argentina time».
+- **Потрачено:** ≈ $2,3 (план $0,25, строки ≈ $1,8, ревью $0,23) — `data/i18n/_spend.json`.
+- **При правке испанского текста jdd:** сборка назовёт новые строки → `node tools/translate.mjs jugadadeldia` (центы) → коммит памяти.
+- **Дальше:** pingalto и casaslegales — по `docs/I18N.md` §4 (слот переключателя в их layout уже есть). Не сделано: английская 404 (одна,
+  испанская); «A 30»-подобные склейки в инструментах проверять живьём.
+
 ## Ленты casaslegales и обслуживание раз в полгода (04.11) — работает, `docs/MAINTENANCE.md`
 - **Сервер:** `feeds-server.sh casaslegales` — `/opt/web/casaslegales-feeds/`, cron `37 6 * * *` UTC, uid 47230, UA `Casaslegales/1.0
   (casaslegales.com)`, TG-ключи в secrets. Ленты `listas` (раз в месяц перекачивает официальные страницы, robots.txt — мы и любой

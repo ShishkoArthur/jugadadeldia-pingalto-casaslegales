@@ -301,6 +301,7 @@ const CODE_KEY = new Set(['year', 'month', 'day', 'hour', 'minute', 'second', 'w
 // visible words in a code string: tags, attribute pieces and code-like tokens removed
 function codeWords(v) {
   if (/^(true|false|null|numeric|2-digit|long|short|narrow|smooth|auto|none|start|end|center|nearest)$/.test(v)) return false;
+  if (/^\s*[AaYyOoEe]\s+$/.test(v) || /^\s+[AaYyOoEe]\s*$/.test(v)) return true;
   if (/^[\w.\/:#\[\]=@-]+$/.test(v) && /[\/_.\[#:=@]/.test(v)) return false;
   const t = v.replace(/<\/?[a-zA-Z][^>]*>?/g, ' ').replace(/[\w-]+="[^"]*"?/g, ' ').replace(/^[^<>]*?">/, ' ').replace(/&\w+;/g, ' ');
   return LETTERS.test(t);

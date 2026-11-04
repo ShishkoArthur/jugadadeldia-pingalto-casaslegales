@@ -72,5 +72,5 @@ export const UI = {
   'Juegos de mesa para pasar el rato: sin plata, sin apuestas y sin registro.': 'Table games to pass the time: no money, no bets, no sign-up.',
   'Los juegos de azar son solo para mayores de {1} años. Esta página no lleva a ningún juego.': 'Gambling is for adults {1} and over only. This page does not lead to any game.',
   'jugadadeldia.com · Argentina · textos de Denis Krazok con ayuda de IA · fuentes revisadas el {1}': 'jugadadeldia.com · Argentina · texts by Denis Krazok with AI help · sources checked on {1}',
-  'gratuita': 'free',
+  'gratuita': '(free)',
 };

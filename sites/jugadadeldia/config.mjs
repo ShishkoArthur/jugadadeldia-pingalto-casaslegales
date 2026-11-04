@@ -17,6 +17,8 @@ export const SITE = {
   name: 'Jugada del Día',
   htmlLang: 'es-AR',
   ogLocale: 'es_AR',
+  langs: ['es', 'en'],
+  i18n: { quoteNote: en => '<p class="jg-qtr" lang="en"><b>In English:</b> ' + en + '</p>' },
   assetDir: 'v',
   assetName: (name, hash) => hash.slice(0, 8) + '-' + bare(name),
   pathRe: new RegExp('^/$|^/' + SEG + '/(' + SEG + '/){0,2}$'),

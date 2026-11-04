@@ -20,7 +20,12 @@ const THEME_JS = "try{var t=localStorage.getItem('jg-tema');if(t==='light'||t===
 const linkList = (h, list, current) => list.filter(([u]) => h.built(u)).map(([u, label]) => '<a href="' + h.href(u) + '"' + (u === current ? ' aria-current="page"' : '') + '>' + h.esc(label) + '</a>').join('');
 
 // Language switcher slot (i18n agent): return the switcher markup for this page here; it sits between the menu and the search button.
-const langSlot = (h, p) => '';
+const langSlot = (h, p) => {
+  const o = (h.langs ? h.langs() : []).find(x => !x.current);
+  if (!o || p.is404) return '';
+  const label = o.lang === 'en' ? 'English version' : 'Versión en español';
+  return '<a class="jg-ib jg-lang" href="' + o.href + '" hreflang="' + o.code + '" lang="' + o.code + '" translate="no" aria-label="' + label + '" title="' + label + '">' + o.lang.toUpperCase() + '</a>';
+};
 
 export function helpBlock(h, p) {
   const j = h.rg.prov(p.jurisdiction || h.site.defaultJurisdiction);
@@ -74,7 +79,7 @@ export function page(h, p, body) {
   const nav = p.help
     ? '<nav class="jg-sg jg-hnav" aria-label="Ayuda">' + linkList(h, HELP_NAV, p.path) + '</nav>'
     : mainNav(h, p);
-  const header = '<header class="jg-h"><a class="jg-lg" href="/">' + MARK + '<span>jugada<b>del</b>día</span></a>' + nav + langSlot(h, p) +
+  const header = '<header class="jg-h"><a class="jg-lg" href="/">' + MARK + '<span translate="no">jugada<b>del</b>día</span></a>' + nav + langSlot(h, p) +
     '<button class="jg-ib jg-fb" type="button" data-jg-find data-jg-idx="' + h.site.search.file(h.lang || 'es') + '" aria-label="Buscar en Jugada del Día" aria-keyshortcuts="/">' + ICON.find + '</button>' +
     '<button class="jg-ib" type="button" data-jg-tema aria-label="Cambiar entre tema claro y oscuro">' + ICON.moon + ICON.sun + '</button>' +
     (p.help ? '' : '<button class="jg-ib jg-bu" type="button" data-jg-menu aria-controls="jg-nav" aria-expanded="false" aria-label="Menú">' + ICON.burger + '</button>') + '</header>';
@@ -92,5 +97,5 @@ export function clientData(h) {
     const j = h.rg.prov(pr.id);
     if (j.line) lines[pr.id] = { n: j.name, p: j.line.phone, t: j.line.phoneTel, f: !!j.line.free };
   }
-  return { lines, w: { free: 'gratuita ' } };
+  return { lines, w: { free: h.tr ? h.tr('gratuita ') : 'gratuita ' } };
 }

@@ -4,7 +4,8 @@ const TZ = 'America/Argentina/Buenos_Aires';
 const MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const monthName = ym => MONTHS[+ym.slice(5, 7) - 1] + ' de ' + ym.slice(0, 4);
-const dmy = d => +d.slice(8, 10) + '/' + +d.slice(5, 7) + '/' + d.slice(0, 4);
+const EN = /^en/.test(document.documentElement.lang || '');
+const dmy = d => (EN ? new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(d + 'T12:00:00Z')) : +d.slice(8, 10) + '/' + +d.slice(5, 7) + '/' + d.slice(0, 4));
 const money = n => '$ ' + fmt(n, 2);
 function todayAr() {
   const p = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date()).map(x => [x.type, x.value]));
