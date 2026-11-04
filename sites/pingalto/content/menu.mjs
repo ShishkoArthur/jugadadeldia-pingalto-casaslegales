@@ -29,6 +29,7 @@ const LABEL = {
   '/lol/worlds': 'Worlds en hora argentina',
   '/lol/msi': 'MSI',
   '/fortnite/nube': 'Jugar en la nube',
+  '/fortnite/tracker': 'Tracker de estadísticas',
   '/dota2/ti': 'The International',
   '/clash/mazos': 'Constructor de mazos',
   '/clash/meta': 'Mazos del meta',

@@ -235,6 +235,7 @@ export const ALT = {
     '/valorant/champions': 'Alt caminando hacia el escenario con auriculares, saludando al público',
     '/dota2/ti': 'Alt sentada mirando una final con un escudo redondo de cosplay apoyado en la rodilla',
     '/fortnite': 'Alt bailando un festejo con un pico gigante de goma apoyado en el hombro',
+    '/fortnite/tracker': 'Alt bailando un festejo con un pico gigante de goma apoyado en el hombro',
     '/ff/max': 'Alt parada jugando con el celular en horizontal, al lado de una paredcita de bloques celestes de juguete',
     '/valorant/mapas/split': 'Alt con auriculares mostrando un plano de dos pasillos dibujado en una hoja',
     '/brawl/brawlers': 'Alt sentada en un almohadón ordenando muñequitos de colores de juguete',

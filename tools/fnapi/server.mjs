@@ -65,7 +65,7 @@ async function lookup(q) {
 const STATUS = { bad_name: 400, bad_param: 400, not_found: 404, no_matches: 404, private: 403, rate_ip: 429, busy: 503, upstream: 502 };
 function send(res, code, obj, extra = {}) {
   const body = JSON.stringify(obj);
-  res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', 'Content-Length': Buffer.byteLength(body), ...extra });
+  res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Length': Buffer.byteLength(body), ...extra });
   res.end(body);
 }
 
