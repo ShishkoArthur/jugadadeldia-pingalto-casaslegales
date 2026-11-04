@@ -67,7 +67,7 @@ if (D && f) {
           break;
         case 'matches':
           val = fmt(o.matches, 0);
-          say = 'Partidas con ' + optText(p, p.value).toLowerCase() + ', ' + optText(w, w.value).toLowerCase() + '.';
+          say = (p.value === 'all' ? 'Con todos los controles' : 'Con ' + optText(p, p.value).toLowerCase()) + ', ' + optText(w, w.value).toLowerCase() + '.';
           break;
         case 'time': {
           const hh = hours(o.minutesPlayed);
@@ -137,7 +137,7 @@ if (D && f) {
     last = ra;
     const o = ra.stats.overall;
     out('ftname', esc(ra.name));
-    out('ftmeta', [ra.bp ? 'Pase de batalla de esta temporada: nivel ' + fmt(ra.bp.level, 0) : '', o.last ? 'última partida registrada: ' + when(o.last) + ' (hora argentina)' : '', 'datos de fortnite-api.com, consultados ' + when(ra.at)].filter(Boolean).join(' · '));
+    out('ftmeta', [ra.bp && (ra.bp.level > 1 || ra.bp.progress > 0) ? 'Pase de batalla de esta temporada: nivel ' + fmt(ra.bp.level, 0) : '', o.last ? 'última partida registrada: ' + when(o.last) + ' (hora argentina)' : '', 'datos de fortnite-api.com, consultados ' + when(ra.at)].filter(Boolean).join(' · '));
     cards(o);
     modes(ra.stats);
     slot('ftkd').hidden = false;

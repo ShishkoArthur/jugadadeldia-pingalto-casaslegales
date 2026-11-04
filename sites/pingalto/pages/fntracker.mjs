@@ -3,7 +3,7 @@
 // meaning of every number, the browser fills it (client/fntracker.js). No skins, no shop. Data source named on the page, with the note
 // that fortnite-api.com is not affiliated with Epic Games.
 import { FN, PLACES } from '../../../engine/games/fnstats.mjs';
-import { fmt, hero, ldPage, sec } from './parts.mjs';
+import { fmt, heroBg, girlCard, ldPage, sec } from './parts.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const nameInput = (id, ph) => '<input id="' + id + '" name="' + id + '" type="text" maxlength="' + FN.nameMax + '" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" placeholder="' + ph + '">';
@@ -66,7 +66,9 @@ export const fortniteTracker = {
       '<p>Le preguntamos a esa API desde nuestro servidor cuando buscás a alguien. No guardamos tus búsquedas: la respuesta queda ' + FN.cacheMin + ' minutos en memoria para no repetir la consulta y después se borra.</p></div>' +
       '<div><p>Para que alcance para todos, cada persona puede hacer hasta ' + FN.perIpPerMin + ' búsquedas por minuto. Comparar dos jugadores cuenta como dos.</p><p>Acá no hay skins, tienda ni pavos: en pingalto no tratamos compras dentro de los juegos.</p>' +
       '<p>¿Recién empezás? En <a href="' + h.href('/fortnite') + '">Fortnite desde Argentina</a> te contamos dónde bajarlo, y si tu compu no da, cómo <a href="' + h.href('/fortnite/nube') + '">jugarlo en la nube</a>.</p></div></div>');
-    return hero(h, { ey: 'Fortnite · estadísticas · por nombre de Epic', sub: 'Escribí el nombre de Epic de cualquier jugador y mirá sus victorias, K/D y partidas por modo. Gratis, sin cuenta y sin skins.' }) +
-      '<div class="pa-tool pa-ft">' + form + out + '</div>' + words + modes + priv + name + src;
+    const bg = heroBg(h);
+    const head = '<section class="pa-he pa-sm' + bg.cls + '"' + bg.style + '><div><p class="pa-ey">Fortnite · estadísticas · por nombre de Epic</p><h1>' + h.esc(h.page.h1) + '</h1>' +
+      '<p class="pa-sb">Escribí el nombre de Epic de cualquier jugador y mirá sus victorias, K/D y partidas por modo. Gratis, sin cuenta y sin skins.</p></div></section>';
+    return head + '<div class="pa-tool pa-ft"><div class="pa-ftl">' + form + girlCard(h) + '</div>' + out + '</div>' + words + modes + priv + name + src;
   },
 };
