@@ -19,7 +19,7 @@
 import { readdirSync, existsSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { makeCtx, writeJsonAtomic, readJson, readFeed, zoneDate, UAS } from './lib.mjs';
+import { makeCtx, writeJsonAtomic, readJson, readFeed, zoneDate, UAS, telegram } from './lib.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const NAME_RE = /^[a-z0-9]+\.mjs$/;
@@ -170,14 +170,7 @@ export function alertsFor(prev, next, site) {
 
 async function sendAlerts(list, env) {
   if (!list.length) return;
-  if (!env.TG_BOT_TOKEN || !env.TG_CHAT_ID) { for (const a of list) console.log('alert (telegram not configured): ' + a); return; }
-  try {
-    const res = await fetch('https://api.telegram.org/bot' + env.TG_BOT_TOKEN + '/sendMessage', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(20000),
-      body: JSON.stringify({ chat_id: env.TG_CHAT_ID, text: list.join('\n'), disable_web_page_preview: true }),
-    });
-    console.log('alert sent to telegram: ' + res.status + ' (' + list.length + ')');
-  } catch (e) { console.log('alert: telegram failed (' + String(e && e.message || e).slice(0, 80) + ')'); }
+  console.log(await telegram(list.join('\n'), env));
 }
 
 export function parseArgs(args) {

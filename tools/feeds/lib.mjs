@@ -87,3 +87,16 @@ export function makeCtx(o = {}) {
     },
   };
 }
+
+// Telegram alert (TG_BOT_TOKEN, TG_CHAT_ID from the env); returns a log line, never the token. Used by the feeds runner and the
+// Fortnite stats proxy (tools/fnapi/server.mjs).
+export async function telegram(text, env = process.env) {
+  if (!env.TG_BOT_TOKEN || !env.TG_CHAT_ID) return 'alert (telegram not configured): ' + text;
+  try {
+    const res = await fetch('https://api.telegram.org/bot' + env.TG_BOT_TOKEN + '/sendMessage', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(20000),
+      body: JSON.stringify({ chat_id: env.TG_CHAT_ID, text, disable_web_page_preview: true }),
+    });
+    return 'alert sent to telegram: ' + res.status + ' (' + text.split('\n').length + ')';
+  } catch (e) { return 'alert: telegram failed (' + String(e && e.message || e).slice(0, 80) + ')'; }
+}
