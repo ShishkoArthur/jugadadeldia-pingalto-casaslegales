@@ -1,0 +1,212 @@
+{
+ "brand": "jugadon",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "caba.jugadon.bet.ar"
+ ],
+ "status": {
+  "caba.jugadon.bet.ar": {
+   "status": "open",
+   "note": "Opens; sportsbook (/deportes) is an embedded provider iframe — odds not collected",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://caba.jugadon.bet.ar/",
+   "file": "data/sources/reviews/jugadon/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "7e00f20b136ac0a7cf1234c2901308b35c2d3d1c07514b9bef382ae54d4ac111"
+  },
+  "medios-de-pago": {
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "file": "data/sources/reviews/jugadon/_docs/medios-de-pago.txt",
+   "date": "2026-11-04",
+   "sha256": "8da485ae9a79851c4daf93ae0657ddd718ca43d43238b9d19ff6ec2ba241de5d"
+  },
+  "juego-responsable": {
+   "url": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "file": "data/sources/reviews/jugadon/_docs/juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "5cbe115d714dea846d0e6f1039f17218f574a249469c655c890a3e63b5f2aab5"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "regulator": "Lotería de la Ciudad de Buenos Aires, S.E.",
+    "act": "DI-2021-468-GCABA-LOTBA"
+   },
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "avalado por Lotería de la Ciudad de Buenos Aires, S.E. mediante Disposición N° DI-2021-468-GCABA-LOTBA",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Limited to CABA",
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "cuyo ámbito de aplicación se circunscribe a la Ciudad Autónoma de Buenos Aires.",
+   "doc": "home"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Casino Casino en vivo",
+   "doc": "home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "bank transfer"
+   ],
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "quote": "TRANSFERENCIA BANCARIA",
+   "doc": "medios-de-pago"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 1000,
+    "currency": "ARS"
+   },
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "quote": "Depósito mínimo: $1.000",
+   "doc": "medios-de-pago"
+  },
+  {
+   "field": "payments.maxDeposit",
+   "value": {
+    "amount": 500000,
+    "currency": "ARS",
+    "per": "transaction"
+   },
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "quote": "Importe máximo por transacción: $500.000",
+   "doc": "medios-de-pago"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "bank transfer to CBU/CVU"
+   ],
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "quote": "te lo acreditaremos por transferencia bancaria.",
+   "doc": "medios-de-pago"
+  },
+  {
+   "field": "payments.minWithdrawal",
+   "value": {
+    "amount": 1000,
+    "currency": "ARS"
+   },
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "quote": "no podrá ser inferior a pesos un mil ($1.000).",
+   "doc": "medios-de-pago"
+  },
+  {
+   "field": "payments.maxWithdrawal",
+   "value": "daily max = UIF threshold; max 3 withdrawals per day",
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "quote": "Los Usuarios solo podrán realizar un máximo de TRES (3) retiros por día",
+   "doc": "medios-de-pago"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": "up to 72 business hours",
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "quote": "los retiros se procesarán en un plazo máximo de setenta y dos (72) horas hábiles a partir de la solicitud.",
+   "doc": "medios-de-pago"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "max session time",
+    "play time limits (day/week/month)",
+    "wager limits (day/week/month/session)",
+    "deposit limits",
+    "loss limits",
+    "game-type limits",
+    "pauses",
+    "hourly alerts"
+   ],
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "date": "2026-11-04",
+   "quote": "o   Monto máximo perdido: permite establecer límites diarios, semanales o mensuales.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "time-out 24 h–6 weeks; quick exit; self-exclusion up to 2 years (CABA)",
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "date": "2026-11-04",
+   "quote": "podrá especificar un tiempo de entre 24 hs y 6 semanas de bloqueo.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Línea de orientación por juego problemático 0800-666-6006 (CABA)"
+   },
+   "host": "caba.jugadon.bet.ar",
+   "url": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "date": "2026-11-04",
+   "quote": "0800-666-6006 LÍNEA DE ORIENTACIÓN POR JUEGO PROBLEMÁTICO.",
+   "doc": "juego-responsable"
+  }
+ ],
+ "shots": [
+  {
+   "view": "payments",
+   "file": "data/shots/jugadon/review-2026-11-04-payments.png",
+   "url": "https://caba.jugadon.bet.ar/reglamento/medios-de-pago/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "a8cc662fd6463151a30d61bbce43077e85f907458bc7754b88abf9ad2c4ad702"
+  },
+  {
+   "view": "rg",
+   "file": "data/shots/jugadon/review-2026-11-04-rg.png",
+   "url": "https://caba.jugadon.bet.ar/reglamento/juegos-responsable/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "49e9fd19055a15af960eef521fca8fac93fcec19d49c2050fced402eb71f3c9e"
+  },
+  {
+   "view": "home",
+   "file": "data/shots/jugadon/review-2026-11-04-home.png",
+   "url": "https://caba.jugadon.bet.ar/",
+   "date": "2026-11-04",
+   "width": 784,
+   "height": 231,
+   "sha256": "6b7ac5106b8a481004f47120c31bdc39c61c530eedb88591e452ebe2957b86a7",
+   "note": "Cropped below the '10 años' promo banner (game lists with provider names)"
+  }
+ ]
+}
