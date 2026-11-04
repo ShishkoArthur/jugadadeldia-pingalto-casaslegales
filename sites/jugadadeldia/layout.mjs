@@ -4,6 +4,7 @@
 import { MENU, TOP, HELP_NAV, FOOT } from './content/menu.mjs';
 import { LOGO } from './logo.mjs';
 import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
+import { isLead } from './pages/parts.mjs';
 
 const MARK = logoSvg(LOGO, LOGO.pick, { mode: 'page', attrs: ' class="jg-lgm" aria-hidden="true"' });
 
@@ -84,7 +85,7 @@ export function page(h, p, body) {
     (p.data ? '<script type="application/json" id="jg-page">' + h.jsonScript(p.data(h)) + '</script>' : '');
   const js = ['jg.js', ...(p.js || [])].map(f => '<script type="module" src="' + h.asset(f) + '"></script>').join('');
   return '<!doctype html><html lang="' + h.site.htmlLang + '"><head>' + head + '</head><body' + (p.help ? ' data-jg-ayuda' : '') + ' data-k="' + h.esc(p.kind || 'x') + '">' +
-    '<a class="jg-skip" href="#main">Saltar al contenido</a>' + header + '<main class="jg-main" id="main">' + body + '</main>' + footer(h, p) + data + js + '</body></html>';
+    '<a class="jg-skip" href="#main">Saltar al contenido</a>' + header + '<main class="jg-main' + (isLead(p) ? ' jg-top' : '') + '" id="main">' + body + '</main>' + footer(h, p) + data + js + '</body></html>';
 }
 
 // Data for the browser (client/jg.js): help line of every jurisdiction that has one, to follow the visitor's province.

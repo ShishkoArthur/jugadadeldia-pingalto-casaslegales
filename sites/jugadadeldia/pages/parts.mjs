@@ -40,10 +40,27 @@ export function girl(h, { lazy = false, cls = '', kind = 'hero' } = {}) {
 export const mnOpen = h => '<div class="jg-mn' + (hasGirl(h) ? ' art' : '') + '">';
 export const mnArt = h => girl(h, { lazy: true, kind: 'mn' });
 
+// Result and tool pages (owner 2026-11-04: on phones the tool or the results first, the girl after). On phones (<= 620 px, css/jg.css
+// .jg-top) the main column becomes one flex column: the kicker and the H1, then the first block of the page (and the live output
+// next to it), then the lede with the buttons, then the scene (lazy: it is below the fold there), then the rest. Desktop keeps the hero
+// with the scene beside the text. A block can join the first group with the class jg-f1.
+export const LEAD = new Set(['/quiniela/', '/quiniela/nocturna/', '/quiniela/matutina/', '/quiniela/vespertina/', '/quiniela/la-primera/', '/quiniela/la-previa/',
+  '/quiniela/nacional/', '/quiniela/provincia/', '/quiniela/cordoba/', '/quiniela/santa-fe/', '/quiniela/entre-rios/', '/quiniela/mendoza/',
+  '/quiniela/nacional-y-provincia/', '/quiniela/extractos/', '/quiniela/numeros-que-mas-salen/',
+  '/quiniela/tucuman/', '/quiniela/san-juan/', '/quiniela/chaco/', '/quiniela/corrientes/', '/quiniela/misiones/',
+  '/quini-6/', '/loto-plus/', '/brinco/', '/telekino/', '/poceada/', '/quiniela-plus/',
+  '/quiniela/cuanto-paga/', '/quiniela/redoblona/', '/quiniela/como-se-juega/', '/quiniela/simulador/', '/quiniela/horarios/', '/cuanto-devuelve-cada-juego/',
+  '/quini-6/como-se-juega/', '/quini-6/controlar/', '/telekino/controlar/',
+  '/truco/', '/truco/valores-de-las-cartas/', '/truco/envido/', '/truco/puntos/', '/truco/quiero-o-no-quiero/', '/truco/flor/',
+  '/generala/', '/generala/probabilidades/', '/chinchon/', '/escoba-de-15/', '/burako/']);
+export const isLead = p => LEAD.has(p.path);
+
 export function hero(h, { kicker, lede, scene, actions = '' }) {
-  const g = scene ? girl(h, { kind: h.page.path === '/' ? 'home' : 'hero' }) : '';
-  return '<section class="jg-hero' + (g ? '' : ' no-g') + '"><div><span class="jg-k">' + kicker + '</span><h1>' + h.esc(h.page.h1) + '</h1>' +
-    (lede ? '<p class="jg-lede">' + lede + '</p>' : '') + (actions ? '<div class="jg-r">' + actions + '</div>' : '') + '</div>' + g + '</section>';
+  const lead = isLead(h.page);
+  const g = scene ? girl(h, { kind: h.page.path === '/' ? 'home' : 'hero', lazy: lead }) : '';
+  const top = '<span class="jg-k">' + kicker + '</span><h1>' + h.esc(h.page.h1) + '</h1>';
+  const rest = (lede ? '<p class="jg-lede">' + lede + '</p>' : '') + (actions ? '<div class="jg-r">' + actions + '</div>' : '');
+  return '<section class="jg-hero' + (g ? '' : ' no-g') + '">' + (lead ? '<div class="jg-hx"><div class="jg-ht">' + top + '</div>' + (rest ? '<div class="jg-hl">' + rest + '</div>' : '') + '</div>' : '<div>' + top + rest + '</div>') + g + '</section>';
 }
 
 export function cite(h, ids, label = 'De dónde sale') {
