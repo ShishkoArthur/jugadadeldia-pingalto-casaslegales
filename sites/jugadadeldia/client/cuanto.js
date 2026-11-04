@@ -32,7 +32,7 @@ function calc() {
   out('times').textContent = fmt(r.ratio / s2.u, 2) + ' veces lo apostado';
   out('per').textContent = s2.d + (s2.d === 1 ? ' cifra ' : ' cifras ') + PLACE[s2.u];
   out('odds').textContent = oneIn(r.oneIn);
-  const evText = r.pUnclear.n > 0n ? pesos(evLow) + ' a ' + pesos(ev) : pesos(ev);
+  const evText = r.pUnclear.n > 0n && pesos(evLow) !== pesos(ev) ? pesos(evLow) + ' a ' + pesos(ev) : pesos(ev);
   out('ev').textContent = evText; out('ev2').textContent = pesos(ev);
   out('bar').style.setProperty('--w', ev + '%');
   if (r.pUnclear.n > 0n) { warn.hidden = false; warn.textContent = 'Si tu número se repite, el tope del reglamento de la Provincia puede recortar el premio: por eso el promedio es un rango.'; }

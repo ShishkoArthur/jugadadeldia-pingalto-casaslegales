@@ -59,7 +59,7 @@ async function hoy(el) {
     return '<td class="jg-xe">' + (later ? t.time : (e && (e.x || []).includes(j.id)) ? 'en revisión' : '—') + '</td>';
   };
   el.innerHTML = status(doc) + (dayShown !== now.d ? '<p class="jg-xh">Hoy todavía no hay extractos. Este es el último día con sorteos: <b>' + esc(day(dayShown)) + '</b>.</p>' : '<p class="jg-xh"><b>' + esc(day(dayShown)) + '</b></p>') +
-    '<div class="jg-tw"><table class="jg-tbl jg-xg"><thead><tr><th>Provincia</th>' + m.turnos.map(t => '<th>' + esc(t.name) + (t.time ? '<small>' + t.time + '</small>' : '') + '</th>').join('') + '</tr></thead><tbody>' +
+    '<div class="jg-tw"><table class="jg-tbl jg-xg"><thead><tr><th>Provincia</th>' + m.turnos.map(t => '<th>' + (P.tpaths && P.tpaths[t.id] ? '<a href="' + P.tpaths[t.id] + '">' + esc(t.name) + '</a>' : esc(t.name)) + (t.time ? '<small>' + t.time + '</small>' : '') + '</th>').join('') + '</tr></thead><tbody>' +
     m.jurs.map(j => '<tr><th scope="row">' + (P.paths[j.id] ? '<a href="' + P.paths[j.id] + '">' + esc(j.name) + '</a>' : esc(j.name)) + '</th>' + m.turnos.map(t => cell(t, j)).join('') + '</tr>').join('') + '</tbody></table></div>' +
     '<p class="jg-note">✓ = las copias de LOTBA y de la Provincia coinciden cifra por cifra. Mendoza llega solo por LOTBA.</p><div class="jg-xd" data-xd></div>';
   const show = k => {
@@ -238,7 +238,40 @@ async function freq(el) {
   draw();
 }
 
-const MODES = { hoy, jur, nyp, ext, freq };
+async function turno(el) {
+  const T = el.dataset.t;
+  const doc = await load('quiniela'), m = doc.data, now = nowAr();
+  const t = m.turnos.find(x => x.id === T) || { id: T, name: T };
+  const mine = m.draws.filter(e => e.t === T);
+  if (!mine.length) { fail(el, 'Todavía no tenemos extractos de este turno.'); return; }
+  let cur = mine[mine.length - 1], jSel = cur.j.caba ? 'caba' : Object.keys(cur.j)[0];
+  const pending = cur.d !== now.d && t.time && now.t < t.time;
+  const draw = () => {
+    const note = cur.d === now.d ? '' : pending ? '<p class="jg-xh">La ' + esc(t.name) + ' de hoy sale a las <b>' + esc(t.time) + '</b>. Mientras tanto, la última: <b>' + esc(day(cur.d)) + '</b>.</p>' : '<p class="jg-xh">Todavía no tenemos la ' + esc(t.name) + ' de hoy (o hoy no hubo sorteo). Esta es la última: <b>' + esc(day(cur.d)) + '</b>.</p>';
+    const rows = m.jurs.map(j => {
+      const x = cur.j[j.id];
+      const label = P.paths[j.id] ? '<a href="' + P.paths[j.id] + '">' + esc(j.name) + '</a>' : esc(j.name);
+      if (!x) return '<tr><th scope="row">' + label + '</th><td class="jg-xe">' + ((cur.x || []).includes(j.id) ? 'en revisión' : '—') + '</td><td></td></tr>';
+      return '<tr><th scope="row">' + label + '</th><td><button type="button" class="jg-xc" data-j="' + j.id + '" aria-pressed="' + (j.id === jSel ? 'true' : 'false') + '" aria-label="' + esc(t.name + ' de ' + j.name + ': ' + nums(x[0])[0]) + '"><span>' + x[0].slice(0, 2) + '<b>' + x[0].slice(2, 4) + '</b></span></button></td><td>' + badge(x[1]) + '</td></tr>';
+    }).join('');
+    el.innerHTML = status(doc) + note + '<p class="jg-xh"><b>' + esc(t.name) + ' del ' + esc(day(cur.d)) + '</b>' + (t.time ? ' · ' + esc(t.time) + ' hs' : '') + '</p>' +
+      '<div class="jg-tw"><table class="jg-tbl jg-xg jg-xt1"><thead><tr><th>Provincia</th><th>Cabeza</th><th>Fuentes</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      '<p class="jg-note">Tocá una cabeza para ver los 20 números de esa provincia.</p><div class="jg-xd">' + (cur.j[jSel] ? '<h3>' + esc(name(m, jSel)) + '</h3>' + head(cur, m, jSel) + extract(nums(cur.j[jSel][0]), { label: 'Extracto de ' + name(m, jSel) }) : '') + '</div>';
+    const w = $('[data-xtweek]');
+    if (w) {
+      const days = [...new Set(mine.map(e => e.d))].reverse();
+      w.innerHTML = '<div class="jg-tw"><table class="jg-tbl jg-xg"><thead><tr><th>Día</th>' + m.jurs.map(j => '<th>' + esc(j.name) + '</th>').join('') + '</tr></thead><tbody>' +
+        days.map(d => { const e = mine.find(x => x.d === d); return '<tr><th scope="row">' + esc(day(d)) + '</th>' + m.jurs.map(j => { const x = e.j[j.id]; return x ? '<td><button type="button" class="jg-xc" data-k="' + d + '|' + j.id + '"' + (e === cur && j.id === jSel ? ' aria-pressed="true"' : '') + '><span>' + x[0].slice(0, 2) + '<b>' + x[0].slice(2, 4) + '</b></span></button></td>' : '<td class="jg-xe">—</td>'; }).join('') + '</tr>'; }).join('') +
+        '</tbody></table></div><p class="jg-note">Los días que faltan no tuvieron ' + esc(t.name) + ' en nuestro registro (domingos y feriados). Tocá una cabeza para ver su extracto arriba.</p>';
+    }
+  };
+  el.addEventListener('click', ev => { const b = ev.target.closest('button[data-j]'); if (b) { jSel = b.dataset.j; draw(); } });
+  const w = $('[data-xtweek]');
+  if (w) w.addEventListener('click', ev => { const b = ev.target.closest('button[data-k]'); if (!b) return; const [d, j] = b.dataset.k.split('|'); const e = mine.find(x => x.d === d); if (e) { cur = e; jSel = j; draw(); el.scrollIntoView({ block: 'start' }); } });
+  draw();
+}
+
+const MODES = { hoy, jur, nyp, ext, freq, turno };
 for (const el of $$('[data-xq]')) {
   const fn = MODES[el.dataset.xq];
   if (fn) fn(el).catch(() => fail(el, 'No pudimos cargar los extractos. Probá de nuevo en un rato.'));

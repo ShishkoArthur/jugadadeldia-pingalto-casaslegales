@@ -1,4 +1,4 @@
-import { fmt, fmtPct, fmtInput, parseNum } from '../../../engine/games/num.mjs';
+import { fmt, fmtFixed, fmtPct, fmtInput, parseNum } from '../../../engine/games/num.mjs';
 export { fmt, fmtPct, fmtInput, parseNum };
 export const $ = (s, el = document) => el.querySelector(s);
 export const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -10,7 +10,7 @@ export const store = {
 export const json = id => { const el = document.getElementById(id); if (!el) return null; try { return JSON.parse(el.textContent); } catch (e) { return null; } };
 export const page = () => json('jg-page') || {};
 export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-export const pesos = n => '$ ' + fmt(n, 2);
+export const pesos = n => '$ ' + (Math.abs(Math.round(n * 100) % 100) === 0 ? fmt(n, 0) : fmtFixed(n, 2));
 export const oneIn = n => '1 en ' + fmt(n, n < 100 ? 1 : 0);
 export const wait = ms => new Promise(r => setTimeout(r, ms));
 export function frame(fn) {

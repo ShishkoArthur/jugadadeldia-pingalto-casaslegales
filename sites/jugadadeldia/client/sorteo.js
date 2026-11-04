@@ -1,4 +1,5 @@
 import { $, $$, page, store } from './kit.js';
+import { STALE_HOURS } from '../../../engine/lottery/extract.mjs';
 
 const D = page();
 const form = $('[data-sorteo]');
@@ -75,7 +76,27 @@ function check(e) {
   p.textContent = anyWin ? 'El premio en pesos lo publica la lotería con el extracto: depende de cuántos ganadores hubo.' : 'Controlado. Recordá que cada sorteo es independiente: los números de hoy no cambian la chance del próximo.';
   sum.append(p);
 }
+const DAYS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+async function fill(btn) {
+  const F = D.fill, id = btn.dataset.fill;
+  const area = $('[data-many="' + id + '"]', form), note = $('[data-fill-note="' + id + '"]', form);
+  if (!F || !area) return;
+  note.textContent = 'Buscando…';
+  try {
+    const r = await fetch(F.feed, { cache: 'no-cache' });
+    if (!r.ok) throw new Error(r.status);
+    const doc = await r.json();
+    const e = [...doc.data.draws].reverse().find(x => x.t === F.t && x.j[F.jur]);
+    if (!e) { note.textContent = 'Todavía no tenemos esa Nocturna. Copiá los números del extracto oficial.'; return; }
+    area.value = e.j[F.jur][0].match(/\d{4}/g).join(' ');
+    const d = e.d, wd = DAYS[new Date(d + 'T12:00:00Z').getUTCDay()];
+    const stale = Date.now() - Date.parse(doc.updated) > STALE_HOURS * 3600e3;
+    note.textContent = 'Nocturna de la Provincia del ' + wd + ' ' + +d.slice(8, 10) + '/' + +d.slice(5, 7) + (e.j[F.jur][1] === 'LP' ? ' · 2 fuentes oficiales coinciden' : ' · 1 fuente oficial') + (stale ? ' · ojo: hace más de ' + STALE_HOURS + ' horas que no pudimos revisar las fuentes' : '') + '. Para cobrar, manda el extracto oficial.';
+    if (readBalls($('[data-balls="mine"]', form)).length === D.pick) check();
+  } catch (err) { note.textContent = 'No pudimos traer el extracto. Copialo del extracto oficial.'; }
+}
 if (form) {
+  form.addEventListener('click', e => { const b = e.target.closest('[data-fill]'); if (b) fill(b); });
   const saved = store.get('jg-boleta-' + D.game);
   if (saved) $$('input', $('[data-balls="mine"]', form)).forEach((el, i) => { const v = saved.split(',')[i]; if (v !== undefined) el.value = D.max > 9 ? two(v) : v; });
   form.addEventListener('submit', check);

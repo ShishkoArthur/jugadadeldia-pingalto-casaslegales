@@ -79,7 +79,8 @@ export default {
         } catch (e) { out.notes.push('LOTBA ' + n + ': ' + e.message.slice(0, 160)); }
       }
     }
-    // PBA: today and yesterday, only while some draw of that day is not checked against it yet (5 MB per day: at most every 80 min)
+    // PBA: today and yesterday, only while some draw of that day is not checked against it yet (5 MB per day: at most every 80 min
+    // for today; yesterday every 3 h - the copy cached before midnight lacks the Vespertina and Nocturna, audit 2026-11-04)
     const pending = new Set();
     const byDate = {};
     for (const e of archive) (byDate[e.d] = byDate[e.d] || []).push(e);
@@ -90,7 +91,7 @@ export default {
     }
     for (const day of pending) {
       try {
-        const { json } = await ctx.getJson(PBA_DAY(day), { ttlHours: day === today ? 1.3 : 20, timeoutMs: 120000 });
+        const { json } = await ctx.getJson(PBA_DAY(day), { ttlHours: day === today ? 1.3 : 3, timeoutMs: 120000 });
         for (const f of pbaPdfs(json)) {
           try { out.pba.push(parsePbaText(pdfText(f.b64), { date: day, turno: f.turno })); }
           catch (e) { out.notes.push('PBA ' + day + ' ' + f.turno + ': ' + e.message.slice(0, 160)); }

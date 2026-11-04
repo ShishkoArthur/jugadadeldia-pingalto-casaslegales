@@ -13,14 +13,15 @@ function calc() {
   const j = f.get('j'), a = two(f.get('a')), b = two(f.get('b')), s = parseNum(f.get('s'));
   const err = out('err');
   err.hidden = true;
+  const blank = () => { out('top').textContent = '-'; out('odds').textContent = '-'; out('ev').textContent = out('ev3').textContent = '-'; out('dist').textContent = ''; };
   helpLine(D.j[j].help);
-  if (Number.isNaN(a) || Number.isNaN(b)) { err.hidden = false; err.textContent = 'Los dos números van de 00 a 99.'; return; }
-  if (!(s > 0) || Math.round(s * 100) !== s * 100) { err.hidden = false; err.textContent = 'Escribí cuánto apostás, en pesos.'; return; }
+  if (Number.isNaN(a) || Number.isNaN(b)) { err.hidden = false; err.textContent = 'Los dos números van de 00 a 99.'; blank(); return; }
+  if (!(s > 0) || Math.round(s * 100) !== s * 100) { err.hidden = false; err.textContent = 'Escribí cuánto apostás, en pesos.'; blank(); return; }
   let r;
   try { r = redoblona({ rules: D.j[j].id, first: { number: a, places: +f.get('ua') }, second: { number: b, places: +f.get('ub') }, stake: s }); } catch (e) {
     err.hidden = false;
     err.textContent = e.code === 'NOT_REDOBLONA' ? (e.message.includes('both bets') ? 'Si los dos van a la cabeza no es una redoblona: elegí otra ubicación para el segundo.' : 'En la Provincia, si el primero va más lejos que el segundo, se paga como apuesta directa.') : 'Revisá los datos.';
-    out('top').textContent = '-';
+    blank();
     return;
   }
   const outs = r.outcomes;

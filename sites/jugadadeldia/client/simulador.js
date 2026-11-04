@@ -49,7 +49,7 @@ function run(again) {
   const j = f.get('j'), d = +f.get('d'), u = +f.get('u'), a = parseNum(f.get('a')), plays = +f.get('f');
   const err = out('err'); err.hidden = true;
   helpLine(D.j[j].help);
-  if (!(a > 0) || Math.round(a * 100) !== a * 100) { err.hidden = false; err.textContent = 'Escribí cuánto apostás por jugada, en pesos.'; return; }
+  if (!(a > 0) || Math.round(a * 100) !== a * 100) { err.hidden = false; err.textContent = 'Escribí cuánto apostás por jugada, en pesos.'; for (const k of ['spent', 'mean', 'loss', 'ahead', 'median']) out(k).textContent = '-'; out('mc').textContent = ''; out('hist').textContent = ''; out('curve').textContent = ''; return; }
   if (again) seed++;
   const b = directBet({ rules: D.j[j].id, digits: d, places: u, stake: a });
   const outcomes = b.outcomes.map(o => ({ amount: o.payout, p: o.p }));
@@ -58,7 +58,8 @@ function run(again) {
   out('mean').textContent = pesos(y.spent + toNumber(y.meanNet));
   out('loss').textContent = pesos(-toNumber(y.meanNet));
   out('ahead').textContent = fmt(y.pAhead * 100, 1) + ' %';
-  out('median').textContent = sp(y.median);
+  const zero = y.rows.length && y.rows[0].net === -y.spent ? y.rows[0].p : 0;
+  out('median').innerHTML = y.median <= -y.spent ? 'En el <b>' + fmt(zero * 100, 1) + ' %</b> de los años no acertás ni una vez y perdés todo lo puesto.' : 'La mitad de los años termina en <b>' + sp(y.median) + '</b> o peor.';
   const mc = yearMonteCarlo({ outcomes, stake: b.stake, plays, years: 10000, seed });
   out('mc').textContent = 'En 10.000 años simulados terminaron en ganancia ' + fmt(mc.pAhead * 100, 1) + ' %; el promedio fue perder ' + pesos(-mc.meanNet) + '.';
   out('hist').innerHTML = hist(mc.nets);

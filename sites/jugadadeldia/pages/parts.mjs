@@ -1,11 +1,11 @@
 // Shared pieces of jugadadeldia.com pages: hero with the girl slot, quotes with their source, Spanish cards, breadcrumbs.
 import { readFileSync } from 'node:fs';
-import { fmt } from '../../../engine/games/num.mjs';
+import { fmt, fmtFixed } from '../../../engine/games/num.mjs';
 
 export { fmt };
 export const pct = (x, d = 2) => fmt(x * 100, d) + ' %';
 export const oneIn = n => '1 en ' + fmt(n, n < 100 ? 1 : 0);
-export const money = n => '$ ' + fmt(n, 2);
+export const money = n => '$ ' + (Math.abs(Math.round(n * 100) % 100) === 0 ? fmt(n, 0) : fmtFixed(n, 2));
 
 // The girl of the site (jdd-girl-r3-10): the accepted scene of the page from sites/jugadadeldia/content/scenes.json
 // (data/art/publish-scenes.mjs). The figure fills its frame: the frame is K times its width tall, times g of the scene (a seated pose

@@ -7,6 +7,7 @@
 .jg-xb{display:inline-flex;align-items:center;min-height:24px;margin-left:6px;padding:0 8px;border-radius:8px;background:var(--s2);color:var(--mu);font:700 12px var(--m);vertical-align:middle}
 .jg-xb.ok{background:color-mix(in srgb,var(--b4) 22%,var(--sf));color:var(--ok)}
 .jg-xg{min-width:560px}
+.jg-xg.jg-xt1{min-width:0}
 .jg-xg th small{display:block;font-weight:500;letter-spacing:0;text-transform:none}
 .jg-xg tbody th{padding:10px;background:var(--s2);border-radius:12px 0 0 12px;font:700 15px var(--d);text-transform:none;letter-spacing:0;color:var(--fg);white-space:nowrap}
 .jg-xg tbody th a{color:inherit}

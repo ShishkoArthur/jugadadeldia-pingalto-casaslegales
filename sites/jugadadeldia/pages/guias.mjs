@@ -16,6 +16,8 @@ import { STALE_HOURS } from '../../../engine/lottery/extract.mjs';
 import { parseProgramText, validateMonth, PROG_CODES, PROG_TYPES } from '../../../engine/lottery/programa.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn, tiles, ICONS } from './parts.mjs';
 import { price, priceNote } from './precios.mjs';
+import { anyLoto } from './sorteos.mjs';
+import { TURN_PATHS } from './extractos.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -79,6 +81,13 @@ export const comoSeJuega = {
   },
 };
 
+// The middle of the year's results in words. When more than half of the years never hit, the median is the whole stake lost:
+// say that (with its share) instead of "X or worse", which cannot be worse.
+export function medianText(y, money) {
+  const zero = y.rows.length && y.rows[0].net === -y.spent ? y.rows[0].p : 0;
+  if (y.median <= -y.spent) return 'En el <b>' + fmt(zero * 100, 1) + ' %</b> de los años no acertás ni una vez y perdés todo lo puesto.';
+  return 'La mitad de los años termina en <b>' + (y.median < 0 ? '−' : '') + money(Math.abs(y.median)) + '</b> o peor.';
+}
 export const simulador = {
   path: '/quiniela/simulador/', kind: 'lottery', section: 'quiniela', css: ['guias.css'], js: ['simulador.js'],
   title: 'Simulador: un año jugando a la quiniela, en pesos',
@@ -101,7 +110,7 @@ export const simulador = {
       '<h3>El saldo, semana a semana</h3><div data-o="curve"><p class="jg-note">La curva se dibuja con JavaScript.</p></div><p class="jg-note">En naranja, un año simulado; en gris, otros 20. La línea punteada es salir hecho.</p></section>' +
       '<section class="jg-c t2" aria-live="polite"><span class="jg-sm">La cuenta exacta</span><p class="jg-win"><span>Ponés en el año</span><b data-o="spent">' + money(y.spent) + '</b></p>' +
       '<p class="jg-hon">En promedio volvés con <b data-o="mean">' + money(y.spent + n(y.meanNet)) + '</b>: perdés <b data-o="loss">' + money(-n(y.meanNet)) + '</b>.</p>' +
-      '<p class="jg-hon">Años que terminan en ganancia: <b data-o="ahead">' + fmt(y.pAhead * 100, 1) + ' %</b>. La mitad de los años termina en <b data-o="median">' + (y.median < 0 ? '−' : '') + money(Math.abs(y.median)) + '</b> o peor.</p>' +
+      '<p class="jg-hon">Años que terminan en ganancia: <b data-o="ahead">' + fmt(y.pAhead * 100, 1) + ' %</b>. <span data-o="median">' + medianText(y, money) + '</span></p>' +
       '<p class="jg-note" data-o="mc">Con JavaScript, además, simulamos 10.000 años para comparar.</p><p class="jg-note" data-o="err" hidden></p></section>' +
       '<section class="jg-c w2"><span class="jg-sm">10.000 años simulados</span><h2>Cómo terminan</h2><div data-o="hist"><p class="jg-note">El histograma aparece con JavaScript.</p></div><p class="jg-note">Cada barra es un grupo de años con un resultado parecido. En verde, los que terminaron en ganancia.</p></section>' +
       '<section class="jg-c w3"><span class="jg-sm">Cómo calculamos</span><h2>Exacto y simulado</h2><ul class="jg-ul tx"><li>El premio por jugada sale del reglamento (las veces que paga, dividido por los lugares que cubrís).</li><li>La cuenta exacta suma todas las combinaciones posibles de aciertos del año. La simulación tira el año 10.000 veces con un generador con semilla, y las dos tienen que coincidir.</li><li>Cada sorteo es independiente: no hay rachas ni números que «se deben».</li></ul>' +
@@ -126,7 +135,7 @@ export const horarios = {
     return hero(h, { kicker: 'Quiniela · hora argentina', scene: 'quiniela-horarios', lede: 'Cinco sorteos por día, de lunes a sábado, de la Previa a la Nocturna. Abajo, la respuesta para hoy y mañana y la cuenta regresiva al próximo.' }) +
       '<div class="jg-mn">' +
       '<section class="jg-c w2" aria-live="polite"><span class="jg-tag">Hoy</span><h2>¿Hay sorteo?</h2><div data-o="now"><p class="jg-note">La respuesta se calcula con JavaScript, en hora argentina.</p></div><div data-o="next"></div></section>' +
-      '<section class="jg-c"><span class="jg-sm">Los turnos</span><h2>Horarios</h2><table class="jg-tbl" data-nosnippet><tbody>' + types.map(t => '<tr><td>' + t + '</td><td class="n">' + times[t].join(' / ') + ' hs</td></tr>').join('') + '</tbody></table>' +
+      '<section class="jg-c"><span class="jg-sm">Los turnos</span><h2>Horarios</h2><table class="jg-tbl" data-nosnippet><tbody>' + types.map(t => { const u = TURN_PATHS[PROG_TYPES.find(x => x.name === t).turno]; return '<tr><td>' + (u && h.built(u) ? '<a href="' + h.href(u) + '">' + t + '</a>' : t) + '</td><td class="n">' + times[t].join(' / ') + ' hs</td></tr>'; }).join('') + '</tbody></table><p class="jg-note">Tocá un turno para ver su último extracto en cada provincia.</p>' +
       cite(h, ['lotba.quiniela.time-previa', 'lotba.quiniela.time-primera', 'lotba.quiniela.time-matutina', 'lotba.quiniela.time-vespertina', 'lotba.quiniela.time-nocturna'], 'Del programa oficial') + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Programa de La Quiniela de la Ciudad, del ' + dm(p.from) + ' al ' + dm(p.to) + '</span><h2>Qué extracto sale en cada turno</h2><div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Extracto</th>' + types.map(t => '<th class="n">' + t + '</th>').join('') + '</tr></thead><tbody>' +
       codes.map(c => '<tr><td>' + PROG_CODES[c] + '</td>' + types.map(t => '<td class="n">' + part(t, c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>' +
@@ -141,26 +150,28 @@ export const horarios = {
 const GAMES = () => {
   const q = d => directBet({ rules: 'lotba-quiniela', digits: d, places: 1, stake: 100 });
   const rows = [
-    { name: 'Quiniela a 1 o 2 cifras', sub: 'premio fijo · Ciudad y Provincia', v: n(q(2).evPer100), any: n(q(2).pWin), fixed: true, url: '/quiniela/cuanto-paga/' },
-    { name: 'Quiniela a 3 cifras', sub: 'premio fijo', v: n(q(3).evPer100), any: n(q(3).pWin), fixed: true, url: '/quiniela/cuanto-paga/' },
-    { name: 'Quiniela a 4 cifras', sub: 'premio fijo', v: n(q(4).evPer100), any: n(q(4).pWin), fixed: true, url: '/quiniela/cuanto-paga/' },
-    { name: 'Quiniela a 5 cifras', sub: 'premio fijo · solo Provincia', v: n(directBet({ rules: 'pba-quiniela', digits: 5, places: 1, stake: 100 }).evPer100), any: n(directBet({ rules: 'pba-quiniela', digits: 5, places: 1, stake: 100 }).pWin), fixed: true, url: '/quiniela/cuanto-paga/' },
+    { name: 'Quiniela a 1 o 2 cifras', sub: 'premio fijo · Ciudad y Provincia', v: n(q(2).evPer100), any: n(q(2).pWin), anyName: 'Quiniela a 2 cifras, a la cabeza', fixed: true, url: '/quiniela/cuanto-paga/' },
+    { name: 'Quiniela a 1 cifra', chanceOnly: true, any: n(q(1).pWin), anyName: 'Quiniela a 1 cifra, a la cabeza' },
+    { name: 'Quiniela a 3 cifras', sub: 'premio fijo', v: n(q(3).evPer100), any: n(q(3).pWin), anyName: 'Quiniela a 3 cifras, a la cabeza', fixed: true, url: '/quiniela/cuanto-paga/' },
+    { name: 'Quiniela a 4 cifras', sub: 'premio fijo', v: n(q(4).evPer100), any: n(q(4).pWin), anyName: 'Quiniela a 4 cifras, a la cabeza', fixed: true, url: '/quiniela/cuanto-paga/' },
+    { name: 'Quiniela a 5 cifras', sub: 'premio fijo · solo Provincia', v: n(directBet({ rules: 'pba-quiniela', digits: 5, places: 1, stake: 100 }).evPer100), any: n(directBet({ rules: 'pba-quiniela', digits: 5, places: 1, stake: 100 }).pWin), anyName: 'Quiniela a 5 cifras, a la cabeza', fixed: true, url: '/quiniela/cuanto-paga/' },
   ];
   const red = redoblona({ rules: 'lotba-quiniela', first: { number: 12, places: 1 }, second: { number: 34, places: 5 }, stake: 100 });
   rows.push({ name: 'Redoblona (cabeza y a los 5)', sub: 'premio fijo con tope · Ciudad', v: n(red.evPer100), any: 1 / red.oneIn, fixed: true, url: '/quiniela/redoblona/' });
   for (const k of [3, 5, 7]) { const t = tombolina({ rules: 'lotba-tombolina', numbers: k, stake: 100 }); rows.push({ name: 'Tombolina con ' + k + ' números', sub: 'premio fijo · Ciudad', v: n(t.evPer100), any: n(t.pWin), fixed: true }); }
-  const pool = (name, sub, id, oddsId, url, ticket) => { const o = oddsId ? odds(oddsId) : null; rows.push({ name, sub, v: n(prizeShare(id).per100), any: o && o.pAnyPrize ? n(ticket ? o.pAnyPrizeTicket : o.pAnyPrize) : null, fixed: false, url }); };
+  const pool = (name, sub, id, oddsId, url, ticket, anyOverride) => { const o = oddsId ? odds(oddsId) : null; rows.push({ name, sub, v: n(prizeShare(id).per100), any: anyOverride || (o && o.pAnyPrize ? n(ticket ? o.pAnyPrizeTicket : o.pAnyPrize) : null), fixed: false, url }); };
   pool('Quini 6 Tradicional', 'pozo · los dos sorteos', 'cas-quini6-tradicional', 'cas-quini6-tradicional', '/quini-6/', true);
   pool('Quini 6 Revancha', 'pozo', 'cas-quini6-revancha', 'cas-quini6-revancha', '/quini-6/');
   pool('Quini 6 Siempre Sale', 'pozo · gana el que más acierta', 'cas-quini6-siempresale', null, '/quini-6/');
   pool('Brinco', 'pozo', 'cas-brinco', 'cas-brinco', '/brinco/');
-  pool('Loto Plus', 'pozo · las cinco modalidades', 'lotba-loto-plus', 'lotba-loto-plus-tradicional', '/loto-plus/');
+  pool('Loto Plus', 'pozo · las cinco modalidades', 'lotba-loto-plus', 'lotba-loto-plus-tradicional', '/loto-plus/', false, 1 / anyLoto());
   pool('Telekino', 'pozo · incluye premios en especie', 'pba-telekino', 'pba-telekino', '/telekino/');
   pool('Poceada de la Ciudad', 'pozo', 'lotba-poceada', 'lotba-poceada', '/poceada/');
   const qp = quinielaPlusOdds('pba-quiniela-plus');
   rows.push({ name: 'Quiniela Plus', sub: 'pozo · la parte Plus', v: n(prizeShare('pba-quiniela-plus').per100), any: n(qp.pAnyPrize), fixed: false, url: '/quiniela-plus/' });
-  return rows.sort((a, b) => b.v - a.v);
+  return rows;
 };
+const BARS = () => GAMES().filter(g => !g.chanceOnly).sort((a, b) => b.v - a.v);
 
 export const devuelve = {
   path: '/cuanto-devuelve-cada-juego/', kind: 'lottery', section: 'loterias', css: ['guias.css'], js: ['devuelve.js'],
@@ -168,9 +179,9 @@ export const devuelve = {
   h1: 'De cada $ 100, cuánto vuelve',
   description: 'De cada $ 100 que jugás, cuánto vuelve en premios en la quiniela, el Quini 6, el Loto, el Telekino y la Tombolina, según cada reglamento.',
   ld: h => [webPage(h), crumbs(h, [])],
-  data: () => ({ g: GAMES().map(g => ({ n: g.name, v: +g.v.toFixed(4) })) }),
+  data: () => ({ g: BARS().map(g => ({ n: g.name, v: +g.v.toFixed(4) })) }),
   render(h) {
-    const g = GAMES(), max = 100;
+    const g = BARS(), all = GAMES(), max = 100;
     const bar = x => '<div><span>' + (x.url && h.built(x.url) ? '<a href="' + h.href(x.url) + '">' + x.name + '</a>' : x.name) + '<small>' + x.sub + '</small></span><i style="--w:' + (100 * x.v / max).toFixed(1) + '%;--c:' + (x.fixed ? 'var(--b2)' : 'var(--b5)') + '"></i><b>' + money(x.v) + '</b></div>';
     const best = g[0], worst = g[g.length - 1];
     return hero(h, { kicker: 'Loterías · la cuenta de la casa', lede: 'Cada reglamento dice qué parte de lo que se juega vuelve en premios. Las ponemos una al lado de la otra: la diferencia hasta $ 100 se queda en comisiones, fondos y la lotería.' }) +
@@ -180,7 +191,7 @@ export const devuelve = {
       '<p class="jg-hon">El que más devuelve, <b>' + best.name + '</b>, igual se queda con <b>' + money(100 - best.v) + '</b> de cada $ 100. El que menos, <b>' + worst.name + '</b>, devuelve <b>' + money(worst.v) + '</b>.</p></section>' +
       '<section class="jg-c w2" data-dev><span class="jg-tag">Tu plata</span><h2>Si jugás todas las semanas</h2><form class="jg-f"><div class="jg-two"><label class="jg-fl"><span>Juego</span>' + sel('g', g.map((x, i) => [i, x.name, i === 0])) + '</label><label class="jg-fl"><span>Por semana (pesos)</span><input class="jg-in" name="a" type="text" inputmode="decimal" value="2000" autocomplete="off"></label></div></form>' +
       '<p class="jg-win no"><span>En un año, en promedio, perdés</span><b data-o="loss">' + money(2000 * 52 * (100 - g[0].v) / 100) + '</b></p><p class="jg-note">Es un promedio de muchos años: un año concreto puede salir mejor o mucho peor. Para verlo, probá el simulador.</p>' + btn(h, '/quiniela/simulador/', 'Simular un año de quiniela', true) + '</section>' +
-      '<section class="jg-c"><span class="jg-sm">Chance de algún premio</span><h2>Lo que sale seguido no paga</h2><table class="jg-tbl" data-nosnippet><tbody>' + g.filter(x => x.any).sort((a, b) => b.any - a.any).map(x => '<tr><td>' + x.name + '</td><td class="n">' + oneIn(1 / x.any) + '</td></tr>').join('') + '</tbody></table></section>' +
+      '<section class="jg-c"><span class="jg-sm">Chance de algún premio</span><h2>Lo que sale seguido no paga</h2><table class="jg-tbl" data-nosnippet><tbody>' + all.filter(x => x.any).sort((a, b) => b.any - a.any).map(x => '<tr><td>' + (x.anyName || x.name) + '</td><td class="n">' + oneIn(1 / x.any) + '</td></tr>').join('') + '</tbody></table></section>' +
       '<section class="jg-c w3"><span class="jg-sm">De los reglamentos</span><h2>De dónde sale cada número</h2>' + cite(h, ['lotba.quiniela.pay-2', 'lotba.quiniela.pay-3', 'lotba.quiniela.pay-4', 'pba.quiniela.pay-5', 'lotba.redoblona.pay', 'lotba.tombolina.pay', 'cas.quini6.nominal', 'cas.quini6.pool', 'cas.quini6.split', 'cas.revancha.share', 'cas.siempresale.share', 'cas.brinco.pool', 'cas.brinco.split', 'lotba.loto.fund', 'lotba.loto.modality-share', 'pba.telekino.fund', 'pba.telekino.split', 'lotba.poceada.fund', 'lotba.poceada.split', 'pba.qplus.fund', 'pba.qplus.split']) + '</section></div>';
   },
 };
