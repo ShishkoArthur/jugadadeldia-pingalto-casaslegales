@@ -11,6 +11,8 @@ import { licenceMap, mapLegend, anat, opQuote, shotFigure, codeOf } from './oppa
 import { src, quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
 import { help } from './provincia.mjs';
 import { ROOT } from '../../../tools/env.mjs';
+import { review } from '../content/reviews.mjs';
+import { SECTIONS, reviewSection, summary, toc, reviewShots, viewLabel } from './review.mjs';
 
 const SHOT_LABEL = { home: 'Página de entrada', parked: 'Lo que muestra la dirección', footer: 'Pie de página', rg: 'Juego responsable', sports: 'Apuestas deportivas', pay: 'Medios de pago', tc: 'Términos y condiciones', block: 'Lo que muestra fuera de su provincia' };
 const RG_ORDER = ['rg-deposit', 'rg-loss', 'rg-bet', 'rg-time', 'rg-pause', 'rg-selfex', 'rg-check', 'rg-age', 'rg-help'];
@@ -173,13 +175,14 @@ function siteSays(h, o, D, row) {
     (about.length ? '<div class="rl-box rl-about"><h3>Cómo se presenta</h3>' + about.map(q => opQuote(h, D, q, q.label)).join('') + (o.caveat ? '<p class="rl-note">' + h.esc(o.caveat) + (h.built('/verificador') ? ' <a href="' + h.href('/verificador') + '">Abrir el verificador</a>' : '') + '</p>' : '') + '</div>' : '') + '</section>';
 }
 
-function shotsSection(h, o, D) {
+function shotsSection(h, o, D, R) {
   const shots = shotsOf(D, o.brand);
+  const rev = R ? reviewShots(h, R, viewLabel) : '';
   const used = new Set(shots.map(s => s.id));
   const misses = Object.values(D.shots).filter(s => s.brand === o.brand && !used.has(s.id) && !s.ok);
-  const figs = shots.map(s => shotFigure(h, s, SHOT_LABEL[s.kind] || 'Página pública')).join('');
+  const figs = rev + shots.map(s => shotFigure(h, s, SHOT_LABEL[s.kind] || 'Página pública')).join('');
   const blockQuotes = quotesOf(D, o.brand, 'block');
-  const fromAr = shots.some(s => s.source === 'owner');
+  const fromAr = !!rev || shots.some(s => s.source === 'owner');
   const miss = misses.map(s => '<li><span class="rl-host">' + h.esc(new URL(s.url).hostname) + '</span><span>' +
     (s.status >= 400 || s.status === 202 ? 'respondió con una página de bloqueo (código ' + s.status + ')' : 'no cargó') + ' · ' + h.fmtDate(s.date) + '</span></li>').join('');
   if (!figs && !miss) return o.access ? accessSection(h, o) : '';
@@ -198,9 +201,11 @@ function toolsReason(o, shots) {
   if (shots.some(s => s.ok)) return ' la guardamos solo en su página de entrada, que no detalla esas herramientas';
   return ' no se mostró desde nuestra ubicación';
 }
-function toolsSection(h, o, D) {
-  const rg = quotesOf(D, o.brand, 'rg').filter(q => q.topic !== 'rg-age' && q.topic !== 'rg-help').sort((a, b) => RG_ORDER.indexOf(a.topic) - RG_ORDER.indexOf(b.topic));
+const rgQuotes = (D, o) => quotesOf(D, o.brand, 'rg').filter(q => q.topic !== 'rg-age' && q.topic !== 'rg-help').sort((a, b) => RG_ORDER.indexOf(a.topic) - RG_ORDER.indexOf(b.topic));
+function toolsSection(h, o, D, only) {
+  const rg = rgQuotes(D, o);
   const pay = quotesOf(D, o.brand, 'pay');
+  if (only && !(only === 'rg' ? rg : pay).length) return '';
   if (!rg.length && !pay.length) {
     return '<section class="rl-sec">' + sectionHead(h, 'Herramientas de juego responsable y medios de pago') +
       '<div class="rl-box"><p>No publicamos una lista: solo contamos lo que dice una página pública del operador que pudimos guardar, y la de ' + h.esc(h.names[o.brand]) + h.esc(toolsReason(o, shotsOf(D, o.brand))) + '. Las herramientas que exige cada provincia están en la página de esa provincia.</p></div></section>';
@@ -211,6 +216,8 @@ function toolsSection(h, o, D) {
   const rgHtml = groups(rg).map(g => head(g.d) + '<div class="rl-tools">' + g.qs.map(q => '<article class="rl-tool"><h3><i class="rl-y" aria-hidden="true"></i>' + h.esc(q.label.replace(/ \((Ciudad|Córdoba)\)$/, '')) + '</h3>' + short(q) + '</article>').join('') + '</div>').join('');
   const payHtml = groups(pay).map(g => head(g.d) + '<div class="rl-pays">' + [...new Set(g.qs.map(q => q.item))].map(it => '<article class="rl-pay"><h3>' + h.esc(it) + '</h3>' +
     g.qs.filter(q => q.item === it).map(q => '<p class="rl-plab">' + h.esc(q.label) + '</p>' + short(q)).join('') + '</article>').join('') + '</div>').join('');
+  if (only === 'rg') return rg.length ? '<p class="rl-note">Otras páginas que guardamos antes:</p>' + rgHtml : '';
+  if (only === 'pay') return pay.length ? '<p class="rl-note">Otras páginas que guardamos antes:</p>' + payHtml : '';
   return (rg.length ? '<section class="rl-sec">' + sectionHead(h, 'Herramientas de juego responsable', 'citas de su página') +
       '<p class="rl-note">Solo lo que dice la página del operador, con su texto. Que una herramienta figure acá no quiere decir que la hayamos probado: no abrimos cuentas.</p>' + rgHtml + '</section>' : '') +
     (pay.length ? '<section class="rl-sec">' + sectionHead(h, 'Medios de pago y retiros', 'citas de su página') + payHtml + '</section>' : '');
@@ -242,10 +249,24 @@ export function operatorPage(o) {
       const row = rowOf(h, o.brand);
       checks(h, o, row);
       const n = presence(row), all = entries(h);
-      const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">Ficha de operador · listas copiadas el ' + h.fmtDate(h.regs.map(r => r.checked).sort()[0]) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
-        '<p class="rl-lead">' + h.esc(o.lead) + '</p>' + officialLinks(h, o.brand, h.regs.filter(r => row.cells[r.id]).map(r => r.id)) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
+      const R = review(h.today, o.brand), isRev = !!(R && R.r.facts.length);
+      if (/rese[nñ]a/i.test(h.page.title + h.page.h1 + h.page.description) !== isRev) throw new Error('/operador/' + o.slug + ': title/H1/description ' + (isRev ? 'must say «reseña» (review data exists)' : 'say «reseña» but there is no review data'));
+      const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + (isRev ? 'Reseña con datos · sitio visto desde Argentina el ' + h.fmtDate(R.r.collected) + ' · listas copiadas el ' : 'Ficha de operador · listas copiadas el ') + h.fmtDate(h.regs.map(r => r.checked).sort()[0]) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
+        '<p class="rl-lead">' + h.esc(isRev && o.reviewLead ? o.reviewLead : o.lead) + '</p>' + officialLinks(h, o.brand, h.regs.filter(r => row.cells[r.id]).map(r => r.id)) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
         '<div class="rl-big"><b>' + n + '<small> de ' + h.regs.length + '</small></b><span>listas oficiales que revisamos lo nombran</span><small>' + h.esc(o.angle) + '</small></div></section>';
       const aid = o.platform ? help(h, { j: h.rg.prov(o.jurisdiction), name: h.rg.prov(o.jurisdiction).name }) : '';
+      if (isRev) {
+        const casinoPath = '/operador/' + o.slug + '/casino';
+        const rgN = new Set(R.pre('rg').map(f => f.field)).size + new Set(rgQuotes(D, o).map(q => q.topic)).size;
+        const extra = {
+          casino: h.built(casinoPath) ? '<p class="rl-note"><a href="' + h.href(casinoPath) + '">' + h.esc(row.name) + ' Casino: juegos, proveedores y en qué provincias tiene licencia</a></p>' : '',
+          'juego-responsable': rgN === 0 ? '' : toolsSection(h, o, D, 'rg') + '<p class="rl-note">Que una herramienta figure acá no quiere decir que la hayamos probado: no abrimos cuentas. Las herramientas que exige cada provincia y sus líneas de ayuda están más abajo y en la página de cada provincia.</p>',
+          pagos: toolsSection(h, o, D, 'pay'),
+        };
+        const sec = SECTIONS.map(x => reviewSection(h, R, x, extra)).join('');
+        return hero + toc(h, [['capturas', 'Capturas']]) + summary(h, R, { lists: n, total: h.regs.length, rgCount: rgN, casinoPath }) + sec +
+          mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D, R) + aid + nextSection(h, row);
+      }
       return hero + mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D) + toolsSection(h, o, D) + aid + nextSection(h, row);
     },
   };

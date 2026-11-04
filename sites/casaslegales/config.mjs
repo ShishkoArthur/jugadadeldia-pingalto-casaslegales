@@ -3,6 +3,7 @@
 // {path}.html; the only third level is operator x province, /operador/<brand>/<jurisdiction>). Own asset folder /_r/ with content-hash names only. Everything visible lives in this folder.
 import { extname } from 'node:path';
 import { SHOT_FILES } from './content/opdata.mjs';
+import { reviewShotFiles } from './content/reviews.mjs';
 import { opPath } from './content/operators.mjs';
 import { brandNames, loadRegistries } from '../../tools/lib/sources.mjs';
 import { officialHosts } from './content/official.mjs';
@@ -20,7 +21,7 @@ export const SITE = {
   notFoundFile: '404.html',
   fonts: ['gabarito-var-latin.woff2', 'ubuntu-sans-mono-var-latin.woff2'],
   preload: ['gabarito-var-latin.woff2'],
-  images: SHOT_FILES(),
+  images: [...SHOT_FILES(), ...reviewShotFiles()],
   registries: ['buenos-aires', 'caba', 'cordoba', 'la-rioja', 'neuquen', 'rio-negro', 'santa-fe', 'mendoza'],
   defaultJurisdiction: 'buenos-aires',
   gate: {

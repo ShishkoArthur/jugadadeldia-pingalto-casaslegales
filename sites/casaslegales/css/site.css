@@ -524,3 +524,31 @@ fieldset.rl-leg legend{padding:0 6px}
 .rl-off-s{min-height:44px;padding:5px 12px;font-size:14px;box-shadow:0 3px 0 var(--sd)}
 .rl-offn{font-size:13px;color:var(--mu);max-width:70ch}
 .rl-offx{font-size:13px;color:var(--mu);margin-top:6px}
+.rl-toc{display:flex;gap:6px;overflow-x:auto;padding:4px 0 2px;margin:4px 0 0;scrollbar-width:thin}
+.rl-toc a{flex:none;padding:7px 12px;border-radius:10px;border:1px solid var(--ln);background:var(--pa);font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+.rl-rs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rl-rsi{background:var(--pa);border:1px solid var(--ln);border-radius:16px;padding:12px 14px;display:grid;gap:2px;align-content:start;box-shadow:-4px 4px 0 var(--gl)}
+.rl-rsi span{font-size:13px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.rl-rsi b{font:700 21px/1.15 var(--m);overflow-wrap:break-word;hyphens:auto}
+.rl-rsi small{font:500 12px/1.4 var(--m);color:var(--mu)}
+.rl-rsi small a{color:var(--mu)}
+.rl-rsn b{font-size:19px;color:var(--mu)}
+.rl-fl{margin:0;display:grid;gap:12px;align-items:start}
+.rl-fi{background:var(--pa);border:1px solid var(--ln);border-radius:18px;padding:14px 16px;display:grid;gap:8px}
+.rl-fi dt{font-weight:900;font-size:18px}
+.rl-fi dd{margin:0;display:grid;gap:8px}
+.rl-fi .rl-q{font-size:16px}
+.rl-fnum{font:700 22px/1.2 var(--m)}
+.rl-fyes{font:700 20px var(--m);color:var(--ac)}
+.rl-chips-s span{font-size:13px;font-weight:600;padding:3px 8px;box-shadow:-2px 2px 0 var(--sd)}
+.rl-sd{background:var(--pa);border:1px dashed var(--ln);border-radius:14px;padding:10px 14px;color:var(--mu);font-size:15px}
+.rl-sd b{color:var(--fg)}
+.rl-mgb{margin-top:12px}
+.rl-mg td,.rl-mg th{white-space:nowrap}
+@media (min-width:760px){.rl-rsi b{font-size:25px}.rl-rs{grid-template-columns:repeat(3,minmax(0,1fr))}.rl-fl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.rl-rs{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.rl-fv{display:grid;gap:8px}
+.rl-fv+.rl-fv{border-top:1px dashed var(--ln);padding-top:10px}
+.rl-fno{font-weight:700;color:var(--mu)}
+.rl-more summary{cursor:pointer;font-weight:700;font-size:14px;min-height:44px;display:flex;align-items:center;color:var(--ac)}
+.rl-more[open] summary{margin-bottom:6px}

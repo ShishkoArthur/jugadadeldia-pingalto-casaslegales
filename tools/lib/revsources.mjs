@@ -15,6 +15,8 @@ import { brandNames } from './sources.mjs';
 export const REV_DIR = path.join(ROOT, 'data/sources/reviews');
 const MAX_AGE = 100;
 
+// a fact of absence ("not published on the page we checked") has no quote; it still names the copy that was read
+export const isAbsence = v => v === false || (!!v && typeof v === 'object' && (v.published === false || v.found === false));
 export function loadReviews(dir = REV_DIR) {
   if (!fs.existsSync(dir)) return {};
   return Object.fromEntries(fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort().map(f => [f.slice(0, -5), JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'))]));
@@ -56,7 +58,8 @@ export function checkReviews({ today, all = loadReviews(), fresh = true, names =
       if (!d) { bad(at + ': unknown copy ' + x.doc); continue; }
       if (x.url && x.url !== d.url) bad(at + ': url ' + x.url + ' is not the url of its copy ' + d.url);
       if (x.date && x.date !== d.date) bad(at + ': date ' + x.date + ' is not the date of its copy ' + d.date);
-      if (x.host && hostKey(x.host) !== hostKey(d.url)) bad(at + ': host ' + x.host + ' is not the host of its copy');
+      if (x.host && hostKey(x.host) !== hostKey(d.url) && !hostKey(d.url).endsWith('.' + hostKey(x.host))) bad(at + ': host ' + x.host + ' is not the host (or a parent of the host) of its copy');
+      if (x.quote == null && isAbsence(x.value)) continue;
       if (!x.quote || !String(x.quote).trim()) { bad(at + ': no quote'); continue; }
       const q = normalize(String(x.quote));
       if (!texts[x.doc] || !texts[x.doc].some(p => p.includes(q))) bad(at + ' not found verbatim in ' + x.doc + ': "' + q.slice(0, 70) + '"');

@@ -1,0 +1,219 @@
+// The review part of /operador/<slug> and the casino page /operador/<slug>/casino: what the operator's own public pages
+// say (data/sources/reviews/<brand>.json, verified), section by section, each fact with its verbatim quote, URL and date.
+// The summary card is computed from those facts and the registries; a section without data says so in one line.
+// No ratings, no bonuses, no promotions: the page reports what the site shows and links only to the address of the official list.
+import { margin } from '../../../engine/odds.mjs';
+import { hostKey } from '../../../engine/registry.mjs';
+import { fmtInt } from '../../../engine/format.mjs';
+import { sectionHead } from './parts.mjs';
+import { isAbsence } from '../../../tools/lib/revsources.mjs';
+
+// field -> label (es-AR) and how its value shows: chips (items checked against the copy), yes, money, count or quote only
+const F = {
+  'licence.footer': ['Licencia según el pie del sitio', 'licence'],
+  'account.provinceRestriction': ['Solo para una provincia', 'quote'],
+  'account.kyc': ['Verificación de identidad', 'quote'],
+  'account.age': ['Edad mínima', 'quote'],
+  'account.documents': ['Documentos que pide', 'quote'],
+  'account.registration': ['Registro', 'quote'],
+  'payments.depositMethods': ['Medios para depositar', 'chips'],
+  'payments.withdrawalMethods': ['Medios para retirar', 'chips'],
+  'payments.minDeposit': ['Depósito mínimo', 'money'],
+  'payments.maxDeposit': ['Depósito máximo', 'money'],
+  'payments.minWithdrawal': ['Retiro mínimo', 'money'],
+  'payments.maxWithdrawal': ['Retiro máximo', 'money'],
+  'payments.currency': ['Moneda', 'quote'],
+  'payments.withdrawalTimes': ['Plazos de retiro', 'quote'],
+  'payments.depositTimes': ['Plazos de depósito', 'quote'],
+  'payments.fees': ['Comisiones', 'quote'],
+  'support.channels': ['Canales de contacto', 'quote'],
+  'support.email': ['Correo electrónico', 'quote'],
+  'support.phone': ['Teléfono', 'quote'],
+  'support.chat': ['Chat', 'quote'],
+  'support.responseTime': ['Tiempo de respuesta', 'quote'],
+  'support.whatsapp': ['WhatsApp', 'quote'],
+  'account.minAge': ['Edad mínima', 'quote'],
+  'account.residence': ['Residencia', 'quote'],
+  'account.verificationTime': ['Plazo de verificación', 'quote'],
+  'account.closure': ['Cierre de cuenta', 'quote'],
+  'account.oneAccount': ['Una cuenta por persona', 'quote'],
+  'payments.methods': ['Medios de pago', 'quote'],
+  'payments.withdrawalTime': ['Plazo de retiro', 'quote'],
+  'payments.limits': ['Límites de pago', 'quote'],
+  'sportsbook.markets': ['Mercados', 'quote'],
+  'sportsbook.liveCount': ['Eventos en vivo', 'quote'],
+  'sportsbook.virtuals': ['Deportes virtuales', 'yes'],
+  'casino.liveProviders': ['Proveedores del casino en vivo', 'quote'],
+  'casino.liveGames': ['Juegos en vivo', 'quote'],
+  'casino.rtpPublished': ['Publica el RTP', 'quote'],
+  'casino.gameCount': ['Cantidad de juegos', 'quote'],
+  'casino.slots': ['Tragamonedas', 'yes'],
+  'casino.bingo': ['Bingo', 'yes'],
+  'casino.poker': ['Póker', 'yes'],
+  'app.store': ['Tiendas de apps', 'quote'],
+  'app.apk': ['Archivo APK', 'quote'],
+  'app.download': ['Descarga', 'quote'],
+  'support.hours': ['Horario', 'quote'],
+  'support.language': ['Idioma', 'quote'],
+  'support.helpCenter': ['Centro de ayuda', 'quote'],
+  'sportsbook.sports': ['Deportes en su lista A-Z', 'sports'],
+  'sportsbook.live': ['Apuestas en vivo', 'yes'],
+  'sportsbook.streaming': ['Transmisiones en vivo', 'yes'],
+  'sportsbook.cashout': ['Cierre de apuesta (cash out)', 'yes'],
+  'sportsbook.betBuilder': ['Apuesta combinada en un partido', 'yes'],
+  'sportsbook.marketsOneMatch': ['Mercados en un partido', 'markets'],
+  'sportsbook.odds1x2': ['Cuotas 1X2 que copiamos', 'odds'],
+  'sportsbook.esports': ['Esports', 'yes'],
+  'casino.exists': ['Sección de casino', 'yes'],
+  'casino.live': ['Casino en vivo', 'yes'],
+  'casino.providers': ['Proveedores en su filtro', 'providers'],
+  'casino.categories': ['Categorías del casino', 'categories'],
+  'casino.rtp': ['Retorno al jugador (RTP)', 'quote'],
+  'casino.games': ['Cantidad de juegos', 'quote'],
+  'app.mentioned': ['El sitio menciona una app', 'yes'],
+  'app.android': ['App para Android', 'quote'],
+  'app.ios': ['App para iPhone', 'quote'],
+  'app.page': ['Página de la app', 'quote'],
+};
+const LABEL_RG = { limits: 'Límites de juego', sessionLimit: 'Límite de tiempo de sesión', pauseSelfExclusion: 'Pausa y autoexclusión', provincialProgramme: 'Programa de autoexclusión de la provincia', realityCheck: 'Aviso de tiempo de juego', depositLimit: 'Límite de depósito', lossLimit: 'Límite de pérdida', wagerLimit: 'Límite de apuesta', selfTest: 'Test de autoevaluación', helpLines: 'Líneas de ayuda', minors: 'Protección de menores', history: 'Historial de juego', cooling: 'Pausa (tiempo fuera)', deposit: 'Límite de depósito', loss: 'Límite de pérdida', bet: 'Límite de apuesta', time: 'Límite de tiempo', session: 'Límite de sesión', pause: 'Pausa (tiempo fuera)', timeout: 'Pausa (tiempo fuera)', selfex: 'Autoexclusión', selfExclusion: 'Autoexclusión', reality: 'Aviso de tiempo de juego', test: 'Test de autoevaluación', help: 'Ayuda y líneas', age: 'Solo mayores de 18', tools: 'Herramientas' };
+const labelOf = field => {
+  if (F[field]) return F[field][0];
+  const m = /^rg\.(.+)$/.exec(field);
+  if (m) { const k = m[1].replace(/Limit$/, ''); if (LABEL_RG[k] || LABEL_RG[m[1]]) return LABEL_RG[k] || LABEL_RG[m[1]]; }
+  throw new Error('review: no label for the field ' + field + ' (add it to pages/review.mjs)');
+};
+const modeOf = field => (F[field] || [null, 'quote'])[1];
+const NON_SPORT = new Set(['Mercados Especiales', 'Película']);
+const PROMO = /\btop ?\d+|torneo|reward|drop|bono|bonus|promo|gratis|jackpot|zaira|exclusiv/i;
+const CTA = /jug[aá] ahora|apost[aá] ahora|apost[aá] ya|registrate|reg[ií]strate|depositá/i;
+export const SECTIONS = [
+  ['deportes', 'Deportes y mercados', 'sportsbook'],
+  ['casino', 'Casino', 'casino'],
+  ['app', 'App', 'app'],
+  ['pagos', 'Pagos y retiros', 'payments'],
+  ['cuenta', 'Cuenta y verificación', 'account'],
+  ['atencion', 'Atención al cliente', 'support'],
+  ['juego-responsable', 'Juego responsable', 'rg'],
+];
+const pct = x => (x * 100).toFixed(1).replace('.', ',') + ' %';
+const odd = x => x.toFixed(2).replace('.', ',');
+
+function cite(h, R, f) {
+  const d = R.doc(f.doc), u = new URL(d.url), where = hostKey(d.url) + (u.pathname === '/' ? '' : u.pathname.replace(/\/$/, ''));
+  const tail = '<span class="rl-host">' + h.esc(where) + '</span> · copia del ' + h.fmtDate(d.date);
+  if (f.quote == null && isAbsence(f.value)) return '<p class="rl-src">Lo buscamos en ' + tail + '</p>';
+  if (CTA.test(f.quote)) return '<p class="rl-src">Lo vimos en ' + tail + '</p>';
+  return '<blockquote class="rl-q">«' + h.esc(f.quote).replace(/@/g, '<span>@</span>') + '»<cite>' + tail + '</cite></blockquote>';
+}
+const chipRow = (h, items) => '<div class="rl-chips rl-chips-s">' + items.map(x => '<span>' + h.esc(x) + '</span>').join('') + '</div>';
+const chips = (h, items, what = 'todos') => items.length <= 12 ? chipRow(h, items) : chipRow(h, items.slice(0, 10)) + '<details class="rl-more"><summary>Ver ' + (what === 'todos' ? 'los ' + items.length : what) + '</summary>' + chipRow(h, items.slice(10)) + '</details>';
+export function sportsOf(R) {
+  const f = R.one('sportsbook.sports');
+  if (!f) return null;
+  const names = R.inDoc(f, f.value.names || f.value);
+  const sports = names.filter(n => !NON_SPORT.has(n));
+  return { f, names, sports, other: names.filter(n => NON_SPORT.has(n)) };
+}
+export function providersOf(R) {
+  const f = R.one('casino.providers');
+  return f ? { f, names: R.inDoc(f, f.value.names || f.value) } : null;
+}
+export function marginOf(R) {
+  const f = R.one('sportsbook.odds1x2');
+  if (!f) return null;
+  const rows = f.value.matches.map(m => {
+    R.inDoc(f, [m.home, m.away]);
+    R.oddsInDoc(f, m.odds);
+    return { ...m, m: margin(m.odds).margin };
+  });
+  const avg = rows.reduce((a, r) => a + r.m, 0) / rows.length;
+  return { f, rows, avg, min: Math.min(...rows.map(r => r.m)), max: Math.max(...rows.map(r => r.m)), date: R.doc(f.doc).date };
+}
+function moneyOf(R, f) {
+  const v = f.value;
+  if (!v || typeof v !== 'object' || !Number.isInteger(v.amount)) return null;
+  const s = fmtInt(v.amount) + ' ' + v.currency;
+  if (!f.quote.includes(fmtInt(v.amount)) && !f.quote.includes(String(v.amount))) throw new Error('review ' + R.brand + ' ' + f.field + ': amount ' + v.amount + ' is not in its quote');
+  return s;
+}
+
+function valueHtml(h, R, f) {
+  const mode = modeOf(f.field);
+  if (f.quote == null && isAbsence(f.value)) return '<b class="rl-fno">No lo encontramos en esa página</b>';
+  if (mode === 'chips') return chips(h, R.inDoc(f, f.value));
+  if (mode === 'yes') return f.value === true ? '<b class="rl-fyes">Sí</b>' : f.value === false ? '<b>No</b>' : '';
+  if (mode === 'money') { const s = moneyOf(R, f); return s ? '<b class="rl-fnum">' + h.esc(s) + '</b>' : ''; }
+  if (mode === 'sports') { const s = sportsOf(R); return '<b class="rl-fnum">' + s.sports.length + ' deportes</b>' + chips(h, s.sports) + (s.other.length ? '<p class="rl-src">La lista trae ' + s.names.length + ' entradas: no contamos como deporte ' + s.other.map(x => '«' + h.esc(x) + '»').join(' ni ') + '.</p>' : ''); }
+  if (mode === 'providers') { const p = providersOf(R); return '<b class="rl-fnum">' + p.names.length + ' proveedores</b>' + chips(h, p.names); }
+  if (mode === 'categories') { const all = R.inDoc(f, f.value), kept = all.filter(x => !PROMO.test(x)); return '<b class="rl-fnum">' + all.length + ' categorías</b>' + chips(h, kept) + (kept.length < all.length ? '<p class="rl-src">No listamos ' + (all.length - kept.length) + ' categorías que son promociones o rankings del propio sitio.</p>' : ''); }
+  if (mode === 'markets') { const v = f.value; R.inDoc(f, String(v.match).split(/\s+vs\.?\s+/i)); return '<b class="rl-fnum">' + fmtInt(v.markets) + ' mercados</b><p>' + h.esc(v.match) + (v.competition ? ' · ' + h.esc(v.competition) : '') + '. Contamos los títulos de mercado de la pestaña «Todos» de ese partido.</p>'; }
+  if (mode === 'licence') { const v = f.value; R.inDoc(f, [v.operator, v.act].filter(Boolean)); return '<p><b>' + h.esc(v.operator) + '</b>' + (v.act ? '<br><span class="rl-host">' + h.esc(v.act) + '</span>' : '') + '</p>'; }
+  return '';
+}
+// one item per field, in the order of F; when two pages say it, both show, each with its source
+const HIDE = new Set(['payments.currency']);
+const ORDER = Object.keys(F);
+const rank = f => { const i = ORDER.indexOf(f.field); return (f.quote == null && isAbsence(f.value) ? 2000 : 0) + (i < 0 ? 999 : i); };
+function factList(h, R, facts) {
+  const fields = [...new Set(facts.filter(f => !HIDE.has(f.field)).sort((a, b) => rank(a) - rank(b)).map(f => f.field))];
+  return '<dl class="rl-fl">' + fields.map(k => '<div class="rl-fi"><dt>' + h.esc(labelOf(k)) + '</dt><dd>' + facts.filter(f => f.field === k).map(f => '<div class="rl-fv">' + valueHtml(h, R, f) + cite(h, R, f) + '</div>').join('') + '</dd></div>').join('') + '</dl>';
+}
+const none = (h, why) => '<p class="rl-sd"><b>Sin dato:</b> ' + h.esc(why) + '</p>';
+export const SIN = 'no lo guardamos de sus páginas públicas vistas desde Argentina';
+
+function marginBlock(h, R, M) {
+  if (!M) return '';
+  const rows = M.rows.map(r => '<tr><th scope="row">' + h.esc(r.home + ' – ' + r.away) + '</th>' + r.odds.map(o => '<td>' + odd(o) + '</td>').join('') + '<td><b>' + pct(r.m) + '</b></td></tr>').join('');
+  return '<div class="rl-box rl-mgb"><h3>Margen medido: ' + pct(M.avg) + '</h3><p>Promedio de ' + M.rows.length + ' partidos de la Liga Profesional, mercado 1X2, con las cuotas que mostraba el sitio el ' + h.fmtDate(M.date) + '. El margen es lo que suma la casa por encima del 100 % en las probabilidades de las tres opciones: cuanto más bajo, más se acercan las cuotas a las justas. Va de ' + pct(M.min) + ' a ' + pct(M.max) + ' según el partido.</p>' +
+    '<div class="rl-scroll"><table class="rl-reg rl-mg"><thead><tr><th scope="col">Partido</th><th scope="col">1</th><th scope="col">X</th><th scope="col">2</th><th scope="col">Margen</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+    cite(h, R, M.f) + (h.built('/calculadora/margen') ? '<p class="rl-note"><a href="' + h.href('/calculadora/margen') + '">Calculá el margen de cualquier cuota</a></p>' : '') + '</div>';
+}
+
+export function reviewSection(h, R, [id, title, prefix], extra = {}) {
+  const facts = R.pre(prefix).filter(f => f.field !== 'sportsbook.odds1x2');
+  const M = prefix === 'sportsbook' ? marginOf(R) : null;
+  const add = extra[id] || '';
+  const body = (facts.length ? factList(h, R, facts) : '') + (M ? marginBlock(h, R, M) : '') + add;
+  return '<section class="rl-sec" id="' + id + '">' + sectionHead(h, title, facts.length || M ? 'de sus páginas públicas, con cita y fecha' : '') + (body || none(h, extra.why && extra.why[id] || SIN)) + '</section>';
+}
+
+// the summary card: facts only, each computed from the data above (or "sin dato")
+export function summary(h, R, { lists, total, rgCount, casinoPath }) {
+  const S = sportsOf(R), P = providersOf(R), M = marginOf(R);
+  const dep = R.all('payments.depositMethods').sort((a, b) => b.value.length - a.value.length)[0], live = R.one('sportsbook.live');
+  const real = f => f && !isAbsence(f.value) && f.value !== false;
+  const cas = [R.one('casino.exists'), R.one('casino.live'), P && P.f].find(real);
+  const app = R.pre('app').find(real);
+  const wt = R.one('payments.withdrawalTimes');
+  const hours = x => { const m = /(\d+)\s*(hora|d[ií]a|minuto)/i.exec(x); return m ? +m[1] * (/^h/i.test(m[2]) ? 1 : /^m/i.test(m[2]) ? 1 / 60 : 24) : Infinity; };
+  const wtTxt = wt ? [...wt.quote.matchAll(/([^:.]+):\s*(Hasta [^.]+)/gi)].map(m => m[2].trim().toLowerCase()).sort((a, b) => hours(a) - hours(b)) : [];
+  const t = (k, v, sub, href) => '<div class="rl-rsi' + (v === null ? ' rl-rsn' : '') + '"><span>' + h.esc(k) + '</span><b>' + (v === null ? 'Sin dato' : h.esc(v)) + '</b>' + (sub ? '<small>' + (href ? '<a href="' + href + '">' + h.esc(sub) + '</a>' : h.esc(sub)) + '</small>' : '') + '</div>';
+  const tiles = [
+    t('Listas oficiales', lists + ' de ' + total, 'que revisamos la nombran', '#licencias'),
+    t('Deportes', S ? String(S.sports.length) : null, S ? 'en su lista A-Z' : SIN, S ? '#deportes' : ''),
+    t('Apuestas en vivo', live ? (live.value ? 'Sí' : 'No') : null, live ? 'según su página' : SIN),
+    t('Casino', cas ? 'Sí' : null, cas ? (P ? P.names.length + ' proveedores' : 'sección propia') : SIN, cas ? (casinoPath && h.built(casinoPath) ? h.href(casinoPath) : '#casino') : ''),
+    t('App', app ? 'Mencionada' : null, app ? 'en su sitio' : SIN, app ? '#app' : ''),
+    t('Medios de pago', dep ? String(R.inDoc(dep, dep.value).length) : null, dep ? 'para depositar, en la lista más larga que publica' : SIN, dep ? '#pagos' : ''),
+    t('Retiro', wtTxt.length ? wtTxt[0] : null, wtTxt.length ? 'el plazo más corto que publica' : SIN, wtTxt.length ? '#pagos' : ''),
+    t('Juego responsable', rgCount ? String(rgCount) : null, rgCount ? (rgCount === 1 ? 'herramienta citada' : 'herramientas citadas') : SIN, rgCount ? '#juego-responsable' : ''),
+    t('Margen medido', M ? pct(M.avg) : null, M ? '1X2, ' + M.rows.length + ' partidos, ' + h.fmtDate(M.date) : 'no copiamos cuotas', M ? '#deportes' : ''),
+  ];
+  return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje') + '<div class="rl-rs">' + tiles.join('') + '</div>' +
+    '<p class="rl-cap">Cada número sale de una página pública del operador o de una lista oficial, con su cita más abajo. No ponemos notas ni puntajes: no abrimos cuentas ni probamos depósitos o retiros.</p></section>';
+}
+export function toc(h, extra = []) {
+  const items = [['resumen', 'Resumen'], ...SECTIONS.map(([id, t]) => [id, t]), ['licencias', 'Licencias'], ...extra];
+  return '<nav class="rl-toc" aria-label="En esta reseña">' + items.map(([id, t]) => '<a href="#' + id + '">' + h.esc(t) + '</a>').join('') + '</nav>';
+}
+export function reviewShots(h, R, label) {
+  return R.shots.map(s => {
+    const u = new URL(s.url);
+    const name = h.names[R.brand];
+    return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(hostKey(s.url) + (u.pathname === '/' ? '' : u.pathname)) + '</span></div>' +
+      '<img src="' + h.asset('shots/' + s.name) + '" width="' + s.width + '" height="' + s.height + '" loading="lazy" decoding="async" alt="' + h.esc(label(s.view) + ' de ' + name + ', vista desde Argentina') + '">' +
+      '<figcaption><b>' + h.esc(label(s.view)) + '</b> Captura propia de la página pública, desde Argentina, sin cuenta · ' + h.fmtDate(s.date) + '</figcaption></figure>';
+  }).join('');
+}
+export const VIEW_LABEL = { home: 'Página de inicio', sportsbook: 'Apuestas deportivas', 'match-markets': 'Mercados de un partido', casino: 'Casino', 'live-casino': 'Casino en vivo', payments: 'Medios de pago', rg: 'Juego responsable', app: 'App', support: 'Atención al cliente', footer: 'Pie de página' };
+export const viewLabel = v => VIEW_LABEL[v] || 'Página pública';

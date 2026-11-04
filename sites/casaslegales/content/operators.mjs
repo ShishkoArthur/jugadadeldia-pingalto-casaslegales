@@ -5,9 +5,10 @@
 export const OPS = [
   {
     slug: 'betsson', brand: 'betsson',
-    title: 'Betsson en Argentina: licencias, dominios y provincias',
-    description: 'Betsson en las listas oficiales de PBA, CABA y Córdoba: una dirección distinta en cada una, capturas propias de su sitio y fecha de revisión.',
-    h1: 'Betsson en Argentina: en qué provincias tiene licencia y con qué dominio',
+    title: 'Betsson Argentina: reseña, licencias y sitio oficial',
+    description: 'Reseña de Betsson en Argentina con datos de su sitio: deportes, cuotas, casino, pagos y retiros, juego responsable y sitio oficial por provincia.',
+    h1: 'Betsson en Argentina: reseña con datos, licencias y sitio oficial por provincia',
+    reviewLead: 'Recorrimos el sitio de Betsson para la Provincia de Buenos Aires desde Argentina, sin abrir cuenta: qué deportes y mercados tiene, sus cuotas, el casino, los medios de pago, la atención y las herramientas de juego responsable. Cada dato va con la cita de su página y la fecha. Además, las tres listas oficiales que la nombran, cada una con otra dirección.',
     lead: 'Betsson es el caso más claro de «misma marca, otra dirección»: cada lista oficial nombra una dirección distinta, y la de la Ciudad no termina en .bet.ar.',
     check: [['caba', 'betsson.com.ar'], ['buenos-aires', 'pba.betsson.bet.ar'], ['cordoba', 'cba.betsson.bet.ar'], ['la-rioja', null], ['neuquen', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],
     angle: 'Tres listas, tres direcciones',
