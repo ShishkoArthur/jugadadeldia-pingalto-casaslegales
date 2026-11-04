@@ -77,7 +77,7 @@ const HUB = [
   ['/esports/latam', 'Ligas de Latinoamérica', 'Qué torneos con equipos de la región se juegan esta semana.'],
   ['/lol/worlds', 'Worlds de LoL', 'El mundial de League of Legends en hora argentina, fase por fase.'],
   ['/valorant/champions', 'VCT de Valorant', 'Champions, Masters y la liga de Américas con los equipos argentinos marcados.'],
-  ['/dota2', 'Ranking de Dota 2', 'Nuestro Elo con las series de seis meses, con Sudamérica y cara a cara.'],
+  ['/dota2#ranking', 'Ranking de Dota 2', 'Nuestro Elo con las series de seis meses, con Sudamérica y cara a cara.'],
   ['/kit/ping', 'Ping desde tu provincia', 'Cuánto tarda tu conexión hasta los servidores de Santiago, São Paulo y Miami.'],
 ];
 

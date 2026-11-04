@@ -161,38 +161,75 @@
   "/clash/mazos": {
    "image": "pa-sc-clash-mazos-r6",
    "file": "data/art/pingalto/cut/pa-sc-clash-mazos-r6.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text"
+   "status": "accepted",
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text",
+   "accepted": "2026-11-04 owner: «сцены принимаю» (r6)"
   },
   "/lol/worlds": {
    "image": "pa-sc-lol-worlds-r6",
    "file": "data/art/pingalto/cut/pa-sc-lol-worlds-r6.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text"
+   "status": "accepted",
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text",
+   "accepted": "2026-11-04 owner: «сцены принимаю» (r6)"
   },
   "/valorant/champions": {
    "image": "pa-sc-valorant-champions-r6",
    "file": "data/art/pingalto/cut/pa-sc-valorant-champions-r6.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text"
+   "status": "accepted",
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest seated pose, no logos or text",
+   "accepted": "2026-11-04 owner: «сцены принимаю» (r6)"
   },
   "/brawl/meta": {
    "image": "pa-sc-brawl-meta-r6",
    "file": "data/art/pingalto/cut/pa-sc-brawl-meta-r6.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete, jacket on both shoulders, legs crossed, blank black phone, toy gem, no logos"
+   "status": "accepted",
+   "checked": "2026-11-03 agent at full size (r6, first try): two arms and hands, face, outfit complete, jacket on both shoulders, legs crossed, blank black phone, toy gem, no logos",
+   "accepted": "2026-11-04 owner: «сцены принимаю» (r6)"
   },
   "/esports/sistema-suizo": {
    "image": "pa-sc-esports-sistema-suizo-r6",
    "file": "data/art/pingalto/cut/pa-sc-esports-sistema-suizo-r6.webp",
-   "status": "review",
-   "checked": "2026-11-03 agent at full size (r6): two arms and hands, face, outfit complete, jacket on both shoulders, modest, no logos or text"
+   "status": "accepted",
+   "checked": "2026-11-03 agent at full size (r6): two arms and hands, face, outfit complete, jacket on both shoulders, modest, no logos or text",
+   "accepted": "2026-11-04 owner: «сцены принимаю» (r6)"
   },
   "/esports/argentinos": {
    "image": "pa-sc-esports-argentinos-r6",
    "file": "data/art/pingalto/cut/pa-sc-esports-argentinos-r6.webp",
+   "status": "accepted",
+   "checked": "2026-11-03 agent at full size (r6): two arms and hands, face, outfit complete, jacket on both shoulders, modest, no logos or text",
+   "accepted": "2026-11-04 owner: «сцены принимаю» (r6)"
+  },
+  "/dota2/ti": {
+   "image": "pa-sc-dota2-ti-r6",
+   "file": "data/art/pingalto/cut/pa-sc-dota2-ti-r6.webp",
    "status": "review",
-   "checked": "2026-11-03 agent at full size (r6): two arms and hands, face, outfit complete, jacket on both shoulders, modest, no logos or text"
+   "checked": "2026-11-04 agent at full size (r6, second try): two arms and hands, face, outfit complete with the jacket on both shoulders, modest, no logos"
+  },
+  "/fortnite": {
+   "image": "pa-sc-fortnite-nube-r4",
+   "file": "data/art/pingalto/cut/pa-sc-fortnite-nube-r4.webp",
+   "status": "accepted",
+   "accepted": "2026-11-03 owner (r4: accepted except /clash and /dota2)",
+   "note": "same image as /fortnite/nube (r4 accepted), reused for the Fortnite hub 04.11"
+  },
+  "/ff/max": {
+   "image": "pa-sc-ff-max-r7",
+   "file": "data/art/pingalto/cut/pa-sc-ff-max-r7.webp",
+   "status": "review",
+   "checked": "2026-11-04 agent at full size (r7, second try: the first crouched with knees apart): two arms and hands, face, outfit complete with the jacket on both shoulders, modest, no logos; toy ice-block wall"
+  },
+  "/clash/cartas": {
+   "image": "pa-sc-clash-cartas-r7",
+   "file": "data/art/pingalto/cut/pa-sc-clash-cartas-r7.webp",
+   "status": "review",
+   "checked": "2026-11-04 agent at full size (r7): two arms and hands, face, outfit complete with the jacket on both shoulders, modest, no logos"
+  },
+  "/esports/agenda": {
+   "image": "pa-sc-esports-agenda-r7",
+   "file": "data/art/pingalto/cut/pa-sc-esports-agenda-r7.webp",
+   "status": "review",
+   "checked": "2026-11-04 agent at full size (r7): two arms and hands, face, outfit complete with the jacket on both shoulders, modest, no logos; pseudo-text on the planner painted out (paper colour)"
   }
  }
 }

@@ -8,32 +8,14 @@ import { fcPc } from './games2.mjs';
 import { hero, ldPage, sec, quote, srcLine, fmt } from './parts.mjs';
 import { agendaBlock, FEED, css, wait, PS, SC } from './feeds.mjs';
 import { vrs } from '../content/vrs.mjs';
-import { ELO } from '../../../engine/games/elo.mjs';
+import { dota2Hub } from './dota2.mjs';
 
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
 const box = (mode, attrs = '') => '<div class="pa-fd" data-fd="' + mode + '" data-fd-src="' + FEED + '"' + attrs + '>' + wait + '</div>';
 const link = (h, u, t) => h.built(u) ? '<a href="' + h.href(u) + '">' + t + '</a>' : t;
 const seriesLink = h => h.built('/esports/series') ? '<p>¿Qué chance tiene un equipo en un Bo3 o un Bo5 si sabés cuánto gana por mapa? Calculalo en la ' + link(h, '/esports/series', 'calculadora de series') + '.</p>' : '';
 
-// ---------- Dota 2 ----------
-export const dota2Hub = {
-  path: '/dota2',
-  kind: 'live',
-  title: 'Ranking de equipos de Dota 2: el mundo y Sudamérica',
-  h1: 'Dota 2: ranking de equipos al día, con Sudamérica',
-  description: 'Ranking de equipos de Dota 2 al día con nuestro Elo: el mundo y Sudamérica, la forma del último mes y la chance de un equipo contra otro en una serie.',
-  scripts: ['events.js', 'agenda.js'],
-  ld: h => ldPage(h),
-  render(h) {
-    const method = sec('Cómo armamos el ranking', '<div class="pa-two"><div><p>Valve no publica un ranking de equipos de Dota 2, así que hacemos el nuestro con una cuenta conocida: <b>Elo</b>. Cada equipo arranca con ' + fmt(ELO.start, 0) + ' puntos; cuando gana una serie le saca puntos al rival, más si el rival estaba más arriba. Usamos todas las series terminadas de los últimos 180 días que lista PandaScore.</p><p>Cuenta solo quién ganó cada serie, no por cuánto. Un equipo nuevo necesita varias series para quedar bien ubicado: por eso mostramos los que jugaron al menos 8 y siguen activos.</p></div>' +
-      '<div class="pa-c"><h3>La fórmula</h3><p>Chance de A contra B = 1 / (1 + 10<sup>(Elo B − Elo A) / 400</sup>). Después de la serie, el ganador suma ' + ELO.k + ' × (1 − su chance) y el perdedor resta lo mismo.</p><p class="pa-src">Debajo de la tabla está la prueba hacia atrás: con el Elo de antes de cada serie de los últimos 60 días, cuántas veces ganó el que estaba arriba. Es la forma honesta de saber cuánto sirve.</p></div></div>');
-    const no = sec('Lo que no mostramos', '<ul class="pa-dot"><li>Medallas, héroes más jugados o win rate por héroe: esos datos salen de servicios que no permiten que los lean agentes de IA o de una clave de Valve que no tenemos.</li><li>Apuestas o cuotas: nunca. Los nombres de equipos con marcas de apuestas aparecen tapados.</li></ul>');
-    return css(h) + hero(h, { ey: 'Dota 2 · ranking pingalto', girl: true, sub: 'Un Elo propio con las series de los últimos seis meses: quién está arriba en el mundo, dónde están los equipos de Sudamérica y qué chance tiene uno contra otro.' }) +
-      sec('El ranking', box('dotaelo') + PS, 'ranking') + agendaBlock(h, 'dota2', 'Próximos partidos de Dota 2') +
-      sec('The International', box('champs', ' data-g="dota2"') + '<p>El cuadro completo de la última edición, en ' + link(h, '/dota2/ti', 'The International en hora argentina') + '.</p>') + method + no;
-  },
-};
-
+// ---------- Dota 2 (the game page /dota2 is in dota2.mjs) ----------
 export const dota2Ti = {
   path: '/dota2/ti',
   kind: 'live',
@@ -45,7 +27,7 @@ export const dota2Ti = {
   render(h) {
     return css(h) + hero(h, { ey: 'Dota 2 · The International', sub: 'El torneo más grande de Dota 2, partido por partido: fase de grupos, eliminación y playoffs, con los horarios pasados a Argentina y los equipos sudamericanos marcados.' }) +
       sec('La última edición', box('event', ' data-ev="ti"') + PS, 'cuadro') +
-      sec('Cómo se lee', '<ul class="pa-dot"><li>Las horas son de Argentina. Los resultados son de las series: cuántos mapas ganó cada equipo.</li><li>Las fases salen como las arma el torneo; tocá una para ver sus partidos.</li><li>Para la chance de un equipo contra otro hoy, usá el cara a cara del ' + link(h, '/dota2', 'ranking de Dota 2') + '.</li></ul>' + seriesLink(h));
+      sec('Cómo se lee', '<ul class="pa-dot"><li>Las horas son de Argentina. Los resultados son de las series: cuántos mapas ganó cada equipo.</li><li>Las fases salen como las arma el torneo; tocá una para ver sus partidos.</li><li>Para la chance de un equipo contra otro hoy, usá el cara a cara del ' + (h.built('/dota2') ? '<a href="' + h.href('/dota2#ranking') + '">ranking de Dota 2</a>' : 'ranking de Dota 2') + '.</li></ul>' + seriesLink(h));
   },
 };
 

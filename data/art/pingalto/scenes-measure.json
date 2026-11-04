@@ -148,13 +148,6 @@
    "transparent": null,
    "size": "632x1225"
   },
-  "pa-sc-fortnite-nube-r4": {
-   "pose": "jump",
-   "head": 285,
-   "scale": 0.744,
-   "transparent": null,
-   "size": "760x1667"
-  },
   "pa-sc-dota2-r5": {
    "pose": "stand",
    "head": 320,
@@ -231,6 +224,41 @@
    "scale": 0.757,
    "transparent": null,
    "size": "865x1723"
+  },
+  "pa-sc-dota2-ti-r6": {
+   "pose": "chair",
+   "head": 331,
+   "scale": 0.64,
+   "transparent": null,
+   "size": "779x1415"
+  },
+  "pa-sc-fortnite-nube-r4": {
+   "pose": "jump",
+   "head": 285,
+   "scale": 0.744,
+   "transparent": null,
+   "size": "760x1667"
+  },
+  "pa-sc-ff-max-r7": {
+   "pose": "stand",
+   "head": 308,
+   "scale": 0.688,
+   "transparent": null,
+   "size": "536x1562"
+  },
+  "pa-sc-clash-cartas-r7": {
+   "pose": "stand",
+   "head": 331,
+   "scale": 0.64,
+   "transparent": null,
+   "size": "600x1464"
+  },
+  "pa-sc-esports-agenda-r7": {
+   "pose": "wstool",
+   "head": 315,
+   "scale": 0.673,
+   "transparent": null,
+   "size": "817x1480"
   }
  }
 }

@@ -1203,6 +1203,190 @@
    "ar": 0.7715,
    "g": 0.9312,
    "alt": "Alt saltando como hincha con una bufanda celeste y blanca en alto"
+  },
+  "/dota2/ti": {
+   "image": "pa-sc-dota2-ti-r6",
+   "files": [
+    {
+     "name": "scenes/dota2-ti-320.webp",
+     "w": 320,
+     "h": 545,
+     "kb": 36
+    },
+    {
+     "name": "scenes/dota2-ti-480.webp",
+     "w": 480,
+     "h": 818,
+     "kb": 62
+    },
+    {
+     "name": "scenes/dota2-ti-720.webp",
+     "w": 720,
+     "h": 1227,
+     "kb": 115
+    },
+    {
+     "name": "scenes/dota2-ti-960.webp",
+     "w": 960,
+     "h": 1636,
+     "kb": 184
+    },
+    {
+     "name": "scenes/dota2-ti-1280.webp",
+     "w": 1280,
+     "h": 2181,
+     "kb": 289
+    }
+   ],
+   "ar": 0.5869,
+   "g": 0.8789,
+   "alt": "Alt sentada mirando una final con un escudo redondo de cosplay apoyado en la rodilla"
+  },
+  "/fortnite": {
+   "image": "pa-sc-fortnite-nube-r4",
+   "files": [
+    {
+     "name": "scenes/fortnite-320.webp",
+     "w": 320,
+     "h": 645,
+     "kb": 37
+    },
+    {
+     "name": "scenes/fortnite-480.webp",
+     "w": 480,
+     "h": 967,
+     "kb": 64
+    },
+    {
+     "name": "scenes/fortnite-720.webp",
+     "w": 720,
+     "h": 1451,
+     "kb": 118
+    },
+    {
+     "name": "scenes/fortnite-960.webp",
+     "w": 960,
+     "h": 1934,
+     "kb": 182
+    },
+    {
+     "name": "scenes/fortnite-1156.webp",
+     "w": 1156,
+     "h": 2329,
+     "kb": 195
+    }
+   ],
+   "ar": 0.4964,
+   "g": 0.9862,
+   "alt": "Alt bailando un festejo con un pico gigante de goma apoyado en el hombro"
+  },
+  "/ff/max": {
+   "image": "pa-sc-ff-max-r7",
+   "files": [
+    {
+     "name": "scenes/ff-max-320.webp",
+     "w": 320,
+     "h": 825,
+     "kb": 44
+    },
+    {
+     "name": "scenes/ff-max-480.webp",
+     "w": 480,
+     "h": 1238,
+     "kb": 79
+    },
+    {
+     "name": "scenes/ff-max-720.webp",
+     "w": 720,
+     "h": 1856,
+     "kb": 151
+    },
+    {
+     "name": "scenes/ff-max-915.webp",
+     "w": 915,
+     "h": 2359,
+     "kb": 191
+    }
+   ],
+   "ar": 0.3879,
+   "g": 0.9418,
+   "alt": "Alt parada jugando con el celular en horizontal, al lado de una paredcita de bloques celestes de juguete"
+  },
+  "/clash/cartas": {
+   "image": "pa-sc-clash-cartas-r7",
+   "files": [
+    {
+     "name": "scenes/clash-cartas-320.webp",
+     "w": 320,
+     "h": 708,
+     "kb": 37
+    },
+    {
+     "name": "scenes/clash-cartas-480.webp",
+     "w": 480,
+     "h": 1062,
+     "kb": 64
+    },
+    {
+     "name": "scenes/clash-cartas-720.webp",
+     "w": 720,
+     "h": 1593,
+     "kb": 120
+    },
+    {
+     "name": "scenes/clash-cartas-960.webp",
+     "w": 960,
+     "h": 2124,
+     "kb": 190
+    },
+    {
+     "name": "scenes/clash-cartas-1075.webp",
+     "w": 1075,
+     "h": 2378,
+     "kb": 197
+    }
+   ],
+   "ar": 0.4521,
+   "g": 0.9003,
+   "alt": "Alt mostrando una carta violeta gigante y una pocioncita de juguete"
+  },
+  "/esports/agenda": {
+   "image": "pa-sc-esports-agenda-r7",
+   "files": [
+    {
+     "name": "scenes/esports-agenda-320.webp",
+     "w": 320,
+     "h": 544,
+     "kb": 33
+    },
+    {
+     "name": "scenes/esports-agenda-480.webp",
+     "w": 480,
+     "h": 816,
+     "kb": 56
+    },
+    {
+     "name": "scenes/esports-agenda-720.webp",
+     "w": 720,
+     "h": 1223,
+     "kb": 101
+    },
+    {
+     "name": "scenes/esports-agenda-960.webp",
+     "w": 960,
+     "h": 1631,
+     "kb": 155
+    },
+    {
+     "name": "scenes/esports-agenda-1280.webp",
+     "w": 1280,
+     "h": 2175,
+     "kb": 240
+    }
+   ],
+   "ar": 0.5885,
+   "g": 0.9075,
+   "alt": "Alt sentada marcando un día en una agenda de papel con un fibrón rosa"
   }
  }
 }

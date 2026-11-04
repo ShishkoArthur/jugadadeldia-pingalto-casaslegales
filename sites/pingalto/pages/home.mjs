@@ -50,7 +50,7 @@ const TOOLS = [
   ['/esports/sistema-suizo', 'swiss', 'Simulador de fase suiza', '16 equipos, reglas de Valve'],
   ['/clash/mazos', 'deck', 'Mazos de Clash Royale', 'Contra el top argentino'],
   ['/valorant/mapas/ascent', 'map', 'Callouts de Ascent', 'En español y en inglés'],
-  ['/dota2', 'rank', 'Ranking de Dota 2', 'Elo propio, con Sudamérica'],
+  ['/dota2', 'rank', '¿Te corre Dota 2?', 'Requisitos de Valve, ping y ranking'],
   ['/esports/argentinos', 'flag', 'Argentinos en esports', 'Por juego y por equipo'],
 ];
 

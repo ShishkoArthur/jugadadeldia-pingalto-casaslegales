@@ -617,10 +617,10 @@
  {
   "section": "Dota 2",
   "url": "/dota2",
-  "title": "Ranking de equipos de Dota 2: el mundo y Sudamérica",
-  "titleLen": 51,
-  "h1": "Dota 2: ranking de equipos al día, con Sudamérica",
-  "description": "Ranking de equipos de Dota 2 al día con nuestro Elo: el mundo y Sudamérica, la forma del último mes y la chance de un equipo contra otro en una serie.",
+  "title": "Dota 2 desde Argentina: requisitos, servidores y ranking",
+  "titleLen": 56,
+  "h1": "Dota 2 desde Argentina",
+  "description": "Dota 2 es gratis en Steam: si te corre según el mínimo de Valve, cuánto tarda la descarga, los servidores cerca de Argentina y un ranking de equipos.",
   "keys": "dota 2 2.3k/73 · dota 2.3k/3 (смешано с автобусной компанией DOTA)",
   "kind": "live",
   "wave": "P1",
@@ -628,8 +628,8 @@
   "ar": "Фильтр Sudamérica в рейтинге OpenDota, аргентинские команды и игроки подсвечены; дата-центры Valve в Sudamérica",
   "data": "OpenDota API (бесплатно, 3000 запросов в день)",
   "auto": "лента на сервере раз в сутки (код готов в RinkMath: tools/feeds/dota2.mjs)",
-  "notes": "«dota colectivos / paro / empresa» — чужой интент 03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution. 03.11 wave 4: h1 changed to what the data supports (plan: \"Dota 2: ranking de equipos en vivo, con Sudamérica\"). 03.11 wave 4: description changed to what the data supports (plan: \"Ranking de equipos de Dota 2 al día: el mundo y Sudamérica, con los argentinos marcados, la forma del último mes y la chance de cada serie Bo1 a Bo5.\").",
-  "status": "live 2026-11-03"
+  "notes": "«dota colectivos / paro / empresa» — чужой интент 03.11 wave 3: skipped - api.opendota.com robots.txt disallows ClaudeBot (TRAPS 03.11); Valve publishes no medal distribution. 03.11 wave 4: h1 changed to what the data supports (plan: \"Dota 2: ranking de equipos en vivo, con Sudamérica\"). 03.11 wave 4: description changed to what the data supports (plan: \"Ranking de equipos de Dota 2 al día: el mundo y Sudamérica, con los argentinos marcados, la forma del último mes y la chance de cada serie Bo1 a Bo5.\"). 04.11 audit: /dota2 became the Dota 2 game page (intent «dota 2»): Steam appdetails 570 for Argentina (free, Windows/Mac/Linux, 60 GB, minimum quoted) + does-it-run check and download time, start steps (bots first, quoted), Valve SDR points of app 570 in South America with typical pings and the fibre floor, our Elo ranking as a section (#ranking), agenda, TI. No OpenDota.",
+  "status": "live 2026-11-04"
  },
  {
   "section": "Dota 2",

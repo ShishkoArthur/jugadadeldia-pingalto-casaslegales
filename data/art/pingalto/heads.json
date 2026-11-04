@@ -182,5 +182,21 @@
  "pa-sc-esports-argentinos-r6": {
   "top": 255,
   "chin": 525
+ },
+ "pa-sc-dota2-ti-r6": {
+  "top": 7,
+  "chin": 338
+ },
+ "pa-sc-ff-max-r7": {
+  "top": 22,
+  "chin": 330
+ },
+ "pa-sc-clash-cartas-r7": {
+  "top": 4,
+  "chin": 335
+ },
+ "pa-sc-esports-agenda-r7": {
+  "top": 7,
+  "chin": 322
  }
 }

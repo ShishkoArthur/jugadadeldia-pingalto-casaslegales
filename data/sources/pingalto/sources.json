@@ -566,6 +566,27 @@
    "fetched": "2026-11-04",
    "status": 200,
    "sha256": "a66f93f96dad32a6f0fe0b9a0cfff1ab54ae820c1fbe8682fd5ec7b2a5fc3475"
+  },
+  "steam-dota2": {
+   "url": "https://store.steampowered.com/api/appdetails?appids=570&cc=ar&l=spanish",
+   "file": "data/sources/pingalto/_docs/steam-appdetails-570-ar.json",
+   "type": "json",
+   "publisher": "Valve (Steam, ficha de Dota 2 para Argentina)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "e44493f10f70432781f3261f77370dc45e1a1abe24d5ed7a2091ae05b6c69df3",
+   "page": "https://store.steampowered.com/app/570/"
+  },
+  "valve-sdr-570": {
+   "url": "https://api.steampowered.com/ISteamApps/GetSDRConfig/v1/?appid=570",
+   "file": "data/sources/pingalto/_docs/valve-sdr-config-570.json",
+   "type": "json",
+   "publisher": "Valve (Steam Web API, red de Dota 2)",
+   "kind": "official",
+   "fetched": "2026-11-04",
+   "status": 200,
+   "sha256": "e44b5135cfe1891214951b9760eec4449000c9a2545bfcc94a580c523d8d37ef"
   }
  },
  "facts": {
@@ -1344,6 +1365,31 @@
    "doc": "wp-fortnite",
    "quote": "The macOS client of both Battle Royale and Save the World, while downloadable, will not be able to be updated as well due to app signing restrictions.",
    "value": "macOS"
+  },
+  "d2_heroes": {
+   "doc": "steam-dota2",
+   "quote": "como uno de los más de cien héroes de Dota",
+   "value": "más de cien"
+  },
+  "d2_all_free": {
+   "doc": "steam-dota2",
+   "quote": "Todos los héroes son gratuitos",
+   "value": "gratuitos"
+  },
+  "d2_ready": {
+   "doc": "steam-dota2",
+   "quote": "todo lo necesario para jugar ya está ahí antes de que te unas a tu primera partida",
+   "value": "primera partida"
+  },
+  "d2_bots": {
+   "doc": "steam-dota2",
+   "quote": "Aprende los conceptos básicos jugando en modo cooperativo contra bots",
+   "value": "bots"
+  },
+  "d2_content": {
+   "doc": "steam-dota2",
+   "quote": "Dota 2 contiene violencia fantástica, consumo de alcohol y desnudos parciales",
+   "value": "violencia fantástica"
   }
  }
 }
