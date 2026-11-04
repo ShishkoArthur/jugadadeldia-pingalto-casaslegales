@@ -52,7 +52,7 @@ export const trucoHub = {
       '<section class="jg-c"><span class="jg-sm">Los puntos</span><h2>Cuánto vale cada canto</h2><table class="jg-tbl" data-nosnippet><tbody>' + Object.entries(TRUCO_CALLS).map(([v, k]) => '<tr><td>' + { truco: 'Truco', retruco: 'Retruco', valeCuatro: 'Vale cuatro' }[k] + ' querido</td><td class="n">' + v + '</td></tr>').join('') + '<tr><td>Flor</td><td class="n">' + FLOR_POINTS.alone + '</td></tr></tbody></table>' +
       cite(h, ['truco.truco-callado', 'truco.truco-retruco-values', 'truco.vale-cuatro', 'truco.flor-three']) + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Todo el truco</span><h2>Elegí por dónde seguir</h2>' + tiles(h, [
-        ['/truco/jugar/', 'Jugar contra la compu', 'Tres niveles, con o sin flor, a 15, 30 o 40', '#ff5a3c', ICONS.play],
+        ['/truco/jugar/', 'Jugar contra la compu', 'De a 2 o de a 4, tres niveles, con o sin flor', '#ff5a3c', ICONS.play],
         ['/truco/anotador/', 'Anotador con fósforos', 'Malas y buenas, deshacer y pantalla grande', '#16b38a', ICONS.pencil],
         ['/truco/valores-de-las-cartas/', 'Valores de las cartas', 'Qué carta mata a cuál', '#e0447a', ICONS.cards],
         ['/truco/senas/', 'Señas', 'Las nueve señas, con dibujo y entrenador', '#8b5cf6', ICONS.eye],
@@ -69,23 +69,43 @@ export const trucoHub = {
 
 export const trucoJugar = {
   path: '/truco/jugar/', kind: 'game', section: 'truco', css: ['mesa.css'], js: ['truco.js'],
-  title: 'Jugar al truco online gratis contra la compu',
+  title: 'Truco online gratis contra la compu: de a 2 o de a 4',
   h1: 'Jugá al truco contra la compu',
-  description: 'Jugá al truco argentino online contra la compu, sin registro y sin plata de por medio. Tres niveles, con o sin flor, y el repaso de cada mano.',
-  ld: h => ldT(h, { '@context': 'https://schema.org', '@type': 'Game', name: 'Truco argentino contra la compu', url: 'https://' + h.site.domain + h.page.path, inLanguage: 'es-AR', numberOfPlayers: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 2 } }),
+  description: 'Jugá al truco argentino online gratis y sin registro contra la compu: mano a mano o de a 4 con un compañero que lee tus señas. Tres niveles.',
+  ld: h => ldT(h, { '@context': 'https://schema.org', '@type': 'Game', name: 'Truco argentino contra la compu', url: 'https://' + h.site.domain + h.page.path, inLanguage: 'es-AR', numberOfPlayers: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 4 } }),
+  data: () => ({ s: SENAS.map(x => ({ id: x.id === 'falso' ? 'anchoFalso' : x.id, what: x.what, how: x.how, face: face(x.face) })) }),
   render(h) {
     const opt = (v, l, sel) => '<option value="' + v + '"' + (sel ? ' selected' : '') + '>' + l + '</option>';
+    const P30 = RULESETS['parejas-30-sin-flor'], P15 = RULESETS['parejas-15-sin-flor'];
+    const seat = (n, cls, name) => '<div class="jg-seat ' + cls + '" data-seat="' + n + '"><div class="jg-stn"><b>' + name + '</b><span data-o="bd"></span></div><div class="jg-hand" data-o="cards"></div><p class="jg-say" data-o="say" hidden></p></div>';
     return SPRITE + '<section class="jg-play" data-truco><div class="jg-ph"><h1 class="jg-h1 sm">' + h.esc(h.page.h1) + '</h1><form class="jg-cfg" data-cfg>' +
+      '<div class="jg-mode"><span class="jg-sm" id="jg-modo">Jugadores</span><div class="jg-seg" role="radiogroup" aria-labelledby="jg-modo"><label><input type="radio" name="modo" value="2" checked><span>De a 2</span></label><label><input type="radio" name="modo" value="4"><span>De a 4</span></label></div></div>' +
       '<label><span class="jg-sm">Compu</span><select class="jg-se" name="nivel">' + opt('facil', 'Fácil') + opt('normal', 'Normal', true) + opt('dificil', 'Difícil') + '</select></label>' +
       '<label><span class="jg-sm">Reglas</span><select class="jg-se" name="reglas">' + opt('clasico-30-sin-flor', 'A 30, sin flor', true) + opt('clasico-30-con-flor', 'A 30, con flor') + opt('corto-15-sin-flor', 'A 15, sin flor') + opt('bonaerense-40-con-flor', 'A 40, con flor (bonaerense)') + '</select></label>' +
       '<button class="jg-b s" type="button" data-sound aria-pressed="false">Sonido: no</button></form></div>' +
-      '<div class="jg-table"><div class="jg-score"><div><span class="jg-sm">Vos</span><div data-t="us"></div></div><p class="jg-goal" data-t="goal"></p><div><span class="jg-sm">Compu</span><div data-t="them"></div></div></div>' +
-      '<div class="jg-felt"><div class="jg-opp"><div class="jg-hand back" data-t="opp"></div><p class="jg-say" data-t="say" hidden aria-live="polite"></p></div>' +
+      '<div class="jg-table"><div class="jg-score"><div><span class="jg-sm" data-t="usl">Vos</span><div data-t="us"></div></div><p class="jg-goal" data-t="goal"></p><div><span class="jg-sm" data-t="theml">Compu</span><div data-t="them"></div></div></div>' +
+      '<div class="jg-felt" data-felt="2"><div class="jg-opp"><div class="jg-hand back" data-t="opp"></div><p class="jg-say" data-t="say" hidden aria-live="polite"></p></div>' +
       '<div class="jg-bazas" data-t="bazas"></div><p class="jg-turn" data-t="turn" aria-live="polite"></p>' +
       '<div class="jg-hand mine" data-t="mine"></div><p class="jg-info" data-t="info"></p><div class="jg-calls" data-t="calls"></div>' +
+      '<div class="jg-end" data-t="end" hidden aria-live="polite"></div></div>' +
+      '<div class="jg-felt jg-f4" data-felt="4" hidden>' + seat(2, 't', 'Compañero') + seat(3, 'l', 'Rival') +
+      '<div class="jg-mid"><div class="jg-bzs" data-t="bz"></div><div class="jg-x" data-t="x"></div><p class="jg-turn" data-t="turn" aria-live="polite"></p><p class="jg-log" data-t="log" aria-live="polite"></p></div>' + seat(1, 'r', 'Rival') +
+      '<div class="jg-me" data-seat="0"><div class="jg-stn"><b>Vos</b><span data-o="bd"></span></div><p class="jg-say" data-o="say" hidden></p><div class="jg-hand mine" data-t="mine"></div><p class="jg-info" data-t="info"></p></div>' +
+      '<div class="jg-calls" data-t="calls"></div>' +
+      '<details class="jg-sn" data-t="sn"><summary>Señas para tu compañero</summary><div class="jg-snl" data-t="snl"></div><p class="jg-snd" data-t="snd"></p></details>' +
       '<div class="jg-end" data-t="end" hidden aria-live="polite"></div></div></div>' +
       '<noscript><p class="jg-hon">Para jugar hace falta JavaScript.</p></noscript></section>' +
-      mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Cómo jugar</span><h2>Tocá una carta para tirarla</h2><ul><li>Los cantos que podés hacer aparecen como botones debajo de tus cartas: envido, truco, quiero, no quiero, irte al mazo.</li><li>Con el teclado: 1, 2 y 3 tiran tus cartas; Enter reparte.</li><li>La partida se guarda en tu navegador: si cerrás la página, la seguís después.</li><li>La compu no ve tus cartas: decide con lo que se ve en la mesa, como vos.</li></ul></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Niveles</span><h2>Qué hace la compu</h2><p><b>Fácil</b> juega casi al azar. <b>Normal</b> calcula la chance exacta de su envido y de sus cartas. <b>Difícil</b> además adivina tus cartas por lo que cantaste y a veces miente.</p></section>' +
+      mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Cómo jugar</span><h2>Tocá una carta para tirarla</h2><ul><li>Elegí arriba si jugás <b>de a 2</b> (vos contra la compu) o <b>de a 4</b> (vos y un compañero contra dos rivales; los tres los maneja la compu).</li><li>Los cantos que podés hacer aparecen como botones debajo de tus cartas: envido, truco, quiero, no quiero, irte al mazo.</li><li>Con el teclado: 1, 2 y 3 tiran tus cartas; Q es quiero, N no quiero, T truco (o la subida que toque), E envido; Enter reparte.</li><li>Cada modo guarda su partida en tu navegador: si cerrás la página o cambiás de modo, la seguís después.</li><li>La compu no ve tus cartas: decide con lo que se ve en la mesa, como vos.</li></ul></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Niveles</span><h2>Qué hace la compu</h2><p><b>Fácil</b> juega casi al azar. <b>Normal</b> calcula la chance exacta de su envido y de sus cartas. <b>Difícil</b> además adivina tus cartas por lo que cantaste y a veces miente. De a 4, tu compañero y los rivales juegan con el mismo nivel.</p></section>' +
+      '<section class="jg-c w3" id="de-a-cuatro"><span class="jg-sm">De a 4</span><h2>Cómo se juega de a cuatro</h2><ul>' +
+      '<li>Son dos parejas sentadas frente a frente: tu compañero está enfrente y los rivales a los costados. Se juega en contra de las agujas del reloj, así que después de vos tira el rival de la derecha.</li>' +
+      '<li>Empieza el mano y en la mano siguiente lo es el de al lado. El último de cada pareja en jugar es el <b>pie</b>.</li>' +
+      '<li>Cada baza la gana la carta más alta. Si empatan dos cartas de la misma pareja, la baza es de esa pareja; si son de parejas distintas, es parda. La baza siguiente la empieza el que ganó; después de una parda, el mano.</li>' +
+      '<li>Cualquiera puede cantar envido antes de tirar su primera carta. Si es querido, los tantos se dicen desde el mano y el que no supera lo mejor de la otra pareja dice «son buenas»; gana la pareja del que tiene más, y si empatan, el más cerca del mano.</li>' +
+      '<li>Quién contesta un canto: a ' + P30.target + ' contesta el pie de la otra pareja; a ' + P15.target + ', el primer rival después del que cantó. La respuesta compromete a toda la pareja.</li>' +
+      '<li>Si te vas al mazo te vas solo y tu compañero sigue con sus cartas. Si se van los dos, la otra pareja cobra lo que valía la mano (sin truco ni cartas jugadas: ' + P30.mazoNoCardPoints + ' a ' + P30.target + ' y ' + P15.mazoNoCardPoints + ' a ' + P15.target + ').</li>' +
+      '<li><b>Señas:</b> con el panel le marcás a tu compañero qué tenés. Acá solo podés hacer señas ciertas y tu compañero las tiene en cuenta; los rivales no las ven, aunque en una mesa de verdad pueden. Están todas en <a href="' + h.href('/truco/senas/') + '">las señas del truco</a>.</li>' +
+      '<li>De a 4 se juega sin flor: con cuatro manos la flor tiene reglas propias que todavía no armamos.</li></ul>' +
+      cite(h, ['truco.4p-pairs', 'truco.4p-order', 'truco.4p-mano-right', 'truco.4p-pie', 'truco.4p-baza-same-team', 'truco.4p-lead-winner', 'truco.4p-parda-mano-leads', 'truco.4p-envido-team', 'truco.4p-envido-tie-mano', 'truco.4p-son-buenas', 'truco.4p-responder-any', 'truco.4p-mazo-alone', 'truco.4p-mazo-both', 'truco.4p-senas', 'truco.4p-senas-visible']) + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Reglas que usa el juego</span><h2>De los reglamentos</h2>' + cite(h, ['truco.hierarchy-bravas', 'truco.hierarchy-rest', 'truco.envido-count', 'truco.envido-tie-mano', 'truco.envido-no-quiero', 'truco.falta-malas-wins-match', 'truco.parda-first', 'truco.parda-all-three', 'truco.mazo-before-cards', 'truco.flor-three', 'truco.flor-achico', 'truco.contraflor', 'truco.target-40']) + '</section></div>';
   },
 };

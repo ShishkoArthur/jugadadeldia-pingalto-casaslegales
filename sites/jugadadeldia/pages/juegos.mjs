@@ -117,7 +117,7 @@ export const juegosCartas = {
   render(h) {
     return SPRITE + hero(h, { kicker: 'Juegos de mesa · sin plata', scene: 'juegos', lede: 'Truco, chinchón, escoba y generala: contra la compu, sin registro y sin apuestas. Y anotadores para cuando juegan en la mesa.' }) +
       '<div class="jg-mn"><section class="jg-c w3"><span class="jg-sm">Con cartas españolas</span><h2>Cartas</h2>' + tiles(h, [
-        ['/truco/jugar/', 'Truco', 'Contra la compu, con o sin flor', '#ff5a3c', ICONS.cards],
+        ['/truco/jugar/', 'Truco', 'Contra la compu, de a 2 o de a 4', '#ff5a3c', ICONS.cards],
         ['/chinchon/jugar/', 'Chinchón', 'Robá, descartá y cortá', '#2f7cf6', ICONS.cards],
         ['/escoba-de-15/jugar/', 'Escoba de 15', 'Sumá 15 y barré la mesa', '#16b38a', ICONS.cards],
         ['/truco/anotador/', 'Anotador de truco', 'Con fósforos, malas y buenas', '#8b5cf6', ICONS.pencil],

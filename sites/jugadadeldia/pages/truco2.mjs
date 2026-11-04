@@ -12,7 +12,7 @@ const sel = (name, opts) => '<select class="jg-se" name="' + name + '">' + opts.
 const CALL = { envido: 'Envido', realEnvido: 'Real envido', faltaEnvido: 'Falta envido' };
 const RULE_OPTS = [['clasico-30-sin-flor', 'A 30 (15 malas y 15 buenas)', true], ['bonaerense-40-con-flor', 'A 40, bonaerense'], ['corto-15-sin-flor', 'A 15']];
 const more = h => tiles(h, [
-  ['/truco/jugar/', 'Jugar contra la compu', 'Tres niveles, con o sin flor', '#ff5a3c', ICONS.play],
+  ['/truco/jugar/', 'Jugar contra la compu', 'De a 2 o de a 4, tres niveles', '#ff5a3c', ICONS.play],
   ['/truco/reglas/', 'Reglas del truco', 'Mano por mano', '#2f7cf6', ICONS.book],
   ['/truco/puntos/', 'Cuánto vale cada canto', 'Envido, truco y falta', '#16b38a', ICONS.calc],
   ['/truco/quiero-o-no-quiero/', '¿Quiero o no quiero?', 'Entrenador en series de diez', '#8b5cf6', ICONS.hand],
