@@ -19,7 +19,7 @@ const args = process.argv.slice(2);
 const id = args.find(a => !a.startsWith('--'));
 const opt = (k, d) => { const a = args.find(x => x === '--' + k || x.startsWith('--' + k + '=')); return a ? (a.includes('=') ? a.split('=')[1] : true) : d; };
 const BUDGET = Number(opt('budget', 15));
-const CYR = /[Ѐ-ӿ]/;
+const CYR = /[\u0400-\u04ff]/;
 const SPEND = join(ROOT, 'data/i18n/_spend.json');
 let spent = 0, client = null;
 
@@ -247,7 +247,7 @@ OUTPUT ONLY JSON {"score": 1-10, "summary": "one sentence", "issues": [{"severit
     saveMemory(id, mem);
   }
   const md = ['# Review of the English version — ' + id + ' (' + new Date().toISOString().slice(0, 10) + ')', '',
-    'Модель: ' + OPUS + ' (выборка ' + results.length + ' стр., по одной на тип страницы). Переводчик: ' + SONNET + '. Стоимость ревью: $' + spent.toFixed(2) + '.' + (opt('apply') ? ' Применено исправлений: ' + applied + '.' : ''), ''];
+    '\u041c\u043e\u0434\u0435\u043b\u044c: ' + OPUS + ' (\u0432\u044b\u0431\u043e\u0440\u043a\u0430 ' + results.length + ' \u0441\u0442\u0440., \u043f\u043e \u043e\u0434\u043d\u043e\u0439 \u043d\u0430 \u0442\u0438\u043f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b). \u041f\u0435\u0440\u0435\u0432\u043e\u0434\u0447\u0438\u043a: ' + SONNET + '. \u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0440\u0435\u0432\u044c\u044e: $' + spent.toFixed(2) + '.' + (opt('apply') ? ' \u041f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u043e \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0439: ' + applied + '.' : ''), ''];
   for (const r of results) {
     md.push('## ' + r.p.path + ' (' + r.p.esPath + ') — ' + r.score + '/10', '', r.summary || '', '');
     for (const x of r.issues || []) md.push('- **' + x.severity + '** «' + x.en + '» → «' + x.fix + '» — ' + x.why + (x.applied ? ' _(' + x.applied + ')_' : ''));
