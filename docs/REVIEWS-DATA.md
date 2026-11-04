@@ -33,7 +33,7 @@ Owner 04.11: casaslegales becomes a review site («ссылки ставим, к
 | bplay | 22 | 4 | 5 | 1 | 2 | 3 | · | 4 | 1 | 3 | pba.bplay.bet.ar: open; deportespba.bplay.bet.ar: open; ayudapba.bplay.bet.ar: partial |
 | betwarrior | 14 | 1 | · | 1 | 3 | 3 | 1 | 2 | 1 | 0 | betwarrior.bet.ar: open; apuestas.betwarrior.bet.ar: empty; caba.betwarrior.bet.ar: error |
 | codere | 16 | 4 | 1 | 1 | 3 | 2 | 1 | 3 | 1 | 2 | www.codere.bet.ar: open; m.caba.codere.bet.ar: open |
-| sportsbet | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
+| sportsbet | 17 | 3 | 1 | · | 6 | 2 | 2 | 2 | 1 | 2 | pba.sports.bet.ar: open; sport.sportsbet.bet.ar: open |
 | jugadon | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | playcet | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | casino-ba-online | — | · | · | · | · | · | · | · | · | 0 | not visited yet |

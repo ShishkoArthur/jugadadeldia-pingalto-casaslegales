@@ -1,0 +1,312 @@
+{
+ "brand": "sportsbet",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "pba.sports.bet.ar",
+  "sport.sportsbet.bet.ar"
+ ],
+ "status": {
+  "pba.sports.bet.ar": {
+   "status": "open",
+   "note": "Opens from AR exit (brand Sports.bet.ar PBA); no cookie banner seen",
+   "date": "2026-11-04"
+  },
+  "sport.sportsbet.bet.ar": {
+   "status": "open",
+   "note": "Sportsbook provider page embedded as iframe in pba.sports.bet.ar/sports; opened directly. 'Superliga Argentina' click did not open the league list — odds not collected",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://pba.sports.bet.ar/",
+   "file": "data/sources/reviews/sportsbet/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "403538b59e5eadab51b0f243cd8cdc52501662466ef34409ee8b7d7b10dfb52e"
+  },
+  "ayuda-depositos": {
+   "url": "https://pba.sports.bet.ar/ayuda-depositos",
+   "file": "data/sources/reviews/sportsbet/_docs/ayuda-depositos.txt",
+   "date": "2026-11-04",
+   "sha256": "4b637fa771189222cf7c33437b304a58462e421fd3bc858514e8d94773436e2a"
+  },
+  "ayuda-retiros": {
+   "url": "https://pba.sports.bet.ar/ayuda-retiros",
+   "file": "data/sources/reviews/sportsbet/_docs/ayuda-retiros.txt",
+   "date": "2026-11-04",
+   "sha256": "2b2e8f379e44ac9f94caa099730c3b5f0f0f6b10f0ba78c50523e8e76ef41583"
+  },
+  "juego-responsable": {
+   "url": "https://pba.sports.bet.ar/info-juego-responsable",
+   "file": "data/sources/reviews/sportsbet/_docs/juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "e9ed774ab393038361aef05f0db2c134a141ad2ab571746385c444882004323d"
+  },
+  "sportsbook": {
+   "url": "https://sport.sportsbet.bet.ar/SportsBook/Home",
+   "file": "data/sources/reviews/sportsbet/_docs/sportsbook.txt",
+   "date": "2026-11-04",
+   "sha256": "c1eeea6d10be3e02e1e2945edc30852e17e0290784c7aede3780e2558005e919"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "ARGENBINGO S.A – LOGISMART S.R.L – GABETEC S.A – JSD S.A - U.T.E",
+    "regulator": "Lotería de La Provincia de Buenos Aires",
+    "act": "RESO-2024-938-GDEBA-IPLYCMGGP"
+   },
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Sports.bet.ar es un sitio operado por ARGENBINGO S.A – LOGISMART S.R.L – GABETEC S.A – JSD S.A - U.T.E con domicilio en Av. Victorica 946, Moreno, bajo permiso otorgado por Lotería de La Provincia de Buenos Aires en la RESO-2024-938-GDEBA-IPLYCMGGP.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Limited to Provincia de Buenos Aires",
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "El ámbito de aplicación se circunscribe a la Provincia de Buenos Aires.",
+   "doc": "home"
+  },
+  {
+   "field": "support.hours",
+   "value": "24 h",
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "con atención al usuario las 24 horas",
+   "doc": "home"
+  },
+  {
+   "field": "casino.exists",
+   "value": {
+    "exists": true,
+    "live": true,
+    "categories": [
+     "Slots",
+     "Casino Vivo",
+     "video bingo"
+    ]
+   },
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Apuestas deportivas, tragamonedas, ruleta, blackjack, casino en vivo y video bingo en Sports.bet.ar",
+   "doc": "home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "Transferencia bancaria (Alias/CBU)",
+    "AstroPay",
+    "Mercado Pago",
+    "Pago360 (payment link)"
+   ],
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-depositos",
+   "date": "2026-11-04",
+   "quote": "· Transferencia bancaria mediante Alias o CBU. · AstroPay, utilizando el saldo disponible en tu cuenta AstroPay. · Mercado Pago. · Pago360, a través de un link de pago.",
+   "doc": "ayuda-depositos"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 500,
+    "currency": "ARS"
+   },
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-depositos",
+   "date": "2026-11-04",
+   "quote": "El monto mínimo para realizar un depósito es de $500 y el monto máximo es de $999.999 por operación.",
+   "doc": "ayuda-depositos"
+  },
+  {
+   "field": "payments.maxDeposit",
+   "value": {
+    "amount": 999999,
+    "currency": "ARS",
+    "per": "operation"
+   },
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-depositos",
+   "date": "2026-11-04",
+   "quote": "el monto máximo es de $999.999 por operación.",
+   "doc": "ayuda-depositos"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "live chat"
+   ],
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-depositos",
+   "date": "2026-11-04",
+   "quote": "comunícate con nuestro equipo de Atención al Cliente a través del chat en vivo",
+   "doc": "ayuda-depositos"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": "Mostly immediate; amounts over ARS 1,500,000 up to 72 business hours (identity verified)",
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-retiros",
+   "date": "2026-11-04",
+   "quote": "Para montos superiores a $1.500.000 pueden requerir un procesamiento adicional y demorar hasta 72 horas hábiles en ser procesados.",
+   "doc": "ayuda-retiros"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "bank transfer",
+    "cash withdrawal at a physical cashier"
+   ],
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-retiros",
+   "date": "2026-11-04",
+   "quote": "Podés realizar un máximo de 2 retiros por día, ya sea mediante transferencia bancaria o retiro en cajero físico.",
+   "doc": "ayuda-retiros"
+  },
+  {
+   "field": "payments.maxWithdrawal",
+   "value": "max 2 withdrawals per day",
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-retiros",
+   "date": "2026-11-04",
+   "quote": "Podés realizar un máximo de 2 retiros por día",
+   "doc": "ayuda-retiros"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Withdrawals require verified identity",
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/ayuda-retiros",
+   "date": "2026-11-04",
+   "quote": "Tu identidad aún no fue verificada.",
+   "doc": "ayuda-retiros"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "self-exclusion from profile, irrevocable for 2 years",
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/info-juego-responsable",
+   "date": "2026-11-04",
+   "quote": "no podrá cancelarse ni revertirse antes de que finalice el plazo de 2 años.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "IPLyC Programa de Juego Responsable; 0800-444-4000; Registro de Autoexclusión",
+    "url": "https://loteria.gba.gob.ar/juego-compulsivo#autoexclusion"
+   },
+   "host": "pba.sports.bet.ar",
+   "url": "https://pba.sports.bet.ar/info-juego-responsable",
+   "date": "2026-11-04",
+   "quote": "· Línea gratuita de orientación al juego problemático: 0800-444-4000",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "sportsbook.sports",
+   "value": {
+    "count": 43,
+    "note": "Menu entries with event counts; excluded from count: 'Deporte Virtual', 'Eventos deportivos y sociales', 'E-Hockey' (kept E-Fútbol/E-Basketball/Esports as listed)",
+    "names": [
+     "Fútbol",
+     "Tenis",
+     "Basquet",
+     "E-Fútbol",
+     "Esports",
+     "E-Basketball",
+     "Fórmula",
+     "Voleibol",
+     "Tenis de Mesa",
+     "Deportes de Combate",
+     "Carrera de Autos",
+     "Boxeo",
+     "Fútbol Americano",
+     "Béisbol",
+     "Hockey sobre Hielo",
+     "Balonmano",
+     "Fútbol Sala",
+     "Waterpolo",
+     "Football Australiano",
+     "Bádminton",
+     "Snooker",
+     "Dardos",
+     "Críquet",
+     "Unihockey",
+     "Rugby",
+     "Liga de Rugby",
+     "Hockey sobre césped",
+     "Hockey con la pelota",
+     "Nascar",
+     "Autopista",
+     "Ciclismo",
+     "Esquí",
+     "Ajedrez",
+     "Billar",
+     "Lucha",
+     "Navegación",
+     "Golf",
+     "Curling",
+     "Fútbol Gaélico",
+     "Hurling",
+     "Lacrosse",
+     "Squash",
+     "Sumo"
+    ]
+   },
+   "host": "sport.sportsbet.bet.ar",
+   "url": "https://sport.sportsbet.bet.ar/SportsBook/Home",
+   "date": "2026-11-04",
+   "quote": "Fútbol (1463) ¦ Tenis (423) ¦ Basquet (239)",
+   "doc": "sportsbook"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": {
+    "live": true,
+    "eventsLiveAtCapture": 224
+   },
+   "host": "sport.sportsbet.bet.ar",
+   "url": "https://sport.sportsbet.bet.ar/SportsBook/Home",
+   "date": "2026-11-04",
+   "quote": "EN VIVO 224",
+   "doc": "sportsbook"
+  },
+  {
+   "field": "sportsbook.streaming",
+   "value": "'TV EN VIVO' tab shown",
+   "host": "sport.sportsbet.bet.ar",
+   "url": "https://sport.sportsbet.bet.ar/SportsBook/Home",
+   "date": "2026-11-04",
+   "quote": "TV EN VIVO",
+   "doc": "sportsbook"
+  }
+ ],
+ "shots": [
+  {
+   "view": "payments",
+   "file": "data/shots/sportsbet/review-2026-11-04-payments.png",
+   "url": "https://pba.sports.bet.ar/centro-ayuda",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "321a71fd29864f7e40adce17123ea5b210248886c4caa3cf844c9c6a741e3e16",
+   "note": "Help centre categories"
+  },
+  {
+   "view": "rg",
+   "file": "data/shots/sportsbet/review-2026-11-04-rg.png",
+   "url": "https://pba.sports.bet.ar/info-juego-responsable",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "116105ecb04f79a464314ff09a4a846eeaa8eca12d5b568ec0ddcf118f76e309"
+  }
+ ]
+}
