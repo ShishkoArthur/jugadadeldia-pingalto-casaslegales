@@ -53,6 +53,22 @@
 
 Открытый ключ GitHub (не секрет): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZ/k/crurewdEaZLh2EBMmmKXlN9ZWzBm/rdNlFv2a9 jugadadeldia-pingalto-casaslegales deploy key`
 
+## СОСТОЯНИЕ 04.11 (финальный QA дня, `docs/QA-2026-11-04.md`)
+- **jugadadeldia.com — 85 страниц + 404** (кинела по провинциям, лото, труко 1×1 и 2×2, генерала, чинчон, эскоба, бурако, гайды, FAQ;
+  автор Denis Krazok). **pingalto.com — 50 + 404** (хабы игр, академия, инструменты, esports). **casaslegales.com — 105 + 404** (27 марок,
+  обзоры, cómo ingresar, хаб казино, гайды, официальные «Ir» nofollow). Индекс открыт, без монетизации, перекрёстных ссылок нет (проверено).
+- **Само обновляется:** jdd — кинела каждые 15 мин, провинции и лото каждый час, программа и цены LOTBA, сроки источников; pingalto —
+  PandaScore, Clash Royale, Brawl Stars, рейтинги (час/сутки); casaslegales — официальные списки раз в месяц (`listas`), сроки (`plazos`),
+  одно Telegram-напоминание. `_health` всех трёх — ok (04.11).
+- **Владелец раз в полгода** — `docs/MAINTENANCE.md` (копии сайтов, закрытых для ИИ, и гео-блок — Chrome в AR; обзоры через Chrome с VPN AR;
+  Search Console; ключи). Ближайшее: Telegram 09.04.2027, копии к 30.04–02.05.2027.
+- **QA 04.11:** 1 458 загрузок + `tools/qa/static.mjs` (title/description, JSON-LD/FAQ, robots, sitemap, ленты, «Ir» + проба 5 адресов) +
+  ссылки — 0 битых. Исправлено и выложено: pingalto (0d4487f), casaslegales (27fe5ec). **jdd (10b41a0) в main, не выложен:** `npm test`
+  падает на кириллице в `tools/translate.mjs` (параллельный коммит i18n eead0b3) → после правки `bash tools/deploy.sh jugadadeldia`.
+- **Открыто:** ключ fortnite-api.com для трекера (регистрация через Discord — владелец; затем /fortnite/tracker); копии владельца
+  (список — `docs/reference/owner-saves/README.md`); вопрос о сцене до инструмента на телефоне на pingalto; P3 — в отчёте QA.
+  После меню с подменю, поиска и английских версий — **повторить полный QA** (этот проход их не покрывает).
+
 ## Состояние и следующее (03.11, вечер)
 - **Все три сайта живые, индекс открыт:** casaslegales.com (97 стр. из 117 плана, все 27 марок со страницей, дизайн r3 «01 Relieve alto», 8 официальных списков; остаток — раздел «97 страниц» ниже), pingalto.com
   (47 стр. из 86 плана — волна 4 ниже, дизайн «Holo pastel», девушка pa-girl-r3-09), jugadadeldia.com (45 стр., дизайн r3 «06 Menú principal», девушка jdd-girl-r3-10,
