@@ -1,25 +1,33 @@
 #!/usr/bin/env node
 // Swap in a copy the owner saved from his own browser (docs/reference/owner-saves/README.md) for a document from a site that
-// blocks AI crawlers: node tools/owner-copy.mjs <slug> <saved file> [--date YYYY-MM-DD] [--write]
-// Every source entry with that slug (registries, provinces, help package, operators) gets the new file, sha256, fetched =
-// the date the owner saved it, copiedBy "owner", and loses pendingOwnerCopy. Without --write it only reports what would
+// blocks AI crawlers: node tools/owner-copy.mjs <slug> <saved file> [--date YYYY-MM-DD] [--by owner|owner-browser] [--write]
+// Every source entry with that slug (registries, provinces, help package, operators, and the jugadadeldia lottery sets in
+// data/sources/lottery) gets the new file, sha256, fetched = the date the owner saved it, copiedBy "owner" (or --by owner-browser:
+// taken in the owner's own Chrome while he watched, tools/lib/copyage.mjs), and loses pendingOwnerCopy. Without --write it only reports what would
 // change. After --write run npm test: if a quote or the list changed on the official page, the checks say exactly what to
 // update by hand (never edit a quote to fit without reading the page).
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { ROOT } from './env.mjs';
-import { allSourceDocs } from './lib/ownercopy.mjs';
+import { allSourceDocs, isOwnerCopied } from './lib/ownercopy.mjs';
 
 const args = process.argv.slice(2);
 const opt = k => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : null; };
-const [slug, file] = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--date');
+const [slug, file] = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--date' && args[i - 1] !== '--by');
+const by = opt('--by') || 'owner';
+if (!isOwnerCopied({ copiedBy: by })) { console.error('bad --by ' + by); process.exit(2); }
 if (!slug || !file) { console.error('usage: node tools/owner-copy.mjs <slug> <saved file> [--date YYYY-MM-DD] [--write]'); process.exit(2); }
 const src = path.resolve(file);
 if (!fs.existsSync(src)) { console.error('no such file ' + src); process.exit(2); }
 const date = opt('--date') || fs.statSync(src).mtime.toISOString().slice(0, 10);
 if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) { console.error('bad --date ' + date); process.exit(2); }
-const hits = allSourceDocs().filter(x => x.slug === slug);
+const lotDir = 'data/sources/lottery';
+const lottery = fs.readdirSync(path.join(ROOT, lotDir)).filter(f => f.endsWith('.json')).sort().flatMap(f => {
+  const j = JSON.parse(fs.readFileSync(path.join(ROOT, lotDir, f), 'utf8'));
+  return Object.entries(j.docs || {}).map(([s, doc]) => ({ set: 'lottery ' + (j.id || f), json: lotDir + '/' + f, slug: s, doc }));
+});
+const hits = [...allSourceDocs(), ...lottery].filter(x => x.slug === slug);
 if (!hits.length) { console.error('no source document with slug ' + slug); process.exit(2); }
 const buf = fs.readFileSync(src);
 const isPdf = buf.subarray(0, 5).toString() === '%PDF-';
@@ -37,7 +45,7 @@ for (const json of [...new Set(hits.map(x => x.json))]) {
   const j = JSON.parse(raw);
   const d = j.docs[slug];
   fs.writeFileSync(path.join(ROOT, d.file), buf);
-  Object.assign(d, { fetched: date, status: 200, sha256: sha, copiedBy: 'owner' });
+  Object.assign(d, { fetched: date, status: 200, sha256: sha, copiedBy: by });
   delete d.pendingOwnerCopy;
   delete d.stale;
   fs.writeFileSync(p, JSON.stringify(j, null, ind) + (raw.endsWith('\n') ? '\n' : ''));

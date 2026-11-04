@@ -10,7 +10,11 @@ export const OWNER_COPY_MAX_AGE = 180, AUTO_MAX_AGE = 100;
 export const AI_BLOCKED_HOSTS = ['loteriadecordoba.com.ar', 'ijan-neuquen.com', 'loteriaderionegro.gob.ar', 'enrejasalta.com.ar', 'hcdn.gob.ar'];
 const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
 export const isAiBlocked = url => AI_BLOCKED_HOSTS.some(h => hostOf(url) === h || hostOf(url).endsWith('.' + h));
-export const isOwnerDoc = d => !!d && !!(d.pendingOwnerCopy || d.copiedBy === 'owner' || isAiBlocked(d.url) || d.refresh === 'manual');
+// copiedBy "owner": saved by the owner himself; "owner-browser": taken by the agent in the owner's own Chrome (Argentine VPN exit) while
+// he watches, only from sites whose robots.txt does not disallow Claude-User or Claude-Code (owner 2026-11-04). Both are owner copies.
+export const OWNER_COPIERS = ['owner', 'owner-browser'];
+export const isOwnerCopied = d => !!d && OWNER_COPIERS.includes(d.copiedBy);
+export const isOwnerDoc = d => !!d && !!(d.pendingOwnerCopy || isOwnerCopied(d) || isAiBlocked(d.url) || d.refresh === 'manual');
 export const docMaxAge = (d, setMaxAge) => isOwnerDoc(d) ? OWNER_COPY_MAX_AGE : (setMaxAge || AUTO_MAX_AGE);
 const plus = (day, n) => new Date(Date.parse(day + 'T00:00:00Z') + n * 864e5).toISOString().slice(0, 10);
 // the last day a copy is valid

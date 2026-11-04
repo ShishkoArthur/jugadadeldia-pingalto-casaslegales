@@ -8,8 +8,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT } from '../env.mjs';
 import { daysBetween } from '../../engine/format.mjs';
-import { AI_BLOCKED_HOSTS, isAiBlocked, isOwnerDoc, docMaxAge, docUntil, OWNER_COPY_MAX_AGE, AUTO_MAX_AGE } from './copyage.mjs';
-export { AI_BLOCKED_HOSTS, isAiBlocked, isOwnerDoc, docMaxAge, docUntil, OWNER_COPY_MAX_AGE, AUTO_MAX_AGE };
+import { AI_BLOCKED_HOSTS, isAiBlocked, isOwnerDoc, isOwnerCopied, docMaxAge, docUntil, OWNER_COPY_MAX_AGE, AUTO_MAX_AGE } from './copyage.mjs';
+export { AI_BLOCKED_HOSTS, isAiBlocked, isOwnerDoc, isOwnerCopied, docMaxAge, docUntil, OWNER_COPY_MAX_AGE, AUTO_MAX_AGE };
 
 const read = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'));
 // every saved document of every source set: { set, file (json), slug, doc }
@@ -28,12 +28,12 @@ export function allSourceDocs() {
 }
 
 export function ownerCopyPending() {
-  return allSourceDocs().filter(x => x.doc.pendingOwnerCopy || (x.doc.refresh === 'manual' && x.doc.copiedBy !== 'owner'));
+  return allSourceDocs().filter(x => x.doc.pendingOwnerCopy || (x.doc.refresh === 'manual' && !isOwnerCopied(x.doc)));
 }
 
 // a document from an AI-blocking site must be either an owner copy or marked as pending one
 export function ownerCopyProblems() {
-  return allSourceDocs().filter(x => isAiBlocked(x.doc.url) && !x.doc.pendingOwnerCopy && x.doc.copiedBy !== 'owner')
+  return allSourceDocs().filter(x => isAiBlocked(x.doc.url) && !x.doc.pendingOwnerCopy && !isOwnerCopied(x.doc))
     .map(x => 'owner copies: ' + x.set + ' ' + x.slug + ' (' + x.doc.url + ') comes from a site that blocks AI crawlers in robots.txt; mark it pendingOwnerCopy or swap in the owner copy (tools/owner-copy.mjs)');
 }
 
