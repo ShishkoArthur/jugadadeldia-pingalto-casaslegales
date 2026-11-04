@@ -37,9 +37,9 @@ Owner 04.11: casaslegales becomes a review site («ссылки ставим, к
 | jugadon | 13 | · | 1 | · | 7 | 1 | · | 3 | 1 | 3 | caba.jugadon.bet.ar: open |
 | playcet | 10 | · | 1 | · | 4 | 2 | 1 | 1 | 1 | 1 | playcet.bet.ar: open |
 | casino-ba-online | 12 | 1 | 1 | 1 | 3 | 2 | 1 | 3 | · | 2 | casinobuenosairesonline.bet.ar: open; caba.casinobuenosairesonline.bet.ar: open; ayuda.casinobuenosairesonline.bet.ar: open |
-| stake | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| super7 | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| casinoclub | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
+| stake | 0 | · | · | · | · | · | · | · | · | 0 | pba.stake.bet.ar: bot-check |
+| super7 | 6 | 1 | 1 | · | · | · | 1 | 3 | · | 1 | www.super7.com.ar: redirect; caba.super7.bet.ar: open |
+| casinoclub | 8 | · | 1 | · | 2 | 3 | 1 | 1 | · | 2 | www.casinoclubonline.bet.ar: open |
 | betfun | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | playuzu | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
 | macgroup | — | · | · | · | · | · | · | · | · | 0 | not visited yet |

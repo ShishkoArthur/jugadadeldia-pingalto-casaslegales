@@ -1,0 +1,119 @@
+{
+ "brand": "super7",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.super7.com.ar",
+  "caba.super7.bet.ar"
+ ],
+ "status": {
+  "www.super7.com.ar": {
+   "status": "redirect",
+   "note": "Redirects to https://caba.super7.bet.ar/aspnet2",
+   "date": "2026-11-04"
+  },
+  "caba.super7.bet.ar": {
+   "status": "open",
+   "note": "Opens; login fields on the home header (not used); cookie notice 'Dejar de mostrar este mensaje' left untouched; no licence text in the footer",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://caba.super7.bet.ar/aspnet2",
+   "file": "data/sources/reviews/super7/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "9531a16c9f8fbe3b4056664ea2f1c2f5341145b3d1cfa7e7afcef7b762cbba23"
+  },
+  "juego-responsable": {
+   "url": "https://caba.super7.bet.ar/aspnet2/footer/juegoresponsable",
+   "file": "data/sources/reviews/super7/_docs/juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "c7e4f33b5c55b3911bc7ddc096eea5d7281f8235d93ba9f330d76563fbe2f935"
+  }
+ },
+ "facts": [
+  {
+   "field": "support.channels",
+   "value": [
+    "WhatsApp +54 9 11 3071-5430",
+    "email soporte@super7.bet.ar",
+    "phone (011) 4363-9010"
+   ],
+   "host": "caba.super7.bet.ar",
+   "url": "https://caba.super7.bet.ar/aspnet2",
+   "date": "2026-11-04",
+   "quote": "+54 9 11 3071-5430 soporte@super7.bet.ar (011) 4363-9010",
+   "doc": "home"
+  },
+  {
+   "field": "casino.categories",
+   "value": [
+    "Ruletas",
+    "Tragamonedas",
+    "Video Poker",
+    "Juegos de cartas"
+   ],
+   "host": "caba.super7.bet.ar",
+   "url": "https://caba.super7.bet.ar/aspnet2",
+   "date": "2026-11-04",
+   "quote": "RULETAS TRAGAMONEDAS VIDEO POKER JUEGOS DE CARTAS DEPORTIVAS",
+   "doc": "home"
+  },
+  {
+   "field": "sportsbook.exists",
+   "value": "'DEPORTIVAS' category in the menu",
+   "host": "caba.super7.bet.ar",
+   "url": "https://caba.super7.bet.ar/aspnet2",
+   "date": "2026-11-04",
+   "quote": "DEPORTIVAS",
+   "doc": "home"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "time, spend and deposit limits set at registration (increase after 24 h)",
+    "visible session time",
+    "mandatory pause per game type",
+    "self-assessment test (LOTBA)"
+   ],
+   "host": "caba.super7.bet.ar",
+   "url": "https://caba.super7.bet.ar/aspnet2/footer/juegoresponsable",
+   "date": "2026-11-04",
+   "quote": "● Límites de tiempo, gasto y depósito: en el momento de registro, el jugador deberá establecer un límite específico para tiempo de juego, depósito de dinero y gasto.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "time-out; quick exit with 12 h block; ReVa 2 years",
+   "host": "caba.super7.bet.ar",
+   "url": "https://caba.super7.bet.ar/aspnet2/footer/juegoresponsable",
+   "date": "2026-11-04",
+   "quote": "y activará el cierre de la sesión de juego de forma inmediata, y bloqueo por las siguientes 12 horas.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "ReVa (LOTBA); 0800-666-6006"
+   },
+   "host": "caba.super7.bet.ar",
+   "url": "https://caba.super7.bet.ar/aspnet2/footer/juegoresponsable",
+   "date": "2026-11-04",
+   "quote": "o El plazo de inscripción en el Registro Voluntario de Autoexclusión (ReVa) es de 2 (dos) años.",
+   "doc": "juego-responsable"
+  }
+ ],
+ "shots": [
+  {
+   "view": "home",
+   "file": "data/shots/super7/review-2026-11-04-home.png",
+   "url": "https://caba.super7.bet.ar/aspnet2",
+   "date": "2026-11-04",
+   "width": 784,
+   "height": 68,
+   "sha256": "eae87aa4ee770db63b6ede72915555b1eaaba24794c15ac866b2866c4e6ac8be",
+   "note": "Logo, LOTBA mark and menu only (promo strip and banner cropped out)"
+  }
+ ]
+}

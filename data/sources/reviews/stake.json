@@ -1,0 +1,18 @@
+{
+ "brand": "stake",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "pba.stake.bet.ar"
+ ],
+ "status": {
+  "pba.stake.bet.ar": {
+   "status": "bot-check",
+   "note": "Cloudflare 'Performing security verification' stayed on 'Verifying...' for 18 s; not passed, site skipped",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {},
+ "facts": [],
+ "shots": []
+}

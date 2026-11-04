@@ -1,0 +1,148 @@
+{
+ "brand": "casinoclub",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.casinoclubonline.bet.ar"
+ ],
+ "status": {
+  "www.casinoclubonline.bet.ar": {
+   "status": "open",
+   "note": "Opens (casinoclubonline.bet.ar -> www.); login fields in the header not used; no licence text in footer (logos: Lotería de Río Negro, loteria-pampa, ipra, loas)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://www.casinoclubonline.bet.ar/",
+   "file": "data/sources/reviews/casinoclub/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "878ad9b50d91bdacb2209a692ae2d31f93a2f599856f49ed3a85652d22a637dd"
+  },
+  "como-depositar": {
+   "url": "https://www.casinoclubonline.bet.ar/ayuda/como-depositar/",
+   "file": "data/sources/reviews/casinoclub/_docs/como-depositar.txt",
+   "date": "2026-11-04",
+   "sha256": "1c878c388564b4a198fa91ac72ff80d823480c9e596c26611c9245205369426c"
+  },
+  "faqs": {
+   "url": "https://www.casinoclubonline.bet.ar/micuenta/faqs",
+   "file": "data/sources/reviews/casinoclub/_docs/faqs.txt",
+   "date": "2026-11-04",
+   "sha256": "18a7ed39f49a23e02819943805970e0f6b1af813c9a65136ea4b1c542e3d3b17"
+  }
+ },
+ "facts": [
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "* Recordá que es necesario que seas mayor de 18 años y residas en alguna provincia habilitada.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Residence in an enabled province",
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "residas en alguna provincia habilitada.",
+   "doc": "home"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "Telegram",
+    "email consultas@casinoclubonline.bet.ar"
+   ],
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Telegram consultas@casinoclubonline.bet.ar",
+   "doc": "home"
+  },
+  {
+   "field": "casino.categories",
+   "value": [
+    "Slots",
+    "Casino",
+    "Mesas en vivo",
+    "Poker",
+    "Bingo"
+   ],
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "SLOTS CASINO MESAS EN VIVO POKER APUESTAS DEPORTIVAS BINGO",
+   "doc": "home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "Transferencia",
+    "Tarjetas",
+    "Payfun",
+    "Agencias"
+   ],
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/ayuda/como-depositar/",
+   "date": "2026-11-04",
+   "quote": "Transferencia Tarjetas Payfun Agencias",
+   "doc": "como-depositar"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "Transferencia"
+   ],
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/ayuda/como-depositar/",
+   "date": "2026-11-04",
+   "quote": "shows a single tab: \"Transferencia\"",
+   "doc": "como-depositar"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Account must be verified before the first deposit; UIF documentation above threshold",
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/micuenta/faqs",
+   "date": "2026-11-04",
+   "quote": "Antes de realizar tu primer depósito deberás veriﬁcar tu cuenta.",
+   "doc": "faqs"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "deposit limits daily/weekly/monthly; increases after 72 h"
+   ],
+   "host": "www.casinoclubonline.bet.ar",
+   "url": "https://www.casinoclubonline.bet.ar/micuenta/faqs",
+   "date": "2026-11-04",
+   "quote": "Allí tendrás la posibilidad de cambiar tus límites de depósitos diario, semanal o mensual.",
+   "doc": "faqs"
+  }
+ ],
+ "shots": [
+  {
+   "view": "payments",
+   "file": "data/shots/casinoclub/review-2026-11-04-payments.png",
+   "url": "https://www.casinoclubonline.bet.ar/ayuda/como-depositar/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "bc8c9f1cd2226138db2f21058fc452a749dd097672aaa132898d4f8b7c18a568"
+  },
+  {
+   "view": "home",
+   "file": "data/shots/casinoclub/review-2026-11-04-home.png",
+   "url": "https://www.casinoclubonline.bet.ar/",
+   "date": "2026-11-04",
+   "width": 400,
+   "height": 115,
+   "sha256": "7401fa3160cfac9b3c09ee4d6ddacccf27261ec99812e985d10a345998d977db",
+   "note": "Below the '40 km' raffle banner: product tiles"
+  }
+ ]
+}
