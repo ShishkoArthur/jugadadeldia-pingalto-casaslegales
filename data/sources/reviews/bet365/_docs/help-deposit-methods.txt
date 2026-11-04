@@ -1,0 +1,27 @@
+URL: https://help.bet365.bet.ar/s/es-xb/payments/deposit-methods
+Captured: 2026-11-04
+---
+You are currently viewing our Buenos Aires Province content.
+[...]
+Métodos de depósito
+País
+Buenos Aires City
+Buenos Aires Province
+Santa Fe
+Divisa
+ARS
+Método de pago
+Tiempo de procesamiento
+Mín.-Máx.
+Tipo de pago
+[Rows: method = logo image alt text in square brackets, then the visible cells]
+[Mercado Pago] Instantáneo | 500,00$ - 700000,00$ | eWallet
+[Debit card logo with mastercard, maestro and Visa Debit in a line] Instantáneo | 500,00$ - 2000000,00$ | Tarjeta de débito
+[AstroPay] Instantáneo | 500,00$ - 1000000,00$ | Cupón/eWallet (Monedero electrónico) prepago
+[ips logo] Instantáneo | 500,00$ - 2000000,00$ | Transferencia bancaria
+[Apple Pay] Instantáneo | 500,00$ - 2000000,00$ | Tarjeta de débito
+[Pagil Facil Logo] Instantáneo | 800,00$ - 50000,00$ | Cupón prepago
+[...]
+Puede depositar de manera instantánea utilizando su tarjeta de débito Visa, Mastercard, Electron o Maestro. También se aceptan tarjetas de prepago.
+[...]
+Si realizó su depósito con Mercado Pago, los retiros se procesarán por transferencia bancaria.

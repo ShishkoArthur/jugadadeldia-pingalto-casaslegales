@@ -1,0 +1,431 @@
+{
+ "brand": "bet365",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.bet365.bet.ar",
+  "help.bet365.bet.ar",
+  "juegoresponsable.bet365.bet.ar",
+  "casino.bet365.bet.ar"
+ ],
+ "status": {
+  "www.bet365.bet.ar": {
+   "status": "partial",
+   "note": "Home opens (cookie 'Solo esenciales' clicked); competition/coupon pages (Liga Profesional, #/AC/...) render an empty content pane — odds and market counts not collected",
+   "date": "2026-11-04"
+  },
+  "help.bet365.bet.ar": {
+   "status": "open",
+   "note": "Help centre, Buenos Aires Province content",
+   "date": "2026-11-04"
+  },
+  "juegoresponsable.bet365.bet.ar": {
+   "status": "open",
+   "note": "Responsible gaming microsite",
+   "date": "2026-11-04"
+  },
+  "casino.bet365.bet.ar": {
+   "status": "open",
+   "note": "Casino lobby; no provider names in visible text",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://www.bet365.bet.ar/#/HO/",
+   "file": "data/sources/reviews/bet365/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "4dfcefef33a58290830b934e6689bb8c71f944c9aa0e1ff74a9bcb95768843c2"
+  },
+  "help-deposit-methods": {
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/deposit-methods",
+   "file": "data/sources/reviews/bet365/_docs/help-deposit-methods.txt",
+   "date": "2026-11-04",
+   "sha256": "f7da525cacb21d43863d261759f1396bbcde4cc699ff048eec3e0a5eb55052bf"
+  },
+  "help-withdrawal-methods": {
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/withdrawal-methods",
+   "file": "data/sources/reviews/bet365/_docs/help-withdrawal-methods.txt",
+   "date": "2026-11-04",
+   "sha256": "9c097f421d610fbebbf5d41ec4644a5abbc70842ef9093601378821ff3729835"
+  },
+  "help-contact": {
+   "url": "https://help.bet365.bet.ar/s/es-xb/contact-us",
+   "file": "data/sources/reviews/bet365/_docs/help-contact.txt",
+   "date": "2026-11-04",
+   "sha256": "b0996e560b6a42b764e5351523eb884043ffcdc052a9b00f5dcdc9196ea56b08"
+  },
+  "juego-responsable": {
+   "url": "https://juegoresponsable.bet365.bet.ar/",
+   "file": "data/sources/reviews/bet365/_docs/juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "b1ee7aca46a7cfa3b383cd36717babdc1cdbb3f826a1be094871b5251e71e873"
+  },
+  "casino": {
+   "url": "https://casino.bet365.bet.ar/home",
+   "file": "data/sources/reviews/bet365/_docs/casino.txt",
+   "date": "2026-11-04",
+   "sha256": "ca5729276a97a122e45ec1b6fc94fecddbbda12ebdc55344fe8a2eb094859985"
+  }
+ },
+ "facts": [
+  {
+   "field": "sportsbook.sports",
+   "value": {
+    "count": 37,
+    "names": [
+     "Bádminton",
+     "Bandy",
+     "Básquetbol",
+     "Béisbol",
+     "Boxeo",
+     "Carreras de caballos",
+     "Carreras de trote",
+     "Ciclismo",
+     "Cricket",
+     "Curling",
+     "Dardos",
+     "Deportes de invierno",
+     "Deportes gaélicos",
+     "eSports",
+     "Floorball",
+     "Fórmula 1",
+     "Fútbol",
+     "Fútbol americano",
+     "Fútbol australiano",
+     "Golf",
+     "Handball",
+     "Hockey sobre césped",
+     "Hockey sobre hielo",
+     "Lacrosse",
+     "MMA",
+     "Motor",
+     "Rugby League",
+     "Rugby Union",
+     "Snooker",
+     "Speedway",
+     "Squash",
+     "Sumo",
+     "Tenis",
+     "Tenis de mesa",
+     "Vela",
+     "Voleibol",
+     "Waterpolo"
+    ],
+    "note": "A-Z top-level entries; Casino, Especiales and UEFA Champions League entries and sub-items (Biatlón etc.) excluded"
+   },
+   "host": "www.bet365.bet.ar",
+   "url": "https://www.bet365.bet.ar/#/HO/",
+   "date": "2026-11-04",
+   "quote": "A-Z Próximo en comenzar Bádminton Bandy Básquetbol",
+   "doc": "home"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": true,
+   "host": "www.bet365.bet.ar",
+   "url": "https://www.bet365.bet.ar/#/HO/",
+   "date": "2026-11-04",
+   "quote": "Todos los deportes En vivo Casino",
+   "doc": "home"
+  },
+  {
+   "field": "sportsbook.streaming",
+   "value": "mentioned (footer note on data and stream delays)",
+   "host": "www.bet365.bet.ar",
+   "url": "https://www.bet365.bet.ar/#/HO/",
+   "date": "2026-11-04",
+   "quote": "Demoras de información y transmisión",
+   "doc": "home"
+  },
+  {
+   "field": "casino.exists",
+   "value": true,
+   "host": "www.bet365.bet.ar",
+   "url": "https://www.bet365.bet.ar/#/HO/",
+   "date": "2026-11-04",
+   "quote": "Todos los deportes En vivo Casino",
+   "doc": "home"
+  },
+  {
+   "field": "licence.footer",
+   "value": [
+    {
+     "operator": "Hillside (New Media Malta) PLC Sucursal Argentina – Pasteko S.A. UT",
+     "cuit": "30-71703546-8",
+     "regulator": "Instituto Provincial de Lotería y Casinos de la Provincia de Buenos Aires",
+     "act": null
+    },
+    {
+     "operator": "Hillside (New Media Malta) PLC Sucursal Argentina - GGSS S.A. UT",
+     "cuit": "30-71730754-9",
+     "regulator": "Lotería de la Ciudad de Buenos Aires",
+     "act": "DI-2022-103-GCABA-LOTBA"
+    }
+   ],
+   "host": "www.bet365.bet.ar",
+   "url": "https://www.bet365.bet.ar/#/HO/",
+   "date": "2026-11-04",
+   "quote": "tiene licencia de la Lotería de la Ciudad de Buenos Aires y permiso de operaciones DI-2022-103-GCABA-LOTBA.",
+   "doc": "home"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Programa de Prevención y Asistencia al Juego Compulsivo (Lotería de la Provincia), 0800 444 4000"
+   },
+   "host": "www.bet365.bet.ar",
+   "url": "https://www.bet365.bet.ar/#/HO/",
+   "date": "2026-11-04",
+   "quote": "Programa de Prevención y Asistencia al Juego Compulsivo de la Lotería de la Provincia. Si tiene un problema con el juego, puede llamar gratis al 0800 444 4000.",
+   "doc": "home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    {
+     "method": "Mercado Pago",
+     "min": 500,
+     "max": 700000,
+     "time": "Instantáneo"
+    },
+    {
+     "method": "Debit card (Visa, Mastercard, Electron, Maestro)",
+     "min": 500,
+     "max": 2000000,
+     "time": "Instantáneo"
+    },
+    {
+     "method": "AstroPay",
+     "min": 500,
+     "max": 1000000,
+     "time": "Instantáneo"
+    },
+    {
+     "method": "Bank transfer (ips logo)",
+     "min": 500,
+     "max": 2000000,
+     "time": "Instantáneo"
+    },
+    {
+     "method": "Apple Pay",
+     "min": 500,
+     "max": 2000000,
+     "time": "Instantáneo"
+    },
+    {
+     "method": "Pago Fácil (prepaid coupon)",
+     "min": 800,
+     "max": 50000,
+     "time": "Instantáneo"
+    }
+   ],
+   "host": "help.bet365.bet.ar",
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/deposit-methods",
+   "date": "2026-11-04",
+   "quote": "[Mercado Pago] Instantáneo | 500,00$ - 700000,00$ | eWallet",
+   "doc": "help-deposit-methods"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 500,
+    "currency": "ARS",
+    "note": "800 for Pago Fácil"
+   },
+   "host": "help.bet365.bet.ar",
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/deposit-methods",
+   "date": "2026-11-04",
+   "quote": "[Debit card logo with mastercard, maestro and Visa Debit in a line] Instantáneo | 500,00$ - 2000000,00$ | Tarjeta de débito",
+   "doc": "help-deposit-methods"
+  },
+  {
+   "field": "payments.currency",
+   "value": "ARS",
+   "host": "help.bet365.bet.ar",
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/deposit-methods",
+   "date": "2026-11-04",
+   "quote": "Divisa ARS",
+   "doc": "help-deposit-methods"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    {
+     "method": "Bank transfer",
+     "min": 500,
+     "max": 950000,
+     "time": "1-2 días laborables"
+    },
+    {
+     "method": "AstroPay",
+     "min": 500,
+     "max": 1000000,
+     "time": "1-4 horas"
+    }
+   ],
+   "host": "help.bet365.bet.ar",
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/withdrawal-methods",
+   "date": "2026-11-04",
+   "quote": "[Wire Transfer Logo] 1-2 días laborables | 500,00$ - 950000,00$ | Transferencia bancaria",
+   "doc": "help-withdrawal-methods"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": {
+    "Bank transfer": "1-2 business days",
+    "AstroPay": "1-4 hours"
+   },
+   "host": "help.bet365.bet.ar",
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/withdrawal-methods",
+   "date": "2026-11-04",
+   "quote": "[AstroPay] 1-4 horas | 500,00$ - 1000000,00$ | Cupón/eWallet (Monedero electrónico) prepago",
+   "doc": "help-withdrawal-methods"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "live chat",
+    "web form",
+    "email",
+    "post"
+   ],
+   "host": "help.bet365.bet.ar",
+   "url": "https://help.bet365.bet.ar/s/es-xb/contact-us",
+   "date": "2026-11-04",
+   "quote": "Chat en vivo Hable con nosotros para resolver una consulta 24 horas al día, 7 días a la semana",
+   "doc": "help-contact"
+  },
+  {
+   "field": "support.hours",
+   "value": "24/7 (chat)",
+   "host": "help.bet365.bet.ar",
+   "url": "https://help.bet365.bet.ar/s/es-xb/contact-us",
+   "date": "2026-11-04",
+   "quote": "24 horas al día, 7 días a la semana",
+   "doc": "help-contact"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "activity statement",
+    "deposit limits",
+    "mandatory reminders (pausas obligatorias)",
+    "spend limits",
+    "time limits"
+   ],
+   "host": "juegoresponsable.bet365.bet.ar",
+   "url": "https://juegoresponsable.bet365.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Límites de depósito Limite la cantidad que puede depositar en horas y días Pausas obligatorias Establezca notificaciones que le ayuden a gestionar su tiempo Límites de gasto",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.sessionLimit",
+   "value": true,
+   "host": "juegoresponsable.bet365.bet.ar",
+   "url": "https://juegoresponsable.bet365.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Límites de tiempo Controle el tiempo que invierte en jugar.",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "time-out and self-exclusion",
+   "host": "juegoresponsable.bet365.bet.ar",
+   "url": "https://juegoresponsable.bet365.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Tiempo fuera Tome un descanso del juego Autoexclusión",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Saber Jugar (Lotería de la Provincia de Buenos Aires) — autoexclusión",
+    "url": "https://saberjugar.gob.ar/?page=autoexlusion"
+   },
+   "host": "juegoresponsable.bet365.bet.ar",
+   "url": "https://juegoresponsable.bet365.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "[link \"Autoexcluite acá\" -> https://saberjugar.gob.ar/?page=autoexlusion]",
+   "doc": "juego-responsable"
+  },
+  {
+   "field": "casino.exists",
+   "value": true,
+   "host": "casino.bet365.bet.ar",
+   "url": "https://casino.bet365.bet.ar/home",
+   "date": "2026-11-04",
+   "quote": "Inicio Novedades Casino en vivo Tragamonedas",
+   "doc": "casino"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "casino.bet365.bet.ar",
+   "url": "https://casino.bet365.bet.ar/home",
+   "date": "2026-11-04",
+   "quote": "Su Casino en Vivo",
+   "doc": "casino"
+  },
+  {
+   "field": "casino.categories",
+   "value": [
+    "Novedades",
+    "Casino en vivo",
+    "Tragamonedas",
+    "Crash & Arcade",
+    "Mesa y cartas",
+    "Póker",
+    "Todos"
+   ],
+   "host": "casino.bet365.bet.ar",
+   "url": "https://casino.bet365.bet.ar/home",
+   "date": "2026-11-04",
+   "quote": "Novedades Casino en vivo Tragamonedas Crash & Arcade Mesa y cartas Póker Todos",
+   "doc": "casino"
+  },
+  {
+   "field": "casino.providers",
+   "value": {
+    "listed": false,
+    "note": "no provider names in the lobby's visible text"
+   },
+   "host": "casino.bet365.bet.ar",
+   "url": "https://casino.bet365.bet.ar/home",
+   "date": "2026-11-04",
+   "quote": null,
+   "doc": "casino"
+  }
+ ],
+ "shots": [
+  {
+   "view": "payments",
+   "file": "data/shots/bet365/review-2026-11-04-payments.png",
+   "url": "https://help.bet365.bet.ar/s/es-xb/payments/deposit-methods",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "96a63634fa05ad224c08e09ce0db9cbe60385b13d2d59f992d02b1203d613541"
+  },
+  {
+   "view": "rg",
+   "file": "data/shots/bet365/review-2026-11-04-rg.png",
+   "url": "https://juegoresponsable.bet365.bet.ar/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "f5a21d2ef31fe236700efaf963df682668f9aa6cac36c95c558b9d9553e216e8"
+  },
+  {
+   "view": "casino",
+   "file": "data/shots/bet365/review-2026-11-04-casino.png",
+   "url": "https://casino.bet365.bet.ar/home",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "e2205262a455d07e9885573cfee3e639d458adc922fa03506ab6367cfda041c0",
+   "note": "'EXCLUSIVO'/'NUEVOS' game badges only, no promo banner"
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+URL: https://help.bet365.bet.ar/s/es-xb/payments/withdrawal-methods
+Captured: 2026-11-04
+---
+Métodos de retiro
+Método de pago
+Tiempo de procesamiento
+Mín.-Máx.
+Tipo de pago
+[Rows: method = logo image alt text in square brackets, then the visible cells]
+[Wire Transfer Logo] 1-2 días laborables | 500,00$ - 950000,00$ | Transferencia bancaria
+[AstroPay] 1-4 horas | 500,00$ - 1000000,00$ | Cupón/eWallet (Monedero electrónico) prepago
