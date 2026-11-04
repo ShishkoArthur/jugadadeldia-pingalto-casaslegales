@@ -8,10 +8,11 @@
 
 | Дата | Что истекает / происходит | Сайт | Кто | Что сделать |
 |---|---|---|---|---|
-| каждый месяц | сервер перепроверяет официальные страницы (лента `listas`): 43 копии реестров, провинций и пакета помощи | casaslegales (+ пакет помощи jdd) | **само** | ничего; изменение списка → Telegram |
-| **21.01.2027** | Telegram-напоминание (за 21 день до 11.02) — один список: что сохранить и как | casaslegales | бот | — |
+| каждый месяц | сервер перепроверяет официальные страницы (лента `listas`): 42 копии реестров, провинций и пакета помощи (04.11: 38 сошлись, 4 не открылись) | casaslegales (+ пакет помощи jdd) | **само** | ничего; изменение списка → Telegram |
+| **19.01.2027** | Telegram-напоминание (за 21 день до 09.02) — один список: что сохранить и как | casaslegales | бот | — |
 | **до 09.02.2027** | пакет помощи (копии 01.11, 100 дн.) — в репозитории; на сервере обновляется сам | jdd, casaslegales | агент | `feeds-server.sh casaslegales pull --write` → `npm test` → commit → `sync` обеих лент → deploy jdd и casaslegales |
-| **11.02.2027** | 16 копий владельца (100 дн.): Córdoba, Neuquén, Río Negro, Salta, Santa Fe, Mendoza + их страницы помощи | casaslegales | **владелец** | сохранить из Chrome (таблица ниже) и прислать |
+| **09.02.2027** | 4 страницы, которые сервер не открывает (Tucumán — TLS, mendoza.gob.ar — 403 из UK, ley 8986 — robots 500): помощь Tucumán и Mendoza, закон Tucumán | casaslegales, jdd | **владелец** | сохранить из Chrome в Аргентине (README owner-saves, «Сервер не смог обновить») |
+| **11.02.2027** | 17 копий владельца (100 дн.): Córdoba, Neuquén, Río Negro, Salta, Santa Fe, Mendoza + их страницы помощи, новость Diputados (hcdn.gob.ar) | casaslegales | **владелец** | сохранить из Chrome (таблица ниже) и прислать |
 | 11.04.2027 | второе напоминание (за 21 день до 02.05) | casaslegales | бот | — |
 | **02.05.2027** | копии страниц операторов и скриншоты (180 дн.) | casaslegales | владелец + агент | Chrome из AR / `capture-shots.mjs` |
 | **02.05.2027** | источники pingalto (`data/sources/pingalto`, 180 дн., копии 03–04.11) | pingalto | агент | скачать заново, сверить цитаты, commit, deploy |
@@ -33,11 +34,11 @@
 
 ## Что может сделать только владелец
 1. **Копии сайтов, закрытых для ИИ, и гео-блок** (Chrome на компьютере, `Ctrl+U` → `Ctrl+S`, «только HTML»; Santa Fe и Mendoza — из
-   Аргентины или с VPN AR). Список и адреса — `docs/reference/owner-saves/README.md` («Что сохранить»), на 04.11 это 16 страниц:
+   Аргентины или с VPN AR). Список и адреса — `docs/reference/owner-saves/README.md` («Что сохранить»), на 04.11 это 17 страниц:
    `cba-juegos-online`, `ar-x-loteria-juego-responsable` (Córdoba); `neu-juego-legal`, `neu-casinos`, `ar-q-ijan-juego-responsable` (Neuquén);
    `rne-inicio`, `rne-rionegrina-online`, `ar-r-loteria-autoexclusion` (Río Negro); `sal-enreja-juego-autorizado`, `ar-a-enreja-jr` (Salta);
    `santa-fe-plataformas`, `santa-fe-inicio`, `santa-fe-juego-responsable`, `santa-fe-juego-compulsivo`, `santa-fe-historia` (Santa Fe);
-   `mendoza-plataformas` (Mendoza). Плюс страницы из пункта 2 напоминания («сервер не смог обновить» — обычно гео-блок, например
+   `mendoza-plataformas` (Mendoza); `ar-hcdn-media-sancion-2024-11-27` (Diputados, закрыт для ИИ с 04.11). Плюс страницы из пункта 2 напоминания («сервер не смог обновить» — обычно гео-блок, например
    `mendoza.gob.ar` отвечает серверу 403). Положить в `docs/reference/owner-saves/<ГГГГ-ММ-ДД>/` или прислать в чат.
 2. **Обзоры** (27 марок): Chrome с VPN-выходом в Буэнос-Айресе, только публичные страницы, без входа и депозитов (порядок — `docs/REVIEWS-DATA.md`).
    Агент ведёт сбор через Chrome владельца (как 04.11) — владельцу нужно только включить VPN и Chrome с расширением.

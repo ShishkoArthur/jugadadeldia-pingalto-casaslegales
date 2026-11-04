@@ -1132,7 +1132,8 @@
    "fetched": "2026-11-01",
    "status": 200,
    "sha256": "4608cffc099cb5ab1a4db7d579a9ddfa78258c87d82deb0b3dd580231062eded",
-   "file": "data/sources/rg/_docs/ar-hcdn-media-sancion-2024-11-27.html"
+   "file": "data/sources/rg/_docs/ar-hcdn-media-sancion-2024-11-27.html",
+   "pendingOwnerCopy": true
   },
   "ar-senado-cd-26-24": {
    "url": "https://www.senado.gob.ar/parlamentario/comisiones/verExp/26.24/CD/PL",

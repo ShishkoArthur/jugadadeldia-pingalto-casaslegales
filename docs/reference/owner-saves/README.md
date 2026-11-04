@@ -31,6 +31,13 @@
 | Santa Fe | https://www.santafe.gob.ar/ms/juegocompulsivo/ | `santa-fe-juego-compulsivo` | линия APRECOD |
 | Mendoza | https://www.ipjyc.gob.ar/JEL/ (сайт «Juego En Línea Mendoza» IPJyC) | `mendoza-plataformas` | блок «PLATAFORMAS DE JUEGO EN LÍNEA» (7 адресов .bet.ar) |
 | Mendoza | страница автоисключения IPJyC (меню «Juego responsable» → «Autoexclusión») | `mendoza-autoexclusion` | срок, как подать |
+| Nación | https://www.hcdn.gob.ar/prensa/noticia/OBTUVO-MEDIA-SANCION-UN-PROYECTO-DE-PREVENCION-DE-LUDOPATIA-Y-REGULACION-DE-LAS-CIBERAPUESTAS/ | `ar-hcdn-media-sancion-2024-11-27` | новость Diputados о media sanción (27.11.2024); robots.txt закрыт для ИИ (найдено сервером 04.11) |
+
+**Сервер не смог обновить сам (04.11, лента `listas`; войдут в напоминание за 21 день):** `tuc-caja-popular-inicio` и
+`ar-t-caja-popular-juego-responsable` (cajapopular.gov.ar, Tucumán — сертификат TLS не проходит проверку, отключать её нельзя),
+`ar-m-ipjyc-juego-responsable` (mendoza.gob.ar — 403 серверу в Великобритании, сохранять из Аргентины), `ar-t-ley-8986`
+(e-legis-ar.msal.gov.ar — robots.txt отвечает 500, по правилам robots это «нельзя»; сохранить сам PDF через «Сохранить как»).
+Если сервер их снова откроет — обновит сам, и они пропадут из напоминания.
 
 Если адрес из таблицы открывается не на ту страницу — сохранить ту, где есть нужное, и записать её адрес в `urls.txt`
 (строка: `имя-файла адрес`). Для Santa Fe и Mendoza `urls.txt` нужен всегда.

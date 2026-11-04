@@ -1,4 +1,5 @@
-// Sites whose robots.txt disallows ClaudeBot and other AI crawlers (docs/TRAPS.md, 2026-11-03): we never download them again.
+// Sites whose robots.txt disallows ClaudeBot and other AI crawlers (docs/TRAPS.md, 2026-11-03; hcdn.gob.ar found by the server
+// recheck tools/feeds/casaslegales/listas.mjs on 2026-11-04): we never download them again.
 // Copies already saved from them stay (the facts on the site keep their quotes), marked pendingOwnerCopy: true; the owner saves
 // the same pages from his own browser (docs/reference/owner-saves/README.md) and tools/owner-copy.mjs swaps the copy in
 // (copiedBy: "owner", pendingOwnerCopy removed). The build prints the pending list as a reminder; it does not fail.
@@ -7,7 +8,7 @@ import path from 'node:path';
 import { ROOT } from '../env.mjs';
 import { daysBetween } from '../../engine/format.mjs';
 
-export const AI_BLOCKED_HOSTS = ['loteriadecordoba.com.ar', 'ijan-neuquen.com', 'loteriaderionegro.gob.ar', 'enrejasalta.com.ar'];
+export const AI_BLOCKED_HOSTS = ['loteriadecordoba.com.ar', 'ijan-neuquen.com', 'loteriaderionegro.gob.ar', 'enrejasalta.com.ar', 'hcdn.gob.ar'];
 const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
 export const isAiBlocked = url => AI_BLOCKED_HOSTS.some(h => hostOf(url) === h || hostOf(url).endsWith('.' + h));
 

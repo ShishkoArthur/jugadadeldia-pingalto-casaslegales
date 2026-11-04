@@ -48,9 +48,9 @@ export function targets(src = loadSources()) {
 export function loadSources() {
   return { registries: loadRegistries().map(r => { const { _file, ...x } = r; return x; }), provinces: loadProvinces(), rg: loadRg() };
 }
-// what the checks depend on (quotes, licensees, addresses), not the copy dates: a new pull does not trigger a recheck
+// what the checks depend on (quotes, licensees, addresses, who saves the copy), not the copy dates: a pull does not trigger a recheck
 export function specHash(src) {
-  const strip = j => ({ ...j, checked: null, docs: Object.fromEntries(Object.entries(j.docs || {}).map(([s, d]) => [s, d.url])) });
+  const strip = j => ({ ...j, checked: null, docs: Object.fromEntries(Object.entries(j.docs || {}).map(([s, d]) => [s, [d.url, isOwnerDoc(d)]])) });
   return sha256(JSON.stringify([src.registries.map(strip), strip(src.provinces), strip(src.rg)])).slice(0, 16);
 }
 
