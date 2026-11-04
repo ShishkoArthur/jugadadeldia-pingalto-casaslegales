@@ -110,7 +110,7 @@ async function meta(S) {
 TASK NOW (overrides INPUT/OUTPUT above): for each page give its English URL and search snippet.
 INPUT: JSON {"pages": [{"url", "title", "h1", "description", "kind", "keys"}]}
 OUTPUT: ONLY JSON {"pages": [{"url", "urlEn", "titleEn", "h1En", "descriptionEn"}]}
-- urlEn: "/en/" + lowercase ASCII words joined by "-", folders ending in "/", same folder depth as the Spanish url; the home "/" is "/en/". Keep the Argentine names of games and places as the section words (quiniela, quini-6, loto-plus, telekino, truco, generala, chinchon, escoba-de-15, burako, tucuman, santa-fe…); translate the descriptive words (cuanto-paga -> payouts, como-se-juega -> how-to-play, horarios -> draw-times, juego-responsable -> responsible-gambling, quienes-somos -> about-us, glosario -> glossary). Unique.
+- urlEn: ${G.urlRule || '"/en/" + lowercase ASCII words joined by "-", folders ending in "/", same folder depth as the Spanish url; the home "/" is "/en/". Keep the Argentine names of games and places as the section words (quiniela, quini-6, loto-plus, telekino, truco, generala, chinchon, escoba-de-15, burako, tucuman, santa-fe…); translate the descriptive words (cuanto-paga -> payouts, como-se-juega -> how-to-play, horarios -> draw-times, juego-responsable -> responsible-gambling, quienes-somos -> about-us, glosario -> glossary). Unique.'}
 - titleEn: natural English for English search, at most ${LIMITS.title} characters, with the main search words first, e.g. "Quiniela results today (Argentina): Tucumán draws"; site name not needed.
 - h1En: the page heading in English (short, may differ from the title).
 - descriptionEn: ${LIMITS.descMin}-${LIMITS.descMax} characters (count them), what the page gives, concrete, no hype. Numbers only as in the Spanish.`;
@@ -123,7 +123,7 @@ OUTPUT: ONLY JSON {"pages": [{"url", "urlEn", "titleEn", "h1En", "descriptionEn"
       const next = [];
       for (const r of todo) {
         const a = (data.pages || []).find(x => x.url === r.url);
-        const err = !a ? 'missing' : !sitePath(S.SITE, a.urlEn) || !a.urlEn.startsWith('/en/') ? 'urlEn ' + a.urlEn + ' not a valid /en/ path of the site' : (taken.has(a.urlEn) || Object.values(out).some(x => x.urlEn === a.urlEn)) ? 'urlEn ' + a.urlEn + ' already used' :
+        const err = !a ? 'missing' : !sitePath(S.SITE, a.urlEn) || !(a.urlEn === '/en' || a.urlEn.startsWith('/en/')) ? 'urlEn ' + a.urlEn + ' not a valid /en/ path of the site' : (taken.has(a.urlEn) || Object.values(out).some(x => x.urlEn === a.urlEn)) ? 'urlEn ' + a.urlEn + ' already used' :
           a.titleEn.length > LIMITS.title ? 'titleEn has ' + a.titleEn.length + ' characters, max ' + LIMITS.title : a.descriptionEn.length < LIMITS.descMin || a.descriptionEn.length > LIMITS.descMax ? 'descriptionEn has ' + a.descriptionEn.length + ' characters, need ' + LIMITS.descMin + '-' + LIMITS.descMax :
             CYR.test(JSON.stringify(a)) ? 'Cyrillic' : null;
         if (err) next.push({ ...r, fix: err + (a ? ' (your answer: ' + JSON.stringify(a) + ')' : '') }); else out[r.url] = a;
