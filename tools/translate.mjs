@@ -218,10 +218,12 @@ async function review(S) {
   const kinds = [...new Set(S.PAGES_EN.map(p => p.kind))];
   const pick = [];
   for (let k = 0; pick.length < N && k < 50; k++) for (const kind of kinds) { const c = S.PAGES_EN.filter(p => p.kind === kind)[k]; if (c && pick.length < N) pick.push(c); }
+  // --pages=/es/path,/es/path2: review these pages (Spanish paths) instead of one per page kind
+  if (typeof opt('pages') === 'string') pick.splice(0, pick.length, ...opt('pages').split(',').map(u => S.PAGES_EN.find(p => p.esPath === u)).filter(Boolean));
   const G = loadGlossary(id);
   const sys = `You are a bilingual (Argentine Spanish / English) editor reviewing the English version of ${id}.com, a site for Argentines: ${G.audience}
 Glossary kept on purpose: ${G.keep.join(', ')}. Money "${'$'} 1,234" in pesos, 24-hour times, English number separators are intended.
-Official quotes are shown in Spanish with an English rendering after them ("In English:"): judge the rendering.
+Official quotes are shown in Spanish with an English rendering after them (labelled "In English:" or "Translation"): judge the rendering.
 For the pair of pages (Spanish original, English version, visible text only) list real problems only: wrong meaning, Spanish left untranslated (beyond the glossary names), changed numbers, unnatural or confusing English, wrong gambling/game terms, missing text. Ignore style preferences.
 OUTPUT ONLY JSON {"score": 1-10, "summary": "one sentence", "issues": [{"severity": "major"|"minor", "en": "exact English substring as it appears", "fix": "replacement for that substring", "why": "short"}]} - at most 12 issues, most important first.`;
   const results = [];
@@ -247,7 +249,7 @@ OUTPUT ONLY JSON {"score": 1-10, "summary": "one sentence", "issues": [{"severit
     saveMemory(id, mem);
   }
   const md = ['# Review of the English version — ' + id + ' (' + new Date().toISOString().slice(0, 10) + ')', '',
-    'Reviewer: ' + OPUS + ' (sample of ' + results.length + ' pages, one per page kind). Translator: ' + SONNET + '. Review cost: $' + spent.toFixed(2) + '.' + (opt('apply') ? ' Fixes applied: ' + applied + '.' : ''), ''];
+    'Reviewer: ' + OPUS + ' (sample of ' + results.length + ' pages, ' + (typeof opt('pages') === 'string' ? 'chosen' : 'one per page kind') + '). Translator: ' + SONNET + '. Review cost: $' + spent.toFixed(2) + '.' + (opt('apply') ? ' Fixes applied: ' + applied + '.' : ''), ''];
   for (const r of results) {
     md.push('## ' + r.p.path + ' (' + r.p.esPath + ') — ' + r.score + '/10', '', r.summary || '', '');
     for (const x of r.issues || []) md.push('- **' + x.severity + '** «' + x.en + '» → «' + x.fix + '» — ' + x.why + (x.applied ? ' _(' + x.applied + ')_' : ''));
