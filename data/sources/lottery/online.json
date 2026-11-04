@@ -1,0 +1,221 @@
+{
+ "id": "online",
+ "operator": "Provincial lotteries and gaming regulators (online play pages)",
+ "checked": "2026-11-04",
+ "maxAgeDays": 100,
+ "note": "Copies of the official pages saved for casaslegales (data/sources/registries/_docs, fetched 2026-11-03; copiedBy owner = saved from the owner browser in Argentina), copied byte for byte so the jugadadeldia build does not depend on that folder. Used by /quiniela/online/. No operator is named or linked from these facts.",
+ "docs": {
+  "caba-agencias": {
+   "url": "https://juegosegurolegal.gob.ar/?page=agencias-juego-en-linea",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "0835246c022439e2cd5d6f295330936c857752425a8eed53c3d031c40508c617",
+   "file": "data/sources/lottery/_docs/online-caba-agencias.html"
+  },
+  "pba-juego-online": {
+   "url": "https://loteria.gba.gob.ar/juego-online",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "714a58e42a87f44c0193a19e45837299425e1e1c9927224466c9bb3451c75e45",
+   "file": "data/sources/lottery/_docs/online-pba-juego-online.html"
+  },
+  "cba-juegos-online": {
+   "url": "https://loteriadecordoba.com.ar/juegos/online",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "1dfc8a77702f16509a51409d3d26b1ebba59ad577ff158ca5bde0b35d68c7ae5",
+   "file": "data/sources/lottery/_docs/online-cba-juegos-online.html",
+   "copiedBy": "owner"
+  },
+  "rne-rionegrina-online": {
+   "url": "https://www.loteriaderionegro.gob.ar/la-rionegrina-online",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "a47c234a600cabaaae38521ae6f071645eeec99cce51771e7a198765282d44f9",
+   "file": "data/sources/lottery/_docs/online-rne-rionegrina-online.html",
+   "copiedBy": "owner"
+  },
+  "neu-juego-legal": {
+   "url": "https://ijan-neuquen.com/juego_legal.php",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "9e59f2d72a6513714629f2ee7b58285eb9d3d296d4fc9e942e009178cdfcd1df",
+   "file": "data/sources/lottery/_docs/online-neu-juego-legal.html",
+   "copiedBy": "owner"
+  },
+  "mendoza-plataformas": {
+   "url": "https://www.ipjyc.gob.ar/JEL/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "c5499cfbb56fb3dc158460eb0c36bf73880be899700ac439b84a275472d09995",
+   "file": "data/sources/lottery/_docs/online-mendoza-plataformas.html",
+   "copiedBy": "owner"
+  },
+  "lri-plataformas": {
+   "url": "https://ajalar.com.ar/sitio/lista-de-plataformas-autorizadas/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "40697d00cfedc93b64d3b0aa76756841c15826c893c7211ee616b709d3b2ca32",
+   "file": "data/sources/lottery/_docs/online-lri-plataformas.html"
+  },
+  "santa-fe-plataformas": {
+   "url": "https://www.loteriasantafe.gov.ar/casinos/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "57a84fc3ff7fffcc3f99620fe76506fbc7ebf2c0038c069b25bbcc3e97709afa",
+   "file": "data/sources/lottery/_docs/online-santa-fe-plataformas.html",
+   "copiedBy": "owner"
+  },
+  "santa-fe-inicio": {
+   "url": "https://www.loteriasantafe.gov.ar/",
+   "fetched": "2026-11-03",
+   "status": 200,
+   "sha256": "737203406cf7dec68ddd3d19bd2ba0d0283ee8128f216fef96f3afea8dbfc86b",
+   "file": "data/sources/lottery/_docs/online-santa-fe-inicio.html",
+   "copiedBy": "owner"
+  }
+ },
+ "facts": [
+  {
+   "id": "online.caba.list",
+   "value": "list of the City",
+   "doc": "caba-agencias",
+   "quote": "Las únicas agencias autorizadas para comercializar juego en línea en el ámbito de la Ciudad de Buenos Aires lo hacen a través de las siguientes páginas web:"
+  },
+  {
+   "id": "online.pba.licences",
+   "value": 7,
+   "valueText": "7 licencias",
+   "doc": "pba-juego-online",
+   "quote": "A partir de la ley 15.079 del año 2019 y su decreto reglamentario 181/19 se autorizaron 7 licencias para la administración y explotación del juego online."
+  },
+  {
+   "id": "online.pba.betar",
+   "value": ".bet.ar",
+   "doc": "pba-juego-online",
+   "quote": "Los sitios legales terminan en .bet.ar"
+  },
+  {
+   "id": "online.pba.age",
+   "value": 18,
+   "valueText": "18 años",
+   "doc": "pba-juego-online",
+   "quote": "Toda actividad relacionada a las apuestas de juegos de azar está prohibida para menores de 18 años."
+  },
+  {
+   "id": "online.cba.list",
+   "value": "list of Córdoba",
+   "doc": "cba-juegos-online",
+   "quote": "Sitios oficiales de juego online en Córdoba"
+  },
+  {
+   "id": "online.cba.betar",
+   "value": ".bet.ar",
+   "doc": "cba-juegos-online",
+   "quote": "Recordá que los sitios que finalicen en .bet.ar son legales y seguros"
+  },
+  {
+   "id": "online.cba.report",
+   "value": "report form",
+   "doc": "cba-juegos-online",
+   "quote": "Reportá un sitio de apuestas ilegal"
+  },
+  {
+   "id": "online.cba.nova",
+   "value": "NoVa+",
+   "doc": "cba-juegos-online",
+   "quote": "Descarga NoVa+ y protegé tu familia de sitios ilegales"
+  },
+  {
+   "id": "online.rne.platform",
+   "value": "La Rionegrina Online",
+   "doc": "rne-rionegrina-online",
+   "quote": "La Rionegrina Online es una plataforma de juegos lotéricos que permite a los apostadores de Río Negro jugar en línea en cualquier momento y en cualquier lugar."
+  },
+  {
+   "id": "online.rne.games",
+   "value": "Quiniela Tradicional",
+   "doc": "rne-rionegrina-online",
+   "quote": "Los juegos habilitados son: Quiniela Tradicional, Quiniela Express, Patagonia Telebingo, Patagonia Minibingo, Lotería Unificada, Money Online y Pozo de la Quiniela."
+  },
+  {
+   "id": "online.rne.age",
+   "value": "adult",
+   "doc": "rne-rionegrina-online",
+   "quote": "(tenés que ser mayor de edad)"
+  },
+  {
+   "id": "online.rne.credit",
+   "value": "agency with DNI",
+   "doc": "rne-rionegrina-online",
+   "quote": "Acercate a cualquier agencia o subagencia de Lotería de Río Negro (con tu DNI) y cargá crédito para poder jugar."
+  },
+  {
+   "id": "online.rne.report",
+   "value": "0800-999-1831",
+   "doc": "rne-rionegrina-online",
+   "quote": "Denunciá anónimamente el juego ilegal: 0800-999-1831"
+  },
+  {
+   "id": "online.neu.list",
+   "value": "Quiniela",
+   "doc": "neu-juego-legal",
+   "quote": "Los juegos autorizados en nuestra jurisdicción son: Lotería Unificada; Quiniela; Quiniela Instantánea; Pozo de la Quiniela; Telekino; Patagonia Telebingo y Patagonia Minibingo; Quini 6; Brinco; Loto; Loto 5; Tarasca; Las Vegas; Money."
+  },
+  {
+   "id": "online.neu.games",
+   "value": "agencies",
+   "doc": "neu-juego-legal",
+   "quote": "Los mismos deben ser comercializados por una Agencia o Subagencia Oficial de Lotería y Quiniela"
+  },
+  {
+   "id": "online.neu.illegal",
+   "value": "not authorized by IJAN",
+   "doc": "neu-juego-legal",
+   "quote": "Es aquel que no se encuentra autorizado, por el Instituto Provincial de Juegos de Azar, dentro del territorio de la Provincia del Neuquén."
+  },
+  {
+   "id": "online.neu.report",
+   "value": "0800 333 1136",
+   "doc": "neu-juego-legal",
+   "quote": "DENUNCIA ANÓNIMA AL: 0800 333 1136"
+  },
+  {
+   "id": "online.mza.list",
+   "value": "list of Mendoza",
+   "doc": "mendoza-plataformas",
+   "quote": "Las plataformas autorizadas al día de la fecha son las siquientes:"
+  },
+  {
+   "id": "online.mza.regulator",
+   "value": "IPJyC",
+   "doc": "mendoza-plataformas",
+   "quote": "En el ámbito del Instituto Provincial de Juegos y Casinos de Mendoza, se regula el juego en línea legal y oficial dentro del territorio de la Provincia de Mendoza."
+  },
+  {
+   "id": "online.lri.betar",
+   "value": ".bet.ar",
+   "doc": "lri-plataformas",
+   "quote": "Todos los sitios de apuestas on line legales se identifican únicamente con el dominio «.bet.ar»."
+  },
+  {
+   "id": "online.lri.age",
+   "value": 18,
+   "valueText": "18 años",
+   "doc": "lri-plataformas",
+   "quote": "Toda actividad relacionada a la apuestas de juego de azar está prohibida para menores de 18 años."
+  },
+  {
+   "id": "online.sfe.count",
+   "value": "Ley 14235/23",
+   "doc": "santa-fe-plataformas",
+   "quote": "Actualmente, se encuentran habilitadas 2 plataformas de juego online y 4 de apuestas deportivas, homologadas a través de la Ley 14235/23"
+  },
+  {
+   "id": "online.sfe.age",
+   "value": "minors",
+   "doc": "santa-fe-inicio",
+   "quote": "El acceso a las plataformas de apuestas está prohibido por ley para niñas, niños y adolescentes."
+  }
+ ]
+}

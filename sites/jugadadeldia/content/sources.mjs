@@ -20,6 +20,15 @@ const LOT_TITLES = {
   'pba:telekino-reglamento': 'Reglamento del Telekino (IPLyC Provincia de Buenos Aires), copia publicada por Mendoza',
   'cajapopular:tipo-sorteo': 'Tipos de sorteo de la Quiniela de Tucumán y su hora (Caja Popular de Ahorros, API del sitio de resultados)',
   'cas:quini6-reglamento': 'Reglamento del Quini 6 y Brinco (Lotería de Santa Fe), copia publicada por Lotería de Río Negro',
+  'online:caba-agencias': 'Agencias de juego en línea autorizadas en la Ciudad (Lotería de la Ciudad, Juego Seguro y Legal)',
+  'online:pba-juego-online': 'Juego online en la Provincia de Buenos Aires (Instituto Provincial de Lotería y Casinos)',
+  'online:cba-juegos-online': 'Sitios oficiales de juego online en Córdoba (Lotería de Córdoba)',
+  'online:rne-rionegrina-online': 'La Rionegrina Online (Lotería de Río Negro)',
+  'online:neu-juego-legal': 'Juego legal en Neuquén (Instituto Provincial de Juegos de Azar del Neuquén)',
+  'online:mendoza-plataformas': 'Juego en línea en Mendoza (Instituto Provincial de Juegos y Casinos)',
+  'online:lri-plataformas': 'Lista de plataformas autorizadas (AJALAR, La Rioja)',
+  'online:santa-fe-plataformas': 'Juego online en Santa Fe: plataformas habilitadas (Lotería de Santa Fe)',
+  'online:santa-fe-inicio': 'Sitio de la Lotería de Santa Fe',
 };
 
 export function loadSources(today) {

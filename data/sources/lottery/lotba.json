@@ -176,7 +176,17 @@
   {"id":"lotba.quiniela.collect-where","value":"same point of sale, until the date on the extract","doc":"quiniela-programa","quote":"Todas las apuestas premiadas podrán presentarse al cobro en el punto de venta donde hubieren sido realizadas y hasta la fecha consignada en el Extracto Oficial emitido para cada sorteo."},
   {"id":"lotba.quiniela.big-prize","value":2100000,"valueText":"$2.100.000","doc":"quiniela-programa","quote":"Quedan exceptuados de lo dispuesto precedentemente los premios que superen la suma de PESOS DOS MILLONES CIEN MIL ($2.100.000.-), los cuales deberán cobrarse en Lotería de la Ciudad de Buenos Aires"},
   {"id":"lotba.quiniela.jurisdictions","value":"Ciudad, Buenos Aires, Córdoba, Santa Fe, Uruguay, Mendoza, Entre Ríos","doc":"quiniela-programa","quote":"LOTBA = N° 1 Lotería de la Ciudad de Buenos Aires. BUENOS AIRES = N° 2 Instituto Provincial de Lotería y Casinos de la Provincia de Buenos Aires CORDOBA = N° 3 Lotería de la Provincia de Córdoba SANTA FE = N° 4 Caja de Asistencia Social de la Provincia de Santa Fe"},
-  {"id":"lotba.quiniela.jurisdictions-2","value":"Uruguay, Mendoza, Entre Ríos","doc":"quiniela-programa","quote":"URUGUAY = N° 5 Dirección Nacional de Loterías y Quinielas de la República Oriental del Uruguay MENDOZA=N° 6 Instituto Provincial de Juegos y Casinos de Mendoza ENTRE RIOS = N° 7 Instituto de Ayuda Financiera a la Acción Social de Entre Ríos"}
+  {"id":"lotba.quiniela.jurisdictions-2","value":"Uruguay, Mendoza, Entre Ríos","doc":"quiniela-programa","quote":"URUGUAY = N° 5 Dirección Nacional de Loterías y Quinielas de la República Oriental del Uruguay MENDOZA=N° 6 Instituto Provincial de Juegos y Casinos de Mendoza ENTRE RIOS = N° 7 Instituto de Ayuda Financiera a la Acción Social de Entre Ríos"},
+  { "id": "lotba.quiniela.channels", "value": "physical and online channels", "doc": "quiniela-reglamento",
+    "quote": "El apostador podrá registrar sus apuestas mediante los canales comerciales físicos y/o en línea que autorice LOTBA S.E. , para tal fin." },
+  { "id": "lotba.quiniela.online-register", "value": "registered user", "doc": "quiniela-reglamento",
+    "quote": "Para efectuar apuestas mediante canales de venta online, el apostador deberá registrarse como usuario en el dominio que LOTBA determine para tal fin, solicitándose como mínimo los siguientes datos:" },
+  { "id": "lotba.quiniela.online-id", "value": "document and birth date", "doc": "quiniela-reglamento",
+    "quote": "− Tipo y número de documento − Fecha nacimiento" },
+  { "id": "lotba.quiniela.online-prizes", "value": "credited to the account", "doc": "quiniela-reglamento",
+    "quote": "Las apuestas con aciertos se acreditarán en la cuenta juego que cada usuario registrado tendrá habilitada para tal fin" },
+  { "id": "lotba.quiniela.where-play", "value": "agencies and online", "doc": "quiniela-home",
+    "quote": "Podés jugar en agencias oficiales de todo el país y online." }
  ],
  "missing": [
   { "id": "lotba.redoblona.exacta-definition", "what": "which positions a Redoblona Exacta takes (the ratio 3500 is cited, the bet is not defined)",
