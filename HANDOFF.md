@@ -108,7 +108,7 @@
 - Проверено Playwright 375/768/1280 × обе темы (локально и на живых): подменю, клавиатура, без переполнения и ошибок консоли; «tucuman»,
   «cuanto paga», «envido», «betsson ingresar», «sensibilidad», «major» находят нужные страницы.
 
-## Английская версия `/en/` (04.11) — jugadadeldia выложен (85 страниц), инструкция `docs/I18N.md`
+## Английская версия `/en/` (04.11) — jugadadeldia (85 страниц), pingalto (50), casaslegales (105) выложены, инструкция `docs/I18N.md`
 - **Движок (общий):** второй проход сборки (`h.lang='en'`, путь страницы остаётся испанским) → `htmlToEn()` (`tools/lib/i18n.mjs`): словарь
   `sites/<сайт>/i18n/en.mjs` (меню/шапка/подвал) → память `data/i18n/<сайт>-en.json` (числа/даты — слоты `{N}`, новые даты не требуют
   перевода); английские браузерные модули (литералы из памяти); `num.mjs` — английские разделители при `<html lang=en>`; hreflang es-AR/en/
@@ -121,8 +121,8 @@
   `docs/REVIEW-EN-jugadadeldia.md`, 21 правка внесена. Формат: «$ 1,234.50» (песо), «4 Nov 2026», время 24 ч, «Argentina time».
 - **Потрачено:** ≈ $2,3 (план $0,25, строки ≈ $1,8, ревью $0,23) — `data/i18n/_spend.json`.
 - **При правке испанского текста jdd:** сборка назовёт новые строки → `node tools/translate.mjs jugadadeldia` (центы) → коммит памяти.
-- **Дальше:** casaslegales — по `docs/I18N.md` §4 (pingalto сделан, раздел ниже) (слот переключателя в их layout уже есть). Не сделано: английская 404 (одна,
-  испанская); «A 30»-подобные склейки в инструментах проверять живьём.
+- **Три сайта с `/en` (04.11):** jdd, pingalto и casaslegales (разделы ниже). Не сделано: английская 404 (одна, испанская);
+  «A 30»-подобные склейки в инструментах проверять живьём.
 
 ## pingalto `/en` (04.11) — выложен, 50 страниц
 - **Адреса** без слэша, как испанские: главная `/en` (файл `en.html`; `/en/` → 301), `/en/kit/sensitivity`, `/en/valorant/ranks`,
@@ -144,6 +144,32 @@
   kit/ping — переключатель ES, hreflang es-AR/en/x-default, меню (бургер и мега-панель), поиск «sensitivity» → `/en/kit/sensitivity`,
   без переполнения и ошибок консоли; sitemap 100 адресов с alternates.
 - **Потрачено:** $2,64 (план $0,14, строки $2,21, ревью $0,29). Испанский VRS с новыми командами → сборка назовёт строки → `node tools/translate.mjs pingalto`.
+
+## casaslegales `/en` (04.11) — выложен, 105 страниц
+- **Адреса** без слэша: `/en` (файл `en.html`; `/en/` → 404, как любой адрес со слэшем), `/en/operator/betsson`, `/en/operator/betsson/caba`,
+  `/en/operator/betsson/log-in`, `/en/operator/bplay/casino`, `/en/province/cordoba`, `/en/check/zeus`, `/en/site-checker`, `/en/licenses`,
+  `/en/guide/bet-ar`, `/en/calculator/parlay`, `/en/responsible-gambling/self-exclusion`, `/en/source-log`. `pathRe` в config принимает
+  `operator` третьим уровнем. Правило — `urlRule` в `data/i18n/casaslegales-glossary.json`; title ≤ 60 («Betsson Argentina: review, licenses
+  and official site»); на английских страницах операторов с данными обзора слово «review» обязательно (проверка в `pages/operador.mjs`).
+- **План:** у 29 строк испанские title/H1/description отставали от кода — синхронизированы с собранными страницами, английские написаны заново.
+- **Глоссарий/словарь:** регуляторы и правовые слова остаются по-испански (LOTBA, IPLyC, «Disposición», «Ley»), autoexclusión → self-exclusion,
+  cuota → odds, combinada → parlay, .bet.ar; словарь `sites/casaslegales/i18n/en.mjs` — меню, поиск, подвал («Not legal advice: it depends on
+  your province's law»), блок помощи, подписи схемы адресов. `SITE.i18n.allow` — имена e-mail/телефона операторов.
+- **Цитаты регуляторов** — дословно по-испански (`lang="es-AR"`, со своей строкой «copia del…»), сразу после — `.rl-qen` «Translation (not
+  official): “…”» со строкой источника по-английски. Кнопки «Go to the official site» ведут на те же адреса (гейт officialLinks тот же).
+- **JSON для браузера** (верификатор, сравнение на страницах оператор×провинция, карта на главной) — через `content/lang.mjs`
+  (`tr`/`trAll`/`date`/`loc`: строки, даты «4 Nov 2026», ссылки на `/en/…`). `client/ui.js`: на `<html lang=en>` — «2.50», «4.8%»,
+  «$ 1,450», ставка с запятыми тысяч, даты «4 Nov 2026». Гейт brandlink (общий) на английских страницах ждёт английскую ссылку бренда.
+- **Ревью Opus** (главная, верификатор, Betsson, Betsson log-in, Córdoba, гайд .bet.ar: 6–10/10) — `docs/REVIEW-EN-casaslegales.md`, 21 правка
+  внесена автоматически, остальные руками («Figure:» → «Listed:» в таблице главной, схема адресов на страницах log-in была по-испански).
+  Гейт bait запрещает «Jackpots»/«Top 10» и в пересказе цитат — там «Progressive Prizes»/«Top ten».
+- **Проверено живьём** 375/1280: шапка с EN/ES влезает на 375, меню (аккордеон), поиск (`/en/buscador.json`, «betsson log in»), верификатор
+  (pba.betsson.bet.ar / betsson.com / sportsbet.io — тексты и ссылки английские), обзор Betsson, провинция Córdoba, калькуляторы; без
+  горизонтальной прокрутки; hreflang пары и sitemap (3 alternates).
+- **Потрачено:** ≈ $3,0 (план $0,42, строки $2,21, ревью $0,35).
+- **При правке испанского текста:** сборка назовёт новые строки → `node tools/translate.mjs casaslegales` → коммит памяти. Новая страница —
+  строка плана → `--meta` (английские адреса по `urlRule`, проверить глазами) → `translate`. Можно включить `SITE.i18n.citeEn` (как у
+  pingalto), чтобы «copia del…» внутри испанской цитаты тоже было по-английски.
 
 ## Ленты casaslegales и обслуживание раз в полгода (04.11) — работает, `docs/MAINTENANCE.md`
 - **Сервер:** `feeds-server.sh casaslegales` — `/opt/web/casaslegales-feeds/`, cron `37 6 * * *` UTC, uid 47230, UA `Casaslegales/1.0

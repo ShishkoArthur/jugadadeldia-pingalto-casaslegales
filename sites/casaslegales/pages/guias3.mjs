@@ -181,7 +181,7 @@ export const handicap = {
       '<label><span>Monto en $</span><input name="s" inputmode="numeric" autocomplete="off" value="' + stake + '"></label></div>' +
       '<p class="rl-merr" data-rl-herr hidden>Escribí goles enteros (0 a 20), una cuota decimal mayor que 1 y un monto.</p>' +
       '<div class="rl-mout rl-cout" aria-live="polite"><div class="rl-hres"><b data-k="res">' + h.esc(WORD[exK]) + '</b><span>resultado de la apuesta</span></div>' +
-      '<div><b data-k="adj">' + dec(ex.a + ex.line, 2).replace(/0+$/, '').replace(/,$/, '') + ' a ' + ex.b + '</b><span>marcador con la línea</span></div>' +
+      '<div><b data-k="adj">' + dec(ex.a + ex.line, 2).replace(/0+$/, '').replace(/,$/, '') + (h.lang === 'en' ? ' to ' : ' a ') + ex.b + '</b><span>marcador con la línea</span></div>' +
       '<div><b data-k="ret">$ ' + fmtInt(Math.round(handicapReturn(ex.line, ex.a - ex.b, odd, stake))) + '</b><span>vuelve, con lo apostado</span></div>' +
       '<div><b data-k="net">' + (handicapReturn(ex.line, ex.a - ex.b, odd, stake) - stake >= 0 ? '+' : '−') + '$ ' + fmtInt(Math.abs(Math.round(handicapReturn(ex.line, ex.a - ex.b, odd, stake) - stake))) + '</b><span>ganancia o pérdida</span></div></div></form>';
     const euro = '<section class="rl-sec">' + sectionHead(h, 'Hándicap europeo: otra apuesta', 'no confundir con el asiático') + '<div class="rl-two">' +

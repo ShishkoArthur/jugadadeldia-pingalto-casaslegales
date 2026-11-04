@@ -122,6 +122,8 @@ html:not(.js) .rl-lang{display:grid}
 .rl-q{border-left:5px solid var(--t1);padding:4px 0 4px 14px;font-size:18px;font-weight:500}
 .rl-q cite{display:block;font:500 13px/1.45 var(--m);color:var(--mu);font-style:normal;margin-top:6px;overflow-wrap:anywhere}
 .rl-qen{margin:8px 0 0;padding:8px 12px;border-radius:10px;background:var(--pa);border:1px dashed var(--ln);font-size:15px;line-height:1.5;color:var(--fg)}
+.rl-qen cite{display:block;font:500 13px/1.45 var(--m);color:var(--mu);font-style:normal;margin-top:4px;overflow-wrap:anywhere}
+.rl-qen cite a{color:var(--mu)}
 .rl-qen b{font:700 12px/1.4 var(--m);text-transform:uppercase;letter-spacing:.05em;color:var(--mu);display:block;margin-bottom:2px}
 .rl-main h1,.rl-src{overflow-wrap:break-word}
 .rl-sites h3 a,.rl-dom h3 a,.rl-cl li>a{display:inline-block;padding-block:8px}

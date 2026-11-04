@@ -1,6 +1,8 @@
 {
  "_about": "Spanish -> English for casaslegales (tools/translate.mjs; docs/I18N.md). text: page strings, code: browser module strings \"file :: literal\".",
  "text": {
+  "$ {1} at {2} → $ {3}": "$ {1} at {2} → $ {3}",
+  "$ {1} at {2} → $ {3}": "$ {1} at {2} → $ {3}",
   "(copia guardada a mano desde un navegador en Argentina)": "(copy saved by hand from a browser in Argentina)",
   "(este sitio pide no ser leído por programas de IA: la próxima copia se guarda a mano desde un navegador)": "(this site asks not to be read by AI programs: the next copy is saved by hand from a browser)",
   ".bet.ar": ".bet.ar",
@@ -3054,6 +3056,7 @@
   "{1} proveedores": "{1} providers",
   "{1} sitios": "{1} sites",
   "{1} sitios en la lista": "{1} sites on the list",
+  "{1} to {2}": "{1} to {2}",
   "{1}+ con cita oficial": "{1}+ with official citation",
   "{1}-{2} horas": "{1}-{2} hours",
   "{1}-{2}-LUDO": "{1}-{2}-LUDO",
