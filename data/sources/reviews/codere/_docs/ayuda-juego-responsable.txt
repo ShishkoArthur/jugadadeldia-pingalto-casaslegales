@@ -1,0 +1,17 @@
+URL: https://www.codere.bet.ar/ayuda/juego-responsable
+Captured: 2026-11-04
+---
+[Paragraphs cut at 300 characters]
+Historial de juego: Se ofrece al jugador de un Historial de cuenta de juego y participaciones o jugadas, donde se informará el código único de sesión, fecha y hora de las transacciones realizadas, así como montos depositados, apostados, ganados y perdidos.
+Paso del tiempo: en todas las interfaces de la plataforma de juego, está visible de manera permanente la información sobre el dinero jugado y la visualización del tiempo transcurrido desde el inicio de sesión.
+Límites de tiempo, gasto y depósito: en el momento de registro, el jugador deberá establecer un límite específico para tiempo de juego, depósito de dinero y gasto.
+[...]
+Tiempo fuera: Durante la sesión de juego, estará disponible de manera permanente la opción de tomar un “Tiempo fuera", que permitirá la exclusión voluntaria temporal por el tiempo que desee.
+Botón de salida rápida: el botón de “salida rápida" estará disponible durante toda la sesión de juego, y activará el cierre de la sesión de juego de forma inmediata, y bloqueo por las siguientes 12 horas.
+Bloqueo de juegos: al abrir una cuenta de juego, o en cada inicio de sesión, el jugador podrá bloquear distintas categorías de juego, que no se ofrecerán como opciones durante la sesión.
+Test de autoevaluación: está disponible el test orientativo que ofrece Lotba, incluso sin necesidad de estar logueado en una sesión de juego: https://saberjugar.gob.ar/?page=autoevaluacion
+Registro de Autoexclusión: https://saberjugar.gob.ar/?page=autoexlusion link directo del registro de autoexclusión de la Ciudad de Buenos Aires.
+[...]
+El plazo de inscripción en el Registro Voluntario de Autoexclusión (ReVa) es de 2 (dos) años.
+[...]
+Pausa Obligatoria: El sistema consultará al jugador sobre la “Pausa obligatoria" que quiere realizar antes que se le permita iniciar una nueva sesión de juego una vez termine la sesión actual.

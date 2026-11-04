@@ -1,0 +1,339 @@
+{
+ "brand": "codere",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.codere.bet.ar",
+  "m.caba.codere.bet.ar"
+ ],
+ "status": {
+  "www.codere.bet.ar": {
+   "status": "open",
+   "note": "Landing page (codere.bet.ar); cookie bar 'Aceptar' only, not clicked",
+   "date": "2026-11-04"
+  },
+  "m.caba.codere.bet.ar": {
+   "status": "open",
+   "note": "Sportsbook/casino app; cookie modal offers only 'OK' — clicked (owner allowed accepting cookie banners 04.11)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://www.codere.bet.ar/",
+   "file": "data/sources/reviews/codere/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "c62c40680118e580487e72059485f12959e3af7c93add3349aeb65548f77ec67"
+  },
+  "liga-profesional": {
+   "url": "https://m.caba.codere.bet.ar/Deportes/#/EventoPage",
+   "file": "data/sources/reviews/codere/_docs/liga-profesional.txt",
+   "date": "2026-11-04",
+   "sha256": "b7122c1bfa2de175d7bfe93567e57605565131056de97ba8c71bf8580643c4ca"
+  },
+  "ayuda-deposito-online": {
+   "url": "https://www.codere.bet.ar/ayuda/deposito-online",
+   "file": "data/sources/reviews/codere/_docs/ayuda-deposito-online.txt",
+   "date": "2026-11-04",
+   "sha256": "12d3f26abf2e5a7517d726870f0625bff63d9870bb265a3c27d1d5e9a0b25704"
+  },
+  "ayuda-cobro-online": {
+   "url": "https://www.codere.bet.ar/ayuda/cobro-online",
+   "file": "data/sources/reviews/codere/_docs/ayuda-cobro-online.txt",
+   "date": "2026-11-04",
+   "sha256": "12a0963e9fac6187892fbb3a9567122116a0ffdeaa86eed38d3c29f664640870"
+  },
+  "ayuda-juego-responsable": {
+   "url": "https://www.codere.bet.ar/ayuda/juego-responsable",
+   "file": "data/sources/reviews/codere/_docs/ayuda-juego-responsable.txt",
+   "date": "2026-11-04",
+   "sha256": "ded544af88b9bacec933ebf72812f4112511597181b17457514cace8f3c9330e"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Codere Online Argentina S.A.",
+    "regulator": "LOTBA S.E.",
+    "act": [
+     "DI-2021-238-GCABA-LOTBA",
+     "DI-2023-359-GCABA-LOTBA"
+    ]
+   },
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "codere.bet.ar es un sitio operado por Codere Online Argentina S.A. bajo permiso otorgado por LOTBA S.E. mediante DI-2021-238-GCABA-LOTBA y DI-2023-359-GCABA-LOTBA.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Limited to CABA",
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "El ámbito de aplicación se circunscribe a la Ciudad Autónoma de Buenos Aires.",
+   "doc": "home"
+  },
+  {
+   "field": "app.ios",
+   "value": {
+    "available": true,
+    "store": "https://apps.apple.com/ar/app/codere-apuestas-deportivas-ar/id6746794569"
+   },
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "app de Codere Argentina | https://apps.apple.com/ar/app/codere-apuestas-deportivas-ar/id6746794569",
+   "doc": "home"
+  },
+  {
+   "field": "sportsbook.sports",
+   "value": {
+    "count": 24,
+    "names": [
+     "Artes Marciales (UFC/MMA)",
+     "Badminton",
+     "Baloncesto",
+     "Balonmano",
+     "Béisbol",
+     "Boxeo",
+     "Carreras de caballos",
+     "Ciclismo",
+     "Dardos",
+     "e-Basket",
+     "e-Fútbol",
+     "eSports",
+     "Fútbol",
+     "Fútbol Americano",
+     "Golf",
+     "Hockey Hielo",
+     "Motor",
+     "Pádel",
+     "Rugby League",
+     "Rugby Union",
+     "Snooker",
+     "Tenis",
+     "Tenis de Mesa",
+     "Voleibol"
+    ],
+    "note": "DEPORTES menu; Cine/TV and Loterías excluded"
+   },
+   "host": "m.caba.codere.bet.ar",
+   "url": "https://m.caba.codere.bet.ar/Deportes/#/EventoPage",
+   "date": "2026-11-04",
+   "quote": "DEPORTES Artes Marciales (UFC/MMA) Badminton Baloncesto",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.live",
+   "value": true,
+   "host": "m.caba.codere.bet.ar",
+   "url": "https://m.caba.codere.bet.ar/Deportes/#/EventoPage",
+   "date": "2026-11-04",
+   "quote": "DEPORTES DIRECTO CASINO CASINO EN VIVO",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "m.caba.codere.bet.ar",
+   "url": "https://m.caba.codere.bet.ar/Deportes/#/EventoPage",
+   "date": "2026-11-04",
+   "quote": "CASINO EN VIVO",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.marketsOneMatch",
+   "value": {
+    "match": "Aldosivi vs River Plate",
+    "competition": "Liga Profesional",
+    "markets": "+173",
+    "method": "'+N' more-markets indicator on the competition list"
+   },
+   "host": "m.caba.codere.bet.ar",
+   "url": "https://m.caba.codere.bet.ar/Deportes/#/EventoPage",
+   "date": "2026-11-04",
+   "quote": "Menos 2.5 1,90 +173",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "sportsbook.odds1x2",
+   "value": {
+    "capturedAt": "2026-11-04T09:30Z",
+    "tz": "site clock ART (UTC-3)",
+    "matches": [
+     {
+      "home": "Aldosivi",
+      "away": "River Plate",
+      "kickoff": "Mañana 18:00",
+      "odds": [
+       7.5,
+       4.25,
+       1.45
+      ]
+     },
+     {
+      "home": "Gimnasia y Esgrima La Plata",
+      "away": "Belgrano",
+      "kickoff": "Mañana 22:15",
+      "odds": [
+       2.3,
+       3.4,
+       3.05
+      ]
+     },
+     {
+      "home": "Barracas Central",
+      "away": "Racing Club",
+      "kickoff": "6 Nov 18:00",
+      "odds": [
+       2.1,
+       3.2,
+       3.45
+      ]
+     },
+     {
+      "home": "Independiente",
+      "away": "Deportivo Riestra",
+      "kickoff": "6 Nov 22:15",
+      "odds": [
+       1.62,
+       3.45,
+       5.75
+      ]
+     },
+     {
+      "home": "San Lorenzo",
+      "away": "Platense",
+      "kickoff": "6 Nov 22:15",
+      "odds": [
+       2.5,
+       2.95,
+       2.95
+      ]
+     }
+    ]
+   },
+   "host": "m.caba.codere.bet.ar",
+   "url": "https://m.caba.codere.bet.ar/Deportes/#/EventoPage",
+   "date": "2026-11-04",
+   "quote": "Aldosivi River Plate Mañana 18:00 1 7,50 X 4,25 2 1,45",
+   "doc": "liga-profesional"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "Mercado Pago",
+    "AstroPay",
+    "bank transfer (own account)"
+   ],
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/deposito-online",
+   "date": "2026-11-04",
+   "quote": "Para realizar un depósito mediante AstroPay seguí los siguientes pasos:",
+   "doc": "ayuda-deposito-online"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 500,
+    "currency": "ARS"
+   },
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/deposito-online",
+   "date": "2026-11-04",
+   "quote": "• Límite mínimo de depósito: $500",
+   "doc": "ayuda-deposito-online"
+  },
+  {
+   "field": "support.email",
+   "value": "apuestas@codere.com",
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/deposito-online",
+   "date": "2026-11-04",
+   "quote": "Contacto: apuestas@codere.com",
+   "doc": "ayuda-deposito-online"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "instant bank transfer to CBU"
+   ],
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/cobro-online",
+   "date": "2026-11-04",
+   "quote": "Mediante transferencia bancaria instantánea",
+   "doc": "ayuda-cobro-online"
+  },
+  {
+   "field": "account.kyc",
+   "value": "First withdrawal requires document check: DNI front/back, bank proof, selfie",
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/cobro-online",
+   "date": "2026-11-04",
+   "quote": "te solicitaremos realizar la verificación documental (dni anverso. dni reverso, justificante bancario y selfie)",
+   "doc": "ayuda-cobro-online"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "time, spend and deposit limits set at registration",
+    "limit warnings and session block",
+    "game history",
+    "visible session clock",
+    "quick-exit button (12 h block)",
+    "game-category blocking",
+    "mandatory pause"
+   ],
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "Límites de tiempo, gasto y depósito: en el momento de registro, el jugador deberá establecer un límite específico para tiempo de juego, depósito de dinero y gasto.",
+   "doc": "ayuda-juego-responsable"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "time-out; quick exit with 12 h block; ReVa self-exclusion 2 years",
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "Botón de salida rápida: el botón de “salida rápida\" estará disponible durante toda la sesión de juego, y activará el cierre de la sesión de juego de forma inmediata, y bloqueo por las siguientes 12 horas.",
+   "doc": "ayuda-juego-responsable"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Registro Voluntario de Autoexclusión (ReVa), LOTBA / Saber Jugar",
+    "url": "https://saberjugar.gob.ar/?page=autoexlusion"
+   },
+   "host": "www.codere.bet.ar",
+   "url": "https://www.codere.bet.ar/ayuda/juego-responsable",
+   "date": "2026-11-04",
+   "quote": "El plazo de inscripción en el Registro Voluntario de Autoexclusión (ReVa) es de 2 (dos) años.",
+   "doc": "ayuda-juego-responsable"
+  }
+ ],
+ "shots": [
+  {
+   "view": "sportsbook",
+   "file": "data/shots/codere/review-2026-11-04-sportsbook.png",
+   "url": "https://m.caba.codere.bet.ar/Deportes/#/EventoPage",
+   "date": "2026-11-04",
+   "width": 705,
+   "height": 457,
+   "sha256": "6a4ae05938700600a6212366a94ecab161ab5af4d09457947e089448808fead2",
+   "note": "Liga Profesional list; right 'Recomendados' casino column cropped out"
+  },
+  {
+   "view": "payments",
+   "file": "data/shots/codere/review-2026-11-04-payments.png",
+   "url": "https://www.codere.bet.ar/ayuda/deposito-online",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 457,
+   "sha256": "6203e3a48356c3dc5138a96ea2cc45a03968db7f5e267bbf68b30ac84e34b58d"
+  }
+ ]
+}

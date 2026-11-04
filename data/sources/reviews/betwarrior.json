@@ -4,7 +4,8 @@
  "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
  "hosts": [
   "betwarrior.bet.ar",
-  "apuestas.betwarrior.bet.ar"
+  "apuestas.betwarrior.bet.ar",
+  "caba.betwarrior.bet.ar"
  ],
  "status": {
   "betwarrior.bet.ar": {
@@ -16,6 +17,11 @@
    "status": "empty",
    "note": "'ARMÁ TU JUGADA' coupon builder for agencies (Jujuy/Salta); rendered empty",
    "date": "2026-11-04"
+  },
+  "caba.betwarrior.bet.ar": {
+   "status": "error",
+   "note": "Redirects to /es-ar/sports/home; after ~20 s shows 'ALGO SALIÓ MAL' (error page) — sportsbook, odds, casino not collected",
+   "date": "2026-11-04"
   }
  },
  "docs": {
@@ -24,6 +30,12 @@
    "file": "data/sources/reviews/betwarrior/_docs/home.txt",
    "date": "2026-11-04",
    "sha256": "b209bec5ac6a56a37d445573a679123330298707e3438f04affc067d6086e8d4"
+  },
+  "faq": {
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "file": "data/sources/reviews/betwarrior/_docs/faq.txt",
+   "date": "2026-11-04",
+   "sha256": "d0257b0f5d25f985bea83b411664e890a95f04b59f6972753f1c56085d07dd36"
   }
  },
  "facts": [
@@ -84,6 +96,92 @@
    "date": "2026-11-04",
    "quote": "apostar en vivo",
    "doc": "home"
+  },
+  {
+   "field": "account.kyc",
+   "value": "Identity verification with DNI or passport at registration",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "verificá tu identidad con tu DNI o pasaporte.",
+   "doc": "faq"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Must reside in an enabled jurisdiction",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "Debés ser mayor de 18 años y residir en una jurisdicción habilitada.",
+   "doc": "faq"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "Debés ser mayor de 18 años",
+   "doc": "faq"
+  },
+  {
+   "field": "licence.claimed",
+   "value": [
+    "LOTBA (CABA)",
+    "IPLyC (Provincia de Buenos Aires)",
+    "IPJyC (Mendoza)",
+    "La Rioja",
+    "Chubut"
+   ],
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "licencias emitidas por LOTBA (CABA), IPLyC (Provincia de Buenos Aires), IPJyC (Mendoza), La Rioja y Chubut.",
+   "doc": "faq"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "cards",
+    "bank transfers",
+    "wallets such as Mercado Pago"
+   ],
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "métodos locales seguros como tarjetas, transferencias bancarias y billeteras como Mercado Pago.",
+   "doc": "faq"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": "processed within 24 business hours; final time depends on bank",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "BetWarrior procesa las operaciones en 24 horas hábiles, aunque el tiempo final depende del banco o procesador.",
+   "doc": "faq"
+  },
+  {
+   "field": "rg.limits",
+   "value": [
+    "deposit limits",
+    "loss limits",
+    "session time limits"
+   ],
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "Desde tu perfil podés fijar límites de depósito, pérdidas o tiempo de sesión",
+   "doc": "faq"
+  },
+  {
+   "field": "rg.pauseSelfExclusion",
+   "value": "temporary self-exclusion",
+   "host": "betwarrior.bet.ar",
+   "url": "https://betwarrior.bet.ar/preguntas-frecuentes",
+   "date": "2026-11-04",
+   "quote": "opciones de autoexclusión temporal",
+   "doc": "faq"
   }
  ],
  "shots": []
