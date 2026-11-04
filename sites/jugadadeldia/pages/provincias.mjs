@@ -4,7 +4,7 @@
 // (IPLyC page, checked the same way). The browser draws the numbers (client/extractos.js, modes pv, pvweek, pvarch, pvfreq); the
 // static page carries the frame, the method, the official address and, for Tucumán, the hours cited from the Caja Popular API.
 // Each page has its own intro and order of blocks (plan note: not a template). No number is typed by hand.
-import { hero, webPage, crumbs, btn, cite } from './parts.mjs';
+import { hero, webPage, crumbs, btn, cite, faq, faqLd } from './parts.mjs';
 import { root, loading, chance, provTiles, pageData, PV_PAGES } from './extractos.mjs';
 import feed from '../../../tools/feeds/jugadadeldia/provincias.mjs';
 
@@ -39,13 +39,24 @@ function pvPage(id, o) {
   return {
     path, kind: 'lottery', section: 'quiniela', jurisdiction: id, css: ['extractos.css'], js: ['extractos.js'],
     title: o.title, h1: o.h1, description: o.description,
-    ld: h => [webPage(h), crumbs(h, h.built('/quiniela/') ? [['/quiniela/', 'Quiniela de hoy']] : [])],
+    ld: h => [webPage(h), crumbs(h, h.built('/quiniela/') ? [['/quiniela/', 'Quiniela de hoy']] : []), ...(o.faq ? [faqLd(o.faq(h))] : [])],
     data: h => ({ ...pageData(h), jur: id, times: o.times ? o.times(h) : null }),
     render(h) {
       return hero(h, { kicker: o.kicker, scene: true, lede: o.lede(h), actions: '<a class="jg-b p" href="#hoy">' + o.cta + '</a>' + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') }) +
         '<div class="jg-mn">' + o.blocks(h).join('') + '</div>';
     },
   };
+}
+
+function tucFaq(h) {
+  const t = tucTimes(h);
+  return [
+    ['¿Cuántos sorteos tiene la quiniela de Tucumán por día?', 'Cinco: Matutino (' + t.MATU + '), Vespertino (' + t.VESP + '), De la Siesta (' + t.SIES + '), De la Tarde (' + t.TARD + ') y Nocturno (' + t.NOCT + '), en hora argentina, según la lista de sorteos que publica la Caja Popular de Ahorros.'],
+    ['¿A qué hora sale el Nocturno de Tucumán?', 'A las ' + t.NOCT + ' según la lista de la Caja Popular, que trae además un Nocturno a las ' + h.src.value('cajapopular.quiniela.time-nocturno-20') + '. Si un día sale a esa hora, el extracto de arriba lo dice.'],
+    ['¿De dónde salen estos números?', 'Del sitio oficial de resultados de la Caja Popular de Ahorros de Tucumán, que revisamos cada 15 minutos. Ninguna otra lotería oficial republica la quiniela tucumana, así que cada extracto lleva la marca «1 fuente».'],
+    ['¿Me sirve esta página para cobrar?', 'No. La copia vale como información: para cobrar manda el extracto oficial que tiene tu agencia.'],
+    ['¿Hay números que salen más en Tucumán?', 'No. Cada terminación de dos cifras tiene <b>1 en 100</b> de salir a la cabeza en cada sorteo, sin importar lo que salió antes. El mapa de frecuencias muestra cuánto salió cada una, no lo que va a salir.'],
+  ];
 }
 
 const tucuman = pvPage('tucuman', {
@@ -55,6 +66,7 @@ const tucuman = pvPage('tucuman', {
   kicker: 'Quiniela · Tucumán · Caja Popular',
   cta: 'Ver el último sorteo',
   times: tucTimes,
+  faq: tucFaq,
   lede: h => 'La Caja Popular de Ahorros sortea la quiniela tucumana cinco veces por día: Matutino, Vespertino, De la Siesta, De la Tarde y Nocturno. Copiamos cada extracto de su sitio oficial de resultados a los pocos minutos: el último sorteo queda arriba, con sus 20 números.',
   blocks: h => {
     const t = tucTimes(h);
@@ -64,7 +76,7 @@ const tucuman = pvPage('tucuman', {
       cite(h, TUC_TIMES.map(([, , f]) => 'cajapopular.quiniela.time-' + f).concat('cajapopular.quiniela.time-nocturno-20'), 'De dónde salen los horarios') + '</section>';
     return [today('tucuman', 'El último sorteo y los cinco de hoy'), hours, check('tucuman', 'Quiniela de Tucumán'), week('tucuman', 'Quiniela de Tucumán'), arch('tucuman', 'Quiniela de Tucumán'), freq('tucuman', 'Quiniela de Tucumán'), chance,
       method(h, 'tucuman', ['Leemos el sitio oficial de resultados de la <b>Caja Popular de Ahorros</b>: la lista de sorteos de cada día y los 20 números de cada uno, en el mismo orden en que los muestra la página oficial.', 'Ninguna otra lotería oficial republica la quiniela de Tucumán, así que no hay una segunda copia para comparar: cada extracto lleva la marca <b>1 fuente</b>. Revisamos que tenga 20 números de cuatro cifras, la fecha pedida y un turno conocido; si algo no cuadra, no se publica.']),
-      more(h, '/quiniela/tucuman/')];
+      faq(h, 'Preguntas sobre la quiniela de Tucumán', tucFaq(h), TUC_TIMES.map(([, , f]) => 'cajapopular.quiniela.time-' + f).concat('cajapopular.quiniela.time-nocturno-20')), more(h, '/quiniela/tucuman/')];
   },
 });
 

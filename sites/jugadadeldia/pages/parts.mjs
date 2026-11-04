@@ -72,6 +72,15 @@ export function cite(h, ids, label = 'De dónde sale') {
   return '<details class="jg-src" data-nosnippet><summary>' + label + '</summary>' + body + '</details>';
 }
 
+// Short FAQ of a page (audit 2026-11-04 section 5): answers only from facts the page already cites or numbers the engine computes; the
+// same list feeds the FAQPage schema (plain text, tags stripped). The quotes behind the answers sit under the questions.
+export function faq(h, title, list, ids) {
+  return '<section class="jg-c w3" id="preguntas"><span class="jg-sm">Preguntas</span><h2>' + h.esc(title) + '</h2><div class="jg-q">' +
+    list.map(([q, a]) => '<details><summary>' + h.esc(q) + '</summary><div>' + a + '</div></details>').join('') + '</div>' + (ids && ids.length ? cite(h, ids) : '') + '</section>';
+}
+const plain = s => s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+export const faqLd = list => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: list.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: plain(a) } })) });
+
 export const btn = (h, path, label, primary) => h.built(path) ? '<a class="jg-b' + (primary ? ' p' : '') + '" href="' + h.href(path) + '">' + label + '</a>' : '';
 export function tiles(h, list) {
   const items = list.filter(t => h.built(t[0]));

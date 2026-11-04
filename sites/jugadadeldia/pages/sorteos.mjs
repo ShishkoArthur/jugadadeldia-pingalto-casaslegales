@@ -3,7 +3,7 @@
 // and Telekino show the latest official draw from the feed and fill the checker with it; Poceada and Quiniela Plus as before.
 import { odds, prizeShare, quini6PremioExtra, lotoPlusMultiplicador, quinielaPlusOdds } from '../../../engine/lottery/games.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
-import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn } from './parts.mjs';
+import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn, faq, faqLd } from './parts.mjs';
 import { price, priceNote } from './precios.mjs';
 import lotFeed from '../../../tools/feeds/jugadadeldia/loterias.mjs';
 
@@ -62,12 +62,24 @@ function live(h, { game, name, who, url, host, cas }) {
 }
 
 const q6 = () => odds('cas-quini6-tradicional');
+const Q6_FAQ_SRC = ['cas.quini6.max', 'cas.quini6.pick', 'cas.quini6.tradicional-draws', 'cas.revancha.draw', 'cas.siempresale.draw', 'cas.quini6.tiers', 'cas.quini6.four-min', 'cas.revancha.six-only', 'cas.siempresale.rule', 'cas.extra.rule', 'cas.extra.from-reserve'];
+function q6Faq() {
+  const o = q6(), ex = quini6PremioExtra();
+  const per = id => money(n(prizeShare(id).per100));
+  return [
+    ['¿Cuántos números hay que elegir en el Quini 6?', 'Seis, del 00 al ' + two(o.pool - 1) + ': hay ' + o.pool + ' números posibles. La modalidad Tradicional tiene dos sorteos con la misma boleta, el Primer Sorteo y La Segunda; Revancha y Siempre Sale sacan sus propios 6 números.'],
+    ['¿Con cuántos aciertos se cobra en el Quini 6?', 'En el Primer Sorteo y en La Segunda, con 6, 5 o 4 aciertos; con 4 cobrás, como mínimo, lo que pagaste por la apuesta. En Revancha, solo con 6. En Siempre Sale cobra quien tenga más aciertos: si nadie hace 6, los de 5; si no, los de 4, y así.'],
+    ['¿Qué chance hay de sacar los 6?', '<b>' + oneIn(o.rows[0].oneIn) + '</b> en cada sorteo: hay ' + fmt(Number(o.combinations), 0) + ' combinaciones posibles y una sola tiene los 6. Algún premio (6, 5 o 4 aciertos) en el Primer Sorteo o en La Segunda: ' + oneIn(o.oneInAnyPrizeTicket) + '.'],
+    ['¿Qué es el Premio Extra?', 'Se juntan los 18 números de Tradicional, La Segunda y Revancha, y cobra quien tenga sus 6 números entre esos 18, sin contar a quien ya hizo 6 en un sorteo. La chance es ' + oneIn(ex.oneIn) + '. Se paga del fondo de reserva para premios especiales del Quini 6.'],
+    ['¿Cuánto de lo que se juega vuelve en premios?', 'De cada $ 100 que se juegan, van a premios ' + per('cas-quini6-tradicional') + ' en la Tradicional, ' + per('cas-quini6-revancha') + ' en Revancha y ' + per('cas-quini6-siempresale') + ' en Siempre Sale, según los porcentajes del reglamento. El resto no vuelve.'],
+  ];
+}
 export const quini6 = {
   path: '/quini-6/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
   title: 'Quini 6: resultados del último sorteo y control de boleta',
   h1: 'Quini 6: resultados y control de tu boleta',
   description: 'Resultados del Quini 6: los números del último sorteo publicado de Tradicional, La Segunda, Revancha y Siempre Sale, el control de tu boleta y cada chance.',
-  ld: h => [webPage(h), crumbs(h, [])],
+  ld: h => [webPage(h), crumbs(h, []), faqLd(q6Faq())],
   data: () => ({ game: 'quini6', min: 0, max: 45, pick: 6, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'se', name: 'La Segunda', drawn: 6, win: [6, 5, 4] }, { id: 're', name: 'Revancha', drawn: 6, win: [6] }, { id: 'ss', name: 'Siempre Sale', drawn: 6, win: 'most' }], extra: 'quini6', lot: lotData('quini-6') }),
   render(h) {
     const o = q6(), ex = quini6PremioExtra();
@@ -87,7 +99,7 @@ export const quini6 = {
       shareCard('Revancha', n(prizeShare('cas-quini6-revancha').per100), ['cas.revancha.nominal', 'cas.revancha.pool', 'cas.revancha.share'], h) +
       shareCard('Siempre Sale', n(prizeShare('cas-quini6-siempresale').per100), ['cas.siempresale.nominal', 'cas.siempresale.pool', 'cas.siempresale.share'], h) +
       checker(h, { game: 'quini6', title: 'Controlá tu boleta', pick: 6, min: 0, max: 45, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6 }, { id: 'se', name: 'La Segunda', drawn: 6 }, { id: 're', name: 'Revancha', drawn: 6 }, { id: 'ss', name: 'Siempre Sale', drawn: 6 }], notes: cite(h, ['cas.quini6.max', 'cas.quini6.tradicional-draws', 'cas.quini6.tiers', 'cas.revancha.six-only', 'cas.siempresale.rule', 'cas.extra.rule', 'cas.quini6.four-min'], 'Las reglas, del reglamento') }) +
-      '</div>';
+      faq(h, 'Preguntas sobre el Quini 6', q6Faq(), Q6_FAQ_SRC) + '</div>';
   },
 };
 
@@ -96,12 +108,23 @@ export const anyLoto = () => {
   const t = odds('lotba-loto-plus-tradicional'), m = odds('lotba-loto-plus-match'), d = odds('lotba-loto-plus-desquite');
   return 1 / (1 - (1 - n(t.pAnyPrize)) * (1 - n(m.pAnyPrize)) * (1 - n(d.pAnyPrize)));
 };
+const LOTO_FAQ_SRC = ['lotba.loto.universe', 'lotba.loto.plus-universe', 'lotba.loto.draws', 'lotba.loto.tradicional-split', 'lotba.loto.desquite-split', 'lotba.loto.saleosale-rule', 'lotba.loto.multiplicador-rule', 'lotba.loto.multiplicador-pay', 'lotba.loto.fund'];
+function lotoFaq() {
+  const o = odds('lotba-loto-plus-tradicional'), m = lotoPlusMultiplicador();
+  return [
+    ['¿Cómo se juega al Loto Plus?', 'Elegís ' + o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y un número Plus del 0 al ' + (m.pPlus.d - 1n) + '. Hay cuatro modalidades, Tradicional, Match, Desquite y Sale o Sale, y cada una tiene su propio sorteo de 6 números.'],
+    ['¿Con cuántos aciertos se cobra en el Loto Plus?', 'En Tradicional y en Match, con 6, 5 o 4 aciertos. En Desquite, solo con 6. En Sale o Sale cobra quien tenga más aciertos: si nadie hace 6, los de 5; si no, los de 4.'],
+    ['¿Para qué sirve el número Plus?', 'Para el Multiplicador: si hacés 6 aciertos en Tradicional, Match o Desquite y además acertás el número Plus, cobrás ' + m.extraTimes + ' veces ese premio. La chance de que pase es ' + oneIn(m.oneIn) + '.'],
+    ['¿Qué chance hay de ganar algo en el Loto Plus?', 'Con Tradicional, Match y Desquite juntos, <b>' + oneIn(anyLoto()) + '</b>, sin contar Sale o Sale, que depende de las jugadas vendidas. Los 6 aciertos en un sorteo: ' + oneIn(o.rows[0].oneIn) + '.'],
+    ['¿Cuánto de lo que se juega vuelve en premios?', 'De cada $ 100, ' + money(n(prizeShare('lotba-loto-plus').per100)) + ' van a los premios de las modalidades, según los porcentajes del reglamento. La parte del Multiplicador va al fondo de reserva.'],
+  ];
+}
 export const lotoPlus = {
   path: '/loto-plus/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
   title: 'Loto Plus: resultados del último sorteo, premios y control',
   h1: 'Loto Plus: resultados y modalidades',
   description: 'Resultados del Loto Plus: el último sorteo de Tradicional, Match, Desquite y Sale o Sale, el número Plus, ganadores y premios, y el control de tu jugada.',
-  ld: h => [webPage(h), crumbs(h, [])],
+  ld: h => [webPage(h), crumbs(h, []), faqLd(lotoFaq())],
   data: () => ({ game: 'loto', min: 0, max: 45, pick: 6, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'ma', name: 'Match', drawn: 6, win: [6, 5, 4] }, { id: 'de', name: 'Desquite', drawn: 6, win: [6] }, { id: 'so', name: 'Sale o Sale', drawn: 6, win: 'most' }], extra: 'loto', lot: lotData('loto-plus') }),
   render(h) {
     const o = odds('lotba-loto-plus-tradicional'), m = lotoPlusMultiplicador();
@@ -117,7 +140,7 @@ export const lotoPlus = {
       shareCard('Loto Plus', n(prizeShare('lotba-loto-plus').per100), ['lotba.loto.fund', 'lotba.loto.modality-share', 'lotba.loto.tradicional-split', 'lotba.loto.match-split', 'lotba.loto.desquite-split', 'lotba.loto.saleosale-split', 'lotba.loto.multiplicador-fund'], h, ' La parte del Multiplicador va al fondo de reserva, por eso no cuenta.') +
       '<section class="jg-c w3"><span class="jg-sm">Por aciertos</span><h2>Chance en un sorteo de 6 números</h2>' + oddsTable(o) + '<p class="jg-note">La jugada cuesta ' + price(h, 'lotba.loto.price') + '.' + priceNote(h, 'lotba.loto.price') + '</p>' + cite(h, ['lotba.loto.price', 'lotba.loto.universe', 'lotba.loto.draws']) + '</section>' +
       checker(h, { game: 'loto', title: 'Controlá tu jugada', pick: 6, min: 0, max: 45, plus: true, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6 }, { id: 'ma', name: 'Match', drawn: 6 }, { id: 'de', name: 'Desquite', drawn: 6 }, { id: 'so', name: 'Sale o Sale', drawn: 6 }], notes: cite(h, ['lotba.loto.tradicional-split', 'lotba.loto.desquite-split', 'lotba.loto.saleosale-rule'], 'Las reglas, del reglamento') }) +
-      '</div>';
+      faq(h, 'Preguntas sobre el Loto Plus', lotoFaq(), LOTO_FAQ_SRC) + '</div>';
   },
 };
 
@@ -142,12 +165,23 @@ export const brinco = {
   },
 };
 
+const TK_FAQ_SRC = ['pba.telekino.ticket', 'pba.telekino.universe', 'pba.telekino.drawn', 'pba.telekino.no-replacement', 'pba.telekino.lowest', 'pba.telekino.none-below', 'pba.telekino.rekino', 'pba.telekino.operator', 'pba.telekino.fund'];
+function tkFaq(h) {
+  const o = odds('pba-telekino'), low = Math.min(...o.rows.filter(r => r.prize).map(r => r.hits));
+  return [
+    ['¿Cómo se juega al Telekino?', 'Tu cartón trae ' + o.pick + ' números del 1 al ' + o.pool + '. En el sorteo salen ' + o.drawn + ' bolillas de las ' + o.pool + ', sin reposición, y contás cuántos de tus números salieron.'],
+    ['¿Con cuántos aciertos hay premio en el Telekino?', 'Con ' + low + ' o más: hay una categoría por cada cantidad, de ' + o.pick + ' a ' + low + ' aciertos. Con ' + (low - 1) + ' o menos no hay premio. La chance de cobrar algo con un cartón es <b>' + oneIn(o.oneInAnyPrize) + '</b>.'],
+    ['¿Qué chance hay de hacer los ' + o.pick + '?', oneIn(o.rows[0].oneIn) + ': es la cantidad de cartones distintos que se pueden armar con ' + o.pick + ' de los ' + o.pool + ' números, y uno solo coincide con lo que sale.'],
+    ['¿Qué es el Rekino?', 'Un segundo sorteo con ' + o.drawn + ' bolillas nuevas del 1 al ' + o.pool + '. Gana el cartón con más aciertos, así que su chance depende de los cartones vendidos y no se puede calcular de antemano.'],
+    ['¿Quién organiza el Telekino?', 'El Instituto Provincial de Lotería y Casinos de la Provincia de Buenos Aires. Su reglamento destina a premios el ' + h.src.value('pba.telekino.fund') + ' % de lo que se recauda.'],
+  ];
+}
 export const telekino = {
   path: '/telekino/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
   title: 'Telekino: resultados del último sorteo y control del cartón',
   h1: 'Telekino: resultados y control de tu cartón',
   description: 'Resultados del Telekino: los 15 números del último sorteo y los del Rekino, el control de tu cartón con un toque y la chance exacta de 15 a 11 aciertos.',
-  ld: h => [webPage(h), crumbs(h, [])],
+  ld: h => [webPage(h), crumbs(h, []), faqLd(tkFaq(h))],
   data: () => ({ game: 'telekino', min: 1, max: 25, pick: 15, sets: [{ id: 'tk', name: 'Telekino', drawn: 15, win: [15, 14, 13, 12, 11] }, { id: 'rk', name: 'Rekino', drawn: 15, win: 'most' }], lot: lotData('telekino') }),
   render(h) {
     const o = odds('pba-telekino');
@@ -159,7 +193,8 @@ export const telekino = {
       '<section class="jg-c w2"><span class="jg-sm">Por aciertos</span><h2>Chance de cada categoría</h2>' + oddsTable(o, { only: r => r.hits >= 8 }) + '<p class="jg-hon">Chance de cobrar algo (11 aciertos o más): <b>' + oneIn(o.oneInAnyPrize) + '</b>. Con 10 o menos no hay premio.</p></section>' +
       shareCard('Telekino', n(prizeShare('pba-telekino').per100), ['pba.telekino.fund', 'pba.telekino.split'], h, ' Incluye los premios en especie del primer premio.') +
       '<section class="jg-c w2"><span class="jg-sm">Rekino</span><h2>15 bolillas nuevas</h2><p>Después del sorteo principal salen otras 15 bolillas y gana el cartón con más aciertos. Como depende de los cartones vendidos, no tiene una chance fija.</p>' + cite(h, ['pba.telekino.universe', 'pba.telekino.drawn', 'pba.telekino.ticket', 'pba.telekino.lowest', 'pba.telekino.none-below', 'pba.telekino.rekino', 'pba.telekino.operator']) + '</section>' +
-      checker(h, { game: 'telekino', title: 'Controlá tu cartón', pick: 15, min: 1, max: 25, sets: [{ id: 'tk', name: 'Sorteo Telekino', drawn: 15 }, { id: 'rk', name: 'Rekino', drawn: 15 }] }) + '</div>';
+      checker(h, { game: 'telekino', title: 'Controlá tu cartón', pick: 15, min: 1, max: 25, sets: [{ id: 'tk', name: 'Sorteo Telekino', drawn: 15 }, { id: 'rk', name: 'Rekino', drawn: 15 }] }) +
+      faq(h, 'Preguntas sobre el Telekino', tkFaq(h), TK_FAQ_SRC) + '</div>';
   },
 };
 
