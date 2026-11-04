@@ -156,6 +156,26 @@ P1 (37, из них служебных и помощи — 8):
   `/operador/casino-magic-online` (марка в списке Неукена; `/verificar/casino-magic` без ключей); «<бренд> casino» → `/operador/<бренд>/casino`,
   где страница казино есть (Betsson, bet365, bplay); у Betano лобби казино при сборе пустое — ключ остаётся на обзоре.
 
+## «Cómo ingresar» (решение владельца 04.11 «можешь делать») — новые страницы `kind: login`
+- `/operador/betsson/ingresar` — «Betsson iniciar sesión: el sitio oficial de tu provincia» (56); ключи betsson iniciar sesión 25k,
+  pba 19k, caba 6.5k, casino 3.1k, provincia de buenos aires 2.7k, cba 1.9k, córdoba 1.7k, casino online argentina 1.4k, argentina ingresar 1k,
+  casino … argentina 900 (≈ 63k).
+- `/operador/bet365/ingresar` — «bet365 login: cómo ingresar al sitio oficial en Argentina» (57); bet365 login 4.8k.
+- `/operador/betano/ingresar` — «Betano iniciar sesión: el sitio oficial de tu provincia» (55); betano casino iniciar sesión 4.1k, betano iniciar sesión 1.2k.
+- Содержание (`pages/opingresar.mjs`): кнопки «Ir al sitio oficial (<провинция>)» по каждому списку (гейт-allowlist, nofollow), SVG «адрес по частям»
+  (строки = адреса из реестров), карточки провинций, «почему у каждой провинции свой сайт» (гео-условие оператора — цитаты из копий обзора,
+  страница выбора провинции, цитаты регуляторов; у bet365 гео-условия в копиях нет — так и сказано, цитируются две лицензии из подвала),
+  как не попасть на копию, приложение (магазин — только ссылка со страницы оператора: Betsson и Betano — App Store, Android — текстом; у bet365 —
+  «ищи со своего официального сайта»), забытый пароль (восстановление только на официальном сайте; у Betsson — цитата «Olvidé mi contraseña» из
+  центра помощи), автоисключение, FAQPage. Раздел `#ingresar` обзора стал коротким и ведёт сюда; ссылки со страниц оператор × провинция.
+- Остальные brand-login ключи (bplay 4.5k, playcet 1.1k, casino magic 1.1k, sportsbet 0.8k+0.45k+0.35k, jugadon 0.7k) — пока на разделах
+  `#ingresar` обзоров (без отдельных страниц, слово владельца было про топ-3).
+
+## Тонкие обзоры (04.11)
+- Обзор показывает только разделы с данными; остальные — один блок «Lo que no pudimos ver» (что не нашли + что посетили из AR: копии страниц,
+  статусы хостов — частично, проверка от роботов, всплывающие окна и т. п.). Resumen — только плитки с данными + строка «Sin dato: …».
+- У марок без фактов (Stake, Arbet, Mitesoro, La Rionegrina) — блок «Lo que vimos desde Argentina» со статусом визита 04.11; это ficha, не reseña.
+
 ## Гайды «как» (04.11) — что добавилось в плане
 - `/guia/apuestas-deportivas` — «Apuestas deportivas online en Argentina: cómo funcionan» (55); ключи apuestas deportivas 9.3k,
   apuestas online 5.1k (с `/operadores`), apuestas deportivas argentina 1.8k (с главной), cash out ≈ 0.5k.

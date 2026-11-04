@@ -101,7 +101,7 @@ export function opProvPage(o) {
       const diff = '<section class="rl-sec">' + sectionHead(h, row.name + ' en cada lista oficial', T.n > 1 ? T.diffs + ' de 9 datos cambian entre provincias' : 'una sola lista') + T.html + '</section>';
       const chk = '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de ' + prov + '?', 'se compara en tu navegador, no se envía') + '<div class="rl-card">' + checker(h, o, row) + '</div>' +
         (h.built('/verificador') ? '<p class="rl-note">Para cualquier otro sitio, usá el <a href="' + h.href('/verificador') + '">verificador</a>.</p>' : '') + '</section>';
-      const links = [['/operador/' + o.brand, 'Ficha completa de ' + row.name], ...OPPROV.filter(y => y.brand === o.brand && y.jur !== o.jur).map(y => ['/operador/' + y.brand + '/' + y.jur, row.name + ' en ' + h.rg.prov(y.jur).name]),
+      const links = [['/operador/' + o.brand, 'Ficha completa de ' + row.name], ['/operador/' + o.brand + '/ingresar', 'Cómo iniciar sesión en ' + row.name + ' ' + (o.jur === 'buenos-aires' ? 'PBA' : o.jur === 'caba' ? 'CABA' : prov)], ...OPPROV.filter(y => y.brand === o.brand && y.jur !== o.jur).map(y => ['/operador/' + y.brand + '/' + y.jur, row.name + ' en ' + h.rg.prov(y.jur).name]),
         ['/provincia/' + o.jur, 'Todos los sitios de la lista de ' + prov], ['/guia/como-verificar', 'Cómo verificar un sitio']].filter(([u]) => h.built(u));
       const next = '<section class="rl-sec">' + sectionHead(h, 'Para seguir') + '<div class="rl-gd">' + links.map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div></section>';
       return hero + addr + diff + chk + siteSeen(h, o, D, row) + help(h, x) + next;

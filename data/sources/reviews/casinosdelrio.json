@@ -31,12 +31,12 @@
    "doc": "home"
   },
   {
-   "field": "note",
-   "value": "'Terminos y Condiciones.' link points to a privacy-policy PDF of Emprendimientos Crown S.A.",
+   "field": "site.about",
+   "value": "Company page of Casinos del Río (7 venues in Río Negro); no online-casino lobby on the home page",
    "host": "casinosdelrio.bet.ar",
    "url": "https://casinosdelrio.bet.ar/",
    "date": "2026-11-04",
-   "quote": "(a privacy-policy PDF)",
+   "quote": "La empresa cuenta con 7 sedes en la provincia de Río Negro y 3 hoteles de alta categoría, contribuyendo a la economía regional con el empleo de más de 700 colaboradores.",
    "doc": "home"
   }
  ],

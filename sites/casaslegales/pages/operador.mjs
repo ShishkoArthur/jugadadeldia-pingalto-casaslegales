@@ -1,7 +1,7 @@
 // /operador/<slug>: one licensed operator. Its own licence map (which of the verified lists name it and with which address),
 // the address read part by part, what its own public pages say (quoted, with date), own screenshots, and the visits where
 // the site did not show itself to us. No link to the operator anywhere: addresses are text.
-import { brandMatrix, presence } from '../../../engine/registry.mjs';
+import { brandMatrix, presence, hostKey } from '../../../engine/registry.mjs';
 import { checkHost } from '../../../engine/hostcheck.mjs';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -188,6 +188,7 @@ function shotsSection(h, o, D, R) {
   const fromAr = !!rev || shots.some(s => s.source === 'owner');
   const miss = misses.map(s => '<li><span class="rl-host">' + h.esc(new URL(s.url).hostname) + '</span><span>' +
     (s.status >= 400 || s.status === 202 ? 'respondió con una página de bloqueo (código ' + s.status + ')' : 'no cargó') + ' · ' + h.fmtDate(s.date) + '</span></li>').join('');
+  if (R && !figs) return '';
   if (!figs && !miss) return o.access ? accessSection(h, o) : '';
   return '<section class="rl-sec" id="capturas">' + sectionHead(h, 'Capturas propias', 'sin registrarnos, sin depositar') +
     (figs ? '<div class="rl-shots">' + figs + '</div>' : '') +
@@ -226,6 +227,34 @@ function toolsSection(h, o, D, only) {
     (pay.length ? '<section class="rl-sec">' + sectionHead(h, 'Medios de pago y retiros', 'citas de su página') + payHtml + '</section>' : '');
 }
 
+// what the visit from Argentina (review collection) found on each address: the page copies we saved and the hosts that did not open
+const VISIT = { open: 'abrió', partial: 'abrió solo en parte', 'bot-check': 'mostró una verificación contra robots, que no intentamos pasar', down: 'no respondía', parked: 'mostraba una página del proveedor del dominio, sin sitio de juego', 'geo-block': 'mostró un bloqueo por ubicación', blank: 'cargó en blanco', redirect: 'redirige a otra dirección', error: 'mostró una página de error', empty: 'cargó sin contenido', 'age-gate': 'pidió confirmar la edad' };
+function visitRows(h, R) {
+  const at = u => { const x = new URL(u); return hostKey(x.hostname) + (x.pathname === '/' ? '' : x.pathname.replace(/\/$/, '')); };
+  const st = R.r.status || {}, seen = new Set();
+  const rows = Object.values(R.r.docs || {}).map(d => { seen.add(new URL(d.url).hostname); return '<li><span class="rl-host">' + h.esc(at(d.url)) + '</span><span>guardamos el texto · ' + h.fmtDate(d.date) + '</span></li>'; });
+  for (const [host, x] of Object.entries(st)) {
+    if (!VISIT[x.status]) throw new Error('review ' + R.brand + ': unknown visit status ' + x.status);
+    const pop = /pop-?up/i.test(x.note || '') ? [...(x.note.matchAll(/'([^']+)'/g))].map(m => m[1]) : [];
+    if (x.status === 'open' && seen.has(host) && !pop.length) continue;
+    const what = x.status === 'open' && pop.length ? 'abrió; ' + pop.map(t => '«' + t + '»').join(' y ') + (pop.length > 1 ? ' se abren' : ' se abre') + ' en una ventana emergente que no guardamos' : VISIT[x.status];
+    rows.push('<li><span class="rl-host">' + h.esc(host.replace(/^www\./, '')) + '</span><span>' + h.esc(what) + (x.date ? ' · ' + h.fmtDate(x.date) : '') + '</span></li>');
+  }
+  return [...new Set(rows)].join('');
+}
+function missingSection(h, R, absent, noShots) {
+  if (!absent.length && !noShots) return '';
+  const names = absent.map(([, t]) => t.toLowerCase());
+  return '<section class="rl-sec" id="sin-ver">' + sectionHead(h, 'Lo que no pudimos ver', 'y por qué') + '<div class="rl-box rl-miss">' +
+    (absent.length ? '<p>En las páginas públicas que guardamos no encontramos datos sobre ' + h.esc(joinY(names)) + '. No abrimos cuenta, no depositamos y no usamos chats ni formularios: lo que el sitio muestra solo con una cuenta queda afuera de esta reseña.</p>' : '') +
+    (noShots ? '<p>No guardamos capturas de este sitio: lo que citamos sale del texto de sus páginas.</p>' : '') +
+    '<h3>Lo que visitamos desde Argentina</h3><ul class="rl-misslist">' + visitRows(h, R) + '</ul></div></section>';
+}
+function visitsSection(h, R) {
+  if (!Object.keys(R.r.status || {}).length) return '';
+  return '<section class="rl-sec" id="visita">' + sectionHead(h, 'Lo que vimos desde Argentina', 'sin abrir cuenta') + '<div class="rl-box rl-miss"><p>Lo intentamos desde un navegador en Argentina, sin registrarnos. Ninguna página nos dejó un texto que podamos citar sobre deportes, casino, pagos o juego responsable, así que esta ficha no es una reseña: solo muestra lo que dicen las listas oficiales.</p><ul class="rl-misslist">' + visitRows(h, R) + '</ul></div></section>';
+}
+
 function nextSection(h, row) {
   const links = [
     ['/verificador', 'Verificá la dirección que tenés abierta'],
@@ -243,7 +272,7 @@ const GROUPS = [['sportsbook', 'deportes'], ['sportsbook.odds1x2', 'cuotas'], ['
 function reviewLead(h, o, R) {
   const hosts = [...new Set(R.r.facts.map(f => new URL(R.doc(f.doc).url).hostname.replace(/^www\./, '')).filter(x => !/^support\.|^ayuda\.|^help\./.test(x)))];
   const has = GROUPS.filter(([k]) => R.r.facts.some(f => f.field === k || f.field.startsWith(k + '.'))).map(([, w]) => w);
-  return 'Recorrimos ' + joinY(hosts) + ' desde Argentina, sin abrir cuenta: ' + joinY(has) + '. Cada dato va con la cita de su página y la fecha. ' + o.lead;
+  return 'Recorrimos ' + joinY(hosts) + ' desde Argentina, sin abrir cuenta' + (has.length > 2 ? ': ' + joinY(has) : has.length ? ', y solo encontramos datos de ' + joinY(has) : ', y guardamos lo que muestra su página') + '. Cada dato va con la cita de su página y la fecha. ' + o.lead;
 }
 export function opCopy(o) {
   const name = brandNames()[o.brand];
@@ -254,12 +283,17 @@ export function opCopy(o) {
   if (rv && (rv.facts || []).length) {
     const has = GROUPS.filter(([k]) => rv.facts.some(f => f.field === k || f.field.startsWith(k + '.'))).map(([, w]) => w);
     const list = has.length < 2 ? has.join('') : has.slice(0, -1).join(', ') + ' y ' + has.at(-1);
+    const span = (...xs) => xs.find(x => x.length >= 115 && x.length <= 155) || xs.at(-1);
+    const what = list ? ' (' + list + ')' : '';
+    const of = jurs.length > 1 ? 'de cada provincia' : 'de ' + provName[jurs[0]];
     return {
       title: fit(60, name + ' Argentina: reseña, licencias y sitio oficial', name + ': reseña, licencias y sitio oficial', name + ': reseña y sitio oficial'),
       h1: name + ' en Argentina: reseña con datos, licencias y sitio oficial' + (jurs.length > 1 ? ' por provincia' : ''),
-      description: fit(155, 'Reseña de ' + name + ' en Argentina con datos de su sitio (' + list + '), sus licencias y el sitio oficial ' + (jurs.length > 1 ? 'de cada provincia.' : 'de ' + provName[jurs[0]] + '.'),
-        'Reseña de ' + name + ' en Argentina con datos de su sitio (' + list + '), licencias y sitio oficial' + (jurs.length > 1 ? ' por provincia.' : '.'),
-        'Reseña de ' + name + ' con datos de su sitio (' + list + '), licencias y sitio oficial.'),
+      description: span('Reseña de ' + name + ' en Argentina con datos de su sitio' + what + ', sus licencias y el sitio oficial ' + of + '.',
+        'Reseña de ' + name + ' en Argentina con datos de su sitio' + what + ', licencias y sitio oficial' + (jurs.length > 1 ? ' por provincia.' : '.'),
+        'Reseña de ' + name + ' con datos de su sitio' + what + ', licencias y sitio oficial.',
+        'Reseña de ' + name + ' en Argentina: lo que muestra su sitio' + what + ', lo que no pudimos ver, sus licencias y el sitio oficial ' + of + '.',
+        'Reseña de ' + name + ': lo que muestra su sitio' + what + ', lo que no pudimos ver, licencias y sitio oficial.'),
     };
   }
   const where = jurs.length === 1 ? (SHORT[jurs[0]] || provName[jurs[0]]) : null;
@@ -300,11 +334,14 @@ export function operatorPage(o) {
           pagos: toolsSection(h, o, D, 'pay'),
           app: appExtra(h, R),
         };
-        const sec = SECTIONS.map(x => reviewSection(h, R, x, extra)).join('');
-        return hero + toc(h, [['capturas', 'Capturas']]) + summary(h, R, { lists: n, total: h.regs.length, rgCount: rgN, casinoPath }) + enterSection(h, R, o, row) + sec +
-          mapSection(h, o, row) + (R.pre('licence').length ? reviewSection(h, R, ['pie', 'La licencia según el pie de cada sitio', 'licence']) : '') + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D, R) + aid + nextSection(h, row);
+        const present = SECTIONS.filter(x => reviewSection(h, R, x, { ...extra, skipEmpty: true }));
+        const sec = present.map(x => reviewSection(h, R, x, extra)).join('');
+        const shots = shotsSection(h, o, D, R);
+        const miss = missingSection(h, R, SECTIONS.filter(x => !present.includes(x) && x[0] !== 'sitio'), !shots);
+        return hero + toc(h, [...(miss ? [['sin-ver', 'Lo que no vimos']] : []), ...(shots ? [['capturas', 'Capturas']] : [])], present.map(x => x[0])) + summary(h, R, { lists: n, total: h.regs.length, rgCount: rgN, casinoPath, missingLink: !!miss }) + enterSection(h, R, o, row) + sec + miss +
+          mapSection(h, o, row) + (R.pre('licence').length ? reviewSection(h, R, ['pie', 'La licencia según el pie de cada sitio', 'licence']) : '') + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shots + aid + nextSection(h, row);
       }
-      return hero + mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D) + toolsSection(h, o, D) + aid + nextSection(h, row);
+      return hero + (R ? visitsSection(h, R) : '') + mapSection(h, o, row) + platformSection(h, o, row) + listsTable(h, o, row) + addressSection(h, o, row, all) + regSays(h, o) + siteSays(h, o, D, row) + relatedSection(h, o, D) + shotsSection(h, o, D) + toolsSection(h, o, D) + aid + nextSection(h, row);
     },
   };
 }

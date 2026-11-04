@@ -571,7 +571,7 @@
   "data": "Лицензии (предварительно): PBA (pba.betsson.bet.ar), CABA (betsson.com.ar, Disp. 1166/2021, Betsson Malta Holding – Casino de Victoria UT), Córdoba (cba.betsson.bet.ar). Плюс публичные T&C/RG оператора (снимок + sha256), скриншоты data/shots/betsson/",
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
-  "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
+  "notes": "Без ссылки на оператора, без бонусов/кодов; ключи входа (iniciar sesión, login) — на /operador/betsson/ingresar (04.11)",
   "live": true
  },
  {
@@ -589,7 +589,21 @@
   "data": "Лицензии (предварительно): PBA (betano.bet.ar), CABA (RESDI-2024-29-GCABA-LOTBA), Mendoza (пресса, проверить). Плюс публичные T&C/RG оператора (снимок + sha256), скриншоты data/shots/betano/",
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
-  "notes": "Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
+  "notes": "Без ссылки на оператора, без бонусов/кодов; ключи входа (iniciar sesión, login) — на /operador/betano/ingresar (04.11)",
+  "live": true
+ },
+ {
+  "section": "Операторы",
+  "url": "/operador/betano/ingresar",
+  "kind": "login",
+  "wave": "P1",
+  "keys": "betano casino iniciar sesión 4.1k/- · betano iniciar sesión 1.2k/55",
+  "tool": "«Cómo ingresar»: адрес из списка каждой провинции (кнопки nofollow из allowlist), SVG-анатомия адресов по спискам, почему у каждой провинции свой сайт (цитата гео-условия оператора из копий обзора + цитаты регуляторов), как отличить копию (буква к букве, не из рекламы/личек, без депозитов на личные счета, верификатор), официальное приложение (ссылка на магазин только из цитаты страницы оператора), забытый пароль = восстановление на официальном сайте; FAQPage JSON-LD",
+  "notes": "Решение владельца 04.11 («можешь делать», аудит §6.3). Без форм, без сбора данных, без ссылок на страницы входа. Раздел #ingresar обзора — короткий, ведёт сюда",
+  "title": "Betano iniciar sesión: el sitio oficial de tu provincia",
+  "h1": "Cómo ingresar a Betano y Betano Casino: el sitio de tu provincia",
+  "description": "Cómo iniciar sesión en Betano: el sitio oficial que nombra la lista de tu provincia (PBA, CABA o Mendoza), cómo no caer en copias, la app y la contraseña.",
+  "titleLen": 55,
   "live": true
  },
  {
@@ -607,7 +621,7 @@
   "data": "Лицензии (предварительно): PBA и CABA (bet365.bet.ar). Плюс публичные T&C/RG оператора (снимок + sha256), скриншоты data/shots/bet365/",
   "auto": "хеш-монитор реестров всех провинций оператора раз в месяц; публичные страницы оператора (T&C, RG, платежи) — хеш раз в месяц; скриншоты пересъёмка раз в полгода",
   "rg": true,
-  "notes": "Отделить «bet365 states / legal states / new user promo» (США) — не цель; Без ссылки на оператора, без бонусов/кодов; навигационные ключи (iniciar sesión, app, login) — не цель",
+  "notes": "Отделить «bet365 states / legal states / new user promo» (США) — не цель; Без ссылки на оператора, без бонусов/кодов; ключи входа (iniciar sesión, login) — на /operador/bet365/ingresar (04.11)",
   "live": true
  },
  {
@@ -2137,6 +2151,20 @@
  },
  {
   "section": "Операторы",
+  "url": "/operador/betsson/ingresar",
+  "kind": "login",
+  "wave": "P1",
+  "keys": "betsson iniciar sesión 25k/60 · betsson pba iniciar sesión 19k/47 · betsson caba iniciar sesión 6.5k/62 · betsson casino iniciar sesión 3.1k/61 · betsson provincia de buenos aires iniciar sesión 2.7k/52 · betsson cba iniciar sesión 1.9k/- · betsson córdoba iniciar sesión 1.7k/47 · betsson casino online argentina iniciar sesión 1.4k/- · betsson argentina ingresar 1k/- · betsson casino iniciar sesión argentina 900/-",
+  "tool": "«Cómo ingresar»: адрес из списка каждой провинции (кнопки nofollow из allowlist), SVG-анатомия адресов по спискам, почему у каждой провинции свой сайт (цитата гео-условия оператора из копий обзора + цитаты регуляторов), как отличить копию (буква к букве, не из рекламы/личек, без депозитов на личные счета, верификатор), официальное приложение (ссылка на магазин только из цитаты страницы оператора), забытый пароль = восстановление на официальном сайте; FAQPage JSON-LD",
+  "notes": "Решение владельца 04.11 («можешь делать», аудит §6.3). Без форм, без сбора данных, без ссылок на страницы входа. Раздел #ingresar обзора — короткий, ведёт сюда",
+  "title": "Betsson iniciar sesión: el sitio oficial de tu provincia",
+  "h1": "Cómo ingresar a Betsson: el sitio oficial de tu provincia",
+  "description": "Cómo iniciar sesión en Betsson: el sitio oficial que nombra la lista de tu provincia (PBA, CABA o Córdoba), cómo no caer en copias, la app y la contraseña.",
+  "titleLen": 56,
+  "live": true
+ },
+ {
+  "section": "Операторы",
   "url": "/operador/bet365/casino",
   "kind": "review-casino",
   "wave": "P1",
@@ -2147,6 +2175,20 @@
   "h1": "bet365 Casino: qué juegos muestra y en qué provincias tiene licencia",
   "description": "bet365 Casino en Argentina: qué juegos y proveedores muestra su sitio, si tiene casino en vivo y en qué provincias tiene licencia, con fecha.",
   "titleLen": 58,
+  "live": true
+ },
+ {
+  "section": "Операторы",
+  "url": "/operador/bet365/ingresar",
+  "kind": "login",
+  "wave": "P1",
+  "keys": "bet365 login 4.8k/72",
+  "tool": "«Cómo ingresar»: адрес из списка каждой провинции (кнопки nofollow из allowlist), SVG-анатомия адресов по спискам, почему у каждой провинции свой сайт (цитата гео-условия оператора из копий обзора + цитаты регуляторов), как отличить копию (буква к букве, не из рекламы/личек, без депозитов на личные счета, верификатор), официальное приложение (ссылка на магазин только из цитаты страницы оператора), забытый пароль = восстановление на официальном сайте; FAQPage JSON-LD",
+  "notes": "Решение владельца 04.11 («можешь делать», аудит §6.3). Без форм, без сбора данных, без ссылок на страницы входа. Раздел #ingresar обзора — короткий, ведёт сюда",
+  "title": "bet365 login: cómo ingresar al sitio oficial en Argentina",
+  "h1": "bet365 login: cómo ingresar al sitio oficial en Argentina",
+  "description": "Para iniciar sesión en bet365 entrá al sitio oficial de tu provincia (PBA o CABA): la dirección es una sola. Cómo reconocerlo, la app y la contraseña.",
+  "titleLen": 57,
   "live": true
  },
  {

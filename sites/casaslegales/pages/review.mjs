@@ -11,6 +11,8 @@ import { isAbsence } from '../../../tools/lib/revsources.mjs';
 
 // field -> label (es-AR) and how its value shows: chips (items checked against the copy), yes, money, count or quote only
 const F = {
+  'site.about': ['Cómo se presenta', 'quote'],
+  'site.games': ['Juegos de su portada', 'chips'],
   'licence.footer': ['Licencia según el pie del sitio', 'licence'],
   'account.provinceRestriction': ['Solo para una provincia', 'quote'],
   'account.kyc': ['Verificación de identidad', 'quote'],
@@ -100,6 +102,7 @@ const NON_SPORT = new Set(['Mercados Especiales', 'Película']);
 const PROMO = /\btop ?\d+|torneo|reward|drop|bono|bonus|promo|gratis|jackpot|zaira|exclusiv/i;
 const CTA = /jug[aá] ahora|apost[aá] ahora|apost[aá] ya|registrate|reg[ií]strate|depositá/i;
 export const SECTIONS = [
+  ['sitio', 'Qué es el sitio', 'site'],
   ['deportes', 'Deportes y mercados', 'sportsbook'],
   ['casino', 'Casino', 'casino'],
   ['app', 'App', 'app'],
@@ -112,13 +115,14 @@ const pct = x => (x * 100).toFixed(1).replace('.', ',') + ' %';
 const odd = x => x.toFixed(2).replace('.', ',');
 
 // the saved copies write links and images as [link "text" -> url] and [alt text]: on the page the quote shows what a visitor reads
-export const readable = q => String(q).replace(/\s*\[(?:\.\.\.|…)\]\s*/g, ' \u2026 ').replace(/\[link "([^"]*)" -> [^\]]*\]/g, '$1').replace(/\[[^\]]*\blogo\b[^\]]*\]\s*/gi, '').replace(/\[([^\]]{1,60})\]/g, '$1').replace(/\s+/g, ' ').trim();
-function cite(h, R, f) {
+export const readable = q => String(q).replace(/\s*(?:\||->)\s*https?:\/\/\S+/g, '').replace(/\s*\[(?:\.\.\.|…)\]\s*/g, ' \u2026 ').replace(/\[link "([^"]*)" -> [^\]]*\]/g, '$1').replace(/\[[^\]]*\blogo\b[^\]]*\]\s*/gi, '').replace(/\[([^\]]{1,60})\]/g, '$1').replace(/\s+/g, ' ').trim();
+export function cite(h, R, f) {
   const d = R.doc(f.doc), u = new URL(d.url), where = hostKey(d.url) + (u.pathname === '/' ? '' : u.pathname.replace(/\/$/, ''));
   const tail = '<span class="rl-host">' + h.esc(where) + '</span> · copia del ' + h.fmtDate(d.date);
   if (f.quote == null && isAbsence(f.value)) return '<p class="rl-src">Lo buscamos en ' + tail + '</p>';
-  if (CTA.test(f.quote)) return '<p class="rl-src">Lo vimos en ' + tail + '</p>';
-  return '<blockquote class="rl-q">«' + h.esc(readable(f.quote)).replace(/@/g, '<span>@</span>') + '»<cite>' + tail + '</cite></blockquote>';
+  const txt = readable(f.quote);
+  if (CTA.test(f.quote) || !txt || /^\[/.test(txt)) return '<p class="rl-src">Lo vimos en ' + tail + '</p>';
+  return '<blockquote class="rl-q">«' + h.esc(txt).replace(/@/g, '<span>@</span>') + '»<cite>' + tail + '</cite></blockquote>';
 }
 const chipRow = (h, items) => '<div class="rl-chips rl-chips-s">' + items.map(x => '<span>' + h.esc(x) + '</span>').join('') + '</div>';
 const chips = (h, items, what = 'todos') => items.length <= 12 ? chipRow(h, items) : chipRow(h, items.slice(0, 10)) + '<details class="rl-more"><summary>Ver ' + (what === 'todos' ? 'los ' + items.length : what) + '</summary>' + chipRow(h, items.slice(10)) + '</details>';
@@ -154,7 +158,12 @@ function moneyOf(R, f) {
 function valueHtml(h, R, f) {
   const mode = modeOf(f.field);
   if (f.quote == null && isAbsence(f.value)) return '<b class="rl-fno">No lo encontramos en esa página</b>';
-  if (mode === 'chips') return Array.isArray(f.value) && R.found(f, f.value) ? chips(h, f.value) : '';
+  if (mode === 'chips') {
+    const off = /([A-Za-zÁÉÍÓÚáéíóúñ ]+) -> (https?:\/\/[^\s\]·|]+)/.exec(f.quote || ''), site = hostKey(R.doc(f.doc).url);
+    if (!Array.isArray(f.value) && off && hostKey(off[2]) !== site && !hostKey(off[2]).endsWith('.' + site)) return '<p>En su página, el enlace «' + h.esc(off[1].trim().replace(/^Link targets: /, '')) + '» lleva a <span class="rl-host">' + h.esc(new URL(off[2]).hostname) + '</span>, fuera de ' + h.esc(site) + ': un formulario externo, que no abrimos. No cargues datos en formularios que no estén en la dirección de la lista.</p>';
+    const items = Array.isArray(f.value) ? f.value : f.value && Array.isArray(f.value.names) ? f.value.names : null;
+    return items && R.found(f, items) ? chips(h, items) : '';
+  }
   if (mode === 'yes') return f.value === true ? '<b class="rl-fyes">Sí</b>' : f.value === false ? '<b>No</b>' : '';
   if (mode === 'money') { const s = moneyOf(R, f); return s ? '<b class="rl-fnum">' + h.esc(s) + '</b>' : ''; }
   if (mode === 'sports') { const s = sportsOf(R); if (!s || s.f !== f) return ''; return '<b class="rl-fnum">' + s.sports.length + ' deportes</b>' + chips(h, s.sports) + (s.other.length ? '<p class="rl-src">La lista trae ' + s.names.length + ' entradas: no contamos como deporte ' + s.other.map(x => '«' + h.esc(x) + '»').join(' ni ') + '.</p>' : ''); }
@@ -188,11 +197,12 @@ export function reviewSection(h, R, [id, title, prefix], extra = {}) {
   const M = prefix === 'sportsbook' ? marginOf(R) : null;
   const add = extra[id] || '';
   const body = (facts.length ? factList(h, R, facts) : '') + (M ? marginBlock(h, R, M) : '') + add;
+  if (!body && extra.skipEmpty) return '';
   return '<section class="rl-sec" id="' + id + '">' + sectionHead(h, title, facts.length || M ? 'de sus páginas públicas, con cita y fecha' : '') + (body || none(h, extra.why && extra.why[id] || SIN)) + '</section>';
 }
 
 // the summary card: facts only, each computed from the data above (or "sin dato")
-export function summary(h, R, { lists, total, rgCount, casinoPath }) {
+export function summary(h, R, { lists, total, rgCount, casinoPath, missingLink }) {
   const S = sportsOf(R), P = providersOf(R), M = marginOf(R);
   const deps = R.all('payments.depositMethods'), dep = deps.filter(f => Array.isArray(f.value) && R.found(f, f.value)).sort((a, b) => b.value.length - a.value.length)[0], live = R.one('sportsbook.live');
   const real = f => f && !isAbsence(f.value) && f.value !== false;
@@ -202,7 +212,7 @@ export function summary(h, R, { lists, total, rgCount, casinoPath }) {
   const DUR = /(hasta\s+)?(\d+(?:\s*-\s*\d+)?)\s*(minutos?|horas?(?:\s+h[aá]biles)?|d[ií]as?(?:\s+(?:h[aá]biles|laborables))?)/gi;
   const hours = (n, u) => +String(n).split('-').pop().trim() * (/^h/i.test(u) ? 1 : /^m/i.test(u) ? 1 / 60 : 24);
   const wtTxt = R.all('payments.withdrawalTimes').filter(f => f.quote).flatMap(f => [...readable(f.quote).matchAll(DUR)].map(m => ({ txt: m[0].trim().toLowerCase(), h: hours(m[2], m[3]) }))).sort((a, b) => a.h - b.h).map(x => x.txt);
-  const t = (k, v, sub, href) => '<div class="rl-rsi' + (v === null ? ' rl-rsn' : '') + '"><span>' + h.esc(k) + '</span><b>' + (v === null ? 'Sin dato' : h.esc(v)) + '</b>' + (sub ? '<small>' + (href ? '<a href="' + href + '">' + h.esc(sub) + '</a>' : h.esc(sub)) + '</small>' : '') + '</div>';
+  const t = (k, v, sub, href) => v === null ? { none: k } : { html: '<div class="rl-rsi"><span>' + h.esc(k) + '</span><b>' + h.esc(v) + '</b>' + (sub ? '<small>' + (href ? '<a href="' + href + '">' + h.esc(sub) + '</a>' : h.esc(sub)) + '</small>' : '') + '</div>' };
   const tiles = [
     t('Listas oficiales', lists + ' de ' + total, 'que revisamos la nombran', '#licencias'),
     t('Deportes', S ? String(S.sports.length) : null, S ? 'en su lista A-Z' : SIN, S ? '#deportes' : ''),
@@ -214,11 +224,13 @@ export function summary(h, R, { lists, total, rgCount, casinoPath }) {
     t('Juego responsable', rgCount ? String(rgCount) : null, rgCount ? (rgCount === 1 ? 'herramienta citada' : 'herramientas citadas') : SIN, rgCount ? '#juego-responsable' : ''),
     t('Margen medido', M ? pct(M.avg) : null, M ? '1X2, ' + M.rows.length + ' partidos, ' + h.fmtDate(M.date) : 'no copiamos cuotas', M ? '#deportes' : ''),
   ];
-  return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje') + '<div class="rl-rs">' + tiles.join('') + '</div>' +
+  const miss = tiles.filter(x => x.none).map(x => x.none.toLowerCase());
+  return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje') + '<div class="rl-rs">' + tiles.filter(x => x.html).map(x => x.html).join('') + '</div>' +
+    (miss.length ? '<p class="rl-cap"><b>Sin dato:</b> ' + h.esc(miss.length < 2 ? miss.join('') : miss.slice(0, -1).join(', ') + ' y ' + miss.at(-1)) + '. No lo vimos en las páginas públicas que guardamos' + (missingLink ? ' (<a href="#sin-ver">por qué</a>)' : '') + '.</p>' : '') +
     '<p class="rl-cap">Cada número sale de una página pública del operador o de una lista oficial, con su cita más abajo. No ponemos notas ni puntajes: no abrimos cuentas ni probamos depósitos o retiros.</p></section>';
 }
-export function toc(h, extra = []) {
-  const items = [['resumen', 'Resumen'], ['ingresar', 'Sitio oficial'], ...SECTIONS.map(([id, t]) => [id, t]), ['licencias', 'Licencias'], ...extra];
+export function toc(h, extra = [], only = null) {
+  const items = [['resumen', 'Resumen'], ['ingresar', 'Sitio oficial'], ...SECTIONS.filter(([id]) => !only || only.includes(id)).map(([id, t]) => [id, t]), ['licencias', 'Licencias'], ...extra];
   return '<nav class="rl-toc" aria-label="En esta reseña">' + items.map(([id, t]) => '<a href="#' + id + '">' + h.esc(t) + '</a>').join('') + '</nav>';
 }
 export function reviewShots(h, R, label) {
@@ -240,6 +252,12 @@ export function enterSection(h, R, o, row) {
   const hosts = [...new Set(jurs.map(r => row.cells[r.id].host))];
   const only = R ? R.all('account.provinceRestriction') : [];
   const items = jurs.map(r => '<li><span class="rl-tag">' + h.esc(r.id === 'buenos-aires' ? 'PBA' : r.id === 'caba' ? 'CABA' : h.rg.prov(r.id).name) + '</span>' + anat(h, row.cells[r.id].host) + '</li>').join('');
+  const ing = '/operador/' + o.slug + '/ingresar';
+  if (h.built(ing)) {
+    return '<section class="rl-sec" id="ingresar">' + sectionHead(h, 'Cómo entrar al sitio oficial de ' + row.name, hosts.length === 1 ? 'una sola dirección en las listas' : hosts.length + ' direcciones en ' + jurs.length + ' listas') +
+      '<div class="rl-box"><ul class="rl-enter rl-enter-s">' + items + '</ul>' + officialLinks(h, o.brand, jurs.map(r => r.id), { note: false, small: true }) +
+      '<p>Entrá con la dirección de la provincia donde estás: el botón para ingresar a tu cuenta está en ese sitio. <a href="' + h.href(ing) + '">Cómo iniciar sesión en ' + h.esc(row.name) + ' paso a paso: tu provincia, la app, la contraseña y cómo no caer en copias</a></p></div></section>';
+  }
   return '<section class="rl-sec" id="ingresar">' + sectionHead(h, 'Cómo entrar al sitio oficial de ' + row.name, hosts.length === 1 ? 'una sola dirección en las listas' : hosts.length + ' direcciones, una por lista') +
     '<div class="rl-two"><div class="rl-box"><h3>La dirección según cada lista</h3><ul class="rl-enter">' + items + '</ul>' + officialLinks(h, o.brand, jurs.map(r => r.id), { note: false, small: true }) +
     '<p>Entrá con la dirección de la provincia donde estás: el botón para ingresar a tu cuenta está en ese sitio. Nosotros no enlazamos páginas de acceso ni pedimos datos.</p></div>' +

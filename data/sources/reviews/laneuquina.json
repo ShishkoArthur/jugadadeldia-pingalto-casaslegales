@@ -22,12 +22,21 @@
  },
  "facts": [
   {
-   "field": "product",
-   "value": "Lottery platform (quiniela, bingo, telebingo, Quini 6), no casino or sportsbook seen",
+   "field": "site.games",
+   "value": [
+    "Quiniela",
+    "Quiniela Instantánea",
+    "Patagonia Minibingo",
+    "Patagonia Telebingo",
+    "Poceada Quiniela",
+    "Loteria Unificada",
+    "Raspadita Money",
+    "Quini 6"
+   ],
    "host": "www.laneuquinaonline.bet.ar",
    "url": "https://www.laneuquinaonline.bet.ar/plataforma/",
    "date": "2026-11-04",
-   "quote": "¿Qué querés jugar hoy?",
+   "quote": "¿Qué querés jugar hoy? Quiniela Quiniela Instantánea Patagonia Minibingo Patagonia Telebingo Poceada Quiniela Loteria Unificada Raspadita Money Quini 6",
    "doc": "plataforma"
   }
  ],

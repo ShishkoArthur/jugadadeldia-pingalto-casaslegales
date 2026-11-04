@@ -165,6 +165,8 @@
   /la-primera/, /la-previa/), Quini 6 «50 %» исправлено (4.683.410 разных / 6.492.584 тиражей), 7 других правок чисел/UI, карточки «¿Ya salió?»,
   Quiniela Plus берёт последнюю Nocturna PBA из ленты, title по интенту; 79 стр. выложено. **Не синхронизировано на сервер:** кэш PBA «вчера» 3 ч
   в `tools/feeds/jugadadeldia/quiniela.mjs` — `feeds-server.sh jugadadeldia sync` после того, как чужой WIP `provincias*.mjs` будет закоммичен.
+- 04.11 — casaslegales — «cómo ingresar»: /operador/betsson|bet365|betano/ingresar (ключи входа ≈ 73k), тонкие обзоры без пустых разделов
+  («Lo que no pudimos ver» + визит из AR), данные Casinos del Río / La Neuquina исправлены (поля роняли сборку) — раздел «casaslegales (04.11) — cómo ingresar».
 - 04.11 — casaslegales — гайды: /guia/apuestas-deportivas, /guia/glosario, paso a paso на cuotas/combinada, «Otras calculadoras», title по Ahrefs.
 - 04.11 — casaslegales — обзорник: «Ir al sitio oficial» по провинциям (гейт-allowlist), обзоры Betsson и Betano, /operador/betsson/casino,
   title/H1 операторов по интенту (раздел «casaslegales (04.11) — обзорник» ниже).
@@ -460,6 +462,24 @@
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
 - **Дальше:** хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
+
+## casaslegales (04.11) — cómo ingresar и тонкие обзоры (решение владельца 04.11 «можешь делать»), выложено
+- **`/operador/<бренд>/ingresar`** для Betsson, bet365, Betano (`pages/opingresar.mjs`, `kind: login` в плане, ключи входа перенесены): кнопки
+  «Ir al sitio oficial (<провинция>)» по каждому списку; SVG «адрес по частям» (строки — адреса реестров); карточки провинций (у Betsson CABA:
+  список LOTBA называет betsson.com.ar → страница выбора провинции → caba.betsson.bet.ar, подвал цитирует ту же Disp. 1166/2021 — сверяет код);
+  «почему у каждой провинции свой сайт» — гео-условия из копий обзора + страницы выбора провинции + цитаты регуляторов (у bet365 гео-условия
+  в копиях нет — так и написано, цитируются две лицензии подвала); как не попасть на копию; приложение (магазин — только ссылка со страницы
+  оператора); забытый пароль = восстановление на официальном сайте; FAQPage. Фразы вне фактов (`copyText`) ищутся в копии — нет фразы → сборка падает.
+  Раздел `#ingresar` обзора у этих трёх — короткий со ссылкой сюда; ссылка и со страниц оператор × провинция. Новый бренд — добавить в `ING`.
+- **Тонкие обзоры** (`pages/operador.mjs`, `pages/review.mjs`): показываются только разделы с данными; остальные — блок `#sin-ver` «Lo que no
+  pudimos ver» (чего не нашли + что посетили из AR: копии, статусы хостов из `status`, всплывающие окна); Resumen — только плитки с данными и
+  строка «Sin dato: …»; описание 115–155 подбирается; цитаты-аннотации сборщика («[...]», URL) не показываются как цитаты; ссылка «Retiros» на
+  внешний формуляр (PlayBet → script.google.com) — фактом. Новые поля `site.about`, `site.games` (раздел «Qué es el sitio»). У марок без фактов
+  (Stake, Arbet, Mitesoro, La Rionegrina) — блок «Lo que vimos desde Argentina». Подписи статусов — `VISIT` в `pages/operador.mjs`.
+- **Данные:** `casinosdelrio.json` (поле `note` → `site.about` с цитатой), `laneuquina.json` (`product` → `site.games`) — старые имена полей роняли
+  `verify-reviews` и сборку на HEAD.
+- **Дальше:** страницы оператор × провинция (например `/operador/betsson/cordoba`) ещё пишут «No pudimos ver su sitio» по визиту 03.11 из-за
+  границы, хотя 04.11 из AR копия есть — добавить строку из обзора; brand-login остальных марок (bplay 4.5k, playcet, casino magic, sportsbet) — на `#ingresar` обзоров.
 
 ## casaslegales (04.11) — гайды «как»: `/guia/apuestas-deportivas`, `/guia/glosario`, paso a paso калькуляторов, выложено
 - `pages/guias5.mjs`: гайд по ставкам (boleto, шаги, рынки, en vivo, cash out, маржа, где легально с кнопками «Ir» 8 списков и 4
