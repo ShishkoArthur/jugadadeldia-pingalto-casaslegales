@@ -1,5 +1,5 @@
 .jg-lot{min-height:96px}
-.jg-lms{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:10px 0}
+.jg-lms{display:grid;grid-template-columns:repeat(auto-fill,minmax(296px,1fr));gap:12px;margin:10px 0}
 .jg-lm{padding:12px 14px;border-radius:16px;background:var(--s2)}
 .jg-lm h3{margin:0 0 8px;font-size:16px}
 .jg-lb{display:flex;flex-wrap:wrap;gap:6px;margin:0}
