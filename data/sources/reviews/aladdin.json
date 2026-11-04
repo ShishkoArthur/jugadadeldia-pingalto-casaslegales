@@ -1,0 +1,57 @@
+{
+ "brand": "aladdin",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "aladdincasino.bet.ar"
+ ],
+ "status": {
+  "aladdincasino.bet.ar": {
+   "status": "open",
+   "note": "Opens; same platform template as the other Neuquén IJAN site (Maverick/Aladdin)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://aladdincasino.bet.ar/",
+   "file": "data/sources/reviews/aladdin/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "410300bc58805538afc9ef74c6593a5cba6858030c788a02800b3ea8efb139ab"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Aladdin Neuquen S.A - CUIT 30-71191510-5",
+    "regulator": "Instituto Provincial de Juegos de Azar del Neuquén",
+    "act": "Resolución Nro. 0631-I del 01/11/2022; Decreto 3.437 del 23/11/2022"
+   },
+   "host": "aladdincasino.bet.ar",
+   "url": "https://aladdincasino.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Autorización otorgada por el Instituto Provincial de Juegos de Azar del Neuquén, Resolución Nro. 0631-I del 01/11/2022, Decreto Poder Ejecutivo Provincial Nro. 3.437 del 23/11/2022.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Limited to Neuquén",
+   "host": "aladdincasino.bet.ar",
+   "url": "https://aladdincasino.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "El ámbito de aplicación se circunscribe a la Provincia de Neuquén.",
+   "doc": "home"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "aladdincasino.bet.ar",
+   "url": "https://aladdincasino.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Casino en vivo",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

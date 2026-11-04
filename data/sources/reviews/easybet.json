@@ -1,0 +1,57 @@
+{
+ "brand": "easybet",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "larioja.easybet.bet.ar"
+ ],
+ "status": {
+  "larioja.easybet.bet.ar": {
+   "status": "open",
+   "note": "Opens; minimal page (19 lines)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://larioja.easybet.bet.ar/",
+   "file": "data/sources/reviews/easybet/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "c88ae5b73e7ff31d9c02a70a7c9846260bb5eac5dddf42ee6e3d798c777a8635"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "FULLPLAY S.R.L.",
+    "regulator": "Administración de Juegos de Azar de La Rioja (AJALaR)",
+    "act": "Resolución Nro. 0007/2025"
+   },
+   "host": "larioja.easybet.bet.ar",
+   "url": "https://larioja.easybet.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Este es un sitio operado por FULLPLAY S.R.L., conforme a la licencia otorgada mediante Resolución Nro. 0007/2025 por la Administración de Juegos de Azar de La Rioja (AJALaR).",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Only players in La Rioja",
+   "host": "larioja.easybet.bet.ar",
+   "url": "https://larioja.easybet.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Sólo podrán participar jugadores de esta Jurisdicción.",
+   "doc": "home"
+  },
+  {
+   "field": "support.email",
+   "value": "soporte@easybet-larioja.com-larioja (as printed, malformed address)",
+   "host": "larioja.easybet.bet.ar",
+   "url": "https://larioja.easybet.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "soporte@easybet-larioja.com-larioja",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

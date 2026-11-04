@@ -1,0 +1,79 @@
+{
+ "brand": "macgroup",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "casinosmacgroup.bet.ar"
+ ],
+ "status": {
+  "casinosmacgroup.bet.ar": {
+   "status": "open",
+   "note": "Opens; login fields in header not used; 'Medios de Pago' and 'Juego Responsable' open JS pop-ups (not opened); no licence text found",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://casinosmacgroup.bet.ar/",
+   "file": "data/sources/reviews/macgroup/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "6591e14863b41436c3be98759a5f653ac38936b9380960f065cd64b3c2bf9c1e"
+  }
+ },
+ "facts": [
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "casinosmacgroup.bet.ar",
+   "url": "https://casinosmacgroup.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Recordá que es necesario que seas mayor de 18 años y residas en alguna de las provincias autorizadas.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Residence in an authorised province",
+   "host": "casinosmacgroup.bet.ar",
+   "url": "https://casinosmacgroup.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "residas en alguna de las provincias autorizadas.",
+   "doc": "home"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "email info@casinosmacgroup.com",
+    "chat",
+    "@MacGroupOnline"
+   ],
+   "host": "casinosmacgroup.bet.ar",
+   "url": "https://casinosmacgroup.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "@MacGroupOnline info@casinosmacgroup.com Chat",
+   "doc": "home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": {
+    "source": "footer link texts",
+    "names": [
+     "Pago mis Cuentas",
+     "Neteller",
+     "Pago fácil",
+     "Skrill",
+     "Mercado Pago",
+     "DineroMail",
+     "Visa",
+     "MasterCard"
+    ],
+    "note": "DineroMail closed in 2016; list looks stale"
+   },
+   "host": "casinosmacgroup.bet.ar",
+   "url": "https://casinosmacgroup.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Pago mis Cuentas | Neteller | Pago facil | Skrill | Mercado Pago | DineroMail | Visa | MasterCard",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

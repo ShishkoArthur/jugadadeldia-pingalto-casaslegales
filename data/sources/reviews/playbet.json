@@ -1,0 +1,48 @@
+{
+ "brand": "playbet",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "play.bet.ar"
+ ],
+ "status": {
+  "play.bet.ar": {
+   "status": "open",
+   "note": "Opens (/home) after a loading screen; footer has no licence text",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://play.bet.ar/home",
+   "file": "data/sources/reviews/playbet/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "e5fc78364765aacb3d54c7b1a63c9199151691840781cf03c97961f50edbcc76"
+  }
+ },
+ "facts": [
+  {
+   "field": "payments.withdrawalMethods",
+   "value": {
+    "note": "Footer 'Retiros' and 'Transferencias' links open a Google Apps Script form (script.google.com), not a page on play.bet.ar; not opened"
+   },
+   "host": "play.bet.ar",
+   "url": "https://play.bet.ar/home",
+   "date": "2026-11-04",
+   "quote": "[Link targets: Retiros -> https://script.google.com/macros/s/AKfycbzLQQ3w9OCu6t2RFfOTWhKVSXUKl_xgQaOXpAh2bELzMv5GJbpIukv7QH7Ce-MFo4cY/exec",
+   "doc": "home"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "WhatsApp"
+   ],
+   "host": "play.bet.ar",
+   "url": "https://play.bet.ar/home",
+   "date": "2026-11-04",
+   "quote": "WHATSAPP",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

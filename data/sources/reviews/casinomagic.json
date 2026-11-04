@@ -1,0 +1,80 @@
+{
+ "brand": "casinomagic",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.casinomagiconline.bet.ar"
+ ],
+ "status": {
+  "www.casinomagiconline.bet.ar": {
+   "status": "open",
+   "note": "Opens; 'Medios de Pago' is a JS pop-up (not opened)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://www.casinomagiconline.bet.ar/",
+   "file": "data/sources/reviews/casinomagic/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "ff6149fe8cb1d3d940afae0fcbbca5095726dc05429c7163f1c6d149c1e67a52"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "regulator": "Instituto de Juegos de Azar de Neuquén (IJAN)",
+    "act": null
+   },
+   "host": "www.casinomagiconline.bet.ar",
+   "url": "https://www.casinomagiconline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "cuenta con la regulación y autorización del Instituto de Juegos de Azar de Neuquén (IJAN)",
+   "doc": "home"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "www.casinomagiconline.bet.ar",
+   "url": "https://www.casinomagiconline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Este sitio de apuestas está destinado exclusivamente a mayores de 18 años",
+   "doc": "home"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "email consultas@casinomagiconline.bet.ar",
+    "phone 0800-333-6634",
+    "Telegram"
+   ],
+   "host": "www.casinomagiconline.bet.ar",
+   "url": "https://www.casinomagiconline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "0800-333-6634 consultas@casinomagiconline.bet.ar Telegram",
+   "doc": "home"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Player helpline 0800 333 0333; juegoresponsable.com.ar"
+   },
+   "host": "www.casinomagiconline.bet.ar",
+   "url": "https://www.casinomagiconline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "llame a nuestro número de atención al jugador: 0800 333 0333",
+   "doc": "home"
+  },
+  {
+   "field": "sportsbook.exists",
+   "value": true,
+   "host": "www.casinomagiconline.bet.ar",
+   "url": "https://www.casinomagiconline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "MESAS EN VIVO DEPORTES",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

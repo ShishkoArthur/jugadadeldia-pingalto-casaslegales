@@ -40,17 +40,17 @@ Owner 04.11: casaslegales becomes a review site («ссылки ставим, к
 | stake | 0 | · | · | · | · | · | · | · | · | 0 | pba.stake.bet.ar: bot-check |
 | super7 | 6 | 1 | 1 | · | · | · | 1 | 3 | · | 1 | www.super7.com.ar: redirect; caba.super7.bet.ar: open |
 | casinoclub | 8 | · | 1 | · | 2 | 3 | 1 | 1 | · | 2 | www.casinoclubonline.bet.ar: open |
-| betfun | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| playuzu | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| macgroup | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| playbet | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| arbet | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| mitesoro | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| easybet | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| laneuquina | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| casinomagic | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| maverick | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| aladdin | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| larionegrina | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| casinosdelrio | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
-| citycenteronline | — | · | · | · | · | · | · | · | · | 0 | not visited yet |
+| betfun | 6 | · | · | 1 | 1 | 1 | 1 | 1 | 1 | 0 | betfun.bet.ar: open |
+| playuzu | 6 | · | 1 | · | 2 | 1 | · | 1 | 1 | 1 | www.playuzu.bet.ar: open |
+| macgroup | 4 | · | · | · | 1 | 2 | 1 | · | · | 0 | casinosmacgroup.bet.ar: open |
+| playbet | 2 | · | · | · | 1 | · | 1 | · | · | 0 | play.bet.ar: open |
+| arbet | 0 | · | · | · | · | · | · | · | · | 0 | arbet.bet.ar: down |
+| mitesoro | 0 | · | · | · | · | · | · | · | · | 0 | mitesoro.bet.ar: parked |
+| easybet | 3 | · | · | · | · | 1 | 1 | · | 1 | 0 | larioja.easybet.bet.ar: open |
+| laneuquina | 1 | · | · | · | · | · | · | · | · | 0 | www.laneuquinaonline.bet.ar: open |
+| casinomagic | 5 | 1 | · | · | · | 1 | 1 | 1 | 1 | 0 | www.casinomagiconline.bet.ar: open |
+| maverick | 5 | · | 1 | · | 2 | 1 | · | · | 1 | 0 | maverickonline.bet.ar: open |
+| aladdin | 3 | · | 1 | · | · | 1 | · | · | 1 | 0 | aladdincasino.bet.ar: open |
+| larionegrina | 0 | · | · | · | · | · | · | · | · | 0 | larionegrinaonline.bet.ar: partial |
+| casinosdelrio | 2 | · | · | · | · | · | 1 | · | · | 0 | casinosdelrio.bet.ar: open |
+| citycenteronline | 4 | 1 | · | · | · | 1 | 1 | · | 1 | 0 | www.citycenteronline.bet.ar: open |

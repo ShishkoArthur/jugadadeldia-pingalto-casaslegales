@@ -1,0 +1,92 @@
+{
+ "brand": "betfun",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "betfun.bet.ar"
+ ],
+ "status": {
+  "betfun.bet.ar": {
+   "status": "open",
+   "note": "Landing page of Hipódromo Palermo's online casino; platform at caba.betfun.bet.ar (not opened)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "landing": {
+   "url": "https://betfun.bet.ar/",
+   "file": "data/sources/reviews/betfun/_docs/landing.txt",
+   "date": "2026-11-04",
+   "sha256": "1dd3cdd2beecfa827b25d1fc17577d789809c697e3a8826a3909ab5eb4d14fb6"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Hipódromo Argentino de Palermo S.A.",
+    "cuit": "30-65511651-4",
+    "regulator": "LOTBA S.E.",
+    "act": "RESOL-2020-138-GCABA-LOTBA"
+   },
+   "host": "betfun.bet.ar",
+   "url": "https://betfun.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Hipódromo Argentino de Palermo S.A. | Av. del Libertador 4101, CABA | CUIT: 30-65511651-4 | Permiso de uso otorgado por LOTBA S.E. mediante RESOL-2020-138-GCABA-LOTBA.",
+   "doc": "landing"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Only within CABA",
+   "host": "betfun.bet.ar",
+   "url": "https://betfun.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Nuestra plataforma y app están habilitadas para ser utilizadas exclusivamente dentro de la Ciudad Autónoma de Buenos Aires (CABA).",
+   "doc": "landing"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "cash at Hipódromo Palermo cashiers (request by email), 24 h"
+   ],
+   "host": "betfun.bet.ar",
+   "url": "https://betfun.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Enviás un email a ayuda@betfun.bet.ar y pasás a buscar tu dinero por las cajas físicas del Hipódromo Palermo ¡Todos los días, las 24 hs!",
+   "doc": "landing"
+  },
+  {
+   "field": "support.email",
+   "value": "ayuda@betfun.bet.ar",
+   "host": "betfun.bet.ar",
+   "url": "https://betfun.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Enviá tu solicitud a ayuda@betfun.bet.ar",
+   "doc": "landing"
+  },
+  {
+   "field": "app.ios",
+   "value": {
+    "available": true,
+    "store": "https://apps.apple.com/ar/app/betfun-casino-y-apuestas/id6447068094"
+   },
+   "host": "betfun.bet.ar",
+   "url": "https://betfun.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "App Store badge -> https://apps.apple.com/ar/app/betfun-casino-y-apuestas/id6447068094",
+   "doc": "landing"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "Línea de orientación 0800-444-4000"
+   },
+   "host": "betfun.bet.ar",
+   "url": "https://betfun.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Línea de orientación al jugador problemático: 0800-444-4000.",
+   "doc": "landing"
+  }
+ ],
+ "shots": []
+}

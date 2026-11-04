@@ -1,0 +1,18 @@
+{
+ "brand": "mitesoro",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "mitesoro.bet.ar"
+ ],
+ "status": {
+  "mitesoro.bet.ar": {
+   "status": "parked",
+   "note": "Domain shows a Wix 'Reconnect Your Domain' page — no casino site served",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {},
+ "facts": [],
+ "shots": []
+}

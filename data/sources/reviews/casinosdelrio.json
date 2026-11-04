@@ -1,0 +1,44 @@
+{
+ "brand": "casinosdelrio",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "casinosdelrio.bet.ar"
+ ],
+ "status": {
+  "casinosdelrio.bet.ar": {
+   "status": "open",
+   "note": "Company/landing page of Casinos del Río (Emprendimientos Crown S.A.), WordPress; no online-casino lobby or licence text found on the home",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://casinosdelrio.bet.ar/",
+   "file": "data/sources/reviews/casinosdelrio/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "b932d9ff387d282548017691d22463081b3c05ff34d3aa4df2f78b938428a603"
+  }
+ },
+ "facts": [
+  {
+   "field": "support.email",
+   "value": "atencionclientes@casinosdelrio.com.ar",
+   "host": "casinosdelrio.bet.ar",
+   "url": "https://casinosdelrio.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "atencionclientes@casinosdelrio.com.ar",
+   "doc": "home"
+  },
+  {
+   "field": "note",
+   "value": "'Terminos y Condiciones.' link points to a privacy-policy PDF of Emprendimientos Crown S.A.",
+   "host": "casinosdelrio.bet.ar",
+   "url": "https://casinosdelrio.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "(a privacy-policy PDF)",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

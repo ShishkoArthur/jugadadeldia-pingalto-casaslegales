@@ -1,0 +1,84 @@
+{
+ "brand": "maverick",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "maverickonline.bet.ar"
+ ],
+ "status": {
+  "maverickonline.bet.ar": {
+   "status": "open",
+   "note": "Opens; same platform template as the other Neuquén IJAN site (Maverick/Aladdin)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://maverickonline.bet.ar/",
+   "file": "data/sources/reviews/maverick/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "bd869711b5e38399fdb48f61dd0aedd4528329c6fbab75d9c5847cf5be0c0be4"
+  },
+  "como-retirar": {
+   "url": "https://maverickonline.bet.ar/como-retirar",
+   "file": "data/sources/reviews/maverick/_docs/como-retirar.txt",
+   "date": "2026-11-04",
+   "sha256": "55647ff82991495a459907c3bf5a289f82cd421d574951432be687512fc2ba2c"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Coleal S.A - CUIT 30-71003650-7",
+    "regulator": "Instituto Provincial de Juegos de Azar del Neuquén",
+    "act": "Resolución Nro. 0631-I del 01/11/2022; Decreto 3.437 del 23/11/2022"
+   },
+   "host": "maverickonline.bet.ar",
+   "url": "https://maverickonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Autorización otorgada por el Instituto Provincial de Juegos de Azar del Neuquén, Resolución Nro. 0631-I del 01/11/2022, Decreto Poder Ejecutivo Provincial Nro. 3.437 del 23/11/2022.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Limited to Neuquén",
+   "host": "maverickonline.bet.ar",
+   "url": "https://maverickonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "El ámbito de aplicación se circunscribe a la Provincia de Neuquén.",
+   "doc": "home"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "maverickonline.bet.ar",
+   "url": "https://maverickonline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Casino en vivo",
+   "doc": "home"
+  },
+  {
+   "field": "payments.withdrawalMethods",
+   "value": [
+    "bank transfer (CBU/Alias)",
+    "cash at a Maverick casino with DNI and code"
+   ],
+   "host": "maverickonline.bet.ar",
+   "url": "https://maverickonline.bet.ar/como-retirar",
+   "date": "2026-11-04",
+   "quote": "Elegí el método de retiro que preferís: Transferencia Bancaria o Agencia",
+   "doc": "como-retirar"
+  },
+  {
+   "field": "payments.withdrawalTimes",
+   "value": "bank transfer within 48–72 business hours; one withdrawal per day",
+   "host": "maverickonline.bet.ar",
+   "url": "https://maverickonline.bet.ar/como-retirar",
+   "date": "2026-11-04",
+   "quote": "Recordá que podés hacer un único retiro diario. Tu solicitud será verificada y la transferencia se realizará dentro de las 48 a 72hs hábiles.",
+   "doc": "como-retirar"
+  }
+ ],
+ "shots": []
+}

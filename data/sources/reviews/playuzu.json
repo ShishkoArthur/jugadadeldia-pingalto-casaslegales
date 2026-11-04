@@ -1,0 +1,110 @@
+{
+ "brand": "playuzu",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.playuzu.bet.ar"
+ ],
+ "status": {
+  "www.playuzu.bet.ar": {
+   "status": "open",
+   "note": "Opens (playuzu.bet.ar -> www.); cookie banner (Permitir todas / Gestionar preferencias) left untouched",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://www.playuzu.bet.ar/",
+   "file": "data/sources/reviews/playuzu/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "1fe70d705a8ed85ca60dc3a7a99c57366f37ed6520c3975c159cfa13eca80df4"
+  },
+  "metodos-de-pago": {
+   "url": "https://www.playuzu.bet.ar/metodos-de-pago/",
+   "file": "data/sources/reviews/playuzu/_docs/metodos-de-pago.txt",
+   "date": "2026-11-04",
+   "sha256": "784795a06f91d51ce78cea61bf30277cbca8a9177cf4c5c443eadeb2887ba2c9"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Biyemas S.A. – Skill on Net S.A.U. - UT",
+    "cuit": "30-71736396-1",
+    "regulator": "LOTBA S.E.",
+    "act": "DI-2023-335-GCABA-LOTBA"
+   },
+   "host": "www.playuzu.bet.ar",
+   "url": "https://www.playuzu.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "PlayUZU.bet.ar es un sitio operado por Biyemas S.A. – Skill on Net S.A.U. - UT (CUIT N° 30-71736396-1) bajo permiso otorgado por LOTBA S.E. mediante DI-2023-335-GCABA-LOTBA.",
+   "doc": "home"
+  },
+  {
+   "field": "account.provinceRestriction",
+   "value": "Only CABA",
+   "host": "www.playuzu.bet.ar",
+   "url": "https://www.playuzu.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "El ámbito de aplicación del permiso otorgado se circunscribe en forma exclusiva a la Ciudad Autónoma de Buenos Aires.",
+   "doc": "home"
+  },
+  {
+   "field": "casino.live",
+   "value": true,
+   "host": "www.playuzu.bet.ar",
+   "url": "https://www.playuzu.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Casino en Vivo",
+   "doc": "home"
+  },
+  {
+   "field": "rg.provincialProgramme",
+   "value": {
+    "name": "CABA line 0800-666-6006"
+   },
+   "host": "www.playuzu.bet.ar",
+   "url": "https://www.playuzu.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "0800-666-6006 ORIENTACION AL JUGADOR PROBLEMATICO",
+   "doc": "home"
+  },
+  {
+   "field": "payments.depositMethods",
+   "value": [
+    "Banco Macro (logo)",
+    "Mercado Pago"
+   ],
+   "host": "www.playuzu.bet.ar",
+   "url": "https://www.playuzu.bet.ar/metodos-de-pago/",
+   "date": "2026-11-04",
+   "quote": "[Two method cards (logos: Macro; Mercado Pago), each with:]",
+   "doc": "metodos-de-pago"
+  },
+  {
+   "field": "payments.minDeposit",
+   "value": {
+    "amount": 5000,
+    "currency": "ARS"
+   },
+   "host": "www.playuzu.bet.ar",
+   "url": "https://www.playuzu.bet.ar/metodos-de-pago/",
+   "date": "2026-11-04",
+   "quote": "MONTO MÍNIMO DE DEPÓSITO: $5.000",
+   "doc": "metodos-de-pago"
+  }
+ ],
+ "shots": [
+  {
+   "view": "payments",
+   "file": "data/shots/playuzu/review-2026-11-04-payments.png",
+   "url": "https://www.playuzu.bet.ar/metodos-de-pago/",
+   "date": "2026-11-04",
+   "width": 941,
+   "height": 375,
+   "sha256": "a47792d26af051d0f3c89e69c04e4259a11a5f3e4c7ee872b7dfa0c9d34a0bc5",
+   "note": "Cropped above the cookie banner"
+  }
+ ]
+}

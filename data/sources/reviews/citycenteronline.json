@@ -1,0 +1,75 @@
+{
+ "brand": "citycenteronline",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.citycenteronline.bet.ar"
+ ],
+ "status": {
+  "www.citycenteronline.bet.ar": {
+   "status": "open",
+   "note": "Opens; 'Medios de Pago' and 'Juego Responsable' are JS pop-ups (not opened)",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "home": {
+   "url": "https://www.citycenteronline.bet.ar/",
+   "file": "data/sources/reviews/citycenteronline/_docs/home.txt",
+   "date": "2026-11-04",
+   "sha256": "5f984691269dd41dcce396be5d0eda6897587420429d94d3f247f06b58a370d3"
+  }
+ },
+ "facts": [
+  {
+   "field": "licence.footer",
+   "value": {
+    "operator": "Casino de Rosario S.A.",
+    "act": [
+     "Contrato de Concesión Nº 9199",
+     "RVE Nº 164/20",
+     "Apuestas Deportivas: Contrato de Concesión Nº 21451",
+     "Decreto 1004/26"
+    ]
+   },
+   "host": "www.citycenteronline.bet.ar",
+   "url": "https://www.citycenteronline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Casino de Rosario S.A. bajo Contrato de Concesión Nº 9199. RVE Nº 164/20. Apuestas Deportivas: Contrato de Concesión Nº 21451. Decreto 1004/26",
+   "doc": "home"
+  },
+  {
+   "field": "account.age",
+   "value": "18+",
+   "host": "www.citycenteronline.bet.ar",
+   "url": "https://www.citycenteronline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "SOLO MAYORES DE 18 AÑOS",
+   "doc": "home"
+  },
+  {
+   "field": "support.channels",
+   "value": [
+    "phone 0800-222-2489",
+    "email consultas@citycenteronline.com.ar",
+    "chat",
+    "@CityCenterOnline"
+   ],
+   "host": "www.citycenteronline.bet.ar",
+   "url": "https://www.citycenteronline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "Chateá con City Center Online",
+   "doc": "home"
+  },
+  {
+   "field": "sportsbook.exists",
+   "value": true,
+   "host": "www.citycenteronline.bet.ar",
+   "url": "https://www.citycenteronline.bet.ar/",
+   "date": "2026-11-04",
+   "quote": "DEPORTES MESAS EN VIVO",
+   "doc": "home"
+  }
+ ],
+ "shots": []
+}

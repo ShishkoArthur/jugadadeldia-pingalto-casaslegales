@@ -1,0 +1,35 @@
+{
+ "brand": "laneuquina",
+ "collected": "2026-11-04",
+ "method": "Owner's Chrome with a Buenos Aires VPN exit, public pages only (no login, registration, deposit, chat or forms); cookies rejected where offered. Page text = rendered visible text including shadow DOM, saved as an excerpt of the lines around what is quoted.",
+ "hosts": [
+  "www.laneuquinaonline.bet.ar"
+ ],
+ "status": {
+  "www.laneuquinaonline.bet.ar": {
+   "status": "open",
+   "note": "Opens at /plataforma/: a lottery platform (Quiniela, Bingo, Telebingo, Quini 6, Loto) — not a casino/sportsbook; no licence text in the visible page",
+   "date": "2026-11-04"
+  }
+ },
+ "docs": {
+  "plataforma": {
+   "url": "https://www.laneuquinaonline.bet.ar/plataforma/",
+   "file": "data/sources/reviews/laneuquina/_docs/plataforma.txt",
+   "date": "2026-11-04",
+   "sha256": "f205182d450bf40d521940748aae3056a74b40bb82676646935996115f3d4d59"
+  }
+ },
+ "facts": [
+  {
+   "field": "product",
+   "value": "Lottery platform (quiniela, bingo, telebingo, Quini 6), no casino or sportsbook seen",
+   "host": "www.laneuquinaonline.bet.ar",
+   "url": "https://www.laneuquinaonline.bet.ar/plataforma/",
+   "date": "2026-11-04",
+   "quote": "¿Qué querés jugar hoy?",
+   "doc": "plataforma"
+  }
+ ],
+ "shots": []
+}
