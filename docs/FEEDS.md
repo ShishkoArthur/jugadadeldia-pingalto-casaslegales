@@ -39,8 +39,7 @@
   берём `Quiniela<Turno>.pdf` — 5 колонок PROVINCIA, CIUDAD, CORDOBA, SANTA FE, ENTRE RIOS; текст `pdftotext -layout`). PBA качается
   только за сегодня и вчера и только пока есть непроверенные тиражи (кэш 80 мин / 20 ч).
 - **Не используем:** API Lotería de Córdoba — robots.txt запрещает ClaudeBot/GPTBot (правило владельца 03.11), Córdoba берём из копий
-  LOTBA и PBA; Tucumán (`resultadosquiniela.cajapopular.gov.ar`) — TLS-сертификат не проходит проверку (с сервера и с машины разработки),
-  проверку не отключаем; Santa Fe и Mendoza — гео-блок/таймаут, их кинела — из LOTBA (и PBA для Santa Fe); Quini 6/Brinco через San Juan
+  LOTBA и PBA; Tucumán и другие провинции — отдельная лента `provincias` (ниже); Santa Fe и Mendoza — гео-блок/таймаут, их кинела — из LOTBA (и PBA для Santa Fe); Quini 6/Brinco через San Juan
   CAS — 03.11 там всё ещё тираж 3421 от 28.10 (воскресный 01.11 не появился): свежесть неприемлема, не делали.
 - **Проверки:** 20 номеров по 4 цифры на местах 01–20 (неполная юрисдикция не публикуется и перечитывается), номер тиража = запрошенный,
   дата/турно известны, тиражи LOTBA по порядку (номер ↔ дата ↔ турно), не из будущего; PDF — строгий разбор (дата, турно, «Realizado a las»,
@@ -113,6 +112,51 @@
 - `status` печатает таблицу `== expiries`: дата, дней осталось, состояние, порог.
 - После обновления источников в репозитории: commit → `feeds-server.sh jugadadeldia sync` (иначе на сервере старые даты — ложная тревога).
 
+## jugadadeldia — кинела провинций (`provincias`, каждые 15 мин)
+- **Зачем:** самые большие запросы сайта — результаты провинций (Tucumán, San Juan, Chaco, Corrientes, Misiones). Ресёрч источников —
+  `docs/research/JDD-SOURCES-2026-11-04.md` (там же, почему нет Catamarca, Formosa, Salta, Neuquén, Jujuy, Santiago).
+- **Источники** (официальные, без ключа; robots.txt — нет правил против нас/ИИ; UA ленты):
+  - **Tucumán** — Caja Popular: `resultadosquiniela.cajapopular.gov.ar/api/extracto/?fecha_sorteo=D` (список турно дня) →
+    `/api/extracto-registro/?id=N` (20 строк `posicion` 0–19). **TLS:** сертификат сайта верный (Sectigo DV, `*.cajapopular.gov.ar`,
+    до 23.04.2027), но сервер не отдаёт промежуточный CA. Лента добавляет публичный промежуточный «Sectigo Public Server Authentication
+    CA DV R36» (взят по адресу AIA из сертификата, закреплён по SHA-256 в `provincias-parse.mjs`) к стандартному хранилищу —
+    проверка цепочки до корня, дат и имени хоста остаётся (проверено: просроченный сертификат по-прежнему отвергается).
+    Турно: Matutino 11:30, Vespertino 14:30, De la Siesta 17:30, De la Tarde 19:30, Nocturno 22:00 (тип 11 — Nocturno 20:00).
+  - **San Juan** — CAS: `cas.gob.ar/?fecha=D` (серверный HTML; блоки «SORTEO VESPERTINO N° 7413 03/11/2026», 1°–20°).
+  - **Chaco + Corrientes** — Lotería Chaqueña: `loteria.chaco.gov.ar/ver_extracto/DD-MM-YYYY/<PRE|PRI|MAT|Ves|NOC>` (колонки Prov. Bs As,
+    Ciudad Bs As, Chaqueña, Correntina, Cordoba). Correntina — пока только эта копия (у самой Lotería Correntina — только xlsx
+    «para medios» с последней Nocturna, перезаписывается; кандидат во вторую копию, см. ресёрч).
+  - **Misiones** (+ Misionera Plus) — IPLyC: `loteriademisiones.com.ar/portal/juegos/quiniela-<турно>/` — только последний тираж турно
+    (robots запрещает `?`, другие даты не спрашиваем); у каждой ячейки aria-label «Lotería <колонка>, premio número NN: VVVV».
+- **Проверки:** 20 номеров по 4 цифры; дата страницы = запрошенная; Tucumán — список строк строго по убыванию `posicion` (так его читает
+  официальная страница), тип турно известен; San Juan/Chaco/Misiones — известные названия турно и колонок, иначе стоп для этой страницы.
+  **Сверка:** страница Chaco/Misiones используется, только если её колонки Ciudad/Provincia/Córdoba/Santa Fe **совпали цифра в цифру**
+  с нашим архивом LOTBA/PBA (`quiniela-archivo.json`) хотя бы в одной колонке и ни одна не разошлась (`c` = число совпавших колонок);
+  нет эталона — ждём следующего запуска; расхождение — `conflicts`. Своя колонка, равная эталонной, — стоп. Если источник изменил уже
+  опубликованные номера — запись снимается и запоминается в `x` архива.
+- **Когда спрашивает:** сегодня — только после времени турно (+20 мин), вчера — пока день не закрыт, затем 1 старый день за запуск
+  (до 21 дня назад; закрытые дни — `checked` в архиве). Обычно 0–10 запросов за запуск, 1 с между ними.
+- **Файлы:** `provincias.json` (7 последних дней с тиражами: `jurs` с турно и операторами, `latest`, `draws` `{j, d, t, s, n (80 цифр),
+  c?, h?}`, `sources.ok/failed`, `conflicts`, `notes`), `provincias-archivo.json` (120 дней + состояние). `maxAgeHours` 3; лента падает,
+  только если не ответил ни один источник (сбой одного — строка в `notes`, `sources.failed`).
+- **Страницы (строит сайт):** `/quiniela/tucuman/`, `/quiniela/san-juan/`, `/quiniela/chaco/`, `/quiniela/corrientes/`, `/quiniela/misiones/`
+  (+ блок Plus). Подпись источника — `jurs[].operator` / `via` («copia publicada por Lotería Chaqueña» для Corrientes).
+
+## jugadadeldia — лото (`loterias`, раз в час)
+- **Источники:** **Loto Plus** — LOTBA `loto.loteriadelaciudad.gob.ar/includes/resultados-data.php?sorteo=N` (номер — с главной; JSON
+  `RESULTADOS_DATA` + `PREMIOS_DATA`: модальности, Número Plus, pozo, выигравшие и выплаты); **Telekino** — `www.telekino.com.ar/`
+  (последний тираж, Telekino + Rekino); **копия для сверки и истории** — San Juan CAS `cas.gob.ar/juegos/sorteos/resultados?juego=
+  loto|telekino|quini6|brinco[&fecha=D]`. **Quini 6 и Brinco** — только CAS: Lotería de Santa Fe отвечает нашему серверу 403 (гео-блок,
+  не обходим), другие официальные сайты (Chaco, Misiones) только ссылаются на Santa Fe.
+- **Проверки:** количество и диапазон (Loto 6 из 00–45, Telekino 15 из 01–25, Quini 6 6 из 00–45, Brinco 6 из 00–39), без повторов,
+  все модальности одного номера тиража; номера тиражей и даты идут вместе. Две копии одного тиража (LOTBA/CAS, сайт Telekino/CAS)
+  сравниваются как множества по каждой модальности: совпали — `src` «CL»/«CT»; разошлись — тираж **не публикуется**, `conflicts`.
+- **Свежесть:** `behind` = сколько тиражей по расписанию (Loto ср/сб, Telekino вс, Quini 6 ср/вс, Brinco вс; после 23:00–23:30) нет
+  после `latest`; `expected` — дата последнего пропущенного. Страница при `behind > 0` пишет «pendiente de publicación oficial» и не
+  выдаёт старый тираж за последний. 04.11: Quini 6 и Brinco — `behind 1` (CAS не выложил 01.11).
+- **История:** до 30 тиражей на игру (`draws`, новые первыми); каждый час — один более старый тираж из CAS (ссылка «Sorteo anterior»).
+- **Страницы:** `/loto-plus/`, `/telekino/`, `/quini-6/`, `/brinco/` (и «controlar» — по `draws`).
+
 ## pingalto — киберспорт и Supercell
 - **`agenda` (раз в час, PandaScore free):** `/matches/{running,upcoming,past}?filter[videogame]=…` для cs-go (CS2), valorant,
   league-of-legends, dota-2, rl, fifa (EA FC) — ≈ 19 запросов из 1000/ч. Оставляем только поля для показа (команды, страна, счёт, время,
@@ -164,4 +208,6 @@
    Supercell ключи живы и привязаны к 187.7.26.95; robots.txt LOTBA/PBA не закрыли нас и ИИ; Córdoba/Tucumán — не изменилось ли (TLS).
 4. Условия: PandaScore ToS, Supercell Fan Content Policy — перечитать, если поменялись.
 5. Диск: `du -sh /opt/web/*-feeds`, образы `docker images | grep -feeds`; соседние сайты не тронуты (свой cron, свои папки).
-6. Новое: появились ли Quini 6/Brinco на официальном источнике со свежестью ≤ 1 дня (San Juan CAS отставал на 6 дней 03.11).
+6. Новое: появились ли Quini 6/Brinco на официальном источнике со свежестью ≤ 1 дня (San Juan CAS отставал на 6 дней 03.11; лента
+   `loterias` пишет `behind`). Tucumán: промежуточный сертификат Sectigo DV R36 действует до 21.03.2036; если сервер Caja Popular
+   начнёт отдавать полную цепочку — ничего не делать; если сменит CA — лента скажет `Tucumán intermediate`/TLS-ошибку в `notes`.
