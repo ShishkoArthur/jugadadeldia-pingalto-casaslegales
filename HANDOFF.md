@@ -158,6 +158,8 @@
   og:image на сайтах нет (twitter:card summary) — делать отдельно, если владелец захочет превью ссылок.
 
 ## Журнал
+- 04.11 — casaslegales — обзорник: «Ir al sitio oficial» по провинциям (гейт-allowlist), обзоры Betsson и Betano, /operador/betsson/casino,
+  title/H1 операторов по интенту (раздел «casaslegales (04.11) — обзорник» ниже).
 - 03.11 — QA трёх сайтов: 18 находок P1/P2 исправлено и выложено, P3 и вопрос о сцене на телефоне — `docs/QA-2026-11-03.md`; скрипты `tools/qa/`.
 - 03.11 — jugadadeldia волна 2: +19 страниц (74 из 111), бурако по регламенту Juegos Bonaerenses, часы кинелы из программы LOTBA (раздел «jugadadeldia — волна 2»).
 - 03.11 — логотипы и фавиконы трёх сайтов (раздел «Логотипы и фавиконы» выше), сравнение `docs/owner/logos-2026-11-03.html`.
@@ -374,6 +376,34 @@
   клавиши C/Q/E/X агентов (нет источника). Волна 1: /cs2/premier, /cs2/rangos, /valorant/mapas/*, Fortnite в конвертере, FF между телефонами.
 - **Дальше:** хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
+
+## casaslegales (04.11) — обзорник: официальные ссылки, обзоры операторов, страницы казино (решение владельца 04.11)
+- **Живое:** /operador/betsson и /operador/betano — обзоры; /operador/betsson/casino — первая страница казино; кнопки «Ir al sitio oficial
+  (<провинция>)» на страницах операторов, оператор × провинция, списках /provincia/* и в результате /verificador (JS, при совпадении).
+- **Ссылки** (`content/official.mjs`, `officialLink(s)` в `pages/parts.mjs`): адрес берётся из `evidence.html` записи реестра (хост как в
+  списке регулятора, https, путь «/», без query); www.arbet.bet.ar не резолвится (DNS 04.11) → вместо кнопки строка (`DEAD`).
+  **Гейт** (`tools/check-dist.mjs`, `SITE.gate.officialLinks`): ссылка на хост оператора — только точный хост из проверенных списков
+  (`operator`), только `rel="nofollow noopener"`, только голый адрес (`oplink`), ни одной на странице помощи (`helplink`); selftest — 4 порчи.
+  На jugadadeldia/pingalto allowlist пуст — любая ссылка на оператора по-прежнему ошибка.
+- **Данные обзоров:** `data/sources/reviews/<brand>.json` (+ `_docs/*.txt`) собирает другой агент через Chrome владельца (формат —
+  `docs/REVIEWS-DATA.md`). Проверка `node tools/verify-reviews.mjs [--selftest]` (в `npm test` и в сборке): sha256 копии, цитата дословно
+  (не через «[...]»), URL/дата факта = копии, хост факта = хост копии или его родитель, свежесть ≤ 100 дн.; факт отсутствия (`quote: null`,
+  `published:false`) допустим. В сборке дополнительно: элементы списков (оплаты, спорт, провайдеры, категории), команды и коэффициенты
+  ищутся в той же копии — если значение пересказано, показывается только цитата (без чипов и без числа в Resumen).
+- **Шаблон обзора** (`pages/review.mjs`, `pages/operador.mjs`): Resumen (списки N из 8, спорт, live, казино, app, способы депозита,
+  кратчайший срок вывода, RG-инструменты, **маржа 1X2 = engine/odds.mjs** по 5 матчам Liga Profesional с датой) · Deportes y mercados ·
+  Casino · App · Pagos y retiros · Cuenta y verificación · Atención al cliente · Juego responsable · Licencias (+ «La licencia según el
+  pie de cada sitio») · Capturas (свои скриншоты из AR). Нет данных — «Sin dato: …». Подписи полей — таблица `F` в `pages/review.mjs`:
+  **поле без подписи не показывается** (сборка пишет «field X has no label»), добавить подпись при новых полях.
+- **Title/H1/description** операторов — `opCopy` (`pages/operador.mjs`) по интенту: с данными обзора «<Марка> Argentina: reseña, licencias
+  y sitio oficial», без — «<Марка> Argentina: licencias y sitio oficial por provincia» / «<Марка>: licencia en <провинция> y sitio oficial».
+  «reseña» без данных обзора роняет сборку. План (`data/plan`) и `docs/PAGES-CASASLEGALES.md` синхронизированы (раздел «Обзорник»).
+- **Казино** `/operador/<slug>/casino` (`pages/opcasino.mjs`): строится, когда у бренда ≥ 2 разных casino-факта; где лицензия называет казино
+  (Neuquén, Santa Fe — из `casinoLists`) или «juego online» без разделения (цитата списка); RG; официальные ссылки. Betano — лобби казино
+  пустое при сборе (1 факт) → страницы нет.
+- **Новый бренд, когда его данные закоммичены:** `node tools/review-shots.mjs <brand>` (PNG из `data/shots/<brand>/` → webp в
+  `sites/casaslegales/static/shots/review-<brand>-<view>.webp`, коммитить) → `node tools/render.mjs casaslegales` (посмотреть «no label»)
+  → проверить страницу на 375/1280 → коммит → `bash tools/deploy.sh casaslegales`. Title/H1 переключатся на «reseña» сами.
 
 ## casaslegales (03.11) — 97 страниц из 117 плана (+404): что сделано и что осталось
 - **Новое (14):** оператор × провинция — betano/caba, bplay/buenos-aires, bplay/caba, betwarrior/buenos-aires, jugadon/caba, jugadon/cordoba,
