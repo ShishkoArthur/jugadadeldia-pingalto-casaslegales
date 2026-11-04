@@ -397,6 +397,15 @@
 - **Дальше:** хаб /fortnite; копия lolwiki от владельца; ленты (VRS по месяцу, PandaScore) — по слову
   владельца; Supercell-ключ → /brawl/brawlers, /clash/mazos; /esports/sistema-suizo (симулятор с посевом и таблицей пар Valve).
 
+## casaslegales (04.11) — аудит страниц вне `/operador/*`: отчёт `docs/AUDIT-CASASLEGALES-2026-11-04.md`, выложено
+- Калькуляторы: 76 чисел сверены независимым пересчётом — арифметика верна; исправлен смысл: «маржа» ≠ «сколько оставляет казино»
+  (маржа 6,65 % / казино 6,23 %), комбинированная выровнена с калькулятором маржи; «paso a paso» на марже; калькулятор гандикапа
+  (−3…+3, шаг 0,25) + отличие от европейского. 12 провинций без списка: «¿Es legal…?» в title и H1; блоки «¿<марка> es legal en
+  <провинция>?» (`ask` в `provcopy.mjs`, вхождения считает код по копиям), на PBA — «¿Buscás Casino Buenos Aires Online?».
+  `/licencias` — title «Casinos y apuestas online legales…», кнопка «Ir» у 47 адресов; главная — «Ir» в блоке «misma marca».
+- Дальше (§6 отчёта): хаб casino online (214k) на `/casinos-online-legales`, `/guia/apuestas-deportivas`, разделы ingresar/app в
+  обзорах, ссылки на платформы провинций (расширить гейт), перенос ключей в плане (betsson caba, casino magic, головы брендов).
+
 ## casaslegales (04.11) — обзорник: официальные ссылки, обзоры операторов, страницы казино (решение владельца 04.11)
 - **Живое:** /operador/betsson и /operador/betano — обзоры; /operador/betsson/casino — первая страница казино; кнопки «Ir al sitio oficial
   (<провинция>)» на страницах операторов, оператор × провинция, списках /provincia/* и в результате /verificador (JS, при совпадении).
