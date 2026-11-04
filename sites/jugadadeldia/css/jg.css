@@ -270,3 +270,4 @@ fieldset.jg-fl{border:0;margin:0;padding:0;min-width:0}
 .jg-lang:hover{color:var(--lk)}
 .jg-qtr{margin:-2px 0 10px;padding:0 12px 0 15px;color:var(--mu);font-size:.95em}
 .jg-qtr b{font-weight:600;color:var(--fg)}
+@media (max-width:420px){.jg-lang{width:32px}.jg-lg{font-size:19px}.jg-lg span{white-space:nowrap}}
