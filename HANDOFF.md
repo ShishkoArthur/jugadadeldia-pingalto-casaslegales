@@ -170,6 +170,10 @@
   og:image на сайтах нет (twitter:card summary) — делать отдельно, если владелец захочет превью ссылок.
 
 ## Журнал
+- 04.11 — jugadadeldia (решения владельца 04.11 по аудиту): на телефоне (≤ 620 px) на 46 страницах результатов и инструментов сначала
+  H1, потом результаты/инструмент, потом лид с кнопками, потом сцена (lazy); ПК без изменений. FAQ (+FAQPage) на /quini-6/, /loto-plus/,
+  /telekino/, /quiniela/nocturna/, /quiniela/tucuman/. Новый гайд /quiniela/online/ («quiniela online» 97k). Сцены на /quiniela/chaco/,
+  /corrientes/, /misiones/ из готовых. 85 стр., выложено (раздел «jugadadeldia (04.11) — телефон: инструмент первым…»).
 - 04.11 — jugadadeldia: результаты из новых лент — 5 страниц кинелы провинций (/quiniela/tucuman/, /san-juan/, /chaco/, /corrientes/,
   /misiones/ + Misionera Plus), результаты на /quini-6/, /brinco/ (с «pendiente», когда CAS отстаёт), /loto-plus/ (выплаты), /telekino/;
   блоки провинций на /quiniela/ и турно-страницах; часы Tucumán с цитатой (раздел «jugadadeldia (04.11) — результаты провинций и лото»).
@@ -222,6 +226,30 @@
 - 02.11 — стартовый набор от сессии RinkMath: правила (CLAUDE.md, PLAYBOOK §1 — три продукта), решения с цитатами, ловушки (gambeteo +
   RinkMath), все ключи API, SSH-ключ GitHub, ключи Ahrefs AR (5 запросов, ≈ 19 300 ед.) и их сводка, пакет помощи AR.
 
+## jugadadeldia (04.11) — телефон: инструмент первым, FAQ, гайд «quiniela online», сцены провинций (85 страниц, выложено)
+- **Порядок на телефоне** (владелец 04.11, DECISIONS «ответы по аудиту»): список `LEAD` в `pages/parts.mjs` (результаты: /quiniela/, турно,
+  провинции, лотереи; инструменты: калькуляторы, контроль, тренажёры, /truco/, /generala/, /chinchon/, /escoba-de-15/, /burako/…). На
+  этих страницах `hero()` делит текст на `.jg-ht` (кикер + H1) и `.jg-hl` (лид + кнопки), `<main>` получает `jg-top`; при ≤ 620 px
+  `css/jg.css` делает из main одну колонку (`display: contents` у героя и первого `.jg-mn`, `order`): H1 → первый блок страницы (+ живой
+  вывод `[aria-live]` сразу за ним, + блоки с классом `jg-f1`) → лид с кнопками → сцена → остальное. ПК без изменений. Сцена на этих
+  страницах `loading=lazy` (на телефоне она ниже сгиба). Страницы-столы (/truco/jugar/ и др.) и так начинаются со стола. Замер 375 px
+  (живой сайт): результаты/инструмент с 188–217 px, сцена на 1350–1650 px; горизонтальной прокрутки нет.
+- **FAQ** (аудит §5): `faq()`/`faqLd()` в `parts.mjs` — 4–5 вопросов, ответы только из уже процитированных фактов и чисел движка, цитаты
+  под вопросами (`data-nosnippet` только у цитат), FAQPage в ld: /quini-6/, /loto-plus/, /telekino/, /quiniela/nocturna/ (час LOTBA,
+  суббота, Quiniela Plus, Nocturno Tucumán), /quiniela/tucuman/ (часы Caja Popular). Дни тиражей Quini 6 не писали (нет цитаты).
+- **/quiniela/online/** («quiniela online» 97k, план обновлён): title «Quiniela online: ¿se puede jugar? Lo legal en tu provincia».
+  Что говорит каждый орган, с цитатой: LOTBA (регламент ст. 8, 8.2, 21.b — канал en línea с регистрацией; сайт «agencias … y online»),
+  Río Negro (La Rionegrina Online с Quiniela Tradicional), PBA (7 лицензий, .bet.ar; регламент кинелы — ticket-recibo агентства, своей
+  кинелы онлайн в документах нет), Córdoba, Santa Fe, Mendoza, La Rioja (списки), Neuquén (кинела — в агентствах; что такое ilegal).
+  Как проверить сайт, денунсии (Córdoba форма, Río Negro, Neuquén), 18+, «la cuenta es la misma» (1 en 100, $ 70 из $ 100 — движок),
+  помощь, FAQ. Без названий операторов и ссылок на них (только сайты лотерей/регуляторов). Источники — `data/sources/lottery/online.json`
+  (копии страниц из `registries/_docs`, байт в байт, maxAgeDays 100 → перепроверить до 11.02.2027) + 5 фактов `lotba.json`, 1 `pba.json`.
+  Новых страниц из сети не качали. Ссылок на casaslegales нет.
+- **Сцены провинций** (без новых картинок): готовые принятые сцены недостроенных страниц перенесены — бolillero (/tombola/santiaguena/) →
+  /quiniela/chaco/, тетрадь (/quiniela/significado-de-los-numeros/) → /quiniela/corrientes/, мешочек (/tombola/jujena/) → /quiniela/misiones/
+  (в `data/art/jugadadeldia/scenes.json` у старых строк `status: moved`, alt — в `scenes.mjs`). **Когда эти три страницы будут строиться — им
+  нужны новые сцены.** Без сцены: /quiniela/santa-fe/, /entre-rios/, турно-страницы (сцена Catamarca с орехами — региональная, не ставили).
+
 ## jugadadeldia (04.11) — труко 2 на 2 на /truco/jugar/ (аудит §6.7)
 - Переключатель «De a 2 / De a 4» (запоминается, `jg-truco-modo`); у каждого режима своя сохранённая партия (`jg-truco-v1`, `jg-truco4-v1`).
   2 на 2: вы + компаньон-бот против двух ботов (движок `game4.mjs`/`bots4.mjs`, уровень общий), наборы `parejas-30-sin-flor` (отвечает pie)
@@ -264,7 +292,7 @@
 - Новое: страницы турно (`pages/extractos.mjs` `turnPages`, режим `turno` в `client/extractos.js`; час — из программы LOTBA `program()`),
   карточки результатов на лотереях (`results()` в `pages/sorteos.mjs`), автоподстановка Nocturna PBA в /quiniela-plus/ (`D.fill` в `client/sorteo.js`).
 - Деньги: `money()`/`pesos()` — целые без копеек, иначе 2 знака. Ключи турно в плане перенесены с /quiniela/horarios/ на турно-страницы.
-- Открыто: синк ленты (выше в журнале); «2 fuentes» за 27–31.10 нет (архив только LOTBA); вопрос владельцу о сцене до инструмента на телефоне — без ответа.
+- Открыто: синк ленты (выше в журнале); «2 fuentes» за 27–31.10 нет (архив только LOTBA). Сцена на телефоне — после инструмента (сделано 04.11, решение владельца).
 
 - **Новые 19 (все 200, гейты и `npm test` зелёные):** /quiniela/como-se-juega/ (интерактивная boleta на примерном экстракте из
   xoshiro-сида + квиз 5 вопросов), /quiniela/simulador/ (yearExact + 10 000 лет МК с сидом, кривая и гистограмма), /quiniela/horarios/
