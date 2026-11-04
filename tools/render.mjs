@@ -250,6 +250,8 @@ export async function build(id, { collect = false, out = null } = {}) {
     }
   }
 
+  // site search (tools/lib/search.mjs): anchors on H2/H3 and one index per language of the written pages (English ones too)
+  if (SITE.search) for (const x of (await import('./lib/search.mjs')).writeSearch({ dist: DIST, site: SITE, pages: [...PAGES, ...(EN ? S.PAGES_EN : [])], id })) console.log('build ' + id + ': search index ' + x.file + ' (' + x.lang + ') ' + x.pages + ' pages, ' + Math.round(x.gz / 1024) + ' KB gzip');
 
   // ---- index: open (owner 2026-11-03) - every built page except 404 is in the sitemap, robots allows everything ----
   writeFileSync(join(DIST, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + ORIGIN + '/sitemap.xml\n');

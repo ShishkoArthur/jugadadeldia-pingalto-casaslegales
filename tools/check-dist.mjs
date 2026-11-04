@@ -191,6 +191,32 @@ export async function check(id, dist, { today = new Date().toISOString().slice(0
   const want = new Set([...S.PAGES, ...S.PAGES_EN].map(p => ORIGIN + p.path));
   for (const l of locs) if (!want.has(l)) bad('sitemap', null, 'sitemap has ' + l + ' (not a built page or another host)');
   for (const u of want) if (!locs.includes(u)) bad('sitemap', null, 'sitemap misses ' + u);
+  // whole menu and site search (owner 2026-11-04): pages of the sitemap by the language of their HTML
+  const langOfHtml = H => ((H.match(/<html lang="([a-z]{2})/) || [])[1]) || 'es';
+  const byLang = {};
+  for (const l of locs) { const u = l.slice(ORIGIN.length) || '/', tf = resolveFile(u); if (tf && html[tf]) (byLang[langOfHtml(html[tf])] = byLang[langOfHtml(html[tf])] || []).push(u); }
+  // every page that is not a help page carries the whole menu (<nav gate.menuAll>) with every page of its language exactly once;
+  // a help page carries only the short help menu
+  if (G.menuAll) for (const f of htmls) {
+    if (f === notFoundFile) continue;
+    const H = html[f], box = containers(H, new RegExp('<(nav)\\b[^>]*\\s' + G.menuAll + '[\\s>=]', 'g'))[0];
+    if (G.helpMark && G.helpMark.test(H)) { if (box) bad('menu', f, 'whole menu on a help page'); continue; }
+    if (!box) { bad('menu', f, 'no whole menu <nav ' + G.menuAll + '>'); continue; }
+    const n = {};
+    for (const [, u] of box.matchAll(/\shref="([^"#?]*)/g)) n[u] = (n[u] || 0) + 1;
+    const off = (byLang[langOfHtml(H)] || []).filter(u => n[u] !== 1);
+    if (off.length) bad('menu', f, off.length + ' page(s) not exactly once in the menu: ' + off.slice(0, 4).map(u => u + ' x' + (n[u] || 0)).join(', '));
+  }
+  // the search index of each language lists exactly the pages of that language
+  if (SITE.search) for (const [lang, list] of Object.entries(byLang)) {
+    const file = join(dist, SITE.search.file(lang));
+    let idx = null;
+    try { idx = JSON.parse(readFileSync(file, 'utf8')); } catch { bad('search', null, 'no readable search index ' + SITE.search.file(lang)); continue; }
+    const got = new Set((idx.p || []).map(e => e.u));
+    const miss = list.filter(u => !got.has(u)), extra = [...got].filter(u => !list.includes(u));
+    if (miss.length) bad('search', null, 'search index ' + SITE.search.file(lang) + ' misses ' + miss.slice(0, 5).join(', '));
+    if (extra.length) bad('search', null, 'search index ' + SITE.search.file(lang) + ' has pages outside the sitemap ' + extra.slice(0, 5).join(', '));
+  }
   const rb = existsSync(join(dist, 'robots.txt')) ? readFileSync(join(dist, 'robots.txt'), 'utf8') : '';
   if (!rb || /^Disallow:\s*\/\S*\s*$/m.test(rb) || !rb.includes('Sitemap: ' + ORIGIN + '/sitemap.xml')) bad('robots', null, 'robots.txt missing, blocking, or without the sitemap line');
   // served files: own asset scheme, no comments, no Cyrillic
@@ -308,6 +334,12 @@ async function selftest(id) {
     ['cyrillic', A, body('<p>' + cyr + '</p>')],
     ['langattr', A, s => s.replace('<html lang="' + S.SITE.htmlLang + '"', '<html lang="en"')],
   ];
+  if (G.menuAll) {
+    const menuOpen = new RegExp('<nav\\b[^>]*\\s' + G.menuAll + '[^>]*>');
+    cases.push(['menu', A, s => s.replace(menuOpen, m => m + '<a href="/">x</a>')], ['menu', A, s => s.replace(menuOpen, m => m + '<b hidden>').replace(/(<b hidden>[\s\S]*?)<a\b([^>]*?)\shref="/, '$1<a$2 data-x="')]);
+    if (RG) cases.push(['menu', HELP, s => s.replace('</header>', '<nav ' + G.menuAll + '><a href="/">x</a></nav></header>')]);
+  }
+  if (S.SITE.search) cases.push(['search', S.SITE.search.file('es').slice(1), s => { const j = JSON.parse(s); j.p = j.p.filter(e => e.u !== A_PATH); return JSON.stringify(j); }]);
   const run = async (name, prep, o = {}) => {
     const tmp = base + '-' + name;
     rmSync(tmp, { recursive: true, force: true });
