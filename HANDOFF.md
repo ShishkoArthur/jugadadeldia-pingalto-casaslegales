@@ -487,6 +487,18 @@
 - **Казино** `/operador/<slug>/casino` (`pages/opcasino.mjs`): строится, когда у бренда ≥ 2 разных casino-факта; где лицензия называет казино
   (Neuquén, Santa Fe — из `casinoLists`) или «juego online» без разделения (цитата списка); RG; официальные ссылки. Betano — лобби казино
   пустое при сборе (1 факт) → страницы нет.
+- **Дополнено 04.11 (по аудиту):** «Ir» у провинциальных платформ, которые регулятор сам ссылает (Entre Ríos, Misiones, Chaco, Corrientes —
+  allowlist гейта расширен хостами из `data/sources/provinces`), колонка «Sitio oficial» в таблице /verificador; в обзорах разделы
+  `#ingresar` (адрес по каждому списку, кнопки, как не попасть на копию; страниц входа не ссылаем) и `#app` (ссылки на App Store/Google Play
+  только из проверенной цитаты страницы оператора; Android-APK с сайта оператора — текстом). `/casinos-online-legales` — хаб «casino online»
+  (title «Casino online en Argentina: sitios legales por provincia»; рулетка 1/37 и 2/38 и RTP считает код; live vs слоты; «Ir» во всех
+  списках; казино брендов). Ключи в плане перенесены (betsson caba → /operador/betsson/caba, casino magic online → /operador/casino-magic-online,
+  «<бренд> casino» → /operador/<бренд>/casino, casino online argentina → хаб). Живые обзоры: Betsson, Betano, bet365, bplay, Codere,
+  BetWarrior (только портал), Jugadón, Sportsbet, Casino BA Online, Super7, Casino Club, Playcet; казино: Betsson, bet365, bplay.
+  Stake — проверка Cloudflare, данных нет (страница без «reseña»).
+- **Параллельные агенты в одном дереве:** коммитить только `git commit -- <пути>` (не `git add` заранее — чужой коммит заберёт индекс);
+  проверять сборку на HEAD + своих файлах (как deploy: `git archive HEAD` во временную папку), т.к. незакоммиченные данные сборщика
+  могут ронять локальную сборку.
 - **Новый бренд, когда его данные закоммичены:** `node tools/review-shots.mjs <brand>` (PNG из `data/shots/<brand>/` → webp в
   `sites/casaslegales/static/shots/review-<brand>-<view>.webp`, коммитить) → `node tools/render.mjs casaslegales` (посмотреть «no label»)
   → проверить страницу на 375/1280 → коммит → `bash tools/deploy.sh casaslegales`. Title/H1 переключатся на «reseña» сами.
