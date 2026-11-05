@@ -1,5 +1,5 @@
 {
- "total": 8.037,
+ "total": 8.3529,
  "runs": [
   {
    "at": "2026-11-04T12:21:12.652Z",
@@ -96,6 +96,12 @@
    "site": "pingalto",
    "what": "strings",
    "usd": 0.0909
+  },
+  {
+   "at": "2026-11-05T08:01:21.088Z",
+   "site": "jugadadeldia",
+   "what": "strings",
+   "usd": 0.3159
   }
  ]
 }
