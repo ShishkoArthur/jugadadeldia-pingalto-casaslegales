@@ -1,4 +1,4 @@
-// Home of jugadadeldia.com: the "Menu principal" layout (design r3/06): HUD chips, hero, quiniela grid explained, cuánto paga,
+// Home of jugadadeldia.com: the "Menu principal" layout (design r3/06): hero, quiniela grid explained, cuánto paga,
 // Quini 6 odds, truco scorer and the library of tools. Draw results live on /quiniela/ and the province pages (server feed).
 import { directBet } from '../../../engine/lottery/quiniela.mjs';
 import { odds } from '../../../engine/lottery/games.mjs';
@@ -14,11 +14,9 @@ export const home = {
   render(h) {
     const c = d => directBet({ rules: 'lotba-quiniela', digits: d, places: 1, stake: 100 });
     const two = c(2), q6 = odds('cas-quini6-tradicional');
-    const jur = h.rg.pack.provinces.length;
     const grid = '<div class="jg-g100" aria-hidden="true">' + Array.from({ length: 100 }, (_, i) => '<i' + (i === 47 ? ' class="on"' : '') + '>' + String(i).padStart(2, '0') + '</i>').join('') + '</div>';
-    const hud = '<p class="jg-hud"><span><i></i>' + h.t('{{docs}}') + ' documentos oficiales guardados</span><span><i style="--c:var(--b3)"></i>' + jur + ' jurisdicciones con su ayuda</span><span><i style="--c:var(--b2)"></i>Truco, generala, chinchón y escoba</span></p>';
     const stack = '<div class="jg-st" aria-hidden="true"><div></div><div></div><div><small>Ejemplo</small><b>A la cabeza</b><div class="jg-four"><i class="jg-ba">4</i><i class="jg-ba c2">7</i><i class="jg-ba c3">2</i><i class="jg-ba c4">1</i></div><small>2 cifras: 1 en 100</small></div></div>';
-    return hud + hero(h, {
+    return hero(h, {
       kicker: 'Quiniela · loterías · truco', scene: 'home',
       lede: 'Cuánto paga cada jugada según el reglamento oficial y qué chance real tiene, sin humo. Y para la sobremesa: truco, generala, chinchón y escoba contra la compu.',
       actions: btn(h, '/quiniela/', 'La quiniela de hoy', true) + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') + btn(h, '/truco/jugar/', 'Jugar al truco'),
