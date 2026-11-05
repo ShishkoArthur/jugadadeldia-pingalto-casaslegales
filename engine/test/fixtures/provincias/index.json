@@ -114,5 +114,33 @@
  "https://www.loteriademisiones.com.ar/portal/juegos/quiniela-nocturna/": {
   "file": "29-loteriademisiones.html",
   "type": "text/html; charset=UTF-8"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/01-11-2026/PRE": {
+  "file": "30-loteria.html",
+  "type": "text/html"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/01-11-2026/PRI": {
+  "file": "31-loteria.html",
+  "type": "text/html"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/01-11-2026/MAT": {
+  "file": "32-loteria.html",
+  "type": "text/html"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/01-11-2026/Ves": {
+  "file": "33-loteria.html",
+  "type": "text/html"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/01-11-2026/NOC": {
+  "file": "34-loteria.html",
+  "type": "text/html"
+ },
+ "https://loteria.chaco.gov.ar/ver_extracto/04-11-2026/NOC": {
+  "file": "35-loteria.html",
+  "type": "text/html"
+ },
+ "https://resultadosquiniela.cajapopular.gov.ar/api/extracto/?fecha_sorteo=2026-11-01": {
+  "file": "36-resultadosquiniela.json",
+  "type": "text/html"
  }
 }

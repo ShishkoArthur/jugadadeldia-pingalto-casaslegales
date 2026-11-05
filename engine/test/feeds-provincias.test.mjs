@@ -1,14 +1,15 @@
 // Provincial quinielas (Tucumán, San Juan, Chaco, Corrientes, Misiones) and lotto games (Loto Plus, Telekino, Quini 6, Brinco):
 // parsing of the official pages, cross-checks, and fixture runs of both feeds. Fixtures are real answers recorded from our server
 // on 2026-11-04 around 06:30 Argentine time (engine/test/fixtures/provincias, engine/test/fixtures/loterias; pages cut down to the
-// result blocks).
+// result blocks). Added 2026-11-05 04:10 Argentine time: the five Chaco pages of Sunday 01-11 (no draw: empty page, files 30-34),
+// the Chaco Nocturna of 04-11 (35, the current layout) and the Tucumán day list of Sunday 01-11 (36, empty).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, mkdtempSync, mkdirSync, cpSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, cpSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parseTucumanDay, parseTucumanRegistro, tucumanIntermediate, parseSanJuan, parseChaco, parseMisiones, ProvError } from '../../tools/feeds/jugadadeldia/provincias-parse.mjs';
-import prov, { refCheck } from '../../tools/feeds/jugadadeldia/provincias.mjs';
+import prov, { refCheck, sourceState, isDown, kindOf } from '../../tools/feeds/jugadadeldia/provincias.mjs';
 import lot, { parseLoto, parseTelekino, parseCas, behindOf, LotError } from '../../tools/feeds/jugadadeldia/loterias.mjs';
 import { runFeed } from '../../tools/feeds/run.mjs';
 
@@ -63,6 +64,34 @@ test('Chaco: five named columns, Chaqueña and Correntina besides the LOTBA/PBA/
   assert.equal(parseChaco(body('provincias', CHA + '03-11-2026/PRI'), '2026-11-03', 'PRIM').cols.chaco.length, 20, '"La Primera" is the Primera turn');
 });
 
+test('Chaco: a page without a draw (Sunday 01-11) is null, a changed empty page throws; the 04-11 layout still parses', () => {
+  for (const [c, t] of [['PRE', 'PREV'], ['PRI', 'PRIM'], ['MAT', 'MATU'], ['Ves', 'VESP'], ['NOC', 'NOCT']]) assert.equal(parseChaco(body('provincias', CHA + '01-11-2026/' + c), '2026-11-01', t), null, c);
+  const sun = body('provincias', CHA + '01-11-2026/PRE');
+  assert.throws(() => parseChaco(sun, '2026-11-02', 'PREV'), /no draw number\/date/, 'an empty page of another date is not a day without draw');
+  const rows = sun.replace('<p class="results-number">Ubicación</p>', '<p class="results-number">Ubicación</p><p class="results-number">Chaqueña</p>');
+  assert.throws(() => parseChaco(rows, '2026-11-01', 'PREV'), /no draw number\/date/, 'columns without a draw number: changed page');
+  const p = parseChaco(body('provincias', CHA + '04-11-2026/NOC'), '2026-11-04', 'NOCT');
+  assert.equal(p.sorteo, 15378);
+  assert.equal(p.cols.chaco[0], '7248');
+  assert.deepEqual(Object.keys(p.cols).sort(), ['buenos-aires', 'caba', 'chaco', 'cordoba', 'corrientes']);
+});
+
+test('source health: a changed page is down after 3 runs, no answer after 2 runs and 3 h; an answer clears it', () => {
+  const at = h => new Date(Date.parse('2026-11-05T03:19:00Z') + h * 3600e3).toISOString();
+  const fmt = [{ kind: 'format', msg: 'Chaco x: no draw number/date' }], net = [{ kind: 'network', msg: 'HTTP 503' }];
+  let s = null;
+  for (let i = 0; i < 3; i++) { s = sourceState(s, 0, fmt, at(i / 4)); assert.equal(isDown(s, Date.parse(at(i / 4))), i === 2, 'format run ' + (i + 1)); }
+  assert.equal(s.since, at(0));
+  assert.deepEqual(sourceState(s, 0, [], at(1)), s, 'not asked: unchanged');
+  assert.deepEqual(sourceState(s, 2, [], at(1)), { lastOk: at(1) });
+  let n = sourceState(sourceState(null, 0, net, at(0)), 1, net, at(1));
+  assert.equal(n.kind, 'network');
+  assert.ok(!isDown(n, Date.parse(at(1))) && isDown(n, Date.parse(at(3))));
+  assert.equal(kindOf(new ProvError('x')), 'format');
+  assert.equal(kindOf(Object.assign(new Error('HTTP 404'), { status: 404 })), 'format');
+  assert.equal(kindOf(new Error('fetch failed')), 'network');
+});
+
 test('Misiones: latest draw of a turn page, Plus column and reference columns', () => {
   const p = parseMisiones(body('provincias', MIS + 'quiniela-nocturna/'), 'NOCT');
   assert.equal(p.date, '2026-11-03');
@@ -100,7 +129,7 @@ function outWithReference() {
   return { out, fixtures };
 }
 
-test('provincias feed: fixture run publishes six jurisdictions; a failing run keeps the last good file', async () => {
+test('provincias feed: fixture run publishes six jurisdictions; a day without draw is no failure; a failing source keeps its last good draws, the others publish', async () => {
   const { out, fixtures } = outWithReference();
   const r = await runFeed(prov, { out, fixtures, now: new Date(NOW), ua: 'test' });
   assert.ok(r.ok, r.error);
@@ -114,10 +143,46 @@ test('provincias feed: fixture run publishes six jurisdictions; a failing run ke
   assert.deepEqual(d.conflicts, []);
   const a = JSON.parse(readFileSync(join(out, 'provincias-archivo.json'), 'utf8')).data;
   assert.deepEqual(a.checked.tuc, ['2026-11-02', '2026-11-03']);
-  // next run: only backfill days without fixtures are asked -> every source fails -> the run fails, the file stays
+  assert.deepEqual(d.alerts, []);
+  // next run: the backfill day is Sunday 01-11. Tucumán and Chaco answer "no draw" (not a failure, the day is closed); San Juan has
+  // no fixture for it (404: a changed address) -> only San Juan fails, the feed still publishes
+  const read = () => JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data;
   const r2 = await runFeed(prov, { out, fixtures, now: new Date(NOW), ua: 'test' });
-  assert.ok(!r2.ok && /all provincial sources failed/.test(r2.error), r2.error);
-  assert.equal(JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data.latest.tucuman.d, '2026-11-03');
+  assert.ok(r2.ok, r2.error);
+  let e = read();
+  assert.deepEqual(e.sources.none, { tuc: ['2026-11-01'], cha: ['2026-11-01 PREV', '2026-11-01 PRIM', '2026-11-01 MATU', '2026-11-01 VESP', '2026-11-01 NOCT'] });
+  assert.ok(!e.sources.state.cha.since && !e.sources.state.tuc.since, 'a day without draw is not a failure');
+  assert.equal(e.sources.state.sj.runs, 1);
+  assert.deepEqual(e.alerts, []);
+  assert.ok(!e.jurs.some(J => J.stale));
+  const a2 = JSON.parse(readFileSync(join(out, 'provincias-archivo.json'), 'utf8')).data;
+  assert.ok(a2.checked.cha.includes('2026-11-01') && a2.checked.tuc.includes('2026-11-01') && !a2.checked.sj.includes('2026-11-01'));
+  // San Juan keeps failing: down on the 3rd run in a row -> one alert naming the source and why; only San Juan is marked stale
+  for (let i = 0; i < 2; i++) assert.ok((await runFeed(prov, { out, fixtures, now: new Date(NOW), ua: 'test' })).ok);
+  e = read();
+  assert.equal(e.sources.state.sj.runs, 3);
+  assert.equal(e.alerts.length, 1);
+  assert.match(e.alerts[0].id, /^prov-sj-/);
+  assert.match(e.alerts[0].text, /San Juan \(CAS\) failing since .*page changed.*fixture missing.*San Juan 2026-11-03 NOCT/);
+  assert.deepEqual(e.jurs.filter(J => J.stale).map(J => J.id), ['san-juan']);
+  for (const j of ['tucuman', 'san-juan', 'chaco', 'corrientes', 'misiones', 'misiones-plus']) assert.deepEqual(e.latest[j], { d: '2026-11-03', t: 'NOCT' }, j);
+});
+
+test('provincias feed: the 05-11 night (only Sunday Chaco pages asked) publishes with no failure', async () => {
+  const { out, fixtures } = outWithReference();
+  assert.ok((await runFeed(prov, { out, fixtures, now: new Date(NOW), ua: 'test' })).ok);
+  const f = join(out, 'provincias-archivo.json'), doc = JSON.parse(readFileSync(f, 'utf8'));
+  const past = Array.from({ length: 21 }, (_, i) => new Date(Date.parse('2026-11-03T12:00:00Z') - i * 864e5).toISOString().slice(0, 10)).sort();
+  for (const s of ['tuc', 'sj']) doc.data.checked[s] = past;
+  doc.data.checked.cha = past.filter(d => d !== '2026-11-01');
+  writeFileSync(f, JSON.stringify(doc));
+  const r = await runFeed(prov, { out, fixtures, now: new Date(NOW), ua: 'test' });
+  assert.ok(r.ok, r.error);
+  assert.equal(r.requests, 5);
+  const d = JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data;
+  assert.deepEqual(d.sources.failed, {});
+  assert.equal(d.sources.none.cha.length, 5);
+  assert.ok(JSON.parse(readFileSync(f, 'utf8')).data.checked.cha.includes('2026-11-01'));
 });
 
 test('lotto parsers: LOTBA Loto Plus with prizes, Telekino site, San Juan CAS copies', () => {

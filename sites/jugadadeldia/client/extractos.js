@@ -286,13 +286,20 @@ function pmeta(m, id) {
 const ptime = (t, e) => (e && e.h) || (P.times && P.times[t.id]) || '';
 const cab = v => '<span>' + v.slice(0, 2) + '<b>' + v.slice(2, 4) + '</b></span>';
 
+const jstale = (J, now) => {
+  if (!J.stale || !J.stale.since) return '';
+  const s = J.stale.since, when = arDate(s) === now.d ? 'hoy a las ' + arTime(s) : 'el ' + day(arDate(s)) + ' a las ' + arTime(s);
+  return '<p class="jg-xs no" role="status"><b>La fuente de la ' + esc(J.long) + ' no responde bien desde ' + esc(when) + '.</b> Abajo están los últimos sorteos que sí pudimos revisar; puede faltar alguno más nuevo.</p>';
+};
+
 async function pv(el) {
   const id = el.dataset.jur;
   const doc = await load('provincias'), m = doc.data, now = nowAr();
   const x = pmeta(m, id);
   if (!x) { fail(el, 'Todavía no tenemos extractos de esta provincia.'); return; }
   const { J, mine, tl, meta } = x;
-  if (!mine.length) { el.innerHTML = status(doc) + '<p class="jg-xh">Todavía no tenemos extractos de la ' + esc(J.long) + '.</p>'; return; }
+  const st = () => status(doc) + jstale(J, now);
+  if (!mine.length) { el.innerHTML = st() + '<p class="jg-xh">Todavía no tenemos extractos de la ' + esc(J.long) + '.</p>'; return; }
   const last = mine[mine.length - 1];
   let cur = last;
   const draw = () => {
@@ -310,7 +317,7 @@ async function pv(el) {
       return '<div class="jg-pk off"><small>' + esc(t.name) + (tm ? ' · ' + esc(tm) : '') + '</small><span class="jg-xe">' + (later ? 'a las ' + esc(tm) : isToday ? 'todavía no' : '—') + '</span></div>';
     }).join('');
     const tn = tName(meta, cur.t), tm = ptime({ id: cur.t }, cur);
-    el.innerHTML = status(doc) + lead + '<div class="jg-pt" role="group" aria-label="Sorteos del día">' + chips + '</div>' +
+    el.innerHTML = st() + lead + '<div class="jg-pt" role="group" aria-label="Sorteos del día">' + chips + '</div>' +
       '<div class="jg-xd"><h3>' + (cur === last ? 'Último sorteo: ' : '') + esc(tn) + ' del ' + esc(day(cur.d)) + '</h3><p class="jg-xh">' + (cur.s ? 'Sorteo N° ' + cur.s : '') + (tm ? ' · ' + esc(tm) + ' hs' : '') + ' ' + pbadge(cur) + '</p>' +
       extract(pnums(cur), { label: 'Extracto de la ' + J.long }) + '</div>';
   };

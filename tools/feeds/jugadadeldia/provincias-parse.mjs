@@ -140,19 +140,23 @@ export function parseSanJuan(html, date) {
 export const CHACO_CODES = { PREV: 'PRE', PRIM: 'PRI', MATU: 'MAT', VESP: 'Ves', NOCT: 'NOC' };
 const CHACO_TITLES = { PREV: ['LA PREVIA'], PRIM: ['LA PRIMERA', 'PRIMERA'], MATU: ['MATUTINA'], VESP: ['VESPERTINA'], NOCT: ['NOCTURNA'] };
 export const CHACO_COLS = { 'PROV. BS AS': 'buenos-aires', 'CIUDAD BS AS': 'caba', CHAQUENA: 'chaco', CORRENTINA: 'corrientes', CORDOBA: 'cordoba' };
-// -> null when the page has no extract for that turn, else { date, turno, sorteo, cols: { id: [20] } } (a column without 20 numbers
-// is left out). Unknown column, wrong date/turn, broken row -> throws.
+// -> null when the page has no extract for that turn (no draw that day: Sunday, holiday; or not drawn yet), else
+// { date, turno, sorteo, cols: { id: [20] } } (a column without 20 numbers is left out). Unknown column, wrong date/turn, broken
+// row -> throws. The empty page (seen 2026-11-05 for Sunday 01-11 and for today's turns before their time) keeps the layout: the
+// asked date, an empty "N° de Sorteo:" and a results list with only the "Ubicación" header cell. Anything else without a draw
+// number is a changed page and throws.
 export function parseChaco(html, date, turno) {
   const h = String(html);
   const sm = /N° de Sorteo:\s*(\d+)/.exec(h), fm = /<h5>\s*Fecha:\s*(\d{2}\/\d{2}\/\d{4})\s*<\/h5>/.exec(h);
   const start = h.indexOf('<ul class="results-list">');
   if (start < 0) { if (sm) bad('Chaco ' + date + ' ' + turno + ': unknown layout'); return null; }
+  const end = h.indexOf('</ul>', start);
+  const items = h.slice(start, end).split(/<li class="results-list__item[^"]*"/).slice(1).map(li => [...li.matchAll(/<p class="results-number[^"]*"[^>]*>([^<]*)<\/p>/g)].map(x => decode(x[1]).trim()));
+  if (!sm && fm && isoFromDmy(fm[1]) === date && /N° de Sorteo:\s*<\/li>/.test(h) && items.length === 1 && items[0].length === 1 && fold(items[0][0]) === 'UBICACION') return null;
   if (!sm || !fm) bad('Chaco ' + date + ' ' + turno + ': no draw number/date');
   if (isoFromDmy(fm[1]) !== date) bad('Chaco ' + date + ' ' + turno + ': page date ' + fm[1]);
   const title = /<h4>\s*Quiniela ([^<]+?)\s*<\/h4>/.exec(h.slice(Math.max(0, start - 800), start));
   if (!title || !CHACO_TITLES[turno].includes(fold(decode(title[1])))) bad('Chaco ' + date + ' ' + turno + ': turn title ' + JSON.stringify(title && title[1]));
-  const end = h.indexOf('</ul>', start);
-  const items = h.slice(start, end).split(/<li class="results-list__item[^"]*"/).slice(1).map(li => [...li.matchAll(/<p class="results-number[^"]*"[^>]*>([^<]*)<\/p>/g)].map(x => decode(x[1]).trim()));
   if (items.length !== 21) bad('Chaco ' + date + ' ' + turno + ': expected header + 20 rows, got ' + items.length);
   const head = items[0];
   if (fold(head[0]) !== 'UBICACION') bad('Chaco ' + date + ' ' + turno + ': header');
