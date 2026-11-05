@@ -7,9 +7,35 @@
 обходить не стали — нужен браузер из Аргентины.
 
 Сборка casaslegales печатает актуальный список «owner copies pending» с числом оставшихся дней. Копия владельца годится **180 дней**
-(решение владельца 04.11; правило в одном месте — `tools/lib/copyage.mjs`): копии 01.11 (новость Diputados, помощь Mendoza и Tucumán,
-ley 8986) истекают **30.04.2027**, остальные 17 (03.11) — **02.05.2027**. Telegram-напоминание придёт **09.04.2027** (за 21 день до первого срока) одним списком
+(решение владельца 04.11; правило в одном месте — `tools/lib/copyage.mjs`): HCDN и ley 8986 (копии 01.11) истекают **30.04.2027**,
+Рío Negro ×3 (03.11) — **02.05.2027**, 16 копий из Chrome владельца (05.11) — **04.05.2027**. Telegram-напоминание придёт **09.04.2027** (за 21 день до первого срока) одним списком
 вместе с обзорами и операторами; дальше — раз в полгода. Страницы, которые сервер качает сам, живут 100 дней и обновляются им каждый месяц.
+
+## 05.11.2026 — снято в Chrome владельца (папка `2026-11-05/`)
+
+По решению 04.11 агент открыл страницы **в Chrome владельца** (VPN с выходом в Аргентине, видимая вкладка, владелец смотрел),
+перед каждым сайтом прочитав robots.txt: Córdoba, Neuquén, Salta запрещают только боты обучения (ClaudeBot, anthropic-ai, Claude-Web),
+`*` — Allow; у loteriadecordoba.com.ar без www robots — 404; loteriasantafe.gov.ar, cajapopular.gov.ar — без запретов для `*`;
+santafe.gob.ar, ipjyc.gob.ar, mendoza.gob.ar — robots 404 (= можно). Входа, форм, CAPTCHA не было.
+
+Сохранено **16 страниц** (`copiedBy: "owner-browser"`, `fetched` 2026-11-05, годны до **04.05.2027**): `cba-juegos-online`,
+`ar-x-loteria-juego-responsable`, `neu-juego-legal`, `neu-casinos`, `ar-q-ijan-juego-responsable`, `sal-enreja-juego-autorizado`,
+`ar-a-enreja-jr`, `santa-fe-plataformas`, `santa-fe-inicio`, `santa-fe-juego-responsable`, `santa-fe-juego-compulsivo`,
+`santa-fe-historia`, `mendoza-plataformas`, `ar-m-ipjyc-juego-responsable`, `tuc-caja-popular-inicio`,
+`ar-t-caja-popular-juego-responsable`. Копия — не вся страница, а DOM после отрисовки: блоки с цитатами и списком (у блока списка
+атрибуты как на странице, у остальных оставлен только `href`; ссылки абсолютные, как их разрешает Chrome), без скриптов, стилей и
+картинок; в `<head>` — `<title>`, canonical, `source-url`, время копии (`copied`) и `copied-by`. Для `noBetAr` (Salta, главная Caja
+Popular) — весь `body` (и проверено, что во всём DOM нет `.bet.ar`). sha256 каждой копии сверен в браузере и на диске.
+Все цитаты на месте; **списки не изменились**: Córdoba 4, Neuquén 5 + La Neuquina, Santa Fe 4 адреса, Mendoza 7.
+
+**Остаются только за владельцем (руками, Ctrl+U → Ctrl+S):** Río Negro ×3 (`rne-inicio`, `rne-rionegrina-online`,
+`ar-r-loteria-autoexclusion` — robots явно запрещает Claude-User; копии 03.11, до 02.05.2027), HCDN `ar-hcdn-media-sancion-2024-11-27`
+(robots запрещает Claude-Code; копия 01.11 ждёт копию владельца, до 30.04.2027) и `ar-t-ley-8986` (PDF; robots.txt e-legis 05.11 и из
+Аргентины отвечает 500 — по правилу «5xx = нельзя», не открывали; до 30.04.2027).
+
+Как повторить: robots.txt сайта (Claude-User и Claude-Code для пути; запрет → стоп) → страница в видимой вкладке → блоки по цитатам и
+шаблону списка из `data/sources` → файл `2026-11-05/<имя>.html` → `node tools/owner-copy.mjs <имя> <файл> --date <дата> --by owner-browser`
+(сначала без `--write`) → `npm test`. Копии jugadadeldia (`data/sources/lottery/online.json`) `owner-copy.mjs` обновляет сам.
 
 ## Что сохранить
 

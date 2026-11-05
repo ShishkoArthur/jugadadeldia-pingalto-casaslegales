@@ -21,11 +21,11 @@
   },
   "cba-juegos-online": {
    "url": "https://loteriadecordoba.com.ar/juegos/online",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "1dfc8a77702f16509a51409d3d26b1ebba59ad577ff158ca5bde0b35d68c7ae5",
+   "sha256": "40f58852fc0afbd0362681a219f9d50b55645fc99e04be40775c303e82e604d1",
    "file": "data/sources/lottery/_docs/online-cba-juegos-online.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "rne-rionegrina-online": {
    "url": "https://www.loteriaderionegro.gob.ar/la-rionegrina-online",
@@ -37,19 +37,19 @@
   },
   "neu-juego-legal": {
    "url": "https://ijan-neuquen.com/juego_legal.php",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "9e59f2d72a6513714629f2ee7b58285eb9d3d296d4fc9e942e009178cdfcd1df",
+   "sha256": "2c23e192aee276a4d141f61b633b7686aa6530d17b6b5be2876384086c3730d6",
    "file": "data/sources/lottery/_docs/online-neu-juego-legal.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "mendoza-plataformas": {
    "url": "https://www.ipjyc.gob.ar/JEL/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "c5499cfbb56fb3dc158460eb0c36bf73880be899700ac439b84a275472d09995",
+   "sha256": "ccc0631d3dd3b8aa2920aa3195ac900bc220441f5d65c589a7eab761e3c5bad3",
    "file": "data/sources/lottery/_docs/online-mendoza-plataformas.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "lri-plataformas": {
    "url": "https://ajalar.com.ar/sitio/lista-de-plataformas-autorizadas/",
@@ -60,19 +60,19 @@
   },
   "santa-fe-plataformas": {
    "url": "https://www.loteriasantafe.gov.ar/casinos/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "57a84fc3ff7fffcc3f99620fe76506fbc7ebf2c0038c069b25bbcc3e97709afa",
+   "sha256": "a034f53040c7536df868c524636d2062374756cb3a3b8c268a301238e3b51107",
    "file": "data/sources/lottery/_docs/online-santa-fe-plataformas.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "santa-fe-inicio": {
    "url": "https://www.loteriasantafe.gov.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "737203406cf7dec68ddd3d19bd2ba0d0283ee8128f216fef96f3afea8dbfc86b",
+   "sha256": "dc388ee39c3bf94786da40ab9a2c9078dcfd4d8df81a38585816726ba6255b93",
    "file": "data/sources/lottery/_docs/online-santa-fe-inicio.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   }
  },
  "facts": [

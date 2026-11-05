@@ -40,20 +40,21 @@
   },
   "sal-enreja-juego-autorizado": {
    "url": "https://www.enrejasalta.com.ar/ja.php",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "b4d37285a9f72b70db9022e2ac61498613d11aa0a847e34f4cd5126345b2c9ba",
+   "sha256": "49cfee4bdfd21cf045be3eb5717ea1bfaa783ef854c942d323b526d2236f3632",
    "file": "data/sources/provinces/_docs/sal-enreja-juego-autorizado.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "tuc-caja-popular-inicio": {
    "url": "https://www.cajapopular.gov.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "5c01cedda0a087ae1423f2ba5a1b080b0cf2b3cecd8109aa657f0d2b1e0bb892",
+   "sha256": "2992fc90698c2c621c6f879f8713433c17220676306b28f6395c90c6a505c0e9",
    "file": "data/sources/provinces/_docs/tuc-caja-popular-inicio.html",
    "refresh": "manual",
-   "refreshWhy": "our server cannot connect to cajapopular.gov.ar (connection timeout from the UK, 2026-11-04); the owner saves it from Chrome in Argentina"
+   "refreshWhy": "our server cannot connect to cajapopular.gov.ar (connection timeout from the UK, 2026-11-04); the owner saves it from Chrome in Argentina",
+   "copiedBy": "owner-browser"
   },
   "sju-cas-inicio": {
    "url": "https://www.cas.gob.ar/",

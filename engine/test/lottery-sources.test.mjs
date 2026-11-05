@@ -23,7 +23,8 @@ test('every engine constant is a quoted fact with the same value', () => {
 
 test('the source files verify (quotes, values, sha256, freshness on the fetch day)', () => {
   const seen = new Set();
-  for (const f of files) assert.deepEqual(checkLotteryFile(f, { today: '2026-11-04', seen }), [], f.id);
+  const lastFetch = f => Object.values(f.docs || {}).map(d => d.fetched).filter(Boolean).sort().at(-1) || '2026-11-04';
+  for (const f of files) assert.deepEqual(checkLotteryFile(f, { today: lastFetch(f), seen }), [], f.id);
 });
 
 test('the verifier catches a wrong value, a wrong table row, an edited quote and a stale document', () => {

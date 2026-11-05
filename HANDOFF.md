@@ -61,12 +61,15 @@
   PandaScore, Clash Royale, Brawl Stars, рейтинги (час/сутки); casaslegales — официальные списки раз в месяц (`listas`), сроки (`plazos`),
   одно Telegram-напоминание. `_health` всех трёх — ok (04.11).
 - **Владелец раз в полгода** — `docs/MAINTENANCE.md` (копии сайтов, закрытых для ИИ, и гео-блок — Chrome в AR; обзоры через Chrome с VPN AR;
-  Search Console; ключи). Ближайшее: Telegram 09.04.2027, копии к 30.04–02.05.2027.
+  Search Console; ключи). Ближайшее: Telegram 09.04.2027; руками владельца — HCDN и ley 8986 к 30.04.2027, Río Negro ×3 к 02.05.2027.
+- **Копии владельца 05.11 — сняты в его Chrome** (VPN AR, видимая вкладка, robots.txt каждого сайта проверен): 16 страниц Córdoba, Neuquén,
+  Salta, Santa Fe, Mendoza, Tucumán → `copiedBy: "owner-browser"`, до 04.05.2027; списки и цитаты не изменились (README owner-saves, раздел 05.11).
+  Не открывали: Río Negro (robots: Claude-User), hcdn.gob.ar (Claude-Code), e-legis ley 8986 (robots 500).
 - **QA 04.11:** 1 458 загрузок + `tools/qa/static.mjs` (title/description, JSON-LD/FAQ, robots, sitemap, ленты, «Ir» + проба 5 адресов) +
   ссылки — 0 битых. Исправлено и выложено: pingalto (0d4487f), casaslegales (27fe5ec). **jdd (10b41a0) в main, не выложен:** `npm test`
   падает на кириллице в `tools/translate.mjs` (параллельный коммит i18n eead0b3) → после правки `bash tools/deploy.sh jugadadeldia`.
-- **Открыто:** ключ fortnite-api.com для трекера (регистрация через Discord — владелец; затем /fortnite/tracker); копии владельца
-  (список — `docs/reference/owner-saves/README.md`); вопрос о сцене до инструмента на телефоне на pingalto; P3 — в отчёте QA.
+- **Открыто:** ключ fortnite-api.com для трекера (регистрация через Discord — владелец; затем /fortnite/tracker); копии руками владельца
+  (Río Negro ×3, HCDN, ley 8986 — `docs/reference/owner-saves/README.md`); вопрос о сцене до инструмента на телефоне на pingalto; P3 — в отчёте QA.
   После меню с подменю, поиска и английских версий — **повторить полный QA** (этот проход их не покрывает).
 
 ## Состояние и следующее (03.11, вечер)
@@ -212,7 +215,8 @@
   лотереи jdd); скачанные нами — `maxAgeDays` своего JSON (реестры, провинции, помощь — 100, обновляет сервер раз в месяц); обзоры и операторы — 180.
   Его используют verify-*, гейт `fresh` (+ selftest 180/181 день), ленты `listas`/`plazos`/`fuentes` (jdd синхронизирует `copyage.mjs`),
   тексты casaslegales (`{{owner_max_age}}`, `{{next_check}}` = первый срок любой копии) и таблица источников jdd. Копии владельца истекают
-  30.04.2027 (4 копии 01.11) и 02.05.2027 (17 шт.); напоминание о них — 09.04.2027, одним списком с обзорами и операторами.
+  30.04.2027 (HCDN, ley 8986), 02.05.2027 (Río Negro ×3) и 04.05.2027 (16 копий из Chrome владельца 05.11, `copiedBy: "owner-browser"` —
+  тоже копия владельца); напоминание о них — 09.04.2027, одним списком с обзорами и операторами.
 - **Перед выкладкой после ~февраля 2027:** `bash tools/feeds-server.sh casaslegales pull --write` → `npm test` → commit → `sync` (casaslegales и
   jugadadeldia — общий пакет помощи) → deploy. `sync` теперь шлёт только `git archive HEAD` (TRAPS 04.11 исправлено); jdd и pingalto пересинхронизированы, health OK.
 

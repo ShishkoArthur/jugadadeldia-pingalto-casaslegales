@@ -179,14 +179,14 @@
   },
   "cba-juegos-online": {
    "url": "https://loteriadecordoba.com.ar/juegos/online",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "1dfc8a77702f16509a51409d3d26b1ebba59ad577ff158ca5bde0b35d68c7ae5",
+   "sha256": "40f58852fc0afbd0362681a219f9d50b55645fc99e04be40775c303e82e604d1",
    "file": "data/sources/registries/_docs/cba-juegos-online.html",
    "kind": "official",
    "official": true,
    "title": "Lotería de Córdoba, juego online",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "betfun-pie": {
    "url": "https://betfun.bet.ar/",

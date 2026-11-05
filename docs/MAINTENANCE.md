@@ -1,7 +1,7 @@
 # Обслуживание раз в полгода — jugadadeldia.com · pingalto.com · casaslegales.com
 
 Владелец хочет вмешиваться **не чаще раза в полгода** (PLAYBOOK §17.2; 04.11: «Работай до конца по всем моментам что не нужно моего
-вмешательства»). Здесь — что идёт само, что делает агент и что может сделать только владелец, с датами (состояние на 04.11.2026).
+вмешательства»). Здесь — что идёт само, что делает агент и что может сделать только владелец, с датами (состояние на 05.11.2026).
 Ленты подробно — `docs/FEEDS.md`; копии владельца — `docs/reference/owner-saves/README.md`; обзоры — `docs/REVIEWS-DATA.md`.
 
 ## Календарь
@@ -11,8 +11,9 @@
 | каждый месяц | сервер перепроверяет официальные страницы (лента `listas`): 42 копии реестров, провинций и пакета помощи (04.11: 38 сошлись, 4 не открылись) | casaslegales (+ пакет помощи jdd) | **само** | ничего; изменение списка → Telegram |
 | **до 09.02.2027** | пакет помощи (копии 01.11, 100 дн.) — в репозитории; на сервере обновляется сам | jdd, casaslegales | агент | `feeds-server.sh casaslegales pull --write` → `npm test` → commit → `sync` обеих лент → deploy jdd и casaslegales |
 | **09.04.2027** | Telegram-напоминание (за 21 день до 30.04) — один список на полгода: копии владельца, операторы, обзоры (всё, что истекает до 29.06) | casaslegales | бот | — |
-| **30.04.2027** | 4 копии 01.11, ждут копию владельца (180 дн.): новость Diputados (hcdn.gob.ar), помощь Mendoza (mendoza.gob.ar — 403 серверу), помощь Tucumán (cajapopular.gov.ar — таймаут), ley 8986 (e-legis — robots 500) | casaslegales, jdd | **владелец** | сохранить из Chrome в Аргентине (README owner-saves) |
-| **02.05.2027** | 17 копий владельца (180 дн., решение 04.11): Córdoba, Neuquén, Río Negro, Salta, Santa Fe, Mendoza + их страницы помощи, главная Caja Popular (Tucumán) | casaslegales (+ копии в jdd `/quiniela/online/`) | **владелец** | сохранить из Chrome (таблица ниже) и прислать |
+| **30.04.2027** | 2 копии только владельца: новость Diputados (hcdn.gob.ar — robots запрещает Claude-Code; ждёт первую копию владельца), ley 8986 (e-legis — robots.txt 500 и 05.11 из Аргентины, по правилу нельзя) | casaslegales, jdd | **владелец** | сохранить руками из Chrome (README owner-saves) |
+| **02.05.2027** | 3 копии Río Negro (`rne-inicio`, `rne-rionegrina-online`, `ar-r-loteria-autoexclusion`; robots запрещает Claude-User) | casaslegales (+ jdd `/quiniela/online/`) | **владелец** | сохранить руками из Chrome |
+| **04.05.2027** | 16 копий из Chrome владельца (05.11, `copiedBy: "owner-browser"`, 180 дн.): Córdoba ×2, Neuquén ×3, Salta ×2, Santa Fe ×5, Mendoza ×2, Tucumán ×2 | casaslegales (+ jdd) | агент в Chrome владельца (VPN AR) | robots.txt каждого сайта → блоки страниц → `owner-copy.mjs --by owner-browser` (README owner-saves) |
 | **02.05.2027** | копии страниц операторов и скриншоты (180 дн.) | casaslegales | владелец + агент | Chrome из AR / `capture-shots.mjs` |
 | **02.05.2027** | источники pingalto (`data/sources/pingalto`, 180 дн., копии 03–04.11) | pingalto | агент | скачать заново, сверить цитаты, commit, deploy |
 | **03.05.2027** | данные обзоров 27 марок (180 дн., собраны 04.11) | casaslegales | **владелец** (Chrome + VPN AR) | пересобрать обзоры |
@@ -52,7 +53,7 @@
 
 ## Что может сделать только владелец
 1. **Копии сайтов, закрытых для ИИ, и гео-блок** (Chrome на компьютере, `Ctrl+U` → `Ctrl+S`, «только HTML»; Santa Fe и Mendoza — из
-   Аргентины или с VPN AR). Список и адреса — `docs/reference/owner-saves/README.md` («Что сохранить»), на 04.11 это 21 страница:
+   Аргентины или с VPN AR). Список и адреса — `docs/reference/owner-saves/README.md` («Что сохранить»), на 05.11 руками — только 5 (Río Negro ×3, HCDN, ley 8986), остальные 16 агент снимает в Chrome владельца, пока он смотрит (05.11). Весь список:
    `cba-juegos-online`, `ar-x-loteria-juego-responsable` (Córdoba); `neu-juego-legal`, `neu-casinos`, `ar-q-ijan-juego-responsable` (Neuquén);
    `rne-inicio`, `rne-rionegrina-online`, `ar-r-loteria-autoexclusion` (Río Negro); `sal-enreja-juego-autorizado`, `ar-a-enreja-jr` (Salta);
    `santa-fe-plataformas`, `santa-fe-inicio`, `santa-fe-juego-responsable`, `santa-fe-juego-compulsivo`, `santa-fe-historia` (Santa Fe);
@@ -85,7 +86,7 @@
 9. Обновить `HANDOFF.md` и этот календарь (новые даты), commit.
 
 ## Как это устроено (для агента)
-- Сроки — **одно место: `tools/lib/copyage.mjs`** (`docMaxAge`): копия владельца (`copiedBy: "owner"`, `pendingOwnerCopy`, хост из
+- Сроки — **одно место: `tools/lib/copyage.mjs`** (`docMaxAge`): копия владельца (`copiedBy: "owner"` или `"owner-browser"`, `pendingOwnerCopy`, хост из
   `AI_BLOCKED_HOSTS`, `refresh: "manual"`) — `OWNER_COPY_MAX_AGE` = 180 дней в любом наборе; скачанная нашими программами — `maxAgeDays`
   своего JSON: реестры, провинции, пакет помощи — 100; операторы — 180; правила лотерей jdd — 183 (`online.json` — 100). Обзоры —
   `REVIEW_MAX_AGE` = `OWNER_COPY_MAX_AGE` (подпись на странице обзора); pingalto — 180; правила игр jdd — 183. Это правило используют

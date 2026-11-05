@@ -16,24 +16,24 @@
     "pattern": "- La Neuquina Online - <a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)/?\""
    }
   ],
-  "note": "Two pages of the regulator: \"Juego legal\" names the authorised online platforms (La Neuquina Online and the online casinos page); \"Casinos\" has the table \"CASINOS ONLINE PERMITIDOS\". robots.txt disallows AI crawlers, so the copies are the ones the owner saved from his own browser on 2026-11-03 (Chrome \"save complete page\": the DOM as the browser serialized it, links made absolute); evidence snippets are taken verbatim from those copies."
+  "note": "Two pages of the regulator: \"Juego legal\" names the authorised online platforms (La Neuquina Online and the online casinos page); \"Casinos\" has the table \"CASINOS ONLINE PERMITIDOS\". robots.txt disallows only AI training crawlers (not Claude-User or Claude-Code) (copy of 2026-11-05 taken in the owner's own Chrome with an Argentine VPN exit while he watched, copiedBy \"owner-browser\": the rendered DOM of the sections with the list and the quotes, links absolute as Chrome resolves them; list unchanged since 2026-11-03); evidence snippets are taken verbatim from those copies."
  },
  "docs": {
   "neu-juego-legal": {
    "url": "https://ijan-neuquen.com/juego_legal.php",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "9e59f2d72a6513714629f2ee7b58285eb9d3d296d4fc9e942e009178cdfcd1df",
+   "sha256": "2c23e192aee276a4d141f61b633b7686aa6530d17b6b5be2876384086c3730d6",
    "file": "data/sources/registries/_docs/neu-juego-legal.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "neu-casinos": {
    "url": "https://ijan-neuquen.com/casinos.php",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "b85283e75f6f23b17ae5c556661aa711093e8272b6011343e4335d9777f6385c",
+   "sha256": "0fa6490e0f4402e80c362933961bee9d21df2e9c6e8f6f7ac010fab95583b67f",
    "file": "data/sources/registries/_docs/neu-casinos.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   }
  },
  "quotes": {

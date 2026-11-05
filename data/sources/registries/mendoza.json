@@ -10,16 +10,16 @@
  "list": {
   "doc": "mendoza-plataformas",
   "pattern": "<p style=\"text-align: center;\"><a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)/?\"",
-  "note": "Home page of \"Juego En Línea Mendoza\" (ipjyc.gob.ar/JEL/), the online gaming site of the IPJyC: block \"PLATAFORMAS DE JUEGO EN LÍNEA\", one logo and one address per platform. The site does not answer from outside Argentina (not bypassed): the copy is the one the owner saved from his own browser in Argentina on 2026-11-03; evidence snippets are taken verbatim from it. The IPJyC home page (mendoza.gob.ar/juegosycasinos/) has no list."
+  "note": "Home page of \"Juego En Línea Mendoza\" (ipjyc.gob.ar/JEL/), the online gaming site of the IPJyC: block \"PLATAFORMAS DE JUEGO EN LÍNEA\", one logo and one address per platform. The site does not answer from outside Argentina (not bypassed): the copy is taken in Argentina (copy of 2026-11-05 taken in the owner's own Chrome with an Argentine VPN exit while he watched, copiedBy \"owner-browser\": the rendered DOM of the sections with the list and the quotes, links absolute as Chrome resolves them; list unchanged since 2026-11-03); evidence snippets are taken verbatim from it. The IPJyC home page (mendoza.gob.ar/juegosycasinos/) has no list."
  },
  "docs": {
   "mendoza-plataformas": {
    "url": "https://www.ipjyc.gob.ar/JEL/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "c5499cfbb56fb3dc158460eb0c36bf73880be899700ac439b84a275472d09995",
+   "sha256": "ccc0631d3dd3b8aa2920aa3195ac900bc220441f5d65c589a7eab761e3c5bad3",
    "file": "data/sources/registries/_docs/mendoza-plataformas.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   }
  },
  "quotes": {

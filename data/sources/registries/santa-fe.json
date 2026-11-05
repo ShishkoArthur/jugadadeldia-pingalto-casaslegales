@@ -10,24 +10,24 @@
  "list": {
   "doc": "santa-fe-plataformas",
   "pattern": "<li><a href=\"https?://(?<host>[^/\"]+\\.bet\\.ar)/?\" target=\"_blank\" rel=\"noopener\">",
-  "note": "Page \"Casinos\" of Lotería de Santa Fe, block \"Juego Online en Santa Fe: Regulación y Plataformas Habilitadas\": two lists, CASINOS ONLINE (bplay.bet.ar, citycenteronline.bet.ar) and APUESTAS DEPORTIVAS (the same two plus betwarrior.bet.ar and jugadon.bet.ar), so 4 distinct addresses; the page itself says 2 online gaming platforms and 4 sports betting platforms. The site does not answer from outside Argentina (not bypassed): the copies are the ones the owner saved from his own browser in Argentina on 2026-11-03; evidence snippets are taken verbatim from those copies."
+  "note": "Page \"Casinos\" of Lotería de Santa Fe, block \"Juego Online en Santa Fe: Regulación y Plataformas Habilitadas\": two lists, CASINOS ONLINE (bplay.bet.ar, citycenteronline.bet.ar) and APUESTAS DEPORTIVAS (the same two plus betwarrior.bet.ar and jugadon.bet.ar), so 4 distinct addresses; the page itself says 2 online gaming platforms and 4 sports betting platforms. The site does not answer from outside Argentina (not bypassed): the copies are taken in Argentina (copy of 2026-11-05 taken in the owner's own Chrome with an Argentine VPN exit while he watched, copiedBy \"owner-browser\": the rendered DOM of the sections with the list and the quotes, links absolute as Chrome resolves them; list unchanged since 2026-11-03); evidence snippets are taken verbatim from those copies."
  },
  "docs": {
   "santa-fe-plataformas": {
    "url": "https://www.loteriasantafe.gov.ar/casinos/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "57a84fc3ff7fffcc3f99620fe76506fbc7ebf2c0038c069b25bbcc3e97709afa",
+   "sha256": "a034f53040c7536df868c524636d2062374756cb3a3b8c268a301238e3b51107",
    "file": "data/sources/registries/_docs/santa-fe-plataformas.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "santa-fe-inicio": {
    "url": "https://www.loteriasantafe.gov.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "737203406cf7dec68ddd3d19bd2ba0d0283ee8128f216fef96f3afea8dbfc86b",
+   "sha256": "dc388ee39c3bf94786da40ab9a2c9078dcfd4d8df81a38585816726ba6255b93",
    "file": "data/sources/registries/_docs/santa-fe-inicio.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   }
  },
  "quotes": {

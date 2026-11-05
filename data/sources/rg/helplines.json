@@ -1077,11 +1077,11 @@
   },
   "ar-x-loteria-juego-responsable": {
    "url": "https://www.loteriadecordoba.com.ar/juego-responsable",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "8f911cd8f6257704aaed18bea29f17692f8c679b7050af39d4767cdaa7971584",
+   "sha256": "079099ad0e172b5fcda011bea1fa79e7c773afe9b1306c6bfa70e82b3baf7eff",
    "file": "data/sources/rg/_docs/ar-x-loteria-juego-responsable.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "ar-e-iafas-prevenjuego": {
    "url": "https://www.iafas.gov.ar/juego-responsable/prevenjuego/",
@@ -1099,20 +1099,21 @@
   },
   "ar-m-ipjyc-juego-responsable": {
    "url": "https://www.mendoza.gob.ar/juegosycasinos/juego-responsable/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "a0cada19b066c476b7f5c62707e266c16e5999daeab6e44717b73b01bff826d2",
+   "sha256": "d6103d3b6c215478598c47a07bf612820bea6ddb2a63705b2f3b7c0109b58dc8",
    "file": "data/sources/rg/_docs/ar-m-ipjyc-juego-responsable.html",
    "refresh": "manual",
-   "refreshWhy": "mendoza.gob.ar answers HTTP 403 to our server (2026-11-04); the owner saves it from Chrome in Argentina"
+   "refreshWhy": "mendoza.gob.ar answers HTTP 403 to our server (2026-11-04); the owner saves it from Chrome in Argentina",
+   "copiedBy": "owner-browser"
   },
   "ar-q-ijan-juego-responsable": {
    "url": "https://ijan-neuquen.com/juego_responsable.php",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "a5df4eebe8f537f2cc019f3754f687dfbe6c1b3aa3e18c3cca95904eb4183418",
+   "sha256": "6f52f3ce555bd80f4e881efdeaa3876a2b535713f1fc054d1e5f4ffa786bcfcb",
    "file": "data/sources/rg/_docs/ar-q-ijan-juego-responsable.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "ar-r-loteria-autoexclusion": {
    "url": "https://www.loteriaderionegro.gob.ar/juego-responsable/autoexclusion",
@@ -1160,12 +1161,13 @@
   },
   "ar-t-caja-popular-juego-responsable": {
    "url": "https://www.cajapopular.gov.ar/index.php/1249-2/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "c0f4855f19febf3454a2ace18da27541b15f6a34385ac34f86508322f2020191",
+   "sha256": "a5d3236b173a6d377213938abf3ab01cb4c4f0ae62c4d594a774dce799c460b0",
    "file": "data/sources/rg/_docs/ar-t-caja-popular-juego-responsable.html",
    "refresh": "manual",
-   "refreshWhy": "our server cannot connect to cajapopular.gov.ar (connection timeout from the UK, 2026-11-04); the owner saves it from Chrome in Argentina"
+   "refreshWhy": "our server cannot connect to cajapopular.gov.ar (connection timeout from the UK, 2026-11-04); the owner saves it from Chrome in Argentina",
+   "copiedBy": "owner-browser"
   },
   "ar-t-ley-8986": {
    "url": "https://e-legis-ar.msal.gov.ar/htdocs/legisalud/migration/pdf/28536.pdf",
@@ -1178,11 +1180,11 @@
   },
   "ar-a-enreja-jr": {
    "url": "https://www.enrejasalta.com.ar/jr.php",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "00d7d9dec42230f9d7a0e06b1da29e3ccbd4db34b91dc7d190e6eb18fb24926b",
+   "sha256": "58186e4e6008b9ab2807f49605ca8eb30b05a2bc782d2ed8cc6ed092a71bda50",
    "file": "data/sources/rg/_docs/ar-a-enreja-jr.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "ar-n-iplyc-portal": {
    "url": "https://www.loteriademisiones.com.ar/portal/",
@@ -1277,27 +1279,27 @@
   },
   "santa-fe-juego-compulsivo": {
    "url": "https://www.santafe.gob.ar/ms/juegocompulsivo/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "ca90bce32dc02a93d50c9dcb57ff80044f6244bd22a954903956536ed3ce322c",
+   "sha256": "83fef561fb32ff8ce0bfcffd10557c4f211b6c07db5407c38fe498e1bd660a81",
    "file": "data/sources/rg/_docs/santa-fe-juego-compulsivo.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "santa-fe-historia": {
    "url": "https://www.loteriasantafe.gov.ar/historia/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "7b6717fb8d9c51b3fbfaab96a3bd67665619bfcfdbb160bca4b3c92f20fe8199",
+   "sha256": "ef8105ef1604fa3d87e79a2f2ef61b80f9b1f4a72eccf648fd76661933ba5e21",
    "file": "data/sources/rg/_docs/santa-fe-historia.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   },
   "santa-fe-juego-responsable": {
    "url": "https://www.loteriasantafe.gov.ar/juego-responsable-3/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "12bfc5f8ddab5d41a5fc2160aa4d5fc445337f370b3afd6b11a8bea0a99cd928",
+   "sha256": "1b1f938384be54753e8faaa8c7a125cd6a74077b2a83936dc17ebb5ec2f7bcc6",
    "file": "data/sources/rg/_docs/santa-fe-juego-responsable.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   }
  }
 }

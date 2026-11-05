@@ -10,16 +10,16 @@
  "list": {
   "doc": "cba-juegos-online",
   "pattern": "class=\"text-center text-sm text-white\" href=\"https?://(?<host>[^/\"]+)/?\">",
-  "note": "Section \"Sitios oficiales de juego online en Córdoba\" (Next.js page). robots.txt disallows AI crawlers, so the copy is the one the owner saved from his own browser in Argentina on 2026-11-03 (Chrome \"save complete page\": links get a trailing slash; the pattern allows it); evidence snippets are taken verbatim from that copy."
+  "note": "Section \"Sitios oficiales de juego online en Córdoba\" (Next.js page). robots.txt disallows only AI training crawlers (not Claude-User or Claude-Code) (copy of 2026-11-05 taken in the owner's own Chrome with an Argentine VPN exit while he watched, copiedBy \"owner-browser\": the rendered DOM of the sections with the list and the quotes, links absolute as Chrome resolves them; list unchanged since 2026-11-03); links to a bare host get a trailing slash, the pattern allows it; evidence snippets are taken verbatim from that copy."
  },
  "docs": {
   "cba-juegos-online": {
    "url": "https://loteriadecordoba.com.ar/juegos/online",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "1dfc8a77702f16509a51409d3d26b1ebba59ad577ff158ca5bde0b35d68c7ae5",
+   "sha256": "40f58852fc0afbd0362681a219f9d50b55645fc99e04be40775c303e82e604d1",
    "file": "data/sources/registries/_docs/cba-juegos-online.html",
-   "copiedBy": "owner"
+   "copiedBy": "owner-browser"
   }
  },
  "quotes": {
