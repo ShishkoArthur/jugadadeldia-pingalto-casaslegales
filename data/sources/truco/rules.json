@@ -365,6 +365,176 @@
    "doc": "juegosdesalon",
    "text": "Hay que tener en cuenta que las señas para informar a los compañeros también pueden observarlas los contrarios.",
    "uses": "jugadadeldia /truco/senas/"
+  },
+  "deck-40": {
+   "doc": "gba-2026",
+   "text": "Se utilizará un mazo de cuarenta (40) cartas españolas.",
+   "uses": "engine/cards/spanish.mjs DECK_40"
+  },
+  "deal-three": {
+   "doc": "gba-2026",
+   "text": "procederá a dar tres cartas a cada jugador en tres vueltas de una carta cada vez, comenzando por el jugador sentado a su derecha y que será llamado mano.",
+   "uses": "engine/truco/game.mjs deal"
+  },
+  "deal-rotates": {
+   "doc": "gba-2026",
+   "text": "En el resto de las jugadas se darán las cartas una vez por jugador siguiendo por turno por la derecha del primero que las dio",
+   "uses": "engine/truco/game.mjs next mano"
+  },
+  "two-bazas": {
+   "doc": "gba-2026",
+   "text": "Para ganar un truco es menester que se hagan dos (2) bazas de las tres (3) que tiene cada tiro.",
+   "uses": "engine/truco/rules.mjs handWinner"
+  },
+  "baza-highest": {
+   "doc": "juegosdesalon",
+   "text": "Cada jugador puede jugar una cualquiera de sus cartas y cada baza la gana la carta más alta; en la primera baza, juega la primera carta el mano, en la segunda y en la tercera, sale el que ha ganado la anterior.",
+   "uses": "engine/truco/game.mjs baza winner and next lead"
+  },
+  "third-not-needed": {
+   "doc": "juegosdesalon",
+   "text": "tampoco es necesario hacerlo si un bando gana las dos primeras bazas, porque entonces ya ha ganado el truco.",
+   "uses": "engine/truco/rules.mjs handWinner"
+  },
+  "quiero-closing": {
+   "doc": "gba-2026",
+   "text": "Todas las propuestas o envites de juego deberán ser cerradas con las palabras QUIERO si son queridas",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
+  },
+  "no-answer-no-quiero": {
+   "doc": "gba-2026",
+   "text": "Si no se responde nada se considerará no querida la invitación hecha.",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
+  },
+  "envido-two-per-word": {
+   "doc": "gba-2026",
+   "text": "ganará el que tenga envido de mayor punto cobrando dos puntos por cada vez que haya pronunciado la palabra envido",
+   "uses": "engine/truco/rules.mjs envidoQuieroValue"
+  },
+  "envido-mano-first": {
+   "doc": "gba-2026",
+   "text": "Cuando el envido es querido el que sea mano es el que comenzará a cantar los puntos que se tienen.",
+   "uses": "engine/truco/game.mjs envido points order"
+  },
+  "envido-revido-accepts": {
+   "doc": "gba-2026",
+   "text": "Todo revido encierra en sí la aceptación del envite anterior sin necesidad que previamente se mencione la palabra",
+   "uses": "engine/truco/rules.mjs envidoNoQuieroValue"
+  },
+  "envido-first-over-truco": {
+   "doc": "juegosdesalon",
+   "text": "Si un jugador grita truco antes de que un miembro del otro bando haya dicho envido, puede contestar al envido contrario, y después de terminado el envido, hay que contestar el truco anterior.",
+   "uses": "engine/truco/game.mjs envido before answering truco"
+  },
+  "envido-not-after": {
+   "doc": "juegosdesalon",
+   "text": "No se puede echar envido después de jugada la primera carta o después de haber querido el truco.",
+   "uses": "engine/truco/game.mjs envidoOpen"
+  },
+  "envido-wrong-count": {
+   "doc": "juegosdesalon",
+   "text": "Si se hubiera equivocado al cantar el valor ganaría el equipo contrario, aunque tuviera un valor inferior.",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
+  },
+  "envido-show": {
+   "doc": "juegosdesalon",
+   "text": "El ganador del envido debe mostrar sus cartas antes de anotarse los puntos.",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
+  },
+  "envido-min-0": {
+   "doc": "juegosdesalon",
+   "text": "mientras que el menor es el de la que tiene tres cartas negras de tres palos distintos, que vale 0 puntos",
+   "uses": "engine/truco/cards.mjs envidoPoints"
+  },
+  "retruco-needs-quiero": {
+   "doc": "gba-2026",
+   "text": "Retrucar sin decir previamente el QUIERO es ilícito.",
+   "uses": "engine/truco/game.mjs raise only after quiero"
+  },
+  "retruco-no-querido": {
+   "doc": "gba-2026",
+   "text": "Cuando el que previamente gritó TRUCO y fue RETRUCADO y no acepta perderá los dos (2) TANTOS como si hubiera cantado y perdido el simple TRUCO.",
+   "uses": "engine/truco/game.mjs noQuiero level 2"
+  },
+  "vale-cuatro-who": {
+   "doc": "gba-2026",
+   "text": "Si luego del RETRUCO el primer jugador que echó el truco QUIERE el RETRUCO podrá echar el VALECUATRO.",
+   "uses": "engine/truco/game.mjs truco.holder"
+  },
+  "vale-cuatro-top": {
+   "doc": "juegosdesalon",
+   "text": "Vale cuatro es la apuesta más alta del truco.",
+   "uses": "engine/truco/rules.mjs TRUCO_CALLS"
+  },
+  "truco-any-time": {
+   "doc": "juegosdesalon",
+   "text": "Un jugador puede cantar truco en cualquier momento, pero lo usual es hacerlo a partir de la segunda baza.",
+   "uses": "engine/truco/game.mjs truco call"
+  },
+  "mazo-what": {
+   "doc": "juegosdesalon",
+   "text": "Tirar las cartas, boca abajo, junto al mazo sobrante del reparto, para indicar que se abandona la mano (generalmente por tener malas cartas).",
+   "uses": "engine/truco/game.mjs mazo"
+  },
+  "card-played": {
+   "doc": "juegosdesalon",
+   "text": "Una vez que una carta está jugada ya no se puede retirar.",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
+  },
+  "bravas-names": {
+   "doc": "juegosdesalon",
+   "text": "Son el as de espadas (la espadilla), el as de bastos (el bastillo), el siete de espadas y el siete de oros.",
+   "uses": "engine/truco/cards.mjs POWER 14-11"
+  },
+  "negras": {
+   "doc": "juegosdesalon",
+   "text": "Las figuras (sotas, caballos y reyes) se llaman negras.",
+   "uses": "engine/truco/cards.mjs ENVIDO_VALUE"
+  },
+  "falsos": {
+   "doc": "juegosdesalon",
+   "text": "Los ases y los sietes que no son bravos se llaman falsos.",
+   "uses": "engine/truco/cards.mjs POWER"
+  },
+  "flor-max-38": {
+   "doc": "juegosdesalon",
+   "text": "La mayor es la formada por el cinco, el seis y el siete de un palo, ya que vale 38 puntos",
+   "uses": "engine/truco/cards.mjs florPoints"
+  },
+  "reserved-words": {
+   "doc": "juegosdesalon",
+   "text": "es muy importante cuidar el lenguaje utilizado durante el juego, en especial si se trata de expresiones reservadas, como quiero y no quiero",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
+  },
+  "senas-own-code": {
+   "doc": "juegosdesalon",
+   "text": "Tales señas pueden variar de un lugar a otro y está permitido que los jugadores elaboren su propio código",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "senas-when": {
+   "doc": "juegosdesalon",
+   "text": "si tiene flor o un buen envido, lo comunicará por señas a su compañero o compañeros, al tiempo que observa las de los otros jugadores.",
+   "uses": "jugadadeldia /truco/senas/"
+  },
+  "mano-options": {
+   "doc": "juegosdesalon",
+   "text": "Empieza a jugar el mano, que puede cantar flor si la tiene, apostar a envido o jugar una de sus cartas",
+   "uses": "engine/truco/game.mjs actions"
+  },
+  "deceive": {
+   "doc": "gba-2026",
+   "text": "la mayor parte del éxito estriba en engañar a los contrarios haciéndoles creer que se tiene tal o cual juego",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
+  },
+  "malas-buenas-15": {
+   "doc": "juegosdesalon",
+   "text": "Los primeros 15 se denominan malas y los siguientes, buenas.",
+   "uses": "engine/truco/rules.mjs buenasAt"
+  },
+  "envido-mazo-show": {
+   "doc": "gba-2026",
+   "text": "lo mismo sucederá si el que gana un envido se va a baraja sin jugar o mostrar las cartas con las que gano el envido.",
+   "uses": "jugadadeldia truco guides (/truco/reglas/ and the other truco pages)"
   }
  }
 }

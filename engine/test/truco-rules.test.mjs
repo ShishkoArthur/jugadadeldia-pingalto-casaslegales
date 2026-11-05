@@ -131,3 +131,20 @@ test('falta envido value under each cited rule', () => {
   assert.equal(faltaValue(forty, [19, 3], 1), 37);
   assert.equal(faltaValue(forty, [21, 3], 1), 19);
 });
+
+test('envidoBreakdown adds up to envidoPoints for every hand', async () => {
+  const { envidoBreakdown, envidoPoints } = await import('../truco/cards.mjs');
+  const { DECK_40, combinations } = await import('../cards/spanish.mjs');
+  let n = 0;
+  combinations(DECK_40, 3, h => {
+    const b = envidoBreakdown(h);
+    const sum = b.kind === 'single' ? b.values[0] : 20 + b.values[0] + b.values[1];
+    assert.equal(sum, envidoPoints(h));
+    assert.equal(b.total, envidoPoints(h));
+    n++;
+  });
+  assert.equal(n, 9880);
+  assert.deepEqual(envidoBreakdown(['7e', '6e', '3b']), { kind: 'pair', cards: ['7e', '6e'], values: [7, 6], total: 33 });
+  assert.equal(envidoBreakdown(['4b', '6b', '2b']).kind, 'three');
+  assert.equal(envidoBreakdown(['7o', '3c', '12e']).total, 7);
+});

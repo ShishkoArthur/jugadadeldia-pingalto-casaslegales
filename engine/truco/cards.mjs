@@ -47,3 +47,20 @@ export function florPoints(hand) {
   if (!hasFlor(hand)) throw new Error('florPoints: the hand has no flor');
   return 20 + ENVIDO_VALUE[hand[0]] + ENVIDO_VALUE[hand[1]] + ENVIDO_VALUE[hand[2]];
 }
+
+// How the envido of a hand is made, for the worked examples: kind 'pair' (two of one suit: 20 + both), 'three' (three of one suit
+// when flor is not played: 20 + the two highest) or 'single' (no two of one suit: the highest value). cards are the counted cards,
+// values their envido values; total always equals envidoPoints(hand).
+export function envidoBreakdown(hand) {
+  const total = envidoPoints(hand);
+  const v = c => ENVIDO_VALUE[c];
+  if (new Set(hand.map(c => SUIT[c])).size === 1) {
+    const two = hand.slice().sort((a, b) => v(b) - v(a)).slice(0, 2);
+    return { kind: 'three', cards: two, values: two.map(v), total };
+  }
+  for (let i = 0; i < 3; i++) for (let j = i + 1; j < 3; j++) {
+    if (SUIT[hand[i]] === SUIT[hand[j]]) return { kind: 'pair', cards: [hand[i], hand[j]], values: [v(hand[i]), v(hand[j])], total };
+  }
+  const top = hand.slice().sort((a, b) => v(b) - v(a))[0];
+  return { kind: 'single', cards: [top], values: [v(top)], total };
+}
