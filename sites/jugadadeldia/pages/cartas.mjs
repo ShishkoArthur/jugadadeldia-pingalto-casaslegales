@@ -4,7 +4,9 @@
 import { RULESETS as CHIN, deckOf, cardValue } from '../../../engine/chinchon/rules.mjs';
 import { RULESETS as ESC, VALUE, SETENTA } from '../../../engine/escoba/rules.mjs';
 import { DECK_40 } from '../../../engine/cards/spanish.mjs';
-import { hero, cite, crumbs, webPage, card, SPRITE, tiles, ICONS, mnOpen, mnArt } from './parts.mjs';
+import { hero, cite, crumbs, webPage, card, SPRITE, tiles, ICONS, mnOpen, mnArt, btn, faqLd } from './parts.mjs';
+import { wrap, go } from './curso.mjs';
+import { chinchonCurso, escobaCurso, burakoCurso } from './curso-juegos.mjs';
 import { LIMIT } from './juegos.mjs';
 
 const ld = (h, parent) => [webPage(h), crumbs(h, parent ? [parent] : [])];
@@ -37,30 +39,22 @@ const GAMES = [
 ];
 
 export const chinchon = {
-  path: '/chinchon/', kind: 'game', section: 'juegos', css: ['mesa.css', 'guias.css'], js: ['corte.js'],
-  title: 'Chinchón: reglas y cuándo se puede cortar',
-  h1: 'Chinchón: reglas y corte',
-  description: 'Reglas del chinchón y cuándo se puede cortar: cargá tus siete cartas y mirá las mejores combinaciones, cuántos puntos te quedan y si tenés chinchón.',
-  ld: h => ld(h, ['/juegos-de-cartas/', 'Juegos de cartas']),
+  path: '/chinchon/', kind: 'game', section: 'juegos', css: ['mesa.css', 'guias.css', 'curso.css'], js: ['corte.js'],
+  title: 'Reglas del chinchón: cómo se juega y cuándo cortar',
+  h1: 'Reglas del chinchón',
+  description: 'Reglas del chinchón desde cero: el mazo, los juegos, robar y tirar, cuándo cortar y cómo se cuentan los puntos, con una mano real resuelta turno por turno.',
+  ld: h => [...ld(h, ['/juegos-de-cartas/', 'Juegos de cartas']), faqLd(chinchonCurso(h, { limit: LIMIT }).faq)],
   data: () => ({ rules: CHIN, decks: Object.fromEntries(Object.entries(CHIN).map(([k, r]) => [k, deckOf(r)])) }),
   render(h) {
-    const B = CHIN['bonaerense-50'], L = CHIN['ludoteka-40'];
+    const B = CHIN['bonaerense-50'];
     const deck = deckOf(B);
     const picker = '<div class="jg-deck sm" data-picker>' + deck.map(c => /^J/.test(c) ? joker(' data-card="' + c + '" tabindex="0"') : card(c, ' data-card="' + c + '" tabindex="0"')).join('') + '</div>';
-    const vals = [1, 5, 10, 12].map(n => (n === 1 ? 'As' : n === 10 ? 'Sota' : n === 12 ? 'Rey' : n) + ' ' + cardValue(B, n + 'o')).join(' · ');
-    return SPRITE + hero(h, { kicker: 'Chinchón · cartas españolas', scene: 'chinchon', lede: 'Siete cartas, juegos de tres o más y cortar con pocos puntos sueltos. Cargá tu mano y el código busca la mejor forma de armarla, entre todas las posibles.', actions: (h.built('/chinchon/jugar/') ? '<a class="jg-b p" href="' + h.href('/chinchon/jugar/') + '">Jugar contra la compu</a>' : '') }) +
-      '<div class="jg-mn">' +
-      '<section class="jg-c w2" data-corte><span class="jg-tag">¿Puedo cortar?</span><h2>Cargá tus 7 cartas</h2><div class="jg-r" style="margin-bottom:10px"><label class="jg-fl" style="flex:1 1 220px"><span>Mazo</span>' + sel('r', [['bonaerense-50', '50 cartas con comodines (bonaerense)', true], ['ludoteka-40', '40 cartas'], ['ludoteka-48', '48 cartas']]) + '</label><button class="jg-b s" type="button" data-clear>Borrar</button></div>' + picker + '<p class="jg-note">Tocá siete cartas; volvé a tocar una para sacarla.</p></section>' +
+    return SPRITE + hero(h, { kicker: 'Chinchón · guía para empezar', scene: 'chinchon', lede: 'Siete cartas, juegos de tres o más y cortar con pocos puntos sueltos. Te lo explicamos paso a paso, con una mano real jugada por nuestro código; al final podés probar si tu mano corta.' }) +
+      wrap(chinchonCurso(h, { limit: LIMIT }).html) +
+      '<div class="jg-mn" id="corte">' +
+      '<section class="jg-c w2" data-corte><span class="jg-tag">¿Puedo cortar?</span><h2>Cargá tus 7 cartas</h2><div class="jg-r" style="margin-bottom:10px"><label class="jg-fl" style="flex:1 1 220px"><span>Mazo</span>' + sel('r', [['bonaerense-50', '50 cartas con comodines (bonaerense)', true], ['ludoteka-40', '40 cartas'], ['ludoteka-48', '48 cartas']]) + '</label><button class="jg-b s" type="button" data-clear>Borrar</button></div>' + picker + '<p class="jg-note">Tocá siete cartas; volvé a tocar una para sacarla. El código busca la mejor forma de armarla entre todas las posibles.</p></section>' +
       '<section class="jg-c t2" aria-live="polite"><span class="jg-sm">Tu mano</span><div class="jg-hand xs" data-o="hand"></div><p class="jg-win"><span data-o="verdict">Elegí 7 cartas</span><b data-o="pts">-</b></p><div class="jg-meld" data-o="melds"></div><p class="jg-hon" data-o="why"></p></section>' +
-      '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Las reglas en un minuto</h2><ol class="jg-steps">' +
-      '<li><b>Siete cartas cada uno</b>Robás del mazo o del pozo y tirás una. La idea es armar juegos.</li>' +
-      '<li><b>Juegos</b>Tres o cuatro cartas del mismo número, o escalera de tres o más del mismo palo. En el bonaerense hay ' + B.jokers + ' comodines y va uno solo por juego.</li>' +
-      '<li><b>Cortar</b>Bonaerense: si lo que te queda suelto suma ' + 5 + ' o menos. Con 40 o 48 cartas: una sola carta suelta de ' + 4 + ' o menos.</li>' +
-      '<li><b>Los puntos</b>Lo que te queda suelto suma en contra. ' + vals + '. Cortar con todo en juegos: ' + B.allMelded + '.</li>' +
-      '<li><b>Chinchón</b>Siete cartas en escalera del mismo palo, sin comodín: ganás el partido en el acto.</li>' +
-      '<li><b>Hasta ' + LIMIT + '</b>El que pasa de ' + LIMIT + ' queda afuera; gana el último que queda.</li></ol>' +
-      cite(h, ['chinchon.seven-cards', 'chinchon.draw-discard', 'chinchon.melds', 'chinchon.groups-3-4', 'chinchon.jokers-two', 'chinchon.one-joker', 'chinchon.cut-5', 'chinchon.l-cut', 'chinchon.values', 'chinchon.l-figures-10', 'chinchon.all-melded', 'chinchon.chinchon-wins', 'chinchon.limit-101', 'chinchon.no-rejoin']) + '</section>' +
-      '<section class="jg-c"><span class="jg-sm">Mazos</span><h2>¿Con cuántas cartas?</h2><table class="jg-tbl" data-nosnippet><tbody>' + Object.entries(CHIN).map(([k, r]) => '<tr><td>' + ({ 'bonaerense-50': 'Bonaerense', 'ludoteka-40': 'Clásico de 40', 'ludoteka-48': 'Clásico de 48' })[k] + '</td><td class="n">' + (r.deck + r.jokers) + ' cartas</td></tr>').join('') + '</tbody></table><p class="jg-note">Con 40 o 48 cartas, sin comodines y las figuras valen ' + cardValue(L, '12o') + '.</p></section>' +
+      go('Ahora, a jugar', '<p>Practicá contra la compu con las mismas reglas: robás, tirás y cortás cuando podés. Para una mesa de verdad, el anotador suma las manos hasta ' + LIMIT + '.</p>', btn(h, '/chinchon/jugar/', 'Jugar contra la compu', true) + btn(h, '/chinchon/anotador/', 'Anotador de chinchón')) +
       '<section class="jg-c w3"><span class="jg-sm">Seguí con</span><h2>Más juegos</h2>' + more(h, GAMES) + '</section></div>';
   },
 };
@@ -83,24 +77,23 @@ export const chinchonAnotador = {
 };
 
 export const escoba = {
-  path: '/escoba-de-15/', kind: 'game', section: 'juegos', css: ['mesa.css', 'guias.css'], js: ['buscador.js'],
-  title: 'Escoba de 15: reglas y buscador de escobas',
-  h1: 'Escoba de 15',
-  description: 'Escoba de 15 con las reglas de acá: cargá las cartas de la mesa y la tuya, y el buscador te muestra todas las sumas de 15 y si hay escoba. Y contá la mano.',
-  ld: h => ld(h, ['/juegos-de-cartas/', 'Juegos de cartas']),
+  path: '/escoba-de-15/', kind: 'game', section: 'juegos', css: ['mesa.css', 'guias.css', 'curso.css'], js: ['buscador.js'],
+  title: 'Cómo se juega a la escoba de 15: reglas y puntos',
+  h1: 'Cómo se juega a la escoba de 15',
+  description: 'Reglas de la escoba de 15 desde cero: qué vale cada carta, cómo se suma 15, la escoba, el setenta y la cuenta de la mano, con una mano real resuelta.',
+  ld: h => [...ld(h, ['/juegos-de-cartas/', 'Juegos de cartas']), faqLd(escobaCurso(h).faq)],
   data: () => ({ rules: ESC }),
   render(h) {
     const picker = (attr) => '<div class="jg-deck sm" ' + attr + '>' + DECK_40.map(c => card(c, ' data-card="' + c + '" tabindex="0"')).join('') + '</div>';
-    const scale = Object.entries(SETENTA).filter(([n]) => +n <= 7).sort((a, b) => b[1] - a[1]).map(([n, v]) => (n === '1' ? 'As' : n) + ' = ' + v).join(' · ');
-    return SPRITE + hero(h, { kicker: 'Escoba de 15 · cartas españolas', scene: 'escoba-de-15', lede: 'Con una carta tuya y las de la mesa tenés que sumar 15. Si levantás todo, es escoba. El buscador te muestra todas las jugadas posibles.', actions: (h.built('/escoba-de-15/jugar/') ? '<a class="jg-b p" href="' + h.href('/escoba-de-15/jugar/') + '">Jugar contra la compu</a>' : '') + '<a class="jg-b" href="#contar">Contar la mano</a>' }) +
-      '<div class="jg-mn">' +
+    return SPRITE + hero(h, { kicker: 'Escoba de 15 · guía para empezar', scene: 'escoba-de-15', lede: 'Con una carta tuya y las de la mesa tenés que sumar 15; si levantás todo, es escoba. Te lo explicamos con una mano real jugada por nuestro código, y al final está el buscador de escobas.' }) +
+      wrap(escobaCurso(h).html) +
+      '<div class="jg-mn" id="herramientas">' +
       '<section class="jg-c w2" data-busca><span class="jg-tag">Buscador</span><h2>¿Hay escoba?</h2><div class="jg-sg" role="group" aria-label="Qué estás cargando" style="margin-bottom:10px"><button type="button" data-mode="t" aria-pressed="true">Cartas de la mesa</button><button type="button" data-mode="m" aria-pressed="false">Mi carta</button><button type="button" data-clear>Borrar</button></div>' + picker('data-picker') + '<p class="jg-note">Azul: en la mesa. Naranja: la tuya.</p></section>' +
       '<section class="jg-c t2" aria-live="polite"><span class="jg-sm">Jugadas posibles</span><p class="jg-win"><span>Formas de sumar 15</span><b data-o="n">-</b></p><div data-o="list"></div></section>' +
-      '<section class="jg-c w3" id="contar" data-cuenta><span class="jg-tag">Contá la mano</span><h2>¿Cuántos puntos hiciste?</h2><p class="jg-mu">Tocá las cartas que levantaste vos; las demás son del rival. Sumá las escobas de cada uno.</p>' + picker('data-mine') +
+      '<section class="jg-c w3" data-cuenta><span class="jg-tag">Contá la mano</span><h2>¿Cuántos puntos hiciste?</h2><p class="jg-mu">Tocá las cartas que levantaste vos; las demás son del rival. Sumá las escobas de cada uno.</p>' + picker('data-mine') +
       '<div class="jg-r" style="margin-top:10px"><label class="jg-fl"><span>Mis escobas</span><input class="jg-in" name="e0" type="text" inputmode="numeric" maxlength="2" value="0" style="width:90px"></label><label class="jg-fl"><span>Escobas del rival</span><input class="jg-in" name="e1" type="text" inputmode="numeric" maxlength="2" value="0" style="width:90px"></label><label class="jg-fl"><span>Reglas</span>' + sel('r', [['bonaerense', 'Bonaerenses', true], ['ludoteka', 'Ludoteka']]) + '</label></div>' +
       '<div class="jg-two" style="margin-top:12px"><p class="jg-win"><span>Vos</span><b data-o="p0">-</b></p><p class="jg-win no"><span>Rival</span><b data-o="p1">-</b></p></div><ul class="jg-chipl" data-o="detail"></ul></section>' +
-      '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Lo que se cuenta</h2><ul class="jg-ul tx"><li><b>Valores:</b> sota ' + VALUE['10o'] + ', caballo ' + VALUE['11o'] + ', rey ' + VALUE['12o'] + '; el resto, su número.</li><li><b>Escoba:</b> levantar toda la mesa, un punto.</li><li><b>Cartas:</b> el que tiene más; empate, nadie.</li><li><b>Oros:</b> el que tiene 6 o más.</li><li><b>Siete de oros:</b> un punto.</li><li><b>Setenta:</b> la mejor carta de cada palo con esta escala: ' + scale + ' · figuras ' + SETENTA[10] + '.</li></ul>' +
-      cite(h, ['escoba.values', 'escoba.escoba', 'escoba.cartas', 'escoba.oros-6', 'escoba.siete-oros', 'escoba.setenta-suits', 'escoba.scale-7', 'escoba.scale-6-1', 'escoba.scale-5-4-3', 'escoba.scale-2', 'escoba.scale-fig', 'escoba.tie-none', 'escoba.must-take', 'escoba.target-30']) + '</section>' +
+      go('Ahora, a jugar', '<p>Practicá contra la compu: después de cada jugada te avisa si se te pasó una escoba.</p>', btn(h, '/escoba-de-15/jugar/', 'Jugar contra la compu', true)) +
       '<section class="jg-c"><span class="jg-sm">Seguí con</span><h2>Más juegos</h2>' + more(h, GAMES.slice(0, 5)) + '</section></div>';
   },
 };
@@ -117,29 +110,23 @@ export function burakoCalc(prefix = '') {
 }
 
 export const burako = {
-  path: '/burako/', kind: 'game', section: 'juegos', css: ['guias.css'], js: ['burako.js'],
-  title: 'Burako: reglas, canastas y cuántos puntos vale cada una',
-  h1: 'Burako',
-  description: 'Burako con el reglamento de los Juegos Bonaerenses: canastas puras e impuras, el muerto y una calculadora que suma los puntos de la mano en segundos.',
-  ld: h => ld(h, ['/juegos-de-cartas/', 'Juegos de cartas']),
+  path: '/burako/', kind: 'game', section: 'juegos', css: ['guias.css', 'curso.css'], js: ['burako.js'],
+  title: 'Cómo se juega al burako: reglas, canastas y puntos',
+  h1: 'Cómo se juega al burako',
+  description: 'Reglas del burako desde cero con el reglamento bonaerense: las fichas, piernas y escaleras, canastas, el muerto, el cierre y una mano contada entera.',
+  ld: h => [...ld(h, ['/juegos-de-cartas/', 'Juegos de cartas']), faqLd(burakoCurso(h, { B: BURAKO }).faq)],
   data: () => ({ B: BURAKO }),
   render(h) {
     checkBurako(h);
     const B = BURAKO;
-    const dealt = 2 * B.rack + 2 * B.muertoTiles + B.piles * B.pileTiles;
-    return hero(h, { kicker: 'Burako · fichas', scene: 'burako', lede: 'Se juega con ' + (B.tilesTotal + B.jokers) + ' fichas: armás piernas y escaleras, juntás canastas de ' + B.canasta + ' y comprás el muerto. Sumá tu mano con la calculadora de acá abajo.', actions: (h.built('/burako/anotador/') ? '<a class="jg-b p" href="' + h.href('/burako/anotador/') + '">Abrir el anotador</a>' : '') }) +
-      '<div class="jg-mn">' +
+    return hero(h, { kicker: 'Burako · guía para empezar', scene: 'burako', lede: 'Se juega con ' + (B.tilesTotal + B.jokers) + ' fichas: armás piernas y escaleras, juntás canastas de ' + B.canasta + ' y comprás el muerto. Te lo explicamos desde cero y al final está la calculadora de la mano.' }) +
+      wrap(burakoCurso(h, { B }).html) +
+      '<div class="jg-mn" id="calculadora">' +
       '<section class="jg-c w2" data-burako><span class="jg-tag">Calculadora</span><h2>Los puntos de tu mano</h2>' + burakoCalc() + '<p class="jg-win"><span>Tu mano</span><b data-o="total">0</b></p><p class="jg-hon" data-o="why">Cargá tus canastas y las fichas.</p></section>' +
       '<section class="jg-c t2"><span class="jg-sm">Lo que vale cada ficha</span><h2>La tabla</h2>' + burakoTiles() + '<table class="jg-tbl" data-nosnippet><tbody>' + B.tiles.map(t => '<tr><td>' + t.label + '</td><td class="n">' + t.v + '</td></tr>').join('') + '<tr><td>Canasta pura</td><td class="n">' + B.pura + '</td></tr><tr><td>Canasta impura</td><td class="n">' + B.impura + '</td></tr><tr><td>Cierre</td><td class="n">' + B.cierre + '</td></tr><tr><td>No comprar el muerto</td><td class="n">−' + B.muerto + '</td></tr></tbody></table>' +
       cite(h, [bq('v-1'), bq('v-2'), bq('v-3-7'), bq('v-8-13'), bq('v-joker'), bq('pura-200'), bq('impura-100'), bq('close-100'), bq('muerto-100'), bq('hand-minus')]) + '</section>' +
-      '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Cómo se juega</h2><ol class="jg-steps">' +
-      '<li><b>El armado</b>' + B.tilesTotal + ' fichas numeradas y ' + B.jokers + ' comodines: ' + B.rack + ' para cada atril, un muerto de ' + B.muertoTiles + ' por jugador y ' + B.piles + ' montones de ' + B.pileTiles + ' (' + dealt + ' en total).' + cite(h, [bq('tiles-104'), bq('jokers-2'), bq('piles')]) + '</li>' +
-      '<li><b>Tu turno</b>Tomás una ficha del mazo o todo el pozo, bajás juegos si querés y dejás una ficha en el pozo.' + cite(h, [bq('pozo-all'), bq('discard')]) + '</li>' +
-      '<li><b>Juegos</b>Pierna: tres o más del mismo número. Escalera: el 1 puede ir al principio o después del 13. Canasta: ' + B.canasta + ' fichas o más. Los 2 también son comodines.' + cite(h, [bq('pierna'), bq('escalera'), bq('canasta'), bq('two-jokers'), bq('two-is-joker')]) + '</li>' +
-      '<li><b>Cerrar</b>Con el atril vacío o una ficha, y solo si ya tenés una canasta y compraste el muerto.' + cite(h, [bq('close-needs'), bq('close-empty')]) + '</li>' +
-      '<li><b>Si se acaba el mazo</b>Sin canastas, la mano se juega de nuevo; si alguien tiene canasta, se cuenta sin los ' + B.cierre + ' del cierre.' + cite(h, [bq('no-canasta-replay'), bq('stock-out')]) + '</li>' +
-      '<li><b>El partido</b>A ' + B.goal.toLocaleString('es-AR') + ' puntos, de a dos.' + cite(h, [bq('goal-1500'), bq('two-players')]) + '</li></ol></section>' +
-      '<section class="jg-c"><span class="jg-sm">Ojo</span><h2>Las fichas bajadas</h2><p>El reglamento bonaerense dice que las fichas que no bajaste se descuentan y que, si se acaba el mazo, se cuenta «normalmente». En casi todas las mesas las fichas bajadas suman: por eso la calculadora las suma, y lo podés apagar.</p>' + more(h, GAMES) + '</section></div>';
+      go('Ahora, a la mesa', '<p>El anotador lleva la planilla mano por mano hasta ' + B.goal.toLocaleString('es-AR') + ', con esta misma calculadora adentro.</p>', btn(h, '/burako/anotador/', 'Abrir el anotador', true)) +
+      '<section class="jg-c w2"><span class="jg-sm">Seguí con</span><h2>Más juegos</h2>' + more(h, GAMES) + '</section></div>';
   },
 };
 

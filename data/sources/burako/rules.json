@@ -40,6 +40,18 @@
     "stock-out": { "doc": "gba-2026", "text": "Si uno de los participantes tuviera canasta al terminar las fichas de los mazos, se contará normalmente sin incluir los 100 puntos por el cierre.", "uses": "calculator: no close bonus" },
     "pozo-all": { "doc": "gba-2026", "text": "en caso de querer tomar el pozo debe tomarlo con todas las fichas depositadas en él.", "uses": "/burako/ turn" },
     "discard": { "doc": "gba-2026", "text": "Luego de finalizar su jugada el jugador de turno debe dejar una ficha para arriba en el pozo para cederle el turno al siguiente jugador.", "uses": "/burako/ turn" },
-    "winner-both": { "doc": "gba-2026", "text": "En caso de que AMBOS PARTICIPANTES logren dicho objetivo, será ganador aquel que compute mayor puntaje en total.", "uses": "anotador: both over target" }
+    "winner-both": { "doc": "gba-2026", "text": "En caso de que AMBOS PARTICIPANTES logren dicho objetivo, será ganador aquel que compute mayor puntaje en total.", "uses": "anotador: both over target" },
+    "mano-first": { "doc": "gba-2026", "text": "El jugador que reparte es mano y toma una ficha del mazo, puede quedarse con ella o dejarla en el pozo y tomar otra ficha", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "no-minimum": { "doc": "gba-2026", "text": "No se requiere un puntaje mínimo para bajar los juegos.", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "only-turn": { "doc": "gba-2026", "text": "Los jugadores SOLO en su turno pueden", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "two-plus-joker": { "doc": "gba-2026", "text": "Se puede bajar un juego con 2 fichas y 1 comodín.", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "canasta-more": { "doc": "gba-2026", "text": "La canasta aunque esté cerrada se le puede seguir agregando fichas", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "two-same-color": { "doc": "gba-2026", "text": "El comodín dos (2) bajado al juego de escalera como dos (2) del mismo color, no puede jugar más como comodín.", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "buy-direct": { "doc": "gba-2026", "text": "El jugador baja todas sus fichas a la mesa (formando nuevos juegos o completando juegos previamente existentes), toma el muerto y lo juega en el mismo turno", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "buy-indirect": { "doc": "gba-2026", "text": "El jugador se queda sin fichas después de colocar una ficha en el pozo, toma el muerto y podrá jugarlo en el próximo turno.", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "muerto-unplayed": { "doc": "gba-2026", "text": "Si lo compra y no lo juega, lo pone o no en el tablero, se cuentan todas las fichas que no fueron bajadas en contra.", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "touched": { "doc": "gba-2026", "text": "Ficha tocada, ficha jugada", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "pierna-example": { "doc": "gba-2026", "text": "Ejemplos: 3 rojo, 3 amarillo, 3 negro, 3 azul; o 6 rojo, 6 rojo, 6 amarillo.", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" },
+    "joker-swap": { "doc": "gba-2026", "text": "el comodín ubicado en un juego puede ser cambiado.", "uses": "sites/jugadadeldia/pages/curso-juegos.mjs burako tutorial" }
   }
 }

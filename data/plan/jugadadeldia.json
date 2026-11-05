@@ -1272,10 +1272,10 @@
  {
   "section": "Truco",
   "url": "/truco/",
-  "title": "Truco argentino: reglas, valores, señas y anotador",
-  "titleLen": 50,
+  "title": "Truco argentino: cómo jugar, reglas, valores y señas",
+  "titleLen": 52,
   "h1": "Truco argentino",
-  "description": "Truco argentino de punta a punta: reglas, valores de las cartas, señas y anotador. Repartí una mano y mirá tu envido y qué chance tiene contra otra.",
+  "description": "Truco argentino para aprender desde cero: cómo se juega paso a paso, los valores de las cartas, el envido, las señas y un anotador para la mesa.",
   "keys": "truco argentino 23k/0 · truco 12k/12 · cartas truco 2.2k/1 · como jugar al truco 1.9k/0",
   "kind": "hub",
   "wave": "P1",
@@ -1287,8 +1287,8 @@
   "notes": "Не азартная — без блока помощи и 18+. «el gran truco», «truco blyts», «one truco» — бренды приложений, не берём; «truco de gta», «dulce o truco» — чужой интент.",
   "live": "2026-11-03",
   "urlEn": "/en/truco/",
-  "titleEn": "Argentine truco: rules, card values, señas and scorekeeper",
-  "descriptionEn": "Argentine truco from start to finish: rules, card values, señas and a scorekeeper. Deal a hand and see your envido and its odds against another.",
+  "titleEn": "Argentine truco: how to play, rules, card values, señas",
+  "descriptionEn": "Learn Argentine truco from scratch: how to play step by step, the card values, envido, the señas and a scorekeeper for the table.",
   "h1En": "Argentine truco"
  },
  {
@@ -1297,7 +1297,7 @@
   "title": "Valores del truco: tabla de cartas de mayor a menor",
   "titleLen": 51,
   "h1": "Valores de las cartas del truco",
-  "description": "Valores del truco argentino de mayor a menor: el ancho de espadas arriba y las 40 cartas en orden. Tocá una y mirá a cuáles mata. Y machete para imprimir.",
+  "description": "Valores del truco argentino de mayor a menor: las 40 cartas en orden, las cuatro bravas, los falsos y las negras, con ejemplos y un juego para aprenderlas.",
   "keys": "valores del truco 21k/0 · valores truco 4.3k/0 · truco valores 3.3k/0 · tabla de valores truco 2.9k/0 · valor de las cartas del truco 1.8k/0 · cartas del truco 1.8k/2 · valores de las cartas en el truco 1.8k/0 · cartas de truco 1.7k/1 · valores de las cartas del truco 1.4k/0 · valor cartas truco 1.4k/0 · valores del truco argentino 1.2k/1 · valores cartas truco 1k/3 · valores de truco 900/0 · valor de cartas truco 900/0 · tabla del truco 900/0 · valor de las cartas en el truco 900/0 · truco cartas 900/0 · tabla de truco 800/0 · orden de las cartas del truco 800/7 · cartas del truco orden 700/3 · escala del truco 600/0 · orden cartas truco 600/1 · valor del truco 500/1 · valores de cartas de truco 500/0",
   "kind": "tool",
   "wave": "P1",
@@ -1309,7 +1309,7 @@
   "live": "2026-11-03",
   "urlEn": "/en/truco/card-values/",
   "titleEn": "Truco card values: chart from highest to lowest",
-  "descriptionEn": "Truco values from highest to lowest: the ancho de espadas on top and all 40 cards in order. Tap one to see what it beats. Printable cheat sheet.",
+  "descriptionEn": "Truco card values from highest to lowest: all 40 cards in order, the four bravas, the falsos and the negras, with examples and a game to learn them.",
   "h1En": "Truco card values"
  },
  {
@@ -1318,7 +1318,7 @@
   "title": "Señas del truco: todas, con dibujo y significado",
   "titleLen": 48,
   "h1": "Las señas del truco",
-  "description": "Todas las señas del truco argentino con dibujo y significado, y un entrenador para adivinar qué carta te está marcando tu compañero, contra reloj.",
+  "description": "Todas las señas del truco argentino con dibujo y significado: cuándo se hacen, cómo se usan en una mano de a cuatro y un entrenador para aprenderlas.",
   "keys": "señas del truco 16k/0 · señas truco 3.7k/0 · señas del truco argentino 2.7k/0 · señas de truco 2.3k/0 · seña del truco 1.1k/0 · valores del truco y señas 1.1k/0 · truco señas 600/0 · seña truco 500/0 · señas en el truco 500/0 · seña de truco 500/0",
   "kind": "tool",
   "wave": "P1",
@@ -1331,7 +1331,7 @@
   "live": "2026-11-03",
   "urlEn": "/en/truco/senas/",
   "titleEn": "Truco señas: all of them, with pictures and meaning",
-  "descriptionEn": "All the Argentine truco señas with pictures and meaning, plus a trainer to guess which card your partner is signaling, against the clock.",
+  "descriptionEn": "All the Argentine truco señas with pictures and meaning: when to make them, how they are used in a four-player hand, and a trainer to learn them.",
   "h1En": "Truco señas"
  },
  {
@@ -1359,10 +1359,10 @@
  {
   "section": "Truco",
   "url": "/truco/reglas/",
-  "title": "Reglas del truco argentino, mano por mano",
-  "titleLen": 41,
-  "h1": "Reglas del truco",
-  "description": "Reglas del truco argentino mano por mano: el reparto, el envido, truco, retruco y vale cuatro, qué se puede cantar en cada momento y qué pasa si no querés.",
+  "title": "Reglas del truco: cómo jugar paso a paso, con ejemplos",
+  "titleLen": 54,
+  "h1": "Reglas del truco argentino, paso a paso",
+  "description": "Reglas del truco argentino desde cero: las cartas, las tres bazas, las pardas, el envido y el truco, con manos de ejemplo dibujadas y jugadas paso a paso.",
   "keys": "reglas del truco 2.4k/2 · como se juega al truco 1.5k/0 · reglas del truco argentino 800/1 · se le puede cantar truco al 4 450/0",
   "kind": "guide",
   "wave": "P1",
@@ -1373,9 +1373,9 @@
   "rg": false,
   "live": "2026-11-03",
   "urlEn": "/en/truco/rules/",
-  "titleEn": "Argentine truco rules, hand by hand",
-  "descriptionEn": "Argentine truco rules hand by hand: the deal, envido, truco, retruco and vale cuatro, what you can call at each point and what happens if you refuse.",
-  "h1En": "Truco rules"
+  "titleEn": "Truco rules: how to play step by step, with examples",
+  "descriptionEn": "Argentine truco rules from scratch: the cards, the three bazas, pardas, envido and truco, with example hands drawn and played out step by step.",
+  "h1En": "Argentine truco rules, step by step"
  },
  {
   "section": "Truco",
@@ -1401,10 +1401,10 @@
  {
   "section": "Truco",
   "url": "/truco/envido/",
-  "title": "Envido: cómo contar los tantos y qué chance tenés",
-  "titleLen": 49,
-  "h1": "Envido: contá tus tantos",
-  "description": "Contá los tantos del envido con tus tres cartas y mirá qué chance tenés de ganarle a una mano al azar, calculada sobre todas las combinaciones posibles.",
+  "title": "Envido: cómo contar los tantos, con ejemplos",
+  "titleLen": 44,
+  "h1": "Envido: cómo contar tus tantos",
+  "description": "Cómo contar el envido del truco con ejemplos dibujados: el 20 del mismo palo, las figuras en cero, cómo se canta, cuánto vale y qué chance tiene tu mano.",
   "keys": "tantos de truco 450/0",
   "kind": "tool",
   "wave": "P2",
@@ -1415,9 +1415,9 @@
   "rg": false,
   "live": "2026-11-03",
   "urlEn": "/en/truco/envido/",
-  "titleEn": "Envido: how to count your tantos and your odds",
-  "descriptionEn": "Count your envido tantos with your three cards and see your odds of beating a random hand, calculated over all possible combinations.",
-  "h1En": "Envido: count your tantos"
+  "titleEn": "Envido: how to count your tantos, with examples",
+  "descriptionEn": "How to count the truco envido with drawn examples: the 20 for the same suit, face cards at zero, how to call it, what it is worth and your odds.",
+  "h1En": "Envido: how to count your tantos"
  },
  {
   "section": "Truco",
@@ -1465,10 +1465,10 @@
  {
   "section": "Truco",
   "url": "/truco/flor/",
-  "title": "La flor en el truco: reglas y probabilidad",
-  "titleLen": 42,
+  "title": "La flor en el truco: reglas, ejemplos y probabilidad",
+  "titleLen": 52,
   "h1": "La flor en el truco",
-  "description": "La flor en el truco argentino: cuándo se juega con flor y cuándo no, la contraflor y el con flor me achico, y la probabilidad exacta de que te toque una.",
+  "description": "La flor en el truco argentino con ejemplos: cuándo se juega, cómo se cuenta, la contraflor y el con flor me achico, y cada cuánto te toca una.",
   "keys": "нет в выгрузках Ahrefs (спрос не проверен)",
   "kind": "tool",
   "wave": "P3",
@@ -1479,8 +1479,8 @@
   "rg": false,
   "live": "2026-11-03",
   "urlEn": "/en/truco/flor/",
-  "titleEn": "Flor in truco: rules and probability",
-  "descriptionEn": "Flor in Argentine truco: when you play with flor and when not, the contraflor and “con flor me achico”, and the exact probability of being dealt one.",
+  "titleEn": "Flor in truco: rules, examples and probability",
+  "descriptionEn": "Flor in Argentine truco with examples: when it is played, how to count it, the contraflor and “con flor me achico”, and how often you get one.",
   "h1En": "Flor in truco"
  },
  {
@@ -1508,10 +1508,10 @@
  {
   "section": "Juegos",
   "url": "/burako/",
-  "title": "Burako: reglas, canastas y cuántos puntos vale cada una",
-  "titleLen": 55,
-  "h1": "Burako",
-  "description": "Burako con el reglamento de los Juegos Bonaerenses: canastas puras e impuras, el muerto y una calculadora que suma los puntos de la mano en segundos.",
+  "title": "Cómo se juega al burako: reglas, canastas y puntos",
+  "titleLen": 50,
+  "h1": "Cómo se juega al burako",
+  "description": "Reglas del burako desde cero con el reglamento bonaerense: las fichas, piernas y escaleras, canastas, el muerto, el cierre y una mano contada entera.",
   "keys": "burako 8.4k/0 · burako juego 1k/0 · rummy burako 500/0 · juego burako 500/0 · rummy y burako 450/0",
   "kind": "tool",
   "wave": "P1",
@@ -1522,9 +1522,9 @@
   "rg": false,
   "live": "2026-11-03",
   "urlEn": "/en/burako/",
-  "titleEn": "Burako: rules, canastas and what each one is worth",
-  "descriptionEn": "Burako with the Juegos Bonaerenses rules: pure and impure canastas, the muerto and a calculator that adds up your hand's points in seconds.",
-  "h1En": "Burako"
+  "titleEn": "How to play burako: rules, canastas and points",
+  "descriptionEn": "Burako rules from scratch with the Buenos Aires rulebook: the tiles, sets and runs, canastas, the muerto, going out and a whole hand counted.",
+  "h1En": "How to play burako"
  },
  {
   "section": "Juegos",
@@ -1566,10 +1566,10 @@
  {
   "section": "Juegos",
   "url": "/chinchon/",
-  "title": "Chinchón: reglas y cuándo se puede cortar",
-  "titleLen": 41,
-  "h1": "Chinchón: reglas y corte",
-  "description": "Reglas del chinchón y cuándo se puede cortar: cargá tus siete cartas y mirá las mejores combinaciones, cuántos puntos te quedan y si tenés chinchón.",
+  "title": "Reglas del chinchón: cómo se juega y cuándo cortar",
+  "titleLen": 50,
+  "h1": "Reglas del chinchón",
+  "description": "Reglas del chinchón desde cero: el mazo, los juegos, robar y tirar, cuándo cortar y cómo se cuentan los puntos, con una mano real resuelta turno por turno.",
   "keys": "chinchon 4.4k/0 · chinchón 1.2k/0 · como se juega al chinchon 800/0 · reglas del chinchon 700/0 · reglas del chinchón para cortar 500/0 · chinchon reglas 600/0",
   "kind": "tool",
   "wave": "P2",
@@ -1580,9 +1580,9 @@
   "rg": false,
   "live": "2026-11-03",
   "urlEn": "/en/chinchon/",
-  "titleEn": "Chinchón: rules and when you can go out",
-  "descriptionEn": "Chinchón rules and when you can go out: enter your seven cards and see the best combinations, how many points you keep and whether you have chinchón.",
-  "h1En": "Chinchón: rules and going out"
+  "titleEn": "Chinchón rules: how to play and when to go out",
+  "descriptionEn": "Chinchón rules from scratch: the deck, melds, drawing and discarding, when to go out and how points are counted, with a real hand worked out turn by turn.",
+  "h1En": "Chinchón rules"
  },
  {
   "section": "Juegos",
@@ -1629,10 +1629,10 @@
  {
   "section": "Juegos",
   "url": "/generala/",
-  "title": "Generala: anotador online, puntos y reglas",
-  "titleLen": 42,
-  "h1": "Generala: anotador y puntos",
-  "description": "Anotador de generala online para 2 a 8 jugadores: escalera, full, póker, generala y servida, con una ayuda que te dice dónde te conviene anotar cada tiro.",
+  "title": "Cómo se juega a la generala: reglas, puntos y anotador",
+  "titleLen": 54,
+  "h1": "Cómo se juega a la generala",
+  "description": "Reglas de la generala desde cero: los tres tiros, qué vale cada jugada, un turno real resuelto tiro por tiro y, al final, el anotador online con ayuda.",
   "keys": "generala 3.5k/3 · generala puntos 1k/0 · generala reglas 600/6 · anotador de generala 80/0",
   "kind": "game",
   "wave": "P1",
@@ -1643,9 +1643,9 @@
   "rg": false,
   "live": "2026-11-03",
   "urlEn": "/en/generala/",
-  "titleEn": "Generala: online scorekeeper, points and rules",
-  "descriptionEn": "Online generala scorekeeper for 2 to 8 players: escalera, full, póker, generala and servida, with a helper that tells you where to score each roll.",
-  "h1En": "Generala: scorekeeper and points"
+  "titleEn": "How to play generala: rules, points and scorekeeper",
+  "descriptionEn": "Generala rules from scratch: the three rolls, what each hand is worth, a real turn worked out roll by roll and, at the end, the online scorekeeper.",
+  "h1En": "How to play generala"
  },
  {
   "section": "Juegos",
@@ -1729,10 +1729,10 @@
  {
   "section": "Juegos",
   "url": "/escoba-de-15/",
-  "title": "Escoba de 15: reglas y buscador de escobas",
-  "titleLen": 42,
-  "h1": "Escoba de 15",
-  "description": "Escoba de 15 con las reglas de acá: cargá las cartas de la mesa y la tuya, y el buscador te muestra todas las sumas de 15 y si hay escoba. Y contá la mano.",
+  "title": "Cómo se juega a la escoba de 15: reglas y puntos",
+  "titleLen": 48,
+  "h1": "Cómo se juega a la escoba de 15",
+  "description": "Reglas de la escoba de 15 desde cero: qué vale cada carta, cómo se suma 15, la escoba, el setenta y la cuenta de la mano, con una mano real resuelta.",
   "keys": "escoba de 15 2k/5",
   "kind": "tool",
   "wave": "P2",
@@ -1743,9 +1743,9 @@
   "rg": false,
   "live": "2026-11-03",
   "urlEn": "/en/escoba-de-15/",
-  "titleEn": "Escoba de 15: rules and escoba finder",
-  "descriptionEn": "Escoba de 15 with our rules: enter the table cards and yours, and the finder shows every sum of 15 and whether there is an escoba. Also count the hand.",
-  "h1En": "Escoba de 15"
+  "titleEn": "How to play escoba de 15: rules and points",
+  "descriptionEn": "Escoba de 15 rules from scratch: card values, how to make 15, the escoba, the setenta and how a hand is counted, with a real hand worked out play by play.",
+  "h1En": "How to play escoba de 15"
  },
  {
   "section": "Juegos",

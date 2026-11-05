@@ -5,7 +5,9 @@ import { servida, generalaWithin } from '../../../engine/lottery/dice.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { RULESETS as CHIN } from '../../../engine/chinchon/rules.mjs';
 import { VALUE, SETENTA } from '../../../engine/escoba/rules.mjs';
-import { hero, cite, crumbs, webPage, fmt, oneIn, card, SPRITE, tiles, ICONS, mnOpen, mnArt } from './parts.mjs';
+import { hero, cite, crumbs, webPage, fmt, oneIn, card, SPRITE, tiles, ICONS, mnOpen, mnArt, btn, faqLd } from './parts.mjs';
+import { wrap, go } from './curso.mjs';
+import { generalaCurso, dadosCurso } from './curso-juegos.mjs';
 
 const BOX = { 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', escalera: 'Escalera', full: 'Full', poker: 'Póker', generala: 'Generala', doble: 'Doble generala' };
 const ld = (h, parent) => [webPage(h), crumbs(h, parent ? [parent] : [])];
@@ -14,19 +16,21 @@ const R = GEN.ruibal;
 export const LIMIT = 101;
 
 export const generala = {
-  path: '/generala/', kind: 'game', section: 'juegos', css: ['mesa.css'], js: ['anotgen.js'],
-  title: 'Generala: anotador online, puntos y reglas',
-  h1: 'Generala: anotador y puntos',
-  description: 'Anotador de generala online para 2 a 8 jugadores: escalera, full, póker, generala y servida, con una ayuda que te dice dónde te conviene anotar cada tiro.',
-  ld: h => ld(h),
+  path: '/generala/', kind: 'game', section: 'juegos', css: ['mesa.css', 'curso.css'], js: ['anotgen.js'],
+  title: 'Cómo se juega a la generala: reglas, puntos y anotador',
+  h1: 'Cómo se juega a la generala',
+  description: 'Reglas de la generala desde cero: los tres tiros, qué vale cada jugada, un turno real resuelto tiro por tiro y, al final, el anotador online con ayuda.',
+  ld: h => [...ld(h), faqLd(generalaCurso(h).faq)],
   data: () => ({ rules: { ruibal: GEN.ruibal, w50: GEN['wikipedia-50'] }, boxes: boxesOf(R), names: BOX }),
   render(h) {
-    return hero(h, { kicker: 'Generala · anotador', scene: 'generala', lede: 'Cinco dados, tres tiros y ' + boxesOf(R).length + ' casilleros. Anotá a todos en la mesa y pedí ayuda: el código te dice qué casillero te conviene llenar.', actions: (h.built('/generala/jugar/') ? '<a class="jg-b p" href="' + h.href('/generala/jugar/') + '">Jugar contra la compu</a>' : '') }) +
-      '<div class="jg-mn"><section class="jg-c w3" data-anotgen><span class="jg-tag">Anotador</span><h2>La planilla</h2><div class="jg-r"><label class="jg-fl"><span>Jugadores</span>' + sel('n', [2, 3, 4, 5, 6, 7, 8].map(v => [v, String(v), v === 2])) + '</label><label class="jg-fl"><span>Generala vale</span>' + sel('g', [['ruibal', String(GEN.ruibal.generala), true], ['w50', String(GEN['wikipedia-50'].generala)]]) + '</label><label class="jg-chk2"><input type="checkbox" name="doble"> Doble generala</label><label class="jg-fl" data-doblev hidden><span>La doble vale</span><input class="jg-in" name="dv" type="text" inputmode="numeric" value="" maxlength="3" placeholder="lo que acuerden"></label></div>' +
+    const C = generalaCurso(h);
+    return hero(h, { kicker: 'Generala · guía para empezar', scene: 'generala', lede: 'Cinco dados, tres tiros por turno y una planilla de ' + boxesOf(R).length + ' casilleros. Te lo explicamos desde cero, con turnos reales jugados por nuestro código; al final está el anotador para la mesa.' }) +
+      wrap(C.html) +
+      '<div class="jg-mn" id="anotador"><section class="jg-c w3" data-anotgen><span class="jg-tag">Anotador</span><h2>El anotador y la ayuda</h2><div class="jg-r"><label class="jg-fl"><span>Jugadores</span>' + sel('n', [2, 3, 4, 5, 6, 7, 8].map(v => [v, String(v), v === 2])) + '</label><label class="jg-fl"><span>Generala vale</span>' + sel('g', [['ruibal', String(GEN.ruibal.generala), true], ['w50', String(GEN['wikipedia-50'].generala)]]) + '</label><label class="jg-chk2"><input type="checkbox" name="doble"> Doble generala</label><label class="jg-fl" data-doblev hidden><span>La doble vale</span><input class="jg-in" name="dv" type="text" inputmode="numeric" value="" maxlength="3" placeholder="lo que acuerden"></label></div>' +
       '<div class="jg-tw"><table class="jg-sheet" data-o="sheet"></table></div><div class="jg-r"><button class="jg-b s" type="button" data-undo>Deshacer</button><button class="jg-b s" type="button" data-reset>Planilla nueva</button></div><p class="jg-note">Tocá un casillero para anotar. La planilla queda guardada en tu teléfono.</p></section>' +
-      '<section class="jg-c w2" data-ayuda><span class="jg-sm">Ayuda</span><h2>¿Dónde me conviene anotar?</h2><p class="jg-mu">Cargá tus cinco dados y en qué tiro estás. Mira la planilla del jugador elegido.</p><div class="jg-dice" data-o="dice">' + [1, 2, 3, 4, 5].map(i => '<button type="button" class="jg-die" data-i="' + i + '" aria-label="Dado ' + i + '">' + i + '</button>').join('') + '</div>' +
+      '<section class="jg-c w2" data-ayuda><span class="jg-sm">Ayuda</span><h2>¿Dónde me conviene anotar?</h2><p class="jg-mu">Cargá tus cinco dados y en qué tiro estás: la ayuda hace la misma cuenta que los ejemplos de arriba, con la planilla del jugador elegido.</p><div class="jg-dice" data-o="dice">' + [1, 2, 3, 4, 5].map(i => '<button type="button" class="jg-die" data-i="' + i + '" aria-label="Dado ' + i + '">' + i + '</button>').join('') + '</div>' +
       '<div class="jg-r"><label class="jg-fl"><span>Tiro</span>' + sel('t', [[1, 'Primero (servido)', true], [2, 'Segundo'], [3, 'Tercero']]) + '</label><label class="jg-fl"><span>Planilla de</span><select class="jg-se" name="p" data-o="who"></select></label></div><ol class="jg-ul" data-o="tips"></ol></section>' +
-      '<section class="jg-c"><span class="jg-sm">Del reglamento</span><h2>Lo que vale cada jugada</h2><table class="jg-tbl" data-nosnippet><tbody><tr><td>Escalera</td><td class="n">' + R.escalera + '</td></tr><tr><td>Full</td><td class="n">' + R.full + '</td></tr><tr><td>Póker</td><td class="n">' + R.poker + '</td></tr><tr><td>Generala</td><td class="n">' + R.generala + '</td></tr><tr><td>Servida (primer tiro)</td><td class="n">+' + R.servidaBonus + '</td></tr></tbody></table><p class="jg-note">Generala servida: gana el partido en el acto.</p>' + cite(h, ['generala.escalera-20', 'generala.full-30', 'generala.poker-40', 'generala.generala-60', 'generala.servida-bonus-5', 'generala.servida-wins', 'generala.w-generala-60-50', 'generala.w-doble-optional', 'generala.number-box']) + '</section></div>';
+      go('Ahora, a jugar', '<p>Practicá contra la compu: en difícil juega con la misma cuenta de los ejemplos y, al terminar, te muestra en qué tiros te apartaste de la mejor jugada. Jugando perfecto, una planilla suma en promedio ' + fmt(C.expected, 1) + ' puntos.</p>', btn(h, '/generala/jugar/', 'Jugar contra la compu', true) + btn(h, '/generala/probabilidades/', 'Ver las probabilidades') + btn(h, '/dados/', 'Tirador de dados')) + '</div>';
   },
 };
 
@@ -96,15 +100,15 @@ export const escobaJugar = {
 };
 
 export const dados = {
-  path: '/dados/', kind: 'game', section: 'juegos', css: ['mesa.css'], js: ['dados.js'],
+  path: '/dados/', kind: 'game', section: 'juegos', css: ['mesa.css', 'curso.css'], js: ['dados.js'],
   title: 'Tirador de dados online: 1 a 10 dados, para la generala',
   h1: 'Tirá los dados',
   description: 'Tirador de dados online: de 1 a 10 dados, de 4 a 20 caras, con suma e historial. Atajo para la generala con cinco dados y gráfico de resultados.',
-  ld: h => ld(h),
+  ld: h => [...ld(h), faqLd(dadosCurso(h).faq)],
   render(h) {
     return '<section class="jg-play" data-dados><div class="jg-ph"><h1 class="jg-h1 sm">' + h.esc(h.page.h1) + '</h1><form class="jg-cfg" data-cfg><label><span class="jg-sm">Dados</span>' + sel('n', Array.from({ length: 10 }, (_, i) => [i + 1, String(i + 1), i === 1])) + '</label><label><span class="jg-sm">Caras</span>' + sel('c', [4, 6, 8, 10, 12, 20].map(v => [v, 'd' + v, v === 6])) + '</label><button class="jg-b s" type="button" data-gen5>Generala (5 dados)</button><button class="jg-b s" type="button" data-sound aria-pressed="false">Sonido: no</button></form></div>' +
       '<div class="jg-felt jg-dfelt"><div class="jg-dice" data-o="dice"></div><p class="jg-win"><span>Suma</span><b data-o="sum">-</b></p><p class="jg-info" data-o="hand"></p><div class="jg-calls"><button class="jg-b p" type="button" data-roll>Tirar</button></div></div>' +
-      mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Historial</span><h2>Lo que fue saliendo</h2><div class="jg-hist" data-o="hist"></div><p class="jg-note" data-o="hn">Tirá varias veces y mirá cómo se reparten las sumas: las barras grises son lo que se espera.</p><ol class="jg-ul" data-o="log"></ol></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Cómo funciona</span><h2>Azar del navegador</h2><p>Cada dado sale de <code>crypto.getRandomValues</code>, el generador criptográfico de tu navegador, sin sesgo por módulo. Nada se manda a ningún lado.</p></section></div>';
+      mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Historial</span><h2>Lo que fue saliendo</h2><div class="jg-hist" data-o="hist"></div><p class="jg-note" data-o="hn">Tirá varias veces y mirá cómo se reparten las sumas: las barras grises son lo que se espera.</p><ol class="jg-ul" data-o="log"></ol></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Cómo funciona</span><h2>Azar del navegador</h2><p>Cada dado sale de <code>crypto.getRandomValues</code>, el generador criptográfico de tu navegador, sin sesgo por módulo. Nada se manda a ningún lado.</p></section></div>' + wrap(dadosCurso(h).html);
   },
 };
 

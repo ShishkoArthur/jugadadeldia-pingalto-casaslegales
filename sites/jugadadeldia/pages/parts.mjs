@@ -49,10 +49,12 @@ export const LEAD = new Set(['/quiniela/', '/quiniela/nocturna/', '/quiniela/mat
   '/quiniela/nacional-y-provincia/', '/quiniela/extractos/', '/quiniela/numeros-que-mas-salen/',
   '/quiniela/tucuman/', '/quiniela/san-juan/', '/quiniela/chaco/', '/quiniela/corrientes/', '/quiniela/misiones/',
   '/quini-6/', '/loto-plus/', '/brinco/', '/telekino/', '/poceada/', '/quiniela-plus/',
-  '/quiniela/cuanto-paga/', '/quiniela/redoblona/', '/quiniela/como-se-juega/', '/quiniela/simulador/', '/quiniela/horarios/', '/cuanto-devuelve-cada-juego/',
-  '/quini-6/como-se-juega/', '/quini-6/controlar/', '/telekino/controlar/',
+  '/quiniela/cuanto-paga/', '/quiniela/simulador/', '/quiniela/horarios/', '/cuanto-devuelve-cada-juego/',
+  '/quini-6/controlar/', '/telekino/controlar/',
   '/truco/', '/truco/valores-de-las-cartas/', '/truco/envido/', '/truco/puntos/', '/truco/quiero-o-no-quiero/', '/truco/flor/',
-  '/generala/', '/generala/probabilidades/', '/chinchon/', '/escoba-de-15/', '/burako/']);
+  '/generala/probabilidades/']);
+// The rules tutorials (owner 2026-11-05: learning first, the tool after it) are not in LEAD: /generala/, /chinchon/, /escoba-de-15/,
+// /burako/, /quiniela/como-se-juega/, /quiniela/redoblona/, /quini-6/como-se-juega/.
 export const isLead = p => LEAD.has(p.path);
 
 export function hero(h, { kicker, lede, scene, actions = '' }) {
