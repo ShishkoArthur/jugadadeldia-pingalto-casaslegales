@@ -17,6 +17,9 @@ import { parseProgramText, validateMonth, PROG_CODES, PROG_TYPES } from '../../.
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn, tiles, ICONS } from './parts.mjs';
 import { price, priceNote } from './precios.mjs';
 import { anyLoto } from './sorteos.mjs';
+import { wrap, go } from './curso.mjs';
+import { quinielaCurso, quini6Curso } from './curso-loterias.mjs';
+import { faqLd } from './parts.mjs';
 import { TURN_PATHS } from './extractos.mjs';
 
 const n = q => toNumber(q);
@@ -46,19 +49,20 @@ export function program() {
 const DEMO = () => { const g = xoshiro128ss(20261103); return Array.from({ length: 20 }, () => String(g.int(10000)).padStart(4, '0')); };
 
 export const comoSeJuega = {
-  path: '/quiniela/como-se-juega/', kind: 'lottery', section: 'quiniela', css: ['guias.css'], js: ['boleta.js'],
-  title: 'Cómo se juega a la quiniela: la boleta paso a paso',
+  path: '/quiniela/como-se-juega/', kind: 'lottery', section: 'quiniela', css: ['guias.css', 'curso.css'], js: ['boleta.js'],
+  title: 'Cómo se juega a la quiniela: guía paso a paso',
   h1: 'Cómo se juega a la quiniela',
-  description: 'Cómo se juega a la quiniela, campo por campo: número, cifras, ubicación y monto en pesos, como en la boleta de la agencia, y qué cuenta como premio.',
-  ld: ldQ,
+  description: 'Cómo se juega a la quiniela desde cero: el extracto, las cifras, a la cabeza o a los 5, cuánto paga, la boleta, un ejemplo paso a paso y cómo se cobra.',
+  ld: h => [...ldQ(h), faqLd(quinielaCurso(h).faq)],
   data: () => ({ demo: DEMO(), j: { lotba: { id: 'lotba-quiniela', help: 'caba', digits: Object.keys(rules('quiniela', 'lotba-quiniela').pay).map(Number) }, pba: { id: 'pba-quiniela', help: 'buenos-aires', digits: Object.keys(rules('quiniela', 'pba-quiniela').pay).map(Number) } } }),
   render(h) {
     const r = directBet({ rules: 'lotba-quiniela', digits: 2, places: 5, stake: 500 });
     const demo = DEMO(), mine = demo[2].slice(2);
     const x20 = demo.map((v, i) => '<span class="' + (i < 5 ? 'in' : '') + (i < 5 && v.endsWith(mine) ? ' hit' : '') + '" data-i="' + (i + 1) + '"><small>' + (i + 1) + '</small>' + v.slice(0, 2) + '<b>' + v.slice(2) + '</b></span>').join('');
     const ten = h.src.value('lotba.quiniela.ten-per-ticket'), cancel = h.src.value('lotba.quiniela.cancel-15');
-    return hero(h, { kicker: 'Quiniela · la boleta', lede: 'Un número, cuántas cifras, en qué lugar del extracto y cuánta plata. Armá tu jugada acá y mirá qué dice cada campo de la boleta y cuándo cobrás.', actions: '<a class="jg-b p" href="#boleta">Armar una boleta</a>' + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') }) +
-      '<div class="jg-mn">' +
+    return hero(h, { kicker: 'Quiniela · guía para empezar', lede: 'Qué es el extracto, cómo se elige el número, qué quiere decir a la cabeza o a los 5 y cuánto paga cada jugada. Desde cero, con un extracto de ejemplo leído paso a paso; al final, una boleta para practicar.' }) +
+      wrap(quinielaCurso(h).html) +
+      '<div class="jg-mn" id="simulador">' +
       '<section class="jg-c w2" id="boleta"><span class="jg-tag">Simulá</span><h2>Tu jugada</h2><form class="jg-f" data-boleta>' +
       '<fieldset class="jg-fl"><legend>Lotería</legend><div class="jg-sg">' + radios('j', [['lotba', 'Ciudad (Nacional)'], ['pba', 'Provincia']], 'lotba') + '</div></fieldset>' +
       '<div class="jg-two"><label class="jg-fl"><span>Número</span><input class="jg-in" name="num" type="text" inputmode="numeric" maxlength="4" value="' + mine + '" autocomplete="off"></label><label class="jg-fl"><span>Apostás (pesos)</span><input class="jg-in" name="a" type="text" inputmode="decimal" value="500" autocomplete="off"></label></div>' +
@@ -69,15 +73,8 @@ export const comoSeJuega = {
       '<dt>Número</dt><dd data-o="b-num">' + mine + '<small>2 cifras: cuenta la terminación</small></dd><dt>Ubicación</dt><dd data-o="b-ub">A los 5<small>tiene que salir entre el lugar 1 y el 5</small></dd>' +
       '<dt>Lotería</dt><dd data-o="b-j">Ciudad</dd><dt>Importe</dt><dd data-o="b-a">' + money(500) + '<small>' + money(n(r.stake) / 5) + ' por cada lugar</small></dd></dl></div>' +
       '<p class="jg-win"><span>Si sale, cobrás</span><b data-o="pay">' + money(n(r.perHit)) + '</b></p><p class="jg-hon" data-o="why">Chance: <b>' + oneIn(r.oneIn) + '</b>. ' + r.ratio + ' veces lo apostado, dividido por los 5 lugares que cubrís.</p><p class="jg-note" data-o="err" hidden></p></section>' +
-      '<section class="jg-c w2"><span class="jg-sm">Campo por campo</span><h2>Qué significa cada cosa</h2><ol class="jg-steps">' +
-      '<li><b>El número</b>De 1 a ' + h.src.value('lotba.quiniela.digits-max') + ' cifras. Si jugás a 2 cifras, cuentan las dos últimas del número que sale; a 3, las tres últimas.</li>' +
-      '<li><b>La ubicación</b>A la cabeza es el primer lugar del extracto. A los 5, 10 o 20 vale cualquiera de esos lugares, pero tu apuesta se reparte entre ellos.</li>' +
-      '<li><b>La lotería</b>Cada extracto (Ciudad, Provincia, Córdoba…) es un sorteo aparte. En la Ciudad la apuesta mínima es ' + price(h, 'lotba.quiniela.min-bet') + ' por extracto.' + priceNote(h, 'lotba.quiniela.min-bet') + '</li>' +
-      '<li><b>El importe</b>El premio incluye lo que apostaste. En un mismo ticket entran hasta ' + ten + ' jugadas.</li></ol>' +
-      cite(h, ['lotba.quiniela.digits-max', 'lotba.quiniela.range-any', 'lotba.quiniela.drawn', 'lotba.quiniela.range-divide', 'lotba.quiniela.includes-stake', 'lotba.quiniela.min-bet', 'lotba.quiniela.ten-per-ticket']) + '</section>' +
-      '<section class="jg-c w3"><span class="jg-sm">Después del sorteo</span><h2>Cobrar o anular</h2><ol class="jg-steps"><li><b>Anular</b>Hasta ' + cancel + ' minutos después de hacer la jugada, y antes del cierre.</li><li><b>Cobrar</b>En la agencia donde jugaste, hasta la fecha que figura en el extracto oficial.</li><li><b>Premios grandes</b>Más de ' + price(h, 'lotba.quiniela.big-prize') + ' se cobran en la sede de Lotería de la Ciudad, con turno.' + priceNote(h, 'lotba.quiniela.big-prize') + '</li></ol>' +
-      cite(h, ['lotba.quiniela.cancel-15', 'lotba.quiniela.collect-where', 'lotba.quiniela.big-prize']) + '</section>' +
-      '<section class="jg-c w3" data-quiz-q><span class="jg-tag">5 preguntas</span><h2>¿Lo entendiste?</h2><div class="jg-qz" data-o="quiz"><p class="jg-note">Las preguntas aparecen con JavaScript.</p></div><p class="jg-hon" data-o="qres" hidden></p></section></div>';
+      '<section class="jg-c w3" data-quiz-q><span class="jg-tag">5 preguntas</span><h2>¿Lo entendiste?</h2><div class="jg-qz" data-o="quiz"><p class="jg-note">Las preguntas aparecen con JavaScript.</p></div><p class="jg-hon" data-o="qres" hidden></p></section>' +
+      go('Cuando quieras jugar', '<p>Antes de ir a la agencia, mirá cuánto paga tu jugada y a qué hora es cada sorteo.</p>', btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?', true) + btn(h, '/quiniela/horarios/', 'Horarios') + btn(h, '/quiniela/', 'La quiniela de hoy')) + '</div>';
   },
 };
 
@@ -199,27 +196,22 @@ export const devuelve = {
 const q6sets = () => [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'se', name: 'La Segunda', drawn: 6, win: [6, 5, 4] }, { id: 're', name: 'Revancha', drawn: 6, win: [6] }, { id: 'ss', name: 'Siempre Sale', drawn: 6, win: 'most' }];
 
 export const quini6Como = {
-  path: '/quini-6/como-se-juega/', kind: 'lottery', section: 'loterias', css: ['guias.css'], js: ['volante.js'],
+  path: '/quini-6/como-se-juega/', kind: 'lottery', section: 'loterias', css: ['guias.css', 'curso.css'], js: ['volante.js'],
   title: 'Cómo se juega al Quini 6: modalidades y premios',
   h1: 'Cómo se juega al Quini 6',
-  description: 'Cómo se juega al Quini 6: marcás seis números del 00 al 45 y elegís modalidades. Qué gana en cada una, cuántos sorteos juega tu boleta y la chance exacta.',
-  ld: h => [webPage(h), crumbs(h, [['/quini-6/', 'Quini 6']])],
+  description: 'Cómo se juega al Quini 6 desde cero: el volante, las cuatro modalidades, el Premio Extra, un sorteo de ejemplo y la chance exacta de cada premio.',
+  ld: h => [webPage(h), crumbs(h, [['/quini-6/', 'Quini 6']]), faqLd(quini6Curso(h).faq)],
   data: () => ({ mods: { tr: odds('cas-quini6-tradicional').rows.filter(r => r.prize).map(r => [r.hits, 1 / n(r.p)]), re: odds('cas-quini6-revancha').rows.filter(r => r.prize).map(r => [r.hits, 1 / n(r.p)]) }, extra: quini6PremioExtra().oneIn }),
   render(h) {
     const o = odds('cas-quini6-tradicional'), max = o.pool - 1;
     const vol = '<div class="jg-vol" data-o="vol" role="group" aria-label="Volante: marcá 6 números">' + Array.from({ length: o.pool }, (_, i) => '<button type="button" data-n="' + i + '" aria-pressed="false">' + two(i) + '</button>').join('') + '</div>';
     const mods = [['tr', 'Tradicional', 'Primer Sorteo y La Segunda: dos sorteos'], ['re', 'Revancha', 'Un sorteo más: solo paga con 6'], ['ss', 'Siempre Sale', 'Gana el que más acierte']];
-    return hero(h, { kicker: 'Quini 6 · el volante', scene: 'quini-6-como-se-juega', lede: 'Marcás ' + o.pick + ' números del 00 al ' + two(max) + ' y elegís en qué modalidades jugás. Probalo acá: el volante te dice en cuántos sorteos entra tu boleta y qué gana en cada uno.' }) +
-      '<div class="jg-mn">' +
+    return hero(h, { kicker: 'Quini 6 · guía para empezar', scene: 'quini-6-como-se-juega', lede: 'Marcás ' + o.pick + ' números del 00 al ' + two(max) + ' y elegís en qué modalidades jugás. Te explicamos cada una desde cero, con un sorteo de ejemplo; al final, un volante para probar.' }) +
+      wrap(quini6Curso(h).html) +
+      '<div class="jg-mn" id="probar">' +
       '<section class="jg-c w2" data-volante><span class="jg-tag">Volante</span><h2>Marcá tus 6 números</h2>' + vol + '<div class="jg-r" style="margin-top:12px"><button class="jg-b s" type="button" data-rand>Al azar</button><button class="jg-b s" type="button" data-clear>Borrar</button></div>' +
       '<h3>Modalidades</h3><div class="jg-sg" role="group" aria-label="Modalidades">' + mods.map(([k, l]) => '<label><input type="checkbox" name="m" value="' + k + '"' + (k === 'tr' ? ' checked' : '') + '>' + l + '</label>').join('') + '</div></section>' +
       '<section class="jg-c t2" aria-live="polite"><span class="jg-sm">Tu boleta</span><p class="jg-win"><span>Juega en</span><b data-o="draws">2</b><span>sorteos</span></p><div class="jg-mods2" data-o="mods">' + mods.map(([k, l, s]) => '<div data-m="' + k + '"' + (k === 'tr' ? ' class="on"' : '') + '><b>' + l + '</b><small>' + s + '</small></div>').join('') + '<div data-m="ex" class="on"><b>Premio Extra</b><small>6 aciertos entre los 18 números de Tradicional, La Segunda y Revancha</small></div></div><p class="jg-hon" data-o="sum">Marcá 6 números para ver tu boleta.</p></section>' +
-      '<section class="jg-c w2"><span class="jg-sm">Paso a paso</span><h2>Qué gana en cada modalidad</h2><ol class="jg-steps">' +
-      '<li><b>Tradicional</b>Con la misma boleta se hacen dos sorteos (Primer Sorteo y La Segunda). En cada uno hay premio con ' + o.rows.filter(r => r.prize).map(r => r.hits).join(', ') + ' aciertos: chance de algo en el día, ' + oneIn(o.oneInAnyPrizeTicket) + '.</li>' +
-      '<li><b>Revancha</b>Otro sorteo, solo paga a quien acierta los 6: ' + oneIn(odds('cas-quini6-revancha').rows[0].oneIn) + '.</li>' +
-      '<li><b>Siempre Sale</b>Si nadie acierta 6, cobran los de 5; si no, los de 4, y así. Siempre hay ganador, pero la chance depende de cuántas boletas se vendan.</li>' +
-      '<li><b>Premio Extra</b>Se juntan los 18 números de Tradicional, La Segunda y Revancha: si tus 6 están ahí, entrás al reparto. Chance: ' + oneIn(quini6PremioExtra().oneIn) + '.</li></ol>' +
-      cite(h, ['cas.quini6.max', 'cas.quini6.pick', 'cas.quini6.tradicional-draws', 'cas.quini6.tiers', 'cas.revancha.six-only', 'cas.siempresale.requires', 'cas.siempresale.rule', 'cas.extra.rule']) + '</section>' +
       '<section class="jg-c"><span class="jg-sm">Lo que no publicamos</span><h2>Precio y horario</h2><p>El precio de cada modalidad y el horario de cierre los fija la programación mensual de la Lotería de Santa Fe, y su sitio no responde desde nuestro servidor. Sin el documento, no ponemos un número: consultalo en tu agencia.</p>' + btn(h, '/quini-6/controlar/', 'Controlar mi Quini 6', true) + '</section></div>';
   },
 };

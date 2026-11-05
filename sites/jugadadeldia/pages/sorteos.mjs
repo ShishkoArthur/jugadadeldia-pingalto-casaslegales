@@ -6,6 +6,8 @@ import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn, faq, faqLd } from './parts.mjs';
 import { price, priceNote } from './precios.mjs';
 import lotFeed from '../../../tools/feeds/jugadadeldia/loterias.mjs';
+import { wrap } from './curso.mjs';
+import { lotoCurso, brincoCurso, telekinoCurso, poceadaCurso, qplusCurso } from './curso-loterias.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -120,7 +122,7 @@ function lotoFaq() {
   ];
 }
 export const lotoPlus = {
-  path: '/loto-plus/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
+  path: '/loto-plus/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css', 'curso.css'],
   title: 'Loto Plus: resultados del último sorteo, premios y control',
   h1: 'Loto Plus: resultados y modalidades',
   description: 'Resultados del Loto Plus: el último sorteo de Tradicional, Match, Desquite y Sale o Sale, el número Plus, ganadores y premios, y el control de tu jugada.',
@@ -130,7 +132,7 @@ export const lotoPlus = {
     const o = odds('lotba-loto-plus-tradicional'), m = lotoPlusMultiplicador();
     const tiers = '<ul class="jg-ul">' + o.rows.filter(r => r.prize).map(r => '<li><b>' + r.hits + ' aciertos</b> ' + oneIn(r.oneIn) + '</li>').join('') + '</ul>';
     const plusDial = '<div class="jg-dial" aria-hidden="true">' + Array.from({ length: 10 }, (_, i) => '<i class="jg-ba' + (i === 7 ? ' c4' : ' c2') + '">' + i + '</i>').join('') + '</div>';
-    return hero(h, { kicker: 'Loto Plus · Lotería de la Ciudad', scene: 'loto-plus', lede: o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y un número Plus del 0 al ' + (m.pPlus.d - 1n) + '. Cada modalidad tiene su propio sorteo y sus propios premios.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi jugada</a>' }) +
+    return hero(h, { kicker: 'Loto Plus · Lotería de la Ciudad', scene: 'loto-plus', lede: o.pick + ' números del 00 al ' + two(o.pool - 1) + ' y un número Plus del 0 al ' + (m.pPlus.d - 1n) + '. Cada modalidad tiene su propio sorteo y sus propios premios.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi jugada</a><a class="jg-b" href="#aprender">Cómo se juega</a>' }) +
       '<div class="jg-mn">' +
       live(h, { game: 'loto-plus', name: 'Loto Plus', who: 'la Lotería de la Ciudad', url: 'https://loto.loteriadelaciudad.gob.ar/', host: 'loto.loteriadelaciudad.gob.ar' }) +
       '<article class="jg-c"><span class="jg-sm">Tradicional y Match</span><h2>6, 5 o 4 aciertos</h2>' + tiers + '<p class="jg-note">Cada una con su sorteo de 6 números. Con Tradicional, Match y Desquite juntos, la chance de algún premio es ' + oneIn(anyLoto()) + ' (sin contar Sale o Sale).</p></article>' +
@@ -140,28 +142,29 @@ export const lotoPlus = {
       shareCard('Loto Plus', n(prizeShare('lotba-loto-plus').per100), ['lotba.loto.fund', 'lotba.loto.modality-share', 'lotba.loto.tradicional-split', 'lotba.loto.match-split', 'lotba.loto.desquite-split', 'lotba.loto.saleosale-split', 'lotba.loto.multiplicador-fund'], h, ' La parte del Multiplicador va al fondo de reserva, por eso no cuenta.') +
       '<section class="jg-c w3"><span class="jg-sm">Por aciertos</span><h2>Chance en un sorteo de 6 números</h2>' + oddsTable(o) + '<p class="jg-note">La jugada cuesta ' + price(h, 'lotba.loto.price') + '.' + priceNote(h, 'lotba.loto.price') + '</p>' + cite(h, ['lotba.loto.price', 'lotba.loto.universe', 'lotba.loto.draws']) + '</section>' +
       checker(h, { game: 'loto', title: 'Controlá tu jugada', pick: 6, min: 0, max: 45, plus: true, sets: [{ id: 'tr', name: 'Tradicional', drawn: 6 }, { id: 'ma', name: 'Match', drawn: 6 }, { id: 'de', name: 'Desquite', drawn: 6 }, { id: 'so', name: 'Sale o Sale', drawn: 6 }], notes: cite(h, ['lotba.loto.tradicional-split', 'lotba.loto.desquite-split', 'lotba.loto.saleosale-rule'], 'Las reglas, del reglamento') }) +
+      wrap(lotoCurso(h).html) +
       faq(h, 'Preguntas sobre el Loto Plus', lotoFaq(), LOTO_FAQ_SRC) + '</div>';
   },
 };
 
 export const brinco = {
-  path: '/brinco/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
+  path: '/brinco/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css', 'curso.css'],
   title: 'Brinco: resultados del último sorteo y chances',
   h1: 'Brinco: resultados y chances',
   description: 'Resultados del Brinco: los números del último sorteo publicado y del Junior, el control de tu jugada y la chance de 6 a 3 aciertos frente al Quini 6.',
-  ld: h => [webPage(h), crumbs(h, [])],
+  ld: h => [webPage(h), crumbs(h, []), faqLd(brincoCurso(h).faq)],
   data: () => ({ game: 'brinco', min: 0, max: 39, pick: 6, sets: [{ id: 'br', name: 'Sorteo del Brinco', drawn: 6, win: [6, 5, 4, 3] }], lot: lotData('brinco') }),
   render(h) {
     const b = odds('cas-brinco'), q = q6();
     const ratio = Number(q.combinations) / Number(b.combinations);
-    return hero(h, { kicker: 'Brinco · Lotería de Santa Fe', scene: 'brinco', lede: 'Como el Quini 6, pero con ' + b.pool + ' números en vez de ' + q.pool + '. Parece poco, y cambia mucho la chance.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi jugada</a>' }) +
+    return hero(h, { kicker: 'Brinco · Lotería de Santa Fe', scene: 'brinco', lede: 'Como el Quini 6, pero con ' + b.pool + ' números en vez de ' + q.pool + '. Parece poco, y cambia mucho la chance.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi jugada</a><a class="jg-b" href="#aprender">Cómo se juega</a>' }) +
       '<div class="jg-mn">' +
       live(h, { game: 'brinco', name: 'Brinco', who: 'la Lotería de Santa Fe', url: LOT.brinco.official[0], host: 'loteriasantafe.gov.ar', cas: true }) +
       '<section class="jg-c w2"><span class="jg-sm">Brinco contra Quini 6</span><h2>Los 6 aciertos</h2><div class="jg-vs"><div><b>' + oneIn(b.rows[0].oneIn) + '</b><span class="jg-bar"><i style="width:' + Math.round(100 / ratio) + '%"></i></span><small>Brinco, ' + b.pool + ' números</small></div><div><b>' + oneIn(q.rows[0].oneIn) + '</b><span class="jg-bar"><i style="width:100%"></i></span><small>Quini 6, ' + q.pool + ' números</small></div></div>' +
       '<p class="jg-hon">Sacar los 6 en el Brinco es unas <b>' + fmt(ratio, 1) + '</b> veces más fácil que en un sorteo del Quini 6. Y con 3 aciertos ya recuperás lo que pagaste.</p></section>' +
       shareCard('Brinco', n(prizeShare('cas-brinco').per100), ['cas.brinco.nominal', 'cas.brinco.pool', 'cas.brinco.split'], h) +
       '<section class="jg-c w3"><span class="jg-sm">Por aciertos</span><h2>Chance en el sorteo</h2>' + oddsTable(b, { prizeLabel: r => (r.hits === 3 ? 'te devuelven la jugada' : r.prize ? 'premio' : '') }) + cite(h, ['cas.brinco.universe', 'cas.brinco.draw', 'cas.brinco.three-price']) + '</section>' +
-      checker(h, { game: 'brinco', title: 'Controlá tu jugada', pick: 6, min: 0, max: 39, sets: [{ id: 'br', name: 'Números del sorteo', drawn: 6 }] }) + '</div>';
+      checker(h, { game: 'brinco', title: 'Controlá tu jugada', pick: 6, min: 0, max: 39, sets: [{ id: 'br', name: 'Números del sorteo', drawn: 6 }] }) + wrap(brincoCurso(h).html) + '</div>';
   },
 };
 
@@ -177,7 +180,7 @@ function tkFaq(h) {
   ];
 }
 export const telekino = {
-  path: '/telekino/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css'],
+  path: '/telekino/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['loterias.css', 'curso.css'],
   title: 'Telekino: resultados del último sorteo y control del cartón',
   h1: 'Telekino: resultados y control de tu cartón',
   description: 'Resultados del Telekino: los 15 números del último sorteo y los del Rekino, el control de tu cartón con un toque y la chance exacta de 15 a 11 aciertos.',
@@ -186,7 +189,7 @@ export const telekino = {
   render(h) {
     const o = odds('pba-telekino');
     const board = '<div class="jg-board b5" aria-hidden="true">' + Array.from({ length: 25 }, (_, i) => '<i' + ([1, 3, 4, 6, 8, 9, 11, 12, 14, 15, 17, 19, 21, 22, 24].includes(i + 1) ? ' class="on"' : '') + '>' + (i + 1) + '</i>').join('') + '</div>';
-    return hero(h, { kicker: 'Telekino · Lotería de la Provincia', scene: 'telekino', lede: 'Un bingo televisado: tu cartón trae ' + o.pick + ' de los ' + o.pool + ' números, y del bolillero salen ' + o.drawn + '. Con ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + ' aciertos o más hay premio.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi cartón</a>' + btn(h, '/telekino/controlar/', 'Grilla de 5 por 5') }) +
+    return hero(h, { kicker: 'Telekino · Lotería de la Provincia', scene: 'telekino', lede: 'Un bingo televisado: tu cartón trae ' + o.pick + ' de los ' + o.pool + ' números, y del bolillero salen ' + o.drawn + '. Con ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + ' aciertos o más hay premio.', actions: '<a class="jg-b p" href="#resultados">Ver el último sorteo</a><a class="jg-b" href="#controlar">Controlar mi cartón</a>' + btn(h, '/telekino/controlar/', 'Grilla de 5 por 5') + '<a class="jg-b" href="#aprender">Cómo se juega</a>' }) +
       '<div class="jg-mn">' +
       live(h, { game: 'telekino', name: 'Telekino', who: 'el sitio oficial del Telekino', url: 'https://www.telekino.com.ar/', host: 'telekino.com.ar' }) +
       '<section class="jg-c"><span class="jg-sm">Un cartón de ejemplo</span><h2>' + o.pick + ' de ' + o.pool + '</h2>' + board + '<p class="jg-note">Cada cartón ya viene con sus 15 números.</p></section>' +
@@ -194,43 +197,44 @@ export const telekino = {
       shareCard('Telekino', n(prizeShare('pba-telekino').per100), ['pba.telekino.fund', 'pba.telekino.split'], h, ' Incluye los premios en especie del primer premio.') +
       '<section class="jg-c w2"><span class="jg-sm">Rekino</span><h2>15 bolillas nuevas</h2><p>Después del sorteo principal salen otras 15 bolillas y gana el cartón con más aciertos. Como depende de los cartones vendidos, no tiene una chance fija.</p>' + cite(h, ['pba.telekino.universe', 'pba.telekino.drawn', 'pba.telekino.ticket', 'pba.telekino.lowest', 'pba.telekino.none-below', 'pba.telekino.rekino', 'pba.telekino.operator']) + '</section>' +
       checker(h, { game: 'telekino', title: 'Controlá tu cartón', pick: 15, min: 1, max: 25, sets: [{ id: 'tk', name: 'Sorteo Telekino', drawn: 15 }, { id: 'rk', name: 'Rekino', drawn: 15 }] }) +
+      wrap(telekinoCurso(h).html) +
       faq(h, 'Preguntas sobre el Telekino', tkFaq(h), TK_FAQ_SRC) + '</div>';
   },
 };
 
 export const poceada = {
-  path: '/poceada/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'],
+  path: '/poceada/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['curso.css'],
   title: 'Quiniela Poceada de la Ciudad: cómo funciona y chances',
   h1: 'La Poceada',
   description: 'Cómo funciona la Poceada de la Ciudad: 8 números del 00 al 99 contra 20 sorteados. La chance exacta de 8, 7, 6 o 5 aciertos y el control de tu jugada.',
-  ld: h => [webPage(h), crumbs(h, [])],
+  ld: h => [webPage(h), crumbs(h, []), faqLd(poceadaCurso(h).faq)],
   data: () => ({ game: 'poceada', min: 0, max: 99, pick: 8, sets: [{ id: 'pc', name: 'Los 20 números', drawn: 20, win: [8, 7, 6, 5] }] }),
   render(h) {
     const o = odds('lotba-poceada');
     const board = '<div class="jg-board b10" aria-hidden="true">' + Array.from({ length: 100 }, (_, i) => '<i' + ([3, 7, 12, 18, 22, 27, 31, 38, 41, 46, 50, 55, 61, 64, 70, 77, 83, 88, 92, 96].includes(i) ? ' class="on"' : [7, 18, 33, 46, 59, 70, 84, 99].includes(i) ? ' class="me"' : '') + '></i>').join('') + '</div>';
-    return hero(h, { kicker: 'Poceada · Lotería de la Ciudad', scene: 'poceada', lede: 'Elegís ' + o.pick + ' números de dos cifras. Se toman ' + o.drawn + ' números distintos del sorteo: si acertás los ' + o.pick + ' te llevás el pozo grande.', actions: '<a class="jg-b p" href="#controlar">Controlar mi jugada</a>' }) +
+    return hero(h, { kicker: 'Poceada · Lotería de la Ciudad', scene: 'poceada', lede: 'Elegís ' + o.pick + ' números de dos cifras. Se toman ' + o.drawn + ' números distintos del sorteo: si acertás los ' + o.pick + ' te llevás el pozo grande.', actions: '<a class="jg-b p" href="#controlar">Controlar mi jugada</a><a class="jg-b" href="#aprender">Cómo se juega</a>' }) +
       '<div class="jg-mn">' +
       results(h, { game: 'de la Poceada', who: 'la Lotería de la Ciudad', url: 'https://quiniela.loteriadelaciudad.gob.ar/', host: 'quiniela.loteriadelaciudad.gob.ar' }) +
       '<section class="jg-c"><span class="jg-sm">Del 00 al 99</span><h2>Tus ' + o.pick + ' contra ' + o.drawn + '</h2>' + board + '<p class="jg-note"><span class="jg-key on"></span> salieron · <span class="jg-key me"></span> tus números (ejemplo)</p></section>' +
       '<section class="jg-c w2"><span class="jg-sm">Por aciertos</span><h2>Chance de cada premio</h2>' + oddsTable(o, { prizeLabel: r => (r.hits === 5 ? 'te devuelven la jugada' : r.prize ? 'premio' : '') }) + '<p class="jg-hon">Hay ' + fmt(Number(o.combinations), 0) + ' jugadas posibles de 8 números. Chance de cobrar algo: <b>' + oneIn(o.oneInAnyPrize) + '</b>.</p></section>' +
       shareCard('Poceada', n(prizeShare('lotba-poceada').per100), ['lotba.poceada.fund', 'lotba.poceada.split', 'lotba.poceada.split-agent', 'lotba.poceada.split-reserve'], h) +
       '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Cómo se juega</h2><ul><li>Elegís 8 números distintos del 00 al 99.</li><li>Se toman 20 números distintos del sorteo.</li><li>Con 5 aciertos te devuelven lo que pagaste.</li><li>La apuesta simple cuesta ' + price(h, 'lotba.poceada.price') + '.' + priceNote(h, 'lotba.poceada.price') + '</li></ul>' + cite(h, ['lotba.poceada.pick', 'lotba.poceada.distinct', 'lotba.poceada.five-refund', 'lotba.poceada.price']) + '</section>' +
-      checker(h, { game: 'poceada', title: 'Controlá tu Poceada', pick: 8, min: 0, max: 99, sets: [{ id: 'pc', name: 'Los 20 números del sorteo', drawn: 20 }] }) + '</div>';
+      checker(h, { game: 'poceada', title: 'Controlá tu Poceada', pick: 8, min: 0, max: 99, sets: [{ id: 'pc', name: 'Los 20 números del sorteo', drawn: 20 }] }) + wrap(poceadaCurso(h).html) + '</div>';
   },
 };
 
 export const quinielaPlus = {
-  path: '/quiniela-plus/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'],
+  path: '/quiniela-plus/', kind: 'lottery', section: 'loterias', js: ['sorteo.js'], css: ['curso.css'],
   title: 'Quiniela Plus: controlá tu jugada con la última Nocturna',
   h1: 'Quiniela Plus',
   description: 'Quiniela Plus de la Provincia: 8 números contra los 20 de la Nocturna. La chance exacta de 8 a 5 aciertos, Súper Plus, Chance Plus y tu control.',
-  ld: h => [webPage(h), crumbs(h, [])],
+  ld: h => [webPage(h), crumbs(h, []), faqLd(qplusCurso(h).faq)],
   jurisdiction: 'buenos-aires',
   data: () => ({ game: 'qplus', min: 0, max: 99, pick: 8, sets: [{ id: 'np', name: 'Los 20 números de la Nocturna', drawn: 20, win: [8, 7, 6, 5], four: true }], fill: { feed: '/data/feeds/quiniela.json', set: 'np', jur: 'buenos-aires', t: 'NOCT' } }),
   render(h) {
     const o = quinielaPlusOdds('pba-quiniela-plus');
     const strip = '<ol class="jg-strip" aria-hidden="true">' + ['4721', '0938', '6154', '2307', '8862', '1495', '7030', '3618', '5276', '9143'].map(x => '<li><b>' + x.slice(0, 2) + '</b><i>' + x.slice(2) + '</i></li>').join('') + '</ol>';
-    return hero(h, { kicker: 'Quiniela Plus · Lotería de la Provincia', scene: 'quiniela-plus', lede: 'Elegís 8 números de dos cifras y se comparan con los 20 números de la Quiniela Nocturna de la Provincia. Cada número que aparece es un punto.', actions: '<a class="jg-b p" href="#controlar">Controlar mi jugada</a>' }) +
+    return hero(h, { kicker: 'Quiniela Plus · Lotería de la Provincia', scene: 'quiniela-plus', lede: 'Elegís 8 números de dos cifras y se comparan con los 20 números de la Quiniela Nocturna de la Provincia. Cada número que aparece es un punto.', actions: '<a class="jg-b p" href="#controlar">Controlar mi jugada</a><a class="jg-b" href="#aprender">Cómo se juega</a>' }) +
       '<div class="jg-mn">' +
       '<section class="jg-c w3 jg-resu"><span class="jg-tag">Resultados</span><h2>¿Qué salió en la Quiniela Plus?</h2><p>La Quiniela Plus no tiene bolillero propio: se resuelve con los 20 números de la <b>Nocturna de la Provincia</b>. Esa Nocturna la copiamos de las fuentes oficiales cada 15 minutos: en el control de abajo tocá <b>Traer la última Nocturna de la Provincia</b> y cargá tus 8 números.</p>' +
       '<div class="jg-r"><a class="jg-b p" href="#controlar">Controlar mi jugada</a>' + btn(h, '/quiniela/nocturna/', 'La Nocturna de hoy') + btn(h, '/quiniela/provincia/', 'Extracto de la Provincia') + '</div><p class="jg-note">El pozo en pesos y los ganadores los informa la Lotería de la Provincia en <a href="https://loteria.gba.gob.ar/" rel="noopener">loteria.gba.gob.ar</a>.</p></section>' +
@@ -238,6 +242,6 @@ export const quinielaPlus = {
       '<section class="jg-c w2"><span class="jg-sm">Plus, por aciertos</span><h2>Chance de cada premio</h2>' + oddsTable(o) + '<p class="jg-hon">Chance de cobrar algo en el Plus: <b>' + oneIn(o.oneInAnyPrize) + '</b>. Si un número sale dos veces en el extracto, lo contamos como un solo acierto.</p></section>' +
       shareCard('Quiniela Plus', n(prizeShare('pba-quiniela-plus').per100), ['pba.qplus.fund', 'pba.qplus.split', 'pba.qplus.split-reserve'], h) +
       '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Cómo se juega</h2><ul><li>Elegís 8 números distintos del 00 al 99.</li><li>Con una apuesta fija de ' + money(h.src.value('pba.qplus.price')) + ' jugás las tres modalidades.</li><li>Se sortea de lunes a sábados con la Nocturna, a las ' + h.src.value('pba.qplus.nocturna') + '.</li><li>En el Súper Plus gana quien tenga más aciertos.</li></ul>' + cite(h, ['pba.qplus.pick', 'pba.qplus.distinct-pick', 'pba.qplus.points', 'pba.qplus.price', 'pba.qplus.nocturna', 'pba.qplus.superplus-rule']) + '</section>' +
-      checker(h, { game: 'qplus', title: 'Controlá tu jugada', pick: 8, min: 0, max: 99, sets: [{ id: 'np', name: 'Los 20 números de la Nocturna (de cuatro cifras)', drawn: 20, fill: 'Traer la última Nocturna de la Provincia' }] }) + '</div>';
+      checker(h, { game: 'qplus', title: 'Controlá tu jugada', pick: 8, min: 0, max: 99, sets: [{ id: 'np', name: 'Los 20 números de la Nocturna (de cuatro cifras)', drawn: 20, fill: 'Traer la última Nocturna de la Provincia' }] }) + wrap(qplusCurso(h).html) + '</div>';
   },
 };

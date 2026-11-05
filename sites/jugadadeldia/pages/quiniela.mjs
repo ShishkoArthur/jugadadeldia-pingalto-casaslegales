@@ -6,6 +6,9 @@ import { rules } from '../../../engine/lottery/rules.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { hero, cite, crumbs, webPage, fmt, oneIn, money, btn } from './parts.mjs';
 import { price, priceNote } from './precios.mjs';
+import { faqLd } from './parts.mjs';
+import { wrap, go } from './curso.mjs';
+import { redoblonaCurso } from './curso-loterias.mjs';
 
 const J = { lotba: { id: 'lotba-quiniela', name: 'Ciudad', long: 'La Quiniela de la Ciudad', help: 'caba' }, pba: { id: 'pba-quiniela', name: 'Provincia', long: 'Quiniela de la Provincia de Buenos Aires', help: 'buenos-aires' } };
 const PLACES = [[1, 'A la cabeza'], [5, 'A los 5'], [10, 'A los 10'], [20, 'A los 20']];
@@ -51,11 +54,11 @@ export const cuantoPaga = {
 };
 
 export const redoblonaPage = {
-  path: '/quiniela/redoblona/', kind: 'lottery', section: 'quiniela', js: ['redoblona.js'],
-  title: 'Redoblona: qué es, cuánto paga y qué chance tiene',
-  h1: 'Redoblona: cuánto paga y qué chance tiene',
-  description: 'Qué es la redoblona en la quiniela, cuánto paga en pesos según el reglamento de tu provincia y qué chance real tiene, calculada número por número.',
-  ld: h => [webPage(h), crumbs(h, [['/quiniela/cuanto-paga/', '¿Cuánto paga la quiniela?']])],
+  path: '/quiniela/redoblona/', kind: 'lottery', section: 'quiniela', css: ['curso.css'], js: ['redoblona.js'],
+  title: 'Redoblona: qué es, cómo se juega y cuánto paga',
+  h1: 'Redoblona: qué es y cómo se juega',
+  description: 'Qué es la redoblona en la quiniela y cómo se juega desde cero: cómo se calcula el premio, el tope, un extracto leído paso a paso y la chance de cobrar.',
+  ld: h => [webPage(h), crumbs(h, [['/quiniela/cuanto-paga/', '¿Cuánto paga la quiniela?']]), faqLd(redoblonaCurso(h).faq)],
   data: () => ({ j: { lotba: { id: J.lotba.id, help: 'caba' }, pba: { id: J.pba.id, help: 'buenos-aires' } } }),
   render(h) {
     const r = redoblona({ rules: J.lotba.id, first: { number: 12, places: 1 }, second: { number: 34, places: 5 }, stake: 100 });
@@ -63,8 +66,9 @@ export const redoblonaPage = {
     const L = rules('quiniela', J.lotba.id).redoblona, P = rules('quiniela', J.pba.id).redoblona;
     const sel = (name, val) => '<select class="jg-se" name="' + name + '">' + PLACES.map(([v, l]) => '<option value="' + v + '"' + (v === val ? ' selected' : '') + '>' + l + '</option>').join('') + '</select>';
     const dist = '<table class="jg-tbl" data-nosnippet><thead><tr><th class="n">Cobrás</th><th class="n">Chance</th></tr></thead><tbody data-o="dist">' + r.outcomes.slice().reverse().map(o => '<tr><td class="n">' + money(n(o.amount)) + '</td><td class="n">' + (o.amount.n > 0n ? oneIn(1 / n(o.p)) : fmt(n(o.p) * 100, 3) + ' %') + '</td></tr>').join('') + '</tbody></table>';
-    return hero(h, { kicker: 'Quiniela · redoblona', scene: 'quiniela-redoblona', lede: 'Dos números de dos cifras en el mismo extracto: si salen los dos, lo que ganás con el primero se vuelve a jugar al segundo. Paga mucho y sale muy poco.' }) +
-      '<div class="jg-mn">' +
+    return hero(h, { kicker: 'Quiniela · redoblona', scene: 'quiniela-redoblona', lede: 'Dos números de dos cifras en el mismo extracto: si salen los dos, lo que ganás con el primero se vuelve a jugar al segundo. Te lo explicamos con la cuenta completa y un extracto de ejemplo; al final, la calculadora.' }) +
+      wrap(redoblonaCurso(h).html) +
+      '<div class="jg-mn" id="calculadora">' +
       '<section class="jg-c w2"><span class="jg-tag">Calculadora</span><h2>Armá la redoblona</h2><form class="jg-f" data-redo>' +
       '<fieldset class="jg-fl"><legend>Lotería</legend><div class="jg-sg">' + radios('j', [['lotba', 'Ciudad (Nacional)'], ['pba', 'Provincia']], 'lotba') + '</div></fieldset>' +
       '<div class="jg-two"><label class="jg-fl"><span>Primer número</span><input class="jg-in" name="a" type="text" inputmode="numeric" maxlength="2" value="12" autocomplete="off"></label><label class="jg-fl"><span>Ubicación</span>' + sel('ua', 1) + '</label></div>' +
@@ -75,7 +79,6 @@ export const redoblonaPage = {
       '<h3>Todo lo que puede pasar</h3>' + dist + '<div class="jg-r"><button class="jg-b s" type="button" data-share>Compartir</button></div></section>' +
       '<section class="jg-c w2"><span class="jg-sm">Comparación</span><h2>Redoblona o dos jugadas</h2><p>Con la misma plata a 2 cifras a la cabeza, de cada $ 100 vuelven ' + money(n(directBet({ rules: J.lotba.id, digits: 2, places: 1, stake: 100 }).evPer100)) + ' en promedio. La redoblona de arriba devuelve <b data-o="ev3">' + money(n(r.evPer100)) + '</b>: el tope del reglamento le recorta los premios más grandes.</p>' +
       '<p class="jg-hon">Ciudad: el primer acierto paga ' + L.pay.v + ' veces y ese premio se juega ' + L.pay.v + ' veces al segundo, con tope de ' + fmt(L.cap.v, 0) + ' veces la apuesta (' + fmt(L.cap12.v, 0) + ' de 1 a 2 ubicaciones, ' + fmt(L.cap13.v, 0) + ' de 1 a 3). Provincia: ' + P.pay.v + ' y ' + P.pay.v + ' veces, tope ' + fmt(P.cap.v, 0) + ' veces lo apostado por lugar.</p></section>' +
-      '<section class="jg-c w3"><span class="jg-sm">Del reglamento</span><h2>Las reglas de la redoblona</h2><ul><li>Son dos números de dos cifras en el mismo extracto.</li><li>Si el primero va a la cabeza y el segundo «a los 5», el segundo se cuenta desde el lugar 2.</li><li>En la Provincia, si el primero llega a un lugar más lejos que el segundo, se paga como apuesta directa.</li></ul>' +
-      cite(h, ['lotba.redoblona.two-digits', 'lotba.redoblona.pay', 'lotba.redoblona.cap', 'lotba.redoblona.cap-1-2', 'lotba.redoblona.cap-1-3', 'lotba.redoblona.first-at-one', 'lotba.redoblona.one-extract', 'pba.redoblona.pay', 'pba.quiniela.cap', 'pba.redoblona.first-beyond-second']) + '</section></div>';
+      go('Cuando quieras jugar', '<p>Mirá también cuánto paga una jugada simple y a qué hora es cada sorteo.</p>', btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga la quiniela?', true) + btn(h, '/quiniela/horarios/', 'Horarios')) + '</div>';
   },
 };

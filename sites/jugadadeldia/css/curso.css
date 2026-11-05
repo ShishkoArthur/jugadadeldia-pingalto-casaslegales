@@ -92,3 +92,4 @@
 .jg-cu-tl{width:28px;height:40px;font-size:15px}
 .jg-cu-tbl{font-size:14px}
 }
+.jg-mn>.jg-cu{grid-column:1/-1;width:100%;margin:0 auto}
