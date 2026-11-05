@@ -13,7 +13,7 @@ const HALF = buenasAt(R30);
 const LV = [1, ...Object.keys(TRUCO_CALLS).map(Number)];
 const CALLN = { truco: 'Truco', retruco: 'Retruco', valeCuatro: 'Vale cuatro' };
 const ENVN = { envido: 'Envido', realEnvido: 'Real envido', faltaEnvido: 'Falta envido' };
-const CSS = ['mesa.css', 'guias.css', 'truco-guia.css'];
+const CSS = ['mesa.css', 'truco-guia.css'];
 const must = (ok, what) => { if (!ok) throw new Error('truco guide example: ' + what); };
 
 export const nm = c => { const n = parseInt(c, 10), s = c.slice(-1); return (n === 1 && (s === 'e' || s === 'b') ? 'ancho' : NUM[n]) + ' de ' + SUIT[s]; };
@@ -35,6 +35,8 @@ const toc = list => '<nav class="jg-c w3 jg-toc" id="indice" aria-labelledby="in
 const lesson = (n, id, title, body) => '<section class="jg-c w3 jg-ls" id="' + id + '"><header class="jg-lh"><span class="jg-ln" aria-hidden="true">' + n + '</span><h2>' + title + '</h2></header>' + body + '</section>';
 const two = (text, visual) => '<div class="jg-lx"><div class="jg-lt">' + text + '</div><div class="jg-lv2">' + visual + '</div></div>';
 const tip = (t, cls = '') => '<p class="jg-tip' + (cls ? ' ' + cls : '') + '">' + t + '</p>';
+const mini = c => { const n = parseInt(c, 10); return '<i class="jg-mc" data-s="' + c.slice(-1) + '">' + ({ 10: 'S', 11: 'C', 12: 'R' }[n] || n) + '</i>'; };
+const minis = cards => '<div class="jg-mcs">' + cards.map(mini).join('') + '</div>';
 const hand = (cards, cls = 'sm') => '<div class="jg-hand ' + cls + '">' + cards.map(c => card(c)).join('') + '</div>';
 const dlg = list => '<ol class="jg-dlg">' + list.map(([who, say, note]) => who === 2 ? '<li class="n"><p>' + say + '</p></li>' : '<li class="' + (who ? 'r' : 'v') + '"><b>' + (who ? 'Rival' : 'Vos') + '</b><span>' + say + '</span>' + (note ? '<small>' + note + '</small>' : '') + '</li>').join('') + '</ol>';
 const cta = (h, title, text, links) => '<section class="jg-c w3 jg-cta" id="a-jugar"><span class="jg-sm">Ya lo tenés</span><h2>' + title + '</h2><p>' + text + '</p><div class="jg-r">' + links.filter(([u]) => h.built(u)).map(([u, l], i) => '<a class="jg-b' + (i ? '' : ' p') + '" href="' + h.href(u) + '">' + l + '</a>').join('') + '</div></section>';
@@ -52,14 +54,14 @@ const more = (h, skip) => '<section class="jg-c w3"><span class="jg-sm">Seguí a
 
 // The ladder, compact: one row per escalón with a name and its cards.
 const GROUP = { 14: 'Brava · la más alta', 13: 'Brava', 12: 'Brava', 11: 'Brava', 10: 'Los tres', 9: 'Los dos', 8: 'Ases falsos', 7: 'Reyes', 6: 'Caballos', 5: 'Sotas', 4: 'Sietes falsos', 3: 'Los seis', 2: 'Los cincos', 1: 'Los cuatros' };
-const ladderMini = () => '<ol class="jg-ldm">' + LADDER.map((cs, i) => '<li' + (i < 4 ? ' class="br"' : '') + '><span class="jg-lv">' + (i + 1) + '</span><b>' + GROUP[POWER[cs[0]]] + '</b><div class="jg-hand xs">' + cs.map(c => card(c)).join('') + '</div></li>').join('') + '</ol>';
+const ladderMini = () => '<ol class="jg-ldm">' + LADDER.map((cs, i) => '<li' + (i < 4 ? ' class="br"' : '') + '><span class="jg-lv">' + (i + 1) + '</span><b>' + GROUP[POWER[cs[0]]] + '</b>' + minis(cs) + '</li>').join('') + '</ol>';
 
 // Tap two cards (client/trucoguia.js draws the same text).
 function duelTool(a = '3e', b = '7o') {
   const r = duelText(a, b);
   return '<div class="jg-duel" data-duelo><div class="jg-dsl"><div><small>Carta 1</small><div data-o="a">' + card(a) + '</div></div><b aria-hidden="true">vs</b><div><small>Carta 2</small><div data-o="b">' + card(b) + '</div></div></div>' +
-    '<p class="jg-res" data-o="r" aria-live="polite"><b>' + (r.w === -1 ? 'Parda.' : 'Gana la carta ' + (r.w + 1) + '.') + '</b> ' + r.text + '</p><p class="jg-note">Tocá una carta del mazo para la carta 1 y otra para la carta 2.</p>' +
-    '<div class="jg-deck sm" data-pick>' + DECK_40.map(c => card(c, ' data-card="' + c + '" tabindex="0"')).join('') + '</div></div>';
+    '<p class="jg-res" data-o="r" aria-live="polite"><b>' + (r.w === -1 ? 'Parda.' : 'Gana la carta ' + (r.w + 1) + '.') + '</b> ' + r.text + '</p><p class="jg-note">Tocá una carta del mazo para la carta 1 y otra para la carta 2.</p><noscript><p class="jg-note">Para probar con otras cartas hace falta JavaScript.</p></noscript>' +
+    '<div class="jg-deck sm" data-pick></div></div>';
 }
 
 // Envido worked examples: the counted cards stand out, the value of each card under it, the sum written out.
@@ -87,7 +89,7 @@ function envArmar() {
   const f = 'Dos del mismo palo: ' + b.values[0] + ' + ' + b.values[1] + ' + 20 = ' + b.total + '.';
   return '<div class="jg-arm" data-armar><div class="jg-evh" data-o="hand">' + start.map(c => cv(c, b.cards.includes(c))).join('') + '</div>' +
     '<p class="jg-fx"><span>Tu envido</span><b data-o="pts">' + b.total + '</b></p><p class="jg-fm" data-o="f" aria-live="polite">' + f + '</p><p class="jg-note">Tocá tres cartas del mazo. Si tocás una cuarta, sale la primera.</p>' +
-    '<div class="jg-deck sm" data-pick>' + DECK_40.map(c => card(c, ' data-card="' + c + '" tabindex="0"' + (start.includes(c) ? ' data-sel' : ''))).join('') + '</div></div>';
+    '<div class="jg-deck sm" data-pick data-start="' + start.join(' ') + '"></div></div>';
 }
 
 // A hand played baza by baza: plays are [your card, rival card]; who leads comes from the rules (mano first, then the winner of the
@@ -125,7 +127,7 @@ function pardaExample(x) {
   return '<li class="jg-pe"><h3>' + x.t + '</h3><p class="jg-note">' + (x.mano === 0 ? 'Vos sos mano.' : 'El rival es mano.') + '</p><ol class="jg-bzl sm">' + o.rows.map(r => bazaBox(r)).join('') + '</ol><p class="jg-big3">' + (o.winner === 0 ? 'Ganás vos la mano' : 'Gana el rival la mano') + '</p></li>';
 }
 
-function trucoChain() {
+export function trucoChain() {
   const who = { truco: 'Lo canta cualquiera, en su turno', retruco: 'Solo el que recibió el truco', valeCuatro: 'Solo el que cantó el truco' };
   return '<ol class="jg-chn"><li><b>Sin cantar</b><span>La mano vale <em>' + LV[0] + '</em></span><small>Nadie dijo truco</small></li>' +
     Object.entries(TRUCO_CALLS).map(([v, k], i) => '<li><b>' + CALLN[k] + '</b><span>Querido: <em>' + v + '</em></span><span>No querido: <em>' + LV[i] + '</em></span><small>' + who[k] + '</small></li>').join('') + '</ol>';
@@ -205,7 +207,7 @@ export const trucoReglas = {
     const ex = { mano: 0, mine: ['12o', '5c', '3e'], theirs: ['2b', '4e', '7o'], plays: [['12o', '2b'], ['5c', '4e'], ['3e', '7o']] };
     const o = playOut(ex.mano, ex.plays);
     must(o.winner === 1 && o.R.join() === '1,0,1', 'bazas example');
-    const bySuit = SUITS.map(s => '<div class="jg-sr"><b>' + cap(SUIT[s]) + '</b>' + hand(NUMBERS_40.map(n => n + s), 'xs') + '</div>').join('');
+    const bySuit = SUITS.map(s => '<div class="jg-sr"><b>' + cap(SUIT[s]) + '</b>' + minis(NUMBERS_40.map(n => n + s)) + '</div>').join('');
     const fl = [['5o', '6o', '7o'], ['12c', '4c', '1c']];
     fl.forEach(x => must(hasFlor(x), 'flor'));
     const sec = [
@@ -221,9 +223,8 @@ export const trucoReglas = {
         '<p>En las bazas no gana el número más grande: gana la carta que está <b>más arriba en esta escalera</b>. Arriba de todo están las cuatro <b>bravas</b>, que son únicas. Después vienen los tres, los dos, y así para abajo.</p>' +
         '<p>Del quinto escalón para abajo <b>el palo no importa</b>: un tres de copas y un tres de oros valen lo mismo, y si se cruzan, empatan.</p>' +
         tip('<b>Ojo con los sietes y los ases.</b> El siete de espadas y el de oros son bravas, pero el de bastos y el de copas están casi abajo de todo: son los «falsos». Lo mismo los ases: el de espadas y el de bastos son las dos más altas; el de oros y el de copas van recién después de los dos.') +
-        '<h3>Probalo: tocá dos cartas y mirá quién gana</h3>' + duelTool() +
         (h.built('/truco/valores-de-las-cartas/') ? '<p><a href="' + h.href('/truco/valores-de-las-cartas/') + '">Tabla para imprimir y un juego para aprendértela</a></p>' : ''),
-        ladderMini()) + cite(h, ['truco.hierarchy-bravas', 'truco.hierarchy-rest', 'truco.falsos'])),
+        ladderMini()) + '<h3>Probalo: tocá dos cartas y mirá quién gana</h3>' + duelTool() + cite(h, ['truco.hierarchy-bravas', 'truco.hierarchy-rest', 'truco.falsos'])),
       lesson(4, 'reparto', 'El reparto y quién es «mano»', two(
         '<p>Uno mezcla y reparte <b>tres cartas a cada uno, de a una por vez</b>, empezando por el que tiene a su derecha. Ese jugador es <b>el mano</b>: es el primero en jugar y, cuando hay un empate, gana él. Ser mano es una ventaja.</p>' +
         '<p>En la mano siguiente reparte el que estaba a la derecha, así que el mano va rotando. En el mano a mano es fácil: una vez sos mano vos y la otra, el rival. Todo el juego va <b>en contra de las agujas del reloj</b>.</p>' +
@@ -248,7 +249,7 @@ export const trucoReglas = {
         tip('<b>El envido está primero.</b> Si te cantan truco antes de que hayas tirado tu primera carta, todavía podés cantar envido: se resuelve el envido y después contestás el truco.'),
         dlg([[2, 'Tenés el seis y el dos de bastos: ' + envFormula(['6b', '2b', '4o']).f + '.'], [1, 'Envido.'], [0, 'Envido.', 'subís: ya es como decir quiero'], [1, 'Quiero.'], [0, envidoPoints(['6b', '2b', '4o']) + '.', 'sos mano: hablás primero'], [1, 'Son buenas.'], [2, 'Ganás <b>' + envidoQuieroValue(R30, ['envido', 'envido'], [0, 0], 0) + ' puntos</b> (envido y envido, querido).']])) +
         '<h3>Cuánto vale cada canto</h3>' + envTable() + '<h3>La falta envido, con dos ejemplos</h3><p>La falta envido no tiene un valor fijo: depende del tanteador. Partido a ' + R30.target + ':</p>' + faltaBox() +
-        cite(h, ['truco.envido-before-card', 'truco.envido-not-after', 'truco.envido-revido-accepts', 'truco.envido-mano-first', 'truco.4p-son-buenas', 'truco.envido-tie-mano', 'truco.envido-show', 'truco.envido-wrong-count', 'truco.envido-first-over-truco', 'truco.envido-two-per-word', 'truco.envido-table-ee', 'truco.envido-table-r', 'truco.envido-table-eer', 'truco.envido-no-quiero', 'truco.falta-malas-wins-match'])),
+        cite(h, ['truco.envido-before-card', 'truco.envido-revido-accepts', 'truco.envido-mano-first', 'truco.4p-son-buenas', 'truco.envido-tie-mano', 'truco.envido-show', 'truco.envido-wrong-count', 'truco.envido-first-over-truco', 'truco.envido-table-ee', 'truco.envido-table-r', 'truco.envido-no-quiero', 'truco.falta-malas-wins-match'])),
       lesson(9, 'truco', 'El truco: truco, retruco y vale cuatro', '<p>Si nadie canta nada, el que gana las bazas se lleva ' + LV[0] + ' punto. Para que la mano valga más, alguien canta <b>truco</b>. El otro tiene tres respuestas: «quiero» (se juega por más), «no quiero» (la mano termina y el que cantó cobra) o subir con «quiero retruco».</p>' + trucoChain() +
         two('<ul class="jg-ul2"><li><b>Solo sube el que recibió el último canto</b>, y primero tiene que querer: «quiero retruco», «quiero vale cuatro».</li><li><b>Se canta en tu turno, en cualquier momento de la mano</b>; muchos esperan a la segunda baza para saber más.</li><li><b>Vale cuatro es lo máximo.</b> Después solo queda jugar las cartas.</li><li><b>Si no contestás, es «no quiero».</b> Y cuidado: «quiero» y «no quiero» obligan aunque los digas en chiste.</li></ul>',
           dlg([[0, '¡Truco!'], [1, '¡Quiero retruco!'], [0, '¡Quiero vale cuatro!'], [1, 'No quiero.'], [2, 'El rival no se animó: cobrás <b>' + LV[2] + ' puntos</b>, lo que valía el retruco.']])) +
@@ -276,11 +277,11 @@ export const trucoReglas = {
         '<li><b>Irse al mazo con el envido ganado sin mostrar las cartas.</b> Perdés esos puntos.</li>' +
         '<li><b>Decir «quiero» o «no quiero» en chiste.</b> Cuenta igual.</li>' +
         '<li><b>Tirar una carta y querer cambiarla.</b> Carta tirada, carta jugada.</li></ul>' +
-        cite(h, ['truco.falsos', 'truco.envido-figures-zero', 'truco.envido-before-card', 'truco.retruco-needs-quiero', 'truco.envido-tie-mano', 'truco.parda-all-three', 'truco.envido-mazo-show', 'truco.reserved-words', 'truco.card-played'])),
+        '<p class="jg-note">Cada uno de estos errores tiene su regla, con la cita del reglamento, en la lección de arriba.</p>'),
     ];
     return SPRITE + hero(h, { kicker: 'Truco · guía desde cero', scene: 'truco-reglas', lede: 'Si nunca jugaste, empezá por acá. Primero las cartas, después cómo se gana una mano y al final los cantos, con manos de ejemplo dibujadas y la cita del reglamento en cada regla.', actions: '<a class="jg-b p" href="#de-que-se-trata">Empezar la guía</a>' + knowLink(h) }) +
       '<div class="jg-mn">' + toc(MAIN_TOC) + sec.join('') +
-      faq(h, 'Preguntas que se hace todo el que empieza', MAIN_FAQ(h), ['truco.deal-three', 'truco.hierarchy-bravas', 'truco.envido-tie-mano', 'truco.envido-first-over-truco', 'truco.truco-no-querido', 'truco.retruco-no-querido', 'truco.vale-cuatro', 'truco.target-30', 'truco.target-40', 'truco.parda-first', 'truco.flor-optional']) +
+      faq(h, 'Preguntas que se hace todo el que empieza', MAIN_FAQ(h), ['truco.envido-first-over-truco', 'truco.target-40']) +
       cta(h, 'Ahora, a jugar', 'Lo mejor para aprender es jugar unas manos. La compu no ve tus cartas y te muestra qué pasó en cada baza.', [['/truco/jugar/', 'Jugar contra la compu'], ['/truco/anotador/', 'Anotador'], ['/truco/quiero-o-no-quiero/', 'Entrenar el quiero']]) +
       more(h, '/truco/reglas/') + '</div>';
   },
@@ -319,17 +320,17 @@ export const trucoValores = {
       toc([['como-leer', 'Cómo se lee la tabla'], ['bravas', 'Las cuatro bravas'], ['comunes', 'El resto, sin importar el palo'], ['duelo', 'Probá con dos cartas'], ['envido', 'Para el envido valen otra cosa'], ['errores', 'Errores comunes'], ['preguntas', 'Preguntas']]) +
       lesson(1, 'como-leer', 'Cómo se lee la tabla', '<p>Cada fila es un <b>escalón</b>. Una carta le gana a todas las que están más abajo. Si dos cartas están en el mismo escalón, <b>empatan</b> y la baza es parda. No importa el número que tiene impreso: un dos le gana a un rey, y un tres le gana a un dos.</p>' +
         '<ol class="jg-bzl">' + pairs.map((p, i) => bazaBox({ i: i + 1, pair: p, lead: 0 }).replace(/<span class="jg-sm">[^<]*<\/span>/, '<span class="jg-sm">Ejemplo ' + (i + 1) + '</span>').replace(/<small>Vos<\/small>/, '<small>Carta 1</small>').replace(/<small>Rival<\/small>/, '<small>Carta 2</small>').replace('Ganás vos.', 'Gana la carta 1.').replace('Gana el rival.', 'Gana la carta 2.')).join('') + '</ol>' +
-        cite(h, ['truco.hierarchy-bravas', 'truco.hierarchy-rest'])),
+        cite(h, ['truco.hierarchy-bravas', 'truco.hierarchy-rest'])) +
       lesson(2, 'bravas', 'Las cuatro bravas', '<p>Son las cuatro cartas más fuertes y cada una es única: no hay otra igual en el mazo. Al as de espadas le dicen <b>«espadilla»</b> o «ancho de espadas», y al de bastos, <b>«bastillo»</b> o «ancho de bastos».</p>' +
         '<div class="jg-brv">' + LADDER.slice(0, 4).map(([c], i) => '<figure>' + card(c) + '<figcaption><b>' + (i + 1) + '.º · ' + cap(nm(c)) + '</b>mata a ' + DECK_40.filter(x => POWER[x] < POWER[c]).length + '</figcaption></figure>').join('') + '</div>' +
-        tip('Con una brava en la mano, el truco se canta con más confianza. Pero ojo: el rival también puede tener una.') + cite(h, ['truco.bravas-names', 'truco.hierarchy-bravas'])),
+        tip('Con una brava en la mano, el truco se canta con más confianza. Pero ojo: el rival también puede tener una.') + cite(h, ['truco.bravas-names', 'truco.hierarchy-bravas'])) +
       lesson(3, 'comunes', 'Después de las bravas: el resto, sin importar el palo', two('<p>Del quinto escalón para abajo el orden es por número y el palo da igual: <b>3, 2, as, rey, caballo, sota, 7, 6, 5 y 4</b>.</p><p>Las trampas son dos: los <b>ases falsos</b> (de oros y de copas) van después de los dos, y los <b>sietes falsos</b> (de bastos y de copas) van después de la sota. A las figuras se les dice «negras».</p>' +
         tip('Una forma de acordarse: contá para atrás desde el tres (3, 2, 1) y seguí con las figuras de mayor a menor (12, 11, 10); después, para atrás desde el siete (7, 6, 5, 4).'),
-        '<ol class="jg-cmn">' + comunes.map(cs => '<li><b>' + GROUP[POWER[cs[0]]] + '</b>' + hand(cs, 'xs') + '</li>').join('') + '</ol>') + cite(h, ['truco.hierarchy-rest', 'truco.hierarchy-rest-2', 'truco.falsos', 'truco.negras'])),
-      lesson(4, 'duelo', 'Probá: tocá dos cartas y mirá quién gana', duelTool('7o', '3b')),
+        '<ol class="jg-cmn">' + comunes.map(cs => '<li><b>' + GROUP[POWER[cs[0]]] + '</b>' + minis(cs) + '</li>').join('') + '</ol>') + cite(h, ['truco.hierarchy-rest', 'truco.hierarchy-rest-2', 'truco.falsos', 'truco.negras'])) +
+      lesson(4, 'duelo', 'Probá: tocá dos cartas y mirá quién gana', duelTool('7o', '3b')) +
       lesson(5, 'envido', 'Ojo: para el envido las cartas valen otra cosa', '<p>Esta tabla es para las bazas. Para el envido cada carta vale su número y las figuras valen 0. Por eso una carta puede ser fuerte para una cosa y floja para la otra:</p>' +
         '<div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Carta</th><th class="n">Escalón en las bazas</th><th class="n">Vale para el envido</th></tr></thead><tbody>' + cmp.map(c => '<tr><td>' + cap(nm(c)) + '</td><td class="n">' + step(c) + '.º</td><td class="n">' + ENVIDO_VALUE[c] + '</td></tr>').join('') + '</tbody></table></div>' +
-        (h.built('/truco/envido/') ? '<p><a href="' + h.href('/truco/envido/') + '">Cómo se cuenta el envido</a></p>' : '') + cite(h, ['truco.envido-figures-zero'])),
+        (h.built('/truco/envido/') ? '<p><a href="' + h.href('/truco/envido/') + '">Cómo se cuenta el envido</a></p>' : '') + cite(h, ['truco.envido-figures-zero'])) +
       lesson(6, 'errores', 'Errores comunes', '<ul class="jg-err"><li><b>Pensar que el número manda.</b> El rey (12) pierde contra el dos y contra el tres.</li><li><b>Creer que todos los ases son altos.</b> El de oros y el de copas están en el escalón ' + step('1o') + '.</li><li><b>Creer que todos los sietes son bravas.</b> El de bastos y el de copas están en el escalón ' + step('7b') + '.</li><li><b>Pensar que el palo desempata.</b> Dos tres de distinto palo empatan: es parda.</li></ul>' + cite(h, ['truco.falsos', 'truco.hierarchy-rest'])) +
       faq(h, 'Preguntas sobre los valores', VAL_FAQ(), ['truco.hierarchy-bravas', 'truco.hierarchy-rest', 'truco.parda-first', 'truco.envido-figures-zero']) +
       cta(h, 'Probá la tabla en una mano de verdad', 'Contra la compu vas a ver enseguida qué carta mata a cuál.', [['/truco/jugar/', 'Jugar contra la compu'], ['/truco/reglas/', 'Las reglas completas']]) + more(h, '/truco/valores-de-las-cartas/') + '</div>';
@@ -359,11 +360,11 @@ export const trucoSenas = {
       '<div class="jg-mn">' + toc([['que-son', 'Qué son y cuándo se hacen'], ['todas', 'Todas las señas'], ['en-una-mano', 'Cómo se usan en una mano'], ['entrenador', 'Entrenador'], ['consejos', 'Consejos y errores'], ['preguntas', 'Preguntas']]) +
       lesson(1, 'que-son', 'Qué son y cuándo se hacen', two('<p>Las señas son <b>gestos de la cara</b> para contarle a tu compañero qué cartas tenés, sin hablar. Se usan <b>de a cuatro</b>: en el mano a mano no hay a quién avisarle.</p><p>Se hacen apenas mirás tus cartas, antes de jugar, y al mismo tiempo mirás las de tu compañero. Están permitidas, pero <b>los rivales también miran</b>: por eso se hacen rápido y disimulando.</p><p>Cada mesa puede tener sus propias señas; antes de jugar, acordalas con tu compañero.</p>',
         '<div class="jg-two-f"><figure><div class="jg-fw">' + face(s1e.face) + '</div><figcaption>Tu compañero levanta las cejas</figcaption></figure><span aria-hidden="true">→</span><figure>' + card('1e') + '<figcaption>Tiene el ancho de espadas</figcaption></figure></div>') +
-        cite(h, ['truco.4p-senas', 'truco.senas-when', 'truco.senas-own-code', 'truco.4p-senas-visible'])),
+        cite(h, ['truco.4p-senas', 'truco.senas-when', 'truco.senas-own-code', 'truco.4p-senas-visible'])) +
       '<section class="jg-c w3 jg-ls" id="todas"><header class="jg-lh"><span class="jg-ln" aria-hidden="true">2</span><h2>Todas las señas</h2></header><h3>Para las cartas del truco</h3><div class="jg-senas2">' + cardsS.map(sena).join('') + '</div><h3>Para avisar cómo venís</h3><div class="jg-senas2">' + restS.map(sena).join('') + '</div></section>' +
       lesson(3, 'en-una-mano', 'Cómo se usan en una mano: un ejemplo', '<p>Juegan vos y tu compañero contra dos rivales. Tus cartas:</p>' + hand(['3c', '6b', '5o']) +
         dlg([[2, 'Mirás a tu compañero: <b>levanta las cejas</b>. Tiene el ancho de espadas, la carta más alta.'], [2, 'Vos tenés un tres. Entre los dos, la pareja viene fuerte para las bazas: te podés animar a cantar truco, y si te retrucan, a querer.'], [0, '¡Truco!'], [2, 'En otra mano, tu compañero <b>cierra los ojos</b>: tiene malas cartas. Si te cantan retruco con solo un cinco y un seis, lo mejor es no querer.']]) +
-        '<div class="jg-sms">' + [s1e, sm].map(x => '<figure><div class="jg-fw">' + face(x.face) + '</div><figcaption><b>' + x.what + '</b>' + x.how + '</figcaption></figure>').join('') + '</div>'),
+        '<div class="jg-sms">' + [s1e, sm].map(x => '<figure><div class="jg-fw">' + face(x.face) + '</div><figcaption><b>' + x.what + '</b>' + x.how + '</figcaption></figure>').join('') + '</div>') +
       '<section class="jg-c w3 jg-train" id="entrenador" data-senas><span class="jg-tag">Entrenador</span><h2>¿Qué te está diciendo?</h2><div class="jg-tr2"><div class="jg-fw big" data-o="face"></div><div><p class="jg-mu">Tenés 5 segundos para elegir.</p><div class="jg-opts" data-o="opts"></div><p class="jg-res" data-o="res"></p><p class="jg-note">Aciertos: <b data-o="ok">0</b> de <b data-o="n">0</b></p><button class="jg-b p" type="button" data-start>Empezar</button></div></div></section>' +
       lesson(4, 'consejos', 'Consejos y errores comunes', '<ul class="jg-err"><li><b>Hacerla lenta o exagerada.</b> Si la ven los rivales, la seña les sirve a ellos.</li><li><b>Mirar solo tus cartas.</b> Al mismo tiempo, mirá a tu compañero: sus señas valen tanto como las tuyas.</li><li><b>Inventar señas en la mesa.</b> Si no las acordaron antes, tu compañero no las va a entender.</li><li><b>Creer que la del envido dice cuánto tenés.</b> Inclinar la cabeza avisa que venís bien para el envido, no el número.</li></ul>' + cite(h, ['truco.4p-senas-visible', 'truco.senas-own-code', 'truco.4p-senas-envido'])) +
       faq(h, 'Preguntas sobre las señas', SEN_FAQ(), ['truco.4p-senas', 'truco.4p-senas-visible', 'truco.senas-own-code', 'truco.4p-senas-1e']) +

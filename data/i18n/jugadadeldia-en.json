@@ -3298,7 +3298,9 @@
   "¿Ya sabés jugar? <t1>Probá si podés cortar</t1> o <t3>jugá contra la compu</t3>.": "Already know how to play? <t1>Test if you can go out</t1> or <t3>play against the computer</t3>.",
   "¿Ya sabés jugar? Jugá contra la compu": "Already know how to play? Play against the computer",
   "¿Ya salió el sorteo de la Poceada?": "Has the Poceada draw come out yet?",
-  "− Tipo y número de documento − Fecha nacimiento": "− Type and number of ID − Date of birth"
+  "− Tipo y número de documento − Fecha nacimiento": "− Type and number of ID − Date of birth",
+  "Cada uno de estos errores tiene su regla, con la cita del reglamento, en la lección de arriba.": "Each of these mistakes has its own rule, with the quote from the official rules, in the lesson above.",
+  "Para probar con otras cartas hace falta JavaScript.": "JavaScript is required to try other cards."
  },
  "code": {
   "engine/cards/spanish.mjs ::  de ": " of ",

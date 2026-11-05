@@ -6,6 +6,7 @@ import { florChance, envidoDistribution } from '../../../engine/truco/probabilit
 import { hasFlor, florPoints } from '../../../engine/truco/cards.mjs';
 import { DECK_40, combinations, binom } from '../../../engine/cards/spanish.mjs';
 import { hero, cite, crumbs, webPage, fmt, card, SPRITE, tiles, ICONS, oneIn } from './parts.mjs';
+import { trucoChain } from './trucoguia.mjs';
 
 const ldT = h => [webPage(h), crumbs(h, [['/truco/', 'Truco']])];
 const sel = (name, opts) => '<select class="jg-se" name="' + name + '">' + opts.map(([v, l, s]) => '<option value="' + v + '"' + (s ? ' selected' : '') + '>' + l + '</option>').join('') + '</select>';
@@ -32,7 +33,7 @@ export function envidoChains() {
 }
 
 export const trucoPuntos = {
-  path: '/truco/puntos/', kind: 'game', section: 'truco', css: ['mesa.css', 'guias.css'], js: ['puntos.js'],
+  path: '/truco/puntos/', kind: 'game', section: 'truco', css: ['mesa.css', 'guias.css', 'truco-guia.css'], js: ['puntos.js'],
   title: 'Puntos del truco: cuánto vale cada canto',
   h1: 'Cuánto vale cada canto en el truco',
   description: 'Calculadora de puntos del truco: elegí la secuencia de cantos, de envido a falta envido o de truco a vale cuatro, y mirá cuánto vale querido y no querido.',
@@ -52,6 +53,7 @@ export const trucoPuntos = {
       '<section class="jg-c t2" data-tpuntos><span class="jg-tag">Calculadora</span><h2>El truco</h2><div class="jg-sg" role="group" aria-label="Hasta dónde llegó">' + '<button type="button" data-t="1" aria-pressed="false">Callado</button>' + tv.map(([v, k]) => '<button type="button" data-t="' + v + '" aria-pressed="' + (v === '2') + '">' + { truco: 'Truco', retruco: 'Retruco', valeCuatro: 'Vale cuatro' }[k] + '</button>').join('') + '</div>' +
       '<p class="jg-win"><span>Querido y ganado</span><b data-o="tq">' + tv[0][0] + '</b></p><p class="jg-win no"><span>No querido</span><b data-o="tnq">1</b></p><p class="jg-hon" data-o="twhy">El que cantó cobra 1 si le dicen «no quiero».</p>' +
       cite(h, ['truco.truco-callado', 'truco.truco-retruco-values', 'truco.truco-no-querido', 'truco.vale-cuatro']) + '</section>' +
+      '<section class="jg-c w3" id="truco-de-un-vistazo"><span class="jg-sm">De un vistazo</span><h2>El truco: cuánto vale cada paso</h2>' + trucoChain() + '<p class="jg-note">«No querido»: el que cantó cobra lo que valía la mano antes de su canto. Solo puede subir el que recibió el último canto, después de decir «quiero».' + (h.built('/truco/reglas/') ? ' <a href="' + h.href('/truco/reglas/#truco') + '">Explicado paso a paso</a>.' : '') + '</p>' + cite(h, ['truco.truco-callado', 'truco.truco-no-querido', 'truco.retruco-no-querido', 'truco.vale-cuatro', 'truco.retruco-by-challenged']) + '</section>' +
       '<section class="jg-c w2"><span class="jg-sm">Todas las seguidillas</span><h2>Envido: la tabla completa</h2><div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Cantos</th><th class="n">Querido</th><th class="n">No querido</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
       '<p class="jg-note">«Falta»: los puntos que le faltan a uno para ganar el partido, según el tanteador y el reglamento que usen (calculadora de arriba).</p>' +
       cite(h, ['truco.envido-table-ee', 'truco.envido-table-r', 'truco.envido-table-eerf-no', 'truco.envido-no-quiero', 'truco.falta-malas-wins-match', 'truco.falta-leader-to-win']) + '</section>' +
@@ -61,7 +63,7 @@ export const trucoPuntos = {
 };
 
 export const trucoQuiero = {
-  path: '/truco/quiero-o-no-quiero/', kind: 'game', section: 'truco', css: ['mesa.css', 'guias.css'], js: ['quiero.js'],
+  path: '/truco/quiero-o-no-quiero/', kind: 'game', section: 'truco', css: ['mesa.css', 'guias.css', 'truco-guia.css'], js: ['quiero.js'],
   title: '¿Quiero o no quiero? Entrenador de truco y envido',
   h1: '¿Quiero o no quiero?',
   description: '¿Quiero o no quiero? Entrená tus decisiones de truco y envido con manos al azar y compará cada respuesta con la cuenta del motor, en series de diez.',
@@ -76,6 +78,7 @@ export const trucoQuiero = {
       '<section class="jg-c t2" aria-live="polite"><span class="jg-sm">Tu serie</span><p class="jg-win"><span>Coincidiste con el motor</span><b data-o="ok">0</b><span>de <span data-o="done">0</span></span></p><p class="jg-hon" data-o="lost">Todavía no respondiste ninguna.</p>' +
       '<h3>Cómo decide el motor</h3><ul class="jg-ul tx"><li><b>Envido:</b> cuenta tus tantos contra todas las manos posibles del rival (las ' + fmt(binom(37, 3), 0) + ' que quedan) y compara lo que se espera ganar queriendo con lo que perdés si no querés.</li><li><b>Truco:</b> la chance de ganar las bazas con las cartas a la vista, contra todas esas manos.</li></ul>' +
       '<p class="jg-note">El motor no adivina por qué cantó el rival: supone una mano cualquiera. En la mesa, si el rival canta, suele tener algo: sé un poco más prudente que el motor.</p></section>' +
+      '<section class="jg-c w3"><span class="jg-sm">Si recién empezás</span><h2>Qué significa querer</h2><p>Cuando el rival canta envido o truco, te está proponiendo jugar por más puntos. <b>«Quiero»</b> acepta: se juega y el que gana se lleva lo apostado. <b>«No quiero»</b> rechaza: no se juega y el rival cobra lo que ya estaba en juego, que es menos. Este entrenador te ayuda a decidir con la cuenta en la mano.' + (h.built('/truco/reglas/') ? ' Si todavía no sabés contar el envido o cómo se gana una baza, empezá por <a href="' + h.href('/truco/reglas/') + '">las reglas paso a paso</a>.' : '') + '</p>' + cite(h, ['truco.quiero-closing', 'truco.no-answer-no-quiero']) + '</section>' +
       '<section class="jg-c w2"><span class="jg-sm">Las reglas que usa</span><h2>Lo que vale cada respuesta</h2><ul class="jg-ul tx"><li>Envido querido: ' + envidoQuieroValue(RULESETS['clasico-30-sin-flor'], ['envido'], [0, 0], 0) + ' puntos al que tenga más; no querido: ' + envidoNoQuieroValue(['envido']) + ' al que cantó.</li><li>Real envido querido: ' + envidoQuieroValue(RULESETS['clasico-30-sin-flor'], ['realEnvido'], [0, 0], 0) + '; no querido: ' + envidoNoQuieroValue(['realEnvido']) + '.</li><li>Truco querido: ' + Object.keys(TRUCO_CALLS)[0] + ' al que gane la mano; no querido: 1 al que cantó.</li><li>Empate de tantos: gana la mano.</li></ul>' +
       cite(h, ['truco.envido-table-ee', 'truco.envido-table-r', 'truco.envido-tie-mano', 'truco.truco-retruco-values', 'truco.truco-no-querido']) + '</section>' +
       '<section class="jg-c w3"><span class="jg-sm">Seguí con</span><h2>Más truco</h2>' + more(h) + '</section></div>';

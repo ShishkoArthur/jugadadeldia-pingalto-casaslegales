@@ -1,6 +1,7 @@
 import { $, $$ } from './kit.js';
 import { cardHtml } from './cards.js';
 import { POWER, LADDER, ENVIDO_VALUE, envidoBreakdown } from '../../../engine/truco/index.mjs';
+import { DECK_40 } from '../../../engine/cards/spanish.mjs';
 
 const SUIT = { e: 'espadas', b: 'bastos', o: 'oros', c: 'copas' };
 const NUM = { 1: 'as', 2: 'dos', 3: 'tres', 4: 'cuatro', 5: 'cinco', 6: 'seis', 7: 'siete', 10: 'sota', 11: 'caballo', 12: 'rey' };
@@ -9,9 +10,11 @@ const el = c => (parseInt(c, 10) === 10 ? 'la ' : 'el ') + nm(c);
 const al = c => (parseInt(c, 10) === 10 ? 'a la ' : 'al ') + nm(c);
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 const step = c => LADDER.length + 1 - POWER[c];
+const fill = box => { const d = $('[data-pick]', box); if (d && !d.children.length) d.innerHTML = DECK_40.map(c => cardHtml(c, { attrs: 'data-card="' + c + '" tabindex="0"' })).join(''); };
 const keyTap = box => box.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('[data-card]')) { e.preventDefault(); e.target.click(); } });
 
 for (const box of $$('[data-duelo]')) {
+  fill(box);
   const out = k => $('[data-o="' + k + '"]', box);
   let pair = [], next = 0;
   const show = () => {
@@ -30,6 +33,7 @@ for (const box of $$('[data-duelo]')) {
   box.addEventListener('click', e => {
     const c = e.target.closest('[data-pick] [data-card]');
     if (!c) return;
+    if (next === 1 && pair[0] === c.dataset.card) return;
     if (next === 0) pair = [c.dataset.card];
     else pair[1] = c.dataset.card;
     next = 1 - next;
@@ -40,14 +44,15 @@ for (const box of $$('[data-duelo]')) {
 
 for (const box of $$('[data-armar]')) {
   const out = k => $('[data-o="' + k + '"]', box);
-  let sel = $$('[data-pick] [data-sel]', box).map(x => x.dataset.card);
+  fill(box);
+  let sel = ($('[data-pick]', box).dataset.start || '').split(' ').filter(Boolean);
   const cv = (c, on) => '<span class="jg-cv' + (on ? ' on' : '') + '">' + cardHtml(c) + '<i>' + ENVIDO_VALUE[c] + '</i></span>';
   const show = () => {
     $$('[data-pick] [data-card]', box).forEach(x => x.classList.toggle('sel', sel.includes(x.dataset.card)));
     if (sel.length < 3) {
       out('hand').innerHTML = sel.map(c => cv(c, false)).join('');
       out('pts').textContent = '-';
-      out('f').textContent = 'Faltan ' + (3 - sel.length) + (3 - sel.length === 1 ? ' carta.' : ' cartas.');
+      out('f').textContent = 3 - sel.length === 1 ? 'Falta una carta.' : 'Faltan ' + (3 - sel.length) + ' cartas.';
       return;
     }
     const b = envidoBreakdown(sel);
