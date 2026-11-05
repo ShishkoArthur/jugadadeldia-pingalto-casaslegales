@@ -8,7 +8,8 @@
 import { createServer } from 'node:http';
 import { FN, shapeStats } from '../../engine/games/fnstats.mjs';
 import { parseQuery, Limiter, TtlCache, cacheKey, clientIp, upstreamError, Alarm } from './core.mjs';
-import { telegram } from '../feeds/lib.mjs';
+import { sendTelegram } from '../feeds/lib.mjs';
+import { renderAlert } from '../feeds/alerts.mjs';
 
 const PORT = Number(process.env.PORT || 8787);
 const KEY = process.env.FORTNITE_API_KEY || '';
@@ -18,7 +19,11 @@ const started = Date.now();
 const perIp = new Limiter(FN.perIpPerMin, 60e3), global = new Limiter(FN.globalPerMin, 60e3);
 const cache = new TtlCache(3000), pending = new Map();
 const log = (...a) => console.log(new Date().toISOString(), ...a);
-const alarm = new Alarm({ send: text => telegram(text).then(r => log(r)) });
+const alarm = new Alarm({ send(tpl, params) {
+  let text;
+  try { text = renderAlert(tpl, params, { site: 'pingalto', scope: { service: 'fortnite-tracker' } }).text; } catch (e) { text = 'pingalto.com fortnite-tracker: ' + tpl + ' ' + JSON.stringify(params).slice(0, 200); log('alert templates failed', String(e && e.message || e).slice(0, 80)); }
+  sendTelegram(text).then(r => log(r.log), () => {});
+} });
 const counts = { requests: 0, upstream: 0, cached: 0, limited: 0 };
 
 async function upstream(name, window) {

@@ -12,6 +12,7 @@
 #   bash tools/feeds-server.sh <site> stage <dir>   write that same file set into <dir> (no server; used by the tests)
 #   bash tools/feeds-server.sh casaslegales pull [--write]   copies the server rechecked -> repository (pull-apply.mjs; dry run without --write)
 #   bash tools/feeds-server.sh <site> run [names] [--force]   run now (--once; waits up to 60 s for a running job) and show the log
+#   bash tools/feeds-server.sh <site> run --test-alert        one "[test]" Telegram message of this site from the server (no feeds run)
 #   bash tools/feeds-server.sh <site> status        cron, image, synced version, _health.json summary, last log lines
 #   bash tools/feeds-server.sh <site> logs [lines]  tail of the runner log
 #   bash tools/feeds-server.sh <site> uninstall     remove the cron file only (code, keys and data stay)
@@ -19,7 +20,7 @@
 # Server layout (per site):
 #   /opt/web/<site>-feeds/app/        synced code (read-only in the container)
 #   /opt/web/<site>-feeds/cache/      HTTP cache of the feed client
-#   /opt/web/<site>-feeds/state/      _log.json (attempts), last-exit, app-version, image-built
+#   /opt/web/<site>-feeds/state/      _log.json (attempts), _alerts.json (alert de-duplication), last-exit, app-version, image-built
 #   /opt/web/<site>-feeds/logs/       runner.log (rotated by size: 1 MB x 4)
 #   /opt/web/<site>-feeds/secrets.env keys for the container (root, 600); Telegram alerts start when TG_BOT_TOKEN and TG_CHAT_ID are in it
 #   /opt/web/<site>-feeds/bin/run.sh  what cron calls (flock, timeout, docker run)
@@ -72,7 +73,9 @@ SYNC_RULES=(
   --exclude='test/' --exclude='fixtures/' --exclude='*.test.mjs' --exclude='.DS_Store'
   --include='/package.json'
   "${SRC_RULES[@]+"${SRC_RULES[@]}"}" "${EXTRA_RULES[@]+"${EXTRA_RULES[@]}"}"
+  --include='/data/' --include='/data/alerts/' --include='/data/alerts/ru.json'
   --include='/tools/' --include='/tools/feeds/' --include='/tools/feeds/lib.mjs' --include='/tools/feeds/run.mjs'
+  --include='/tools/feeds/alerts.mjs' --include='/tools/feeds/notify.mjs'
   --include="/tools/feeds/$SITE/***"
   --include='/engine/***'
   --exclude='*'
@@ -172,7 +175,7 @@ cmd_secrets() {
 cmd_stage() {
   local dir="$1"; [ -n "$dir" ] || { echo "usage: stage <dir>" >&2; exit 2; }
   local tmp; tmp=$(mktemp -d "${TMPDIR:-/tmp}/feeds-stage.XXXXXX")
-  git -C "$ROOT" archive HEAD -- package.json tools engine data/sources data/shots/shots.json 2>/dev/null | tar -x -C "$tmp" \
+  git -C "$ROOT" archive HEAD -- package.json tools engine data/sources data/shots/shots.json data/alerts 2>/dev/null | tar -x -C "$tmp" \
     || { rm -rf "$tmp"; echo "feeds-server: git archive HEAD failed" >&2; exit 1; }
   mkdir -p "$dir"
   rsync -rlt --delete --delete-excluded --chmod=D755,F644 "${SYNC_RULES[@]}" "$tmp/" "$dir/"
@@ -189,7 +192,7 @@ cmd_sync() {
   "${SSH[@]}" "$HOST" "echo '$ver $(date -u +%FT%TZ)' > $BASE/state/app-version"
   echo "feeds-server $SITE: synced commit $ver ($(find "$stage/app/tools/feeds/$SITE" -maxdepth 1 -name '*.mjs' | wc -l) feed files, $(find "$stage/app" -type f | wc -l) files)"
   rm -rf "$stage"
-  git -C "$ROOT" diff --quiet HEAD -- tools/feeds tools/lib engine data/sources 2>/dev/null \
+  git -C "$ROOT" diff --quiet HEAD -- tools/feeds tools/lib engine data/sources data/alerts 2>/dev/null \
     || echo "note: uncommitted changes in tools/feeds, tools/lib, engine or data/sources were NOT synced (commit first)"
 }
 
@@ -206,7 +209,7 @@ cmd_pull() {
 
 cmd_run() {
   server
-  for a in "$@"; do [[ "$a" =~ ^([a-z0-9]+|--force)$ ]] || { echo "bad argument: $a" >&2; exit 2; }; done
+  for a in "$@"; do [[ "$a" =~ ^([a-z0-9]+|--force|--test-alert)$ ]] || { echo "bad argument: $a" >&2; exit 2; }; done
   remote "$@" <<'REMOTE'
 LOG=$BASE/logs/runner.log
 s=$(stat -c %s "$LOG" 2>/dev/null || echo 0)

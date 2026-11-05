@@ -91,10 +91,12 @@ export function upstreamError(status, body) {
 
 // alerts after `after` upstream failures in a row (a bad key at once), then at most once per `everyMs`; one note when it recovers
 export class Alarm {
-  constructor({ after = 5, everyMs = 6 * 3600e3, send, now = () => Date.now() }) { Object.assign(this, { after, everyMs, send, now }); this.fails = 0; this.last = -Infinity; this.raised = false; this.lastError = null; this.lastOk = null; }
+  // send(templateId, params): Russian templates of data/alerts/ru.json (fn_key, fn_failing, fn_ok), rendered by tools/fnapi/server.mjs.
+  // The same problem at most once per everyMs (12 h, docs/TELEGRAM-BOT.md).
+  constructor({ after = 5, everyMs = 12 * 3600e3, send, now = () => Date.now() }) { Object.assign(this, { after, everyMs, send, now }); this.fails = 0; this.last = -Infinity; this.raised = false; this.lastError = null; this.lastOk = null; }
   ok() {
     this.lastOk = new Date(this.now()).toISOString();
-    if (this.raised) { this.raised = false; this.send('pingalto fortnite tracker: upstream OK again after ' + this.fails + ' failures'); }
+    if (this.raised) { this.raised = false; this.send('fn_ok', { fails: this.fails }); }
     this.fails = 0;
   }
   fail(what, { key = false } = {}) {
@@ -102,7 +104,7 @@ export class Alarm {
     this.lastError = { at: new Date(this.now()).toISOString(), what: String(what).slice(0, 120) };
     if ((key || this.fails >= this.after) && this.now() - this.last >= this.everyMs) {
       this.last = this.now(); this.raised = true;
-      this.send('pingalto fortnite tracker: ' + (key ? 'fortnite-api.com refuses the key (401): renew FORTNITE_API_KEY (docs/MAINTENANCE.md)' : this.fails + ' upstream failures in a row, last: ' + this.lastError.what));
+      if (key) this.send('fn_key', { raw: this.lastError.what }); else this.send('fn_failing', { fails: this.fails, raw: this.lastError.what });
     }
   }
 }

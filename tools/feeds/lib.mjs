@@ -88,15 +88,34 @@ export function makeCtx(o = {}) {
   };
 }
 
-// Telegram alert (TG_BOT_TOKEN, TG_CHAT_ID from the env); returns a log line, never the token. Used by the feeds runner and the
-// Fortnite stats proxy (tools/fnapi/server.mjs).
-export async function telegram(text, env = process.env) {
-  if (!env.TG_BOT_TOKEN || !env.TG_CHAT_ID) return 'alert (telegram not configured): ' + text;
-  try {
-    const res = await fetch('https://api.telegram.org/bot' + env.TG_BOT_TOKEN + '/sendMessage', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(20000),
-      body: JSON.stringify({ chat_id: env.TG_CHAT_ID, text, disable_web_page_preview: true }),
-    });
-    return 'alert sent to telegram: ' + res.status + ' (' + text.split('\n').length + ')';
-  } catch (e) { return 'alert: telegram failed (' + String(e && e.message || e).slice(0, 80) + ')'; }
+// Telegram message (TG_BOT_TOKEN, TG_CHAT_ID from the env), HTML parse mode; the texts come from tools/feeds/alerts.mjs (Russian templates
+// in data/alerts/ru.json). Two more tries after a network error or a 429/5xx answer (429: waits retry_after, at most 30 s). Returns
+// { ok, configured, status, log }; the log line never holds the token or the chat id. Used by the feeds runner, tools/feeds/notify.mjs
+// and the Fortnite stats proxy (tools/fnapi/server.mjs).
+export async function sendTelegram(text, env = process.env, o = {}) {
+  const tok = env.TG_BOT_TOKEN, chat = env.TG_CHAT_ID;
+  const lines = String(text).split('\n').length;
+  if (!tok || !chat) return { ok: false, configured: false, status: 0, log: 'alert (telegram not configured): ' + String(text).replace(/<[^>]+>/g, '').replace(/\n/g, ' | ').slice(0, 600) };
+  const clean = s => String(s).split(tok).join('***').split(String(chat)).join('***').slice(0, 120);
+  const tries = o.tries || 3;
+  let last = '';
+  for (let i = 0; i < tries; i++) {
+    try {
+      const res = await fetch('https://api.telegram.org/bot' + tok + '/sendMessage', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(o.timeoutMs || 20000),
+        body: JSON.stringify({ chat_id: chat, text: String(text).slice(0, 4096), parse_mode: 'HTML', disable_web_page_preview: true }),
+      });
+      const body = await res.json().catch(() => null);
+      if (res.ok && body && body.ok) return { ok: true, configured: true, status: res.status, log: 'alert sent to telegram: ' + res.status + ' (' + lines + ' lines)' };
+      last = 'HTTP ' + res.status + (body && body.description ? ' ' + clean(body.description) : '');
+      if (res.status !== 429 && res.status < 500) break;
+      const wait = res.status === 429 && body && body.parameters && body.parameters.retry_after ? Math.min(30, body.parameters.retry_after) * 1000 : 3000;
+      if (i < tries - 1) await new Promise(r => setTimeout(r, o.retryMs === undefined ? wait : o.retryMs));
+    } catch (e) {
+      last = clean(e && e.message || e);
+      if (i < tries - 1) await new Promise(r => setTimeout(r, o.retryMs === undefined ? 3000 : o.retryMs));
+    }
+  }
+  return { ok: false, configured: true, status: 0, log: 'alert: telegram failed (' + last + ')' };
 }
+export const telegram = async (text, env = process.env) => (await sendTelegram(text, env)).log;

@@ -73,7 +73,11 @@ export function reminder(today, own, listas) {
   if (g('review').length) parts.push('3) Collect the reviews again from Chrome with the Argentine VPN (docs/REVIEWS-DATA.md): ' + list(g('review'), x => x.id.replace(/^review-/, '') + ' until ' + dm(x.until), 30) + '.');
   if (g('operators').length) parts.push('4) Operator copies and screenshots (node tools/capture-shots.mjs, Chrome in Argentina for geo-blocked ones): ' + list(g('operators'), x => x.id + ' until ' + dm(x.until)) + '.');
   parts.push('Then send the files to the agent; checklist: docs/MAINTENANCE.md.');
-  return { id: 'reminder-' + first, text: parts.join('\n').slice(0, 3800) };
+  // params: the same lists for the Russian Telegram template (tools/feeds/alerts.mjs, data/alerts/ru.json)
+  const items = (k, f, n = 40) => g(k).slice(0, n).map(x => ({ name: f(x), until: x.until }));
+  const params = { first, days: days(today, first), owner: items('owner', x => x.id.replace(/^owner-/, '') + ' ' + short(x.url)), server: items('server', x => x.id + ' (' + x.state + ')'),
+    review: items('review', x => x.id.replace(/^review-/, '')), operators: items('operators', x => x.id) };
+  return { id: 'reminder-' + first, text: parts.join('\n').slice(0, 3800), params };
 }
 
 export default {

@@ -15,11 +15,14 @@
 // same way (history archives). Files are written only on success: on failure the previous files stay (last good data is kept).
 // After every run <out>/_health.json is rewritten for all feeds of the site (stale, consecutiveFailures, lastError). A feed that
 // turns stale or recovers raises an alert: sent to Telegram when TG_BOT_TOKEN and TG_CHAT_ID are set, otherwise only logged.
+// Alert texts are Russian templates (data/alerts/ru.json) chosen and de-duplicated by tools/feeds/alerts.mjs; its state is
+// <dir of --log>/_alerts.json (never in --out: that folder is public). --test-alert sends one test message of the site and exits.
 // Exit code: 0 all good; 1 some enabled feed has no file younger than its maxAgeHours or failed to load; 2 bad arguments.
 import { readdirSync, existsSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { makeCtx, writeJsonAtomic, readJson, readFeed, zoneDate, UAS, telegram } from './lib.mjs';
+import { makeCtx, writeJsonAtomic, readJson, readFeed, zoneDate, UAS, sendTelegram } from './lib.mjs';
+import { problemsOf, planAlerts, composeTexts, renderAlert } from './alerts.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const NAME_RE = /^[a-z0-9]+\.mjs$/;
@@ -100,7 +103,13 @@ const dayDiff = (a, b) => Math.round((Date.parse(b + 'T00:00:00Z') - Date.parse(
 // alerts: [{ id, text }]. Each id is alerted once, when it appears; while listed it is a problem of the health report.
 export function noticesOf(docs) {
   const out = [];
-  for (const [feed, doc] of docs) for (const x of (doc && doc.data && Array.isArray(doc.data.alerts) ? doc.data.alerts : [])) if (x && typeof x.id === 'string') out.push({ id: x.id, text: String(x.text || '').slice(0, 300), feed });
+  for (const [feed, doc] of docs) {
+    for (const x of (doc && doc.data && Array.isArray(doc.data.alerts) ? doc.data.alerts : [])) {
+      if (!x || typeof x.id !== 'string') continue;
+      const params = x.params && typeof x.params === 'object' && JSON.stringify(x.params).length <= 8000 ? x.params : null;
+      out.push({ id: x.id, text: String(x.text || '').slice(0, params ? 300 : 1500), feed, ...(params ? { params } : {}) });
+    }
+  }
   return out;
 }
 export function expiriesOf(docs, now) {
@@ -117,7 +126,7 @@ export function expiriesOf(docs, now) {
 }
 
 export function buildHealth(feeds, out, log, loadErrors, now, env = {}, site = '') {
-  const health = { generated: now.toISOString(), runner: UAS[site] || site, ok: true, problems: [], feeds: {}, expiries: [] };
+  const health = { generated: now.toISOString(), runner: UAS[site] || site, ok: true, problems: [], feeds: {}, expiries: [], loadErrors: loadErrors.map(e => ({ file: e.file, error: e.error })) };
   const docs = [];
   for (const e of loadErrors) { health.ok = false; health.problems.push('load ' + e.file + ': ' + e.error); }
   for (const feed of feeds) {
@@ -168,9 +177,22 @@ export function alertsFor(prev, next, site) {
   return out;
 }
 
-async function sendAlerts(list, env) {
-  if (!list.length) return;
-  console.log(await telegram(list.join('\n'), env));
+// Russian messages (tools/feeds/alerts.mjs), at least 1.1 s apart (Telegram: about 1 message a second to one chat). The new state is
+// kept only when every message went out (or Telegram is not configured): a failed send is tried again on the next run.
+export async function sendAlerts(site, health, stateFile, env, now = new Date(), send = sendTelegram) {
+  let state = null;
+  try { state = readJson(stateFile); } catch { /* first run of the alert layer */ }
+  const { messages, state: next } = planAlerts(state, problemsOf(health), now, { seed: !state });
+  const texts = composeTexts(messages, site, now);
+  let ok = true;
+  for (let i = 0; i < texts.length; i++) {
+    if (i) await new Promise(r => setTimeout(r, 1100));
+    const r = await send(texts[i], env);
+    console.log(r.log);
+    if (!r.ok && r.configured) ok = false;
+  }
+  if (ok) writeJsonAtomic(stateFile, next, true);
+  return { sent: texts.length, ok };
 }
 
 export function parseArgs(args) {
@@ -194,6 +216,11 @@ export function parseArgs(args) {
 export async function main(argv = process.argv.slice(2), env = process.env) {
   const o = parseArgs(argv);
   if (!UAS[o.site]) { console.error('--site must be one of ' + Object.keys(UAS).join(', ')); return 2; }
+  if (argv.includes('--test-alert')) {
+    const r = await sendTelegram(renderAlert('test', { from: 'feeds' }, { site: o.site, test: true }).text, env);
+    console.log(r.log);
+    return r.ok ? 0 : 1;
+  }
   if (o.now && Number.isNaN(o.now.getTime())) { console.error('bad --now'); return 2; }
   const { feeds: all, errors } = await loadFeedsSafe(o.feedsDir);
   for (const e of errors) console.error('load ' + e.file + ': ' + e.error);
@@ -218,7 +245,10 @@ export async function main(argv = process.argv.slice(2), env = process.env) {
   try { before = readJson(hf); } catch { /* first run */ }
   const health = buildHealth(all, o.out, log, errors, clock(), env, o.site);
   writeJsonAtomic(hf, health, true);
-  if (!o.fixtures) await sendAlerts(alertsFor(before, health, o.site), env);
+  if (!o.fixtures) {
+    for (const a of alertsFor(before, health, o.site)) console.log('change: ' + a);
+    try { await sendAlerts(o.site, health, join(dirname(o.logFile), '_alerts.json'), env, clock()); } catch (e) { console.error('alerts failed: ' + String(e && e.message || e).slice(0, 200)); }
+  }
   for (const p of health.problems) console.error(p);
   console.log('health: ' + (health.ok ? 'ok' : 'PROBLEMS ' + health.problems.length) + ', ' + Object.keys(health.feeds).length + ' feeds');
   return health.ok ? 0 : 1;

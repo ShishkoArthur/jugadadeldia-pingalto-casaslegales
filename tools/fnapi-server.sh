@@ -13,7 +13,8 @@
 #   bash tools/fnapi-server.sh logs [n]   last container log lines (no names are logged)
 #
 # Server layout: /opt/web/pingalto-fnapi/{app,image,bin,logs,state}, secrets.env; bin/watch.sh runs every 5 min from cron: a stopped or
-# unhealthy container is recreated and a Telegram alert goes out (the service itself alerts on repeated upstream failures).
+# unhealthy container is recreated and a Telegram alert goes out, at most once per 12 h (the service itself alerts on repeated upstream
+# failures). Alert texts: data/alerts/ru.json (docs/TELEGRAM-BOT.md).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 ROOT=$(pwd)
@@ -23,7 +24,7 @@ IMAGE=pingalto-fnapi:node24
 RUN_UID=47221
 NET=web_default
 KEYS=(FORTNITE_API_KEY TG_BOT_TOKEN TG_CHAT_ID)
-FILES=(engine/games/fnstats.mjs tools/fnapi/core.mjs tools/fnapi/server.mjs tools/feeds/lib.mjs)
+FILES=(engine/games/fnstats.mjs tools/fnapi/core.mjs tools/fnapi/server.mjs tools/feeds/lib.mjs tools/feeds/alerts.mjs tools/feeds/notify.mjs data/alerts/ru.json)
 
 MAIN=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null || echo "$ROOT/.git")")
 if [ -z "${DEPLOY_HOST:-}" ]; then for f in .env "$MAIN/.env"; do if [ -f "$f" ]; then set -a; . "$f"; set +a; break; fi; done; fi
@@ -64,18 +65,19 @@ tmp=\$(mktemp "\$BASE/bin/.watch.sh.XXXXXX")
 cat > "\$tmp" <<'WATCH'
 #!/usr/bin/env bash
 # watchdog of the pingalto Fortnite proxy (written by tools/fnapi-server.sh; edit there): recreate when stopped or unhealthy, alert
-BASE=/opt/web/pingalto-fnapi; NAME=pingalto-fnapi; LOG=\$BASE/logs/watch.log
+BASE=/opt/web/pingalto-fnapi; NAME=pingalto-fnapi; IMAGE=$IMAGE; RUN_UID=$RUN_UID; LOG=\$BASE/logs/watch.log
 ts() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 [ -f "\$BASE/app/tools/fnapi/server.mjs" ] || exit 0
 st=\$(docker inspect -f '{{.State.Status}} {{if .State.Health}}{{.State.Health.Status}}{{end}}' "\$NAME" 2>/dev/null || echo missing)
 case "\$st" in "running healthy"|"running starting") exit 0 ;; esac
 echo "\$(ts) state '\$st' -> recreate" >> "\$LOG"
 "\$BASE/bin/up.sh" >> "\$LOG" 2>&1
-tg=\$(grep -E '^TG_(BOT_TOKEN|CHAT_ID)=' "\$BASE/secrets.env" 2>/dev/null)
-tok=\$(printf '%s\n' "\$tg" | sed -n 's/^TG_BOT_TOKEN=//p'); chat=\$(printf '%s\n' "\$tg" | sed -n 's/^TG_CHAT_ID=//p')
 last=\$(cat "\$BASE/state/watch-alert" 2>/dev/null || echo 0); now=\$(date +%s)
-if [ -n "\$tok" ] && [ -n "\$chat" ] && [ \$((now - last)) -gt 21600 ]; then
-  curl -s -m 20 -o /dev/null "https://api.telegram.org/bot\$tok/sendMessage" --data-urlencode "chat_id=\$chat" --data-urlencode "text=pingalto fortnite proxy was '\$st', recreated (bash tools/fnapi-server.sh status)" && echo "\$now" > "\$BASE/state/watch-alert"
+# Russian text from data/alerts/ru.json (template fn_restarted), sent by a throwaway container with the same image and secrets
+if [ \$((now - last)) -gt 43200 ] && docker run --rm --user "\$RUN_UID:\$RUN_UID" --read-only --cap-drop ALL --security-opt no-new-privileges \\
+  --memory 64m --env-file "\$BASE/secrets.env" -e NODE_OPTIONS=--dns-result-order=ipv4first -v "\$BASE/app:/app:ro" -w /app "\$IMAGE" \\
+  node tools/feeds/notify.mjs pingalto fn_restarted --service fortnite-tracker "state=\$st" >> "\$LOG" 2>&1; then
+  echo "\$now" > "\$BASE/state/watch-alert"
 fi
 WATCH
 chmod 755 "\$tmp"; mv -f "\$tmp" "\$BASE/bin/watch.sh"

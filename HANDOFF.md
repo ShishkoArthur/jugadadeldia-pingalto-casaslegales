@@ -44,6 +44,10 @@
 
 ## Доступы (состояние 03.11)
 - Ключи в `.env` проверены 03.11: PandaScore (200), Supercell CR и BS (200 с сервера по IPv4, IP 187.7.26.95). Telegram-бот @jpc_avisos_bot — подключён 03.11 (`TG_BOT_TOKEN`, `TG_CHAT_ID` в `.env` и в secrets лент обоих сайтов на сервере, тест дошёл).
+- **Telegram по-русски (05.11):** все уведомления (ленты трёх сайтов, Fortnite-трекер, его сторож) — русские шаблоны `data/alerts/ru.json`,
+  первая строка `🔴/🟡/🟢 <домен> · лента/сервис «…»`, причина, что сделано, что делать, время ART и МСК; повтор не чаще 12 ч, сводка раз в сутки,
+  🟢 при починке (`tools/feeds/alerts.mjs`, тесты `engine/test/alerts.test.mjs`). Подключить другой проект к боту — **`docs/TELEGRAM-BOT.md`**
+  (без значений ключей). Тест: `bash tools/feeds-server.sh <сайт> run --test-alert`.
 
 | Что | Состояние | Кто |
 |---|---|---|
@@ -143,8 +147,8 @@
   ошибки `bad_name` 400, `not_found`/`no_matches` 404, `private` 403, `rate_ip` 429 (+ Retry-After), `busy` 503, `upstream` 502; `/api/fn/health`.
   Лимиты: 10/мин на посетителя (IP из CF-Connecting-IP только если соединение пришло с адреса Cloudflare), 60/мин к API на весь сайт
   (ключ даёт 180/мин — заголовки `x-rate-limit-*`), кэш 10 мин на имя+период (все 4 платформы одним ответом; «private» — 2 мин),
-  таймаут 8 с, одинаковые запросы ждут один вызов. Имена в логи не пишутся. Telegram: 5 сбоев API подряд или сразу 401 (ключ) — не чаще раза в 6 ч,
-  и «OK again». Управление: `bash tools/fnapi-server.sh install|secrets|sync|restart|status|logs` (sync — только закоммиченное).
+  таймаут 8 с, одинаковые запросы ждут один вызов. Имена в логи не пишутся. Telegram (по-русски, шаблоны fn_*): 5 сбоев API подряд или сразу 401 (ключ) — не чаще раза в 12 ч,
+  и 🟢 при починке; сторож шлёт fn_restarted через `tools/feeds/notify.mjs` (не чаще раза в 12 ч). Управление: `bash tools/fnapi-server.sh install|secrets|sync|restart|status|logs` (sync — только закоммиченное).
   `telegram()` теперь в `tools/feeds/lib.mjs` (им пользуются и ленты).
 - **Проверено живьём 04.11:** `/fortnite/tracker?n=Ninja` → 11.458 побед, K/D 10,16, таблица режимов; `?n=Ninja&vs=SypherPK` — сравнение;
   несуществующее имя → «No hay ninguna cuenta de Epic…»; `a<b` → «El nombre … no sirve» (в браузере, без запроса); 11 быстрых поисков →

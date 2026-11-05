@@ -97,7 +97,7 @@ test('fn tracker: K/D plan and win rate words', () => {
 test('fn tracker: alarm after failures in a row, at once for a bad key, once per period', () => {
   let t = 0;
   const sent = [];
-  const a = new Alarm({ after: 3, everyMs: 1000, send: s => sent.push(s), now: () => t });
+  const a = new Alarm({ after: 3, everyMs: 1000, send: id => sent.push(id), now: () => t });
   a.fail('x'); a.fail('x');
   assert.equal(sent.length, 0);
   a.fail('x');
@@ -109,5 +109,5 @@ test('fn tracker: alarm after failures in a row, at once for a bad key, once per
   t = 5000;
   a.fail('401', { key: true });
   assert.equal(sent.length, 3);
-  assert.ok(/renew/.test(sent[2]));
+  assert.equal(sent[2], 'fn_key', 'Russian template: renew the key (data/alerts/ru.json)');
 });
