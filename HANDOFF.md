@@ -387,6 +387,17 @@
   Примеры проверяются при сборке: если движок/сид перестал давать описанную ситуацию — сборка падает (подобрать другой сид). 12 новых цитат
   бурако (`data/sources/burako/rules.json`, проверены тестом по PDF). Учебники убраны из списка «инструмент первым на телефоне» (`LEAD`).
   Английский: строки + meta в плане (переводчик ≈ $0,47).
+- **Труко (05.11):** /truco/reglas/ — учебник с нуля, 15 уроков + FAQ (+FAQPage): цель, мазо 40 карт по мастям, лестница 14 ступеней
+  с «tocá dos cartas» (дуэль), раздача и мано (схема стола на 4), три базы на нарисованной руке по шагам, 4 примера pardas + «¿quién ganó?»,
+  envido: 3 правила и 5 рук с формулой + «armá tu mano», как поётся (диалог), таблица envido и falta на двух счётах, цепочка truco/retruco/
+  vale cuatro (querido / no querido), mazo (таблица), flor, palitos malas/buenas, señas, целая рука от начала до конца, ошибки; «Jugar» —
+  в конце, сверху только ссылка «¿Ya sabés jugar?». /truco/valores-de-las-cartas/, /truco/senas/, /truco/envido/, /truco/flor/, /truco/
+  (путь «Aprendé en 7 pasos») — тоже учебники с оглавлением, примерами, ошибками и FAQ; /truco/puntos/ — цепочка truco, /truco/quiero-o-no-quiero/ — вводный блок.
+  **Код:** `pages/trucoguia.mjs` (все страницы-учебники труко; каждый пример — победитель базы, руки, envido, очки — считает движок и сверяется
+  с текстом, иначе сборка падает), `client/trucoguia.js` (дуэль, armá tu mano; колоды рисует браузер — вес), `css/truco-guia.css`;
+  `engine/truco/cards.mjs envidoBreakdown` (+тест по 9880 рукам); +35 цитат в `data/sources/truco/rules.json` (тест по PDF). Вес /truco/reglas/
+  у предела (EN ≈ 160 KB): новое добавлять экономно. Плашки-«чипы» под шапкой главной jugadadeldia убраны; на pingalto и casaslegales таких нет
+  (там обычный kicker героя).
 
 ## jugadadeldia (04.11) — телефон: инструмент первым, FAQ, гайд «quiniela online», сцены провинций (85 страниц, выложено)
 - **Порядок на телефоне** (владелец 04.11, DECISIONS «ответы по аудиту»): список `LEAD` в `pages/parts.mjs` (результаты: /quiniela/, турно,
