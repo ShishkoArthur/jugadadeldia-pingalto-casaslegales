@@ -13,6 +13,7 @@ import { ROOT } from '../env.mjs';
 import { normalize, visibleText, hasQuote } from '../../engine/text.mjs';
 import { daysBetween } from '../../engine/format.mjs';
 import { docMaxAge } from './ownercopy.mjs';
+import { PDFTOTEXT } from '../../engine/pdf.mjs';
 
 export const LOTTERY_DIR = path.join(ROOT, 'data/sources/lottery');
 
@@ -38,7 +39,7 @@ const textCache = new Map();
 export function docText(file) {
   const abs = path.join(ROOT, file);
   if (!textCache.has(abs)) {
-    const t = file.endsWith('.pdf') ? normalize(execFileSync('pdftotext', ['-layout', abs, '-'], { encoding: 'utf8', maxBuffer: 64 << 20 })) : visibleText(fs.readFileSync(abs, 'utf8'));
+    const t = file.endsWith('.pdf') ? normalize(execFileSync(PDFTOTEXT, ['-layout', abs, '-'], { encoding: 'utf8', maxBuffer: 64 << 20 })) : visibleText(fs.readFileSync(abs, 'utf8'));
     textCache.set(abs, t);
   }
   return textCache.get(abs);

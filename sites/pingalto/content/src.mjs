@@ -4,12 +4,13 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { visibleText, normalize } from '../../../engine/text.mjs';
 import { checkFacts } from '../../../engine/games/cite.mjs';
 import { parsePoint } from '../../../engine/games/geo.mjs';
 import { daysBetween } from '../../../engine/format.mjs';
 
-const ROOT = new URL('../../../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 export const SOURCES_FILE = 'data/sources/pingalto/sources.json';
 
 export function load({ today, root = ROOT } = {}) {

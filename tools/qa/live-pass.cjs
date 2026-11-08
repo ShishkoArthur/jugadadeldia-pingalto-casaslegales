@@ -2,9 +2,9 @@
 // elements, clipped text, images (broken / upscaled by srcset width), contrast, tap targets, sticky header, covered controls, burger menu,
 // keyboard focus, junk text after driving each tool. Output: <out>/results.json and screenshots in <out>/shots.
 // node tools/qa/live-pass.cjs --site pingalto [--workers 2] [--paths /a,/b] [--combos 375-light,...] [--out dir]
-const { chromium } = require('/home/dev/manuallysites/casinovictoriaargentina/node_modules/playwright');
 const fs = require('fs');
 const path = require('path');
+const { chromium } = require(process.env.PLAYWRIGHT_DIR || path.resolve(__dirname, '../../../manuallysites/casinovictoriaargentina/node_modules/playwright'));
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : d; };
 const SITE = arg('site');
 const BASE = arg('base', 'https://' + SITE + '.com');

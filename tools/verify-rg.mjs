@@ -28,13 +28,14 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { decodeEntities, normalize, visibleText, hasQuote } from '../engine/text.mjs';
 import { isOwnerDoc, docMaxAge } from './lib/ownercopy.mjs';
+import { PDFTOTEXT } from '../engine/pdf.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PACK = path.join(ROOT, 'data/sources/rg/helplines.json');
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 casaslegales-check/1.0';
 export { decodeEntities, normalize, visibleText, hasQuote };
 export function fileText(file) {
-  if (file.endsWith('.pdf')) return normalize(execFileSync('pdftotext', ['-layout', file, '-'], { encoding: 'utf8' }));
+  if (file.endsWith('.pdf')) return normalize(execFileSync(PDFTOTEXT, ['-layout', file, '-'], { encoding: 'utf8' }));
   return visibleText(fs.readFileSync(file, 'utf8'));
 }
 const digits = s => String(s ?? '').replace(/\D/g, '');

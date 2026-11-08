@@ -6,11 +6,12 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { visibleText, normalize, hasQuote } from '../text.mjs';
+import { PDFTOTEXT } from '../pdf.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const textOf = d => {
   const f = path.join(ROOT, d.file);
-  if (f.endsWith('.pdf')) return normalize(execFileSync('pdftotext', ['-layout', f, '-'], { encoding: 'utf8' }));
+  if (f.endsWith('.pdf')) return normalize(execFileSync(PDFTOTEXT, ['-layout', f, '-'], { encoding: 'utf8' }));
   return visibleText(fs.readFileSync(f, 'utf8'));
 };
 

@@ -5,9 +5,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { fmt, fmtFixed, fmtPct, fmtInput, parseNum } from '../games/num.mjs';
 
-const ROOT = new URL('../../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
 test('fmt: decimal comma, thousands dot, same in every engine', () => {
   assert.equal(fmt(1234, 0), '1.234');

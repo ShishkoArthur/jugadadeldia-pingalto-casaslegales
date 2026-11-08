@@ -36,7 +36,7 @@ case "$SITE" in
     # the feed "fuentes" reads the descriptions of the saved sources (JSON only, never the saved documents) for their expiry dates
     SRC_SETS=(lottery rg truco generala chinchon escoba burako)
     # how long a copy stays fresh (owner copy or downloaded): one dependency-free file
-    EXTRA_RULES=(--include='/tools/lib/' --include='/tools/lib/copyage.mjs') ;;
+    EXTRA_PATHS=(tools/lib/copyage.mjs) ;;
   pingalto)
     CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK=''
     KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID)
@@ -46,12 +46,11 @@ case "$SITE" in
     CRON_SPEC='37 6 * * *'; RUN_UID=47230; IMAGE=casaslegales-feeds:node24; APK='poppler-utils'
     KEYS=(TG_BOT_TOKEN TG_CHAT_ID)
     SRC_SETS=(registries provinces rg operators reviews)
-    EXTRA_RULES=(--include='/data/sources/brands.json' --include='/data/shots/' --include='/data/shots/shots.json'
-      --include='/tools/env.mjs' --include='/tools/verify-rg.mjs' --include='/tools/lib/' --include='/tools/lib/*.mjs')
+    EXTRA_PATHS=(data/sources/brands.json data/shots/shots.json tools/env.mjs tools/verify-rg.mjs ':(glob)tools/lib/*.mjs')
     HEALTH_MAX_H=26 ;;
   *) sed -n '2,28p' "$0"; exit 2 ;;
 esac
-: "${HEALTH_MAX_H:=2}"; EXTRA_RULES=("${EXTRA_RULES[@]+"${EXTRA_RULES[@]}"}")
+: "${HEALTH_MAX_H:=2}"; EXTRA_PATHS=("${EXTRA_PATHS[@]+"${EXTRA_PATHS[@]}"}")
 BASE=/opt/web/$SITE-feeds
 OUT=/opt/web/sites/$SITE.com/data/feeds
 CRON=/etc/cron.d/$SITE-feeds
@@ -64,21 +63,15 @@ server() {
   SSH=(ssh -i "${DEPLOY_KEY/#\~/$HOME}" -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20)
 }
 
-SRC_RULES=()
-if [ "${#SRC_SETS[@]}" -gt 0 ]; then
-  SRC_RULES=(--include='/data/' --include='/data/sources/')
-  for s in "${SRC_SETS[@]}"; do SRC_RULES+=(--include="/data/sources/$s/" --include="/data/sources/$s/*.json"); done
-fi
-SYNC_RULES=(
-  --exclude='test/' --exclude='fixtures/' --exclude='*.test.mjs' --exclude='.DS_Store'
-  --include='/package.json'
-  "${SRC_RULES[@]+"${SRC_RULES[@]}"}" "${EXTRA_RULES[@]+"${EXTRA_RULES[@]}"}"
-  --include='/data/' --include='/data/alerts/' --include='/data/alerts/ru.json'
-  --include='/tools/' --include='/tools/feeds/' --include='/tools/feeds/lib.mjs' --include='/tools/feeds/run.mjs'
-  --include='/tools/feeds/alerts.mjs' --include='/tools/feeds/notify.mjs'
-  --include="/tools/feeds/$SITE/***"
-  --include='/engine/***'
-  --exclude='*'
+# the file set the feeds need, as git pathspecs for "git archive HEAD" (no rsync needed on the development machine)
+SRC_PATHS=()
+for s in "${SRC_SETS[@]+"${SRC_SETS[@]}"}"; do SRC_PATHS+=(":(glob)data/sources/$s/*.json"); done
+SYNC_PATHS=(
+  package.json "${SRC_PATHS[@]+"${SRC_PATHS[@]}"}" "${EXTRA_PATHS[@]+"${EXTRA_PATHS[@]}"}"
+  data/alerts/ru.json
+  tools/feeds/lib.mjs tools/feeds/run.mjs tools/feeds/alerts.mjs tools/feeds/notify.mjs
+  "tools/feeds/$SITE" engine
+  ':(exclude,glob)**/test/**' ':(exclude,glob)**/fixtures/**' ':(exclude,glob)**/*.test.mjs' ':(exclude,glob)**/.DS_Store'
 )
 
 remote() {
@@ -171,23 +164,25 @@ cmd_secrets() {
   echo "secrets: set ${set[*]:-none}; not in .env: ${unset[*]:-none}"
 }
 
-# the committed file set (git archive HEAD, filtered by SYNC_RULES) in a directory; nothing from the working tree
+# the committed file set (git archive HEAD, SYNC_PATHS) in a new or empty directory; nothing from the working tree
 cmd_stage() {
   local dir="$1"; [ -n "$dir" ] || { echo "usage: stage <dir>" >&2; exit 2; }
-  local tmp; tmp=$(mktemp -d "${TMPDIR:-/tmp}/feeds-stage.XXXXXX")
-  git -C "$ROOT" archive HEAD -- package.json tools engine data/sources data/shots/shots.json data/alerts 2>/dev/null | tar -x -C "$tmp" \
-    || { rm -rf "$tmp"; echo "feeds-server: git archive HEAD failed" >&2; exit 1; }
+  if command -v cygpath >/dev/null; then dir=$(cygpath -u "$dir"); fi
+  if [ -e "$dir" ] && [ -n "$(ls -A "$dir")" ]; then echo "stage: $dir is not empty" >&2; exit 2; fi
   mkdir -p "$dir"
-  rsync -rlt --delete --delete-excluded --chmod=D755,F644 "${SYNC_RULES[@]}" "$tmp/" "$dir/"
-  rm -rf "$tmp"
+  git -C "$ROOT" archive HEAD -- "${SYNC_PATHS[@]}" | tar -x -C "$dir" \
+    || { echo "feeds-server: git archive HEAD failed" >&2; exit 1; }
 }
 
+# the staged set replaces $BASE/app under the runner lock; the delete runs with the server's rsync (none needed here)
 cmd_sync() {
   server
   "${SSH[@]}" "$HOST" "test -x $BASE/bin/run.sh" || { echo "feeds-server: not installed (bash tools/feeds-server.sh $SITE install)" >&2; exit 1; }
   local stage; stage=$(mktemp -d "${TMPDIR:-/tmp}/feeds-sync.XXXXXX")
   cmd_stage "$stage/app"
-  rsync -rlt --delete --chmod=D755,F644 --rsync-path="flock -w 120 $BASE/run.lock rsync" -e "${SSH[*]}" "$stage/app/" "$HOST:$BASE/app/"
+  tar -C "$stage/app" -cf - . | "${SSH[@]}" "$HOST" "T=\$(mktemp -d $BASE/.sync.XXXXXX) && tar -x -C \$T --no-same-owner \
+    && find \$T -type d -exec chmod 755 {} + && find \$T -type f -exec chmod 644 {} + \
+    && flock -w 120 $BASE/run.lock rsync -rlt --delete \$T/ $BASE/app/; r=\$?; rm -rf \$T; exit \$r"
   local ver; ver="$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo unknown)"
   "${SSH[@]}" "$HOST" "echo '$ver $(date -u +%FT%TZ)' > $BASE/state/app-version"
   echo "feeds-server $SITE: synced commit $ver ($(find "$stage/app/tools/feeds/$SITE" -maxdepth 1 -name '*.mjs' | wc -l) feed files, $(find "$stage/app" -type f | wc -l) files)"
@@ -202,8 +197,9 @@ cmd_pull() {
   server
   local dir="$ROOT/.cache/feeds-pull/$SITE"
   rm -rf "$dir"; mkdir -p "$dir/docs"
-  rsync -rt -e "${SSH[*]}" "$HOST:$BASE/state/docs/listas" "$dir/docs/" 2>/dev/null || { echo "pull: no rechecked copies on the server yet" >&2; exit 1; }
-  rsync -t -e "${SSH[*]}" "$HOST:$OUT/listas.json" "$dir/listas.json"
+  "${SSH[@]}" "$HOST" "test -d $BASE/state/docs/listas && tar -C $BASE/state/docs -cf - listas" | tar -x -C "$dir/docs" \
+    || { echo "pull: no rechecked copies on the server yet" >&2; exit 1; }
+  "${SSH[@]}" "$HOST" "cat $OUT/listas.json" > "$dir/listas.json"
   node "$ROOT/tools/feeds/casaslegales/pull-apply.mjs" "$dir" "$@"
 }
 

@@ -15,10 +15,11 @@ import plazos, { ownerExpiries, reminder, loadInputs, REMINDER_DAYS } from '../.
 import { applyPull } from '../../tools/feeds/casaslegales/pull-apply.mjs';
 import { runFeed, alertsFor, buildHealth } from '../../tools/feeds/run.mjs';
 import { readFeed } from '../../tools/feeds/lib.mjs';
+import { PDFTOTEXT } from '../pdf.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const tmp = p => mkdtempSync(join(tmpdir(), 'cl-' + p + '-'));
-const hasPdf = spawnSync('pdftotext', ['-v']).status === 0 || spawnSync('pdftotext', ['-v']).stderr?.length > 0;
+const hasPdf = spawnSync(PDFTOTEXT, ['-v']).status === 0 || spawnSync(PDFTOTEXT, ['-v']).stderr?.length > 0;
 
 test('robots.txt: AI crawlers, our agent, longest match', () => {
   const ai = 'User-agent: *\nAllow: /\n\nUser-agent: ClaudeBot\nUser-agent: GPTBot\nDisallow: /\n';

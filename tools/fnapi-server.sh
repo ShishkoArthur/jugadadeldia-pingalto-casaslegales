@@ -104,7 +104,9 @@ cmd_sync() {
   local stage; stage=$(mktemp -d "${TMPDIR:-/tmp}/fnapi-sync.XXXXXX")
   git -C "$ROOT" archive HEAD -- "${FILES[@]}" | tar -x -C "$stage"
   for f in "${FILES[@]}"; do [ -f "$stage/$f" ] || { rm -rf "$stage"; echo "fnapi-server: $f is not committed" >&2; exit 1; }; done
-  rsync -rlt --delete --chmod=D755,F644 -e "${SSH[*]}" "$stage/" "$HOST:$BASE/app/"
+  tar -C "$stage" -cf - . | "${SSH[@]}" "$HOST" "T=\$(mktemp -d $BASE/.sync.XXXXXX) && tar -x -C \$T --no-same-owner \
+    && find \$T -type d -exec chmod 755 {} + && find \$T -type f -exec chmod 644 {} + \
+    && rsync -rlt --delete \$T/ $BASE/app/; r=\$?; rm -rf \$T; exit \$r"
   local ver; ver="$(git -C "$ROOT" rev-parse --short HEAD)"
   "${SSH[@]}" "$HOST" "echo '$ver $(date -u +%FT%TZ)' > $BASE/state/app-version"
   rm -rf "$stage"

@@ -12,6 +12,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parseLotba, lotbaLatest, pbaPdfs, parsePbaText, frequency, chiSquareP, JURS, TURNOS, turnoIndex, STALE_HOURS } from '../../../engine/lottery/extract.mjs';
 import { readFeed, zoneTime } from '../lib.mjs';
+import { PDFTOTEXT } from '../../../engine/pdf.mjs';
 
 const LOTBA = 'https://quiniela.loteriadelaciudad.gob.ar/';
 const LOTBA_DRAW = n => LOTBA + 'includes/resultados-data.php?sorteo=' + n;
@@ -39,7 +40,7 @@ function pdfText(b64) {
   try {
     const f = join(dir, 'x.pdf');
     writeFileSync(f, Buffer.from(b64, 'base64'));
-    return execFileSync('pdftotext', ['-layout', '-enc', 'UTF-8', f, '-'], { encoding: 'utf8', timeout: 30000, maxBuffer: 4 << 20 });
+    return execFileSync(PDFTOTEXT, ['-layout', '-enc', 'UTF-8', f, '-'], { encoding: 'utf8', timeout: 30000, maxBuffer: 4 << 20 });
   } finally { rmSync(dir, { recursive: true, force: true }); }
 }
 

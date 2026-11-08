@@ -4,7 +4,8 @@
 // Site specifics (markers of the help block, help pages, 18+, menu; URL scheme; asset folder) come from sites/<site>/config.mjs
 // and the page list from sites/<site>/pages/index.mjs, so the gates stay the same while every site keeps its own HTML.
 import { readFileSync, readdirSync, statSync, existsSync, cpSync, writeFileSync, rmSync } from 'node:fs';
-import { join, relative, extname } from 'node:path';
+import { join, relative, extname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { parse as parseJs } from 'acorn';
@@ -416,7 +417,7 @@ async function selftest(id) {
   return fail;
 }
 
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop())) {
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2), id = args.find(a => !a.startsWith('--'));
   if (!id) { console.error('usage: node tools/check-dist.mjs <site> [folder] [--selftest]'); process.exit(2); }
   if (args.includes('--selftest')) process.exit(await selftest(id) ? 1 : 0);

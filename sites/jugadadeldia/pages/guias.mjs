@@ -21,6 +21,7 @@ import { wrap, go } from './curso.mjs';
 import { quinielaCurso, quini6Curso } from './curso-loterias.mjs';
 import { faqLd } from './parts.mjs';
 import { TURN_PATHS } from './extractos.mjs';
+import { PDFTOTEXT } from '../../../engine/pdf.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -38,7 +39,7 @@ export function program() {
   const doc = JSON.parse(readFileSync(join(ROOT, 'data/sources/lottery/lotba.json'), 'utf8')).docs['quiniela-programa'];
   const f = /ano=(\d{4})&mes=(\d{2})/.exec(doc.form || '');
   if (!f) throw new Error('program: no month in the form of the saved LOTBA program');
-  const text = execFileSync('pdftotext', ['-layout', join(ROOT, doc.file), '-'], { encoding: 'utf8' });
+  const text = execFileSync(PDFTOTEXT, ['-layout', join(ROOT, doc.file), '-'], { encoding: 'utf8' });
   const rows = parseProgramText(text, f[1] + '-' + f[2]);
   const { from, to } = validateMonth(rows, f[1] + '-' + f[2]);
   PROGRAM = { fetched: doc.fetched, rows, from, to };

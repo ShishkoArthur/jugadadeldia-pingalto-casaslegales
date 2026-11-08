@@ -11,10 +11,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { pathToFileURL } from 'node:url';
 import { ROOT } from './env.mjs';
 
-const PW = process.env.PLAYWRIGHT || '/home/dev/manuallysites/casinovictoriaargentina/node_modules/playwright/index.mjs';
-const { chromium } = await import(PW);
+const PW = process.env.PLAYWRIGHT || path.resolve(ROOT, '../manuallysites/casinovictoriaargentina/node_modules/playwright/index.mjs');
+const { chromium } = await import(pathToFileURL(PW).href);
 const sharp = (await import('sharp')).default;
 const T = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/shots/targets.json'), 'utf8')).targets;
 const MAN = path.join(ROOT, 'data/shots/shots.json');

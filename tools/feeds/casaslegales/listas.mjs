@@ -22,6 +22,7 @@ import { checkProvinces, loadProvinces } from '../../lib/provsources.mjs';
 import { isOwnerDoc, docMaxAge } from '../../lib/ownercopy.mjs';
 import { citations, hasQuote, normalize, visibleText } from '../../verify-rg.mjs';
 import { robotsVerdict } from './robots-txt.mjs';
+import { PDFTOTEXT } from '../../../engine/pdf.mjs';
 
 export const MONTH_DAYS = 28, RETRY_DAYS = 3, RETRY_FOR_DAYS = 14;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -74,7 +75,7 @@ async function robotsOf(ctx, origin) {
 export function textOf(buf, ext) {
   if (ext !== '.pdf') return visibleText(buf.toString('utf8'));
   const dir = mkdtempSync(join(tmpdir(), 'cl-pdf-'));
-  try { writeFileSync(join(dir, 'd.pdf'), buf); return normalize(execFileSync('pdftotext', ['-layout', join(dir, 'd.pdf'), '-'], { encoding: 'utf8', maxBuffer: 64 << 20 })); }
+  try { writeFileSync(join(dir, 'd.pdf'), buf); return normalize(execFileSync(PDFTOTEXT, ['-layout', join(dir, 'd.pdf'), '-'], { encoding: 'utf8', maxBuffer: 64 << 20 })); }
   finally { rmSync(dir, { recursive: true, force: true }); }
 }
 

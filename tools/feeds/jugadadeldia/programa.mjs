@@ -13,6 +13,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parseProgramText, mergeVersions, joinMonths, checkAgainstArchive, formAnswer, validateMonth, ymOf, nextYm } from '../../../engine/lottery/programa.mjs';
 import { readFeed } from '../lib.mjs';
+import { PDFTOTEXT } from '../../../engine/pdf.mjs';
 
 const HOME = 'https://quiniela.loteriadelaciudad.gob.ar/';
 const FORM = HOME + 'includes/descargaPrograma.php';
@@ -28,7 +29,7 @@ function pdfText(buf) {
   try {
     const f = join(dir, 'p.pdf');
     writeFileSync(f, buf);
-    return execFileSync('pdftotext', ['-q', '-layout', '-enc', 'UTF-8', f, '-'], { encoding: 'utf8', timeout: 60000, maxBuffer: 16 << 20 });
+    return execFileSync(PDFTOTEXT, ['-q', '-layout', '-enc', 'UTF-8', f, '-'], { encoding: 'utf8', timeout: 60000, maxBuffer: 16 << 20 });
   } finally { rmSync(dir, { recursive: true, force: true }); }
 }
 

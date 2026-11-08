@@ -15,6 +15,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { formAnswer, monthEnd, nextYm, ymOf } from '../../../engine/lottery/programa.mjs';
 import { PRICES, DOCS, extractPrices, judgePrice, confirmFacts, checkDocument } from '../../../engine/lottery/precios.mjs';
+import { PDFTOTEXT } from '../../../engine/pdf.mjs';
 
 export const HOSTS = { QUI: 'https://quiniela.loteriadelaciudad.gob.ar/', LTO: 'https://loto.loteriadelaciudad.gob.ar/' };
 export const LINKS = { QUI: HOSTS.QUI + '#programacion', LTO: HOSTS.LTO + '#programacion' };
@@ -29,7 +30,7 @@ function pdfText(buf) {
   try {
     const f = join(dir, 'p.pdf');
     writeFileSync(f, buf);
-    return execFileSync('pdftotext', ['-q', '-layout', '-enc', 'UTF-8', f, '-'], { encoding: 'utf8', timeout: 60000, maxBuffer: 16 << 20 });
+    return execFileSync(PDFTOTEXT, ['-q', '-layout', '-enc', 'UTF-8', f, '-'], { encoding: 'utf8', timeout: 60000, maxBuffer: 16 << 20 });
   } finally { rmSync(dir, { recursive: true, force: true }); }
 }
 

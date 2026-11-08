@@ -5,9 +5,10 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { visibleText, normalize } from '../text.mjs';
 
-const ROOT = new URL('../../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const P = JSON.parse(readFileSync(join(ROOT, 'data/sources/pingalto/brand-policies.json'), 'utf8'));
 
 test('brand policy copies match their sha256 and hold every quote', () => {

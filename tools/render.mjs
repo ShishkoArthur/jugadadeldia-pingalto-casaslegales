@@ -131,7 +131,7 @@ export async function build(id, { collect = false, out = null } = {}) {
         if (stack.includes(abs)) throw new Error('import cycle ' + [...stack, abs].join(' -> '));
         if (!SRC.has(abs)) throw new Error('no module ' + abs + ' (from ' + stack.at(-1) + '; engine dirs in config.engineDirs)');
         let src = readFileSync(abs, 'utf8');
-        if (lang === 'en') src = codeToEn(src, abs.slice(ROOT.length + 1), { mem, onMiss, mapPath: toEn }).code;
+        if (lang === 'en') src = codeToEn(src, abs.slice(ROOT.length + 1).replace(/\\/g, '/'), { mem, onMiss, mapPath: toEn }).code;
         const hs = sha(src);
         if (!mini.has(hs)) mini.set(hs, (await minify(src, { module: true, compress: { passes: 1 }, mangle: true, format: { comments: false, ascii_only: true } })).code);
         let code = mini.get(hs);
