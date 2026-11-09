@@ -1,7 +1,7 @@
 # HANDOFF — jugadadeldia.com · pingalto.com · casaslegales.com (один репозиторий, три сайта)
 
 Читать первым, затем `CLAUDE.md`, `PLAYBOOK.md`, `docs/DECISIONS.md` (решения владельца сверху — самые новые), `docs/TRAPS.md`.
-Полная история работы (все разделы по дням, 02–05.11) — `docs/archive/HANDOFF-full-2026-11-05.md`. Переписка — `chat.md` (последние 100 сообщений).
+Полная история работы (все разделы по дням, 02–05.11) — `docs/archive/HANDOFF-full-2026-11-05.md`. Переписка — `chat.md` (последние 100 сообщений; лежит только локально, в git не отправлять — владелец 09.11).
 Переезд на другое устройство — `docs/MIGRATION.md`. Обслуживание раз в полгода — `docs/MAINTENANCE.md`.
 
 ## 08.11.2026 — работаем на Windows (`C:\dev\jugadadeldia-pingalto-casaslegales`, Git Bash)
