@@ -1,2 +1,3 @@
 - [Girl & scene style](girl-scenes-style.md) — approved young modern girls and active varied page scenes; always generate this way
 - [Owner workflow](owner-workflow.md) — Russian, max 8 agents, results shown on the overview artifact
+- [Review proactively](review-proactively.md) — never wait for the owner to send pages; check every page of all three sites yourself
