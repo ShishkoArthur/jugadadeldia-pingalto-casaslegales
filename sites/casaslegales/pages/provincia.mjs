@@ -37,11 +37,12 @@ function chips(h, x) {
 function hero(h, P, x, o) {
   const kick = x.code + ' · ' + x.label;
   const side = '<div class="rl-pvv">' + relief(h, P, x.id) +
-    '<p class="rl-pvn">' + (x.n !== null ? '<b>' + x.n + '</b>' : '<b class="rl-pvn-0">-</b>') + '<span>' + h.esc(
+    '<p class="rl-pvn">' + (x.n !== null ? '<b>' + x.n + '</b>' : '<b class="rl-pvn-0" data-i="eyeoff">-</b>') + '<span>' + h.esc(
       x.st === 'list' ? (x.n === 1 ? 'sitio en la lista oficial de ' : 'sitios en la lista oficial de ') + x.reg.regulator.short :
       x.st === 'platform' ? (x.n === 1 ? 'plataforma enlazada por el regulador' : 'plataformas enlazadas por el regulador') :
       x.st === 'none' ? 'sitios que podamos citar: no hay lista oficial verificada' : 'datos publicados: la fuente no se puede consultar') + '</span></p>' +
     (x.st === 'list' && x.n ? '<a class="rl-jump" href="#sitios">' + (x.n === 1 ? 'Ver el sitio de la lista' : 'Ver los ' + x.n + ' sitios de la lista') + '</a>' : '') +
+    (x.st === 'platform' && x.n ? '<a class="rl-jump" href="#plataformas">' + (x.n === 1 ? 'Ver la plataforma' : 'Ver las ' + x.n + ' plataformas') + '</a>' : '') +
     '<p class="rl-pvcap">' + h.esc(x.name) + ' resaltada en el mapa de las 24 jurisdicciones</p>' + reliefLegend() + '</div>';
   return '<section class="rl-hero rl-hero-pv rl-hero-pr"><div><p class="rl-kick">' + h.esc(kick) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
     '<p class="rl-lead">' + h.t(o.lead) + '</p>' + chips(h, x) + '</div>' + side + '</section>';
@@ -158,7 +159,7 @@ function platformLink(h, p, d) {
 }
 function platformBody(h, P, x, o) {
   const e = x.e;
-  const cards = '<section class="rl-sec">' + sectionHead(h, e.platforms.length === 1 ? 'La plataforma que enlaza el regulador' : 'Las plataformas que enlaza el regulador', 'enlace en su sitio oficial, sin lista de otros operadores') +
+  const cards = '<section class="rl-sec" id="plataformas">' + sectionHead(h, e.platforms.length === 1 ? 'La plataforma que enlaza el regulador' : 'Las plataformas que enlaza el regulador', 'enlace en su sitio oficial, sin lista de otros operadores') +
     '<div class="rl-plat" data-nosnippet>' + e.platforms.map(p => {
       const d = P.doc(p.evidence.doc);
       return '<article><h3>' + h.esc(p.name) + '</h3>' + hostHtml(h, p.host) + (p.quote ? pdQuote(h, P, p.quote, x.j.regulator ? x.j.regulator.name : x.name) : '<p class="rl-note">El enlace está en el portal del regulador, sin texto propio que citar.</p>') +

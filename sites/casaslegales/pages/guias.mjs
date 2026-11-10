@@ -8,6 +8,8 @@ import { opData, quoteById } from '../content/opdata.mjs';
 import { anat, opSrcQuote, listsDate } from './opparts.mjs';
 import { quote, rgQuote, src, sectionHead, brandLink } from './parts.mjs';
 import { opPath } from '../content/operators.mjs';
+import { review } from '../content/reviews.mjs';
+import { THUMB, thumbName, hasThumb } from '../content/thumbs.mjs';
 
 const go = (h, list) => '<div class="rl-gd">' + list.filter(([u]) => h.built(u)).map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div>';
 
@@ -92,10 +94,12 @@ export const operadores = {
     const matrix = brandMatrix(h.regs, h.names);
     const cards = matrix.map(row => {
       const u = opPath(row.brand);
-      const shots = ((D.data.brands[row.brand] || {}).shots || []).length;
+      const R = review(h.today, row.brand);
+      const shots = ((D.data.brands[row.brand] || {}).shots || []).length + (R ? R.shots.length : 0);
+      const pic = hasThumb(row.brand) ? '<img class="rl-opt" src="' + h.asset('shots/' + thumbName(row.brand)) + '" width="' + THUMB.w + '" height="' + THUMB.h + '" loading="lazy" decoding="async" alt="' + h.esc('Captura propia del sitio de ' + row.name) + '">' : '<span class="rl-opt rl-opt-no" data-i="cam" aria-hidden="true"></span>';
       const dots = '<span class="rl-dots" aria-label="' + h.esc('Figura en ' + presence(row) + ' de ' + h.regs.length + ' listas') + '">' + h.regs.map(r => '<i class="' + (row.cells[r.id] ? 'on' : '') + '" title="' + h.esc(CODE[r.id]) + '">' + h.esc(CODE[r.id]) + '</i>').join('') + '</span>';
       const hosts = [...new Set(Object.values(row.cells).filter(Boolean).map(c => c.host))];
-      const inner = '<h3>' + h.esc(row.name) + '</h3>' + dots + '<p class="rl-host">' + hosts.map(x => h.esc(x)).join('<br>') + '</p>' +
+      const inner = pic + '<h3>' + h.esc(row.name) + '</h3>' + dots + '<p class="rl-host">' + hosts.map(x => h.esc(x)).join('<br>') + '</p>' +
         '<p class="rl-src">' + (shots ? shots + (shots === 1 ? ' captura propia' : ' capturas propias') : 'sin capturas propias') + '</p>';
       return '<a class="rl-opc" href="' + h.href(u) + '">' + inner + '</a>';
     }).join('');

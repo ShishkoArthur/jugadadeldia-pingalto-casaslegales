@@ -10,6 +10,7 @@ import { opData, quotesOf, shotsOf, docOf, quoteById } from '../content/opdata.m
 import { licenceMap, mapLegend, anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
 import { src, quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
 import { help } from './provincia.mjs';
+import { THUMB, thumbName, hasThumb } from '../content/thumbs.mjs';
 import { ROOT } from '../../../tools/env.mjs';
 import { review } from '../content/reviews.mjs';
 import { loadReviews } from '../../../tools/lib/revsources.mjs';
@@ -73,9 +74,14 @@ function mapSection(h, o, row) {
     return '<li class="' + (c ? 'rl-in' : 'rl-out') + '"><div class="rl-jr"><span class="rl-tag">' + h.esc(codeOf(r.id)) + '</span><b>' + h.esc(h.rg.prov(r.id).name) + '</b></div>' +
       (c ? anat(h, c.host) + (c.ref ? '<p class="rl-ref">Autorizado por ' + h.esc(c.ref) + '</p>' : '') + (r.id === 'santa-fe' ? '<p class="rl-ref">En la lista: ' + h.esc(joinY(sfeCats(h)[c.host])) + '</p>' : '') + (h.built('/operador/' + o.slug + '/' + r.id) ? '<p><a href="' + h.href('/operador/' + o.slug + '/' + r.id) + '">' + h.esc(row.name + ' en ' + h.rg.prov(r.id).name) + '</a></p>' : '') : '<p class="rl-none">No figura en esta lista (' + r.licensees.length + ' sitios).</p>') +
       '<p class="rl-src">' + h.esc(r.regulator.short) + ' · <a href="' + h.esc(doc.url) + '" rel="noopener">' + h.esc(doc.host) + '</a> · copia del ' + h.fmtDate(doc.fetched) + '</p></li>';
-  }).join('');
+  });
+  // lists that do not name the brand: one compact card with their codes; each list, with its source, stays behind "Ver cada lista"
+  const outs = h.regs.filter(r => !row.cells[r.id]), only = f => items.filter((x, i) => f(!!row.cells[h.regs[i].id])).join('');
+  const list = outs.length < 3 ? items.join('') : only(x => x) +
+    '<li class="rl-out rl-outs"><div class="rl-jr"><b>No figura en ' + outs.length + ' listas</b></div><div class="rl-dots">' + outs.map(r => '<i>' + h.esc(codeOf(r.id)) + '</i>').join('') + '</div>' +
+    '<details class="rl-more"><summary>Ver cada lista, con su fuente</summary><ul class="rl-jlist">' + only(x => !x) + '</ul></details></li>';
   return '<section class="rl-sec" id="licencias">' + sectionHead(h, 'Mapa de licencias de ' + row.name, o.angle, ICON.licencias) +
-    '<div class="rl-opmap"><div class="rl-card rl-mapcard" data-nosnippet>' + svg + mapLegend() + '</div><ul class="rl-jlist">' + items + '</ul></div>' +
+    '<div class="rl-opmap"><div class="rl-card rl-mapcard" data-nosnippet>' + svg + mapLegend() + '</div><ul class="rl-jlist">' + list + '</ul></div>' +
     '<p class="rl-cap">Las demás jurisdicciones aparecen sin dato: no quiere decir que la marca no esté habilitada ahí, sino que todavía no guardamos esa lista oficial.</p></section>';
 }
 
@@ -86,9 +92,9 @@ function listsTable(h, o, row) {
   const hosts = new Set(in_.map(r => row.cells[r.id].host));
   const rows = in_.map(r => {
     const c = row.cells[r.id], l = r.licensees.find(x => x.brand === o.brand);
-    return '<tr><th scope="row"><span class="rl-tag">' + h.esc(codeOf(r.id)) + '</span> ' + h.esc(h.rg.prov(r.id).name) + '</th><td class="rl-host"><p class="rl-tl">Dirección</p>' + h.esc(c.host) + '</td><td><p class="rl-tl">Cómo la nombra</p>' +
-      (l.label ? '«' + h.esc(l.label) + '»' : '<span class="rl-src">solo la dirección</span>') + '</td><td><p class="rl-tl">Acto</p>' + (c.ref ? h.esc(c.ref) : '<span class="rl-src">la lista no lo indica</span>') + '</td><td><p class="rl-tl">Regulador</p>' +
-      h.esc(r.regulator.short) + '</td><td><p class="rl-tl">Sitios en la lista</p>' + r.licensees.length + '</td><td><p class="rl-tl">Copia</p>' + h.fmtDate(h.doc(r.list.doc).fetched) + '</td></tr>';
+    return '<tr><th scope="row"><span class="rl-tag">' + h.esc(codeOf(r.id)) + '</span> ' + h.esc(h.rg.prov(r.id).name) + '</th><td class="rl-host"><p class="rl-lbl">Dirección</p>' + h.esc(c.host) + '</td><td><p class="rl-lbl">Cómo la nombra</p>' +
+      (l.label ? '«' + h.esc(l.label) + '»' : '<span class="rl-src">solo la dirección</span>') + '</td><td><p class="rl-lbl">Acto</p>' + (c.ref ? h.esc(c.ref) : '<span class="rl-src">la lista no lo indica</span>') + '</td><td><p class="rl-lbl">Regulador</p>' +
+      h.esc(r.regulator.short) + '</td><td><p class="rl-lbl">Sitios en la lista</p>' + r.licensees.length + '</td><td><p class="rl-lbl">Copia</p>' + h.fmtDate(h.doc(r.list.doc).fetched) + '</td></tr>';
   }).join('');
   return '<section class="rl-sec">' + sectionHead(h, row.name + ' en cada lista', hosts.size === 1 ? 'la misma dirección en ' + in_.length + ' listas' : hosts.size + ' direcciones en ' + in_.length + ' listas') +
     '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg rl-optab rl-cards rl-kv"><thead><tr><th scope="col">Lista</th><th scope="col">Dirección</th><th scope="col">Cómo la nombra</th><th scope="col">Acto</th><th scope="col">Regulador</th><th scope="col">Sitios en la lista</th><th scope="col">Copia</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
@@ -329,7 +335,7 @@ export function operatorPage(o) {
       if ((h.lang === 'en' ? /review/i : /rese[nñ]a/i).test(h.page.title + h.page.h1 + h.page.description) !== isRev) throw new Error('/operador/' + o.slug + ': title/H1/description ' + (isRev ? 'must say «reseña» (review data exists)' : 'say «reseña» but there is no review data'));
       const hero = '<section class="rl-hero rl-hero-pv rl-hero-op"><div><p class="rl-kick">' + (isRev ? 'Reseña con datos · sitio visto desde Argentina el ' + h.fmtDate(R.r.collected) + ' · listas copiadas el ' : 'Ficha de operador · listas copiadas el ') + h.fmtDate(h.regs.map(r => r.checked).sort()[0]) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
         '<p class="rl-lead">' + h.esc(isRev ? o.reviewLead || reviewLead(h, o, R) : o.lead) + '</p>' + officialLinks(h, o.brand, h.regs.filter(r => row.cells[r.id]).map(r => r.id)) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
-        '<div class="rl-big"><b>' + n + '<small> de ' + h.regs.length + '</small></b><span>listas oficiales que revisamos lo nombran</span><small>' + h.esc(o.angle) + '</small>' + listChips(h, row) + '</div></section>';
+        '<div class="rl-big">' + (hasThumb(o.brand) ? '<img class="rl-bigt" src="' + h.asset('shots/' + thumbName(o.brand)) + '" width="' + THUMB.w + '" height="' + THUMB.h + '" decoding="async" alt="' + h.esc('Captura propia del sitio de ' + h.names[o.brand]) + '">' : '') + '<b>' + n + '<small> de ' + h.regs.length + '</small></b><span>listas oficiales que revisamos lo nombran</span><small>' + h.esc(o.angle) + '</small>' + listChips(h, row) + '</div></section>';
       const aid = o.platform ? help(h, { j: h.rg.prov(o.jurisdiction), name: h.rg.prov(o.jurisdiction).name }) : '';
       if (isRev) {
         const casinoPath = '/operador/' + o.slug + '/casino';

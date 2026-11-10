@@ -4,6 +4,7 @@
 import { extname } from 'node:path';
 import { SHOT_FILES } from './content/opdata.mjs';
 import { reviewShotFiles } from './content/reviews.mjs';
+import { thumbFiles } from './content/thumbs.mjs';
 import { opPath } from './content/operators.mjs';
 import { brandNames, loadRegistries } from '../../tools/lib/sources.mjs';
 import { officialHosts, platformHosts } from './content/official.mjs';
@@ -26,7 +27,7 @@ export const SITE = {
   notFoundFile: '404.html',
   fonts: ['gabarito-var-latin.woff2', 'ubuntu-sans-mono-var-latin.woff2'],
   preload: ['gabarito-var-latin.woff2'],
-  images: [...SHOT_FILES(), ...reviewShotFiles()],
+  images: [...SHOT_FILES(), ...reviewShotFiles(), ...thumbFiles()],
   registries: ['buenos-aires', 'caba', 'cordoba', 'la-rioja', 'neuquen', 'rio-negro', 'santa-fe', 'mendoza'],
   defaultJurisdiction: 'buenos-aires',
   // site search (tools/lib/search.mjs, engine/search.mjs, client/buscar.js): one index per language, loaded on the first search

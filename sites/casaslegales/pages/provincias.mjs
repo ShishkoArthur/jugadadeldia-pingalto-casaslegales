@@ -28,11 +28,11 @@ export const provincias = {
       const what = x.st === 'list' ? x.n + ' sitios' : x.st === 'platform' ? x.e.platforms.map(p => p.name).join(', ') : '-';
       return '<tr data-s="' + x.st + '"><th scope="row"><a href="' + h.href('/provincia/' + x.id) + '">' + h.esc(x.name) + '</a></th>' +
         '<td class="rl-pst"><span class="rl-sb rl-c-' + x.st + '">' + h.esc(x.label) + '</span></td>' +
-        '<td class="rl-lt"><p class="rl-tl">Regulador</p>' + (reg ? h.esc(reg) : '<span class="rl-src">sin cita</span>') + '</td>' +
-        '<td class="rl-lt"><p class="rl-tl">Sitios</p>' + h.esc(what) + '</td>' +
-        '<td class="rl-lt"><p class="rl-tl">Ayuda</p>' + (x.j.line ? '<a href="tel:' + h.esc(x.j.line.phoneTel) + '">' + h.esc(x.j.line.phone) + '</a>' : '<span class="rl-src">nacional</span>') + '</td>' +
-        '<td class="rl-lt"><p class="rl-tl">Autoexclusión</p>' + (x.j.selfExclusion ? h.esc(x.j.selfExclusion.terms || 'sí, sin plazo publicado') : '<span class="rl-src">sin dato</span>') + '</td>' +
-        '<td class="rl-lt"><p class="rl-tl">Copia</p>' + (x.date ? h.fmtDate(x.date) : '<span class="rl-src">-</span>') + '</td></tr>';
+        '<td class="rl-lt"><p class="rl-lbl">Regulador</p>' + (reg ? h.esc(reg) : '<span class="rl-src">sin cita</span>') + '</td>' +
+        '<td class="rl-lt"><p class="rl-lbl">Sitios</p>' + h.esc(what) + '</td>' +
+        '<td class="rl-lt"><p class="rl-lbl">Ayuda</p>' + (x.j.line ? '<a href="tel:' + h.esc(x.j.line.phoneTel) + '">' + h.esc(x.j.line.phone) + '</a>' : '<span class="rl-src">nacional</span>') + '</td>' +
+        '<td class="rl-lt"><p class="rl-lbl">Autoexclusión</p>' + (x.j.selfExclusion ? h.esc(x.j.selfExclusion.terms || 'sí, sin plazo publicado') : '<span class="rl-src">sin dato</span>') + '</td>' +
+        '<td class="rl-lt"><p class="rl-lbl">Copia</p>' + (x.date ? h.fmtDate(x.date) : '<span class="rl-src">-</span>') + '</td></tr>';
     }).join('');
     const filter = '<div class="rl-filter" data-rl-sfilter role="group" aria-label="Filtrar por estado"><button type="button" data-f="all" aria-pressed="true">Todas</button>' +
       STATUS_ORDER.map(s => '<button type="button" data-f="' + s + '" aria-pressed="false">' + h.esc(STATUS_LABEL[s]) + '</button>').join('') + '</div>';

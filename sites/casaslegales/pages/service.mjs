@@ -101,6 +101,9 @@ export const redaccion = {
   },
 };
 
+// phone cards (css .rl-cards.rl-kv): every cell carries the name of its column, hidden on wide screens
+const labelled = (rows, labels) => rows.replace(/<tr>[\s\S]*?<\/tr>/g, tr => { let i = 0; return tr.replace(/<td([^>]*)>/g, m => m + '<p class="rl-lbl">' + labels[i++] + '</p>'); });
+
 export const fuentes = {
   path: '/registro-de-fuentes',
   id: 'registro-de-fuentes',
@@ -114,7 +117,7 @@ export const fuentes = {
     const rows = docs.map(d => '<tr><th scope="row">' + h.esc(d.jurName) + '</th><td><a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host + d.pathShort) + '</a>' + (d.archived ? ' <span class="rl-src">(copia de archivo web)</span>' : '') + (d.copiedBy === 'owner' || d.copiedBy === 'owner-browser' ? ' <span class="rl-src">(copia guardada a mano desde un navegador en Argentina)</span>' : '') + (d.pendingOwnerCopy ? ' <span class="rl-src">(este sitio pide no ser leído por programas de IA: la próxima copia se guarda a mano desde un navegador)</span>' : '') + '</td><td>' + h.esc(d.use) + '</td><td data-rv="' + h.esc(d.key) + '" data-rvd="' + h.esc(d.fetched) + '">' + h.fmtDate(d.fetched) + '</td><td class="rl-host" translate="no">' + h.esc(d.sha256.slice(0, 12)) + '</td><td>' + d.quotes + '</td></tr>').join('');
     return '<section class="rl-hero"><div><p class="rl-kick">' + h.t('{{doc_total}} documentos · {{quote_total}} citas') + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
       '<p class="rl-lead">Cada documento oficial que usamos, con la fecha de nuestra copia y su huella digital (los primeros caracteres del SHA-256). Si una página oficial cambia, la huella cambia y lo revisamos.' + (docs.some(d => d.pendingOwnerCopy) ? ' Algunos reguladores piden en su robots.txt que no los lean programas de inteligencia artificial: esas páginas no las vuelve a descargar ningún programa nuestro, las guarda una persona desde su navegador.' : '') + '</p></div></section>' +
-      '<section class="rl-sec"><div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Jurisdicción</th><th scope="col">Documento</th><th scope="col">Para qué</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
+      '<section class="rl-sec"><div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg rl-cards rl-kv"><thead><tr><th scope="col">Jurisdicción</th><th scope="col">Documento</th><th scope="col">Para qué</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + labelled(rows, ['Documento', 'Para qué', 'Copia', 'Huella', 'Citas']) + '</tbody></table></div></div>' +
       '<p class="rl-cap">' + h.t('Ningún documento descargado tiene más de {{max_age}} días ni ninguna copia guardada a mano más de {{owner_max_age}}: la próxima revisión es antes del {{next_check}}.') + '</p><p class="rl-cap" data-rv-sum hidden></p></section>' + opDocs(h);
   },
 };
@@ -125,7 +128,7 @@ function opDocs(h) {
   const docs = Object.entries(D.data.docs).filter(([, d]) => !d.official).sort((a, b) => a[0].localeCompare(b[0]));
   const rows = docs.map(([slug, d]) => { const u = new URL(d.url); return '<tr><th scope="row">' + (d.brand && h.names[d.brand] ? brandLink(h, d.brand, d.title || slug) : h.esc(d.title || slug)) + '</th><td class="rl-host">' + h.esc(u.hostname + (u.pathname === '/' ? '' : u.pathname)) + '</td><td>' + (d.kind === 'block' ? 'mensaje de bloqueo' : 'página pública') + '</td><td>' + h.fmtDate(d.fetched) + '</td><td class="rl-host" translate="no">' + h.esc(d.sha256.slice(0, 12)) + '</td><td>' + cnt(slug) + '</td></tr>'; }).join('');
   return '<section class="rl-sec">' + sectionHead(h, 'Páginas públicas de operadores', docs.length + ' copias con fecha') + '<p class="rl-note">Copias de páginas que cualquiera ve sin registrarse, guardadas con fecha. La dirección de la copia va como texto; el botón al sitio oficial está en la ficha de cada marca y lleva solo a la dirección que publica la lista.</p>' +
-    '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg"><thead><tr><th scope="col">Página</th><th scope="col">Dirección</th><th scope="col">Tipo</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></section>';
+    '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg rl-cards rl-kv"><thead><tr><th scope="col">Página</th><th scope="col">Dirección</th><th scope="col">Tipo</th><th scope="col">Copia</th><th scope="col">Huella</th><th scope="col">Citas</th></tr></thead><tbody>' + labelled(rows, ['Dirección', 'Tipo', 'Copia', 'Huella', 'Citas']) + '</tbody></table></div></div></section>';
 }
 
 export const notFound = {

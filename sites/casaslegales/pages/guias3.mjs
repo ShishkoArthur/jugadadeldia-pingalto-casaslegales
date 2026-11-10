@@ -137,7 +137,9 @@ export const calcMargen = {
 const LINES = [-1.5, -1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 1];
 const SCORES = [[3, 0], [2, 0], [2, 1], [1, 1], [0, 1], [0, 2]];
 const WORD = { win: 'gana', 'half-win': 'mitad gana, mitad vuelve', push: 'se devuelve', 'half-lose': 'mitad pierde, mitad vuelve', lose: 'pierde' };
-const SHORT = { win: 'G', 'half-win': '½G', push: 'D', 'half-lose': '½P', lose: 'P' };
+// one-letter marks of the grid, in the language of the page (too short for the translation memory): gana/devuelve/pierde, win/refund/loss
+const SHORTS = { es: { win: 'G', 'half-win': '½G', push: 'D', 'half-lose': '½P', lose: 'P' }, en: { win: 'W', 'half-win': '½W', push: 'R', 'half-lose': '½L', lose: 'L' } };
+let SHORT = SHORTS.es;
 const lineTxt = l => (l > 0 ? '+' : l < 0 ? '−' : '') + dec(Math.abs(l), Number.isInteger(l * 2) ? 1 : 2).replace(/,0$/, '');
 
 export const handicap = {
@@ -149,6 +151,7 @@ export const handicap = {
   h1: 'Hándicap asiático en apuestas: qué es y cómo se resuelve cada línea',
   ld: h => [h.webPage(), h.crumbs([['/', 'Inicio'], ['/guia/handicap', 'Hándicap']])],
   render(h) {
+    SHORT = SHORTS[h.lang] || SHORTS.es;
     const team = 'Racing', rival = 'Independiente';
     const head = '<thead><tr><th scope="col"><abbr title="Línea de ' + team + '">Línea</abbr></th>' + SCORES.map(([a, b]) => '<th scope="col">' + a + '-' + b + '</th>').join('') + '</tr></thead>';
     const body = LINES.map(l => '<tr><th scope="row">' + lineTxt(l) + '</th>' + SCORES.map(([a, b]) => {

@@ -61,6 +61,8 @@ export function helpBlock(h, p) {
 }
 
 export function page(h, p, body) {
+  // English pages: the example odds already typed in calculator fields use a decimal point, like every number around them
+  if (h.lang === 'en') body = body.replace(/(<input\b[^>]*\svalue=")(-?\d+),(\d+)(")/g, '$1$2.$3$4');
   const url = 'https://' + h.site.domain + p.path;
   const title = p.title;
   const crumb = p.is404 ? null : crumbsLd(h, p);

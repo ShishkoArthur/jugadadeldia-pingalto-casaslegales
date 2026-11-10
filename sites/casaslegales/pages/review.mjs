@@ -129,8 +129,13 @@ export function cite(h, R, f) {
   if (CTA.test(f.quote) || !txt || /^\[/.test(txt)) return '<p class="rl-src">Lo vimos en ' + tail + '</p>';
   return '<blockquote class="rl-q">«' + h.esc(txt).replace(/@/g, '<span>@</span>') + '»<cite>' + tail + '</cite></blockquote>';
 }
-const chipRow = (h, items) => '<div class="rl-chips rl-chips-s">' + items.map(x => '<span>' + h.esc(x) + '</span>').join('') + '</div>';
-const chips = (h, items, what = 'todos') => items.length <= 12 ? chipRow(h, items) : chipRow(h, items.slice(0, 10)) + '<details class="rl-more"><summary>Ver ' + (what === 'todos' ? 'los ' + items.length : what) + '</summary>' + chipRow(h, items.slice(10)) + '</details>';
+// a payment method gets the icon of its kind (own icon set): bank transfer, wallet app, cash voucher, card
+export const payKind = x => /debin|transferencia|bancari|banco|cbu|cvu|d[eé]bito inmediato/i.test(x) ? 'bank' :
+  /mercado ?pago|astropay|skrill|neteller|ual[aá]|\bmodo\b|billetera|wallet|paypal|prex|personal pay|cripto|binance/i.test(x) ? 'wallet' :
+  /pago ?f[aá]cil|rapipago|cobro ?express|pago ?24|ripsa|provincia ?net|cup[oó]n|efectivo|paysafe|voucher/i.test(x) ? 'cash' :
+  /tarjeta|visa|master|maestro|cabal|amex|american express|d[eé]bito|cr[eé]dito/i.test(x) ? 'card' : '';
+const chipRow = (h, items, ic) => '<div class="rl-chips rl-chips-s">' + items.map(x => '<span' + (ic && ic(x) ? ' data-i="' + ic(x) + '"' : '') + '>' + h.esc(x) + '</span>').join('') + '</div>';
+const chips = (h, items, what = 'todos', ic = null) => items.length <= 12 ? chipRow(h, items, ic) : chipRow(h, items.slice(0, 10), ic) + '<details class="rl-more"><summary>Ver ' + (what === 'todos' ? 'los ' + items.length : what) + '</summary>' + chipRow(h, items.slice(10), ic) + '</details>';
 export function sportsOf(R) {
   const f = R.one('sportsbook.sports');
   if (!f) return null;
@@ -167,7 +172,7 @@ function valueHtml(h, R, f) {
     const off = /([A-Za-zÁÉÍÓÚáéíóúñ ]+) -> (https?:\/\/[^\s\]·|]+)/.exec(f.quote || ''), site = hostKey(R.doc(f.doc).url);
     if (!Array.isArray(f.value) && off && hostKey(off[2]) !== site && !hostKey(off[2]).endsWith('.' + site)) return '<p>En su página, el enlace «' + h.esc(off[1].trim().replace(/^Link targets: /, '')) + '» lleva a <span class="rl-host">' + h.esc(new URL(off[2]).hostname) + '</span>, fuera de ' + h.esc(site) + ': un formulario externo, que no abrimos. No cargues datos en formularios que no estén en la dirección de la lista.</p>';
     const items = Array.isArray(f.value) ? f.value : f.value && Array.isArray(f.value.names) ? f.value.names : null;
-    return items && R.found(f, items) ? chips(h, items) : '';
+    return items && R.found(f, items) ? chips(h, items, 'todos', /^payments\./.test(f.field) ? payKind : null) : '';
   }
   if (mode === 'yes') return f.value === true ? '<b class="rl-fyes">Sí</b>' : f.value === false ? '<b>No</b>' : '';
   if (mode === 'money') { const s = moneyOf(R, f); return s ? '<b class="rl-fnum">' + h.esc(s) + '</b>' : ''; }
@@ -219,7 +224,7 @@ export function summary(h, R, { lists, total, rgCount, casinoPath, missingLink }
   const hours = (n, u) => +String(n).split('-').pop().trim() * (/^h/i.test(u) ? 1 : /^m/i.test(u) ? 1 / 60 : 24);
   const wtTxt = R.all('payments.withdrawalTimes').filter(f => f.quote).flatMap(f => [...readable(f.quote).matchAll(DUR)].map(m => ({ txt: m[0].trim().toLowerCase(), h: hours(m[2], m[3]) }))).sort((a, b) => a.h - b.h).map(x => x.txt);
   // a tile with a section to go to is one link (the whole card is the tap target), with the icon of what it counts
-  const t = (k, v, sub, href, ic) => v === null ? { none: k } : { html: (href ? '<a class="rl-rsi" href="' + href + '"' : '<div class="rl-rsi"') + ' data-i="' + ic + '"><span>' + h.esc(k) + '</span><b>' + h.esc(v) + '</b>' + (sub ? '<small>' + h.esc(sub) + '</small>' : '') + (href ? '</a>' : '</div>') };
+  const t = (k, v, sub, href, ic) => v === null ? { none: k, dim: '<div class="rl-rsi rl-rsn" data-i="' + ic + '"><span>' + h.esc(k) + '</span><b>Sin dato</b></div>' } : { html: (href ? '<a class="rl-rsi" href="' + href + '"' : '<div class="rl-rsi"') + ' data-i="' + ic + '"><span>' + h.esc(k) + '</span><b>' + h.esc(v) + '</b>' + (sub ? '<small>' + h.esc(sub) + '</small>' : '') + (href ? '</a>' : '</div>') };
   const tiles = [
     t('Listas oficiales', lists + ' de ' + total, 'que revisamos la nombran', '#licencias', 'seal'),
     t('Deportes', S ? String(S.sports.length) : null, S ? 'en su lista A-Z' : SIN, S ? '#deportes' : '', 'ball'),
@@ -232,7 +237,7 @@ export function summary(h, R, { lists, total, rgCount, casinoPath, missingLink }
     t('Margen medido', M ? pct(M.avg) : null, M ? '1X2, ' + M.rows.length + ' partidos, ' + h.fmtDate(M.date) : 'no copiamos cuotas', M ? '#deportes' : '', 'pct'),
   ];
   const miss = tiles.filter(x => x.none).map(x => x.none.toLowerCase());
-  return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje', ICON.resumen) + '<div class="rl-rs">' + tiles.filter(x => x.html).map(x => x.html).join('') + '</div>' +
+  return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje', ICON.resumen) + '<div class="rl-rs">' + tiles.filter(x => x.html).map(x => x.html).join('') + tiles.filter(x => x.dim).map(x => x.dim).join('') + '</div>' +
     (miss.length ? '<p class="rl-cap"><b>Sin dato:</b> ' + h.esc(miss.length < 2 ? miss.join('') : miss.slice(0, -1).join(', ') + ' y ' + miss.at(-1)) + '. No lo vimos en las páginas públicas que guardamos' + (missingLink ? ' (<a href="#sin-ver">por qué</a>)' : '') + '.</p>' : '') +
     '<p class="rl-cap">Cada número sale de una página pública del operador o de una lista oficial, con su cita más abajo. No ponemos notas ni puntajes: no abrimos cuentas ni probamos depósitos o retiros.' + dataDate(h, R) + '</p></section>';
 }
