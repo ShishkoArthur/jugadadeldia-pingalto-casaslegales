@@ -23,8 +23,8 @@ export function hostHtml(h, host, jur) {
   const pre = /^(pba|caba|cba|cordoba|larioja)\./.exec(host);
   return '<span class="rl-host">' + (pre ? '<b>' + h.esc(pre[0]) + '</b>' + h.esc(host.slice(pre[0].length)) : h.esc(host)) + '</span>';
 }
-export function sectionHead(h, title, note) {
-  return '<div class="rl-hh"><h2>' + h.esc(title) + '</h2>' + (note ? '<p>' + h.esc(note) + '</p>' : '') + '</div>';
+export function sectionHead(h, title, note, icon) {
+  return '<div class="rl-hh"' + (icon ? ' data-i="' + icon + '"' : '') + '><h2>' + h.esc(title) + '</h2>' + (note ? '<p>' + h.esc(note) + '</p>' : '') + '</div>';
 }
 // "Ir al sitio oficial (<province>)": the address the verified list of that province names for the brand (content/official.mjs)
 export function officialLink(h, jid, brand, opts = {}) {

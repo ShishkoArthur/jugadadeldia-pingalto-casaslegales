@@ -82,7 +82,7 @@ export function mainNav(h, p) {
   const cur = p.path;
   const secs = navTree(h, SPEC).map(s => {
     const n = s.groups.reduce((x, g) => x + g.items.length, 0);
-    return '<div class="rl-dd" data-rl-dd><button type="button" aria-expanded="false" aria-controls="rl-m-' + s.id + '"' + (holds(s, cur) ? ' data-on' : '') + '>' + h.esc(s.name) + '</button>' +
+    return '<div class="rl-dd" data-rl-dd><button type="button" aria-expanded="false" aria-controls="rl-m-' + s.id + '"' + (cur !== '/' && holds(s, cur) ? ' data-on' : '') + '>' + h.esc(s.name) + '</button>' +
       '<div class="rl-mp" id="rl-m-' + s.id + '"><div class="rl-mpi' + (n > 12 ? ' rl-mw' : '') + '">' + s.groups.map(g => '<div class="rl-mc"><p class="rl-mh">' + h.esc(g.name) + '</p><ul>' + [g.head, ...g.items].filter(Boolean).map(it => li(h, it, cur)).join('') + '</ul></div>').join('') + '</div></div></div>';
   }).join('');
   return '<nav class="rl-nav" id="rl-nav" aria-label="Principal" data-rl-all><div class="rl-nq"><input type="search" data-rl-q placeholder="Buscar operador, provincia o tema" aria-label="Buscar en casaslegales" autocomplete="off" enterkeyhint="search"><div class="rl-nqr" data-rl-qr hidden></div></div>' + secs + '</nav>';

@@ -15,7 +15,7 @@ export function relief(h, P, cur, { links = false, cls: clsOf = null, tip = null
     const label = x.name + ': ' + (tip ? tip(x) : x.label);
     const on = x.id === cur;
     const href = links && h.built('/provincia/' + x.id) ? h.href('/provincia/' + x.id) : null;
-    return { kind, h: clsOf ? (kind === 'list' ? 22 : kind === 'blocked' ? 5 : 3) : isoHeight(x.st, x.n), on,
+    return { kind, h: clsOf ? (kind === 'list' || kind === 'yes' ? 22 : kind === 'blocked' || kind === 'no' ? 5 : 3) : isoHeight(x.st, x.n), on,
       label: on ? x.code + (!clsOf && x.n !== null ? ' · ' + x.n : '') : null, href, attrs: href ? ' aria-label="' + h.esc(label) + '"' : '', title: href ? null : label };
   }, { size: 'm', aria: links ? 'Mapa de las 24 jurisdicciones: cada ficha lleva a su página' : aria });
 }
@@ -41,7 +41,8 @@ function hero(h, P, x, o) {
       x.st === 'list' ? (x.n === 1 ? 'sitio en la lista oficial de ' : 'sitios en la lista oficial de ') + x.reg.regulator.short :
       x.st === 'platform' ? (x.n === 1 ? 'plataforma enlazada por el regulador' : 'plataformas enlazadas por el regulador') :
       x.st === 'none' ? 'sitios que podamos citar: no hay lista oficial verificada' : 'datos publicados: la fuente no se puede consultar') + '</span></p>' +
-    '<p class="rl-pvcap">' + h.esc(x.name) + ' resaltada en el mapa de las 24 jurisdicciones</p></div>';
+    (x.st === 'list' && x.n ? '<a class="rl-jump" href="#sitios">' + (x.n === 1 ? 'Ver el sitio de la lista' : 'Ver los ' + x.n + ' sitios de la lista') + '</a>' : '') +
+    '<p class="rl-pvcap">' + h.esc(x.name) + ' resaltada en el mapa de las 24 jurisdicciones</p>' + reliefLegend() + '</div>';
   return '<section class="rl-hero rl-hero-pv rl-hero-pr"><div><p class="rl-kick">' + h.esc(kick) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
     '<p class="rl-lead">' + h.t(o.lead) + '</p>' + chips(h, x) + '</div>' + side + '</section>';
 }
@@ -58,7 +59,7 @@ function others(h, x) {
   if (!matrix.length) return '';
   const code = id => TILES.find(t => t.id === id).code;
   const split = matrix.filter(row => distinctHosts(row) > 1).length;
-  return '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de ' + x.name + '?', split ? 'misma marca, otra dirección' : 'misma marca en otras listas') +
+  return '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de ' + x.name + '?', split ? 'misma marca, otra dirección' : 'misma marca en otras listas', 'link') +
     '<p class="rl-note">Estas marcas figuran también en otra lista oficial. En la lista de ' + h.esc(x.name) + ' figura la dirección resaltada; cada provincia autoriza la suya.</p>' +
     '<div class="rl-dom" data-nosnippet>' + matrix.map(row => '<article><h3>' + brandLink(h, row.brand, row.name) + '</h3><ul>' +
       h.regs.filter(y => row.cells[y.id]).map(y => '<li><span class="rl-tag">' + h.esc(code(y.id)) + '</span>' + (y.id === r.id ? hostHtml(h, row.cells[y.id].host) : '<span class="rl-host rl-src">' + h.esc(row.cells[y.id].host) + '</span>') + '</li>').join('') +
@@ -110,7 +111,7 @@ export function help(h, x) {
   if (j.selfExclusion) parts.push('<div class="rl-box"><h3>Autoexclusión' + (j.selfExclusion.terms ? ': ' + h.esc(j.selfExclusion.terms) : '') + '</h3><p>' + h.esc(j.selfExclusion.name) + '.' +
     (j.selfExclusion.terms ? '' : ' La página oficial no indica un plazo, así que no lo publicamos.') + '</p>' + rgQuote(h, j.selfExclusion, j.selfExclusion.name) + '</div>');
   else parts.push('<div class="rl-box"><h3>Autoexclusión</h3><p>No encontramos en una página oficial cómo pedir la autoexclusión en esta jurisdicción, así que no lo publicamos. Consultá en la línea de ayuda.</p></div>');
-  return '<section class="rl-sec">' + sectionHead(h, 'Ayuda y autoexclusión en ' + x.name) + '<div class="rl-two">' + parts.join('') + '</div>' +
+  return '<section class="rl-sec">' + sectionHead(h, 'Ayuda y autoexclusión en ' + x.name, '', 'pause') + '<div class="rl-two">' + parts.join('') + '</div>' +
     (h.built('/juego-responsable') ? '<p class="rl-note"><a href="' + h.href('/juego-responsable') + '">Líneas de ayuda de todas las provincias</a></p>' : '') + '</section>';
 }
 
@@ -129,23 +130,23 @@ function regulatorBox(h, x, extra = '') {
 function nextSteps(h) {
   const l = [['/guia/como-verificar', 'Cómo verificar un sitio paso a paso'], ['/verificador', 'Verificar una dirección contra las listas'], ['/provincias', 'Estado de las 24 jurisdicciones']].filter(([u]) => h.built(u));
   if (!l.length) return '';
-  return '<section class="rl-sec">' + sectionHead(h, 'Mientras tanto') + '<div class="rl-gd">' + l.map(([u, t], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(t) + '</a>').join('') + '</div></section>';
+  return '<section class="rl-sec">' + sectionHead(h, 'Mientras tanto', '', 'list') + '<div class="rl-gd">' + l.map(([u, t], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(t) + '</a>').join('') + '</div></section>';
 }
 
 function listBody(h, P, x, o) {
   const r = x.reg;
-  const list = '<section class="rl-sec">' + sectionHead(h, 'Los sitios de la lista oficial', 'tal como los publica el regulador') + sites(h, r) +
+  const list = '<section class="rl-sec" id="sitios">' + sectionHead(h, 'Los sitios de la lista oficial', 'tal como los publica el regulador', 'seal') + sites(h, r) +
     [r.list.doc, ...(r.list.more || []).map(m => m.doc)].map(d => src(h, d)).join('') + '</section>';
   const shown = Object.values(r.quotes).filter(q => !q.hidden && ['regulator', 'list', 'domain', 'platform'].includes(q.role));
   const reg = x.j.regulator && !shown.some(q => q.text === x.j.regulator.quote) ? x.j.regulator : null;
-  const who = '<section class="rl-sec">' + sectionHead(h, 'Quién regula y con qué norma') + '<div class="rl-two">' +
+  const who = '<section class="rl-sec">' + sectionHead(h, 'Quién regula y con qué norma', '', 'doc') + '<div class="rl-two">' +
     '<div class="rl-box"><h3>' + h.esc(r.regulator.name) + '</h3>' + (reg ? rgQuote(h, reg, reg.name) : '') + shown.map(q => quote(h, q, r.regulator.short)).join('') + '</div>' +
     '<div class="rl-box"><h3>La norma</h3>' + (r.law.length ? r.law.map(l => '<p><b>' + h.esc(l.name) + '</b>' + (l.date ? ' · ' + h.esc(l.date.text) : '') + '</p>' + quote(h, r.quotes[l.quote], l.name)).join('') :
       '<p>No citamos una ley de la jurisdicción porque todavía no guardamos su texto oficial. Lo que sí está verificado es la lista del regulador' + (r.quotes.date ? ', publicada el ' + h.esc(r.quotes.date.text) : '') + '.</p>') + '</div>' +
     '</div></section>';
   const tools = Object.values(r.quotes).filter(q => q.role === 'tool');
   const extra = tools.length ? '<section class="rl-sec">' + sectionHead(h, o.toolsTitle || 'Herramientas del regulador') + '<div class="rl-law">' + tools.map(q => '<article>' + quote(h, q, r.regulator.short) + '</article>').join('') + '</div></section>' : '';
-  const report = r.quotes.report ? '<section class="rl-sec">' + sectionHead(h, 'Denunciar juego ilegal') + quote(h, r.quotes.report, r.regulator.short) + '</section>' : '';
+  const report = r.quotes.report ? '<section class="rl-sec">' + sectionHead(h, 'Denunciar juego ilegal', '', 'chat') + quote(h, r.quotes.report, r.regulator.short) + '</section>' : '';
   const ageQ = !x.j.age && r.quotes.age ? '<section class="rl-sec">' + sectionHead(h, 'Edad mínima') + quote(h, r.quotes.age, r.regulator.short) + '</section>' : age(h, x);
   return list + asked(h, P, x, o) + others(h, x) + who + extra + report + ageQ + help(h, x);
 }
@@ -165,7 +166,7 @@ function platformBody(h, P, x, o) {
     }).join('') + '</div>' +
     '<p class="rl-note">Qué quiere decir: el sitio oficial del regulador manda a esta dirección para jugar online. No encontramos una lista de otros operadores habilitados en ' + h.esc(x.name) + ', así que no decimos que no existan ni cuáles serían.</p>' +
     [...new Set(e.platforms.map(p => p.evidence.doc))].map(d => pdSrc(h, P, d)).join('') + '</section>';
-  const who = x.j.regulator ? '<section class="rl-sec">' + sectionHead(h, 'Quién regula') + '<div class="rl-two">' + regulatorBox(h, x) +
+  const who = x.j.regulator ? '<section class="rl-sec">' + sectionHead(h, 'Quién regula', '', 'doc') + '<div class="rl-two">' + regulatorBox(h, x) +
     (e.report ? '<div class="rl-box"><h3>Denunciar juego ilegal</h3>' + pdQuote(h, P, e.report, x.j.regulator.name) + '</div>' : '') + '</div></section>' : '';
   return cards + asked(h, P, x, o) + who + age(h, x) + help(h, x);
 }
@@ -181,7 +182,7 @@ function seenBody(h, P, x, o) {
   const what = '<section class="rl-sec">' + sectionHead(h, 'Qué revisamos', x.st === 'blocked' ? 'fuente no consultable: no afirmamos nada sobre sitios' : 'sin lista oficial verificada') +
     '<div class="rl-two">' + boxes.join('') + '</div>' +
     '<p class="rl-note">Que no haya lista acá no quiere decir que no haya sitios habilitados en ' + h.esc(x.name) + ', ni que los haya. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></section>';
-  const who = x.j.regulator ? '<section class="rl-sec">' + sectionHead(h, 'Quién regula') + '<div class="rl-two">' + regulatorBox(h, x) + '</div></section>' : '';
+  const who = x.j.regulator ? '<section class="rl-sec">' + sectionHead(h, 'Quién regula', '', 'doc') + '<div class="rl-two">' + regulatorBox(h, x) + '</div></section>' : '';
   return what + asked(h, P, x, o) + who + age(h, x) + help(h, x) + nextSteps(h);
 }
 

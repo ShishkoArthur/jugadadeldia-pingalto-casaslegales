@@ -149,10 +149,43 @@ function map(data) {
     footerLine(data);
 verifier();
   };
-  tiles.forEach(t => t.addEventListener('click', () => show(t.dataset.j)));
+  tiles.forEach(t => t.addEventListener('click', () => { show(t.dataset.j); reveal(panel); }));
   if (pick) pick.addEventListener('change', () => show(pick.value));
   const saved = store.get('rl-prov');
   if (saved && data.j[saved]) show(saved);
+}
+
+function reveal(node) {
+  if (!node) return;
+  const r = node.getBoundingClientRect(), top = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+  if (r.top >= top && r.top <= innerHeight - Math.min(r.height, 160)) return;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  node.scrollIntoView({ block: 'start', behavior: calm ? 'auto' : 'smooth' });
+}
+
+function tocSpy() {
+  const nav = document.querySelector('.rl-toc');
+  if (!nav) return;
+  const links = [...nav.querySelectorAll('a[href^="#"]')];
+  const secs = links.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  if (!secs.length) return;
+  secs.sort((a, b) => (a.compareDocumentPosition(b) & 2 ? 1 : -1));
+  let busy = false, last = null;
+  const pick = () => {
+    busy = false;
+    const line = (parseFloat(getComputedStyle(root).scrollPaddingTop) || 0) + 24;
+    let cur = null;
+    for (const x of secs) if (x.getBoundingClientRect().top <= line) cur = x;
+    if (cur === last) return;
+    last = cur;
+    for (const a of links) {
+      const on = !!cur && a.getAttribute('href') === '#' + cur.id;
+      a.classList.toggle('rl-tocon', on);
+      if (on && (a.offsetLeft < nav.scrollLeft || a.offsetLeft + a.offsetWidth > nav.scrollLeft + nav.clientWidth)) nav.scrollTo({ left: Math.max(0, a.offsetLeft - 16) });
+    }
+  };
+  addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(pick); } }, { passive: true });
+  pick();
 }
 
 function filter() {
@@ -287,6 +320,7 @@ function verifier() {
     }
     if (r.matches.length) out.append(ul);
     if (r.state === 'none' || r.state === 'similar') out.append(el('p', 'rl-note', fill(s.noneLong, { lists: V.lists })));
+    if (push) reveal(out);
     if (push) { try { history.replaceState(null, '', location.pathname + '?d=' + encodeURIComponent(r.host)); } catch (e) { return; } }
   };
   form.addEventListener('submit', e => { e.preventDefault(); run(input.value, true); });
@@ -493,3 +527,4 @@ parlayCalc();
 hcpCalc();
 provCheck();
 revisado();
+tocSpy();

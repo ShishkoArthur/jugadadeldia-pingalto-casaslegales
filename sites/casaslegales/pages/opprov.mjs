@@ -7,7 +7,7 @@ import { OPPROV } from '../content/opprov.mjs';
 import { opData, quotesOf, docOf } from '../content/opdata.mjs';
 import { provData } from '../content/provdata.mjs';
 import { rowOf, entries } from './operador.mjs';
-import { anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
+import { anat, opQuote, shotFigure, codeOf, mapLegend } from './opparts.mjs';
 import { relief, help } from './provincia.mjs';
 import { quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
 import { trAll } from '../content/lang.mjs';
@@ -40,8 +40,8 @@ function diffTable(h, o, row) {
   const diffs = ROWS.filter(([k]) => cols.slice(1).some(c => c[k] !== cols[0][k])).length;
   const head = '<thead><tr><th scope="col"><span class="rl-vh">Dato</span></th>' + jurs.map((j, i) => '<th scope="col"' + (i === 0 ? ' class="rl-dcur"' : '') + '><span class="rl-tag">' + h.esc(codeOf(j)) + '</span> ' + h.esc(h.rg.prov(j).name) + '</th>').join('') + '</tr></thead>';
   const body = ROWS.map(([k, l]) => '<tr><th scope="row">' + h.esc(l) + '</th>' + cols.map((c, i) => '<td class="' + (i === 0 ? 'rl-dcur' : c[k] !== cols[0][k] ? 'rl-dif' : 'rl-same') + (k === 'host' ? ' rl-host' : '') + '">' + h.esc(c[k]) + '</td>').join('') + '</tr>').join('');
-  return { html: '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-reg rl-diff">' + head + '<tbody>' + body + '</tbody></table></div>' +
-    (jurs.length > 1 ? '<p class="rl-cap">Columna resaltada: ' + h.esc(h.rg.prov(o.jur).name) + '. En las demás columnas, con fondo de color, los datos que cambian frente a esta provincia.</p>' : '') + '</div>', diffs, n: jurs.length };
+  return { html: '<div class="rl-card" data-nosnippet>' + (jurs.length > 1 ? '<p class="rl-cap rl-capt">Columna resaltada: ' + h.esc(h.rg.prov(o.jur).name) + '. En las demás columnas, con fondo de color, los datos que cambian frente a esta provincia.</p>' : '') +
+    '<div class="rl-scroll"><table class="rl-reg rl-diff">' + head + '<tbody>' + body + '</tbody></table></div></div>', diffs, n: jurs.length };
 }
 
 function checker(h, o, row) {
@@ -89,10 +89,10 @@ export function opProvPage(o) {
       const lead = 'En la lista oficial ' + (DE[r.regulator.short] || 'de ' + r.regulator.short) + ', ' + row.name + ' figura con la dirección ' + o.host + '.' +
         (otherHosts.length ? ' En ' + others.filter(y => row.cells[y.id].host !== o.host).map(y => h.rg.prov(y.id).name).join(' y ') + ' la marca figura con ' + (otherHosts.length === 1 ? 'otra dirección' : 'otras direcciones') + ': si jugás desde ' + prov + ', vale la de esta lista.' : '') +
         (sameHost.length ? ' La misma dirección figura también en la lista de ' + sameHost.map(y => h.rg.prov(y.id).name).join(' y ') + ', con otro regulador.' : '');
-      const map = relief(h, P, o.jur, { cls: y => row.cells[y.id] ? 'rl-s-list' : h.regs.some(z => z.id === y.id) ? 'rl-s-none' : 'rl-s-blocked', tip: y => row.cells[y.id] ? 'figura en la lista oficial' : 'no figura o sin lista verificada' });
+      const map = relief(h, P, o.jur, { cls: y => row.cells[y.id] ? 'rl-s-yes' : h.regs.some(z => z.id === y.id) ? 'rl-s-no' : 'rl-s-none', tip: y => row.cells[y.id] ? 'figura en la lista oficial' : h.regs.some(z => z.id === y.id) ? 'no figura en la lista oficial' : 'sin dato verificado' });
       const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">' + brandLink(h, o.brand, row.name) + h.esc(' × ' + prov) + ' · lista copiada el ' + h.fmtDate(listDoc.fetched) + '</p><h1>' + h.esc(h.page.h1) + '</h1>' +
-        '<p class="rl-lead">' + h.esc(lead) + '</p><p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
-        '<div class="rl-pvv">' + map + '<p class="rl-pvn"><b>' + T.n + '</b><span>' + (T.n === 1 ? 'lista oficial nombra a ' : 'listas oficiales de las que revisamos nombran a ') + h.esc(row.name) + '</span></p><p class="rl-pvcap">' + h.esc(prov) + ' resaltada; en verde, donde figura</p></div></section>';
+        '<p class="rl-lead">' + h.esc(lead) + '</p>' + officialLinks(h, o.brand, [o.jur]) + '<p class="rl-note">Sin promociones ni afiliados. Depende de la ley de tu provincia; esto no es asesoramiento legal.</p></div>' +
+        '<div class="rl-pvv">' + map + '<p class="rl-pvn"><b>' + T.n + '</b><span>' + (T.n === 1 ? 'lista oficial nombra a ' : 'listas oficiales de las que revisamos nombran a ') + h.esc(row.name) + '</span></p><p class="rl-pvcap">' + h.esc(prov) + ' resaltada; en verde, donde figura</p>' + mapLegend() + '</div></section>';
       const licQuote = r.quotes.licences || r.quotes.licence || r.quotes.list;
       const addr = '<section class="rl-sec">' + sectionHead(h, 'La dirección que figura en ' + prov, 'copiada de la lista oficial') + '<div class="rl-two">' +
         '<div class="rl-box"><h3>' + h.esc(o.host) + '</h3>' + anat(h, o.host) + (cell.ref ? '<p class="rl-ref">Autorizado por ' + h.esc(cell.ref) + '</p>' : '') + officialLinks(h, o.brand, [o.jur]) +

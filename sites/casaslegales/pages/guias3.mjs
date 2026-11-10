@@ -113,16 +113,16 @@ export const calcMargen = {
       m.odds.map((o, i) => '<tr><th scope="row">' + names[i] + '</th><td>' + dec(o) + '</td><td>' + pct(m.implied[i]) + '</td><td>' + dec(m.fairOdds[i]) + '</td></tr>').join('') + '</tbody></table>';
     const tool = '<form class="rl-calc" data-rl-margin novalidate><fieldset><legend>Mercado</legend><label class="rl-rad"><input type="radio" name="k" value="3" checked> Tres resultados (1X2)</label><label class="rl-rad"><input type="radio" name="k" value="2"> Dos resultados</label></fieldset>' +
       '<div class="rl-oin">' + inputs + '</div><p class="rl-merr" data-rl-merr hidden>Escribí cuotas decimales mayores que 1, por ejemplo 1,85.</p>' + out + '</form>';
-    const hero = '<section class="rl-hero rl-hero-pv"><div><p class="rl-kick">Calculadora · sin datos de operadores</p><h1>' + h.esc(h.page.h1) + '</h1>' +
-      '<p class="rl-lead">Las cuotas de un mercado esconden una comisión: si sumás la probabilidad que implica cada cuota, el total pasa del 100 %. Esa diferencia es el margen. Escribí las cuotas decimales de un partido y la calculadora hace la cuenta.</p></div>' +
-      '<div class="rl-box"><h3>La cuenta</h3><p class="rl-form">suma = 1/cuota₁ + 1/cuota₂ + …</p><p class="rl-form">margen = suma − 1</p><p class="rl-form">devolución = 1 / suma · se queda la casa = 1 − devolución</p><p>Cuota sin margen = cuota × suma. Es la cuota que pagaría una casa que no cobra nada.</p></div></section>';
+    const hero = '<section class="rl-hero rl-hero-calc"><div><p class="rl-kick">Calculadora · sin datos de operadores</p><h1>' + h.esc(h.page.h1) + '</h1>' +
+      '<p class="rl-lead">Las cuotas de un mercado esconden una comisión: si sumás la probabilidad que implica cada cuota, el total pasa del 100 %. Esa diferencia es el margen. Escribí las cuotas decimales de un partido y la calculadora hace la cuenta.</p></div></section>';
+    const formula = '<div class="rl-box"><h3>La cuenta</h3><p class="rl-form">suma = 1/cuota₁ + 1/cuota₂ + …</p><p class="rl-form">margen = suma − 1</p><p class="rl-form">devolución = 1 / suma · se queda la casa = 1 − devolución</p><p>Cuota sin margen = cuota × suma. Es la cuota que pagaría una casa que no cobra nada.</p></div>';
     const steps = '<details class="rl-box"><summary>Cómo se calcula, paso a paso</summary><ol>' +
       m.odds.map((o, i) => '<li>' + names[i] + ': 1 / ' + dec(o) + ' = ' + dec(m.implied[i], 4) + '</li>').join('') +
       '<li>Suma: ' + m.implied.map(p => dec(p, 4)).join(' + ') + ' = ' + dec(m.sum, 4) + ', o sea ' + pct(m.sum) + '</li>' +
       '<li>Margen: ' + dec(m.sum, 4) + ' − 1 = ' + pct(m.margin) + '</li>' +
       '<li>Devolución: 1 / ' + dec(m.sum, 4) + ' = ' + pct(m.payout) + '; la casa se queda ' + pct(1 - m.payout) + '</li>' +
       '<li>Cuota sin margen del local: ' + dec(m.odds[0]) + ' × ' + dec(m.sum, 4) + ' = ' + dec(m.fairOdds[0]) + '</li></ol></details>';
-    const how = '<section class="rl-sec">' + sectionHead(h, 'Calculá el margen', 'acepta coma o punto: 1,85 o 1.85') + '<div class="rl-card">' + tool + '</div>' + steps + '</section>';
+    const how = '<section class="rl-sec">' + sectionHead(h, 'Calculá el margen', 'acepta coma o punto: 1,85 o 1.85') + '<div class="rl-calcw"><div class="rl-card">' + tool + '</div>' + formula + '</div>' + steps + '</section>';
     const exs = '<section class="rl-sec">' + sectionHead(h, 'Dos ejemplos, calculados', 'cuotas de ejemplo, no de un sitio real') + '<div class="rl-two">' +
       '<div class="rl-box"><h3>Un partido de la Liga Profesional, 1X2</h3><p>Cuotas ' + EX.odds.join(' · ') + ' para local, empate y visitante.</p>' + bar(m, names) + '</div>' +
       '<div class="rl-box"><h3>Más o menos de 2,5 goles</h3><p>Cuotas ' + EX.two.join(' · ') + '.</p>' + bar(m2, ['Más', 'Menos']) + '</div></div></section>';

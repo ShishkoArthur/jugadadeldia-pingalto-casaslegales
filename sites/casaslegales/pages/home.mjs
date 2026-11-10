@@ -39,9 +39,9 @@ export const home = {
       '<p class="rl-meta" data-rl-meta>' + h.esc(dreg.regulator.short) + ' · revisado ' + h.fmtDate(dreg.checked) + '</p>' +
       '<p class="rl-line" data-rl-help>Ayuda: <a href="tel:' + h.esc(dj.line.phoneTel) + '">' + h.esc(dj.line.phone) + '</a></p>' +
       '<a class="rl-go" data-rl-go href="' + h.href('/provincia/' + def) + '">Ver ' + h.esc(dj.name) + '</a>' +
-      '<div class="rl-leg"><span><i class="rl-s-list"></i>lista oficial verificada</span><span><i class="rl-s-platform"></i>plataforma provincial</span><span><i class="rl-s-none"></i>sin dato verificado</span><span><i class="rl-s-blocked"></i>no consultable</span></div>' +
       '</aside><div class="rl-acts"><a class="rl-b2" href="' + h.href(ver ? '/verificador' : '/licencias') + '">' + (ver ? 'Verificar una dirección' : 'Ver las licencias') + '</a><a class="rl-b2" href="' + h.href('/metodologia') + '">Cómo lo verificamos</a></div></div>' +
-      '<div class="rl-hmap">' + map + '</div></section>';
+      '<div class="rl-hmap">' + map + '<p class="rl-maph">Tocá una provincia del mapa para ver su lista oficial</p>' +
+      '<div class="rl-leg rl-mapleg"><span><i class="rl-s-list"></i>lista oficial verificada</span><span><i class="rl-s-platform"></i>plataforma provincial</span><span><i class="rl-s-none"></i>sin dato verificado</span><span><i class="rl-s-blocked"></i>no consultable</span></div></div></section>';
 
     const regs = h.regs;
     const matrix = brandMatrix(regs, h.names);
@@ -50,20 +50,21 @@ export const home = {
       const c = row.cells[r.id];
       return '<td>' + (c ? '<i class="rl-y" title="' + h.esc(c.host) + '"><span class="rl-vh">Figura: ' + h.esc(c.host) + '</span></i>' : '<i class="rl-n"><span class="rl-vh">No figura</span></i>') + '</td>';
     }).join('') + '</tr>').join('');
-    const table = '<section class="rl-sec">' + sectionHead(h, 'Licencias por provincia', h.t('{{brand_total}} marcas en {{reg_total}} listas oficiales · fuente y fecha abajo')) +
-      '<div class="rl-card" data-nosnippet><div class="rl-scroll"><table class="rl-tbl">' + head + '<tbody>' + rows + '</tbody></table></div>' +
-      '<p class="rl-cap">Verde: figura en la lista oficial de esa jurisdicción. Gris: no figura en esa lista (no quiere decir que sea ilegal en otra provincia). Las demás jurisdicciones no tienen una lista verificada acá' + (h.built('/provincias') ? ': su estado está en <a href="' + h.href('/provincias') + '">provincias</a>' : '') + '.</p>' +
+    const table = '<section class="rl-sec">' + sectionHead(h, 'Licencias por provincia', h.t('{{brand_total}} marcas en {{reg_total}} listas oficiales · fuente y fecha abajo'), 'seal') +
+      '<div class="rl-card" data-nosnippet><ul class="rl-mxleg"><li><i class="rl-y"></i>figura en la lista oficial de esa jurisdicción</li><li><i class="rl-n"></i>no figura en esa lista (no quiere decir que sea ilegal en otra provincia)</li></ul>' +
+      '<div class="rl-scroll rl-mx"><table class="rl-tbl">' + head + '<tbody>' + rows + '</tbody></table></div>' +
+      '<p class="rl-cap">Las demás jurisdicciones no tienen una lista verificada acá' + (h.built('/provincias') ? ': su estado está en <a href="' + h.href('/provincias') + '">provincias</a>' : '') + '.</p>' +
       regs.map(r => src(h, r.list.doc, h.rg.prov(r.id).name)).join('') + '</div></section>';
 
     const multi = splitAddress(matrix);
-    const dom = '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de tu provincia?', h.t('{{split_total}} marcas cambian de dirección según la jurisdicción')) +
+    const dom = '<section class="rl-sec">' + sectionHead(h, '¿Estás en el sitio de tu provincia?', h.t('{{split_total}} marcas cambian de dirección según la jurisdicción'), 'link') +
       '<p class="rl-note">La misma marca puede tener una dirección distinta en cada provincia. En la lista oficial figura una dirección exacta: mirá la dirección completa, no solo el nombre de la marca. «Ir» abre la dirección de la lista de esa provincia, sin códigos de afiliado; solo mayores de 18.</p>' +
       '<div class="rl-dom" data-nosnippet>' + multi.map(row => '<article><h3>' + brandLink(h, row.brand, row.name) + '</h3><ul>' +
         regs.filter(r => row.cells[r.id]).map(r => '<li><span class="rl-tag">' + h.esc(CODE[r.id]) + '</span>' + hostHtml(h, row.cells[r.id].host) + go(h, r, r.licensees.find(l => l.brand === row.brand && l.host === row.cells[r.id].host)) + '</li>').join('') +
         '</ul></article>').join('') + '</div></section>';
 
     const pba = h.reg('buenos-aires'), caba = h.reg('caba'), cba = h.reg('cordoba');
-    const law = '<section class="rl-sec">' + sectionHead(h, 'Lo que dice cada regulador', 'citas textuales con fecha') + '<div class="rl-law">' +
+    const law = '<section class="rl-sec">' + sectionHead(h, 'Lo que dice cada regulador', 'citas textuales con fecha', 'quote') + '<div class="rl-law">' +
       '<article><span class="rl-tag">PBA</span>' + quote(h, pba.quotes.licences, pba.regulator.name) + quote(h, pba.quotes.betar, pba.regulator.name) + '</article>' +
       '<article><span class="rl-tag">CABA</span>' + quote(h, caba.quotes.list, caba.regulator.name) + '</article>' +
       '<article><span class="rl-tag">CBA</span>' + quote(h, cba.quotes.list, cba.regulator.name) + quote(h, cba.quotes.licence, cba.regulator.name) + '</article>' +
@@ -88,7 +89,7 @@ export const home = {
       ['/registro-de-fuentes', 'Todas las fuentes, con fecha'],
       ['/redaccion', 'Quiénes hacemos este sitio'],
     ].filter(([u]) => h.built(u));
-    const gd = '<section class="rl-sec">' + sectionHead(h, 'Por dónde seguir') + '<div class="rl-gd">' +
+    const gd = '<section class="rl-sec">' + sectionHead(h, 'Por dónde seguir', '', 'list') + '<div class="rl-gd">' +
       guides.map(([u, l], i) => '<a href="' + h.href(u) + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + h.esc(l) + '</a>').join('') + '</div></section>';
     return hero + table + dom + law + gd;
   },

@@ -111,6 +111,10 @@ export const SECTIONS = [
   ['atencion', 'Atención al cliente', 'support'],
   ['juego-responsable', 'Juego responsable', 'rg'],
 ];
+// section id -> icon of the site's own set (css/site.css, [data-i]): section heads, the table of contents and the summary tiles
+export const ICON = { resumen: 'list', ingresar: 'enter', sitio: 'globe', deportes: 'ball', casino: 'die', app: 'phone', pagos: 'card', cuenta: 'id', atencion: 'chat', 'juego-responsable': 'pause', licencias: 'pin', 'sin-ver': 'eyeoff', capturas: 'cam', pie: 'doc', visita: 'eyeoff' };
+// own screenshot views -> the review section they illustrate (shown at the top of that section, the rest stay in "Capturas propias")
+export const VIEW_SECTION = { sportsbook: 'deportes', 'match-markets': 'deportes', casino: 'casino', 'live-casino': 'casino', payments: 'pagos', rg: 'juego-responsable', app: 'app', support: 'atencion' };
 const pct = x => (x * 100).toFixed(1).replace('.', ',') + ' %';
 const odd = x => x.toFixed(2).replace('.', ',');
 
@@ -199,7 +203,8 @@ export function reviewSection(h, R, [id, title, prefix], extra = {}) {
   const add = extra[id] || '';
   const body = (facts.length ? factList(h, R, facts) : '') + (M ? marginBlock(h, R, M) : '') + add;
   if (!body && extra.skipEmpty) return '';
-  return '<section class="rl-sec" id="' + id + '">' + sectionHead(h, title, facts.length || M ? 'de sus páginas públicas, con cita y fecha' : '') + (body || none(h, extra.why && extra.why[id] || SIN)) + '</section>';
+  const shot = extra.shots && extra.shots[id] ? '<div class="rl-secshots">' + extra.shots[id] + '</div>' : '';
+  return '<section class="rl-sec" id="' + id + '">' + sectionHead(h, title, facts.length || M ? 'de sus páginas públicas, con cita y fecha' : '', ICON[id]) + shot + (body || none(h, extra.why && extra.why[id] || SIN)) + '</section>';
 }
 
 // the summary card: facts only, each computed from the data above (or "sin dato")
@@ -213,20 +218,21 @@ export function summary(h, R, { lists, total, rgCount, casinoPath, missingLink }
   const DUR = /(hasta\s+)?(\d+(?:\s*-\s*\d+)?)\s*(minutos?|horas?(?:\s+h[aá]biles)?|d[ií]as?(?:\s+(?:h[aá]biles|laborables))?)/gi;
   const hours = (n, u) => +String(n).split('-').pop().trim() * (/^h/i.test(u) ? 1 : /^m/i.test(u) ? 1 / 60 : 24);
   const wtTxt = R.all('payments.withdrawalTimes').filter(f => f.quote).flatMap(f => [...readable(f.quote).matchAll(DUR)].map(m => ({ txt: m[0].trim().toLowerCase(), h: hours(m[2], m[3]) }))).sort((a, b) => a.h - b.h).map(x => x.txt);
-  const t = (k, v, sub, href) => v === null ? { none: k } : { html: '<div class="rl-rsi"><span>' + h.esc(k) + '</span><b>' + h.esc(v) + '</b>' + (sub ? '<small>' + (href ? '<a href="' + href + '">' + h.esc(sub) + '</a>' : h.esc(sub)) + '</small>' : '') + '</div>' };
+  // a tile with a section to go to is one link (the whole card is the tap target), with the icon of what it counts
+  const t = (k, v, sub, href, ic) => v === null ? { none: k } : { html: (href ? '<a class="rl-rsi" href="' + href + '"' : '<div class="rl-rsi"') + ' data-i="' + ic + '"><span>' + h.esc(k) + '</span><b>' + h.esc(v) + '</b>' + (sub ? '<small>' + h.esc(sub) + '</small>' : '') + (href ? '</a>' : '</div>') };
   const tiles = [
-    t('Listas oficiales', lists + ' de ' + total, 'que revisamos la nombran', '#licencias'),
-    t('Deportes', S ? String(S.sports.length) : null, S ? 'en su lista A-Z' : SIN, S ? '#deportes' : ''),
-    t('Apuestas en vivo', live ? (live.value ? 'Sí' : 'No') : null, live ? 'según su página' : SIN),
-    t('Casino', cas ? 'Sí' : null, cas ? (P ? P.names.length + ' proveedores' : 'sección propia') : SIN, cas ? (casinoPath && h.built(casinoPath) ? h.href(casinoPath) : '#casino') : ''),
-    t('App', app ? 'Mencionada' : null, app ? 'en su sitio' : SIN, app ? '#app' : ''),
-    t('Medios de pago', dep ? String(dep.value.length) : deps.length ? 'Publicados' : null, dep ? 'para depositar, en la lista más larga que publica' : deps.length ? 'ver la cita en pagos' : SIN, deps.length ? '#pagos' : ''),
-    t('Retiro', wtTxt.length ? wtTxt[0] : null, wtTxt.length ? 'el plazo más corto que publica' : SIN, wtTxt.length ? '#pagos' : ''),
-    t('Juego responsable', rgCount ? String(rgCount) : null, rgCount ? (rgCount === 1 ? 'herramienta citada' : 'herramientas citadas') : SIN, rgCount ? '#juego-responsable' : ''),
-    t('Margen medido', M ? pct(M.avg) : null, M ? '1X2, ' + M.rows.length + ' partidos, ' + h.fmtDate(M.date) : 'no copiamos cuotas', M ? '#deportes' : ''),
+    t('Listas oficiales', lists + ' de ' + total, 'que revisamos la nombran', '#licencias', 'seal'),
+    t('Deportes', S ? String(S.sports.length) : null, S ? 'en su lista A-Z' : SIN, S ? '#deportes' : '', 'ball'),
+    t('Apuestas en vivo', live ? (live.value ? 'Sí' : 'No') : null, live ? 'según su página' : SIN, live ? '#deportes' : '', 'live'),
+    t('Casino', cas ? 'Sí' : null, cas ? (P ? P.names.length + ' proveedores' : 'sección propia') : SIN, cas ? (casinoPath && h.built(casinoPath) ? h.href(casinoPath) : '#casino') : '', 'die'),
+    t('App', app ? 'Mencionada' : null, app ? 'en su sitio' : SIN, app ? '#app' : '', 'phone'),
+    t('Medios de pago', dep ? String(dep.value.length) : deps.length ? 'Publicados' : null, dep ? 'para depositar, en la lista más larga que publica' : deps.length ? 'ver la cita en pagos' : SIN, deps.length ? '#pagos' : '', 'card'),
+    t('Retiro', wtTxt.length ? wtTxt[0] : null, wtTxt.length ? 'el plazo más corto que publica' : SIN, wtTxt.length ? '#pagos' : '', 'cash'),
+    t('Juego responsable', rgCount ? String(rgCount) : null, rgCount ? (rgCount === 1 ? 'herramienta citada' : 'herramientas citadas') : SIN, rgCount ? '#juego-responsable' : '', 'pause'),
+    t('Margen medido', M ? pct(M.avg) : null, M ? '1X2, ' + M.rows.length + ' partidos, ' + h.fmtDate(M.date) : 'no copiamos cuotas', M ? '#deportes' : '', 'pct'),
   ];
   const miss = tiles.filter(x => x.none).map(x => x.none.toLowerCase());
-  return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje') + '<div class="rl-rs">' + tiles.filter(x => x.html).map(x => x.html).join('') + '</div>' +
+  return '<section class="rl-sec" id="resumen">' + sectionHead(h, 'Resumen', 'solo datos, sin puntaje', ICON.resumen) + '<div class="rl-rs">' + tiles.filter(x => x.html).map(x => x.html).join('') + '</div>' +
     (miss.length ? '<p class="rl-cap"><b>Sin dato:</b> ' + h.esc(miss.length < 2 ? miss.join('') : miss.slice(0, -1).join(', ') + ' y ' + miss.at(-1)) + '. No lo vimos en las páginas públicas que guardamos' + (missingLink ? ' (<a href="#sin-ver">por qué</a>)' : '') + '.</p>' : '') +
     '<p class="rl-cap">Cada número sale de una página pública del operador o de una lista oficial, con su cita más abajo. No ponemos notas ni puntajes: no abrimos cuentas ni probamos depósitos o retiros.' + dataDate(h, R) + '</p></section>';
 }
@@ -239,10 +245,10 @@ export function dataDate(h, R) {
 }
 export function toc(h, extra = [], only = null) {
   const items = [['resumen', 'Resumen'], ['ingresar', 'Sitio oficial'], ...SECTIONS.filter(([id]) => !only || only.includes(id)).map(([id, t]) => [id, t]), ['licencias', 'Licencias'], ...extra];
-  return '<nav class="rl-toc" aria-label="En esta reseña">' + items.map(([id, t]) => '<a href="#' + id + '">' + h.esc(t) + '</a>').join('') + '</nav>';
+  return '<nav class="rl-toc" aria-label="En esta reseña">' + items.map(([id, t]) => '<a href="#' + id + '"' + (ICON[id] ? ' data-i="' + ICON[id] + '"' : '') + '>' + h.esc(t) + '</a>').join('') + '</nav>';
 }
-export function reviewShots(h, R, label) {
-  return R.shots.map(s => {
+export function reviewShots(h, R, label, skip = null) {
+  return R.shots.filter(s => !skip || !skip.has(s)).map(s => {
     const u = new URL(s.url);
     const name = h.names[R.brand];
     return '<figure class="rl-shot"><div class="rl-shot-bar"><i></i><i></i><i></i><span>' + h.esc(hostKey(s.url) + (u.pathname === '/' ? '' : decodePath(u.pathname))) + '</span></div>' +
@@ -262,11 +268,11 @@ export function enterSection(h, R, o, row) {
   const items = jurs.map(r => '<li><span class="rl-tag">' + h.esc(r.id === 'buenos-aires' ? 'PBA' : r.id === 'caba' ? 'CABA' : h.rg.prov(r.id).name) + '</span>' + anat(h, row.cells[r.id].host) + '</li>').join('');
   const ing = '/operador/' + o.slug + '/ingresar';
   if (h.built(ing)) {
-    return '<section class="rl-sec" id="ingresar">' + sectionHead(h, 'Cómo entrar al sitio oficial de ' + row.name, hosts.length === 1 ? 'una sola dirección en las listas' : hosts.length + ' direcciones en ' + jurs.length + ' listas') +
+    return '<section class="rl-sec" id="ingresar">' + sectionHead(h, 'Cómo entrar al sitio oficial de ' + row.name, hosts.length === 1 ? 'una sola dirección en las listas' : hosts.length + ' direcciones en ' + jurs.length + ' listas', ICON.ingresar) +
       '<div class="rl-box"><ul class="rl-enter rl-enter-s">' + items + '</ul>' + officialLinks(h, o.brand, jurs.map(r => r.id), { note: false, small: true }) +
       '<p>Entrá con la dirección de la provincia donde estás: el botón para ingresar a tu cuenta está en ese sitio. <a href="' + h.href(ing) + '">Cómo iniciar sesión en ' + h.esc(row.name) + ' paso a paso: tu provincia, la app, la contraseña y cómo no caer en copias</a></p></div></section>';
   }
-  return '<section class="rl-sec" id="ingresar">' + sectionHead(h, 'Cómo entrar al sitio oficial de ' + row.name, hosts.length === 1 ? 'una sola dirección en las listas' : hosts.length + ' direcciones, una por lista') +
+  return '<section class="rl-sec" id="ingresar">' + sectionHead(h, 'Cómo entrar al sitio oficial de ' + row.name, hosts.length === 1 ? 'una sola dirección en las listas' : hosts.length + ' direcciones, una por lista', ICON.ingresar) +
     '<div class="rl-two"><div class="rl-box"><h3>La dirección según cada lista</h3><ul class="rl-enter">' + items + '</ul>' + officialLinks(h, o.brand, jurs.map(r => r.id), { note: false, small: true }) +
     '<p>Entrá con la dirección de la provincia donde estás: el botón para ingresar a tu cuenta está en ese sitio. Nosotros no enlazamos páginas de acceso ni pedimos datos.</p></div>' +
     '<div class="rl-box"><h3>Para no caer en una copia</h3><ol class="rl-chk"><li>Compará la barra del navegador con la dirección de la lista, letra por letra.</li><li>No entres desde anuncios, mensajes o perfiles que te pasen un enlace: escribí la dirección o usá un enlace oficial.</li><li>Un sitio que pide depositar a una cuenta personal o por chat no es el sitio de la lista.</li>' +
