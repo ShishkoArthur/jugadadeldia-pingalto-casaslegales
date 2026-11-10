@@ -85,7 +85,7 @@ export function page(h, p, body) {
     (p.help ? '' : '<button class="jg-ib jg-bu" type="button" data-jg-menu aria-controls="jg-nav" aria-expanded="false" aria-label="Menú">' + ICON.burger + '</button>') + '</header>';
   const data = '<script type="application/json" id="jg-data">' + h.jsonScript(h.clientData()) + '</script>' +
     (p.data ? '<script type="application/json" id="jg-page">' + h.jsonScript(p.data(h)) + '</script>' : '');
-  const js = ['jg.js', ...(p.js || [])].map(f => '<script type="module" src="' + h.asset(f) + '"></script>').join('');
+  const js = ['jg.js', ...(p.js || []), ...(body.includes('class="jg-cd"') ? ['naipes.js'] : [])].map(f => '<script type="module" src="' + h.asset(f) + '"></script>').join('');
   return '<!doctype html><html lang="' + h.site.htmlLang + '"><head>' + head + '</head><body' + (p.help ? ' data-jg-ayuda' : '') + ' data-k="' + h.esc(p.kind || 'x') + '">' +
     '<a class="jg-skip" href="#main">Saltar al contenido</a>' + header + '<main class="jg-main' + (isLead(p) ? ' jg-top' : '') + '" id="main">' + body + '</main>' + footer(h, p) + data + js + '</body></html>';
 }

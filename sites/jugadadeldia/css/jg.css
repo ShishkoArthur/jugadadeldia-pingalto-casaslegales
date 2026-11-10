@@ -180,6 +180,7 @@ fieldset.jg-fl{border:0;margin:0;padding:0;min-width:0}
 .jg-ul{list-style:none;padding:0!important;display:grid;gap:6px;margin:8px 0}
 .jg-ul li{display:flex;justify-content:space-between;gap:10px;padding:8px 12px;border-radius:12px;background:var(--s2);font-variant-numeric:tabular-nums}
 .jg-ul li+li{margin-top:0}
+.jg-ul.tx li{display:block}
 .jg-mod .jg-ba{--s:52px;float:right;margin-left:10px}
 .jg-mod h3{margin-top:0;font-size:21px}
 .jg-dial{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
@@ -206,6 +207,7 @@ fieldset.jg-fl{border:0;margin:0;padding:0;min-width:0}
 .jg-strip i{font-style:normal;color:var(--lk)}
 .jg-chk .jg-six{grid-template-columns:repeat(auto-fill,minmax(44px,1fr));width:100%;max-width:560px}
 .jg-chk .jg-six input{font-size:17px}
+.jg-b[data-del]{flex:none;min-width:44px;min-height:44px;padding:0 12px;font-size:20px}
 .jg-set{padding:12px;border-radius:18px!important;background:var(--s2)!important}
 .jg-set .jg-six input{--c:var(--b2)}
 .jg-ta{min-height:84px;padding:10px 14px;font:500 16px var(--m);resize:vertical}
@@ -267,4 +269,19 @@ fieldset.jg-fl{border:0;margin:0;padding:0;min-width:0}
 .jg-lang:hover{color:var(--lk)}
 .jg-qtr{margin:-2px 0 10px;padding:0 12px 0 15px;color:var(--mu);font-size:.95em}
 .jg-qtr b{font-weight:600;color:var(--fg)}
-@media (max-width:420px){.jg-lang{width:32px}.jg-lg{font-size:19px}.jg-lg span{white-space:nowrap}}
+.jg-lg{flex:none}
+.jg-lg span{white-space:nowrap}
+.jg-nt{display:none}
+.jg-peek{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));z-index:25;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);min-height:48px;padding:8px 18px 8px 20px;border:0;border-radius:99px;background:var(--fg);color:var(--bg);box-shadow:0 14px 30px -10px #0e1726a6;font:700 16px/1.2 var(--d);font-variant-numeric:tabular-nums;transform:translateX(-50%);cursor:pointer}
+.jg-peek::after{content:"";flex:none;width:8px;height:8px;margin-top:-4px;border:solid currentColor;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+@media (min-width:1001px) and (max-width:1120px){.jg-h{padding:10px 14px;gap:6px}.jg-lg{gap:8px}.jg-dd>button{padding:0 9px 0 11px}.jg-dd>button::after{margin-left:6px}}
+@media (max-width:1000px){.jg-h:has(.jg-hnav){flex-wrap:wrap;row-gap:6px}.jg-hnav{order:9;flex:1 0 100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-radius:18px}.jg-hnav>a{min-height:44px;padding:4px 8px;border-radius:14px;text-align:center;line-height:1.15}}
+@media (max-width:760px){.jg-hnav{display:grid}}
+@media (max-width:420px){.jg-h{gap:6px;padding:8px 10px}.jg-lg{gap:8px;font-size:19px}.jg-lang{width:40px}.jg-hnav>a{font-size:14px;padding:4px 6px}}
+@media (max-width:400px){.jg-h:has([data-jg-menu])>[data-jg-tema]{display:none}.jg-nt{display:flex;justify-content:center;padding:18px 0 4px}}
+@media (max-width:340px){.jg-lgm{width:32px;height:32px}.jg-lg{font-size:18px}.jg-ib{width:40px;height:40px}}
+@media (min-width:621px) and (max-width:900px){.jg-top{display:flex;flex-direction:column;gap:18px}.jg-top>.jg-hero,.jg-top .jg-hx,.jg-top>.jg-hero+.jg-mn{display:contents}.jg-top>*,.jg-top>.jg-hero+.jg-mn>*{order:5;margin-top:0;margin-bottom:0}.jg-top .jg-ht{order:1;margin-top:6px;padding:26px 30px 22px;border-radius:30px;background:var(--hb);color:var(--hf);box-shadow:var(--sh)}.jg-top .jg-ht h1{margin-bottom:0;font-size:38px}.jg-top>.jg-hero+.jg-mn>:first-child,.jg-top>.jg-hero+.jg-mn>:first-child+[aria-live],.jg-top>.jg-hero+.jg-mn>.jg-f1{order:2}.jg-top .jg-hl{order:3;padding:22px 30px;border-radius:30px;background:var(--hb);color:var(--hf);box-shadow:var(--sh)}.jg-top>.jg-hero>.jg-girl{order:4;align-self:center;width:min(300px,60%)}}
+@media (min-width:901px){.jg-top>.jg-hero{grid-template-columns:minmax(0,1fr) 220px;gap:26px;padding:24px 36px;margin-bottom:22px}.jg-top>.jg-hero h1{font-size:40px;margin:10px 0 8px}.jg-top>.jg-hero .jg-lede{max-width:72ch;font-size:16px}.jg-top>.jg-hero .jg-lede+.jg-r{margin-top:14px}.jg-top>.jg-hero>.jg-girl{border-radius:24px}.jg-top>.jg-hero>.jg-girl i{--s:40px}.jg-top>.jg-hero>.jg-girl i:nth-child(1){--s:48px}.jg-top>.jg-hero>.jg-girl i:nth-child(3){--s:32px}}
+.jg-jump .jg-sg{padding:0;background:none;gap:6px}
+.jg-jump .jg-sg>a{min-height:44px;background:var(--s2)}
+@media (max-width:1000px){html:has(.jg-hnav){scroll-padding-top:140px}}

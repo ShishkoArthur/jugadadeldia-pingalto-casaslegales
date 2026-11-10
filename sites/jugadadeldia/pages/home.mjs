@@ -3,7 +3,7 @@
 import { directBet } from '../../../engine/lottery/quiniela.mjs';
 import { odds } from '../../../engine/lottery/games.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
-import { hero, tiles, ICONS, oneIn, money, webPage, btn } from './parts.mjs';
+import { hero, tiles, ICONS, suitIcon, oneIn, money, webPage, btn } from './parts.mjs';
 
 export const home = {
   path: '/', kind: 'hub',
@@ -39,11 +39,11 @@ export const home = {
         ['/quini-6/', 'Quini 6', 'El último sorteo publicado y el control de tu boleta', '#2f7cf6', ICONS.check],
         ['/loto-plus/', 'Loto Plus y Brinco', 'Resultados, número Plus y chances', '#8b5cf6', ICONS.balls],
         ['/telekino/', 'Telekino y Poceada', 'Resultados, cartones y lo que va a premios', '#ff5a3c', ICONS.balls],
-        ['/truco/jugar/', 'Truco contra la compu', 'Tres niveles, con o sin flor', '#e0447a', ICONS.cards],
+        ['/truco/jugar/', 'Truco contra la compu', 'Tres niveles, con o sin flor', '#e0447a', suitIcon('e')],
         ['/truco/anotador/', 'Anotador de truco', 'Con fósforos, malas y buenas', '#16b38a', ICONS.pencil],
-        ['/truco/valores-de-las-cartas/', 'Valores del truco', 'Qué carta mata a cuál, y las señas', '#ff5a3c', ICONS.cards],
+        ['/truco/valores-de-las-cartas/', 'Valores del truco', 'Qué carta mata a cuál, y las señas', '#ff5a3c', suitIcon('o')],
         ['/generala/jugar/', 'Generala', 'Contra la compu, anotador y probabilidades', '#e8930c', ICONS.dice],
-        ['/chinchon/jugar/', 'Chinchón y escoba', 'Cartas españolas contra la compu', '#2f7cf6', ICONS.hand],
+        ['/chinchon/jugar/', 'Chinchón y escoba', 'Cartas españolas contra la compu', '#2f7cf6', suitIcon('c')],
         ['/burako/', 'Burako', 'Reglas y calculadora de la mano', '#8b5cf6', ICONS.calc],
       ]) + '</section></div>';
   },

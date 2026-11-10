@@ -111,7 +111,17 @@ export const SPRITE = '<svg width="0" height="0" style="position:absolute" aria-
   '<symbol id="p-c" viewBox="0 0 24 24"><path d="M5 3h14c0 6-3 9-7 9S5 9 5 3z" fill="currentColor"/><path d="M12 12v6M7.5 21h9" stroke-width="2.6"/></symbol>' +
   '<symbol id="p-e" viewBox="0 0 24 24"><path d="M12 1.5l2.6 3L12 16l-2.6-11.5z" fill="currentColor"/><path d="M6.5 16h11M12 16v6" stroke-width="2.6"/></symbol>' +
   '<symbol id="p-b" viewBox="0 0 24 24"><path d="M9.5 2.5c3-1 6 .5 5.5 4l-1.7 15h-3.6L8.3 7c-.4-2.2.1-3.9 1.2-4.5z" fill="currentColor"/><path d="M10 8.5h4M10.6 13.5h3" stroke="#fff" stroke-width="1.6"/></symbol>' +
+  '<symbol id="f-10" viewBox="0 0 24 30"><path d="M8.4 5.4h7.2L14.2 2.2H9.8z" fill="currentColor" stroke="none"/><circle cx="12" cy="8.6" r="3.4" fill="currentColor" stroke="none"/><path d="M6.4 28.5l1.9-13.6c.3-1.7 1.7-2.7 3.7-2.7s3.4 1 3.7 2.7l1.9 13.6z" fill="currentColor" stroke="none"/><path d="M9 20h6M12 20v8" stroke="#fff" stroke-width="1.3"/></symbol>' +
+  '<symbol id="f-11" viewBox="0 0 24 30"><path d="M9.5 28.5h12.2c-.2-4.4-.6-8.4-2-11.6-1.2-2.8-3.4-5-6.1-6.2l.6-3.1-2.6 1.6L10 6.4 9.1 9.7c-2.4 1.5-4.2 3.9-5.2 6.6l-.6 1.9 2.5 1.2 2.6-1.6c.9-.6 2-.6 2.8 0-1.5 3.1-1.9 6.5-1.7 10.7z" fill="currentColor" stroke="none"/><circle cx="10.6" cy="12.8" r="1.1" fill="#fff" stroke="none"/><path d="M14.4 11.8c2 1.9 3.4 4.6 3.9 8" stroke="#fff" stroke-width="1.2"/></symbol>' +
+  '<symbol id="f-12" viewBox="0 0 24 30"><path d="M6.8 10.6L5.9 3.8l3.4 2.9L12 1.8l2.7 4.9 3.4-2.9-.9 6.8z" fill="currentColor" stroke="none"/><circle cx="12" cy="14.2" r="3.4" fill="currentColor" stroke="none"/><path d="M4.6 28.5c.4-6.2 3-9.9 7.4-9.9s7 3.7 7.4 9.9z" fill="currentColor" stroke="none"/><path d="M12 19.6v8.4M8.2 8.8h7.6" stroke="#fff" stroke-width="1.3"/></symbol>' +
   '</defs></svg>';
+// Card face: the built page draws one pip (the face before scripts run, and the face of narrow cards); client/naipes.js then lays
+// the pips out as on a real Spanish card (1 to 9) or a drawn figure holding its suit (#f-10..#f-12 above). Cards narrower than about
+// 56 px keep the single pip (container query in css/naipes.css). client/cards.js draws the full markup for cards made in the browser.
+// A tile icon: a small Spanish card with the suit pip, drawn inline (no sprite needed on the page).
+const SYM = s => SPRITE.match(new RegExp('<symbol id="p-' + s + '" viewBox="0 0 24 24">(.*?)</symbol>'))[1];
+const SUIT_INK = { e: '#2563c9', b: '#13805f', o: '#9a6800', c: '#cf2f63' };
+export const suitIcon = s => '<svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.6" fill="#fffdf7" stroke="none"/><g transform="translate(7 7) scale(.4167)" style="color:' + SUIT_INK[s] + '">' + SYM(s) + '</g></svg>';
 export function card(c, extra = '') {
   const m = /^(\d+)([ebco])$/.exec(c);
   if (!m) throw new Error('card: bad card ' + c);

@@ -36,7 +36,7 @@ export function face({ brows = 'n', eyes = 'open', mouth = 'n', tilt = false } =
 }
 
 export const trucoJugar = {
-  path: '/truco/jugar/', kind: 'game', section: 'truco', css: ['mesa.css'], js: ['truco.js'],
+  path: '/truco/jugar/', kind: 'game', section: 'truco', css: ['naipes.css', 'mesa.css'], js: ['truco.js'],
   title: 'Truco online gratis contra la compu: de a 2 o de a 4',
   h1: 'Jugá al truco contra la compu',
   description: 'Jugá al truco argentino online gratis y sin registro contra la compu: mano a mano o de a 4 con un compañero que lee tus señas. Tres niveles.',
@@ -79,7 +79,7 @@ export const trucoJugar = {
 };
 
 export const trucoAnotador = {
-  path: '/truco/anotador/', kind: 'game', section: 'truco', css: ['mesa.css'], js: ['anotador.js'],
+  path: '/truco/anotador/', kind: 'game', section: 'truco', css: ['naipes.css', 'mesa.css'], js: ['anotador.js'],
   title: 'Anotador de truco online: a 15 o a 30, con fósforos',
   h1: 'Anotador de truco',
   description: 'Anotador de truco online para el celu: a 15 o a 30, malas y buenas, con los fosforitos en cuadrados de cinco como en la mesa. Deshacer y pantalla completa.',

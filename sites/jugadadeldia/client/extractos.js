@@ -43,6 +43,7 @@ function extract(list, { mark = new Set(), label = '' } = {}) {
 function head(e, meta, jur) {
   return '<p class="jg-xh"><b>' + esc(tName(meta, e.t)) + '</b> del ' + esc(day(e.d)) + (e.h ? ' · ' + esc(e.h) + ' hs' : '') + ' ' + badge(e.j[jur][1]) + '</p>';
 }
+const reveal = x => { if (!x) return; const r = x.getBoundingClientRect(); if (r.top > innerHeight - 140 || r.bottom < 80) x.scrollIntoView({ block: 'start' }); };
 const fail = (el, msg) => { el.innerHTML = '<p class="jg-xs no">' + esc(msg) + '</p>'; };
 
 async function hoy(el) {
@@ -59,9 +60,9 @@ async function hoy(el) {
     return '<td class="jg-xe">' + (later ? t.time : (e && (e.x || []).includes(j.id)) ? 'en revisión' : '—') + '</td>';
   };
   el.innerHTML = status(doc) + (dayShown !== now.d ? '<p class="jg-xh">Hoy todavía no hay extractos. Este es el último día con sorteos: <b>' + esc(day(dayShown)) + '</b>.</p>' : '<p class="jg-xh"><b>' + esc(day(dayShown)) + '</b></p>') +
+    '<p class="jg-xlg"><span><i class="jg-xsw">✓</i>las copias de LOTBA y de la Provincia coinciden cifra por cifra. Mendoza llega solo por LOTBA.</span><span><i class="jg-xsw on"></i>la cabeza que estás viendo: sus 20 números salen debajo de la tabla.</span></p>' +
     '<div class="jg-tw"><table class="jg-tbl jg-xg"><thead><tr><th>Provincia</th>' + m.turnos.map(t => '<th>' + (P.tpaths && P.tpaths[t.id] ? '<a href="' + P.tpaths[t.id] + '">' + esc(t.name) + '</a>' : esc(t.name)) + (t.time ? '<small>' + t.time + '</small>' : '') + '</th>').join('') + '</tr></thead><tbody>' +
-    m.jurs.map(j => '<tr><th scope="row">' + (P.paths[j.id] ? '<a href="' + P.paths[j.id] + '">' + esc(j.name) + '</a>' : esc(j.name)) + '</th>' + m.turnos.map(t => cell(t, j)).join('') + '</tr>').join('') + '</tbody></table></div>' +
-    '<p class="jg-note">✓ = las copias de LOTBA y de la Provincia coinciden cifra por cifra. Mendoza llega solo por LOTBA.</p><div class="jg-xd" data-xd></div>';
+    m.jurs.map(j => '<tr><th scope="row">' + (P.paths[j.id] ? '<a href="' + P.paths[j.id] + '">' + esc(j.name) + '</a>' : esc(j.name)) + '</th>' + m.turnos.map(t => cell(t, j)).join('') + '</tr>').join('') + '</tbody></table></div><div class="jg-xd" data-xd></div>';
   const show = k => {
     const [d, t, j] = k.split('|');
     const e = m.draws.find(x => x.d === d && x.t === t);
@@ -69,7 +70,7 @@ async function hoy(el) {
     $$('.jg-xc', el).forEach(b => b.setAttribute('aria-pressed', b.dataset.k === k ? 'true' : 'false'));
     $('[data-xd]', el).innerHTML = '<h3>' + esc(name(m, j)) + '</h3>' + head(e, m, j) + extract(nums(e.j[j][0]), { label: 'Extracto de ' + name(m, j) });
   };
-  el.addEventListener('click', ev => { const b = ev.target.closest('.jg-xc'); if (b) show(b.dataset.k); });
+  el.addEventListener('click', ev => { const b = ev.target.closest('.jg-xc'); if (b) { show(b.dataset.k); reveal($('[data-xd]', el)); } });
   const last = [...list].reverse().find(e => e.j.caba) || list[list.length - 1];
   if (last) show(last.d + '|' + last.t + '|' + (last.j.caba ? 'caba' : Object.keys(last.j)[0]));
 }
@@ -199,6 +200,7 @@ async function ext(el) {
   f.addEventListener('submit', e => { e.preventDefault(); run(); });
 }
 
+const KEY = '<div class="jg-xky"><span>Salió menos de lo esperable</span><i aria-hidden="true"></i><span>Salió más</span></div>';
 function heat(counts, expected, label) {
   const max = Math.max(...counts.map(c => Math.abs(c - expected)), 1);
   return '<div class="jg-xm" role="img" aria-label="' + esc(label) + '">' + counts.map((c, i) => {
@@ -226,8 +228,8 @@ async function freq(el) {
     el.innerHTML = '<div class="jg-x3"><label class="jg-fl"><span>Provincia</span><select class="jg-se" data-f="j">' + m.jurs.map(x => '<option value="' + x.id + '"' + (x.id === j ? ' selected' : '') + '>' + esc(x.long) + '</option>').join('') + '</select></label>' +
       '<div class="jg-fl"><span>Qué contamos</span><div class="jg-sg" role="group"><button type="button" data-a="0" aria-pressed="' + !all + '">A la cabeza</button><button type="button" data-a="1" aria-pressed="' + all + '">Los 20 lugares</button></div></div></div>' +
       '<p class="jg-xh">' + f.draws + ' sorteos · lo esperable para cada terminación: <b>' + fmt(e, 1) + '</b></p>' +
+      KEY + '<p class="jg-note">Más oscuro: salió más de lo esperable; más claro: menos. El de la derecha lo inventó la compu con bolillas perfectas: también sale desparejo.</p>' +
       '<div class="jg-x2"><div><h3>Lo que salió</h3>' + heat(counts, e, 'Veces que salió cada terminación') + '</div><div><h3>Un sorteo inventado al azar</h3>' + heat(sim, e, 'Un sorteo al azar con la misma cantidad') + '</div></div>' +
-      '<p class="jg-note">Más oscuro: salió más de lo esperable; más claro: menos. El de la derecha lo inventó la compu con bolillas perfectas: también sale desparejo.</p>' +
       '<p>Más veces: ' + top.map(([i, c]) => '<b>' + String(i).padStart(2, '0') + '</b> (' + c + ')').join(', ') + '. Menos: ' + low.map(([i, c]) => '<b>' + String(i).padStart(2, '0') + '</b> (' + c + ')').join(', ') + '.</p>';
     const chi = $('[data-xchi]');
     const p = all ? f.pAll : f.pHead, c2 = all ? f.chiAll : f.chiHead;
@@ -376,7 +378,7 @@ async function pvfreq(el) {
     const chi = counts.reduce((s, o) => s + (o - e) ** 2 / e, 0), p = chiSquareP(chi, 99);
     const order = counts.map((c, i) => [i, c]).sort((a, b) => b[1] - a[1] || a[0] - b[0]);
     el.innerHTML = '<div class="jg-sg" role="group" aria-label="Qué contamos"><button type="button" data-a="0" aria-pressed="' + !wide + '">A la cabeza</button><button type="button" data-a="1" aria-pressed="' + wide + '">Los 20 lugares</button></div>' +
-      '<p class="jg-xh">' + n + (n === 1 ? ' sorteo' : ' sorteos') + ' en el archivo · lo esperable para cada terminación: <b>' + fmt(e, 2) + '</b></p>' +
+      '<p class="jg-xh">' + n + (n === 1 ? ' sorteo' : ' sorteos') + ' en el archivo · lo esperable para cada terminación: <b>' + fmt(e, 2) + '</b></p>' + KEY +
       heat(counts, e, 'Veces que salió cada terminación') +
       (n >= 30 ? '<p>Más veces: ' + order.slice(0, 5).map(([i, c]) => '<b>' + String(i).padStart(2, '0') + '</b> (' + c + ')').join(', ') + '. Menos: ' + order.slice(-5).reverse().map(([i, c]) => '<b>' + String(i).padStart(2, '0') + '</b> (' + c + ')').join(', ') + '.</p><p class="jg-hon">Chi cuadrado: <b>' + fmt(chi, 1) + '</b>. Con 99 grados de libertad, el puro azar da un desorden así o mayor en el <b>' + fmt(p * 100, 0) + ' %</b> de los casos.</p>' : '<p class="jg-hon">Con ' + n + ' sorteos todavía es muy poco para comparar con el azar: hacen falta al menos 30. El archivo crece con cada sorteo.</p>');
   };

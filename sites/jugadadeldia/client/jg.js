@@ -3,17 +3,17 @@ import './precios.js';
 const root = document.documentElement;
 
 function theme() {
-  const btn = $('[data-jg-tema]');
-  if (!btn) return;
+  const btns = [...document.querySelectorAll('[data-jg-tema]')];
+  if (!btns.length) return;
   const dark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches);
-  const sync = () => btn.setAttribute('aria-pressed', dark() ? 'true' : 'false');
+  const sync = () => btns.forEach(b => b.setAttribute('aria-pressed', dark() ? 'true' : 'false'));
   sync();
-  btn.addEventListener('click', () => {
+  btns.forEach(b => b.addEventListener('click', () => {
     const next = dark() ? 'light' : 'dark';
     root.dataset.theme = next;
     store.set('jg-tema', next);
     sync();
-  });
+  }));
 }
 
 const WIDE = '(min-width: 1001px)';
@@ -106,8 +106,33 @@ export function helpLine(id) {
   box.append(a);
 }
 
+function peek() {
+  if (!('IntersectionObserver' in window)) return;
+  const outs = [...document.querySelectorAll('main section.t2[aria-live]')].filter(s => s.querySelector('.jg-win') && s.previousElementSibling && s.previousElementSibling.matches('section'));
+  for (const out of outs) {
+    const win = out.querySelector('.jg-win'), src = out.previousElementSibling;
+    const bar = document.createElement('button');
+    bar.type = 'button';
+    bar.className = 'jg-peek';
+    bar.hidden = true;
+    const sync = () => { bar.textContent = [...win.childNodes].map(n => n.textContent.replace(/\s+/g, ' ').trim()).filter(Boolean).join(' '); };
+    sync();
+    new MutationObserver(sync).observe(win, { subtree: true, childList: true, characterData: true });
+    let inSrc = false, below = false;
+    const typing = () => { const x = document.activeElement; return !!x && x.matches('input:not([type=radio]):not([type=checkbox]),textarea'); };
+    const upd = () => { bar.hidden = !(inSrc && below) || typing(); };
+    src.addEventListener('focusin', upd);
+    src.addEventListener('focusout', () => setTimeout(upd, 0));
+    new IntersectionObserver(([e]) => { below = !e.isIntersecting && e.boundingClientRect.top > 0; upd(); }).observe(out);
+    new IntersectionObserver(([e]) => { inSrc = e.isIntersecting; upd(); }, { rootMargin: '0px 0px -30% 0px' }).observe(src);
+    bar.addEventListener('click', () => out.scrollIntoView({ block: 'start' }));
+    document.body.appendChild(bar);
+  }
+}
+
 theme();
 menu();
 search();
+peek();
 const saved = store.get('jg-prov');
 if (saved) helpLine(saved);

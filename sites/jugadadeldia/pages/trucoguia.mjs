@@ -13,7 +13,7 @@ const HALF = buenasAt(R30);
 const LV = [1, ...Object.keys(TRUCO_CALLS).map(Number)];
 const CALLN = { truco: 'Truco', retruco: 'Retruco', valeCuatro: 'Vale cuatro' };
 const ENVN = { envido: 'Envido', realEnvido: 'Real envido', faltaEnvido: 'Falta envido' };
-const CSS = ['mesa.css', 'truco-guia.css'];
+const CSS = ['naipes.css', 'truco-guia.css'];
 const must = (ok, what) => { if (!ok) throw new Error('truco guide example: ' + what); };
 
 export const nm = c => { const n = parseInt(c, 10), s = c.slice(-1); return (n === 1 && (s === 'e' || s === 'b') ? 'ancho' : NUM[n]) + ' de ' + SUIT[s]; };
@@ -36,6 +36,7 @@ const lesson = (n, id, title, body) => '<section class="jg-c w3 jg-ls" id="' + i
 const two = (text, visual) => '<div class="jg-lx"><div class="jg-lt">' + text + '</div><div class="jg-lv2">' + visual + '</div></div>';
 const tip = (t, cls = '') => '<p class="jg-tip' + (cls ? ' ' + cls : '') + '">' + t + '</p>';
 const mini = c => { const n = parseInt(c, 10); return '<i class="jg-mc" data-s="' + c.slice(-1) + '">' + ({ 10: 'S', 11: 'C', 12: 'R' }[n] || n) + '</i>'; };
+const fan = cards => '<span class="jg-fan" aria-hidden="true">' + cards.map(c => mini(c).replace(/^<i/, '<span').replace(/<\/i>$/, '</span>')).join('') + '</span>';
 const minis = cards => '<div class="jg-mcs">' + cards.map(mini).join('') + '</div>';
 const hand = (cards, cls = 'sm') => '<div class="jg-hand ' + cls + '">' + cards.map(c => card(c)).join('') + '</div>';
 const dlg = list => '<ol class="jg-dlg">' + list.map(([who, say, note]) => who === 2 ? '<li class="n"><p>' + say + '</p></li>' : '<li class="' + (who ? 'r' : 'v') + '"><b>' + (who ? 'Rival' : 'Vos') + '</b><span>' + say + '</span>' + (note ? '<small>' + note + '</small>' : '') + '</li>').join('') + '</ol>';
@@ -475,17 +476,17 @@ export const trucoHub = {
   ld: h => ldT(h),
   render(h) {
     const path = [
-      ['/truco/reglas/#el-mazo', 'Las cartas', 'Las ' + DECK_40.length + ' cartas españolas y sus palos', ICONS.cards],
-      ['/truco/valores-de-las-cartas/', 'Qué carta mata a cuál', 'La escalera de ' + LADDER.length + ' escalones, con las cuatro bravas', ICONS.cards],
-      ['/truco/reglas/#bazas', 'Cómo se gana una mano', 'Las tres bazas, con un ejemplo carta por carta', ICONS.book],
-      ['/truco/reglas/#pardas', 'Los empates', 'Las pardas, con cuatro ejemplos', ICONS.book],
-      ['/truco/envido/', 'El envido', 'Cómo contar tus puntos y cómo se canta', ICONS.calc],
+      ['/truco/reglas/#el-mazo', 'Las cartas', 'Las ' + DECK_40.length + ' cartas españolas y sus palos', fan(['1e', '1b', '1o', '1c'])],
+      ['/truco/valores-de-las-cartas/', 'Qué carta mata a cuál', 'La escalera de ' + LADDER.length + ' escalones, con las cuatro bravas', fan(['1e', '1b', '7e', '7o'])],
+      ['/truco/reglas/#bazas', 'Cómo se gana una mano', 'Las tres bazas, con un ejemplo carta por carta', fan(['3e', '2o', '12c'])],
+      ['/truco/reglas/#pardas', 'Los empates', 'Las pardas, con cuatro ejemplos', fan(['3b', '3c'])],
+      ['/truco/envido/', 'El envido', 'Cómo contar tus puntos y cómo se canta', fan(['7c', '6c'])],
       ['/truco/reglas/#truco', 'Truco, retruco y vale cuatro', 'Cuánto vale cada canto y quién puede subir', ICONS.hand],
       ['/truco/reglas/#ejemplo', 'Una mano entera', 'Todo junto, de punta a punta', ICONS.play],
     ].filter(([u]) => h.built(u.split('#')[0]));
     return SPRITE + hero(h, { kicker: 'Truco · 40 cartas españolas', scene: 'truco', lede: 'Se juega con ' + DECK_40.length + ' cartas, sin ochos ni nueves, de a dos o de a cuatro. Si nunca jugaste, seguí los pasos de abajo en orden: en un rato vas a poder sentarte a una mesa.', actions: '<a class="jg-b p" href="#aprender">Aprender a jugar</a>' + knowLink(h) }) +
       '<div class="jg-mn">' +
-      '<section class="jg-c w3 jg-ls" id="aprender"><span class="jg-sm">Para empezar de cero</span><h2>Aprendé a jugar en ' + path.length + ' pasos</h2><ol class="jg-path">' + path.map(([u, t, s, ic]) => '<li><a href="' + h.href(u.split('#')[0]) + (u.includes('#') ? '#' + u.split('#')[1] : '') + '"><i>' + ic + '</i><span><b>' + t + '</b><small>' + s + '</small></span></a></li>').join('') + '</ol></section>' +
+      '<section class="jg-c w3 jg-ls" id="aprender"><span class="jg-sm">Para empezar de cero</span><h2>Aprendé a jugar en ' + path.length + ' pasos</h2><ol class="jg-path">' + path.map(([u, t, s, ic]) => '<li><a href="' + h.href(u.split('#')[0]) + (u.includes('#') ? '#' + u.split('#')[1] : '') + '"><i' + (ic.startsWith('<span') ? ' class="jg-pv"' : '') + '>' + ic + '</i><span><b>' + t + '</b><small>' + s + '</small></span></a></li>').join('') + '</ol></section>' +
       '<section class="jg-c w2 jg-deal" data-mano><span class="jg-tag">Probá</span><h2>Repartí una mano</h2><div class="jg-hand" data-o="hand">' + ['1e', '7o', '3c'].map(c => card(c)).join('') + '</div>' +
       '<div class="jg-ch"><span>Envido: <b data-o="env">' + envidoPoints(['1e', '7o', '3c']) + '</b></span><span data-o="flor">sin flor</span><span>Carta más alta: <b data-o="top">' + cap(nm('1e')) + '</b></span></div>' +
       '<p class="jg-hon" data-o="chance">Tocá «Repartir» para ver qué chance tiene tu envido contra una mano al azar.</p><div class="jg-r"><button class="jg-b p" type="button" data-deal>Repartir</button><label class="jg-chk2"><input type="checkbox" data-mano-mano checked> Soy mano</label></div></section>' +

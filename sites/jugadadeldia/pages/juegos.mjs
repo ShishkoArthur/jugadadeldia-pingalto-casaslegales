@@ -5,7 +5,7 @@ import { servida, generalaWithin } from '../../../engine/lottery/dice.mjs';
 import { toNumber } from '../../../engine/lottery/exact.mjs';
 import { RULESETS as CHIN } from '../../../engine/chinchon/rules.mjs';
 import { VALUE, SETENTA } from '../../../engine/escoba/rules.mjs';
-import { hero, cite, crumbs, webPage, fmt, oneIn, card, SPRITE, tiles, ICONS, mnOpen, mnArt, btn, faqLd } from './parts.mjs';
+import { hero, cite, crumbs, webPage, fmt, oneIn, card, SPRITE, tiles, ICONS, suitIcon, mnOpen, mnArt, btn, faqLd } from './parts.mjs';
 import { wrap, go } from './curso.mjs';
 import { generalaCurso, dadosCurso } from './curso-juegos.mjs';
 
@@ -16,7 +16,7 @@ const R = GEN.ruibal;
 export const LIMIT = 101;
 
 export const generala = {
-  path: '/generala/', kind: 'game', section: 'juegos', css: ['mesa.css', 'curso.css'], js: ['anotgen.js'],
+  path: '/generala/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css', 'curso.css'], js: ['anotgen.js'],
   title: 'Cómo se juega a la generala: reglas, puntos y anotador',
   h1: 'Cómo se juega a la generala',
   description: 'Reglas de la generala desde cero: los tres tiros, qué vale cada jugada, un turno real resuelto tiro por tiro y, al final, el anotador online con ayuda.',
@@ -35,7 +35,7 @@ export const generala = {
 };
 
 export const generalaJugar = {
-  path: '/generala/jugar/', kind: 'game', section: 'juegos', css: ['mesa.css'], js: ['generala.js'],
+  path: '/generala/jugar/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css'], js: ['generala.js'],
   title: 'Jugar a la generala online contra la compu',
   h1: 'Jugá a la generala',
   description: 'Jugá a la generala online contra la compu, que en difícil juega con estrategia óptima. Al terminar, mirá en qué tiros te apartaste de la mejor jugada.',
@@ -43,14 +43,14 @@ export const generalaJugar = {
   data: () => ({ boxes: boxesOf(R), names: BOX }),
   render(h) {
     return '<section class="jg-play" data-gen><div class="jg-ph"><h1 class="jg-h1 sm">' + h.esc(h.page.h1) + '</h1><form class="jg-cfg" data-cfg><label><span class="jg-sm">Compu</span>' + sel('nivel', [['facil', 'Fácil'], ['normal', 'Normal', true], ['dificil', 'Difícil']]) + '</label><button class="jg-b s" type="button" data-sound aria-pressed="false">Sonido: no</button></form></div>' +
-      '<div class="jg-table"><div class="jg-score"><table class="jg-sheet" data-o="sheet"></table></div><div class="jg-felt"><p class="jg-turn" data-o="turn" aria-live="polite"></p><div class="jg-dice" data-o="dice"></div><p class="jg-info" data-o="info"></p>' +
+      '<div class="jg-table"><div class="jg-score"><p class="jg-note jg-gk"><span><i class="jg-gkb">5</i>lo que anotás ahí con estos dados</span><span><i class="jg-gkb">✕</i>anotás 0: queda tachado</span><span><i>-</i>todavía libre</span></p><table class="jg-sheet" data-o="sheet"></table></div><div class="jg-felt"><p class="jg-turn" data-o="turn" aria-live="polite"></p><div class="jg-dice" data-o="dice"></div><p class="jg-info" data-o="info"></p>' +
       '<div class="jg-calls"><button class="jg-b p" type="button" data-roll>Tirar</button><button class="jg-b s" type="button" data-hint>¿Qué me conviene?</button></div><p class="jg-say" data-o="say" hidden></p><div class="jg-end" data-o="end" hidden></div></div></div></section>' +
       mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Cómo jugar</span><h2>Tocá los dados que querés guardar</h2><ul><li>Tenés tres tiros por turno. Después de cada tiro, tocá los dados que te quedás y volvé a tirar.</li><li>Para anotar, tocá tu casillero en la planilla: muestra cuánto sumás ahí.</li><li>«¿Qué me conviene?» te muestra la jugada con más puntos esperados para todo el partido.</li></ul></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Niveles</span><h2>Qué hace la compu</h2><p><b>Fácil</b> junta el número que más le salió. <b>Normal</b> calcula las chances del turno. <b>Difícil</b> juega la mejor estrategia posible para toda la planilla.</p></section></div>';
   },
 };
 
 export const generalaProb = {
-  path: '/generala/probabilidades/', kind: 'game', section: 'juegos', css: ['mesa.css'],
+  path: '/generala/probabilidades/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css'],
   title: 'Probabilidades de la generala: servida y con tres tiros',
   h1: 'Qué chance tiene cada jugada',
   description: 'Probabilidades de la generala: qué chance tiene cada jugada servida y en tres tiros si guardás los dados, calculadas exactas por nuestro código.',
@@ -68,7 +68,7 @@ export const generalaProb = {
 };
 
 export const chinchonJugar = {
-  path: '/chinchon/jugar/', kind: 'game', section: 'juegos', css: ['mesa.css'], js: ['chinchon.js'],
+  path: '/chinchon/jugar/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css'], js: ['chinchon.js'],
   title: 'Jugar al chinchón online gratis',
   h1: 'Jugá al chinchón',
   description: 'Jugá al chinchón online contra la compu, gratis y sin registro: robás, descartás y cortás cuando podés, con las reglas de los Juegos Bonaerenses.',
@@ -84,7 +84,7 @@ export const chinchonJugar = {
 };
 
 export const escobaJugar = {
-  path: '/escoba-de-15/jugar/', kind: 'game', section: 'juegos', css: ['mesa.css'], js: ['escoba.js'],
+  path: '/escoba-de-15/jugar/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css'], js: ['escoba.js'],
   title: 'Jugar a la escoba de 15 online gratis',
   h1: 'Jugá a la escoba de 15',
   description: 'Jugá a la escoba de 15 online contra la compu, gratis y sin registro, con un aviso de las escobas que se te pasaron después de cada jugada.',
@@ -94,13 +94,13 @@ export const escobaJugar = {
     return SPRITE + '<section class="jg-play" data-esc><div class="jg-ph"><h1 class="jg-h1 sm">' + h.esc(h.page.h1) + '</h1><form class="jg-cfg" data-cfg><label><span class="jg-sm">Compu</span>' + sel('nivel', [['facil', 'Fácil'], ['normal', 'Normal', true], ['dificil', 'Difícil']]) + '</label><label><span class="jg-sm">Reglas</span>' + sel('reglas', [['bonaerense', 'Bonaerenses (levantar es obligatorio)', true], ['ludoteka', 'Levantar a elección']]) + '</label><button class="jg-b s" type="button" data-sound aria-pressed="false">Sonido: no</button></form></div>' +
       '<div class="jg-table"><div class="jg-score"><div><span class="jg-sm">Vos</span><b data-o="us">0</b></div><p class="jg-goal" data-o="goal"></p><div><span class="jg-sm">Compu</span><b data-o="them">0</b></div></div>' +
       '<div class="jg-felt"><div class="jg-opp"><div class="jg-hand" data-o="opp"></div></div><div class="jg-tablecards" data-o="table"></div><p class="jg-turn" data-o="turn" aria-live="polite"></p>' +
-      '<div class="jg-hand mine" data-o="mine"></div><p class="jg-info" data-o="info"></p><div class="jg-calls" data-o="calls"></div><p class="jg-say" data-o="tip" hidden></p><div class="jg-end" data-o="end" hidden></div></div></div></section>' +
+      '<div class="jg-hand mine" data-o="mine"></div><p class="jg-info" data-o="info"></p><div class="jg-calls" data-o="calls"></div><p class="jg-say" data-o="tip" hidden></p><p class="jg-ek">Para sumar 15: ' + vals + '</p><div class="jg-end" data-o="end" hidden></div></div></div></section>' +
       mnOpen(h) + '<section class="jg-c w2"><span class="jg-sm">Cómo jugar</span><h2>Sumá 15 con la mesa</h2><ul><li>Tocá una carta tuya. Si puede levantar, elegís qué cartas de la mesa suman 15 con ella.</li><li>Si dejás la mesa vacía, es escoba: un punto.</li><li>Valores: ' + vals + '; el resto, su número.</li><li>Al final de cada mano se cuentan cartas, oros, siete de oros y setenta (con la escala del reglamento).</li></ul></section>' + mnArt(h) + '<section class="jg-c"><span class="jg-sm">Setenta</span><h2>La escala</h2><p>' + Object.entries(SETENTA).filter(([n]) => +n <= 7).sort((a, b) => b[1] - a[1]).map(([n, v]) => (n === '1' ? 'As' : n) + ' = ' + v).join(' · ') + ' · figuras = ' + SETENTA[10] + '</p>' + cite(h, ['escoba.values', 'escoba.escoba', 'escoba.cartas', 'escoba.oros-6', 'escoba.siete-oros', 'escoba.setenta-suits', 'escoba.scale-7', 'escoba.scale-6-1', 'escoba.scale-5-4-3', 'escoba.scale-2', 'escoba.scale-fig', 'escoba.must-take', 'escoba.target-30', 'escoba.l-optional']) + '</section></div>';
   },
 };
 
 export const dados = {
-  path: '/dados/', kind: 'game', section: 'juegos', css: ['mesa.css', 'curso.css'], js: ['dados.js'],
+  path: '/dados/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css', 'curso.css'], js: ['dados.js'],
   title: 'Tirador de dados online: 1 a 10 dados, para la generala',
   h1: 'Tirá los dados',
   description: 'Tirador de dados online: de 1 a 10 dados, de 4 a 20 caras, con suma e historial. Atajo para la generala con cinco dados y gráfico de resultados.',
@@ -113,7 +113,7 @@ export const dados = {
 };
 
 export const juegosCartas = {
-  path: '/juegos-de-cartas/', kind: 'game', section: 'juegos', css: ['mesa.css'],
+  path: '/juegos-de-cartas/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css'],
   title: 'Juegos de cartas españolas que se juegan en Argentina',
   h1: 'Juegos de cartas y de dados',
   description: 'Los juegos de cartas españolas y de dados de la mesa argentina: truco, chinchón, escoba de 15 y generala, para jugar contra la compu o anotar en la mesa.',
@@ -121,11 +121,11 @@ export const juegosCartas = {
   render(h) {
     return SPRITE + hero(h, { kicker: 'Juegos de mesa · sin plata', scene: 'juegos', lede: 'Truco, chinchón, escoba y generala: contra la compu, sin registro y sin apuestas. Y anotadores para cuando juegan en la mesa.' }) +
       '<div class="jg-mn"><section class="jg-c w3"><span class="jg-sm">Con cartas españolas</span><h2>Cartas</h2>' + tiles(h, [
-        ['/truco/jugar/', 'Truco', 'Contra la compu, de a 2 o de a 4', '#ff5a3c', ICONS.cards],
-        ['/chinchon/jugar/', 'Chinchón', 'Robá, descartá y cortá', '#2f7cf6', ICONS.cards],
-        ['/escoba-de-15/jugar/', 'Escoba de 15', 'Sumá 15 y barré la mesa', '#16b38a', ICONS.cards],
+        ['/truco/jugar/', 'Truco', 'Contra la compu, de a 2 o de a 4', '#ff5a3c', suitIcon('e')],
+        ['/chinchon/jugar/', 'Chinchón', 'Robá, descartá y cortá', '#2f7cf6', suitIcon('c')],
+        ['/escoba-de-15/jugar/', 'Escoba de 15', 'Sumá 15 y barré la mesa', '#16b38a', suitIcon('o')],
         ['/truco/anotador/', 'Anotador de truco', 'Con fósforos, malas y buenas', '#8b5cf6', ICONS.pencil],
-        ['/chinchon/', '¿Puedo cortar?', 'Cargá tus siete cartas de chinchón', '#16b38a', ICONS.hand],
+        ['/chinchon/', '¿Puedo cortar?', 'Cargá tus siete cartas de chinchón', '#16b38a', suitIcon('b')],
         ['/chinchon/anotador/', 'Anotador de chinchón', 'Hasta ' + LIMIT + ', con reenganche', '#e8930c', ICONS.pencil],
         ['/escoba-de-15/', 'Buscador de escobas', 'Todas las sumas de 15 de la mesa', '#2f7cf6', ICONS.eye],
       ]) + '</section><section class="jg-c w3"><span class="jg-sm">Con fichas y bolillas</span><h2>Burako y bolillero</h2>' + tiles(h, [

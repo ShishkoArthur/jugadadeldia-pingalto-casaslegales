@@ -71,3 +71,10 @@ for (const box of $$('[data-armar]')) {
   keyTap(box);
   show();
 }
+
+const FIG = { S: 10, C: 11, R: 12 };
+$$('.jg-suits .jg-mcs').forEach(row => {
+  const cards = [...row.querySelectorAll('.jg-mc')].map(m => (FIG[m.textContent] || m.textContent) + m.dataset.s);
+  row.className = 'jg-suitc';
+  row.innerHTML = cards.map(c => cardHtml(c, { attrs: 'role="img"' })).join('');
+});

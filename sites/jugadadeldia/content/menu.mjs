@@ -100,7 +100,7 @@ export function mainNav(h, p) {
       const n = [g.head, ...g.items].filter(Boolean).length + g.items.reduce((a, it) => a + it.kids.length, 0);
       return '<div class="jg-mg' + (n > 9 ? ' jg-mg2' : '') + '"><b>' + h.esc(g.name) + '</b>' + (g.head ? link(h, g.head, cur) : '') + items(h, g.items, cur) + '</div>';
     }).join('') + '</div></div></div>').join('');
-  return '<nav class="jg-menu jg-sg" id="jg-nav" aria-label="Principal" data-jg-all><div class="jg-nq"><input type="search" data-jg-q placeholder="Buscar en Jugada del Día" aria-label="Buscar en Jugada del Día" autocomplete="off" enterkeyhint="search"><div class="jg-nqr" data-jg-qr hidden></div></div>' + secs + '</nav>';
+  return '<nav class="jg-menu jg-sg" id="jg-nav" aria-label="Principal" data-jg-all><div class="jg-nq"><input type="search" data-jg-q placeholder="Buscar en Jugada del Día" aria-label="Buscar en Jugada del Día" autocomplete="off" enterkeyhint="search"><div class="jg-nqr" data-jg-qr hidden></div></div>' + secs + '<div class="jg-nt"><button class="jg-b s" type="button" data-jg-tema>Tema claro u oscuro</button></div></nav>';
 }
 
 // BreadcrumbList from the menu tree (home -> section hub -> parent -> page)

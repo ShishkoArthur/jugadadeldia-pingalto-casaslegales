@@ -33,7 +33,7 @@ export function envidoChains() {
 }
 
 export const trucoPuntos = {
-  path: '/truco/puntos/', kind: 'game', section: 'truco', css: ['mesa.css', 'guias.css', 'truco-guia.css'], js: ['puntos.js'],
+  path: '/truco/puntos/', kind: 'game', section: 'truco', css: ['naipes.css', 'mesa.css', 'guias.css', 'truco-guia.css'], js: ['puntos.js'],
   title: 'Puntos del truco: cuánto vale cada canto',
   h1: 'Cuánto vale cada canto en el truco',
   description: 'Calculadora de puntos del truco: elegí la secuencia de cantos, de envido a falta envido o de truco a vale cuatro, y mirá cuánto vale querido y no querido.',
@@ -63,7 +63,7 @@ export const trucoPuntos = {
 };
 
 export const trucoQuiero = {
-  path: '/truco/quiero-o-no-quiero/', kind: 'game', section: 'truco', css: ['mesa.css', 'guias.css', 'truco-guia.css'], js: ['quiero.js'],
+  path: '/truco/quiero-o-no-quiero/', kind: 'game', section: 'truco', css: ['naipes.css', 'mesa.css', 'guias.css', 'truco-guia.css'], js: ['quiero.js'],
   title: '¿Quiero o no quiero? Entrenador de truco y envido',
   h1: '¿Quiero o no quiero?',
   description: '¿Quiero o no quiero? Entrená tus decisiones de truco y envido con manos al azar y compará cada respuesta con la cuenta del motor, en series de diez.',

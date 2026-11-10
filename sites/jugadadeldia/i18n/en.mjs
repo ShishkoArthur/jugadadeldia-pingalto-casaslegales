@@ -8,6 +8,7 @@ export const UI = {
   'Ayuda': 'Help',
   'Idioma': 'Language',
   'Cambiar entre tema claro y oscuro': 'Switch between light and dark theme',
+  'Tema claro u oscuro': 'Light or dark theme',
   'Institucional': 'About the site',
   'Inicio': 'Home',
   'Quiniela': 'Quiniela',

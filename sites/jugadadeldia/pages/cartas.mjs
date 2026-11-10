@@ -39,7 +39,7 @@ const GAMES = [
 ];
 
 export const chinchon = {
-  path: '/chinchon/', kind: 'game', section: 'juegos', css: ['mesa.css', 'guias.css', 'curso.css'], js: ['corte.js'],
+  path: '/chinchon/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css', 'guias.css', 'curso.css'], js: ['corte.js'],
   title: 'Reglas del chinchón: cómo se juega y cuándo cortar',
   h1: 'Reglas del chinchón',
   description: 'Reglas del chinchón desde cero: el mazo, los juegos, robar y tirar, cuándo cortar y cómo se cuentan los puntos, con una mano real resuelta turno por turno.',
@@ -60,7 +60,7 @@ export const chinchon = {
 };
 
 export const chinchonAnotador = {
-  path: '/chinchon/anotador/', kind: 'game', section: 'juegos', css: ['mesa.css', 'guias.css'], js: ['anotchin.js'],
+  path: '/chinchon/anotador/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css', 'guias.css'], js: ['anotchin.js'],
   title: 'Anotador de chinchón online, con enganche',
   h1: 'Anotador de chinchón',
   description: 'Anotador de chinchón online: puntaje hasta 101 o lo que elijan, menos diez por cortar con todo, reenganche y la tabla final de quién quedó afuera.',
@@ -77,7 +77,7 @@ export const chinchonAnotador = {
 };
 
 export const escoba = {
-  path: '/escoba-de-15/', kind: 'game', section: 'juegos', css: ['mesa.css', 'guias.css', 'curso.css'], js: ['buscador.js'],
+  path: '/escoba-de-15/', kind: 'game', section: 'juegos', css: ['naipes.css', 'mesa.css', 'guias.css', 'curso.css'], js: ['buscador.js'],
   title: 'Cómo se juega a la escoba de 15: reglas y puntos',
   h1: 'Cómo se juega a la escoba de 15',
   description: 'Reglas de la escoba de 15 desde cero: qué vale cada carta, cómo se suma 15, la escoba, el setenta y la cuenta de la mano, con una mano real resuelta.',

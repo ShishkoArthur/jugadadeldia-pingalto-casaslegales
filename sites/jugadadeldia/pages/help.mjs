@@ -51,11 +51,11 @@ export const autoexclusion = {
     const list = provinces(h).filter(j => j.selfExclusion);
     const cards = list.map(j => {
       const s = j.selfExclusion;
-      return '<article class="jg-c"><span class="jg-sm">' + h.esc(j.name) + '</span><h3>' + h.esc(s.name) + '</h3>' + (s.terms ? '<p class="jg-ch"><span>Dura: ' + h.esc(s.terms) + '</span></p>' : '') +
+      return '<article class="jg-c" id="ax-' + j.id + '"><span class="jg-sm">' + h.esc(j.name) + '</span><h3>' + h.esc(s.name) + '</h3>' + (s.terms ? '<p class="jg-ch"><span>Dura: ' + h.esc(s.terms) + '</span></p>' : '') +
         (s.web ? '<p>Dónde: <a href="' + h.esc(s.web) + '" rel="noopener">' + h.esc(hostOf(s.web)) + '</a></p>' : '') + quote(h, s) + '</article>';
     }).join('');
     return '<section class="jg-hero no-g jg-calm"><div><span class="jg-k">Ayuda · autoexclusión</span><h1>' + h.esc(h.page.h1) + '</h1><p class="jg-lede">La autoexclusión es un pedido voluntario: durante un tiempo no te dejan entrar a las salas (y, en algunas provincias, a las plataformas con licencia). Esto es lo que dice cada página oficial.</p></div></section>' +
-      '<div class="jg-mn">' + cards + crisisCard(h) + '</div>';
+      '<div class="jg-mn"><nav class="jg-c w3 jg-jump" aria-label="Elegí tu provincia"><span class="jg-sm">Elegí tu provincia</span><div class="jg-sg">' + list.map(j => '<a href="#ax-' + j.id + '">' + h.esc(j.name) + '</a>').join('') + '</div></nav>' + cards + crisisCard(h) + '</div>';
   },
 };
 
