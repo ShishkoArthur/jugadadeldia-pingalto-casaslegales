@@ -186,6 +186,9 @@
 - **`clash` (раз в сутки, api.clashroyale.com, ключ на IPv4 сервера):** `/cards` (123 карты: элексир, редкость, max level, эволюция),
   `/locations` → Argentina (57000017) → `pathoflegend/players` (03.11 пусто — сезонный рейтинг; страница рейтинг не показывает).
   Новые карты помечаются «nueva». Страница `/clash/cartas` (фильтры, мазо из 8: средний элексир и цикл). `maxAgeHours` 72.
+  **Картинки карт (с 10.11, решение владельца):** лента копирует `iconUrls` (api-assets.clashroyale.com, без изменений) в
+  `/data/feeds/clash-art/` один раз (новые/изменённые), список — `clash-art.json`; выключатель — `data/sources/pingalto/assets.json`
+  (`publishers.supercell.enabled`; файл синхронизируется на сервер, нет файла = картинок нет). Первый прогон ≈ 130 запросов, 130 с.
 - **`brawl` (раз в час; бойцы и рейтинг кэш 20 ч):** `/brawlers` (111: star powers, gadgets; редкости/класса в официальном API нет),
   `/events/rotation`, `/rankings/AR/players` → только пороги копов на местах 1/10/25/50/100/200 (имена и теги не храним).
   Страницы `/brawl/brawlers`, `/brawl/eventos` (обратный отсчёт). `maxAgeHours` 6.
