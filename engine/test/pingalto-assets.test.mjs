@@ -21,10 +21,12 @@ test('every hosted file is listed, unmodified, from the publisher host', () => {
     assert.ok(A.publishers[s.publisher], s.id + ': unknown publisher');
     assert.ok(s.source && s.robots, s.id + ': source and robots note');
     if (!s.dir) { assert.ok(s.server && s.list, s.id + ': server art names its list'); continue; }
-    assert.ok(s.files.length > 100, s.id + ': files');
+    assert.ok(s.files.length >= 2, s.id + ': files');
     const host = new URL(s.files[0].url).hostname;
     for (const f of s.files) {
       const p = join(ROOT, s.dir, f.file), b = readFileSync(p);
+      assert.ok(b.length <= 30 * 1024, f.file + ': served file over 30 KB');
+      if (f.srcSha256) assert.match(f.srcSha256, /^[0-9a-f]{64}$/, f.file);
       assert.equal(createHash('sha256').update(b).digest('hex'), f.sha256, f.file);
       assert.equal(b.length, f.bytes, f.file);
       assert.equal(new URL(f.url).hostname, host, f.file + ': one host per set');

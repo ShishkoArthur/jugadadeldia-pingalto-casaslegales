@@ -1,4 +1,4 @@
-// Clash Royale card art (owner 2026-11-10): the clash feed copies the official images named by iconUrls once, unmodified, into
+// Clash Royale card art (owner 2026-11-10): the clash feed copies the official images named by iconUrls once, unmodified (or as a light WebP tile), into
 // <out>/clash-art/, lists them in clash-art.json, never fetches an unchanged one again, drops files the API no longer names,
 // skips anything that is not a PNG from the official image host, obeys robots.txt and the switch in assets.json. No network:
 // recorded answers in a temporary fixture folder.
@@ -21,7 +21,7 @@ function cards(n = 85, change = {}) {
   return Array.from({ length: n }, (_, i) => {
     const id = 26000000 + i;
     const c = { id, name: 'Card ' + i, rarity: RAR[i % 5], elixirCost: 1 + (i % 7), maxLevel: 16, iconUrls: { medium: IMG + (change[id] || 'card' + i + 'abcdefgh') + '.png' } };
-    if (i % 4 === 0) { c.maxEvolutionLevel = 1; c.iconUrls.evolutionMedium = IMG + 'evo' + i + 'abcdefgh.png'; }
+    if (i % 4 === 0) { c.maxEvolutionLevel = 1; c.iconUrls.evolutionMedium = 'https://api-assets.clashroyale.com/cardevolutions/300/evo' + i + 'abcdefgh.png'; }
     return c;
   });
 }
@@ -43,7 +43,7 @@ function fixtures(dir, items, o = {}) {
   writeFileSync(join(f, 'index.json'), JSON.stringify(idx));
 }
 
-const env = { CR_API_KEY: 'test-key' };
+const env = { CR_API_KEY: 'test-key', PA_ART_PNG: '1' };
 const read = f => JSON.parse(readFileSync(f, 'utf8'));
 
 test('first run copies every official image once and the cards point at them', async () => {
@@ -60,6 +60,7 @@ test('first run copies every official image once and the cards point at them', a
     assert.equal(doc.art.on, true);
     for (const c of doc.cards) {
       assert.match(c.img, /^clash-art\/\d+-[0-9a-f]{10}\.png$/);
+      if (c.ei) assert.match(c.ei, /^clash-art\/\d+-evo-[0-9a-f]{10}\.png$/);
       assert.ok(existsSync(join(out, c.img)), c.img);
       assert.equal(!!c.ei, !!c.evo, 'evolution art only for cards with an evolution');
     }
@@ -68,7 +69,7 @@ test('first run copies every official image once and the cards point at them', a
     const list = read(join(out, 'clash-art.json')).data;
     assert.equal(list.publisher, 'Supercell');
     assert.equal(list.files.length, items.length + evo + 1);
-    for (const f of list.files) { assert.ok(f.url.startsWith(IMG)); assert.ok(f.fetched); assert.ok(existsSync(join(out, ART_DIR, f.file))); }
+    for (const f of list.files) { assert.ok(f.url.startsWith('https://api-assets.clashroyale.com/')); assert.ok(f.fetched); assert.ok(existsSync(join(out, ART_DIR, f.file))); }
 
     fixtures(join(dir, 'fx2'), items, { images: false });
     const r2 = await runFeed(clash, { out, fixtures: join(dir, 'fx2'), env });
@@ -82,7 +83,7 @@ test('first run copies every official image once and the cards point at them', a
     assert.equal(r3.ok, true, r3.error);
     assert.equal(r3.requests, 3 + 1 + 1, 'only the changed image is fetched');
     const c5 = read(join(out, 'clash.json')).data.cards.find(c => c.id === 26000005);
-    assert.equal(c5.img, ART_DIR + '/' + artFile(26000005, '', IMG + 'card5newartwork.png'));
+    assert.equal(c5.img, ART_DIR + '/' + artFile(26000005, '', IMG + 'card5newartwork.png') + '.png');
     assert.equal(readdirSync(join(out, ART_DIR)).filter(f => f.startsWith('26000005-')).length, 1, 'the old file of a changed card is removed');
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
@@ -117,7 +118,7 @@ test('switch off in assets.json or robots.txt against us: no download, folder em
     const items = cards();
     fixtures(join(dir, 'fx'), items);
     const ctx = makeCtx({ fixtures: join(dir, 'fx', 'clash'), gapMs: 0 });
-    ctx.outDir = out;
+    ctx.outDir = out; ctx.env = { PA_ART_PNG: '1' };
     const on = await syncArt(ctx, items, { switch: { on: true } });
     assert.ok(on.got > 80);
     const off = await syncArt(ctx, items, { switch: { on: false, why: 'off' } });
@@ -125,9 +126,9 @@ test('switch off in assets.json or robots.txt against us: no download, folder em
     assert.deepEqual(off.files, {});
     assert.equal(readdirSync(join(out, ART_DIR)).length, 0, 'all copied art removed');
 
-    fixtures(join(dir, 'fx2'), items, { robots: 'User-agent: ClaudeBot\nDisallow: /cards/\n' });
+    fixtures(join(dir, 'fx2'), items, { robots: 'User-agent: ClaudeBot\nDisallow: /\n' });
     const ctx2 = makeCtx({ fixtures: join(dir, 'fx2', 'clash'), gapMs: 0 });
-    ctx2.outDir = join(dir, 'out2');
+    ctx2.outDir = join(dir, 'out2'); ctx2.env = { PA_ART_PNG: '1' };
     const blocked = await syncArt(ctx2, items, { switch: { on: true } });
     assert.equal(blocked.got, 0);
     assert.ok(blocked.notes.some(n => /robots/.test(n)));
@@ -135,9 +136,32 @@ test('switch off in assets.json or robots.txt against us: no download, folder em
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
+const makeCtxIn = (fx, out) => { const c = makeCtx({ fixtures: join(fx, 'clash'), gapMs: 0 }); c.outDir = out; c.env = {}; return c; };
+test('light tiles: each image is converted once to a WebP 210 px wide and the PNG is not kept', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'pa-art-'));
+  try {
+    const items = cards();
+    fixtures(join(dir, 'fx'), items);
+    const ctx = makeCtxIn(join(dir, 'fx'), join(dir, 'out'));
+    const widths = [];
+    const fake = (buf, w) => { widths.push(w); return Buffer.concat([Buffer.from('RIFF'), Buffer.alloc(4), Buffer.from('WEBPVP8 '), Buffer.alloc(400, 7)]); };
+    const r = await syncArt(ctx, items, { switch: { on: true }, convert: fake });
+    assert.equal(r.webp, true);
+    assert.ok(widths.length > 80 && widths.every(w => w === 210));
+    const names = readdirSync(join(dir, 'out', ART_DIR));
+    assert.ok(names.length === widths.length && names.every(f => f.endsWith('.webp')));
+    const again = await syncArt(ctx, items, { switch: { on: true }, convert: () => { throw new Error('converted twice'); } });
+    assert.equal(again.got, 0);
+    const bad = await syncArt(makeCtxIn(join(dir, 'fx'), join(dir, 'out3')), items, { switch: { on: true }, convert: () => Buffer.from('nope') });
+    assert.equal(Object.keys(bad.files).length, 0);
+    assert.ok(bad.notes.some(n => /WebP/.test(n)));
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
 test('helpers: official host only, PNG check, robots rules', () => {
   assert.equal(artUrl(IMG + 'abcdefgh123.png'), IMG + 'abcdefgh123.png');
-  for (const u of ['http://api-assets.clashroyale.com/cards/300/abcdefgh123.png', 'https://api-assets.clashroyale.com/cards/300/abcdefgh123.png?x=1', 'https://cdn.example/cards/300/abcdefgh123.png', 'https://api-assets.clashroyale.com/other/abcdefgh123.png', 'nonsense']) assert.equal(artUrl(u), null, u);
+  assert.ok(artUrl('https://api-assets.clashroyale.com/cardevolutions/300/abcdefgh123.png'));
+  for (const u of ['http://api-assets.clashroyale.com/cards/300/abcdefgh123.png', 'https://api-assets.clashroyale.com/cards/300/abcdefgh123.png?x=1', 'https://cdn.example/cards/300/abcdefgh123.png', 'https://api-assets.clashroyale.com/abcdefgh123.png', 'https://api-assets.clashroyale.com/cards/300/abc def.png', 'nonsense']) assert.equal(artUrl(u), null, u);
   assert.equal(isPng(png(1)), true);
   assert.equal(isPng(Buffer.from('GIF89a' + 'x'.repeat(2000))), false);
   assert.equal(robotsAllow('', '/cards/300/x.png'), true);

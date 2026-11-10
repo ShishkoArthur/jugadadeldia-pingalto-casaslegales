@@ -1,0 +1,12 @@
+.pa-bsw{display:flex;align-items:center;gap:10px;min-width:0}
+.pa-bsp{flex:none;width:44px;height:44px;border-radius:12px;background:radial-gradient(circle at 50% 35%,#ffe58a,#f3a83b 70%);box-shadow:0 0 0 2px var(--ln)}
+.pa-bsg{width:22px;height:auto;margin-right:6px;vertical-align:-5px}
+.pa-seg .pa-bsg{width:20px;margin:0 6px 0 -4px}
+.pa-bse{position:relative;grid-template-columns:minmax(0,1fr);overflow:hidden}
+.pa-bsm{display:block;margin:-14px -16px 6px;height:150px;background:#1d1830;overflow:hidden}
+.pa-bsm img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.pa-bsmc{overflow:hidden}
+.pa-bsmc>.pa-bsm{margin:-20px -20px 12px}
+.pa-blim{width:28px;height:28px;margin-right:8px;border-radius:8px;flex:none}
+.pa-bl li>span:first-child{display:flex;align-items:center}
+@media (max-width:680px){.pa-bsp{width:38px;height:38px;border-radius:10px}.pa-bsm{height:120px}}

@@ -95,3 +95,4 @@ span.pa-crd:hover,span.pa-crd:active{transform:none}
 .pa-blim{width:26px;height:auto;margin-right:8px;vertical-align:middle;border-radius:4px}
 .pa-bl li>span:first-child{display:flex;align-items:center}
 @media (max-width:760px){.pa-crdk,.pa-crpk{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}}
+@media (min-width:761px){.pa-mz>.pa-out{position:sticky;top:86px}}

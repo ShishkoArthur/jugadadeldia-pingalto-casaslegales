@@ -38,7 +38,7 @@ case "$SITE" in
     # how long a copy stays fresh (owner copy or downloaded): one dependency-free file
     EXTRA_PATHS=(tools/lib/copyage.mjs) ;;
   pingalto)
-    CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK=''
+    CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK='libwebp-tools'
     KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID)
     SRC_SETS=()
     # the art switch (owner 10.11): no file means no Clash card art is downloaded

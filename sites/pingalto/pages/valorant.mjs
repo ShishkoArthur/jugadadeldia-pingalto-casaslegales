@@ -1,6 +1,10 @@
 // /valorant/agentes - every playable agent with role and abilities, read whole from the saved valorant-api.com copy (data of the
 // game client, es-MX). Nothing typed by hand: names, roles, texts, colors and release dates come from that file.
 import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
+import { artFor, artOn, artNotice } from '../content/art.mjs';
+
+export const valArtNote = h => artOn('valorantapi') ? '<p class="pa-src" lang="en">' + h.esc(artNotice('valorantapi')) + '</p>' : '';
+export const agentImg = (h, a) => { const f = artFor('valorant-agents', a.uuid); return f ? '<img src="' + h.asset(f) + '" alt="' + h.esc(a.name) + '" width="128" height="128" loading="lazy">' : ''; };
 
 const SLOT = { Ultimate: 'Definitiva', Passive: 'Pasiva' };
 const ORDER = { Grenade: 0, Ability1: 1, Ability2: 2, Ultimate: 3, Passive: 4 };
@@ -11,7 +15,7 @@ export function agents(h) {
   const raw = h.pa.json('valapi-agents');
   if (raw.status !== 200 || !Array.isArray(raw.data)) throw new Error('valorant agents: bad file');
   const list = raw.data.filter(a => a.isPlayableCharacter && a.role).map(a => ({
-    id: slug(a.displayName), name: a.displayName, role: a.role.displayName, roleId: slug(a.role.displayName), roleDesc: a.role.description,
+    id: slug(a.displayName), uuid: a.uuid, name: a.displayName, role: a.role.displayName, roleId: slug(a.role.displayName), roleDesc: a.role.description,
     desc: a.description, released: /^(19[7-9]|20[01])/.test(a.releaseDate) ? null : a.releaseDate.slice(0, 10),
     colors: (a.backgroundGradientColors || []).slice(0, 3).map(color),
     abilities: a.abilities.filter(x => x.displayName && x.description).sort((x, y) => (ORDER[x.slot] ?? 9) - (ORDER[y.slot] ?? 9)).map(x => ({ slot: x.slot, name: x.displayName, desc: x.description })),
@@ -29,7 +33,7 @@ const rich = (h, t) => h.esc(t).replace(/&lt;(whitebold|teal|debuffred)&gt;([\s\
 function card(h, a, newest) {
   const bg = a.colors.length ? 'background:linear-gradient(135deg,' + a.colors.join(',') + ')' : '';
   return '<article class="pa-c pa-ag" id="' + a.id + '" data-role="' + a.roleId + '" data-name="' + h.esc(a.name.toLowerCase()) + '">' +
-    '<header><i style="' + bg + '" aria-hidden="true">' + h.esc([...a.name][0]) + '</i><div><h3>' + h.esc(a.name) + (a.id === newest ? ' <span class="pa-tag pa-cm">el más nuevo</span>' : '') + '</h3><p class="pa-x">' + h.esc(a.role) + (a.released ? ' · llegó el ' + h.fmtDate(a.released) : '') + '</p></div></header>' +
+    '<header>' + (agentImg(h, a) ? '<i class="pa-agp" style="' + bg + '">' + agentImg(h, a) + '</i>' : '<i style="' + bg + '" aria-hidden="true">' + h.esc([...a.name][0]) + '</i>') + '<div><h3>' + h.esc(a.name) + (a.id === newest ? ' <span class="pa-tag pa-cm">el más nuevo</span>' : '') + '</h3><p class="pa-x">' + h.esc(a.role) + (a.released ? ' · llegó el ' + h.fmtDate(a.released) : '') + '</p></div></header>' +
     '<p>' + rich(h, a.desc) + '</p><details class="pa-abd"><summary><b>' + a.abilities.length + ' habilidades</b> <span>' + a.abilities.map(x => h.esc(x.name)).join(' · ') + '</span></summary><ul class="pa-ab">' + a.abilities.map(x => '<li><b>' + h.esc(x.name) + (SLOT[x.slot] ? ' <span class="pa-tag">' + SLOT[x.slot] + '</span>' : '') + '</b><span>' + rich(h, x.desc) + '</span></li>').join('') + '</ul></details></article>';
 }
 
@@ -56,9 +60,9 @@ export const valorantAgentes = {
     const roles = sec('Los ' + fmt(A.roles.length, 0) + ' roles', '<div class="pa-two">' + A.roles.map(r => '<div class="pa-c"><h3>' + h.esc(r.name) + ' · ' + fmt(count(r), 0) + '</h3><p>' + h.esc(r.desc) + '</p></div>').join('') + '</div>');
     const grid = sec('Todos los agentes', '<div class="pa-ags" id="ag-list">' + A.list.map(a => card(h, a, newest)).join('') + '</div>');
     const src = sec('De dónde salen los datos', '<div class="pa-two"><div><p>Nombres, roles, textos de habilidades y colores salen de los archivos del cliente de Valorant que publica valorant-api.com, un proyecto de la comunidad sin relación con Riot. Leemos el archivo entero, tal como lo guardamos, en español de México. Los textos son los del juego.</p>' +
-      srcLine(h, 'valapi-agents') + srcLine(h, 'valapi-version', 'cliente <code>' + h.esc(A.version) + '</code> del ' + h.fmtDate(A.build)) + '</div><div><p>La fecha de llegada solo aparece cuando el archivo la trae; para los agentes más viejos viene vacía y no la inventamos. Qué agentes eligen los equipos argentinos en torneos todavía no lo mostramos: falta una fuente pública que podamos citar partido por partido.</p></div></div>');
+      srcLine(h, 'valapi-agents', artOn('valorantapi') ? 'íconos de la misma copia, achicados' : '') + srcLine(h, 'valapi-version', 'cliente <code>' + h.esc(A.version) + '</code> del ' + h.fmtDate(A.build)) + valArtNote(h) + '</div><div><p>La fecha de llegada solo aparece cuando el archivo la trae; para los agentes más viejos viene vacía y no la inventamos. Qué agentes eligen los equipos argentinos en torneos todavía no lo mostramos: falta una fuente pública que podamos citar partido por partido.</p></div></div>');
     const ar = sec('Desde Argentina', '<div class="pa-two"><div>' + quote(h, 'val_scl', 'es') + '</div><div><p>Tu ping hasta Santiago desde tu provincia está en el <a href="' + h.href('/kit/ping') + '">test de ping</a>, y cuántas partidas te faltan para subir, en los <a href="' + h.href('/valorant/rangos') + '">rangos de Valorant</a>.</p></div></div>');
-    return '<link rel="stylesheet" href="' + h.asset('lists.css') + '">' + hero(h, { ey: 'Valorant · agentes · ' + fmt(A.list.length, 0), sub: 'Cada agente con su rol y sus habilidades en español, para elegir con quién jugar o entender qué te hizo el rival. Filtrá por rol y compará de a dos.' }) +
+    return '<link rel="stylesheet" href="' + h.asset('vx.css') + '">' + hero(h, { ey: 'Valorant · agentes · ' + fmt(A.list.length, 0), sub: 'Cada agente con su rol y sus habilidades en español, para elegir con quién jugar o entender qué te hizo el rival. Filtrá por rol y compará de a dos.' }) +
       tools + grid + roles + src + ar;
   },
 };

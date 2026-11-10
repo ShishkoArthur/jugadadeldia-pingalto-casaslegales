@@ -13,6 +13,9 @@ export const crCss = h => '<link rel="stylesheet" href="' + h.asset('cr.css') + 
 export const wait = '<p class="pa-fdw" data-fdw>Cargando…</p><noscript><p class="pa-note">Esta lista se arma con JavaScript desde nuestra copia de los datos.</p></noscript>';
 export const PS = '<p class="pa-src pa-fds">Datos: <a href="https://pandascore.co/" rel="noopener">PandaScore</a> · horarios en hora argentina · se revisa cada hora</p>';
 export const ART = artOn('supercell') ? ' data-fd-art="1"' : '';
+export const ART_BS = artOn('supercell') && artOn('brawlify') ? ' data-fd-art="1"' : '';
+export const bsCss = h => '<link rel="stylesheet" href="' + h.asset('bs.css') + '">';
+export const BSN = ART_BS ? '<p class="pa-src pa-fds">Imágenes de Brawl Stars: arte original del juego tomado de la copia de fans de <a href="https://brawlify.com/" rel="noopener">Brawlify</a>, sin cambios, guardado en nuestro servidor. La API oficial no trae imágenes.</p>' : '';
 const RLEG = [['common', 'Común'], ['rare', 'Especial'], ['epic', 'Épica'], ['legendary', 'Legendaria'], ['champion', 'Campeón']];
 export const crLegend = (tap = true) => '<p class="pa-czl"><span><b class="pa-crx">3</b> elixir que cuesta</span><span class="pa-czr">' + RLEG.map(([k, l]) => '<i class="pa-cr-' + k + '">' + l + '</i>').join('') + '</span><span><i class="pa-crv">EVO</i> tiene evolución</span>' + (tap ? '<span><s class="pa-crk">1</s> lugar en tu mazo: tocá una carta para sumarla o sacarla</span>' : '') + '</p>';
 export const SC = '<p class="pa-src pa-fds" lang="en">' + ATTRIBUTION + '</p>';
@@ -68,10 +71,10 @@ export const brawlBrawlers = {
   scripts: ['supercell.js'],
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'Brawl Stars · brawlers', sub: 'La lista de la API oficial de Supercell, con cada habilidad estelar y cada gadget. Y una cuenta rápida: cuántas copas tiene el puesto 1, el 50 o el 200 de Argentina.' }) +
+    return css(h) + bsCss(h) + hero(h, { ey: 'Brawl Stars · brawlers', sub: 'La lista de la API oficial de Supercell, con cada habilidad estelar y cada gadget. Y una cuenta rápida: cuántas copas tiene el puesto 1, el 50 o el 200 de Argentina.' }) +
       sec('¿Entrás entre los mejores de Argentina?', '<div class="pa-fd" data-fd="brawl-top" data-fd-src="' + FEED + '">' + wait + '</div>', 'top') +
-      sec('Los brawlers', '<div class="pa-fd" data-fd="brawl" data-fd-src="' + FEED + '">' + wait + '</div>' + SC, 'brawlers') +
-      sec('Lo que no mostramos', '<ul class="pa-dot"><li>Rareza y clase: la API oficial no las publica y no copiamos sitios no oficiales.</li><li>Imágenes de los brawlers y de los mapas: la API oficial de Supercell no trae ninguna, así que van con su nombre.</li><li>Nombres de jugadores del ranking: solo usamos las copas de cada puesto, no quién es.</li></ul>');
+      sec('Los brawlers', '<div class="pa-fd" data-fd="brawl" data-fd-src="' + FEED + '"' + ART_BS + '>' + wait + '</div>' + SC + BSN, 'brawlers') +
+      sec('Lo que no mostramos', '<ul class="pa-dot"><li>Rareza y clase: la API oficial no las publica y no copiamos sitios no oficiales.</li><li>Imágenes en la API oficial: no trae ninguna. Las caras de los brawlers vienen de una copia de fans del arte original; si falta alguna, el brawler va con su nombre.</li><li>Nombres de jugadores del ranking: solo usamos las copas de cada puesto, no quién es.</li></ul>');
   },
 };
 
@@ -84,8 +87,8 @@ export const brawlEventos = {
   scripts: ['supercell.js'],
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'Brawl Stars · eventos', sub: 'Qué mapa y qué modo hay en cada lugar de la rotación ahora mismo, a qué hora de Argentina cambia y cuánto falta.' }) +
-      sec('Ahora en la rotación', '<div class="pa-fd" data-fd="brawl-events" data-fd-src="' + FEED + '">' + wait + '</div>' + SC, 'eventos') +
+    return css(h) + bsCss(h) + hero(h, { ey: 'Brawl Stars · eventos', sub: 'Qué mapa y qué modo hay en cada lugar de la rotación ahora mismo, a qué hora de Argentina cambia y cuánto falta.' }) +
+      sec('Ahora en la rotación', '<div class="pa-fd" data-fd="brawl-events" data-fd-src="' + FEED + '"' + ART_BS + '>' + wait + '</div>' + SC + BSN, 'eventos') +
       sec('Cómo se lee', '<ul class="pa-dot"><li>Los modos y mapas salen con el nombre que usa la API oficial, en inglés.</li><li>La cuenta regresiva corre en tu navegador con la hora de fin que publica Supercell.</li><li>La rotación se revisa cada hora: si la copia es vieja, la página lo avisa.</li></ul>');
   },
 };

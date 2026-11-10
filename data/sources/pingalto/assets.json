@@ -8,17 +8,32 @@
    "notice": "pingalto was created under Riot Games' \"Legal Jibber Jabber\" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.",
    "policy": "brand-policies.json publishers.riot (Legal Jibber Jabber: noncommercial community use of Riot IP; no Riot logos)"
   },
+  "valorantapi": {
+   "enabled": true,
+   "publisher": "Riot Games (art), served by valorant-api.com",
+   "notice": "pingalto was created under Riot Games' \"Legal Jibber Jabber\" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project. Valorant images: valorant-api.com, a fan mirror of the original game art.",
+   "policy": "Fan mirror of original art, owner 2026-11-10 (\"official ones or whatever is better\"): Riot publishes no open image files for Valorant. robots.txt of valorant-api.com: \"Disallow:\" for *; media.valorant-api.com: no rules (only Cloudflare content signals, none set). Needs publishers.riot on as well.",
+   "requires": "riot"
+  },
   "supercell": {
    "enabled": true,
    "notice": "This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: www.supercell.com/fan-content-policy.",
    "policy": "brand-policies.json publishers.supercell (Fan Content Policy: fan pages and guide apps; Supercell assets not modified)"
+  },
+  "brawlify": {
+   "enabled": true,
+   "publisher": "Supercell (art), served by Brawlify",
+   "notice": "This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: www.supercell.com/fan-content-policy. Brawl Stars images: Brawlify CDN (cdn.brawlify.com), a fan mirror of the original game art.",
+   "policy": "Fan CDN of original art, owner 2026-11-10 (\"official ones or whatever is better\"): the official API names no images. robots.txt of cdn.brawlify.com: \"Disallow:\" for *. The Brawlify API answers 403 to us and is not used. Needs publishers.supercell on as well.",
+   "requires": "supercell"
   }
  },
  "sets": [
   {
    "id": "riot-lol",
    "publisher": "riot",
-   "what": "Square portrait of every League of Legends champion (Data Dragon, the version of the saved champion list)",
+   "host": "ddragon.leagueoflegends.com",
+   "what": "Square portrait of every League of Legends champion (Data Dragon, the version of the saved champion list), served as WebP 104 px",
    "pages": [
     "/lol",
     "/tier-list"
@@ -29,1395 +44,2584 @@
    "fetch": "node data/sources/pingalto/fetch-art.mjs riot-lol --write",
    "files": [
     {
-     "file": "Aatrox.png",
+     "file": "Aatrox.webp",
      "of": "Aatrox",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Aatrox.png",
      "fetched": "2026-11-10",
-     "bytes": 25644,
-     "sha256": "852d739fb696684549064266851df91ecd03729e06b1a192dc14af01549b7f3f"
+     "width": 104,
+     "bytes": 2818,
+     "sha256": "94c106f4255007b13052f58e98c74ddb5d961cee8be55ecb6836d9f8ce478163",
+     "srcBytes": 25644,
+     "srcSha256": "852d739fb696684549064266851df91ecd03729e06b1a192dc14af01549b7f3f"
     },
     {
-     "file": "Ahri.png",
+     "file": "Ahri.webp",
      "of": "Ahri",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ahri.png",
      "fetched": "2026-11-10",
-     "bytes": 28511,
-     "sha256": "8e93368d97e3d302463c4e83ac5980d1f0a3a0aaf92ac44435730fecbd55b565"
+     "width": 104,
+     "bytes": 3322,
+     "sha256": "5b3393317967528b944b2b08613da52d2255a957ee75632297e665ca3cd98349",
+     "srcBytes": 28511,
+     "srcSha256": "8e93368d97e3d302463c4e83ac5980d1f0a3a0aaf92ac44435730fecbd55b565"
     },
     {
-     "file": "Akali.png",
+     "file": "Akali.webp",
      "of": "Akali",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Akali.png",
      "fetched": "2026-11-10",
-     "bytes": 27191,
-     "sha256": "a62acc32c454b5cc39cebd0769f940b34f3d39ddaf157b95acb176027f81e17a"
+     "width": 104,
+     "bytes": 2774,
+     "sha256": "c69c94718be4702086905d3e3ac8ecdddd287947b7b835cff2cda0d127703c0e",
+     "srcBytes": 27191,
+     "srcSha256": "a62acc32c454b5cc39cebd0769f940b34f3d39ddaf157b95acb176027f81e17a"
     },
     {
-     "file": "Akshan.png",
+     "file": "Akshan.webp",
      "of": "Akshan",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Akshan.png",
      "fetched": "2026-11-10",
-     "bytes": 25518,
-     "sha256": "da9a6cec8d8085b85e35b7ef0f4fb0ef368992b86760ea72a6539095482e5043"
+     "width": 104,
+     "bytes": 2878,
+     "sha256": "b18ef7f1b5d7b86d41ec87d679e7e5b234c9a806a4de9db15636570614fa4059",
+     "srcBytes": 25518,
+     "srcSha256": "da9a6cec8d8085b85e35b7ef0f4fb0ef368992b86760ea72a6539095482e5043"
     },
     {
-     "file": "Alistar.png",
+     "file": "Alistar.webp",
      "of": "Alistar",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Alistar.png",
      "fetched": "2026-11-10",
-     "bytes": 28116,
-     "sha256": "a1b9e0dc85d186fea8b7eccb91b7dc770ea6d3c5d5b53d9698cdf33524879259"
+     "width": 104,
+     "bytes": 3260,
+     "sha256": "7e15a64c0f4f5395dcd85055ffb29ac23632727a9577559250e9c0471e7ee85f",
+     "srcBytes": 28116,
+     "srcSha256": "a1b9e0dc85d186fea8b7eccb91b7dc770ea6d3c5d5b53d9698cdf33524879259"
     },
     {
-     "file": "Ambessa.png",
+     "file": "Ambessa.webp",
      "of": "Ambessa",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ambessa.png",
      "fetched": "2026-11-10",
-     "bytes": 20689,
-     "sha256": "ce2bf0adfc1cb9e46430f318e73ec1c0bf257e5afe84b584acb88f15bfdb3646"
+     "width": 104,
+     "bytes": 3178,
+     "sha256": "b05cd82b26939545418fbcecd0e0e24d52a2e586886ca9a1bc190475e3ee0665",
+     "srcBytes": 20689,
+     "srcSha256": "ce2bf0adfc1cb9e46430f318e73ec1c0bf257e5afe84b584acb88f15bfdb3646"
     },
     {
-     "file": "Amumu.png",
+     "file": "Amumu.webp",
      "of": "Amumu",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Amumu.png",
      "fetched": "2026-11-10",
-     "bytes": 24683,
-     "sha256": "bb20e52d6f4808d3c3cb5038397fdbff174544ee7c9cf9271deee9240a4b1204"
+     "width": 104,
+     "bytes": 2884,
+     "sha256": "5a0179bb308fd544a6e84ba46ecb14df7208f730ef1b2160f57f88da47660419",
+     "srcBytes": 24683,
+     "srcSha256": "bb20e52d6f4808d3c3cb5038397fdbff174544ee7c9cf9271deee9240a4b1204"
     },
     {
-     "file": "Anivia.png",
+     "file": "Anivia.webp",
      "of": "Anivia",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Anivia.png",
      "fetched": "2026-11-10",
-     "bytes": 27008,
-     "sha256": "f10e316692a616d9f27ff5548a52aa128e794ce736b8daa3e1a2b86217a406d5"
+     "width": 104,
+     "bytes": 3636,
+     "sha256": "6cd4b24df6220817a70fa43c04da0d79680d08f1034fc501aaa29314f1c73df6",
+     "srcBytes": 27008,
+     "srcSha256": "f10e316692a616d9f27ff5548a52aa128e794ce736b8daa3e1a2b86217a406d5"
     },
     {
-     "file": "Annie.png",
+     "file": "Annie.webp",
      "of": "Annie",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Annie.png",
      "fetched": "2026-11-10",
-     "bytes": 30267,
-     "sha256": "97720fcc698033b18382e7475800d4aac6c436712d997d99df4a0ae99f6829e2"
+     "width": 104,
+     "bytes": 3790,
+     "sha256": "ac43898dc275cbeb44b23603fbeab59b8a42d189fdf4ce7d7785310f919ced52",
+     "srcBytes": 30267,
+     "srcSha256": "97720fcc698033b18382e7475800d4aac6c436712d997d99df4a0ae99f6829e2"
     },
     {
-     "file": "Aphelios.png",
+     "file": "Aphelios.webp",
      "of": "Aphelios",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Aphelios.png",
      "fetched": "2026-11-10",
-     "bytes": 25225,
-     "sha256": "1db20831bdc7a01918adac84c3afffe3ce4ea8e2f2bee54d70dec220bd1ea6fc"
+     "width": 104,
+     "bytes": 2606,
+     "sha256": "09a7302bb3116f2a5e4a8b1a12f3f4239f0c7cc45820bbf6236e7b46112caff4",
+     "srcBytes": 25225,
+     "srcSha256": "1db20831bdc7a01918adac84c3afffe3ce4ea8e2f2bee54d70dec220bd1ea6fc"
     },
     {
-     "file": "Ashe.png",
+     "file": "Ashe.webp",
      "of": "Ashe",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ashe.png",
      "fetched": "2026-11-10",
-     "bytes": 32121,
-     "sha256": "423666bdb0685355be4576f78eb6406fd49469b4f6e9f780f1c5eb4349fed91f"
+     "width": 104,
+     "bytes": 4336,
+     "sha256": "ee60717dac54388e4c95d1eb322c6d61ab38e6d1a5c58850485de73a19aac6b2",
+     "srcBytes": 32121,
+     "srcSha256": "423666bdb0685355be4576f78eb6406fd49469b4f6e9f780f1c5eb4349fed91f"
     },
     {
-     "file": "AurelionSol.png",
+     "file": "AurelionSol.webp",
      "of": "AurelionSol",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/AurelionSol.png",
      "fetched": "2026-11-10",
-     "bytes": 26953,
-     "sha256": "a8888510b555c75b35f291a1474e28f46875a543eafcbf4d3595a71654856d7c"
+     "width": 104,
+     "bytes": 3368,
+     "sha256": "8e36c4db886eded01d7218ab733837e16c4157cfcc55d1edac847a92df758590",
+     "srcBytes": 26953,
+     "srcSha256": "a8888510b555c75b35f291a1474e28f46875a543eafcbf4d3595a71654856d7c"
     },
     {
-     "file": "Aurora.png",
+     "file": "Aurora.webp",
      "of": "Aurora",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Aurora.png",
      "fetched": "2026-11-10",
-     "bytes": 31037,
-     "sha256": "cb291047d565205ffe91bbbd3fc34592452b2f55b7706430a31c8ac188d99a33"
+     "width": 104,
+     "bytes": 3820,
+     "sha256": "899f49a4e8c3fbbda864bef667c342b35ddb6110963c8944e97ff7135e0f47d2",
+     "srcBytes": 31037,
+     "srcSha256": "cb291047d565205ffe91bbbd3fc34592452b2f55b7706430a31c8ac188d99a33"
     },
     {
-     "file": "Azir.png",
+     "file": "Azir.webp",
      "of": "Azir",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Azir.png",
      "fetched": "2026-11-10",
-     "bytes": 25934,
-     "sha256": "fa90e249ef38adeabd757f24fc4069db8caccdf64353868d9683a5a9c4c81a35"
+     "width": 104,
+     "bytes": 3774,
+     "sha256": "00ed129a2a3f4f7c269ffa785ce5c176e087b620934f6ce2efde54d07454895f",
+     "srcBytes": 25934,
+     "srcSha256": "fa90e249ef38adeabd757f24fc4069db8caccdf64353868d9683a5a9c4c81a35"
     },
     {
-     "file": "Bard.png",
+     "file": "Bard.webp",
      "of": "Bard",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Bard.png",
      "fetched": "2026-11-10",
-     "bytes": 31628,
-     "sha256": "18ee517f6453831c0730d73cbf1628001e53a5acced928d4d78e34a28051094d"
+     "width": 104,
+     "bytes": 4282,
+     "sha256": "2818f84b182f95d7e124c4303cc8816fbf2c3c5ab2745a3af4110fde61682d05",
+     "srcBytes": 31628,
+     "srcSha256": "18ee517f6453831c0730d73cbf1628001e53a5acced928d4d78e34a28051094d"
     },
     {
-     "file": "Belveth.png",
+     "file": "Belveth.webp",
      "of": "Belveth",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Belveth.png",
      "fetched": "2026-11-10",
-     "bytes": 25348,
-     "sha256": "9959345f8316af4ff29d9bf68ab6c8450c85a3742ba4f3e6952ab19d4d0057f1"
+     "width": 104,
+     "bytes": 2784,
+     "sha256": "b1dcbebfede1d71e846df9dde70b7bc10378054da7fa5ade8a370626de14d3d5",
+     "srcBytes": 25348,
+     "srcSha256": "9959345f8316af4ff29d9bf68ab6c8450c85a3742ba4f3e6952ab19d4d0057f1"
     },
     {
-     "file": "Blitzcrank.png",
+     "file": "Blitzcrank.webp",
      "of": "Blitzcrank",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Blitzcrank.png",
      "fetched": "2026-11-10",
-     "bytes": 29858,
-     "sha256": "753db19576c52ab7af43bd5ec2631023654567ecb2e0d83389d016927610d74c"
+     "width": 104,
+     "bytes": 3754,
+     "sha256": "bd2b9593dcf1fa2516b39d128aa0ea2ff5b95271c8da9d32176ea08949cbafa9",
+     "srcBytes": 29858,
+     "srcSha256": "753db19576c52ab7af43bd5ec2631023654567ecb2e0d83389d016927610d74c"
     },
     {
-     "file": "Brand.png",
+     "file": "Brand.webp",
      "of": "Brand",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Brand.png",
      "fetched": "2026-11-10",
-     "bytes": 30626,
-     "sha256": "c50bbafb3ed2beea470479b28cd9b2e233a9f88760e61a76cd413d68bafbac52"
+     "width": 104,
+     "bytes": 4132,
+     "sha256": "e03348b00f3bfdf38677eb0323beb9692379b8f201ea6af30d70ce94568544d2",
+     "srcBytes": 30626,
+     "srcSha256": "c50bbafb3ed2beea470479b28cd9b2e233a9f88760e61a76cd413d68bafbac52"
     },
     {
-     "file": "Braum.png",
+     "file": "Braum.webp",
      "of": "Braum",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Braum.png",
      "fetched": "2026-11-10",
-     "bytes": 23674,
-     "sha256": "1ada9222fe928d32cca4b91fc374fb41cacb6157f0122a390ca611c3e2c29daa"
+     "width": 104,
+     "bytes": 3144,
+     "sha256": "da70d43e2140b0acd19b6e7d6fbe9e18fcc5b14cf36937d8a5f4334f7533a241",
+     "srcBytes": 23674,
+     "srcSha256": "1ada9222fe928d32cca4b91fc374fb41cacb6157f0122a390ca611c3e2c29daa"
     },
     {
-     "file": "Briar.png",
+     "file": "Briar.webp",
      "of": "Briar",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Briar.png",
      "fetched": "2026-11-10",
-     "bytes": 31369,
-     "sha256": "dbecebf6559e79383b208ea340c1cffeea0867b757dff0b8525dd0e0a751ff1c"
+     "width": 104,
+     "bytes": 3762,
+     "sha256": "c5be3dd93d139ec506f8f3d617e229ccb36017398a64cb728ac0dce8567ca58d",
+     "srcBytes": 31369,
+     "srcSha256": "dbecebf6559e79383b208ea340c1cffeea0867b757dff0b8525dd0e0a751ff1c"
     },
     {
-     "file": "Caitlyn.png",
+     "file": "Caitlyn.webp",
      "of": "Caitlyn",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Caitlyn.png",
      "fetched": "2026-11-10",
-     "bytes": 25976,
-     "sha256": "f7a515360f30f33dfe5ab4e8886ce59a70c2d333f924252f48f5f9a2fbc6edf4"
+     "width": 104,
+     "bytes": 2994,
+     "sha256": "41e0fa2df3f00f14cd67b063865f1e65c99ff936f562354962433a33c08f8c00",
+     "srcBytes": 25976,
+     "srcSha256": "f7a515360f30f33dfe5ab4e8886ce59a70c2d333f924252f48f5f9a2fbc6edf4"
     },
     {
-     "file": "Camille.png",
+     "file": "Camille.webp",
      "of": "Camille",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Camille.png",
      "fetched": "2026-11-10",
-     "bytes": 26879,
-     "sha256": "54bfa2dc66fc3885279d4546a4d9651f3a16bd4e4474ceaf2e319bf7f673138a"
+     "width": 104,
+     "bytes": 2904,
+     "sha256": "257c18760a2ed99f32648283ddc310a54932c57e75b7686edf08eb3229ced25e",
+     "srcBytes": 26879,
+     "srcSha256": "54bfa2dc66fc3885279d4546a4d9651f3a16bd4e4474ceaf2e319bf7f673138a"
     },
     {
-     "file": "Cassiopeia.png",
+     "file": "Cassiopeia.webp",
      "of": "Cassiopeia",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Cassiopeia.png",
      "fetched": "2026-11-10",
-     "bytes": 26205,
-     "sha256": "da2ad096fc5237e31a1e9d9ebb9b6db6de65e2cab126c9a607c3fa7a36bc8e54"
+     "width": 104,
+     "bytes": 3176,
+     "sha256": "d11cc370607d0175b60fa78507b4757049f738e52989d6be144130ce96ed44c0",
+     "srcBytes": 26205,
+     "srcSha256": "da2ad096fc5237e31a1e9d9ebb9b6db6de65e2cab126c9a607c3fa7a36bc8e54"
     },
     {
-     "file": "Chogath.png",
+     "file": "Chogath.webp",
      "of": "Chogath",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Chogath.png",
      "fetched": "2026-11-10",
-     "bytes": 32006,
-     "sha256": "f5381fea0255a8a903381728fec79862dc5c426e25774c5e18def583fb3b1dfb"
+     "width": 104,
+     "bytes": 4324,
+     "sha256": "123bc9976d4230030451a58d769115227a13d9a346727f34abb524ddca36015c",
+     "srcBytes": 32006,
+     "srcSha256": "f5381fea0255a8a903381728fec79862dc5c426e25774c5e18def583fb3b1dfb"
     },
     {
-     "file": "Corki.png",
+     "file": "Corki.webp",
      "of": "Corki",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Corki.png",
      "fetched": "2026-11-10",
-     "bytes": 28457,
-     "sha256": "db997e48b9a4cda57b6e934c131d4718aca559f2b5bdaacc8e81a19d3c2953bb"
+     "width": 104,
+     "bytes": 3848,
+     "sha256": "ca1acef7c93f635e51be21610ead0e64fe7f13fe1956b14785d0452ad4611354",
+     "srcBytes": 28457,
+     "srcSha256": "db997e48b9a4cda57b6e934c131d4718aca559f2b5bdaacc8e81a19d3c2953bb"
     },
     {
-     "file": "Darius.png",
+     "file": "Darius.webp",
      "of": "Darius",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Darius.png",
      "fetched": "2026-11-10",
-     "bytes": 27666,
-     "sha256": "4c73167413335e00b3ece58fadaa495a0c3fe05184b246b0f8b9af923a0d3d81"
+     "width": 104,
+     "bytes": 3252,
+     "sha256": "8ac6c02dd8b8dec8b600c2488410ce1917b9c2d494881a0ad740b7cb86366878",
+     "srcBytes": 27666,
+     "srcSha256": "4c73167413335e00b3ece58fadaa495a0c3fe05184b246b0f8b9af923a0d3d81"
     },
     {
-     "file": "Diana.png",
+     "file": "Diana.webp",
      "of": "Diana",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Diana.png",
      "fetched": "2026-11-10",
-     "bytes": 24762,
-     "sha256": "d967ef71d043a49c60dce6f19725fd17d8e8362ea3c059f9ba38906688905d93"
+     "width": 104,
+     "bytes": 2664,
+     "sha256": "2555d529205cd811a055a0635127d75f0a5d231d12e0750b6d2fe7ea30b81fcc",
+     "srcBytes": 24762,
+     "srcSha256": "d967ef71d043a49c60dce6f19725fd17d8e8362ea3c059f9ba38906688905d93"
     },
     {
-     "file": "DrMundo.png",
+     "file": "DrMundo.webp",
      "of": "DrMundo",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/DrMundo.png",
      "fetched": "2026-11-10",
-     "bytes": 30630,
-     "sha256": "496b97ef027d5f90b583329269714623701ad12d013c610ee4c7465916ecb8e0"
+     "width": 104,
+     "bytes": 3466,
+     "sha256": "ec8d1650961d8e6b88af70e00826122d6e70a92c06910a3fa31b2ffc866bb165",
+     "srcBytes": 30630,
+     "srcSha256": "496b97ef027d5f90b583329269714623701ad12d013c610ee4c7465916ecb8e0"
     },
     {
-     "file": "Draven.png",
+     "file": "Draven.webp",
      "of": "Draven",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Draven.png",
      "fetched": "2026-11-10",
-     "bytes": 26400,
-     "sha256": "9b62ecd81173ff55d83a7a9e42d7f9553288856e8365cc3bcbbf4ce3bf4091a6"
+     "width": 104,
+     "bytes": 3012,
+     "sha256": "1d016c68223f05d6dea155f712b033388325481ed47a0af1ee58a5beeda9ee43",
+     "srcBytes": 26400,
+     "srcSha256": "9b62ecd81173ff55d83a7a9e42d7f9553288856e8365cc3bcbbf4ce3bf4091a6"
     },
     {
-     "file": "Ekko.png",
+     "file": "Ekko.webp",
      "of": "Ekko",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ekko.png",
      "fetched": "2026-11-10",
-     "bytes": 26511,
-     "sha256": "6b2219dd6a3888d5572a2b2f2f522c3eeac490578f82f58171adfdf8e647b093"
+     "width": 104,
+     "bytes": 3174,
+     "sha256": "46019ff863b11d808a228ab03124c12e2792725b504cf1ff637af3850dce89d0",
+     "srcBytes": 26511,
+     "srcSha256": "6b2219dd6a3888d5572a2b2f2f522c3eeac490578f82f58171adfdf8e647b093"
     },
     {
-     "file": "Elise.png",
+     "file": "Elise.webp",
      "of": "Elise",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Elise.png",
      "fetched": "2026-11-10",
-     "bytes": 27566,
-     "sha256": "cb7e3ec0658c4e8cf86f2829b12203af68cfc9ab95b98579957427134d00c6e0"
+     "width": 104,
+     "bytes": 2774,
+     "sha256": "79e7c0e75a0d79171f531db998e61e455dd59b761c8aab57ea4e55275741f9ad",
+     "srcBytes": 27566,
+     "srcSha256": "cb7e3ec0658c4e8cf86f2829b12203af68cfc9ab95b98579957427134d00c6e0"
     },
     {
-     "file": "Evelynn.png",
+     "file": "Evelynn.webp",
      "of": "Evelynn",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Evelynn.png",
      "fetched": "2026-11-10",
-     "bytes": 27174,
-     "sha256": "7b09f45c7350fe57217f6833fb97427ea6cc8312b902f7fb8bbbf2a6d5c2f506"
+     "width": 104,
+     "bytes": 3042,
+     "sha256": "65f3b9eae78d152052a81459ffd6d749b2d326ea1cc3280ff745a6159d7bda6d",
+     "srcBytes": 27174,
+     "srcSha256": "7b09f45c7350fe57217f6833fb97427ea6cc8312b902f7fb8bbbf2a6d5c2f506"
     },
     {
-     "file": "Ezreal.png",
+     "file": "Ezreal.webp",
      "of": "Ezreal",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ezreal.png",
      "fetched": "2026-11-10",
-     "bytes": 31064,
-     "sha256": "676467c4362b8745a27db93a44619179820add83be95583d7b2adcfcb4eb7e35"
+     "width": 104,
+     "bytes": 3988,
+     "sha256": "0a2c6c095158a4c2eb405031d0b816f155cc78440468815a7fe1a980670a1d8c",
+     "srcBytes": 31064,
+     "srcSha256": "676467c4362b8745a27db93a44619179820add83be95583d7b2adcfcb4eb7e35"
     },
     {
-     "file": "Fiddlesticks.png",
+     "file": "Fiddlesticks.webp",
      "of": "Fiddlesticks",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Fiddlesticks.png",
      "fetched": "2026-11-10",
-     "bytes": 27884,
-     "sha256": "681544df2412f89a96052e835abe3327cfdd73801868aad20d07576a8157cc32"
+     "width": 104,
+     "bytes": 3256,
+     "sha256": "61b91ce8d3fdbc857b6db1da4d72eaa59d03724fdec23b34e9af56e09c998b23",
+     "srcBytes": 27884,
+     "srcSha256": "681544df2412f89a96052e835abe3327cfdd73801868aad20d07576a8157cc32"
     },
     {
-     "file": "Fiora.png",
+     "file": "Fiora.webp",
      "of": "Fiora",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Fiora.png",
      "fetched": "2026-11-10",
-     "bytes": 28094,
-     "sha256": "b76387ea62f007ece3e06e589ac15bc9bf5452472b70a0d847d096b06f6785b7"
+     "width": 104,
+     "bytes": 3244,
+     "sha256": "747346a28e45f34983a7f920417e7d9f9cac38602115fcfad2fd60b1fa038c59",
+     "srcBytes": 28094,
+     "srcSha256": "b76387ea62f007ece3e06e589ac15bc9bf5452472b70a0d847d096b06f6785b7"
     },
     {
-     "file": "Fizz.png",
+     "file": "Fizz.webp",
      "of": "Fizz",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Fizz.png",
      "fetched": "2026-11-10",
-     "bytes": 27947,
-     "sha256": "447fa01c18cc5bdcd0e014825f7825a93f05d32bde8226bb69fdf58fd6412999"
+     "width": 104,
+     "bytes": 3794,
+     "sha256": "cce82e1b80f7fcf678c1a910d836c4fd96613edf2f4a6914d49841bba89ccd84",
+     "srcBytes": 27947,
+     "srcSha256": "447fa01c18cc5bdcd0e014825f7825a93f05d32bde8226bb69fdf58fd6412999"
     },
     {
-     "file": "Galio.png",
+     "file": "Galio.webp",
      "of": "Galio",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Galio.png",
      "fetched": "2026-11-10",
-     "bytes": 24739,
-     "sha256": "25b4acea5a0d8d2b4de819e62fbf7e7bb4afdb94e0d18e8896cb28112a13dc3f"
+     "width": 104,
+     "bytes": 3188,
+     "sha256": "7b36505f337e3dedee339c4b2a3567fde6dc06b78a2d9df91436aa762f55ee3b",
+     "srcBytes": 24739,
+     "srcSha256": "25b4acea5a0d8d2b4de819e62fbf7e7bb4afdb94e0d18e8896cb28112a13dc3f"
     },
     {
-     "file": "Gangplank.png",
+     "file": "Gangplank.webp",
      "of": "Gangplank",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Gangplank.png",
      "fetched": "2026-11-10",
-     "bytes": 28742,
-     "sha256": "f2bed51abb3d68897a161e152f03e9c9e0bc13039e6b709f551397a52e5aeb39"
+     "width": 104,
+     "bytes": 3404,
+     "sha256": "8ef271b289f9c80971ca231790f21a2a6039ed738b6ddbeef411311245579e4e",
+     "srcBytes": 28742,
+     "srcSha256": "f2bed51abb3d68897a161e152f03e9c9e0bc13039e6b709f551397a52e5aeb39"
     },
     {
-     "file": "Garen.png",
+     "file": "Garen.webp",
      "of": "Garen",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Garen.png",
      "fetched": "2026-11-10",
-     "bytes": 30705,
-     "sha256": "53018603962e1867b391071f159bb4c60d57919422585c33bfd36551e97f3752"
+     "width": 104,
+     "bytes": 4000,
+     "sha256": "c298f6217b82974fa02d3a71064426c2cce95a82c1c47b6968c799c602b0e737",
+     "srcBytes": 30705,
+     "srcSha256": "53018603962e1867b391071f159bb4c60d57919422585c33bfd36551e97f3752"
     },
     {
-     "file": "Gnar.png",
+     "file": "Gnar.webp",
      "of": "Gnar",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Gnar.png",
      "fetched": "2026-11-10",
-     "bytes": 25845,
-     "sha256": "d566858ab7ae4a6887f3490cedcd9a7097f5b5214d78c0b7f1b631567f8d739e"
+     "width": 104,
+     "bytes": 3234,
+     "sha256": "677e5df096950d32420afd6aa57db7f2ec0fa0cf1779003b7d4d3cbc886d9252",
+     "srcBytes": 25845,
+     "srcSha256": "d566858ab7ae4a6887f3490cedcd9a7097f5b5214d78c0b7f1b631567f8d739e"
     },
     {
-     "file": "Gragas.png",
+     "file": "Gragas.webp",
      "of": "Gragas",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Gragas.png",
      "fetched": "2026-11-10",
-     "bytes": 28755,
-     "sha256": "06599cb8a6b083a3250c3bcd701b1bab1c8f9dab6ea52c7709ac2c895431f4f6"
+     "width": 104,
+     "bytes": 3684,
+     "sha256": "0e80f5388d7126db3c6ed3922e723ea6ea514c6cd351cf9ddd10751988de02a2",
+     "srcBytes": 28755,
+     "srcSha256": "06599cb8a6b083a3250c3bcd701b1bab1c8f9dab6ea52c7709ac2c895431f4f6"
     },
     {
-     "file": "Graves.png",
+     "file": "Graves.webp",
      "of": "Graves",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Graves.png",
      "fetched": "2026-11-10",
-     "bytes": 28267,
-     "sha256": "6f171c830d729e9b8b23c6a4d772f2bd44f90304101f1e6a299920b4ecda67d9"
+     "width": 104,
+     "bytes": 3554,
+     "sha256": "ed419d158faeb388d2f2509f3481edecb54ee8441c30adcf3244192338e65a46",
+     "srcBytes": 28267,
+     "srcSha256": "6f171c830d729e9b8b23c6a4d772f2bd44f90304101f1e6a299920b4ecda67d9"
     },
     {
-     "file": "Gwen.png",
+     "file": "Gwen.webp",
      "of": "Gwen",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Gwen.png",
      "fetched": "2026-11-10",
-     "bytes": 31229,
-     "sha256": "a7bba2bc0970bc5098396a4578a2cb72908630125011502bd2c0ee183ceb29d9"
+     "width": 104,
+     "bytes": 3968,
+     "sha256": "a5ea643275c00a73fd8df7aa80c519a2ec8eb226dd0cdfd943d622504bd6f8fa",
+     "srcBytes": 31229,
+     "srcSha256": "a7bba2bc0970bc5098396a4578a2cb72908630125011502bd2c0ee183ceb29d9"
     },
     {
-     "file": "Hecarim.png",
+     "file": "Hecarim.webp",
      "of": "Hecarim",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Hecarim.png",
      "fetched": "2026-11-10",
-     "bytes": 28985,
-     "sha256": "ba5b2d3fd406fdd81e52e359231024ef4877009bdcf61c9d7ca389916fe61509"
+     "width": 104,
+     "bytes": 3658,
+     "sha256": "47c6ed7184dc244410ea032ac1a481521c5cd45e2905e461b34c30b199f5b978",
+     "srcBytes": 28985,
+     "srcSha256": "ba5b2d3fd406fdd81e52e359231024ef4877009bdcf61c9d7ca389916fe61509"
     },
     {
-     "file": "Heimerdinger.png",
+     "file": "Heimerdinger.webp",
      "of": "Heimerdinger",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Heimerdinger.png",
      "fetched": "2026-11-10",
-     "bytes": 32532,
-     "sha256": "3e54bea65546474fa1154f9ac25c73bd51aff36db5c808377553b1e9f252c56d"
+     "width": 104,
+     "bytes": 4516,
+     "sha256": "ace29a5c49865bc6368b88df16fd5f7a8980ae9f0d5823033f57734d90023042",
+     "srcBytes": 32532,
+     "srcSha256": "3e54bea65546474fa1154f9ac25c73bd51aff36db5c808377553b1e9f252c56d"
     },
     {
-     "file": "Hwei.png",
+     "file": "Hwei.webp",
      "of": "Hwei",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Hwei.png",
      "fetched": "2026-11-10",
-     "bytes": 24613,
-     "sha256": "c8aeb272d4f4990ee87b7b7f857840d214e99f1707c9aebb6529ac6e0bc5f5ff"
+     "width": 104,
+     "bytes": 2592,
+     "sha256": "46e3f06be2934046fc896b5cc5cc9641868ed5b06c2bd0207f27dcca81bb13d5",
+     "srcBytes": 24613,
+     "srcSha256": "c8aeb272d4f4990ee87b7b7f857840d214e99f1707c9aebb6529ac6e0bc5f5ff"
     },
     {
-     "file": "Illaoi.png",
+     "file": "Illaoi.webp",
      "of": "Illaoi",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Illaoi.png",
      "fetched": "2026-11-10",
-     "bytes": 25338,
-     "sha256": "1334b302ec0fb4895e15033351122427786cfc25c6c30b4f9b43e2a8212314c1"
+     "width": 104,
+     "bytes": 3222,
+     "sha256": "4797db6320d459bf14fcdd1efa787efc423864bb50e5530de5e4484016103b9e",
+     "srcBytes": 25338,
+     "srcSha256": "1334b302ec0fb4895e15033351122427786cfc25c6c30b4f9b43e2a8212314c1"
     },
     {
-     "file": "Irelia.png",
+     "file": "Irelia.webp",
      "of": "Irelia",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Irelia.png",
      "fetched": "2026-11-10",
-     "bytes": 29037,
-     "sha256": "a8cd7e83c7b327516869d67eb9cd96499bcf720d799b814830373cb200a98c9c"
+     "width": 104,
+     "bytes": 3886,
+     "sha256": "86c039c4853bc2e683db3959089f00a94ca398d09e0710ba9b81900fc2a4737a",
+     "srcBytes": 29037,
+     "srcSha256": "a8cd7e83c7b327516869d67eb9cd96499bcf720d799b814830373cb200a98c9c"
     },
     {
-     "file": "Ivern.png",
+     "file": "Ivern.webp",
      "of": "Ivern",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ivern.png",
      "fetched": "2026-11-10",
-     "bytes": 25942,
-     "sha256": "a79756ca23f8f93a882f47e4ce5d4228b70bf002a1ea320d5a69fa16491c5df4"
+     "width": 104,
+     "bytes": 3206,
+     "sha256": "3a1e30b4552654eec040e427bcc203fbc10cf20186370149ac86873906629f2e",
+     "srcBytes": 25942,
+     "srcSha256": "a79756ca23f8f93a882f47e4ce5d4228b70bf002a1ea320d5a69fa16491c5df4"
     },
     {
-     "file": "Janna.png",
+     "file": "Janna.webp",
      "of": "Janna",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Janna.png",
      "fetched": "2026-11-10",
-     "bytes": 28129,
-     "sha256": "d0a7b79a9d7673b429fc94bb2718a27bff8cdbbbafe9fac294f1cf0cc1982d83"
+     "width": 104,
+     "bytes": 3540,
+     "sha256": "13640b520440ee28e1d2c36b8a0aa32f96e826b5f6934821030162611176cc08",
+     "srcBytes": 28129,
+     "srcSha256": "d0a7b79a9d7673b429fc94bb2718a27bff8cdbbbafe9fac294f1cf0cc1982d83"
     },
     {
-     "file": "JarvanIV.png",
+     "file": "JarvanIV.webp",
      "of": "JarvanIV",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/JarvanIV.png",
      "fetched": "2026-11-10",
-     "bytes": 28504,
-     "sha256": "9da74ae808585eff7f130f47ce4c6c3ddab0b302b1d39902e273ae0253592764"
+     "width": 104,
+     "bytes": 4018,
+     "sha256": "39bbd0b202eff7b32363f276b68a4e58c245cf529f6285f5b1b507d2a2737ca6",
+     "srcBytes": 28504,
+     "srcSha256": "9da74ae808585eff7f130f47ce4c6c3ddab0b302b1d39902e273ae0253592764"
     },
     {
-     "file": "Jax.png",
+     "file": "Jax.webp",
      "of": "Jax",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jax.png",
      "fetched": "2026-11-10",
-     "bytes": 27107,
-     "sha256": "441e8d865d461bc338a2d2d5a2a09f6151bbfdb4795ec8b59e66ee8654eebcca"
+     "width": 104,
+     "bytes": 2894,
+     "sha256": "bb18327f8f1115feec5bc8121c5b105293ee073621e75b6636c14393bbcdfe4b",
+     "srcBytes": 27107,
+     "srcSha256": "441e8d865d461bc338a2d2d5a2a09f6151bbfdb4795ec8b59e66ee8654eebcca"
     },
     {
-     "file": "Jayce.png",
+     "file": "Jayce.webp",
      "of": "Jayce",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jayce.png",
      "fetched": "2026-11-10",
-     "bytes": 23552,
-     "sha256": "81301e79adf1c92dd700defb5e1ee11cb8b7ef04b7034554aacb067c66256a38"
+     "width": 104,
+     "bytes": 2554,
+     "sha256": "4b76c7c41f2d5a1afa2ddf94fb3112f43b46b741edf5493463764ec701cd663e",
+     "srcBytes": 23552,
+     "srcSha256": "81301e79adf1c92dd700defb5e1ee11cb8b7ef04b7034554aacb067c66256a38"
     },
     {
-     "file": "Jhin.png",
+     "file": "Jhin.webp",
      "of": "Jhin",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jhin.png",
      "fetched": "2026-11-10",
-     "bytes": 25526,
-     "sha256": "dd24ce955ba61995956f1a48cb9b90b9b52936bb23bf05e0cb74cfc9c74a4b0c"
+     "width": 104,
+     "bytes": 2908,
+     "sha256": "de0f79f0335935246d47898d4fc2f8f74f976c5ce236d080a7ea086cf7303286",
+     "srcBytes": 25526,
+     "srcSha256": "dd24ce955ba61995956f1a48cb9b90b9b52936bb23bf05e0cb74cfc9c74a4b0c"
     },
     {
-     "file": "Jinx.png",
+     "file": "Jinx.webp",
      "of": "Jinx",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jinx.png",
      "fetched": "2026-11-10",
-     "bytes": 27938,
-     "sha256": "2777d44345974b93f8af378430811670566d0451b6410b2caff2984e93797357"
+     "width": 104,
+     "bytes": 3630,
+     "sha256": "cb7ed2dfc6df882bb4fd5ae7991bcfe96f189a51cec7431bab10cc220a71e86a",
+     "srcBytes": 27938,
+     "srcSha256": "2777d44345974b93f8af378430811670566d0451b6410b2caff2984e93797357"
     },
     {
-     "file": "KSante.png",
+     "file": "KSante.webp",
      "of": "KSante",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/KSante.png",
      "fetched": "2026-11-10",
-     "bytes": 25880,
-     "sha256": "d7d62b07df5b66497195c68e3e2bbdc8c3d6078066aa2ed170cfbcb0fc2f5ddf"
+     "width": 104,
+     "bytes": 2886,
+     "sha256": "ccb10b984e74bfed0f43e9e64b3ca7d738a49ca8ecbdbed2a94b6ba666165dfe",
+     "srcBytes": 25880,
+     "srcSha256": "d7d62b07df5b66497195c68e3e2bbdc8c3d6078066aa2ed170cfbcb0fc2f5ddf"
     },
     {
-     "file": "Kaisa.png",
+     "file": "Kaisa.webp",
      "of": "Kaisa",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kaisa.png",
      "fetched": "2026-11-10",
-     "bytes": 26828,
-     "sha256": "e0e86ccb7143d20bcbd83f192530f9712bf4b1d6306ec07a06992d4b72676443"
+     "width": 104,
+     "bytes": 2776,
+     "sha256": "498c094464d9bd1c0ce787e754c9b36d296892e1207a66512a13b921c7d51591",
+     "srcBytes": 26828,
+     "srcSha256": "e0e86ccb7143d20bcbd83f192530f9712bf4b1d6306ec07a06992d4b72676443"
     },
     {
-     "file": "Kalista.png",
+     "file": "Kalista.webp",
      "of": "Kalista",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kalista.png",
      "fetched": "2026-11-10",
-     "bytes": 28603,
-     "sha256": "3809361a78dfb97d3660fd47345145287d48af10909426d353b451cf52dc093b"
+     "width": 104,
+     "bytes": 3418,
+     "sha256": "88ffbf533a90943bec1db63ea6e7c85c130a62709b868b9fcecea6a2514c056f",
+     "srcBytes": 28603,
+     "srcSha256": "3809361a78dfb97d3660fd47345145287d48af10909426d353b451cf52dc093b"
     },
     {
-     "file": "Karma.png",
+     "file": "Karma.webp",
      "of": "Karma",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Karma.png",
      "fetched": "2026-11-10",
-     "bytes": 30154,
-     "sha256": "e1df55d95c9a90445b59615db2984c3a8a9d8df3578faf968872bbe2e0075bc0"
+     "width": 104,
+     "bytes": 3934,
+     "sha256": "f14f0a6c903096162f88a53249debb084b2d5b588a260426980a98a22a78c31a",
+     "srcBytes": 30154,
+     "srcSha256": "e1df55d95c9a90445b59615db2984c3a8a9d8df3578faf968872bbe2e0075bc0"
     },
     {
-     "file": "Karthus.png",
+     "file": "Karthus.webp",
      "of": "Karthus",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Karthus.png",
      "fetched": "2026-11-10",
-     "bytes": 28743,
-     "sha256": "2b7015e102317b52900f9c69adfe462426301ac0f62c54502fdeae518d30392e"
+     "width": 104,
+     "bytes": 3138,
+     "sha256": "0e924a401adf1a371d820ff351596ae89cbbf1367ece22fd86107ab7d882c983",
+     "srcBytes": 28743,
+     "srcSha256": "2b7015e102317b52900f9c69adfe462426301ac0f62c54502fdeae518d30392e"
     },
     {
-     "file": "Kassadin.png",
+     "file": "Kassadin.webp",
      "of": "Kassadin",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kassadin.png",
      "fetched": "2026-11-10",
-     "bytes": 29874,
-     "sha256": "a7616e721346eef6a2af65470f98757e4ad184a53685d412edec583dd5989a15"
+     "width": 104,
+     "bytes": 3522,
+     "sha256": "9b9bd426c36dd8a726c155ea26d4a9811a18887cefef9f44495caeea08a20755",
+     "srcBytes": 29874,
+     "srcSha256": "a7616e721346eef6a2af65470f98757e4ad184a53685d412edec583dd5989a15"
     },
     {
-     "file": "Katarina.png",
+     "file": "Katarina.webp",
      "of": "Katarina",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Katarina.png",
      "fetched": "2026-11-10",
-     "bytes": 26732,
-     "sha256": "998f3a479b5441f86f4031aace49bbd70bb83a76c05d39b0697288fe50ba029e"
+     "width": 104,
+     "bytes": 2992,
+     "sha256": "b1b47a775e7ca3a2e0e9d7c740ff29cab2f76d09e2a995fe856dc9cc0de85b67",
+     "srcBytes": 26732,
+     "srcSha256": "998f3a479b5441f86f4031aace49bbd70bb83a76c05d39b0697288fe50ba029e"
     },
     {
-     "file": "Kayle.png",
+     "file": "Kayle.webp",
      "of": "Kayle",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kayle.png",
      "fetched": "2026-11-10",
-     "bytes": 24103,
-     "sha256": "63dd90ebddcf8fcda57aa20f6f6b490ceea0958a45f9411946d4b9bd0d1293c6"
+     "width": 104,
+     "bytes": 2956,
+     "sha256": "cdd1ff6b54829e7f71f698fde0b90c9b924a65c1d8d3c44fc9e37b86a2ac35dd",
+     "srcBytes": 24103,
+     "srcSha256": "63dd90ebddcf8fcda57aa20f6f6b490ceea0958a45f9411946d4b9bd0d1293c6"
     },
     {
-     "file": "Kayn.png",
+     "file": "Kayn.webp",
      "of": "Kayn",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kayn.png",
      "fetched": "2026-11-10",
-     "bytes": 25653,
-     "sha256": "7a7e6e8f8df01879296ed9de5710329a2f3c541418ae277c65175e1ba2212982"
+     "width": 104,
+     "bytes": 2620,
+     "sha256": "d503a76d0ab0744c6df587cb5510b9b82e5ea5edb69d2ef0ac85417726591bbe",
+     "srcBytes": 25653,
+     "srcSha256": "7a7e6e8f8df01879296ed9de5710329a2f3c541418ae277c65175e1ba2212982"
     },
     {
-     "file": "Kennen.png",
+     "file": "Kennen.webp",
      "of": "Kennen",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kennen.png",
      "fetched": "2026-11-10",
-     "bytes": 26105,
-     "sha256": "71239ebd9236d5d0fdbccfb8741727e6f13dd007a4d6905e5aa82f6b36aceebd"
+     "width": 104,
+     "bytes": 3244,
+     "sha256": "1ad38dbf9ffc69150b62e9424023432051d16ee1102561db8b9a4416a389c860",
+     "srcBytes": 26105,
+     "srcSha256": "71239ebd9236d5d0fdbccfb8741727e6f13dd007a4d6905e5aa82f6b36aceebd"
     },
     {
-     "file": "Khazix.png",
+     "file": "Khazix.webp",
      "of": "Khazix",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Khazix.png",
      "fetched": "2026-11-10",
-     "bytes": 23545,
-     "sha256": "30007408b2c91e58a8036116f222f70b1d148699b994a109a30eacb4eff6bb63"
+     "width": 104,
+     "bytes": 2776,
+     "sha256": "0211d8f5e49f394af9d6bf891bee6ca74ee2b1a050da192c4872add3ac3ec4b8",
+     "srcBytes": 23545,
+     "srcSha256": "30007408b2c91e58a8036116f222f70b1d148699b994a109a30eacb4eff6bb63"
     },
     {
-     "file": "Kindred.png",
+     "file": "Kindred.webp",
      "of": "Kindred",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kindred.png",
      "fetched": "2026-11-10",
-     "bytes": 29250,
-     "sha256": "a789f7340a9e390c8627be587cb4f236736f55907c8e36b792ca1f6221ade4ed"
+     "width": 104,
+     "bytes": 3314,
+     "sha256": "6e2ad32787c877b16b364437f0fb63822b9eb29b51f856c6ebac3b77a9c12ba1",
+     "srcBytes": 29250,
+     "srcSha256": "a789f7340a9e390c8627be587cb4f236736f55907c8e36b792ca1f6221ade4ed"
     },
     {
-     "file": "Kled.png",
+     "file": "Kled.webp",
      "of": "Kled",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kled.png",
      "fetched": "2026-11-10",
-     "bytes": 28478,
-     "sha256": "4d71421e5e0a4fd8092fc9b6d91cc10fb36a067fc8a74b5e2fce2e718d3f2566"
+     "width": 104,
+     "bytes": 3558,
+     "sha256": "4a7de78e21e9631a91c021d6c4c2f511e541ea2c41caee4d05fe672e27b4603c",
+     "srcBytes": 28478,
+     "srcSha256": "4d71421e5e0a4fd8092fc9b6d91cc10fb36a067fc8a74b5e2fce2e718d3f2566"
     },
     {
-     "file": "KogMaw.png",
+     "file": "KogMaw.webp",
      "of": "KogMaw",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/KogMaw.png",
      "fetched": "2026-11-10",
-     "bytes": 29237,
-     "sha256": "a5836dd40801e9f6275c1b74de8ba6de2de09ab2d24ec2e9695f958917348f1a"
+     "width": 104,
+     "bytes": 3482,
+     "sha256": "1bab3acc4213cbb8f796e23582bb87e38ed1f5e09e6e790e355d650257c54a8c",
+     "srcBytes": 29237,
+     "srcSha256": "a5836dd40801e9f6275c1b74de8ba6de2de09ab2d24ec2e9695f958917348f1a"
     },
     {
-     "file": "Leblanc.png",
+     "file": "Leblanc.webp",
      "of": "Leblanc",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Leblanc.png",
      "fetched": "2026-11-10",
-     "bytes": 36027,
-     "sha256": "e48b97ce2451c37d4e4a747b37663bd1095730b4182b2805f397f60fd12c7c5d"
+     "width": 104,
+     "bytes": 2912,
+     "sha256": "d656c05e00235f6b361751d7ecb9474c238254883e48a65275a02f74488eb490",
+     "srcBytes": 36027,
+     "srcSha256": "e48b97ce2451c37d4e4a747b37663bd1095730b4182b2805f397f60fd12c7c5d"
     },
     {
-     "file": "LeeSin.png",
+     "file": "LeeSin.webp",
      "of": "LeeSin",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/LeeSin.png",
      "fetched": "2026-11-10",
-     "bytes": 24979,
-     "sha256": "890f439dd16bfa686b3c6f06f9749eb5477e5b706a8ff85cb8161f91adcff9a8"
+     "width": 104,
+     "bytes": 2968,
+     "sha256": "b83a01356939e175d46c9080a662d1a9eccb3de6bd91c0c4497d8899e78debc0",
+     "srcBytes": 24979,
+     "srcSha256": "890f439dd16bfa686b3c6f06f9749eb5477e5b706a8ff85cb8161f91adcff9a8"
     },
     {
-     "file": "Leona.png",
+     "file": "Leona.webp",
      "of": "Leona",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Leona.png",
      "fetched": "2026-11-10",
-     "bytes": 31573,
-     "sha256": "d7e170e1d5c37b243663e03d480a4befe727d86d0733e3e411b90297cb192461"
+     "width": 104,
+     "bytes": 4160,
+     "sha256": "0ef823a7a78681002535f022638e98928d1651e23ab849d641f47dae6962d248",
+     "srcBytes": 31573,
+     "srcSha256": "d7e170e1d5c37b243663e03d480a4befe727d86d0733e3e411b90297cb192461"
     },
     {
-     "file": "Lillia.png",
+     "file": "Lillia.webp",
      "of": "Lillia",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Lillia.png",
      "fetched": "2026-11-10",
-     "bytes": 28814,
-     "sha256": "b270de6af7ec29bb2fb91d6effec79f3c0b6d93811315dc54d101ee55f61fb31"
+     "width": 104,
+     "bytes": 3444,
+     "sha256": "0a2dfaa509375b14e4785165cf306066648814d2274673ed1d6f8cda124a0b2a",
+     "srcBytes": 28814,
+     "srcSha256": "b270de6af7ec29bb2fb91d6effec79f3c0b6d93811315dc54d101ee55f61fb31"
     },
     {
-     "file": "Lissandra.png",
+     "file": "Lissandra.webp",
      "of": "Lissandra",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Lissandra.png",
      "fetched": "2026-11-10",
-     "bytes": 28806,
-     "sha256": "ece7fc0269138d30380dbb0420ccf822e7ca95819d7d911a0e29f7d10cf7445d"
+     "width": 104,
+     "bytes": 3486,
+     "sha256": "d59d70285daba0cd15b66dcd360b277d87fa5ca18db70a5fd8c0a3dfb1d9f6cf",
+     "srcBytes": 28806,
+     "srcSha256": "ece7fc0269138d30380dbb0420ccf822e7ca95819d7d911a0e29f7d10cf7445d"
     },
     {
-     "file": "Locke.png",
+     "file": "Locke.webp",
      "of": "Locke",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Locke.png",
      "fetched": "2026-11-10",
-     "bytes": 36247,
-     "sha256": "f05b0779ef6873f798d42f0bff433d54a7ba761d487ef36dd3de0c32bdf98d28"
+     "width": 104,
+     "bytes": 3336,
+     "sha256": "7cee48a56ed0117b7dea11df1b0cd50a84a7e60c1a41e4e1485e1c9f1d2517b2",
+     "srcBytes": 36247,
+     "srcSha256": "f05b0779ef6873f798d42f0bff433d54a7ba761d487ef36dd3de0c32bdf98d28"
     },
     {
-     "file": "Lucian.png",
+     "file": "Lucian.webp",
      "of": "Lucian",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Lucian.png",
      "fetched": "2026-11-10",
-     "bytes": 27998,
-     "sha256": "75e3de3e43f732f815293472167e0022118a0be55a627f10794bc8043e2602cb"
+     "width": 104,
+     "bytes": 3142,
+     "sha256": "5f9d82bd30ac36ce03ce7958529c4d4512a077206ebe4318a56fa859f658381a",
+     "srcBytes": 27998,
+     "srcSha256": "75e3de3e43f732f815293472167e0022118a0be55a627f10794bc8043e2602cb"
     },
     {
-     "file": "Lulu.png",
+     "file": "Lulu.webp",
      "of": "Lulu",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Lulu.png",
      "fetched": "2026-11-10",
-     "bytes": 29539,
-     "sha256": "ca22c4a042d66085ef7794c8b351b57880739be454aa4128fbdd7506c02d1a50"
+     "width": 104,
+     "bytes": 3818,
+     "sha256": "ac734719f27beec792825cdbc71a75e8ea974f0b8776adab25fff447468975e2",
+     "srcBytes": 29539,
+     "srcSha256": "ca22c4a042d66085ef7794c8b351b57880739be454aa4128fbdd7506c02d1a50"
     },
     {
-     "file": "Lux.png",
+     "file": "Lux.webp",
      "of": "Lux",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Lux.png",
      "fetched": "2026-11-10",
-     "bytes": 29188,
-     "sha256": "64639bea2aa7d622dd07287de7a7820950e567f0993c7dcc422e1e699fd743fd"
+     "width": 104,
+     "bytes": 3684,
+     "sha256": "00073e2eb25878be51f68f4c22905c9ce07e5ff9efadea9a4e8b8c8651cd3bb8",
+     "srcBytes": 29188,
+     "srcSha256": "64639bea2aa7d622dd07287de7a7820950e567f0993c7dcc422e1e699fd743fd"
     },
     {
-     "file": "Malphite.png",
+     "file": "Malphite.webp",
      "of": "Malphite",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Malphite.png",
      "fetched": "2026-11-10",
-     "bytes": 26063,
-     "sha256": "233005b989ae25fc6e5e22d1325291bce2d64e49767ebb83413c0f91e1b157c6"
+     "width": 104,
+     "bytes": 2884,
+     "sha256": "caac505dadd998399a8da33253a8b85c7ea5ad2662a5f8482542e99b7e68c2bd",
+     "srcBytes": 26063,
+     "srcSha256": "233005b989ae25fc6e5e22d1325291bce2d64e49767ebb83413c0f91e1b157c6"
     },
     {
-     "file": "Malzahar.png",
+     "file": "Malzahar.webp",
      "of": "Malzahar",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Malzahar.png",
      "fetched": "2026-11-10",
-     "bytes": 27604,
-     "sha256": "c0f9eb031b22805d1bbed0cd0ee2a7f148541076c1655271665325e2dbf06911"
+     "width": 104,
+     "bytes": 3114,
+     "sha256": "638e8e7ab2a0ffcb17edcede70f9decffe675da08f73515f31125aaefc52ff96",
+     "srcBytes": 27604,
+     "srcSha256": "c0f9eb031b22805d1bbed0cd0ee2a7f148541076c1655271665325e2dbf06911"
     },
     {
-     "file": "Maokai.png",
+     "file": "Maokai.webp",
      "of": "Maokai",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Maokai.png",
      "fetched": "2026-11-10",
-     "bytes": 27854,
-     "sha256": "7e68c320efa332ba9126c6d2d6ccd3a51939d7d1f2b31785fbec8594a0e6f6b3"
+     "width": 104,
+     "bytes": 3166,
+     "sha256": "3320fb3d69ed1e859951ec9558efa08904c46c606936f534ecd25dfebe7a4bc1",
+     "srcBytes": 27854,
+     "srcSha256": "7e68c320efa332ba9126c6d2d6ccd3a51939d7d1f2b31785fbec8594a0e6f6b3"
     },
     {
-     "file": "MasterYi.png",
+     "file": "MasterYi.webp",
      "of": "MasterYi",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/MasterYi.png",
      "fetched": "2026-11-10",
-     "bytes": 29421,
-     "sha256": "1c23534926a7956a260591fb3cee8f38cb6de3d9d4f064fe93fb88c8f76b1b66"
+     "width": 104,
+     "bytes": 3924,
+     "sha256": "0ae7c356f286379307767104cbd9de57f0eaed4dbc70ba9ad2d3cfdc19c69709",
+     "srcBytes": 29421,
+     "srcSha256": "1c23534926a7956a260591fb3cee8f38cb6de3d9d4f064fe93fb88c8f76b1b66"
     },
     {
-     "file": "Mel.png",
+     "file": "Mel.webp",
      "of": "Mel",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Mel.png",
      "fetched": "2026-11-10",
-     "bytes": 29534,
-     "sha256": "e464fe1e53f45f3c603cdf1bab1cd182ce6a429840e008d30ed41411d4a68ea0"
+     "width": 104,
+     "bytes": 2718,
+     "sha256": "54d32b360a68886eeb7cee72f21889aaae82588c4fa571e5fddbb459efb4a944",
+     "srcBytes": 29534,
+     "srcSha256": "e464fe1e53f45f3c603cdf1bab1cd182ce6a429840e008d30ed41411d4a68ea0"
     },
     {
-     "file": "Milio.png",
+     "file": "Milio.webp",
      "of": "Milio",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Milio.png",
      "fetched": "2026-11-10",
-     "bytes": 27199,
-     "sha256": "86517cc10c6c5670dcd6821a2e5c7bbb9e16aac597cda5d04578933bd5861343"
+     "width": 104,
+     "bytes": 3258,
+     "sha256": "0991a36c1109c06d78d375151f40a9c7833530ec5ede0eeb32b418d967daf378",
+     "srcBytes": 27199,
+     "srcSha256": "86517cc10c6c5670dcd6821a2e5c7bbb9e16aac597cda5d04578933bd5861343"
     },
     {
-     "file": "MissFortune.png",
+     "file": "MissFortune.webp",
      "of": "MissFortune",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/MissFortune.png",
      "fetched": "2026-11-10",
-     "bytes": 25963,
-     "sha256": "a8c3048bfb76b4e8b34e00193ed2febe69669918055ffda835ddb24905588733"
+     "width": 104,
+     "bytes": 3090,
+     "sha256": "27e837da7e5734235870e6364a7c7fcf9b142b7bd038c076fa42237278b0b6ee",
+     "srcBytes": 25963,
+     "srcSha256": "a8c3048bfb76b4e8b34e00193ed2febe69669918055ffda835ddb24905588733"
     },
     {
-     "file": "MonkeyKing.png",
+     "file": "MonkeyKing.webp",
      "of": "MonkeyKing",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/MonkeyKing.png",
      "fetched": "2026-11-10",
-     "bytes": 29161,
-     "sha256": "2264db1ffde08659aee3380c8ac5643771d872d95a9c9090951d7f2849e61353"
+     "width": 104,
+     "bytes": 3600,
+     "sha256": "76ac36d4ceb6fb5b0da8ef3f5990ff6a1caab7c6637f068ecbac3d7228f31eec",
+     "srcBytes": 29161,
+     "srcSha256": "2264db1ffde08659aee3380c8ac5643771d872d95a9c9090951d7f2849e61353"
     },
     {
-     "file": "Mordekaiser.png",
+     "file": "Mordekaiser.webp",
      "of": "Mordekaiser",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Mordekaiser.png",
      "fetched": "2026-11-10",
-     "bytes": 26259,
-     "sha256": "3d3521dedf02d446ae2a506b8b5395a9fba690567dbf6be3cf4523e8c439d9b8"
+     "width": 104,
+     "bytes": 2786,
+     "sha256": "7f3d70ac416ba90ee975d26519962166c5cf72512205949733e2b88483db64ce",
+     "srcBytes": 26259,
+     "srcSha256": "3d3521dedf02d446ae2a506b8b5395a9fba690567dbf6be3cf4523e8c439d9b8"
     },
     {
-     "file": "Morgana.png",
+     "file": "Morgana.webp",
      "of": "Morgana",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Morgana.png",
      "fetched": "2026-11-10",
-     "bytes": 26025,
-     "sha256": "bd170027904c2e5a354e53dca0f5d50516a4f3d60a4fbb0c286c9eb32d8d8954"
+     "width": 104,
+     "bytes": 2590,
+     "sha256": "5f760688607ba80a3451da64ad8125d959e5dd14f0498dcfebc32441137902de",
+     "srcBytes": 26025,
+     "srcSha256": "bd170027904c2e5a354e53dca0f5d50516a4f3d60a4fbb0c286c9eb32d8d8954"
     },
     {
-     "file": "Naafiri.png",
+     "file": "Naafiri.webp",
      "of": "Naafiri",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Naafiri.png",
      "fetched": "2026-11-10",
-     "bytes": 23851,
-     "sha256": "75a82287766d7bc333305390675eb5bd3a0b7522d0a69a46543e7bdc301a4ed7"
+     "width": 104,
+     "bytes": 2752,
+     "sha256": "c1d6bbfb2dedfde98d085104d1e058f1f939fb51fa09278b52521c2dfa5f5d33",
+     "srcBytes": 23851,
+     "srcSha256": "75a82287766d7bc333305390675eb5bd3a0b7522d0a69a46543e7bdc301a4ed7"
     },
     {
-     "file": "Nami.png",
+     "file": "Nami.webp",
      "of": "Nami",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nami.png",
      "fetched": "2026-11-10",
-     "bytes": 28176,
-     "sha256": "f43e652c61cd4998274e966a1e91e00fb3d51cc6202f7e53a5f2c7da160ddd23"
+     "width": 104,
+     "bytes": 3058,
+     "sha256": "3ebd0f7b4bd35813a85f0188b7a144f6148642e3aaa074e3e2a79b33974dea96",
+     "srcBytes": 28176,
+     "srcSha256": "f43e652c61cd4998274e966a1e91e00fb3d51cc6202f7e53a5f2c7da160ddd23"
     },
     {
-     "file": "Nasus.png",
+     "file": "Nasus.webp",
      "of": "Nasus",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nasus.png",
      "fetched": "2026-11-10",
-     "bytes": 29763,
-     "sha256": "80b838812e5f14b1e37900d1c14c54835b535d5bd36af6ace19fd23344989be3"
+     "width": 104,
+     "bytes": 4120,
+     "sha256": "b66d1f7a54104d40ffb7138b78de5c783e22a9d2971bd2fe4405262ecb7dc4a2",
+     "srcBytes": 29763,
+     "srcSha256": "80b838812e5f14b1e37900d1c14c54835b535d5bd36af6ace19fd23344989be3"
     },
     {
-     "file": "Nautilus.png",
+     "file": "Nautilus.webp",
      "of": "Nautilus",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nautilus.png",
      "fetched": "2026-11-10",
-     "bytes": 28532,
-     "sha256": "6e8dfa2e6ba3d4564745fe69ace7c796898aa023a2af2727b0be127316712c2c"
+     "width": 104,
+     "bytes": 3592,
+     "sha256": "a74cef124c1880e5f2b157914504bedc666b225a7dcaa13307b8912432b226c7",
+     "srcBytes": 28532,
+     "srcSha256": "6e8dfa2e6ba3d4564745fe69ace7c796898aa023a2af2727b0be127316712c2c"
     },
     {
-     "file": "Neeko.png",
+     "file": "Neeko.webp",
      "of": "Neeko",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Neeko.png",
      "fetched": "2026-11-10",
-     "bytes": 28615,
-     "sha256": "0fd600e0aeeca36f9245bcbc02ca666a2493b2b68a60ecd298a2ad26c33c8a92"
+     "width": 104,
+     "bytes": 3518,
+     "sha256": "a00c40b5d95e6e9d6c8fd00c4edc848639e82a7b9e25507eabb84ce6224f9736",
+     "srcBytes": 28615,
+     "srcSha256": "0fd600e0aeeca36f9245bcbc02ca666a2493b2b68a60ecd298a2ad26c33c8a92"
     },
     {
-     "file": "Nidalee.png",
+     "file": "Nidalee.webp",
      "of": "Nidalee",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nidalee.png",
      "fetched": "2026-11-10",
-     "bytes": 26077,
-     "sha256": "f6291b72f4ea9ea1fa272f61443bc3580e3f61b870be31c0743824a1c25abf33"
+     "width": 104,
+     "bytes": 2928,
+     "sha256": "e5145f59afac64f6faddb7d3481baecb5b736c09f266580c02822aaa2ac1f0e5",
+     "srcBytes": 26077,
+     "srcSha256": "f6291b72f4ea9ea1fa272f61443bc3580e3f61b870be31c0743824a1c25abf33"
     },
     {
-     "file": "Nilah.png",
+     "file": "Nilah.webp",
      "of": "Nilah",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nilah.png",
      "fetched": "2026-11-10",
-     "bytes": 28372,
-     "sha256": "564103bc6f32863242ea0d39fc40eb39c70cf4a1f28297c756f83d44195048b2"
+     "width": 104,
+     "bytes": 3288,
+     "sha256": "5fe99026df9e35c2753bf858639b875039ef6f5dd88868700636750fd2c2c6ad",
+     "srcBytes": 28372,
+     "srcSha256": "564103bc6f32863242ea0d39fc40eb39c70cf4a1f28297c756f83d44195048b2"
     },
     {
-     "file": "Nocturne.png",
+     "file": "Nocturne.webp",
      "of": "Nocturne",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nocturne.png",
      "fetched": "2026-11-10",
-     "bytes": 27356,
-     "sha256": "b9968b3e2bd60257ed23cede9e69b184ef78096bc196d157c1f6eff9b3d900d5"
+     "width": 104,
+     "bytes": 3156,
+     "sha256": "be0143b09960aa22a7f1ffe24967c9268c63d5563726e3e75c35e6c975db1f17",
+     "srcBytes": 27356,
+     "srcSha256": "b9968b3e2bd60257ed23cede9e69b184ef78096bc196d157c1f6eff9b3d900d5"
     },
     {
-     "file": "Nunu.png",
+     "file": "Nunu.webp",
      "of": "Nunu",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Nunu.png",
      "fetched": "2026-11-10",
-     "bytes": 27502,
-     "sha256": "dab4f686598e93d0d430db32d824a98f34b5a0055331a654c84ea3759fe6ed6a"
+     "width": 104,
+     "bytes": 3660,
+     "sha256": "94395d34d1f4a9ac2af9cf4d2eca89faabfec9dd141df9b97811fd485a7a674a",
+     "srcBytes": 27502,
+     "srcSha256": "dab4f686598e93d0d430db32d824a98f34b5a0055331a654c84ea3759fe6ed6a"
     },
     {
-     "file": "Olaf.png",
+     "file": "Olaf.webp",
      "of": "Olaf",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Olaf.png",
      "fetched": "2026-11-10",
-     "bytes": 30509,
-     "sha256": "17d439590f461a2d4d5bdacd33d4d2c31009ea8f57b46a6a427b0db96f6bd0ab"
+     "width": 104,
+     "bytes": 4110,
+     "sha256": "b92ba6c95541aaeb989cf309b4544512dc423349ce0993635fb7c8678cf3fbd3",
+     "srcBytes": 30509,
+     "srcSha256": "17d439590f461a2d4d5bdacd33d4d2c31009ea8f57b46a6a427b0db96f6bd0ab"
     },
     {
-     "file": "Orianna.png",
+     "file": "Orianna.webp",
      "of": "Orianna",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Orianna.png",
      "fetched": "2026-11-10",
-     "bytes": 21902,
-     "sha256": "7d70d8bcb2991de3f3512efb565c453a9d470dca78088c05aec3691d22dd7511"
+     "width": 104,
+     "bytes": 2276,
+     "sha256": "39927813836b08bf9442b8f339db2a7f35c1f9069453350f1a430708b31f0936",
+     "srcBytes": 21902,
+     "srcSha256": "7d70d8bcb2991de3f3512efb565c453a9d470dca78088c05aec3691d22dd7511"
     },
     {
-     "file": "Ornn.png",
+     "file": "Ornn.webp",
      "of": "Ornn",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ornn.png",
      "fetched": "2026-11-10",
-     "bytes": 25086,
-     "sha256": "91374f0919871a6490ac7b8ff9b073efb8b6a797f28302cc3751294c47c58d6e"
+     "width": 104,
+     "bytes": 2464,
+     "sha256": "5dd1fc1d3137b61fc0823a4f6b97e46b01626f69fdadefd16693d237f1a3508b",
+     "srcBytes": 25086,
+     "srcSha256": "91374f0919871a6490ac7b8ff9b073efb8b6a797f28302cc3751294c47c58d6e"
     },
     {
-     "file": "Pantheon.png",
+     "file": "Pantheon.webp",
      "of": "Pantheon",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Pantheon.png",
      "fetched": "2026-11-10",
-     "bytes": 28793,
-     "sha256": "0ab8b436d5d7dd0a4163ec105a4977fc77abfd16757d46a9e958242f2d6858c1"
+     "width": 104,
+     "bytes": 3286,
+     "sha256": "ddfc3ab8697e02311498f82c8111c3206e13c22fecfdbf467202914ec92dbec1",
+     "srcBytes": 28793,
+     "srcSha256": "0ab8b436d5d7dd0a4163ec105a4977fc77abfd16757d46a9e958242f2d6858c1"
     },
     {
-     "file": "Poppy.png",
+     "file": "Poppy.webp",
      "of": "Poppy",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Poppy.png",
      "fetched": "2026-11-10",
-     "bytes": 31447,
-     "sha256": "c2cdd3a868b4b9ac5f1f3fef5ca77e930f32b0c98a5c3b83bcb099f75a4b6b7c"
+     "width": 104,
+     "bytes": 3814,
+     "sha256": "d8f622bde7e7556948d60c43c4e51f7d419bcebfe5bd82ef92a8405cc066c1a0",
+     "srcBytes": 31447,
+     "srcSha256": "c2cdd3a868b4b9ac5f1f3fef5ca77e930f32b0c98a5c3b83bcb099f75a4b6b7c"
     },
     {
-     "file": "Pyke.png",
+     "file": "Pyke.webp",
      "of": "Pyke",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Pyke.png",
      "fetched": "2026-11-10",
-     "bytes": 29162,
-     "sha256": "384a69fbcbfed183b2ef591923e51cb56d5f55835a4dae2da716f858cd8a7a6f"
+     "width": 104,
+     "bytes": 3292,
+     "sha256": "1ccaac3e108a4278c9f675c3109ba74e0c29663f755f1afa5f94d59c5e93bd94",
+     "srcBytes": 29162,
+     "srcSha256": "384a69fbcbfed183b2ef591923e51cb56d5f55835a4dae2da716f858cd8a7a6f"
     },
     {
-     "file": "Qiyana.png",
+     "file": "Qiyana.webp",
      "of": "Qiyana",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Qiyana.png",
      "fetched": "2026-11-10",
-     "bytes": 30662,
-     "sha256": "b7bc7f2b7b4acd45b994005e87710c779c1c9bb89343e02f1fd1e98533a1f93f"
+     "width": 104,
+     "bytes": 4280,
+     "sha256": "f633735052426c6993eb7b65dae86b9485bb63445a86a745c768258f369b8439",
+     "srcBytes": 30662,
+     "srcSha256": "b7bc7f2b7b4acd45b994005e87710c779c1c9bb89343e02f1fd1e98533a1f93f"
     },
     {
-     "file": "Quinn.png",
+     "file": "Quinn.webp",
      "of": "Quinn",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Quinn.png",
      "fetched": "2026-11-10",
-     "bytes": 30154,
-     "sha256": "69ac72c21c771fe80492a7a6316dbe7053c0f20f0bb35ecb59d43f6d916d90e4"
+     "width": 104,
+     "bytes": 3872,
+     "sha256": "4354bb9f14e6fcd45c2e27aa20453ea7c25fdc5e77340d7b446969819cea4a45",
+     "srcBytes": 30154,
+     "srcSha256": "69ac72c21c771fe80492a7a6316dbe7053c0f20f0bb35ecb59d43f6d916d90e4"
     },
     {
-     "file": "Rakan.png",
+     "file": "Rakan.webp",
      "of": "Rakan",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Rakan.png",
      "fetched": "2026-11-10",
-     "bytes": 28472,
-     "sha256": "b0252249ed33b226421595e5cf4f7a6b4e4fbe9441140e65cee05f82463f87fd"
+     "width": 104,
+     "bytes": 3256,
+     "sha256": "b7350984f110f25939352be2eee6d8a66e1f42c346446dceb687353efc966dae",
+     "srcBytes": 28472,
+     "srcSha256": "b0252249ed33b226421595e5cf4f7a6b4e4fbe9441140e65cee05f82463f87fd"
     },
     {
-     "file": "Rammus.png",
+     "file": "Rammus.webp",
      "of": "Rammus",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Rammus.png",
      "fetched": "2026-11-10",
-     "bytes": 27369,
-     "sha256": "911faa8b6e8a2b5e018fa1c5f36617488036782e163faa8029d1475885cef6ab"
+     "width": 104,
+     "bytes": 3600,
+     "sha256": "7e07c575cfb10a38cea69091cb486d0d9c3be8ac42753d68e505d41738dc35ed",
+     "srcBytes": 27369,
+     "srcSha256": "911faa8b6e8a2b5e018fa1c5f36617488036782e163faa8029d1475885cef6ab"
     },
     {
-     "file": "RekSai.png",
+     "file": "RekSai.webp",
      "of": "RekSai",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/RekSai.png",
      "fetched": "2026-11-10",
-     "bytes": 27922,
-     "sha256": "881fcd45ab0566be11312e358b9fe33f61656bbafe5b0ae4c95e5b3ca9cacfc3"
+     "width": 104,
+     "bytes": 3434,
+     "sha256": "7117334f63ff5210d9aae34d9d7ead7282695407ae0c36f99f6bab176bcaf998",
+     "srcBytes": 27922,
+     "srcSha256": "881fcd45ab0566be11312e358b9fe33f61656bbafe5b0ae4c95e5b3ca9cacfc3"
     },
     {
-     "file": "Rell.png",
+     "file": "Rell.webp",
      "of": "Rell",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Rell.png",
      "fetched": "2026-11-10",
-     "bytes": 29915,
-     "sha256": "47c0724d3b71c8b4d2ae4eed8d3b793550e1f4ef0e2bf3807696c6bf2ebaa91c"
+     "width": 104,
+     "bytes": 3884,
+     "sha256": "a3e774edc3c5732ac29d9a6b3e802ecbf8b1e82107e633b2a3e4789ab3ab52d1",
+     "srcBytes": 29915,
+     "srcSha256": "47c0724d3b71c8b4d2ae4eed8d3b793550e1f4ef0e2bf3807696c6bf2ebaa91c"
     },
     {
-     "file": "Renata.png",
+     "file": "Renata.webp",
      "of": "Renata",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Renata.png",
      "fetched": "2026-11-10",
-     "bytes": 27669,
-     "sha256": "59f70a9f29de3a7740594e7f0a635e2d75f7e32b44c04f1d5b2576e91494baf0"
+     "width": 104,
+     "bytes": 3334,
+     "sha256": "67cbfcb0ad87eaf995094942a4d7ef8fff5814eded92f1361e4c577655ee5396",
+     "srcBytes": 27669,
+     "srcSha256": "59f70a9f29de3a7740594e7f0a635e2d75f7e32b44c04f1d5b2576e91494baf0"
     },
     {
-     "file": "Renekton.png",
+     "file": "Renekton.webp",
      "of": "Renekton",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Renekton.png",
      "fetched": "2026-11-10",
-     "bytes": 29409,
-     "sha256": "a3b94121970f7649896ef8c695be265d31c617e33ff9c7c86cff56d1e19724fd"
+     "width": 104,
+     "bytes": 3840,
+     "sha256": "65075f39786ab0f4ef26ac94192d9ff9e5e09af6bf4c77cf0712f7f665daff49",
+     "srcBytes": 29409,
+     "srcSha256": "a3b94121970f7649896ef8c695be265d31c617e33ff9c7c86cff56d1e19724fd"
     },
     {
-     "file": "Rengar.png",
+     "file": "Rengar.webp",
      "of": "Rengar",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Rengar.png",
      "fetched": "2026-11-10",
-     "bytes": 31091,
-     "sha256": "afc37ac7e29cbc58e31e3d127e26a9c1e09f05fcc489adbb512ad6710b63ff5e"
+     "width": 104,
+     "bytes": 3730,
+     "sha256": "3e66023c36fbd1444d6cc63a2ebdd4cccae18007c8cd44a2649ae3c9a3777d59",
+     "srcBytes": 31091,
+     "srcSha256": "afc37ac7e29cbc58e31e3d127e26a9c1e09f05fcc489adbb512ad6710b63ff5e"
     },
     {
-     "file": "Riven.png",
+     "file": "Riven.webp",
      "of": "Riven",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Riven.png",
      "fetched": "2026-11-10",
-     "bytes": 27993,
-     "sha256": "4527ba3804c0b78e0127608708b2a425d1c6eef5f95925c5dcfd707f5fa32139"
+     "width": 104,
+     "bytes": 3748,
+     "sha256": "5950690a3aaf9622f85a14cd06cea4b490784fa17f3a21cd58b29dd1303e6378",
+     "srcBytes": 27993,
+     "srcSha256": "4527ba3804c0b78e0127608708b2a425d1c6eef5f95925c5dcfd707f5fa32139"
     },
     {
-     "file": "Rumble.png",
+     "file": "Rumble.webp",
      "of": "Rumble",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Rumble.png",
      "fetched": "2026-11-10",
-     "bytes": 29584,
-     "sha256": "e14a39464abbdb4aba3ac5827e8f717ff7ce5b13d9c6a932da3fc13caa783f36"
+     "width": 104,
+     "bytes": 3728,
+     "sha256": "c6959e737e67e43affac9c2fe3bee3e168d250d6eee4ea55dc4dfb59a1007eee",
+     "srcBytes": 29584,
+     "srcSha256": "e14a39464abbdb4aba3ac5827e8f717ff7ce5b13d9c6a932da3fc13caa783f36"
     },
     {
-     "file": "Ryze.png",
+     "file": "Ryze.webp",
      "of": "Ryze",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ryze.png",
      "fetched": "2026-11-10",
-     "bytes": 25185,
-     "sha256": "abb747c8b8402625d4cc6b5b3c48950b192823216532c74f26d4b5ccf8851290"
+     "width": 104,
+     "bytes": 2852,
+     "sha256": "49b24e282644cbf81695c5956f33b989756ab8bb060fd57b2a2adcf75940b961",
+     "srcBytes": 25185,
+     "srcSha256": "abb747c8b8402625d4cc6b5b3c48950b192823216532c74f26d4b5ccf8851290"
     },
     {
-     "file": "Samira.png",
+     "file": "Samira.webp",
      "of": "Samira",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Samira.png",
      "fetched": "2026-11-10",
-     "bytes": 24690,
-     "sha256": "0a30028f649d72534fddf5c66e713792511dc79cb4ce882b7b7828eeabe35aa7"
+     "width": 104,
+     "bytes": 2914,
+     "sha256": "f2b066bfc80a73f9b63450ac5732d4ed43911d7363607305bed31fce6b4ad121",
+     "srcBytes": 24690,
+     "srcSha256": "0a30028f649d72534fddf5c66e713792511dc79cb4ce882b7b7828eeabe35aa7"
     },
     {
-     "file": "Sejuani.png",
+     "file": "Sejuani.webp",
      "of": "Sejuani",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sejuani.png",
      "fetched": "2026-11-10",
-     "bytes": 31761,
-     "sha256": "a84f6106746dd2cc0c173e6a995d7310a2ee676c7a22630f041fa1869bc6ef86"
+     "width": 104,
+     "bytes": 4334,
+     "sha256": "9aa2bc80172c1528e58085648d50d247108ffd87e26fa4495c59e10fff39218c",
+     "srcBytes": 31761,
+     "srcSha256": "a84f6106746dd2cc0c173e6a995d7310a2ee676c7a22630f041fa1869bc6ef86"
     },
     {
-     "file": "Senna.png",
+     "file": "Senna.webp",
      "of": "Senna",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Senna.png",
      "fetched": "2026-11-10",
-     "bytes": 23661,
-     "sha256": "9ea2bd78c36f3c9b466a0f6df52154007663bb77cab7c07d87496885f0f86683"
+     "width": 104,
+     "bytes": 2406,
+     "sha256": "095f9c90c445a5b79a7c7be296738313b6f6be07f8faf5f4537f5e0e471cdf67",
+     "srcBytes": 23661,
+     "srcSha256": "9ea2bd78c36f3c9b466a0f6df52154007663bb77cab7c07d87496885f0f86683"
     },
     {
-     "file": "Seraphine.png",
+     "file": "Seraphine.webp",
      "of": "Seraphine",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Seraphine.png",
      "fetched": "2026-11-10",
-     "bytes": 27763,
-     "sha256": "87bfe49f6595aa4b3b002f9768487d5d410badf25dfbb0f7bb54de11b0d50254"
+     "width": 104,
+     "bytes": 3690,
+     "sha256": "79133a3d7aed6915924a04ea3252e49cc73e69d23d604d1865ec882159302177",
+     "srcBytes": 27763,
+     "srcSha256": "87bfe49f6595aa4b3b002f9768487d5d410badf25dfbb0f7bb54de11b0d50254"
     },
     {
-     "file": "Sett.png",
+     "file": "Sett.webp",
      "of": "Sett",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sett.png",
      "fetched": "2026-11-10",
-     "bytes": 26531,
-     "sha256": "95823a0688664a52d1d46ebb0392c3cc45e26ab7e7a2510292a4f36239d9eea0"
+     "width": 104,
+     "bytes": 2776,
+     "sha256": "785b7e74d74ac25b94fd033c758e2338edcc3359bec5c804bb22b98d4c829605",
+     "srcBytes": 26531,
+     "srcSha256": "95823a0688664a52d1d46ebb0392c3cc45e26ab7e7a2510292a4f36239d9eea0"
     },
     {
-     "file": "Shaco.png",
+     "file": "Shaco.webp",
      "of": "Shaco",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Shaco.png",
      "fetched": "2026-11-10",
-     "bytes": 28951,
-     "sha256": "83ad990c0196b9b33c06b6cdf672db2d1ab3025cde131961ba767ddfff9c7a8a"
+     "width": 104,
+     "bytes": 3534,
+     "sha256": "d0cc8ed2b7255d93996cbc2baf3a275b68aaf1575e7f114311d50a312b40b8d6",
+     "srcBytes": 28951,
+     "srcSha256": "83ad990c0196b9b33c06b6cdf672db2d1ab3025cde131961ba767ddfff9c7a8a"
     },
     {
-     "file": "Shen.png",
+     "file": "Shen.webp",
      "of": "Shen",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Shen.png",
      "fetched": "2026-11-10",
-     "bytes": 25298,
-     "sha256": "6570a91fb958ef079805dadd8c7a628da569d9601883b6b24610f0858bda8239"
+     "width": 104,
+     "bytes": 3058,
+     "sha256": "10a0ce33fa7b8fc1ab68f4ce3dca406dd4f2d54c7599815f4bd608ab8636e968",
+     "srcBytes": 25298,
+     "srcSha256": "6570a91fb958ef079805dadd8c7a628da569d9601883b6b24610f0858bda8239"
     },
     {
-     "file": "Shyvana.png",
+     "file": "Shyvana.webp",
      "of": "Shyvana",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Shyvana.png",
      "fetched": "2026-11-10",
-     "bytes": 39720,
-     "sha256": "f65317e9ded51d97ea2e53293984b7a5c640242a7099df7fb3de0aad356594b0"
+     "width": 104,
+     "bytes": 3728,
+     "sha256": "3ee5423f10ff0b9db77b0630673b9a6a9e4ce2062afc2448d5741e9a7f1aafcb",
+     "srcBytes": 39720,
+     "srcSha256": "f65317e9ded51d97ea2e53293984b7a5c640242a7099df7fb3de0aad356594b0"
     },
     {
-     "file": "Singed.png",
+     "file": "Singed.webp",
      "of": "Singed",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Singed.png",
      "fetched": "2026-11-10",
-     "bytes": 27610,
-     "sha256": "0429cad926e909454d99f3286b091a143780b87f67f867b54ab4ee152bdbec99"
+     "width": 104,
+     "bytes": 3214,
+     "sha256": "dd3c03c7cc98f2a42ffdaeeeb95f619457774e6d3e9a9c52a09dce380e5a6075",
+     "srcBytes": 27610,
+     "srcSha256": "0429cad926e909454d99f3286b091a143780b87f67f867b54ab4ee152bdbec99"
     },
     {
-     "file": "Sion.png",
+     "file": "Sion.webp",
      "of": "Sion",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sion.png",
      "fetched": "2026-11-10",
-     "bytes": 26066,
-     "sha256": "4908e30a48ec3cbdb080de1667833e2d018ea03fb296e9760066a46793adb528"
+     "width": 104,
+     "bytes": 3116,
+     "sha256": "5d6e6760e64e9e5a7aeba0816b6fa144cfe2698aea64d98f14e9cdc916c6a841",
+     "srcBytes": 26066,
+     "srcSha256": "4908e30a48ec3cbdb080de1667833e2d018ea03fb296e9760066a46793adb528"
     },
     {
-     "file": "Sivir.png",
+     "file": "Sivir.webp",
      "of": "Sivir",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sivir.png",
      "fetched": "2026-11-10",
-     "bytes": 28166,
-     "sha256": "dd8642cd3fb6df0d85d1837dc94c7128e4292554a93451081a5537d0b888172b"
+     "width": 104,
+     "bytes": 3368,
+     "sha256": "e0d79f21d4eb2cbe1abc8a9c67b89d9f79380a0e7b63ec179e828b6d7ef345a6",
+     "srcBytes": 28166,
+     "srcSha256": "dd8642cd3fb6df0d85d1837dc94c7128e4292554a93451081a5537d0b888172b"
     },
     {
-     "file": "Skarner.png",
+     "file": "Skarner.webp",
      "of": "Skarner",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Skarner.png",
      "fetched": "2026-11-10",
-     "bytes": 29500,
-     "sha256": "cefd97204e9634f6d46216b736279b988f5e0f3ce1ca49ed43a519effd6f05c9"
+     "width": 104,
+     "bytes": 3570,
+     "sha256": "99472d2fba6a956bdb9410af8334545ded5d9ab67c7c4330a0462032ce64ad55",
+     "srcBytes": 29500,
+     "srcSha256": "cefd97204e9634f6d46216b736279b988f5e0f3ce1ca49ed43a519effd6f05c9"
     },
     {
-     "file": "Smolder.png",
+     "file": "Smolder.webp",
      "of": "Smolder",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Smolder.png",
      "fetched": "2026-11-10",
-     "bytes": 29635,
-     "sha256": "8a7ffc62f2fe7904aee014201fe75e138b2bf82710d2bc3a6cf34d50d171e076"
+     "width": 104,
+     "bytes": 3912,
+     "sha256": "3d51a470bfabcf4a7b03a63a80085c677f49c8784afc157fcbc8f74445aeddf4",
+     "srcBytes": 29635,
+     "srcSha256": "8a7ffc62f2fe7904aee014201fe75e138b2bf82710d2bc3a6cf34d50d171e076"
     },
     {
-     "file": "Sona.png",
+     "file": "Sona.webp",
      "of": "Sona",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sona.png",
      "fetched": "2026-11-10",
-     "bytes": 26340,
-     "sha256": "e77557069fdc32b412190e8218d2df235d89265100758f0fd8a3399e7b585548"
+     "width": 104,
+     "bytes": 3076,
+     "sha256": "cd590b7cca8f10c71e0f931916b7c888e43514d7ab651be48c26ca4f45dd8ad9",
+     "srcBytes": 26340,
+     "srcSha256": "e77557069fdc32b412190e8218d2df235d89265100758f0fd8a3399e7b585548"
     },
     {
-     "file": "Soraka.png",
+     "file": "Soraka.webp",
      "of": "Soraka",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Soraka.png",
      "fetched": "2026-11-10",
-     "bytes": 31969,
-     "sha256": "ca2774023350198da7025b950c85be65e3506e2f40947ca4151f0e8df4a8be15"
+     "width": 104,
+     "bytes": 3874,
+     "sha256": "a6d5537b42673ba072a26164d480c6ece7af1614ae8b33a351e59c051e94eb39",
+     "srcBytes": 31969,
+     "srcSha256": "ca2774023350198da7025b950c85be65e3506e2f40947ca4151f0e8df4a8be15"
     },
     {
-     "file": "Swain.png",
+     "file": "Swain.webp",
      "of": "Swain",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Swain.png",
      "fetched": "2026-11-10",
-     "bytes": 24066,
-     "sha256": "9f4550dd903cf19ee587bd0870f630ce90d6f62fac2a2d07fe46bda153db8f9b"
+     "width": 104,
+     "bytes": 2464,
+     "sha256": "a06a578b238574aafd3ac3d629d883c633a327ec093dbfa2bfcd174654bf2da4",
+     "srcBytes": 24066,
+     "srcSha256": "9f4550dd903cf19ee587bd0870f630ce90d6f62fac2a2d07fe46bda153db8f9b"
     },
     {
-     "file": "Sylas.png",
+     "file": "Sylas.webp",
      "of": "Sylas",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sylas.png",
      "fetched": "2026-11-10",
-     "bytes": 27292,
-     "sha256": "3e724fcd4fffd0b36ea3dd2a60d7d3ed9aeb20ebc5e2dec2e8019b31c3097647"
+     "width": 104,
+     "bytes": 2992,
+     "sha256": "096797b832f29e9746bcb44dee24bed12daa0c1ae902d275e02901cde6114d07",
+     "srcBytes": 27292,
+     "srcSha256": "3e724fcd4fffd0b36ea3dd2a60d7d3ed9aeb20ebc5e2dec2e8019b31c3097647"
     },
     {
-     "file": "Syndra.png",
+     "file": "Syndra.webp",
      "of": "Syndra",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Syndra.png",
      "fetched": "2026-11-10",
-     "bytes": 30524,
-     "sha256": "51424965682912746a4ac1a66c9c7d4e3d08333aaf8a59b9865725166580f7b3"
+     "width": 104,
+     "bytes": 3668,
+     "sha256": "c32a73cb044809a403ab0c94eab217207851d860c57f296f6d1de4edd071ed34",
+     "srcBytes": 30524,
+     "srcSha256": "51424965682912746a4ac1a66c9c7d4e3d08333aaf8a59b9865725166580f7b3"
     },
     {
-     "file": "TahmKench.png",
+     "file": "TahmKench.webp",
      "of": "TahmKench",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/TahmKench.png",
      "fetched": "2026-11-10",
-     "bytes": 27628,
-     "sha256": "138eaa3abe89c804e7ef287f8d3bf69172be797965df958b259663c3d4389e42"
+     "width": 104,
+     "bytes": 3060,
+     "sha256": "1ba3cf3a660b0f49de964aa6050c8e519ab82dae58ac0769e4006d2eb9141ede",
+     "srcBytes": 27628,
+     "srcSha256": "138eaa3abe89c804e7ef287f8d3bf69172be797965df958b259663c3d4389e42"
     },
     {
-     "file": "Taliyah.png",
+     "file": "Taliyah.webp",
      "of": "Taliyah",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Taliyah.png",
      "fetched": "2026-11-10",
-     "bytes": 24435,
-     "sha256": "436958c1d99411e473c7065bd969cec65ebdf61702d5b266db7e0720a3937c85"
+     "width": 104,
+     "bytes": 2930,
+     "sha256": "9418b426b11c49c89233484228ec1f1e5775c9bc42c43bd015f990c3b379f46d",
+     "srcBytes": 24435,
+     "srcSha256": "436958c1d99411e473c7065bd969cec65ebdf61702d5b266db7e0720a3937c85"
     },
     {
-     "file": "Talon.png",
+     "file": "Talon.webp",
      "of": "Talon",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Talon.png",
      "fetched": "2026-11-10",
-     "bytes": 26989,
-     "sha256": "fc05e5ae6e6d4705a9db3a842fdbce11f429bf333b278f8183caef1d669919d9"
+     "width": 104,
+     "bytes": 3580,
+     "sha256": "267e4b4031ea351746dd0bee8d3e9c78df192dc6fc6bd2de0597491aaf3bf64c",
+     "srcBytes": 26989,
+     "srcSha256": "fc05e5ae6e6d4705a9db3a842fdbce11f429bf333b278f8183caef1d669919d9"
     },
     {
-     "file": "Taric.png",
+     "file": "Taric.webp",
      "of": "Taric",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Taric.png",
      "fetched": "2026-11-10",
-     "bytes": 27875,
-     "sha256": "3a91b21a88d562717fb78ada18c95a0b7a077e0c3b941d34829ba5e4d7eceaed"
+     "width": 104,
+     "bytes": 3372,
+     "sha256": "21a6f65fb5eb7b7d1337895a471a272fdc6e5e24dc7568719792dd112c319586",
+     "srcBytes": 27875,
+     "srcSha256": "3a91b21a88d562717fb78ada18c95a0b7a077e0c3b941d34829ba5e4d7eceaed"
     },
     {
-     "file": "Teemo.png",
+     "file": "Teemo.webp",
      "of": "Teemo",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Teemo.png",
      "fetched": "2026-11-10",
-     "bytes": 21456,
-     "sha256": "bbf4b7238b1f62dc02b39208db764588d18a712a7ea96205f5932730c08a62ee"
+     "width": 104,
+     "bytes": 3756,
+     "sha256": "40808d08149585d358aab4acced154fcc5b3edcc324f4cb024a3fec99fc0724c",
+     "srcBytes": 21456,
+     "srcSha256": "bbf4b7238b1f62dc02b39208db764588d18a712a7ea96205f5932730c08a62ee"
     },
     {
-     "file": "Thresh.png",
+     "file": "Thresh.webp",
      "of": "Thresh",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Thresh.png",
      "fetched": "2026-11-10",
-     "bytes": 26720,
-     "sha256": "27f9bfc32eb28d9e17e42e29f8d555c91110e040991d56577f433ddc9eca6c7e"
+     "width": 104,
+     "bytes": 3806,
+     "sha256": "4d828a98b8692a6f9e0ba2cb73ee7adc33dc3d8a3334d6199e39fa8145bfacc4",
+     "srcBytes": 26720,
+     "srcSha256": "27f9bfc32eb28d9e17e42e29f8d555c91110e040991d56577f433ddc9eca6c7e"
     },
     {
-     "file": "Tristana.png",
+     "file": "Tristana.webp",
      "of": "Tristana",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Tristana.png",
      "fetched": "2026-11-10",
-     "bytes": 30313,
-     "sha256": "9f46e6dd9d49bf8fd2c6dc7397fa4badb35bf0f355334301782c7f9e13f00aa5"
+     "width": 104,
+     "bytes": 3852,
+     "sha256": "231c421b3a689f7549d9f52f73a1195276ab1921885a759244a7231750052189",
+     "srcBytes": 30313,
+     "srcSha256": "9f46e6dd9d49bf8fd2c6dc7397fa4badb35bf0f355334301782c7f9e13f00aa5"
     },
     {
-     "file": "Trundle.png",
+     "file": "Trundle.webp",
      "of": "Trundle",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Trundle.png",
      "fetched": "2026-11-10",
-     "bytes": 28260,
-     "sha256": "e77d99af3ac328a80a247fafec728df7be4eda7200300a597b38f093fffe234e"
+     "width": 104,
+     "bytes": 3674,
+     "sha256": "98d974ae599062b8c4ac0b3fcfd184f84642194a696833ca980a4c1f7c7b599b",
+     "srcBytes": 28260,
+     "srcSha256": "e77d99af3ac328a80a247fafec728df7be4eda7200300a597b38f093fffe234e"
     },
     {
-     "file": "Tryndamere.png",
+     "file": "Tryndamere.webp",
      "of": "Tryndamere",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Tryndamere.png",
      "fetched": "2026-11-10",
-     "bytes": 31840,
-     "sha256": "e715ed3a7eb5f3a0dcfb6da2a9c8ae05d9c197ef514f959d5a94bff38d4dff48"
+     "width": 104,
+     "bytes": 3844,
+     "sha256": "8b1c2a22aac7c6fb7fb0220734ddd284742710c76a9080b7aa47da2c87fb5fe8",
+     "srcBytes": 31840,
+     "srcSha256": "e715ed3a7eb5f3a0dcfb6da2a9c8ae05d9c197ef514f959d5a94bff38d4dff48"
     },
     {
-     "file": "TwistedFate.png",
+     "file": "TwistedFate.webp",
      "of": "TwistedFate",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/TwistedFate.png",
      "fetched": "2026-11-10",
-     "bytes": 24949,
-     "sha256": "5f5944763b0d7c8fc68edad413a908799e2cfcae8a850a6ff746a16afc553670"
+     "width": 104,
+     "bytes": 2864,
+     "sha256": "9e2c8ddf3add8da175232cfe7fd919ec1d5f1aec1beb39d1d77e2843faf86b3e",
+     "srcBytes": 24949,
+     "srcSha256": "5f5944763b0d7c8fc68edad413a908799e2cfcae8a850a6ff746a16afc553670"
     },
     {
-     "file": "Twitch.png",
+     "file": "Twitch.webp",
      "of": "Twitch",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Twitch.png",
      "fetched": "2026-11-10",
-     "bytes": 28474,
-     "sha256": "823c7394b6cdc9fcc0b70f0e71578d8fbe1f06533e1010aa7785ebae4d1209ad"
+     "width": 104,
+     "bytes": 3604,
+     "sha256": "831f4c711d1f0afbf908969a608cb77a629e5bd95abb3be2745b790d9651fa68",
+     "srcBytes": 28474,
+     "srcSha256": "823c7394b6cdc9fcc0b70f0e71578d8fbe1f06533e1010aa7785ebae4d1209ad"
     },
     {
-     "file": "Udyr.png",
+     "file": "Udyr.webp",
      "of": "Udyr",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Udyr.png",
      "fetched": "2026-11-10",
-     "bytes": 29169,
-     "sha256": "5fa439ae56b9b7a7bdc2ee35661caf8080c19bf2ef5fc0b87ad0315271ac9b93"
+     "width": 104,
+     "bytes": 3528,
+     "sha256": "1fea60c39bc034b202e251c552ad56093bc1f641987ee34037e7bb05d6f9ad42",
+     "srcBytes": 29169,
+     "srcSha256": "5fa439ae56b9b7a7bdc2ee35661caf8080c19bf2ef5fc0b87ad0315271ac9b93"
     },
     {
-     "file": "Urgot.png",
+     "file": "Urgot.webp",
      "of": "Urgot",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Urgot.png",
      "fetched": "2026-11-10",
-     "bytes": 25786,
-     "sha256": "35d3f774ca9b1430aa32fcacb9add8daa7cecb51411985a178e0d72d5571ec3d"
+     "width": 104,
+     "bytes": 2816,
+     "sha256": "03974456ca06d0678a845312288c966ba82d41f21890455dd5eca37c1d621699",
+     "srcBytes": 25786,
+     "srcSha256": "35d3f774ca9b1430aa32fcacb9add8daa7cecb51411985a178e0d72d5571ec3d"
     },
     {
-     "file": "Varus.png",
+     "file": "Varus.webp",
      "of": "Varus",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Varus.png",
      "fetched": "2026-11-10",
-     "bytes": 28137,
-     "sha256": "1a300d007f9a3bc76342534a16cdf025ac111e733f69667bb4f065869a5ae9f4"
+     "width": 104,
+     "bytes": 3248,
+     "sha256": "ea01236efd8db7886b5c74e40cd14de9e790a6f2c7f7fc86509a3197e775f46c",
+     "srcBytes": 28137,
+     "srcSha256": "1a300d007f9a3bc76342534a16cdf025ac111e733f69667bb4f065869a5ae9f4"
     },
     {
-     "file": "Vayne.png",
+     "file": "Vayne.webp",
      "of": "Vayne",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Vayne.png",
      "fetched": "2026-11-10",
-     "bytes": 28367,
-     "sha256": "d9ea091b8d2eddbf7d08001866d7a0798f2649a7067c61dce15ac92fbc3cb723"
+     "width": 104,
+     "bytes": 3428,
+     "sha256": "25ed6c88601056efa0088824367bd1a791027297d9aa22b82bac422f6bb05055",
+     "srcBytes": 28367,
+     "srcSha256": "d9ea091b8d2eddbf7d08001866d7a0798f2649a7067c61dce15ac92fbc3cb723"
     },
     {
-     "file": "Veigar.png",
+     "file": "Veigar.webp",
      "of": "Veigar",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Veigar.png",
      "fetched": "2026-11-10",
-     "bytes": 26807,
-     "sha256": "ace2c32c06d8a96b4de943228b01812f220adf3a4dfaa396e922f7c696221024"
+     "width": 104,
+     "bytes": 3388,
+     "sha256": "fdeaa5c76219c20953efe9af37c87d490a675e4e9f2e44b1723625747563312d",
+     "srcBytes": 26807,
+     "srcSha256": "ace2c32c06d8a96b4de943228b01812f220adf3a4dfaa396e922f7c696221024"
     },
     {
-     "file": "Velkoz.png",
+     "file": "Velkoz.webp",
      "of": "Velkoz",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Velkoz.png",
      "fetched": "2026-11-10",
-     "bytes": 29187,
-     "sha256": "263e174bec40da4a00656390621f4bb7e81677c39527ed98ad63ed12c52308ee"
+     "width": 104,
+     "bytes": 3828,
+     "sha256": "6ba893a6cc3f0f8b1838f9ff355676d826e0dfda0ab954ebd5da49af9455d2b7",
+     "srcBytes": 29187,
+     "srcSha256": "263e174bec40da4a00656390621f4bb7e81677c39527ed98ad63ed12c52308ee"
     },
     {
-     "file": "Vex.png",
+     "file": "Vex.webp",
      "of": "Vex",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Vex.png",
      "fetched": "2026-11-10",
-     "bytes": 29332,
-     "sha256": "aaa93d7fab2d5d469778128ccdbe59bde00e601da065d17e3ae7bce4fe53c758"
+     "width": 104,
+     "bytes": 3644,
+     "sha256": "7a7e14d5c947b62a53df832a34fbe78adc02e9aac97201cc37e91c9b71d08a55",
+     "srcBytes": 29332,
+     "srcSha256": "aaa93d7fab2d5d469778128ccdbe59bde00e601da065d17e3ae7bce4fe53c758"
     },
     {
-     "file": "Vi.png",
+     "file": "Vi.webp",
      "of": "Vi",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Vi.png",
      "fetched": "2026-11-10",
-     "bytes": 33358,
-     "sha256": "282bd7a3e6a3bdd309f90eebf03b1fb7009a5357e6f53e158dd8c7df8103b4ab"
+     "width": 104,
+     "bytes": 4356,
+     "sha256": "2a9bc675db276826e9614496989ec3c7df1b004f0790b59ab53cfb27ba987c0e",
+     "srcBytes": 33358,
+     "srcSha256": "282bd7a3e6a3bdd309f90eebf03b1fb7009a5357e6f53e158dd8c7df8103b4ab"
     },
     {
-     "file": "Viego.png",
+     "file": "Viego.webp",
      "of": "Viego",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Viego.png",
      "fetched": "2026-11-10",
-     "bytes": 28601,
-     "sha256": "582fda91453e711bf45146e75ae7b0db0a2aa148499cffd4919050a1b96e9316"
+     "width": 104,
+     "bytes": 3614,
+     "sha256": "4e04c8764afa620e5abab2cc0c0e5f926bd7f1b653fd20777b44276f89c0d11e",
+     "srcBytes": 28601,
+     "srcSha256": "582fda91453e711bf45146e75ae7b0db0a2aa148499cffd4919050a1b96e9316"
     },
     {
-     "file": "Viktor.png",
+     "file": "Viktor.webp",
      "of": "Viktor",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Viktor.png",
      "fetched": "2026-11-10",
-     "bytes": 30530,
-     "sha256": "caf7df593c7713892aac575d1031e9693066c57b86c25ff19542f4ca98c2159a"
+     "width": 104,
+     "bytes": 2736,
+     "sha256": "6a001aade997ceed5dddfbe360a2ffa94c39d9472b94bae61eeb40ad82215fa6",
+     "srcBytes": 30530,
+     "srcSha256": "caf7df593c7713892aac575d1031e9693066c57b86c25ff19542f4ca98c2159a"
     },
     {
-     "file": "Vladimir.png",
+     "file": "Vladimir.webp",
      "of": "Vladimir",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Vladimir.png",
      "fetched": "2026-11-10",
-     "bytes": 24626,
-     "sha256": "eebcd73ab4ba404c4c5b45b7665e5f31399515402b36d9ff8953bb02d4d4c0b3"
+     "width": 104,
+     "bytes": 3286,
+     "sha256": "4d6e51a3461f7d348a2006c87cfd65d9b633e5e1f268008c7440206fc9b9b1cb",
+     "srcBytes": 24626,
+     "srcSha256": "eebcd73ab4ba404c4c5b45b7665e5f31399515402b36d9ff8953bb02d4d4c0b3"
     },
     {
-     "file": "Volibear.png",
+     "file": "Volibear.webp",
      "of": "Volibear",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Volibear.png",
      "fetched": "2026-11-10",
-     "bytes": 29127,
-     "sha256": "36ab730707d6835a6a6fefe216ae3d8bf9d416970fc3223c857f109f404ee5ab"
+     "width": 104,
+     "bytes": 3406,
+     "sha256": "4f009001ddc7cb8596f599cc98798bb7bd07a96c7ed9f6bac3382dc28aef2a7d",
+     "srcBytes": 29127,
+     "srcSha256": "36ab730707d6835a6a6fefe216ae3d8bf9d416970fc3223c857f109f404ee5ab"
     },
     {
-     "file": "Warwick.png",
+     "file": "Warwick.webp",
      "of": "Warwick",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Warwick.png",
      "fetched": "2026-11-10",
-     "bytes": 24895,
-     "sha256": "f5df0cb82ea9fba63308254d04d68307c09d1b17b1a28426d1550da39d9c79b8"
+     "width": 104,
+     "bytes": 2738,
+     "sha256": "54925cc5d8c282f23c5299927fe7bb05bfe0586096a3c1047b746027f10edda6",
+     "srcBytes": 24895,
+     "srcSha256": "f5df0cb82ea9fba63308254d04d68307c09d1b17b1a28426d1550da39d9c79b8"
     },
     {
-     "file": "Xayah.png",
+     "file": "Xayah.webp",
      "of": "Xayah",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Xayah.png",
      "fetched": "2026-11-10",
-     "bytes": 26882,
-     "sha256": "4ecd1e37697ebc5ee54ca05f1914101ee49be334798287bb8a432f8dd42a5b3d"
+     "width": 104,
+     "bytes": 3100,
+     "sha256": "ede5e2f19488861dc89013eaf0a665dd76060fb732d1df93ccdb90cb38a24e9d",
+     "srcBytes": 26882,
+     "srcSha256": "4ecd1e37697ebc5ee54ca05f1914101ee49be334798287bb8a432f8dd42a5b3d"
     },
     {
-     "file": "Xerath.png",
+     "file": "Xerath.webp",
      "of": "Xerath",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Xerath.png",
      "fetched": "2026-11-10",
-     "bytes": 24656,
-     "sha256": "b204c7007dfe3dd7203c36a65ac6798f39fd96ba10ab981fa82e488aa170ed38"
+     "width": 104,
+     "bytes": 3320,
+     "sha256": "2fb2123a861949cd821bf39faa71cda18c4f4acf8719fdd4a50b58f5a66ffa9e",
+     "srcBytes": 24656,
+     "srcSha256": "b204c7007dfe3dd7203c36a65ac6798f39fd96ba10ab981fa82e488aa170ed38"
     },
     {
-     "file": "XinZhao.png",
+     "file": "XinZhao.webp",
      "of": "XinZhao",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/XinZhao.png",
      "fetched": "2026-11-10",
-     "bytes": 35410,
-     "sha256": "f70e9570c60a33328b4e0c0437bcb33cc2320056ba0724e0279e553436da5667"
+     "width": 104,
+     "bytes": 2880,
+     "sha256": "d5994672984f459bc87dcc71ff1bf75e8f3d633d8f409f1665abb3b263e3cfd8",
+     "srcBytes": 35410,
+     "srcSha256": "f70e9570c60a33328b4e0c0437bcb33cc2320056ba0724e0279e553436da5667"
     },
     {
-     "file": "Yasuo.png",
+     "file": "Yasuo.webp",
      "of": "Yasuo",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yasuo.png",
      "fetched": "2026-11-10",
-     "bytes": 28213,
-     "sha256": "25a7597bfbd3198740b56d369734542f9e7b2100645d9f1199d969c7e1538ffb"
+     "width": 104,
+     "bytes": 3358,
+     "sha256": "d117c6838b014ab7dc5079ba610575c8b1692558a80a6d1cf0d37332316272ff",
+     "srcBytes": 28213,
+     "srcSha256": "25a7597bfbd3198740b56d369734542f9e7b2100645d9f1199d969c7e1538ffb"
     },
     {
-     "file": "Yone.png",
+     "file": "Yone.webp",
      "of": "Yone",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yone.png",
      "fetched": "2026-11-10",
-     "bytes": 26864,
-     "sha256": "cc02f91c39f7336562fb8fa5792eeaeeb1540517a54e7713f7c70732add51c6d"
+     "width": 104,
+     "bytes": 3500,
+     "sha256": "68562bb16051a9a40e801df1bc27e1b0a9996f1c832d46504a9c62cf905ef545",
+     "srcBytes": 26864,
+     "srcSha256": "cc02f91c39f7336562fb8fa5792eeaeeb1540517a54e7713f7c70732add51c6d"
     },
     {
-     "file": "Yorick.png",
+     "file": "Yorick.webp",
      "of": "Yorick",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yorick.png",
      "fetched": "2026-11-10",
-     "bytes": 26344,
-     "sha256": "151b64e886222db394d6397734f5297862ddc4216fcc1db4a6ad5d33d5dc241a"
+     "width": 104,
+     "bytes": 2780,
+     "sha256": "4716ab7fa2e493f1435a58a341ca6be1d04c10cd2091ebb450e0302d2a5e8549",
+     "srcBytes": 26344,
+     "srcSha256": "151b64e886222db394d6397734f5297862ddc4216fcc1db4a6ad5d33d5dc241a"
     },
     {
-     "file": "Yunara.png",
+     "file": "Yunara.webp",
      "of": "Yunara",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yunara.png",
      "fetched": "2026-11-10",
-     "bytes": 39524,
-     "sha256": "1502b9641f838af84749a8b10db447942fa8f1661c1fc9c3d43330489427a9d5"
+     "width": 104,
+     "bytes": 3712,
+     "sha256": "553041f32622e34b6a4c383eb888c04698e1e2c91282b467960349b2ad2ab3ea",
+     "srcBytes": 39524,
+     "srcSha256": "1502b9641f838af84749a8b10db447942fa8f1661c1fc9c3d43330489427a9d5"
     },
     {
-     "file": "Yuumi.png",
+     "file": "Yuumi.webp",
      "of": "Yuumi",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yuumi.png",
      "fetched": "2026-11-10",
-     "bytes": 28605,
-     "sha256": "63283c06c2b3a4873a83cb9d00b2ee5892f7bcd7cd009fd8b6ff893f92138b9e"
+     "width": 104,
+     "bytes": 3864,
+     "sha256": "da06bf13b1bcd18333bbcaec4d3b3438a93bed57f63969ae12818e9127100d66",
+     "srcBytes": 28605,
+     "srcSha256": "63283c06c2b3a4873a83cb9d00b2ee5892f7bcd7cd009fd8b6ff893f92138b9e"
     },
     {
-     "file": "Zaahen.png",
+     "file": "Zaahen.webp",
      "of": "Zaahen",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zaahen.png",
      "fetched": "2026-11-10",
-     "bytes": 40550,
-     "sha256": "2028854176d35cf2f1f926044f071bcd0b7cc8eed839590296e64852bedd35d4"
+     "width": 104,
+     "bytes": 3706,
+     "sha256": "a22def45ac1e8b360955662a5c799247b8ac4a7032eff233b3c9b3ddcc86afaf",
+     "srcBytes": 40550,
+     "srcSha256": "2028854176d35cf2f1f926044f071bcd0b7cc8eed839590296e64852bedd35d4"
     },
     {
-     "file": "Zac.png",
+     "file": "Zac.webp",
      "of": "Zac",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zac.png",
      "fetched": "2026-11-10",
-     "bytes": 25794,
-     "sha256": "be2426155e937aa048cd22cab2342dd7ecbc591a90c5417d0bd3759ab5876aa6"
+     "width": 104,
+     "bytes": 3110,
+     "sha256": "0cfeadccf0142e79316222d9a9bf2b9962331c518dffd38bc884ebe65b58f40b",
+     "srcBytes": 25794,
+     "srcSha256": "be2426155e937aa048cd22cab2342dd7ecbc591a90c5417d0bd3759ab5876aa6"
     },
     {
-     "file": "Zed.png",
+     "file": "Zed.webp",
      "of": "Zed",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zed.png",
      "fetched": "2026-11-10",
-     "bytes": 28879,
-     "sha256": "3ad3e956e9ad5ca3127d8f685faf69d4251fb726e9b4f0be989764f0027e9c5f"
+     "width": 104,
+     "bytes": 4038,
+     "sha256": "1fd22d590b7a1bf93a1611cff1a14e2fc4575264600da3723bcc59989b94183e",
+     "srcBytes": 28879,
+     "srcSha256": "3ad3e956e9ad5ca3127d8f685faf69d4251fb726e9b4f0be989764f0027e9c5f"
     },
     {
-     "file": "Zeri.png",
+     "file": "Zeri.webp",
      "of": "Zeri",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zeri.png",
      "fetched": "2026-11-10",
-     "bytes": 28570,
-     "sha256": "5fc4e7ed3b8184495375ea0b8e35a625521cddc7d17d1d6e30e13b683b36100c"
+     "width": 104,
+     "bytes": 3618,
+     "sha256": "5bedbab78a9e199c18355278d17277e485ff9c6434a488a6654f0bf1d7c0bf7a",
+     "srcBytes": 28570,
+     "srcSha256": "5fc4e7ed3b8184495375ea0b8e35a625521cddc7d17d1d6e30e13b683b36100c"
     },
     {
-     "file": "Ziggs.png",
+     "file": "Ziggs.webp",
      "of": "Ziggs",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ziggs.png",
      "fetched": "2026-11-10",
-     "bytes": 28542,
-     "sha256": "cc3ea57671db30642002b5c36c0a6c851aacb7b2d6a5af10069f9f00b00775a9"
+     "width": 104,
+     "bytes": 3732,
+     "sha256": "8e1326c72661c44863ad21779da17cc06595c7c0750096801b65860b396f87c4",
+     "srcBytes": 28542,
+     "srcSha256": "cc3ea57671db30642002b5c36c0a6c851aacb7b2d6a5af10069f9f00b00775a9"
     },
     {
-     "file": "Zilean.png",
+     "file": "Zilean.webp",
      "of": "Zilean",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zilean.png",
      "fetched": "2026-11-10",
-     "bytes": 32671,
-     "sha256": "07c45f7285e5d741f17ebdc07889971c46c67f09846fdb9a3f0f0123aedd8850"
+     "width": 104,
+     "bytes": 4216,
+     "sha256": "f8a806118e101154efa234d6777bd03cd9468ca5d6a654e9cd4695a30cfd3d1e",
+     "srcBytes": 32671,
+     "srcSha256": "07c45f7285e5d741f17ebdc07889971c46c67f09846fdb9a3f0f0123aedd8850"
     },
     {
-     "file": "Zoe.png",
+     "file": "Zoe.webp",
      "of": "Zoe",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zoe.png",
      "fetched": "2026-11-10",
-     "bytes": 27849,
-     "sha256": "2413cb98c5f863b8570a012e1927e4908ee78be0f7619ab3ce471e8c7da56bb2"
+     "width": 104,
+     "bytes": 3326,
+     "sha256": "8c73f3928e0055bd5e852255dff224f89c89cc53cc1e61776014528e2de49602",
+     "srcBytes": 27849,
+     "srcSha256": "2413cb98c5f863b8570a012e1927e4908ee78be0f7619ab3ce471e8c7da56bb2"
     },
     {
-     "file": "Zyra.png",
+     "file": "Zyra.webp",
      "of": "Zyra",
      "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Zyra.png",
      "fetched": "2026-11-10",
-     "bytes": 26347,
-     "sha256": "9993a6caf52f955ad41077e56b56f2472c07c1a589fb4d1c66097ddf775feda4"
+     "width": 104,
+     "bytes": 3108,
+     "sha256": "4af881c06bc1089a0e25fcf0a91a9ae47a46ae271e05efd9f1409d9cca391b45",
+     "srcBytes": 26347,
+     "srcSha256": "9993a6caf52f955ad41077e56b56f2472c07c1a589fb4d1c66097ddf775feda4"
     }
    ],
-   "fetched": "2026-11-10"
+   "fetched": "2026-11-10",
+   "width": 104
+  },
+  {
+   "id": "valorant-agents",
+   "publisher": "valorantapi",
+   "host": "media.valorant-api.com",
+   "what": "Icon of every playable Valorant agent, served as WebP 128 px (the 1024 px originals are about 570 KB)",
+   "pages": [
+    "/valorant/agentes",
+    "/valorant",
+    "/tier-list"
+   ],
+   "dir": "sites/pingalto/static/art/valorant/agents",
+   "source": "displayIcon of the saved valorant-api.com agent list (media.valorant-api.com/agents/<uuid>/displayicon.png)",
+   "robots": "valorant-api.com: \"User-agent: * Disallow:\"; media.valorant-api.com: no rules (checked 2026-11-10)",
+   "fetch": "node data/sources/pingalto/fetch-art.mjs valorant-agents --write",
+   "files": [
+    {
+     "file": "astra.webp",
+     "of": "41fb69c1-4189-7b37-f117-bcaf1e96f1bf",
+     "url": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5600,
+     "sha256": "6b3acffe3b037e091d2552244edbe47c6c6f25497c7905b168397ab7d81af691",
+     "srcBytes": 409955,
+     "srcSha256": "70061e655c229326b38efad764f4b82263ac3065e7b3aa9a6808f737387bb176"
+    },
+    {
+     "file": "breach.webp",
+     "of": "5f8d3a7f-467b-97f3-062c-13acf203c006",
+     "url": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5496,
+     "sha256": "a0510a0d4d3e25165f81015e1d37cee5d4388f2f06018293380fd1441fcb656b",
+     "srcBytes": 456642,
+     "srcSha256": "e38c30c81de0601bd3de340aefdc82e01ddf4a7580c3848eff45c59f03793362"
+    },
+    {
+     "file": "brimstone.webp",
+     "of": "9f0d8ba9-4140-b941-57d3-a7ad57c6b417",
+     "url": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5106,
+     "sha256": "ed8d6e6030e3f5418cb4d99b86eb67c2ba08979a3daa77b3cd40c3edfc3705c4",
+     "srcBytes": 412007,
+     "srcSha256": "ab3be7c8412fdf78b72987d7829dd570f600927bbfe9b1487c51c995560c73d5"
+    },
+    {
+     "file": "chamber.webp",
+     "of": "22697a3d-45bf-8dd7-4fec-84a9e28c69d7",
+     "url": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5128,
+     "sha256": "5afa5287f8a1a3f5612e4e428fa67cc490835e62c127bc6fd33ea0d45343a52d",
+     "srcBytes": 435701,
+     "srcSha256": "7703fa1ae4289af11e3ce7cac4f0293fa93e1719bd39f0e44eaeee6e9f4c7e15"
+    },
+    {
+     "file": "clove.webp",
+     "of": "1dbf2edd-4729-0984-3115-daa5eed44993",
+     "url": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5634,
+     "sha256": "7e84bd54c50ee0a6555f146fa150b6842607fb04ea31b500a5c20acb5358e171",
+     "srcBytes": 388443,
+     "srcSha256": "6704b491d95159f51b55bb7804c30eb89511487c77ba2e30fffb3beb774a7b18"
+    },
+    {
+     "file": "cypher.webp",
+     "of": "117ed9e3-49f3-6512-3ccf-0cada7e3823b",
+     "url": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5684,
+     "sha256": "46d7477ab1e360c8c7b74d7b06ec0c8c9f06ce2d9467c82bfa15edb66ea56cff",
+     "srcBytes": 428133,
+     "srcSha256": "c563d8085b90e8e19fee8ef13cefd45356a69e49989f144631548079863dd694"
+    },
+    {
+     "file": "deadlock.webp",
+     "of": "cc8b64c8-4b25-4ff9-6e7f-37b4da43d235",
+     "url": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 6338,
+     "sha256": "be0e8936cc7b276c95ee02fe7c606dab0ec3b57a68740d473f839a6b0c33e04d",
+     "srcBytes": 540135,
+     "srcSha256": "473c76937bb788450fd7b3c7a5460e5131c7307d7102248d382c816ce5d5d482"
+    },
+    {
+     "file": "fade.webp",
+     "of": "dade69b4-4f5a-8528-247b-219e5a1facd6",
+     "url": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 6436,
+     "sha256": "3ddd0ca27d28e058ada041eed908a0a287e62de1f3cb85db72ad3867e0ff310f",
+     "srcBytes": 579617,
+     "srcSha256": "2ea9f3af0e07a8fc4c1b24cc3e6c5b5718824dc64a26dadf1f9cea00530fe894"
+    },
+    {
+     "file": "gekko.webp",
+     "of": "e370fa57-4757-3604-3648-499e1f642d3f",
+     "url": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 4708,
+     "sha256": "db7c77c1751283edba5965d827123d378c506aca26e292b49735c0821112de30",
+     "srcBytes": 568157,
+     "srcSha256": "d86ce31860b104c60abd2a75402e89126dc95e06fdb2acb2299c4a0e27018e77"
+    },
+    {
+     "file": "harbor.webp",
+     "of": "95b78ed7-4637-86d9-7e41-71ba8c293152",
+     "url": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5554,
+     "sha256": "1be8e8bdd6ea4068f3c4fb2680fa481773406acaa3773207d4226724f02f6194",
+     "srcBytes": 513708,
+     "srcSha256": "f522b11d545d61b45b2d0fef6097f6c17f6bd6f40caa95a0326d8824035f2590"
+    },
+    {
+     "file": "hush.webp",
+     "of": "ddd5a15c-4fbe-42fa-3789-11a55ca5ee04",
+     "url": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 4678,
+     "sha256": "283538a9ab5f2d504126a063037f9083d21a6700540ab8cf455088f3f13f14fc",
+     "srcBytes": 277568,
+     "srcSha256": "981e77651c031c856d64303515b0f535486320041cb2b5291a664ec81b461755"
+    },
+    {
+     "file": "iso.webp",
+     "of": "0e38b510-41a8-5780-5e8f-568b2a4f2d6c",
+     "url": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5050,
+     "sha256": "f27015cf42d7345ee2800bcb05ca6218b5c5e66884d9b38a5603317732e7300a",
+     "srcBytes": 354086,
+     "srcSha256": "b2c18170a366f5e72342e86aaba65ab7cf139e4903400ac5ead2397e47af10dc"
+    },
+    {
+     "file": "jett.webp",
+     "of": "add6443a-41bd-e414-f6ad-e58d267f4e95",
+     "url": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5238,
+     "sha256": "3f5cff0c0e131b060a75184fae0a402ddf9628a9257c2b277dd744686481cf0d",
+     "srcBytes": 410578,
+     "srcSha256": "04d5f6b623ebb3f42f3fa572dab3bbad3be614d127ba7d2ea28575a0f30b4045"
+    },
+    {
+     "file": "kay-o.webp",
+     "of": "601dbbe7-43ce-be57-2a40-4abd24953621",
+     "url": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 6050,
+     "sha256": "96a6941e09a97c9058b89c28cd5ca715efbced5d538f3eaf4ade0bb094289cd0",
+     "srcBytes": 628427,
+     "srcSha256": "e0f200b03983bc1ee4cbc17476d2940b241e3841943ca6795406bdeeb9f50b98"
+    },
+    {
+     "file": "killjoy.webp",
+     "of": "1e58de9c-4950-5125-93e9-a0aee9f98746",
+     "url": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 6186,
+     "sha256": "4d100efcb28da46e933bd6d742cc86c0ed6d8127a5bd74933222dacb7511694b",
+     "srcBytes": 396252,
+     "srcSha256": "f69b0c15f564925d0972b9aa0e60ee180839f5c111847d7e0b18a179f750e640"
+    },
+    {
+     "file": "miks.webp",
+     "of": "7c8a4701-4de6-9355-b254-e09bc2a34b72",
+     "url": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5722,
+     "sha256": "3ea2743a5f48d71113d31ab773bf7f87eee4bf83ec0624f6a36cf049e1a45366",
+     "srcBytes": 394611,
+     "srcSha256": "d50919fcf1b6c5ca92155d0b6d3d0a15e0d3d2f958a63eb84df6076c6abe4649"
+    },
+    {
+     "file": "neon.webp",
+     "of": "bb2a4828-46eb-8cd1-e765-15848195d751",
+     "url": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 7590,
+     "sha256": "243eb077a08c5d0420f0685af8cd63e0bf1aee7b589c44954dc283dbd4f6498f",
+     "srcBytes": 204687,
+     "srcSha256": "f491dff17632b08a009eda907000097169bd4a048c9cb7e5d6feb0723d88b9a2"
+    },
+    {
+     "file": "omen.webp",
+     "of": "8e253930-4c05-31dd-1b6c-968525494517",
+     "url": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5178,
+     "sha256": "49f643de86f10822316a08eff6d5f2dfcfa5c651229c618496d23ac87b809f3b",
+     "srcBytes": 431965,
+     "srcSha256": "5961fac1d5f2f2cd9e35d6d8acb09df7016e0ec51cc53eac49ff8664c419b313"
+    },
+    {
+     "file": "phoenix.webp",
+     "of": "eb93336a-449b-9c1b-0a54-a891f7921d69",
+     "url": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5068,
+     "sha256": "d786930c6f5d3bc159b5a8d2627d647462035e084ed26775378e4c2e8a350ca0",
+     "srcBytes": 411650,
+     "srcSha256": "b15901ae8693d703b8b0bdc510b675194ef86cf11da1bcbb92d3a5524f0dad6b"
+    },
+    {
+     "file": "raze.webp",
+     "of": "f94c3b30-42be-e959-889c-5aa313dba261",
+     "url": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 6430,
+     "sha256": "5920ce1df23e5023806791dc41d2eced1dfe9f1eff35944d4401dd1dacd904e3",
+     "srcBytes": 479860,
+     "srcSha256": "63456bd7a31c64bcffa6ce4386363a222fb6d68b9251c47f01f2dc512f7ac52d"
+    },
+    {
+     "file": "reyna.webp",
+     "of": "a3bfb853-43b2-7238-a4f1-ad90e9e46bcc",
+     "url": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5838,
+     "sha256": "20a7dffb79738a36d39d89791c2dcb8c796b2843497a572c1d830fec734b7118",
+     "srcBytes": 367243,
+     "srcSha256": "adda77d405273bcecf6eb05d737da2db7e5443adde45f5cff5b9b648ec3df8dc"
+    },
+    {
+     "file": "sage.webp",
+     "of": "569fdd95-4d10-43ab-ca70-79becc718b46",
+     "url": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5324,
+     "sha256": "d30fd44a3d2978a936d65559ab2c8bb5a317d432189ab3a9ed9927cd631c0297",
+     "srcBytes": 357309,
+     "srcSha256": "56a14a4a033fb1769574e331f03dca5aaf39c8b6aa65b6d0b2558647f6bd38d6"
+    },
+    {
+     "file": "skye.webp",
+     "of": "6f2a04ca-43e0-be17-7f36-b3908627744d",
+     "url": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5946,
+     "sha256": "1ce3dd2950e44b9205b5a2653b445b9baba3279076e709379d5e61f50bcb4872",
+     "srcBytes": 450543,
+     "srcSha256": "96b7997f91b5f7ccb8872b8069b198dfc9bea871e8347559f7a4b9b1dd53b84e"
+    },
+    {
+     "file": "sova.webp",
+     "of": "320b2a48-4d9b-a075-30f1-1f93a9b638fa",
+     "url": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5318,
+     "sha256": "2021ec0f897bac377f2bff8f0b331e90e74a2c6ee90bc3a7cc1ffbcf01f3c3bb",
+     "srcBytes": 464918,
+     "srcSha256": "24d84a2b82806899441511b3f2a4c152e7792f756231f231b4e54af1c6e99be2"
+    },
+    {
+     "file": "tejo.webp",
+     "of": "b444168c-4e35-8076-db47-ef9bf368f384",
+     "url": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5564,
+     "sha256": "c7de23a70630a83f3123a018b8d2aff9665de38d2778d2ef06540056a1b390da",
+     "srcBytes": 509256,
+     "srcSha256": "d6c800a5c3470779cb3b9795265a9fbc329aed5f50d9db31f9a389ff0bd6318f"
+    },
+    {
+     "file": "veto.webp",
+     "of": "92eeef5d-43b5-1d4a-8d03-b3927a09034b",
+     "url": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 4472,
+     "sha256": "47ce0a889c2b04f678da7637027d0f0e6db34769664ecada56c1743ab765d226",
+     "srcBytes": 278965,
+     "srcSha256": "73a36fd036123fc3497716b820605f67a13fae3533fb2c79c646fbbea37d3cee"
+    },
+    {
+     "file": "viper.webp",
+     "of": "707eab51-4836-f488-046a-cda6bf494859",
+     "url": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 6038,
+     "sha256": "cb2bd06378181efbb9c577bc2c224acfd5437ec6a730cfd4c7c8fe1635ac7609",
+     "srcBytes": 421306,
+     "srcSha256": "3a8b0582cfd95e3a9a1d83c3b1e824de3c20af15574396adff125a51ad6c6916"
+    },
+    {
+     "file": "vyse.webp",
+     "of": "efba5359-4016-a1e5-7626-b1ae76895940",
+     "url": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5070,
+     "sha256": "4b342440cc56603ce2eb1b8531fd137f61b423b4c0e862f82a3a20927abb6080",
+     "srcBytes": 287425,
+     "srcSha256": "afa8d35bdfe05f4b4a4405b699a3416ce8100fee8da86df0df3e6956165fff11"
+    },
+    {
+     "file": "waylay.webp",
+     "of": "df1cb487-4902-002e-5c17-d28e83e78588",
+     "url": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5710,
+     "sha256": "da540c014d14b0236228f315363d03fb0007427449f330a3b82742315e11f00c",
+     "srcBytes": 386496,
+     "srcSha256": "f4118f1567f4285fa6bfa7d3b36fcebe95b34a8bb7c21bdefe99bb75ceffec8a"
+    },
+    {
+     "file": "yoru.webp",
+     "of": "7f94d92c-4234-0a36-9646-3a87eb8b5c89",
+     "url": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 128,
+     "bytes": 5306,
+     "sha256": "ba7aedb2c98bd45d4e6a1b89c33da65407f7529af34a7b11cb2f0474fc622578",
+     "srcBytes": 497037,
+     "srcSha256": "1ca02a8e6fb437fba4864f293973e79e46382b2a57b55cafeb4df3d95d3a8216"
+    }
+   ],
+   "fetched": "2026-11-10",
+   "width": 128
+  },
+  {
+   "id": "valorant-maps",
+   "publisher": "valorantapi",
+   "host": "media.valorant-api.com",
+   "what": "Banner of every Valorant map with sites, served as WebP 456 px",
+   "pages": [
+    "/valorant",
+    "/tier-list",
+    "/valorant/mapas/ascent",
+    "/valorant/mapas/split"
+   ],
+   "dir": "sites/pingalto/static/art/valorant/maps",
+   "source": "listViewIcon of the saved valorant-api.com map list (media.valorant-api.com/maps/<uuid>/listviewicon.png)",
+   "robots": "as valorant-agents",
+   "fetch": "node data/sources/pingalto/fetch-art.mjs valorant-maps --write",
+   "files": [
+    {
+     "file": "abyss.webp",
+     "of": "224b0a95-48b9-f703-1bd8-67aca101a61f",
+     "url": "https://media.valorant-api.com/maps/224b0a95-48b9-f703-1bd8-67aca101a61f/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 11872,
+     "sha256": "d26b9416fa893d6d016d7b99a4a39b5d1bd74c05d473525ebf73e038ecceeb68",
+     "srcBytes": 57369,
+     "srcSha256": "c844af1a299d15131374f331759e6eb93b59f59296d9b6820bacd901b30ef1dd"
+    },
+    {
+     "file": "ascent.webp",
+     "of": "7eaecc1b-4337-bbf6-6ab9-04b8f06b3319",
+     "url": "https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 13338,
+     "sha256": "6ffbcf55d3c1a1445c7c24354fb157e5cff38d0a40f8ded621f3c58bcef6607a",
+     "srcBytes": 65494,
+     "srcSha256": "ee69ab74e626e8ad9e19663b93d46fdf8bc0452231a63fe64d16f0f7458eabdf"
+    },
+    {
+     "file": "bind.webp",
+     "of": "2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba",
+     "url": "https://media.valorant-api.com/maps/2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 13338,
+     "sha256": "5fe27ad490a29eedd13612fc7867685cb1ea5e27bfa30d0c44d6fdd280d13fc0",
+     "srcBytes": 63826,
+     "srcSha256": "37f7359f4e75dee830b7328116e0a7c50e78601b9c834829f40f75a61f43881e"
+    },
+    {
+     "file": "breeze.webp",
+     "of": "2fb9a4fd-47b8-4e7d-a969-74b4046ebd53",
+     "url": "https://media.valorant-api.com/maps/2fb9a4fd-47b8-4e7d-a969-74b4046ebd53/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 12478,
+     "sha256": "6cfd031427dedbe443d314137d5dc59b12b55255b4e0aefec4399a4ab8fb3077",
+     "srcBytes": 58839,
+     "srcSha256": "c06572938a6b88f777e5708055007fc0a53a04ccef681dfab59f3bbeaa4463a9"
+    },
+    {
+     "file": "corrode.webp",
+     "of": "1c18ab1f-420d-0d8b-71d0-77ad3c439115",
+     "url": "https://media.valorant-api.com/maps/1c18ab1f-420d-0d8b-71d0-77ad3c439115/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 16712,
+     "sha256": "1c8d25546472e5f0e146993c0ac10ebdb4b738b98ccc29bbd358289629f24abb",
+     "srcBytes": 75005,
+     "srcSha256": "c8c351a33eaa54ec12d2e5e5a5ed2272b4c657582afb8d04bcf073be500edef6"
+    },
+    {
+     "file": "fracture.webp",
+     "of": "b529448b-4d60-346e-e89e-00a4c527a405",
+     "url": "https://media.valorant-api.com/maps/b529448b-4d60-346e-e89e-00a4c527a405/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 12504,
+     "sha256": "6ef861ae328468262791bf15dc9abb142bbf1cd3e3074d8856b06b63d158dc8e",
+     "srcBytes": 65859,
+     "srcSha256": "ed0f6f8da39a203639e16362973c94127e71dadb4fb4a6bff3c242c336d76dfb"
+    },
+    {
+     "file": "haven.webp",
+     "of": "2bee0dc9-4ffe-519b-1cbd-7fbe763a6047",
+     "url": "https://media.valorant-api.com/maps/2bee0dc9-4ffe-519b-1cbd-7fbe763a6047/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 14640,
+     "sha256": "e947dc7e8129a629620cb98bb201d39ffd89946a499822d4e87d63c99921e1e6",
+     "srcBytes": 82442,
+     "srcSha256": "bbb28211626778d57afb729de3a63c64f0f8ca1b389f63b26a6a80f7a454b8b7"
+    },
+    {
+     "file": "icebox.webp",
+     "of": "e2ad5c54-4114-a870-9641-8ea21279579a",
+     "url": "https://media.valorant-api.com/maps/e2ad5c54-4114-a870-9641-8ea21279579a/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 16386,
+     "sha256": "701bf18638b5050d15f1b1ee92f6d1b63beec2c8f0d185df6f1536c7ff0dd038",
+     "srcBytes": 70990,
+     "srcSha256": "9b70c517f0fcb01e4d4456f84ce1efe8c6c6160f5debcede4b8b503cc180e215"
+    },
+    {
+     "file": "lotus.webp",
+     "of": "2fe4ed3a-450a-948b-6d6b-e89a78e680a9",
+     "url": "https://media.valorant-api.com/maps/2fe4ed3a-450a-948b-6d6b-e89a78e680a9/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 13086,
+     "sha256": "f6dd5527ccc75d8f43591fb431f72b42fe7fffd0a33177f24f46b7b34f2ede2e",
+     "srcBytes": 62683,
+     "srcSha256": "11e899a062d299331fb1f0b6b19d6e82908bac5e81599b94dea61d83cdc074eb"
+    },
+    {
+     "file": "pearl.webp",
+     "of": "fd267378-4d1d-484f-ff52-77821ed10dc2",
+     "url": "https://media.valorant-api.com/maps/fd267378-4d1d-484f-ff52-77821ed10dc2/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 13466,
+     "sha256": "459730e5078aabb166f275f8b57f12b0b0e0a9fef9bc2f4cf05ccad16829c137",
+     "srcBytes": 64660,
+     "srcSha256": "39ed6cfbb1289757f06d0aa5080fcc884df9e9685d6636f48f1fbb0cfaeed724"
+    },
+    {
+     "file": "split.webp",
+     "of": "d960549e-485c-e861-8d71-aa9d1aed12a2",
+     "url": "https://media.valorant-api.com/maps/d960549e-485c-e861-8d71-aa9d1aed12a2/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 14204,
+     "sha256": "814830e6163ab0f81c504ddfdd98a6662e9ffb43b604a182c1eb7cd725940dc6",
+     "srcBytes": 69578,
+     "srcSha256": "b7fdf3d4ff5e09a6fd74db0b397da202ca3d871b90b83afa47af6b70478efd11"
+    },
+    {
+     "file": "summit.webp",
+     "of": "756da597-416b-c0f2-f47b-afbdf28670bc",
+     "url": "https://media.valorant-api.com/maps/756da597-416b-c0f2-f47b-afbdf28670bc/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 10916,
+     "sha256": "aabddc269a08a3021f21e23403457b8663211fd2a470d76478e035e91657cf3b",
+     "srcBytes": 56037,
+     "srcSha256": "1d29befd0b2a8b5523d364efc08da74dee4877d3f2c18d37aa78f80f0dd3af28"
+    },
+    {
+     "file": "sunset.webp",
+     "of": "92584fbe-486a-b1b2-9faa-39b0f486b498",
+     "url": "https://media.valorant-api.com/maps/92584fbe-486a-b1b2-9faa-39b0f486b498/listviewicon.png",
+     "fetched": "2026-11-10",
+     "width": 456,
+     "bytes": 14600,
+     "sha256": "61641cfd9ccca3ac6f867573e82ce074b0fccbb8357816ef8e4bf9e6b39b8349",
+     "srcBytes": 65259,
+     "srcSha256": "b426ed7bdbc5e3f4657ae47474349ec78af1dc238d0893de6d1d49fdd9037a80"
+    }
+   ],
+   "fetched": "2026-11-10",
+   "width": 456
+  },
+  {
+   "id": "valorant-minimaps",
+   "publisher": "valorantapi",
+   "host": "media.valorant-api.com",
+   "what": "In-game minimap of the maps with an interactive callout page (Ascent, Split), WebP 640 px, under the callout dots",
+   "pages": [
+    "/valorant/mapas/ascent",
+    "/valorant/mapas/split"
+   ],
+   "dir": "sites/pingalto/static/art/valorant/minimaps",
+   "source": "displayIcon of the saved valorant-api.com map list (media.valorant-api.com/maps/<uuid>/displayicon.png)",
+   "robots": "as valorant-agents",
+   "fetch": "node data/sources/pingalto/fetch-art.mjs valorant-minimaps --write",
+   "files": [
+    {
+     "file": "ascent.webp",
+     "of": "7eaecc1b-4337-bbf6-6ab9-04b8f06b3319",
+     "url": "https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 640,
+     "bytes": 9738,
+     "sha256": "63987492fc98499aee49ed3ff7fdefd5dae23e3019b7ed5c9e2454ccacd816de",
+     "srcBytes": 26841,
+     "srcSha256": "287357fcfce230ecb67704cafdb519a5bdb91602ed30f897474a65e86469c550"
+    },
+    {
+     "file": "split.webp",
+     "of": "d960549e-485c-e861-8d71-aa9d1aed12a2",
+     "url": "https://media.valorant-api.com/maps/d960549e-485c-e861-8d71-aa9d1aed12a2/displayicon.png",
+     "fetched": "2026-11-10",
+     "width": 640,
+     "bytes": 10376,
+     "sha256": "7cc2f41a8400e5369d52859792d23f1faebea87d7a3e38004b16f77d92f65e9d",
+     "srcBytes": 26611,
+     "srcSha256": "cc102270353627dab124a7c4ecc429fa150982aa7f243b944ac15f8f83b5b7c8"
+    }
+   ],
+   "fetched": "2026-11-10",
+   "width": 640
+  },
+  {
+   "id": "valorant-ranks",
+   "publisher": "valorantapi",
+   "host": "media.valorant-api.com",
+   "what": "Icon of each Valorant rank (first division, the latest act of valorant-api.com competitivetiers), WebP 64 px",
+   "pages": [
+    "/valorant/rangos"
+   ],
+   "dir": "sites/pingalto/static/art/valorant/ranks",
+   "source": "smallIcon of https://valorant-api.com/v1/competitivetiers?language=es-MX (latest entry)",
+   "robots": "as valorant-agents",
+   "fetch": "node data/sources/pingalto/fetch-art.mjs valorant-ranks --write",
+   "files": [
+    {
+     "file": "ascendente.webp",
+     "of": "Ascendente",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/21/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 1868,
+     "sha256": "0a7b336ee0810613c8ccc51dc5021a56d1293574996746156e555568f75f0961",
+     "srcBytes": 11150,
+     "srcSha256": "ad481dc05406a06a6d0acb364ac5f7a32d35d8b53dab0edc274094f73faf2e16"
+    },
+    {
+     "file": "bronce.webp",
+     "of": "Bronce",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/6/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 1876,
+     "sha256": "794a19e3ec6c145cef39fbf5d27309e99979d7ca7d9fda65bfb08918e99a7c89",
+     "srcBytes": 12608,
+     "srcSha256": "f157f8dc786c1fca3d7017e6f6928c3fef36386182c496c3604d2c8acd5c58bb"
+    },
+    {
+     "file": "diamante.webp",
+     "of": "Diamante",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/18/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 2168,
+     "sha256": "cb5e02c32a756b6947f4641957cd0635564594945a83808d09997a8fb6bda8b6",
+     "srcBytes": 15119,
+     "srcSha256": "23e37ea212d63691de188cad5f1c54e47823b7695cec40a10bf6418b87d45d22"
+    },
+    {
+     "file": "hierro.webp",
+     "of": "Hierro",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/3/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 1742,
+     "sha256": "804a76924604075c08d896871ce4bcb3495a5b3ece3d73a52f13e55b12e6c206",
+     "srcBytes": 13274,
+     "srcSha256": "feeb926510181b5fac26424f79f69a2dbf97c6dffd418210fa0dbd0a3c00d8f4"
+    },
+    {
+     "file": "inmortal.webp",
+     "of": "Inmortal",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/24/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 2294,
+     "sha256": "329a03eae71d2dac4f75fa1a7f34acd7f13f51f38de8ba48feac5aad102dc6bd",
+     "srcBytes": 25163,
+     "srcSha256": "dbdf2329bb10fa0beced94893f5df776667c919ac182891937369828a3af7f81"
+    },
+    {
+     "file": "oro.webp",
+     "of": "Oro",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/12/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 2158,
+     "sha256": "5af31e0327b92a7a282b0a7cd757a0ad5ae3740df4fe95764c08b9b3fc3ae50a",
+     "srcBytes": 20260,
+     "srcSha256": "a7bf9ad5fe4123f2ccee0b577f9a97d13fdd65a3013d24e71f5ba2493b6ba044"
+    },
+    {
+     "file": "plata.webp",
+     "of": "Plata",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/9/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 1780,
+     "sha256": "de454de6367223d6564fe9d1d75847702f2aa53b0949e4612fdd0fc52852c05a",
+     "srcBytes": 11845,
+     "srcSha256": "620572508cbc0481f48e7347434e244b1f046247fd333c41fd664378c3043a5a"
+    },
+    {
+     "file": "platino.webp",
+     "of": "Platino",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/15/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 2082,
+     "sha256": "61b0787291f856bd09dfd58ca89f642445a07112421f3c10c903e75673c1b298",
+     "srcBytes": 15640,
+     "srcSha256": "30e5ea9ff650b148920d114ff073789173781856b12ebb2c0c85b44b67467db3"
+    },
+    {
+     "file": "radiante.webp",
+     "of": "Radiante",
+     "url": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/27/smallicon.png",
+     "fetched": "2026-11-10",
+     "width": 64,
+     "bytes": 2456,
+     "sha256": "b88cf009ab65a6a87b3e1ea883006a12a87b0138ce1968f7d9fdaf855e6830c7",
+     "srcBytes": 29277,
+     "srcSha256": "f1fbc87f4eb7b9d9e8dd93514ef51e347854b91688fae544f159319c35062330"
+    }
+   ],
+   "fetched": "2026-11-10",
+   "width": 64
   },
   {
    "id": "supercell-clash-cards",
    "publisher": "supercell",
+   "host": "api-assets.clashroyale.com",
    "what": "Card art of every Clash Royale card and its evolution, as named by iconUrls in the official API",
    "pages": [
     "/clash/cartas",
@@ -1425,17 +2629,35 @@
     "/clash/meta",
     "/clash"
    ],
-   "server": "/data/feeds/clash-art/ on pingalto.com, written by the clash feed (tools/feeds/pingalto/card-art.mjs)",
+   "server": "/data/feeds/clash-art/ on pingalto.com, written by the clash feed (tools/feeds/pingalto/card-art.mjs): WebP tiles 210 px wide derived from the 300 px originals (cwebp), PNG as received when cwebp is missing",
    "source": "https://api-assets.clashroyale.com/cards/300/<name>.png (iconUrls.medium, iconUrls.evolutionMedium of https://api.clashroyale.com/v1/cards)",
    "robots": "api-assets.clashroyale.com/robots.txt answers 404: no rules; the feed reads it before each new download",
    "list": "/data/feeds/clash-art.json: every copied file with its source URL and the date it was copied"
+  },
+  {
+   "id": "brawlify-brawl-stars",
+   "publisher": "brawlify",
+   "host": "cdn.brawlify.com",
+   "what": "Brawl Stars brawler portraits (borderless), map images of the rotation and of the Argentine battles, game mode icons",
+   "pages": [
+    "/brawl/brawlers",
+    "/brawl/eventos",
+    "/brawl/meta",
+    "/brawl"
+   ],
+   "server": "/data/feeds/brawl-art/ on pingalto.com, written by the brawl feed (tools/feeds/pingalto/brawl-art.mjs); maps as WebP 220 px when cwebp is there",
+   "source": "https://cdn.brawlify.com/brawlers/borderless/<id>.png, /maps/regular/<id>.png, /game-modes/regular/<id>.png (ids from the official API)",
+   "robots": "cdn.brawlify.com/robots.txt: \"User-agent: * Disallow:\" (checked 2026-11-10); the feed reads it before each new download",
+   "list": "/data/feeds/brawl-art.json: every copied file with its source URL and the date it was copied",
+   "note": "fan CDN of original art, owner 10.11"
   }
  ],
  "notAvailable": {
-  "brawl-stars": "The official Brawl Stars API (/v1/brawlers, /v1/events/rotation) names no images: brawlers and maps stay text.",
-  "valorant": "Riot publishes no open image files for agents or maps (Data Dragon covers League of Legends only; valorant-api.com is not Riot).",
-  "valve": "Valve publishes no fan-site licence; no Valve image (brand-policies.json).",
+  "valorant": "Riot publishes no open image files for Valorant; agent icons and map banners come from valorant-api.com, a fan mirror of the original art (own switch publishers.valorantapi).",
+  "valve": "Valve publishes no fan-site licence. Dota 2 hero portraits exist on Valve's CDN (robots: none), but no pingalto page lists heroes (OpenDota keeps AI agents out, so there is no hero data); CS2 has no official map or rank image files. No Valve image.",
   "epic": "fortnite.com and epicgames.com answer 403 to us: not fetched (brand-policies.json).",
-  "logos": "Riot forbids its logos without a written licence; the Supercell fan kit answers 403 to us; Garena and EA have no fan policy: no game logos."
+  "logos": "Riot forbids its logos without a written licence; the Supercell fan kit answers 403 to us; Garena and EA have no fan policy: no game logos.",
+  "lolRanks": "LoL rank emblems: Riot publishes them only as a zip for developers; the CommunityDragon mirror has small crests without Emerald and large emblems on 16:9 canvases that would need cropping. Not shown.",
+  "teams": "Team logos (PandaScore image_url): many teams carry betting sponsors in their logos and the audience is young; names are masked for betting brands, logos cannot be checked the same way. Not shown."
  }
 }

@@ -22,7 +22,7 @@
    "logo": false,
    "keyArt": "allowed only noncommercially with the Legal Jibber Jabber notice; not used (no asset we may fetch and our own backgrounds suffice); since 2026-11-10 (owner) the square champion portraits of Data Dragon are used, unmodified and hosted by us (assets.json set riot-lol)",
    "used": true,
-   "now": "Game names in our own type, no Riot logo; our own backgrounds. League of Legends champion portraits from Data Dragon on /lol and /tier-list with the Legal Jibber Jabber notice next to them; the footer keeps the Riot notice on Valorant and LoL pages. Switch: assets.json publishers.riot.enabled.",
+   "now": "Game names in our own type, no Riot logo; our own backgrounds. League of Legends champion portraits from Data Dragon on /lol and /tier-list, and Valorant agent icons, map banners and rank icons from valorant-api.com (fan mirror of the original art: Riot has no open Valorant image files; owner 2026-11-10) on /valorant, /valorant/agentes, /valorant/rangos and /tier-list, all resized to light WebP, with the Legal Jibber Jabber notice next to them; the footer keeps the Riot notice on Valorant and LoL pages. Switches: assets.json publishers.riot.enabled (all Riot art) and publishers.valorantapi.enabled (the Valorant mirror).",
    "ifAffiliate": "Riot IP use is noncommercial except passive ads by individual players and API projects with a key: an affiliate button would need a written Riot licence for any Riot art (switch it off in assets.json first); names in text stay nominative."
   },
   "valve": {
@@ -62,7 +62,7 @@
    "logo": "allowed from the official fan kit, unmodified, with the Supercell notice",
    "used": true,
    "why": "Owner 2026-11-10: official card art may be shown. The fan kit host (fankit.supercell.com) still answers 403 to us, so there is no game logo; the card images come from the official API (iconUrls), copied unmodified by the clash feed.",
-   "now": "Clash Royale card art (and evolution art) on /clash/cartas, /clash/mazos and /clash/meta, copied once from api-assets.clashroyale.com into /data/feeds/clash-art/, unmodified, with the Supercell notice on every page that shows it. No logo. Brawl Stars: the official API names no images, so brawlers and maps stay text. Switch: assets.json publishers.supercell.enabled.",
+   "now": "Clash Royale card art (and evolution art) on /clash/cartas, /clash/mazos and /clash/meta, copied once from api-assets.clashroyale.com into /data/feeds/clash-art/, unmodified, with the Supercell notice on every page that shows it. No logo. Brawl Stars: the official API names no images, so portraits, maps and mode icons come from cdn.brawlify.com (fan CDN of the original art, robots allows all; owner 2026-11-10), copied by the brawl feed. Card tiles are WebP 210 px derived from the 300 px originals. Switches: assets.json publishers.supercell.enabled (all Supercell art) and publishers.brawlify.enabled.",
    "ifAffiliate": "Ads are allowed, but no Supercell asset may sit next to gambling: an affiliate button for betting means no Supercell art or logos on the site (switch it off in assets.json)."
   },
   "garena": {

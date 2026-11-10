@@ -32,7 +32,7 @@ export default {
     for (const l of raw.logs) for (const b of l.items) { if (!b.battle || !b.event) throw new Error('battle without event'); scTime(b.battleTime); }
   },
   compute(raw) {
-    const by = {}, modes = {}, maps = {};
+    const by = {}, modes = {}, maps = {}, mapIds = {};
     let battles = 0, from = null, to = null;
     const add = (o, k, id, win) => { const x = (o[k] = o[k] || {}); const y = (x[id] = x[id] || [0, 0, 0]); y[0]++; if (win === true) y[1]++; if (win !== null) y[2]++; };
     for (const l of raw.logs) {
@@ -51,7 +51,7 @@ export default {
         const x = (by[id] = by[id] || { n: clean(me.brawler.name), u: 0, w: 0, d: 0 });
         x.u++; if (win === true) x.w++; if (win !== null) x.d++;
         if (mode) add(modes, mode, id, win);
-        if (map) add(maps, map + '|' + mode, id, win);
+        if (map) { add(maps, map + '|' + mode, id, win); if (Number.isInteger(b.event.id)) mapIds[map + '|' + mode] = b.event.id; }
       }
     }
     const top = (o, min) => Object.entries(o).map(([k, ids]) => {
@@ -61,7 +61,7 @@ export default {
     return {
       players: raw.logs.length, battles, from, to,
       brawlers: Object.entries(by).map(([id, x]) => ({ id: +id, ...x })).sort((a, b) => b.u - a.u || a.id - b.id),
-      modes: top(modes, 20), maps: top(maps, 15).map(m => { const [map, mode] = m.k.split('|'); return { map, mode, n: m.n, top: m.top }; }),
+      modes: top(modes, 20), maps: top(maps, 15).map(m => { const [map, mode] = m.k.split('|'); return { map, mode, id: mapIds[m.k], n: m.n, top: m.top }; }),
       attribution: ATTRIBUTION,
     };
   },

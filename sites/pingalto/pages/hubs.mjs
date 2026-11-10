@@ -2,12 +2,12 @@
 // base stats, compare two), /valorant (agents, roles and maps with sites from the saved client data), /ff (Free Fire tools and
 // what the site will not do), /ff/codigos (how to redeem a code on Garena's site, a format check from Garena's own notice, scam
 // signs and where to report it in Argentina, quoted from argentina.gob.ar). Every number comes from a saved file.
-import { agents } from './valorant.mjs';
+import { agents, valArtNote } from './valorant.mjs';
 import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
 import { agendaBlock } from './feeds.mjs';
 import { itunes, play, millions } from '../content/stores.mjs';
 import { lolStart, valorantStart } from './academy.mjs';
-import { lolArt, artOn, artNotice } from '../content/art.mjs';
+import { lolArt, artOn, artNotice, artFor } from '../content/art.mjs';
 
 const champImg = (h, c, lazy = true) => { const f = lolArt(c.id); return f ? '<img src="' + h.asset(f) + '" alt="' + h.esc(c.name) + '"' + (lazy ? ' loading="lazy"' : '') + '>' : ''; };
 export const riotArtNote = h => artOn('riot') ? '<p class="pa-src" lang="en">' + h.esc(artNotice('riot')) + '</p>' : '';
@@ -100,9 +100,11 @@ export const valorantHub = {
     const facts = '<div class="pa-gd"><section class="pa-c pa-w2"><p class="pa-big">' + fmt(A.list.length, 0) + '</p><p>agentes en ' + fmt(A.roles.length, 0) + ' roles: ' + A.roles.map(r => h.esc(r.name) + ' ' + A.list.filter(a => a.roleId === r.id).length).join(', ') + '.</p></section>' +
       '<section class="pa-c pa-w2"><p class="pa-big">' + fmt(maps.length, 0) + '</p><p>mapas con sitios para plantar en los datos del cliente; ' + fmt(three, 0) + ' tienen tres sitios (A, B y C).</p></section>' +
       '<section class="pa-c pa-w2"><h3>El agente más nuevo</h3><p><b>' + h.esc(newest.name) + '</b>, ' + h.esc(newest.role) + (newest.released ? ', llegó el ' + h.fmtDate(newest.released) : '') + '. <a href="' + h.href('/valorant/agentes') + '#' + newest.id + '">Sus habilidades</a></p></section></div>';
-    const mapList = sec('Mapas con sitios', '<ul class="pa-mapl">' + maps.map(([n, d]) => '<li><b>' + h.esc(n) + '</b><span>' + h.esc(d) + '</span></li>').join('') + '</ul><p class="pa-src">Son los mapas con sitios de plantado que trae el cliente ' + h.esc(A.version) + '. Riot rota cuáles entran en competitivo cada tanto, y esa rotación no está en estos datos: no la mostramos como si lo estuviera.</p>' + srcLine(h, 'valapi-maps'));
+    const mapUuid = new Map(h.pa.json('valapi-maps').data.map(m => [m.displayName, m.uuid]));
+    const mapImg = n => { const f = artFor('valorant-maps', mapUuid.get(n)); return f ? '<img src="' + h.asset(f) + '" alt="' + h.esc(n) + '" width="456" height="100" loading="lazy">' : ''; };
+    const mapList = sec('Mapas con sitios', '<ul class="pa-mapl">' + maps.map(([n, d]) => '<li>' + mapImg(n) + '<b>' + h.esc(n) + '</b><span>' + h.esc(d) + '</span></li>').join('') + '</ul>' + valArtNote(h) + '<p class="pa-src">Son los mapas con sitios de plantado que trae el cliente ' + h.esc(A.version) + '. Riot rota cuáles entran en competitivo cada tanto, y esa rotación no está en estos datos: no la mostramos como si lo estuviera.</p>' + srcLine(h, 'valapi-maps'));
     const ar = sec('El servidor que te toca', '<div class="pa-two"><div>' + quote(h, 'val_scl', 'es') + quote(h, 'val_scl_ar', 'es') + '</div><div><p>Cuánto ping le sacás a Santiago desde tu provincia, y el mínimo que permite la física, en el <a href="' + h.href('/kit/ping') + '">test de ping</a>.</p></div></div>');
-    return hero(h, { ey: 'Valorant · desde Argentina', girl: true, sub: 'Rangos, agentes, mapas y el servidor de Santiago, con los datos del juego y de Riot. Elegí por dónde empezar.' }) +
+    return '<link rel="stylesheet" href="' + h.asset('vx.css') + '">' + hero(h, { ey: 'Valorant · desde Argentina', girl: true, sub: 'Rangos, agentes, mapas y el servidor de Santiago, con los datos del juego y de Riot. Elegí por dónde empezar.' }) +
       valorantStart(h) + sec('Herramientas', cards(h, VAL)) + (h.built('/esports/agenda') ? agendaBlock(h, 'valorant', 'Próximos partidos de Valorant') : '') + facts + mapList + ar;
   },
 };

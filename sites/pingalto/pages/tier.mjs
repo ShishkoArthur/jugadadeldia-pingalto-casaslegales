@@ -4,20 +4,24 @@
 import { ROWS } from '../../../engine/games/tier.mjs';
 import { agents } from './valorant.mjs';
 import { fmt, hero, ldPage, sec, srcLine } from './parts.mjs';
-import { lolArt } from '../content/art.mjs';
+import { lolArt, artFor } from '../content/art.mjs';
+import { valArtNote } from './valorant.mjs';
 import { riotArtNote } from './hubs.mjs';
 
 export function tierSets(h) {
   const byName = (a, b) => a.localeCompare(b, 'es');
-  const val = agents(h).list.map(a => a.name).sort(byName);
-  const maps = h.pa.json('valapi-maps').data.filter(m => /^Sitios /.test(m.tacticalDescription || '')).map(m => m.displayName);
-  const mapNames = [...new Set(maps)].sort(byName);
+  const valList = agents(h).list.slice().sort((a, b) => byName(a.name, b.name));
+  const val = valList.map(a => a.name), valIcons = valList.map(a => artFor('valorant-agents', a.uuid));
+  const mapData = h.pa.json('valapi-maps').data.filter(m => /^Sitios /.test(m.tacticalDescription || ''));
+  const mapNames = [...new Set(mapData.map(m => m.displayName))].sort(byName);
+  const mapIcons = mapNames.map(n => artFor('valorant-maps', mapData.find(m => m.displayName === n).uuid));
+  const some = l => l.some(Boolean) ? l : null;
   const champList = Object.values(h.pa.json('ddragon-champs').data).sort((a, b) => byName(a.name, b.name));
   const champs = champList.map(c => c.name), icons = champList.map(c => lolArt(c.id));
   if (mapNames.length < 8 || champs.length < 150) throw new Error('tier-list: sets too small');
   return [
-    { id: 'val-agentes', name: 'Valorant · agentes', items: val, src: 'valapi-agents' },
-    { id: 'val-mapas', name: 'Valorant · mapas con sitios', items: mapNames, src: 'valapi-maps' },
+    { id: 'val-agentes', name: 'Valorant · agentes', items: val, src: 'valapi-agents', icons: some(valIcons) },
+    { id: 'val-mapas', name: 'Valorant · mapas con sitios', items: mapNames, src: 'valapi-maps', icons: some(mapIcons) },
     { id: 'lol', name: 'League of Legends · campeones', items: champs, src: 'ddragon-champs', icons: icons.some(Boolean) ? icons : null },
     { id: 'libre', name: 'Tu propia lista', items: [], src: null },
   ];
@@ -41,9 +45,9 @@ export const tierList = {
       '<p class="pa-x"><b>cómo se usa</b> · arrastrá un nombre a una fila, o tocalo y después tocá la fila. Tocá de nuevo para devolverlo abajo.</p>' +
       '<div class="pa-share"><button type="button" data-tl="png">Guardar imagen</button><button type="button" data-tl="link">Copiar link</button><button type="button" data-tl="reset">Empezar de cero</button><output data-o="copied"></output></div></div>';
     const board = '<div class="pa-tl" id="tl-board" aria-label="Tu tier list">' + ROWS.map((r, i) => '<div class="pa-tr" data-row="' + i + '"><button type="button" class="pa-tk pa-t' + i + '" data-place="' + i + '" aria-label="Poner en ' + r + '">' + r + '</button><div class="pa-tz" data-zone="' + i + '"></div></div>').join('') + '</div>' +
-      '<div class="pa-c pa-pool"><p class="pa-x">Sin ubicar · <span data-o="left">' + fmt(first.items.length, 0) + '</span></p><div class="pa-tz" data-zone="-1" id="tl-pool">' + first.items.map((n, i) => '<button type="button" class="pa-ti" data-i="' + i + '">' + h.esc(n) + '</button>').join('') + '</div></div>';
+      '<div class="pa-c pa-pool"><p class="pa-x">Sin ubicar · <span data-o="left">' + fmt(first.items.length, 0) + '</span></p><div class="pa-tz" data-zone="-1" id="tl-pool">' + first.items.map((n, i) => '<button type="button" class="pa-ti" data-i="' + i + '">' + (first.icons && first.icons[i] ? '<img src="' + h.asset(first.icons[i]) + '" width="120" height="120" alt="' + h.esc(n) + '" loading="lazy">' : '') + h.esc(n) + '</button>').join('') + '</div></div>';
     const honest = sec('Es tu opinión, no la meta', '<div class="pa-two"><div><p>Esta herramienta no sabe quién gana más ni a quién eligen los profesionales: ordena lo que vos digas. Por eso no te mostramos una tier list «oficial» al lado. Cuando tengamos datos públicos de partidas que podamos citar, los vamos a mostrar aparte y con su fuente.</p><p>Tu lista vive en el link: nada se guarda en pingalto ni se manda a ningún lado.</p></div>' +
-      '<div><p>Los nombres salen de archivos guardados con fecha. Los de LoL vienen en el idioma del cliente de Riot para Argentina (es_AR).</p>' + S.filter(s => s.src).map(s => srcLine(h, s.src)).join('') + riotArtNote(h) + '</div></div>');
+      '<div><p>Los nombres salen de archivos guardados con fecha. Los de LoL vienen en el idioma del cliente de Riot para Argentina (es_AR).</p>' + S.filter(s => s.src).map(s => srcLine(h, s.src)).join('') + riotArtNote(h) + valArtNote(h) + '</div></div>');
     const more = sec('Para elegir mejor', '<p>Las habilidades de cada agente, con filtro por rol, en <a href="' + h.href('/valorant/agentes') + '">agentes de Valorant</a>. Cuántas partidas te faltan para subir, en los <a href="' + h.href('/valorant/rangos') + '">rangos de Valorant</a> y los de <a href="' + h.href('/lol/rangos') + '">LoL</a>.</p>');
     return '<link rel="stylesheet" href="' + h.asset('lists.css') + '">' + hero(h, { ey: 'Kit · tier list · S a F', sub: 'Elegí qué ordenar, arrastrá cada nombre a su fila y compartí el resultado con un link o como imagen. Funciona en el celular.' }) +
       '<div class="pa-sec">' + controls + board + '</div>' + honest + more;

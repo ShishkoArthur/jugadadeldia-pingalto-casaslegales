@@ -6,13 +6,15 @@
 // frame, the method, the attribution and what we do not show and why.
 import { fcPc } from './games2.mjs';
 import { hero, ldPage, sec, quote, srcLine, fmt } from './parts.mjs';
-import { agendaBlock, FEED, css, crCss, wait, PS, SC, ART, crLegend } from './feeds.mjs';
+import { agendaBlock, FEED, css, crCss, bsCss, wait, PS, SC, ART, ART_BS, BSN, crLegend } from './feeds.mjs';
 import { vrs } from '../content/vrs.mjs';
 import { rlStart, clashStart, brawlStart } from './academy.mjs';
 import { dota2Hub } from './dota2.mjs';
+import { artFor } from '../content/art.mjs';
+import { valArtNote } from './valorant.mjs';
 
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
-const box = (mode, attrs = '') => '<div class="pa-fd" data-fd="' + mode + '" data-fd-src="' + FEED + '"' + (mode === 'clashmeta' ? ART : '') + attrs + '>' + wait + '</div>';
+const box = (mode, attrs = '') => '<div class="pa-fd" data-fd="' + mode + '" data-fd-src="' + FEED + '"' + (mode === 'clashmeta' ? ART : /^brawl/.test(mode) ? ART_BS : '') + attrs + '>' + wait + '</div>';
 const link = (h, u, t) => h.built(u) ? '<a href="' + h.href(u) + '">' + t + '</a>' : t;
 const seriesLink = h => h.built('/esports/series') ? '<p>¿Qué chance tiene un equipo en un Bo3 o un Bo5 si sabés cuánto gana por mapa? Calculalo en la ' + link(h, '/esports/series', 'calculadora de series') + '.</p>' : '';
 
@@ -102,9 +104,9 @@ export const brawlHub = {
   scripts: ['supercell.js', 'meta.js'],
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'Brawl Stars · desde Argentina', girl: true, sub: 'La rotación de ahora, los brawlers que más eligen los mejores del país y todas las herramientas, con la API oficial de Supercell.' }) +
+    return css(h) + bsCss(h) + hero(h, { ey: 'Brawl Stars · desde Argentina', girl: true, sub: 'La rotación de ahora, los brawlers que más eligen los mejores del país y todas las herramientas, con la API oficial de Supercell.' }) +
       brawlStart(h) + sec('Herramientas', cards(h, BRAWL)) +
-      sec('Ahora en la rotación', box('brawl-events') + SC, 'eventos') +
+      sec('Ahora en la rotación', box('brawl-events') + SC + BSN, 'eventos') +
       sec('Lo más elegido por el top argentino', box('brawlmeta', ' data-n="10"') + '<p class="pa-more">' + link(h, '/brawl/meta', 'Por modo, por mapa y con cuánto ganan') + '</p>');
   },
 };
@@ -118,8 +120,8 @@ export const brawlMeta = {
   scripts: ['meta.js'],
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'Brawl Stars · meta argentino', sub: 'Miramos las últimas partidas de los 100 mejores jugadores de Argentina y contamos qué brawler llevó cada uno, modo por modo y en los mapas de la rotación de ahora.' }) +
-      sec('Qué juegan los mejores del país', box('brawlmeta') + SC, 'meta') +
+    return css(h) + bsCss(h) + hero(h, { ey: 'Brawl Stars · meta argentino', sub: 'Miramos las últimas partidas de los 100 mejores jugadores de Argentina y contamos qué brawler llevó cada uno, modo por modo y en los mapas de la rotación de ahora.' }) +
+      sec('Qué juegan los mejores del país', box('brawlmeta') + SC + BSN, 'meta') +
       sec('Cómo se lee', '<ul class="pa-dot"><li><b>Elegido</b>: en qué parte de las partidas el jugador del top llevó ese brawler.</li><li><b>Gana</b>: en los modos de equipo, cuántas de esas partidas ganó. Entre paréntesis va el margen con 95 % de confianza (intervalo de Wilson): con pocas partidas el margen es grande y no conviene sacar conclusiones.</li><li>Contamos partidas de trofeos y de ranked. La API da las últimas 25 de cada jugador, así que la foto es de las últimas horas.</li><li>No guardamos nombres ni tags: solo cuentas.</li></ul>') +
       sec('Seguí con', cards(h, BRAWL.filter(([u]) => u !== '/brawl/meta')));
   },
@@ -284,7 +286,7 @@ export function callouts(h, id) {
     return { es: c.regionName, sup: c.superRegionName, en: e.regionName, enSup: e.superRegionName, x: +x.toFixed(4), y: +y.toFixed(4) };
   });
   if (list.length < 15) throw new Error('callouts: only ' + list.length + ' on ' + id);
-  return { name: a.displayName, desc: a.tacticalDescription, list };
+  return { name: a.displayName, desc: a.tacticalDescription, uuid: a.uuid, list };
 }
 // Spanish label as players say it: the zone first (A Principal, Mid Pizza), the spawns as Aparición atacante / defensora.
 const fullEs = c => /^(Atacantes|Defensores)$/.test(c.sup) ? c.es + (c.sup === 'Atacantes' ? ' atacante' : ' defensora') : c.sup + ' ' + c.es;
@@ -296,7 +298,9 @@ function mapSvg(h, C) {
   const x0 = Math.min(...xs) - 0.06, x1 = Math.max(...xs) + 0.06, y0 = Math.min(...ys) - 0.05, y1 = Math.max(...ys) + 0.05;
   const W = 1000, H = Math.round((W * (y1 - y0)) / (x1 - x0));
   const X = x => Math.round(((x - x0) / (x1 - x0)) * W), Y = y => Math.round(((y - y0) / (y1 - y0)) * H);
-  return '<svg class="pa-cmap" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Puntos de los callouts de ' + h.esc(C.name) + ' en el mapa"><rect width="' + W + '" height="' + H + '" rx="24"/>' +
+  const mm = artFor('valorant-minimaps', C.uuid);
+  const bg = mm ? '<image href="' + h.asset(mm) + '" x="' + X(0) + '" y="' + Y(0) + '" width="' + (X(1) - X(0)) + '" height="' + (Y(1) - Y(0)) + '" preserveAspectRatio="none"/>' : '';
+  return '<svg class="pa-cmap' + (mm ? ' pa-cmi' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Puntos de los callouts de ' + h.esc(C.name) + ' en el mapa"><rect width="' + W + '" height="' + H + '" rx="24"/>' + bg +
     C.list.map((c, i) => '<g class="pa-cp pa-cp-' + grp(c.sup) + '" data-i="' + i + '" tabindex="0" role="button" aria-label="' + h.esc(fullEs(c)) + '"><circle cx="' + X(c.x) + '" cy="' + Y(c.y) + '" r="15"/><text x="' + X(c.x) + '" y="' + (Y(c.y) - 22) + '"' + edge(X(c.x), W, Math.max(fullEs(c).length, (c.enSup + ' ' + c.en).length)) + ' data-es="' + h.esc(fullEs(c)) + '" data-en="' + h.esc(c.enSup + ' ' + c.en) + '">' + h.esc(fullEs(c)) + '</text></g>').join('') + '</svg>';
 }
 function mapPage(id, meta) {
@@ -312,12 +316,12 @@ function mapPage(id, meta) {
       const C = callouts(h, id);
       const zones = [...new Set(C.list.map(c => c.sup))];
       const seg = '<div class="pa-seg" role="group" aria-label="Idioma de los nombres"><button type="button" data-lang="es" aria-pressed="true">Español</button><button type="button" data-lang="en" aria-pressed="false">Inglés</button></div>';
-      const tool = '<div class="pa-tool pa-cm"><div class="pa-c">' + seg + mapSvg(h, C) + '<p class="pa-src">Cada punto es un callout en la posición que trae el juego; el dibujo es nuestro, no el minimapa de Riot. Arriba y abajo no coinciden con la vista de cada lado.</p></div>' +
+      const tool = '<div class="pa-tool pa-cm"><div class="pa-c">' + seg + mapSvg(h, C) + '<p class="pa-src">' + (artFor('valorant-minimaps', C.uuid) ? 'Cada punto es un callout en la posición que trae el juego, sobre el minimapa del juego (copia de valorant-api.com). En el celular tocá un punto para ver su nombre.' : 'Cada punto es un callout en la posición que trae el juego; el dibujo es nuestro, no el minimapa de Riot.') + ' Arriba y abajo no coinciden con la vista de cada lado.</p></div>' +
         '<div class="pa-c pa-out" aria-live="polite"><h2>¿Dónde queda?</h2><p class="pa-say" data-o="q">Tocá un punto para ver su nombre en español y en inglés.</p><div class="pa-share"><button type="button" data-quiz>Jugar: encontrá el callout</button></div><p class="pa-big" data-o="sc"></p><p class="pa-x" data-o="sel"></p></div></div>';
       const table = '<div class="pa-tw"><table class="pa-tb"><thead><tr><th>Zona</th><th>En español (LATAM)</th><th>En inglés</th></tr></thead><tbody>' + zones.map(z => C.list.filter(c => c.sup === z).map((c, i) => '<tr><td>' + (i ? '' : '<b>' + h.esc(SUPER[z] || z) + '</b>') + '</td><td lang="es" translate="no">' + h.esc(fullEs(c)) + '</td><td lang="en">' + h.esc(c.enSup + ' ' + c.en) + '</td></tr>').join('')).join('') + '</tbody></table></div>';
       const ar = sec('Para jugar desde Argentina', '<div class="pa-two"><div><p>En las partidas de Latinoamérica conviven los dos idiomas: el cliente en español usa los nombres de la columna del medio, y muchos jugadores y streams usan los de inglés. Saberte los dos te ahorra segundos en cada ronda.</p>' + quote(h, 'val_scl', 'es') + '</div><div><p>¿Cuánto ping le sacás al servidor de Santiago desde tu provincia? Medilo en el ' + link(h, '/kit/ping', 'test de ping') + '. Los agentes y sus habilidades, en ' + link(h, '/valorant/agentes', 'agentes de Valorant') + '.</p></div></div>');
-      return hero(h, { ey: 'Valorant · ' + C.name + ' · ' + C.desc, sub: fmt(C.list.length, 0) + ' callouts de ' + C.name + ' con el nombre que usa el juego en español de Latinoamérica y en inglés, sobre un mapa que podés tocar y con un juego para aprenderlos.' }) +
-        tool + sec('Todos los callouts', table + srcLine(h, 'valapi-maps', 'nombres en español') + srcLine(h, 'valapi-maps-en', 'nombres en inglés')) + ar +
+      return '<link rel="stylesheet" href="' + h.asset('vx.css') + '">' + hero(h, { ey: 'Valorant · ' + C.name + ' · ' + C.desc, sub: fmt(C.list.length, 0) + ' callouts de ' + C.name + ' con el nombre que usa el juego en español de Latinoamérica y en inglés, sobre un mapa que podés tocar y con un juego para aprenderlos.' }) +
+        tool + sec('Todos los callouts', table + srcLine(h, 'valapi-maps', 'nombres en español') + srcLine(h, 'valapi-maps-en', 'nombres en inglés') + valArtNote(h)) + ar +
         sec('Lo que no mostramos', '<ul class="pa-dot"><li>Tiempos de corrida y rotaciones: el juego no publica la longitud de los caminos, y una distancia en línea recta engaña.</li><li>La rotación de mapas del competitivo: no está en los datos del cliente.</li></ul>');
     },
   };

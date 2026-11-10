@@ -1,7 +1,7 @@
 import { esc, load, stale, stamp, fail, arDay, arTime, dayName, today } from './fdkit.js';
 import { fmt, fmtPct } from '../../../engine/games/num.mjs';
 import { wilson, below } from '../../../engine/games/stats.mjs';
-import { artBase, face, label, chip, noArt } from './crcard.js';
+import { artBase, face, label, chip, noArt, pic } from './crcard.js';
 
 const TYPE = { 26: 'Tropa', 27: 'Estructura', 28: 'Hechizo' };
 const typeOf = id => TYPE[String(id).slice(0, 2)] || 'Otra';
@@ -75,17 +75,21 @@ async function mazos(el) {
 
 async function brawlMeta(el) {
   const [doc, br] = await Promise.all([load(el.dataset.fdSrc, 'brawlmeta'), load(el.dataset.fdSrc, 'brawl').catch(() => null)]);
-  const d = doc.data, n = Number(el.dataset.n) || 0;
+  const d = doc.data, n = Number(el.dataset.n) || 0, base = artBase(el);
+  noArt(el);
+  const imgs = new Map(br ? br.data.brawlers.map(b => [b.id, b.img]) : []), art = (br && br.data.art) || { maps: {}, modes: {} };
   const name = id => tc((d.brawlers.find(b => b.id === id) || { n: '#' + id }).n);
+  const who = id => '<span class="pa-bsw">' + (base ? pic(base, imgs.get(id), 'pa-bsp') || '<i class="pa-bsp" aria-hidden="true"></i>' : '') + '<b>' + esc(name(id)) + '</b></span>';
+  const gi = k => pic(base, art.modes && art.modes[k], 'pa-bsg', 161, 137);
   const wr = x => { if (x.d < 10) return '<span class="pa-x">pocas partidas</span>'; const [lo, hi] = wilson(x.w, x.d); return fmtPct(x.w / x.d, 0) + ' <small>(' + fmtPct(lo, 0) + ' a ' + fmtPct(hi, 0) + ')</small>'; };
-  const table = (list, total) => '<div class="pa-tw"><table class="pa-tb"><thead><tr><th>Brawler</th><th class="pa-n">Elegido</th><th class="pa-n">Gana</th></tr></thead><tbody>' + list.map(x => '<tr><td><b>' + esc(name(x.id)) + '</b></td><td class="pa-n">' + pct(x.u, total) + '</td><td class="pa-n">' + wr(x) + '</td></tr>').join('') + '</tbody></table></div>';
+  const table = (list, total) => '<div class="pa-tw"><table class="pa-tb"><thead><tr><th>Brawler</th><th class="pa-n">Elegido</th><th class="pa-n">Gana</th></tr></thead><tbody>' + list.map(x => '<tr><td>' + who(x.id) + '</td><td class="pa-n">' + pct(x.u, total) + '</td><td class="pa-n">' + wr(x) + '</td></tr>').join('') + '</tbody></table></div>';
   let h = stamp(doc, 72) + '<div class="pa-evk"><div><small>Jugadores del top argentino</small><b>' + d.players + '</b></div><div><small>Partidas contadas</small><b>' + fmt(d.battles, 0) + '</b></div><div><small>Desde</small><b>' + esc(dayName(arDay(d.from)) + ' ' + arTime(d.from)) + '</b></div></div>';
-  if (n) { el.innerHTML = h + '<ul class="pa-bl">' + d.brawlers.slice(0, n).map(b => '<li><span>' + esc(tc(b.n)) + '</span>' + bar(b.u, d.brawlers[0].u) + '<b>' + pct(b.u, d.battles) + '</b></li>').join('') + '</ul>'; return; }
+  if (n) { el.innerHTML = h + '<ul class="pa-bl">' + d.brawlers.slice(0, n).map(b => '<li><span>' + (base ? pic(base, imgs.get(b.id), 'pa-blim', 170, 170) || '<i class="pa-blim" aria-hidden="true"></i>' : '') + esc(tc(b.n)) + '</span>' + bar(b.u, d.brawlers[0].u) + '<b>' + pct(b.u, d.battles) + '</b></li>').join('') + '</ul>'; return; }
   const now = Date.now();
   const rot = br && !stale(br, 6) ? br.data.events.filter(e => Date.parse(e.end) > now && e.map) : [];
   const onNow = rot.map(e => ({ e, m: d.maps.find(m => m.map === e.map && m.mode === e.mode) })).filter(x => x.m);
-  if (onNow.length) h += '<h3 class="pa-fdh3">En los mapas de la rotación de ahora</h3><div class="pa-two">' + onNow.map(({ e, m }) => '<div class="pa-c"><p class="pa-x">' + esc(mode(e.mode)) + ' · cambia ' + esc(arDay(e.end) === today() ? 'hoy' : dayName(arDay(e.end))) + ' ' + arTime(e.end) + '</p><h4>' + esc(e.map) + '</h4>' + table(m.top.slice(0, 5), m.n) + '<p class="pa-src">' + m.n + ' partidas en este mapa.</p></div>').join('') + '</div>';
-  h += '<h3 class="pa-fdh3">Por modo</h3><div class="pa-seg" role="group" aria-label="Modo">' + d.modes.map((m, i) => '<button type="button" data-m="' + i + '" aria-pressed="' + (i === 0) + '">' + esc(mode(m.k)) + ' · ' + m.n + '</button>').join('') + '</div><div data-mode></div>';
+  if (onNow.length) h += '<h3 class="pa-fdh3">En los mapas de la rotación de ahora</h3><div class="pa-two">' + onNow.map(({ e, m }) => '<div class="pa-c pa-bsmc">' + (base && e.mi ? '<span class="pa-bsm">' + pic(base, e.mi, '', 690, 1050) + '</span>' : '') + '<p class="pa-x">' + gi(e.mode) + esc(mode(e.mode)) + ' · cambia ' + esc(arDay(e.end) === today() ? 'hoy' : dayName(arDay(e.end))) + ' ' + arTime(e.end) + '</p><h4>' + esc(e.map) + '</h4>' + table(m.top.slice(0, 5), m.n) + '<p class="pa-src">' + m.n + ' partidas en este mapa.</p></div>').join('') + '</div>';
+  h += '<h3 class="pa-fdh3">Por modo</h3><div class="pa-seg" role="group" aria-label="Modo">' + d.modes.map((m, i) => '<button type="button" data-m="' + i + '" aria-pressed="' + (i === 0) + '">' + gi(m.k) + esc(mode(m.k)) + ' · ' + m.n + '</button>').join('') + '</div><div data-mode></div>';
   h += '<h3 class="pa-fdh3">Todos los brawlers que eligieron</h3>' + table(d.brawlers.slice(0, 30), d.battles);
   el.innerHTML = h;
   const box = el.querySelector('[data-mode]');

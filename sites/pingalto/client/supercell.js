@@ -1,6 +1,6 @@
 import { esc, load, stale, stamp, fail, arTime, arDay, dayName, today } from './fdkit.js';
 import { fmt, parseNum } from '../../../engine/games/num.mjs';
-import { RAR, RORD, artBase, face, label, noArt } from './crcard.js';
+import { RAR, RORD, artBase, face, label, noArt, pic } from './crcard.js';
 
 const PL = { common: 'comunes', rare: 'especiales', epic: 'épicas', legendary: 'legendarias', champion: 'campeones' };
 
@@ -78,8 +78,9 @@ async function clash(el) {
 
 const tc = s => String(s).toLowerCase().replace(/(^|[\s.-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
 async function brawl(el) {
-  const doc = await load(el.dataset.fdSrc, 'brawl'), d = doc.data;
+  const doc = await load(el.dataset.fdSrc, 'brawl'), d = doc.data, base = artBase(el);
   let q = '';
+  noArt(el);
   const draw = () => {
     const list = d.brawlers.filter(b => !q || b.n.toLowerCase().includes(q)).sort((a, b) => a.n < b.n ? -1 : 1);
     const newest = d.brawlers.find(b => b.id === d.newest);
@@ -90,7 +91,7 @@ async function brawl(el) {
       return draw();
     }
     box.innerHTML = '<div class="pa-tw"><table class="pa-tb"><thead><tr><th>Brawler</th><th>Habilidades estelares</th><th>Gadgets</th></tr></thead><tbody>' +
-      list.map(b => '<tr><td><b>' + esc(tc(b.n)) + '</b>' + (b.id === d.newest ? ' <span class="pa-tag">nuevo</span>' : '') + '</td><td>' + b.sp.map(x => esc(tc(x))).join('<br>') + '</td><td>' + b.gd.map(x => esc(tc(x))).join('<br>') + '</td></tr>').join('') + '</tbody></table></div>';
+      list.map(b => '<tr><td><span class="pa-bsw">' + (base ? pic(base, b.img, 'pa-bsp') || '<i class="pa-bsp" aria-hidden="true"></i>' : '') + '<span><b>' + esc(tc(b.n)) + '</b>' + (b.id === d.newest ? ' <span class="pa-tag">nuevo</span>' : '') + '</span></span></td><td>' + b.sp.map(x => esc(tc(x))).join('<br>') + '</td><td>' + b.gd.map(x => esc(tc(x))).join('<br>') + '</td></tr>').join('') + '</tbody></table></div>';
   };
   el.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); draw(); } });
   draw();
@@ -116,13 +117,14 @@ async function brawlTop(el) {
 const left = ms => { const m = Math.max(0, Math.round(ms / 60000)); const h = Math.floor(m / 60); return h >= 24 ? Math.floor(h / 24) + ' d ' + (h % 24) + ' h' : h + ' h ' + String(m % 60).padStart(2, '0') + ' min'; };
 const mode = s => String(s).replace(/([a-z])([A-Z0-9])/g, '$1 $2').replace(/^./, c => c.toUpperCase());
 async function brawlEvents(el) {
-  const doc = await load(el.dataset.fdSrc, 'brawl'), d = doc.data;
+  const doc = await load(el.dataset.fdSrc, 'brawl'), d = doc.data, base = artBase(el);
+  noArt(el);
   const draw = () => {
     if (stale(doc, 6)) { el.innerHTML = stamp(doc, 6); return; }
     const now = Date.now(), t = today();
     const ev = d.events.filter(e => Date.parse(e.end) > now);
     const when = iso => (arDay(iso) === t ? 'hoy' : dayName(arDay(iso))) + ' a las ' + arTime(iso);
-    el.innerHTML = stamp(doc, 6) + '<ul class="pa-fdev">' + ev.map(e => '<li><small>' + esc(mode(e.mode)) + '</small><b>' + esc(e.map || 'Mapa a confirmar') + '</b><span>Cambia ' + esc(when(e.end)) + ' · faltan ' + left(Date.parse(e.end) - now) + '</span>' + (e.mod && e.mod.length ? '<span>' + e.mod.map(mode).map(esc).join(', ') + '</span>' : '') + '</li>').join('') + '</ul>' + (ev.length ? '' : '<p>La rotación que tenemos ya terminó: esperamos la próxima copia.</p>');
+    el.innerHTML = stamp(doc, 6) + '<ul class="pa-fdev">' + ev.map(e => '<li class="pa-bse">' + (base && e.mi ? '<span class="pa-bsm">' + pic(base, e.mi, '', 690, 1050) + '</span>' : '') + '<small>' + pic(base, e.gi, 'pa-bsg', 161, 137) + esc(mode(e.mode)) + '</small><b>' + esc(e.map || 'Mapa a confirmar') + '</b><span>Cambia ' + esc(when(e.end)) + ' · faltan ' + left(Date.parse(e.end) - now) + '</span>' + (e.mod && e.mod.length ? '<span>' + e.mod.map(mode).map(esc).join(', ') + '</span>' : '') + '</li>').join('') + '</ul>' + (ev.length ? '' : '<p>La rotación que tenemos ya terminó: esperamos la próxima copia.</p>');
   };
   draw();
   setInterval(draw, 60000);

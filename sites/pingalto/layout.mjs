@@ -107,7 +107,7 @@ export function page(h, p, body) {
     '<button class="pa-ib pa-bu" type="button" data-pa-menu aria-controls="pa-nv" aria-expanded="false" aria-label="Menú">' + BURGER + '</button></header>';
   const footer = '<footer class="pa-ft"><p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>' +
     '<nav aria-label="Pie">' + links(h, FOOT, p.path) + '</nav>' +
-    '<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor y no usa sus logos' + (anyArt() ? '; el arte oficial que mostramos (cartas, campeones) va sin cambios y con el aviso de su editor. Los fondos y Alt son ilustraciones propias hechas con IA.' : ' ni su arte: los fondos y Alt son ilustraciones propias hechas con IA.') + ' Cada número tiene su fuente en la página de datos.</small>' +
+    '<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor y no usa sus logos' + (anyArt() ? '; el arte de los juegos que mostramos (cartas, campeones, agentes, brawlers) es el original, solo achicado, con el aviso de su editor. Los fondos y Alt son ilustraciones propias hechas con IA.' : ' ni su arte: los fondos y Alt son ilustraciones propias hechas con IA.') + ' Cada número tiene su fuente en la página de datos.</small>' +
     (p.riot ? '<small lang="en">' + h.esc(RIOT) + '</small>' : '') + '</footer>';
   const data = p.data ? '<script type="application/json" id="pa-d">' + h.jsonScript(dataOf(h, p)) + '</script>' : '';
   const js = ['pa.js', ...(p.scripts || [])].map(s => '<script type="module" src="' + h.asset(s) + '"></script>').join('');

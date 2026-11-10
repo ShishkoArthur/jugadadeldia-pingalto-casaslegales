@@ -22,6 +22,13 @@ export function chip(c, base, extra = '') {
 export function noArt(root) {
   root.addEventListener('error', e => {
     const t = e.target;
-    if (t && t.tagName === 'IMG' && t.parentElement && t.parentElement.classList.contains('pa-crf')) { t.parentElement.classList.add('pa-crno'); t.remove(); }
+    if (!t || t.tagName !== 'IMG' || !t.parentElement) return;
+    const p = t.parentElement;
+    if (p.classList.contains('pa-crf')) p.classList.add('pa-crno');
+    if (p.classList.contains('pa-bsm')) p.remove(); else t.remove();
   }, true);
+}
+
+export function pic(base, src, cls, w = 170, h = 170) {
+  return base && src ? '<img class="' + cls + '" src="' + esc(base + src) + '" alt="" width="' + w + '" height="' + h + '" loading="lazy" decoding="async">' : '';
 }

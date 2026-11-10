@@ -2,6 +2,8 @@
 // (engine/games/ladder.mjs, exact Markov chain). Shares of players per rank are shown only where the publisher states one.
 import { progress } from '../../../engine/games/ladder.mjs';
 import { fmt, fmtPct, fmtInput, quote, hero, ldPage, sec } from './parts.mjs';
+import { artFor } from '../content/art.mjs';
+import { valArtNote } from './valorant.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const num = (id, value) => '<input id="' + id + '" type="text" inputmode="numeric" autocomplete="off" value="' + fmtInput(value, 0) + '">';
@@ -50,9 +52,10 @@ function calc(h, L, startIdx, game) {
 }
 const ladderData = L => ({ steps: L.steps, lastModel: L.lastModel, top: L.top, carry: L.carry, minAfterUp: L.minAfterUp, demote: L.demote, tier: L.tier, unit: L.unit });
 
-function ladderVisual(h, names, label) {
+function ladderVisual(h, names, label, set) {
   const n = names.length;
-  return '<ol class="pa-st" style="--n:' + n + '" aria-label="' + h.esc(label) + '">' + names.map((x, i) => '<li' + (i === Math.floor(n / 2) - 1 ? ' class="pa-me"' : '') + '><i style="height:' + Math.round(((i + 1) / n) * 100) + '%"></i><b>' + h.esc(x) + '</b></li>').join('') + '</ol>';
+  const icon = x => { const f = set && artFor(set, x); return f ? '<img src="' + h.asset(f) + '" width="64" height="64" alt="' + h.esc(x) + '">' : ''; };
+  return '<ol class="pa-st' + (set && names.some(icon) ? ' pa-sti' : '') + '" style="--n:' + n + '" aria-label="' + h.esc(label) + '">' + names.map((x, i) => '<li' + (i === Math.floor(n / 2) - 1 ? ' class="pa-me"' : '') + '><i style="height:' + Math.round(((i + 1) / n) * 100) + '%">' + icon(x) + '</i><b>' + h.esc(x) + '</b></li>').join('') + '</ol>';
 }
 
 export const valorantRangos = {
@@ -67,14 +70,14 @@ export const valorantRangos = {
   ld: h => ldPage(h),
   render(h) {
     const L = valorant(h);
-    const ladder = '<div class="pa-gd"><section class="pa-c pa-w4"><h2>La escalera completa</h2><p class="pa-x">' + fmt(L.ranks.length, 0) + ' rangos · ' + fmt(L.per, 0) + ' niveles cada uno, menos ' + h.esc(L.ranks[L.ranks.length - 1]) + ' · ' + fmt(L.steps.length, 0) + ' escalones</p>' + ladderVisual(h, L.ranks, 'Rangos de Valorant de menor a mayor') + '</section>' +
+    const ladder = '<div class="pa-gd"><section class="pa-c pa-w4"><h2>La escalera completa</h2><p class="pa-x">' + fmt(L.ranks.length, 0) + ' rangos · ' + fmt(L.per, 0) + ' niveles cada uno, menos ' + h.esc(L.ranks[L.ranks.length - 1]) + ' · ' + fmt(L.steps.length, 0) + ' escalones</p>' + ladderVisual(h, L.ranks, 'Rangos de Valorant de menor a mayor', 'valorant-ranks') + valArtNote(h) + '</section>' +
       '<section class="pa-c pa-w2"><h2>Lo que dice Riot</h2>' + quote(h, 'val_ranks', 'es') + quote(h, 'val_levels', 'es') + '</section></div>';
     const rules = sec('Cómo se sube y se baja', '<div class="pa-three"><div class="pa-c"><h3>Subís a los ' + fmt(L.top, 0) + '</h3>' + quote(h, 'val_rr_up', 'es') + '</div>' +
       '<div class="pa-c"><h3>Arrancás con algo</h3>' + quote(h, 'val_rr_after_up', 'es') + '</div><div class="pa-c"><h3>Si bajás</h3>' + quote(h, 'val_rr_down_rule', 'es') + quote(h, 'val_rr_after_down', 'es') + quote(h, 'val_protect', 'es') + '</div></div>' +
       '<p class="pa-note" style="margin-top:14px">La calculadora sigue estas reglas: al subir arrancás con lo que te sobró (y nunca menos de ' + fmt(L.minAfterUp, 0) + '), y si perdés con 0 bajás al nivel anterior con ' + fmt(L.demote.to, 0) + ', lo más bajo que permite Riot. No baja del rango donde empezás ni cuenta las protecciones de rango, y llega hasta ' + h.esc(L.steps[L.lastModel]) + ': de ahí para arriba la CR funciona distinto.</p>');
     const dist = sec('¿Cuántos jugadores hay en cada rango?', '<p>Riot no publica en sus páginas oficiales qué porcentaje de jugadores hay en cada rango, así que no mostramos uno inventado ni sacado de sitios que no explican cómo lo miden.</p>');
     const latam = sec('Desde Argentina', '<div class="pa-two"><div>' + quote(h, 'val_scl', 'es') + quote(h, 'val_scl_ar', 'es') + '</div><div><p>Tu ping hasta Santiago, y el mínimo que permite la física desde tu provincia, está en el <a href="' + h.href('/kit/ping') + '">test de ping desde Argentina</a>.</p></div></div>');
-    return hero(h, { ey: 'Valorant · competitivo', sub: 'Los ' + fmt(L.ranks.length, 0) + ' rangos en orden, las reglas de la CR (clasificación de rango, el RR en inglés) tal como las escribe Riot y una calculadora que te dice cuántas partidas te faltan con tus propios números.' }) +
+    return '<link rel="stylesheet" href="' + h.asset('vx.css') + '">' + hero(h, { ey: 'Valorant · competitivo', sub: 'Los ' + fmt(L.ranks.length, 0) + ' rangos en orden, las reglas de la CR (clasificación de rango, el RR en inglés) tal como las escribe Riot y una calculadora que te dice cuántas partidas te faltan con tus propios números.' }) +
       calc(h, L, L.steps.indexOf(L.ranks[3] + ' 1'), 'valorant') + ladder + rules + dist + latam;
   },
 };
