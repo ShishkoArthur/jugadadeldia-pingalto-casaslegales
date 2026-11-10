@@ -1,0 +1,18 @@
+.pa-abd{margin-top:12px;border-radius:16px;background:var(--p2)}
+.pa-abd summary{display:block;min-height:44px;padding:11px 40px 11px 14px;position:relative;cursor:pointer;font-size:14px;line-height:1.4;list-style:none}
+.pa-abd summary::-webkit-details-marker{display:none}
+.pa-abd summary::after{content:"+";position:absolute;right:14px;top:9px;font:800 20px/1 "M PLUS Rounded 1c",sans-serif;color:var(--vi)}
+.pa-abd[open] summary::after{content:"\2212"}
+.pa-abd summary span{color:var(--mu)}
+.pa-abd .pa-ab{margin:0;padding:0 14px 14px}
+.pa-kw{font-weight:700}
+.pa-kt{font-weight:700;color:var(--tl)}
+.pa-kd{font-weight:700;color:var(--pk)}
+.pa-chc{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-content:start}
+.pa-chc>*{grid-column:1/-1}
+.pa-chc>img{grid-column:1;grid-row:1/3;width:52px;height:52px;border-radius:14px;box-shadow:0 0 0 2px var(--ln);align-self:center}
+.pa-chc>img+h3,.pa-chc>img+h3+.pa-x{grid-column:2}
+.pa-chc h3{align-self:end}
+.pa-tb th>img{display:block;width:44px;height:44px;margin:0 0 6px auto;border-radius:12px;box-shadow:0 0 0 2px var(--ln)}
+.pa-ti img{width:30px;height:30px;margin:0 8px 0 -8px;border-radius:8px;vertical-align:middle;pointer-events:none}
+@media (max-width:680px){.pa-chc{padding:12px;font-size:13px;column-gap:8px}.pa-chc>img{width:40px;height:40px;border-radius:11px}.pa-chc h3{font-size:16px}}

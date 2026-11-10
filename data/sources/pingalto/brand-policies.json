@@ -20,9 +20,10 @@
     { "doc": "riot-ljj", "q": "was created under Riot Games' \"Legal Jibber Jabber\" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project." }
    ],
    "logo": false,
-   "keyArt": "allowed only noncommercially with the Legal Jibber Jabber notice; not used (no asset we may fetch and our own backgrounds suffice)",
-   "now": "Game names in our own type only, no Riot logo; our own background. Footer keeps the Riot notice on Valorant and LoL pages.",
-   "ifAffiliate": "Riot IP use is noncommercial except passive ads by individual players and API projects with a key: an affiliate button would need a written Riot licence for any Riot art; names in text stay nominative."
+   "keyArt": "allowed only noncommercially with the Legal Jibber Jabber notice; not used (no asset we may fetch and our own backgrounds suffice); since 2026-11-10 (owner) the square champion portraits of Data Dragon are used, unmodified and hosted by us (assets.json set riot-lol)",
+   "used": true,
+   "now": "Game names in our own type, no Riot logo; our own backgrounds. League of Legends champion portraits from Data Dragon on /lol and /tier-list with the Legal Jibber Jabber notice next to them; the footer keeps the Riot notice on Valorant and LoL pages. Switch: assets.json publishers.riot.enabled.",
+   "ifAffiliate": "Riot IP use is noncommercial except passive ads by individual players and API projects with a key: an affiliate button would need a written Riot licence for any Riot art (switch it off in assets.json first); names in text stay nominative."
   },
   "valve": {
    "games": ["cs2", "dota2"],
@@ -59,10 +60,10 @@
     { "doc": "supercell-fcp", "q": "This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: www.supercell.com/fan-content-policy." }
    ],
    "logo": "allowed from the official fan kit, unmodified, with the Supercell notice",
-   "used": false,
-   "why": "No Brawl Stars or Clash Royale page is built yet, and the fan kit host (fankit.supercell.com) answers 403 to us. When the pages exist the owner downloads the game logos from the fan kit; we host them unmodified with the notice.",
-   "now": "Nothing shown until the pages exist.",
-   "ifAffiliate": "Ads are allowed, but no Supercell asset may sit next to gambling: an affiliate button for betting means no Supercell logos on the site."
+   "used": true,
+   "why": "Owner 2026-11-10: official card art may be shown. The fan kit host (fankit.supercell.com) still answers 403 to us, so there is no game logo; the card images come from the official API (iconUrls), copied unmodified by the clash feed.",
+   "now": "Clash Royale card art (and evolution art) on /clash/cartas, /clash/mazos and /clash/meta, copied once from api-assets.clashroyale.com into /data/feeds/clash-art/, unmodified, with the Supercell notice on every page that shows it. No logo. Brawl Stars: the official API names no images, so brawlers and maps stay text. Switch: assets.json publishers.supercell.enabled.",
+   "ifAffiliate": "Ads are allowed, but no Supercell asset may sit next to gambling: an affiliate button for betting means no Supercell art or logos on the site (switch it off in assets.json)."
   },
   "garena": {
    "games": ["ff"],

@@ -6,13 +6,13 @@
 // frame, the method, the attribution and what we do not show and why.
 import { fcPc } from './games2.mjs';
 import { hero, ldPage, sec, quote, srcLine, fmt } from './parts.mjs';
-import { agendaBlock, FEED, css, wait, PS, SC } from './feeds.mjs';
+import { agendaBlock, FEED, css, crCss, wait, PS, SC, ART, crLegend } from './feeds.mjs';
 import { vrs } from '../content/vrs.mjs';
 import { rlStart, clashStart, brawlStart } from './academy.mjs';
 import { dota2Hub } from './dota2.mjs';
 
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
-const box = (mode, attrs = '') => '<div class="pa-fd" data-fd="' + mode + '" data-fd-src="' + FEED + '"' + attrs + '>' + wait + '</div>';
+const box = (mode, attrs = '') => '<div class="pa-fd" data-fd="' + mode + '" data-fd-src="' + FEED + '"' + (mode === 'clashmeta' ? ART : '') + attrs + '>' + wait + '</div>';
 const link = (h, u, t) => h.built(u) ? '<a href="' + h.href(u) + '">' + t + '</a>' : t;
 const seriesLink = h => h.built('/esports/series') ? '<p>¿Qué chance tiene un equipo en un Bo3 o un Bo5 si sabés cuánto gana por mapa? Calculalo en la ' + link(h, '/esports/series', 'calculadora de series') + '.</p>' : '';
 
@@ -48,9 +48,9 @@ export const clashHub = {
   scripts: ['meta.js'],
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'Clash Royale · desde Argentina', girl: true, sub: 'Herramientas con la API oficial de Supercell: tu mazo, todas las cartas y lo que juegan hoy los mejores del país.' }) +
+    return css(h) + crCss(h) + hero(h, { ey: 'Clash Royale · desde Argentina', girl: true, sub: 'Herramientas con la API oficial de Supercell: tu mazo, todas las cartas y lo que juegan hoy los mejores del país.' }) +
       clashStart(h) + sec('Herramientas', cards(h, CLASH)) +
-      sec('Lo que más usa el top argentino', box('clashmeta', ' data-n="10" data-decks="no"') + SC + '<p>' + link(h, '/clash/meta', 'Ver el meta completo y los mazos repetidos') + '</p>');
+      sec('Lo que más usa el top argentino', box('clashmeta', ' data-n="10" data-decks="no"') + SC + '<p class="pa-more">' + link(h, '/clash/meta', 'Ver el meta completo y los mazos repetidos') + '</p>');
   },
 };
 
@@ -63,8 +63,8 @@ export const clashMazos = {
   scripts: ['meta.js'],
   ld: h => ldPage(h),
   render(h) {
-    const tool = '<div class="pa-fd pa-mz" data-fd="mazos" data-fd-src="' + FEED + '"><div class="pa-c"><h2>Elegí ocho cartas</h2><div data-pick>' + wait + '</div></div><div class="pa-c pa-out" aria-live="polite"><h2>Tu mazo</h2><div class="pa-share"><button type="button" data-clear>Vaciar</button><button type="button" data-top>Cargar el mazo más repetido del top</button></div><div data-deck></div></div></div>';
-    return css(h) + hero(h, { ey: 'Clash Royale · constructor de mazos', sub: 'Tocá ocho cartas: te mostramos el elixir promedio, el ciclo, la curva y cuántos mazos del top argentino llevan cada una. El link guarda tu mazo para compartirlo.' }) +
+    const tool = '<div class="pa-fd pa-mz" data-fd="mazos" data-fd-src="' + FEED + '"' + ART + '><div class="pa-c"><h2>Elegí ocho cartas</h2>' + crLegend() + '<div data-pick>' + wait + '</div></div><div class="pa-c pa-out" aria-live="polite"><h2>Tu mazo</h2><div class="pa-share"><button type="button" data-clear>Vaciar</button><button type="button" data-top>Cargar el mazo más repetido del top</button></div><div data-deck></div></div></div>';
+    return css(h) + crCss(h) + hero(h, { ey: 'Clash Royale · constructor de mazos', sub: 'Tocá ocho cartas: te mostramos el elixir promedio, el ciclo, la curva y cuántos mazos del top argentino llevan cada una. El link guarda tu mazo para compartirlo.' }) +
       tool + SC +
       sec('Qué mira el análisis', '<div class="pa-two"><div><ul class="pa-dot"><li><b>Elixir promedio</b>: la suma de las ocho cartas dividida por ocho.</li><li><b>Ciclo</b>: lo que cuestan tus cuatro cartas más baratas, lo que gastás para volver a tener la primera en la mano.</li><li><b>Curva</b>: cuántas cartas tenés de cada costo.</li></ul>' + typesNote + '</div>' +
         '<div><p>La comparación usa los mazos que tienen elegidos hoy los jugadores con más copas de los mejores clanes de Argentina (detalle en ' + link(h, '/clash/meta', 'el meta argentino') + ').</p><p class="pa-src">No te ponemos una nota: no hay una fórmula oficial que diga qué mazo es bueno, y una nota inventada te haría cambiar cartas por nada. Mostramos números que podés revisar.</p></div></div>');
@@ -80,7 +80,7 @@ export const clashMeta = {
   scripts: ['meta.js'],
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'Clash Royale · meta argentino', sub: 'Qué cartas llevan los que más copas tienen en los mejores clanes de Argentina, y qué mazos se repiten entre ellos.' }) +
+    return css(h) + crCss(h) + hero(h, { ey: 'Clash Royale · meta argentino', sub: 'Qué cartas llevan los que más copas tienen en los mejores clanes de Argentina, y qué mazos se repiten entre ellos.' }) +
       sec('Hoy en el top argentino', box('clashmeta', ' data-n="30"') + SC, 'meta') +
       sec('De dónde sale', '<ul class="pa-dot"><li>La tabla oficial de jugadores de Argentina viene vacía en la API (es por temporada). La de clanes sí está: tomamos los 10 mejores clanes del país, sus miembros con más copas (hasta 100) y el mazo que cada uno tiene elegido ahora.</li><li>Es el mazo elegido, no cuánto gana: la API no da el win rate de un mazo y no lo inventamos.</li><li>No guardamos nombres ni tags de jugadores: solo cuántos llevan cada carta.</li></ul>' + typesNote) +
       sec('Probalo con tu mazo', '<p>Armá el tuyo y fijate cuánto se parece al de los mejores en el ' + link(h, '/clash/mazos', 'constructor de mazos') + '.</p>');
@@ -105,7 +105,7 @@ export const brawlHub = {
     return css(h) + hero(h, { ey: 'Brawl Stars · desde Argentina', girl: true, sub: 'La rotación de ahora, los brawlers que más eligen los mejores del país y todas las herramientas, con la API oficial de Supercell.' }) +
       brawlStart(h) + sec('Herramientas', cards(h, BRAWL)) +
       sec('Ahora en la rotación', box('brawl-events') + SC, 'eventos') +
-      sec('Lo más elegido por el top argentino', box('brawlmeta', ' data-n="10"') + '<p>' + link(h, '/brawl/meta', 'Por modo, por mapa y con cuánto ganan') + '</p>');
+      sec('Lo más elegido por el top argentino', box('brawlmeta', ' data-n="10"') + '<p class="pa-more">' + link(h, '/brawl/meta', 'Por modo, por mapa y con cuánto ganan') + '</p>');
   },
 };
 
@@ -210,7 +210,7 @@ export const valorantChampions = {
     return css(h) + hero(h, { ey: 'Valorant · VCT', girl: true, sub: 'Champions, los Masters y la liga de las Américas, donde juegan los equipos de Argentina, con los horarios pasados a hora argentina y cada resultado.' }) +
       sec('Los campeones', box('champs', ' data-g="valorant"') + PS) +
       tabs.map(([k, i, t]) => sec(t, box('event', ' data-ev="' + k + '" data-ed="' + i + '"'))).join('') +
-      sec('Cómo se lee', '<ul class="pa-dot"><li>Las horas son de Argentina y los equipos argentinos van marcados con AR, según el país que PandaScore le asigna a cada equipo.</li><li>Tocá una fase para ver sus partidos.</li></ul>' + seriesLink(h) + '<p>' + link(h, '/valorant', 'Todo Valorant desde Argentina') + '</p>');
+      sec('Cómo se lee', '<ul class="pa-dot"><li>Las horas son de Argentina y los equipos argentinos van marcados con AR, según el país que PandaScore le asigna a cada equipo.</li><li>Tocá una fase para ver sus partidos.</li></ul>' + seriesLink(h) + '<p class="pa-more">' + link(h, '/valorant', 'Todo Valorant desde Argentina') + '</p>');
   },
 };
 
@@ -226,7 +226,7 @@ export const esportsArgentinos = {
   render(h) {
     return css(h) + hero(h, { ey: 'Esports · Argentina', girl: true, sub: 'Todos los jugadores con nacionalidad argentina que PandaScore tiene con equipo hoy, juego por juego, con los que juegan en clubes de otros países y sus próximos partidos.' }) +
       sec('Los argentinos, juego por juego', box('argentinos') + PS, 'jugadores') +
-      sec('Cómo se lee', '<ul class="pa-dot"><li>Mostramos el nick, el equipo y el país del equipo. No publicamos nombres reales ni fechas de nacimiento.</li><li>«Afuera» quiere decir que el equipo está registrado en otro país.</li><li>Los logros de cada jugador no están en estos datos: no los inventamos.</li></ul>' + '<p>' + link(h, '/esports/latam', 'Las ligas de Latinoamérica de esta semana') + '</p>');
+      sec('Cómo se lee', '<ul class="pa-dot"><li>Mostramos el nick, el equipo y el país del equipo. No publicamos nombres reales ni fechas de nacimiento.</li><li>«Afuera» quiere decir que el equipo está registrado en otro país.</li><li>Los logros de cada jugador no están en estos datos: no los inventamos.</li></ul>' + '<p class="pa-more">' + link(h, '/esports/latam', 'Las ligas de Latinoamérica de esta semana') + '</p>');
   },
 };
 

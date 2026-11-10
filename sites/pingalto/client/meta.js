@@ -1,32 +1,34 @@
 import { esc, load, stale, stamp, fail, arDay, arTime, dayName, today } from './fdkit.js';
 import { fmt, fmtPct } from '../../../engine/games/num.mjs';
 import { wilson, below } from '../../../engine/games/stats.mjs';
+import { artBase, face, label, chip, noArt } from './crcard.js';
 
-const RAR = { common: 'Común', rare: 'Especial', epic: 'Épica', legendary: 'Legendaria', champion: 'Campeón' };
 const TYPE = { 26: 'Tropa', 27: 'Estructura', 28: 'Hechizo' };
 const typeOf = id => TYPE[String(id).slice(0, 2)] || 'Otra';
 const tc = s => String(s).toLowerCase().replace(/(^|[\s.-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
 const mode = s => String(s).replace(/([a-z])([A-Z0-9])/g, '$1 $2').replace(/^./, c => c.toUpperCase());
 const pct = (a, b) => fmtPct(b ? a / b : 0, 0);
 const bar = (v, max) => '<i style="--v:' + Math.round((v / (max || 1)) * 100) + '"></i>';
-const cardChip = (c, extra = '') => '<span class="pa-fdcd pa-fdr-' + c.r + '"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>' + extra + '</small></span>';
+const thumb = (c, base) => base && c.img ? '<img class="pa-blim" src="' + esc(base + c.img) + '" alt="" width="285" height="420" loading="lazy" decoding="async">' : '';
 
 async function clashMeta(el) {
   const [doc, cd] = await Promise.all([load(el.dataset.fdSrc, 'clashmeta'), load(el.dataset.fdSrc, 'clash')]);
-  const d = doc.data, byId = new Map(cd.data.cards.map(c => [c.id, c]));
+  const d = doc.data, byId = new Map(cd.data.cards.map(c => [c.id, c])), base = artBase(el);
+  noArt(el);
   const card = id => byId.get(id) || { id, n: 'Carta ' + id, e: null, r: 'common' };
   const n = Number(el.dataset.n) || 20;
   const avg = ids => ids.reduce((t, id) => t + (card(id).e || 0), 0) / ids.length;
   const top = d.cards.slice(0, n);
   let h = stamp(doc, 72) + '<div class="pa-evk"><div><small>Mazos mirados</small><b>' + d.n + '</b></div><div><small>Clanes del top argentino</small><b>' + d.clans + '</b></div><div><small>Elixir promedio de esos mazos</small><b>' + fmt(d.all.reduce((t, x) => t + avg(x), 0) / d.all.length, 2) + '</b></div></div>';
-  h += '<h3 class="pa-fdh3">Las cartas más usadas</h3><ul class="pa-bl">' + top.map(c => '<li><span>' + esc(card(c.id).n) + '</span>' + bar(c.n, d.n) + '<b>' + pct(c.n, d.n) + '</b></li>').join('') + '</ul><p class="pa-src">Porcentaje de los ' + d.n + ' mazos que llevan la carta.</p>';
-  if (el.dataset.decks !== 'no') h += '<h3 class="pa-fdh3">Mazos repetidos</h3>' + (d.decks.length ? d.decks.map(k => '<div class="pa-c pa-dk"><p class="pa-x">' + k.n + ' jugadores · elixir ' + fmt(avg(k.ids), 1) + '</p><div class="pa-fdcs">' + k.ids.map(id => cardChip(card(id), typeOf(id))).join('') + '</div></div>').join('') : '<p>Hoy ningún mazo se repite exacto entre estos jugadores: cada uno juega el suyo.</p>');
+  h += '<h3 class="pa-fdh3">Las cartas más usadas</h3><ul class="pa-bl">' + top.map(c => '<li><span>' + thumb(card(c.id), base) + esc(card(c.id).n) + '</span>' + bar(c.n, d.n) + '<b>' + pct(c.n, d.n) + '</b></li>').join('') + '</ul><p class="pa-src">Porcentaje de los ' + d.n + ' mazos que llevan la carta.</p>';
+  if (el.dataset.decks !== 'no') h += '<h3 class="pa-fdh3">Mazos repetidos</h3>' + (d.decks.length ? d.decks.map(k => '<div class="pa-c pa-dk"><p class="pa-x">' + k.n + ' jugadores · elixir ' + fmt(avg(k.ids), 1) + '</p><div class="pa-crs pa-crdk">' + k.ids.map(id => chip(card(id), base, typeOf(id))).join('') + '</div></div>').join('') : '<p>Hoy ningún mazo se repite exacto entre estos jugadores: cada uno juega el suyo.</p>');
   el.innerHTML = h;
 }
 
 async function mazos(el) {
   const [cd, mt] = await Promise.all([load(el.dataset.fdSrc, 'clash'), load(el.dataset.fdSrc, 'clashmeta').catch(() => null)]);
-  const cards = cd.data.cards, byId = new Map(cards.map(c => [c.id, c]));
+  const cards = cd.data.cards, byId = new Map(cards.map(c => [c.id, c])), base = artBase(el);
+  noArt(el);
   const deck = [];
   const q0 = new URLSearchParams(location.search).get('m');
   if (q0) for (const id of q0.split('-').map(Number)) if (byId.has(id) && !deck.includes(id) && deck.length < 8) deck.push(id);
@@ -35,7 +37,7 @@ async function mazos(el) {
   const drawPick = () => {
     const list = cards.filter(c => !q || c.n.toLowerCase().includes(q));
     if (!pick.querySelector('[data-list]')) pick.innerHTML = '<div class="pa-fdf"><label class="pa-f"><span>Buscar carta</span><input type="search" data-q value="' + esc(q) + '" placeholder="Hog Rider" autocomplete="off"></label></div><div data-list></div>';
-    pick.querySelector('[data-list]').innerHTML = '<ul class="pa-fdcs pa-scr">' + list.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="' + deck.includes(c.id) + '"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>' + typeOf(c.id) + '</small></button></li>').join('') + '</ul>';
+    pick.querySelector('[data-list]').innerHTML = '<ul class="pa-crs pa-crpk pa-scr">' + list.map(c => { const i = deck.indexOf(c.id); return '<li><button type="button" class="pa-crd pa-cr-' + c.r + '" data-id="' + c.id + '" aria-pressed="' + (i >= 0) + '" aria-label="' + esc(label(c)) + '">' + face(c, base) + '<span class="pa-crn">' + esc(c.n) + '</span><small>' + typeOf(c.id) + '</small><s class="pa-crk" aria-hidden="true">' + (i >= 0 ? i + 1 : '') + '</s></button></li>'; }).join('') + '</ul>';
   };
   const drawDeck = () => {
     const cs = deck.map(id => byId.get(id));
@@ -55,7 +57,7 @@ async function mazos(el) {
       const b = below(avgs, avg);
       h += '<div><h3 class="pa-fdh3">Contra el top argentino</h3><p>Tu elixir promedio es más alto que el de ' + fmtPct(b, 0) + ' de los ' + d.n + ' mazos del top argentino' + (b > 0.8 ? ': es un mazo pesado para ese nivel.' : b < 0.2 ? ': es un mazo de ciclo rápido para ese nivel.' : '.') + '</p><ul class="pa-bl">' + cs.slice().sort((x, y) => share(y.id) - share(x.id)).map(c => '<li><span>' + esc(c.n) + '</span>' + bar(share(c.id), 1) + '<b>' + fmtPct(share(c.id), 0) + '</b></li>').join('') + '</ul><p class="pa-src">Cuántos mazos del top argentino llevan cada carta tuya. El más parecido comparte ' + best.k + ' de 8 cartas con el tuyo.</p></div>';
     } else h += '<div><h3 class="pa-fdh3">Contra el top argentino</h3><p>Completá las ocho cartas para compararlo con los mazos de los mejores jugadores de Argentina.</p></div>';
-    h += '</div><ul class="pa-fdcs">' + cs.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="true"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>sacar</small></button></li>').join('') + '</ul>';
+    h = '<ul class="pa-crs pa-crdk">' + cs.map(c => '<li><button type="button" class="pa-crd pa-crm pa-cr-' + c.r + '" data-id="' + c.id + '" aria-label="' + esc('Sacar ' + c.n) + '">' + face(c, base) + '<span class="pa-crn">' + esc(c.n) + '</span><small>sacar</small></button></li>').join('') + '</ul>' + h + '</div>';
     out.innerHTML = h;
   };
   const toggle = id => { const i = deck.indexOf(id); if (i >= 0) deck.splice(i, 1); else if (deck.length < 8) deck.push(id); drawPick(); drawDeck(); };

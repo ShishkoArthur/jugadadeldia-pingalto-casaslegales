@@ -25,11 +25,12 @@ export function agents(h) {
   return { list, roles, version: v.data.version, build: v.data.buildDate.slice(0, 10) };
 }
 
+const rich = (h, t) => h.esc(t).replace(/&lt;(whitebold|teal|debuffred)&gt;([\s\S]*?)&lt;\/&gt;/g, (m, k, x) => '<b class="pa-k' + k[0] + '">' + x + '</b>').replace(/&lt;\/?[a-z]*&gt;/g, '');
 function card(h, a, newest) {
   const bg = a.colors.length ? 'background:linear-gradient(135deg,' + a.colors.join(',') + ')' : '';
   return '<article class="pa-c pa-ag" id="' + a.id + '" data-role="' + a.roleId + '" data-name="' + h.esc(a.name.toLowerCase()) + '">' +
     '<header><i style="' + bg + '" aria-hidden="true">' + h.esc([...a.name][0]) + '</i><div><h3>' + h.esc(a.name) + (a.id === newest ? ' <span class="pa-tag pa-cm">el más nuevo</span>' : '') + '</h3><p class="pa-x">' + h.esc(a.role) + (a.released ? ' · llegó el ' + h.fmtDate(a.released) : '') + '</p></div></header>' +
-    '<p>' + h.esc(a.desc) + '</p><ul class="pa-ab">' + a.abilities.map(x => '<li><b>' + h.esc(x.name) + (SLOT[x.slot] ? ' <span class="pa-tag">' + SLOT[x.slot] + '</span>' : '') + '</b><span>' + h.esc(x.desc) + '</span></li>').join('') + '</ul></article>';
+    '<p>' + rich(h, a.desc) + '</p><details class="pa-abd"><summary><b>' + a.abilities.length + ' habilidades</b> <span>' + a.abilities.map(x => h.esc(x.name)).join(' · ') + '</span></summary><ul class="pa-ab">' + a.abilities.map(x => '<li><b>' + h.esc(x.name) + (SLOT[x.slot] ? ' <span class="pa-tag">' + SLOT[x.slot] + '</span>' : '') + '</b><span>' + rich(h, x.desc) + '</span></li>').join('') + '</ul></details></article>';
 }
 
 export const valorantAgentes = {
@@ -57,7 +58,7 @@ export const valorantAgentes = {
     const src = sec('De dónde salen los datos', '<div class="pa-two"><div><p>Nombres, roles, textos de habilidades y colores salen de los archivos del cliente de Valorant que publica valorant-api.com, un proyecto de la comunidad sin relación con Riot. Leemos el archivo entero, tal como lo guardamos, en español de México. Los textos son los del juego.</p>' +
       srcLine(h, 'valapi-agents') + srcLine(h, 'valapi-version', 'cliente <code>' + h.esc(A.version) + '</code> del ' + h.fmtDate(A.build)) + '</div><div><p>La fecha de llegada solo aparece cuando el archivo la trae; para los agentes más viejos viene vacía y no la inventamos. Qué agentes eligen los equipos argentinos en torneos todavía no lo mostramos: falta una fuente pública que podamos citar partido por partido.</p></div></div>');
     const ar = sec('Desde Argentina', '<div class="pa-two"><div>' + quote(h, 'val_scl', 'es') + '</div><div><p>Tu ping hasta Santiago desde tu provincia está en el <a href="' + h.href('/kit/ping') + '">test de ping</a>, y cuántas partidas te faltan para subir, en los <a href="' + h.href('/valorant/rangos') + '">rangos de Valorant</a>.</p></div></div>');
-    return hero(h, { ey: 'Valorant · agentes · ' + fmt(A.list.length, 0), sub: 'Cada agente con su rol y sus habilidades en español, para elegir con quién jugar o entender qué te hizo el rival. Filtrá por rol y compará de a dos.' }) +
+    return '<link rel="stylesheet" href="' + h.asset('lists.css') + '">' + hero(h, { ey: 'Valorant · agentes · ' + fmt(A.list.length, 0), sub: 'Cada agente con su rol y sus habilidades en español, para elegir con quién jugar o entender qué te hizo el rival. Filtrá por rol y compará de a dos.' }) +
       tools + grid + roles + src + ar;
   },
 };

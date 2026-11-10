@@ -58,6 +58,7 @@ export const UI = {
   'Simulador de fase suiza': 'Swiss stage simulator',
   'Sin apuestas, sin skins, sin cajas: solo herramientas y datos.': 'No betting, no skins, no loot boxes: just tools and data.',
   'Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor y no usa sus logos ni su arte: los fondos y Alt son ilustraciones propias hechas con IA. Cada número tiene su fuente en la página de datos.': "Game names are trademarks of their owners; pingalto is not affiliated with any publisher and does not use their logos or art: the backgrounds and Alt are our own AI-made illustrations. Every number has its source on the data page.",
+  "Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor y no usa sus logos; el arte oficial que mostramos (cartas, campeones) va sin cambios y con el aviso de su editor. Los fondos y Alt son ilustraciones propias hechas con IA. Cada número tiene su fuente en la página de datos.": "Game names are trademarks of their owners; pingalto is not affiliated with any publisher and does not use their logos; the official art we show (cards, champions) is unmodified and carries its publisher's notice. The backgrounds and Alt are our own AI-made illustrations. Every number has its source on the data page.",
 };
 
 // Visible strings that pages hand to their browser modules as JSON data (<script id="pa-d">), which the HTML pass does not see.

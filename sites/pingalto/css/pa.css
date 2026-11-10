@@ -172,6 +172,8 @@ h1 em{font-style:normal;color:var(--vi)}
 .pa-seg [aria-pressed=true]{background:var(--fg);color:var(--bg)}
 
 .pa-sec{padding:28px 28px 0}
+.pa-jp{display:flex;gap:8px;overflow-x:auto;padding:16px 28px 4px;scrollbar-width:none}
+.pa-jp a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:99px;background:var(--pn);box-shadow:0 0 0 1px var(--ln);color:var(--fg);font:600 14px "Be Vietnam Pro",sans-serif;text-decoration:none;white-space:nowrap}
 .pa-sec>h2{margin-bottom:12px}
 .pa-sec>p{max-width:760px}
 .pa-sec>p+p{margin-top:10px}
@@ -336,6 +338,7 @@ h2{font-size:23px}
 .pa-ap a{grid-template-columns:52px minmax(0,1fr)}
 .pa-ap svg{width:52px;height:52px;padding:13px;border-radius:17px}
 .pa-tool,.pa-sec{padding:16px 12px 0}
+.pa-jp{padding:12px 12px 2px}
 .pa-two{grid-template-columns:minmax(0,1fr)}
 .pa-big{font-size:48px}
 .pa-tb{font-size:14px}
@@ -402,7 +405,7 @@ h2{font-size:23px}
 .pa-col{flex-direction:column;align-items:stretch}
 .pa-col .pa-ck{border-radius:18px;padding:10px 14px;align-items:flex-start}
 @media (max-width:980px){.pa-chs{grid-template-columns:repeat(2,minmax(0,1fr))}.pa-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.pa-flow li:nth-child(2)::after{display:none}}
-@media (max-width:680px){.pa-chs{grid-template-columns:minmax(0,1fr)}.pa-hb li{grid-template-columns:92px minmax(0,1fr) 40px}.pa-flow{gap:10px}.pa-flow li::after{display:none}.pa-bar.pa-thin{min-width:90px}}
+@media (max-width:680px){.pa-chs{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pa-hb li{grid-template-columns:92px minmax(0,1fr) 40px}.pa-flow{gap:10px}.pa-flow li::after{display:none}.pa-bar.pa-thin{min-width:90px}}
 
 .pa-g-ff{--g1:#ff9a4d;--g2:#e8457f}.pa-g-valorant{--g1:#ff6b81;--g2:#7c4ddb}.pa-g-lol{--g1:#2f6fdb;--g2:#d9a63c}.pa-g-cs2{--g1:#d9a55f;--g2:#3f4f6b}.pa-g-fortnite{--g1:#9b4ff0;--g2:#2aa9e0}
 .pa-mh i,.pa-gm i{display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;font:800 13px/1 "M PLUS Rounded 1c",sans-serif;font-style:normal;letter-spacing:.02em;text-shadow:0 1px 2px #0005;box-shadow:inset 0 0 0 1px #ffffff40}
@@ -479,6 +482,10 @@ h2{font-size:23px}
 .pa-gl h3 small{font:600 13px "Be Vietnam Pro",sans-serif;color:var(--mu)}
 .pa-gl p{font-size:15px}
 .pa-gl .pa-gll{font-size:14px;font-weight:600}
+.pa-gll a,.pa-more a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.pa-more a::after{content:"\2192";margin-left:6px;text-decoration:none}
+.pa-fm button.pa-b1{justify-self:start;min-height:48px;padding:0 22px;border:0;border-radius:99px;background:var(--gl),var(--vi);color:var(--on);font:600 15px "Be Vietnam Pro",sans-serif;box-shadow:inset 0 -3px 0 #0003;cursor:pointer}
+.pa-rg input[type=range]{min-height:44px}
 .pa-glh{box-shadow:var(--sh),0 0 0 2px var(--vi)}
 #pa-gs{display:grid;gap:14px}
 .pa-ac samp{font:inherit}

@@ -7,6 +7,10 @@ import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
 import { agendaBlock } from './feeds.mjs';
 import { itunes, play, millions } from '../content/stores.mjs';
 import { lolStart, valorantStart } from './academy.mjs';
+import { lolArt, artOn, artNotice } from '../content/art.mjs';
+
+const champImg = (h, c, lazy = true) => { const f = lolArt(c.id); return f ? '<img src="' + h.asset(f) + '" alt="' + h.esc(c.name) + '"' + (lazy ? ' loading="lazy"' : '') + '>' : ''; };
+export const riotArtNote = h => artOn('riot') ? '<p class="pa-src" lang="en">' + h.esc(artNotice('riot')) + '</p>' : '';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
@@ -44,17 +48,17 @@ export const lolHub = {
     const bars = '<div class="pa-c"><h3>Campeones por rol</h3><p class="pa-x">un campeón puede tener dos roles</p><ul class="pa-hb">' + ROLES.map(r => '<li><span>' + h.esc(C.role[r]) + '</span><i style="--v:' + Math.round((count(r) / max) * 100) + '"></i><b>' + fmt(count(r), 0) + '</b></li>').join('') + '</ul></div>';
     const seg = '<div class="pa-seg" role="group" aria-label="Filtrar por rol"><button type="button" data-role="" aria-pressed="true">Todos · ' + fmt(C.list.length, 0) + '</button>' + ROLES.map(r => '<button type="button" data-role="' + h.esc(C.role[r]) + '" aria-pressed="false">' + h.esc(C.role[r]) + '</button>').join('') + '</div>';
     const sortSel = '<select id="ch-s"><option value="name">Nombre</option><option value="3">Dificultad (de Riot)</option><option value="0">Ataque (de Riot)</option><option value="1">Defensa (de Riot)</option><option value="2">Magia (de Riot)</option><option value="r6">' + h.esc(C.STATS[6][1]) + ' de ataque</option><option value="r0">Vida base</option></select>';
-    const grid = '<div class="pa-chs" id="ch-list">' + C.list.map(c => '<article class="pa-chc" data-id="' + h.esc(c.id) + '" data-roles="' + h.esc(c.tags.map(t => C.role[t]).join('|')) + '"><h3>' + h.esc(c.name) + '</h3><p class="pa-x">' + h.esc(c.title) + '</p><p><b>' + h.esc(c.tags.map(t => C.role[t]).join(' · ')) + '</b></p><p class="pa-chi">' + INFO.map(([k, l]) => l + ' ' + c.info[k]).join(' · ') + '</p></article>').join('') + '</div>';
+    const grid = '<div class="pa-chs" id="ch-list">' + C.list.map(c => '<article class="pa-chc" data-id="' + h.esc(c.id) + '" data-roles="' + h.esc(c.tags.map(t => C.role[t]).join('|')) + '">' + champImg(h, c) + '<h3>' + h.esc(c.name) + '</h3><p class="pa-x">' + h.esc(c.title) + '</p><p><b>' + h.esc(c.tags.map(t => C.role[t]).join(' · ')) + '</b></p><p class="pa-chi">' + INFO.map(([k, l]) => l + ' ' + c.info[k]).join(' · ') + '</p></article>').join('') + '</div>';
     const opts = sel => C.list.map(c => '<option value="' + h.esc(c.id) + '"' + (c.id === sel ? ' selected' : '') + '>' + h.esc(c.name) + '</option>').join('');
     const A = C.list.find(c => c.id === 'Ahri') || C.list[0], B = C.list.find(c => c.id === 'Garen') || C.list[1];
     const tools = '<div class="pa-tool"><div class="pa-c pa-fm"><h2>Buscá y filtrá</h2>' + seg + '<div class="pa-row">' + field('ch-q', 'Nombre', '<input id="ch-q" type="search" autocomplete="off" placeholder="por ejemplo Jinx">') + field('ch-s', 'Ordenar por', sortSel) + '</div><p class="pa-x" data-o="n">' + fmt(C.list.length, 0) + ' campeones</p></div>' +
       '<div class="pa-c pa-fm"><h2>Compará dos</h2><div class="pa-row">' + field('ch-a', 'Campeón 1', '<select id="ch-a">' + opts(A.id) + '</select>') + field('ch-b', 'Campeón 2', '<select id="ch-b">' + opts(B.id) + '</select>') + '</div><div class="pa-tw" data-o="cmp">' + cmpTable(h, C, A, B) + '</div></div></div>';
     const about = sec('Qué significa cada dato', '<div class="pa-two"><div class="pa-c"><h3>Ataque, defensa, magia y dificultad</h3><p>Son las notas de 1 a 10 que Riot publica para cada campeón en sus datos del juego. No son estadísticas de partidas: dicen hacia dónde apunta el diseño del campeón y qué tan difícil es de jugar según Riot.</p></div>' +
       '<div class="pa-c"><h3>Estadísticas base</h3><p>Vida, armadura, alcance y el resto son los valores en el nivel 1, sin objetos ni runas. Suben con cada nivel; la subida por nivel también está en el archivo de Riot, pero acá mostramos el punto de partida.</p></div></div>' +
-      srcLine(h, 'ddragon-champs', 'versión ' + h.esc(C.version)) + srcLine(h, 'ddragon-lang', 'nombres de roles en es_AR'));
+      srcLine(h, 'ddragon-champs', 'versión ' + h.esc(C.version) + (artOn('riot') ? ' · retratos oficiales de Riot, sin cambios' : '')) + srcLine(h, 'ddragon-lang', 'nombres de roles en es_AR') + riotArtNote(h));
     const ar = sec('Desde Argentina', '<div class="pa-two"><div><p>Los nombres, títulos y roles están en el español de Argentina que Riot publica en sus datos del juego (es_AR). Los rangos de LAS, con cuántos PL pide cada división y una calculadora de partidas, en <a href="' + h.href('/lol/rangos') + '">rangos de LoL</a>.</p>' + quote(h, 'lol_lan_mia', 'es') + '</div>' +
       '<div><p>Armá tu tier list de campeones y compartila en el <a href="' + h.href('/tier-list') + '">creador de tier list</a>, y medí tu ping desde tu provincia en el <a href="' + h.href('/kit/ping') + '">test de ping</a>.</p><p class="pa-src">Lo que no mostramos: qué campeones se eligen o ganan más en el competitivo o en la cola clasificatoria. Esos datos necesitan una clave de Riot para productos aprobados o fuentes que no podemos copiar.</p></div></div>');
-    return hero(h, { ey: 'LoL · ' + fmt(C.list.length, 0) + ' campeones · versión ' + C.version, girl: true, sub: 'Todos los campeones con sus roles y las notas de Riot en español, un comparador de a dos y la calculadora de rangos de LAS. Datos del juego, sin win rates inventados.' }) +
+    return '<link rel="stylesheet" href="' + h.asset('lists.css') + '">' + hero(h, { ey: 'LoL · ' + fmt(C.list.length, 0) + ' campeones · versión ' + C.version, girl: true, sub: 'Todos los campeones con sus roles y las notas de Riot en español, un comparador de a dos y la calculadora de rangos de LAS. Datos del juego, sin win rates inventados.' }) +
       lolStart(h) + tools + sec('Torneos', cards(h, [['/lol/worlds', 'Worlds en hora argentina', 'El mundial partido por partido, con lo que se juega hoy.'], ['/lol/msi', 'MSI', 'La última edición del torneo de mitad de año, con su campeón.']])) + '<div class="pa-gd"><div class="pa-w2">' + bars + '</div><div class="pa-w4 pa-c"><h3>Notas de Riot, en promedio</h3>' + avgInfo(C) + '</div></div>' + (h.built('/esports/agenda') ? agendaBlock(h, 'lol', 'Próximos partidos de LoL') : '') + sec('Todos los campeones', grid) + about + ar;
   },
 };
@@ -63,7 +67,7 @@ function avgInfo(C) {
 }
 export function cmpTable(h, C, A, B) {
   const row = (l, a, b) => '<tr><td>' + l + '</td><td class="pa-n">' + a + '</td><td class="pa-n">' + b + '</td></tr>';
-  return '<table class="pa-tb"><thead><tr><th></th><th class="pa-n">' + h.esc(A.name) + '</th><th class="pa-n">' + h.esc(B.name) + '</th></tr></thead><tbody>' +
+  return '<table class="pa-tb"><thead><tr><th></th><th class="pa-n">' + champImg(h, A, false) + h.esc(A.name) + '</th><th class="pa-n">' + champImg(h, B, false) + h.esc(B.name) + '</th></tr></thead><tbody>' +
     INFO.map(([k, l]) => row(l + ' (1 a 10)', fmt(A.info[k], 0), fmt(B.info[k], 0))).join('') +
     row('Tipo de recurso', h.esc(A.res || '-'), h.esc(B.res || '-')) + C.STATS.map(([k, l]) => row(h.esc(l), fmt(A.s[k], 3), fmt(B.s[k], 3))).join('') + '</tbody></table>';
 }

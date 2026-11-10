@@ -77,10 +77,10 @@ export const home = {
     const vs = convertSens({ sens: ex.s, dpi: ex.dpi, yaw: cs.yaw, toDpi: ex.dpi, toYaw: va.yaw });
     const cm = cm360({ dpi: ex.dpi, sens: ex.s, yaw: cs.yaw });
     const sens = '<section class="pa-c pa-w3"><h2>Sensibilidad entre juegos</h2><p class="pa-x"><b>ejemplo</b> · mismo giro de 360°</p><div class="pa-sv"><div><small>CS2 · ' + fmt(ex.dpi, 0) + ' DPI</small><b>' + fmt(ex.s, 2) + '</b></div><div><small>Valorant</small><b>' + fmt(vs, 3) + '</b></div></div>' +
-      '<p class="pa-ch"><span>eDPI CS2 ' + fmt(edpi({ dpi: ex.dpi, sens: ex.s }), 0) + '</span><span>' + fmt(cm, 1) + ' cm por vuelta</span></p><p style="margin-top:12px"><a href="' + h.href('/kit/sensibilidad') + '">Pasá la tuya</a></p></section>';
+      '<p class="pa-ch"><span>eDPI CS2 ' + fmt(edpi({ dpi: ex.dpi, sens: ex.s }), 0) + '</span><span>' + fmt(cm, 1) + ' cm por vuelta</span></p><p class="pa-more" style="margin-top:6px"><a href="' + h.href('/kit/sensibilidad') + '">Pasá la tuya</a></p></section>';
     const ranks = P.fact('val_ranks');
     const ladder = '<section class="pa-c pa-w3"><h2>Rangos de Valorant</h2><p class="pa-x">' + fmt(ranks.length, 0) + ' rangos, según Riot</p><ol class="pa-st" style="--n:' + ranks.length + '">' + ranks.map((r, i) => '<li' + (i === 3 ? ' class="pa-me"' : '') + '><i style="height:' + Math.round(((i + 1) / ranks.length) * 100) + '%"></i><b>' + h.esc(r) + '</b></li>').join('') + '</ol>' +
-      '<p style="margin-top:12px"><a href="' + h.href('/valorant/rangos') + '">Cuántas partidas te faltan</a></p></section>';
+      '<p class="pa-more" style="margin-top:6px"><a href="' + h.href('/valorant/rangos') + '">Cuántas partidas te faltan</a></p></section>';
     const hero = '<section class="pa-he"><div><p class="pa-ey">Hecho en Argentina · para jugar desde acá</p><h1>¿Ping alto? <em>Jugá con los números</em> a favor</h1>' +
       '<p class="pa-sb">Ping desde tu provincia, sensibilidad entre juegos, DPI real del mouse y rangos de Valorant y LoL. Cada número con su fuente, sin humo y sin vender nada.</p>' +
       '<div class="pa-bt"><a class="pa-b1" href="' + h.href('/kit/ping') + '">Medí tu ping</a><a href="' + h.href('/kit/sensibilidad') + '">Pasá tu sensibilidad</a></div></div>' + girlCard(h) + '</section>';

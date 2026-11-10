@@ -10,7 +10,7 @@ if (D && board) {
   let set = D.sets[0], items = set.items, st = empty(items.length), picked = null;
   const ownItems = () => [...new Set(ownTa.value.split('\n').map(s => s.trim().slice(0, 24)).filter(Boolean))].slice(0, 40);
   const save = () => setParams({ l: serialize(set.id, st), t: title.value === 'Mi tier list' ? '' : title.value, n: set.id === 'libre' ? items.join('|') : '' });
-  const tile = i => '<button type="button" class="pa-ti" data-i="' + i + '"' + (picked === i ? ' aria-pressed="true"' : '') + '>' + esc(items[i]) + '</button>';
+  const tile = i => '<button type="button" class="pa-ti" data-i="' + i + '"' + (picked === i ? ' aria-pressed="true"' : '') + '>' + (set.icons && set.icons[i] && set.items === items ? '<img src="' + esc(set.icons[i]) + '" width="120" height="120" alt="" loading="lazy">' : '') + esc(items[i]) + '</button>';
   const draw = () => {
     st.rows.forEach((r, k) => { zones(k).innerHTML = r.map(tile).join(''); });
     pool.innerHTML = st.pool.map(tile).join('') || '<p class="pa-src">' + (items.length ? 'Ubicaste todo.' : 'Escribí tus nombres arriba.') + '</p>';

@@ -1,47 +1,78 @@
 import { esc, load, stale, stamp, fail, arTime, arDay, dayName, today } from './fdkit.js';
 import { fmt, parseNum } from '../../../engine/games/num.mjs';
+import { RAR, RORD, artBase, face, label, noArt } from './crcard.js';
 
-const RAR = { common: 'Común', rare: 'Especial', epic: 'Épica', legendary: 'Legendaria', champion: 'Campeón' };
-const RORD = ['common', 'rare', 'epic', 'legendary', 'champion'];
 const PL = { common: 'comunes', rare: 'especiales', epic: 'épicas', legendary: 'legendarias', champion: 'campeones' };
 
 async function clash(el) {
   const doc = await load(el.dataset.fdSrc, 'clash'), d = doc.data;
+  const base = artBase(el);
   const deckEl = document.querySelector('[data-fd-deck]');
   const deck = [];
-  let r = '', e = '', q = '';
+  const mzEl = deckEl && deckEl.querySelector('[data-mz]'), mz = mzEl && mzEl.getAttribute('href');
+  let r = '', e = '', q = '', evo = false, last = null, msg = '';
   const added = new Set(d.added || []);
+  const byId = new Map(d.cards.map(c => [c.id, c]));
+  const tot = {}; for (const c of d.cards) tot[c.r] = (tot[c.r] || 0) + 1;
+  el.innerHTML = stamp(doc, 72) +
+    '<p class="pa-x">' + d.cards.length + ' cartas: ' + RORD.filter(k => tot[k]).map(k => tot[k] + ' ' + (tot[k] === 1 ? RAR[k].toLowerCase() : PL[k])).join(', ') + ' · ' + d.cards.filter(c => c.evo).length + ' con evolución</p>' +
+    '<div class="pa-fdf pa-czf"><label class="pa-f pa-czq"><span>Buscar</span><input type="search" data-q placeholder="Knight" autocomplete="off"></label>' +
+    '<label class="pa-f"><span>Rareza</span><select data-r><option value="">Todas</option>' + RORD.map(k => '<option value="' + k + '">' + RAR[k] + '</option>').join('') + '</select></label>' +
+    '<label class="pa-f"><span>Elixir</span><select data-e><option value="">Todos</option>' + [1, 2, 3, 4, 5, 6, 7].map(x => '<option value="' + x + '">' + (x === 7 ? '7 o más' : x) + '</option>').join('') + '</select></label>' +
+    '<label class="pa-czv"><input type="checkbox" data-v><span>Solo con evolución</span></label></div><p class="pa-x pa-czn" data-n aria-live="polite"></p><div data-list></div>';
+  const box = el.querySelector('[data-list]'), count = el.querySelector('[data-n]');
   const draw = () => {
-    const cards = d.cards.filter(c => (!r || c.r === r) && (e === '' || String(c.e) === e || (e === '7' && c.e >= 7)) && (!q || c.n.toLowerCase().includes(q)));
-    const tot = {}; for (const c of d.cards) tot[c.r] = (tot[c.r] || 0) + 1;
-    const box = el.querySelector('[data-list]');
-    if (!box) {
-      el.innerHTML = stamp(doc, 72) +
-      '<p class="pa-x">' + d.cards.length + ' cartas: ' + RORD.filter(k => tot[k]).map(k => tot[k] + ' ' + (tot[k] === 1 ? RAR[k].toLowerCase() : PL[k])).join(', ') + ' · ' + d.cards.filter(c => c.evo).length + ' con evolución</p>' +
-      '<div class="pa-fdf"><label class="pa-f"><span>Buscar</span><input type="search" data-q value="' + esc(q) + '" placeholder="Knight" autocomplete="off"></label>' +
-      '<label class="pa-f"><span>Rareza</span><select data-r><option value="">Todas</option>' + RORD.map(k => '<option value="' + k + '"' + (k === r ? ' selected' : '') + '>' + RAR[k] + '</option>').join('') + '</select></label>' +
-      '<label class="pa-f"><span>Elixir</span><select data-e><option value="">Todos</option>' + [1, 2, 3, 4, 5, 6, 7].map(x => '<option value="' + x + '"' + (String(x) === e ? ' selected' : '') + '>' + (x === 7 ? '7 o más' : x) + '</option>').join('') + '</select></label></div><div data-list></div>';
-      return draw();
+    const cards = d.cards.filter(c => (!r || c.r === r) && (e === '' || String(c.e) === e || (e === '7' && c.e >= 7)) && (!q || c.n.toLowerCase().includes(q)) && (!evo || c.evo));
+    count.textContent = cards.length === d.cards.length ? '' : cards.length + (cards.length === 1 ? ' carta' : ' cartas') + ' con esos filtros';
+    box.innerHTML = '<ul class="pa-crs">' + cards.map(c => '<li><button type="button" class="pa-crd pa-cr-' + c.r + '" data-id="' + c.id + '" aria-pressed="false" aria-label="' + esc(label(c)) + '">' + face(c, base, evo) +
+        '<span class="pa-crn">' + esc(c.n) + '</span><small>' + RAR[c.r] + ' · máx. ' + c.max + (added.has(c.id) ? ' · <b>nueva</b>' : '') + '</small><s class="pa-crk" aria-hidden="true"></s></button></li>').join('') + '</ul>' + (cards.length ? '' : '<p>Ninguna carta con esos filtros.</p>');
+    mark();
+  };
+  const mark = () => {
+    for (const b of box.querySelectorAll('.pa-crd')) {
+      const id = Number(b.dataset.id), i = deck.indexOf(id);
+      b.setAttribute('aria-pressed', String(i >= 0));
+      b.lastElementChild.textContent = i >= 0 ? String(i + 1) : '';
+      b.classList.toggle('pa-crhit', id === last);
     }
-    box.innerHTML = '<ul class="pa-fdcs">' + cards.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="' + deck.includes(c.id) + '"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>' + RAR[c.r] + (c.evo ? ' · evo' : '') + (added.has(c.id) ? ' · nueva' : '') + '</small></button></li>').join('') + '</ul>' +
-      (cards.length ? '' : '<p>Ninguna carta con esos filtros.</p>');
   };
   const drawDeck = () => {
     if (!deckEl) return;
-    const cs = deck.map(id => d.cards.find(c => c.id === id)).filter(Boolean);
-    if (!cs.length) { deckEl.innerHTML = '<p class="pa-note">Tocá hasta ocho cartas de la lista para armar un mazo.</p>'; return; }
-    const ex = cs.map(c => c.e).filter(x => x !== null);
-    const avg = ex.reduce((a, b) => a + b, 0) / (ex.length || 1);
-    const cyc = [...ex].sort((a, b) => a - b).slice(0, 4).reduce((a, b) => a + b, 0);
-    deckEl.innerHTML = '<p class="pa-fdbig"><span>Elixir promedio</span><b>' + fmt(avg, 1) + '</b>' + (cs.length === 8 && ex.length >= 4 ? '<span>Ciclo</span><b>' + cyc + '</b>' : '') + '</p><p class="pa-x">' + cs.length + ' de 8 cartas' + (cs.length < 8 ? ': el promedio es de las que elegiste' : '') + '</p>' +
-      '<ul class="pa-fdcs">' + cs.map(c => '<li><button type="button" class="pa-fdcd pa-fdr-' + c.r + '" data-id="' + c.id + '" aria-pressed="true"><b>' + (c.e === null ? '?' : c.e) + '</b><span>' + esc(c.n) + '</span><small>sacar</small></button></li>').join('') + '</ul>';
+    const cs = deck.map(id => byId.get(id)).filter(Boolean);
+    const ev = cs.map(c => c.e).filter(x => x !== null);
+    const avg = ev.reduce((a, b) => a + b, 0) / (ev.length || 1);
+    const cyc = [...ev].sort((a, b) => a - b).slice(0, 4).reduce((a, b) => a + b, 0);
+    const slots = Array.from({ length: 8 }, (_, i) => {
+      const c = cs[i];
+      if (!c) return '<li><span class="pa-czs0">' + (i + 1) + '</span></li>';
+      return '<li><button type="button" class="pa-crd pa-crm pa-cr-' + c.r + (c.id === last ? ' pa-crhit' : '') + '" data-id="' + c.id + '" aria-label="' + esc('Sacar ' + c.n) + '">' + face(c, base) + '</button></li>';
+    }).join('');
+    deckEl.innerHTML = '<div class="pa-czh"><h2>Tu mazo</h2><span>' + cs.length + ' de 8</span></div><ol class="pa-czs">' + slots + '</ol>' +
+      '<p class="pa-czm"><span>Elixir promedio <b>' + (cs.length ? fmt(avg, 1) : '-') + '</b></span><span>Ciclo <b>' + (cs.length === 8 && ev.length >= 4 ? cyc : '-') + '</b></span></p>' +
+      '<p class="pa-czt" role="status">' + (msg || (cs.length ? (cs.length < 8 ? 'Te faltan ' + (8 - cs.length) + '. Tocá una del mazo para sacarla.' : 'Mazo completo. Tocá una del mazo para cambiarla.') : 'Tocá una carta de la lista y entra acá.')) + '</p>' +
+      (cs.length ? '<p class="pa-czb"><button type="button" data-clear>Vaciar</button>' + (mz ? '<a href="' + esc(mz) + '?m=' + deck.join('-') + '">Analizar este mazo</a>' : '') + '</p>' : '');
   };
-  const toggle = id => { const i = deck.indexOf(id); if (i >= 0) deck.splice(i, 1); else if (deck.length < 8) deck.push(id); draw(); drawDeck(); };
+  const toggle = (id, from) => {
+    const c = byId.get(id), i = deck.indexOf(id);
+    if (i >= 0) { deck.splice(i, 1); last = null; msg = 'Sacaste ' + c.n + '.'; }
+    else if (deck.length < 8) { deck.push(id); last = id; msg = c.n + ' entró en el lugar ' + deck.length + '.'; }
+    else { last = null; msg = 'El mazo ya tiene 8: tocá una del mazo para sacarla.'; if (from) { from.classList.remove('pa-crfull'); void from.offsetWidth; from.classList.add('pa-crfull'); } drawDeck(); return; }
+    mark(); drawDeck();
+  };
   el.addEventListener('input', ev => { if (ev.target.matches('[data-q]')) { q = ev.target.value.trim().toLowerCase(); draw(); } });
-  el.addEventListener('change', ev => { if (ev.target.matches('[data-r]')) { r = ev.target.value; draw(); } if (ev.target.matches('[data-e]')) { e = ev.target.value; draw(); } });
-  const click = ev => { const b = ev.target.closest('.pa-fdcd'); if (b) toggle(Number(b.dataset.id)); };
-  el.addEventListener('click', click);
-  if (deckEl) deckEl.addEventListener('click', click);
+  el.addEventListener('change', ev => {
+    if (ev.target.matches('[data-r]')) r = ev.target.value;
+    else if (ev.target.matches('[data-e]')) e = ev.target.value;
+    else if (ev.target.matches('[data-v]')) evo = ev.target.checked;
+    else return;
+    draw();
+  });
+  el.addEventListener('click', ev => { const b = ev.target.closest('[data-list] .pa-crd'); if (b) toggle(Number(b.dataset.id), b); });
+  if (deckEl) deckEl.addEventListener('click', ev => {
+    if (ev.target.closest('[data-clear]')) { deck.length = 0; last = null; msg = 'Mazo vacío.'; mark(); drawDeck(); return; }
+    const b = ev.target.closest('.pa-crd'); if (b) toggle(Number(b.dataset.id), b);
+  });
+  noArt(el); if (deckEl) noArt(deckEl);
   draw(); drawDeck();
 }
 

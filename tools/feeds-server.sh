@@ -40,7 +40,9 @@ case "$SITE" in
   pingalto)
     CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK=''
     KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID)
-    SRC_SETS=() ;;
+    SRC_SETS=()
+    # the art switch (owner 10.11): no file means no Clash card art is downloaded
+    EXTRA_PATHS=(data/sources/pingalto/assets.json) ;;
   casaslegales)
     # daily; the feed listas goes to the network about once a month (tools/feeds/casaslegales/listas.mjs)
     CRON_SPEC='37 6 * * *'; RUN_UID=47230; IMAGE=casaslegales-feeds:node24; APK='poppler-utils'

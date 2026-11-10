@@ -96,3 +96,4 @@ function search() {
 theme();
 menu();
 search();
+if (document.querySelector('.pa-tool:not(.pa-oo) > .pa-out .pa-big')) import('./peek.js');

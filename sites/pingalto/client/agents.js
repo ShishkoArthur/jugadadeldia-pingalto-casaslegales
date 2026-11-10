@@ -10,6 +10,7 @@ if (list) {
     const t = norm(q.value);
     let n = 0;
     for (const c of cards) { const ok = (!role || c.dataset.role === role) && (!t || norm(c.dataset.name).includes(t)); c.classList.toggle('pa-hide', !ok); if (ok) n++; }
+    if (t && n <= 3) for (const c of cards) { const d = c.querySelector('details'); if (d && !c.classList.contains('pa-hide')) d.open = true; }
     btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.role === role)));
     out('n', fmt(n, 0) + (n === 1 ? ' agente' : ' agentes'));
   };

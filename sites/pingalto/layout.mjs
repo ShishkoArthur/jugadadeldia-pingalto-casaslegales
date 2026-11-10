@@ -6,6 +6,8 @@ import { mainNav, crumbsLd } from './content/menu.mjs';
 import { LOGO as MARKS } from './logo.mjs';
 import { logoSvg, iconLinks } from '../../tools/lib/icons.mjs';
 import { DATA as DATA_EN } from './i18n/en.mjs';
+import { anyArt } from './content/art.mjs';
+import { GAMES } from './content/visual.mjs';
 
 const MARK = logoSvg(MARKS, MARKS.pick, { mode: 'page', attrs: ' class="pa-lgm" aria-hidden="true"' });
 
@@ -50,7 +52,30 @@ function dataOf(h, p) {
   return o;
 }
 
+const slugId = t => 'v-' + t.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 22).replace(/^-|-$/g, '');
+const GAME_NAMES = GAMES.flatMap(g => [g.name, g.short, g.mono].filter(Boolean)).sort((x, y) => y.length - x.length);
+const shortLabel = l => { let t = (l.split(/[,:]/)[0].length >= 4 ? l.split(/[,:]/)[0] : l).replace(/^Cómo empezar a jugar.*/, 'Cómo empezar').replace(/ desde Argentina$/, '');
+  for (const g of GAME_NAMES) if (t.endsWith(' de ' + g) || t.endsWith(' en ' + g) || t.endsWith(' para ' + g)) { t = t.slice(0, t.length - g.length).replace(/ (de|en|para) $/, ''); break; }
+  return t; };
+function jumps(p, body) {
+  if (!(p.jump || (p.kind === 'hub' && p.path !== '/' && p.path !== '/esports/glosario'))) return body;
+  const end = body.indexOf('</section>', body.indexOf('<section class="pa-he'));
+  if (end < 0) return body;
+  const cut = end + '</section>'.length, seen = new Set([...body.matchAll(/\sid="([^"]+)"/g)].map(m => m[1])), list = [];
+  const rest = body.slice(cut).replace(/<h2(\s[^>]*)?>([\s\S]*?)<\/h2>/g, (m, attrs = '', inner) => {
+    const label = inner.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if (!label || list.length >= 7) return m;
+    let id = (attrs.match(/\sid="([^"]+)"/) || [])[1];
+    if (!id) { id = slugId(label); let k = 2; while (seen.has(id)) id = slugId(label) + '-' + k++; seen.add(id); attrs += ' id="' + id + '"'; }
+    list.push([id, shortLabel(label)]);
+    return '<h2' + attrs + '>' + inner + '</h2>';
+  });
+  if (list.length < 3) return body;
+  return body.slice(0, cut) + '<nav class="pa-jp" aria-label="En esta página">' + list.map(([id, l]) => '<a href="#' + id + '">' + l + '</a>').join('') + '</nav>' + rest;
+}
+
 export function page(h, p, body) {
+  body = jumps(p, body);
   const url = 'https://' + h.site.domain + p.path;
   const crumb = p.is404 ? null : crumbsLd(h, p);
   const ld = [...(p.ld || []).filter(o => !(crumb && o && o['@type'] === 'BreadcrumbList')), crumb].filter(Boolean).map(o => '<script type="application/ld+json">' + h.jsonScript(o) + '</script>').join('');
@@ -82,7 +107,7 @@ export function page(h, p, body) {
     '<button class="pa-ib pa-bu" type="button" data-pa-menu aria-controls="pa-nv" aria-expanded="false" aria-label="Menú">' + BURGER + '</button></header>';
   const footer = '<footer class="pa-ft"><p>Sin apuestas, sin skins, sin cajas: solo herramientas y datos.</p>' +
     '<nav aria-label="Pie">' + links(h, FOOT, p.path) + '</nav>' +
-    '<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor y no usa sus logos ni su arte: los fondos y Alt son ilustraciones propias hechas con IA. Cada número tiene su fuente en la página de datos.</small>' +
+    '<small>Los nombres de juegos son marcas de sus dueños; pingalto no está afiliado a ningún editor y no usa sus logos' + (anyArt() ? '; el arte oficial que mostramos (cartas, campeones) va sin cambios y con el aviso de su editor. Los fondos y Alt son ilustraciones propias hechas con IA.' : ' ni su arte: los fondos y Alt son ilustraciones propias hechas con IA.') + ' Cada número tiene su fuente en la página de datos.</small>' +
     (p.riot ? '<small lang="en">' + h.esc(RIOT) + '</small>' : '') + '</footer>';
   const data = p.data ? '<script type="application/json" id="pa-d">' + h.jsonScript(dataOf(h, p)) + '</script>' : '';
   const js = ['pa.js', ...(p.scripts || [])].map(s => '<script type="module" src="' + h.asset(s) + '"></script>').join('');

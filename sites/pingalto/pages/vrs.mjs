@@ -52,7 +52,7 @@ export const cs2Ranking = {
       '<div class="pa-out" aria-live="polite"><p class="pa-x">Chance de que A gane el partido, según el modelo de Valve</p><p class="pa-big" data-o="dx">' + fmtPct(E.x, 1) + '</p>' +
       '<div class="pa-bar" style="--v:' + Math.round(E.x * 100) + '" data-o="dbar"><i></i><span>B: ' + fmtPct(1 - E.x, 1) + '</span></div>' +
       '<p class="pa-say" data-o="dsay">' + h.esc(E.a.team) + ' le saca ' + fmt(E.a.points - E.b.points, 0) + ' puntos a ' + h.esc(E.b.team) + '. Si el partido fuera un Bo3, equivale a ganar cada mapa con ' + fmtPct(E.pm, 1) + '.</p>' +
-      '<p><a data-o="dlink" href="' + h.href('/esports/series') + '?bo=3&amp;p=' + fmtInput(E.pm * 100, 1) + '">Ver esa serie mapa por mapa</a></p></div>' +
+      '<p class="pa-more"><a data-o="dlink" href="' + h.href('/esports/series') + '?bo=3&amp;p=' + fmtInput(E.pm * 100, 1) + '">Ver esa serie mapa por mapa</a></p></div>' +
       '<p class="pa-x"><b>ejemplo</b> · 1.º contra 5.º de las Américas</p></div>';
     const model = sec('Cómo arma Valve el ranking y la chance', '<div class="pa-two"><div><p>Valve usa este ranking para invitar equipos a sus torneos, así que lo arma para predecir quién gana el próximo partido. La diferencia de puntos entre dos equipos se traduce en una chance esperada de ganar, con la misma fórmula que publica en su código.</p>' +
       quote(h, 'vrs_goal') + quote(h, 'vrs_ewr') + '<p>Con la fórmula de Valve, ' + fmt(Math.round(gapFor(0.6)), 0) + ' puntos de diferencia dan 60 %; ' + fmt(Math.round(gapFor(0.75)), 0) + ', 75 %; y ' + fmt(Math.round(gapFor(0.9)), 0) + ', 90 %.</p></div>' +
@@ -77,6 +77,7 @@ function swissBlock(p) {
 }
 export const cs2Major = {
   path: '/cs2/major',
+  jump: true,
   kind: 'tool',
   title: 'Major de CS2: formato, fase suiza y chance de pasar',
   description: 'Cómo es el Major de CS2 según el reglamento de Valve: fases suizas, playoffs, cuándo se juega Bo1 o Bo3 y tu chance de pasar una fase, con cuenta exacta.',

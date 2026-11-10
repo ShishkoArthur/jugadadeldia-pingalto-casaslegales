@@ -5,6 +5,7 @@
 import { extname } from 'node:path';
 import { readFileSync, existsSync } from 'node:fs';
 import { bgFiles } from './content/visual.mjs';
+import { artFiles } from './content/art.mjs';
 
 const SCENES = new URL('./content/scenes.json', import.meta.url);
 const sceneFiles = () => existsSync(SCENES) ? Object.values(JSON.parse(readFileSync(SCENES, 'utf8')).pages).flatMap(p => p.files.map(f => f.name)) : [];
@@ -27,7 +28,7 @@ export const SITE = {
   pathRe: new RegExp('^/$|^/' + SEG + '(/' + SEG + '){0,2}$'),
   fileOf: p => (p === '/' ? 'index.html' : p.slice(1) + '.html'),
   notFoundFile: '404.html',
-  images: [...sceneFiles(), ...bgFiles()],
+  images: [...sceneFiles(), ...bgFiles(), ...artFiles()],
   fonts: ['rounded-800-latin.woff2', 'vietnam-400-latin.woff2', 'vietnam-600-latin.woff2'],
   preload: ['rounded-800-latin.woff2', 'vietnam-400-latin.woff2'],
   engineDirs: ['games'],
