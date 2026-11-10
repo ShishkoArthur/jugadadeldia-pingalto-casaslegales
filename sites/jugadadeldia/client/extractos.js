@@ -44,6 +44,7 @@ function head(e, meta, jur) {
   return '<p class="jg-xh"><b>' + esc(tName(meta, e.t)) + '</b> del ' + esc(day(e.d)) + (e.h ? ' · ' + esc(e.h) + ' hs' : '') + ' ' + badge(e.j[jur][1]) + '</p>';
 }
 const reveal = x => { if (!x) return; const r = x.getBoundingClientRect(); if (r.top > innerHeight - 140 || r.bottom < 80) x.scrollIntoView({ block: 'start' }); };
+const theTurn = (n, cap) => /^La /.test(n) ? (cap ? n : 'la ' + n.slice(3)) : (cap ? 'La ' : 'la ') + n;
 const fail = (el, msg) => { el.innerHTML = '<p class="jg-xs no">' + esc(msg) + '</p>'; };
 
 async function hoy(el) {
@@ -249,7 +250,7 @@ async function turno(el) {
   let cur = mine[mine.length - 1], jSel = cur.j.caba ? 'caba' : Object.keys(cur.j)[0];
   const pending = cur.d !== now.d && t.time && now.t < t.time;
   const draw = () => {
-    const note = cur.d === now.d ? '' : pending ? '<p class="jg-xh">La ' + esc(t.name) + ' de hoy sale a las <b>' + esc(t.time) + '</b>. Mientras tanto, la última: <b>' + esc(day(cur.d)) + '</b>.</p>' : '<p class="jg-xh">Todavía no tenemos la ' + esc(t.name) + ' de hoy (o hoy no hubo sorteo). Esta es la última: <b>' + esc(day(cur.d)) + '</b>.</p>';
+    const note = cur.d === now.d ? '' : pending ? '<p class="jg-xh">' + esc(theTurn(t.name, true)) + ' de hoy sale a las <b>' + esc(t.time) + '</b>. Mientras tanto, la última: <b>' + esc(day(cur.d)) + '</b>.</p>' : '<p class="jg-xh">Todavía no tenemos ' + esc(theTurn(t.name)) + ' de hoy (o hoy no hubo sorteo). Esta es la última: <b>' + esc(day(cur.d)) + '</b>.</p>';
     const rows = m.jurs.map(j => {
       const x = cur.j[j.id];
       const label = P.paths[j.id] ? '<a href="' + P.paths[j.id] + '">' + esc(j.name) + '</a>' : esc(j.name);

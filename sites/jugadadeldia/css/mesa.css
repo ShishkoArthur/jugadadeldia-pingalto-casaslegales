@@ -126,3 +126,4 @@ h1.jg-h1.sm{font-size:32px;margin:6px 0}
 @media (max-width:900px){[data-gen] .jg-score{flex-direction:column;align-items:stretch}}
 @media (min-width:901px){[data-gen] .jg-felt{align-self:start;position:sticky;top:84px}}
 .jg-ek{margin:0;padding:6px 12px;border-radius:99px;background:#0b4a3380;font:600 13px var(--d);color:#d9f7ea;text-align:center}
+[data-o=log] li.e{list-style:none;margin-left:-1.2em;color:var(--mu)}

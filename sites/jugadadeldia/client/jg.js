@@ -117,10 +117,13 @@ function peek() {
     bar.hidden = true;
     const sync = () => { bar.textContent = [...win.childNodes].map(n => n.textContent.replace(/\s+/g, ' ').trim()).filter(Boolean).join(' '); };
     sync();
-    new MutationObserver(sync).observe(win, { subtree: true, childList: true, characterData: true });
-    let inSrc = false, below = false;
+    new MutationObserver(() => { sync(); upd(); }).observe(win, { subtree: true, childList: true, characterData: true });
+    let inSrc = false, below = false, used = false;
     const typing = () => { const x = document.activeElement; return !!x && x.matches('input:not([type=radio]):not([type=checkbox]),textarea'); };
-    const upd = () => { bar.hidden = !(inSrc && below) || typing(); };
+    const upd = () => { bar.hidden = !(used && inSrc && below) || typing() || /^[-\s]*$/.test((win.querySelector('b') || win).textContent); };
+    const use = () => { used = true; setTimeout(upd, 0); };
+    src.addEventListener('change', use);
+    src.addEventListener('click', use);
     src.addEventListener('focusin', upd);
     src.addEventListener('focusout', () => setTimeout(upd, 0));
     new IntersectionObserver(([e]) => { below = !e.isIntersecting && e.boundingClientRect.top > 0; upd(); }).observe(out);

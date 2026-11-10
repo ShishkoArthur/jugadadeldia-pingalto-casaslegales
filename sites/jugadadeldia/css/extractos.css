@@ -81,3 +81,6 @@
 a.jg-pc:hover{outline:2px solid var(--lk)}
 .jg-xtp td small{display:block;color:var(--mu);font:500 12px var(--d)}
 .jg-xtp a.jg-xc{color:var(--fg);text-decoration:none}
+.jg-xw{display:flex;align-items:center;gap:10px;min-height:44px;color:var(--mu)}
+.jg-xw::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;border:3px solid var(--ln);border-top-color:var(--ac);animation:jg-spin .8s linear infinite}
+@keyframes jg-spin{to{transform:rotate(360deg)}}

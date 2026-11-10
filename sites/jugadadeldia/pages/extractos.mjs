@@ -184,6 +184,8 @@ const TURN_TEXT = {
 };
 const TURN_PV = { NOCT: 'La Nocturna', MATU: 'La Matutina', VESP: 'La Vespertina', PRIM: 'La Primera', PREV: 'La Previa' };
 const turnName = t => PROG_TYPES.find(x => x.turno === t).name;
+// 'la Matutina' but 'La Previa' (the article is part of some turn names)
+const theTurn = (n, cap) => /^La /.test(n) ? (cap ? n : 'la ' + n.slice(3)) : (cap ? 'La ' : 'la ') + n;
 const turnTime = t => { const name = turnName(t), set = [...new Set(program().rows.filter(r => r.type === name).map(r => r.t))]; return set.join(' / '); };
 const turnTiles = (h, except) => tiles(h, TURNS.filter(x => x.path !== except).map((x, i) => [x.path, turnName(x.t), 'a las ' + turnTime(x.t), COLORS[(i + 2) % COLORS.length], ICONS.pin]));
 
@@ -211,10 +213,10 @@ function turnPage(T) {
     data: h => ({ ...pageData(h), turno: T.t }),
     render(h) {
       const time = turnTime(T.t);
-      return hero(h, { kicker: 'Quiniela · ' + time + ' hs, hora argentina', scene: true, lede: 'La ' + name + ' se sortea a las <b>' + time + '</b>. Acá está su último extracto en la Ciudad (Nacional), la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza, y la página se actualiza sola cada 15 minutos.', actions: '<a class="jg-b p" href="#turno">Ver la ' + h.esc(name) + '</a>' + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') }) +
+      return hero(h, { kicker: 'Quiniela · ' + time + ' hs, hora argentina', scene: true, lede: theTurn(name, true) + ' se sortea a las <b>' + time + '</b>. Acá está su último extracto en la Ciudad (Nacional), la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza, y la página se actualiza sola cada 15 minutos.', actions: '<a class="jg-b p" href="#turno">Ver ' + h.esc(theTurn(name)) + '</a>' + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') }) +
         '<div class="jg-mn">' +
-        '<section class="jg-c w3" id="turno"><span class="jg-tag">' + h.esc(name) + ' · ' + time + ' hs</span><h2>La ' + h.esc(name) + ', provincia por provincia</h2>' + root('turno', ' data-t="' + T.t + '"') + loading + '</div></section>' +
-        '<section class="jg-c w3"><span class="jg-sm">La semana</span><h2>Las cabezas de la ' + h.esc(name) + ', día por día</h2><div data-xtweek><p class="jg-xw">Cargando…</p></div></section>' +
+        '<section class="jg-c w3" id="turno"><span class="jg-tag">' + h.esc(name) + ' · ' + time + ' hs</span><h2>' + h.esc(theTurn(name, true)) + ', provincia por provincia</h2>' + root('turno', ' data-t="' + T.t + '"') + loading + '</div></section>' +
+        '<section class="jg-c w3"><span class="jg-sm">La semana</span><h2>Las cabezas de ' + h.esc(theTurn(name)) + ', día por día</h2><div data-xtweek><p class="jg-xw">Cargando…</p></div></section>' +
         (PV_PAGES.some(([, u]) => h.built(u)) ? '<section class="jg-c w3"><span class="jg-sm">Otras provincias</span><h2>' + h.esc(TURN_PV[T.t]) + ' en otras provincias</h2>' + root('tprov', ' data-t="' + T.t + '"') + loading + '</div><p class="jg-note">Cada lotería sortea a su hora: la hora de cada provincia es la que publica su lotería, si la publica.</p></section>' : '') +
         (T.t === 'NOCT' && h.built('/quiniela-plus/') ? '<section class="jg-c w2"><span class="jg-sm">Con la Nocturna</span><h2>Quiniela Plus</h2><p>La Quiniela Plus de la Provincia se resuelve con los 20 números de la Nocturna de la Provincia, de lunes a sábados a las ' + h.src.value('pba.qplus.nocturna') + '.</p><div class="jg-r">' + btn(h, '/quiniela-plus/', 'Controlar mi Quiniela Plus', true) + btn(h, '/quiniela/nacional-y-provincia/', 'Nacional y Provincia, lado a lado') + '</div>' + cite(h, ['pba.qplus.nocturna']) + '</section>' : '') +
         chance +

@@ -26,7 +26,7 @@ function render() {
   out('win').hidden = !w;
   if (w) out('win').textContent = '¡Ganó ' + S.names[w] + '! ' + S[w] + ' a ' + S[w === 'a' ? 'b' : 'a'];
   $$('[data-add]', root).forEach(b => { b.disabled = !!w && +b.dataset.v > 0; });
-  out('log').innerHTML = S.log.slice(-40).map(x => '<li>' + (x.v > 0 ? '+' : '') + x.v + ' ' + escapeHtml(S.names[x.k]) + ' (' + x.a + ' a ' + x.b + ')</li>').join('');
+  out('log').innerHTML = S.log.length ? S.log.slice(-40).map(x => '<li>' + (x.v > 0 ? '+' : '') + x.v + ' ' + escapeHtml(S.names[x.k]) + ' (' + x.a + ' a ' + x.b + ')</li>').join('') : '<li class="e">Todavía no anotaron ningún punto.</li>';
 }
 const escapeHtml = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 function add(k, v) {
