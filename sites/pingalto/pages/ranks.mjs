@@ -72,7 +72,7 @@ export const valorantRangos = {
     const L = valorant(h);
     const ladder = '<div class="pa-gd"><section class="pa-c pa-w4"><h2>La escalera completa</h2><p class="pa-x">' + fmt(L.ranks.length, 0) + ' rangos · ' + fmt(L.per, 0) + ' niveles cada uno, menos ' + h.esc(L.ranks[L.ranks.length - 1]) + ' · ' + fmt(L.steps.length, 0) + ' escalones</p>' + ladderVisual(h, L.ranks, 'Rangos de Valorant de menor a mayor', 'valorant-ranks') + valArtNote(h) + '</section>' +
       '<section class="pa-c pa-w2"><h2>Lo que dice Riot</h2>' + quote(h, 'val_ranks', 'es') + quote(h, 'val_levels', 'es') + '</section></div>';
-    const rules = sec('Cómo se sube y se baja', '<div class="pa-three"><div class="pa-c"><h3>Subís a los ' + fmt(L.top, 0) + '</h3>' + quote(h, 'val_rr_up', 'es') + '</div>' +
+    const rules = sec('Cómo se sube y se baja', '<div class="pa-three pa-3w"><div class="pa-c"><h3>Subís a los ' + fmt(L.top, 0) + '</h3>' + quote(h, 'val_rr_up', 'es') + '</div>' +
       '<div class="pa-c"><h3>Arrancás con algo</h3>' + quote(h, 'val_rr_after_up', 'es') + '</div><div class="pa-c"><h3>Si bajás</h3>' + quote(h, 'val_rr_down_rule', 'es') + quote(h, 'val_rr_after_down', 'es') + quote(h, 'val_protect', 'es') + '</div></div>' +
       '<p class="pa-note" style="margin-top:14px">La calculadora sigue estas reglas: al subir arrancás con lo que te sobró (y nunca menos de ' + fmt(L.minAfterUp, 0) + '), y si perdés con 0 bajás al nivel anterior con ' + fmt(L.demote.to, 0) + ', lo más bajo que permite Riot. No baja del rango donde empezás ni cuenta las protecciones de rango, y llega hasta ' + h.esc(L.steps[L.lastModel]) + ': de ahí para arriba la CR funciona distinto.</p>');
     const dist = sec('¿Cuántos jugadores hay en cada rango?', '<p>Riot no publica en sus páginas oficiales qué porcentaje de jugadores hay en cada rango, así que no mostramos uno inventado ni sacado de sitios que no explican cómo lo miden.</p>');
@@ -97,7 +97,7 @@ export const lolRangos = {
     const ladder = '<div class="pa-gd"><section class="pa-c pa-w4"><h2>Los ' + fmt(L.tiers.length, 0) + ' niveles</h2><p class="pa-x">De ' + h.esc(L.low[0]) + ' a ' + h.esc(L.low[L.low.length - 1]) + ' con ' + fmt(L.div, 0) + ' divisiones · ' + h.esc(L.apex.join(', ')) + ' sin divisiones</p>' + ladderVisual(h, L.tiers, 'Niveles de League of Legends de menor a mayor') + '</section>' +
       '<section class="pa-c pa-w2"><h2>Lo que dice Riot</h2>' + quote(h, 'lol_tiers_n', 'es') + quote(h, 'lol_divs', 'es') + '</section></div>';
     const top = h.pa.fact('lol_master_top');
-    const rules = sec('PL, divisiones y la cima', '<div class="pa-three"><div class="pa-c"><h3>' + fmt(L.top, 0) + ' PL por división</h3>' + quote(h, 'lol_lp_up', 'es') + '</div>' +
+    const rules = sec('PL, divisiones y la cima', '<div class="pa-three pa-3w"><div class="pa-c"><h3>' + fmt(L.top, 0) + ' PL por división</h3>' + quote(h, 'lol_lp_up', 'es') + '</div>' +
       '<div class="pa-c"><h3>Llegar a ' + h.esc(L.apex[0]) + ': el ' + fmt(top, 1) + ' %</h3>' + quote(h, 'lol_master_top', 'es') + '<p class="pa-src">Es el único porcentaje que Riot da en esa página; el resto de la distribución no lo publica.</p></div>' +
       '<div class="pa-c"><h3>El orden</h3>' + quote(h, 'lol_tiers_low', 'es') + quote(h, 'lol_tiers_apex', 'es') + '</div></div>' +
       '<div class="pa-two" style="margin-top:14px"><div class="pa-c"><h3>Si bajás</h3>' + quote(h, 'lol_demote_div', 'es') + quote(h, 'lol_demote_tier', 'es') + '</div>' +

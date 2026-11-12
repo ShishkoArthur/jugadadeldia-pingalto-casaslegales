@@ -67,6 +67,8 @@ function provDesc(p) {
   return d;
 }
 export function provincePages(pack) {
+// the cards under the two phone lines fill their row: two cards share it as one and two columns, one card takes it all
+const fill = cards => { const c = cards.filter(Boolean), w = ['', 'w3', 'w2'][c.length] || ''; if (w) c[c.length - 1] = c[c.length - 1].replace('class="jg-c"', 'class="jg-c ' + w + '"'); return c.join(''); };
   return pack.provinces.filter(p => (p.gambling || []).length || (p.selfExclusion || []).length).map(p => ({
     path: '/juego-responsable/' + p.id + '/', kind: 'help', help: true, jurisdiction: p.id,
     title: 'Ayuda por juego compulsivo en ' + short(p.name),
@@ -87,7 +89,7 @@ export function provincePages(pack) {
       const age = j.age ? '<section class="jg-c"><span class="jg-sm">Edad</span><h2>Solo mayores de ' + j.age.value + '</h2><p>' + h.esc(j.age.scope) + '.</p>' + quote(h, j.age) + '</section>' : '';
       const reg = j.regulator ? '<section class="jg-c"><span class="jg-sm">Quién regula</span><h2>' + h.esc(j.regulator.name) + '</h2>' + quote(h, j.regulator) + '</section>' : '';
       return '<section class="jg-hero no-g jg-calm"><div><span class="jg-k">Ayuda · ' + h.esc(j.name) + '</span><h1>' + h.esc(h.page.h1) + '</h1><p class="jg-lede">Los datos oficiales de ' + h.esc(j.name) + ' para pedir ayuda por el juego, con la fuente de cada uno. Si no es urgente, también podés escribir o pasar por la página oficial.</p></div></section>' +
-        '<div class="jg-mn">' + lineCard + seCard + age + reg + crisisCard(h) + '</div>';
+        '<div class="jg-mn">' + lineCard + crisisCard(h) + fill([seCard, age, reg]) + '</div>';
     },
   }));
 }

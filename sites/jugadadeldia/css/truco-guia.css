@@ -103,8 +103,8 @@
 .jg-dlg li>b{font:700 11px var(--m);text-transform:uppercase;color:var(--mu)}
 .jg-dlg li>span{font:800 19px/1.2 var(--d)}
 .jg-dlg li>small{color:var(--mu);font-size:13px}
-.jg-tl2{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));align-items:start;gap:14px;margin:10px 0;padding:0;list-style:none}
-.jg-tl2>li{padding:14px;border-radius:20px;background:var(--sf);box-shadow:inset 0 0 0 2px var(--ln)}
+.jg-tl2{columns:2 320px;column-gap:14px;margin:10px 0;padding:0;list-style:none}
+.jg-tl2>li{padding:14px;border-radius:20px;background:var(--sf);box-shadow:inset 0 0 0 2px var(--ln);break-inside:avoid;margin-bottom:14px}
 .jg-fal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0}
 .jg-fal>div{padding:14px;border-radius:18px;background:var(--s2)}
 .jg-sc{font:800 28px var(--d);margin:2px 0 6px}

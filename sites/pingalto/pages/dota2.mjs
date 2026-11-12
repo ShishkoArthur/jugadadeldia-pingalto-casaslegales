@@ -105,9 +105,10 @@ export const dota2Hub = {
     const method = sec('Cómo armamos el ranking', '<div class="pa-two"><div><p>Valve no publica un ranking de equipos de Dota 2, así que hacemos el nuestro con una cuenta conocida: <b>Elo</b>. Cada equipo arranca con ' + fmt(ELO.start, 0) + ' puntos; cuando gana una serie le saca puntos al rival, más si el rival estaba más arriba. Usamos todas las series terminadas de los últimos 180 días que lista PandaScore.</p><p>Cuenta solo quién ganó cada serie, no por cuánto. Un equipo nuevo necesita varias series para quedar bien ubicado: por eso mostramos los que jugaron al menos 8 y siguen activos.</p></div>' +
       '<div class="pa-c"><h3>La fórmula</h3><p>Chance de A contra B = 1 / (1 + 10<sup>(Elo B − Elo A) / 400</sup>). Después de la serie, el ganador suma ' + ELO.k + ' × (1 − su chance) y el perdedor resta lo mismo.</p><p class="pa-src">Debajo de la tabla está la prueba hacia atrás: con el Elo de antes de cada serie de los últimos 60 días, cuántas veces ganó el que estaba arriba. Es la forma honesta de saber cuánto sirve.</p></div></div>');
 
-    const parents = sec('Para padres y lo que no mostramos', '<div class="pa-three"><div class="pa-c"><h3>Qué dice Steam del contenido</h3>' + quote(h, 'd2_content', 'es') + '<p>Se juega en línea, con otras personas que no conocés.</p></div>' +
+    const parents = sec('Para padres y lo que no mostramos', '<div class="pa-three pa-3w">' +
       '<div class="pa-c"><h3>Medallas y héroes</h3><p>Distribución de medallas, héroes más jugados o win rate por héroe: esos datos salen de servicios que no permiten que los lean agentes de IA o de una clave de Valve que no tenemos.</p></div>' +
-      '<div class="pa-c"><h3>Apuestas</h3><p>Nunca: ni cuotas ni casas de apuestas. Los nombres de equipos con marcas de apuestas aparecen tapados.</p></div></div>');
+      '<div class="pa-c"><h3>Apuestas</h3><p>Nunca: ni cuotas ni casas de apuestas. Los nombres de equipos con marcas de apuestas aparecen tapados.</p></div>' +
+      '<div class="pa-c"><h3>Qué dice Steam del contenido</h3>' + quote(h, 'd2_content', 'es') + '<p>Se juega en línea, con otras personas que no conocés.</p></div></div>');
 
     return css(h) + hero(h, { ey: 'Dota 2 · gratis en Steam · desde Argentina', girl: true, sub: 'Si tu compu lo corre según Valve, cuánto tarda la descarga, cómo empezar, el ping a los servidores de Sudamérica y quién está arriba en nuestro ranking de equipos.' }) +
       facts + tool + what + steps + tools + servers +

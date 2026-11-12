@@ -119,10 +119,11 @@ export const ping = {
       '<div class="pa-tw" style="margin-top:14px"><table class="pa-tb"><thead><tr><th>Desde ' + h.esc(v.home.desc) + ' hasta</th><th class="pa-n">Ping típico de Valve</th><th class="pa-n">Piso físico</th><th class="pa-n">Veces el piso</th></tr></thead><tbody>' +
       v.rows.map(r => '<tr><td>' + h.esc(r.desc) + '</td><td class="pa-n">' + fmt(r.ms, 0) + ' ms</td><td class="pa-n">' + fmt(r.floor, 1) + ' ms</td><td class="pa-n">' + fmt(r.ms / r.floor, 1) + '×</td></tr>').join('') +
       '</tbody></table></div>' + srcLine(h, 'valve-sdr', 'revisión ' + v.revision) + '<p class="pa-src">Los valores salen del archivo tal como lo publica Valve; el piso físico lo calculamos con las coordenadas que trae el mismo archivo.</p>');
-    const where = sec('Dónde juega Argentina', '<div class="pa-three">' +
-      '<div class="pa-c"><h3>Valorant: Santiago</h3>' + quote(h, 'val_scl', 'es') + quote(h, 'val_scl_ar', 'es') + '<p class="pa-src">Anuncio de Riot del ' + h.fmtDate(h.pa.doc('riot-latam').published) + ', cuando llegó Valorant a la región. Puede haber cambios posteriores que esa nota no cuenta.</p></div>' +
+    const where = sec('Dónde juega Argentina', '<div class="pa-three pa-3w">' +
       '<div class="pa-c"><h3>LoL LAS: Santiago</h3>' + quote(h, 'lol_las_scl') + '</div>' +
-      '<div class="pa-c"><h3>LoL LAN: Miami</h3>' + quote(h, 'lol_lan_mia', 'es') + '</div></div>');
+      '<div class="pa-c"><h3>LoL LAN: Miami</h3>' + quote(h, 'lol_lan_mia', 'es') + '</div>' +
+      '<div class="pa-c"><h3>Valorant: Santiago</h3>' + quote(h, 'val_scl', 'es') + quote(h, 'val_scl_ar', 'es') + '<p class="pa-src">Anuncio de Riot del ' + h.fmtDate(h.pa.doc('riot-latam').published) + ', cuando llegó Valorant a la región. Puede haber cambios posteriores que esa nota no cuenta.</p></div></div>');
+
     const table = sec('Las 24 jurisdicciones', '<div class="pa-tw"><table class="pa-tb"><thead><tr><th>Provincia · capital</th>' + d.targets.map(t => '<th class="pa-n">' + t.name + '</th>').join('') + '</tr></thead><tbody>' +
       d.rows.map(r => '<tr><td>' + h.esc(r.prov) + ' · ' + h.esc(r.city) + '</td>' + r.ms.map(x => '<td class="pa-n">' + fmt(x, 1) + ' ms</td>').join('') + '</tr>').join('') +
       '</tbody></table></div><p class="pa-src">Ping mínimo de ida y vuelta por fibra recta desde la capital de cada provincia (y la Ciudad de Buenos Aires).</p>');

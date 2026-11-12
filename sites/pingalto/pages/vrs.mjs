@@ -34,7 +34,11 @@ export const cs2Ranking = {
   description: 'CS2 es gratis en Steam: si te corre según el mínimo de Valve, cuánto tarda la descarga, los servidores cerca de Argentina y el ranking oficial de equipos.',
   h1: 'Counter-Strike 2 desde Argentina',
   scripts: ['req.js', 'vrs.js', 'agenda.js'],
-  data: h => { const V = vrs(h); return { gl: rowsForClient(V.gl.rows, true), am: V.am.rows.map(r => [r.rank, r.global]), show: SHOW, ...cs2ReqData(h) }; },
+  data: h => {
+    const V = vrs(h), gl = rowsForClient(V.gl.rows, true);
+    if (gl.some((r, i) => r[0] !== i + 1) || V.am.rows.some((r, i) => r.rank !== i + 1)) throw new Error('vrs: ranks are not 1..n, the client rebuilds them from the order');
+    return { gl: gl.map(r => r.slice(1)), am: V.am.rows.map(r => r.global), show: SHOW, ...cs2ReqData(h) };
+  },
   ld: h => ldPage(h),
   render(h) {
     const V = vrs(h), E = h2h(V);

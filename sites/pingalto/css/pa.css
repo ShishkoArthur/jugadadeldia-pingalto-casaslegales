@@ -179,6 +179,9 @@ h1 em{font-style:normal;color:var(--vi)}
 .pa-sec>p+p{margin-top:10px}
 .pa-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .pa-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pa-3w{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pa-3w>:last-child{grid-column:1/-1}
+[data-pin]{position:sticky;top:84px;align-self:start}
 .pa-tw{overflow-x:auto;border-radius:20px;box-shadow:0 0 0 1px var(--ln);background:var(--pn)}
 .pa-tb{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
 .pa-tb th,.pa-tb td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--ln);vertical-align:top}
@@ -491,15 +494,15 @@ h2{font-size:23px}
 .pa-ac samp{font:inherit}
 
 .pa-ftr{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
-.pa-ftout{gap:14px;grid-template-columns:minmax(0,1fr)}
+.pa-ftout{gap:14px;display:flex;flex-direction:column}
+.pa-ftout>:empty{display:none}
 .pa-ftl{display:grid;gap:22px;align-content:start}
-.pa-ftl>.pa-girl{width:min(100%,320px);justify-self:center}
 .pa-ftl .pa-row{grid-template-columns:minmax(0,1fr)}
 .pa-fthd h2{font-size:30px;overflow-wrap:anywhere}
 .pa-fthd h2 small{font-size:18px;color:var(--mu)}
 .pa-fthd .pa-x{margin:6px 0 0}
 .pa-ftmsg{padding:14px 18px;border-radius:18px;background:var(--p2);box-shadow:inset 4px 0 0 var(--pk);font-weight:600}
-.pa-ftg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pa-ftg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:12px;flex:1 0 auto}
 .pa-fts{padding:16px 18px;display:grid;gap:4px;align-content:start}
 .pa-fts .pa-x{margin:0;font-weight:600}
 .pa-fts .pa-big.pa-nk{font-size:40px}
@@ -512,5 +515,5 @@ h2{font-size:23px}
 .pa-ftwin i{font-style:normal;font-size:11px}
 .pa-ftkd{display:grid;gap:10px}
 .pa-ftkd[hidden]{display:none}
-@media (max-width:980px){.pa-ftr{grid-template-columns:minmax(0,1fr)}.pa-ftl{display:contents}.pa-ftout{order:2}.pa-ftl>.pa-girl{order:3;margin-top:4px}.pa-ftq .pa-ftout{order:-1}}
+@media (max-width:980px){.pa-ftr{grid-template-columns:minmax(0,1fr)}.pa-ftl{display:contents}.pa-ftout{order:2}.pa-ftq .pa-ftout{order:-1}}
 @media (max-width:680px){.pa-ftg{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pa-fts{padding:14px}.pa-fts .pa-big.pa-nk{font-size:30px}.pa-fthd h2{font-size:24px}}

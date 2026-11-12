@@ -117,8 +117,14 @@ export function clientData(h) {
       tr(h, x.st === 'none' ? 'No hay una lista oficial que podamos citar.' : x.e.reason === 'geo' ? 'La fuente oficial no abre desde fuera de Argentina: copia pendiente.' : 'La fuente oficial no está en condiciones de citarse.');
     j[t.id] = { n: p.name, co: t.code, s: x.st, c: x.n, k, m, l: p.line ? { p: p.line.phone, t: p.line.phoneTel } : null, u: h.built(u) ? loc(h, h.href(u)) : null };
   }
+  // a label or a line that repeats across provinces is sent once in t and named by its index, empty fields are left out (page weight)
+  const t = [], n = {}, at = {}, all = Object.values(j);
+  for (const v of all) for (const f of ['c', 'l', 'u']) if (v[f] === null) delete v[f];
+  for (const v of all) for (const f of ['k', 'm']) n[v[f]] = (n[v[f]] || 0) + 1;
+  for (const v of all) for (const f of ['k', 'm']) if (n[v[f]] > 1) v[f] = at[v[f]] ?? (at[v[f]] = t.push(v[f]) - 1);
   return {
     j,
+    t,
     crisis: { p: h.rg.crisis.phone, t: h.rg.crisis.phoneTel },
     s: { dash: '-', help: tr(h, 'Ayuda:'), helpNone: tr(h, 'Sin línea provincial verificada. Línea nacional:'), go: tr(h, 'Ver {n}') },
   };

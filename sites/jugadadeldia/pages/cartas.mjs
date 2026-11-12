@@ -93,7 +93,7 @@ export const escoba = {
       '<section class="jg-c w3" data-cuenta><span class="jg-tag">Contá la mano</span><h2>¿Cuántos puntos hiciste?</h2><p class="jg-mu">Tocá las cartas que levantaste vos; las demás son del rival. Sumá las escobas de cada uno.</p>' + picker('data-mine') +
       '<div class="jg-r" style="margin-top:10px"><label class="jg-fl"><span>Mis escobas</span><input class="jg-in" name="e0" type="text" inputmode="numeric" maxlength="2" value="0" style="width:90px"></label><label class="jg-fl"><span>Escobas del rival</span><input class="jg-in" name="e1" type="text" inputmode="numeric" maxlength="2" value="0" style="width:90px"></label><label class="jg-fl"><span>Reglas</span>' + sel('r', [['bonaerense', 'Bonaerenses', true], ['ludoteka', 'Ludoteka']]) + '</label></div>' +
       '<div class="jg-two" style="margin-top:12px"><p class="jg-win"><span>Vos</span><b data-o="p0">-</b></p><p class="jg-win no"><span>Rival</span><b data-o="p1">-</b></p></div><ul class="jg-chipl" data-o="detail"></ul></section>' +
-      go('Ahora, a jugar', '<p>Practicá contra la compu: después de cada jugada te avisa si se te pasó una escoba.</p>', btn(h, '/escoba-de-15/jugar/', 'Jugar contra la compu', true)) +
+      go('Ahora, a jugar', '<p>Practicá contra la compu: después de cada jugada te avisa si se te pasó una escoba.</p>', btn(h, '/escoba-de-15/jugar/', 'Jugar contra la compu', true)).replace('jg-c jg-cu-go', 'jg-c w2 jg-cu-go') +
       '<section class="jg-c"><span class="jg-sm">Seguí con</span><h2>Más juegos</h2>' + more(h, GAMES.slice(0, 5)) + '</section></div>';
   },
 };

@@ -5,8 +5,8 @@ import { $, $$, data, out, params, setParams, fmt, fmtPct, fmtInput, esc } from 
 const D = data();
 const box = $('#pa-vr');
 if (D && box) {
-  const byRank = new Map(D.gl.map(r => [r[0], r]));
-  const amRows = D.am.map(([rank, g]) => { const r = byRank.get(g); return [rank, r[1], r[2], r[3], g]; });
+  D.gl = D.gl.map((r, i) => [i + 1, ...r]);
+  const amRows = D.am.map((g, i) => { const r = D.gl[g - 1]; return [i + 1, r[1], r[2], r[3], g]; });
   let region = 'am', all = false;
   const q = $('#vr-q'), more = $('[data-o="more"]');
   const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -31,7 +31,7 @@ if (D && box) {
   q.addEventListener('input', draw);
   const A = $('#vd-a'), B = $('#vd-b');
   const duel = (push = true) => {
-    const a = byRank.get(Number(A.value)), b = byRank.get(Number(B.value));
+    const a = D.gl[Number(A.value) - 1], b = D.gl[Number(B.value) - 1];
     if (!a || !b) return;
     const x = expected(a[1], b[1]), pm = mapChanceFor(3, x);
     out('dx', fmtPct(x, 1));

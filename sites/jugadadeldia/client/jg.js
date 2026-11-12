@@ -133,9 +133,95 @@ function peek() {
   }
 }
 
+// wide screens: a card grid (.jg-mn) where one column is much shorter than its neighbour puts the cards of that column into one box
+// that follows the reader down, and a card with empty columns to its right in its row grows over them (in a grid with Alt, the cards
+// under her picture take the whole row); two blocks side by side (.jg-lx, .jg-two, .jg-table) do the same with the shorter one (owner
+// 2026-11-11: no empty areas). The grid places cards by their classes (w2, w3, t2), so the plan is worked out from the classes and
+// the heights of the cards, never from where the browser put them after an earlier plan.
+function stacks() {
+  const grids = [...document.querySelectorAll('.jg-mn:not(.art)')].map(g => ({ g, all: [...g.children], key: '' }));
+  const pairs = [...document.querySelectorAll('.jg-lx,.jg-two,.jg-table')];
+  const arts = [...document.querySelectorAll('.jg-mn.art')];
+  if (!grids.length && !pairs.length && !arts.length) return;
+  const area = (r, c, h, w) => [r + 1, c + 1, r + 1 + h, c + 1 + w].join(' / ');
+  const GAP = 22;
+  const has = (k, c) => k.classList.contains(c);
+  const own = k => { if (has(k.parentElement, 'jg-stk-i')) return k.offsetHeight; k.style.alignSelf = 'start'; const v = k.offsetHeight; k.style.alignSelf = ''; return v; };
+  const room = () => innerHeight - 120;
+  const undo = G => {
+    for (const w of G.g.querySelectorAll(':scope>.jg-stk')) { w.before(...w.firstChild.children); w.remove(); }
+    for (const k of G.all) k.style.gridArea = '';
+  };
+  const plan = G => {
+    const cards = G.all.filter(k => !k.hidden && getComputedStyle(k).display !== 'none');
+    const used = [], place = [];
+    const free = (r, c, w, h) => { if (c + w > 3) return false; for (let i = r; i < r + h; i++) for (let j = c; j < c + w; j++) if (used[i] && used[i][j]) return false; return true; };
+    let cr = 0, cc = 0;
+    for (const k of cards) {
+      const w = has(k, 'w3') || has(k, 'jg-cu') ? 3 : has(k, 'w2') ? 2 : 1, h = has(k, 't2') ? 2 : 1;
+      let r = cr, c = cc;
+      while (!free(r, c, w, h)) if (++c + w > 3) { c = 0; r++; }
+      for (let i = r; i < r + h; i++) for (let j = c; j < c + w; j++) (used[i] = used[i] || [])[j] = 1;
+      place.push({ k, r, c, w, h, n: own(k) });
+      cr = r; cc = c + w;
+    }
+    for (const p of place) if (p.h === 1) while (p.c + p.w < 3 && !(used[p.r] || [])[p.c + p.w]) used[p.r][p.c + p.w++] = 1;
+    const band = [];
+    for (const p of place) { const b = band.find(x => p.r <= x.r1 && p.r + p.h - 1 >= x.r0); if (b) { b.r0 = Math.min(b.r0, p.r); b.r1 = Math.max(b.r1, p.r + p.h - 1); b.ps.push(p); } else band.push({ r0: p.r, r1: p.r + p.h - 1, ps: [p] }); }
+    const wraps = [];
+    for (const b of band) {
+      const cols = new Map();
+      for (const p of b.ps) cols.set(p.c + '/' + p.w, [...(cols.get(p.c + '/' + p.w) || []), p]);
+      if (cols.size < 2 || !b.ps.some(p => p.w > 1 || p.h > 1)) continue;
+      const hs = [...cols.values()].map(ps => ps.reduce((a, p) => a + p.n, 0) + GAP * (ps.length - 1)), top = Math.max(...hs);
+      [...cols.values()].forEach((ps, i) => { if (top - hs[i] > 120) wraps.push({ ps, r: b.r0, rows: b.r1 - b.r0 + 1, fix: hs[i] < room() }); });
+    }
+    return { place, wraps };
+  };
+  const fit = () => {
+    for (const G of grids) {
+      const P = innerWidth > 900 ? plan(G) : null;
+      const key = P ? P.place.map(p => [p.r, p.c, p.w, p.h].join()).join(' ') + '|' + P.wraps.map(x => x.ps.map(p => G.all.indexOf(p.k)).join('.') + (x.fix ? '!' : '')).join(' ') : '';
+      if (key === G.key) continue;
+      undo(G);
+      G.key = key;
+      if (!P) continue;
+      for (const p of P.place) p.k.style.gridArea = area(p.r, p.c, p.h, p.w);
+      for (const x of P.wraps) {
+        const box = document.createElement('div'), inner = document.createElement('div');
+        box.className = 'jg-stk'; inner.className = 'jg-stk-i';
+        box.style.gridArea = area(x.r, x.ps[0].c, x.rows, x.ps[0].w);
+        x.ps[0].k.before(box);
+        box.append(inner);
+        for (const p of x.ps) { p.k.style.gridArea = ''; inner.append(p.k); }
+        inner.toggleAttribute('data-fija', x.fix);
+      }
+    }
+    for (const a of arts) {
+      const girl = a.querySelector(':scope>.jg-girl'), cards = [...a.children].filter(k => k !== girl);
+      cards.forEach(k => { k.style.gridColumn = ''; });
+      if (girl && innerWidth > 620) { const end = girl.offsetTop + girl.offsetHeight; cards.forEach(k => { if (k.offsetTop >= end) k.style.gridColumn = '1 / -1'; }); }
+    }
+    for (const p of pairs) {
+      const two = [...p.children].filter(k => k.offsetHeight);
+      if (two.length !== 2) { for (const k of p.children) k.removeAttribute('data-fija'); continue; }
+      const [a, b] = two, ha = own(a), hb = own(b);
+      const go = a.offsetTop === b.offsetTop && Math.abs(ha - hb) > 120 && Math.min(ha, hb) < room() ? (ha < hb ? a : b) : 0;
+      for (const el of [a, b]) el.toggleAttribute('data-fija', el === go);
+    }
+  };
+  let t = 0;
+  const soon = () => { clearTimeout(t); t = setTimeout(fit, 80); };
+  if ('ResizeObserver' in window) { const ro = new ResizeObserver(soon); for (const G of grids) for (const k of G.all) ro.observe(k); for (const p of pairs) for (const k of p.children) ro.observe(k); }
+  addEventListener('resize', soon);
+  addEventListener('load', soon);
+  fit();
+}
+
 theme();
 menu();
 search();
 peek();
+stacks();
 const saved = store.get('jg-prov');
 if (saved) helpLine(saved);

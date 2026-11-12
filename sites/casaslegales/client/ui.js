@@ -132,14 +132,15 @@ function map(data) {
     if (!j) return;
     tiles.forEach(t => { const on = t.dataset.j === id; t.setAttribute('aria-pressed', on ? 'true' : 'false'); t.classList.toggle('rl-on', on); });
     const tile = tiles.find(t => t.dataset.j === id);
-    if (tag && tile) { tag.textContent = j.co + (j.c === null ? '' : ' · ' + j.c); tile.append(tag); }
+    if (tag && tile) { tag.textContent = j.co + (j.c == null ? '' : ' · ' + j.c); tile.append(tag); }
     if (pick && pick.value !== id) pick.value = id;
     panel.querySelector('h2').textContent = j.n;
     const num = panel.querySelector('.rl-num');
-    num.firstChild.textContent = j.c === null ? s.dash : String(j.c);
-    num.querySelector('small').textContent = j.k;
+    num.firstChild.textContent = j.c == null ? s.dash : String(j.c);
+    const txt = v => (typeof v === 'number' ? data.t[v] : v);
+    num.querySelector('small').textContent = txt(j.k);
     num.dataset.s = j.s;
-    panel.querySelector('[data-rl-meta]').textContent = j.m;
+    panel.querySelector('[data-rl-meta]').textContent = txt(j.m);
     const line = panel.querySelector('[data-rl-help]');
     line.textContent = '';
     if (j.l) { line.append(s.help + ' '); line.append(telLink(j.l)); } else { line.append(s.helpNone + ' '); line.append(telLink(data.crisis)); }
@@ -510,6 +511,59 @@ function revisado() {
   }).catch(() => {});
 }
 
+// side by side blocks of different height (a box next to a longer box, the map next to the list, the calculator next to its sum):
+// the shorter one follows the reader down, so no tall empty column stays next to the long one (owner 2026-11-11: no empty areas)
+function follow() {
+  const sets = [...document.querySelectorAll('.rl-two,.rl-opmap,.rl-calcw,.rl-law:not(.rl-law-1),.rl-fl')];
+  const own = el => { el.style.alignSelf = 'start'; const v = el.offsetHeight; el.style.alignSelf = ''; return v; };
+  const place = () => {
+    const pad = parseFloat(getComputedStyle(root).scrollPaddingTop) || 76;
+    for (const p of sets) {
+      const ks = [...p.children].filter(k => k.offsetHeight), hs = ks.map(own), top = Math.max(...hs);
+      const row = ks.length > 1 && ks.every(k => k.offsetTop === ks[0].offsetTop);
+      ks.forEach((el, i) => { const go = row && top - hs[i] > 160 && hs[i] < innerHeight - pad - 24; el.toggleAttribute('data-sigue', go); el.style.top = go ? pad + 8 + 'px' : ''; });
+    }
+  };
+  let wait = 0;
+  const soon = () => { clearTimeout(wait); wait = setTimeout(place, 80); };
+  addEventListener('resize', soon);
+  addEventListener('load', soon);
+  if (sets.length) { new ResizeObserver(soon).observe(document.body); place(); }
+}
+
+// lists of quotes and facts on wide screens: each block goes, in reading order, into the column that is shortest so far; when that
+// leaves the columns far apart, the tallest blocks are placed first (each column still keeps the reading order), and a list that
+// stays uneven in three columns tries two
+function lanes() {
+  const lists = [...document.querySelectorAll('.rl-law:not(.rl-law-1),.rl-fl')].filter(l => l.children.length > 1).map(l => ({ l, items: [...l.children] }));
+  if (!lists.length) return;
+  const split = (L, n) => {
+    L.l.classList.toggle('rl-k3', n === 3);
+    const cols = Array.from({ length: n }, () => document.createElement('div'));
+    L.l.replaceChildren(...cols);
+    cols[0].append(...L.items);
+    const hs = L.items.map(k => k.offsetHeight);
+    const deal = order => { const h = Array(n).fill(0), to = []; for (const i of order) { const c = h.indexOf(Math.min(...h)); to[i] = c; h[c] += hs[i] + 14; } return { to, gap: Math.max(...h) - Math.min(...h) }; };
+    let d = deal(hs.map((x, i) => i));
+    if (d.gap > 300) { const e = deal(hs.map((x, i) => i).sort((x, y) => hs[y] - hs[x])); if (e.gap < d.gap) d = e; }
+    L.items.forEach((k, i) => cols[d.to[i]].append(k));
+    return d.gap;
+  };
+  const lay = () => {
+    for (const L of lists) {
+      L.l.replaceChildren(...L.items);
+      const wide = innerWidth >= 760;
+      L.l.classList.toggle('rl-lanes', wide);
+      if (!wide) continue;
+      if (innerWidth >= 1080 && L.items.length > 2 && L.l.classList.contains('rl-law') && split(L, 3) <= 200) continue;
+      split(L, 2);
+    }
+  };
+  let wait = 0;
+  addEventListener('resize', () => { clearTimeout(wait); wait = setTimeout(lay, 120); });
+  lay();
+}
+
 const data = json('rl-data');
 theme();
 menu();
@@ -528,3 +582,5 @@ hcpCalc();
 provCheck();
 revisado();
 tocSpy();
+lanes();
+follow();

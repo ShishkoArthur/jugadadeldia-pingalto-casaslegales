@@ -140,6 +140,7 @@ html:not(.js) .rl-lang{display:grid}
 .rl-sites h3{font-size:20px;font-weight:900}
 .rl-sites .rl-ref{font:500 13px var(--m);color:var(--mu)}
 .rl-two{display:grid;gap:14px}
+[data-sigue]{position:sticky;top:84px;align-self:start}
 .rl-box{background:var(--pa);border:1px solid var(--ln);border-radius:20px;padding:18px;display:grid;gap:12px;align-content:start}
 .rl-box h3{font-size:21px;font-weight:900}
 .rl-box p{max-width:68ch}
@@ -172,8 +173,6 @@ html:not(.js) .rl-filter{display:none}
 .rl-lines h3{font-size:20px;font-weight:900}
 .rl-lines .rl-none{color:var(--mu)}
 .rl-lines li:target{outline:3px solid var(--t1)}
-.rl-prose{display:grid;gap:12px;max-width:72ch}
-.rl-prose p{font-size:18px}
 .rl-ft{background:var(--sl);color:var(--so);padding:24px 16px;display:grid;gap:16px;margin-top:40px}
 .rl-ft > *{max-width:1208px;width:100%;margin:0 auto}
 .rl-ft nav{display:flex;flex-wrap:wrap;gap:4px 20px}
@@ -336,7 +335,6 @@ html:not(.js) .rl-dd:hover>.rl-mp,html:not(.js) .rl-dd:focus-within>.rl-mp{displ
 a.rl-opc:hover{border-color:var(--fg)}
 .rl-opc h3{font-size:21px;font-weight:900}
 .rl-opc .rl-host{font-size:14px}
-.rl-opc-off{background:transparent;border-style:dashed}
 .rl-se ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .rl-se li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center}
 .rl-se li span{font-weight:700;font-size:15px}
@@ -604,6 +602,7 @@ fieldset.rl-leg legend{padding:0 6px}
 .rl-rsi small a{color:var(--mu)}
 .rl-rsn b{font-size:19px;color:var(--mu)}
 .rl-fl{margin:0;display:grid;gap:12px;align-items:start}
+@media (min-width:760px){.rl-lanes{display:grid;grid-template-columns:1fr 1fr;align-items:start}.rl-k3{grid-template-columns:repeat(3,1fr)}.rl-lanes>div{display:grid;gap:14px;min-width:0}:is(.rl-law,.rl-fl)>:only-child{grid-column:1/-1}}
 .rl-fi{background:var(--pa);border:1px solid var(--ln);border-radius:18px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-width:0;overflow-wrap:anywhere}
 .rl-fi dt{font-weight:900;font-size:18px}
 .rl-fi dd{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
@@ -611,8 +610,6 @@ fieldset.rl-leg legend{padding:0 6px}
 .rl-fnum{font:700 22px/1.2 var(--m)}
 .rl-fyes{font:700 20px var(--m);color:var(--ac)}
 .rl-chips-s span{font-size:13px;font-weight:600;padding:3px 8px;box-shadow:-2px 2px 0 var(--sd)}
-.rl-sd{background:var(--pa);border:1px dashed var(--ln);border-radius:14px;padding:10px 14px;color:var(--mu);font-size:15px}
-.rl-sd b{color:var(--fg)}
 .rl-mgb{margin-top:12px}
 .rl-mg td,.rl-mg th{white-space:nowrap}
 @media (min-width:760px){.rl-rsi b{font-size:25px}.rl-rs{grid-template-columns:repeat(3,minmax(0,1fr))}.rl-fl{grid-template-columns:repeat(2,minmax(0,1fr))}}

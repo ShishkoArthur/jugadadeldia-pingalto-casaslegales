@@ -97,3 +97,34 @@ theme();
 menu();
 search();
 if (document.querySelector('.pa-tool:not(.pa-oo) > .pa-out .pa-big')) import('./peek.js');
+
+// two columns of different height side by side (a form and its result, a text next to a table): the shorter one rides along while
+// the page scrolls, so no tall empty column is left next to the long one (owner 2026-11-11: no empty areas). Only in the last row of
+// a grid: a sticky grid item is held by the whole grid, not by its row, and would slide over the rows below
+function pin() {
+  const boxes = [...document.querySelectorAll('.pa-tool,.pa-two,.pa-gd')];
+  if (!boxes.length || !('ResizeObserver' in window)) return;
+  const natural = k => { const s = k.style.alignSelf; k.style.alignSelf = 'start'; const v = k.offsetHeight; k.style.alignSelf = s; return v; };
+  const fit = () => {
+    for (const b of boxes) {
+      const rows = new Map();
+      for (const k of b.children) if (k.offsetHeight) rows.set(k.offsetTop, [...(rows.get(k.offsetTop) || []), k]);
+      const want = new Set();
+      const last = Math.max(...rows.keys());
+      for (const [top, row] of rows) {
+        if (row.length !== 2 || top !== last) continue;
+        const [x, y] = row.map(natural), [lo, hi] = x < y ? [row[0], y] : [row[1], x];
+        if (hi - Math.min(x, y) > 120 && Math.min(x, y) < innerHeight - 110) want.add(lo);
+      }
+      for (const k of b.children) if (k.hasAttribute('data-pin') !== want.has(k)) k.toggleAttribute('data-pin', want.has(k));
+    }
+  };
+  let t = 0;
+  const later = () => { clearTimeout(t); t = setTimeout(fit, 60); };
+  const ro = new ResizeObserver(later);
+  for (const b of boxes) { ro.observe(b); for (const k of b.children) ro.observe(k); }
+  addEventListener('resize', later);
+  addEventListener('load', later);
+  fit();
+}
+pin();
