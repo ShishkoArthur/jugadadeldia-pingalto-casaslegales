@@ -5,7 +5,7 @@
 Переезд на другое устройство — `docs/MIGRATION.md`. Обслуживание раз в полгода — `docs/MAINTENANCE.md`.
 
 ## 16.11.2026 — папка проекта в сообщениях Telegram (DECISIONS 16.11)
-- Вторая строка каждого сообщения бота: `📁 Писать в чат Claude Code с папкой C:devjugadadeldia-pingalto-casaslegales` (`folder` в data/alerts/ru.json).
+- Вторая строка каждого сообщения бота: `📁 Писать в чат Claude Code с папкой C:\dev\jugadadeldia-pingalto-casaslegales` (`folder` в data/alerts/ru.json).
 - Код разослан: ленты трёх сайтов и fnapi (commit ae522f9); тестовое сообщение с сервера ушло (200). npm test 285/285.
 
 ## 11.11.2026 — без пустот на широком экране (DECISIONS 11.11)
