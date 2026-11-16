@@ -23,6 +23,8 @@ test('alerts: the header names the project domain and the feed or service, with 
   const r = renderAlert('feed_stale', { feed: 'provincias', age: 3.25, limit: 3, updated: '2026-11-05T11:00:00Z', raw: 'all provincial sources failed: Chaco timeout after 30 s' }, { site: 'jugadadeldia', scope: { feed: 'provincias' }, now: NOW });
   assert.equal(firstLine(r.text), fill(T.header.feed, { emoji: T.emoji.red, domain: 'jugadadeldia.com', feed: 'provincias' }));
   assert.ok(r.text.startsWith('<b>' + T.emoji.red + ' jugadadeldia.com'));
+  assert.equal(r.text.split('\n')[1], T.folder, 'second line: the folder of the project chat (owner 2026-11-16)');
+  assert.ok(T.folder.includes('jugadadeldia-pingalto-casaslegales'));
   for (const k of ['why', 'did', 'todo']) assert.ok(r.text.includes('<b>' + T.labels[k] + ':</b>'), k);
   assert.ok(r.text.includes(T.reasons.timeout.text), 'reason class timeout');
   assert.ok(r.text.includes('Chaco timeout after 30 s'), 'the original reason stays');

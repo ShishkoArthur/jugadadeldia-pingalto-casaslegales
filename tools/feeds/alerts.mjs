@@ -1,6 +1,6 @@
 // Telegram alert layer of the three sites (owner 2026-11-05; guide for other projects: docs/TELEGRAM-BOT.md). The texts are Russian and
 // live in data/alerts/ru.json (no Cyrillic in code): code names a template id and its params, render() fills it.
-// Every message: a header "<severity emoji> <domain> . <feed or service>", what happened, why (reason class + source + the short technical
+// Every message: a header "<severity emoji> <domain> . <feed or service>", the project folder (owner 2026-11-16), what happened, why (reason class + source + the short technical
 // reason), what the system did, what the owner should do, the time in Argentina and in Moscow. HTML parse mode (params are escaped).
 //   problemsOf(health, site)              _health.json of a feeds run -> [{ key, group, tpl, ok, params, scope }]
 //   planAlerts(state, problems, now, o)   de-duplication: a new problem is sent once, the same problem again at most once per DEDUP_MS
@@ -124,7 +124,7 @@ export function renderAlert(tpl, params = {}, ctx = {}) {
   const header = (ctx.test ? T.testPrefix : '') + fill(T.header[ctx.digest ? 'digest' : scope.feed ? 'feed' : scope.service ? 'service' : 'site'], hp);
   const now = ctx.now || new Date();
   const what = fill(t.what, p);
-  const lines = ['<b>' + header + '</b>', what];
+  const lines = ['<b>' + header + '</b>', fill(T.folder), what];
   if (t.list) lines.push(fill(t.list, p));
   for (const k of ['why', 'did', 'todo']) { const v = t[k] ? fill(t[k], p) : ''; if (v.trim()) lines.push('<b>' + esc(T.labels[k]) + ':</b> ' + v); }
   lines.push(fill(T.time, { ar: fmtAt(now, AR), msk: fmtAt(now, MSK) }));

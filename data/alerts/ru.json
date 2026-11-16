@@ -11,6 +11,7 @@
  "testPrefix": "[тест] ",
  "labels": { "why": "Причина", "did": "Что сделано", "todo": "Что делать", "source": "Источник", "raw": "Технически" },
  "time": "🕒 {ar} по Аргентине · {msk} по Москве",
+ "folder": "📁 Писать в чат Claude Code с папкой C:\\dev\\jugadadeldia-pingalto-casaslegales",
  "units": { "min": "{n} мин", "hours": "{n} ч", "days": "{n} дн.", "never": "ни разу" },
  "todoDefault": "Ничего — исправлю при проверке.",
  "feedNames": {
