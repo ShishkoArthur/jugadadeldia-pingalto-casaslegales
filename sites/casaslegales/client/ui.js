@@ -486,29 +486,41 @@ function provCheck() {
   input.addEventListener('input', run);
 }
 
+// server rechecks next to the dates of saved copies (data-rv: /data/feeds/listas.json) and of operator addresses we could not open
+// (data-ac: /data/feeds/accesos.json): unchanged -> the date of the check; changed or not checked -> a dated line, never silence
 function revisado() {
-  const els = [...document.querySelectorAll('[data-rv]')];
+  const els = [...document.querySelectorAll('[data-rv]')], acs = [...document.querySelectorAll('[data-ac]')];
   const sum = document.querySelector('[data-rv-sum]');
-  if (!els.length) return;
   const day = /^\d{4}-\d{2}-\d{2}$/;
   const fmt = d => (EN ? new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(d + 'T12:00:00Z')) : d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4));
-  fetch('/data/feeds/listas.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(j => {
-    const docs = j && j.data && j.data.docs;
+  const feed = (f, go) => fetch('/data/feeds/' + f + '.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(j => j && j.data && go(j.data)).catch(() => {});
+  const note = (node, warn, t, o) => node.appendChild(el('span', warn ? 'rl-rv rl-rvx' : 'rl-rv', fill(t, o)));
+  if (els.length) feed('listas', ({ docs }) => {
     if (!docs) return;
     let n = 0, last = '';
     for (const node of els) {
-      const d = docs[node.dataset.rv];
-      if (!d || d.state !== 'ok' || !day.test(d.revisado || '')) continue;
-      if (node.tagName === 'TD') n++;
-      if (d.revisado > last) last = d.revisado;
-      if (d.revisado <= (node.dataset.rvd || '')) continue;
-      node.appendChild(el('span', 'rl-rv', ' · revisada el ' + fmt(d.revisado) + ', sin cambios'));
+      const d = docs[node.dataset.rv], b = node.dataset.rvd || '';
+      if (!d) continue;
+      if (d.state === 'ok' && day.test(d.revisado || '')) {
+        if (node.tagName === 'TD') n++;
+        if (d.revisado > last) last = d.revisado;
+        if (d.revisado > b) note(node, 0, ' · revisada el {a}, sin cambios', { a: fmt(d.revisado) });
+      } else if (day.test(d.since || '') && (d.state === 'changed' ? d.hit : d.state === 'unreachable' || d.state === 'robots')) {
+        note(node, 1, d.state !== 'changed' ? ' · No pudimos revisar la página oficial desde el {a}.' : d.list ? ' · La lista oficial cambió el {a}; la estamos revisando.' : ' · La página oficial cambió el {a}; la estamos revisando.', { a: fmt(d.since) });
+      }
     }
     if (sum && n && last) {
       sum.textContent = 'Revisión automática mensual: el ' + fmt(last) + ', ' + n + ' de ' + els.filter(x => x.tagName === 'TD').length + ' documentos de esta tabla seguían iguales en la página oficial (citas y listas). Los demás los guarda una persona desde un navegador.';
       sum.hidden = false;
     }
-  }).catch(() => {});
+  });
+  if (acs.length) feed('accesos', ({ hosts }) => {
+    for (const node of hosts ? acs : []) {
+      const x = hosts[node.dataset.ac];
+      if (x && x.confirmed && day.test(x.since || '')) note(node, 1, ' · el {a} respondió distinto; lo estamos revisando', { a: fmt(x.since) });
+      else if (x && x.same && day.test(x.lastSame || '')) note(node, 0, ' · revisado de nuevo el {a}: sigue igual', { a: fmt(x.lastSame) });
+    }
+  });
 }
 
 // side by side blocks of different height (a box next to a longer box, the map next to the list, the calculator next to its sum):

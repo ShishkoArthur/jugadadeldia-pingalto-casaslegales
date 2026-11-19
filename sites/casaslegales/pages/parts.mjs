@@ -8,6 +8,8 @@ export function brandLink(h, brand, text) {
 }
 // data-rv: the key of the copy in /data/feeds/listas.json (server recheck); ui.js adds "revisada el ..." when it is newer than data-rvd
 export const rvAttr = (h, key, d) => ' data-rv="' + h.esc(key) + '" data-rvd="' + h.esc(d.fetched) + '"';
+// data-ac: an operator address of data/sources/operators/access.json; ui.js adds the date of the server's last recheck (/data/feeds/accesos.json)
+export const acAttr = (h, host) => ' data-ac="' + h.esc(host) + '"';
 export function src(h, slug, extra = '') {
   const d = h.doc(slug);
   return '<p class="rl-src"' + rvAttr(h, slug, d) + '>Fuente: <a href="' + h.esc(d.url) + '" rel="noopener">' + h.esc(d.host) + '</a> · copia guardada el ' + h.fmtDate(d.fetched) + (extra ? ' · ' + extra : '') + '</p>';
@@ -31,7 +33,7 @@ export function officialLink(h, jid, brand, opts = {}) {
   const r = h.reg(jid), l = r.licensees.find(x => x.brand === brand && (!opts.host || x.host === opts.host));
   if (!l) throw new Error('official link: ' + brand + ' is not in the ' + jid + ' list');
   const u = officialUrl(l), p = h.rg.prov(jid).name;
-  if (DEAD[l.host]) return '<p class="rl-offx">' + h.esc(new URL(u).hostname) + ' (lista de ' + h.esc(p) + ') no respondía cuando la revisamos, el ' + h.fmtDate(DEAD[l.host]) + ': su nombre no apuntaba a ningún servidor. Por eso no hay botón.</p>';
+  if (DEAD[l.host]) return '<p class="rl-offx"' + acAttr(h, l.host) + '>' + h.esc(new URL(u).hostname) + ' (lista de ' + h.esc(p) + ') no respondía cuando la revisamos, el ' + h.fmtDate(DEAD[l.host]) + ': su nombre no apuntaba a ningún servidor. Por eso no hay botón.</p>';
   return '<a class="rl-off' + (opts.small ? ' rl-off-s' : '') + '" href="' + h.esc(u) + '" rel="nofollow noopener" target="_blank"><span>Ir al sitio oficial (' + h.esc(p) + ')</span><small>' + h.esc(new URL(u).hostname) + ' · según ' + h.esc(r.regulator.short) + '</small></a>';
 }
 export function officialLinks(h, brand, jids, opts = {}) {

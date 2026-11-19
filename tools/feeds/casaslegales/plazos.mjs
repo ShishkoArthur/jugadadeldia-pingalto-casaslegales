@@ -8,14 +8,23 @@
 // Every entry has warnDays 0 (an alert only once expired). Instead, REMINDER_DAYS (21) before the first expiry of anything (these
 // entries and the pages of listas.json) one reminder goes to Telegram with everything that expires within REMINDER_SPAN days of it,
 // grouped by what has to be done (alerts id "reminder-<first day>": once per cycle).
+// Two more, apart from that reminder:
+//   - repo-gate (repoGate): the copies in the repository of the pages our server checks itself (not owner copies) stop the
+//     build GATE_DAYS (maxAgeDays of their set, 100) after the oldest "fetched", however fresh the server's own copies are; the
+//     entry warns GATE_WARN_DAYS (21) before (a yellow alert), so a deploy is never blocked by surprise. The cure is the agent's:
+//     bash tools/feeds-server.sh casaslegales pull --write, npm test, commit, sync, deploy;
+//   - resave-<YYYY-MM> (resaveAlert): once a month, a reminder to the owner to save again the licence lists our server cannot
+//     download (owner registries: robots.txt keeps AI crawlers out, or geo-blocked), with what the light probe of listas found;
+//     listed for RESAVE_LIST_DAYS days from the first run of the month (one Telegram message), skipped for lists saved less than
+//     RESAVE_FRESH_DAYS ago.
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadSources } from './listas.mjs';
-import { isOwnerDoc, docMaxAge } from '../../lib/ownercopy.mjs';
+import { loadSources, listDocs } from './listas.mjs';
+import { isOwnerDoc, docMaxAge, docUntil } from '../../lib/ownercopy.mjs';
 import { loadReviews, REVIEW_MAX_AGE } from '../../lib/revsources.mjs';
 
-export const REMINDER_DAYS = 21, REMINDER_SPAN = 60;
+export const REMINDER_DAYS = 21, REMINDER_SPAN = 60, GATE_WARN_DAYS = 21, RESAVE_LIST_DAYS = 3, RESAVE_FRESH_DAYS = 20;
 const ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const plus = (d, n) => new Date(Date.parse(d + 'T00:00:00Z') + n * 864e5).toISOString().slice(0, 10);
@@ -57,6 +66,47 @@ export function ownerExpiries({ src, reviews, operators, shots }) {
   return out.sort((a, b) => a.until < b.until ? -1 : a.until > b.until ? 1 : a.id < b.id ? -1 : 1);
 }
 
+// the build gate of the repository copies the server refreshes (pull): the first day after which a deploy stops
+export function repoGate({ src, operators }) {
+  const rows = [];
+  const add = (set, slug, d, max) => { if (d && !isOwnerDoc(d) && DAY.test(d.fetched || '')) rows.push({ set, slug, fetched: d.fetched, until: docUntil(d, max) }); };
+  for (const r of src.registries) for (const [slug, d] of Object.entries(r.docs)) add('registry ' + r.id, slug, d, r.maxAgeDays);
+  for (const [slug, d] of Object.entries(src.provinces.docs || {})) add('provinces', slug, d, src.provinces.maxAgeDays);
+  for (const [slug, d] of Object.entries(src.rg.docs || {})) add('help package', slug, d, src.rg.maxAgeDays);
+  if (operators) for (const [slug, d] of Object.entries(operators.docs || {})) if (d.official) add('operators', slug, d, operators.maxAgeDays);
+  if (!rows.length) return null;
+  rows.sort((a, b) => a.until < b.until ? -1 : a.until > b.until ? 1 : a.slug < b.slug ? -1 : 1);
+  const first = rows[0], same = rows.filter(x => x.until === first.until).length;
+  return { id: 'repo-gate', kind: 'repo', what: 'repository copies of the pages our server checks: ' + rows.length + ', oldest saved ' + first.fetched + ' (' + first.set + ' ' + first.slug + (same > 1 ? ' and ' + (same - 1) + ' more' : '') + '); deploys stop after ' + first.until + ' - bash tools/feeds-server.sh casaslegales pull --write, npm test, commit, sync, deploy', until: first.until, warnDays: GATE_WARN_DAYS };
+}
+
+// the licence lists only the owner can save, with the probe finding of listas.json for each
+export function resaveList(src, today, listas) {
+  const L = (listas && listas.docs) || {}, out = [];
+  for (const r of src.registries) {
+    const own = Object.entries(r.docs).filter(([, d]) => isOwnerDoc(d) && DAY.test(d.fetched || ''));
+    if (!own.length) continue;
+    const oldest = own.map(([, d]) => d.fetched).sort()[0];
+    if (days(oldest, today) < RESAVE_FRESH_DAYS) continue;
+    const pr = listDocs(r).map(x => L[x.doc] && L[x.doc].probe).find(Boolean) || null;
+    out.push({ id: r.id, regulator: r.regulator && r.regulator.short || r.id, argentina: JSON.stringify(r).includes('outside Argentina'),
+      docs: own.map(([slug, d]) => ({ slug, url: d.url, fetched: d.fetched, until: docUntil(d, r.maxAgeDays) })), probe: pr && pr.on ? { result: pr.result, on: pr.on, reason: pr.reason || '' } : null });
+  }
+  return out;
+}
+// prev: { month, on } of the last run -> { state, alert | null }
+export function resaveAlert(today, list, prev) {
+  const month = today.slice(0, 7), on = prev && prev.month === month && DAY.test(prev.on || '') ? prev.on : today;
+  const state = { month, on };
+  if (!list.length || days(on, today) >= RESAVE_LIST_DAYS) return { state, alert: null };
+  const docs = list.flatMap(r => r.docs.map(d => ({ r, d })));
+  const text = 'casaslegales monthly: save again from your Chrome the ' + list.length + ' licence lists our server cannot download (' + list.map(r => r.id).join(', ') + '): ' +
+    docs.map(({ r, d }) => d.slug + ' ' + short(d.url) + (r.argentina ? ' (from Argentina)' : '') + ', saved ' + d.fetched).join('; ') + '. How: docs/reference/owner-saves/README.md. Server probe: ' +
+    (list.map(r => r.id + ' ' + (r.probe ? r.probe.result + ' on ' + r.probe.on : 'not yet')).join('; ')) + '.';
+  const params = { n: list.length, items: docs.map(({ r, d }) => ({ name: d.slug + ' ' + short(d.url) + (r.argentina ? ' (AR)' : ''), until: d.until })), probe: list.map(r => ({ name: r.id + ' (' + r.regulator + ')', result: r.probe ? r.probe.result : 'none', on: r.probe ? r.probe.on : '' })) };
+  return { state, alert: { id: 'resave-' + month, text: text.slice(0, 3800), params } };
+}
+
 // listas: data of listas.json (its expiries name pages the server checks; one that is not "ok" needs a person too)
 export function reminder(today, own, listas) {
   const server = ((listas && listas.expiries) || []).map(x => ({ ...x, kind: 'server', state: listas.docs && listas.docs[x.id] ? listas.docs[x.id].state : '?' }));
@@ -93,9 +143,11 @@ export default {
     if (!raw.inputs.src.registries.length) throw new Error('plazos: no registries synced');
     ownerExpiries(raw.inputs);
   },
-  compute(raw) {
-    const expiries = ownerExpiries(raw.inputs);
-    const r = reminder(raw.today, expiries, raw.listas);
-    return { count: expiries.length, reminderDays: REMINDER_DAYS, expiries, alerts: r ? [r] : [] };
+  compute(raw, prev) {
+    const own = ownerExpiries(raw.inputs), gate = repoGate(raw.inputs);
+    const expiries = gate ? [...own, gate] : own;
+    const r = reminder(raw.today, own, raw.listas);
+    const rs = resaveAlert(raw.today, resaveList(raw.inputs.src, raw.today, raw.listas), prev && prev.resave);
+    return { count: expiries.length, reminderDays: REMINDER_DAYS, gate: gate ? gate.until : null, expiries, resave: rs.state, alerts: [...(r ? [r] : []), ...(rs.alert ? [rs.alert] : [])] };
   },
 };

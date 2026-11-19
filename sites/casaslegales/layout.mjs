@@ -99,12 +99,18 @@ export function page(h, p, body) {
     '<nav aria-label="Pie">' + links(h, p.help ? FOOT.filter(f => !f[2]) : FOOT, p.path) + '</nav>' +
     (p.help ? '<p><b class="rl-18">18+</b> Los juegos de apuestas son solo para mayores de 18 años.</p>' : helpBlock(h, p)) +
     '<p class="rl-fine">casaslegales.com · datos oficiales revisados el ' + h.fmtDate(h.checked) + ' · redacción independiente, sin acuerdos con operadores</p></footer>';
-  const data = '<script type="application/json" id="rl-data">' + h.jsonScript(h.clientData()) + '</script>';
+  const data = '<script type="application/json" id="rl-data">' + h.jsonScript(pageData(h.clientData(), body)) + '</script>';
   const js = '<script type="module" src="' + h.asset('ui.js') + '"></script>';
   return '<!doctype html><html lang="' + h.site.htmlLang + '"><head>' + head + '</head><body' + (p.help ? ' data-calma' : '') + '>' +
     '<a class="rl-skip" href="#main">Saltar al contenido</a>' + header + '<main class="rl-main" id="main">' + body + '</main>' + footer + data + js + '</body></html>';
 }
 
+// a page without the interactive map (data-rl-map) only needs what the footer help line reads: name and line of the provinces
+// that have one (ui.js footerLine; page weight)
+export function pageData(d, body) {
+  if (!d || body.includes('data-rl-map')) return d;
+  return { j: Object.fromEntries(Object.entries(d.j).filter(([, v]) => v.l).map(([id, v]) => [id, { n: v.n, l: v.l }])) };
+}
 // Data for the browser (sites/casaslegales/client/ui.js): per jurisdiction name, count, regulator, date, help line, page; UI words.
 export function clientData(h) {
   const j = {};

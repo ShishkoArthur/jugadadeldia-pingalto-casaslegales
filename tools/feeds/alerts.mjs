@@ -98,6 +98,14 @@ const PREP = {
     const steps = ['owner', 'server', 'review', 'operators'].map(g).filter(Boolean);
     return { first: fmtDay(p.first), steps: H(steps.length ? steps.join('\n') + '\n' + fill(T.templates.reminder_end) : fill(T.templates.reminder_end) + (p.raw ? '\n' + esc(p.raw) : '')) };
   },
+  resave_monthly(p, T) {
+    const pr = (Array.isArray(p.probe) ? p.probe : []).map(x => fill(T.templates['resave_probe_' + x.result] || T.templates.resave_probe_none, { name: x.name, on: fmtDay(x.on) }));
+    return { n: p.n || 0, items: H(list(T, Array.isArray(p.items) ? p.items : [], 20)), probe: pr.length ? pr.join('; ') : fill(T.templates.resave_probe_none, { name: '-' }) };
+  },
+  access_changed: p => ({ host: p.host || '', kind: p.kind || '', written: fmtDay(p.written), observed: p.observed || '', since: fmtDay(p.since), raw: String(p.raw || '').slice(0, 300) }),
+  access_ok: p => ({ host: p.host || '' }),
+  expiry_repo_gate_soon: p => ({ until: fmtDay(p.until), days: p.days === undefined ? '' : p.days }),
+  expiry_repo_gate: p => ({ until: fmtDay(p.until) }),
   expiry_soon: p => ({ until: fmtDay(p.until) }),
   expiry_expired: p => ({ until: fmtDay(p.until) }),
   expiry_lotba_programa: p => ({ until: fmtDay(p.until) }),
@@ -141,6 +149,7 @@ const RE = {
   held: /^price (\S+) of (\S+) held back \(([\s\S]*)\); the last good one stays(?: \(([^,]*), until (\S+)\))?$/,
   cited: /^LOTBA (\S+) (\S+): cited values not found any more: ([\s\S]*?) \(the site keeps/,
   reminder: /expires on (\d\d)\.(\d\d)\.(\d{4}) \((\d+) days\)/,
+  access: /^operator address (\S+) no longer behaves as its page says \((\w+), written (\S+)\): the server finds (\w+) since (\S+) \(([^)]*)\)/,
 };
 function noticeProblem(x) {
   const id = x.id, text = x.text || '', base = { key: 'notice:' + id, group: 'notice:' + id, scope: { feed: x.feed } };
@@ -153,6 +162,8 @@ function noticeProblem(x) {
   }
   if (id.startsWith('held-') && (m = RE.held.exec(text))) return { ...base, tpl: 'price_held', ok: 'price_ok', params: { price: m[1], ym: m[2], raw: m[3], value: m[4] || '', until: m[5] || '' } };
   if (x.feed === 'precios' && id.startsWith('changed-') && (m = RE.cited.exec(text))) return { ...base, tpl: 'cited_changed', ok: 'cited_ok', params: { doc: m[1], ym: m[2], list: m[3] } };
+  if (id.startsWith('resave-') && x.params && typeof x.params === 'object') return { ...base, tpl: 'resave_monthly', ok: null, digest: false, params: { n: x.params.n, items: x.params.items, probe: x.params.probe } };
+  if (id.startsWith('access-') && (m = RE.access.exec(text))) return { ...base, tpl: 'access_changed', ok: 'access_ok', params: { host: m[1], kind: m[2], written: m[3], observed: m[4], since: m[5], raw: m[6] } };
   if (id.startsWith('reminder-')) {
     const p = x.params && typeof x.params === 'object' ? x.params : null;
     if (p && p.first) return { ...base, tpl: 'reminder', ok: null, digest: false, params: { first: p.first, days: p.days, owner: p.owner, server: p.server, review: p.review, operators: p.operators } };
@@ -172,7 +183,7 @@ export function problemsOf(health) {
   for (const x of health.notices || []) out.push(noticeProblem(x));
   for (const x of health.expiries || []) {
     if (x.state !== 'soon' && x.state !== 'expired') continue;
-    const tpl = x.state === 'soon' ? 'expiry_soon' : x.id === 'lotba-programa' ? 'expiry_lotba_programa' : x.id === 'lotba-precios' ? 'expiry_lotba_precios' : 'expiry_expired';
+    const tpl = x.id === 'repo-gate' ? (x.state === 'soon' ? 'expiry_repo_gate_soon' : 'expiry_repo_gate') : x.state === 'soon' ? 'expiry_soon' : x.id === 'lotba-programa' ? 'expiry_lotba_programa' : x.id === 'lotba-precios' ? 'expiry_lotba_precios' : 'expiry_expired';
     out.push({ key: 'expiry:' + x.id + ':' + x.state, group: 'expiry:' + x.id, tpl, ok: 'expiry_ok', digest: x.state !== 'soon', scope: { feed: x.feed }, params: { id: x.id, until: x.until, days: x.daysLeft, raw: x.what } });
   }
   return out;
