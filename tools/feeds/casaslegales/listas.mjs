@@ -11,6 +11,13 @@
 //   - something changed (a licensee added or removed, a quote gone): nothing is published, the last good date stays, the fresh copy
 //     is kept in state/docs/listas-pending/ and an alert with the difference goes to Telegram (once per difference);
 //   - unreachable: the last good date stays; expiries show the day the copy turns too old (revisado + maxAgeDays).
+// The site shows a dated line next to a copy whose page changed ("hit": the difference names that document) or could not be
+// checked (client ui.js). Owner copies are never replaced by the server, but the list page of an owner registry gets a light
+// probe on the same monthly run (probeFetch, probeOwner): only when the host is not in AI_BLOCKED_HOSTS and robots.txt lets us
+// and every AI crawler in, one GET of the list page, the list pattern of the registry run on it and the addresses compared with
+// the registry file. Same: nothing changes (docs[key].probe records it); different: the copy turns "changed" like any other and
+// alerts; robots, unreachable or a page where the pattern finds nothing: recorded in probe only (the owner's monthly reminder
+// in plazos names them).
 // The repository copies are refreshed from the server ones by: bash tools/feeds-server.sh casaslegales pull (pull-apply.mjs).
 import { createHash } from 'node:crypto';
 import { writeFileSync, mkdirSync, renameSync, mkdtempSync, rmSync } from 'node:fs';
@@ -19,7 +26,9 @@ import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { loadRegistries, checkRegistry, brandNames, loadRg } from '../../lib/sources.mjs';
 import { checkProvinces, loadProvinces } from '../../lib/provsources.mjs';
-import { isOwnerDoc, docMaxAge } from '../../lib/ownercopy.mjs';
+import { isOwnerDoc, docMaxAge, isAiBlocked } from '../../lib/ownercopy.mjs';
+import { hostKey } from '../../../engine/registry.mjs';
+import { stripComments } from '../../../engine/text.mjs';
 import { citations, hasQuote, normalize, visibleText } from '../../verify-rg.mjs';
 import { robotsVerdict } from './robots-txt.mjs';
 import { PDFTOTEXT } from '../../../engine/pdf.mjs';
@@ -35,12 +44,14 @@ export const fileKey = key => key.replace(':', '_');
 // findings of a registry belong to the whole registry (one check of all its pages); the other sets are checked page by page
 export const scopeOf = t => t.set.startsWith('registry:') ? t.set : t.key;
 
-// every saved document of the three sets: { key, set, slug, url, ext, maxAge, owner, fetched, sha256 }
+// the documents of a registry that hold its list (list.doc and list.more), each with its pattern
+export const listDocs = r => r.list ? [{ doc: r.list.doc, pattern: r.list.pattern }, ...(r.list.more || [])] : [];
+// every saved document of the three sets: { key, set, slug, url, ext, maxAge, owner, fetched, sha256, list }
 export function targets(src = loadSources()) {
   const out = [];
   for (const r of src.registries) {
-    const owner = Object.values(r.docs).some(isOwnerDoc);
-    for (const [slug, d] of Object.entries(r.docs)) out.push({ key: slug, set: 'registry:' + r.id, slug, url: d.url, ext: extname(d.file) || '.html', maxAge: docMaxAge(d, r.maxAgeDays), owner, fetched: d.fetched, sha256: d.sha256 });
+    const owner = Object.values(r.docs).some(isOwnerDoc), lists = new Set(listDocs(r).map(x => x.doc));
+    for (const [slug, d] of Object.entries(r.docs)) out.push({ key: slug, set: 'registry:' + r.id, slug, url: d.url, ext: extname(d.file) || '.html', maxAge: docMaxAge(d, r.maxAgeDays), owner, fetched: d.fetched, sha256: d.sha256, list: lists.has(slug) });
   }
   for (const [slug, d] of Object.entries(src.provinces.docs || {})) out.push({ key: 'pv:' + slug, set: 'provinces', slug, url: d.url, ext: extname(d.file) || '.html', maxAge: docMaxAge(d, src.provinces.maxAgeDays), owner: isOwnerDoc(d), fetched: d.fetched, sha256: d.sha256 });
   for (const [slug, d] of Object.entries(src.rg.docs || {})) out.push({ key: 'rg:' + slug, set: 'rg', slug, url: d.url, ext: extname(d.file) || '.html', maxAge: docMaxAge(d, src.rg.maxAgeDays), owner: isOwnerDoc(d), fetched: d.fetched, sha256: d.sha256 });
@@ -90,6 +101,24 @@ export function registryDiff(errs) {
   }
   return { added, removed, other };
 }
+// the documents of a registry a difference is about: the list documents for added or removed sites, any document a finding names
+export function hitDocs(r, diff) {
+  const hit = new Set(diff.added.length || diff.removed.length ? listDocs(r).map(x => x.doc) : []);
+  for (const o of diff.other) for (const slug of Object.keys(r.docs)) if ((' ' + o + ' ').replace(/[:,]/g, ' ').includes(' ' + slug + ' ')) hit.add(slug);
+  if (!hit.size && r.list) hit.add(r.list.doc);
+  return hit;
+}
+
+// the light probe of an owner registry: the addresses its list pattern finds on the fresh list pages against the registry file
+// -> { result: 'same' | 'changed' | 'unknown', added, removed }
+export function probeList(r, pages) {
+  const found = new Set();
+  for (const x of listDocs(r)) for (const m of stripComments(pages[x.doc] || '').matchAll(new RegExp(x.pattern, 'g'))) found.add(hostKey(m.groups.host));
+  if (!found.size) return { result: 'unknown', added: [], removed: [] };
+  const mine = new Set((r.licensees || []).map(l => l.host));
+  const added = [...found].filter(h => !mine.has(h)).sort(), removed = [...mine].filter(h => !found.has(h)).sort();
+  return { result: added.length || removed.length ? 'changed' : 'same', added, removed };
+}
 
 function writeAtomic(file, buf) {
   mkdirSync(join(file, '..'), { recursive: true });
@@ -104,20 +133,25 @@ export function judge(raw, prevData, docsDir) {
   const docs = {}, alerts = [], changes = [];
   const base = t => {
     const p = P[t.key] && P[t.key].url === t.url ? P[t.key] : null;
-    return { set: t.set, url: t.url, state: t.owner ? 'owner' : p ? p.state : 'new', revisado: maxDay(p && p.revisado, t.fetched), sha256: p && p.sha256 || t.sha256, ...(p && p.since ? { since: p.since, lastTry: p.lastTry, reason: p.reason } : {}) };
+    // an owner copy is "owner" again on every probe run; between them a probe finding stays
+    const ownerKeep = t.owner && !raw.probe && p && p.state === 'changed';
+    return { set: t.set, url: t.url, ...(t.list ? { list: true } : {}), state: t.owner && !ownerKeep ? 'owner' : p ? p.state : 'new', revisado: maxDay(p && p.revisado, t.fetched), sha256: p && p.sha256 || t.sha256,
+      ...(p && p.since ? { since: p.since, lastTry: p.lastTry, reason: p.reason } : {}), ...(p && p.hit && (!t.owner || ownerKeep) ? { hit: true } : {}), ...(t.owner && p && p.probe ? { probe: p.probe } : {}) };
   };
   for (const t of list) docs[t.key] = base(t);
   const touched = t => !t.owner && (!only || only.has(t.key));
-  const ok = t => { const f = fresh[t.key]; docs[t.key] = { set: t.set, url: t.url, state: 'ok', revisado: today, sha256: sha256(f.buf), bytes: f.buf.length }; if (docsDir) writeAtomic(join(docsDir, 'listas', fileKey(t.key) + t.ext), f.buf); };
+  const ok = t => { const f = fresh[t.key]; docs[t.key] = { set: t.set, url: t.url, ...(t.list ? { list: true } : {}), state: 'ok', revisado: today, sha256: sha256(f.buf), bytes: f.buf.length }; if (docsDir) writeAtomic(join(docsDir, 'listas', fileKey(t.key) + t.ext), f.buf); };
+  // since: the first day of this state (kept across runs, also for an owner copy whose base state is "owner")
   const fail = (t, state, reason) => {
-    const was = docs[t.key];
-    docs[t.key] = { ...was, state, since: was.state === state && was.since ? was.since : today, lastTry: today, reason: String(reason).slice(0, 200) };
+    const { hit, ...was } = docs[t.key], p = P[t.key] && P[t.key].url === t.url ? P[t.key] : null;
+    const since = was.state === state && was.since ? was.since : p && p.state === state && p.since ? p.since : today;
+    docs[t.key] = { ...was, state, since, lastTry: today, reason: String(reason).slice(0, 200) };
     if (state === 'robots') alerts.push({ id: 'robots-' + t.key, scope: scopeOf(t), text: t.url + ' now keeps AI crawlers or us out (' + reason + '): our server stops fetching it; the owner saves it from his browser (docs/reference/owner-saves/README.md), then mark it pendingOwnerCopy' });
   };
-  const changed = (t, diff) => {
-    const f = fresh[t.key];
+  const changed = (t, diff, hit = true, f = fresh[t.key]) => {
     if (docsDir && f && f.buf) writeAtomic(join(docsDir, 'listas-pending', fileKey(t.key) + t.ext), f.buf);
     fail(t, 'changed', [diff.added.length ? 'added ' + diff.added.join(', ') : '', diff.removed.length ? 'removed ' + diff.removed.join(', ') : '', diff.other.slice(0, 2).join('; ')].filter(Boolean).join('; '));
+    if (hit) docs[t.key].hit = true;
   };
   const blocked = t => { const f = fresh[t.key]; if (!f) { fail(t, 'unreachable', 'not fetched'); return true; } if (f.robots) { fail(t, 'robots', f.robots); return true; } if (f.error) { fail(t, 'unreachable', f.error); return true; } return false; };
   const report = (t, label, diff) => {
@@ -126,14 +160,28 @@ export function judge(raw, prevData, docsDir) {
     alerts.push({ id, scope: scopeOf(t), text: label + ' changed on the official page; the site keeps the last checked data. ' + [diff.added.length ? 'Added: ' + diff.added.join(', ') + '.' : '', diff.removed.length ? 'Removed: ' + diff.removed.join(', ') + '.' : '', diff.other.length ? 'Other: ' + diff.other.slice(0, 3).join('; ').slice(0, 400) + '.' : ''].filter(Boolean).join(' ') + ' Fresh copy: state/docs/listas-pending on the server; fix the data by hand after reading the page (docs/MAINTENANCE.md).' });
   };
 
+  function probeOwner(r, ts) {
+    const lts = ts.filter(t => t.list), got = lts.map(t => raw.probe[t.key]);
+    if (!lts.length || got.some(x => !x)) return;
+    const stop = got.find(x => !x.buf);
+    const res = stop ? { result: stop.robots ? 'robots' : 'unreachable', reason: String(stop.robots || stop.error).slice(0, 160) }
+      : probeList(r, Object.fromEntries(lts.map(t => [t.slug, raw.probe[t.key].buf.toString('utf8')])));
+    const probe = { on: today, result: res.result, ...(res.reason ? { reason: res.reason } : {}), ...(res.result === 'changed' ? { added: res.added, removed: res.removed } : {}) };
+    for (const t of lts) docs[t.key] = { ...docs[t.key], probe };
+    if (res.result !== 'changed') return;
+    const diff = { added: res.added, removed: res.removed, other: [] };
+    for (const t of lts) changed(t, diff, true, raw.probe[t.key]);
+    report(lts[0], 'registry ' + r.id + ' (owner copy)', diff);
+  }
   const names = brandNames();
   for (const r of src.registries) {
     const ts = list.filter(t => t.set === 'registry:' + r.id);
-    if (!ts.length || ts[0].owner || !ts.some(touched)) continue;
+    if (ts.length && ts[0].owner) { if (raw.probe) probeOwner(r, ts); continue; }
+    if (!ts.length || !ts.some(touched)) continue;
     const bad = ts.filter(blocked);
     if (bad.length) { for (const t of ts.filter(t => !bad.includes(t))) docs[t.key] = { ...docs[t.key], lastTry: today }; continue; }
     const errs = checkRegistry(r, { today, names, raw: slug => fresh[slug].buf.toString('utf8'), fresh: false });
-    if (errs.length) { const diff = registryDiff(errs); ts.forEach(t => changed(t, diff)); report(ts[0], 'registry ' + r.id, diff); }
+    if (errs.length) { const diff = registryDiff(errs), hit = hitDocs(r, diff); ts.forEach(t => changed(t, diff, hit.has(t.slug))); report(ts[0], 'registry ' + r.id, diff); }
     else ts.forEach(ok);
   }
   for (const t of list.filter(t => t.set === 'provinces' && touched(t))) {
@@ -163,6 +211,23 @@ export function judge(raw, prevData, docsDir) {
   return { docs, counts, changes, alerts, expiries };
 }
 
+// the list pages of owner registries (probeOwner): never a host of AI_BLOCKED_HOSTS, never past robots.txt, one GET each
+export async function probeFetch(ctx, list, robots = {}) {
+  const out = {};
+  for (const t of list.filter(t => t.owner && t.list && t.set.startsWith('registry:'))) {
+    if (isAiBlocked(t.url)) { out[t.key] = { robots: 'robots.txt keeps AI crawlers out (AI_BLOCKED_HOSTS)' }; continue; }
+    const u = new URL(t.url);
+    if (!(u.origin in robots)) robots[u.origin] = await robotsOf(ctx, u.origin);
+    const rb = robots[u.origin];
+    if (rb.error) { out[t.key] = { error: 'robots.txt unreachable: ' + rb.error }; continue; }
+    const v = robotsVerdict(rb.text, u.pathname + u.search);
+    if (!v.ok) { out[t.key] = { robots: v.why }; continue; }
+    try { out[t.key] = { buf: (await ctx.getBytes(t.url, { ttlHours: 20, timeoutMs: 25000 })).buf }; }
+    catch (e) { out[t.key] = { error: String(e && e.message || e).slice(0, 160) }; }
+  }
+  return out;
+}
+
 export default {
   name: 'listas',
   cadence: 'run',
@@ -185,6 +250,7 @@ export default {
       try { const r = await ctx.getBytes(t.url, { ttlHours: 20, timeoutMs: 40000 }); raw.fresh[t.key] = { buf: r.buf }; }
       catch (e) { raw.fresh[t.key] = { error: String(e && e.message || e).slice(0, 160) }; }
     }
+    if (!due.only) raw.probe = await probeFetch(ctx, list, robots);
     return raw;
   },
   validate(raw) {

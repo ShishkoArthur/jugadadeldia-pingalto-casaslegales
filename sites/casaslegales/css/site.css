@@ -118,6 +118,7 @@ html:not(.js) .rl-lang{display:grid}
 .rl-law article{background:var(--pa);border:1px solid var(--ln);border-radius:20px;padding:18px;display:grid;gap:10px;align-content:start}
 .rl-law p{font-size:18px;font-weight:500}
 .rl-src{font:500 13px/1.45 var(--m);color:var(--mu)}
+.rl-rvx{color:var(--ct);font-weight:600}
 .rl-src a{color:var(--mu)}
 .rl-q{border-left:5px solid var(--t1);padding:4px 0 4px 14px;font-size:18px;font-weight:500}
 .rl-q cite{display:block;font:500 13px/1.45 var(--m);color:var(--mu);font-style:normal;margin-top:6px;overflow-wrap:anywhere}

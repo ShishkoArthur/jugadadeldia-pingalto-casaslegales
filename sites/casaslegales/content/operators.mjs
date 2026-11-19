@@ -3,6 +3,12 @@
 // Licences come only from the verified registries; quotes, screenshots and block pages from data/sources/operators/operators.json
 // and data/shots/shots.json. "check" lines are conditions on the verified data that the copy relies on: the build stops when
 // one is false (for example a brand that leaves a list).
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { ROOT } from '../../../tools/env.mjs';
+
+// access (why a page has no own capture) and dead addresses: data/sources/operators/access.json, rechecked monthly by the server
+export const ACCESS_DATA = JSON.parse(readFileSync(join(ROOT, 'data/sources/operators/access.json'), 'utf8'));
 export const OPS = [
   {
     slug: 'betsson', brand: 'betsson',
@@ -100,9 +106,8 @@ export const OPS = [
     check: [['caba', 'casinobuenosairesonline.bet.ar'], ['buenos-aires', null], ['cordoba', null], ['la-rioja', null], ['neuquen', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],
     angle: 'Solo la Ciudad',
   },
-  // brands added 2026-11-03 (owner: every brand of a verified list has its page). access: why there is no own capture
-  // (robots = robots.txt disallows AI agents; botcheck = robots.txt and site behind a bot check; tls / dns = no connection;
-  // geo = the site answers with an access-restricted page). Nothing was bypassed.
+  // brands added 2026-11-03 (owner: every brand of a verified list has its page). access (why there is no own capture) comes
+  // from data/sources/operators/access.json (robots, botcheck, tls, dns, geo). Nothing was bypassed.
   {
     slug: 'casino-club', brand: 'casinoclub',
     title: 'Casino Club Online: licencias en Mendoza y Río Negro',
@@ -111,7 +116,6 @@ export const OPS = [
     lead: 'Casino Club Online figura en dos listas oficiales, la del IPJyC de Mendoza y la de la Lotería de Río Negro, y las dos nombran la misma dirección: casinoclubonline.bet.ar. Una sola dirección, dos reguladores distintos.',
     check: [['mendoza', 'casinoclubonline.bet.ar'], ['rio-negro', 'casinoclubonline.bet.ar'], ['buenos-aires', null], ['caba', null], ['cordoba', null], ['la-rioja', null], ['neuquen', null], ['santa-fe', null]],
     angle: 'Una dirección, dos reguladores',
-    access: { kind: 'botcheck', hosts: ['casinoclubonline.bet.ar'], date: '2026-11-03' },
     related: { brand: 'betfun', quote: 'betfun-titular', title: '¿Y en la Ciudad?', text: 'Casino Club Online no figura en la lista de la Lotería de la Ciudad. El pie de página de {b}, que sí figura en esa lista, nombra a una «CASINO CLUB S.A.» entre las empresas de su unión transitoria. El nombre coincide, pero no verificamos que sea la misma empresa, y eso no pone a casinoclubonline.bet.ar en la lista porteña.' },
   },
   {
@@ -123,7 +127,6 @@ export const OPS = [
     check: [['la-rioja', 'casinosmacgroup.bet.ar'], ['neuquen', 'casinosmacgroup.bet.ar'], ['buenos-aires', null], ['caba', null], ['cordoba', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],
     labels: [['neuquen', 'Casino MAC Group']],
     angle: 'Dos provincias, una dirección',
-    access: { kind: 'robots', hosts: ['casinosmacgroup.bet.ar'], date: '2026-11-03' },
   },
   {
     slug: 'super7', brand: 'super7',
@@ -133,7 +136,6 @@ export const OPS = [
     lead: 'Super7 figura en dos listas oficiales con dos direcciones distintas: en la de la Ciudad, super7.com.ar, que no termina en .bet.ar; en la de Mendoza, mdz.super7.bet.ar, con el subdominio de la provincia adelante.',
     check: [['caba', 'super7.com.ar'], ['mendoza', 'mdz.super7.bet.ar'], ['buenos-aires', null], ['cordoba', null], ['la-rioja', null], ['neuquen', null], ['rio-negro', null], ['santa-fe', null]],
     angle: 'Dos listas, dos terminaciones',
-    access: { kind: 'tls', hosts: ['super7.com.ar', 'mdz.super7.bet.ar'], date: '2026-11-03' },
   },
   {
     slug: 'stake', brand: 'stake',
@@ -145,7 +147,6 @@ export const OPS = [
     check: [['buenos-aires', 'pba.stake.bet.ar'], ['caba', null], ['cordoba', null], ['la-rioja', null], ['neuquen', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],
     lookalikes: ['stake.com', 'stake.bet.ar'],
     angle: 'Solo Provincia, con «pba.»',
-    access: { kind: 'botcheck', hosts: ['pba.stake.bet.ar'], date: '2026-11-03' },
   },
   {
     slug: 'betfun', brand: 'betfun',
@@ -186,7 +187,6 @@ export const OPS = [
     lead: 'ARBET figura en una sola de las listas que revisamos, la de plataformas autorizadas de AJALAR, en La Rioja, con la dirección arbet.bet.ar. Cuando quisimos abrirla, la dirección no respondía.',
     check: [['la-rioja', 'arbet.bet.ar'], ['buenos-aires', null], ['caba', null], ['cordoba', null], ['neuquen', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],
     angle: 'Solo La Rioja',
-    access: { kind: 'dns', hosts: ['arbet.bet.ar'], date: '2026-11-03' },
   },
   {
     slug: 'mitesoro', brand: 'mitesoro',
@@ -218,7 +218,6 @@ export const OPS = [
     lead: 'La Neuquina Online no está en la tabla de casinos online del IJAN: el instituto la nombra aparte, en su página «Juego legal», entre las plataformas autorizadas en Neuquén. Su dirección es laneuquinaonline.bet.ar.',
     check: [['neuquen', 'laneuquinaonline.bet.ar'], ['buenos-aires', null], ['caba', null], ['cordoba', null], ['la-rioja', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],
     angle: 'Aparte de la tabla de casinos',
-    access: { kind: 'geo', hosts: ['laneuquinaonline.bet.ar'], date: '2026-11-03' },
   },
   {
     slug: 'casino-magic-online', brand: 'casinomagic',
@@ -230,7 +229,6 @@ export const OPS = [
     check: [['neuquen', 'casinomagiconline.bet.ar'], ['buenos-aires', null], ['caba', null], ['cordoba', null], ['la-rioja', null], ['rio-negro', null], ['santa-fe', null], ['mendoza', null]],
     labels: [['neuquen', 'Casino Magic Online']],
     angle: 'Solo Neuquén',
-    access: { kind: 'botcheck', hosts: ['casinomagiconline.bet.ar'], date: '2026-11-03' },
   },
   {
     slug: 'maverick-online', brand: 'maverick',
@@ -286,9 +284,13 @@ export const OPS = [
     check: [['santa-fe', 'citycenteronline.bet.ar'], ['buenos-aires', null], ['caba', null], ['cordoba', null], ['la-rioja', null], ['neuquen', null], ['rio-negro', null], ['mendoza', null]],
     angle: 'Solo Santa Fe',
     regQuotes: [['santa-fe', 'citycenter', 'Lotería de Santa Fe, sobre el City Center Rosario'], ['santa-fe', 'citycenteronline', 'Lotería de Santa Fe, sobre el City Center Rosario']],
-    access: { kind: 'botcheck', hosts: ['citycenteronline.bet.ar'], date: '2026-11-03' },
   },
 ];
+for (const [slug, a] of Object.entries(ACCESS_DATA.operators)) {
+  const o = OPS.find(x => x.slug === slug);
+  if (!o) throw new Error('access.json: no operator page ' + slug);
+  o.access = a;
+}
 const SLUGS = Object.fromEntries(OPS.map(o => [o.brand, o.slug]));
 export const slugOf = brand => { if (!SLUGS[brand]) throw new Error('brand ' + brand + ' has no operator page in content/operators.mjs'); return SLUGS[brand]; };
 export const opPath = brand => '/operador/' + slugOf(brand);

@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { OPS, slugOf } from '../content/operators.mjs';
 import { opData, quotesOf, shotsOf, docOf, quoteById } from '../content/opdata.mjs';
 import { licenceMap, mapLegend, anat, opQuote, shotFigure, codeOf } from './opparts.mjs';
-import { src, quote, sectionHead, brandLink, officialLinks } from './parts.mjs';
+import { src, quote, sectionHead, brandLink, officialLinks, rvAttr, acAttr } from './parts.mjs';
 import { help } from './provincia.mjs';
 import { THUMB, thumbName, hasThumb } from '../content/thumbs.mjs';
 import { ROOT } from '../../../tools/env.mjs';
@@ -73,7 +73,7 @@ function mapSection(h, o, row) {
     const doc = h.doc(r.list.doc);
     return '<li class="' + (c ? 'rl-in' : 'rl-out') + '"><div class="rl-jr"><span class="rl-tag">' + h.esc(codeOf(r.id)) + '</span><b>' + h.esc(h.rg.prov(r.id).name) + '</b></div>' +
       (c ? anat(h, c.host) + (c.ref ? '<p class="rl-ref">Autorizado por ' + h.esc(c.ref) + '</p>' : '') + (r.id === 'santa-fe' ? '<p class="rl-ref">En la lista: ' + h.esc(joinY(sfeCats(h)[c.host])) + '</p>' : '') + (h.built('/operador/' + o.slug + '/' + r.id) ? '<p><a href="' + h.href('/operador/' + o.slug + '/' + r.id) + '">' + h.esc(row.name + ' en ' + h.rg.prov(r.id).name) + '</a></p>' : '') : '<p class="rl-none">No figura en esta lista (' + r.licensees.length + ' sitios).</p>') +
-      '<p class="rl-src">' + h.esc(r.regulator.short) + ' · <a href="' + h.esc(doc.url) + '" rel="noopener">' + h.esc(doc.host) + '</a> · copia del ' + h.fmtDate(doc.fetched) + '</p></li>';
+      '<p class="rl-src"' + rvAttr(h, r.list.doc, doc) + '>' + h.esc(r.regulator.short) + ' · <a href="' + h.esc(doc.url) + '" rel="noopener">' + h.esc(doc.host) + '</a> · copia del ' + h.fmtDate(doc.fetched) + '</p></li>';
   });
   // lists that do not name the brand: one compact card with their codes; each list, with its source, stays behind "Ver cada lista"
   const outs = h.regs.filter(r => !row.cells[r.id]), only = f => items.filter((x, i) => f(!!row.cells[h.regs[i].id])).join('');
@@ -148,7 +148,7 @@ function accessSection(h, o) {
   const a = o.access;
   return '<section class="rl-sec" id="capturas">' + sectionHead(h, 'Capturas propias', 'sin registrarnos, sin depositar') +
     '<div class="rl-box rl-miss"><h3>No pudimos ver su sitio</h3><p>Lo intentamos el ' + h.fmtDate(a.date) + ': ' + h.esc(accessReason(o)) + '. No usamos capturas ajenas, así que esta ficha no tiene imagen de su sitio. Lo que sí está verificado es la lista oficial de arriba.</p>' +
-    '<ul class="rl-misslist">' + a.hosts.map(x => '<li><span class="rl-host">' + h.esc(x) + '</span><span>' + h.fmtDate(a.date) + '</span></li>').join('') + '</ul></div></section>';
+    '<ul class="rl-misslist">' + a.hosts.map(x => '<li><span class="rl-host">' + h.esc(x) + '</span><span' + acAttr(h, x) + '>' + h.fmtDate(a.date) + '</span></li>').join('') + '</ul></div></section>';
 }
 
 function addressSection(h, o, row, all) {

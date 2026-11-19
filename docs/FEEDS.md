@@ -232,15 +232,43 @@
   `changed` — список или цитата изменились: **ничего не публикуется**, `revisado` остаётся прежним, свежая копия — в
   `state/docs/listas-pending/`, в Telegram — одно сообщение с разницей («Added: … Removed: …», id по хешу разницы — повтор не шлётся);
   `unreachable` — не открылась (`since`, `reason`); `robots`; `owner`. Сроки (`expiries`): `revisado + maxAgeDays` каждой страницы.
+  С 19.11: `list: true` у документов со списком реестра; `hit: true` у документов, о которых разница (добавлен/убран адрес → документы
+  списка; пропала цитата → документ, который она называет; `hitDocs`) — остальные документы того же реестра тоже `changed`, но без `hit`.
+- **Лёгкая проверка реестров владельца** (с 19.11, `probeFetch`/`probeOwner`, в том же месячном прогоне): Córdoba, Neuquén, Río Negro —
+  `AI_BLOCKED_HOSTS`, **ни одного запроса** (`probe.result: robots`); Santa Fe и Mendoza — robots.txt (нас и всех ИИ) → один GET страницы
+  списка → шаблон `list.pattern` реестра → адреса против файла реестра. `same` — ничего не меняется; `changed` — копия становится
+  `changed` (+ `hit`, сообщение «registry … (owner copy) changed»; владелец пересохраняет страницу); `unreachable` (гео-блок) / `unknown`
+  (шаблон ничего не нашёл в серверной вёрстке) — только `docs[<ключ>].probe`. HEAD/ETag/Last-Modified не годятся: у этих страниц их нет
+  (проверено 19.11, ipjyc.gob.ar — WordPress без ETag); 19.11 с машины разработки Mendoza открылась (`same`), Santa Fe — нет.
 - **Сайт:** даты на страницах — из сборки («copia guardada el …»); рядом с каждой копией, которую сервер перепроверил позже,
   браузер дописывает «· revisada el dd/mm/aaaa, sin cambios» (`client/ui.js` → `revisado()`, атрибуты `data-rv`/`data-rvd` у
   `src()`/`quote()` в `pages/parts.mjs`, `pdSrc`/`pdQuote` в `content/provdata.mjs`, колонка «Copia» в `/registro-de-fuentes` + строка
   «Revisión automática mensual …»). Пересборка на сервере не нужна (выбрано вместо схемы gambeteo `site-server.sh`: ни одной
-  серверной сборки, сайт = коммит).
+  серверной сборки, сайт = коммит). С 19.11 (аудит свежести) **молчать нельзя**: `changed` с `hit` → «· La lista oficial cambió el
+  dd/mm/aaaa; la estamos revisando.» (или «La página oficial…» не у документа списка), `unreachable`/`robots` → «· No pudimos revisar
+  la página oficial desde el dd/mm/aaaa.» (дата — `since`; копия сборки остаётся видна с её датой). `data-rv` есть и на всех
+  `/operador/<марка>` (карта лицензий, `pages/operador.mjs`). На `/en/` — английские строки: литералы `ui.js` переводит сборка из
+  `data/i18n/casaslegales-en.json` (`code`); новая строка в `ui.js` без перевода останавливает сборку. Ловушка: аргументы функции с
+  именем из `SKIP_CALL` (`add`, `get`, `set`, … в `tools/lib/i18n.mjs`) не переводятся — назвать иначе (`note`).
 - **В репозиторий** (чтобы гейт свежести пропустил следующую выкладку): `bash tools/feeds-server.sh casaslegales pull` (сухой прогон) →
   `pull --write` — берёт только `ok`-копии новее наших и только если байты совпадают с записанным sha256; меняет файл, `sha256`,
   `fetched` (= день проверки сервером) во всех наборах с тем же slug и адресом (реестр, провинции, помощь, операторы) → `npm test` → commit
   → `sync` → deploy. Делает агент при любой выкладке после ~февраля 2027 и в полугодовой проверке (`docs/MAINTENANCE.md`).
+
+## casaslegales — адреса операторов без своих скриншотов (`accesos`, раз в сутки, cadence `run`; в сеть — раз в месяц)
+- Источник — `data/sources/operators/access.json` (с 19.11; раньше было вписано руками в `content/operators.mjs` и `content/official.mjs`
+  `DEAD`, теперь оба читают этот файл): `operators.<slug>` — `kind` (robots / botcheck / tls / dns / geo), `hosts`, `date`; `dead` —
+  адреса из списков, чьё имя не резолвилось (нет кнопки «Ir al sitio oficial»).
+- Раз в 28 дней по каждому адресу: DNS (если имя не резолвится — ещё `www.` + имя: списки ссылаются на www) → TLS (рукопожатие на 443,
+  сертификат проверяется) → robots.txt (наш агент и все ИИ) → `HEAD /` **только** если robots.txt пускает всех. Итог `observed`:
+  dns / tls / robots / blocked (401/403/429/451/503) / open / error (таймаут, EAI_AGAIN — никогда не «изменение»). Сверка с `kind`
+  (`EXPECT`: botcheck = robots или blocked, geo = blocked или open). Не совпало → повтор через 3 дня; только второе совпадение
+  подтверждает (`confirmed`) → одно сообщение `access_changed` (🟡), пока не исправлено — в `health`.
+- **Сайт:** у дат этих адресов (`data-ac`: список «No pudimos ver su sitio», строка про мёртвый адрес у кнопок) браузер дописывает
+  «· revisado de nuevo el dd/mm/aaaa: sigue igual» или «· el dd/mm/aaaa respondió distinto; lo estamos revisando».
+- 19.11 с машины разработки все 9 адресов совпали с описанием (super7 ×2 — TLS ECONNRESET, arbet — ENOTFOUND, остальные — 403 / robots).
+- Исправление: проверить адрес руками, поправить `access.json` (если сайт открылся — снять скриншоты, `capture-shots.mjs`), `npm test`,
+  commit → `sync` → deploy.
 
 ## casaslegales — сроки того, что сервер обновить не может (`plazos`, раз в сутки, без сети)
 - Из синхронизированных JSON: копии владельца (реестры Córdoba, Neuquén, Río Negro, Santa Fe, Mendoza; провинция Salta; копии владельца в пакете
@@ -251,6 +279,15 @@
   ближайшие 60 дней, по группам: 1) сохранить из Chrome (адреса, до какого числа), 2) что сервер не смог обновить, 3) обзоры через
   Chrome + VPN AR, 4) копии и скриншоты операторов. id `reminder-<первый срок>` — раз на цикл; пока висит — `health` PROBLEMS.
   Отдельные сроки — `warnDays 0` (сообщение только в день истечения).
+- **Гейт сборки** (с 19.11, `repo-gate`, `warnDays 21`): самая старая `fetched` копий **в репозитории** страниц, которые сервер проверяет
+  сам (реестры, провинции, помощь, официальные страницы в `operators.json`; не копии владельца) + `maxAgeDays` набора (100) = последний
+  день, когда сборка проходит. Серверные копии при этом свежие, поэтому напоминание выше этот срок не видело. За 21 день — 🟡
+  `expiry_repo_gate_soon`, после — 🔴 `expiry_repo_gate`. Лечит агент: `pull --write` → `npm test` → commit → `sync` → deploy.
+  19.11.2026: гейт **09.02.2027** (копии пакета помощи от 01.11), предупреждение придёт 19.01.2027.
+- **Раз в месяц владельцу** (с 19.11, `resave-<ГГГГ-ММ>`, `resave_monthly`): пересохранить 5 списков, которые сервер скачать не может
+  (Córdoba, Neuquén, Río Negro — robots.txt против ИИ; Santa Fe, Mendoza — только из Аргентины): адреса, имена файлов, до какого числа
+  годна копия и что нашла лёгкая проверка `listas`. Висит 3 дня с первого запуска месяца; списки, сохранённые меньше 20 дней назад,
+  пропускаются. Как — `docs/reference/owner-saves/README.md`.
 
 ## Что ломается и как
 | Симптом | Где видно | Что делать |
@@ -271,6 +308,9 @@
 | `expires …` / `EXPIRED …` (не программа) | Telegram, `status` | обновить копию источника (половинная проверка ниже), commit → `sync` |
 | `… changed on the official page` (casaslegales) | Telegram, `listas.json → changes`, `status` | `pull` не возьмёт эту копию; скачать страницу, прочитать, поправить `data/sources/...` руками (новые/ушедшие адреса — с HTML-доказательством), `npm test`, commit → `sync` → deploy |
 | `… now keeps AI crawlers or us out` (casaslegales) | Telegram | больше не качаем: пометить документ `pendingOwnerCopy: true`, адрес — в `owner-saves/README.md`, commit → `sync` |
+| `operator address … no longer behaves as its page says` | Telegram (`accesos`) | адрес вручную; `data/sources/operators/access.json`; открылся — скриншоты; `npm test`, commit → `sync` → deploy |
+| `repo-gate` скоро / истёк | Telegram (`plazos`) | `bash tools/feeds-server.sh casaslegales pull --write` → `npm test` → commit → `sync` → deploy |
+| `casaslegales monthly: save again …` | Telegram (`plazos`, раз в месяц) | владелец сохраняет 5 страниц (`owner-saves/README.md`), агент раскладывает `owner-copy.mjs` |
 | `casaslegales reminder: …` | Telegram (за 21 день) | `docs/MAINTENANCE.md`: владелец сохраняет страницы / собирает обзоры, агент раскладывает (`owner-copy.mjs`, `pull --write`) |
 
 ## Раз в полгода (агент)

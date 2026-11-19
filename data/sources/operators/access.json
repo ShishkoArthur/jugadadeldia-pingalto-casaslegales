@@ -1,0 +1,14 @@
+{
+ "_about": "Operator addresses of the verified lists that we could not open (no own capture; sites/casaslegales/content/operators.mjs reads operators.<slug>) and listed addresses whose name did not resolve (dead: no official button; content/official.mjs). kind: robots = robots.txt disallows AI agents; botcheck = robots.txt and a bot check; tls / dns = no connection; geo = an access-restricted page outside Argentina. Nothing was bypassed. The server feed tools/feeds/casaslegales/accesos.mjs rechecks DNS, TLS, robots.txt and HTTP of every host here once a month and alerts when one no longer behaves as written; then recheck by hand and edit this file (docs/FEEDS.md).",
+ "operators": {
+  "casino-club": { "kind": "botcheck", "hosts": ["casinoclubonline.bet.ar"], "date": "2026-11-03" },
+  "mac-group": { "kind": "robots", "hosts": ["casinosmacgroup.bet.ar"], "date": "2026-11-03" },
+  "super7": { "kind": "tls", "hosts": ["super7.com.ar", "mdz.super7.bet.ar"], "date": "2026-11-03" },
+  "stake": { "kind": "botcheck", "hosts": ["pba.stake.bet.ar"], "date": "2026-11-03" },
+  "arbet": { "kind": "dns", "hosts": ["arbet.bet.ar"], "date": "2026-11-03" },
+  "la-neuquina-online": { "kind": "geo", "hosts": ["laneuquinaonline.bet.ar"], "date": "2026-11-03" },
+  "casino-magic-online": { "kind": "botcheck", "hosts": ["casinomagiconline.bet.ar"], "date": "2026-11-03" },
+  "city-center-online": { "kind": "botcheck", "hosts": ["citycenteronline.bet.ar"], "date": "2026-11-03" }
+ },
+ "dead": { "arbet.bet.ar": "2026-11-04" }
+}
