@@ -50,8 +50,8 @@
   берём `Quiniela<Turno>.pdf` — 5 колонок PROVINCIA, CIUDAD, CORDOBA, SANTA FE, ENTRE RIOS; текст `pdftotext -layout`). PBA качается
   только за сегодня и вчера и только пока есть непроверенные тиражи (кэш 80 мин / 20 ч).
 - **Не используем:** API Lotería de Córdoba — robots.txt запрещает ClaudeBot/GPTBot (правило владельца 03.11), Córdoba берём из копий
-  LOTBA и PBA; Tucumán и другие провинции — отдельная лента `provincias` (ниже); Santa Fe и Mendoza — гео-блок/таймаут, их кинела — из LOTBA (и PBA для Santa Fe); Quini 6/Brinco через San Juan
-  CAS — 03.11 там всё ещё тираж 3421 от 28.10 (воскресный 01.11 не появился): свежесть неприемлема, не делали.
+  LOTBA и PBA; Tucumán и другие провинции — отдельная лента `provincias` (ниже); Santa Fe и Mendoza — гео-блок/таймаут, их кинела — из LOTBA (и PBA для Santa Fe); Quini 6/Brinco — в ленте `loterias`
+  (ниже: CAS San Juan + PDF-копия IPJyC Mendoza с 19.11).
 - **Проверки:** 20 номеров по 4 цифры на местах 01–20 (неполная юрисдикция не публикуется и перечитывается), номер тиража = запрошенный,
   дата/турно известны, тиражи LOTBA по порядку (номер ↔ дата ↔ турно), не из будущего; PDF — строгий разбор (дата, турно, «Realizado a las»,
   заголовок юрисдикций, 10 строк × позиции 1–10/11–20, «Premio» = 1-е место), неизвестный макет — стоп для этого PDF.
@@ -164,16 +164,28 @@
 - **Источники:** **Loto Plus** — LOTBA `loto.loteriadelaciudad.gob.ar/includes/resultados-data.php?sorteo=N` (номер — с главной; JSON
   `RESULTADOS_DATA` + `PREMIOS_DATA`: модальности, Número Plus, pozo, выигравшие и выплаты); **Telekino** — `www.telekino.com.ar/`
   (последний тираж, Telekino + Rekino); **копия для сверки и истории** — San Juan CAS `cas.gob.ar/juegos/sorteos/resultados?juego=
-  loto|telekino|quini6|brinco[&fecha=D]`. **Quini 6 и Brinco** — только CAS: Lotería de Santa Fe отвечает нашему серверу 403 (гео-блок,
-  не обходим), другие официальные сайты (Chaco, Misiones) только ссылаются на Santa Fe.
+  loto|telekino|quini6|brinco[&fecha=D]`. **Quini 6 и Brinco** — две официальные копии (Lotería de Santa Fe отвечает 403/таймаут —
+  гео-блок, не обходим): CAS (история; с 28.10 по 19.11 не обновлялась, страницы `&fecha=` ноября пустые) и **IPJyC Mendoza** (с 19.11)
+  `http://ipjycweb.mendoza.gov.ar/userfiles/file/quini6.pdf` и `…/brinco.pdf` — подписанный «Extracto oficial» Santa Fe, один файл
+  на игру, перезаписывается после тиража (≈ через 10–12 ч: тираж вс 15.11 — файл пн 09:41 UTC). Только последний тираж, только http
+  (https и главная — таймаут/403), robots.txt — 404. Разбор — `pdftotext -bbox` (poppler; шары — двузначные слова кеглем ≈ 34 pt под
+  заголовком модальности), сверка «QUINI»/«BRINCO» в тексте. Отсюда (Windows, вне AR) отвечает 19.11; с сервера **не проверено**.
+  Другие официальные сайты (Chaco, Misiones, PBA) только ссылаются на Santa Fe; quini-6.com.ar, quini6.com.ar — неофициальные.
 - **Проверки:** количество и диапазон (Loto 6 из 00–45, Telekino 15 из 01–25, Quini 6 6 из 00–45, Brinco 6 из 00–39), без повторов,
-  все модальности одного номера тиража; номера тиражей и даты идут вместе. Две копии одного тиража (LOTBA/CAS, сайт Telekino/CAS)
-  сравниваются как множества по каждой модальности: совпали — `src` «CL»/«CT»; разошлись — тираж **не публикуется**, `conflicts`.
+  все модальности одного номера тиража; номера тиражей и даты идут вместе. Две копии одного тиража (LOTBA/CAS, сайт Telekino/CAS,
+  CAS/IPJyC) сравниваются как множества по каждой модальности: совпали — `src` «CL»/«CT»/«CM»; разошлись — тираж **не публикуется**,
+  `conflicts`. Одна копия — `C`, `M`, `L`, `T` (страница пишет «1 fuente»).
 - **Свежесть:** `behind` = сколько тиражей по расписанию (Loto ср/сб, Telekino вс, Quini 6 ср/вс, Brinco вс; после 23:00–23:30) нет
   после `latest`; `expected` — дата последнего пропущенного. Страница при `behind > 0` пишет «pendiente de publicación oficial» и не
-  выдаёт старый тираж за последний. 04.11: Quini 6 и Brinco — `behind 1` (CAS не выложил 01.11).
+  выдаёт старый тираж за последний. 19.11 с IPJyC: Quini 6 — 3426 от 15.11 (`behind 1`, 18.11 ещё нет), Brinco — 1380 (`behind 0`);
+  тиражи 3422–3425 и 1378–1379 не опубликованы ни одной копией — в истории пропуск.
+- **Сигнал:** при `behind ≥ 2` лента кладёт `data.alerts` `lot-behind-<игра>` → `_health.problems` → Telegram: одно 🟡 на игру, одно
+  🔴 при `behind ≥ 4` (ключ `notice:lot-behind-<игра>:yellow|red`, одна группа), 🟢 когда отставание ушло (шаблоны `lot_*` в
+  `data/alerts/ru.json`).
 - **История:** до 30 тиражей на игру (`draws`, новые первыми); каждый час — один более старый тираж из CAS (ссылка «Sorteo anterior»).
-- **Страницы:** `/loto-plus/`, `/telekino/`, `/quini-6/`, `/brinco/` (и «controlar» — по `draws`).
+- **Страницы:** `/loto-plus/`, `/telekino/`, `/quini-6/`, `/brinco/` (выбор тиража из `draws`); `/quini-6/controlar/` и
+  `/telekino/controlar/` (и `/en/`) — выбор «Sorteo oficial» из `draws` (последний подставлен, ручной ввод переключает на «a mano»;
+  `client/lotfeed.js`).
 
 ## pingalto — киберспорт и Supercell
 - **`agenda` (раз в час, PandaScore free):** `/matches/{running,upcoming,past}?filter[videogame]=…` для cs-go (CS2), valorant,
@@ -271,6 +283,6 @@
    Supercell ключи живы и привязаны к 187.7.26.95; robots.txt LOTBA/PBA не закрыли нас и ИИ; Córdoba/Tucumán — не изменилось ли (TLS).
 4. Условия: PandaScore ToS, Supercell Fan Content Policy — перечитать, если поменялись.
 5. Диск: `du -sh /opt/web/*-feeds`, образы `docker images | grep -feeds`; соседние сайты не тронуты (свой cron, свои папки).
-6. Новое: появились ли Quini 6/Brinco на официальном источнике со свежестью ≤ 1 дня (San Juan CAS отставал на 6 дней 03.11; лента
-   `loterias` пишет `behind`). Tucumán: промежуточный сертификат Sectigo DV R36 действует до 21.03.2036; если сервер Caja Popular
+6. Quini 6/Brinco: IPJyC Mendoza отвечает серверу (в `loterias.json.notes` нет `IPJyC …`), `src` «CM» появляется, когда CAS догоняет;
+   лента `loterias` пишет `behind`, при ≥ 2 — сигнал в Telegram. Tucumán: промежуточный сертификат Sectigo DV R36 действует до 21.03.2036; если сервер Caja Popular
    начнёт отдавать полную цепочку — ничего не делать; если сменит CA — лента скажет `Tucumán intermediate`/TLS-ошибку в `notes`.
