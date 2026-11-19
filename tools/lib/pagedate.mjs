@@ -11,10 +11,11 @@ import { join, dirname, resolve, relative, isAbsolute } from 'node:path';
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 export const newest = list => list.filter(d => DAY.test(d || '')).sort().at(-1) || null;
 
-// last commit day of every file under dirs, from one "git log" pass (first appearance = last commit); {} without git
+// last commit day of every file under dirs, from one "git log" pass (first appearance = last commit); {} without git.
+// PAGE_GIT_ROOT: the repository whose history to read when the build runs from a git archive (tools/deploy.sh)
 export function gitDays(root, dirs) {
   let out = '';
-  try { out = execFileSync('git', ['-c', 'core.quotePath=false', 'log', '--format=@%cs', '--name-only', '--', ...dirs], { cwd: root, encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'ignore'] }); } catch (e) { return {}; }
+  try { out = execFileSync('git', ['-c', 'core.quotePath=false', 'log', '--format=@%cs', '--name-only', '--', ...dirs], { cwd: process.env.PAGE_GIT_ROOT || root, encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'ignore'] }); } catch (e) { return {}; }
   return parseGitLog(out);
 }
 export function parseGitLog(out) {

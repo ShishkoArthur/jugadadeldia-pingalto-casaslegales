@@ -22,6 +22,7 @@ rm -rf "$WT"; mkdir -p "$WT"
 git archive HEAD | tar -x -C "$WT"
 ln -s "$MAIN/node_modules" "$WT/node_modules"
 ln -s "$MAIN/.env" "$WT/.env"
+export PAGE_GIT_ROOT="$MAIN"
 cd "$WT"
 npm test > test.log 2>&1 || { tail -40 test.log; echo "ERROR: npm test failed"; exit 1; }
 grep -E '^check-code-lang|^ℹ (pass|fail)|^verify-|^selftest .*: (every|FAILED)' test.log

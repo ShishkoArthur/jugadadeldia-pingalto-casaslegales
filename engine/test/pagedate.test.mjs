@@ -15,7 +15,7 @@ test('git log: the first day a file appears is its last commit', () => {
 
 test('git days of the repo match git log -1 --format=%cs', () => {
   const f = 'tools/render.mjs';
-  const want = execFileSync('git', ['log', '-1', '--format=%cs', '--', f], { cwd: ROOT, encoding: 'utf8' }).trim();
+  const want = execFileSync('git', ['log', '-1', '--format=%cs', '--', f], { cwd: process.env.PAGE_GIT_ROOT || ROOT, encoding: 'utf8' }).trim();
   assert.equal(gitDays(ROOT, ['tools'])[f], want);
   assert.match(want, /^\d{4}-\d{2}-\d{2}$/);
 });
