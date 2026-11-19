@@ -81,7 +81,7 @@ export function faq(h, title, list, ids) {
     list.map(([q, a]) => '<details><summary>' + h.esc(q) + '</summary><div>' + a + '</div></details>').join('') + '</div>' + (ids && ids.length ? cite(h, ids) : '') + '</section>';
 }
 const plain = s => s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
-export const faqLd = list => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: list.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: plain(a) } })) });
+export const faqLd = list => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: list.map(([q, a, ld]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: plain(ld === undefined ? a : ld) } })) });
 
 export const btn = (h, path, label, primary) => h.built(path) ? '<a class="jg-b' + (primary ? ' p' : '') + '" href="' + h.href(path) + '">' + label + '</a>' : '';
 export function tiles(h, list) {

@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { citedConstants, rules, ruleIds } from '../lottery/rules.mjs';
-import { loadLotteryFiles, lotteryFacts, lotteryMissing, checkLotteryFile } from '../../tools/lib/lottery-sources.mjs';
+import { loadLotteryFiles, lotteryFacts, lotteryMissing, checkLotteryFile, docText } from '../../tools/lib/lottery-sources.mjs';
 
 const files = loadLotteryFiles();
 const facts = lotteryFacts(files), missing = lotteryMissing(files);
@@ -54,4 +54,18 @@ test('gaps are listed with the places searched, and have no rule set', () => {
     assert.ok(missing.has(id), id);
     assert.ok(missing.get(id).searched.length >= 1);
   }
+});
+
+test('Santa Fe online platforms (/quiniela/online/): the quoted counts equal the items listed under each heading of the saved page', () => {
+  const f = files.find(x => x.id === 'online');
+  const text = docText(f.docs['santa-fe-plataformas'].file);
+  const list = facts.get('online.sfe.list');
+  const at = text.indexOf(list.quote);
+  assert.ok(at >= 0, 'the list sentence is in the saved page');
+  const tail = text.slice(at + list.quote.length);
+  const block = (from, to) => { const a = tail.indexOf(from), b = to ? tail.indexOf(to, a + from.length) : -1; assert.ok(a >= 0, from); return tail.slice(a + from.length, b > a ? b : a + 400); };
+  const items = s => (s.match(/\b[a-z0-9-]+\.bet\.ar\b/g) || []).length;
+  assert.equal(items(block('CASINOS ONLINE', 'APUESTAS DEPORTIVAS')), facts.get('online.sfe.online-count').value);
+  assert.equal(items(block('APUESTAS DEPORTIVAS', 'La Lotería de Santa Fe')), facts.get('online.sfe.sports-count').value);
+  assert.equal(typeof facts.get('online.sfe.online-count').value, 'number');
 });

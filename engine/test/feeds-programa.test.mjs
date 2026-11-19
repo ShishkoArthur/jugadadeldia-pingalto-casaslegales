@@ -227,3 +227,19 @@ test('source expiries of jugadadeldia: lottery copies, monthly programmes, help 
   assert.equal(fuentes.compute(raw).count, ex.length);
   assert.throws(() => sourceExpiries({ lottery: [{ id: 'x', docs: { a: { fetched: '2026-11-01' } } }] }), /maxAgeDays/);
 });
+
+
+test('browser (client/turnos.js): the feed shape check, the current month on, the hours of a turn and of a weekday', async () => {
+  const { goodProgram, current, timesOf } = await import('../../sites/jugadadeldia/client/turnos.js');
+  const nov = simple(), dec = december(nov).map(r => r.type === 'Nocturna' ? { ...r, t: '21:30' } : r);
+  const rows = [...nov, ...dec].map(r => [r.n, r.d, r.t, r.type, r.j]);
+  const p = { from: '2026-11-02', to: '2026-12-31', rows };
+  assert.ok(goodProgram(p));
+  assert.ok(!goodProgram({ ...p, rows: [] }) && !goodProgram({ ...p, rows: [[1, '2026-11-02', '9:00', 'Nocturna', [1]]] }) && !goodProgram(null));
+  assert.deepEqual(timesOf(current(rows, '2026-11'), 'Nocturna'), ['21:00', '21:30'], 'November on: both months');
+  assert.deepEqual(timesOf(current(rows, '2026-12'), 'Nocturna'), ['21:30'], 'December on: the new hour only, without a redeploy');
+  assert.equal(current(rows, '2026-12')[0][1], '2026-12-01');
+  assert.deepEqual(timesOf(current(rows, '2027-02'), 'La Previa'), ['10:15'], 'after the last month: the whole programme');
+  assert.deepEqual(timesOf(nov.map(r => [r.n, r.d, r.t, r.type, r.j]), 'Nocturna', 6), ['21:00']);
+  assert.deepEqual(timesOf(rows, 'Otra'), []);
+});

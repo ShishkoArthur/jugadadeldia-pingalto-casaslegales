@@ -21,6 +21,15 @@ function apply(feed) {
     const f = feed && feed.prices && feed.prices[id];
     const c = good(f) && f.until >= st.until ? { value: f.value, ym: f.ym, until: f.until, link: (feed.links && feed.links[f.juego]) || st.link, fetched: f.doc && f.doc.fetched } : st;
     const notes = document.querySelectorAll('[data-price-note="' + id + '"]');
+    if (el.dataset.kind === 'page') {
+      const pf = good(f) && f.until >= st.until && DAY.test(f.checked || '') ? f : null;
+      const val = pf ? pf.value : st.value, until = pf ? pf.until : st.until, seen = pf ? pf.checked : el.dataset.fetched;
+      const gone = today > until;
+      el.textContent = gone ? 'sin precio vigente' : money(val);
+      el.classList.toggle('jg-off', gone);
+      notes.forEach(n => { const w = n.querySelector('[data-price-when]'); if (w && DAY.test(seen || '')) w.textContent = (gone ? ', sin revisar desde el ' : ', revisada el ') + dmy(seen); });
+      continue;
+    }
     const link = '<a href="' + esc(c.link) + '" rel="noopener">programa oficial de ' + monthName(c.ym) + '</a>';
     if (today > c.until) {
       el.textContent = 'sin precio vigente';

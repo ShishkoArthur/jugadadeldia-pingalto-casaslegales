@@ -187,16 +187,17 @@ const turnName = t => PROG_TYPES.find(x => x.turno === t).name;
 // 'la Matutina' but 'La Previa' (the article is part of some turn names)
 const theTurn = (n, cap) => /^La /.test(n) ? (cap ? n : 'la ' + n.slice(3)) : (cap ? 'La ' : 'la ') + n;
 const turnTime = t => { const name = turnName(t), set = [...new Set(program().rows.filter(r => r.type === name).map(r => r.t))]; return set.join(' / '); };
-const turnTiles = (h, except) => tiles(h, TURNS.filter(x => x.path !== except).map((x, i) => [x.path, turnName(x.t), 'a las ' + turnTime(x.t), COLORS[(i + 2) % COLORS.length], ICONS.pin]));
+const turnSpan = t => '<span data-tt="' + turnName(t) + '">' + turnTime(t) + '</span>';
+const turnTiles = (h, except) => tiles(h, TURNS.filter(x => x.path !== except).map((x, i) => [x.path, turnName(x.t), 'a las ' + turnSpan(x.t), COLORS[(i + 2) % COLORS.length], ICONS.pin]));
 
 // FAQ of the Nocturna page: the hours from the saved LOTBA programme, the Quiniela Plus rule of the Provincia and, when the Tucumán
 // page is built, the hours of the Caja Popular list.
 const NOCT_FAQ_SRC = h => ['lotba.quiniela.time-nocturna', 'lotba.quiniela.saturday-nocturna', 'pba.qplus.nocturna'].concat(h.built('/quiniela/tucuman/') ? ['cajapopular.quiniela.time-nocturno', 'cajapopular.quiniela.time-nocturno-20'] : []);
 function noctFaq(h) {
-  const time = turnTime('NOCT');
+  const time = turnSpan('NOCT');
   return [
     ['¿A qué hora sale la Quiniela Nocturna?', 'A las ' + time + ', hora argentina, según el programa oficial de la Lotería de la Ciudad. Esta página revisa los extractos oficiales cada 15 minutos y muestra la Nocturna apenas está publicada.'],
-    ['¿Hay Nocturna los sábados?', 'Sí. En el programa oficial de la Lotería de la Ciudad el sábado también tiene Nocturna, a las ' + h.src.value('lotba.quiniela.saturday-nocturna') + '.'],
+    ['¿Hay Nocturna los sábados?', 'Sí. En el programa oficial de la Lotería de la Ciudad el sábado también tiene Nocturna, a las ' + '<span data-tt="' + turnName('NOCT') + '" data-wd="6">' + h.src.value('lotba.quiniela.saturday-nocturna') + '</span>' + '.'],
     ['¿Qué se resuelve con la Nocturna de la Provincia?', 'La Quiniela Plus: se sortea con la Nocturna de la Provincia, de lunes a sábados a las ' + h.src.value('pba.qplus.nocturna') + ' hs.'],
     ...(h.built('/quiniela/tucuman/') ? [['¿La Nocturna de Tucumán sale a la misma hora?', 'No: cada lotería sortea a su hora. En la lista de sorteos de la Caja Popular de Tucumán el Nocturno figura a las ' + h.src.value('cajapopular.quiniela.time-nocturno') + ', y también hay un Nocturno a las ' + h.src.value('cajapopular.quiniela.time-nocturno-20') + '.']] : []),
     ['¿Hay números que salen más en la Nocturna?', 'No. Cada terminación de dos cifras tiene <b>1 en 100</b> de salir a la cabeza, en la Nocturna y en cualquier turno. Lo que salió ayer no cambia lo que sale hoy.'],
@@ -212,7 +213,7 @@ function turnPage(T) {
     ld: h => [webPage(h), crumbs(h, h.built('/quiniela/') ? [['/quiniela/', 'Quiniela de hoy']] : []), ...(T.t === 'NOCT' ? [faqLd(noctFaq(h))] : [])],
     data: h => ({ ...pageData(h), turno: T.t }),
     render(h) {
-      const time = turnTime(T.t);
+      const time = turnSpan(T.t);
       return hero(h, { kicker: 'Quiniela · ' + time + ' hs, hora argentina', scene: true, lede: theTurn(name, true) + ' se sortea a las <b>' + time + '</b>. Acá está su último extracto en la Ciudad (Nacional), la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza, y la página se actualiza sola cada 15 minutos.', actions: '<a class="jg-b p" href="#turno">Ver ' + h.esc(theTurn(name)) + '</a>' + btn(h, '/quiniela/cuanto-paga/', '¿Cuánto paga?') }) +
         '<div class="jg-mn">' +
         '<section class="jg-c w3" id="turno"><span class="jg-tag">' + h.esc(name) + ' · ' + time + ' hs</span><h2>' + h.esc(theTurn(name, true)) + ', provincia por provincia</h2>' + root('turno', ' data-t="' + T.t + '"') + loading + '</div></section>' +

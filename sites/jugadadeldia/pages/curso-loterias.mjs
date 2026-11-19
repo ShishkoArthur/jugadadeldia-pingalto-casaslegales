@@ -353,7 +353,7 @@ export function poceadaCurso(h) {
   const FAQ = [
     ['¿Cómo se juega a la Poceada?', 'Elegís ' + o.pick + ' números distintos del 00 al 99. Se toman ' + o.drawn + ' números distintos del sorteo y contás cuántos de los tuyos están. Hay premio con 8, 7, 6 y 5 aciertos.'],
     ['¿Con 5 aciertos qué cobro?', 'Te devuelven lo que pagaste por la apuesta.'],
-    ['¿Cuánto cuesta la Poceada?', 'La apuesta simple cuesta ' + price(h, 'lotba.poceada.price') + ' según el programa oficial.'],
+    ['¿Cuánto cuesta la Poceada?', 'El precio de la apuesta simple lo fija cada mes el programa oficial de la Lotería de la Ciudad: hoy, ' + price(h, 'lotba.poceada.price') + '.', 'El precio de la apuesta simple lo fija cada mes el programa oficial de la Lotería de la Ciudad.'],
     ['¿Qué chance hay de acertar los 8?', oneIn(o.rows[0].oneIn) + ': hay ' + fmt(Number(o.combinations), 0) + ' jugadas posibles de 8 números.'],
   ];
   const html = toc([['aprender', 'Cómo se juega, paso a paso'], ['pc-premios', 'Qué paga'], ['pc-ejemplo', 'Un sorteo de ejemplo'], ['pc-antes', 'Antes de jugar'], ['pc-errores', 'Errores comunes'], ['preguntas', 'Preguntas']]) +
@@ -386,13 +386,13 @@ export function qplusCurso(h) {
   const FAQ = [
     ['¿Cómo se juega a la Quiniela Plus?', 'Elegís 8 números distintos del 00 al 99 y se comparan con los 20 números de la Quiniela Nocturna de la Provincia. Cada número tuyo que aparece es un acierto.'],
     ['¿Qué diferencia hay entre Plus, Súper Plus y Chance Plus?', 'Miran distintas cifras del mismo extracto: el Plus las dos últimas, el Súper Plus las dos primeras y el Chance Plus las dos del medio.'],
-    ['¿Cuánto cuesta?', 'Con una apuesta fija de ' + money(h.src.value('pba.qplus.price')) + ' jugás las tres modalidades.'],
+    ['¿Cuánto cuesta?', 'Con una apuesta fija jugás las tres modalidades. Su precio lo publica la Lotería de la Provincia en su página oficial: hoy, ' + price(h, 'pba.qplus.price') + '.', 'Con una apuesta fija jugás las tres modalidades. Su precio lo publica la Lotería de la Provincia en su página oficial.'],
     ['¿Cuándo se sortea?', 'De lunes a sábados, con la Quiniela Nocturna de la Provincia de las ' + h.src.value('pba.qplus.nocturna') + ' hs.'],
   ];
   const cells = arr => '<div class="jg-cu-x">' + ex.map((v, i) => { const s = four(v); return '<span' + (mine.includes(arr[i]) ? ' class="hit"' : '') + '><small>' + (i + 1) + '</small>' + (arr === last ? s.slice(0, 2) + '<b>' + s.slice(2) + '</b>' : arr === firstTwo ? '<b>' + s.slice(0, 2) + '</b>' + s.slice(2) : s[0] + '<b>' + s.slice(1, 3) + '</b>' + s[3]) + '</span>'; }).join('') + '</div>';
   const html = toc([['aprender', 'Cómo se juega, paso a paso'], ['qp-cifras', 'Tres juegos con el mismo extracto'], ['qp-ejemplo', 'Un extracto de ejemplo'], ['qp-antes', 'Antes de jugar'], ['qp-errores', 'Errores comunes'], ['preguntas', 'Preguntas']]) +
     sec('aprender', 1, 'Para empezar', 'Cómo se juega a la Quiniela Plus, paso a paso',
-      steps([['Elegís 8 números', '<p>Distintos, del 00 al 99. Con una apuesta fija de ' + money(h.src.value('pba.qplus.price')) + ' jugás las tres modalidades.</p>', balls(mine, () => 'on')], ['Esperás la Nocturna de la Provincia', '<p>No hay bolillero propio: se usa el extracto de la Quiniela Nocturna, a las ' + h.src.value('pba.qplus.nocturna') + ' hs, de lunes a sábados.</p>'], ['Contás tus aciertos', '<p>Cada número tuyo que aparece en el extracto es un punto. Hay premio desde ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + '.</p>']]) +
+      steps([['Elegís 8 números', '<p>Distintos, del 00 al 99. Con una apuesta fija de ' + price(h, 'pba.qplus.price') + ' jugás las tres modalidades.' + priceNote(h, 'pba.qplus.price') + '</p>', balls(mine, () => 'on')], ['Esperás la Nocturna de la Provincia', '<p>No hay bolillero propio: se usa el extracto de la Quiniela Nocturna, a las ' + h.src.value('pba.qplus.nocturna') + ' hs, de lunes a sábados.</p>'], ['Contás tus aciertos', '<p>Cada número tuyo que aparece en el extracto es un punto. Hay premio desde ' + Math.min(...o.rows.filter(r => r.prize).map(r => r.hits)) + '.</p>']]) +
       cite(h, ['pba.qplus.pick', 'pba.qplus.distinct-pick', 'pba.qplus.price', 'pba.qplus.nocturna', 'pba.qplus.points'])) +
     sec('qp-cifras', 2, 'Las modalidades', 'Tres juegos con el mismo extracto',
       '<div class="jg-cu-two"><div><h3>Plus</h3><p>Mira las <b>dos últimas cifras</b> de cada número: del 4721, el 21.</p></div><div><h3>Súper Plus</h3><p>Las <b>dos primeras</b>: del 4721, el 47. Gana quien más acierta.</p></div><div><h3>Chance Plus</h3><p>Las <b>dos del medio</b>: del 4721, el 72.</p></div></div>' + cite(h, ['pba.qplus.points', 'pba.qplus.superplus-rule'])) +
