@@ -1,5 +1,6 @@
 import { $, $$, page, store, esc, pesos, fmt } from './kit.js';
 import { STALE_HOURS } from '../../../engine/lottery/extract.mjs';
+import { SRCS } from './lotfeed.js';
 
 const D = page();
 const form = $('[data-sorteo]');
@@ -96,7 +97,6 @@ async function fill(btn) {
   } catch (err) { note.textContent = 'No pudimos traer el extracto. Copialo del extracto oficial.'; }
 }
 const TZ = 'America/Argentina/Buenos_Aires';
-const SRCS = { CL: '2 fuentes: Lotería de la Ciudad y CAS San Juan', CT: '2 fuentes: telekino.com.ar y CAS San Juan', C: '1 fuente: copia de la CAS San Juan', L: '1 fuente: Lotería de la Ciudad', T: '1 fuente: telekino.com.ar' };
 const dmy = d => +d.slice(8, 10) + '/' + +d.slice(5, 7);
 const dayName = d => DAYS[new Date(d + 'T12:00:00Z').getUTCDay()] + ' ' + dmy(d);
 const hhmm = iso => new Intl.DateTimeFormat('es-AR', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso));
@@ -135,7 +135,7 @@ async function lot(el) {
   const stale = Date.now() - Date.parse(doc.updated) > L.stale * 3600e3;
   const when = (ymd(doc.updated) === ymd(now) ? 'hoy' : 'el ' + dayName(ymd(doc.updated))) + ' a las ' + hhmm(doc.updated);
   const head = stale ? '<p class="jg-xs no" role="status"><b>Sin datos al ' + hhmm(now) + '.</b> No pudimos revisar las fuentes desde ' + esc(when) + ' (hora argentina): puede haber un sorteo más nuevo que este. Mirá ' + '<a href="' + L.official[0] + '" rel="noopener">' + esc(L.official[1]) + '</a>.</p>' : '<p class="jg-xs" role="status">Revisado ' + esc(when) + ' · hora argentina</p>';
-  const behind = g.behind > 0 && g.expected ? '<p class="jg-xs no"><b>Pendiente de publicación oficial.</b> La copia oficial de San Juan todavía no publicó el sorteo del ' + esc(dayName(g.expected)) + (g.behind > 1 ? ' (faltan ' + g.behind + ' sorteos)' : '') + '. Abajo, el último que publicó. Los números del ' + esc(dmy(g.expected)) + ' están en <a href="' + L.official[0] + '" rel="noopener">' + esc(L.official[1]) + '</a>.</p>' : '';
+  const behind = g.behind > 0 && g.expected ? '<p class="jg-xs no"><b>Pendiente de publicación oficial.</b> Las copias oficiales que leemos todavía no publicaron el sorteo del' + esc(dayName(g.expected)) + (g.behind > 1 ? ' (faltan ' + g.behind + ' sorteos)' : '') + '. Abajo, el último que publicó. Los números del ' + esc(dmy(g.expected)) + ' están en <a href="' + L.official[0] + '" rel="noopener">' + esc(L.official[1]) + '</a>.</p>' : '';
   let cur = g.draws[0];
   const draw = () => {
     el.innerHTML = head + behind + (g.draws.length > 1 ? '<label class="jg-fl jg-xsel"><span>Sorteo</span><select class="jg-se" data-lot-sel>' + g.draws.map((e, i) => '<option value="' + e.s + '"' + (e === cur ? ' selected' : '') + '>N° ' + e.s + ' · ' + esc(dayName(e.d)) + (i === 0 ? ' (el último publicado)' : '') + '</option>').join('') + '</select></label>' : '') + drawHtml(L, g, cur) +

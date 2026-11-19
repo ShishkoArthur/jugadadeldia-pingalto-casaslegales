@@ -106,6 +106,9 @@ const PREP = {
   access_ok: p => ({ host: p.host || '' }),
   expiry_repo_gate_soon: p => ({ until: fmtDay(p.until), days: p.days === undefined ? '' : p.days }),
   expiry_repo_gate: p => ({ until: fmtDay(p.until) }),
+  lot_behind: p => ({ latestDay: fmtDay(p.d), expectedDay: fmtDay(p.expected) }),
+  lot_behind_red: p => ({ latestDay: fmtDay(p.d), expectedDay: fmtDay(p.expected) }),
+  lot_ok: p => ({ firstDay: fmtDay(p.first) }),
   expiry_soon: p => ({ until: fmtDay(p.until) }),
   expiry_expired: p => ({ until: fmtDay(p.until) }),
   expiry_lotba_programa: p => ({ until: fmtDay(p.until) }),
@@ -164,6 +167,10 @@ function noticeProblem(x) {
   if (x.feed === 'precios' && id.startsWith('changed-') && (m = RE.cited.exec(text))) return { ...base, tpl: 'cited_changed', ok: 'cited_ok', params: { doc: m[1], ym: m[2], list: m[3] } };
   if (id.startsWith('resave-') && x.params && typeof x.params === 'object') return { ...base, tpl: 'resave_monthly', ok: null, digest: false, params: { n: x.params.n, items: x.params.items, probe: x.params.probe } };
   if (id.startsWith('access-') && (m = RE.access.exec(text))) return { ...base, tpl: 'access_changed', ok: 'access_ok', params: { host: m[1], kind: m[2], written: m[3], observed: m[4], since: m[5], raw: m[6] } };
+  if (x.feed === 'loterias' && id.startsWith('lot-behind-') && x.params && x.params.game) {
+    const q = x.params, red = q.level === 'red';
+    return { key: base.key + ':' + (red ? 'red' : 'yellow'), group: base.group, scope: base.scope, tpl: red ? 'lot_behind_red' : 'lot_behind', ok: 'lot_ok', params: { name: q.name, behind: q.behind, s: q.s, d: q.d, expected: q.expected, first: q.first, hosts: q.hosts } };
+  }
   if (id.startsWith('reminder-')) {
     const p = x.params && typeof x.params === 'object' ? x.params : null;
     if (p && p.first) return { ...base, tpl: 'reminder', ok: null, digest: false, params: { first: p.first, days: p.days, owner: p.owner, server: p.server, review: p.review, operators: p.operators } };

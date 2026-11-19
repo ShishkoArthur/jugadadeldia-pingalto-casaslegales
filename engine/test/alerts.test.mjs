@@ -8,7 +8,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderAlert, classify, problemsOf, planAlerts, composeTexts, loadTemplates, fill, DEDUP_MS, MAX_MSGS } from '../../tools/feeds/alerts.mjs';
-import { sendAlerts } from '../../tools/feeds/run.mjs';
+import { sendAlerts, noticesOf } from '../../tools/feeds/run.mjs';
+import { behindAlerts } from '../../tools/feeds/jugadadeldia/loterias.mjs';
 import { sendTelegram } from '../../tools/feeds/lib.mjs';
 import { main as notify } from '../../tools/feeds/notify.mjs';
 import { Alarm } from '../../tools/fnapi/core.mjs';
@@ -57,7 +58,7 @@ test('alerts: params are HTML-escaped, the text stays under the Telegram limit, 
 
 test('alerts: every template id used in code exists in ru.json', () => {
   const code = ['tools/feeds/alerts.mjs', 'tools/fnapi/core.mjs', 'tools/fnapi-server.sh', 'tools/feeds/run.mjs'].map(f => readFileSync(join(ROOT, f), 'utf8')).join('\n');
-  const used = new Set([...code.matchAll(/(?:tpl[,:] |tpl = |'|send\(|fn_restarted)'?([a-z]+_[a-z_]+)'/g)].map(m => m[1]).filter(x => /^(feed|load|prov|robots|list|price|cited|expiry|fn|kept|reminder|digest|test|notice)_/.test(x)));
+  const used = new Set([...code.matchAll(/(?:tpl[,:] |tpl = |'|send\(|fn_restarted)'?([a-z]+_[a-z_]+)'/g)].map(m => m[1]).filter(x => /^(feed|load|prov|robots|list|price|cited|expiry|fn|kept|reminder|digest|test|notice|lot)_/.test(x)));
   used.add('fn_restarted');
   for (const id of used) assert.ok(T.templates[id] !== undefined, id);
   for (const c of ['robots', 'key', 'rate', 'forbidden', 'notfound', 'down', 'tls', 'timeout', 'network', 'format', 'unknown']) assert.ok(T.reasons[c] && T.reasons[c].text, c);
@@ -142,6 +143,35 @@ test('alerts: de-duplication, recovery note, flap within 12 h, daily digest, fir
   assert.equal(texts.length, 1);
   assert.equal(firstLine(texts[0]), fill(T.header.digest, { emoji: T.emoji.red, domain: 'jugadadeldia.com' }));
   assert.ok(texts[0].includes(fill(T.templates.digest_first)));
+});
+
+test('alerts: a lotto game 2+ draws behind -> one message per game, one escalation to red, one recovery note', () => {
+  const at = h => new Date(NOW.getTime() + h * H);
+  const game = (behind, s = 3421) => ({ name: 'Quini 6', latest: { s, d: '2026-10-28' }, behind, expected: '2026-11-18' });
+  const doc = games => ({ data: { alerts: behindAlerts(games) } });
+  const probs = games => problemsOf(health({ notices: noticesOf([['loterias', doc(games)]]) }));
+  assert.equal(behindAlerts({ 'quini-6': game(1), brinco: { ...game(0), name: 'Brinco' } }).length, 0, 'one missing draw is normal lag: no alert');
+  let r = planAlerts({ problems: {} }, probs({ 'quini-6': game(2), brinco: { ...game(3, 1377), name: 'Brinco' }, telekino: { ...game(0), name: 'Telekino' } }), at(0));
+  assert.deepEqual(r.messages.map(m => m.kind + ':' + m.tpl).sort(), ['alert:lot_behind', 'alert:lot_behind']);
+  const texts = composeTexts(r.messages, 'jugadadeldia', at(0));
+  assert.ok(texts.every(t => firstLine(t) === fill(T.header.feed, { emoji: T.emoji.yellow, domain: 'jugadadeldia.com', feed: 'loterias' })));
+  assert.ok(texts.every(t => t.split('\n')[1] === T.folder), 'second line: the project folder');
+  assert.ok(texts.some(t => t.includes('Quini 6') && t.includes('3421') && t.includes('18.11.2026') && t.includes('ipjycweb.mendoza.gov.ar')));
+  assert.ok(!texts.some(t => /\{[a-zA-Z]+\}/.test(t)), 'no placeholder left');
+  r = planAlerts(r.state, probs({ 'quini-6': game(3), brinco: { ...game(3, 1377), name: 'Brinco' } }), at(1));
+  assert.equal(r.messages.length, 0, 'the same game is not sent again');
+  r = planAlerts(r.state, probs({ 'quini-6': game(4), brinco: { ...game(3, 1377), name: 'Brinco' } }), at(2));
+  assert.deepEqual(r.messages.map(m => m.kind + ':' + m.tpl), ['alert:lot_behind_red'], 'escalation once, no recovery note in between');
+  assert.equal(firstLine(composeTexts(r.messages, 'jugadadeldia', at(2))[0]), fill(T.header.feed, { emoji: T.emoji.red, domain: 'jugadadeldia.com', feed: 'loterias' }));
+  r = planAlerts(r.state, probs({ 'quini-6': game(5), brinco: { ...game(3, 1377), name: 'Brinco' } }), at(3));
+  assert.equal(r.messages.length, 0);
+  r = planAlerts(r.state, probs({ 'quini-6': game(0, 3427), brinco: { ...game(3, 1377), name: 'Brinco' } }), at(5));
+  assert.deepEqual(r.messages.map(m => m.kind + ':' + m.tpl), ['ok:lot_ok'], 'one recovery note for Quini 6, Brinco stays open');
+  const ok = composeTexts(r.messages, 'jugadadeldia', at(5))[0];
+  assert.equal(firstLine(ok), fill(T.header.feed, { emoji: T.emoji.green, domain: 'jugadadeldia.com', feed: 'loterias' }));
+  assert.ok(ok.includes('Quini 6') && ok.includes('01.11.2026'), 'names the first missing draw day');
+  r = planAlerts(r.state, probs({ 'quini-6': game(0, 3427), brinco: { ...game(0, 1380), name: 'Brinco' } }), at(6));
+  assert.deepEqual(r.messages.map(m => m.kind + ':' + m.tpl), ['ok:lot_ok']);
 });
 
 test('alerts: more than MAX_MSGS in one run -> the rest in one overflow message', () => {
