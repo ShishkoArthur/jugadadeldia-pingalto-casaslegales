@@ -6,6 +6,8 @@
 // saved listing (content/stores.mjs); a listing that changed shape stops the build.
 import { steamApp, itunes, play, millions } from '../content/stores.mjs';
 import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
+import { gameName, shortName } from '../../../engine/games/steamname.mjs';
+import { FEED } from './feeds.mjs';
 
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
 const cards = (h, list) => '<div class="pa-hub">' + list.filter(([u]) => h.built(u)).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
@@ -180,12 +182,18 @@ function ffMaxData(h) {
 }
 
 // ---------- /eafc: the current game on PC, from its Steam listing for Argentina ----------
-export function fcPc(h) {
+export function fcApp(h) {
   const A = steamApp(h, 'steam-fc27', 4080220);
-  if (A.free || !A.price || !A.rec || !A.diskGb) throw new Error('eafc: FC 27 Steam listing changed shape');
+  if (A.free || !A.price || !A.rec || !A.diskGb) throw new Error('eafc: EA Sports FC Steam listing changed shape');
+  const full = gameName(A.name);
+  return { A, full, short: shortName(full) };
+}
+export const fcData = h => { const F = fcApp(h); return { cents: F.A.price.cents, cur: F.A.price.cur, full: F.full, short: F.short, d: h.pa.doc('steam-fc27').fetched }; };
+export function fcPc(h) {
+  const { A, short } = fcApp(h);
   const keys = Object.keys(A.min).filter(k => k !== 'Notas adicionales' && A.rec[k] !== undefined);
   const tbl = '<div class="pa-tw"><table class="pa-tb"><thead><tr><th></th><th>Mínimo</th><th>Recomendado</th></tr></thead><tbody>' + keys.map(k => '<tr><td>' + h.esc(k) + '</td><td lang="es"><samp>' + h.esc(A.min[k]) + '</samp></td><td lang="es"><samp>' + h.esc(A.rec[k]) + '</samp></td></tr>').join('') + '</tbody></table></div>';
-  return sec('FC 27 en la compu', '<div class="pa-gd"><section class="pa-c pa-w2"><p class="pa-big pa-nk">' + usd(A.price) + '</p><p>precio en Steam para Argentina, el día de la copia. Salió el ' + h.esc(A.date.toLowerCase()) + '.</p></section>' +
+  return sec('<span data-fc>' + h.esc(short) + '</span> en la compu', '<div class="pa-gd" id="fc" data-fd-src="' + FEED + '"><section class="pa-c pa-w2"><p class="pa-big pa-nk" data-o="fcp">' + usd(A.price) + '</p><p data-o="fct">precio en Steam para Argentina, el día de la copia. Salió el ' + h.esc(A.date.toLowerCase()) + '.</p></section>' +
     '<section class="pa-c pa-w2"><p class="pa-big pa-nk">' + fmt(A.diskGb, 0) + ' <small>GB</small></p><p>de espacio libre y ' + fmt(A.ramGb, 0) + ' GB de RAM como mínimo.</p></section>' +
     '<section class="pa-c pa-w2"><p class="pa-big pa-nk">' + (A.platforms.mac || A.platforms.linux ? 'Varios' : 'Windows') + '</p><p>' + (A.platforms.mac || A.platforms.linux ? '' : 'Solo Windows en Steam: no hay versión para Mac ni Linux.') + '</p></section></div>' + tbl +
     srcLine(h, 'steam-fc27', '<a href="' + steamLink(h, 'steam-fc27') + '" rel="noopener">ficha de Steam</a>') + '<p class="pa-src">Las versiones de consola y su precio están en el sitio de EA, que no permite que lo lean robots: no las copiamos de otros sitios.</p>', 'pc');

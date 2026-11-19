@@ -21,7 +21,12 @@ async function clashMeta(el) {
   const top = d.cards.slice(0, n);
   let h = stamp(doc, 72) + '<div class="pa-evk"><div><small>Mazos mirados</small><b>' + d.n + '</b></div><div><small>Clanes del top argentino</small><b>' + d.clans + '</b></div><div><small>Elixir promedio de esos mazos</small><b>' + fmt(d.all.reduce((t, x) => t + avg(x), 0) / d.all.length, 2) + '</b></div></div>';
   h += '<h3 class="pa-fdh3">Las cartas más usadas</h3><ul class="pa-bl">' + top.map(c => '<li><span>' + thumb(card(c.id), base) + esc(card(c.id).n) + '</span>' + bar(c.n, d.n) + '<b>' + pct(c.n, d.n) + '</b></li>').join('') + '</ul><p class="pa-src">Porcentaje de los ' + d.n + ' mazos que llevan la carta.</p>';
-  if (el.dataset.decks !== 'no') h += '<h3 class="pa-fdh3">Mazos repetidos</h3>' + (d.decks.length ? d.decks.map(k => '<div class="pa-c pa-dk"><p class="pa-x">' + k.n + ' jugadores · elixir ' + fmt(avg(k.ids), 1) + '</p><div class="pa-crs pa-crdk">' + k.ids.map(id => chip(card(id), base, typeOf(id))).join('') + '</div></div>').join('') : '<p>Hoy ningún mazo se repite exacto entre estos jugadores: cada uno juega el suyo.</p>');
+  if (el.dataset.decks !== 'no') {
+    const deck = (n, ids) => '<div class="pa-c pa-dk"><p class="pa-x">' + n + '</p><div class="pa-crs pa-crdk">' + ids.map(id => chip(card(id), base, typeOf(id))).join('') + '</div></div>';
+    h += '<h3 class="pa-fdh3">Mazos repetidos</h3>' + (d.decks.length ? d.decks.map(k => deck(k.n + ' jugadores · elixir ' + fmt(avg(k.ids), 1), k.ids)).join('') : '<p>Hoy ningún mazo se repite exacto entre estos jugadores: cada uno juega el suyo.</p>');
+    const near = (d.near || []).filter(g => g.flex.length > 1);
+    if (near.length) h += '<h3 class="pa-fdh3">Mazos casi iguales</h3><p class="pa-src">Comparten 7 de sus 8 cartas; cambia la octava. Cada jugador cuenta una sola vez.</p>' + near.map(g => deck(g.n + ' jugadores · 7 cartas en común · la octava: ' + g.flex.map(f => esc(card(f.id).n) + ' (' + f.n + ')').join(', '), g.core)).join('');
+  }
   el.innerHTML = h;
 }
 
@@ -67,7 +72,7 @@ async function mazos(el) {
   el.querySelector('[data-clear]').addEventListener('click', () => { deck.length = 0; drawPick(); drawDeck(); });
   el.querySelector('[data-top]').addEventListener('click', () => {
     if (!mt) return;
-    const d = mt.data, k = d.decks[0] ? d.decks[0].ids : d.cards.slice(0, 8).map(c => c.id);
+    const d = mt.data, g = (d.near || [])[0], k = d.decks[0] ? d.decks[0].ids : g ? g.core.concat(g.flex[0].id) : d.cards.slice(0, 8).map(c => c.id);
     deck.length = 0; for (const id of k) if (byId.has(id)) deck.push(id); drawPick(); drawDeck();
   });
   drawPick(); drawDeck();

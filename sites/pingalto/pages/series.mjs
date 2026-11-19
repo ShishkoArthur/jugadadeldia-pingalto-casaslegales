@@ -6,7 +6,8 @@ import { expected } from '../../../engine/games/vrs.mjs';
 import { curvesSvg, scoreTable, invTable } from '../../../engine/games/seriesviz.mjs';
 import { vrs } from '../content/vrs.mjs';
 import { fmt, fmtPct, fmtInput, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
-import { agendaBlock } from './feeds.mjs';
+import { agendaBlock, FEED } from './feeds.mjs';
+import { liveSrc } from './vrs.mjs';
 
 const EX = { n: 3, p: 0.6 };
 const field = (id, label, input, note = '') => '<div class="pa-f"><label for="' + id + '">' + label + '</label>' + input + (note ? '<small>' + note + '</small>' : '') + '</div>';
@@ -85,7 +86,8 @@ const HUB = [
 export const esportsHub = {
   path: '/esports',
   kind: 'hub',
-  scripts: ['agenda.js'],
+  scripts: ['agenda.js', 'vrsup.js'],
+  data: h => { const V = vrs(h); return { date: V.date, copied: h.pa.doc('vrs-americas').fetched, n: V.am.rows.length }; },
   title: 'Esports desde Argentina: ranking de CS2 y series',
   description: 'Esports desde Argentina: el ranking de Valve de CS2 con las Américas, cómo funciona el Major y la probabilidad de un Bo3 o un Bo5, cada número con fuente.',
   h1: 'Esports desde Argentina',
@@ -94,9 +96,9 @@ export const esportsHub = {
     const V = vrs(h);
     const top = V.am.rows.slice(0, 8);
     const cards = '<div class="pa-hub">' + HUB.filter(([u]) => h.built(u.split('#')[0])).map(([u, t, s]) => '<a class="pa-c" href="' + h.href(u) + '"><h3>' + t + '</h3><p>' + s + '</p></a>').join('') + '</div>';
-    const tbl = '<div class="pa-tw"><table class="pa-tb"><thead><tr><th class="pa-n">Américas</th><th>Equipo</th><th class="pa-n">Puntos</th><th class="pa-n">Mundo</th></tr></thead><tbody>' +
+    const tbl = '<div class="pa-tw" id="vr8" data-fd-src="' + FEED + '"><table class="pa-tb"><thead><tr><th class="pa-n">Américas</th><th>Equipo</th><th class="pa-n">Puntos</th><th class="pa-n">Mundo</th></tr></thead><tbody data-o="am8">' +
       top.map(r => '<tr><td class="pa-n">' + r.rank + '</td><td>' + h.esc(V.label(r)) + '</td><td class="pa-n">' + fmt(r.points, 0) + '</td><td class="pa-n">' + r.global + '</td></tr>').join('') + '</tbody></table></div>';
-    const vr = sec('Las Américas en el ranking de Valve', '<div class="pa-two"><div>' + tbl + srcLine(h, 'vrs-americas', 'tabla del ' + h.fmtDate(V.date)) + '</div><div><p>Valve ordena a los equipos de CS2 en tres regiones para invitarlos al Major: Europa, Américas y Asia. Argentina juega en las Américas, junto con el resto de Sudamérica y Norteamérica.</p>' + quote(h, 'major_regions') + '<p class="pa-more"><a href="' + h.href('/cs2#ranking') + '">Ver los ' + fmt(V.am.rows.length, 0) + ' equipos de las Américas</a></p></div></div>');
+    const vr = sec('Las Américas en el ranking de Valve', '<div class="pa-two"><div>' + tbl + liveSrc(srcLine(h, 'vrs-americas', 'tabla del ' + h.fmtDate(V.date))) + '</div><div><p>Valve ordena a los equipos de CS2 en tres regiones para invitarlos al Major: Europa, Américas y Asia. Argentina juega en las Américas, junto con el resto de Sudamérica y Norteamérica.</p>' + quote(h, 'major_regions') + '<p class="pa-more" data-rl><a href="' + h.href('/cs2#ranking') + '">Ver los ' + fmt(V.am.rows.length, 0) + ' equipos de las Américas</a></p></div></div>');
     const missing = sec('Lo que todavía no está', '<ul class="pa-dot"><li>Free Fire competitivo: no hay una fuente de partidos que podamos usar con sus condiciones.</li><li>Tablas de ligas de Valorant y LoL: sus ligas no publican tablas abiertas que podamos copiar con fecha.</li></ul>');
     return hero(h, { ey: 'Esports · desde Argentina', girl: true, sub: 'Rankings oficiales con fecha, formatos de torneo explicados con el reglamento en la mano y la matemática de las series. Sin apuestas y sin humo.' }) +
       sec('Herramientas', cards) + (h.built('/esports/agenda') ? agendaBlock(h, '', 'Próximos partidos') : '') + vr + missing;

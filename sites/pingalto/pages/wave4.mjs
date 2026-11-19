@@ -4,7 +4,7 @@
 // brawlmeta), the Swiss stage simulator with Valve's pairing rules and the Valorant callout maps from the client data.
 // The browser draws the feed data (client/events.js, client/meta.js, client/supercell.js, client/agenda.js); the page carries the
 // frame, the method, the attribution and what we do not show and why.
-import { fcPc } from './games2.mjs';
+import { fcPc, fcApp, fcData } from './games2.mjs';
 import { hero, ldPage, sec, quote, srcLine, fmt } from './parts.mjs';
 import { agendaBlock, FEED, css, crCss, bsCss, wait, PS, SC, ART, ART_BS, BSN, crLegend } from './feeds.mjs';
 import { vrs } from '../content/vrs.mjs';
@@ -149,13 +149,14 @@ export const rlHub = {
 export const eafcHub = {
   path: '/eafc',
   kind: 'hub',
-  title: 'EA Sports FC 27 desde Argentina: requisitos en PC y esports',
-  h1: 'EA Sports FC 27 desde Argentina: PC y competitivo',
-  description: 'EA Sports FC 27 desde Argentina: requisitos y precio en Steam, el último mundial FC Pro partido por partido y los jugadores argentinos que compiten.',
-  scripts: ['events.js', 'agenda.js'],
+  title: '{{fc_name}} desde Argentina: requisitos en PC y esports',
+  h1: '{{fc_name}} desde Argentina: PC y competitivo',
+  description: '{{fc_name}} desde Argentina: requisitos y precio en Steam, el último mundial FC Pro partido por partido y los jugadores argentinos que compiten.',
+  scripts: ['events.js', 'agenda.js', 'steam.js'],
+  data: fcData,
   ld: h => ldPage(h),
   render(h) {
-    return css(h) + hero(h, { ey: 'EA Sports FC · PC y competitivo', girl: true, sub: 'Qué pide FC 27 en la compu según Steam y el mundial de FC Pro con los horarios de Argentina, el camino de cada jugador y los argentinos que compiten.' }) +
+    return css(h) + hero(h, { ey: 'EA Sports FC · PC y competitivo', girl: true, sub: 'Qué pide ' + h.esc(fcApp(h).short) + ' en la compu según Steam y el mundial de FC Pro con los horarios de Argentina, el camino de cada jugador y los argentinos que compiten.' }) +
       fcPc(h) + sec('El último FC Pro World Championship', box('event', ' data-ev="fc-worlds"') + PS, 'mundial') +
       agendaBlock(h, 'eafc', 'Próximos partidos de EA Sports FC') +
       sec('Argentinos en EA Sports FC', box('argentinos', ' data-g="fifa"')) +
@@ -254,11 +255,11 @@ export const sistemaSuizo = {
   h1: 'Simulador de fase suiza',
   description: 'Simulá una fase suiza de 16 equipos con el ranking de Valve o con el tuyo y mirá la chance de 3-0, de pasar o de 0-3, con las reglas de cruces del Major.',
   scripts: ['swisssim.js'],
-  data: h => { const V = vrs(h); return { top: V.gl.rows.filter(r => !r.masked).slice(0, 16).map(r => [r.team, r.points, r.americas ? 1 : 0]) }; },
+  data: h => { const V = vrs(h); return { date: V.date, top: V.gl.rows.filter(r => !r.masked).slice(0, 16).map(r => [r.team, r.points, r.americas ? 1 : 0]) }; },
   ld: h => ldPage(h),
   render(h) {
     const V = vrs(h), top = V.gl.rows.filter(r => !r.masked).slice(0, 16);
-    const tool = '<form class="pa-c pa-fm" id="pa-ss" autocomplete="off"><h2>Los 16 equipos</h2><div class="pa-f"><label for="ss-src">Arrancar con</label><select id="ss-src"><option value="vrs">Los 16 primeros del ranking de Valve</option><option value="eq">16 equipos iguales</option><option value="own">Mi lista</option></select></div>' +
+    const tool = '<form class="pa-c pa-fm" id="pa-ss" autocomplete="off" data-fd-src="' + FEED + '"><h2>Los 16 equipos</h2><div class="pa-f"><label for="ss-src">Arrancar con</label><select id="ss-src"><option value="vrs">Los 16 primeros del ranking de Valve</option><option value="eq">16 equipos iguales</option><option value="own">Mi lista</option></select></div>' +
       '<div class="pa-f"><label for="ss-teams">Una línea por equipo: nombre y puntos, de la siembra 1 a la 16</label><textarea id="ss-teams" rows="16" spellcheck="false">' + top.map(r => h.esc(r.team) + ', ' + r.points).join('&#10;') + '</textarea><small>Los puntos son del ranking de Valve; la chance de cada mapa sale de su propia fórmula.</small></div><p class="pa-note" data-o="ssn" aria-live="polite"></p><button type="submit" class="pa-b1">Simular de nuevo</button></form>';
     const out = '<div class="pa-c pa-out"><h2>Resultado de 10.000 fases simuladas</h2><div class="pa-tw" data-o="ss"><p class="pa-fdw">Calculando…</p></div><p class="pa-src">Barra de récords, de izquierda a derecha: 3-0, 3-1, 3-2, 2-3, 1-3 y 0-3. Marcados, los equipos de las Américas en el ranking de Valve (ahí compite Argentina).</p></div>';
     const rules = sec('Las reglas de cruces, según Valve', '<div class="pa-two"><div>' + quote(h, 'major_identical') + quote(h, 'major_3w3l') + quote(h, 'major_bo3') + quote(h, 'major_bo1') + quote(h, 'major_rematch') + '</div><div>' + quote(h, 'major_r1') + quote(h, 'major_r23') + quote(h, 'major_table') + quote(h, 'major_order') + quote(h, 'major_buchholz') + '</div></div>' + srcLine(h, 'major-rules', 'versión del ' + h.fmtDate(h.pa.doc('major-rules').published)));

@@ -51,6 +51,17 @@ async function robotsOf(ctx, origin) {
   catch (e) { return e.status >= 400 && e.status < 500 ? { txt: '', why: '' } : { txt: null, why: 'robots.txt of ' + new URL(origin).host + ' did not answer (' + String(e.message).slice(0, 60) + ')' }; }
 }
 const robotsWhy = (r, origin, path) => r.txt === null ? r.why : robotsAllow(r.txt, path) ? '' : 'robots.txt of ' + new URL(origin).host + ' keeps us or AI agents out of ' + path.replace(/[^/]+$/, '');
+// Data feeds (riot, vrs, steam): stops the run before the first request to a host whose robots.txt keeps us or AI agents out of
+// one of the given addresses (same rules as the art copy; a 4xx answer for robots.txt means no rules).
+export async function robotsGate(ctx, urls) {
+  const seen = new Map();
+  for (const url of urls) {
+    const u = new URL(url);
+    if (!seen.has(u.origin)) seen.set(u.origin, await robotsOf(ctx, u.origin));
+    const why = robotsWhy(seen.get(u.origin), u.origin, u.pathname);
+    if (why) throw new Error(why);
+  }
+}
 
 let cwebpOk = null;
 const run = (cmd, args) => new Promise(res => execFile(cmd, args, { timeout: 30000 }, (err, so, se) => res({ ok: !err, err: err ? String(se || err.message).slice(0, 120) : '' })));

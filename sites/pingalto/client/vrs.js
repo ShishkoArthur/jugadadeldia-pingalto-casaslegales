@@ -1,12 +1,14 @@
 import { expected } from '../../../engine/games/vrs.mjs';
 import { mapChanceFor } from '../../../engine/games/series.mjs';
 import { $, $$, data, out, params, setParams, fmt, fmtPct, fmtInput, esc } from './kit.js';
+import { cs2Live } from './vrsfd.js';
 
 const D = data();
 const box = $('#pa-vr');
 if (D && box) {
-  D.gl = D.gl.map((r, i) => [i + 1, ...r]);
-  const amRows = D.am.map((g, i) => { const r = D.gl[g - 1]; return [i + 1, r[1], r[2], r[3], g]; });
+  let amRows;
+  const load = V => { D.gl = V.gl.map((r, i) => [i + 1, ...r]); D.am = V.am; amRows = D.am.map((g, i) => { const r = D.gl[g - 1]; return [i + 1, r[1], r[2], r[3], g]; }); };
+  load(D);
   let region = 'am', all = false;
   const q = $('#vr-q'), more = $('[data-o="more"]');
   const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -47,4 +49,5 @@ if (D && box) {
   B.addEventListener('change', () => duel());
   duel(false);
   draw();
+  cs2Live(box, D, V => { load(V); duel(false); draw(); });
 }

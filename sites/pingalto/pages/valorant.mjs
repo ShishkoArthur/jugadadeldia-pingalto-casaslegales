@@ -2,32 +2,20 @@
 // game client, es-MX). Nothing typed by hand: names, roles, texts, colors and release dates come from that file.
 import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
 import { artFor, artOn, artNotice } from '../content/art.mjs';
+import { valAgents, valRoles } from '../../../engine/games/riot.mjs';
+import { FEED } from './feeds.mjs';
 
 export const valArtNote = h => artOn('valorantapi') ? '<p class="pa-src" lang="en">' + h.esc(artNotice('valorantapi')) + '</p>' : '';
 export const agentImg = (h, a) => { const f = artFor('valorant-agents', a.uuid); return f ? '<img src="' + h.asset(f) + '" alt="' + h.esc(a.name) + '" width="128" height="128" loading="lazy">' : ''; };
 
 const SLOT = { Ultimate: 'Definitiva', Passive: 'Pasiva' };
-const ORDER = { Grenade: 0, Ability1: 1, Ability2: 2, Ultimate: 3, Passive: 4 };
-const slug = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const color = c => '#' + String(c).slice(0, 6);
-
 export function agents(h) {
-  const raw = h.pa.json('valapi-agents');
-  if (raw.status !== 200 || !Array.isArray(raw.data)) throw new Error('valorant agents: bad file');
-  const list = raw.data.filter(a => a.isPlayableCharacter && a.role).map(a => ({
-    id: slug(a.displayName), uuid: a.uuid, name: a.displayName, role: a.role.displayName, roleId: slug(a.role.displayName), roleDesc: a.role.description,
-    desc: a.description, released: /^(19[7-9]|20[01])/.test(a.releaseDate) ? null : a.releaseDate.slice(0, 10),
-    colors: (a.backgroundGradientColors || []).slice(0, 3).map(color),
-    abilities: a.abilities.filter(x => x.displayName && x.description).sort((x, y) => (ORDER[x.slot] ?? 9) - (ORDER[y.slot] ?? 9)).map(x => ({ slot: x.slot, name: x.displayName, desc: x.description })),
-  }));
-  if (list.length < 20) throw new Error('valorant agents: only ' + list.length);
-  const ids = new Set(list.map(a => a.id));
-  if (ids.size !== list.length) throw new Error('valorant agents: duplicate ids');
-  list.sort((a, b) => (b.released || '').localeCompare(a.released || '') || a.name.localeCompare(b.name, 'es'));
-  const roles = [...new Map(list.map(a => [a.roleId, { id: a.roleId, name: a.role, desc: a.roleDesc }])).values()].sort((a, b) => a.name.localeCompare(b.name, 'es'));
+  const list = valAgents(h.pa.json('valapi-agents'));
   const v = h.pa.json('valapi-version');
-  return { list, roles, version: v.data.version, build: v.data.buildDate.slice(0, 10) };
+  return { list, roles: valRoles(list), version: v.data.version, build: v.data.buildDate.slice(0, 10) };
 }
+export const valLive = (h, A) => ({ v: A.version, b: A.build, d: h.pa.doc('valapi-agents').fetched, vd: h.pa.doc('valapi-version').fetched, n: A.list.length, r: A.roles.length });
+export const live = s => s.replace('<p class="pa-src"', '<p class="pa-src" data-rl');
 
 const rich = (h, t) => h.esc(t).replace(/&lt;(whitebold|teal|debuffred)&gt;([\s\S]*?)&lt;\/&gt;/g, (m, k, x) => '<b class="pa-k' + k[0] + '">' + x + '</b>').replace(/&lt;\/?[a-z]*&gt;/g, '');
 function card(h, a, newest) {
@@ -45,6 +33,7 @@ export const valorantAgentes = {
   description: 'Todos los agentes de Valorant con sus habilidades en español, filtro por rol, comparador de a dos y el más nuevo arriba, con datos del cliente del juego.',
   h1: 'Agentes de Valorant y sus habilidades',
   scripts: ['agents.js'],
+  data: h => valLive(h, agents(h)),
   ld: h => ldPage(h),
   render(h) {
     const A = agents(h);
@@ -57,10 +46,10 @@ export const valorantAgentes = {
       '<div class="pa-f"><label for="ag-q">Nombre</label><input id="ag-q" type="search" autocomplete="off" placeholder="por ejemplo Jett"></div><p class="pa-x" data-o="n">' + fmt(A.list.length, 0) + ' agentes</p></div>' +
       '<div class="pa-c pa-fm"><h2>Compará dos</h2><div class="pa-row"><div class="pa-f"><label for="ag-a">Agente 1</label><select id="ag-a">' + opts(A.list[0].id) + '</select></div><div class="pa-f"><label for="ag-b">Agente 2</label><select id="ag-b">' + opts(A.list[1].id) + '</select></div></div>' +
       '<div class="pa-cmp" data-o="cmp"><p class="pa-src">Elegí dos agentes y los ves uno al lado del otro.</p></div></div></div>';
-    const roles = sec('Los ' + fmt(A.roles.length, 0) + ' roles', '<div class="pa-two">' + A.roles.map(r => '<div class="pa-c"><h3>' + h.esc(r.name) + ' · ' + fmt(count(r), 0) + '</h3><p>' + h.esc(r.desc) + '</p></div>').join('') + '</div>');
-    const grid = sec('Todos los agentes', '<div class="pa-ags" id="ag-list">' + A.list.map(a => card(h, a, newest)).join('') + '</div>');
+    const roles = sec('Los ' + fmt(A.roles.length, 0) + ' roles', '<div class="pa-two">' + A.roles.map(r => '<div class="pa-c"><h3 data-rr="' + r.id + '">' + h.esc(r.name) + ' · ' + fmt(count(r), 0) + '</h3><p>' + h.esc(r.desc) + '</p></div>').join('') + '</div>');
+    const grid = sec('Todos los agentes', '<div class="pa-ags" id="ag-list" data-fd-src="' + FEED + '">' + A.list.map(a => card(h, a, newest)).join('') + '</div>');
     const src = sec('De dónde salen los datos', '<div class="pa-two"><div><p>Nombres, roles, textos de habilidades y colores salen de los archivos del cliente de Valorant que publica valorant-api.com, un proyecto de la comunidad sin relación con Riot. Leemos el archivo entero, tal como lo guardamos, en español de México. Los textos son los del juego.</p>' +
-      srcLine(h, 'valapi-agents', artOn('valorantapi') ? 'íconos de la misma copia, achicados' : '') + srcLine(h, 'valapi-version', 'cliente <code>' + h.esc(A.version) + '</code> del ' + h.fmtDate(A.build)) + valArtNote(h) + '</div><div><p>La fecha de llegada solo aparece cuando el archivo la trae; para los agentes más viejos viene vacía y no la inventamos. Qué agentes eligen los equipos argentinos en torneos todavía no lo mostramos: falta una fuente pública que podamos citar partido por partido.</p></div></div>');
+      live(srcLine(h, 'valapi-agents', artOn('valorantapi') ? 'íconos de la misma copia, achicados' : '')) + live(srcLine(h, 'valapi-version', 'cliente <code>' + h.esc(A.version) + '</code> del ' + h.fmtDate(A.build))) + valArtNote(h) + '</div><div><p>La fecha de llegada solo aparece cuando el archivo la trae; para los agentes más viejos viene vacía y no la inventamos. Qué agentes eligen los equipos argentinos en torneos todavía no lo mostramos: falta una fuente pública que podamos citar partido por partido.</p></div></div>');
     const ar = sec('Desde Argentina', '<div class="pa-two"><div>' + quote(h, 'val_scl', 'es') + '</div><div><p>Tu ping hasta Santiago desde tu provincia está en el <a href="' + h.href('/kit/ping') + '">test de ping</a>, y cuántas partidas te faltan para subir, en los <a href="' + h.href('/valorant/rangos') + '">rangos de Valorant</a>.</p></div></div>');
     return '<link rel="stylesheet" href="' + h.asset('vx.css') + '">' + hero(h, { ey: 'Valorant · agentes · ' + fmt(A.list.length, 0), sub: 'Cada agente con su rol y sus habilidades en español, para elegir con quién jugar o entender qué te hizo el rival. Filtrá por rol y compará de a dos.' }) +
       tools + grid + roles + src + ar;

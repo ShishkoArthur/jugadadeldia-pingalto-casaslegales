@@ -1,5 +1,6 @@
 import { empty, move, serialize, parse } from '../../../engine/games/tier.mjs';
 import { $, $$, data, out, fmt, esc, params, setParams } from './kit.js';
+import { feed, newer, swap, num } from './live.js';
 
 const D = data();
 const board = $('#tl-board');
@@ -107,4 +108,19 @@ if (D && board) {
   const sid = parsed.set && D.sets.some(s => s.id === parsed.set) ? parsed.set : D.sets[0].id;
   const n = sid === 'libre' ? ownItems().length : D.sets.find(s => s.id === sid).items.length;
   choose(sid, q.get('l') ? parse(q.get('l'), n).state : null);
+  const grow = (id, names) => {
+    const s = D.sets.find(x => x.id === id);
+    const add = s ? [...new Set(names)].filter(x => !s.items.includes(x)) : [];
+    if (!add.length) return;
+    const n0 = s.items.length;
+    s.items = s.items.concat(add);
+    if (s.icons) s.icons = s.icons.concat(add.map(() => ''));
+    const o = [...setSel.options].find(x => x.value === id);
+    if (o) swap(o, [[num(n0), num(s.items.length)]]);
+    if (set === s) { items = s.items; st = { rows: st.rows, pool: st.pool.concat(add.map((x, i) => n0 + i)) }; draw(); }
+  };
+  Promise.all([feed(board, 'riot-lol'), feed(board, 'riot-val')]).then(([l, v]) => {
+    if (l && Array.isArray(l.data.c) && newer(l.data.v, D.lv)) grow('lol', l.data.c.map(c => c[1]).sort((a, b) => a.localeCompare(b, 'es')));
+    if (v && Array.isArray(v.data.agents) && newer(v.data.v, D.vv)) { grow('val-agentes', v.data.agents.map(x => x.es.name)); grow('val-mapas', v.data.maps.map(m => m.es[0])); }
+  });
 }

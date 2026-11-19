@@ -1,6 +1,7 @@
 import { simulate, RECORDS } from '../../../engine/games/swisssim.mjs';
 import { expected } from '../../../engine/games/vrs.mjs';
 import { $, data, fmtPct, parseNum, esc } from './kit.js';
+import { vrsNewer, top16 } from './vrsfd.js';
 
 const D = data();
 const f = $('#pa-ss');
@@ -24,4 +25,11 @@ if (f && D) {
   f.addEventListener('submit', e => { e.preventDefault(); run(); });
   if (read().length !== 16) write(preset(src.value === 'eq' ? 'eq' : 'vrs'));
   run();
+  vrsNewer(f, D.date).then(doc => {
+    if (!doc) return;
+    D.top = top16(doc.data);
+    am.clear();
+    for (const t of D.top) if (t[2]) am.add(t[0]);
+    if (src.value !== 'own') { write(preset(src.value)); run(); }
+  });
 }

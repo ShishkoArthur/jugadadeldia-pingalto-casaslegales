@@ -10,7 +10,7 @@ const TR = [
 const STG = [[/^Group Stage$/i, 'Fase de grupos'], [/^Group ([A-H])$/i, 'Grupo $1'], [/^Knockout Stage$/i, 'Eliminación directa'], [/^Elimination Round$/i, 'Ronda de eliminación'], [/^Swiss Stage$/i, 'Fase suiza']];
 const tr = (s, list) => { let x = String(s || ''); for (const [r, t] of list) x = x.replace(r, t); return x.charAt(0).toUpperCase() + x.slice(1); };
 const VCT = new Set(['champions', 'masters', 'americas']);
-const title = (ev, ed) => VCT.has(ev.k) ? 'VCT ' + ed.name : ev.name + (ed.name && !/^\d{4}$/.test(ed.name) ? ' ' + ed.name : ed.year ? ' ' + ed.year : '');
+const title = (ev, ed) => VCT.has(ev.k) ? 'VCT ' + ed.name : ev.k === 'cs2-major' ? ed.name : ev.name + (ed.name && !/^\d{4}$/.test(ed.name) ? ' ' + ed.name : ed.year ? ' ' + ed.year : '');
 const ST = { running: 'En curso', upcoming: 'Por empezar', finished: 'Terminado' };
 const SA = new Set(['AR', 'BO', 'BR', 'CL', 'CO', 'EC', 'PE', 'PY', 'UY', 'VE']);
 const flag = loc => loc === 'AR' ? ' <i class="pa-fdar" title="Argentina">AR</i>' : '';
@@ -49,7 +49,8 @@ async function event(el) {
   const doc = await load(el.dataset.fdSrc, 'torneos'), d = doc.data;
   const ev = d.events.find(e => e.k === el.dataset.ev);
   if (!ev || !ev.eds.length) { el.innerHTML = '<p>Todavía no hay datos de este torneo.</p>'; return; }
-  const ed = ev.eds[Number(el.dataset.ed || 0)] || ev.eds[0];
+  const ed = ev.eds[Number(el.dataset.ed || 0)] || (ev.k === 'cs2-major' && Number(el.dataset.ed) > 0 ? null : ev.eds[0]);
+  if (!ed) { const s = el.closest('section'); if (s) s.hidden = true; return; }
   el.innerHTML = stamp(doc, 6) + (stale(doc, 6) && ed.st !== 'finished' ? '' : edition(ed, ev));
   const list = el.querySelector('[data-stage-list]');
   if (!list) return;

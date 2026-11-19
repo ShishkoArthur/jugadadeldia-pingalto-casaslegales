@@ -67,7 +67,7 @@ export const UI = {
 export const DATA = {
   '/valorant/rangos': { tr: ['steps.*'], set: { unit: 'RR' } },
   '/lol/rangos': { tr: ['steps.*'], set: { unit: 'LP' } },
-  '/lol': { tr: ['c.*.2', 'c.*.4', 'stats.*', 'info.*'] },
+  '/lol': { tr: ['c.*.3', 'stats.*', 'info.*', 'roles.*'] },
   '/ff/sensibilidad': { tr: ['sliders.*'] },
   '/ff/max': { tr: ['first.say'] },
   '/kit/ping': { tr: ['live.*.label'] },

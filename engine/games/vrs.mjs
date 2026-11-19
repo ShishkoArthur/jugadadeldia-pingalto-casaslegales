@@ -40,3 +40,24 @@ export function parseStandings(md) {
   rows.forEach((r, i) => { if (r.rank !== i + 1) throw new Error('vrs: rank ' + r.rank + ' at row ' + (i + 1)); if (i && r.points > rows[i - 1].points) throw new Error('vrs: points not sorted at ' + r.rank); });
   return { region: head[1] || 'Global', date: head[2] + '-' + head[3] + '-' + head[4], rows };
 }
+
+// The Americas table inside the global one: marks every global row of an Americas team (r.americas) and gives every Americas row
+// its world rank (r.global). The two files must be of the same date and every Americas row must be in the global list.
+export function joinRegions(am, gl) {
+  if (am.region !== 'Americas') throw new Error('vrs: Americas file has region ' + am.region);
+  if (am.date !== gl.date) throw new Error('vrs: Americas table of ' + am.date + ' but global of ' + gl.date);
+  const key = r => r.team + '|' + r.roster.join(',');
+  const amKeys = new Set(am.rows.map(key));
+  for (const r of gl.rows) r.americas = amKeys.has(key(r));
+  const at = new Map();
+  for (const r of gl.rows) if (!at.has(key(r))) at.set(key(r), r.rank);
+  const inGlobal = gl.rows.filter(r => r.americas).length;
+  if (inGlobal !== am.rows.length) throw new Error('vrs: ' + am.rows.length + ' Americas rows but ' + inGlobal + ' found in the global list');
+  for (const r of am.rows) r.global = at.get(key(r));
+  return { am, gl, date: am.date };
+}
+// Compact rows for the browser (client/vrs.js and the vrs feed): global rows [points, name or '' when masked, roster, 1 if Americas]
+// in Valve's order (rank = position) and, for the Americas list, the world rank of each row.
+export function clientTables(V) {
+  return { gl: V.gl.rows.map(r => [r.points, r.masked ? '' : r.team, r.roster.join(', '), r.americas ? 1 : 0]), am: V.am.rows.map(r => r.global) };
+}
