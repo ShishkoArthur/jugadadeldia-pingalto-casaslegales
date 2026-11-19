@@ -1,12 +1,21 @@
 // Lotto games for jugadadeldia.com (docs/FEEDS.md, research docs/research/JDD-SOURCES-2026-11-04.md). Hourly.
-// Official sources reachable from our server (robots.txt of each answers 404 = no rules; checked 2026-11-04):
+// Official sources reachable from our server (robots.txt of each answers 404 = no rules; checked 2026-11-04, IPJyC 2026-11-19):
 //   Loto Plus   LOTBA loto.loteriadelaciudad.gob.ar (operator; JSON in includes/resultados-data.php, with prizes) + copy at San Juan CAS
 //   Telekino    www.telekino.com.ar (the game's own site, latest draw) + copy at San Juan CAS
-//   Quini 6, Brinco   only the copy at San Juan CAS: the operator (Lotería de Santa Fe) answers 403 to our server (geo-block, not
-//               bypassed). CAS lags behind sometimes: each game carries `behind` (scheduled draws missing since its latest) and the
-//               pages must say "pendiente de publicación oficial" instead of pretending the old draw is the newest.
+//   Quini 6, Brinco   the operator (Lotería de Santa Fe) answers 403 / times out (geo-block, not bypassed). Two official copies:
+//               San Juan CAS (history, lags behind: its latest page stopped at 28.10 in November 2026) and the IPJyC Mendoza
+//               (Instituto Provincial de Juegos y Casinos) copy of the operator's signed "Extracto oficial" PDF, one file per game
+//               overwritten after each draw (ipjycweb.mendoza.gov.ar/userfiles/file/<quini6|brinco>.pdf, http only; the latest draw,
+//               about half a day after it). Each game carries `behind` (scheduled draws missing since its latest): the pages say
+//               "pendiente de publicación oficial" instead of pretending the old draw is the newest, and from 2 missing draws the
+//               feed lists an alert (data.alerts -> _health.json -> Telegram, one per game, a recovery note when it clears).
 // Two copies of one draw must agree number by number ("2 fuentes"), else that draw is not published and goes to conflicts.
-// Output: loterias.json { games: { id: { draws (newest first, up to KEEP), latest, behind, expected } }, conflicts, notes }.
+// Output: loterias.json { games: { id: { draws (newest first, up to KEEP), latest, behind, expected } }, conflicts, notes, alerts }.
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { PDFTOTEXT } from '../../../engine/pdf.mjs';
 import { zoneTime } from '../lib.mjs';
 import { decode, isoFromDmy } from './provincias-parse.mjs';
 
@@ -14,18 +23,22 @@ const LOTO = 'https://loto.loteriadelaciudad.gob.ar/';
 const LOTO_DRAW = n => LOTO + 'includes/resultados-data.php?sorteo=' + n;
 const TK = 'https://www.telekino.com.ar/';
 const CAS = (g, d) => 'https://cas.gob.ar/juegos/sorteos/resultados?juego=' + g + (d ? '&fecha=' + d : '');
+export const MZA = f => 'http://ipjycweb.mendoza.gov.ar/userfiles/file/' + f + '.pdf';
 const KEEP = 30, STALE = 4;
+export const ALERT_BEHIND = 2, RED_BEHIND = 4;
 
 // schedule (days of week, 0 = Sunday) and the hour after which the day's draw should be published, Argentine time
 export const GAMES = {
-  'loto-plus': { name: 'Loto Plus', operator: 'Lotería de la Ciudad de Buenos Aires', cas: 'loto', days: [3, 6], after: '23:30', max: 45, size: 6,
+  'loto-plus': { name: 'Loto Plus', operator: 'Lotería de la Ciudad de Buenos Aires', cas: 'loto', hosts: 'loto.loteriadelaciudad.gob.ar, cas.gob.ar', days: [3, 6], after: '23:30', max: 45, size: 6,
     mods: { Tradicional: 'tradicional', Match: 'match', Desquite: 'desquite', 'Sale o Sale': 'sale-o-sale' } },
-  telekino: { name: 'Telekino', operator: 'Telekino', cas: 'telekino', days: [0], after: '23:00', min: 1, max: 25, size: 15,
+  telekino: { name: 'Telekino', operator: 'Telekino', cas: 'telekino', hosts: 'telekino.com.ar, cas.gob.ar', days: [0], after: '23:00', min: 1, max: 25, size: 15,
     mods: { '': 'telekino', Telekino: 'telekino', Rekino: 'rekino' } },
-  'quini-6': { name: 'Quini 6', operator: 'Lotería de Santa Fe', cas: 'quini6', days: [0, 3], after: '23:30', max: 45, size: 6,
-    mods: { Tradicional: 'tradicional', 'Segunda Vuelta': 'segunda', Revancha: 'revancha', 'Siempre Sale': 'siempre-sale' } },
-  brinco: { name: 'Brinco', operator: 'Lotería de Santa Fe', cas: 'brinco', days: [0], after: '23:00', max: 39, size: 6,
-    mods: { Tradicional: 'tradicional', Junior: 'junior' } },
+  'quini-6': { name: 'Quini 6', operator: 'Lotería de Santa Fe', cas: 'quini6', hosts: 'cas.gob.ar, ipjycweb.mendoza.gov.ar', days: [0, 3], after: '23:30', max: 45, size: 6,
+    mods: { Tradicional: 'tradicional', 'Segunda Vuelta': 'segunda', Revancha: 'revancha', 'Siempre Sale': 'siempre-sale' },
+    mza: { file: 'quini6', heads: { PRIMER: 'tradicional', SEGUNDA: 'segunda', REVANCHA: 'revancha', SIEMPRE: 'siempre-sale' }, is: t => /\bQUINI\b/.test(t) && !/\bBRINCO\b/.test(t) } },
+  brinco: { name: 'Brinco', operator: 'Lotería de Santa Fe', cas: 'brinco', hosts: 'cas.gob.ar, ipjycweb.mendoza.gov.ar', days: [0], after: '23:00', max: 39, size: 6,
+    mods: { Tradicional: 'tradicional', Junior: 'junior' },
+    mza: { file: 'brinco', heads: { TRADICIONAL: 'tradicional', JUNIOR: 'junior' }, is: t => /\bBRINCO\b/.test(t) && !/\bQUINI\b/.test(t) } },
 };
 const MONTHS = { enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, setiembre: 9, octubre: 10, noviembre: 11, diciembre: 12 };
 
@@ -100,6 +113,67 @@ export function parseCas(html, g) {
   return { g, s, d, mods, prev: pm ? pm[1] : null };
 }
 
+// IPJyC Mendoza copy of the Lotería de Santa Fe "Extracto oficial" PDF, as words with boxes (pdftotext -bbox) -> { g, s, d, mods }.
+// Layout (checked 2026-11-19 on Quini 6 N° 3426 and Brinco N° 1380): "EXTRACTO OFICIAL CONCURSO Nº N", "SORTEO REALIZADO EL DD/MM/YYYY
+// A LAS HH:MM EN SANTA FE", then per modality a heading line (font about 14 pt) and one row of balls (two digits, font about 34 pt);
+// prize figures and the 18 numbers of the Premio Extra are in smaller fonts. A row belongs to the nearest heading above it.
+const WORD = /<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">([^<]*)<\/word>/g;
+export function parseMza(bbox, g) {
+  const G = GAMES[g], M = G.mza || bad('IPJyC: no copy for ' + g);
+  const where = 'IPJyC ' + g;
+  const words = [];
+  let page = 0;
+  for (const part of String(bbox).split(/<page /).slice(1)) {
+    page++;
+    for (const m of part.matchAll(WORD)) words.push({ p: page, x: +m[1], y: +m[2], h: +m[4] - +m[2], t: decode(m[5]).trim() });
+  }
+  if (!words.length) bad(where + ': no text in the PDF');
+  const text = words.map(w => w.t).join(' ');
+  const sm = /EXTRACTO OFICIAL CONCURSO N\S{0,2}\s*(\d{3,6})\b/.exec(text);
+  const dm = /SORTEO REALIZADO EL (\d{2}\/\d{2}\/\d{4}) A LAS \d{1,2}:\d{2} (?:HS\.? )?EN SANTA FE/.exec(text);
+  if (!sm || !dm) bad(where + ': no draw number/date');
+  if (!M.is(text)) bad(where + ': the PDF is not the extract of ' + G.name);
+  const s = Number(sm[1]), d = isoFromDmy(dm[1]) || bad(where + ': bad date');
+  const heads = words.filter(w => M.heads[w.t] && w.h >= 10 && w.h < 22);
+  for (const k of Object.keys(M.heads)) { const n = heads.filter(w => w.t === k).length; if (n !== 1) bad(where + ': heading ' + k + ' found ' + n + ' times'); }
+  const rows = [];
+  for (const w of words.filter(x => /^\d{2}$/.test(x.t) && x.h >= 25)) {
+    const r = rows.find(z => z.p === w.p && Math.abs(z.y - w.y) < 3);
+    if (r) r.w.push(w); else rows.push({ p: w.p, y: w.y, w: [w] });
+  }
+  const mods = {};
+  for (const r of rows) {
+    const above = heads.filter(x => x.p === r.p && x.y < r.y).sort((a, b) => b.y - a.y)[0];
+    const id = above ? M.heads[above.t] : bad(where + ': balls without a heading');
+    if (mods[id]) bad(where + ': modality twice ' + id);
+    mods[id] = checkSet(r.w.sort((a, b) => a.x - b.x).map(w => w.t), g, where + ' ' + id);
+  }
+  for (const id of new Set(Object.values(G.mods))) if (!mods[id]) bad(where + ': modality missing ' + id);
+  return { g, s, d, mods };
+}
+export function pdfBbox(buf) {
+  if (!Buffer.isBuffer(buf) || buf.subarray(0, 5).toString('latin1') !== '%PDF-') bad('not a PDF');
+  const dir = mkdtempSync(join(tmpdir(), 'mza-'));
+  try {
+    const f = join(dir, 'x.pdf');
+    writeFileSync(f, buf);
+    return execFileSync(PDFTOTEXT, ['-bbox', '-enc', 'UTF-8', f, '-'], { encoding: 'utf8', timeout: 30000, maxBuffer: 4 << 20 });
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+}
+
+// Alerts for the health report (tools/feeds/run.mjs noticesOf -> tools/feeds/alerts.mjs): a game with ALERT_BEHIND or more scheduled
+// draws missing in every official copy. One id per game; params.level turns red from RED_BEHIND (the alert layer escalates once).
+const firstAfter = (g, d) => { for (let x = addDays(d, 1), i = 0; i < 14; x = addDays(x, 1), i++) if (GAMES[g].days.includes(dow(x))) return x; return null; };
+export function behindAlerts(games) {
+  const out = [];
+  for (const [g, x] of Object.entries(games)) {
+    if (!(x.behind >= ALERT_BEHIND) || !x.latest) continue;
+    out.push({ id: 'lot-behind-' + g, text: x.name + ': ' + x.behind + ' scheduled draws missing in the official copies (latest #' + x.latest.s + ' of ' + x.latest.d + ', expected one of ' + x.expected + ')',
+      params: { game: g, name: x.name, behind: x.behind, s: x.latest.s, d: x.latest.d, expected: x.expected, first: firstAfter(g, x.latest.d), hosts: GAMES[g].hosts, level: x.behind >= RED_BEHIND ? 'red' : 'yellow' } });
+  }
+  return out;
+}
+
 // Scheduled draw days after `latest` that should be published by now (holidays can move a draw: the pages say "según la fuente").
 export function behindOf(g, latest, today, nowHm) {
   const G = GAMES[g];
@@ -122,7 +196,7 @@ export default {
   async fetch(ctx) {
     const prev = ctx.prev && ctx.prev.data;
     const have = g => new Set(((prev && prev.games && prev.games[g] && prev.games[g].draws) || []).map(x => x.s));
-    const out = { today: ctx.today(), now: zoneTime(ctx.now || new Date()), got: [], notes: [], ok: 0, failed: 0, next: { ...((prev && prev.next) || {}) }, prev, fetched: new Date().toISOString(), source: { url: LOTO, also: [TK, 'https://cas.gob.ar/'] } };
+    const out = { today: ctx.today(), now: zoneTime(ctx.now || new Date()), got: [], notes: [], ok: 0, failed: 0, next: { ...((prev && prev.next) || {}) }, prev, fetched: new Date().toISOString(), source: { url: LOTO, also: [TK, 'https://cas.gob.ar/', 'http://ipjycweb.mendoza.gov.ar/'] } };
     const tryGet = async (what, fn) => { try { const r = await fn(); out.ok++; return r; } catch (e) { out.failed++; out.notes.push((what + ': ' + e.message).slice(0, 200)); return null; } };
     // LOTBA Loto Plus: the newest draw from the home page, the next number (the home may lag), one older missing draw (backfill)
     const latest = await tryGet('LOTBA loto home', async () => {
@@ -152,6 +226,11 @@ export default {
         const o = await tryGet('CAS ' + g + ' ' + back, async () => parseCas((await ctx.getText(CAS(GAMES[g].cas, back), { ttlHours: 24 })).text, g));
         if (o) { if (o.d !== back) out.notes.push('CAS ' + g + ' ' + back + ': page shows ' + o.d); else { out.got.push({ src: 'C', ...o }); } out.next[g] = o.prev || null; }
       }
+    }
+    // IPJyC Mendoza: the latest extract PDF of Quini 6 and Brinco (the file is overwritten after each draw)
+    for (const g of Object.keys(GAMES).filter(k => GAMES[k].mza)) {
+      const m = await tryGet('IPJyC ' + g, async () => parseMza(pdfBbox((await ctx.getBytes(MZA(GAMES[g].mza.file), { ttlHours: 0.5, timeoutMs: 60000 })).buf), g));
+      if (m) out.got.push({ src: 'M', ...m });
     }
     return out;
   },
@@ -183,8 +262,8 @@ export default {
     if (!Object.values(games).some(x => x.draws.length)) throw new Error('no lotto draws yet');
     return {
       today: raw.today, checkedAt: raw.now, games, next: raw.next,
-      sources: { L: LOTO, T: TK, C: 'https://cas.gob.ar/juegos/sorteos/resultados' },
-      conflicts: conflicts.slice(-40), notes: raw.notes.slice(0, 12),
+      sources: { L: LOTO, T: TK, C: 'https://cas.gob.ar/juegos/sorteos/resultados', M: MZA('quini6').replace('quini6.pdf', '') },
+      conflicts: conflicts.slice(-40), notes: raw.notes.slice(0, 12), alerts: behindAlerts(games),
     };
   },
 };

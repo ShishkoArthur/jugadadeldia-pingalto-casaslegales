@@ -10,7 +10,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parseTucumanDay, parseTucumanRegistro, tucumanIntermediate, parseSanJuan, parseChaco, parseMisiones, ProvError } from '../../tools/feeds/jugadadeldia/provincias-parse.mjs';
 import prov, { refCheck, sourceState, isDown, kindOf } from '../../tools/feeds/jugadadeldia/provincias.mjs';
-import lot, { parseLoto, parseTelekino, parseCas, behindOf, LotError } from '../../tools/feeds/jugadadeldia/loterias.mjs';
+import lot, { parseLoto, parseTelekino, parseCas, parseMza, pdfBbox, behindOf, LotError } from '../../tools/feeds/jugadadeldia/loterias.mjs';
 import { runFeed } from '../../tools/feeds/run.mjs';
 
 const FX = name => new URL('./fixtures/' + name + '/', import.meta.url);
@@ -223,4 +223,55 @@ test('loterias feed: fixture run, two copies agree; a differing copy drops the d
   const x = lot.compute(raw, null);
   assert.equal(x.games['loto-plus'].draws.length, 0);
   assert.equal(x.conflicts[0].s, 3931);
+  assert.ok(d.notes.some(n => n.startsWith('IPJyC quini-6')), 'the IPJyC copy is asked for (no fixture of 04.11: noted, the feed goes on)');
+  assert.deepEqual(d.alerts, [], 'one missing draw is no alert');
+});
+
+// IPJyC Mendoza copies of the Lotería de Santa Fe extract PDFs, recorded 2026-11-19 05:50 Argentine time from this repository's
+// machine (pdftotext -bbox of ipjycweb.mendoza.gov.ar/userfiles/file/quini6.pdf and brinco.pdf, both of the draws of 15-11).
+const MZA_Q6 = () => readFileSync(new URL('14-ipjyc-quini6-3426.bbox.html', FX('loterias')), 'utf8');
+const MZA_BR = () => readFileSync(new URL('15-ipjyc-brinco-1380.bbox.html', FX('loterias')), 'utf8');
+
+test('lotto parsers: IPJyC Mendoza copy of the Santa Fe extract (Quini 6, Brinco), by the boxes of the words', () => {
+  const Q = parseMza(MZA_Q6(), 'quini-6');
+  assert.equal(Q.s, 3426);
+  assert.equal(Q.d, '2026-11-15');
+  assert.deepEqual(Q.mods, { tradicional: ['01', '02', '10', '13', '38', '39'], segunda: ['11', '17', '19', '21', '27', '28'], revancha: ['01', '16', '27', '33', '37', '40'], 'siempre-sale': ['01', '02', '24', '33', '38', '43'] });
+  const B = parseMza(MZA_BR(), 'brinco');
+  assert.deepEqual([B.s, B.d], [1380, '2026-11-15']);
+  assert.deepEqual(B.mods, { tradicional: ['06', '09', '16', '28', '33', '34'], junior: ['01', '03', '11', '25', '28', '36'] });
+  assert.throws(() => parseMza(MZA_Q6(), 'brinco'), /not the extract of Brinco/, 'a swapped file is refused');
+  assert.throws(() => parseMza(MZA_BR(), 'quini-6'), LotError);
+  assert.throws(() => parseMza(MZA_Q6().replace(/>REVANCHA</, '>OTRA<'), 'quini-6'), LotError, 'a missing heading stops the parse');
+  assert.throws(() => parseMza(MZA_Q6().replace(/(yMax="415\.\d+">)40</, '$1'), 'quini-6'), /expected 6 numbers/, 'a row with a missing ball stops');
+  assert.throws(() => parseMza(MZA_Q6().replace('15/11/2026', '15-11'), 'quini-6'), /no draw number\/date/);
+  assert.throws(() => parseMza('', 'quini-6'), /no text/);
+  assert.throws(() => pdfBbox(Buffer.from('<html>403</html>')), /not a PDF/);
+});
+
+test('loterias: the IPJyC copy brings Quini 6 and Brinco up to date, agrees with or conflicts with CAS, and lagging games raise alerts', async () => {
+  const { out, fixtures } = outWithReference();
+  const r = await runFeed(lot, { out, fixtures, now: new Date(NOW), ua: 'test' });
+  assert.ok(r.ok, r.error);
+  const prev = JSON.parse(readFileSync(join(out, 'loterias.json'), 'utf8')).data;
+  const mza = { src: 'M', ...parseMza(MZA_Q6(), 'quini-6') }, mzb = { src: 'M', ...parseMza(MZA_BR(), 'brinco') };
+  const raw = { today: '2026-11-19', now: '05:50', notes: [], next: {}, got: [mza, mzb] };
+  const x = lot.compute(raw, prev);
+  assert.deepEqual(x.games['quini-6'].latest, { s: 3426, d: '2026-11-15' });
+  assert.deepEqual([x.games['quini-6'].behind, x.games['quini-6'].expected], [1, '2026-11-18'], 'the draw of 18-11 is not in the copy yet');
+  assert.deepEqual([x.games.brinco.latest.s, x.games.brinco.behind], [1380, 0]);
+  assert.equal(x.games['quini-6'].draws[0].src, 'M');
+  assert.equal(x.games['quini-6'].draws[1].s, 3421, 'the older CAS draws stay');
+  assert.deepEqual(x.alerts.map(a => a.id).sort(), ['lot-behind-loto-plus', 'lot-behind-telekino'], 'only the games still behind 2+ draws');
+  const tk = x.alerts.find(a => a.id === 'lot-behind-telekino').params;
+  assert.deepEqual([tk.behind, tk.s, tk.first, tk.expected, tk.level], [2, 2452, '2026-11-08', '2026-11-15', 'yellow']);
+  assert.equal(x.alerts.find(a => a.id === 'lot-behind-loto-plus').params.level, 'red');
+  const before = lot.compute({ ...raw, got: [] }, prev);
+  assert.deepEqual(before.alerts.map(a => a.id).sort(), ['lot-behind-brinco', 'lot-behind-loto-plus', 'lot-behind-quini-6', 'lot-behind-telekino'], 'without the IPJyC copy all four lag');
+  const cas = { ...mza, src: 'C', mods: { ...mza.mods } };
+  const both = lot.compute({ ...raw, got: [mza, cas] }, prev);
+  assert.equal(both.games['quini-6'].draws[0].src, 'CM', 'two official copies agree');
+  const differ = lot.compute({ ...raw, got: [mza, { ...cas, mods: { ...cas.mods, revancha: ['01', '16', '27', '33', '37', '41'] } }] }, prev);
+  assert.equal(differ.games['quini-6'].latest.s, 3421, 'copies differ: the draw is not published');
+  assert.ok(differ.conflicts.some(c => c.g === 'quini-6' && c.s === 3426));
 });

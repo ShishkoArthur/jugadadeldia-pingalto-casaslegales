@@ -98,6 +98,9 @@ const PREP = {
     const steps = ['owner', 'server', 'review', 'operators'].map(g).filter(Boolean);
     return { first: fmtDay(p.first), steps: H(steps.length ? steps.join('\n') + '\n' + fill(T.templates.reminder_end) : fill(T.templates.reminder_end) + (p.raw ? '\n' + esc(p.raw) : '')) };
   },
+  lot_behind: p => ({ latestDay: fmtDay(p.d), expectedDay: fmtDay(p.expected) }),
+  lot_behind_red: p => ({ latestDay: fmtDay(p.d), expectedDay: fmtDay(p.expected) }),
+  lot_ok: p => ({ firstDay: fmtDay(p.first) }),
   expiry_soon: p => ({ until: fmtDay(p.until) }),
   expiry_expired: p => ({ until: fmtDay(p.until) }),
   expiry_lotba_programa: p => ({ until: fmtDay(p.until) }),
@@ -153,6 +156,10 @@ function noticeProblem(x) {
   }
   if (id.startsWith('held-') && (m = RE.held.exec(text))) return { ...base, tpl: 'price_held', ok: 'price_ok', params: { price: m[1], ym: m[2], raw: m[3], value: m[4] || '', until: m[5] || '' } };
   if (x.feed === 'precios' && id.startsWith('changed-') && (m = RE.cited.exec(text))) return { ...base, tpl: 'cited_changed', ok: 'cited_ok', params: { doc: m[1], ym: m[2], list: m[3] } };
+  if (x.feed === 'loterias' && id.startsWith('lot-behind-') && x.params && x.params.game) {
+    const q = x.params, red = q.level === 'red';
+    return { key: base.key + ':' + (red ? 'red' : 'yellow'), group: base.group, scope: base.scope, tpl: red ? 'lot_behind_red' : 'lot_behind', ok: 'lot_ok', params: { name: q.name, behind: q.behind, s: q.s, d: q.d, expected: q.expected, first: q.first, hosts: q.hosts } };
+  }
   if (id.startsWith('reminder-')) {
     const p = x.params && typeof x.params === 'object' ? x.params : null;
     if (p && p.first) return { ...base, tpl: 'reminder', ok: null, digest: false, params: { first: p.first, days: p.days, owner: p.owner, server: p.server, review: p.review, operators: p.operators } };
