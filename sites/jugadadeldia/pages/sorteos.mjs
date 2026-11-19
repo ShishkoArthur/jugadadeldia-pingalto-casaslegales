@@ -58,7 +58,7 @@ const LOT = {
 const lotData = game => ({ feed: '/data/feeds/loterias.json', game, stale: lotFeed.maxAgeHours, ...LOT[game] });
 function live(h, { game, name, who, url, host, cas }) {
   return '<section class="jg-c w3 jg-resu" id="resultados"><span class="jg-tag">Resultados</span><h2>Resultados del ' + name + ': el último sorteo</h2>' +
-    '<div class="jg-lot" data-lot aria-live="polite"><p>Los números oficiales los publica <b>' + who + '</b> en <a href="' + url + '" rel="noopener">' + host + '</a> y están en el extracto de tu agencia. Acá mostramos la última copia oficial que pudimos leer' + (cas ? ': la que publica la Caja de Acción Social de San Juan, que vende el ' + name + '.' : '.') + '</p>' +
+    '<div class="jg-lot" data-lot aria-live="polite"><p>Los números oficiales los publica <b>' + who + '</b> en <a href="' + url + '" rel="noopener">' + host + '</a> y están en el extracto de tu agencia. Acá mostramos la última copia oficial que pudimos leer' + (cas ? ': las que publican la Caja de Acción Social de San Juan y el Instituto Provincial de Juegos y Casinos de Mendoza, que venden el ' + name + '. Si las dos tienen el mismo sorteo, las comparamos número por número.' : '.') + '</p>' +
     '<noscript><p class="jg-note">Los números se muestran con JavaScript desde nuestra copia de los datos oficiales.</p></noscript></div>' +
     '<p class="jg-mu">Con esos números ya cargados, controlá tu ' + (game === 'telekino' ? 'cartón' : 'boleta') + ' abajo: la comparación es exacta y se hace en tu teléfono.</p></section>';
 }

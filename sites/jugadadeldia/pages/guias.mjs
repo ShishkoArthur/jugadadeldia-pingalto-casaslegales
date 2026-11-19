@@ -22,6 +22,7 @@ import { quinielaCurso, quini6Curso } from './curso-loterias.mjs';
 import { faqLd } from './parts.mjs';
 import { TURN_PATHS } from './extractos.mjs';
 import { PDFTOTEXT } from '../../../engine/pdf.mjs';
+import lotFeed from '../../../tools/feeds/jugadadeldia/loterias.mjs';
 
 const n = q => toNumber(q);
 const two = x => String(x).padStart(2, '0');
@@ -194,6 +195,9 @@ export const devuelve = {
   },
 };
 
+const lotFor = (game, mods) => ({ feed: '/data/feeds/loterias.json', game, stale: lotFeed.maxAgeHours, mods });
+const lotPick = () => '<div class="jg-fl" data-lotp hidden><select class="jg-se" data-lotp-sel aria-label="Sorteo oficial"><option value="">Cargar los números a mano</option></select></div>';
+const lotNote = '<p class="jg-note" data-lotp-note aria-live="polite" hidden></p>';
 const q6sets = () => [{ id: 'tr', name: 'Tradicional', drawn: 6, win: [6, 5, 4] }, { id: 'se', name: 'La Segunda', drawn: 6, win: [6, 5, 4] }, { id: 're', name: 'Revancha', drawn: 6, win: [6] }, { id: 'ss', name: 'Siempre Sale', drawn: 6, win: 'most' }];
 
 export const quini6Como = {
@@ -223,17 +227,17 @@ export const quini6Controlar = {
   h1: 'Controlá tu Quini 6',
   description: 'Controlá tu Quini 6: cargá tus boletas y el extracto, y mirá los aciertos de cada una en Tradicional, La Segunda, Revancha, Siempre Sale y Extra.',
   ld: h => [webPage(h), crumbs(h, [['/quini-6/', 'Quini 6']])],
-  data: () => ({ min: 0, max: odds('cas-quini6-tradicional').pool - 1, pick: 6, sets: q6sets(), key: 'jg-q6-boletas' }),
+  data: () => ({ min: 0, max: odds('cas-quini6-tradicional').pool - 1, pick: 6, sets: q6sets(), key: 'jg-q6-boletas', lot: lotFor('quini-6', { tr: 'tradicional', se: 'segunda', re: 'revancha', ss: 'siempre-sale' }) }),
   render(h) {
     const o = odds('cas-quini6-tradicional');
     const six = (name, label) => '<div class="jg-six" data-six="' + name + '">' + Array.from({ length: 6 }, (_, i) => '<input type="text" inputmode="numeric" maxlength="2" autocomplete="off" aria-label="' + label + ' ' + (i + 1) + '">').join('') + '</div>';
     return hero(h, { kicker: 'Quini 6 · control', scene: 'quini-6-controlar', lede: 'Cargá todas tus boletas una vez (quedan en tu teléfono) y después solo los números del extracto. La tabla te muestra los aciertos de cada boleta en cada modalidad.' }) +
       '<div class="jg-mn">' +
       '<section class="jg-c w2" data-q6c><span class="jg-tag">1</span><h2>Tus boletas</h2><p class="jg-note">Tocá cada bolilla y escribí tus 6 números, del 00 al ' + String(o.pool - 1).padStart(2, '0') + '.</p><div class="jg-tix" data-o="tix"></div><div class="jg-r" style="margin-top:10px"><button class="jg-b s" type="button" data-add>Agregar boleta</button></div><p class="jg-note">Hasta 10 boletas. Se guardan solo en este navegador; no van en el link ni a ningún servidor.</p></section>' +
-      '<section class="jg-c t2 jg-f1" data-q6d><span class="jg-tag">2</span><h2>El extracto</h2><p class="jg-mu">Copialo del extracto oficial de tu agencia o de la Lotería de Santa Fe.</p>' +
+      '<section class="jg-c t2 jg-f1" data-q6d><span class="jg-tag">2</span><h2>El extracto</h2><p class="jg-mu">Elegí el sorteo o copialo del extracto oficial.</p>' + lotPick() +
       q6sets().map(s => '<fieldset class="jg-fl"><legend>' + s.name + '</legend>' + six(s.id, s.name) + '</fieldset>').join('') +
       '<label class="jg-fl"><span>O pegá los 24 números en orden</span><textarea class="jg-in jg-ta" rows="3" inputmode="numeric" data-paste placeholder="Tradicional, La Segunda, Revancha y Siempre Sale"></textarea></label></section>' +
-      '<section class="jg-c w2 jg-f1" aria-live="polite"><span class="jg-tag">3</span><h2>Resultado</h2><div data-o="res"><p class="jg-note">Cargá al menos una boleta y una modalidad del extracto.</p></div></section>' +
+      '<section class="jg-c w2 jg-f1" aria-live="polite"><span class="jg-tag">3</span><h2>Resultado</h2>' + lotNote + '<div data-o="res"><p class="jg-note">Cargá al menos una boleta y una modalidad del extracto.</p></div></section>' +
       '<section class="jg-c w3"><span class="jg-sm">Qué paga cada modalidad</span><h2>Cuándo hay premio</h2><ul class="jg-ul tx"><li><b>Tradicional y La Segunda:</b> ' + o.rows.filter(r => r.prize).map(r => r.hits).join(', ') + ' aciertos.</li><li><b>Revancha:</b> solo 6.</li><li><b>Siempre Sale:</b> el que más acierta en ese sorteo; la tabla te dice cuántos hiciste.</li><li><b>Premio Extra:</b> tus 6 entre los 18 números de las tres primeras.</li></ul>' +
       '<p class="jg-hon">El monto en pesos depende de cuántos ganadores haya en cada categoría: lo informa el extracto oficial, no lo inventamos.</p>' + cite(h, ['cas.quini6.tiers', 'cas.revancha.six-only', 'cas.siempresale.rule', 'cas.extra.rule', 'cas.quini6.four-min']) + '</section></div>';
   },
@@ -245,17 +249,17 @@ export const telekinoControlar = {
   h1: 'Controlá tu cartón de Telekino',
   description: 'Controlá tu cartón de Telekino en una grilla de 5 por 5: marcás tus 15 números y se iluminan los aciertos del sorteo, con su categoría y el Rekino.',
   ld: h => [webPage(h), crumbs(h, [['/telekino/', 'Telekino']])],
-  data: () => { const o = odds('pba-telekino'); return { pool: o.pool, pick: o.pick, drawn: o.drawn, win: o.rows.filter(r => r.prize).map(r => r.hits), odds: Object.fromEntries(o.rows.map(r => [r.hits, 1 / n(r.p)])), key: 'jg-tk-cartones' }; },
+  data: () => { const o = odds('pba-telekino'); return { pool: o.pool, pick: o.pick, drawn: o.drawn, win: o.rows.filter(r => r.prize).map(r => r.hits), odds: Object.fromEntries(o.rows.map(r => [r.hits, 1 / n(r.p)])), key: 'jg-tk-cartones', lot: lotFor('telekino', { tk: 'telekino', rk: 'rekino' }) }; },
   render(h) {
     const o = odds('pba-telekino');
     const grid = '<div class="jg-k25" data-o="grid">' + Array.from({ length: o.pool }, (_, i) => '<button type="button" data-n="' + (i + 1) + '" aria-pressed="false">' + (i + 1) + '</button>').join('') + '</div>';
     const lo = Math.min(...o.rows.filter(r => r.prize).map(r => r.hits));
     return hero(h, { kicker: 'Telekino · control', scene: 'telekino-controlar', lede: 'Tocá los ' + o.pick + ' números de tu cartón en la grilla y después cargá los que salieron. Los aciertos se prenden en verde y te decimos la categoría.' }) +
       '<div class="jg-mn">' +
-      '<section class="jg-c w2" data-tk><span class="jg-tag">Tu cartón</span><h2>Marcá tus ' + o.pick + ' números</h2><div class="jg-sg" role="group" aria-label="Qué estás marcando" style="margin-bottom:12px"><button type="button" data-mode="m" aria-pressed="true">Mi cartón</button><button type="button" data-mode="d" aria-pressed="false">Los que salieron</button></div>' + grid +
+      '<section class="jg-c w2" data-tk><span class="jg-tag">Tu cartón</span><h2>Marcá tus ' + o.pick + ' números</h2><div class="jg-sg"role="group" aria-label="Qué estás marcando" style="margin-bottom:12px"><button type="button" data-mode="m" aria-pressed="true">Mi cartón</button><button type="button" data-mode="d" aria-pressed="false">Los que salieron</button></div>' + grid +
       '<p class="jg-note" data-o="count">Marcados: 0 de ' + o.pick + '.</p><div class="jg-r"><label class="jg-fl" style="flex:1 1 180px"><span>Sorteo</span>' + sel('s', [['tk', 'Telekino', true], ['rk', 'Rekino']]) + '</label><button class="jg-b s" type="button" data-save>Guardar cartón</button><button class="jg-b s" type="button" data-clear>Borrar</button></div>' +
       '<label class="jg-fl"><span>O pegá los ' + o.drawn + ' números que salieron</span><textarea class="jg-in jg-ta" rows="2" inputmode="numeric" data-paste></textarea></label><div class="jg-chipl" data-o="saved"></div></section>' +
-      '<section class="jg-c t2" aria-live="polite"><span class="jg-sm">Resultado</span><p class="jg-win"><span>Aciertos</span><b data-o="hits">-</b></p><p class="jg-hon" data-o="cat">Marcá tu cartón y los números del sorteo.</p>' +
+      '<section class="jg-c t2" aria-live="polite"><span class="jg-sm">Resultado</span><p class="jg-win"><span>Aciertos</span><b data-o="hits">-</b></p><p class="jg-hon" data-o="cat">Marcá tu cartón y los números del sorteo.</p>' + lotPick() + lotNote +
       '<table class="jg-tbl" data-nosnippet><tbody>' + o.rows.filter(r => r.prize).map(r => '<tr data-h="' + r.hits + '"><td>' + r.hits + ' aciertos</td><td class="n">' + oneIn(r.oneIn) + '</td></tr>').join('') + '</tbody></table></section>' +
       '<section class="jg-c w2"><span class="jg-sm">Del reglamento</span><h2>Cómo se gana</h2><ul class="jg-ul tx"><li>Salen ' + o.drawn + ' números de ' + o.pool + ', sin reposición.</li><li>Hay premio desde ' + lo + ' aciertos.</li><li>El Rekino es otro sorteo con el mismo cartón: gana quien más acierte.</li></ul>' + cite(h, ['pba.telekino.drawn', 'pba.telekino.universe', 'pba.telekino.no-replacement', 'pba.telekino.lowest', 'pba.telekino.rekino']) + '</section></div>';
   },

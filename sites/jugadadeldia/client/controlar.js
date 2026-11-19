@@ -1,4 +1,5 @@
 import { $, $$, page, store, esc } from './kit.js';
+import { lotPicker } from './lotfeed.js';
 
 const D = page();
 const tixBox = $('[data-q6c]'), drawBox = $('[data-q6d]');
@@ -57,7 +58,17 @@ if (tixBox && drawBox) {
     const d = e.target.closest('[data-del]');
     if (d) { tix.splice(+d.dataset.del, 1); if (!tix.length) tix = [['', '', '', '', '', '']]; drawTix(); calc(); }
   });
+  const MODS = (D.lot && D.lot.mods) || {};
+  const boxP = $('[data-lotp]', drawBox);
+  const lp = boxP && D.lot ? lotPicker(boxP, D.lot, e => {
+    D.sets.forEach(s => { const v = e && e.mods[MODS[s.id]] ? e.mods[MODS[s.id]].split(' ') : []; $$('[data-six="' + s.id + '"] input', drawBox).forEach((inp, k) => { inp.value = v[k] || ''; }); });
+    const p = $('[data-paste]', drawBox);
+    if (p) p.value = '';
+    calc();
+  }) : null;
+  if (lp) lp.load(!$$('[data-six] input', drawBox).some(i => i.value)).catch(() => {});
   drawBox.addEventListener('input', e => {
+    if (lp && !e.target.matches('[data-lotp-sel]')) lp.manual();
     if (e.target.matches('[data-paste]')) {
       const n = (e.target.value.match(/\d+/g) || []).slice(0, D.sets.length * 6);
       D.sets.forEach((s, i) => $$('[data-six="' + s.id + '"] input', drawBox).forEach((inp, k) => { inp.value = n[i * 6 + k] !== undefined ? n[i * 6 + k] : inp.value; }));
