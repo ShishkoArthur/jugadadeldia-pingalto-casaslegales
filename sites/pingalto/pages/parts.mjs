@@ -59,7 +59,7 @@ export function ldPage(h, extra = []) {
   const O = 'https://' + h.site.domain;
   const org = { '@type': 'Organization', name: 'pingalto', url: O + '/' };
   const crumbs = h.page.path === '/' ? [] : [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'pingalto', item: O + '/' }, { '@type': 'ListItem', position: 2, name: h.page.h1, item: O + h.page.path }] }];
-  return [{ '@context': 'https://schema.org', '@type': 'WebPage', name: h.page.h1, url: O + h.page.path, inLanguage: h.site.htmlLang, dateModified: h.pa.src.checked, publisher: org }, ...crumbs, ...extra];
+  return [{ '@context': 'https://schema.org', '@type': 'WebPage', name: h.page.h1, url: O + h.page.path, inLanguage: h.site.htmlLang, dateModified: h.modified(), publisher: org }, ...crumbs, ...extra];
 }
 export function sec(title, inner, id) {
   return '<section class="pa-sec"' + (id ? ' id="' + id + '"' : '') + '><h2>' + title + '</h2>' + inner + '</section>';

@@ -47,8 +47,12 @@ function footer(h, p) {
       : '<p class="jg-rs jg-rs-j"><span>Juegos de mesa para pasar el rato: sin plata, sin apuestas y sin registro.</span></p>';
   return '<footer class="jg-ft"><div class="jg-ftt"><b>Sin apuestas online ni operadores: datos oficiales y la cuenta hecha por código.</b>' +
     '<nav class="jg-sg" aria-label="Institucional">' + linkList(h, FOOT, p.path) + '</nav></div>' + bottom +
-    '<p class="jg-fine">jugadadeldia.com · Argentina · textos de Denis Krazok con ayuda de IA · fuentes revisadas el ' + h.fmtDate(h.checked) + '</p></footer>';
+    '<p class="jg-fine">jugadadeldia.com · Argentina · textos de Denis Krazok con ayuda de IA · ' + (isLive(p)
+      ? 'texto y reglas de esta página actualizados el ' + h.fmtDate(h.modified()) + '; los resultados llevan su propia hora de revisión'
+      : 'página actualizada el ' + h.fmtDate(h.modified())) + '</p></footer>';
 }
+const LIVE_JS = ['extractos.js', 'sorteo.js'];
+const isLive = p => (p.js || []).some(f => LIVE_JS.includes(f));
 
 export function page(h, p, body) {
   const url = 'https://' + h.site.domain + p.path;

@@ -11,6 +11,7 @@ import { ROOT } from './env.mjs';
 import { loadRegistries, verifyRegistries, brandNames, loadRg } from './lib/sources.mjs';
 import { verify as verifyRg, displayable, freshness } from './verify-rg.mjs';
 import { ownerCopyReminder } from './lib/ownercopy.mjs';
+import { pageDater } from './lib/pagedate.mjs';
 import { fmtDate, fmtInt } from '../engine/format.mjs';
 import { iconFiles } from './lib/icons.mjs';
 import { hasEn, planEn, sitePath, HREFLANG, OG_LOCALE, LANG_LABEL, loadMemory, translator, htmlToEn, codeToEn } from './lib/i18n.mjs';
@@ -94,6 +95,9 @@ export async function build(id, { collect = false, out = null } = {}) {
       use: isCrisis ? 'línea nacional de salud mental' : isLaw ? 'proyecto de ley federal' : 'ayuda, edad y autoexclusión', quotes: cites.filter(c => c[2] === slug).length };
   }
   const checked = [...regs.map(r => r.checked), rgPack.checked].sort()[0];
+  // per page date (tools/lib/pagedate.mjs): newest copy day of the documents the page body cites and last commit day of its module
+  const dater = pageDater({ root: ROOT, siteDir: dir, fallback: checked, log: m => console.log('render ' + id + ': ' + m) });
+  const pageDates = new Map();
 
   // ---- assets: /<assetDir>/<name by the site's scheme> ----
   rmSync(DIST, { recursive: true, force: true });
@@ -173,6 +177,8 @@ export async function build(id, { collect = false, out = null } = {}) {
     href: u => { const base = u.split(/[?#]/)[0]; if (!BUILT.has(base)) throw new Error('link to an unbuilt page ' + u); return u; },
     jsonScript: o => JSON.stringify(o).replace(/</g, LT),
     page: null,
+    // the date of the page being written, set once its body is rendered (JSON-LD dateModified, sitemap lastmod, footer date)
+    pageDate: null,
     // language of the pass: 'es' (site root) or 'en' (/en/); pages keep their Spanish path while rendering in both passes
     lang: 'es',
     // language links of the current page for the layout's switcher: [{ lang, code, label, href, current }] ([] without a counterpart)
@@ -184,7 +190,8 @@ export async function build(id, { collect = false, out = null } = {}) {
   const FACTS = S.facts(h);
   h.t = s => String(s).replace(/\{\{(\w+)\}\}/g, (m, k) => { if (FACTS[k] === undefined) throw new Error('unknown token ' + m + (h.page ? ' on ' + h.page.path : '')); return String(FACTS[k]); });
   h.org = (full = false) => ({ '@context': full ? 'https://schema.org' : undefined, '@type': 'Organization', name: SITE.domain, url: ORIGIN + '/', ...(full ? { description: SITE.orgDescription || undefined } : {}) });
-  h.webPage = () => ({ '@context': 'https://schema.org', '@type': 'WebPage', name: h.page.h1, url: ORIGIN + h.page.path, inLanguage: SITE.htmlLang, dateModified: checked, publisher: h.org() });
+  h.webPage = () => ({ '@context': 'https://schema.org', '@type': 'WebPage', name: h.page.h1, url: ORIGIN + h.page.path, inLanguage: SITE.htmlLang, dateModified: h.modified(), publisher: h.org() });
+  h.modified = () => h.pageDate || (() => { throw new Error((h.page && h.page.path) + ': page date asked before the page body was rendered'); })();
   h.crumbs = list => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: list.map(([u, n], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item: ORIGIN + (u === '/' ? '/' : u) })) });
   h.clientData = () => SITE.clientData ? SITE.clientData(h) : null;
   if (S.layout.clientData) h.clientData = () => S.layout.clientData(h);
@@ -195,7 +202,9 @@ export async function build(id, { collect = false, out = null } = {}) {
   const alternates = esPath => { const e = EN && toEn(esPath); return e ? '<link rel="alternate" hreflang="' + HREFLANG.es + '" href="' + ORIGIN + esPath + '"><link rel="alternate" hreflang="' + HREFLANG.en + '" href="' + ORIGIN + e + '"><link rel="alternate" hreflang="x-default" href="' + ORIGIN + esPath + '">' : ''; };
   function emit(p, file, post = null) {
     h.page = p;
+    h.pageDate = null;
     const body = p.render(h);
+    h.pageDate = dater(p, body);
     if (p.ld) p.ldOut = p.ld(h); else p.ldOut = [];
     let html = tidy(S.layout.page(h, { ...p, ld: p.ldOut }, body));
     if (post) html = post(html);
@@ -207,6 +216,7 @@ export async function build(id, { collect = false, out = null } = {}) {
     mkdirSync(dirname(join(DIST, file)), { recursive: true });
     writeFileSync(join(DIST, file), html);
     written.push(p.lang === 'en' ? p.enPath : p.path);
+    pageDates.set(written.at(-1), h.pageDate);
   }
   for (const P of PAGES) {
     const p = { ...P };
@@ -258,7 +268,7 @@ export async function build(id, { collect = false, out = null } = {}) {
   const esOf = new Map(EN ? S.PAGES_EN.map(p => [p.path, p.esPath]) : []);
   const alts = u => { const es = esOf.get(u) || u, e = EN && toEn(es); return e ? [[HREFLANG.es, es], [HREFLANG.en, e], ['x-default', es]].map(([c, x]) => '<xhtml:link rel="alternate" hreflang="' + c + '" href="' + ORIGIN + x + '"/>').join('') : ''; };
   writeFileSync(join(DIST, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' + (EN ? ' xmlns:xhtml="http://www.w3.org/1999/xhtml"' : '') + '>\n' +
-    written.map(u => '<url><loc>' + ORIGIN + u + '</loc><lastmod>' + checked + '</lastmod>' + alts(u) + '</url>').join('\n') + '\n</urlset>\n');
+    written.map(u => '<url><loc>' + ORIGIN + u + '</loc><lastmod>' + pageDates.get(u) + '</lastmod>' + alts(u) + '</url>').join('\n') + '\n</urlset>\n');
   console.log(`build ${id}: ${written.length} pages + 404${EN ? ' (' + S.PAGES_EN.length + ' in English)' : ''}, ${Object.keys(assets).length} assets, ${regs.length} registries, ${Object.keys(DOCS).length} documents -> ${DIST}` + (misses.size ? ' - ' + misses.size + ' English strings missing' : ''));
   return { dist: DIST, pages: written, misses: [...misses.values()] };
 }
