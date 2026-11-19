@@ -2,6 +2,7 @@
 // for the pages; an unverified or stale source stops the build here.
 import { load } from './src.mjs';
 import { fmtDate, fmtInt } from '../../../engine/format.mjs';
+import { gameName } from '../../../engine/games/steamname.mjs';
 
 export function facts(h) {
   h.pa = load({ today: h.today });
@@ -11,5 +12,6 @@ export function facts(h) {
     fact_total: fmtInt(Object.keys(s.facts).length),
     checked: fmtDate(s.checked),
     max_age: fmtInt(s.maxAgeDays),
+    fc_name: gameName(h.pa.json('steam-fc27')['4080220'].data.name),
   };
 }

@@ -237,7 +237,7 @@ export async function build(id, { collect = false, out = null } = {}) {
       const m = S.enMeta.get(P.path);
       if (!m) continue;
       h.page = P;
-      for (const [k, v] of [['title', m.title], ['description', m.description], ['h1', m.h1]]) { if (typeof v !== 'string' || !v) throw new Error(P.path + ': plan row without ' + k + 'En'); known.add(v); dict[h.t(P[k])] = v; }
+      for (const [k, raw] of [['title', m.title], ['description', m.description], ['h1', m.h1]]) { if (typeof raw !== 'string' || !raw) throw new Error(P.path + ': plan row without ' + k + 'En'); const v = h.t(raw); known.add(v); dict[h.t(P[k])] = v; }
     }
     trEn = translator({ dict, mem, known, onMiss });
     const siteEs = h.site, assetEs = h.asset;
@@ -248,7 +248,7 @@ export async function build(id, { collect = false, out = null } = {}) {
       for (const P of PAGES) {
         const m = S.enMeta.get(P.path);
         if (!m) continue;
-        const p = { ...P, lang: 'en', esPath: P.path, enPath: m.path, title: m.title, description: m.description, h1: m.h1 };
+        const p = { ...P, lang: 'en', esPath: P.path, enPath: m.path, title: h.t(m.title), description: h.t(m.description), h1: h.t(m.h1) };
         if (p.title.length > LIMITS.title) throw new Error(`${m.path}: title ${p.title.length} > ${LIMITS.title}: ${p.title}`);
         if (p.description.length < LIMITS.descMin || p.description.length > LIMITS.descMax) throw new Error(`${m.path}: description ${p.description.length} chars, outside ${LIMITS.descMin}-${LIMITS.descMax}: ${p.description}`);
         emit(p, SITE.fileOf(m.path), html => htmlToEn(html, { tr: trEn, mapPath: toEn, origin: ORIGIN, quoteNote: SITE.i18n && SITE.i18n.quoteNote, citeEn: !!(SITE.i18n && SITE.i18n.citeEn), where: m.path }));

@@ -7,6 +7,7 @@ import { fmt, hero, ldPage, sec, srcLine } from './parts.mjs';
 import { lolArt, artFor } from '../content/art.mjs';
 import { valArtNote } from './valorant.mjs';
 import { riotArtNote } from './hubs.mjs';
+import { FEED } from './feeds.mjs';
 
 export function tierSets(h) {
   const byName = (a, b) => a.localeCompare(b, 'es');
@@ -35,7 +36,7 @@ export const tierList = {
   description: 'Armá tu tier list de Valorant, LoL o de lo que quieras arrastrando nombres, también desde el celular, y compartila con un link o como imagen.',
   h1: 'Creador de tier list: armá la tuya y compartila',
   scripts: ['tier.js'],
-  data: h => ({ rows: ROWS, sets: tierSets(h).map(s => ({ id: s.id, name: s.name, items: s.items, ...(s.icons ? { icons: s.icons.map(f => f ? h.asset(f) : '') } : {}) })) }),
+  data: h => ({ lv: h.pa.json('ddragon-champs').version, vv: h.pa.json('valapi-version').data.version, rows: ROWS, sets: tierSets(h).map(s => ({ id: s.id, name: s.name, items: s.items, ...(s.icons ? { icons: s.icons.map(f => f ? h.asset(f) : '') } : {}) })) }),
   ld: h => ldPage(h, [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: h.page.h1, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web', inLanguage: 'es-AR', isAccessibleForFree: true, url: 'https://' + h.site.domain + h.page.path }]),
   render(h) {
     const S = tierSets(h), first = S[0];
@@ -44,7 +45,7 @@ export const tierList = {
       '<div class="pa-f pa-hide" id="tl-own"><label for="tl-items">Tus nombres, uno por línea (hasta 40)</label><textarea id="tl-items" rows="4" maxlength="1200" placeholder="Juego 1&#10;Juego 2"></textarea></div>' +
       '<p class="pa-x"><b>cómo se usa</b> · arrastrá un nombre a una fila, o tocalo y después tocá la fila. Tocá de nuevo para devolverlo abajo.</p>' +
       '<div class="pa-share"><button type="button" data-tl="png">Guardar imagen</button><button type="button" data-tl="link">Copiar link</button><button type="button" data-tl="reset">Empezar de cero</button><output data-o="copied"></output></div></div>';
-    const board = '<div class="pa-tl" id="tl-board" aria-label="Tu tier list">' + ROWS.map((r, i) => '<div class="pa-tr" data-row="' + i + '"><button type="button" class="pa-tk pa-t' + i + '" data-place="' + i + '" aria-label="Poner en ' + r + '">' + r + '</button><div class="pa-tz" data-zone="' + i + '"></div></div>').join('') + '</div>' +
+    const board = '<div class="pa-tl" id="tl-board" data-fd-src="' + FEED + '" aria-label="Tu tier list">' + ROWS.map((r, i) => '<div class="pa-tr" data-row="' + i + '"><button type="button" class="pa-tk pa-t' + i + '" data-place="' + i + '" aria-label="Poner en ' + r + '">' + r + '</button><div class="pa-tz" data-zone="' + i + '"></div></div>').join('') + '</div>' +
       '<div class="pa-c pa-pool"><p class="pa-x">Sin ubicar · <span data-o="left">' + fmt(first.items.length, 0) + '</span></p><div class="pa-tz" data-zone="-1" id="tl-pool">' + first.items.map((n, i) => '<button type="button" class="pa-ti" data-i="' + i + '">' + (first.icons && first.icons[i] ? '<img src="' + h.asset(first.icons[i]) + '" width="120" height="120" alt="' + h.esc(n) + '" loading="lazy">' : '') + h.esc(n) + '</button>').join('') + '</div></div>';
     const honest = sec('Es tu opinión, no la meta', '<div class="pa-two"><div><p>Esta herramienta no sabe quién gana más ni a quién eligen los profesionales: ordena lo que vos digas. Por eso no te mostramos una tier list «oficial» al lado. Cuando tengamos datos públicos de partidas que podamos citar, los vamos a mostrar aparte y con su fuente.</p><p>Tu lista vive en el link: nada se guarda en pingalto ni se manda a ningún lado.</p></div>' +
       '<div><p>Los nombres salen de archivos guardados con fecha. Los de LoL vienen en el idioma del cliente de Riot para Argentina (es_AR).</p>' + S.filter(s => s.src).map(s => srcLine(h, s.src)).join('') + riotArtNote(h) + valArtNote(h) + '</div></div>');

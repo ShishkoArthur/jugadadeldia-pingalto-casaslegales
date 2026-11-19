@@ -223,10 +223,34 @@
 - **`torneos` (раз в час, PandaScore):** большие турниры (`EVENTS` в файле: Worlds, MSI, VCT Champions/Masters/Americas, TI, RLCS, FC Pro) —
   последняя редакция, стадии, все матчи; завершённые кэш 20 ч. Страницы /lol/worlds, /lol/msi, /valorant/champions, /dota2/ti, /rl, /eafc.
   Новая лига — строка в `EVENTS` (id лиги: `/leagues?search[name]=…`). `maxAgeHours` 6.
+  С 19.11 в `EVENTS` есть `cs2-major`: у Major каждый раз другой организатор, поэтому не одна лига, а поиск — лиги CS2 с «Major» в
+  имени (5 запросов, кэш 20 ч) + серии CS2 «Major» (`pickMajors`: без отборов RMR/Qualifier/Tribo; редакция 0 — идущий или ближайший,
+  1 — последний сыгранный). Страница `/cs2/major` (блоки «El Major, partido por partido» и «El Major anterior»; второго нет — блок прячется).
+- **`riot` (сутки, без ключа; с 19.11):** Data Dragon (`api/versions.json` → `champion.json` es_AR и en_US, `language.json` es_AR) и
+  valorant-api.com (`/v1/version`, `/v1/agents?isPlayableCharacter=true` es-MX и en-US, `/v1/maps` es-MX и en-US); robots.txt читается
+  до запросов (valorant-api.com — всё разрешено; ddragon отдаёт 403 на robots = правил нет). Разбор — `engine/games/riot.mjs` (тот же,
+  что у сборки). Три файла: `riot.json` (версии, счётчики), `riot-lol.json`, `riot-val.json` (без картинок). Версия ниже прошлой — стоп.
+  Страницы `/lol`, `/valorant`, `/valorant/agentes`, `/tier-list` (+ `/en/`) собраны из копий; браузер, если версия ленты новее копии,
+  перерисовывает версию, счётчики, роли, средние, списки и добавляет новых чемпионов/агентов/карты (без картинок до следующей выкладки).
+  `maxAgeHours` 72.
+- **`vrs` (сутки, GitHub API без ключа — 1 запрос из 60/ч; с 19.11):** листинг `live/<год>` (в январе до первой таблицы — прошлый год),
+  самая новая дата, у которой есть и `standings_global_…`, и `standings_americas_…` → оба файла с raw.githubusercontent.com → разбор
+  `engine/games/vrs.mjs` (`parseStandings` + `joinRegions`, как сборка). Таблица старше прошлой — стоп. `/cs2` (таблица, график, дуэль,
+  даты), `/esports` (8 первых Америк), `/esports/sistema-suizo` (16 первых) рисуют новую таблицу в браузере, сборка — сохранённую.
+  `maxAgeHours` 72. 403 от GitHub = лимит адреса исчерпан (общий IP сервера) — повтор в следующий день.
+- **`steam` (сутки, без ключа; с 19.11):** `store.steampowered.com/api/appdetails?appids=4080220&cc=ar&l=spanish` → имя, короткое имя
+  (`engine/games/steamname.mjs`: «EA SPORTS FC™ 27» → «EA Sports FC 27»), цена в центах, валюта USD/ARS, скидка. `/eafc` показывает цену
+  «revisado el …» (лента старше 96 ч — остаётся цена копии с пометкой «el día de la copia»). Новая часть FC — новый app id в `APPS` и
+  новая копия в `data/sources` (title/H1 страницы берут имя из копии: токен `{{fc_name}}`). `maxAgeHours` 72.
 - **`argentinos` (сутки, PandaScore):** игроки с nationality AR и командой (ник, команда, страна команды), команды AR. /esports/argentinos, /rl, /eafc.
 - **`dotaelo` (сутки, PandaScore):** серии Dota 2 за 180 дней → Elo (`engine/games/elo.mjs`), бэктест 60 дней. /dota2.
+  «Solo Sudamérica» (с 19.11, `saTeam`): страна команды в Южной Америке или, если страны нет, больше половины (и ≥ 3) её серий — в
+  турнирах региона SA. Фильтр MIN_SERIES 8 / активность 60 дней прежний, поэтому 19.11 это 6 команд вместо 5 (больше честно не дать).
 - **`clashmeta` / `brawlmeta` (сутки, Supercell):** топ-10 кланов AR → 100 игроков → текущие колоды; топ-100 AR Brawl Stars → battlelog.
   Только счётчики (без имён и тегов). /clash, /clash/mazos, /clash/meta, /brawl, /brawl/meta. ≈ 110 и 100 запросов (по 1 с).
+  С 19.11 `clashmeta.near` — «почти одинаковые» колоды (7 из 8 карт общие, `nearGroups`: каждый игрок в одной группе, жадно от самой
+  большой); точные повторы среди 90 игроков почти не бывают (`decks: []`), а `near` 18.11 дал 5 групп / 11 игроков. /clash/meta показывает
+  обе секции, кнопка «Cargar el mazo más repetido» на /clash/mazos берёт точный повтор, иначе ядро самой большой группы.
 - Supercell Fan Content Policy: на каждой странице текст «This material is unofficial and is not endorsed by Supercell…», без логотипов и
   арта карт, ничего не продаём. JSON pingalto — обработанные данные (не зеркало ответов API).
 

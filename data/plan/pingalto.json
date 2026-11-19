@@ -1530,10 +1530,10 @@
  {
   "section": "EA FC",
   "url": "/eafc",
-  "title": "EA Sports FC 27 desde Argentina: requisitos en PC y esports",
+  "title": "{{fc_name}} desde Argentina: requisitos en PC y esports",
   "titleLen": 59,
-  "h1": "EA Sports FC 27 desde Argentina: PC y competitivo",
-  "description": "EA Sports FC 27 desde Argentina: requisitos y precio en Steam, el último mundial FC Pro partido por partido y los jugadores argentinos que compiten.",
+  "h1": "{{fc_name}} desde Argentina: PC y competitivo",
+  "description": "{{fc_name}} desde Argentina: requisitos y precio en Steam, el último mundial FC Pro partido por partido y los jugadores argentinos que compiten.",
   "keys": "fc 26 12k/2 · fifa 26 6.6k/2 · ea sports fc 26 2.6k/4 · ea fc 26 1.5k/11",
   "kind": "hub",
   "wave": "P2",
@@ -1544,9 +1544,9 @@
   "notes": "«fifa 26» частично = Mundial 2026 — смешанный интент; адрес без года, год — в title (переживёт FC 27) 03.11 wave 4: title changed to what the data supports (plan: \"EA Sports FC 26: versiones, química y argentinos\"). 03.11 wave 4: h1 changed to what the data supports (plan: \"EA Sports FC 26\"). 03.11 wave 4: description changed to what the data supports (plan: \"EA Sports FC 26: qué cambia entre PS4, PS5, PC y Switch, cómo funciona la química y qué lugar tienen los argentinos y la Liga Profesional en el juego.\"). 04.11 audit: FC 27 on PC from the Steam AR listing (price, min/rec requirements); console versions not shown (EA blocks robots).",
   "status": "live 2026-11-04",
   "urlEn": "/en/eafc",
-  "titleEn": "EA Sports FC 27 from Argentina: PC requirements and esports",
-  "descriptionEn": "EA Sports FC 27 from Argentina: requirements and Steam price, the latest FC Pro world championship match by match and Argentine players competing.",
-  "h1En": "EA Sports FC 27 from Argentina: PC and competitive"
+  "titleEn": "{{fc_name}} from Argentina: PC requirements and esports",
+  "descriptionEn": "{{fc_name}} from Argentina: requirements and Steam price, the latest FC Pro world championship match by match and Argentine players competing.",
+  "h1En": "{{fc_name}} from Argentina: PC and competitive"
  },
  {
   "section": "EA FC",

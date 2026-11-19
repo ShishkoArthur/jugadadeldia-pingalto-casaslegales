@@ -7,6 +7,39 @@ import { ATTRIBUTION } from './supercell.mjs';
 const API = 'https://api.clashroyale.com/v1';
 const AR = 57000017, CLANS = 10, PLAYERS = 100;
 const enc = tag => encodeURIComponent(String(tag));
+const NEAR = 7, NEAR_TOP = 8;
+
+// Decks that share at least 7 of their 8 cards: every deck counts once, in the largest group it fits (greedy, the most players
+// first; ties by the lowest card ids). Each group: core (the 7 shared cards), n players, flex = the eighth card and how many play
+// it. A group whose flex has one card for all players is an exact repeat. Only groups of two players or more.
+export function nearGroups(decks) {
+  const cores = new Map();
+  decks.forEach((ids, i) => {
+    if (ids.length !== 8) return;
+    const s = ids.slice().sort((a, b) => a - b);
+    for (let j = 0; j < 8; j++) {
+      const core = s.filter((_, k) => k !== j), key = core.join('.');
+      if (!cores.has(key)) cores.set(key, { core, members: new Map() });
+      const m = cores.get(key).members;
+      if (!m.has(i)) m.set(i, s[j]);
+    }
+  });
+  const used = new Set(), out = [];
+  for (;;) {
+    let best = null;
+    for (const [key, c] of cores) {
+      const n = [...c.members.keys()].filter(i => !used.has(i)).length;
+      if (n >= 2 && (!best || n > best.n || (n === best.n && key < best.key))) best = { key, c, n };
+    }
+    if (!best) break;
+    const flex = new Map();
+    for (const [i, id] of best.c.members) if (!used.has(i)) { used.add(i); flex.set(id, (flex.get(id) || 0) + 1); }
+    cores.delete(best.key);
+    out.push({ core: best.c.core, n: best.n, flex: [...flex].map(([id, n]) => ({ id, n })).sort((a, b) => b.n - a.n || a.id - b.id) });
+  }
+  if (out.some(g => g.core.length !== NEAR)) throw new Error('near decks: core is not ' + NEAR + ' cards');
+  return out;
+}
 
 export default {
   name: 'clashmeta',
@@ -52,6 +85,7 @@ export default {
       n: full.length, clans: raw.clans,
       cards: Object.entries(use).map(([id, n]) => ({ id: +id, n, evo: evo[id] || 0 })).sort((a, b) => b.n - a.n || a.id - b.id),
       decks: Object.entries(same).filter(([, n]) => n >= 2).map(([k, n]) => ({ ids: k.split('.').map(Number), n })).sort((a, b) => b.n - a.n).slice(0, 10),
+      near: nearGroups(full.map(d => d.cards.map(c => c.id))).slice(0, NEAR_TOP),
       all: full.map(d => d.cards.map(c => c.id)),
       trophies: trophies.length ? { min: trophies[0], med: trophies[Math.floor(trophies.length / 2)], max: trophies[trophies.length - 1] } : null,
       attribution: ATTRIBUTION,

@@ -2,12 +2,13 @@
 // base stats, compare two), /valorant (agents, roles and maps with sites from the saved client data), /ff (Free Fire tools and
 // what the site will not do), /ff/codigos (how to redeem a code on Garena's site, a format check from Garena's own notice, scam
 // signs and where to report it in Argentina, quoted from argentina.gob.ar). Every number comes from a saved file.
-import { agents, valArtNote } from './valorant.mjs';
+import { agents, valArtNote, valLive, live } from './valorant.mjs';
 import { fmt, quote, hero, ldPage, sec, srcLine } from './parts.mjs';
-import { agendaBlock } from './feeds.mjs';
+import { agendaBlock, FEED } from './feeds.mjs';
 import { itunes, play, millions } from '../content/stores.mjs';
 import { lolStart, valorantStart } from './academy.mjs';
 import { lolArt, artOn, artNotice, artFor } from '../content/art.mjs';
+import { lolChamps, valSiteMaps, LOL_ROLES, LOL_INFO, LOL_STATS } from '../../../engine/games/riot.mjs';
 
 const champImg = (h, c, lazy = true) => { const f = lolArt(c.id); return f ? '<img src="' + h.asset(f) + '" alt="' + h.esc(c.name) + '"' + (lazy ? ' loading="lazy"' : '') + '>' : ''; };
 export const riotArtNote = h => artOn('riot') ? '<p class="pa-src" lang="en">' + h.esc(artNotice('riot')) + '</p>' : '';
@@ -21,14 +22,16 @@ export function champions(h) {
   const raw = h.pa.json('ddragon-champs'), lang = h.pa.json('ddragon-lang').data;
   if (raw.version !== h.pa.json('ddragon-lang').version) throw new Error('lol: champion and language files are from different versions');
   const role = Object.fromEntries(ROLES.map(r => { if (!lang[r]) throw new Error('lol: no es_AR name for ' + r); return [r, lang[r]]; }));
-  const list = Object.values(raw.data).map(c => {
-    for (const t of c.tags) if (!role[t]) throw new Error('lol: unknown role ' + t + ' on ' + c.id);
-    for (const [k] of INFO) if (!Number.isInteger(c.info[k])) throw new Error('lol: ' + c.id + ' has no ' + k);
-    return { id: c.id, name: c.name, title: c.title, tags: c.tags, info: c.info, res: c.partype || '', s: c.stats };
-  }).sort((a, b) => a.name.localeCompare(b.name, 'es'));
-  if (list.length < 150) throw new Error('lol: only ' + list.length + ' champions');
+  if (ROLES.join() !== LOL_ROLES.join() || INFO.map(([k]) => k).join() !== LOL_INFO.join()) throw new Error('lol: roles or ratings out of order with engine/games/riot.mjs');
+  const list = lolChamps(raw).list.map(c => ({ ...c, info: Object.fromEntries(LOL_INFO.map((k, i) => [k, c.info[i]])), s: Object.fromEntries(LOL_STATS.map((k, i) => [k, c.s[i]])) }))
+    .sort((a, b) => a.name.localeCompare(b.name, 'es'));
   const STATS = [['hp', 'Vida'], ['mp', 'Recurso'], ['armor', lang.Armor], ['spellblock', lang.SpellBlock], ['attackdamage', 'Daño de ataque'], ['attackspeed', lang.AttackSpeed], ['attackrange', lang.Range], ['movespeed', 'Velocidad de movimiento']];
+  if (STATS.map(([k]) => k).join() !== LOL_STATS.join()) throw new Error('lol: stats out of order with engine/games/riot.mjs');
   return { list, role, version: raw.version, STATS };
+}
+function valHubMaps(h) {
+  const maps = valSiteMaps(h.pa.json('valapi-maps')).map(m => [m.name, m.tac]).sort((a, b) => a[0].localeCompare(b[0], 'es'));
+  return { maps, three: maps.filter(([, d]) => /A\/B\/C/.test(d)).length };
 }
 
 export const lolHub = {
@@ -39,23 +42,23 @@ export const lolHub = {
   description: 'League of Legends desde Argentina: todos los campeones por rol con los datos de Riot en español, comparador de a dos y los rangos de LAS con calculadora.',
   h1: 'League of Legends desde Argentina',
   scripts: ['champs.js', 'agenda.js'],
-  data: h => { const C = champions(h); return { c: C.list.map(c => [c.id, c.name, c.tags.map(t => C.role[t]).join(', '), INFO.map(([k]) => c.info[k]), c.res, C.STATS.map(([k]) => c.s[k])]), stats: C.STATS.map(([, l]) => l), info: INFO.map(([, l]) => l) }; },
+  data: h => { const C = champions(h); return { c: C.list.map(c => [c.id, c.name, INFO.map(([k]) => c.info[k]), c.res, C.STATS.map(([k]) => c.s[k])]), stats: C.STATS.map(([, l]) => l), info: INFO.map(([, l]) => l), roles: ROLES.map(r => C.role[r]), v: C.version, d: h.pa.doc('ddragon-champs').fetched }; },
   ld: h => ldPage(h),
   render(h) {
     const C = champions(h);
     const count = r => C.list.filter(c => c.tags.includes(r)).length;
     const max = Math.max(...ROLES.map(count));
-    const bars = '<div class="pa-c"><h3>Campeones por rol</h3><p class="pa-x">un campeón puede tener dos roles</p><ul class="pa-hb">' + ROLES.map(r => '<li><span>' + h.esc(C.role[r]) + '</span><i style="--v:' + Math.round((count(r) / max) * 100) + '"></i><b>' + fmt(count(r), 0) + '</b></li>').join('') + '</ul></div>';
+    const bars = '<div class="pa-c"><h3>Campeones por rol</h3><p class="pa-x">un campeón puede tener dos roles</p><ul class="pa-hb" data-o="bars">' + ROLES.map(r => '<li><span>' + h.esc(C.role[r]) + '</span><i style="--v:' + Math.round((count(r) / max) * 100) + '"></i><b>' + fmt(count(r), 0) + '</b></li>').join('') + '</ul></div>';
     const seg = '<div class="pa-seg" role="group" aria-label="Filtrar por rol"><button type="button" data-role="" aria-pressed="true">Todos · ' + fmt(C.list.length, 0) + '</button>' + ROLES.map(r => '<button type="button" data-role="' + h.esc(C.role[r]) + '" aria-pressed="false">' + h.esc(C.role[r]) + '</button>').join('') + '</div>';
     const sortSel = '<select id="ch-s"><option value="name">Nombre</option><option value="3">Dificultad (de Riot)</option><option value="0">Ataque (de Riot)</option><option value="1">Defensa (de Riot)</option><option value="2">Magia (de Riot)</option><option value="r6">' + h.esc(C.STATS[6][1]) + ' de ataque</option><option value="r0">Vida base</option></select>';
-    const grid = '<div class="pa-chs" id="ch-list">' + C.list.map(c => '<article class="pa-chc" data-id="' + h.esc(c.id) + '" data-roles="' + h.esc(c.tags.map(t => C.role[t]).join('|')) + '">' + champImg(h, c) + '<h3>' + h.esc(c.name) + '</h3><p class="pa-x">' + h.esc(c.title) + '</p><p><b>' + h.esc(c.tags.map(t => C.role[t]).join(' · ')) + '</b></p><p class="pa-chi">' + INFO.map(([k, l]) => l + ' ' + c.info[k]).join(' · ') + '</p></article>').join('') + '</div>';
+    const grid = '<div class="pa-chs" id="ch-list" data-fd-src="' + FEED + '">' + C.list.map(c => '<article class="pa-chc" data-id="' + h.esc(c.id) + '" data-roles="' + h.esc(c.tags.map(t => C.role[t]).join('|')) + '">' + champImg(h, c) + '<h3>' + h.esc(c.name) + '</h3><p class="pa-x">' + h.esc(c.title) + '</p><p><b>' + h.esc(c.tags.map(t => C.role[t]).join(' · ')) + '</b></p><p class="pa-chi">' + INFO.map(([k, l]) => l + ' ' + c.info[k]).join(' · ') + '</p></article>').join('') + '</div>';
     const opts = sel => C.list.map(c => '<option value="' + h.esc(c.id) + '"' + (c.id === sel ? ' selected' : '') + '>' + h.esc(c.name) + '</option>').join('');
     const A = C.list.find(c => c.id === 'Ahri') || C.list[0], B = C.list.find(c => c.id === 'Garen') || C.list[1];
     const tools = '<div class="pa-tool"><div class="pa-c pa-fm"><h2>Buscá y filtrá</h2>' + seg + '<div class="pa-row">' + field('ch-q', 'Nombre', '<input id="ch-q" type="search" autocomplete="off" placeholder="por ejemplo Jinx">') + field('ch-s', 'Ordenar por', sortSel) + '</div><p class="pa-x" data-o="n">' + fmt(C.list.length, 0) + ' campeones</p></div>' +
       '<div class="pa-c pa-fm"><h2>Compará dos</h2><div class="pa-row">' + field('ch-a', 'Campeón 1', '<select id="ch-a">' + opts(A.id) + '</select>') + field('ch-b', 'Campeón 2', '<select id="ch-b">' + opts(B.id) + '</select>') + '</div><div class="pa-tw" data-o="cmp">' + cmpTable(h, C, A, B) + '</div></div></div>';
     const about = sec('Qué significa cada dato', '<div class="pa-two"><div class="pa-c"><h3>Ataque, defensa, magia y dificultad</h3><p>Son las notas de 1 a 10 que Riot publica para cada campeón en sus datos del juego. No son estadísticas de partidas: dicen hacia dónde apunta el diseño del campeón y qué tan difícil es de jugar según Riot.</p></div>' +
       '<div class="pa-c"><h3>Estadísticas base</h3><p>Vida, armadura, alcance y el resto son los valores en el nivel 1, sin objetos ni runas. Suben con cada nivel; la subida por nivel también está en el archivo de Riot, pero acá mostramos el punto de partida.</p></div></div>' +
-      srcLine(h, 'ddragon-champs', 'versión ' + h.esc(C.version) + (artOn('riot') ? ' · retratos oficiales de Riot, sin cambios' : '')) + srcLine(h, 'ddragon-lang', 'nombres de roles en es_AR') + riotArtNote(h));
+      live(srcLine(h, 'ddragon-champs', 'versión ' + h.esc(C.version) + (artOn('riot') ? ' · retratos oficiales de Riot, sin cambios' : ''))) + live(srcLine(h, 'ddragon-lang', 'nombres de roles en es_AR')) + riotArtNote(h));
     const ar = sec('Desde Argentina', '<div class="pa-two"><div><p>Los nombres, títulos y roles están en el español de Argentina que Riot publica en sus datos del juego (es_AR). Los rangos de LAS, con cuántos PL pide cada división y una calculadora de partidas, en <a href="' + h.href('/lol/rangos') + '">rangos de LoL</a>.</p>' + quote(h, 'lol_lan_mia', 'es') + '</div>' +
       '<div><p>Armá tu tier list de campeones y compartila en el <a href="' + h.href('/tier-list') + '">creador de tier list</a>, y medí tu ping desde tu provincia en el <a href="' + h.href('/kit/ping') + '">test de ping</a>.</p><p class="pa-src">Lo que no mostramos: qué campeones se eligen o ganan más en el competitivo o en la cola clasificatoria. Esos datos necesitan una clave de Riot para productos aprobados o fuentes que no podemos copiar.</p></div></div>');
     return '<link rel="stylesheet" href="' + h.asset('lists.css') + '">' + hero(h, { ey: 'LoL · ' + fmt(C.list.length, 0) + ' campeones · versión ' + C.version, girl: true, sub: 'Todos los campeones con sus roles y las notas de Riot en español, un comparador de a dos y la calculadora de rangos de LAS. Datos del juego, sin win rates inventados.' }) +
@@ -63,7 +66,7 @@ export const lolHub = {
   },
 };
 function avgInfo(C) {
-  return '<ul class="pa-hb">' + INFO.map(([k, l]) => { const v = C.list.reduce((t, c) => t + c.info[k], 0) / C.list.length; return '<li><span>' + l + '</span><i style="--v:' + Math.round(v * 10) + '"></i><b>' + fmt(v, 1) + '</b></li>'; }).join('') + '</ul><p class="pa-src">Promedio de los ' + fmt(C.list.length, 0) + ' campeones, en la escala de 1 a 10 de Riot.</p>';
+  return '<ul class="pa-hb" data-o="avg">' + INFO.map(([k, l]) => { const v = C.list.reduce((t, c) => t + c.info[k], 0) / C.list.length; return '<li><span>' + l + '</span><i style="--v:' + Math.round(v * 10) + '"></i><b>' + fmt(v, 1) + '</b></li>'; }).join('') + '</ul><p class="pa-src" data-rl>Promedio de los ' + fmt(C.list.length, 0) + ' campeones, en la escala de 1 a 10 de Riot.</p>';
 }
 export function cmpTable(h, C, A, B) {
   const row = (l, a, b) => '<tr><td>' + l + '</td><td class="pa-n">' + a + '</td><td class="pa-n">' + b + '</td></tr>';
@@ -85,24 +88,23 @@ const VAL = [
 export const valorantHub = {
   path: '/valorant',
   kind: 'hub',
-  scripts: ['agenda.js'],
+  scripts: ['agenda.js', 'valhub.js'],
   riot: true,
   title: 'Valorant en Argentina: rangos, agentes, mapas y servidor',
   description: 'Valorant desde Argentina: rangos y calculadora de RR, todos los agentes y roles, los mapas con sitios del juego y el servidor de Santiago que te toca.',
   h1: 'Valorant desde Argentina',
+  data: h => { const A = agents(h), M = valHubMaps(h); return { ...valLive(h, A), m: M.maps.length, t: M.three, nw: A.list[0].id, md: h.pa.doc('valapi-maps').fetched }; },
   ld: h => ldPage(h),
   render(h) {
     const A = agents(h);
-    const maps = [...new Map(h.pa.json('valapi-maps').data.filter(m => /^Sitios /.test(m.tacticalDescription || '')).map(m => [m.displayName, m.tacticalDescription])).entries()].sort((a, b) => a[0].localeCompare(b[0], 'es'));
-    if (maps.length < 8) throw new Error('valorant hub: only ' + maps.length + ' maps');
-    const three = maps.filter(([, d]) => /A\/B\/C/.test(d)).length;
+    const { maps, three } = valHubMaps(h);
     const newest = A.list[0];
-    const facts = '<div class="pa-gd"><section class="pa-c pa-w2"><p class="pa-big">' + fmt(A.list.length, 0) + '</p><p>agentes en ' + fmt(A.roles.length, 0) + ' roles: ' + A.roles.map(r => h.esc(r.name) + ' ' + A.list.filter(a => a.roleId === r.id).length).join(', ') + '.</p></section>' +
-      '<section class="pa-c pa-w2"><p class="pa-big">' + fmt(maps.length, 0) + '</p><p>mapas con sitios para plantar en los datos del cliente; ' + fmt(three, 0) + ' tienen tres sitios (A, B y C).</p></section>' +
-      '<section class="pa-c pa-w2"><h3>El agente más nuevo</h3><p><b>' + h.esc(newest.name) + '</b>, ' + h.esc(newest.role) + (newest.released ? ', llegó el ' + h.fmtDate(newest.released) : '') + '. <a href="' + h.href('/valorant/agentes') + '#' + newest.id + '">Sus habilidades</a></p></section></div>';
+    const facts = '<div class="pa-gd" id="vh" data-fd-src="' + FEED + '"><section class="pa-c pa-w2"><p class="pa-big" data-rl>' + fmt(A.list.length, 0) + '</p><p data-vf="a">agentes en ' + fmt(A.roles.length, 0) + ' roles: ' + A.roles.map(r => h.esc(r.name) + ' ' + A.list.filter(a => a.roleId === r.id).length).join(', ') + '.</p></section>' +
+      '<section class="pa-c pa-w2"><p class="pa-big" data-vf="m">' + fmt(maps.length, 0) + '</p><p data-vf="m">mapas con sitios para plantar en los datos del cliente; ' + fmt(three, 0) + ' tienen tres sitios (A, B y C).</p></section>' +
+      '<section class="pa-c pa-w2"><h3>El agente más nuevo</h3><p data-vf="nw"><b>' + h.esc(newest.name) + '</b>, ' + h.esc(newest.role) + (newest.released ? ', llegó el ' + h.fmtDate(newest.released) : '') + '. <a href="' + h.href('/valorant/agentes') + '#' + newest.id + '">Sus habilidades</a></p></section></div>';
     const mapUuid = new Map(h.pa.json('valapi-maps').data.map(m => [m.displayName, m.uuid]));
     const mapImg = n => { const f = artFor('valorant-maps', mapUuid.get(n)); return f ? '<img src="' + h.asset(f) + '" alt="' + h.esc(n) + '" width="456" height="100" loading="lazy">' : ''; };
-    const mapList = sec('Mapas con sitios', '<ul class="pa-mapl">' + maps.map(([n, d]) => '<li>' + mapImg(n) + '<b>' + h.esc(n) + '</b><span>' + h.esc(d) + '</span></li>').join('') + '</ul>' + valArtNote(h) + '<p class="pa-src">Son los mapas con sitios de plantado que trae el cliente ' + h.esc(A.version) + '. Riot rota cuáles entran en competitivo cada tanto, y esa rotación no está en estos datos: no la mostramos como si lo estuviera.</p>' + srcLine(h, 'valapi-maps'));
+    const mapList = sec('Mapas con sitios', '<ul class="pa-mapl" data-o="maps">' + maps.map(([n, d]) => '<li>' + mapImg(n) + '<b>' + h.esc(n) + '</b><span>' + h.esc(d) + '</span></li>').join('') + '</ul>' + valArtNote(h) + '<p class="pa-src" data-rl>Son los mapas con sitios de plantado que trae el cliente ' + h.esc(A.version) + '. Riot rota cuáles entran en competitivo cada tanto, y esa rotación no está en estos datos: no la mostramos como si lo estuviera.</p>' + live(srcLine(h, 'valapi-maps')));
     const ar = sec('El servidor que te toca', '<div class="pa-two"><div>' + quote(h, 'val_scl', 'es') + quote(h, 'val_scl_ar', 'es') + '</div><div><p>Cuánto ping le sacás a Santiago desde tu provincia, y el mínimo que permite la física, en el <a href="' + h.href('/kit/ping') + '">test de ping</a>.</p></div></div>');
     return '<link rel="stylesheet" href="' + h.asset('vx.css') + '">' + hero(h, { ey: 'Valorant · desde Argentina', girl: true, sub: 'Rangos, agentes, mapas y el servidor de Santiago, con los datos del juego y de Riot. Elegí por dónde empezar.' }) +
       valorantStart(h) + sec('Herramientas', cards(h, VAL)) + (h.built('/esports/agenda') ? agendaBlock(h, 'valorant', 'Próximos partidos de Valorant') : '') + facts + mapList + ar;

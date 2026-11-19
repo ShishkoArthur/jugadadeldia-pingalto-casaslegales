@@ -1,5 +1,6 @@
 // The big events of each game for pingalto.com (docs/FEEDS.md): LoL Worlds and MSI, VCT Champions and Masters, Dota 2 The
-// International, RLCS World Championship and Majors, FC Pro World Championship. PandaScore free plan, hourly; a finished event is
+// International, RLCS World Championship and Majors, FC Pro World Championship, the CS2 Major (the one on now or next, and the
+// last finished one; found by name, see pickMajors). PandaScore free plan, hourly; a finished event is
 // cached 20 h, an event that is on now is asked again every run. For each event: the latest edition (series), its stages
 // (tournaments) and every match with teams, country, score and time; the winner when PandaScore has one. Same terms as the agenda
 // (attribution "Datos: PandaScore", no betting fields, betting brands in names masked, only what the pages draw is kept).
@@ -17,8 +18,39 @@ export const EVENTS = [
   { k: 'rlcs-worlds', g: 'rl', league: 4834, name: 'RLCS World Championship' },
   { k: 'rlcs-major', g: 'rl', league: 4694, name: 'RLCS Major', n: 2 },
   { k: 'fc-worlds', g: 'eafc', league: 5271, name: 'FC Pro World Championship' },
+  { k: 'cs2-major', g: 'cs2', major: true, name: 'Major de CS2' },
 ];
-const GNAME = { lol: 'League of Legends', valorant: 'Valorant', dota2: 'Dota 2', rl: 'Rocket League', eafc: 'EA Sports FC' };
+const GNAME = { lol: 'League of Legends', valorant: 'Valorant', dota2: 'Dota 2', rl: 'Rocket League', eafc: 'EA Sports FC', cs2: 'Counter-Strike 2' };
+// CS2 Majors change organiser every edition (IEM, PGL, BLAST, StarLadder, Perfect World), so they are not one league: every CS2
+// league named "Major" plus every CS2 series named "Major", without qualifiers (RMR, regional and last-chance qualifiers, "road to").
+const MAJOR = /\bMajor\b/i, NOT_MAJOR = /qualif|\brmr\b|last chance|closed|\bopen\b|tribo|road to|academy|regional|showmatch/i;
+export function pickMajors(list, now) {
+  const seen = new Map();
+  for (const s of list) {
+    const label = clean(s && s.full_name || s && s.name), lg = clean(s && s._league || s && s.league && s.league.name);
+    if (!s || !Number.isInteger(s.id) || !s.begin_at || !(MAJOR.test(label) || MAJOR.test(lg)) || NOT_MAJOR.test(label) || NOT_MAJOR.test(lg)) continue;
+    seen.set(s.id, { ...s, _league: lg });
+  }
+  const all = [...seen.values()].sort((a, b) => (a.begin_at < b.begin_at ? 1 : -1));
+  const open = all.filter(s => !s.end_at || Date.parse(s.end_at) > +now - DAY).sort((a, b) => (a.begin_at < b.begin_at ? -1 : 1));
+  const done = all.filter(s => s.end_at && Date.parse(s.end_at) <= +now - DAY);
+  return [open[0], done[0]].filter(Boolean);
+}
+export const majorName = s => { const n = clean(s.full_name || s.name), lg = clean(s._league); return MAJOR.test(n) ? (lg && !MAJOR.test(lg) ? lg + ' ' + n : n) : (lg ? lg + ' ' : '') + n; };
+async function majorSeries(get, now) {
+  const list = [];
+  const leagues = await get('/csgo/leagues?search[name]=Major&page[size]=50', 20);
+  if (!Array.isArray(leagues)) throw new Error('cs2-major: league search is not a list');
+  for (const l of leagues) {
+    if (!l || !MAJOR.test(clean(l.name)) || NOT_MAJOR.test(clean(l.name))) continue;
+    const ss = await get('/leagues/' + l.id + '/series?sort=-begin_at&page[size]=10', 20);
+    if (!Array.isArray(ss)) throw new Error('cs2-major: series of league ' + l.id + ' is not a list');
+    for (const s of ss) list.push({ ...s, _league: l.name });
+  }
+  const found = await get('/csgo/series?search[name]=Major&sort=-begin_at&page[size]=20', 6);
+  if (!Array.isArray(found)) throw new Error('cs2-major: series search is not a list');
+  return pickMajors(list.concat(found), now);
+}
 const STATUS = new Set(['not_started', 'running', 'finished', 'postponed', 'canceled']);
 const clean = s => String(s == null ? '' : s).replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, 60);
 const safe = s => { const c = clean(s); return c && isBrandName(c) ? 'Nombre oculto' : c; };
@@ -41,10 +73,14 @@ export default {
     const lists = {};
     const out = { events: [], fetched: new Date().toISOString(), source: { url: API + '/leagues' } };
     for (const ev of EVENTS) {
-      if (!lists[ev.league]) lists[ev.league] = await get('/leagues/' + ev.league + '/series?sort=-begin_at&page[size]=50', 6);
-      const all = lists[ev.league];
-      if (!Array.isArray(all)) throw new Error(ev.k + ': series list is not a list');
-      const chosen = all.filter(s => s && s.begin_at && (!ev.pick || ev.pick.test(clean(s.full_name)))).slice(0, ev.n || 1);
+      let chosen;
+      if (ev.major) chosen = await majorSeries(get, ctx.now);
+      else {
+        if (!lists[ev.league]) lists[ev.league] = await get('/leagues/' + ev.league + '/series?sort=-begin_at&page[size]=50', 6);
+        const all = lists[ev.league];
+        if (!Array.isArray(all)) throw new Error(ev.k + ': series list is not a list');
+        chosen = all.filter(s => s && s.begin_at && (!ev.pick || ev.pick.test(clean(s.full_name)))).slice(0, ev.n || 1);
+      }
       const eds = [];
       for (const s of chosen) {
         const done = s.end_at && Date.parse(s.end_at) < +ctx.now - DAY;
@@ -97,7 +133,7 @@ export default {
           const begin = s.begin_at, end = s.end_at;
           const st = ms.some(m => m.st === 'running') ? 'running' : ms.length && ms.every(m => m.st === 'finished') ? 'finished' : Date.parse(begin) > Date.parse(raw.fetched) ? 'upcoming' : 'running';
           return {
-            id: s.id, name: safe(s.full_name), year: s.year || null, begin, end, st,
+            id: s.id, name: safe(ev.major ? majorName(s) : s.full_name), year: s.year || null, begin, end, st,
             winner: wo ? { n: safe(wo.name), loc: wo.location || wo.nationality || undefined } : finalWinner(ms, order[order.length - 1]),
             stages: order.map(t => ({ id: t.id, n: safe(t.name), begin: t.begin_at || null, end: t.end_at || null })),
             matches: ms,
