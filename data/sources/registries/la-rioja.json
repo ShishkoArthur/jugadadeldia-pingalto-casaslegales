@@ -1,6 +1,6 @@
 {
  "id": "la-rioja",
- "checked": "2026-11-03",
+ "checked": "2026-11-05",
  "maxAgeDays": 100,
  "status": "official-list",
  "regulator": {
@@ -15,16 +15,16 @@
  "docs": {
   "lri-plataformas": {
    "url": "https://ajalar.com.ar/sitio/lista-de-plataformas-autorizadas/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "40697d00cfedc93b64d3b0aa76756841c15826c893c7211ee616b709d3b2ca32",
+   "sha256": "2ab06d9089f9aca3da9e353f19efaca07ae2974bf3216abee4a41dd8f95de12b",
    "file": "data/sources/registries/_docs/lri-plataformas.html"
   },
   "lri-autoexclusion": {
    "url": "https://ajalar.com.ar/sitio/formulario-de-autoexclusion/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "419263a194c61cb050340986c0466a4467fcf483328dd7722399e55c9c815ea9",
+   "sha256": "a82eed5c1badc8d1f4b22fed0dd51d153906acb8f3db978e89caf1dfee2c71e8",
    "file": "data/sources/registries/_docs/lri-autoexclusion.html"
   }
  },

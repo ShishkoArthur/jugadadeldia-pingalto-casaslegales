@@ -1,6 +1,6 @@
 {
  "id": "buenos-aires",
- "checked": "2026-11-03",
+ "checked": "2026-11-05",
  "maxAgeDays": 100,
  "status": "official-list",
  "regulator": {
@@ -15,23 +15,23 @@
  "docs": {
   "pba-juego-online": {
    "url": "https://loteria.gba.gob.ar/juego-online",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "714a58e42a87f44c0193a19e45837299425e1e1c9927224466c9bb3451c75e45",
+   "sha256": "8746660434a9244cd1cf0b2b080c8b622b1db128571719c245882a2172527a64",
    "file": "data/sources/registries/_docs/pba-juego-online.html"
   },
   "pba-ley-15079": {
    "url": "https://normas.gba.gob.ar/ar-b/ley/2018/15079/2404",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "ebdaff2a0b6d74770c8e984a5ff9baa32fed9ed8e184202bcffef94f4280d0bb",
+   "sha256": "3d0d4e198059d17cec4806a2a3404cd0b6a5f9f9e64ce09e1f91c56401fce0ae",
    "file": "data/sources/registries/_docs/pba-ley-15079.html"
   },
   "pba-decreto-181-19": {
    "url": "https://normas.gba.gob.ar/ar-b/decreto/2019/181/207077",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "97012d785e0635b2a22970d27075ca7015ca431bed8b5fa70a9142de9e0adc50",
+   "sha256": "9f6f1e0d789dde8f219a19f1c8440bec987e1d09fc062f1858a2bef1d38b7eb0",
    "file": "data/sources/registries/_docs/pba-decreto-181-19.html"
   }
  },

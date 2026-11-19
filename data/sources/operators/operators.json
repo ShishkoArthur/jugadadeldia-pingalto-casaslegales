@@ -1,6 +1,6 @@
 {
  "about": "Facts of operator pages on casaslegales.com: verbatim quotes of saved copies of public pages (operators: rendered DOM without scripts, made by tools/capture-shots.mjs; official pages: copies shared with the registries and the help package). Checked by tools/verify-operators.mjs. Operator documents are cited as text, never linked.",
- "checked": "2026-11-03",
+ "checked": "2026-11-05",
  "maxAgeDays": 180,
  "docs": {
   "betsson-entrada": {
@@ -159,7 +159,7 @@
   },
   "ar-c-juegosegurolegal": {
    "url": "https://juegosegurolegal.gob.ar/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "782d662a7b0a4be70b0f42415eb7e3014621bd01498022be82c8136ab614b6a2",
    "file": "data/sources/rg/_docs/ar-c-juegosegurolegal.html",
@@ -169,9 +169,9 @@
   },
   "ar-gob-proyecto-pe-2026-05-26": {
    "url": "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-presento-un-proyecto-para-prevenir-la-ludopatia",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "d6931819062ee6caaae61f9ffa8cb082624662ce92fb04a203cc984e6d724b9e",
+   "sha256": "c4ba31b7785ffd58973cce63bba95b56872772aa00605e9565dfdf8ad55b8324",
    "file": "data/sources/rg/_docs/ar-gob-proyecto-pe-2026-05-26.html",
    "kind": "official",
    "official": true,

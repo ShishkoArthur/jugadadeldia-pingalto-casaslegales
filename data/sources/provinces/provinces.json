@@ -1,41 +1,41 @@
 {
  "about": "Jurisdictions of casaslegales.com without a verified licensee list (lists live in data/sources/registries/). status: platform = the regulator links its own .bet.ar platform (no list of other operators published); none = nothing verifiable found (seen = saved copies checked for .bet.ar links); blocked = source unreachable or excluded, nothing claimed. Checked by tools/lib/provsources.mjs.",
- "checked": "2026-11-03",
+ "checked": "2026-11-05",
  "maxAgeDays": 100,
  "docs": {
   "eri-iafas-inicio": {
    "url": "https://www.iafas.gov.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "9093827dab41a56d310fc6d9c561861aea00f702ddbb43cb0723ed17e9815607",
+   "sha256": "8eff3d60122b3850dbb9d755c11085e39e41abfef119f1e7a1e458000314a39b",
    "file": "data/sources/provinces/_docs/eri-iafas-inicio.html"
   },
   "mis-iplyc-portal": {
    "url": "https://www.loteriademisiones.com.ar/portal/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "047df1a6e9ae07a6456c059615398cbf45b0c04efade8069a2ab9ea833b18aed",
+   "sha256": "71ccdba05ace242b60f7e9b160a9e314c30281f4d227ab8f4ef0f0f14999c13b",
    "file": "data/sources/provinces/_docs/mis-iplyc-portal.html"
   },
   "cha-loteria-inicio": {
    "url": "https://loteria.chaco.gov.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "b20af0466a18592e814f18b021566b1a887aec951f303e82bc9da1ac81c9105d",
+   "sha256": "2b9c8dd3ef9b5e31439426b2f4c11d67c254dd3c79a9179b810e9d282cb0f700",
    "file": "data/sources/provinces/_docs/cha-loteria-inicio.html"
   },
   "cha-juego-ilegal": {
    "url": "https://loteria.chaco.gov.ar/juego-ilegal",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "d8558829442cf6f7c65bc360fae918241ed67a7481462e41705e18fc5d389bc5",
+   "sha256": "0739e24e9812b174e85483cbf08693d72ea2894d6d081bc102cc826b8808eef8",
    "file": "data/sources/provinces/_docs/cha-juego-ilegal.html"
   },
   "cor-loteria-inicio": {
    "url": "https://www.loteriacorrentina.gob.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "e83a94a6175e2b5caede6408c2b5571dc4b9f289d43fa69805a2229cd8c90462",
+   "sha256": "d6b24625ca1cfc8fc54de5bf3434d6de1a4c6dbc904667ba7817d5de1aaa1ad4",
    "file": "data/sources/provinces/_docs/cor-loteria-inicio.html"
   },
   "sal-enreja-juego-autorizado": {
@@ -58,23 +58,23 @@
   },
   "sju-cas-inicio": {
    "url": "https://www.cas.gob.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "5400a61211763103b2ac484cfdb26feb337a263d76b9f63678f65ceb61d218a4",
+   "sha256": "3209db59c45c7b5585349b3ec27e76496d4d9140617674cd6ed3f002efb2c14d",
    "file": "data/sources/provinces/_docs/sju-cas-inicio.html"
   },
   "tdf-ipra-inicio": {
    "url": "https://www.ipra.gov.ar/web/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "27890869748520f3484564c0512c137c67d1b39e31facf77c0225aa5ad2f3c42",
+   "sha256": "19b058f44292cef385b0d982bc7632cc443290c5a78814fe000ea8f4759d2d6e",
    "file": "data/sources/provinces/_docs/tdf-ipra-inicio.html"
   },
   "scr-loas-inicio": {
    "url": "https://loteriadesantacruz.gob.ar/",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "66f28a9571e0611d16bd363b7101d38ebe8b8d46a3c0b418554d533df7aeca08",
+   "sha256": "4b4430636d3e274a6fe9ba29dd2ad61ce1c80d7200067ca46a45d85d2cccb286",
    "file": "data/sources/provinces/_docs/scr-loas-inicio.html"
   }
  },

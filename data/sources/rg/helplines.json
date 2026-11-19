@@ -1,6 +1,6 @@
 {
  "about": "Help lines, self-exclusion, age, regulators and the federal gambling-harm bill for Argentina (23 provinces + CABA). Only entries with a verbatim quote from a saved document (_docs/, sha256) are shown; tools/verify-rg.mjs checks them. Freshness <= maxAgeDays per document. verify[] = leads not shown; searched[] = where we looked when nothing official was found; otherLines[] = other official lines on the same pages (not shown by default). free: true only when the quote says gratuita; archived: true = the document is a web.archive.org copy of the official page. Copied from the gambeteo package on 2026-11-03 (research: gambeteo docs/research/RG-AR-2026-11-01.md).",
- "checked": "2026-11-01",
+ "checked": "2026-11-05",
  "maxAgeDays": 100,
  "default": "buenos-aires",
  "national": {
@@ -1039,39 +1039,39 @@
  "docs": {
   "ar-c-juegosegurolegal": {
    "url": "https://juegosegurolegal.gob.ar/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "782d662a7b0a4be70b0f42415eb7e3014621bd01498022be82c8136ab614b6a2",
    "file": "data/sources/rg/_docs/ar-c-juegosegurolegal.html"
   },
   "ar-c-lotba-autoexclusion": {
    "url": "https://juegosegurolegal.gob.ar/?page=autoexclusion",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "4b77736a7d2423e0dd71781bebe7094128dd3cb8463ac519f7735adbb5015f1a",
+   "sha256": "4ff6e1b8a5f04ebfafd2d73f4595c5eaaf730f6b3d0c7fb2b40c90aa85a08db8",
    "file": "data/sources/rg/_docs/ar-c-lotba-autoexclusion.html",
    "finalUrl": "https://autoexclusion.loteriadelaciudad.gob.ar/wpnformulariopreregistroresponsive"
   },
   "ar-c-lotba-agencias": {
    "url": "https://juegosegurolegal.gob.ar/?page=agencias-juego-en-linea",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "0835246c022439e2cd5d6f295330936c857752425a8eed53c3d031c40508c617",
    "file": "data/sources/rg/_docs/ar-c-lotba-agencias.html"
   },
   "ar-b-loteria-juego-compulsivo": {
    "url": "https://www.loteria.gba.gob.ar/juego-compulsivo",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "f05560a662d54d6aa918b5e562b547788dc810e71f3cb72881ba90c6fd89e00c",
+   "sha256": "44228539d872f483c2b899262ec037df154be4bdd7b748b615180dbc56e25a5c",
    "file": "data/sources/rg/_docs/ar-b-loteria-juego-compulsivo.html",
    "finalUrl": "https://loteria.gba.gob.ar/juego-compulsivo"
   },
   "ar-b-loteria-juego-online": {
    "url": "https://www.loteria.gba.gob.ar/juego-online",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "7efce31c8ffa8bf0356585f7ddd7693711489ace399c770867e6ce27f33894e2",
+   "sha256": "a404017a64f6b4a43aaaea32666fae4e6a61f964094acb7c7551499bcc0c79d2",
    "file": "data/sources/rg/_docs/ar-b-loteria-juego-online.html",
    "finalUrl": "https://loteria.gba.gob.ar/juego-online"
   },
@@ -1085,16 +1085,16 @@
   },
   "ar-e-iafas-prevenjuego": {
    "url": "https://www.iafas.gov.ar/juego-responsable/prevenjuego/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "5a01127a3d48a7503fda30d0bbbffebccad308ccf9b24fdcdaaab51eaf375dca",
+   "sha256": "73638383c7eb464fad426500a2335fd4edad39ac0a0b5100e0f1d3f6438cebd2",
    "file": "data/sources/rg/_docs/ar-e-iafas-prevenjuego.html"
   },
   "ar-e-iafas-home": {
    "url": "https://www.iafas.gov.ar/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "7eee5fec5d4e7cb3f6f2fbf951886813359dd48473fc1d6d8466b6f3b279f9ff",
+   "sha256": "8eff3d60122b3850dbb9d755c11085e39e41abfef119f1e7a1e458000314a39b",
    "file": "data/sources/rg/_docs/ar-e-iafas-home.html"
   },
   "ar-m-ipjyc-juego-responsable": {
@@ -1125,9 +1125,9 @@
   },
   "ar-msal-0800-salud-mental": {
    "url": "https://www.argentina.gob.ar/node/356435",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "4ee93aa8cac331c5b27aaef4f486bdc01ca13ee6dfcc0e3bbd7de150a4c15a29",
+   "sha256": "239b0b6c4a07a21e6f165821f69691234d1249a0adc330ba26725b8ea8712d85",
    "file": "data/sources/rg/_docs/ar-msal-0800-salud-mental.html"
   },
   "ar-hcdn-media-sancion-2024-11-27": {
@@ -1140,23 +1140,23 @@
   },
   "ar-senado-cd-26-24": {
    "url": "https://www.senado.gob.ar/parlamentario/comisiones/verExp/26.24/CD/PL",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "a8337c963a5398ec13220997faf5f2e8868beebad3e21dc029c7bc6adb364ab7",
+   "sha256": "637e57903fd3f97f1e626a731bdfe6cec2bcffd6e576453b147c1411759ffbc6",
    "file": "data/sources/rg/_docs/ar-senado-cd-26-24.html"
   },
   "ar-senado-plenario-2025-10-15": {
    "url": "https://www.senado.gob.ar/micrositios/nota/23285/noticias",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "88da0dfc31bcd8eb8e01860b8fc5d7af92169fa9894c8acc0b503ae5e7456ce3",
+   "sha256": "acf479d93deaa7111b948fcf5dac176ee649901c099ab0f3d6dee2242058151d",
    "file": "data/sources/rg/_docs/ar-senado-plenario-2025-10-15.html"
   },
   "ar-gob-proyecto-pe-2026-05-26": {
    "url": "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-presento-un-proyecto-para-prevenir-la-ludopatia",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "d6931819062ee6caaae61f9ffa8cb082624662ce92fb04a203cc984e6d724b9e",
+   "sha256": "c4ba31b7785ffd58973cce63bba95b56872772aa00605e9565dfdf8ad55b8324",
    "file": "data/sources/rg/_docs/ar-gob-proyecto-pe-2026-05-26.html"
   },
   "ar-t-caja-popular-juego-responsable": {
@@ -1188,91 +1188,91 @@
   },
   "ar-n-iplyc-portal": {
    "url": "https://www.loteriademisiones.com.ar/portal/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "112c6d7c50a56c68cbfc7af7d3c5a757d881bf8a763ae39b305ca9b0d6fed2ad",
+   "sha256": "71ccdba05ace242b60f7e9b160a9e314c30281f4d227ab8f4ef0f0f14999c13b",
    "file": "data/sources/rg/_docs/ar-n-iplyc-portal.html"
   },
   "ar-n-iplyc-juego-responsable": {
    "url": "https://juegoresponsable.loteriademisiones.com.ar/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "a4c185a0c15b690d9d4a24f8197f9eda816ce9d1a4e7fd478c22cd98948b5361",
+   "sha256": "cf8075088505e12ee27d353bc3379dc5853e32ea8640f7475f2d64ef85941163",
    "file": "data/sources/rg/_docs/ar-n-iplyc-juego-responsable.html"
   },
   "ar-n-iplyc-autoexclusion": {
    "url": "https://juegoresponsable.loteriademisiones.com.ar/autoexcluirme/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "15e220055b923e49f848865d5b23b44caf44c08f47e1b670ba6e96bfdc54e376",
+   "sha256": "f59dd5ad484cd517dcc721a7f3a59396653f298b485ea189507d29e7a0307338",
    "file": "data/sources/rg/_docs/ar-n-iplyc-autoexclusion.html"
   },
   "ar-h-loteria-chaquena-jr": {
    "url": "https://loteria.chaco.gov.ar/juego_responsable",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "d9b0adf548dd773ee641ee50c059719d01df9c93fe19b08442963a3f45dfd410",
+   "sha256": "2f41e5dc504c844c6b8c9dec87efab07ddc57009442d83905aa7df95166db37f",
    "file": "data/sources/rg/_docs/ar-h-loteria-chaquena-jr.html"
   },
   "ar-h-chaco-gob-2025-02-17": {
    "url": "https://chaco.gov.ar/noticia-loteria-chaquena-redobla-su-compromiso-con-el-juego-responsable-2025-02-17-10-30",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "deeafe4002784879e24872985e603bf08c4281c1f92da549c260f1e2e03b544c",
    "file": "data/sources/rg/_docs/ar-h-chaco-gob-2025-02-17.html"
   },
   "ar-w-loteria-correntina-autoexclusion": {
    "url": "https://www.loteriacorrentina.gob.ar/juego-responsable/autoexclusi%C3%B3n",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "ed8b02ba27192a3ef7d528457a61a59ca84899e938481dfc1f33b1b111128fa4",
+   "sha256": "dcabfc69fdb788e9c1d9b129e101a7cd1119f29aa06d4719cf4e287a78dfa5ce",
    "file": "data/sources/rg/_docs/ar-w-loteria-correntina-autoexclusion.html"
   },
   "ar-j-cas-juego-responsable": {
    "url": "https://www.cas.gob.ar/juegos/responsable",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "a5183b06b63e532a71c6b3ab8d0e1534e1dbfba66878172a2b9a4e0d684236a8",
    "file": "data/sources/rg/_docs/ar-j-cas-juego-responsable.html"
   },
   "ar-l-iss-dafas-juego-responsable-wayback-2026-07-13": {
    "url": "https://web.archive.org/web/20260713124458/https://www.isslapampa.gob.ar/dafas-juego-responsable/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "90d0aa208b42eab016f1847592751e8552e8f785c61c7fdf948726b50e32fe50",
+   "sha256": "7828dfe4b1e4ed4336e9d1e033f26b6c68a3bc07dcc0ce1839b302fb60395e8e",
    "file": "data/sources/rg/_docs/ar-l-iss-dafas-juego-responsable-wayback-2026-07-13.html"
   },
   "ar-v-ipra-juego-responsable": {
    "url": "https://www.ipra.gov.ar/web/juegoresponsable/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "2d8235a2e5b0249c452732e459f6f2b7ab9152cd0152f8ddad82826686373bbc",
+   "sha256": "32926d87cd1ca93d7283ad5a528bf4bd02f01eaca0394e996aefea8dc9ee635e",
    "file": "data/sources/rg/_docs/ar-v-ipra-juego-responsable.html"
   },
   "ar-f-ajalar-contacto": {
    "url": "https://ajalar.com.ar/sitio/contacto/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "7a5723db9278d54a9344a2476cc38e6b1baac39d5ac760baa4ad33bca04caf5f",
+   "sha256": "27a3cda0b1ee72d0eb037bfe6846bcf44aee12d1e949c5eb81b1108e2a7f51ce",
    "file": "data/sources/rg/_docs/ar-f-ajalar-contacto.html"
   },
   "ar-f-ajalar-autoexclusion": {
    "url": "https://ajalar.com.ar/sitio/formulario-de-autoexclusion/",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
-   "sha256": "9c4a6920036522538821d93950148f0b5cff6f0a13211433727969240d20daca",
+   "sha256": "a82eed5c1badc8d1f4b22fed0dd51d153906acb8f3db978e89caf1dfee2c71e8",
    "file": "data/sources/rg/_docs/ar-f-ajalar-autoexclusion.html"
   },
   "ar-g-caja-social-juego-responsable": {
    "url": "http://www.cajasocialsde.gob.ar/php/juegoresponsable.php",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "23c7e99255e7a118b1a297e8a9e7f438c5795c593649e7d8fb9b371231afc96a",
    "file": "data/sources/rg/_docs/ar-g-caja-social-juego-responsable.html"
   },
   "ar-z-loas-guia-padres-docentes": {
    "url": "https://loteriadesantacruz.gob.ar/wp-content/uploads/2025/01/Guia-para-Padre-y-Docentes.pdf",
-   "fetched": "2026-11-01",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "889ea46685087f2246caf339d54680f17560666ecdabca5a28d7eb9bb4699415",
    "file": "data/sources/rg/_docs/ar-z-loas-guia-padres-docentes.pdf"

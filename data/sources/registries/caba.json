@@ -1,6 +1,6 @@
 {
  "id": "caba",
- "checked": "2026-11-03",
+ "checked": "2026-11-05",
  "maxAgeDays": 100,
  "status": "official-list",
  "regulator": {
@@ -15,7 +15,7 @@
  "docs": {
   "caba-agencias": {
    "url": "https://juegosegurolegal.gob.ar/?page=agencias-juego-en-linea",
-   "fetched": "2026-11-03",
+   "fetched": "2026-11-05",
    "status": 200,
    "sha256": "0835246c022439e2cd5d6f295330936c857752425a8eed53c3d031c40508c617",
    "file": "data/sources/registries/_docs/caba-agencias.html"
