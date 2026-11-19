@@ -98,7 +98,7 @@ export function page(h, p, body) {
   const footer = '<footer class="rl-ft"><p>Sin bonos ni afiliados: solo enlazamos la dirección que publica cada lista oficial. No es asesoramiento legal: depende de la ley de tu provincia.</p>' +
     '<nav aria-label="Pie">' + links(h, p.help ? FOOT.filter(f => !f[2]) : FOOT, p.path) + '</nav>' +
     (p.help ? '<p><b class="rl-18">18+</b> Los juegos de apuestas son solo para mayores de 18 años.</p>' : helpBlock(h, p)) +
-    '<p class="rl-fine">casaslegales.com · datos oficiales revisados el ' + h.fmtDate(h.checked) + ' · redacción independiente, sin acuerdos con operadores</p></footer>';
+    '<p class="rl-fine">casaslegales.com · última actualización de esta página: ' + h.fmtDate(h.modified()) + ' · redacción independiente, sin acuerdos con operadores</p></footer>';
   const data = '<script type="application/json" id="rl-data">' + h.jsonScript(h.clientData()) + '</script>';
   const js = '<script type="module" src="' + h.asset('ui.js') + '"></script>';
   return '<!doctype html><html lang="' + h.site.htmlLang + '"><head>' + head + '</head><body' + (p.help ? ' data-calma' : '') + '>' +
