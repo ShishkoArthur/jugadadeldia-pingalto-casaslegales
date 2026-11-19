@@ -122,7 +122,7 @@ export const horarios = {
   h1: '¿Hay quiniela hoy? Horarios de todos los sorteos',
   description: '¿Hay quiniela hoy? La respuesta para hoy y mañana según el programa oficial y el registro de sorteos, y los horarios de la Previa a la Nocturna.',
   ld: ldQ,
-  data: () => { const p = program(); return { feed: '/data/feeds/', stale: STALE_HOURS, prog: { from: p.from, to: p.to, rows: p.rows.map(r => [r.d, r.t, r.type, r.j]) }, codes: PROG_CODES }; },
+  data: () => { const p = program(); return { feed: '/data/feeds/', stale: STALE_HOURS, prog: { from: p.from, to: p.to, rows: p.rows.map(r => [r.d, r.t, r.type, r.j]) }, codes: PROG_CODES, types: PROG_TYPES.map(t => t.name) }; },
   render(h) {
     const p = program();
     const types = PROG_TYPES.map(t => t.name);
@@ -133,11 +133,11 @@ export const horarios = {
     return hero(h, { kicker: 'Quiniela · hora argentina', scene: 'quiniela-horarios', lede: 'Cinco sorteos por día, de lunes a sábado, de la Previa a la Nocturna. Abajo, la respuesta para hoy y mañana y la cuenta regresiva al próximo.' }) +
       '<div class="jg-mn">' +
       '<section class="jg-c w2" aria-live="polite"><span class="jg-tag">Hoy</span><h2>¿Hay sorteo?</h2><div data-o="now"><p class="jg-note">La respuesta se calcula con JavaScript, en hora argentina.</p></div><div data-o="next"></div></section>' +
-      '<section class="jg-c"><span class="jg-sm">Los turnos</span><h2>Horarios</h2><table class="jg-tbl" data-nosnippet><tbody>' + types.map(t => { const u = TURN_PATHS[PROG_TYPES.find(x => x.name === t).turno]; return '<tr><td>' + (u && h.built(u) ? '<a href="' + h.href(u) + '">' + t + '</a>' : t) + '</td><td class="n">' + times[t].join(' / ') + ' hs</td></tr>'; }).join('') + '</tbody></table><p class="jg-note">Tocá un turno para ver su último extracto en cada provincia.</p>' +
+      '<section class="jg-c"><span class="jg-sm">Los turnos</span><h2>Horarios</h2><table class="jg-tbl" data-nosnippet><tbody>' + types.map(t => { const u = TURN_PATHS[PROG_TYPES.find(x => x.name === t).turno]; return '<tr><td>' + (u && h.built(u) ? '<a href="' + h.href(u) + '">' + t + '</a>' : t) + '</td><td class="n"><span data-tt="' + t + '">' + times[t].join(' / ') + '</span> hs</td></tr>'; }).join('') + '</tbody></table><p class="jg-note">Tocá un turno para ver su último extracto en cada provincia.</p>' +
       cite(h, ['lotba.quiniela.time-previa', 'lotba.quiniela.time-primera', 'lotba.quiniela.time-matutina', 'lotba.quiniela.time-vespertina', 'lotba.quiniela.time-nocturna'], 'Del programa oficial') + '</section>' +
-      '<section class="jg-c w3"><span class="jg-sm">Programa de La Quiniela de la Ciudad, del ' + dm(p.from) + ' al ' + dm(p.to) + '</span><h2>Qué extracto sale en cada turno</h2><div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Extracto</th>' + types.map(t => '<th class="n">' + t + '</th>').join('') + '</tr></thead><tbody>' +
+      '<section class="jg-c w3"><span class="jg-sm">Programa de La Quiniela de la Ciudad, <span data-o="pspan">del ' + dm(p.from) + ' al ' + dm(p.to) + '</span></span><h2>Qué extracto sale en cada turno</h2><div class="jg-tw"><table class="jg-tbl" data-nosnippet><thead><tr><th>Extracto</th>' + types.map(t => '<th class="n">' + t + '</th>').join('') + '</tr></thead><tbody data-o="ptab">' +
       codes.map(c => '<tr><td>' + PROG_CODES[c] + '</td>' + types.map(t => '<td class="n">' + part(t, c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>' +
-      '<p class="jg-note">«Todos» quiere decir que esa jurisdicción participa en cada sorteo de ese turno del programa; si no, cuántos de los ' + p.rows.filter(r => r.type === types[0]).length + ' sorteos del turno.</p>' +
+      '<p class="jg-note">«Todos» quiere decir que esa jurisdicción participa en cada sorteo de ese turno del programa; si no, cuántos de los <span data-o="pn">' + p.rows.filter(r => r.type === types[0]).length + '</span> sorteos del turno.</p>' +
       cite(h, ['lotba.quiniela.jurisdictions', 'lotba.quiniela.jurisdictions-2', 'lotba.quiniela.saturday-nocturna']) + '</section>' +
       '<section class="jg-c w2"><span class="jg-sm">Lo que pasó de verdad</span><h2>Los días con sorteo en nuestro registro</h2><div data-o="days"><p class="jg-note">El registro se carga con JavaScript.</p></div><div data-o="off"></div></section>' +
       '<section class="jg-c"><span class="jg-sm">Ojo</span><h2>Feriados</h2><p>El programa oficial que guardamos va <span data-o="span">del ' + dm(p.from) + ' al ' + dm(p.to) + '</span>. Para otros días miramos lo que pasó: los días de semana sin ningún sorteo en el registro suelen ser feriados.</p><p class="jg-note">Si un feriado cambia el calendario, manda lo que diga tu agencia o el sitio de la lotería.</p>' +

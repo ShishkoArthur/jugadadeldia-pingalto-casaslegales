@@ -1,4 +1,5 @@
 import { $, page, esc, fmt } from './kit.js';
+import { programa, current, monthAr } from './turnos.js';
 
 const D = page();
 const TZ = 'America/Argentina/Buenos_Aires';
@@ -60,20 +61,25 @@ function days() {
     order.map(w => '<div' + (per[w].w ? '' : ' class="z"') + '><span>' + DAYS[w] + '</span><b>' + per[w].w + '</b><small>de ' + per[w].t + '</small></div>').join('') + '</div>';
   out('off').innerHTML = off.length ? '<h3>De lunes a sábado sin ningún sorteo</h3><ul class="jg-chipl">' + off.map(x => '<li>' + DAYS[wd(x)].slice(0, 3) + ' ' + dm(x) + '</li>').join('') + '</ul><p class="jg-note">' + (off.length === 1 ? 'Es un día' : 'Son ' + off.length + ' días') + ' en el registro. Suelen coincidir con feriados nacionales.</p>' : '';
 }
+function table(rows) {
+  const types = D.types || [], codes = Object.keys(D.codes).map(Number);
+  const part = (t, c) => { const rs = rows.filter(r => r[3] === t), k = rs.filter(r => r[4].includes(c)).length; return !rs.length || !k ? '—' : k === rs.length ? '<span class="jg-ok">todos</span>' : k + ' de ' + rs.length; };
+  const ds = rows.map(r => r[1]).sort();
+  const ps = out('pspan'), tb = out('ptab'), pn = out('pn');
+  if (ps) ps.textContent = 'del ' + dm(ds[0]) + ' al ' + dm(ds[ds.length - 1]);
+  if (tb) tb.innerHTML = codes.map(c => '<tr><td>' + esc(D.codes[c]) + '</td>' + types.map(t => '<td class="n">' + part(t, c) + '</td>').join('') + '</tr>').join('');
+  if (pn && types.length) pn.textContent = String(rows.filter(r => r[3] === types[0]).length);
+}
 function useProgram(p) {
-  const ok = p && Array.isArray(p.rows) && p.rows.length && typeof p.from === 'string' && typeof p.to === 'string' && p.to > D.prog.to &&
-    p.rows.every(r => Array.isArray(r) && r.length === 5 && /^\d{4}-\d\d-\d\d$/.test(r[1]) && /^\d\d:\d\d$/.test(r[2]) && typeof r[3] === 'string' && Array.isArray(r[4]));
-  if (!ok) return false;
+  if (!p || p.to < D.prog.to) return false;
   D.prog = { from: p.from, to: p.to, rows: p.rows.map(r => [r[1], r[2], r[3], r[4]]) };
   const sp = out('span');
   if (sp) sp.textContent = 'del ' + dm(p.from) + ' al ' + dm(p.to);
+  table(current(p.rows, monthAr()));
   return true;
 }
 async function loadProgram() {
-  try {
-    const r = await fetch(D.feed + 'programa.json', { cache: 'no-cache' });
-    if (r.ok && useProgram((await r.json()).data)) { draw(); next(); }
-  } catch (e) { return; }
+  if (useProgram(await programa())) { draw(); next(); }
 }
 async function load() {
   try {

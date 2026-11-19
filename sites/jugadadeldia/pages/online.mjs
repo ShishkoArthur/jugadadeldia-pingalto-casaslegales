@@ -8,6 +8,7 @@ import { hero, cite, crumbs, webPage, money, oneIn, btn, faq, faqLd } from './pa
 
 const n = q => toNumber(q);
 const host = u => new URL(u).hostname.replace(/^www\./, '');
+const platforms = k => k + (k === 1 ? ' plataforma' : ' plataformas');
 const off = (url, label) => '<a href="' + url + '" rel="noopener">' + (label || host(url)) + '</a>';
 
 const ROWS = h => [
@@ -24,8 +25,8 @@ const ROWS = h => [
     text: 'La Lotería de Córdoba publica su lista de sitios oficiales de juego online y recuerda que los sitios que terminan en .bet.ar son legales. Esa página no dice cuáles de esos sitios venden quiniela.',
     src: ['online.cba.list', 'online.cba.betar'] },
   { j: 'Santa Fe', who: 'Lotería de Santa Fe', site: 'https://www.loteriasantafe.gov.ar/', online: 'casinos y apuestas online',
-    text: 'Según la Lotería de Santa Fe, hay 2 plataformas de juego online y 4 de apuestas deportivas habilitadas por la Ley 14235/23. Su lista está dividida en casinos online y apuestas deportivas: la quiniela no aparece.',
-    src: ['online.sfe.count'] },
+    text: 'Según la Lotería de Santa Fe, hay ' + platforms(h.src.value('online.sfe.online-count')) + ' de juego online y ' + h.src.value('online.sfe.sports-count') + ' de apuestas deportivas habilitadas por la ' + h.src.value('online.sfe.law') + '. Su lista está dividida en casinos online y apuestas deportivas: la quiniela no aparece.',
+    src: ['online.sfe.online-count', 'online.sfe.sports-count', 'online.sfe.law', 'online.sfe.list'] },
   { j: 'Mendoza', who: 'Instituto Provincial de Juegos y Casinos', site: 'https://www.ipjyc.gob.ar/JEL/', online: 'lista de plataformas',
     text: 'El Instituto regula el juego en línea dentro de la provincia y publica la lista de plataformas autorizadas.',
     src: ['online.mza.regulator', 'online.mza.list'] },

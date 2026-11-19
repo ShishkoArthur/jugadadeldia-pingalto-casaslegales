@@ -106,8 +106,9 @@ test('runner: fixtures run writes the feed and health; a failing run keeps the l
   cpSync(new URL('lotba-quiniela-programa-2026-11.pdf', DOC), join(pr, 'qui.pdf'));
   cpSync(new URL('lotba-loto-plus-programa-2026-11.pdf', DOC), join(pr, 'lto.pdf'));
   cpSync(new URL('./fixtures/programa/not-loaded.html', import.meta.url), join(pr, 'no.html'));
+  cpSync(new URL('pba-juegos-tradicionales.html', DOC), join(pr, 'pba.html'));
   const PF = j => 'https://' + (j === 'QUI' ? 'quiniela' : 'loto') + '.loteriadelaciudad.gob.ar/includes/descargaPrograma.php ano=2026&mes=';
-  writeFileSync(join(pr, 'index.json'), JSON.stringify({ [PF('QUI') + '11&version=1&juego=QUI']: { file: 'qui.pdf', type: 'application/pdf' }, [PF('LTO') + '11&version=1&juego=LTO']: { file: 'lto.pdf', type: 'application/pdf' }, [PF('QUI') + '12&version=1&juego=QUI']: { file: 'no.html', type: 'text/html' }, [PF('LTO') + '12&version=1&juego=LTO']: { file: 'no.html', type: 'text/html' } }));
+  writeFileSync(join(pr, 'index.json'), JSON.stringify({ [PF('QUI') + '11&version=1&juego=QUI']: { file: 'qui.pdf', type: 'application/pdf' }, [PF('LTO') + '11&version=1&juego=LTO']: { file: 'lto.pdf', type: 'application/pdf' }, [PF('QUI') + '12&version=1&juego=QUI']: { file: 'no.html', type: 'text/html' }, [PF('LTO') + '12&version=1&juego=LTO']: { file: 'no.html', type: 'text/html' }, 'https://loteria.gba.gob.ar/juegos-tradicionales': { file: 'pba.html', type: 'text/html' } }));
   const quiet = console.log; console.log = () => {};
   const errs = console.error; console.error = () => {};
   try {

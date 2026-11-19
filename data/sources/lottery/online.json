@@ -206,10 +206,31 @@
    "quote": "Toda actividad relacionada a la apuestas de juego de azar está prohibida para menores de 18 años."
   },
   {
-   "id": "online.sfe.count",
-   "value": "Ley 14235/23",
+   "id": "online.sfe.online-count",
+   "value": 2,
+   "valueText": "2 plataformas de juego online",
    "doc": "santa-fe-plataformas",
    "quote": "Actualmente, se encuentran habilitadas 2 plataformas de juego online y 4 de apuestas deportivas, homologadas a través de la Ley 14235/23"
+  },
+  {
+   "id": "online.sfe.sports-count",
+   "value": 4,
+   "valueText": "4 de apuestas deportivas",
+   "doc": "santa-fe-plataformas",
+   "quote": "Actualmente, se encuentran habilitadas 2 plataformas de juego online y 4 de apuestas deportivas, homologadas a través de la Ley 14235/23"
+  },
+  {
+   "id": "online.sfe.law",
+   "value": "Ley 14235/23",
+   "valueText": "Ley 14235/23",
+   "doc": "santa-fe-plataformas",
+   "quote": "Actualmente, se encuentran habilitadas 2 plataformas de juego online y 4 de apuestas deportivas, homologadas a través de la Ley 14235/23"
+  },
+  {
+   "id": "online.sfe.list",
+   "value": "list of Santa Fe",
+   "doc": "santa-fe-plataformas",
+   "quote": "Las plataformas autorizadas para operar en la provincia de Santa Fe son:"
   },
   {
    "id": "online.sfe.age",

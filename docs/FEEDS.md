@@ -72,6 +72,11 @@
   Сохранённая при сборке копия (`data/sources/lottery`, версия «completa» за 11.2026) текстом покрывает лишь 02.11–12.11. Лента держит
   свежую программу; страница в браузере берёт `programa.json`, если он доходит дальше сохранённой копии (иначе — копия, а за её пределами —
   ответ по архиву тиражей, как раньше).
+- **Что берётся из ленты в браузере (19.11):** `client/turnos.js` (подключён в `jg.js`, один запрос `programa.json` на страницу) —
+  на `/quiniela/horarios/` заголовок «Programa … del X al Y», таблица «Qué extracto sale en cada turno», «N de M sorteos» и таблица часов;
+  часы турно (`<span data-tt="Nocturna">`, `data-wd="6"` — суббота) в kicker/lede/теге 5 страниц турно, плитках «a las …» на них и на
+  `/quiniela/`, FAQ Nocturna. Берутся строки с текущего месяца (по Аргентине) и дальше; если таких нет — вся лента. Новый месяц в ленте
+  виден сразу, без выкладки. Сборка пишет те же места из сохранённой копии (без JS); `<title>`, description и FAQ JSON-LD — из копии.
 - **Источник** (официальный, тот же публичный формуляр сайта, без личных данных; `robots.txt` хоста отвечает 404 = правил нет; UA ленты):
   `POST quiniela.loteriadelaciudad.gob.ar/includes/descargaPrograma.php` `ano=YYYY&mes=MM&version=1|0&juego=QUI` — за текущий и следующий
   месяц, обе версии. `version=1` «completa» (утверждённый документ; в 11.2026 второй лист диаграммы — картинка), `version=0` «simple»
@@ -112,6 +117,14 @@
   после `until` без новой программы — «sin precio vigente» и «(el programa … venció el …)».
 - **Сроки в health:** `lotba-precios` (ближайшее `until` цен), `lotba-quiniela-programa`, `lotba-loto-programa` (до какого месяца
   подтверждены остальные значения); все — сигнал только при истечении.
+- **Quiniela Plus (PBA, с 19.11):** месячной программы нет — цена с официальной страницы `loteria.gba.gob.ar/juegos-tradicionales`
+  (robots.txt: только `*`, путь открыт). Шаблон — цитата `pba.qplus.price` с суммой как слотом (`PAGE_PRICES` в
+  `engine/lottery/precios.mjs`), одна сумма, диапазон и скачок как у LOTBA; остальные цитаты этой страницы (`pba.qplus.nocturna`,
+  `pba.quiniela.drawn`) проверяются дословно. Читается раз в 7 дней (`PAGE_RECHECK_DAYS`, отдельно от LOTBA); хорошее значение живёт
+  40 дней после чтения (`PAGE_VALID_DAYS`, `prices[id].kind = 'page'`, `checked`), потом «sin precio vigente». Сбой чтения, скачок или
+  пропавшая цитата → `page-PBA-*` в `alerts` (последнее верное остаётся). Срок в health: `precio-pba.qplus.price`. На странице —
+  «(página oficial de la Lotería de la Provincia, revisada el …)». Суммы в FAQ JSON-LD не пишутся (третий элемент FAQ — текст для
+  схемы без числа: `/poceada/`, `/quiniela-plus/`).
 
 ## jugadadeldia — сроки источников (`fuentes`, раз в сутки, без сети)
 - Читает описания сохранённых источников (`data/sources/{lottery,rg,truco,generala,chinchon,escoba,burako}/*.json`; `sync` копирует только

@@ -1,5 +1,6 @@
 import { $, store, json } from './kit.js';
 import './precios.js';
+import './turnos.js';
 const root = document.documentElement;
 
 function theme() {

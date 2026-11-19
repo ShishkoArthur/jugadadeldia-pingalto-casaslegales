@@ -2,7 +2,7 @@
 // extraction of the prices from the PDF text (pdftotext -layout), the check of every other cited value of the month against its
 // quote, and the plausibility rules (range, jump against the last good value). Pure functions: the server feed
 // (tools/feeds/jugadadeldia/precios.mjs) and the tests use them; the pages read the feed output in the browser.
-import { normalize, hasQuote } from '../text.mjs';
+import { normalize, hasQuote, visibleText } from '../text.mjs';
 import { parseProgramText } from './programa.mjs';
 
 // Prices shown on the pages. digits and words must agree ("PESOS CIENTO CINCUENTA ($150)"); range in pesos; jump: the largest
@@ -17,6 +17,17 @@ export const PRICES = {
     re: /APUESTA SIMPLE ?= ?OCHO \(8\) N[UÚ]MEROS ?= ?VALOR DE LA APUESTA: ?\$ ?(\d[\d.]*) \(PESOS ([A-ZÁÉÍÓÚÑ ]+?)\)/g, words: 2, digits: 1 },
   'lotba.loto.price': { juego: 'LTO', doc: 'loto-programa', range: [100, 1e6], table: true },
 };
+// Prices read from an official web page instead of a monthly programme (Quiniela Plus of the Provincia: "Con una apuesta fija de
+// $1000, ..." on loteria.gba.gob.ar/juegos-tradicionales). The page has no month: a good value is valid PAGE_VALID_DAYS after the
+// last successful read, and the feed reads the page every PAGE_RECHECK_DAYS. The pattern is the cited quote with the amount as slot.
+export const PAGE_PRICES = {
+  'pba.qplus.price': { juego: 'PBA', doc: 'juegos-tradicionales', range: [100, 1e6], digits: 1,
+    re: /Con una apuesta fija de \$ ?(\d[\d.]*), el apostador participa de tres modalidades: Quiniela Plus, Quiniela Super Plus y Quiniela Chance Plus\./g },
+};
+export const PAGES = { PBA: { file: 'pba', doc: 'juegos-tradicionales', url: 'https://loteria.gba.gob.ar/juegos-tradicionales' } };
+export const PAGE_VALID_DAYS = 40, PAGE_RECHECK_DAYS = 7;
+export const priceDef = id => PRICES[id] || PAGE_PRICES[id];
+
 // Values that are checked through the draw rows of the month instead of their quote (the quote is a dated row).
 export const TIMES = {
   'lotba.quiniela.time-previa': 'La Previa', 'lotba.quiniela.time-primera': 'La Primera', 'lotba.quiniela.time-matutina': 'Matutina',
@@ -118,7 +129,7 @@ export function extractPrices(juego, text, ym) {
 
 // Range and jump against the reference (last good value, or the value of the saved copy the site was built from). null = fine.
 export function judgePrice(id, value, ref, maxJump = MAX_JUMP) {
-  const p = PRICES[id];
+  const p = priceDef(id);
   if (!Number.isInteger(value) || value < p.range[0] || value > p.range[1]) return 'outside ' + p.range.join('..');
   if (Number.isFinite(ref) && ref > 0 && Math.abs(value - ref) / ref > maxJump) return 'jump ' + ref + ' -> ' + value + ' (more than ' + Math.round(maxJump * 100) + ' %)';
   return null;
@@ -132,7 +143,7 @@ export function confirmFacts(facts, text, ym, juego) {
   let rows = null;
   if (juego === 'QUI') { try { rows = parseProgramText(text, ym); } catch { rows = []; } }
   for (const f of facts) {
-    if (PRICES[f.id]) continue;
+    if (priceDef(f.id)) continue;
     if (TIMES[f.id]) {
       let rs = (rows || []).filter(r => r.type === TIMES[f.id]);
       if (f.id.includes('saturday')) rs = rs.filter(r => new Date(r.d + 'T12:00:00Z').getUTCDay() === 6);
@@ -142,4 +153,21 @@ export function confirmFacts(facts, text, ym, juego) {
     (hasQuote(flat, true, f.quote) ? confirmed : changed).push(f.id);
   }
   return { confirmed, changed };
+}
+
+// Prices of an official web page -> { values, problems }, as extractPrices (one amount, every match the same); html: the page source.
+export function extractPagePrices(juego, html) {
+  const values = {}, problems = {};
+  const text = visibleText(html);
+  for (const [id, p] of Object.entries(PAGE_PRICES)) {
+    if (p.juego !== juego) continue;
+    const found = new Set();
+    let bad = null;
+    for (const m of text.matchAll(p.re)) { const n = esAmount(m[p.digits]); if (n === null) { bad = 'amount "' + m[p.digits] + '" not readable'; break; } found.add(n); }
+    if (bad) problems[id] = bad;
+    else if (!found.size) problems[id] = 'not found';
+    else if (found.size > 1) problems[id] = 'several amounts ' + [...found].join('/');
+    else values[id] = [...found][0];
+  }
+  return { values, problems, text };
 }

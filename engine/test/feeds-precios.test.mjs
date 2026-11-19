@@ -6,8 +6,8 @@ import assert from 'node:assert/strict';
 import { readFileSync, mkdtempSync, writeFileSync, mkdirSync, copyFileSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { esWords, esAmount, extractPrices, judgePrice, confirmFacts, checkDocument, PRICES, DOCS } from '../lottery/precios.mjs';
-import feed, { dueReason, builtCopy } from '../../tools/feeds/jugadadeldia/precios.mjs';
+import { esWords, esAmount, extractPrices, extractPagePrices, judgePrice, confirmFacts, checkDocument, PRICES, DOCS, PAGE_PRICES, PAGE_VALID_DAYS } from '../lottery/precios.mjs';
+import feed, { dueReason, pageDue, builtCopy } from '../../tools/feeds/jugadadeldia/precios.mjs';
 import { main, alertsFor } from '../../tools/feeds/run.mjs';
 
 const FX = new URL('./fixtures/programa/', import.meta.url);
@@ -116,14 +116,19 @@ test('feed with the real 2026-11 PDFs: prices, saved copies with sha256, Decembe
   copyFileSync(new URL('data/sources/lottery/_docs/lotba-quiniela-programa-2026-11.pdf', ROOT), join(fxd, 'qui.pdf'));
   copyFileSync(new URL('data/sources/lottery/_docs/lotba-loto-plus-programa-2026-11.pdf', ROOT), join(fxd, 'lto.pdf'));
   copyFileSync(new URL('not-loaded.html', FX), join(fxd, 'no.html'));
+  copyFileSync(new URL('data/sources/lottery/_docs/pba-juegos-tradicionales.html', ROOT), join(fxd, 'pba.html'));
   const F = { QUI: 'https://quiniela.loteriadelaciudad.gob.ar/includes/descargaPrograma.php', LTO: 'https://loto.loteriadelaciudad.gob.ar/includes/descargaPrograma.php' };
   const k = (j, m) => F[j] + ' ano=2026&mes=' + m + '&version=1&juego=' + j;
-  writeFileSync(join(fxd, 'index.json'), JSON.stringify({ [k('QUI', 11)]: { file: 'qui.pdf', type: 'application/pdf' }, [k('LTO', 11)]: { file: 'lto.pdf', type: 'application/pdf' }, [k('QUI', 12)]: { file: 'no.html', type: 'text/html' }, [k('LTO', 12)]: { file: 'no.html', type: 'text/html' } }));
+  writeFileSync(join(fxd, 'index.json'), JSON.stringify({ [k('QUI', 11)]: { file: 'qui.pdf', type: 'application/pdf' }, [k('LTO', 11)]: { file: 'lto.pdf', type: 'application/pdf' }, [k('QUI', 12)]: { file: 'no.html', type: 'text/html' }, [k('LTO', 12)]: { file: 'no.html', type: 'text/html' }, 'https://loteria.gba.gob.ar/juegos-tradicionales': { file: 'pba.html', type: 'text/html' } }));
   const quiet = console.log, errs = console.error; console.log = () => {}; console.error = () => {};
   try {
     await main(['--site', 'jugadadeldia', 'precios', '--out', out, '--fixtures', fixtures, '--log', join(dir, 'state/_log.json'), '--now', '2026-11-03T21:00:00Z'], {});
     const p = JSON.parse(readFileSync(join(out, 'precios.json'), 'utf8')).data;
-    assert.deepEqual(Object.fromEntries(Object.entries(p.prices).map(([id, x]) => [id, [x.value, x.until]])), { 'lotba.quiniela.min-bet': [150, '2026-11-30'], 'lotba.quiniela.big-prize': [2100000, '2026-11-30'], 'lotba.poceada.price': [1700, '2026-11-30'], 'lotba.loto.price': [4000, '2026-11-30'] });
+    assert.deepEqual(Object.fromEntries(Object.entries(p.prices).map(([id, x]) => [id, [x.value, x.until]])), { 'lotba.quiniela.min-bet': [150, '2026-11-30'], 'lotba.quiniela.big-prize': [2100000, '2026-11-30'], 'lotba.poceada.price': [1700, '2026-11-30'], 'lotba.loto.price': [4000, '2026-11-30'], 'pba.qplus.price': [1000, '2026-12-13'] });
+    assert.equal(p.prices['pba.qplus.price'].kind, 'page');
+    assert.equal(p.pages.PBA.checked, '2026-11-03');
+    assert.deepEqual(p.pages.PBA.changed, [], 'the other cited values of the PBA page are still there');
+    assert.equal(p.links.PBA, 'https://loteria.gba.gob.ar/juegos-tradicionales');
     assert.deepEqual(p.missing, ['QUI 2026-12', 'LTO 2026-12']);
     assert.deepEqual(p.alerts, []);
     const kept = readdirSync(join(dir, 'state/docs')).sort();
@@ -132,6 +137,7 @@ test('feed with the real 2026-11 PDFs: prices, saved copies with sha256, Decembe
     assert.ok(!readdirSync(out).some(f => f.endsWith('.pdf')), 'the copies are never in the public folder');
     const h = JSON.parse(readFileSync(join(out, '_health.json'), 'utf8'));
     assert.equal(h.expiries.find(x => x.id === 'lotba-precios').until, '2026-11-30');
+    assert.equal(h.expiries.find(x => x.id === 'precio-pba.qplus.price').until, '2026-12-13');
     const withNotice = { ...h, notices: [{ id: 'held-x', text: 'price x held' }] };
     assert.equal(alertsFor(h, withNotice, 'jdd').filter(a => /held/.test(a)).length, 1);
     assert.equal(alertsFor(withNotice, withNotice, 'jdd').filter(a => /held/.test(a)).length, 0);
@@ -142,4 +148,58 @@ test('the two programmes cover every cited value of their documents', () => {
   const { facts } = builtCopy();
   assert.deepEqual(Object.keys(DOCS), ['QUI', 'LTO']);
   assert.ok(facts.QUI.length > 30 && facts.LTO.length > 10);
+});
+
+const PBA = () => readFileSync(new URL('data/sources/lottery/_docs/pba-juegos-tradicionales.html', ROOT), 'utf8');
+test('Quiniela Plus price from the official PBA page: the quote with the amount, one amount, other cited values', () => {
+  const r = extractPagePrices('PBA', PBA());
+  assert.deepEqual([r.values, r.problems], [{ 'pba.qplus.price': 1000 }, {}]);
+  assert.equal(builtCopy().values['pba.qplus.price'], 1000, 'equals the saved copy');
+  assert.deepEqual(extractPagePrices('PBA', PBA().replace('apuesta fija de $1000', 'apuesta fija de $1.200')).values, { 'pba.qplus.price': 1200 });
+  assert.equal(extractPagePrices('PBA', PBA().replace('apuesta fija de $1000', 'apuesta de $1000')).problems['pba.qplus.price'], 'not found');
+  assert.match(extractPagePrices('PBA', PBA() + '<p>Con una apuesta fija de $900, el apostador participa de tres modalidades: Quiniela Plus, Quiniela Super Plus y Quiniela Chance Plus.</p>').problems['pba.qplus.price'], /several/);
+  assert.deepEqual(extractPagePrices('QUI', PBA()).values, {}, 'only the prices of that page');
+  const { facts } = builtCopy();
+  const ok = confirmFacts(facts.PBA, r.text, null, 'PBA');
+  assert.deepEqual(ok.changed, []);
+  assert.deepEqual(ok.confirmed.sort(), facts.PBA.map(f => f.id).filter(id => !PAGE_PRICES[id]).sort());
+  assert.ok(ok.confirmed.includes('pba.qplus.nocturna'));
+  const t = extractPagePrices('PBA', PBA().replace('a las 21hs', 'a las 22hs')).text;
+  assert.deepEqual(confirmFacts(facts.PBA, t, null, 'PBA').changed, ['pba.qplus.nocturna']);
+  assert.match(judgePrice('pba.qplus.price', 5000, 1000), /jump/);
+  assert.equal(judgePrice('pba.qplus.price', 1200, 1000), null);
+});
+
+test('when the feed reads the PBA page; the page price does not move the LOTBA schedule', () => {
+  assert.equal(pageDue(null, '2026-11-03'), 'no page price yet');
+  assert.equal(pageDue({ pages: { PBA: { checked: '2026-11-03' } } }, '2026-11-09'), null);
+  assert.equal(pageDue({ pages: { PBA: { checked: '2026-11-03' } } }, '2026-11-10'), 'page recheck');
+  assert.equal(pageDue({ pages: { PBA: { checked: '2026-11-03' } } }, '2026-11-04', true), 'forced');
+  assert.equal(dueReason({ prices: { 'pba.qplus.price': { until: '2026-11-20' } }, checked: '2026-11-03' }, '2026-11-18'), 'no prices yet');
+  assert.equal(dueReason({ prices: { 'lotba.loto.price': { until: '2026-11-30' }, 'pba.qplus.price': { until: '2026-11-20' } }, checked: '2026-11-03' }, '2026-11-18'), null);
+});
+
+const page = (values, problems = {}, changed = []) => ({ juego: 'PBA', url: 'https://loteria.gba.gob.ar/juegos-tradicionales', reason: 'x', fetched: '2026-11-03T10:00:00Z', sha256: 'p', values, problems, confirmed: [], changed });
+test('compute: the page price is valid PAGE_VALID_DAYS after its read; a jump, a failed read or a changed quote alerts and keeps the last good one', () => {
+  const nov = feed.compute({ ...raw('2026-11-03', NOVDOCS), pages: [page({ 'pba.qplus.price': 1000 })] }, null);
+  assert.deepEqual([nov.prices['pba.qplus.price'].value, nov.prices['pba.qplus.price'].until, nov.prices['pba.qplus.price'].checked], [1000, '2026-12-13', '2026-11-03']);
+  assert.equal(PAGE_VALID_DAYS, 40);
+  assert.deepEqual(nov.alerts, []);
+  assert.equal(nov.expiries.find(x => x.id === 'lotba-precios').until, '2026-11-30', 'the LOTBA expiry stays on the LOTBA prices');
+  const later = feed.compute({ ...raw('2026-11-10', [], null), pages: [page({ 'pba.qplus.price': 1200 })] }, nov);
+  assert.deepEqual([later.prices['pba.qplus.price'].value, later.prices['pba.qplus.price'].until, later.pages.PBA.checked], [1200, '2026-12-20', '2026-11-10']);
+  assert.equal(later.prices['lotba.loto.price'].value, 4000, 'LOTBA prices are kept when only the page was due');
+  const jump = feed.compute({ ...raw('2026-11-17', [], null), pages: [page({ 'pba.qplus.price': 9000 })] }, later);
+  assert.equal(jump.prices['pba.qplus.price'].value, 1200);
+  assert.deepEqual(jump.alerts.map(a => a.id), ['page-PBA-held-pba.qplus.price']);
+  const fail = feed.compute({ ...raw('2026-11-18', [], null), pages: [{ juego: 'PBA', url: 'u', reason: 'x', error: 'HTTP 503' }] }, jump);
+  assert.deepEqual(fail.alerts.map(a => a.id), ['page-PBA-failed']);
+  assert.equal(fail.prices['pba.qplus.price'].until, '2026-12-20');
+  const quiet = feed.compute(raw('2026-11-19', [], null), fail);
+  assert.deepEqual(quiet.alerts, fail.alerts, 'not due: the page alert stays listed (sent once)');
+  const back = feed.compute({ ...raw('2026-11-19', [], null), pages: [page({ 'pba.qplus.price': 1200 }, {}, ['pba.qplus.nocturna'])] }, fail);
+  assert.deepEqual(back.alerts.map(a => a.id), ['page-PBA-changed']);
+  const dec = feed.compute(raw('2026-12-01', [doc('QUI', '2026-12', { 'lotba.quiniela.min-bet': 160, 'lotba.quiniela.big-prize': 2100000, 'lotba.poceada.price': 1700 }), doc('LTO', '2026-12', { 'lotba.loto.price': 4000 })]), back);
+  assert.deepEqual(dec.alerts.map(a => a.id), ['page-PBA-changed'], 'a LOTBA run keeps the page alerts');
+  assert.equal(dec.prices['pba.qplus.price'].value, 1200);
 });
