@@ -9,6 +9,7 @@ import { parseProgramText, validateMonth, mergeVersions, joinMonths, checkAgains
 import feed, { dueReason } from '../../tools/feeds/jugadadeldia/programa.mjs';
 import fuentes, { sourceExpiries, readSets, GAME_MAX_AGE } from '../../tools/feeds/jugadadeldia/fuentes.mjs';
 import { GAME_MAX_AGE as SITE_GAME_MAX_AGE } from '../../sites/jugadadeldia/content/sources.mjs';
+import { docUntil } from '../../tools/lib/copyage.mjs';
 import { main, buildHealth, alertsFor, expiriesOf } from '../../tools/feeds/run.mjs';
 
 const FX = new URL('./fixtures/programa/', import.meta.url);
@@ -212,9 +213,8 @@ test('source expiries of jugadadeldia: lottery copies, monthly programmes, help 
   const reg = sets.lottery.find(l => l.id === 'lotba').docs['quiniela-reglamento'];
   assert.equal(by['lotba-quiniela-reglamento'].until, addDays(reg.fetched, sets.lottery.find(l => l.id === 'lotba').maxAgeDays));
   assert.equal(by['lotba-quiniela-reglamento'].warnDays, 14);
-  const lim = d => ['owner', 'owner-browser'].includes(d.copiedBy) || d.pendingOwnerCopy ? 180 : sets.rg.maxAgeDays;
-  const firstRg = Object.values(sets.rg.docs).map(d => addDays(d.fetched, lim(d))).sort()[0];
-  assert.equal(by['rg-package'].until, firstRg, 'help package: the first copy to expire (owner copies 180 days)');
+  const firstRg = Object.values(sets.rg.docs).map(d => docUntil(d, sets.rg.maxAgeDays)).sort()[0];
+  assert.equal(by['rg-package'].until, firstRg, 'help package: the first copy to expire (owner and AI-blocked copies 180 days)');
   const online = sets.lottery.find(l => l.id === 'online');
   const [ownSlug, ownDoc] = Object.entries(online.docs).find(([, d]) => ['owner', 'owner-browser'].includes(d.copiedBy));
   assert.equal(by['online-' + ownSlug].until, addDays(ownDoc.fetched, 180), 'an owner copy in a lottery file: 180 days');
