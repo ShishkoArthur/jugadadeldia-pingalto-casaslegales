@@ -14,8 +14,8 @@ const tucTimes = h => Object.fromEntries(TUC_TIMES.map(([t, , f]) => [t, h.src.v
 const SRC = {
   tucuman: { host: 'resultadosquiniela.cajapopular.gov.ar', url: 'https://resultadosquiniela.cajapopular.gov.ar/', who: 'la Caja Popular de Ahorros de la Provincia de Tucumán' },
   'san-juan': { host: 'cas.gob.ar', url: 'https://cas.gob.ar/', who: 'la Caja de Acción Social de San Juan (CAS)' },
-  chaco: { host: 'loteria.chaco.gov.ar', url: 'https://loteria.chaco.gov.ar/', who: 'la Lotería Chaqueña' },
-  corrientes: { host: 'loteria.chaco.gov.ar', url: 'https://loteria.chaco.gov.ar/', who: 'la Lotería Chaqueña, que publica también la Correntina' },
+  chaco: { host: 'loteria.chaco.gov.ar', url: 'https://loteria.chaco.gov.ar/', who: 'la Lotería Chaqueña', also: [['loteriacorrentina.gob.ar', 'https://www.loteriacorrentina.gob.ar/juegos/quiniela']] },
+  corrientes: { host: 'loteria.chaco.gov.ar', url: 'https://loteria.chaco.gov.ar/', who: 'la Lotería Chaqueña, que publica también la Correntina', also: [['loteriacorrentina.gob.ar', 'https://www.loteriacorrentina.gob.ar/juegos/quiniela']] },
   misiones: { host: 'loteriademisiones.com.ar', url: 'https://www.loteriademisiones.com.ar/portal/', who: 'el IPLyC de Misiones' },
 };
 
@@ -29,9 +29,10 @@ function method(h, id, lines) {
   return '<section class="jg-c w3"><span class="jg-sm">De dónde salen</span><h2>Cómo copiamos cada extracto</h2><ul class="jg-ul tx">' + lines.map(l => '<li>' + l + '</li>').join('') +
     '<li>Revisamos la fuente cada 15 minutos desde nuestro servidor. Si no responde, queda la última copia buena; si pasan más de ' + feed.maxAgeHours + ' horas sin poder revisar, la página dice «Sin datos» y no muestra el día como si estuviera al día.</li>' +
     '<li>La copia vale como información. Para cobrar manda el extracto oficial que tiene tu agencia.</li></ul>' +
-    '<p class="jg-note">Fuente oficial: <a href="' + s.url + '" rel="noopener">' + s.host + '</a>' + (h.built('/de-donde-salen-los-datos/') ? ' · <a href="' + h.href('/de-donde-salen-los-datos/') + '">Más sobre nuestros datos</a>' : '') + '.</p></section>';
+    '<p class="jg-note">' + (s.also ? 'Fuentes oficiales' : 'Fuente oficial') + ': <a href="' + s.url + '" rel="noopener">' + s.host + '</a>' + (s.also || []).map(([host, url]) => ' · <a href="' + url + '" rel="noopener">' + host + '</a>').join('') + (h.built('/de-donde-salen-los-datos/') ? ' · <a href="' + h.href('/de-donde-salen-los-datos/') + '">Más sobre nuestros datos</a>' : '') + '.</p></section>';
 }
 const more = (h, path) => '<section class="jg-c w3"><span class="jg-sm">Otras provincias</span><h2>Más extractos</h2>' + provTiles(h, path) + '<div class="jg-r">' + btn(h, '/quiniela/', 'Todas las cabezas de hoy', true) + btn(h, '/quiniela/nocturna/', 'La Nocturna en todas las provincias') + '</div></section>';
+const night = '<li>Si la página de la Lotería Chaqueña no responde, la <b>Nocturna</b> la tomamos de la planilla de extractos que la <b>Lotería Correntina</b> publica en su sitio para los medios. Trae la Chaqueña y la Correntina junto con la Ciudad, la Provincia, Santa Fe, Córdoba y Entre Ríos del mismo sorteo, y la usamos solo si esas cinco coinciden cifra por cifra con nuestras copias. La planilla tiene solo la última Nocturna: los otros turnos esperan a que vuelva la página de Chaco.</li>';
 const checked = '<li>La misma página oficial trae también extractos de la Ciudad, la Provincia y Córdoba (o Santa Fe) del mismo turno. La usamos solo si esas columnas coinciden <b>cifra por cifra</b> con nuestras copias de LOTBA y de la Provincia: si una sola difiere, ese sorteo no se publica. Por eso lleva la marca <b>verificada</b>.</li>';
 
 function pvPage(id, o) {
@@ -100,7 +101,7 @@ const chaco = pvPage('chaco', {
   cta: 'Ver la Chaqueña de hoy',
   lede: () => 'Cinco sorteos por día, de La Previa a la Nocturna. Los copiamos de la página de extractos de la Lotería Chaqueña y los comparamos con nuestras copias de la Ciudad y la Provincia que trae esa misma página.',
   blocks: h => [today('chaco', 'La Chaqueña de hoy, turno por turno'), check('chaco', 'Quiniela Chaqueña'), week('chaco', 'Quiniela Chaqueña'), freq('chaco', 'Quiniela Chaqueña'), arch('chaco', 'Quiniela Chaqueña'), chance,
-    method(h, 'chaco', ['Leemos la página de extractos de la <b>Lotería Chaqueña</b>, día por día y turno por turno.', checked]),
+    method(h, 'chaco', ['Leemos la página de extractos de la <b>Lotería Chaqueña</b>, día por día y turno por turno.', checked, night]),
     more(h, '/quiniela/chaco/')],
 });
 
@@ -112,7 +113,7 @@ const corrientes = pvPage('corrientes', {
   cta: 'Ver la Correntina de hoy',
   lede: () => 'La quiniela de Corrientes, turno por turno. La copia oficial que podemos leer es la que publica la Lotería Chaqueña en su página de extractos, al lado de la Chaqueña: la usamos solo cuando el resto de esa página coincide con nuestras copias.',
   blocks: h => [today('corrientes', 'La Correntina de hoy'), week('corrientes', 'Quiniela Correntina'), chance, check('corrientes', 'Quiniela Correntina'), arch('corrientes', 'Quiniela Correntina'), freq('corrientes', 'Quiniela Correntina'),
-    method(h, 'corrientes', ['La quiniela de Corrientes la organiza el <b>Instituto de Lotería y Casinos de Corrientes</b>. Su sitio no tiene una página de extractos que podamos leer desde nuestro servidor, así que tomamos la copia que publica la <b>Lotería Chaqueña</b> en la misma tabla que la Chaqueña.', checked]),
+    method(h, 'corrientes', ['La quiniela de Corrientes la organiza el <b>Instituto de Lotería y Casinos de Corrientes</b>. Su sitio no tiene una página de extractos por día y turno, así que tomamos la copia que publica la <b>Lotería Chaqueña</b> en la misma tabla que la Chaqueña.', checked, night]),
     more(h, '/quiniela/corrientes/')],
 });
 

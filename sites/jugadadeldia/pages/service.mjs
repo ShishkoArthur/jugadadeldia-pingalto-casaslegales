@@ -50,7 +50,7 @@ const FEEDS = [
   ['Quiniela de la Ciudad, la Provincia, Córdoba, Santa Fe, Entre Ríos y Mendoza', 'https://quiniela.loteriadelaciudad.gob.ar/', 'LOTBA, comparada con el extracto de la Provincia (IPLyC)', '/quiniela/'],
   ['Quiniela de Tucumán', 'https://resultadosquiniela.cajapopular.gov.ar/', 'Caja Popular de Ahorros: una sola copia oficial', '/quiniela/tucuman/'],
   ['Quiniela de San Juan', 'https://cas.gob.ar/', 'Caja de Acción Social: una sola copia oficial', '/quiniela/san-juan/'],
-  ['Quiniela Chaqueña y Correntina', 'https://loteria.chaco.gov.ar/', 'Lotería Chaqueña: la página se usa solo si sus extractos de la Ciudad, la Provincia y Córdoba coinciden con los nuestros', '/quiniela/chaco/'],
+  ['Quiniela Chaqueña y Correntina', 'https://loteria.chaco.gov.ar/', 'Lotería Chaqueña: la página se usa solo si sus extractos de la Ciudad, la Provincia y Córdoba coinciden con los nuestros; si no responde, la Nocturna sale de la planilla oficial de la Lotería Correntina, con la misma comparación', '/quiniela/chaco/'],
   ['Quiniela Misionera y Misionera Plus', 'https://www.loteriademisiones.com.ar/portal/', 'IPLyC Misiones: la página se usa solo si sus extractos de LOTBA, la Provincia y Santa Fe coinciden con los nuestros', '/quiniela/misiones/'],
   ['Loto Plus', 'https://loto.loteriadelaciudad.gob.ar/', 'Lotería de la Ciudad, comparada con la copia de la CAS de San Juan', '/loto-plus/'],
   ['Telekino', 'https://www.telekino.com.ar/', 'sitio oficial del Telekino, comparado con la copia de la CAS de San Juan', '/telekino/'],

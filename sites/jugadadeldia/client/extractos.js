@@ -276,7 +276,7 @@ async function turno(el) {
 
 const PV = {};
 const pnums = e => e.n.match(/\d{4}/g);
-const pbadge = e => e.c ? '<span class="jg-xb ok" title="La página oficial coincide con nuestras copias de LOTBA y la Provincia">verificada</span>' : '<span class="jg-xb">1 fuente</span>';
+const pbadge = e => e.v === 'cor' ? '<span class="jg-xb ok" title="De la planilla oficial de la Lotería Correntina, que coincide con nuestras copias de LOTBA y la Provincia">verificada · planilla de Corrientes</span>' : e.c ? '<span class="jg-xb ok" title="La página oficial coincide con nuestras copias de LOTBA y la Provincia">verificada</span>' : '<span class="jg-xb">1 fuente</span>';
 function pmeta(m, id) {
   const J = m.jurs.find(x => x.id === id);
   if (!J) return null;
@@ -292,7 +292,7 @@ const cab = v => '<span>' + v.slice(0, 2) + '<b>' + v.slice(2, 4) + '</b></span>
 const jstale = (J, now) => {
   if (!J.stale || !J.stale.since) return '';
   const s = J.stale.since, when = arDate(s) === now.d ? 'hoy a las ' + arTime(s) : 'el ' + day(arDate(s)) + ' a las ' + arTime(s);
-  return '<p class="jg-xs no" role="status"><b>La fuente de la ' + esc(J.long) + ' no responde bien desde ' + esc(when) + '.</b> Abajo están los últimos sorteos que sí pudimos revisar; puede faltar alguno más nuevo.</p>';
+  return '<p class="jg-xs no" role="status"><b>La fuente de la ' + esc(J.long) + ' no responde bien desde ' + esc(when) + '.</b> Abajo están los últimos sorteos que sí pudimos revisar; puede faltar alguno más nuevo.' + (J.alt && !J.alt.down ? ' La Nocturna la seguimos copiando de la planilla oficial de la ' + esc(J.alt.who) + ', con la misma comparación.' : '') + '</p>';
 };
 
 async function pv(el) {

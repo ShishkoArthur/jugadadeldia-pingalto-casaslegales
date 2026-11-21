@@ -1,5 +1,5 @@
 {
- "total": 9.3964,
+ "total": 9.4249,
  "runs": [
   {
    "at": "2026-11-04T12:21:12.652Z",
@@ -222,6 +222,12 @@
    "site": "jugadadeldia",
    "what": "strings",
    "usd": 0.0011
+  },
+  {
+   "at": "2026-11-21T11:59:37.726Z",
+   "site": "jugadadeldia",
+   "what": "strings",
+   "usd": 0.0285
   }
  ]
 }

@@ -4,6 +4,12 @@
 Полная история работы (все разделы по дням, 02–05.11) — `docs/archive/HANDOFF-full-2026-11-05.md`. Переписка — `chat.md` (последние 100 сообщений; лежит только локально, в git не отправлять — владелец 09.11).
 Переезд на другое устройство — `docs/MIGRATION.md`. Обслуживание раз в полгода — `docs/MAINTENANCE.md`.
 
+## 21.11.2026 — сбой Lotería Chaqueña, запасной источник Nocturna
+- loteria.chaco.gov.ar не отвечает с 20.11 12:34 ART (порт закрыт и с сервера, и с машины разработки) — сбой у них. Страницы
+  /quiniela/chaco/ и /corrientes/ честно пишут, что источник молчит, и держат последние верные тиражи.
+- По слову владельца («Да, добавь») — источник `cor`: xlsx Lotería Correntina с последней Nocturna (Chaqueña + Correntina + пять
+  опорных колонок, сверка с архивом). Тесты в engine/test/feeds-provincias.test.mjs (фикстура engine/test/fixtures/provincias-cor).
+
 ## 19.11.2026 — исправлено по аудиту (владелец: «Всё по порядку»)
 - jugadadeldia: Quini 6 и Brinco — вторая официальная копия (IPJyC Mendoza, PDF Lotería de Santa Fe; сервер её видит), сигнал
   lot_behind при отставании ≥ 2 тиражей; выбор официального тиража в /quini-6/controlar/ и /telekino/controlar/; расписание и часы

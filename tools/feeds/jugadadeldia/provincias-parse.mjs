@@ -206,3 +206,78 @@ export function parseMisiones(html, turno) {
   if (!cols.misiones) bad('Misiones ' + turno + ': no Misionera column');
   return { date, turno, sorteo: Number(info[2]), cols };
 }
+
+// Corrientes  Instituto de Lotería y Casinos de Corrientes: the workbook "EXTRACTO NOCTURNO.xlsx" linked from the quiniela page of
+//             loteriacorrentina.gob.ar ("Descargar últimos extractos para medios"); overwritten after every Nocturna, so it holds the
+//             latest Nocturna only. One sheet with the same extract drawn twice (two blocks side by side): a header row with the seven
+//             columns Correntina, Ciudad B.A., Bonaerense, Santa Fe, Córdoba, Entre Ríos, Chaco; under each header the labels 1º-20º,
+//             each followed in its row by the 4-digit number; "SORTEO Nº", "FECHA DE SORTEO" (Excel day serial), "HORA DE SORTEO".
+//             The second block carries places 1º-10º only; every block must agree with the full one cell by cell. The draw number is the Correntina one (not the number the Chaco page prints).
+export const COR_COLS = { CORRENTINA: 'corrientes', 'CIUDAD B.A.': 'caba', BONAERENSE: 'buenos-aires', 'SANTA FE': 'santa-fe', CORDOBA: 'cordoba', 'ENTRE RIOS': 'entre-rios', CHACO: 'chaco' };
+const colNum = ref => { let n = 0; for (const ch of /^[A-Z]+/.exec(ref)[0]) n = n * 26 + ch.charCodeAt(0) - 64; return n; };
+const rowNum = ref => Number(/\d+$/.exec(ref)[0]);
+const serialIso = v => { const n = Number(v); if (!Number.isFinite(n) || n < 40000 || n > 60000) return null; return new Date(Date.UTC(1899, 11, 30) + Math.floor(n) * 864e5).toISOString().slice(0, 10); };
+const serialTime = v => { const n = Number(v); if (!Number.isFinite(n) || n < 0 || n >= 1) return null; const m = Math.round(n * 1440); return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+export function parseCorrientes(sheets) {
+  const sheet = (sheets || []).find(s => Object.values(s.cells).some(v => fold(String(v)).replace(/ /g, '') === 'NOCTURNA'));
+  if (!sheet) bad('Corrientes: no sheet titled NOCTURNA');
+  const cells = Object.entries(sheet.cells).map(([ref, v]) => ({ r: rowNum(ref), c: colNum(ref), v: String(v).trim() })).filter(x => x.v);
+  const right = (x, max = Infinity) => cells.filter(y => y.r === x.r && y.c > x.c && y.c < max).sort((a, b) => a.c - b.c)[0];
+  const labelled = re => [...new Set(cells.filter(x => re.test(fold(x.v))).map(x => { const y = right(x); return y ? y.v : null; }))];
+  const sorteos = labelled(/^SORTEO N[°º]?:?$/), dates = labelled(/^FECHA DE SORTEO:?$/), hours = labelled(/^HORA DE SORTEO:?$/);
+  if (sorteos.length !== 1 || !/^\d{3,6}$/.test(sorteos[0])) bad('Corrientes: draw number ' + JSON.stringify(sorteos));
+  if (dates.length !== 1) bad('Corrientes: draw date ' + JSON.stringify(dates));
+  const date = serialIso(dates[0]) || isoFromDmy(dates[0]) || bad('Corrientes: draw date ' + JSON.stringify(dates[0]));
+  const hour = hours.length === 1 ? serialTime(hours[0]) || (/^\d{2}:\d{2}/.exec(hours[0]) || [])[0] || null : null;
+  const heads = cells.filter(x => COR_COLS[fold(x.v).replace(/\s+/g, ' ')]);
+  if (!heads.length) bad('Corrientes: no column headers');
+  const byRow = new Map();
+  for (const x of heads) (byRow.get(x.r) || byRow.set(x.r, []).get(x.r)).push(x);
+  const got = {};
+  let blocks = 0;
+  const N = Object.keys(COR_COLS).length;
+  for (const [r, row] of byRow) {
+    row.sort((a, b) => a.c - b.c);
+    if (row.length % N) bad('Corrientes: ' + row.length + ' column headers in row ' + r);
+    const rowEnd = Math.min(...[...byRow.keys()].filter(k => k > r));
+    for (let g = 0; g < row.length; g += N) {
+      const list = row.slice(g, g + N), ids = list.map(x => COR_COLS[fold(x.v)]);
+      if (new Set(ids).size !== N) bad('Corrientes: repeated column in row ' + r);
+      const found = {};
+      list.forEach((x, i) => {
+        const id = ids[i], to = i + 1 < N ? list[i + 1].c : Math.min(x.c + (list[N - 1].c - list[N - 2].c), g + N < row.length ? row[g + N].c : Infinity);
+        const nums = new Array(20).fill(null);
+        let any = false;
+        const area = cells.filter(y => y.r > r && y.r < rowEnd && y.c >= x.c && y.c < to);
+        const labelCols = new Set(area.filter(y => /^\d{1,2} ?[º°]$/.test(y.v)).map(y => y.c));
+        for (const l of area) {
+          const m = labelCols.has(l.c) && /^(\d{1,2}) ?[º°]?$/.exec(l.v);
+          if (!m) continue;
+          const place = Number(m[1]), y = right(l, to);
+          if (place < 1 || place > 20) bad('Corrientes ' + id + ': place ' + l.v);
+          if (nums[place - 1] !== null) bad('Corrientes ' + id + ': place ' + place + ' twice');
+          nums[place - 1] = y ? (/^\d+$/.test(y.v) && y.v.length <= 4 ? y.v.padStart(4, '0') : y.v) : '';
+          any = true;
+        }
+        if (any) found[id] = nums;
+      });
+      if (!Object.keys(found).length) continue;
+      blocks++;
+      for (const id of ids) {
+        const nums = found[id] || bad('Corrientes ' + date + ' ' + id + ': no places under the header');
+        const k = nums.findIndex(v => v === null), size = k < 0 ? 20 : k;
+        if (size !== 10 && size !== 20 || nums.slice(size).some(v => v !== null)) bad('Corrientes ' + date + ' ' + id + ': places 1-10 or 1-20 expected');
+        checkTwenty(nums.slice(0, size).concat(new Array(20 - size).fill('0000')), 'Corrientes ' + date + ' ' + id);
+        (got[id] = got[id] || []).push(nums.slice(0, size));
+      }
+    }
+  }
+  if (!blocks) bad('Corrientes: no row with the seven column headers');
+  const cols = {};
+  for (const id of Object.values(COR_COLS)) {
+    const full = (got[id] || []).find(l => l.length === 20) || bad('Corrientes ' + date + ' ' + id + ': no block with 20 places');
+    for (const l of got[id]) if (l.join('') !== full.slice(0, l.length).join('')) bad('Corrientes ' + date + ' ' + id + ': the blocks of the sheet differ');
+    cols[id] = full;
+  }
+  return { date, turno: 'NOCT', sorteo: Number(sorteos[0]), hour, blocks, cols };
+}

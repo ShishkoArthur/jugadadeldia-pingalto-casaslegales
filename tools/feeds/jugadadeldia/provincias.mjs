@@ -2,7 +2,10 @@
 // Official sources, reachable from our server, robots.txt without rules against us or AI agents (checked 2026-11-04):
 //   Tucumán (Caja Popular JSON; the server omits its intermediate CA: we add the pinned public intermediate, verification stays on),
 //   San Juan (CAS HTML by date), Chaco and Corrientes (Lotería Chaqueña HTML by date and turn; Corrientes is the Chaco copy: the
-//   Corrientes lottery publishes no extract we can read), Misiones and Misiones Plus (IPLyC HTML, latest draw of each turn).
+//   Corrientes lottery publishes no extract page we can read), Misiones and Misiones Plus (IPLyC HTML, latest draw of each turn).
+// Second copy of the Nocturna of Chaco and Corrientes: the workbook the Corrientes lottery links from its quiniela page for the press
+// (latest Nocturna only, overwritten after each draw; seven columns, five of them the LOTBA/PBA/Santa Fe/Córdoba/Entre Ríos extracts).
+// It is asked for only while the Chaco page did not give the latest due Nocturna (a Chaco outage), and checked the same way.
 // Chaco and Misiones pages also print the Ciudad/Provincia (and Córdoba) extract of the same turn: those columns must equal our
 // LOTBA/PBA archive (quiniela-archivo.json) before the page is used - proof that the columns and places were read right.
 // Output: provincias.json (last 7 draw days) and provincias-archivo.json (up to 120 days; also the state: checked days, dropped keys,
@@ -14,7 +17,8 @@
 import tls from 'node:tls';
 import { join } from 'node:path';
 import { readFeed, zoneTime } from '../lib.mjs';
-import { tucumanIntermediate, parseTucumanDay, parseTucumanRegistro, parseSanJuan, parseChaco, parseMisiones, CHACO_CODES, MIS_PAGES, dmyDash, checkTwenty, ProvError } from './provincias-parse.mjs';
+import { tucumanIntermediate, parseTucumanDay, parseTucumanRegistro, parseSanJuan, parseChaco, parseMisiones, parseCorrientes, CHACO_CODES, MIS_PAGES, dmyDash, checkTwenty, ProvError } from './provincias-parse.mjs';
+import { readXlsx } from '../../lib/xlsx.mjs';
 
 const TUC = 'https://resultadosquiniela.cajapopular.gov.ar/';
 const TUC_DAY = d => TUC + 'api/extracto/?fecha_sorteo=' + d;
@@ -24,9 +28,19 @@ const SJ_DAY = d => SJ + '?fecha=' + d;
 const CHA = 'https://loteria.chaco.gov.ar/';
 const CHA_PAGE = (d, t) => CHA + 'ver_extracto/' + dmyDash(d) + '/' + CHACO_CODES[t];
 const MIS = 'https://www.loteriademisiones.com.ar/portal/juegos/';
+export const COR = 'https://www.loteriacorrentina.gob.ar/';
+export const COR_PAGE = COR + 'juegos/quiniela';
+// the press workbook of the latest Nocturna, as linked from the quiniela page (the file address changes when the lottery uploads a new file)
+export function corrientesLink(html) {
+  const m = [...String(html).matchAll(/href="([^"]*\/_files\/ugd\/[^"]+\.xlsx[^"]*)"/gi)].map(x => x[1].replace(/&amp;/g, '&')).find(u => /EXTRACTO(%2520|%20|\s|\+)NOCTURNO/i.test(u));
+  if (!m) throw new ProvError('Corrientes: no link to the Nocturna workbook on the quiniela page');
+  return new URL(m, COR).href;
+}
 const MIS_PAGE = t => MIS + MIS_PAGES[t] + '/';
 const KEEP_DAYS = 120, DAYS_OUT = 7, BACK_DAYS = 21, BACK_PER_RUN = 1, STALE = 3, FORMAT_RUNS = 3, NET_RUNS = 2;
-export const SRCS = { tuc: 'Tucumán (Caja Popular)', sj: 'San Juan (CAS)', cha: 'Chaco and Corrientes (Lotería Chaqueña)', mis: 'Misiones (IPLyC)' };
+export const SRCS = { tuc: 'Tucumán (Caja Popular)', sj: 'San Juan (CAS)', cha: 'Chaco and Corrientes (Lotería Chaqueña)', mis: 'Misiones (IPLyC)', cor: 'Chaco and Corrientes Nocturna (Lotería Correntina workbook)' };
+const OWN = { cha: ['chaco', 'corrientes'], mis: ['misiones', 'misiones-plus'], cor: ['chaco', 'corrientes'] };
+const ALT = { src: 'cor', turnos: ['NOCT'], who: 'Lotería Correntina', url: COR };
 // LOTBA grid (Chaco and Misiones draw at the same times): a turn page is asked for only after its time + 20 minutes.
 const GRID = { PREV: '10:15', PRIM: '12:00', MATU: '15:00', VESP: '18:00', NOCT: '21:00' };
 const GRID_T = Object.keys(GRID);
@@ -36,8 +50,8 @@ export const JURS = [
     turnos: [['MATU', 'Matutino', '11:30'], ['VESP', 'Vespertino', '14:30'], ['SIES', 'De la Siesta', '17:30'], ['TARD', 'De la Tarde', '19:30'], ['NOCT', 'Nocturno', '22:00']] },
   { id: 'san-juan', name: 'San Juan', long: 'Quiniela de San Juan', operator: 'Caja de Acción Social de San Juan', source: SJ, src: 'sj',
     turnos: [['PREV', 'La Previa', null], ['PRIM', 'Primera', null], ['MATU', 'Matutino', null], ['VESP', 'Vespertino', null], ['TARD', 'Tarde', null], ['NOCT', 'Nocturno', null]] },
-  { id: 'chaco', name: 'Chaco', long: 'Quiniela Chaqueña', operator: 'Lotería Chaqueña', source: CHA, src: 'cha', grid: true },
-  { id: 'corrientes', name: 'Corrientes', long: 'Quiniela Correntina', operator: 'Instituto de Lotería y Casinos de Corrientes', source: CHA, src: 'cha', via: 'Lotería Chaqueña', grid: true },
+  { id: 'chaco', name: 'Chaco', long: 'Quiniela Chaqueña', operator: 'Lotería Chaqueña', source: CHA, src: 'cha', alt: ALT, grid: true },
+  { id: 'corrientes', name: 'Corrientes', long: 'Quiniela Correntina', operator: 'Instituto de Lotería y Casinos de Corrientes', source: CHA, src: 'cha', via: 'Lotería Chaqueña', alt: ALT, grid: true },
   { id: 'misiones', name: 'Misiones', long: 'Quiniela Misionera', operator: 'IPLyC S.E. Misiones', source: 'https://www.loteriademisiones.com.ar/portal/', src: 'mis', grid: true },
   { id: 'misiones-plus', name: 'Misiones Plus', long: 'Quiniela Misionera Plus', operator: 'IPLyC S.E. Misiones', source: 'https://www.loteriademisiones.com.ar/portal/', src: 'mis', grid: true },
 ];
@@ -101,7 +115,7 @@ export default {
     const have = new Set(st.draws.map(key));
     const has = (j, d, t) => have.has(j + '|' + d + '|' + t);
     const checked = Object.fromEntries(['tuc', 'sj', 'cha'].map(s => [s, new Set(st.checked[s] || [])]));
-    const out = { today, found: [], refs: [], notes: [], ok: {}, failed: {}, errs: {}, none: {}, checkedNew: { tuc: [], sj: [], cha: [] }, archive: st.draws, x: st.x, checked: st.checked, src: st.src, fetched: now.toISOString(), source: { url: TUC, also: [SJ, CHA, MIS] } };
+    const out = { today, found: [], refs: [], notes: [], ok: {}, failed: {}, errs: {}, none: {}, checkedNew: { tuc: [], sj: [], cha: [] }, archive: st.draws, x: st.x, checked: st.checked, src: st.src, fetched: now.toISOString(), source: { url: TUC, also: [SJ, CHA, MIS, COR] } };
     const fail = (src, msg, e) => { out.failed[src] = (out.failed[src] || 0) + 1; (out.errs[src] = out.errs[src] || []).push({ kind: kindOf(e), msg: msg.slice(0, 200) }); out.notes.push(msg.slice(0, 200)); };
     const okd = src => { out.ok[src] = (out.ok[src] || 0) + 1; };
     const none = (src, what) => { (out.none[src] = out.none[src] || []).push(what); };
@@ -172,6 +186,17 @@ export default {
       if (d === today || (d === yesterday && empty && (haveAny || drawn))) complete = false;
       if (d < today && complete) out.checkedNew.cha.push(d);
     }
+    // Corrientes workbook: the latest Nocturna, only while the Chaco page did not give the due one (not drawn that night: skipped too)
+    const night = nowMin >= minutes(GRID.NOCT) + 20 ? today : yesterday;
+    const chaNight = out.refs.some(r => r.src === 'cha' && r.date === night && r.turno === 'NOCT') || (out.none.cha || []).includes(night + ' NOCT');
+    if (!chaNight && OWN.cor.some(j => !has(j, night, 'NOCT'))) {
+      try {
+        const link = corrientesLink((await ctx.getText(COR_PAGE, { ttlHours: 6 })).text);
+        const p = parseCorrientes(readXlsx((await ctx.getBytes(link, { ttlHours: night === today ? 0.2 : 1 })).buf));
+        okd('cor');
+        out.refs.push({ src: 'cor', ...p });
+      } catch (e) { fail('cor', e.message.startsWith('Corrientes') ? e.message : 'Corrientes workbook: ' + e.message, e); }
+    }
     // Misiones: the latest draw of each turn page (no other date can be asked for)
     for (const t of GRID_T) {
       const due = nowMin >= minutes(GRID[t]) + 20;
@@ -199,20 +224,21 @@ export default {
       if (dropped.has(k)) return;
       const n = e.n.join('');
       const cur = map.get(k);
-      if (cur && cur.n !== n) { map.delete(k); dropped.add(k); conflicts.push({ j: e.j, d: e.d, t: e.t, why: 'source changed the numbers' }); return; }
-      if (!cur) map.set(k, { j: e.j, d: e.d, t: e.t, s: e.s, ...(e.h ? { h: e.h } : {}), ...extra, n });
+      if (cur && cur.n !== n) { map.delete(k); dropped.add(k); conflicts.push({ j: e.j, d: e.d, t: e.t, why: 'source changed the numbers' + (extra.v || cur.v ? ' (Chaco page and Corrientes workbook differ)' : '') }); return; }
+      if (cur && !cur.s && e.s) map.set(k, { ...cur, s: e.s });
+      if (!cur) map.set(k, { j: e.j, d: e.d, t: e.t, ...(e.s ? { s: e.s } : {}), ...(e.h ? { h: e.h } : {}), ...extra, n });
     };
     for (const f of raw.found) put(f, {});
     for (const p of raw.refs) {
       if (p.date > raw.today) { notes.push(p.src + ' ' + p.turno + ': page date ' + p.date + ' is after today'); continue; }
       const chk = refCheck(p.cols, raw.reference[p.date + '|' + p.turno]);
-      if (chk.bad.length) { conflicts.push({ j: p.src === 'cha' ? 'chaco' : 'misiones', d: p.date, t: p.turno, why: 'reference columns differ from LOTBA/PBA: ' + chk.bad.join(',') }); continue; }
+      if (chk.bad.length) { conflicts.push({ j: OWN[p.src][p.src === 'cor' ? 1 : 0], d: p.date, t: p.turno, why: 'reference columns differ from LOTBA/PBA: ' + chk.bad.join(',') }); continue; }
       if (!chk.ok) { notes.push(p.src + ' ' + p.date + ' ' + p.turno + ': held back until LOTBA/PBA have this turn'); continue; }
-      const own = p.src === 'cha' ? ['chaco', 'corrientes'] : ['misiones', 'misiones-plus'];
-      for (const j of own) {
+      for (const j of OWN[p.src]) {
         if (!p.cols[j]) continue;
         if (REF.some(r => p.cols[r] && p.cols[r].join('') === p.cols[j].join(''))) { conflicts.push({ j, d: p.date, t: p.turno, why: 'equals a reference column' }); continue; }
-        put({ j, d: p.date, t: p.turno, s: p.sorteo, n: p.cols[j] }, { c: chk.ok });
+        // the workbook number is the Correntina one, not the number the Chaco page gives both: the Chaco page fills it in later
+        put({ j, d: p.date, t: p.turno, s: p.src === 'cor' ? null : p.sorteo, n: p.cols[j] }, { c: chk.ok, ...(p.src === 'cor' ? { v: 'cor' } : {}) });
       }
     }
     const oldest = addDays(raw.today, -KEEP_DAYS);
@@ -221,6 +247,7 @@ export default {
     const lastS = {};
     for (const e of draws) {
       const k = e.j + '|' + e.t;
+      if (!e.s) continue;
       if (lastS[k] && e.s <= lastS[k].s && e.d > lastS[k].d) notes.push('draw number goes back: ' + e.j + ' ' + e.t + ' ' + lastS[k].d + ' #' + lastS[k].s + ' / ' + e.d + ' #' + e.s);
       lastS[k] = e;
     }
@@ -237,6 +264,7 @@ export default {
     const meta = {
       today: raw.today, checkedAt: zoneTime(ctx.now || new Date()),
       jurs: JURS.map(J => ({ id: J.id, name: J.name, long: J.long, operator: J.operator, source: J.source, ...(J.via ? { via: J.via } : {}), checked: J.src === 'cha' || J.src === 'mis', turnos: J.turnos.map(([id, name, time]) => ({ id, name, time })),
+        ...(J.alt ? { alt: { ...J.alt, ...(down[J.alt.src] ? { down: true } : {}) } } : {}),
         ...(down[J.src] ? { stale: { since: down[J.src].since, kind: down[J.src].kind } } : {}) })),
       sources: { ok: raw.ok, failed: raw.failed, ...(Object.keys(raw.none || {}).length ? { none: raw.none } : {}), state: src },
     };

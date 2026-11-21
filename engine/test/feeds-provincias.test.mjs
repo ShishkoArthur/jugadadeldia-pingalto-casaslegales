@@ -8,8 +8,9 @@ import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, cpSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { parseTucumanDay, parseTucumanRegistro, tucumanIntermediate, parseSanJuan, parseChaco, parseMisiones, ProvError } from '../../tools/feeds/jugadadeldia/provincias-parse.mjs';
-import prov, { refCheck, sourceState, isDown, kindOf } from '../../tools/feeds/jugadadeldia/provincias.mjs';
+import { parseTucumanDay, parseTucumanRegistro, tucumanIntermediate, parseSanJuan, parseChaco, parseMisiones, parseCorrientes, ProvError } from '../../tools/feeds/jugadadeldia/provincias-parse.mjs';
+import { readXlsx } from '../../tools/lib/xlsx.mjs';
+import prov, { refCheck, sourceState, isDown, kindOf, corrientesLink } from '../../tools/feeds/jugadadeldia/provincias.mjs';
 import lot, { parseLoto, parseTelekino, parseCas, parseMza, pdfBbox, behindOf, LotError } from '../../tools/feeds/jugadadeldia/loterias.mjs';
 import { runFeed } from '../../tools/feeds/run.mjs';
 
@@ -274,4 +275,74 @@ test('loterias: the IPJyC copy brings Quini 6 and Brinco up to date, agrees with
   const differ = lot.compute({ ...raw, got: [mza, { ...cas, mods: { ...cas.mods, revancha: ['01', '16', '27', '33', '37', '41'] } }] }, prev);
   assert.equal(differ.games['quini-6'].latest.s, 3421, 'copies differ: the draw is not published');
   assert.ok(differ.conflicts.some(c => c.g === 'quini-6' && c.s === 3426));
+});
+
+// Corrientes press workbook (engine/test/fixtures/provincias-cor, recorded from our server on 2026-11-21 around 00:50 Argentine time,
+// during the Lotería Chaqueña outage of 20-11): "EXTRACTO NOCTURNO.xlsx" linked from loteriacorrentina.gob.ar/juegos/quiniela, cut
+// to the workbook, the strings and the one sheet with values (images, styles and empty cells removed).
+const COR_FX = FX('provincias-cor');
+const corBook = () => readFileSync(new URL('nocturno-2026-11-20.xlsx', COR_FX));
+const corRef = () => Object.fromEntries(Object.entries(JSON.parse(readFileSync(new URL('quiniela-archivo.json', COR_FX), 'utf8')).data.draws[0].j).map(([k, v]) => [k, v[0]]));
+
+test('Corrientes workbook: seven columns, both blocks agree, the five reference columns equal our LOTBA/PBA archive', () => {
+  const p = parseCorrientes(readXlsx(corBook()));
+  assert.equal(p.date, '2026-11-20');
+  assert.equal(p.turno, 'NOCT');
+  assert.equal(p.sorteo, 17967);
+  assert.equal(p.hour, '21:00');
+  assert.equal(p.blocks, 2);
+  assert.deepEqual(Object.keys(p.cols).sort(), ['buenos-aires', 'caba', 'chaco', 'cordoba', 'corrientes', 'entre-rios', 'santa-fe']);
+  assert.deepEqual(p.cols.corrientes.slice(0, 3), ['4382', '5194', '0765']);
+  assert.equal(p.cols.corrientes[19], '0249', 'place 20 has a label without the degree sign in the file');
+  assert.deepEqual(p.cols.chaco.slice(0, 3), ['4908', '1392', '0273']);
+  assert.deepEqual(refCheck(p.cols, corRef()), { ok: 5, bad: [] });
+  assert.equal(corrientesLink(readFileSync(new URL('quiniela.html', COR_FX), 'utf8')), 'https://www.loteriacorrentina.gob.ar/_files/ugd/e7f41c_622ab22512d64c1a8e4089fe30511534.xlsx?dn=EXTRACTO%2520NOCTURNO.xlsx');
+  assert.throws(() => corrientesLink('<a href="/_files/ugd/x.xlsx?dn=POCEADA%2520CORRENTINA.xlsx">'), ProvError);
+  const sheets = readXlsx(corBook());
+  const cells = sheets[0].cells, ref = Object.keys(cells).find(k => cells[k] === p.cols.chaco[0] && /^U/.test(k));
+  cells[ref] = '1111';
+  assert.throws(() => parseCorrientes(sheets), /blocks of the sheet differ/);
+  assert.throws(() => parseCorrientes([{ name: 'x', cells: { A1: 'MATUTINA' } }]), ProvError);
+});
+
+function corRun() {
+  const dir = mkdtempSync(join(tmpdir(), 'jdd-cor-'));
+  const out = join(dir, 'out'), fixtures = join(dir, 'fx');
+  mkdirSync(out, { recursive: true });
+  cpSync(new URL('quiniela-archivo.json', COR_FX), join(out, 'quiniela-archivo.json'));
+  cpSync(COR_FX, join(fixtures, 'provincias'), { recursive: true });
+  return { out, fixtures };
+}
+
+test('provincias feed: while the Chaco page does not answer, the Corrientes workbook brings the Nocturna of Chaco and Corrientes', async () => {
+  const { out, fixtures } = corRun();
+  const NIGHT = '2026-11-21T03:00:00Z';
+  const r = await runFeed(prov, { out, fixtures, now: new Date(NIGHT), ua: 'test' });
+  assert.ok(r.ok, r.error);
+  const d = JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data;
+  const ch = d.draws.find(e => e.j === 'chaco' && e.d === '2026-11-20' && e.t === 'NOCT'), co = d.draws.find(e => e.j === 'corrientes' && e.d === '2026-11-20' && e.t === 'NOCT');
+  assert.equal(ch.n.slice(0, 12), '490813920273');
+  assert.equal(co.n.slice(0, 12), '438251940765');
+  for (const e of [ch, co]) { assert.equal(e.v, 'cor'); assert.equal(e.c, 5); assert.ok(!('s' in e), 'the workbook number is the Correntina one: not used'); }
+  assert.ok(d.sources.ok.cor >= 1 && d.sources.failed.cha >= 1, 'Chaco fails, the workbook answers');
+  assert.deepEqual(d.jurs.find(J => J.id === 'corrientes').alt.turnos, ['NOCT']);
+  // the next run has the night: the workbook is not asked again
+  const r2 = await runFeed(prov, { out, fixtures, now: new Date(NIGHT), ua: 'test' });
+  assert.ok(r2.ok, r2.error);
+  assert.ok(!JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data.sources.ok.cor);
+});
+
+test('provincias: the Chaco page later fills the draw number of a workbook draw; a page that differs from the workbook drops the draw', () => {
+  const p = parseCorrientes(readXlsx(corBook()));
+  const ref = { '2026-11-20|NOCT': corRef() };
+  const base = { today: '2026-11-21', found: [], notes: [], ok: { cor: 1 }, failed: {}, checkedNew: { tuc: [], sj: [], cha: [] }, x: [], checked: {}, reference: ref };
+  const first = prov.compute({ ...base, refs: [{ src: 'cor', ...p }], archive: [] }, null, { now: new Date('2026-11-21T03:00:00Z') });
+  const arch = first.__files['provincias-archivo'].draws;
+  const page = { src: 'cha', date: '2026-11-20', turno: 'NOCT', sorteo: 15392, cols: { caba: p.cols.caba, 'buenos-aires': p.cols['buenos-aires'], cordoba: p.cols.cordoba, chaco: p.cols.chaco, corrientes: p.cols.corrientes } };
+  const later = prov.compute({ ...base, ok: { cha: 1 }, refs: [page], archive: arch }, null, { now: new Date('2026-11-21T12:00:00Z') });
+  assert.equal(later.draws.find(e => e.j === 'chaco' && e.t === 'NOCT').s, 15392);
+  const other = { ...page, cols: { ...page.cols, chaco: ['9999', ...p.cols.chaco.slice(1)] } };
+  const bad = prov.compute({ ...base, ok: { cha: 1 }, refs: [other], archive: arch }, null, { now: new Date('2026-11-21T12:00:00Z') });
+  assert.ok(!bad.draws.some(e => e.j === 'chaco' && e.d === '2026-11-20' && e.t === 'NOCT'));
+  assert.match(bad.conflicts.find(c => c.j === 'chaco').why, /Chaco page and Corrientes workbook differ/);
 });

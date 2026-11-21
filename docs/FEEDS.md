@@ -148,8 +148,14 @@
     Турно: Matutino 11:30, Vespertino 14:30, De la Siesta 17:30, De la Tarde 19:30, Nocturno 22:00 (тип 11 — Nocturno 20:00).
   - **San Juan** — CAS: `cas.gob.ar/?fecha=D` (серверный HTML; блоки «SORTEO VESPERTINO N° 7413 03/11/2026», 1°–20°).
   - **Chaco + Corrientes** — Lotería Chaqueña: `loteria.chaco.gov.ar/ver_extracto/DD-MM-YYYY/<PRE|PRI|MAT|Ves|NOC>` (колонки Prov. Bs As,
-    Ciudad Bs As, Chaqueña, Correntina, Cordoba). Correntina — пока только эта копия (у самой Lotería Correntina — только xlsx
-    «para medios» с последней Nocturna, перезаписывается; кандидат во вторую копию, см. ресёрч).
+    Ciudad Bs As, Chaqueña, Correntina, Cordoba).
+  - **Вторая копия Nocturna Chaco + Corrientes** (источник `cor`, с 21.11) — xlsx «para medios» Lotería Correntina: ссылка
+    «EXTRACTO NOCTURNO.xlsx» со страницы `loteriacorrentina.gob.ar/juegos/quiniela` (адрес файла меняется — ищем каждый раз),
+    только последняя Nocturna, файл перезаписывается после тиража. Разбор `tools/lib/xlsx.mjs` (zip без зависимостей) +
+    `parseCorrientes`: семь колонок (Correntina, Ciudad, Bonaerense, Santa Fe, Córdoba, Entre Ríos, Chaco), два блока (1–20 и 1–10)
+    обязаны совпасть. Запрашивается, только пока страница Chaco не дала последнюю положенную Nocturna (сбой Chaco); сверка — те же
+    пять колонок с нашим архивом. Номер тиража в файле — свой у Корриентеса, не берём: его дописывает страница Chaco, когда вернётся
+    (если её цифры другие — тираж снимается как конфликт). Тираж из файла помечен `v: "cor"`, значок «verificada · planilla de Corrientes».
   - **Misiones** (+ Misionera Plus) — IPLyC: `loteriademisiones.com.ar/portal/juegos/quiniela-<турно>/` — только последний тираж турно
     (robots запрещает `?`, другие даты не спрашиваем); у каждой ячейки aria-label «Lotería <колонка>, premio número NN: VVVV».
 - **Проверки:** 20 номеров по 4 цифры; дата страницы = запрошенная; Tucumán — список строк строго по убыванию `posicion` (так его читает

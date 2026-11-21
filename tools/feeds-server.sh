@@ -35,8 +35,8 @@ case "$SITE" in
     KEYS=(TG_BOT_TOKEN TG_CHAT_ID)
     # the feed "fuentes" reads the descriptions of the saved sources (JSON only, never the saved documents) for their expiry dates
     SRC_SETS=(lottery rg truco generala chinchon escoba burako)
-    # how long a copy stays fresh (owner copy or downloaded): one dependency-free file
-    EXTRA_PATHS=(tools/lib/copyage.mjs) ;;
+    # how long a copy stays fresh (copyage) and the press workbook of the Corrientes lottery (xlsx): dependency-free files
+    EXTRA_PATHS=(tools/lib/copyage.mjs tools/lib/xlsx.mjs) ;;
   pingalto)
     CRON_SPEC='23 * * * *'; RUN_UID=47220; IMAGE=pingalto-feeds:node24; APK='libwebp-tools'
     KEYS=(PANDASCORE_TOKEN CR_API_KEY BS_API_KEY TG_BOT_TOKEN TG_CHAT_ID)

@@ -4,6 +4,11 @@
 
 ## Три сайта
 
+## 2026-11-21 — запасной источник Nocturna Chaco и Corrientes: xlsx Lotería Correntina
+> «Да, добавь» (на предложение после сигнала бота о сбое Lotería Chaqueña 20.11)
+- Сайт loteria.chaco.gov.ar не отвечает никому с 20.11 12:34 ART. Nocturna Chaqueña и Correntina теперь берётся и из xlsx «para medios»
+  Lotería Correntina (docs/FEEDS.md, источник `cor`), с той же сверкой пяти колонок; остальные турно — только Chaco.
+
 ## 2026-11-19 — исправить всё из аудита автообновления, по порядку
 > «Всё по порядку» (ответ на «Что исправлять?» после аудита «Все ли страницы автообновляемые и автонаполняемые»)
 - Исправлены все пункты аудита (HANDOFF 19.11): вторая копия Quini 6/Brinco, ленты riot/vrs/steam, accesos, цена Quiniela Plus,
