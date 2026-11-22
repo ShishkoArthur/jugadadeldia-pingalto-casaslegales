@@ -9,6 +9,9 @@
   /quiniela/chaco/ и /corrientes/ честно пишут, что источник молчит, и держат последние верные тиражи.
 - По слову владельца («Да, добавь») — источник `cor`: xlsx Lotería Correntina с последней Nocturna (Chaqueña + Correntina + пять
   опорных колонок, сверка с архивом). Тесты в engine/test/feeds-provincias.test.mjs (фикстура engine/test/fixtures/provincias-cor).
+- 22.11: Чако всё ещё молчит; Nocturna 20/11 и 21/11 на сайте из `cor` (c 5). Запуск provincias вырос до 338 с из 420 (ожидание
+  каждой страницы Чако) — теперь источник без ответа спрашивается один раз за запуск (`mute` в provincias.mjs), запуск 43 с.
+  Тесты лент запускать с загруженным `.env` (PDFTOTEXT), иначе три теста PDF падают ложно.
 
 ## 19.11.2026 — исправлено по аудиту (владелец: «Всё по порядку»)
 - jugadadeldia: Quini 6 и Brinco — вторая официальная копия (IPJyC Mendoza, PDF Lotería de Santa Fe; сервер её видит), сигнал
