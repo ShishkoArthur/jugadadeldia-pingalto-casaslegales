@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, cpSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { parseTucumanDay, parseTucumanRegistro, tucumanIntermediate, parseSanJuan, parseChaco, parseMisiones, parseCorrientes, ProvError } from '../../tools/feeds/jugadadeldia/provincias-parse.mjs';
+import { parseTucumanDay, parseTucumanRegistro, tucumanIntermediate, parseSanJuan, parseChaco, parseMisiones, parseCorrientes, ProvError, dmyDash, CHACO_CODES } from '../../tools/feeds/jugadadeldia/provincias-parse.mjs';
 import { readXlsx } from '../../tools/lib/xlsx.mjs';
 import prov, { refCheck, sourceState, isDown, kindOf, corrientesLink } from '../../tools/feeds/jugadadeldia/provincias.mjs';
 import lot, { parseLoto, parseTelekino, parseCas, parseMza, pdfBbox, behindOf, LotError } from '../../tools/feeds/jugadadeldia/loterias.mjs';
@@ -330,6 +330,20 @@ test('provincias feed: while the Chaco page does not answer, the Corrientes work
   const r2 = await runFeed(prov, { out, fixtures, now: new Date(NIGHT), ua: 'test' });
   assert.ok(r2.ok, r2.error);
   assert.ok(!JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data.sources.ok.cor);
+});
+
+test('provincias feed: a source that does not answer is asked once per run; the workbook is still asked', async () => {
+  const { out, fixtures } = corRun();
+  const idx = join(fixtures, 'provincias', 'index.json'), ix = JSON.parse(readFileSync(idx, 'utf8'));
+  ix['https://loteria.chaco.gov.ar/ver_extracto/' + dmyDash('2026-11-20') + '/' + CHACO_CODES.PREV] = { error: 'fetch failed' };
+  writeFileSync(idx, JSON.stringify(ix));
+  const r = await runFeed(prov, { out, fixtures, now: new Date('2026-11-21T03:00:00Z'), ua: 'test' });
+  assert.ok(r.ok, r.error);
+  const d = JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data;
+  assert.equal(d.sources.failed.cha, 1);
+  assert.equal(d.sources.state.cha.kind, 'network');
+  assert.ok(d.sources.ok.cor >= 1);
+  assert.equal(d.draws.find(e => e.j === 'chaco' && e.d === '2026-11-20' && e.t === 'NOCT').v, 'cor');
 });
 
 test('provincias: the Chaco page later fills the draw number of a workbook draw; a page that differs from the workbook drops the draw', () => {

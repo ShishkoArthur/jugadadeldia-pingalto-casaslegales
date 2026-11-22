@@ -116,7 +116,9 @@ export default {
     const has = (j, d, t) => have.has(j + '|' + d + '|' + t);
     const checked = Object.fromEntries(['tuc', 'sj', 'cha'].map(s => [s, new Set(st.checked[s] || [])]));
     const out = { today, found: [], refs: [], notes: [], ok: {}, failed: {}, errs: {}, none: {}, checkedNew: { tuc: [], sj: [], cha: [] }, archive: st.draws, x: st.x, checked: st.checked, src: st.src, fetched: now.toISOString(), source: { url: TUC, also: [SJ, CHA, MIS, COR] } };
-    const fail = (src, msg, e) => { out.failed[src] = (out.failed[src] || 0) + 1; (out.errs[src] = out.errs[src] || []).push({ kind: kindOf(e), msg: msg.slice(0, 200) }); out.notes.push(msg.slice(0, 200)); };
+    // a source whose host did not answer at all (no HTTP status) is not asked again in this run: its other pages wait for the next run
+    const mute = {};
+    const fail = (src, msg, e) => { if (kindOf(e) === 'network' && !/^HTTP \d/.test(String(e && e.message))) mute[src] = true; out.failed[src] = (out.failed[src] || 0) + 1; (out.errs[src] = out.errs[src] || []).push({ kind: kindOf(e), msg: msg.slice(0, 200) }); out.notes.push(msg.slice(0, 200)); };
     const okd = src => { out.ok[src] = (out.ok[src] || 0) + 1; };
     const none = (src, what) => { (out.none[src] = out.none[src] || []).push(what); };
     // a draw is checked here, per source: a bad one fails its source only
@@ -141,6 +143,7 @@ export default {
     if (ca) {
       if (!caAdded) { tls.setDefaultCACertificates([...tls.getCACertificates('default'), ca]); caAdded = true; }
       for (const d of daysFor('tuc')) {
+        if (mute.tuc) break;
         if (d === today && nowMin < minutes('11:45')) continue;
         try {
           const items = parseTucumanDay((await ctx.getJson(TUC_DAY(d), { ttlHours: d === today ? 0.2 : 2 })).json, d);
@@ -149,6 +152,7 @@ export default {
           let complete = true;
           for (const it of items) {
             if (has('tucuman', d, it.turno)) continue;
+            if (mute.tuc) { complete = false; break; }
             try { if (!add('tuc', { j: 'tucuman', d, t: it.turno, s: it.sorteo, h: it.time, n: parseTucumanRegistro((await ctx.getJson(TUC_REG(it.id), { ttlHours: 24 })).json, it.id) })) complete = false; }
             catch (e) { complete = false; fail('tuc', e.message, e); }
           }
@@ -158,6 +162,7 @@ export default {
     }
     // San Juan: one page per day with all its turns
     for (const d of daysFor('sj')) {
+      if (mute.sj) break;
       if (d === today && nowMin < minutes('11:00')) continue;
       try {
         const p = parseSanJuan((await ctx.getText(SJ_DAY(d), { ttlHours: d === today ? 0.2 : 2 })).text, d);
@@ -176,7 +181,7 @@ export default {
       const haveAny = GRID_T.some(t => has('chaco', d, t));
       for (const t of GRID_T) {
         if (has('chaco', d, t)) continue;
-        if (d === today && nowMin < minutes(GRID[t]) + 20) { complete = false; continue; }
+        if (mute.cha || (d === today && nowMin < minutes(GRID[t]) + 20)) { complete = false; continue; }
         try {
           const p = parseChaco((await ctx.getText(CHA_PAGE(d, t), { ttlHours: d === today ? 0.2 : 2 })).text, d, t);
           okd('cha');
@@ -200,6 +205,7 @@ export default {
     // Misiones: the latest draw of each turn page (no other date can be asked for)
     for (const t of GRID_T) {
       const due = nowMin >= minutes(GRID[t]) + 20;
+      if (mute.mis) break;
       if (due ? has('misiones', today, t) : has('misiones', yesterday, t)) continue;
       try {
         const p = parseMisiones((await ctx.getText(MIS_PAGE(t), { ttlHours: due ? 0.2 : 2 })).text, t);

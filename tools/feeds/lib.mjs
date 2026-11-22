@@ -27,7 +27,7 @@ export const zoneTime = (d, tz = AR_TZ) => { const p = parts(d, tz); return p.ho
 
 // ctx for feed.fetch(): getText/getJson/getBytes(url, { ttlHours, headers, timeoutMs, method, body }); one request at a time, at least gapMs between
 // requests, 3 tries with pauses (not for 4xx), responses cached in cacheDir (a cache entry younger than ttlHours is used without a
-// request; headers are never cached or logged). fixtures: <dir>/index.json { url: file } replaces the network (tests).
+// request; headers are never cached or logged). fixtures: <dir>/index.json { url: file } replaces the network (tests); { error } stands for no answer, { status } for an HTTP error.
 export function makeCtx(o = {}) {
   const now = o.now ? new Date(o.now) : new Date();
   const gapMs = o.gapMs === undefined ? 1000 : o.gapMs;
@@ -45,6 +45,7 @@ export function makeCtx(o = {}) {
       if (!index[key]) { const e = new Error('fixture missing for ' + key); e.status = 404; throw e; }
       requests.push({ url, from: 'fixture' });
       const f = index[key];
+      if (f && typeof f === 'object' && f.error) throw new Error(f.error);
       if (f && typeof f === 'object' && f.status) { const e = new Error('HTTP ' + f.status + ' ' + url); e.status = f.status; throw e; }
       const file = typeof f === 'object' ? f.file : f;
       const raw = readFileSync(join(o.fixtures, file));
