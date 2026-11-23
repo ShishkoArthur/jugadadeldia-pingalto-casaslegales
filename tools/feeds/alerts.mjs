@@ -81,7 +81,9 @@ function list(T, xs, n = 12) {
   return items.join('; ') + ((xs || []).length > n ? '; ' + fill(T.templates.more, { n: xs.length - n }) : '');
 }
 
-// derived params per template (formatting and the parts built from other templates)
+const TURN_NAMES = { PREV: 'La Previa', PRIM: 'Primera', MATU: 'Matutina', VESP: 'Vespertina', NOCT: 'Nocturna' };
+// derived params per template (formatting and the parts built from other templates); external: the fault is on the source's side
+// (nothing to fix here, the owner need not forward it), with the turns a backup source still brings
 const PREP = {
   feed_stale(p, T) {
     const w = why(T, p.raw);
@@ -90,7 +92,12 @@ const PREP = {
   },
   feed_ok: (p, T) => ({ duration: fmtDuration(p.durationMs || 0, T) }),
   load_error: (p, T) => ({ raw: H(why(T, p.raw).html) }),
-  prov_down: (p, T) => ({ since: p.since ? fmtIso(p.since.replace(' ', 'T') + ':00Z') : '', kind: H(fill(T.templates[p.kind === 'format' ? 'prov_kind_format' : 'prov_kind_net']) + '. ' + why(T, p.raw).html) }),
+  prov_down: (p, T) => {
+    const ext = p.kind !== 'format', turnos = p.backup ? p.backup.turnos.map(t => TURN_NAMES[t] || t).join(', ') : '';
+    return { since: p.since ? fmtIso(p.since.replace(' ', 'T') + ':00Z') : '', kind: H(fill(T.templates[ext ? 'prov_kind_net' : 'prov_kind_format']) + '. ' + why(T, p.raw).html),
+      backup: H(p.backup ? fill(T.templates.prov_backup, { turnos, who: p.backup.who }) : ''), todo: H(fill(ext ? T.templates.todo_external : T.todoDefault)),
+      external: ext ? { backup: turnos } : null };
+  },
   list_changed: (p, T) => ({ diff: H([p.added ? fill(T.templates.list_added, { x: p.added }) : '', p.removed ? fill(T.templates.list_removed, { x: p.removed }) : '', p.other ? fill(T.templates.list_other, { x: p.other }) : ''].filter(Boolean).join(' ')) }),
   price_held: (p, T) => ({ last: H(p.value ? fill(T.templates.price_last, { value: p.value, until: fmtDay(p.until) }) : '') }),
   reminder(p, T) {
@@ -141,13 +148,13 @@ export function renderAlert(tpl, params = {}, ctx = {}) {
   lines.push(fill(T.time, { ar: fmtAt(now, AR), msk: fmtAt(now, MSK) }));
   let text = lines.join('\n');
   if (text.length > 4000) text = text.slice(0, 3990).replace(/<[^>]*$/, '').replace(/&[a-z]*$/, '') + ' …';
-  return { text, sev, title: unesc(what).slice(0, 160) };
+  return { text, sev, title: unesc(what).slice(0, 160), external: p.external || null };
 }
 
 // ---- problems from a health report ----------------------------------------------------------------------------------------------
 
 const RE = {
-  prov: /^provincias: (.+?) failing since (\d{4}-\d\d-\d\d \d\d:\d\d) UTC, (\d+) runs, (page changed \(parser or address\)|no answer): ([\s\S]*?)\. Kept last good draws: ([\s\S]*); the other provinces publish\.$/,
+  prov: /^provincias: (.+?) failing since (\d{4}-\d\d-\d\d \d\d:\d\d) UTC, (\d+) runs, (page changed \(parser or address\)|no answer): ([\s\S]*?)\. Kept last good draws: ([\s\S]*); the other provinces publish\.(?: Backup: ([A-Z,]+) from (.+)\.)?$/,
   robots: /^(\S+) now keeps AI crawlers or us out \(([\s\S]*?)\): our server stops/,
   held: /^price (\S+) of (\S+) held back \(([\s\S]*)\); the last good one stays(?: \(([^,]*), until (\S+)\))?$/,
   cited: /^LOTBA (\S+) (\S+): cited values not found any more: ([\s\S]*?) \(the site keeps/,
@@ -157,7 +164,7 @@ const RE = {
 function noticeProblem(x) {
   const id = x.id, text = x.text || '', base = { key: 'notice:' + id, group: 'notice:' + id, scope: { feed: x.feed } };
   let m;
-  if (id.startsWith('prov-') && (m = RE.prov.exec(text))) return { ...base, tpl: 'prov_down', ok: 'prov_ok', params: { source: m[1], since: m[2], runs: Number(m[3]), kind: m[4].startsWith('page') ? 'format' : 'net', raw: m[5], last: m[6] } };
+  if (id.startsWith('prov-') && (m = RE.prov.exec(text))) return { ...base, tpl: 'prov_down', ok: 'prov_ok', params: { source: m[1], since: m[2], runs: Number(m[3]), kind: m[4].startsWith('page') ? 'format' : 'net', raw: m[5], last: m[6], ...(m[7] ? { backup: { turnos: m[7].split(','), who: m[8] } } : {}) } };
   if (id.startsWith('robots-') && (m = RE.robots.exec(text))) return { ...base, tpl: 'robots_blocked', ok: 'robots_ok', params: { url: m[1], raw: m[2] } };
   if (x.feed === 'listas' && id.startsWith('changed-') && text.includes(' changed on the official page;')) {
     const g = re => { const r = re.exec(text); return r ? r[1] : ''; };
@@ -233,8 +240,13 @@ export function composeTexts(messages, site, now = new Date(), T = loadTemplates
   const one = m => {
     if (m.kind !== 'digest') return renderAlert(m.tpl, m.params, { site, scope: m.scope, now, T });
     // first digest: the start of a problem is unknown (it was alerted before this layer), so no "since"
-    const items = m.items.map(i => fill(T.templates[m.first ? 'digest_item_plain' : 'digest_item'], { title: renderAlert(i.tpl, i.params, { site, scope: i.scope, now, T }).title, since: fmtIso(i.since) }));
-    return renderAlert('digest', { intro: H(fill(T.templates[m.first ? 'digest_first' : 'digest_daily'])), n: m.items.length, items: H(items.join('\n')) }, { site, now, T, digest: true, sev: 'red' });
+    // a problem on the source's side is marked as such; when every open one is, the digest is yellow and asks for nothing
+    const rs = m.items.map(i => ({ i, r: renderAlert(i.tpl, i.params, { site, scope: i.scope, now, T }) }));
+    const items = rs.map(({ i, r }) => fill(T.templates[m.first ? 'digest_item_plain' : 'digest_item'], { title: r.title, since: fmtIso(i.since) })
+      + (r.external ? fill(T.templates.digest_ext, { backup: H(r.external.backup ? fill(T.templates.digest_ext_backup, { turnos: r.external.backup }) : '') }) : ''));
+    const allExt = rs.every(x => x.r.external);
+    return renderAlert('digest', { intro: H(fill(T.templates[m.first ? 'digest_first' : 'digest_daily'])), n: m.items.length, items: H(items.join('\n')),
+      todo: H(fill(T.templates[allExt ? 'digest_todo_external' : 'digest_todo'])) }, { site, now, T, digest: true, sev: allExt ? 'yellow' : 'red' });
   };
   const all = messages.map(one);
   if (all.length <= MAX_MSGS) return all.map(r => r.text);

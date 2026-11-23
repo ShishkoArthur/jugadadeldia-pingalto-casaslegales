@@ -145,6 +145,28 @@ test('alerts: de-duplication, recovery note, flap within 12 h, daily digest, fir
   assert.ok(texts[0].includes(fill(T.templates.digest_first)));
 });
 
+test('alerts: a source down on its side asks for nothing (owner 2026-11-22), names the backup turns; the digest is yellow only when every open problem is external', () => {
+  const prov = (kind, backup) => ({ feed: 'provincias', id: 'prov-cha-2026-11-20T15:34:03.205Z', text: 'provincias: Chaco and Corrientes (Lotería Chaqueña) failing since 2026-11-20 15:34 UTC, 204 runs, ' + (kind === 'net' ? 'no answer' : 'page changed (parser or address)') + ': Chaco 2026-11-22 PREV: fetch failed. Kept last good draws: Chaco 2026-11-21 NOCT, Corrientes 2026-11-21 NOCT; the other provinces publish.' + (backup ? ' Backup: NOCT from Lotería Correntina.' : '') });
+  const [p] = problemsOf(health({ notices: [prov('net', true)] }));
+  assert.deepEqual(p.params.backup, { turnos: ['NOCT'], who: 'Lotería Correntina' });
+  const a = renderAlert(p.tpl, p.params, { site: 'jugadadeldia', scope: p.scope, now: NOW });
+  assert.equal(a.sev, 'yellow');
+  assert.ok(a.text.includes(fill(T.templates.todo_external)) && !a.text.includes(T.todoDefault));
+  assert.ok(a.text.includes(fill(T.templates.prov_backup, { turnos: 'Nocturna', who: 'Lotería Correntina' })));
+  const [f] = problemsOf(health({ notices: [prov('format', false)] }));
+  const b = renderAlert(f.tpl, f.params, { site: 'jugadadeldia', scope: f.scope, now: NOW });
+  assert.ok(b.text.includes(T.todoDefault) && !b.text.includes(fill(T.templates.todo_external)) && !b.external, 'a changed page is ours to fix');
+  const at = h => new Date(NOW.getTime() + h * H);
+  const digest = ps => { let r = planAlerts({ problems: {} }, ps, at(0)), s = r.state; for (let h = 25; h < 50 && !(r = planAlerts(s, ps, at(h))).messages.length; h++) s = r.state; assert.equal(r.messages[0].kind, 'digest'); return composeTexts(r.messages, 'jugadadeldia', at(30))[0]; };
+  const d1 = digest([p]);
+  assert.equal(firstLine(d1), fill(T.header.digest, { emoji: T.emoji.yellow, domain: 'jugadadeldia.com' }));
+  assert.ok(d1.includes(fill(T.templates.digest_ext, { backup: { __html: fill(T.templates.digest_ext_backup, { turnos: 'Nocturna' }) } })));
+  assert.ok(d1.includes(fill(T.templates.digest_todo_external)) && !d1.includes(fill(T.templates.digest_todo)));
+  const d2 = digest([p, ...problemsOf(health({ feeds: { loterias: stale } }))]);
+  assert.equal(firstLine(d2), fill(T.header.digest, { emoji: T.emoji.red, domain: 'jugadadeldia.com' }));
+  assert.ok(d2.includes(fill(T.templates.digest_todo)) && d2.includes(fill(T.templates.digest_ext, { backup: { __html: '' } }).slice(0, 20)));
+});
+
 test('alerts: a lotto game 2+ draws behind -> one message per game, one escalation to red, one recovery note', () => {
   const at = h => new Date(NOW.getTime() + h * H);
   const game = (behind, s = 3421) => ({ name: 'Quini 6', latest: { s, d: '2026-10-28' }, behind, expected: '2026-11-18' });

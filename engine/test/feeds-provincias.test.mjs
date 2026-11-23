@@ -344,6 +344,11 @@ test('provincias feed: a source that does not answer is asked once per run; the 
   assert.equal(d.sources.state.cha.kind, 'network');
   assert.ok(d.sources.ok.cor >= 1);
   assert.equal(d.draws.find(e => e.j === 'chaco' && e.d === '2026-11-20' && e.t === 'NOCT').v, 'cor');
+  // 4 h later still silent: down, and the alert names the turns the workbook still brings
+  assert.ok((await runFeed(prov, { out, fixtures, now: new Date('2026-11-21T07:00:00Z'), ua: 'test' })).ok);
+  const e = JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data;
+  assert.equal(e.alerts.length, 1);
+  assert.match(e.alerts[0].text, /^provincias: Chaco and Corrientes \(Lotería Chaqueña\) failing since .* no answer: .*; the other provinces publish\. Backup: NOCT from Lotería Correntina\.$/);
 });
 
 test('provincias: the Chaco page later fills the draw number of a workbook draw; a page that differs from the workbook drops the draw', () => {

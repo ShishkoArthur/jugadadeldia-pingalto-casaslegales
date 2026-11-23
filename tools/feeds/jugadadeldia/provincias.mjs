@@ -45,6 +45,9 @@ const ALT = { src: 'cor', turnos: ['NOCT'], who: 'Lotería Correntina', url: COR
 const GRID = { PREV: '10:15', PRIM: '12:00', MATU: '15:00', VESP: '18:00', NOCT: '21:00' };
 const GRID_T = Object.keys(GRID);
 
+// the turns another official source still brings while a source is down: " Backup: NOCT from Lotería Correntina." or ''
+const backupOf = (s, down) => { const A = (JURS.find(J => J.src === s && J.alt) || {}).alt; return A && !down[A.src] ? ' Backup: ' + A.turnos.join(',') + ' from ' + A.who + '.' : ''; };
+
 export const JURS = [
   { id: 'tucuman', name: 'Tucumán', long: 'Quiniela de Tucumán', operator: 'Caja Popular de Ahorros de la Provincia de Tucumán', source: TUC, src: 'tuc',
     turnos: [['MATU', 'Matutino', '11:30'], ['VESP', 'Vespertino', '14:30'], ['SIES', 'De la Siesta', '17:30'], ['TARD', 'De la Tarde', '19:30'], ['NOCT', 'Nocturno', '22:00']] },
@@ -277,7 +280,7 @@ export default {
     // one alert per failing source (the id holds the start of the failure: a new failure later is a new alert)
     const alerts = Object.entries(down).map(([s, v]) => {
       const js = JURS.filter(J => J.src === s), last = js.map(J => J.name + ' ' + (latest[J.id] ? latest[J.id].d + ' ' + latest[J.id].t : 'none')).join(', ');
-      return { id: 'prov-' + s + '-' + v.since, text: 'provincias: ' + SRCS[s] + ' failing since ' + v.since.slice(0, 16).replace('T', ' ') + ' UTC, ' + v.runs + ' runs, ' + (v.kind === 'format' ? 'page changed (parser or address)' : 'no answer') + ': ' + v.why.slice(0, 160) + '. Kept last good draws: ' + last + '; the other provinces publish.' };
+      return { id: 'prov-' + s + '-' + v.since, text: 'provincias: ' + SRCS[s] + ' failing since ' + v.since.slice(0, 16).replace('T', ' ') + ' UTC, ' + v.runs + ' runs, ' + (v.kind === 'format' ? 'page changed (parser or address)' : 'no answer') + ': ' + v.why.slice(0, 160) + '. Kept last good draws: ' + last + '; the other provinces publish.' + backupOf(s, down) };
     });
     return {
       ...meta, latest, days, draws: draws.filter(e => days.includes(e.d)),
