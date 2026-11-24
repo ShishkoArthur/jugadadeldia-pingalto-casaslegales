@@ -1,0 +1,44 @@
+{
+ "jugadadeldia.com": {
+  "path": "/_ritmo",
+  "method": "POST",
+  "enc": "json",
+  "keys": {
+   "path": "pg",
+   "ref": "de",
+   "title": "tit",
+   "lang": "idi",
+   "sw": "an",
+   "sh": "al",
+   "tz": "hz"
+  }
+ },
+ "pingalto.com": {
+  "path": "/lvl-up",
+  "method": "POST",
+  "enc": "b64",
+  "keys": {
+   "path": "u",
+   "ref": "from",
+   "title": "name",
+   "lang": "hl",
+   "sw": "vw",
+   "sh": "vh",
+   "tz": "zone"
+  }
+ },
+ "casaslegales.com": {
+  "path": "/lectura",
+  "method": "POST",
+  "enc": "form",
+  "keys": {
+   "path": "p",
+   "ref": "r",
+   "title": "t",
+   "lang": "l",
+   "sw": "w",
+   "sh": "h",
+   "tz": "z"
+  }
+ }
+}
