@@ -1,5 +1,5 @@
 {
- "total": 9.4249,
+ "total": 9.4544,
  "runs": [
   {
    "at": "2026-11-04T12:21:12.652Z",
@@ -228,6 +228,30 @@
    "site": "jugadadeldia",
    "what": "strings",
    "usd": 0.0285
+  },
+  {
+   "at": "2026-11-24T14:34:18.606Z",
+   "site": "jugadadeldia",
+   "what": "strings",
+   "usd": 0.0084
+  },
+  {
+   "at": "2026-11-24T14:34:39.870Z",
+   "site": "pingalto",
+   "what": "strings",
+   "usd": 0.0092
+  },
+  {
+   "at": "2026-11-24T14:37:41.917Z",
+   "site": "casaslegales",
+   "what": "strings",
+   "usd": 0.011
+  },
+  {
+   "at": "2026-11-24T14:39:27.329Z",
+   "site": "pingalto",
+   "what": "strings",
+   "usd": 0.0009
   }
  ]
 }

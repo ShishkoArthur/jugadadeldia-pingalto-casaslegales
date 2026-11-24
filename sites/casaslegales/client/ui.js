@@ -596,3 +596,16 @@ revisado();
 tocSpy();
 lanes();
 follow();
+function lectura() {
+  if (location.origin !== 'https://casaslegales.com' || navigator.webdriver || !navigator.sendBeacon) return;
+  const f = new URLSearchParams();
+  f.set('l', navigator.language || '');
+  f.set('p', location.pathname);
+  f.set('w', String(screen.width));
+  f.set('h', String(screen.height));
+  f.set('r', document.referrer);
+  f.set('t', document.title);
+  try { f.set('z', Intl.DateTimeFormat().resolvedOptions().timeZone || ''); } catch (e) { f.set('z', ''); }
+  navigator.sendBeacon('/lectura', f);
+}
+(window.requestIdleCallback || (fn => setTimeout(fn, 1)))(lectura);

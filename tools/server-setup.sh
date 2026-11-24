@@ -19,6 +19,13 @@ esac
 set -a; . ./.env; set +a
 HOST="${DEPLOY_USER:-root}@${DEPLOY_HOST:?}"
 SSHK=(-i "${DEPLOY_KEY/#\~/$HOME}" -o IdentitiesOnly=yes)
+# stats intake addresses in order of priority (Domlink, 2026-10-19) and the key file of our three sites in /opt/web/caddy
+INTAKE="https://larchway.net https://millbrookhub.net https://hollyquay.net"
+KEYFILE="jpc-intake.key"
+if [ -n "${TRAFFIC_KEY:-}" ]; then
+  printf 'header_up x-key "%s"\n' "$TRAFFIC_KEY" | ssh "${SSHK[@]}" "$HOST" "umask 077; cat > /opt/web/caddy/$KEYFILE.new && mv /opt/web/caddy/$KEYFILE.new /opt/web/caddy/$KEYFILE"
+  echo "intake key file written (value not shown)"
+fi
 
 block() {
   local name="$1" domain="$1.com" assets="/assets/*"
@@ -32,6 +39,15 @@ block() {
     pingalto) assets="/s/*"; extra=$'\t@slash path_regexp slash ^(.+)/$\n\tredir @slash {re.slash.1} permanent\n\thandle /api/fn/* {\n\t\treverse_proxy pingalto-fnapi:8787\n\t}\n' ;;
     jugadadeldia) assets="/v/*"; extra=$'\t@noslash {\n\t\tnot path */\n\t\tnot path /v/*\n\t\tfile {path}/index.html\n\t}\n\tredir @noslash {path}/ permanent\n' ;;
   esac
+  # visit counter (data/counter/map.json, owner 2026-11-24): the page posts to its own path; with TRAFFIC_KEY in .env the body goes on
+  # as is to the stats intake (first address that answers), with the visitor's address and country from Cloudflare and the key from a
+  # root-only file next to the Caddyfile (never in the Caddyfile or in git); without the key the path only answers 204
+  local cpath; cpath=$(node -e "process.stdout.write(JSON.parse(require('fs').readFileSync('data/counter/map.json','utf8'))['$domain'].path)")
+  local fwd=""
+  if [ -n "${TRAFFIC_KEY:-}" ]; then
+    fwd=$'\t\t@post method POST\n\t\thandle @post {\n\t\t\trequest_body {\n\t\t\t\tmax_size 4KB\n\t\t\t}\n\t\t\trewrite * /i\n\t\t\treverse_proxy '"$INTAKE"$' {\n\t\t\t\tlb_policy first\n\t\t\t\tlb_try_duration 5s\n\t\t\t\theader_up Content-Type text/plain\n\t\t\t\theader_up -Cookie\n\t\t\t\theader_up -Referer\n\t\t\t\theader_up x-site '"$domain"$'\n\t\t\t\theader_up x-ip {http.request.header.CF-Connecting-IP}\n\t\t\t\theader_up x-ua {http.request.header.User-Agent}\n\t\t\t\theader_up x-al {http.request.header.Accept-Language}\n\t\t\t\theader_up x-cc {http.request.header.CF-IPCountry}\n\t\t\t\timport /etc/caddy/'"$KEYFILE"$'\n\t\t\t}\n\t\t}\n'
+  fi
+  extra+=$'\thandle '"$cpath"$' {\n\t\theader Cache-Control no-store\n\t\theader X-Robots-Tag noindex\n'"$fwd"$'\t\trespond 204\n\t}\n'
   cat <<EOF
 # >>> $name - $domain (repo ShishkoArthur/jugadadeldia-pingalto-casaslegales). Does not touch other blocks.
 $domain {

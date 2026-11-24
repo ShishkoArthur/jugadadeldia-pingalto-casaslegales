@@ -19,7 +19,9 @@ import { verify as verifyRg, freshness } from './verify-rg.mjs';
 import { isOwnerDoc, docMaxAge, docUntil } from './lib/ownercopy.mjs';
 import { daysBetween } from '../engine/format.mjs';
 
-const BUDGET = 160 * 1024;
+// 161 KB since 2026-11-24: the visit counter the owner asked for (data/counter/map.json) put the longest text page,
+// jugadadeldia /en/truco/rules/, 239 bytes over 160 KB with everything already minified
+const BUDGET = 161 * 1024;
 const FONT_BUDGET = 90 * 1024;
 const ch = String.fromCharCode;
 const CYR = new RegExp('[' + ch(0x400) + '-' + ch(0x52f) + ch(0x2de0) + '-' + ch(0x2dff) + ch(0xa640) + '-' + ch(0xa69f) + ']|\\\\u04[0-9a-fA-F]{2}');

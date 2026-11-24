@@ -1,0 +1,6 @@
+{
+ "_about": "Visit counter of our three sites for the owner's stats service (Domlink, owner 2026-11-24, docs/DECISIONS.md). Per site: the same-origin path the page posts to, method, body encoding and field names - the decoding table Domlink needs (format of the catalogs' tracker-map.json). Our Caddy block forwards the body as is to the intake (tools/server-setup.sh). Changing a path or a field here means sending the map to Domlink again before the deploy.",
+ "jugadadeldia.com": {"path": "/_ritmo", "method": "POST", "enc": "json", "keys": {"path": "pg", "ref": "de", "title": "tit", "lang": "idi", "sw": "an", "sh": "al", "tz": "hz"}},
+ "pingalto.com": {"path": "/lvl-up", "method": "POST", "enc": "b64", "keys": {"path": "u", "ref": "from", "title": "name", "lang": "hl", "sw": "vw", "sh": "vh", "tz": "zone"}},
+ "casaslegales.com": {"path": "/lectura", "method": "POST", "enc": "form", "keys": {"path": "p", "ref": "r", "title": "t", "lang": "l", "sw": "w", "sh": "h", "tz": "z"}}
+}

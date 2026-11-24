@@ -226,3 +226,8 @@ peek();
 stacks();
 const saved = store.get('jg-prov');
 if (saved) helpLine(saved);
+
+if (location.hostname === 'jugadadeldia.com' && !navigator.webdriver && navigator.sendBeacon) {
+  const d = { pg: location.pathname, de: document.referrer, tit: document.title, idi: navigator.language || '', an: screen.width, al: screen.height, hz: Intl.DateTimeFormat().resolvedOptions().timeZone || '' };
+  navigator.sendBeacon('/_ritmo', new Blob([JSON.stringify(d)], { type: 'text/plain' }));
+}

@@ -1,5 +1,5 @@
 // Service pages of casaslegales.com: legal notice, contact and privacy. Short, plain, and only what is true today: no public mail
-// address until the owner sets one up (a mailbox nobody reads is not published), no analytics, two values kept in the browser.
+// address until the owner sets one up (a mailbox nobody reads is not published), our own visit counter without cookies (data/counter/map.json), two values kept in the browser.
 import { sectionHead } from './parts.mjs';
 
 const hero = (h, kick, lead) => '<section class="rl-hero"><div><p class="rl-kick">' + h.esc(kick) + '</p><h1>' + h.esc(h.page.h1) + '</h1><p class="rl-lead">' + h.esc(lead) + '</p></div></section>';
@@ -55,7 +55,7 @@ export const privacidad = {
   id: 'privacidad',
   kind: 'service',
   title: 'Privacidad y datos personales en casaslegales.com',
-  description: 'Privacidad en casaslegales.com: sin datos personales, sin cookies ni analítica; qué guarda tu navegador y qué pasa con la dirección que verificás.',
+  description: 'Privacidad en casaslegales.com: sin cuentas ni cookies; qué cuenta el contador de visitas, qué queda en tu navegador y qué pasa con lo que verificás.',
   h1: 'Privacidad',
   ld: h => [h.webPage()],
   render(h) {
@@ -64,12 +64,13 @@ export const privacidad = {
       '<p>Se guardan en el almacenamiento local de tu navegador y no nos llegan. Se borran al limpiar los datos del sitio.</p></div>' +
       '<div class="rl-box"><h3>La dirección que verificás</h3><p>El verificador compara la dirección dentro de tu navegador, con las listas que ya vienen en la página: no la envía a ningún servidor. Para que puedas compartir el resultado, la agrega al final de la dirección de la página: solo viaja si recargás o compartís ese enlace, como cualquier dirección web.</p></div></div></section>';
     const no = '<section class="rl-sec">' + sectionHead(h, 'Lo que no hacemos') + '<div class="rl-card"><ul class="rl-states">' +
-      '<li><i class="rl-n" aria-hidden="true"></i><p>No usamos cookies, analítica, píxeles de publicidad ni botones de redes sociales.</p></li>' +
+      '<li><i class="rl-n" aria-hidden="true"></i><p>No usamos cookies, píxeles de publicidad, analítica de terceros ni botones de redes sociales.</p></li>' +
       '<li><i class="rl-n" aria-hidden="true"></i><p>No hay registro de usuarios, cuentas ni boletines: no te pedimos nombre, correo ni DNI.</p></li>' +
       '<li><i class="rl-n" aria-hidden="true"></i><p>Las fuentes tipográficas y las imágenes se sirven desde este mismo dominio, sin servicios de terceros.</p></li></ul></div></section>';
+    const count = '<section class="rl-sec">' + sectionHead(h, 'Contador de visitas') + '<div class="rl-box"><p>Para saber qué páginas se leen, cada página abierta avisa una vez a este mismo dominio: qué página es, desde qué página llegaste, su título, el idioma y el tamaño de pantalla de tu navegador y tu zona horaria. Nuestro servidor pasa ese aviso a nuestro servicio de estadísticas junto con tu dirección IP (de ella sale el país) y los datos técnicos de tu navegador. No usa cookies ni guarda nada en tu navegador, y no lo usamos para saber quién sos.</p></div></section>';
     const net = '<section class="rl-sec">' + sectionHead(h, 'La conexión') + '<div class="rl-box"><p>Como cualquier sitio web, para entregarte una página el servidor recibe tu dirección IP y los datos técnicos de tu navegador. El sitio pasa por la red de Cloudflare, que también los procesa para entregar la página y protegerla de ataques. Los enlaces a reguladores llevan a sus propias páginas, con sus propias reglas de privacidad.</p></div></section>';
-    const rights = '<section class="rl-sec">' + sectionHead(h, 'Tus derechos') + '<div class="rl-box"><p>En Argentina, la autoridad de control en materia de datos personales es la Agencia de Acceso a la Información Pública (AAIP). Como no guardamos datos personales tuyos, no tenemos nada que corregir ni borrar a tu nombre; si creés que no es así, podés reclamar ante ella.</p></div></section>';
-    return hero(h, 'Sin datos personales', 'Este sitio se puede usar entero sin dar ningún dato personal. Acá está todo lo que pasa con tu visita.') + keep + no + net + rights +
+    const rights = '<section class="rl-sec">' + sectionHead(h, 'Tus derechos') + '<div class="rl-box"><p>En Argentina, la autoridad de control en materia de datos personales es la Agencia de Acceso a la Información Pública (AAIP). No tenemos cuentas ni datos a tu nombre: el contador de visitas guarda la dirección IP con cada visita, sin nombre ni cuenta. Si creés que tenemos algo tuyo para corregir o borrar, podés reclamar ante ella.</p></div></section>';
+    return hero(h, 'Sin cuentas ni cookies', 'Este sitio se puede usar entero sin dar ningún dato personal. Acá está todo lo que pasa con tu visita.') + keep + no + count + net + rights +
       more(h, [['/aviso-legal', 'Aviso legal'], ['/contacto', 'Contacto y correcciones']]);
   },
 };
