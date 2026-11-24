@@ -351,6 +351,21 @@ test('provincias feed: a source that does not answer is asked once per run; the 
   assert.match(e.alerts[0].text, /^provincias: Chaco and Corrientes \(Lotería Chaqueña\) failing since .* no answer: .*; the other provinces publish\. Backup: NOCT from Lotería Correntina\.$/);
 });
 
+test('provincias feed: the draw night page without the workbook link is no failure; the next day it is, and the alert names the Chaco and Corrientes draws kept', async () => {
+  const { out, fixtures } = corRun();
+  const run = async iso => { const r = await runFeed(prov, { out, fixtures, now: new Date(iso), ua: 'test' }); assert.ok(r.ok, r.error); return JSON.parse(readFileSync(join(out, 'provincias.json'), 'utf8')).data; };
+  await run('2026-11-21T03:00:00Z');
+  writeFileSync(join(fixtures, 'provincias', 'quiniela.html'), '<!DOCTYPE html><html lang="es"><body><a href="https://www.loteriacorrentina.gob.ar/_files/ugd/x.xlsx?dn=POCEADA%2520CORRENTINA.xlsx">p</a></body></html>');
+  let d = await run('2026-11-22T01:00:00Z');
+  assert.ok(!d.sources.failed.cor && d.sources.ok.cor >= 1, 'link not up yet on the draw night');
+  assert.deepEqual(d.sources.none.cor, ['2026-11-21 NOCT']);
+  for (const iso of ['2026-11-22T04:00:00Z', '2026-11-22T04:20:00Z', '2026-11-22T04:40:00Z']) d = await run(iso);
+  assert.equal(d.sources.state.cor.kind, 'format');
+  const a = d.alerts.find(x => x.id.startsWith('prov-cor-'));
+  assert.ok(a, 'down after three runs');
+  assert.match(a.text, /Kept last good draws: Chaco \S+ \S+, Corrientes \S+ \S+;/);
+});
+
 test('provincias: the Chaco page later fills the draw number of a workbook draw; a page that differs from the workbook drops the draw', () => {
   const p = parseCorrientes(readXlsx(corBook()));
   const ref = { '2026-11-20|NOCT': corRef() };

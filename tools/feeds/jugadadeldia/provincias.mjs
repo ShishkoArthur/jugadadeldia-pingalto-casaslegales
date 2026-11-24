@@ -197,12 +197,19 @@ export default {
     // Corrientes workbook: the latest Nocturna, only while the Chaco page did not give the due one (not drawn that night: skipped too)
     const night = nowMin >= minutes(GRID.NOCT) + 20 ? today : yesterday;
     const chaNight = out.refs.some(r => r.src === 'cha' && r.date === night && r.turno === 'NOCT') || (out.none.cha || []).includes(night + ' NOCT');
+    // The page is asked as often as the workbook (a copy of the page cached for hours kept a moment without the link, 23.11);
+    // on the draw night the link may be missing while the new file goes up: not a failure, asked again next run.
     if (!chaNight && OWN.cor.some(j => !has(j, night, 'NOCT'))) {
+      const fresh = night === today ? 0.2 : 1;
       try {
-        const link = corrientesLink((await ctx.getText(COR_PAGE, { ttlHours: 6 })).text);
-        const p = parseCorrientes(readXlsx((await ctx.getBytes(link, { ttlHours: night === today ? 0.2 : 1 })).buf));
-        okd('cor');
-        out.refs.push({ src: 'cor', ...p });
+        const page = (await ctx.getText(COR_PAGE, { ttlHours: fresh })).text;
+        let link = null;
+        try { link = corrientesLink(page); } catch (e) { if (night !== today) throw e; okd('cor'); none('cor', night + ' NOCT'); }
+        if (link) {
+          const p = parseCorrientes(readXlsx((await ctx.getBytes(link, { ttlHours: fresh })).buf));
+          okd('cor');
+          out.refs.push({ src: 'cor', ...p });
+        }
       } catch (e) { fail('cor', e.message.startsWith('Corrientes') ? e.message : 'Corrientes workbook: ' + e.message, e); }
     }
     // Misiones: the latest draw of each turn page (no other date can be asked for)
@@ -279,7 +286,7 @@ export default {
     };
     // one alert per failing source (the id holds the start of the failure: a new failure later is a new alert)
     const alerts = Object.entries(down).map(([s, v]) => {
-      const js = JURS.filter(J => J.src === s), last = js.map(J => J.name + ' ' + (latest[J.id] ? latest[J.id].d + ' ' + latest[J.id].t : 'none')).join(', ');
+      const js = JURS.filter(J => J.src === s || (OWN[s] || []).includes(J.id)), last = js.map(J => J.name + ' ' + (latest[J.id] ? latest[J.id].d + ' ' + latest[J.id].t : 'none')).join(', ');
       return { id: 'prov-' + s + '-' + v.since, text: 'provincias: ' + SRCS[s] + ' failing since ' + v.since.slice(0, 16).replace('T', ' ') + ' UTC, ' + v.runs + ' runs, ' + (v.kind === 'format' ? 'page changed (parser or address)' : 'no answer') + ': ' + v.why.slice(0, 160) + '. Kept last good draws: ' + last + '; the other provinces publish.' + backupOf(s, down) };
     });
     return {
